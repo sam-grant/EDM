@@ -1,0 +1,263 @@
+void TGraphThetaYTimeModuloFit()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Wed Sep 16 12:28:47 2020) by ROOT version 6.16/00
+   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
+   c->SetHighLightColor(2);
+   c->Range(-0.5506581,-0.2928186,4.955922,0.4402579);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   Double_t Graph0_fx1002[43] = {
+   0.05017614,
+   0.1505284,
+   0.2508807,
+   0.351233,
+   0.4515852,
+   0.5519375,
+   0.6522898,
+   0.7526421,
+   0.8529943,
+   0.9533466,
+   1.053699,
+   1.154051,
+   1.254403,
+   1.354756,
+   1.455108,
+   1.55546,
+   1.655813,
+   1.756165,
+   1.856517,
+   1.956869,
+   2.057222,
+   2.157574,
+   2.257926,
+   2.358278,
+   2.458631,
+   2.558983,
+   2.659335,
+   2.759688,
+   2.86004,
+   2.960392,
+   3.060744,
+   3.161097,
+   3.261449,
+   3.361801,
+   3.462154,
+   3.562506,
+   3.662858,
+   3.76321,
+   3.863563,
+   3.963915,
+   4.064267,
+   4.164619,
+   4.264972};
+   Double_t Graph0_fy1002[43] = {
+   0.0462566,
+   0.023423,
+   0.03238176,
+   -0.04742482,
+   0.05480523,
+   -0.003008784,
+   0.09664085,
+   -0.04415928,
+   -0.04663841,
+   -0.03866121,
+   0.0995374,
+   0.06570317,
+   -0.04105273,
+   -0.06353069,
+   0.1677864,
+   0.05573664,
+   -0.01702137,
+   0.05039554,
+   0.1587391,
+   0.03509896,
+   0.003778885,
+   0.118281,
+   -0.007826199,
+   0.2589575,
+   0.02102056,
+   0.1355918,
+   0.03218599,
+   0.006041203,
+   0.06154056,
+   -0.09988001,
+   -0.02821615,
+   0.02419555,
+   0.2334695,
+   0.05739179,
+   0.06698329,
+   -0.007954867,
+   0.08079919,
+   -0.02730305,
+   -0.1068257,
+   0.05988048,
+   0.08762078,
+   -0.003843536,
+   0.1141999};
+   Double_t Graph0_fex1002[43] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t Graph0_fey1002[43] = {
+   0.06362274,
+   0.06294851,
+   0.06293935,
+   0.06301041,
+   0.06230915,
+   0.06248735,
+   0.06176314,
+   0.06151708,
+   0.06120402,
+   0.06121956,
+   0.06066418,
+   0.06030073,
+   0.05988307,
+   0.05940951,
+   0.05938376,
+   0.05979082,
+   0.05907553,
+   0.05908657,
+   0.05923382,
+   0.05874511,
+   0.05884992,
+   0.05882447,
+   0.05926883,
+   0.059121,
+   0.05953571,
+   0.05919608,
+   0.05996285,
+   0.05969291,
+   0.06080889,
+   0.06077477,
+   0.06103451,
+   0.06132976,
+   0.06209631,
+   0.06233653,
+   0.06300879,
+   0.06268112,
+   0.06344091,
+   0.0633113,
+   0.0638135,
+   0.06379903,
+   0.06433034,
+   0.06469393,
+   0.0648933};
+   TGraphErrors *gre = new TGraphErrors(43,Graph0_fx1002,Graph0_fy1002,Graph0_fex1002,Graph0_fey1002);
+   gre->SetName("Graph0");
+   gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_Graph_Graph010011002 = new TH1F("Graph_Graph_Graph010011002","",100,0,4.686451);
+   Graph_Graph_Graph010011002->SetMinimum(-0.219511);
+   Graph_Graph_Graph010011002->SetMaximum(0.3669502);
+   Graph_Graph_Graph010011002->SetDirectory(0);
+   Graph_Graph_Graph010011002->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_Graph_Graph010011002->SetLineColor(ci);
+   Graph_Graph_Graph010011002->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
+   Graph_Graph_Graph010011002->GetXaxis()->SetRange(1,94);
+   Graph_Graph_Graph010011002->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph010011002->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010011002->GetXaxis()->SetLabelSize(0.035);
+   Graph_Graph_Graph010011002->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph010011002->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010011002->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad]");
+   Graph_Graph_Graph010011002->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph010011002->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph010011002->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010011002->GetYaxis()->SetLabelSize(0.035);
+   Graph_Graph_Graph010011002->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph010011002->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph010011002->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph010011002->GetZaxis()->SetLabelSize(0.035);
+   Graph_Graph_Graph010011002->GetZaxis()->SetTitleSize(0.035);
+   Graph_Graph_Graph010011002->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph010011002->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph010011002);
+   
+   gre->Draw("ap");
+   
+   TF1 *SinFit1 = new TF1("SinFit","[0] * sin([1] * x) + [2]",0,4.365324, TF1::EAddToList::kDefault);
+   SinFit1->SetFillColor(19);
+   SinFit1->SetFillStyle(0);
+   SinFit1->SetLineColor(2);
+   SinFit1->SetLineWidth(2);
+   SinFit1->GetXaxis()->SetLabelFont(42);
+   SinFit1->GetXaxis()->SetLabelSize(0.035);
+   SinFit1->GetXaxis()->SetTitleSize(0.035);
+   SinFit1->GetXaxis()->SetTitleOffset(1);
+   SinFit1->GetXaxis()->SetTitleFont(42);
+   SinFit1->GetYaxis()->SetLabelFont(42);
+   SinFit1->GetYaxis()->SetLabelSize(0.035);
+   SinFit1->GetYaxis()->SetTitleSize(0.035);
+   SinFit1->GetYaxis()->SetTitleFont(42);
+   SinFit1->SetParameter(0,0);
+   SinFit1->SetParError(0,0);
+   SinFit1->SetParLimits(0,0,0);
+   SinFit1->SetParameter(1,0);
+   SinFit1->SetParError(1,0);
+   SinFit1->SetParLimits(1,0,0);
+   SinFit1->SetParameter(2,0);
+   SinFit1->SetParError(2,0);
+   SinFit1->SetParLimits(2,0,0);
+   SinFit1->Draw("same");
+   
+   TPaveText *pt = new TPaveText(0.59,0.79,0.89,0.89,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("N:	$3.82\times10^{6}$");
+   pt->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

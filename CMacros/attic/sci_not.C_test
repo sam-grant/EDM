@@ -1,0 +1,8 @@
+{
+   TString text;
+   text = Form("%5.3g", 12345678.);
+   text.ReplaceAll("e+0","#times10^{");
+   text.Append("}");
+   TLatex *t = new TLatex(.5,.5, text.Data());
+   t->Draw();
+}

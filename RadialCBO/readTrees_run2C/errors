@@ -1,0 +1,1 @@
+g++ -c  -g Reader.C -o Reader.o

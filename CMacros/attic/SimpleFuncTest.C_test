@@ -1,0 +1,9 @@
+{
+
+	double OMEGA_A = 0.00143934; // kHz
+	double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
+	TF1 *SimpleSinFunc = new TF1("SimpleSinFunc","0.2 * sin(0.00143934 * 1000 * x) - 0.3", 0, G2PERIOD);
+	TCanvas *c = new TCanvas("c","c",800,600);
+	SimpleSinFunc->Draw();
+	c->SaveAs("sin.png");
+}
