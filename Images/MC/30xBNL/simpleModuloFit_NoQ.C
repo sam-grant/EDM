@@ -1,7 +1,7 @@
 void simpleModuloFit_NoQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 01:13:33 2020) by ROOT version 6.16/00
+//=========  (Thu Sep 17 19:15:06 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5487514,-0.6712225,4.938762,0.1284662);
@@ -538,19 +538,19 @@ void simpleModuloFit_NoQ()
    gre->GetListOfFunctions()->Add(SimpleSinFunc1002);
    gre->Draw("ap");
    
-   TPaveText *pt = new TPaveText(0.69,0.55,0.89,0.89,"brNDC");
+   TPaveText *pt = new TPaveText(0.69,0.59,0.89,0.89,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText("4.51#times10^{7}");
    pt_LaTex = pt->AddText(" 1.67");
-   pt_LaTex = pt->AddText(" 0.14");
-   pt_LaTex = pt->AddText(" 1.33");
-   pt_LaTex = pt->AddText("-0.256");
+   pt_LaTex = pt->AddText(" 0.14#pm0.004");
+   pt_LaTex = pt->AddText(" 1.33#pm 0.01");
+   pt_LaTex = pt->AddText("-0.256#pm0.003");
    pt->Draw();
    
-   pt = new TPaveText(0.59,0.55,0.69,0.89,"brNDC");
+   pt = new TPaveText(0.55,0.59,0.69,0.88,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
@@ -561,6 +561,24 @@ void simpleModuloFit_NoQ()
    pt_LaTex = pt->AddText("#omega_{a} [MHz]");
    pt_LaTex = pt->AddText("C [mrad]");
    pt->Draw();
+   
+   TLegend *leg = new TLegend(0.11,0.79,0.45,0.89,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("SimpleSinFunc","A_{EDM} sin(#omega_{a}t) + c","lpf");
+   entry->SetFillColor(19);
+   entry->SetLineColor(2);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(3);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(1);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   leg->Draw();
    
    TF1 *SimpleSinFunc1003 = new TF1("*SimpleSinFunc",0,4.365324,3);
     //The original function : SimpleSinFunc had originally been created by:

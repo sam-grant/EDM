@@ -23,19 +23,19 @@ void Plotter::InitHistos() {
   plot1D("nHits",31,0,32,"nHits","Tracks");
 
   // Vertical angle plots
-  plot1D("ThetaY", 180, -60, 60, "#theta_{y} [mrad]","Decay vertices");
+  plot1D("ThetaY", 180, -60, 60, "#theta_{y} [mrad]","Tracks");
   // Factor of 0.148936 removes the fast rotation, bin in 150 ns (148.9 ns)
-  plot2D("ThetaY_vs_DecayTime", 2700, 0, 2700*0.148936, 180, -60, 60, "Decay time [#mus]", "#theta_{y} [mrad]");
+  plot2D("ThetaY_vs_Time", 2700, 0, 2700*0.148936, 180, -60, 60, "Track time [#mus]", "#theta_{y} [mrad]");
 
 
   //=========== Time modulo plots ===========
 
   // 50 ns bins 
-  plot2D("ThetaY_vs_DecayTime_Modulo", 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+  plot2D("ThetaY_vs_Time_Modulo", 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
   // Coarse bin 
-  plot2D("ThetaY_vs_DecayTime_Modulo_Coarse", 15, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+  plot2D("ThetaY_vs_Time_Modulo_Coarse", 15, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
   // Fine bin
-  plot2D("ThetaY_vs_DecayTime_Modulo_Fine", 1000, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+  plot2D("ThetaY_vs_Time_Modulo_Fine", 1000, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
 
 }
 
@@ -49,16 +49,16 @@ void Plotter::Run() {
   while( NextTrEvent() ) {
 
     // BEAM VERTEX QUALITY CUT
-    if(!tr->passVertexQuality) continue;
+    //if(!tr->passVertexQuality) continue;
 
     double time = tr->trackT0 * 1e-3; // ns -> us
     double p = tr->trackMomentum;
 
     // MOM CUTS
-    if(p < 700 || p > 2400) continue; 
+    //if(p < 700 || p > 2400) continue; 
     // TIME CUTS
     //if(time > g2Period*70) continue;
-    if(time < g2Period*7 || time > g2Period*70) continue;
+    //if(time < g2Period*7 || time > g2Period*70) continue;
     //if(time > 300) continue;
 
     // Vertical angle
@@ -72,7 +72,7 @@ void Plotter::Run() {
 
     // Vertical angle plots
     Fill1D("ThetaY", theta_y);
-    Fill2D("ThetaY_vs_DecayTime", time, theta_y);
+    Fill2D("ThetaY_vs_Time", time, theta_y);
     
     //=========== Time modulo ===========
 
@@ -80,9 +80,9 @@ void Plotter::Run() {
     int g2fracTimeInt = g2fracTime;
     double g2ModTime = (g2fracTime - g2fracTimeInt) * g2Period;
 
-    Fill2D("ThetaY_vs_DecayTime_Modulo", g2ModTime, theta_y);
-    Fill2D("ThetaY_vs_DecayTime_Modulo_Coarse", g2ModTime, theta_y);
-    Fill2D("ThetaY_vs_DecayTime_Modulo_Fine", g2ModTime, theta_y);
+    Fill2D("ThetaY_vs_Time_Modulo", g2ModTime, theta_y);
+    Fill2D("ThetaY_vs_Time_Modulo_Coarse", g2ModTime, theta_y);
+    Fill2D("ThetaY_vs_Time_Modulo_Fine", g2ModTime, theta_y);
 
   }
 

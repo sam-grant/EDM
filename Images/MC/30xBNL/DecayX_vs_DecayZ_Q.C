@@ -1,7 +1,7 @@
 void DecayX_vs_DecayZ_Q()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 10:19:51 2020) by ROOT version 6.16/00
+//=========  (Thu Sep 17 19:16:30 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

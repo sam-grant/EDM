@@ -1,0 +1,2 @@
+convert  <name>.gif
+convert `ls <name>_*.png | sort -V` <name>.gif

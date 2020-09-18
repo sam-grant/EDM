@@ -12,6 +12,11 @@
 #include "TPaveText.h"
 #include "TF1.h"
 #include "TString.h"
+#include "TLegend.h"
+#include "TLatex.h"
+
+
+// =========================== Standard plotting ===========================
 
 void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 
@@ -98,6 +103,9 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 }
 
+
+// =========================== Custom plotting ===========================
+
 void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -107,10 +115,18 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 
 	double chi2ndf = func->GetChisquare() / func->GetNDF();
 	double par0 = func->GetParameter(0);
+	double err0 = func->GetParError(0);
 	double par1 = func->GetParameter(1);
+	double err1 = func->GetParError(1);
 	double par2 = func->GetParameter(2);
+	double err2 = func->GetParError(2);
 
-	TPaveText *names = new TPaveText(0.59,0.55,0.69,0.89,"NDC");
+	TLegend *function = new TLegend(0.11,0.79,0.45,0.89);//,"NDC");
+	function->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c") ;
+	function->SetBorderSize(0);
+
+	//TPaveText *names = new TPaveText(0.59,0.55,0.69,0.89,"NDC");
+	TPaveText *names = new TPaveText(0.55,0.59,0.69,0.88,"NDC");
 	names->SetTextAlign(13);
 	names->AddText("N") ; // +SciNotation(double(N))); 
 	names->AddText("#chi^{2}/ndf"); //+SciNotation(chi2ndf));
@@ -118,14 +134,17 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));
 	names->AddText("C [mrad]"); // +SciNotation(par2));
 
-	TPaveText *values = new TPaveText(0.69,0.55,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
-	values->AddText(SciNotation(chi2ndf));
-	values->AddText(SciNotation(par0));
-	values->AddText(SciNotation(par1));
-	values->AddText(SciNotation(par2));
+	values->AddText(ThreeSigFig(chi2ndf));//std::to_string(chi2ndf).c_str());
+	values->AddText(SciNotation(par0)+"#pm"+OneSigFig(err0));
+	values->AddText(SciNotation(par1)+"#pm"+OneSigFig(err1));
+	values->AddText(SciNotation(par2)+"#pm"+OneSigFig(err2));
 
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
 	names->SetTextSize(26);
 	names->SetTextFont(44);
 	names->SetFillColor(0);
@@ -146,6 +165,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	graph->Draw("AP");
 	values->Draw("same");
 	names->Draw("same");
+	function->Draw("same");
 	
 	func->SetLineWidth(3);
 	func->Draw("same");

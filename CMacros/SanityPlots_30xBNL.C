@@ -29,28 +29,31 @@ int main() {
 
 	TFile *input = TFile::Open(("../Plots/MC/30xBNL/moduloPlots"+qualString+".root").c_str());
 	cout << "\nRead input...\t\t: " << input << endl;
+
+	// TODO: ADD 1D PLOTS
 	
 	// Draw 2D plots
 	TH2D *DecayX_vs_DecayZ = (TH2D*)input->Get("DecayX_vs_DecayZ");
 	DrawTH2(DecayX_vs_DecayZ, "", ("../Images/MC/30xBNL/DecayX_vs_DecayZ_"+qualString).c_str());
-	TH2D *ThetaY_vs_DecayTime = (TH2D*)input->Get("ThetaY_vs_DecayTime");
-	DrawTH2(ThetaY_vs_DecayTime, "", ("../Images/MC/30xBNL/ThetaY_vs_DecayTime_2D_"+qualString).c_str());
-	TH2D *ThetaY_vs_DecayTime_Modulo = (TH2D*)input->Get("ThetaY_vs_DecayTime_Modulo_Fine");
-	DrawTH2(ThetaY_vs_DecayTime_Modulo, "", ("../Images/MC/30xBNL/ThetaY_vs_DecayTime_Modulo_2D_"+qualString).c_str());
+	TH2D *ThetaY_vs_Time = (TH2D*)input->Get("ThetaY_vs_Time");
+	DrawTH2(ThetaY_vs_Time, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_2D_"+qualString).c_str());
+	TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo_Fine");
+	DrawTH2(ThetaY_vs_Time_Modulo, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_Modulo_2D_"+qualString).c_str());
 
+	TH1D *TrackMomentum = (TH1D*)input->Get("TrackMom"); // ->ProjectionY();
+	DrawTH1(TrackMomentum, "", ("../Images/MC/30xBNL/TrackMom_"+qualString).c_str());
 	// Draw projections
-	TH1D *ThetaY_vs_DecayTime_ProjX = ((TH2D*)input->Get("ThetaY_vs_DecayTime"))->ProjectionX();
-	DrawTH1(ThetaY_vs_DecayTime_ProjX, "", ("../Images/MC/30xBNL/ThetaY_vs_DecayTime_ProjX_"+qualString).c_str());
+	TH1D *ThetaY_vs_Time_ProjX = ((TH2D*)input->Get("ThetaY_vs_Time"))->ProjectionX();
+	DrawTH1(ThetaY_vs_Time_ProjX, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_ProjX_"+qualString).c_str());
 	
-	TH1D *ThetaY_vs_DecayTime_ProjY = ((TH2D*)input->Get("ThetaY_vs_DecayTime"))->ProjectionY();
-	DrawTH1(ThetaY_vs_DecayTime_ProjY, "", ("../Images/MC/30xBNL/ThetaY_vs_DecayTime_Modulo_ProjY_"+qualString).c_str());
+	TH1D *ThetaY_vs_Time_ProjY = ((TH2D*)input->Get("ThetaY_vs_Time"))->ProjectionY();
+	DrawTH1(ThetaY_vs_Time_ProjY, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_Modulo_ProjY_"+qualString).c_str());
 
-
-	TH1D *ThetaY_vs_DecayTime_Modulo_ProjX = ((TH2D*)input->Get("ThetaY_vs_DecayTime_Modulo"))->ProjectionX();
-	DrawTH1(ThetaY_vs_DecayTime_Modulo_ProjX, "", ("../Images/MC/30xBNL/ThetaY_vs_DecayTime_Modulo_ProjX_"+qualString).c_str());
+	TH1D *ThetaY_vs_Time_Modulo_ProjX = ((TH2D*)input->Get("ThetaY_vs_Time_Modulo"))->ProjectionX();
+	DrawTH1(ThetaY_vs_Time_Modulo_ProjX, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_Modulo_ProjX_"+qualString).c_str());
 	
-	TH1D *ThetaY_vs_DecayTime_Modulo_ProjY = ((TH2D*)input->Get("ThetaY_vs_DecayTime_Modulo"))->ProjectionY();
-	DrawTH1(ThetaY_vs_DecayTime_Modulo_ProjY, "", ("../Images/MC/30xBNL/ThetaY_vs_DecayTime_Modulo_ProjY_"+qualString).c_str());
+	TH1D *ThetaY_vs_Time_Modulo_ProjY = ((TH2D*)input->Get("ThetaY_vs_Time_Modulo"))->ProjectionY();
+	DrawTH1(ThetaY_vs_Time_Modulo_ProjY, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_Modulo_ProjY_"+qualString).c_str());
 
 
 	input->Close();

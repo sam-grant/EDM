@@ -21,33 +21,9 @@
 
 using namespace std;
 
-double SimpleSinFunc(double *x, double *par) {
-	return ( par[0] * TMath::Sin(par[1] * x[0]) ) + par[2];
-}
-
-
-void SimpleSinFit(TGraphErrors *graph, double par1, double par2, double par3) {
-  
-	TF1 *func = new TF1("SimpleSinFunc", SimpleSinFunc, 0, G2PERIOD, 3);
-
-
-	// Generally works if you only set par2
-
-	//func->SetParameter(0, par1);  // Amplitude
-  	func->SetParameter(1, par2);  // Omega
-  	//func->SetParameter(2, par3);  // Vertical offset
-
-	graph->Fit(func, "MR"); // ,"MR");
-  
-  	std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
-
-  	return;
-
-}
-
 int main() {
 
-	std::string qualString = "Q";
+	std::string qualString = "NoQ";
 	//bool quality = false;
 	//std::string qualString;
 	//if(quality) qualString = "Q";
@@ -58,7 +34,7 @@ int main() {
 	//TFile *input = TFile::Open("../Plots/MC/30xBNL/moduloPlotsNoQ.root");
 	cout << "\nRead input...\t\t: " << input << endl;
 
-	TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_DecayTime_Modulo");
+	TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
 	cout << "Got modulo hist...\t: " << moduloHist <<endl;
 
 	// Make profile
