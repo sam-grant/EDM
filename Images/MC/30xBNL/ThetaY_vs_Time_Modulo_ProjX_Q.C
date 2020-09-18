@@ -1,7 +1,7 @@
 void ThetaY_vs_Time_Modulo_ProjX_Q()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:16:34 2020) by ROOT version 6.16/00
+//=========  (Thu Sep 17 20:34:21 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

@@ -149,8 +149,5 @@ int main() {
 	DrawTGraphErrors(w_vs_time, ";Track time [#mus];#omega_{a} [MHz]",("../Images/MC/30xBNL/w_vs_time"+qualString).c_str());
 	DrawTGraphErrors(C_vs_time, ";Track time [#mus];Average vertical offset, c [mrad]",("../Images/MC/30xBNL/C_vs_time"+qualString).c_str());
 
-	
-
-
 	return 0;
 }

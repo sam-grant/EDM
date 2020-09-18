@@ -22,7 +22,7 @@ using namespace std;
 
 int main() {
 
-	bool quality = true;
+	bool quality = false;
 	std::string qualString;
 	if(quality) qualString = "Q";
 	else qualString = "NoQ";
@@ -47,7 +47,7 @@ int main() {
 	DrawTH1(ThetaY_vs_Time_ProjX, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_ProjX_"+qualString).c_str());
 	
 	TH1D *ThetaY_vs_Time_ProjY = ((TH2D*)input->Get("ThetaY_vs_Time"))->ProjectionY();
-	DrawTH1(ThetaY_vs_Time_ProjY, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_Modulo_ProjY_"+qualString).c_str());
+	DrawTH1(ThetaY_vs_Time_ProjY, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_ProjY_"+qualString).c_str());
 
 	TH1D *ThetaY_vs_Time_Modulo_ProjX = ((TH2D*)input->Get("ThetaY_vs_Time_Modulo"))->ProjectionX();
 	DrawTH1(ThetaY_vs_Time_Modulo_ProjX, "", ("../Images/MC/30xBNL/ThetaY_vs_Time_Modulo_ProjX_"+qualString).c_str());

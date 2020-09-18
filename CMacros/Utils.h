@@ -14,7 +14,7 @@
 
 // ====================== Constants ====================== 
 
-double OMEGA_A = 0.00143934; // kHz
+double OMEGA_A = 0.00143934; // kHz from gm2const
 double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
 
 
@@ -52,7 +52,6 @@ TString OneSigFig(double num) {
 TString ThreeSigFig(double num) { 
   return Form("%5.3g", num);
 }
-
 
 TString SciNotation(double num) { 
 	TString text;
