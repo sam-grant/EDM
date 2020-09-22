@@ -1,10 +1,10 @@
 void A_vs_mom_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 20:01:42 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:05 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.9375,-4.773887,3941.438,1.160569);
+   c->Range(-437.9375,-2.349553,3941.438,0.6939501);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void A_vs_mom_noQ()
    2750,
    3250};
    Double_t Graph0_fy1015[7] = {
-   0.07754937,
-   0.1274532,
-   0.164237,
-   0.1509534,
-   0.1263661,
-   0.07934141,
-   -1.956508};
+   0.116659,
+   0.1296682,
+   0.1628805,
+   0.1496298,
+   0.1272924,
+   0.07876935,
+   -1.085931};
    Double_t Graph0_fex1015[7] = {
    250,
    250,
@@ -36,13 +36,13 @@ void A_vs_mom_noQ()
    250,
    250};
    Double_t Graph0_fey1015[7] = {
-   0.07723839,
-   0.009991378,
-   0.007256181,
-   0.006098167,
-   0.005801582,
-   0.007781888,
-   1.828303};
+   0.07004055,
+   0.009054888,
+   0.00658608,
+   0.005536167,
+   0.005257553,
+   0.007074846,
+   0.756372};
    TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
    gre->SetName("Graph0");
    gre->SetTitle(";Track momentum [MeV];A_{EDM} [mrad]");
@@ -50,8 +50,8 @@ void A_vs_mom_noQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","",100,0,3850);
-   Graph_Graph01015->SetMinimum(-4.180442);
-   Graph_Graph01015->SetMaximum(0.5671236);
+   Graph_Graph01015->SetMinimum(-2.045203);
+   Graph_Graph01015->SetMaximum(0.3895998);
    Graph_Graph01015->SetDirectory(0);
    Graph_Graph01015->SetStats(0);
 

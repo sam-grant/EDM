@@ -1,7 +1,7 @@
 void ThetaY_vs_Time_ProjX_5_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:58:49 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:57 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,8 +12,8 @@ void ThetaY_vs_Time_ProjX_5_noQ()
    c->SetFrameBorderMode(0);
    
    TH1D *ThetaY_vs_Time_5_px__27 = new TH1D("ThetaY_vs_Time_5_px__27","500<t<600 us",2700,0,402.1272);
-   ThetaY_vs_Time_5_px__27->SetBinContent(2701,15139);
-   ThetaY_vs_Time_5_px__27->SetBinError(2701,123.0406);
+   ThetaY_vs_Time_5_px__27->SetBinContent(2701,18538);
+   ThetaY_vs_Time_5_px__27->SetBinError(2701,136.1543);
    ThetaY_vs_Time_5_px__27->SetStats(0);
    ThetaY_vs_Time_5_px__27->SetLineWidth(3);
    ThetaY_vs_Time_5_px__27->GetXaxis()->SetTitle("Track time [#mus]");

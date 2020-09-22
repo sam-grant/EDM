@@ -35,7 +35,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	hist->GetYaxis()->SetMaxDigits(4);
 	hist->SetLineWidth(3);
 
-	c->SetRightMargin(0.13);
+	//c->SetRightMargin(0.13);
 
 	hist->Draw("HIST");
 	
@@ -254,6 +254,57 @@ void DrawSimpleSinFit2(TGraphErrors *graph, std::string title, std::string fname
 
 }
 
+void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	// TLegend *leg = new TLegend(0.25,0.69,0.45,0.89);
+	// TODO: Make legend not look like a pile of shit
+	TLegend *leg = new TLegend(0.15,0.65,0.35,0.85);
+	leg->SetBorderSize(1);
+	
+	TLine *y_0 = new TLine(0,0,1,0);
+	
+	leg->AddEntry(N," N(y)");
+	leg->AddEntry(A," A(y)");
+	leg->AddEntry(NA2," NA^{2}(y)");
+
+	N->SetTitle(title.c_str());		
+	N->GetXaxis()->SetTitleSize(.04);
+	N->GetYaxis()->SetTitleSize(.04);
+	N->GetXaxis()->SetTitleOffset(1.1);
+	N->GetYaxis()->SetTitleOffset(1.1);
+	N->GetXaxis()->CenterTitle(1);
+	N->GetYaxis()->CenterTitle(1);
+	N->GetYaxis()->SetMaxDigits(4);
+
+	N->SetLineColor(kBlack);
+	A->SetLineColor(kRed);
+	NA2->SetLineColor(kBlue);
+
+	N->SetLineWidth(3);
+	A->SetLineWidth(3);
+	NA2->SetLineWidth(3);
+	y_0->SetLineWidth(3);
+
+	y_0->SetLineStyle(2);
+
+	//c->SetRightMargin(0.13);
+
+	N->Draw();
+	leg->Draw("same");
+	A->Draw("same");
+	NA2->Draw("same");
+	y_0->Draw("same");
+	
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
 
 
 

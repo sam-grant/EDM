@@ -1,10 +1,10 @@
 void C_vs_time_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:58:50 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:58 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-96.25001,-1.590316,866.25,0.8713097);
+   c->Range(-96.25001,-1.418904,866.25,0.7293452);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void C_vs_time_noQ()
    550,
    650};
    Double_t Graph0_fy1017[7] = {
-   -0.256196,
-   -0.2635847,
-   -0.2265409,
-   -0.10664,
-   0.2654357,
-   -0.2009702,
-   -0.8747212};
+   -0.2562033,
+   -0.2654179,
+   -0.2297549,
+   -0.09100384,
+   0.118473,
+   -0.02846391,
+   -0.7753656};
    Double_t Graph0_fex1017[7] = {
    50,
    50,
@@ -36,13 +36,13 @@ void C_vs_time_noQ()
    50,
    50};
    Double_t Graph0_fey1017[7] = {
-   0.003416476,
-   0.00725978,
-   0.01498458,
-   0.09311837,
-   0.195603,
-   0.4497172,
-   0.3053239};
+   0.003085276,
+   0.006497199,
+   0.0136403,
+   0.08483906,
+   0.1778296,
+   0.3997676,
+   0.2854967};
    TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1017,Graph0_fy1017,Graph0_fex1017,Graph0_fey1017);
    gre->SetName("Graph0");
    gre->SetTitle(";Track time [#mus];Average vertical offset, c [mrad]");
@@ -50,8 +50,8 @@ void C_vs_time_noQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01017 = new TH1F("Graph_Graph01017","",100,0,770);
-   Graph_Graph01017->SetMinimum(-1.344153);
-   Graph_Graph01017->SetMaximum(0.6251471);
+   Graph_Graph01017->SetMinimum(-1.204079);
+   Graph_Graph01017->SetMaximum(0.5145203);
    Graph_Graph01017->SetDirectory(0);
    Graph_Graph01017->SetStats(0);
 

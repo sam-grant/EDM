@@ -1,7 +1,7 @@
 void ThetaY_vs_Time_ProjX_4_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:58:49 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:57 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,39 +12,39 @@ void ThetaY_vs_Time_ProjX_4_noQ()
    c->SetFrameBorderMode(0);
    
    TH1D *ThetaY_vs_Time_4_px__22 = new TH1D("ThetaY_vs_Time_4_px__22","400<t<500 us",2700,0,402.1272);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2686,64);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2687,231);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2688,224);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2689,203);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2690,175);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2691,207);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2692,175);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2693,192);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2694,196);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2695,192);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2696,178);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2697,181);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2698,203);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2699,230);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2700,203);
-   ThetaY_vs_Time_4_px__22->SetBinContent(2701,69150);
-   ThetaY_vs_Time_4_px__22->SetBinError(2686,8);
-   ThetaY_vs_Time_4_px__22->SetBinError(2687,15.19868);
-   ThetaY_vs_Time_4_px__22->SetBinError(2688,14.96663);
-   ThetaY_vs_Time_4_px__22->SetBinError(2689,14.24781);
-   ThetaY_vs_Time_4_px__22->SetBinError(2690,13.22876);
-   ThetaY_vs_Time_4_px__22->SetBinError(2691,14.38749);
-   ThetaY_vs_Time_4_px__22->SetBinError(2692,13.22876);
-   ThetaY_vs_Time_4_px__22->SetBinError(2693,13.85641);
-   ThetaY_vs_Time_4_px__22->SetBinError(2694,14);
-   ThetaY_vs_Time_4_px__22->SetBinError(2695,13.85641);
-   ThetaY_vs_Time_4_px__22->SetBinError(2696,13.34166);
-   ThetaY_vs_Time_4_px__22->SetBinError(2697,13.45362);
-   ThetaY_vs_Time_4_px__22->SetBinError(2698,14.24781);
-   ThetaY_vs_Time_4_px__22->SetBinError(2699,15.16575);
-   ThetaY_vs_Time_4_px__22->SetBinError(2700,14.24781);
-   ThetaY_vs_Time_4_px__22->SetBinError(2701,262.9639);
-   ThetaY_vs_Time_4_px__22->SetEntries(2854);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2686,73);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2687,284);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2688,272);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2689,239);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2690,216);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2691,242);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2692,217);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2693,227);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2694,242);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2695,240);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2696,220);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2697,222);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2698,250);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2699,272);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2700,255);
+   ThetaY_vs_Time_4_px__22->SetBinContent(2701,84350);
+   ThetaY_vs_Time_4_px__22->SetBinError(2686,8.544004);
+   ThetaY_vs_Time_4_px__22->SetBinError(2687,16.8523);
+   ThetaY_vs_Time_4_px__22->SetBinError(2688,16.49242);
+   ThetaY_vs_Time_4_px__22->SetBinError(2689,15.45962);
+   ThetaY_vs_Time_4_px__22->SetBinError(2690,14.69694);
+   ThetaY_vs_Time_4_px__22->SetBinError(2691,15.55635);
+   ThetaY_vs_Time_4_px__22->SetBinError(2692,14.73092);
+   ThetaY_vs_Time_4_px__22->SetBinError(2693,15.06652);
+   ThetaY_vs_Time_4_px__22->SetBinError(2694,15.55635);
+   ThetaY_vs_Time_4_px__22->SetBinError(2695,15.49193);
+   ThetaY_vs_Time_4_px__22->SetBinError(2696,14.8324);
+   ThetaY_vs_Time_4_px__22->SetBinError(2697,14.89966);
+   ThetaY_vs_Time_4_px__22->SetBinError(2698,15.81139);
+   ThetaY_vs_Time_4_px__22->SetBinError(2699,16.49242);
+   ThetaY_vs_Time_4_px__22->SetBinError(2700,15.96872);
+   ThetaY_vs_Time_4_px__22->SetBinError(2701,290.4307);
+   ThetaY_vs_Time_4_px__22->SetEntries(3471);
    ThetaY_vs_Time_4_px__22->SetStats(0);
    ThetaY_vs_Time_4_px__22->SetLineWidth(3);
    ThetaY_vs_Time_4_px__22->GetXaxis()->SetTitle("Track time [#mus]");

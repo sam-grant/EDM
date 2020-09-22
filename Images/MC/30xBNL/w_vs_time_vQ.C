@@ -1,10 +1,10 @@
 void w_vs_time_vQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:59:40 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:32 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-82.50001,-0.09175694,742.5,2.439915);
+   c->Range(-82.50001,-2.942249,742.5,5.350833);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void w_vs_time_vQ()
    450,
    550};
    Double_t Graph0_fy1014[6] = {
-   1.481996,
-   1.436332,
-   0.6647361,
-   1.626241,
-   0.4388235,
-   1.025542};
+   1.467144,
+   1.495664,
+   2.163477,
+   1.204292,
+   1.431342,
+   1.231327};
    Double_t Graph0_fex1014[6] = {
    50,
    50,
@@ -33,12 +33,12 @@ void w_vs_time_vQ()
    50,
    50};
    Double_t Graph0_fey1014[6] = {
-   0.03905129,
-   0.07625581,
-   0.06576555,
-   0.3780157,
-   0.2594787,
-   0.4983698};
+   0.03467051,
+   0.06520491,
+   0.1503794,
+   2.76436,
+   0.2914311,
+   0.4549731};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1014,Graph0_fy1014,Graph0_fex1014,Graph0_fey1014);
    gre->SetName("Graph0");
    gre->SetTitle(";Track time [#mus];#omega_{a} [MHz]");
@@ -46,8 +46,8 @@ void w_vs_time_vQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01014 = new TH1F("Graph_Graph01014","",100,0,660);
-   Graph_Graph01014->SetMinimum(0.1614103);
-   Graph_Graph01014->SetMaximum(2.186748);
+   Graph_Graph01014->SetMinimum(-2.112941);
+   Graph_Graph01014->SetMaximum(4.521524);
    Graph_Graph01014->SetDirectory(0);
    Graph_Graph01014->SetStats(0);
 

@@ -22,7 +22,7 @@ using namespace std;
 
 int main() {
 
-	bool quality = false;
+	bool quality = true;
 	std::string qualString;
 	if(quality) qualString = "Q";
 	else qualString = "NoQ";

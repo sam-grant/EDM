@@ -1,10 +1,10 @@
 void C_vs_mom_vQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 20:02:11 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:33:35 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-416.625,-1.143011,3749.625,5.425343);
+   c->Range(-416.625,-1.194977,3749.625,5.641744);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void C_vs_mom_vQ()
    2250,
    2750};
    Double_t Graph0_fy1015[6] = {
-   4.245248,
-   0.1463532,
-   0.09000753,
-   -0.012906,
-   -0.01071897,
-   -0.03532432};
+   4.301096,
+   0.1439066,
+   0.08973666,
+   -0.0163798,
+   -0.01355521,
+   -0.0434447};
    Double_t Graph0_fex1015[6] = {
    250,
    250,
@@ -33,12 +33,12 @@ void C_vs_mom_vQ()
    250,
    250};
    Double_t Graph0_fey1015[6] = {
-   0.08536852,
-   0.01474292,
-   0.009794984,
-   0.009168703,
-   0.009922947,
-   0.01296121};
+   0.2011943,
+   0.01327054,
+   0.00874481,
+   0.008285038,
+   0.009059117,
+   0.01207883};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
    gre->SetName("Graph0");
    gre->SetTitle(";Track momentum [MeV];Average vertical offset, c [mrad]");
@@ -46,8 +46,8 @@ void C_vs_mom_vQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","",100,0,3300);
-   Graph_Graph01015->SetMinimum(-0.4861758);
-   Graph_Graph01015->SetMaximum(4.768507);
+   Graph_Graph01015->SetMinimum(-0.5113049);
+   Graph_Graph01015->SetMaximum(4.958072);
    Graph_Graph01015->SetDirectory(0);
    Graph_Graph01015->SetStats(0);
 

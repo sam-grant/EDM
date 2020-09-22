@@ -1,10 +1,10 @@
 void simpleModuloFit_1_vQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:59:36 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:29 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.5487514,-0.6407414,4.938762,0.9723463);
+   c->Range(-0.5487514,-0.6045211,4.938762,0.9013744);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -100,93 +100,93 @@ void simpleModuloFit_1_vQ()
    4.29006,
    4.340236};
    Double_t Graph0_fy1003[87] = {
-   0.2405947,
-   0.3354229,
-   0.5137448,
-   0.05744998,
-   0.06052298,
-   0.1434622,
-   0.5623653,
-   0.3135179,
-   0.03107955,
-   0.3766672,
-   0.4278001,
-   0.1577119,
-   0.2450936,
-   0.3092285,
-   0.1971742,
-   0.1454445,
-   0.2991566,
-   0.04019404,
-   0.2979694,
-   0.4255663,
-   0.310023,
-   -0.07826344,
-   0.2882024,
-   0.4204485,
-   0.1946132,
-   0.4200558,
-   0.2614785,
-   0.2914759,
-   0.1939582,
-   0.2824044,
-   -0.1033662,
-   0.2516949,
-   0.274762,
-   0.2703268,
-   -0.04441919,
-   -0.1040325,
-   -0.004423113,
-   -0.0268944,
-   0.1160073,
-   0.0430622,
-   0.1935736,
-   0.3067623,
-   0.1108269,
-   -0.007372969,
-   0.01437506,
-   0.267059,
-   -0.005502705,
-   0.05143261,
-   0.1650888,
-   -0.05024649,
-   0.06481348,
-   0.2555738,
-   0.01474166,
-   -0.09044642,
-   0.2212587,
-   -0.2276516,
-   -0.2218259,
-   0.332206,
-   0.1333139,
-   0.01797714,
-   -0.03382716,
-   0.1489583,
-   0.07374414,
-   -0.09575941,
-   0.04331793,
-   0.4128436,
-   -0.1882103,
-   -0.009926006,
-   0.05289737,
-   0.2507398,
-   0.1757777,
-   0.02066458,
-   -0.02002792,
-   -0.05514917,
-   0.09281534,
-   -0.1601491,
-   -0.2267293,
-   0.0440719,
-   0.2136102,
-   -0.03757667,
-   0.2175423,
-   -0.03624337,
-   0.1955654,
-   -0.1840378,
-   -0.197414,
-   0.03398184,
-   0.2422615};
+   0.2304728,
+   0.3577563,
+   0.4323328,
+   0.09817554,
+   0.02903441,
+   0.07767382,
+   0.5225796,
+   0.4214725,
+   0.1543438,
+   0.3748237,
+   0.3903531,
+   0.2353516,
+   0.1680458,
+   0.2357854,
+   0.2145088,
+   0.1461485,
+   0.356816,
+   0.02734304,
+   0.1948637,
+   0.4068438,
+   0.3632447,
+   0.05558586,
+   0.2423092,
+   0.3916472,
+   0.1771793,
+   0.3850421,
+   0.2257926,
+   0.2820697,
+   0.2732701,
+   0.2668648,
+   -0.04987245,
+   0.181746,
+   0.3010199,
+   0.1698443,
+   -0.08556077,
+   -0.06812438,
+   -0.07150996,
+   0.02945863,
+   0.1705566,
+   0.08767071,
+   0.05802785,
+   0.1847998,
+   0.1726343,
+   -0.02070058,
+   0.02318155,
+   0.2560436,
+   -0.009656282,
+   0.08721541,
+   0.2139108,
+   -0.151108,
+   0.02404166,
+   0.1696635,
+   0.005604702,
+   -0.0413605,
+   0.1862908,
+   -0.2370327,
+   -0.2301265,
+   0.2484702,
+   0.1478006,
+   0.08865946,
+   -0.05985301,
+   0.09116827,
+   0.02244288,
+   -0.0128941,
+   0.03688966,
+   0.4211803,
+   -0.1433656,
+   0.006656945,
+   0.01938378,
+   0.1836935,
+   0.114646,
+   0.02896164,
+   -0.06187967,
+   0.01200795,
+   0.04794839,
+   -0.1556361,
+   -0.09183651,
+   0.09290358,
+   0.2032751,
+   0.03556077,
+   0.1051298,
+   -0.03357314,
+   0.1836522,
+   -0.08803266,
+   -0.1057189,
+   -0.02577755,
+   0.3182711};
    Double_t Graph0_fex1003[87] = {
    0,
    0,
@@ -276,93 +276,93 @@ void simpleModuloFit_1_vQ()
    0,
    0};
    Double_t Graph0_fey1003[87] = {
-   0.1425514,
-   0.1408022,
-   0.1399299,
-   0.1410817,
-   0.1398386,
-   0.1410125,
-   0.1411331,
-   0.138465,
-   0.1392415,
-   0.1374681,
-   0.1384672,
-   0.1393077,
-   0.1354211,
-   0.1356187,
-   0.1338275,
-   0.1350286,
-   0.1318615,
-   0.1329417,
-   0.130033,
-   0.1323605,
-   0.1333607,
-   0.1306735,
-   0.1300518,
-   0.1298258,
-   0.1308524,
-   0.1286376,
-   0.1260024,
-   0.1292865,
-   0.1266464,
-   0.1258761,
-   0.1260486,
-   0.1235265,
-   0.1257377,
-   0.1256262,
-   0.1243413,
-   0.1232081,
-   0.1271077,
-   0.1245412,
-   0.1242541,
-   0.1258566,
-   0.1233882,
-   0.1233447,
-   0.1272098,
-   0.1255271,
-   0.1253016,
-   0.1240981,
-   0.1244244,
-   0.1252282,
-   0.1275698,
-   0.1260742,
-   0.1280413,
-   0.1282973,
-   0.1291647,
-   0.1304865,
-   0.1287521,
-   0.1287876,
-   0.1295442,
-   0.1320534,
-   0.1308235,
-   0.1349284,
-   0.13359,
-   0.1345134,
-   0.1344901,
-   0.1375522,
-   0.1378352,
-   0.1379153,
-   0.1373704,
-   0.1400434,
-   0.1399317,
-   0.1414261,
-   0.142782,
-   0.1436139,
-   0.1418887,
-   0.1474345,
-   0.143527,
-   0.1452848,
-   0.1451641,
-   0.1475221,
-   0.145592,
-   0.1398882,
-   0.1383032,
-   0.1400886,
-   0.1403475,
-   0.1413192,
-   0.1417878,
-   0.1422077,
-   0.1430488};
+   0.1291205,
+   0.1278809,
+   0.127255,
+   0.1273209,
+   0.1265247,
+   0.1275111,
+   0.1278123,
+   0.1262005,
+   0.1273823,
+   0.1247333,
+   0.1248645,
+   0.1255525,
+   0.1222407,
+   0.1221407,
+   0.1208511,
+   0.1222065,
+   0.1193659,
+   0.1206255,
+   0.1174619,
+   0.1197998,
+   0.1210036,
+   0.1189224,
+   0.117448,
+   0.1166014,
+   0.1182474,
+   0.1156315,
+   0.114056,
+   0.1174874,
+   0.1152383,
+   0.1139414,
+   0.1143222,
+   0.1119325,
+   0.1130413,
+   0.1141104,
+   0.1123069,
+   0.111843,
+   0.1146505,
+   0.1125538,
+   0.1125517,
+   0.1136118,
+   0.111783,
+   0.1114423,
+   0.1149777,
+   0.1135976,
+   0.113149,
+   0.1120417,
+   0.112957,
+   0.1132434,
+   0.1152745,
+   0.1152284,
+   0.1152982,
+   0.1168502,
+   0.1171897,
+   0.1182125,
+   0.1166722,
+   0.1165058,
+   0.1174688,
+   0.1195413,
+   0.11916,
+   0.1222512,
+   0.1212702,
+   0.121844,
+   0.1220694,
+   0.1250455,
+   0.1253199,
+   0.1245063,
+   0.1244792,
+   0.1265358,
+   0.1272962,
+   0.1271225,
+   0.1291922,
+   0.1293626,
+   0.128951,
+   0.1341024,
+   0.1295136,
+   0.1313588,
+   0.131985,
+   0.1336317,
+   0.1310713,
+   0.1267106,
+   0.1254706,
+   0.1276048,
+   0.1264631,
+   0.128264,
+   0.1283038,
+   0.1282908,
+   0.1293433};
    TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1003,Graph0_fy1003,Graph0_fex1003,Graph0_fey1003);
    gre->SetName("Graph0");
    gre->SetTitle("100<t<200 us;t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]");
@@ -370,8 +370,8 @@ void simpleModuloFit_1_vQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01003 = new TH1F("Graph_Graph01003","100<t<200 us",100,0,4.771751);
-   Graph_Graph01003->SetMinimum(-0.4794326);
-   Graph_Graph01003->SetMaximum(0.8110375);
+   Graph_Graph01003->SetMinimum(-0.4539315);
+   Graph_Graph01003->SetMaximum(0.7507849);
    Graph_Graph01003->SetDirectory(0);
    Graph_Graph01003->SetStats(0);
 
@@ -407,114 +407,114 @@ void simpleModuloFit_1_vQ()
    SimpleSinFunc1004->SetRange(0,4.365324);
    SimpleSinFunc1004->SetName("SimpleSinFunc");
    SimpleSinFunc1004->SetTitle("SimpleSinFunc");
-   SimpleSinFunc1004->SetSavedPoint(0,0.1237944);
-   SimpleSinFunc1004->SetSavedPoint(1,0.1306888);
-   SimpleSinFunc1004->SetSavedPoint(2,0.1375561);
-   SimpleSinFunc1004->SetSavedPoint(3,0.1443693);
-   SimpleSinFunc1004->SetSavedPoint(4,0.1511016);
-   SimpleSinFunc1004->SetSavedPoint(5,0.1577267);
-   SimpleSinFunc1004->SetSavedPoint(6,0.1642183);
-   SimpleSinFunc1004->SetSavedPoint(7,0.1705511);
-   SimpleSinFunc1004->SetSavedPoint(8,0.1767002);
-   SimpleSinFunc1004->SetSavedPoint(9,0.1826413);
-   SimpleSinFunc1004->SetSavedPoint(10,0.1883512);
-   SimpleSinFunc1004->SetSavedPoint(11,0.1938073);
-   SimpleSinFunc1004->SetSavedPoint(12,0.1989883);
-   SimpleSinFunc1004->SetSavedPoint(13,0.2038737);
-   SimpleSinFunc1004->SetSavedPoint(14,0.2084445);
-   SimpleSinFunc1004->SetSavedPoint(15,0.2126825);
-   SimpleSinFunc1004->SetSavedPoint(16,0.2165713);
-   SimpleSinFunc1004->SetSavedPoint(17,0.2200954);
-   SimpleSinFunc1004->SetSavedPoint(18,0.223241);
-   SimpleSinFunc1004->SetSavedPoint(19,0.2259958);
-   SimpleSinFunc1004->SetSavedPoint(20,0.228349);
-   SimpleSinFunc1004->SetSavedPoint(21,0.2302912);
-   SimpleSinFunc1004->SetSavedPoint(22,0.2318149);
-   SimpleSinFunc1004->SetSavedPoint(23,0.2329141);
-   SimpleSinFunc1004->SetSavedPoint(24,0.2335844);
-   SimpleSinFunc1004->SetSavedPoint(25,0.2338232);
-   SimpleSinFunc1004->SetSavedPoint(26,0.2336297);
-   SimpleSinFunc1004->SetSavedPoint(27,0.2330044);
-   SimpleSinFunc1004->SetSavedPoint(28,0.23195);
-   SimpleSinFunc1004->SetSavedPoint(29,0.2304705);
-   SimpleSinFunc1004->SetSavedPoint(30,0.2285717);
-   SimpleSinFunc1004->SetSavedPoint(31,0.2262612);
-   SimpleSinFunc1004->SetSavedPoint(32,0.2235479);
-   SimpleSinFunc1004->SetSavedPoint(33,0.2204427);
-   SimpleSinFunc1004->SetSavedPoint(34,0.2169576);
-   SimpleSinFunc1004->SetSavedPoint(35,0.2131063);
-   SimpleSinFunc1004->SetSavedPoint(36,0.2089041);
-   SimpleSinFunc1004->SetSavedPoint(37,0.2043673);
-   SimpleSinFunc1004->SetSavedPoint(38,0.199514);
-   SimpleSinFunc1004->SetSavedPoint(39,0.194363);
-   SimpleSinFunc1004->SetSavedPoint(40,0.1889347);
-   SimpleSinFunc1004->SetSavedPoint(41,0.1832503);
-   SimpleSinFunc1004->SetSavedPoint(42,0.1773324);
-   SimpleSinFunc1004->SetSavedPoint(43,0.171204);
-   SimpleSinFunc1004->SetSavedPoint(44,0.1648892);
-   SimpleSinFunc1004->SetSavedPoint(45,0.158413);
-   SimpleSinFunc1004->SetSavedPoint(46,0.1518007);
-   SimpleSinFunc1004->SetSavedPoint(47,0.1450784);
-   SimpleSinFunc1004->SetSavedPoint(48,0.1382724);
-   SimpleSinFunc1004->SetSavedPoint(49,0.1314095);
-   SimpleSinFunc1004->SetSavedPoint(50,0.1245167);
-   SimpleSinFunc1004->SetSavedPoint(51,0.117621);
-   SimpleSinFunc1004->SetSavedPoint(52,0.1107496);
-   SimpleSinFunc1004->SetSavedPoint(53,0.1039295);
-   SimpleSinFunc1004->SetSavedPoint(54,0.09718745);
-   SimpleSinFunc1004->SetSavedPoint(55,0.09054996);
-   SimpleSinFunc1004->SetSavedPoint(56,0.08404312);
-   SimpleSinFunc1004->SetSavedPoint(57,0.07769251);
-   SimpleSinFunc1004->SetSavedPoint(58,0.07152308);
-   SimpleSinFunc1004->SetSavedPoint(59,0.06555908);
-   SimpleSinFunc1004->SetSavedPoint(60,0.05982395);
-   SimpleSinFunc1004->SetSavedPoint(61,0.05434023);
-   SimpleSinFunc1004->SetSavedPoint(62,0.04912947);
-   SimpleSinFunc1004->SetSavedPoint(63,0.04421215);
-   SimpleSinFunc1004->SetSavedPoint(64,0.03960759);
-   SimpleSinFunc1004->SetSavedPoint(65,0.03533389);
-   SimpleSinFunc1004->SetSavedPoint(66,0.03140785);
-   SimpleSinFunc1004->SetSavedPoint(67,0.02784489);
-   SimpleSinFunc1004->SetSavedPoint(68,0.02465902);
-   SimpleSinFunc1004->SetSavedPoint(69,0.02186277);
-   SimpleSinFunc1004->SetSavedPoint(70,0.01946711);
-   SimpleSinFunc1004->SetSavedPoint(71,0.01748146);
-   SimpleSinFunc1004->SetSavedPoint(72,0.01591363);
-   SimpleSinFunc1004->SetSavedPoint(73,0.01476979);
-   SimpleSinFunc1004->SetSavedPoint(74,0.01405441);
-   SimpleSinFunc1004->SetSavedPoint(75,0.01377033);
-   SimpleSinFunc1004->SetSavedPoint(76,0.01391864);
-   SimpleSinFunc1004->SetSavedPoint(77,0.01449878);
-   SimpleSinFunc1004->SetSavedPoint(78,0.01550845);
-   SimpleSinFunc1004->SetSavedPoint(79,0.0169437);
-   SimpleSinFunc1004->SetSavedPoint(80,0.01879887);
-   SimpleSinFunc1004->SetSavedPoint(81,0.02106669);
-   SimpleSinFunc1004->SetSavedPoint(82,0.02373824);
-   SimpleSinFunc1004->SetSavedPoint(83,0.02680301);
-   SimpleSinFunc1004->SetSavedPoint(84,0.03024897);
-   SimpleSinFunc1004->SetSavedPoint(85,0.03406256);
-   SimpleSinFunc1004->SetSavedPoint(86,0.03822881);
-   SimpleSinFunc1004->SetSavedPoint(87,0.04273134);
-   SimpleSinFunc1004->SetSavedPoint(88,0.04755246);
-   SimpleSinFunc1004->SetSavedPoint(89,0.0526732);
-   SimpleSinFunc1004->SetSavedPoint(90,0.05807346);
-   SimpleSinFunc1004->SetSavedPoint(91,0.06373201);
-   SimpleSinFunc1004->SetSavedPoint(92,0.06962661);
-   SimpleSinFunc1004->SetSavedPoint(93,0.07573409);
-   SimpleSinFunc1004->SetSavedPoint(94,0.08203045);
-   SimpleSinFunc1004->SetSavedPoint(95,0.08849095);
-   SimpleSinFunc1004->SetSavedPoint(96,0.09509019);
-   SimpleSinFunc1004->SetSavedPoint(97,0.1018022);
-   SimpleSinFunc1004->SetSavedPoint(98,0.1086007);
-   SimpleSinFunc1004->SetSavedPoint(99,0.1154589);
-   SimpleSinFunc1004->SetSavedPoint(100,0.1223499);
+   SimpleSinFunc1004->SetSavedPoint(0,0.1205257);
+   SimpleSinFunc1004->SetSavedPoint(1,0.1279171);
+   SimpleSinFunc1004->SetSavedPoint(2,0.1352769);
+   SimpleSinFunc1004->SetSavedPoint(3,0.142574);
+   SimpleSinFunc1004->SetSavedPoint(4,0.149777);
+   SimpleSinFunc1004->SetSavedPoint(5,0.1568554);
+   SimpleSinFunc1004->SetSavedPoint(6,0.1637791);
+   SimpleSinFunc1004->SetSavedPoint(7,0.1705183);
+   SimpleSinFunc1004->SetSavedPoint(8,0.1770446);
+   SimpleSinFunc1004->SetSavedPoint(9,0.18333);
+   SimpleSinFunc1004->SetSavedPoint(10,0.1893478);
+   SimpleSinFunc1004->SetSavedPoint(11,0.1950723);
+   SimpleSinFunc1004->SetSavedPoint(12,0.2004791);
+   SimpleSinFunc1004->SetSavedPoint(13,0.2055452);
+   SimpleSinFunc1004->SetSavedPoint(14,0.210249);
+   SimpleSinFunc1004->SetSavedPoint(15,0.2145705);
+   SimpleSinFunc1004->SetSavedPoint(16,0.2184912);
+   SimpleSinFunc1004->SetSavedPoint(17,0.2219945);
+   SimpleSinFunc1004->SetSavedPoint(18,0.2250654);
+   SimpleSinFunc1004->SetSavedPoint(19,0.2276907);
+   SimpleSinFunc1004->SetSavedPoint(20,0.2298595);
+   SimpleSinFunc1004->SetSavedPoint(21,0.2315623);
+   SimpleSinFunc1004->SetSavedPoint(22,0.2327919);
+   SimpleSinFunc1004->SetSavedPoint(23,0.2335431);
+   SimpleSinFunc1004->SetSavedPoint(24,0.2338128);
+   SimpleSinFunc1004->SetSavedPoint(25,0.2335997);
+   SimpleSinFunc1004->SetSavedPoint(26,0.2329047);
+   SimpleSinFunc1004->SetSavedPoint(27,0.2317308);
+   SimpleSinFunc1004->SetSavedPoint(28,0.2300831);
+   SimpleSinFunc1004->SetSavedPoint(29,0.2279685);
+   SimpleSinFunc1004->SetSavedPoint(30,0.225396);
+   SimpleSinFunc1004->SetSavedPoint(31,0.2223767);
+   SimpleSinFunc1004->SetSavedPoint(32,0.2189233);
+   SimpleSinFunc1004->SetSavedPoint(33,0.2150506);
+   SimpleSinFunc1004->SetSavedPoint(34,0.2107752);
+   SimpleSinFunc1004->SetSavedPoint(35,0.2061151);
+   SimpleSinFunc1004->SetSavedPoint(36,0.2010903);
+   SimpleSinFunc1004->SetSavedPoint(37,0.1957222);
+   SimpleSinFunc1004->SetSavedPoint(38,0.1900337);
+   SimpleSinFunc1004->SetSavedPoint(39,0.1840489);
+   SimpleSinFunc1004->SetSavedPoint(40,0.1777935);
+   SimpleSinFunc1004->SetSavedPoint(41,0.171294);
+   SimpleSinFunc1004->SetSavedPoint(42,0.1645782);
+   SimpleSinFunc1004->SetSavedPoint(43,0.1576747);
+   SimpleSinFunc1004->SetSavedPoint(44,0.1506128);
+   SimpleSinFunc1004->SetSavedPoint(45,0.1434228);
+   SimpleSinFunc1004->SetSavedPoint(46,0.1361352);
+   SimpleSinFunc1004->SetSavedPoint(47,0.128781);
+   SimpleSinFunc1004->SetSavedPoint(48,0.1213917);
+   SimpleSinFunc1004->SetSavedPoint(49,0.1139987);
+   SimpleSinFunc1004->SetSavedPoint(50,0.1066335);
+   SimpleSinFunc1004->SetSavedPoint(51,0.0993275);
+   SimpleSinFunc1004->SetSavedPoint(52,0.09211183);
+   SimpleSinFunc1004->SetSavedPoint(53,0.08501725);
+   SimpleSinFunc1004->SetSavedPoint(54,0.07807398);
+   SimpleSinFunc1004->SetSavedPoint(55,0.07131161);
+   SimpleSinFunc1004->SetSavedPoint(56,0.06475896);
+   SimpleSinFunc1004->SetSavedPoint(57,0.05844395);
+   SimpleSinFunc1004->SetSavedPoint(58,0.05239349);
+   SimpleSinFunc1004->SetSavedPoint(59,0.04663337);
+   SimpleSinFunc1004->SetSavedPoint(60,0.04118813);
+   SimpleSinFunc1004->SetSavedPoint(61,0.03608097);
+   SimpleSinFunc1004->SetSavedPoint(62,0.03133366);
+   SimpleSinFunc1004->SetSavedPoint(63,0.02696643);
+   SimpleSinFunc1004->SetSavedPoint(64,0.02299789);
+   SimpleSinFunc1004->SetSavedPoint(65,0.01944494);
+   SimpleSinFunc1004->SetSavedPoint(66,0.01632274);
+   SimpleSinFunc1004->SetSavedPoint(67,0.01364458);
+   SimpleSinFunc1004->SetSavedPoint(68,0.01142188);
+   SimpleSinFunc1004->SetSavedPoint(69,0.009664107);
+   SimpleSinFunc1004->SetSavedPoint(70,0.008378755);
+   SimpleSinFunc1004->SetSavedPoint(71,0.007571299);
+   SimpleSinFunc1004->SetSavedPoint(72,0.007245181);
+   SimpleSinFunc1004->SetSavedPoint(73,0.007401791);
+   SimpleSinFunc1004->SetSavedPoint(74,0.00804046);
+   SimpleSinFunc1004->SetSavedPoint(75,0.009158468);
+   SimpleSinFunc1004->SetSavedPoint(76,0.01075105);
+   SimpleSinFunc1004->SetSavedPoint(77,0.01281142);
+   SimpleSinFunc1004->SetSavedPoint(78,0.0153308);
+   SimpleSinFunc1004->SetSavedPoint(79,0.01829845);
+   SimpleSinFunc1004->SetSavedPoint(80,0.02170172);
+   SimpleSinFunc1004->SetSavedPoint(81,0.02552612);
+   SimpleSinFunc1004->SetSavedPoint(82,0.02975534);
+   SimpleSinFunc1004->SetSavedPoint(83,0.03437137);
+   SimpleSinFunc1004->SetSavedPoint(84,0.03935453);
+   SimpleSinFunc1004->SetSavedPoint(85,0.04468359);
+   SimpleSinFunc1004->SetSavedPoint(86,0.05033584);
+   SimpleSinFunc1004->SetSavedPoint(87,0.05628719);
+   SimpleSinFunc1004->SetSavedPoint(88,0.06251229);
+   SimpleSinFunc1004->SetSavedPoint(89,0.06898459);
+   SimpleSinFunc1004->SetSavedPoint(90,0.07567654);
+   SimpleSinFunc1004->SetSavedPoint(91,0.0825596);
+   SimpleSinFunc1004->SetSavedPoint(92,0.08960445);
+   SimpleSinFunc1004->SetSavedPoint(93,0.09678106);
+   SimpleSinFunc1004->SetSavedPoint(94,0.1040589);
+   SimpleSinFunc1004->SetSavedPoint(95,0.1114068);
+   SimpleSinFunc1004->SetSavedPoint(96,0.1187937);
+   SimpleSinFunc1004->SetSavedPoint(97,0.1261879);
+   SimpleSinFunc1004->SetSavedPoint(98,0.1335579);
+   SimpleSinFunc1004->SetSavedPoint(99,0.1408725);
+   SimpleSinFunc1004->SetSavedPoint(100,0.1481003);
    SimpleSinFunc1004->SetSavedPoint(101,0);
    SimpleSinFunc1004->SetSavedPoint(102,4.365324);
    SimpleSinFunc1004->SetFillColor(19);
    SimpleSinFunc1004->SetFillStyle(0);
    SimpleSinFunc1004->SetLineColor(2);
    SimpleSinFunc1004->SetLineWidth(3);
-   SimpleSinFunc1004->SetChisquare(126.7324);
+   SimpleSinFunc1004->SetChisquare(123.9985);
    SimpleSinFunc1004->SetNDF(84);
    SimpleSinFunc1004->GetXaxis()->SetLabelFont(42);
    SimpleSinFunc1004->GetXaxis()->SetLabelSize(0.035);
@@ -525,14 +525,14 @@ void simpleModuloFit_1_vQ()
    SimpleSinFunc1004->GetYaxis()->SetLabelSize(0.035);
    SimpleSinFunc1004->GetYaxis()->SetTitleSize(0.035);
    SimpleSinFunc1004->GetYaxis()->SetTitleFont(42);
-   SimpleSinFunc1004->SetParameter(0,0.1100294);
-   SimpleSinFunc1004->SetParError(0,0.02041178);
+   SimpleSinFunc1004->SetParameter(0,0.1132879);
+   SimpleSinFunc1004->SetParError(0,0.0187239);
    SimpleSinFunc1004->SetParLimits(0,0,0);
-   SimpleSinFunc1004->SetParameter(1,1.436332);
-   SimpleSinFunc1004->SetParError(1,0.07625581);
+   SimpleSinFunc1004->SetParameter(1,1.495664);
+   SimpleSinFunc1004->SetParError(1,0.06520491);
    SimpleSinFunc1004->SetParLimits(1,0,0);
-   SimpleSinFunc1004->SetParameter(2,0.1237944);
-   SimpleSinFunc1004->SetParError(2,0.01436071);
+   SimpleSinFunc1004->SetParameter(2,0.1205257);
+   SimpleSinFunc1004->SetParError(2,0.01294856);
    SimpleSinFunc1004->SetParLimits(2,0,0);
    SimpleSinFunc1004->SetParent(gre);
    gre->GetListOfFunctions()->Add(SimpleSinFunc1004);
@@ -543,11 +543,11 @@ void simpleModuloFit_1_vQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("1.17#times10^{6}");
-   pt_LaTex = pt->AddText(" 1.51");
-   pt_LaTex = pt->AddText(" 0.11#pm 0.02");
-   pt_LaTex = pt->AddText(" 1.44#pm 0.08");
-   pt_LaTex = pt->AddText("0.124#pm 0.01");
+   TText *pt_LaTex = pt->AddText("1.42#times10^{6}");
+   pt_LaTex = pt->AddText(" 1.48");
+   pt_LaTex = pt->AddText("0.113#pm 0.02");
+   pt_LaTex = pt->AddText("  1.5#pm 0.07");
+   pt_LaTex = pt->AddText("0.121#pm 0.01");
    pt->Draw();
    
    pt = new TPaveText(0.55,0.59,0.69,0.88,"brNDC");
@@ -586,114 +586,114 @@ void simpleModuloFit_1_vQ()
    SimpleSinFunc1005->SetRange(0,4.365324);
    SimpleSinFunc1005->SetName("SimpleSinFunc");
    SimpleSinFunc1005->SetTitle("SimpleSinFunc");
-   SimpleSinFunc1005->SetSavedPoint(0,0.1237944);
-   SimpleSinFunc1005->SetSavedPoint(1,0.1306888);
-   SimpleSinFunc1005->SetSavedPoint(2,0.1375561);
-   SimpleSinFunc1005->SetSavedPoint(3,0.1443693);
-   SimpleSinFunc1005->SetSavedPoint(4,0.1511016);
-   SimpleSinFunc1005->SetSavedPoint(5,0.1577267);
-   SimpleSinFunc1005->SetSavedPoint(6,0.1642183);
-   SimpleSinFunc1005->SetSavedPoint(7,0.1705511);
-   SimpleSinFunc1005->SetSavedPoint(8,0.1767002);
-   SimpleSinFunc1005->SetSavedPoint(9,0.1826413);
-   SimpleSinFunc1005->SetSavedPoint(10,0.1883512);
-   SimpleSinFunc1005->SetSavedPoint(11,0.1938073);
-   SimpleSinFunc1005->SetSavedPoint(12,0.1989883);
-   SimpleSinFunc1005->SetSavedPoint(13,0.2038737);
-   SimpleSinFunc1005->SetSavedPoint(14,0.2084445);
-   SimpleSinFunc1005->SetSavedPoint(15,0.2126825);
-   SimpleSinFunc1005->SetSavedPoint(16,0.2165713);
-   SimpleSinFunc1005->SetSavedPoint(17,0.2200954);
-   SimpleSinFunc1005->SetSavedPoint(18,0.223241);
-   SimpleSinFunc1005->SetSavedPoint(19,0.2259958);
-   SimpleSinFunc1005->SetSavedPoint(20,0.228349);
-   SimpleSinFunc1005->SetSavedPoint(21,0.2302912);
-   SimpleSinFunc1005->SetSavedPoint(22,0.2318149);
-   SimpleSinFunc1005->SetSavedPoint(23,0.2329141);
-   SimpleSinFunc1005->SetSavedPoint(24,0.2335844);
-   SimpleSinFunc1005->SetSavedPoint(25,0.2338232);
-   SimpleSinFunc1005->SetSavedPoint(26,0.2336297);
-   SimpleSinFunc1005->SetSavedPoint(27,0.2330044);
-   SimpleSinFunc1005->SetSavedPoint(28,0.23195);
-   SimpleSinFunc1005->SetSavedPoint(29,0.2304705);
-   SimpleSinFunc1005->SetSavedPoint(30,0.2285717);
-   SimpleSinFunc1005->SetSavedPoint(31,0.2262612);
-   SimpleSinFunc1005->SetSavedPoint(32,0.2235479);
-   SimpleSinFunc1005->SetSavedPoint(33,0.2204427);
-   SimpleSinFunc1005->SetSavedPoint(34,0.2169576);
-   SimpleSinFunc1005->SetSavedPoint(35,0.2131063);
-   SimpleSinFunc1005->SetSavedPoint(36,0.2089041);
-   SimpleSinFunc1005->SetSavedPoint(37,0.2043673);
-   SimpleSinFunc1005->SetSavedPoint(38,0.199514);
-   SimpleSinFunc1005->SetSavedPoint(39,0.194363);
-   SimpleSinFunc1005->SetSavedPoint(40,0.1889347);
-   SimpleSinFunc1005->SetSavedPoint(41,0.1832503);
-   SimpleSinFunc1005->SetSavedPoint(42,0.1773324);
-   SimpleSinFunc1005->SetSavedPoint(43,0.171204);
-   SimpleSinFunc1005->SetSavedPoint(44,0.1648892);
-   SimpleSinFunc1005->SetSavedPoint(45,0.158413);
-   SimpleSinFunc1005->SetSavedPoint(46,0.1518007);
-   SimpleSinFunc1005->SetSavedPoint(47,0.1450784);
-   SimpleSinFunc1005->SetSavedPoint(48,0.1382724);
-   SimpleSinFunc1005->SetSavedPoint(49,0.1314095);
-   SimpleSinFunc1005->SetSavedPoint(50,0.1245167);
-   SimpleSinFunc1005->SetSavedPoint(51,0.117621);
-   SimpleSinFunc1005->SetSavedPoint(52,0.1107496);
-   SimpleSinFunc1005->SetSavedPoint(53,0.1039295);
-   SimpleSinFunc1005->SetSavedPoint(54,0.09718745);
-   SimpleSinFunc1005->SetSavedPoint(55,0.09054996);
-   SimpleSinFunc1005->SetSavedPoint(56,0.08404312);
-   SimpleSinFunc1005->SetSavedPoint(57,0.07769251);
-   SimpleSinFunc1005->SetSavedPoint(58,0.07152308);
-   SimpleSinFunc1005->SetSavedPoint(59,0.06555908);
-   SimpleSinFunc1005->SetSavedPoint(60,0.05982395);
-   SimpleSinFunc1005->SetSavedPoint(61,0.05434023);
-   SimpleSinFunc1005->SetSavedPoint(62,0.04912947);
-   SimpleSinFunc1005->SetSavedPoint(63,0.04421215);
-   SimpleSinFunc1005->SetSavedPoint(64,0.03960759);
-   SimpleSinFunc1005->SetSavedPoint(65,0.03533389);
-   SimpleSinFunc1005->SetSavedPoint(66,0.03140785);
-   SimpleSinFunc1005->SetSavedPoint(67,0.02784489);
-   SimpleSinFunc1005->SetSavedPoint(68,0.02465902);
-   SimpleSinFunc1005->SetSavedPoint(69,0.02186277);
-   SimpleSinFunc1005->SetSavedPoint(70,0.01946711);
-   SimpleSinFunc1005->SetSavedPoint(71,0.01748146);
-   SimpleSinFunc1005->SetSavedPoint(72,0.01591363);
-   SimpleSinFunc1005->SetSavedPoint(73,0.01476979);
-   SimpleSinFunc1005->SetSavedPoint(74,0.01405441);
-   SimpleSinFunc1005->SetSavedPoint(75,0.01377033);
-   SimpleSinFunc1005->SetSavedPoint(76,0.01391864);
-   SimpleSinFunc1005->SetSavedPoint(77,0.01449878);
-   SimpleSinFunc1005->SetSavedPoint(78,0.01550845);
-   SimpleSinFunc1005->SetSavedPoint(79,0.0169437);
-   SimpleSinFunc1005->SetSavedPoint(80,0.01879887);
-   SimpleSinFunc1005->SetSavedPoint(81,0.02106669);
-   SimpleSinFunc1005->SetSavedPoint(82,0.02373824);
-   SimpleSinFunc1005->SetSavedPoint(83,0.02680301);
-   SimpleSinFunc1005->SetSavedPoint(84,0.03024897);
-   SimpleSinFunc1005->SetSavedPoint(85,0.03406256);
-   SimpleSinFunc1005->SetSavedPoint(86,0.03822881);
-   SimpleSinFunc1005->SetSavedPoint(87,0.04273134);
-   SimpleSinFunc1005->SetSavedPoint(88,0.04755246);
-   SimpleSinFunc1005->SetSavedPoint(89,0.0526732);
-   SimpleSinFunc1005->SetSavedPoint(90,0.05807346);
-   SimpleSinFunc1005->SetSavedPoint(91,0.06373201);
-   SimpleSinFunc1005->SetSavedPoint(92,0.06962661);
-   SimpleSinFunc1005->SetSavedPoint(93,0.07573409);
-   SimpleSinFunc1005->SetSavedPoint(94,0.08203045);
-   SimpleSinFunc1005->SetSavedPoint(95,0.08849095);
-   SimpleSinFunc1005->SetSavedPoint(96,0.09509019);
-   SimpleSinFunc1005->SetSavedPoint(97,0.1018022);
-   SimpleSinFunc1005->SetSavedPoint(98,0.1086007);
-   SimpleSinFunc1005->SetSavedPoint(99,0.1154589);
-   SimpleSinFunc1005->SetSavedPoint(100,0.1223499);
+   SimpleSinFunc1005->SetSavedPoint(0,0.1205257);
+   SimpleSinFunc1005->SetSavedPoint(1,0.1279171);
+   SimpleSinFunc1005->SetSavedPoint(2,0.1352769);
+   SimpleSinFunc1005->SetSavedPoint(3,0.142574);
+   SimpleSinFunc1005->SetSavedPoint(4,0.149777);
+   SimpleSinFunc1005->SetSavedPoint(5,0.1568554);
+   SimpleSinFunc1005->SetSavedPoint(6,0.1637791);
+   SimpleSinFunc1005->SetSavedPoint(7,0.1705183);
+   SimpleSinFunc1005->SetSavedPoint(8,0.1770446);
+   SimpleSinFunc1005->SetSavedPoint(9,0.18333);
+   SimpleSinFunc1005->SetSavedPoint(10,0.1893478);
+   SimpleSinFunc1005->SetSavedPoint(11,0.1950723);
+   SimpleSinFunc1005->SetSavedPoint(12,0.2004791);
+   SimpleSinFunc1005->SetSavedPoint(13,0.2055452);
+   SimpleSinFunc1005->SetSavedPoint(14,0.210249);
+   SimpleSinFunc1005->SetSavedPoint(15,0.2145705);
+   SimpleSinFunc1005->SetSavedPoint(16,0.2184912);
+   SimpleSinFunc1005->SetSavedPoint(17,0.2219945);
+   SimpleSinFunc1005->SetSavedPoint(18,0.2250654);
+   SimpleSinFunc1005->SetSavedPoint(19,0.2276907);
+   SimpleSinFunc1005->SetSavedPoint(20,0.2298595);
+   SimpleSinFunc1005->SetSavedPoint(21,0.2315623);
+   SimpleSinFunc1005->SetSavedPoint(22,0.2327919);
+   SimpleSinFunc1005->SetSavedPoint(23,0.2335431);
+   SimpleSinFunc1005->SetSavedPoint(24,0.2338128);
+   SimpleSinFunc1005->SetSavedPoint(25,0.2335997);
+   SimpleSinFunc1005->SetSavedPoint(26,0.2329047);
+   SimpleSinFunc1005->SetSavedPoint(27,0.2317308);
+   SimpleSinFunc1005->SetSavedPoint(28,0.2300831);
+   SimpleSinFunc1005->SetSavedPoint(29,0.2279685);
+   SimpleSinFunc1005->SetSavedPoint(30,0.225396);
+   SimpleSinFunc1005->SetSavedPoint(31,0.2223767);
+   SimpleSinFunc1005->SetSavedPoint(32,0.2189233);
+   SimpleSinFunc1005->SetSavedPoint(33,0.2150506);
+   SimpleSinFunc1005->SetSavedPoint(34,0.2107752);
+   SimpleSinFunc1005->SetSavedPoint(35,0.2061151);
+   SimpleSinFunc1005->SetSavedPoint(36,0.2010903);
+   SimpleSinFunc1005->SetSavedPoint(37,0.1957222);
+   SimpleSinFunc1005->SetSavedPoint(38,0.1900337);
+   SimpleSinFunc1005->SetSavedPoint(39,0.1840489);
+   SimpleSinFunc1005->SetSavedPoint(40,0.1777935);
+   SimpleSinFunc1005->SetSavedPoint(41,0.171294);
+   SimpleSinFunc1005->SetSavedPoint(42,0.1645782);
+   SimpleSinFunc1005->SetSavedPoint(43,0.1576747);
+   SimpleSinFunc1005->SetSavedPoint(44,0.1506128);
+   SimpleSinFunc1005->SetSavedPoint(45,0.1434228);
+   SimpleSinFunc1005->SetSavedPoint(46,0.1361352);
+   SimpleSinFunc1005->SetSavedPoint(47,0.128781);
+   SimpleSinFunc1005->SetSavedPoint(48,0.1213917);
+   SimpleSinFunc1005->SetSavedPoint(49,0.1139987);
+   SimpleSinFunc1005->SetSavedPoint(50,0.1066335);
+   SimpleSinFunc1005->SetSavedPoint(51,0.0993275);
+   SimpleSinFunc1005->SetSavedPoint(52,0.09211183);
+   SimpleSinFunc1005->SetSavedPoint(53,0.08501725);
+   SimpleSinFunc1005->SetSavedPoint(54,0.07807398);
+   SimpleSinFunc1005->SetSavedPoint(55,0.07131161);
+   SimpleSinFunc1005->SetSavedPoint(56,0.06475896);
+   SimpleSinFunc1005->SetSavedPoint(57,0.05844395);
+   SimpleSinFunc1005->SetSavedPoint(58,0.05239349);
+   SimpleSinFunc1005->SetSavedPoint(59,0.04663337);
+   SimpleSinFunc1005->SetSavedPoint(60,0.04118813);
+   SimpleSinFunc1005->SetSavedPoint(61,0.03608097);
+   SimpleSinFunc1005->SetSavedPoint(62,0.03133366);
+   SimpleSinFunc1005->SetSavedPoint(63,0.02696643);
+   SimpleSinFunc1005->SetSavedPoint(64,0.02299789);
+   SimpleSinFunc1005->SetSavedPoint(65,0.01944494);
+   SimpleSinFunc1005->SetSavedPoint(66,0.01632274);
+   SimpleSinFunc1005->SetSavedPoint(67,0.01364458);
+   SimpleSinFunc1005->SetSavedPoint(68,0.01142188);
+   SimpleSinFunc1005->SetSavedPoint(69,0.009664107);
+   SimpleSinFunc1005->SetSavedPoint(70,0.008378755);
+   SimpleSinFunc1005->SetSavedPoint(71,0.007571299);
+   SimpleSinFunc1005->SetSavedPoint(72,0.007245181);
+   SimpleSinFunc1005->SetSavedPoint(73,0.007401791);
+   SimpleSinFunc1005->SetSavedPoint(74,0.00804046);
+   SimpleSinFunc1005->SetSavedPoint(75,0.009158468);
+   SimpleSinFunc1005->SetSavedPoint(76,0.01075105);
+   SimpleSinFunc1005->SetSavedPoint(77,0.01281142);
+   SimpleSinFunc1005->SetSavedPoint(78,0.0153308);
+   SimpleSinFunc1005->SetSavedPoint(79,0.01829845);
+   SimpleSinFunc1005->SetSavedPoint(80,0.02170172);
+   SimpleSinFunc1005->SetSavedPoint(81,0.02552612);
+   SimpleSinFunc1005->SetSavedPoint(82,0.02975534);
+   SimpleSinFunc1005->SetSavedPoint(83,0.03437137);
+   SimpleSinFunc1005->SetSavedPoint(84,0.03935453);
+   SimpleSinFunc1005->SetSavedPoint(85,0.04468359);
+   SimpleSinFunc1005->SetSavedPoint(86,0.05033584);
+   SimpleSinFunc1005->SetSavedPoint(87,0.05628719);
+   SimpleSinFunc1005->SetSavedPoint(88,0.06251229);
+   SimpleSinFunc1005->SetSavedPoint(89,0.06898459);
+   SimpleSinFunc1005->SetSavedPoint(90,0.07567654);
+   SimpleSinFunc1005->SetSavedPoint(91,0.0825596);
+   SimpleSinFunc1005->SetSavedPoint(92,0.08960445);
+   SimpleSinFunc1005->SetSavedPoint(93,0.09678106);
+   SimpleSinFunc1005->SetSavedPoint(94,0.1040589);
+   SimpleSinFunc1005->SetSavedPoint(95,0.1114068);
+   SimpleSinFunc1005->SetSavedPoint(96,0.1187937);
+   SimpleSinFunc1005->SetSavedPoint(97,0.1261879);
+   SimpleSinFunc1005->SetSavedPoint(98,0.1335579);
+   SimpleSinFunc1005->SetSavedPoint(99,0.1408725);
+   SimpleSinFunc1005->SetSavedPoint(100,0.1481003);
    SimpleSinFunc1005->SetSavedPoint(101,0);
    SimpleSinFunc1005->SetSavedPoint(102,4.365324);
    SimpleSinFunc1005->SetFillColor(19);
    SimpleSinFunc1005->SetFillStyle(0);
    SimpleSinFunc1005->SetLineColor(2);
    SimpleSinFunc1005->SetLineWidth(3);
-   SimpleSinFunc1005->SetChisquare(126.7324);
+   SimpleSinFunc1005->SetChisquare(123.9985);
    SimpleSinFunc1005->SetNDF(84);
    SimpleSinFunc1005->GetXaxis()->SetLabelFont(42);
    SimpleSinFunc1005->GetXaxis()->SetLabelSize(0.035);
@@ -704,14 +704,14 @@ void simpleModuloFit_1_vQ()
    SimpleSinFunc1005->GetYaxis()->SetLabelSize(0.035);
    SimpleSinFunc1005->GetYaxis()->SetTitleSize(0.035);
    SimpleSinFunc1005->GetYaxis()->SetTitleFont(42);
-   SimpleSinFunc1005->SetParameter(0,0.1100294);
-   SimpleSinFunc1005->SetParError(0,0.02041178);
+   SimpleSinFunc1005->SetParameter(0,0.1132879);
+   SimpleSinFunc1005->SetParError(0,0.0187239);
    SimpleSinFunc1005->SetParLimits(0,0,0);
-   SimpleSinFunc1005->SetParameter(1,1.436332);
-   SimpleSinFunc1005->SetParError(1,0.07625581);
+   SimpleSinFunc1005->SetParameter(1,1.495664);
+   SimpleSinFunc1005->SetParError(1,0.06520491);
    SimpleSinFunc1005->SetParLimits(1,0,0);
-   SimpleSinFunc1005->SetParameter(2,0.1237944);
-   SimpleSinFunc1005->SetParError(2,0.01436071);
+   SimpleSinFunc1005->SetParameter(2,0.1205257);
+   SimpleSinFunc1005->SetParError(2,0.01294856);
    SimpleSinFunc1005->SetParLimits(2,0,0);
    SimpleSinFunc1005->Draw("same");
    

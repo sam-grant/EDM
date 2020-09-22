@@ -44,8 +44,6 @@ void Plotter::InitHistos() {
     // Fine bin
     plot2D("ThetaY_vs_Time_Modulo_Fine_"+std::to_string(i_slice), 1000, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
 
-
-
   }
 
 
@@ -61,7 +59,7 @@ void Plotter::Run() {
   while( NextTrEvent() ) {
 
     // BEAM VERTEX QUALITY CUT
-    //if(!tr->passVertexQuality) continue;
+    if(!tr->passVertexQuality) continue;
 
     double time = tr->trackT0 * 1e-3; // ns -> us
     double p = tr->trackMomentum;

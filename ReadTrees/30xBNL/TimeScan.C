@@ -61,7 +61,7 @@ void Plotter::Run() {
   while( NextTrEvent() ) {
 
     // BEAM VERTEX QUALITY CUT
-   // if(!tr->passVertexQuality) continue;
+    if(!tr->passVertexQuality) continue;
 
     double time = tr->trackT0 * 1e-3; // ns -> us
     double p = tr->trackMomentum;

@@ -1,7 +1,7 @@
 void TrackMom_5_vQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 20:02:11 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:33:35 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,41 +12,41 @@ void TrackMom_5_vQ()
    c->SetFrameBorderMode(0);
    
    TH1D *TrackMom_5__26 = new TH1D("TrackMom_5__26","2500<p<3000 MeV",128,0,3200);
-   TrackMom_5__26->SetBinContent(101,20908);
-   TrackMom_5__26->SetBinContent(102,20685);
-   TrackMom_5__26->SetBinContent(103,20491);
-   TrackMom_5__26->SetBinContent(104,20927);
-   TrackMom_5__26->SetBinContent(105,20435);
-   TrackMom_5__26->SetBinContent(106,20330);
-   TrackMom_5__26->SetBinContent(107,19980);
-   TrackMom_5__26->SetBinContent(108,18985);
-   TrackMom_5__26->SetBinContent(109,16971);
-   TrackMom_5__26->SetBinContent(110,14343);
-   TrackMom_5__26->SetBinContent(111,11340);
-   TrackMom_5__26->SetBinContent(112,7839);
-   TrackMom_5__26->SetBinContent(113,4801);
-   TrackMom_5__26->SetBinContent(114,2486);
-   TrackMom_5__26->SetBinContent(115,917);
-   TrackMom_5__26->SetBinContent(116,228);
-   TrackMom_5__26->SetBinContent(117,28);
-   TrackMom_5__26->SetBinError(101,144.596);
-   TrackMom_5__26->SetBinError(102,143.8228);
-   TrackMom_5__26->SetBinError(103,143.1468);
-   TrackMom_5__26->SetBinError(104,144.6617);
-   TrackMom_5__26->SetBinError(105,142.951);
-   TrackMom_5__26->SetBinError(106,142.5833);
-   TrackMom_5__26->SetBinError(107,141.3506);
-   TrackMom_5__26->SetBinError(108,137.7861);
-   TrackMom_5__26->SetBinError(109,130.2728);
-   TrackMom_5__26->SetBinError(110,119.7623);
-   TrackMom_5__26->SetBinError(111,106.4894);
-   TrackMom_5__26->SetBinError(112,88.53813);
-   TrackMom_5__26->SetBinError(113,69.28925);
-   TrackMom_5__26->SetBinError(114,49.8598);
-   TrackMom_5__26->SetBinError(115,30.28201);
-   TrackMom_5__26->SetBinError(116,15.09967);
-   TrackMom_5__26->SetBinError(117,5.291503);
-   TrackMom_5__26->SetEntries(221694);
+   TrackMom_5__26->SetBinContent(101,25598);
+   TrackMom_5__26->SetBinContent(102,25190);
+   TrackMom_5__26->SetBinContent(103,25072);
+   TrackMom_5__26->SetBinContent(104,25394);
+   TrackMom_5__26->SetBinContent(105,24960);
+   TrackMom_5__26->SetBinContent(106,24850);
+   TrackMom_5__26->SetBinContent(107,24195);
+   TrackMom_5__26->SetBinContent(108,23140);
+   TrackMom_5__26->SetBinContent(109,20676);
+   TrackMom_5__26->SetBinContent(110,17452);
+   TrackMom_5__26->SetBinContent(111,13866);
+   TrackMom_5__26->SetBinContent(112,9558);
+   TrackMom_5__26->SetBinContent(113,5821);
+   TrackMom_5__26->SetBinContent(114,3053);
+   TrackMom_5__26->SetBinContent(115,1107);
+   TrackMom_5__26->SetBinContent(116,272);
+   TrackMom_5__26->SetBinContent(117,35);
+   TrackMom_5__26->SetBinError(101,159.9937);
+   TrackMom_5__26->SetBinError(102,158.7136);
+   TrackMom_5__26->SetBinError(103,158.3414);
+   TrackMom_5__26->SetBinError(104,159.3549);
+   TrackMom_5__26->SetBinError(105,157.9873);
+   TrackMom_5__26->SetBinError(106,157.6388);
+   TrackMom_5__26->SetBinError(107,155.5474);
+   TrackMom_5__26->SetBinError(108,152.1184);
+   TrackMom_5__26->SetBinError(109,143.7915);
+   TrackMom_5__26->SetBinError(110,132.106);
+   TrackMom_5__26->SetBinError(111,117.754);
+   TrackMom_5__26->SetBinError(112,97.76502);
+   TrackMom_5__26->SetBinError(113,76.29548);
+   TrackMom_5__26->SetBinError(114,55.25396);
+   TrackMom_5__26->SetBinError(115,33.27161);
+   TrackMom_5__26->SetBinError(116,16.49242);
+   TrackMom_5__26->SetBinError(117,5.91608);
+   TrackMom_5__26->SetEntries(270239);
    TrackMom_5__26->SetStats(0);
    TrackMom_5__26->SetLineWidth(3);
    TrackMom_5__26->SetMarkerSize(1.5);

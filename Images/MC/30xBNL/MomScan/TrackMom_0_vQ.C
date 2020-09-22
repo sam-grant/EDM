@@ -1,7 +1,7 @@
 void TrackMom_0_vQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 20:02:03 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:33:27 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,21 +12,21 @@ void TrackMom_0_vQ()
    c->SetFrameBorderMode(0);
    
    TH1D *TrackMom_0__1 = new TH1D("TrackMom_0__1","0<p<500 MeV",128,0,3200);
-   TrackMom_0__1->SetBinContent(14,8);
-   TrackMom_0__1->SetBinContent(15,1080);
-   TrackMom_0__1->SetBinContent(16,5807);
-   TrackMom_0__1->SetBinContent(17,12625);
-   TrackMom_0__1->SetBinContent(18,19479);
-   TrackMom_0__1->SetBinContent(19,25842);
-   TrackMom_0__1->SetBinContent(20,30366);
-   TrackMom_0__1->SetBinError(14,2.828427);
-   TrackMom_0__1->SetBinError(15,32.86335);
-   TrackMom_0__1->SetBinError(16,76.20367);
-   TrackMom_0__1->SetBinError(17,112.361);
-   TrackMom_0__1->SetBinError(18,139.5672);
-   TrackMom_0__1->SetBinError(19,160.7545);
-   TrackMom_0__1->SetBinError(20,174.2584);
-   TrackMom_0__1->SetEntries(95207);
+   TrackMom_0__1->SetBinContent(14,9);
+   TrackMom_0__1->SetBinContent(15,1324);
+   TrackMom_0__1->SetBinContent(16,7073);
+   TrackMom_0__1->SetBinContent(17,15396);
+   TrackMom_0__1->SetBinContent(18,23814);
+   TrackMom_0__1->SetBinContent(19,31644);
+   TrackMom_0__1->SetBinContent(20,36874);
+   TrackMom_0__1->SetBinError(14,3);
+   TrackMom_0__1->SetBinError(15,36.38681);
+   TrackMom_0__1->SetBinError(16,84.10113);
+   TrackMom_0__1->SetBinError(17,124.0806);
+   TrackMom_0__1->SetBinError(18,154.3179);
+   TrackMom_0__1->SetBinError(19,177.8876);
+   TrackMom_0__1->SetBinError(20,192.026);
+   TrackMom_0__1->SetEntries(116134);
    TrackMom_0__1->SetStats(0);
    TrackMom_0__1->SetLineWidth(3);
    TrackMom_0__1->SetMarkerSize(1.5);

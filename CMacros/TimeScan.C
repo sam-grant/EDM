@@ -23,7 +23,7 @@ using namespace std;
 
 int main() {
 
-	bool quality = true;
+	bool quality = false;
 
 	std::string qualString;
 	if(quality) qualString = "_vQ";

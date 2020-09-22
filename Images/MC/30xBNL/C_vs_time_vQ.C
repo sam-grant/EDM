@@ -1,10 +1,10 @@
 void C_vs_time_vQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 17 19:59:40 2020) by ROOT version 6.16/00
+//=========  (Fri Sep 18 16:34:32 2020) by ROOT version 6.16/00
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-82.50001,-1.134544,742.5,1.559243);
+   c->Range(-82.50001,-0.4660674,742.5,0.5470039);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void C_vs_time_vQ()
    450,
    550};
    Double_t Graph0_fy1015[6] = {
-   0.1243892,
-   0.1237944,
-   0.3445246,
-   0.04149058,
-   0.7167407,
-   -0.1902668};
+   0.1228296,
+   0.1205257,
+   0.1019294,
+   0.008030551,
+   0.1170833,
+   0.04046824};
    Double_t Graph0_fex1015[6] = {
    50,
    50,
@@ -33,12 +33,12 @@ void C_vs_time_vQ()
    50,
    50};
    Double_t Graph0_fey1015[6] = {
-   0.006582438,
-   0.01436071,
-   0.08864091,
-   0.06945653,
-   0.3935382,
-   0.4953124};
+   0.005969719,
+   0.01294856,
+   0.02904627,
+   0.06435027,
+   0.1304081,
+   0.3376904};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
    gre->SetName("Graph0");
    gre->SetTitle(";Track time [#mus];Average vertical offset, c [mrad]");
@@ -46,8 +46,8 @@ void C_vs_time_vQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","",100,0,660);
-   Graph_Graph01015->SetMinimum(-0.865165);
-   Graph_Graph01015->SetMaximum(1.289865);
+   Graph_Graph01015->SetMinimum(-0.3647603);
+   Graph_Graph01015->SetMaximum(0.4456968);
    Graph_Graph01015->SetDirectory(0);
    Graph_Graph01015->SetStats(0);
 

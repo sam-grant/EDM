@@ -23,7 +23,7 @@ using namespace std;
 
 int main() {
 
-	std::string qualString = "NoQ";
+	std::string qualString = "Q";
 	//bool quality = false;
 	//std::string qualString;
 	//if(quality) qualString = "Q";
