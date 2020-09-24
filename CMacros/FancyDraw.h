@@ -14,6 +14,7 @@
 #include "TString.h"
 #include "TLegend.h"
 #include "TLatex.h"
+#include "TGaxis.h"
 
 
 // =========================== Standard plotting ===========================
@@ -103,8 +104,46 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 }
 
-
 // =========================== Custom plotting ===========================
+
+void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::string axisTitle, std::string fname, double lo, double hi) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->Draw("AP");
+
+	gPad->Update();
+
+	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),lo,hi,510,"-");
+	axis->SetTitle(axisTitle.c_str());
+	axis->SetTitleOffset(1.1);
+	axis->CenterTitle(true);
+	axis->SetTextFont(42);
+	axis->SetLabelFont(42);
+	axis->SetTextColor(kRed);
+	axis->SetLabelColor(kRed);
+	axis->SetLineColor(kRed);
+	axis->Draw("same");
+
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
 
 void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N) {
 

@@ -1,14 +1,8 @@
 
 #include "FancyDraw.h"
 #include "TF1.h"
-/*#include "TCanvas.h"
-#include "TLine.h"
-#include "TAxis.h"
-#include "TLegend.h"*/
 
 // Not really happy with the formatting, but functions are correct
-
-
 
 int main() { 
 
@@ -67,7 +61,7 @@ int main() {
 
 	N_4->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_4, A_4, NA2_4, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame_eCut");
+	DrawAsymmetryPlot(N_4, A_4, NA2_4, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame");
 
 
 	return 0;
