@@ -1,17 +1,25 @@
+# Makefile that also compiles software blinding
+
+# Rather hacky, this is voodoo to me
+
+Target  = Asymmetry.exe testBlinding.exe
 
 C++ = g++
-C_FLAGS = -g
 
-ROOTCFLAGS=$(shell root-config --cflags)
-ROOTLIBS=$(shell root-config --libs)
+ROOTFLAGS = $(shell root-config --cflags)
+ROOTLIBS  = $(shell root-config --libs)
 
-SOURCES = $(shell find . ! -name "Reader.C" -name "*.C")
+RANDOMLIB = ../Blinding/rlib/include
+BLINDING = -L./ -lBlinders
 
-all : $(SOURCES:.C=)
+all:$(Target)
+
+Asymmetry.exe: Asymmetry.C
+	${C++} -o $@ Asymmetry.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
+############################# BLINDING ###################################
+testBlinding.exe: testBlinding.C
+	${C++} -I ${RANDOMLIB} testBlinding.C ${BLINDING} -o testBlinding.exe 
 
 clean:
-	rm *.o $(SOURCES:.C=)
-
-##generic rule:
-%: %.C
-	$(C++) $(ROOTCFLAGS) $(C_FLAGS) $<  -o $@  -L/Users/samuelgrant/Documents/gm2/EDM/Blinding -lgm2util_blinders $(ROOTLIBS)
+	rm *exe
