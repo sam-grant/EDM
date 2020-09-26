@@ -31,11 +31,11 @@ const double k_precisionR = 1e-6;
 using namespace blinding;
 
 // Code in extern to enable python access
-#ifdef __cplusplus
+/*#ifdef __cplusplus
 extern "C" {
 #include "python_header.h" 
   }
-#endif
+#endif*/
 
 // ******************************************************************************************************
 // ******************************************************************************************************

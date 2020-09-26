@@ -16,7 +16,7 @@
 #include <iomanip>
 #include <limits>
 #include <cmath>                // for std::pow
-#include "UniformInteger.hpp"
+#include <RandomLib/UniformInteger.hpp>
 
 namespace RandomLib {
   /**

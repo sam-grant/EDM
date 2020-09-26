@@ -7,9 +7,9 @@ int main() {
   Blinders::fitType ftype = Blinders::kOmega_a;
   Blinders myBlinder( ftype );
   
-  Blinders getBlinded( ftype, "Chris eats at Two Brothers" );
+  Blinders getBlinded( ftype, "Inspiral" );
   
-  Blinders systematicallyBlinded( ftype, 1, 10, "Help me! I think I'm falling..." );
+  Blinders systematicallyBlinded( ftype, 1, 10, "Ringdown" );
 
   // there should be no blinding...
   std::cout << "\n\n should be unblinded results " << std::endl;

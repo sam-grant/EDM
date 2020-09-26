@@ -18,7 +18,7 @@
 #include <iterator>
 #include <algorithm>            // For std::transform
 #include <sstream>              // For VectorToString
-#include "RandomType.hpp"
+#include <RandomLib/RandomType.hpp>
 
 #if defined(_MSC_VER)
 // Squelch warnings about dll vs vector

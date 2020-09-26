@@ -1,0 +1,1 @@
+g++ -I rlib/include -I INCLUDEPATH Blinders.cc -std=c++11 -Wall -Wextra -Werror -pedantic-errors -fpic -c
