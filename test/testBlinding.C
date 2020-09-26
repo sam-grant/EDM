@@ -1,4 +1,8 @@
+
+
 #include "../Blinding/Blinders.hh"
+#include "TTree.h"
+#include "TCanvas.h"
 
 using namespace blinding;
 
@@ -30,5 +34,10 @@ int main() {
     double result = ( systematicallyBlinded.paramToFreq( R ) / systematicallyBlinded.referenceValue() ) - 1;
     std::cout << " input R: " << R << "   output: " << result << std::endl;
   }
+
+
+  TCanvas *c = new TCanvas();
+  c->Draw();
+  c->SaveAs("blank.png");
 
 }
