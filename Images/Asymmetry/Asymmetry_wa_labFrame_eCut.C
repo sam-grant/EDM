@@ -1,7 +1,7 @@
 void Asymmetry_wa_labFrame_eCut()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 22 15:55:51 2020) by ROOT version 6.16/00
+//=========  (Sat Sep 26 15:51:56 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -17,14 +17,14 @@ void Asymmetry_wa_labFrame_eCut()
    N_37->GetXaxis()->SetTitle("y=p/p_{max}");
    N_37->GetXaxis()->CenterTitle(true);
    N_37->GetXaxis()->SetLabelFont(42);
-   N_37->GetXaxis()->SetLabelSize(0.035);
+   N_37->GetXaxis()->SetTitleSize(0.04);
    N_37->GetXaxis()->SetTitleOffset(1.1);
    N_37->GetXaxis()->SetTitleFont(42);
    N_37->GetYaxis()->SetTitle("Arbitrary units");
    N_37->GetYaxis()->CenterTitle(true);
    N_37->GetYaxis()->SetNdivisions(4000510);
    N_37->GetYaxis()->SetLabelFont(42);
-   N_37->GetYaxis()->SetLabelSize(0.035);
+   N_37->GetYaxis()->SetTitleSize(0.04);
    N_37->GetYaxis()->SetTitleOffset(1.1);
    N_37->GetYaxis()->SetTitleFont(42);
    N_37->Draw("");
@@ -69,13 +69,9 @@ void Asymmetry_wa_labFrame_eCut()
    A_38->SetLineColor(ci);
    A_38->SetLineWidth(3);
    A_38->GetXaxis()->SetLabelFont(42);
-   A_38->GetXaxis()->SetLabelSize(0.035);
-   A_38->GetXaxis()->SetTitleSize(0.035);
    A_38->GetXaxis()->SetTitleOffset(1);
    A_38->GetXaxis()->SetTitleFont(42);
    A_38->GetYaxis()->SetLabelFont(42);
-   A_38->GetYaxis()->SetLabelSize(0.035);
-   A_38->GetYaxis()->SetTitleSize(0.035);
    A_38->GetYaxis()->SetTitleFont(42);
    A_38->Draw("same");
    
@@ -87,13 +83,9 @@ void Asymmetry_wa_labFrame_eCut()
    NA2_39->SetLineColor(ci);
    NA2_39->SetLineWidth(3);
    NA2_39->GetXaxis()->SetLabelFont(42);
-   NA2_39->GetXaxis()->SetLabelSize(0.035);
-   NA2_39->GetXaxis()->SetTitleSize(0.035);
    NA2_39->GetXaxis()->SetTitleOffset(1);
    NA2_39->GetXaxis()->SetTitleFont(42);
    NA2_39->GetYaxis()->SetLabelFont(42);
-   NA2_39->GetYaxis()->SetLabelSize(0.035);
-   NA2_39->GetYaxis()->SetTitleSize(0.035);
    NA2_39->GetYaxis()->SetTitleFont(42);
    NA2_39->Draw("same");
    TLine *line = new TLine(0,0,1,0);

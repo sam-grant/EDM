@@ -1,0 +1,279 @@
+void CaloMeanPosErr_vs_N()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Oct  1 09:42:56 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(-125042.8,-0.03667627,1125385,0.8819054);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   Double_t Graph0_fx1004[51] = {
+   7227,
+   27222,
+   47627,
+   67989,
+   87922,
+   108055,
+   128652,
+   148772,
+   167953,
+   188018,
+   208222,
+   228320,
+   248610,
+   268826,
+   289178,
+   309230,
+   327701,
+   347896,
+   368121,
+   388326,
+   408541,
+   428948,
+   449164,
+   469685,
+   488611,
+   508797,
+   528821,
+   548918,
+   569017,
+   588701,
+   609004,
+   629021,
+   648236,
+   668478,
+   688633,
+   709089,
+   729016,
+   749421,
+   769648,
+   789969,
+   808774,
+   829055,
+   849199,
+   869599,
+   889780,
+   909766,
+   930075,
+   950263,
+   969013,
+   988891,
+   1000000};
+   Double_t Graph0_fy1004[51] = {
+   0.7237987,
+   0.37119,
+   0.2801914,
+   0.2345999,
+   0.2063151,
+   0.1861775,
+   0.170688,
+   0.1587237,
+   0.1494219,
+   0.1412532,
+   0.1341715,
+   0.1281518,
+   0.1228256,
+   0.1181118,
+   0.1138501,
+   0.1101104,
+   0.1069939,
+   0.1038403,
+   0.1009574,
+   0.09831756,
+   0.09587292,
+   0.09357299,
+   0.09144638,
+   0.08943763,
+   0.08768649,
+   0.08592828,
+   0.08429882,
+   0.08274186,
+   0.08126692,
+   0.07989108,
+   0.07855258,
+   0.0772891,
+   0.07613532,
+   0.0749768,
+   0.07387564,
+   0.07280336,
+   0.07180223,
+   0.0708166,
+   0.06988183,
+   0.0689689,
+   0.06815715,
+   0.06731341,
+   0.06651028,
+   0.06572766,
+   0.06498401,
+   0.06427026,
+   0.06356859,
+   0.0628898,
+   0.06227443,
+   0.06165376,
+   0.06131323};
+   Double_t Graph0_fex1004[51] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t Graph0_fey1004[51] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   TGraphErrors *gre = new TGraphErrors(51,Graph0_fx1004,Graph0_fy1004,Graph0_fex1004,Graph0_fey1004);
+   gre->SetName("Graph0");
+   gre->SetTitle(";Number of clusters;Cluster mean position uncertainty [mm]");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_Graph01004 = new TH1F("Graph_Graph01004","",100,0,1099277);
+   Graph_Graph01004->SetMinimum(0.0551819);
+   Graph_Graph01004->SetMaximum(0.7900472);
+   Graph_Graph01004->SetDirectory(0);
+   Graph_Graph01004->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_Graph01004->SetLineColor(ci);
+   Graph_Graph01004->GetXaxis()->SetTitle("Number of clusters");
+   Graph_Graph01004->GetXaxis()->SetRange(1,91);
+   Graph_Graph01004->GetXaxis()->CenterTitle(true);
+   Graph_Graph01004->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01004->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01004->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01004->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01004->GetYaxis()->SetTitle("Cluster mean position uncertainty [mm]");
+   Graph_Graph01004->GetYaxis()->CenterTitle(true);
+   Graph_Graph01004->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01004->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01004->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01004->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph01004->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01004->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01004->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01004->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01004);
+   
+   gre->Draw("ap");
+   TGaxis *gaxis = new TGaxis(0,0.7900472,1000342,0.7900472,0,51,510,"-");
+   gaxis->SetLabelOffset(0.005);
+   gaxis->SetLabelSize(0.04);
+   gaxis->SetTickSize(0.03);
+   gaxis->SetGridLength(0);
+   gaxis->SetTitleOffset(1.1);
+   gaxis->SetTitleSize(0.04);
+   gaxis->SetTitleColor(632);
+   gaxis->SetTitleFont(42);
+   gaxis->SetTitle("Number of sub-runs");
+
+   ci = TColor::GetColor("#ff0000");
+   gaxis->SetLabelColor(ci);
+
+   ci = TColor::GetColor("#ff0000");
+   gaxis->SetLineColor(ci);
+   gaxis->SetLabelFont(42);
+   gaxis->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

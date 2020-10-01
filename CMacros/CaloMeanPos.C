@@ -32,7 +32,7 @@ double Mean(TH2 *hist) {
 }
 
 
-TGraphErrors *Graph(vector<int> N, vector<double> mean, vector<double> err, int type) { 
+TGraphErrors *DefineTGraph(vector<int> N, vector<float> mean, vector<float> err, int type) { 
 
 	int n = N.size();
 	double x[n];
@@ -66,54 +66,68 @@ TGraphErrors *Graph(vector<int> N, vector<double> mean, vector<double> err, int 
 
 int main() {
 
-	TFile *input = TFile::Open("../Plots/Data/MeanCaloPos/plots_15921.root");
+	TFile *input = TFile::Open("../Plots/Data/MeanCaloPos/plots_calo_15921.root");
+	//TFile *input = TFile::Open("/Users/samuelgrant/Documents/gm2/EDM/ReadTrees/Data/ReadCaloTrees/plots_Data_15921.root");
+
 	cout<<"Opened file\t:"<<input<<endl;
 
 	int counter = 0;
 
-	TH2 *hist;
-	TH2 *histStack;
+	//TH1 *ctagHist;
+	//TH1 *ctagHistStack;
+	TH2 *posHist;
+	TH2 *posHistStack;
 
-	vector<int> N;
-	vector<double> err;
-	vector<double> mean; 
+	//vector<int> N;
+	vector<int> ctag; 
+	vector<float> meanPosY; 
+	vector<float> meanPosYErr;
 
 	for(int i = 0; i<400; i++) { 
 
-		hist = (TH2D*)input->Get( ("caloVertY_vs_caloVertX_"+to_string(i)).c_str() );
+		//ctagHist = (TH1D*)input->Get( ("ctag_"+to_string(i)).c_str() );
+		posHist = (TH2D*)input->Get( ("clusterY_vs_clusterX_"+to_string(i)).c_str() );
 
-		if(hist==0) continue;
+		if(posHist == 0) continue;
 
-		if(counter==0) histStack = hist;
-		else histStack->Add(hist);
+		//cout<<"Got posHist\t:"<<posHist<<endl;
 
-		N.push_back(histStack->GetEntries());
-		mean.push_back(Mean(histStack));
-		err.push_back(ErrorOnMean(histStack));		
+		if(counter==0) {
+			posHistStack = posHist;
+		} else {
+			posHistStack->Add(posHist);
+		}
+
+		//cout<<"ctagHistStack->GetMean()\t:"<<ctagHistStack->GetMean()<<endl;
+		ctag.push_back(posHistStack->GetEntries());
+
+		// Do I want mean CTAGS, or the aggregated total CTAGs? 
+
+		//ctag.push_back(ctagHistStack->GetMean());
+		meanPosY.push_back(posHistStack->ProjectionY()->GetMean());
+		meanPosYErr.push_back(posHistStack->ProjectionY()->GetMeanError());	
 
 		counter++;
 
 	}
 
-	//vector<TH2*> histStack = stack(input);
 
-	//cout<<"errorOnMean at 0\t"<<errorOnMean(histStack.at(0))<<endl;
-	//cout<<"errorOnMean at 10\t"<<errorOnMean(histStack.at(10))<<endl;
-	//cout<<"errorOnMean at 20\t"<<errorOnMean(histStack.at(20))<<endl;
-	//cout<<"errorOnMean at 30\t"<<errorOnMean(histStack.at(30))<<endl;
+	TGraphErrors *gr0 = DefineTGraph(ctag, meanPosY, meanPosYErr, 0);
+	TGraphErrors *gr1 = DefineTGraph(ctag, meanPosY, meanPosYErr, 1);
+	//TGraphErrors *gr2 = DefineTGraph(N, meanPos, meanPosErr, 0);
+	//TGraphErrors *gr3 = DefineTGraph(N, meanPos, meanPosErr, 1);
 
-	TGraphErrors *gr0 = Graph(N, mean, err, 0);
-	TGraphErrors *gr1 = Graph(N, mean, err, 1);
+	gr0->GetXaxis()->SetRangeUser(0,ctag.back());
+	gr1->GetXaxis()->SetRangeUser(0,ctag.back());
+	gr0->GetYaxis()->SetRangeUser(75.45,76.1);
+	gr1->GetYaxis()->SetRangeUser(0,0.25);
+	//gr2->GetXaxis()->SetRangeUser(0,N.back());
+	//gr3->GetXaxis()->SetRangeUser(0,N.back());
 
-	//gr1->GetYaxis()->SetRangeUser(0.4,0.5);
-
-	//DrawTGraphErrors(gr0, "test0", "0");
-	//DrawTGraphErrors(gr1, "test1", "1");
-	gr0->GetXaxis()->SetRangeUser(0,N.back());
-	gr1->GetXaxis()->SetRangeUser(0,N.back());
-
-	DrawTGraphErrorsDoubleXAxis(gr0, ";Number of tracks;Calo vertex mean position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPos", 0, counter);
-	DrawTGraphErrorsDoubleXAxis(gr1, ";Number of tracks;Calo vertex mean position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosErr", 0, counter);
+	DrawTGraphErrorsDoubleXAxis(gr0, ";CTAGs;Cluster mean Y-position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPos_vs_CTAG", 0, counter);
+	DrawTGraphErrorsDoubleXAxis(gr1, ";CTAGs;Cluster mean Y-position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosYErr_vs_CTAG", 0, counter);
+	//DrawTGraphErrorsDoubleXAxis(gr2, ";Number of clusters;Cluster mean position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPos_vs_N", 0, counter);
+	//DrawTGraphErrorsDoubleXAxis(gr3, ";Number of clusters;Cluster mean position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosErr_vs_N", 0, counter);
 
 	return 0;
 }

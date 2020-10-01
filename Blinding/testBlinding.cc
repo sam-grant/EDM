@@ -1,5 +1,5 @@
 #include "Blinders.hh"
-
+#include "TFile.h"
 using namespace blinding;
 
 int main() {
@@ -30,5 +30,6 @@ int main() {
     double result = ( systematicallyBlinded.paramToFreq( R ) / systematicallyBlinded.referenceValue() ) - 1;
     std::cout << " input R: " << R << "   output: " << result << std::endl;
   }
-
+  TCanvas *c = new TCanvas();
+  c->SaveAs("blank.png");
 }

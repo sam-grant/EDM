@@ -1,0 +1,68 @@
+// Run calo trees for calo position
+
+// Sam Grant - Sept 2020
+
+// Basically identical to gm2analyses/fcl/rootTreesForCaloClusters.fcl
+
+process_name : rootTrees
+  
+//-----------------------------------------------
+  
+source : {
+  
+  module_type : RootInput
+  maxEvents   : -1  
+}
+  
+//-----------------------------------------------
+
+services : 
+{
+   message: {
+      debugModules : ["*"]
+      suppressInfo : []
+        
+      destinations: {
+         LogToFile: {
+            append    : false
+            filename  : "gm2rootTrees_ana.log"
+            threshold : "INFO"
+            type      : "file"
+         }
+      }
+   }
+
+   scheduler: {
+      errorOnFailureToPut: false
+   }
+
+   TFileService : {
+      fileName : "gm2rootTrees_ana.root"
+   }
+}
+
+//-----------------------------------------------
+  
+physics : {
+  
+  analyzers : { 
+   
+    caloTrees : {
+  
+      module_type : CaloTrees
+      clusterModuleLabel : hitClusterDAQ
+      clusterInstanceLabel : cluster
+      SelectEvents : ["offline:muonPath"]
+    }
+
+  } // analyzers  
+   
+  // Define paths/streams
+  treePath : [ caloTrees ]  
+  
+  //List trigger (producer/filter) and end (analyzer/output) paths
+
+  end_paths     : [ treePath ]
+}
+
+

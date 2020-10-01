@@ -1,7 +1,7 @@
 void Asymmetry_wa_restFrame()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 22 15:55:51 2020) by ROOT version 6.16/00
+//=========  (Sat Sep 26 15:51:55 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -18,14 +18,14 @@ void Asymmetry_wa_restFrame()
    N_11->GetXaxis()->SetRange(1,100);
    N_11->GetXaxis()->CenterTitle(true);
    N_11->GetXaxis()->SetLabelFont(42);
-   N_11->GetXaxis()->SetLabelSize(0.035);
+   N_11->GetXaxis()->SetTitleSize(0.04);
    N_11->GetXaxis()->SetTitleOffset(1.1);
    N_11->GetXaxis()->SetTitleFont(42);
    N_11->GetYaxis()->SetTitle("Arbitrary units");
    N_11->GetYaxis()->CenterTitle(true);
    N_11->GetYaxis()->SetNdivisions(4000510);
    N_11->GetYaxis()->SetLabelFont(42);
-   N_11->GetYaxis()->SetLabelSize(0.035);
+   N_11->GetYaxis()->SetTitleSize(0.04);
    N_11->GetYaxis()->SetTitleOffset(1.1);
    N_11->GetYaxis()->SetTitleFont(42);
    N_11->Draw("");
@@ -70,13 +70,9 @@ void Asymmetry_wa_restFrame()
    A_12->SetLineColor(ci);
    A_12->SetLineWidth(3);
    A_12->GetXaxis()->SetLabelFont(42);
-   A_12->GetXaxis()->SetLabelSize(0.035);
-   A_12->GetXaxis()->SetTitleSize(0.035);
    A_12->GetXaxis()->SetTitleOffset(1);
    A_12->GetXaxis()->SetTitleFont(42);
    A_12->GetYaxis()->SetLabelFont(42);
-   A_12->GetYaxis()->SetLabelSize(0.035);
-   A_12->GetYaxis()->SetTitleSize(0.035);
    A_12->GetYaxis()->SetTitleFont(42);
    A_12->Draw("same");
    
@@ -88,13 +84,9 @@ void Asymmetry_wa_restFrame()
    NA2_13->SetLineColor(ci);
    NA2_13->SetLineWidth(3);
    NA2_13->GetXaxis()->SetLabelFont(42);
-   NA2_13->GetXaxis()->SetLabelSize(0.035);
-   NA2_13->GetXaxis()->SetTitleSize(0.035);
    NA2_13->GetXaxis()->SetTitleOffset(1);
    NA2_13->GetXaxis()->SetTitleFont(42);
    NA2_13->GetYaxis()->SetLabelFont(42);
-   NA2_13->GetYaxis()->SetLabelSize(0.035);
-   NA2_13->GetYaxis()->SetTitleSize(0.035);
    NA2_13->GetYaxis()->SetTitleFont(42);
    NA2_13->Draw("same");
    TLine *line = new TLine(0,0,1,0);

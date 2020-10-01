@@ -2,7 +2,7 @@
 
 # Rather hacky, this is voodoo to me
 
-Target  = Asymmetry.exe testBlinding.exe # BlindedEDMAnalysis.exe
+Target  = Asymmetry.exe testBlinding.exe BlindedEDMAnalysis.exe
 
 C++ = g++
 
@@ -23,6 +23,8 @@ testBlinding.exe: testBlinding.C
 	${C++} -o $@ testBlinding.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 
 	# ${C++} -I ${RANDOMLIB} testBlinding.C ${BLINDING} -o testBlinding.exe 
 
+BlindedEDMAnalysis.exe: BlindedEDMAnalysis.C
+	${C++} -o $@ BlindedEDMAnalysis.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
 #BlindedEDMAnalysis.exe: BlindedEDMAnalysis.C
 #	${C++} -o $@ BlindedEDMAnalysis.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 	#${C++} -I ${RANDOMLIB} ${BLINDING} -o $@ BlindedEDMAnalysis.C 
