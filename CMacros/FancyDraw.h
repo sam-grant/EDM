@@ -15,7 +15,7 @@
 #include "TLegend.h"
 #include "TLatex.h"
 #include "TGaxis.h"
-
+#include "TPad.h"
 
 // =========================== Standard plotting ===========================
 
@@ -93,6 +93,45 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetYaxis()->SetMaxDigits(4);
 	graph->SetMarkerStyle(20); //  Full circle
 	graph->Draw("AP");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graphs.at(0)->SetTitle(title.c_str());
+	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetXaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+	graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	graphs.at(0)->Draw("AP");
+
+	// Why doesn't this work??
+	// Could use Multigraph?? 
+	
+	std::cout<<"graphs.at(1):\t"<<graphs.at(1)<<std::endl;
+	graphs.at(1)->SetMarkerStyle(24); //  Full circle
+	graphs.at(1)->Draw("P SAME");
+
+
+	//std::cout<<"graphs.size():\t"<<graphs.size()<<std::endl;
+
+	//for(int i = 1; i < graphs.size(); i++) {
+	//	graphs.at(i)->Draw("P SAME");
+	//}
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
