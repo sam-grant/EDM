@@ -17,7 +17,67 @@
 #include "TFile.h"
 #include "TH1.h"
 #include "TGraphErrors.h"
+#include "TLegend.h"
 #include "TRandom3.h"
+
+// =========== Initialise parameters =========== 
+const int N_quad = 2;
+const int N_field = 4;
+const double Br_res = 8; // ppm, the size of the field that would kill our measurement
+const double sigma = 0.0247454; // [mm] 50 sub-runs worth of data, for mean calo pos y unc
+const double QHV[N_quad] = {16, 20}; // Two quad settings, kV
+const double Br_app[N_field] = {-30, -10, 10, 30}; // Applied radial field, ppm
+
+void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax, std::string func ) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.20);
+
+	graphs.at(0)->SetTitle(title.c_str());
+	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetXaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+	//graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+	//l->SetHeader("Applied B_{r}");
+	l->SetBorderSize(0);
+	// Load legend entries backwards
+	for( int i = graphs.size()-1; i>-1; i--) {
+		l->AddEntry(graphs.at(i), FormatNegativeNumber(Br_app[i])+" ppm");
+	}
+	
+	for(int i = 0; i < graphs.size(); i++) {
+		
+		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
+		fit->SetLineColor(kBlack);
+		fit->SetLineColor(i+1); 
+			graphs.at(i)->SetMarkerColor(i+1);
+			graphs.at(i)->SetLineColor(i+1);
+		if(i==0) graphs.at(i)->Draw("AP");
+		else {
+
+			graphs.at(i)->Draw("P SAME");
+			
+		}
+		fit->Draw("same");
+	}
+	l->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
 
 void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string fname) {
 
@@ -111,14 +171,6 @@ double yPosition(double Br_true, double QHV) {
 
 int main() {
 
-	// =========== Initialise parameters =========== 
-	const int N_quad = 2;
-	const int N_field = 4;
-	const double Br_res = 8; // ppm, the size of the field that would kill our measurement
-	const double sigma = 0.0247454; // [mm] 50 sub-runs worth of data, for mean calo pos y unc
-	const double QHV[N_quad] = {16, 20}; // Two quad settings, kV
-	const double Br_app[N_field] = {-30, -10, 10, 30}; // Applied radial field, ppm
-
 	TRandom3 random;
 
 	std::vector<TGraphErrors*> scans;
@@ -167,6 +219,7 @@ int main() {
 		}
 
 		TGraphErrors *scan = new TGraphErrors(N_quad,x,y,ex,ey);
+		scan->SetName((std::to_string(Br_app[i_field])+" ppm").c_str());
 
 		// Fit
 		TF1 *lineFit = new TF1("lineFit", "pol 1");
@@ -180,7 +233,7 @@ int main() {
 
 	} 
 
-	DrawManyTGraphErrorsFits(scans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/Scans",-3,2,"lineFit");
+	DrawQuadScanFits(scans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/Scans",-3,2,"lineFit");
 
 	TGraphErrors *result = new TGraphErrors(N_field,Br_app,slopes,holder,slope_errs);
 	TF1 *lineFit2 = new TF1("lineFit2", "pol 1");
