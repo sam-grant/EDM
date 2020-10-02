@@ -55,9 +55,12 @@ TString ThreeSigFig(double num) {
 
 TString SciNotation(double num) { 
 	TString text;
-	text = ThreeSigFig(num);// = Form("%5.3g", num);
-	text.ReplaceAll("e+0","#times10^{");
-	if(abs(num)>10) text.Append("}");
+	text = ThreeSigFig(num);
+  text.ReplaceAll("e+0","#times10^{");
+  text.ReplaceAll("e-0","#times10^{#minus");
+  text.ReplaceAll("e+","#times10^{");
+  text.ReplaceAll("e-","#times10^{#minus");
+	if(abs(num)>10 || abs(num)<0.1) text.Append("}");
 	return text;
 }
 
