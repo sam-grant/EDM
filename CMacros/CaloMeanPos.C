@@ -107,6 +107,32 @@ int main() {
 		meanPosY.push_back(posHistStack->ProjectionY()->GetMean());
 		meanPosYErr.push_back(posHistStack->ProjectionY()->GetMeanError());	
 
+		if(i==25) {
+			cout<<"SIGMA at 25 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 25 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==50) {
+			cout<<"SIGMA at 50 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 50 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==75) {
+			cout<<"SIGMA at 75 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 75 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==100) {
+			cout<<"SIGMA at 100 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 100 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==125) {
+			cout<<"SIGMA at 125 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 125 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==150) {
+			cout<<"SIGMA at 150 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 150 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==175) {
+			cout<<"SIGMA at 175 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 175 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		} else if(i==200) {
+			cout<<"SIGMA at 200 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
+			cout<<"CTAGs at 200 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
+		}
+ 
 		counter++;
 
 	}
@@ -131,79 +157,3 @@ int main() {
 
 	return 0;
 }
-
-/*
-vector<pair<int,double>> N_and_Err(TFile *input) {
-
-	TH2 *hist;
-
-	TH1 *projX;
-	TH1 *projY;
-
-	vector<pair<int,double>> result_;
-
-	for(int i = 0; i<400; i++) { 
-
-		if(i!=100) continue;
-
-		hist = (TH2D*)input->Get( ("caloVertY_vs_caloVertX_"+to_string(i)).c_str() );
-
-		if(hist==0) continue;
-
-		int N = hist->GetEntries();
-
-		projX = hist->ProjectionX();
-		projY = hist->ProjectionY();
-
-		double meanX = projX->GetMean();
-		double errX = projX->GetMeanError();
-		double meanY = projY->GetMean();
-		double errY = projY->GetMeanError();
-
-		double mean = sqrt(pow(meanX,2)+pow(meanY,2));
-		double err = sqrt(pow(errX,2)+pow(errY,2));
-
-		result_.push_back(make_pair(N,err));
-
-	}
-
-	return result_;
-
-}
-
-// Add histograms one by one, appending the result to a vector which each new hist
-vector<TH2*> stack(TFile *input) {
-
-
-	TH2 *hist;
-	TH2 *histStack;
-
-	vector<TH2*> stack_;
-
-	int counter = 0;
-
-	for(int i = 0; i<40; i++) { 
-
-		hist = (TH2D*)input->Get( ("caloVertY_vs_caloVertX_"+to_string(i)).c_str() );
-
-		if(hist==0) continue;
-
-		if(counter==0) histStack = hist;
-		else histStack->Add(hist);
-
-		// Overwrites for some reason
-		stack_.push_back(histStack);
-
-		//cout<<"hist N:\t"<<hist->GetEntries()<<endl;
-		//cout<<"histStack:\t"<<histStack->GetEntries()<<endl;
-		//cout<<"mean:\t"<<mean(histStack)<<endl;
-		cout<<"error:\t"<<errorOnMean(histStack)<<endl;
-		
-
-		counter++;
-
-	}
-
-	return stack_;
-
-}*/

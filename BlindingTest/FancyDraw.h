@@ -104,6 +104,35 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 }
 
+void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graphs.at(0)->SetTitle(title.c_str());
+	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetXaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+	graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	graphs.at(0)->Draw("AP");
+
+	for(int i = 1; i < graphs.size(); i++) {
+		graphs.at(i)->Draw("P same");
+	}
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
 // =========================== Custom plotting ===========================
 
 void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::string axisTitle, std::string fname, double lo, double hi) {

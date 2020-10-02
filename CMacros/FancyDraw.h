@@ -25,7 +25,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 
 	hist->SetTitle(title.c_str());
 
-	hist->SetStats(0);
+	//hist->SetStats(0);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -35,6 +35,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
 	hist->SetLineWidth(3);
+	hist->SetLineColor(1);
 
 	//c->SetRightMargin(0.13);
 
@@ -106,7 +107,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 // =========================== Custom plotting ===========================
 
-void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, float ymin, float ymax ) {
+void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -139,9 +140,10 @@ void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, 
 
 }
 
-void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, float ymin, float ymax, std::string func ) {
+void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax, std::string func ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.25);
 
 	graphs.at(0)->SetTitle(title.c_str());
 	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
@@ -154,8 +156,11 @@ void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string tit
 	//graphs.at(0)->SetMarkerStyle(20); //  Full circle
 	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
 
+	TLegend *l = new TLegend(0.69,0.40,0.99,0.60);
+	l->SetBorderSize(0);
 
 	for(int i = 0; i < graphs.size(); i++) {
+		l->AddEntry(graphs.at(i));
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
 		fit->SetLineColor(kBlack);
 		fit->SetLineColor(i+1); 
@@ -169,6 +174,7 @@ void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string tit
 		}
 		fit->Draw("same");
 	}
+	l->Draw("same");
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());

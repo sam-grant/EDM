@@ -67,8 +67,8 @@ TString SciNotation(double num) {
 TString FormatNegativeNumber(double num) { 
   TString text;
   text = ThreeSigFig(num);
-  if(num>0) {
-    std::cout<<"This number is positive..."<<std::endl;
+  if(num>=0) {
+    //std::cout<<"This number is positive..."<<std::endl;
     return text;
   } else {
     text.ReplaceAll("-","#minus");
