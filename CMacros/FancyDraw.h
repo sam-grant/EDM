@@ -104,7 +104,9 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 }
 
-void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname) {
+// =========================== Custom plotting ===========================
+
+void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, float ymin, float ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -116,22 +118,16 @@ void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, 
 	graphs.at(0)->GetXaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
-	graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	//graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
 	graphs.at(0)->Draw("AP");
 
-	// Why doesn't this work??
-	// Could use Multigraph?? 
-	
-	std::cout<<"graphs.at(1):\t"<<graphs.at(1)<<std::endl;
-	graphs.at(1)->SetMarkerStyle(24); //  Full circle
-	graphs.at(1)->Draw("P SAME");
-
-
-	//std::cout<<"graphs.size():\t"<<graphs.size()<<std::endl;
-
-	//for(int i = 1; i < graphs.size(); i++) {
-	//	graphs.at(i)->Draw("P SAME");
-	//}
+	for(int i = 0; i < graphs.size(); i++) {
+		//graphs.at(i)->SetMarkerStyle(20);
+		graphs.at(i)->SetMarkerColor(i+1);
+		graphs.at(i)->SetLineColor(i+1);
+		graphs.at(i)->Draw("P SAME");
+	}
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -143,7 +139,48 @@ void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, 
 
 }
 
-// =========================== Custom plotting ===========================
+void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, float ymin, float ymax, std::string func ) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graphs.at(0)->SetTitle(title.c_str());
+	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetXaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+	//graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+
+	for(int i = 0; i < graphs.size(); i++) {
+		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
+		fit->SetLineColor(kBlack);
+		fit->SetLineColor(i+1); 
+			graphs.at(i)->SetMarkerColor(i+1);
+			graphs.at(i)->SetLineColor(i+1);
+		if(i==0) graphs.at(i)->Draw("AP");
+		else {
+
+			graphs.at(i)->Draw("P SAME");
+			
+		}
+		fit->Draw("same");
+	}
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+
 
 void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::string axisTitle, std::string fname, double lo, double hi) {
 

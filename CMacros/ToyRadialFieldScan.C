@@ -19,6 +19,11 @@
 #include "TGraphErrors.h"
 #include "TRandom3.h"
 
+// Just put this in a function so it can be easily expanded
+float yPosition(float Br_true, float QHV) {
+	return Br_true / QHV;
+}
+
 int main() {
 
 	// =========== Initialise parameters =========== 
@@ -32,6 +37,11 @@ int main() {
 	TRandom3 random;
 
 	std::vector<TGraphErrors*> scans;
+	// Not nice 
+	float slopes[N_field];
+	float slope_errs[N_field];
+	float holder[N_field];
+
 	// =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_field; i_field++ ) {
 
@@ -54,7 +64,7 @@ int main() {
 			// Printout
 			std::cout<<"QHV "<<i_quad<<":\t\t"<<QHV[i_quad]<<" kV"<<std::endl;
 
-			float yPos =  Br_true / QHV[i_quad];
+			float yPos =  yPosition( Br_true, QHV[i_quad]);
 			// Calculate y 
 			y[i_quad] = yPos;
 			// Smear y_err
@@ -72,25 +82,29 @@ int main() {
 		}
 
 		TGraphErrors *scan = new TGraphErrors(N_quad,x,y,ex,ey);
+
+		// Fit
+		TF1 *lineFit = new TF1("lineFit", "pol 1");
+		scan->Fit(lineFit);
 		scans.push_back(scan);
 		
+		slopes[i_field] = lineFit->GetParameter(1);
+		slope_errs[i_field] = lineFit->GetParError(1);
+		holder[i_field] = 0;
 
-		//break;
 
 	} 
 
-	DrawManyTGraphErrors(scans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/Scans");
+	TGraphErrors *result = new TGraphErrors(N_field,Br_app,slopes,holder,slope_errs);
+	TF1 *lineFit2 = new TF1("lineFit2", "pol 1");
+	result->Fit(lineFit2);
+	DrawTGraphErrors(result,";<y>/QHV [mm/kV];#LTB_{r}#GT [ppm]","../Images/MC/ToyRadialFieldScan/Result");
+
+	//DrawTest(slopes, slope_errs, ";<y>/QHV [mm/kV];#LTB_{r}#GT [ppm]", "../Images/MC/ToyRadialFieldScan/Result");
+	DrawManyTGraphErrorsFits(scans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/Scans",-3,2,"lineFit");
 
 
-	TCanvas *c = new TCanvas();
 
-	scans.at(1)->Draw("AP");
-	//scans.at(1)->Draw("P SAME");
-	//scans.at(2)->Draw("P SAME");
-	//scans.at(3)->Draw("P SAME");
-
-	c->SaveAs("test.png");
-	 
 
 	return 0;
 }
