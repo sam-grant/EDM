@@ -19,8 +19,93 @@
 #include "TGraphErrors.h"
 #include "TRandom3.h"
 
+void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graph->Draw();
+	gPad->Update();
+
+	// Get function
+	TF1 *func = graph->GetFunction("lineFit2");
+
+	func->SetLineWidth(2);
+	func->SetLineColor(kRed);
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+
+	std::cout<<"chi2ndf "<<chi2ndf<<std::endl;
+
+	double par0 = func->GetParameter(0);
+	double err0 = func->GetParError(0);
+	double par1 = func->GetParameter(1);
+	double err1 = func->GetParError(1);
+
+	double xint = - par0 / par1;
+
+	TPaveText *names = new TPaveText(0.50,0.69,0.69,0.88,"NDC");
+	names->SetTextAlign(13);
+	names->AddText("#chi^{2}/ndf"); 
+	names->AddText("Residual B_{r} [ppm]"); 
+
+	TPaveText *values = new TPaveText(0.69,0.69,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+
+	values->AddText(SciNotation(chi2ndf));
+	values->AddText(ThreeSigFig(xint));
+
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+
+
+	//TLegend *function = new TLegend(0.11,0.79,0.45,0.89);//,"NDC");
+	//function->AddEntry(func,"B_{r} = A_{EDM} sin(#omega_{a}t) + c") ;
+	//function->SetBorderSize(0);
+
+	TLine *x_line = new TLine(gPad->GetUxmin(),0,xint,0);
+	x_line->SetLineStyle(2);
+	x_line->SetLineWidth(2);
+	TLine *y_line = new TLine(xint,gPad->GetUymin(),xint,0);//xint);
+	y_line->SetLineStyle(2);
+	y_line->SetLineWidth(2);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.2);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+
+	graph->Draw("AP");
+	values->Draw("same");
+	names->Draw("same");
+	x_line->Draw("same");
+	y_line->Draw("same");
+	func->Draw("same");
+	
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
 // Just put this in a function so it can be easily expanded
-float yPosition(float Br_true, float QHV) {
+double yPosition(double Br_true, double QHV) {
 	return Br_true / QHV;
 }
 
@@ -29,18 +114,18 @@ int main() {
 	// =========== Initialise parameters =========== 
 	const int N_quad = 2;
 	const int N_field = 4;
-	const float Br_res = 8; // ppm, the size of the field that would kill our measurement
-	const float sigma = 0.0247454; // [mm] 50 sub-runs worth of data, for mean calo pos y unc
-	const float QHV[N_quad] = {16, 20}; // Two quad settings, kV
-	const float Br_app[N_field] = {-30, -10, 10, 30}; // Applied radial field, ppm
+	const double Br_res = 8; // ppm, the size of the field that would kill our measurement
+	const double sigma = 0.0247454; // [mm] 50 sub-runs worth of data, for mean calo pos y unc
+	const double QHV[N_quad] = {16, 20}; // Two quad settings, kV
+	const double Br_app[N_field] = {-30, -10, 10, 30}; // Applied radial field, ppm
 
 	TRandom3 random;
 
 	std::vector<TGraphErrors*> scans;
 	// Not nice 
-	float slopes[N_field];
-	float slope_errs[N_field];
-	float holder[N_field];
+	double slopes[N_field];
+	double slope_errs[N_field];
+	double holder[N_field];
 
 	// =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_field; i_field++ ) {
@@ -50,13 +135,13 @@ int main() {
 		std::cout<<"Br setting:\t"<<Br_app[i_field]<<" ppm"<<std::endl; 
 		std::cout<<"True Br:\t"<<Br_app[i_field]-Br_res<<" ppm"<<std::endl;
 
-		float Br_true = Br_app[i_field]-Br_res;
+		double Br_true = Br_app[i_field]-Br_res;
 
 		// Average vertical position
-		float y[N_quad];
-		float ey[N_quad];
-		float x[N_quad];
-		float ex[N_quad];
+		double y[N_quad];
+		double ey[N_quad];
+		double x[N_quad];
+		double ex[N_quad];
 
 		// =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_quad; i_quad++ ) {
@@ -64,7 +149,7 @@ int main() {
 			// Printout
 			std::cout<<"QHV "<<i_quad<<":\t\t"<<QHV[i_quad]<<" kV"<<std::endl;
 
-			float yPos =  yPosition( Br_true, QHV[i_quad]);
+			double yPos =  yPosition( Br_true, QHV[i_quad]);
 			// Calculate y 
 			y[i_quad] = yPos;
 			// Smear y_err
@@ -95,16 +180,13 @@ int main() {
 
 	} 
 
-	TGraphErrors *result = new TGraphErrors(N_field,Br_app,slopes,holder,slope_errs);
-	TF1 *lineFit2 = new TF1("lineFit2", "pol 1");
-	result->Fit(lineFit2);
-	DrawTGraphErrors(result,";<y>/QHV [mm/kV];#LTB_{r}#GT [ppm]","../Images/MC/ToyRadialFieldScan/Result");
-
-	//DrawTest(slopes, slope_errs, ";<y>/QHV [mm/kV];#LTB_{r}#GT [ppm]", "../Images/MC/ToyRadialFieldScan/Result");
 	DrawManyTGraphErrorsFits(scans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/Scans",-3,2,"lineFit");
 
-
-
+	TGraphErrors *result = new TGraphErrors(N_field,Br_app,slopes,holder,slope_errs);
+	TF1 *lineFit2 = new TF1("lineFit2", "pol 1");
+	lineFit2->SetLineColor(kRed);
+	result->Fit(lineFit2);
+	DrawRadialFieldLineFit(result,";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result");
 
 	return 0;
 }
