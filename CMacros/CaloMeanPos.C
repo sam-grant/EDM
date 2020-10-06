@@ -71,7 +71,7 @@ int main() {
 
 	cout<<"Opened file\t:"<<input<<endl;
 
-	int counter = 0;
+	int subruns = 0;
 
 	//TH1 *ctagHist;
 	//TH1 *ctagHistStack;
@@ -83,6 +83,9 @@ int main() {
 	vector<float> meanPosY; 
 	vector<float> meanPosYErr;
 
+	// Loop through sub-runs 
+
+	// Note that i =/= n_subruns
 	for(int i = 0; i<400; i++) { 
 
 		//ctagHist = (TH1D*)input->Get( ("ctag_"+to_string(i)).c_str() );
@@ -92,7 +95,7 @@ int main() {
 
 		//cout<<"Got posHist\t:"<<posHist<<endl;
 
-		if(counter==0) {
+		if(subruns==0) {
 			posHistStack = posHist;
 		} else {
 			posHistStack->Add(posHist);
@@ -107,33 +110,33 @@ int main() {
 		meanPosY.push_back(posHistStack->ProjectionY()->GetMean());
 		meanPosYErr.push_back(posHistStack->ProjectionY()->GetMeanError());	
 
-		if(i==25) {
+		if(subruns==25) {
 			cout<<"SIGMA at 25 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 25 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==50) {
+		} else if(subruns==50) {
 			cout<<"SIGMA at 50 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 50 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==75) {
+		} else if(subruns==75) {
 			cout<<"SIGMA at 75 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 75 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==100) {
+		} else if(subruns==100) {
 			cout<<"SIGMA at 100 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 100 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==125) {
+		} else if(subruns==125) {
 			cout<<"SIGMA at 125 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 125 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==150) {
+		} else if(subruns==150) {
 			cout<<"SIGMA at 150 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 150 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==175) {
+		} else if(subruns==175) {
 			cout<<"SIGMA at 175 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 175 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(i==200) {
+		} else if(subruns==200) {
 			cout<<"SIGMA at 200 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
 			cout<<"CTAGs at 200 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
 		}
  
-		counter++;
+		subruns++;
 
 	}
 
@@ -150,8 +153,8 @@ int main() {
 	//gr2->GetXaxis()->SetRangeUser(0,N.back());
 	//gr3->GetXaxis()->SetRangeUser(0,N.back());
 
-	DrawTGraphErrorsDoubleXAxis(gr0, ";CTAGs;Cluster mean Y-position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPos_vs_CTAG", 0, counter);
-	DrawTGraphErrorsDoubleXAxis(gr1, ";CTAGs;Cluster mean Y-position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosYErr_vs_CTAG", 0, counter);
+	DrawTGraphErrorsDoubleXAxis(gr0, ";CTAGs;Cluster mean Y-position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPos_vs_CTAG", 0, subruns);
+	DrawTGraphErrorsDoubleXAxis(gr1, ";CTAGs;Cluster mean Y-position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosYErr_vs_CTAG", 0, subruns);
 	//DrawTGraphErrorsDoubleXAxis(gr2, ";Number of clusters;Cluster mean position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPos_vs_N", 0, counter);
 	//DrawTGraphErrorsDoubleXAxis(gr3, ";Number of clusters;Cluster mean position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosErr_vs_N", 0, counter);
 
