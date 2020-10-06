@@ -20,15 +20,21 @@
 #include "TLegend.h"
 #include "TRandom3.h"
 
-// ==================== Initialise global parameters ====================
+// ==================== GLOBAL PARAMETERS ====================
 const int N_QHV = 2;
 const int N_FIELD = 4;
 const double BR_RES = 8; // ppm, the size of the field that would kill our measurement
 const int N_SUBRUNS = 8;
 
 const int SUBRUNS[N_SUBRUNS] = {25, 50, 75, 100, 125, 150, 175, 200};
-const double SIGMA[N_SUBRUNS] = {0.0456595, 0.0247454, 0.018954, 0.015932, 0.0148505, 0.0132568, 0.0120878, 0.0111837}; 
-const double CTAGS[N_SUBRUNS] = {401058, 1.36725e+06, 2.32944e+06, 3.29551e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06, 6.68638e+06};
+
+// Prior to bug correction
+// const double SIGMA[N_SUBRUNS] = {0.0456595, 0.0247454, 0.018954, 0.015932, 0.0148505, 0.0132568, 0.0120878, 0.0111837}; 
+// const double CTAGS[N_SUBRUNS] = {401058, 1.36725e+06, 2.32944e+06, 3.29551e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06, 6.68638e+06};
+
+// Should load these from a file!!!
+const double SIGMA[N_SUBRUNS] = {0.0298227, 0.0209469, 0.0170752, 0.0148505, 0.0132568, 0.0120878, 0.0111837, 0.0104537};
+const double CTAGS[N_SUBRUNS] = {941719, 1.90707e+06, 2.86835e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06,  6.68638e+06, 7.65107e+06};
 
 const double QHV[N_QHV] = {16, 20}; // Two quad settings, kV
 const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
@@ -216,35 +222,35 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 
 
 
-		// =========== Field setting loop =========== 
+	// =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
 
-			// Printout
+		// Printout
 		std::cout<<"\nScan number:\t"<<i_field<<std::endl;
 		std::cout<<"Br setting:\t"<<BR_APP[i_field]<<" ppm"<<std::endl; 
 		std::cout<<"True Br:\t"<<BR_APP[i_field]-BR_RES<<" ppm"<<std::endl;
 
 		double Br_true = BR_APP[i_field]-BR_RES;
 
-			// Average vertical position
+		// Average vertical position
 		double y[N_QHV];
 		double ey[N_QHV];
 		double x[N_QHV];
 		double ex[N_QHV];
 
-			// =========== Quad setting loop ==========
+		// =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
-				// Printout
+			// Printout
 			std::cout<<"QHV "<<i_quad<<":\t\t"<<QHV[i_quad]<<" kV"<<std::endl;
 
 			double yPos =  yPosition( Br_true, QHV[i_quad]);
 
-				// Smear y 
+			// Smear y 
 			y[i_quad] = GausSmearing(yPos, i_subrun);
-				// std::cout<<"\nyPos:\t"<<yPos<<std::endl;
-				// std::cout<<"y[i_quad]:\t"<<y[i_quad]<<std::endl;
-				// Take uncertainty as sigma
+			// std::cout<<"\nyPos:\t"<<yPos<<std::endl;
+			// std::cout<<"y[i_quad]:\t"<<y[i_quad]<<std::endl;
+			// Take uncertainty as sigma
 			ey[i_quad] = SIGMA[i_subrun];
 			x[i_quad] = QHV[i_quad];
 			ex[i_quad] = 0;
@@ -255,7 +261,7 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 		TGraphErrors *QuadScan = new TGraphErrors(N_QHV,x,y,ex,ey);
 		QuadScan->SetName((std::to_string(BR_APP[i_field])+" ppm").c_str());
 
-			// Fit
+		// Fit
 		TF1 *quadLineFit = new TF1("quadLineFit", "pol 1");
 		QuadScan->Fit(quadLineFit,"Q");
 		QuadScans.push_back(QuadScan);
@@ -271,10 +277,10 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 
 	TF1 *fieldLineFit = new TF1("fieldLineFit", "pol 1");
 
-		// lineFit2->SetLineColor(kRed);
+	// lineFit2->SetLineColor(kRed);
 	result->Fit(fieldLineFit);
 
-		// Only draw the plots once 
+	// Only draw the plots once 
 	if(i_experiment==0) { 
 		DrawQuadScanFits(QuadScans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-3,2,"quadLineFit");
 		DrawRadialFieldLineFit(result,"Sub-runs "+std::to_string(SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result_NSUBRUN_"+std::to_string(SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),"fieldLineFit");
@@ -290,27 +296,55 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 
 int main() {
 
-	// Loop through a range of sub-runs
+	// Draw a TGraph of dBr versus sub-runs and CTAGS
+
+	const int N_EXP = 1;
+	double x[N_SUBRUNS];
+	double ex[N_SUBRUNS];
+	double y[N_SUBRUNS];
+	double ey[N_SUBRUNS];
+
+	double x2[N_SUBRUNS];
+	double ex2[N_SUBRUNS];
 
 	for ( int i_subrun = 0; i_subrun < N_SUBRUNS; i_subrun++ ) { 
 
-		// Perform many experiments at that sub-run
+		// Perform many experiments at that sub-run / 
 
 		// Book histogram for each sub-run 
+		//TH1D *dBr = new TH1D("dBr","dBr",16,0,4);
 
-		TH1D *dBr = new TH1D("dBr","dBr",16,0,4);
+		for ( int i_exp = 0; i_exp < N_EXP; i_exp++ ) {
 
-		for ( int i_exp = 0; i_exp < 1000; i_exp++ ) {
+			//dBr->Fill(GetRadialFieldPrecision(i_exp, i_subrun));
+			x[i_subrun] = SUBRUNS[i_subrun];//CTAGS[i_subrun];
+			ex[i_subrun] = 0;
+			y[i_subrun] = GetRadialFieldPrecision(i_exp, i_subrun);
+			ey[i_subrun] = 0;
 
-			dBr->Fill(GetRadialFieldPrecision(i_exp, i_subrun)); 
+			x2[i_subrun] = CTAGS[i_subrun];
+			ex2[i_subrun] = 0;
 
 		}
 
-		DrawTH1(dBr,"Number of sub-runs: "+std::to_string(SUBRUNS[i_subrun])+";Residual #deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/dBr_"+std::to_string(SUBRUNS[i_subrun]));
+		//DrawTH1(dBr,"Number of sub-runs: "+std::to_string(SUBRUNS[i_subrun])+";Residual #deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/dBr_"+std::to_string(SUBRUNS[i_subrun]));
 
 	}
 
+	TGraphErrors *dBr_vs_N_1 = new TGraphErrors(N_SUBRUNS,x,y,ex,ey);
+	TGraphErrors *dBr_vs_N_2 = new TGraphErrors(N_SUBRUNS,x2,y,ex2,ey);
+
+	// These must be hard coded, otherwise the axes won't line up 
+
+	// TODO: either put these as globals, or try and read everything in from another file
 	
+	dBr_vs_N_1->GetXaxis()->SetRangeUser(14,209);
+	dBr_vs_N_2->GetXaxis()->SetRangeUser(517848,7.99829e+06);
+
+	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_2, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
+	DrawTGraphErrors(dBr_vs_N_1, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");//,0, 225);
+	DrawTGraphErrors(dBr_vs_N_2, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");//,0, 225);
+
 
 	return 0;
 
