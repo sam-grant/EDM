@@ -223,8 +223,6 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 	double slope_errs[N_FIELD];
 	double zeros[N_FIELD];
 
-	
-
 	// =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
 	//for ( int i_field = 0; i_field < 1; i_field++ ) {
@@ -251,11 +249,12 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 
 			double yPos =  yPosition( Br_true, QHV[i_quad]);
 
-			// Smear y 
+			// Smear y, ensure that it's properly random smearing with a unique seed 
+			// TODO, put this in a function
 			TRandom3 *rndm = new TRandom3(i_experiment*i_subrun*i_field*i_quad);
 			y[i_quad] = rndm->Gaus(yPos,SIGMA[i_subrun]);
-			std::cout<<"y-poistion:\t"<<yPos<<std::endl;
-			std::cout<<"Smeared y-poistion:\t"<<y[i_quad]<<std::endl;
+			// std::cout<<"y-poistion:\t"<<yPos<<std::endl;
+			// std::cout<<"Smeared y-poistion:\t"<<y[i_quad]<<std::endl;
 
 			// = GausSmearing(yPos, i_subrun);
 			// std::cout<<"\nyPos:\t"<<yPos<<std::endl;
@@ -309,13 +308,11 @@ int main() {
 	// Draw a TGraph of dBr versus sub-runs and CTAGS
 
 	const int N_EXP = 1e3;
-	double x[N_SUBRUNS];
+	double x1[N_SUBRUNS];
+	double x2[N_SUBRUNS];
 	double ex[N_SUBRUNS];
 	double y[N_SUBRUNS];
 	double ey[N_SUBRUNS];
-
-	double x2[N_SUBRUNS];
-	double ex2[N_SUBRUNS];
 
 	for ( int i_subrun = 0; i_subrun < N_SUBRUNS; i_subrun++ ) { 
 	//for ( int i_subrun = 0; i_subrun < 1; i_subrun++ ) {
@@ -329,33 +326,38 @@ int main() {
 
 			dBr->Fill(GetRadialFieldPrecision(i_exp, i_subrun));
 			//std::cout<<"dBr:\t"<<GetRadialFieldPrecision(i_exp, i_subrun)<<std::endl;
-			
-			//x[i_subrun] = SUBRUNS[i_subrun];//CTAGS[i_subrun];
-			//ex[i_subrun] = 0;
-			//y[i_subrun] = GetRadialFieldPrecision(i_exp, i_subrun);
-			//ey[i_subrun] = 0;
-			//x2[i_subrun] = CTAGS[i_subrun];
-			//ex2[i_subrun] = 0;
-
+		
 		}
+
+
 
 		DrawTH1(dBr,"Number of sub-runs: "+std::to_string(SUBRUNS[i_subrun])+";Residual #deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/dBr_"+std::to_string(SUBRUNS[i_subrun]));
 
+		x1[i_subrun] = CTAGS[i_subrun];
+		x2[i_subrun] = SUBRUNS[i_subrun];//CTAGS[i_subrun];
+		ex[i_subrun] = 0;
+		// y[i_subrun] = GetRadialFieldPrecision(i_exp, i_subrun);
+		y[i_subrun] = dBr->GetMean();
+		ey[i_subrun] = dBr->GetRMS();
+		
+		
 	}
 
-//	TGraphErrors *dBr_vs_N_1 = new TGraphErrors(N_SUBRUNS,x,y,ex,ey);
-//	TGraphErrors *dBr_vs_N_2 = new TGraphErrors(N_SUBRUNS,x2,y,ex2,ey);
+	TGraphErrors *dBr_vs_N_1 = new TGraphErrors(N_SUBRUNS,x1,y,ex,ey);
+	TGraphErrors *dBr_vs_N_2 = new TGraphErrors(N_SUBRUNS,x2,y,ex,ey);
 //
 //	// These must be hard coded, otherwise the axes won't line up 
 //
 //	// TODO: either put these as globals, or try and read everything in from another file
 //
-//	dBr_vs_N_1->GetXaxis()->SetRangeUser(14,209);
-//	dBr_vs_N_2->GetXaxis()->SetRangeUser(517848,7.99829e+06);
+	dBr_vs_N_1->GetXaxis()->SetRangeUser(517848,7.99829e+06);
+	dBr_vs_N_2->GetXaxis()->SetRangeUser(14,209);
+	
 //
-//	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_2, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
-//	DrawTGraphErrors(dBr_vs_N_1, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");//,0, 225);
-//	DrawTGraphErrors(dBr_vs_N_2, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");//,0, 225);
+	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_1, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
+	DrawTGraphErrors(dBr_vs_N_1, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");//,0, 225);
+	DrawTGraphErrors(dBr_vs_N_2, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");//,0, 225);
+	
 
 
 	return 0;
