@@ -17,6 +17,13 @@
 double OMEGA_A = 0.00143934; // kHz from gm2const
 double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
 
+// ==================== LOAD CTAGS, SIGMAS, SUBRUNS FOR TOY RADIAL FIELD ====================
+void LOAD_SUBRUNS(std::string fname) {
+
+
+}
+
+
 // ====================== Fitting ====================== 
 
 // Need to keep these in a header so it's consitent across mulitple macros

@@ -1,10 +1,10 @@
 void CaloMeanYPos_vs_CTAG()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct  6 19:45:12 2020) by ROOT version 6.22/02
+//=========  (Wed Oct  7 17:30:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1676730,75.36875,1.509057e+07,76.18125);
+   c->Range(-1674140,75.36875,1.506726e+07,76.18125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,6 +12,7 @@ void CaloMeanYPos_vs_CTAG()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx1001[349] = {
+   6.953119e-310,
    14076,
    52517,
    92012,
@@ -359,9 +360,9 @@ void CaloMeanYPos_vs_CTAG()
    1.324637e+07,
    1.328502e+07,
    1.332377e+07,
-   1.336249e+07,
-   1.338444e+07};
+   1.336249e+07};
    Double_t Graph0_fy1001[349] = {
+   2.420277e-314,
    75.82923,
    75.68869,
    75.58341,
@@ -709,10 +710,9 @@ void CaloMeanYPos_vs_CTAG()
    75.56739,
    75.56788,
    75.56774,
-   75.5677,
-   75.56798};
+   75.5677};
    Double_t Graph0_fex1001[349] = {
-   0,
+   6.953119e-310,
    0,
    0,
    0,
@@ -1062,6 +1062,7 @@ void CaloMeanYPos_vs_CTAG()
    0,
    0};
    Double_t Graph0_fey1001[349] = {
+   0,
    0.2458444,
    0.126379,
    0.09535128,
@@ -1409,15 +1410,14 @@ void CaloMeanYPos_vs_CTAG()
    0.007945793,
    0.007934199,
    0.007922622,
-   0.007911157,
-   0.007904588};
+   0.007911157};
    TGraphErrors *gre = new TGraphErrors(349,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
    gre->SetTitle(";CTAGs;Cluster mean Y-position [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",349,0,1.472148e+07);
+   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",349,0,1.469874e+07);
    Graph_Graph01001->SetMinimum(75.45);
    Graph_Graph01001->SetMaximum(76.1);
    Graph_Graph01001->SetDirectory(0);
@@ -1447,7 +1447,7 @@ void CaloMeanYPos_vs_CTAG()
    gre->SetHistogram(Graph_Graph01001);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,76.1,1.341384e+07,76.1,1,350,510,"-");
+   TGaxis *gaxis = new TGaxis(0,76.1,1.339312e+07,76.1,0,350,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

@@ -20,24 +20,61 @@
 #include "TLegend.h"
 #include "TRandom3.h"
 
+using namespace std;
+
 // ==================== GLOBAL PARAMETERS ====================
 const int N_QHV = 2;
 const int N_FIELD = 4;
 const double BR_RES = 8; // ppm, the size of the field that would kill our measurement
-const int N_SUBRUNS = 8;
-
-const int SUBRUNS[N_SUBRUNS] = {25, 50, 75, 100, 125, 150, 175, 200};
-
-// Prior to bug correction
-// const double SIGMA[N_SUBRUNS] = {0.0456595, 0.0247454, 0.018954, 0.015932, 0.0148505, 0.0132568, 0.0120878, 0.0111837}; 
-// const double CTAGS[N_SUBRUNS] = {401058, 1.36725e+06, 2.32944e+06, 3.29551e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06, 6.68638e+06};
-
-// Should load these from a file!!!
-const double SIGMA[N_SUBRUNS] = {0.0298227, 0.0209469, 0.0170752, 0.0148505, 0.0132568, 0.0120878, 0.0111837, 0.0104537};
-const double CTAGS[N_SUBRUNS] = {941719, 1.90707e+06, 2.86835e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06,  6.68638e+06, 7.65107e+06};
-
+const int N_EXP = 1e3;
 const double QHV[N_QHV] = {16, 20}; // Two quad settings, kV
 const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+const int N_SUBRUNS = 12;
+const int SUBRUN_INTERVAL = 25;
+
+// I want to load these from a file, but that's tricky with global params. Maybe I can do it in a header?
+const int SUBRUNS[N_SUBRUNS] = {25, 50, 75, 100, 125, 150, 175, 200};
+const double SIGMAS[N_SUBRUNS] = {0.0298227, 0.0209469, 0.0170752, 0.0148505, 0.0132568, 0.0120878, 0.0111837, 0.0104537};
+const double CTAGS[N_SUBRUNS] = {941719, 1.90707e+06, 2.86835e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06,  6.68638e+06, 7.65107e+06};
+
+// ==================== LOAD CTAGS AND SUBRUNS ====================
+
+/* void LOAD_CTAGs_SIGMAS_SUBRUNS(std::string fname) {
+
+	// struct Variables var; 
+
+	std::cout<<"\nLoading CTAGS, SIGMAS, AND SUBRUNS"<<std::endl;
+	// TFile *file = TFile::Open("../Plots/Data/MeanCaloPos/CTAG_SUBRUN_SIGMA_15921.root"); 
+	TFile *file = TFile::Open(fname.c_str()); 
+
+	// Load histograms
+	TH1D *CTAG_vs_SUBRUN = (TH1D*)file->Get("CTAG_vs_SUBRUN"); 
+	TH1D *SIGMA_vs_SUBRUN = (TH1D*)file->Get("SIGMA_vs_SUBRUN"); 
+
+	// int n = 0;
+	// int n_1 = CTAG_vs_SUBRUN->GetNbinsX(); 
+	// int n_2 = SIGMA_vs_SUBRUN->GetNbinsX(); 
+	// if(n_1 == n_2) n = n_1; 
+	// else cout<<"ERROR"<<endl;
+
+	int counter = 0;
+
+	for (int i_subrun = SUBRUN_INTERVAL; i_subrun < N_SUBRUNS*SUBRUN_INTERVAL; i_subrun = i_subrun + SUBRUN_INTERVAL) { 
+
+
+		SUBRUNS[counter] = 100;//i_subrun+1; // new int[i_subrun+1]; // new int[i_subrun+1]; //  = ;
+		//CTAGS[i_subrun] = CTAG_vs_SUBRUN->GetBinContent(i_subrun+1);
+		//SIGMAS[i_subrun] = SIGMA_vs_SUBRUN->GetBinContent(i_subrun+1);
+
+		counter++;
+
+	}
+
+	return;
+
+
+} */
+
 
 // ==================== HELPER FUNCTIONS ====================
 
@@ -60,7 +97,7 @@ double RadialFieldPrecision(TF1 *fit) {
 double GausSmearing(double yPos, int i_subrun, int seed) {
  
  	TRandom3 *rndm = new TRandom3(seed);
- 	return rndm->Gaus(yPos,SIGMA[i_subrun]);
+ 	return rndm->Gaus(yPos,SIGMAS[i_subrun]);
  
 }
 
@@ -242,7 +279,7 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 			int seed = i_experiment*i_subrun*i_field*i_quad;;
 			y[i_quad] = GausSmearing(yPos, i_subrun, seed);
 			// Take uncertainty as sigma
-			ey[i_quad] = SIGMA[i_subrun];
+			ey[i_quad] = SIGMAS[i_subrun];
 			x[i_quad] = QHV[i_quad];
 			ex[i_quad] = 0;
 
@@ -280,6 +317,8 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 
 }
 
+
+
 // ==================== MAIN ====================
 
 int main() {
@@ -287,7 +326,25 @@ int main() {
 	// Draw a TGraph of dBr versus sub-runs and CTAGS
 	// Overlay residual RMS of meas-true 
 
-	const int N_EXP = 1e3;
+/*	struct Variables var;
+
+	CTAGs_SIGMAS_SUBRUNS("../Plots/Data/MeanCaloPos/CTAG_SUBRUN_SIGMA_15921.root");
+
+	std::cout<<"N_SUBRUNS\t"<<var.N_SUBRUNS<<std::endl;
+
+	for (int i = 0; i < var.N_SUBRUNS; i++) {
+
+		std::cout<<"SUBRUNS\t"<<var.SUBRUNS[i]<<std::endl;
+
+
+
+	}
+
+			std::cout<<"\ni_subrun\t"<<i_subrun<<std::endl;
+		std::cout<<"ctags \t"<<CTAG_vs_SUBRUN->GetBinContent(i_subrun+1)<<std::endl;
+		std::cout<<"sigma \t"<<SIGMA_vs_SUBRUN->GetBinContent(i_subrun+1)<<std::endl;*/
+
+	
 	double x_ctag[N_SUBRUNS];
 	double x_subrun[N_SUBRUNS];
 	double ex[N_SUBRUNS];
@@ -299,7 +356,7 @@ int main() {
 		// Perform many experiments at that sub-run /
 
 		// Book histogram for each sub-run 
-		TH1D *dBr = new TH1D("dBr","dBr",300,0,3);
+		TH1D *dBr = new TH1D("","dBr",300,0,3);
 
 		for ( int i_exp = 0; i_exp < N_EXP; i_exp++ ) {
 
@@ -329,9 +386,10 @@ int main() {
 	dBr_vs_N_subrun->GetXaxis()->SetRangeUser(14,209);
 	
 	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_ctag, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
-	DrawTGraphErrors(dBr_vs_N_ctag, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");
-	DrawTGraphErrors(dBr_vs_N_subrun, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");
+	// DrawTGraphErrors(dBr_vs_N_ctag, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");
+	// DrawTGraphErrors(dBr_vs_N_subrun, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");
 	
-	return 0;
+	// delete[] SUBRUNS;
+	return 0; 
 
 }
