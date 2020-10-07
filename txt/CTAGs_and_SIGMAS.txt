@@ -1,0 +1,16 @@
+SIGMA at 25 sub-runs:    0.0298227
+CTAGs at 25 sub-runs:    941719
+SIGMA at 50 sub-runs:    0.0209469
+CTAGs at 50 sub-runs:    1.90707e+06
+SIGMA at 75 sub-runs:    0.0170752
+CTAGs at 75 sub-runs:    2.86835e+06
+SIGMA at 100 sub-runs:    0.0148505
+CTAGs at 100 sub-runs:    3.79245e+06
+SIGMA at 125 sub-runs:    0.0132568
+CTAGs at 125 sub-runs:    4.75873e+06
+SIGMA at 150 sub-runs:    0.0120878
+CTAGs at 150 sub-runs:    5.72386e+06
+SIGMA at 175 sub-runs:    0.0111837
+CTAGs at 175 sub-runs:    6.68638e+06
+SIGMA at 200 sub-runs:    0.0104537
+CTAGs at 200 sub-runs:    7.65107e+06

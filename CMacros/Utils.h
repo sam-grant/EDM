@@ -17,8 +17,9 @@
 double OMEGA_A = 0.00143934; // kHz from gm2const
 double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
 
-
 // ====================== Fitting ====================== 
+
+// Need to keep these in a header so it's consitent across mulitple macros
 
 double SimpleSinFunc(double *x, double *par) {
   return ( par[0] * TMath::Sin(par[1] * x[0]) ) + par[2];
@@ -31,9 +32,12 @@ void SimpleSinFit(TGraphErrors *graph, double par1, double par2, double par3) {
 
   // Generally works if you only set par2
 
-  //func->SetParameter(0, par1);  // Amplitude
-  func->SetParameter(1, par2);  // Omega
-  //func->SetParameter(2, par3);  // Vertical offset
+  // WORKS PERFECTLY FOR 30xBNL
+
+  //  func->SetParameter(1, par2);  // Omega
+
+  // Put 10% limits on omega_a
+  func->SetParLimits(1, par2-(par2*0.10), par2+(par2*0.10));  // Omega
 
   graph->Fit(func, "MR"); // ,"MR");
   

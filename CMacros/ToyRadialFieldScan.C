@@ -42,11 +42,7 @@ const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 // ==================== HELPER FUNCTIONS ====================
 
 // This is an approximation! 
-double yPosition(double Br_true, double QHV) {
-
-	return Br_true / QHV;
-
-}
+double yPosition(double Br_true, double QHV) { return Br_true / QHV; }
 
 double RadialFieldPrecision(TF1 *fit) { 
 
@@ -61,18 +57,16 @@ double RadialFieldPrecision(TF1 *fit) {
 }
 
 // Get a random value for the y-poistion based on Gaussian smearing
-// double GausSmearing(double yPos, int i_subrun) {
-// 
-// 	TRandom3 rndm;
-// 	double result = rndm.Gaus(yPos,SIGMA[i_subrun]);
-// 	std::cout<<"y-poistion:\t"<<yPos<<std::endl;
-// 	std::cout<<"Smeared y-poistion:\t"<<result<<std::endl;
-// 	return result; // rndm.Gaus(yPos,SIGMA[i_subrun]);
-// 
-// }
-
+double GausSmearing(double yPos, int i_subrun, int seed) {
+ 
+ 	TRandom3 *rndm = new TRandom3(seed);
+ 	return rndm->Gaus(yPos,SIGMA[i_subrun]);
+ 
+}
 
 // ==================== CUSTOM PLOTTING ====================
+
+// I'd rather put these in FancyDraw.h but there are too many dependancies
 
 void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax, std::string func ) {
 
@@ -181,7 +175,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string 
 	TLine *x_line = new TLine(gPad->GetUxmin(),0,xint,0);
 	x_line->SetLineStyle(2);
 	x_line->SetLineWidth(2);
-	TLine *y_line = new TLine(xint,gPad->GetUymin(),xint,0);//xint);
+	TLine *y_line = new TLine(xint,gPad->GetUymin(),xint,0);
 	y_line->SetLineStyle(2);
 	y_line->SetLineWidth(2);
 
@@ -218,14 +212,13 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string 
 double GetRadialFieldPrecision(int i_experiment, int i_subrun) { 
 
 	std::vector<TGraphErrors*> QuadScans;
-	// Not nice 
-	double slopes[N_FIELD];
-	double slope_errs[N_FIELD];
+
+	double quadScanGrads[N_FIELD];
+	double quadScanGradErrs[N_FIELD];
 	double zeros[N_FIELD];
 
 	// =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
-	//for ( int i_field = 0; i_field < 1; i_field++ ) {
 
 		// Printout
 		// std::cout<<"\nScan number:\t"<<i_field<<std::endl;
@@ -242,23 +235,12 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 
 		// =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
-		//for ( int i_quad = 0; i_quad < 1; i_quad++ ) {
-
-			// Printout
-			// std::cout<<"QHV "<<i_quad<<":\t\t"<<QHV[i_quad]<<" kV"<<std::endl;
 
 			double yPos =  yPosition( Br_true, QHV[i_quad]);
 
 			// Smear y, ensure that it's properly random smearing with a unique seed 
-			// TODO, put this in a function
-			TRandom3 *rndm = new TRandom3(i_experiment*i_subrun*i_field*i_quad);
-			y[i_quad] = rndm->Gaus(yPos,SIGMA[i_subrun]);
-			// std::cout<<"y-poistion:\t"<<yPos<<std::endl;
-			// std::cout<<"Smeared y-poistion:\t"<<y[i_quad]<<std::endl;
-
-			// = GausSmearing(yPos, i_subrun);
-			// std::cout<<"\nyPos:\t"<<yPos<<std::endl;
-			// std::cout<<"y[i_quad]:\t"<<y[i_quad]<<std::endl;
+			int seed = i_experiment*i_subrun*i_field*i_quad;;
+			y[i_quad] = GausSmearing(yPos, i_subrun, seed);
 			// Take uncertainty as sigma
 			ey[i_quad] = SIGMA[i_subrun];
 			x[i_quad] = QHV[i_quad];
@@ -275,29 +257,26 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 		QuadScan->Fit(quadLineFit,"QM");
 		QuadScans.push_back(QuadScan);
 
-		slopes[i_field] = quadLineFit->GetParameter(1);
-		slope_errs[i_field] = quadLineFit->GetParError(1);
+		quadScanGrads[i_field] = quadLineFit->GetParameter(1);
+		quadScanGradErrs[i_field] = quadLineFit->GetParError(1);
 		zeros[i_field] = 0;
-
 
 	} 
 	
-	TGraphErrors *result = new TGraphErrors(N_FIELD,BR_APP,slopes,zeros,slope_errs);
+	TGraphErrors *quadGrads_vs_BrApp = new TGraphErrors(N_FIELD,BR_APP,quadScanGrads,zeros,quadScanGradErrs);
 
 	TF1 *fieldLineFit = new TF1("fieldLineFit", "pol 1");
 
 	// lineFit2->SetLineColor(kRed);
-	result->Fit(fieldLineFit, "QM");
+	quadGrads_vs_BrApp->Fit(fieldLineFit, "QM");
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 
 		DrawQuadScanFits(QuadScans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-3,2,"quadLineFit");
-		DrawRadialFieldLineFit(result,"Sub-runs "+std::to_string(SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result_NSUBRUN_"+std::to_string(SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),"fieldLineFit");
+		DrawRadialFieldLineFit(quadGrads_vs_BrApp,"Sub-runs "+std::to_string(SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result_NSUBRUN_"+std::to_string(SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),"fieldLineFit");
 	}
 
-
 	return RadialFieldPrecision(fieldLineFit);
-
 
 }
 
@@ -306,18 +285,18 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 int main() {
 
 	// Draw a TGraph of dBr versus sub-runs and CTAGS
+	// Overlay residual RMS of meas-true 
 
 	const int N_EXP = 1e3;
-	double x1[N_SUBRUNS];
-	double x2[N_SUBRUNS];
+	double x_ctag[N_SUBRUNS];
+	double x_subrun[N_SUBRUNS];
 	double ex[N_SUBRUNS];
 	double y[N_SUBRUNS];
 	double ey[N_SUBRUNS];
 
 	for ( int i_subrun = 0; i_subrun < N_SUBRUNS; i_subrun++ ) { 
-	//for ( int i_subrun = 0; i_subrun < 1; i_subrun++ ) {
 
-		// Perform many experiments at that sub-run / 
+		// Perform many experiments at that sub-run /
 
 		// Book histogram for each sub-run 
 		TH1D *dBr = new TH1D("dBr","dBr",300,0,3);
@@ -329,37 +308,30 @@ int main() {
 		
 		}
 
-
-
 		DrawTH1(dBr,"Number of sub-runs: "+std::to_string(SUBRUNS[i_subrun])+";Residual #deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/dBr_"+std::to_string(SUBRUNS[i_subrun]));
 
-		x1[i_subrun] = CTAGS[i_subrun];
-		x2[i_subrun] = SUBRUNS[i_subrun];//CTAGS[i_subrun];
+		x_ctag[i_subrun] = CTAGS[i_subrun];
+		x_subrun[i_subrun] = SUBRUNS[i_subrun];
 		ex[i_subrun] = 0;
-		// y[i_subrun] = GetRadialFieldPrecision(i_exp, i_subrun);
 		y[i_subrun] = dBr->GetMean();
 		ey[i_subrun] = dBr->GetRMS();
 		
-		
 	}
 
-	TGraphErrors *dBr_vs_N_1 = new TGraphErrors(N_SUBRUNS,x1,y,ex,ey);
-	TGraphErrors *dBr_vs_N_2 = new TGraphErrors(N_SUBRUNS,x2,y,ex,ey);
-//
-//	// These must be hard coded, otherwise the axes won't line up 
-//
-//	// TODO: either put these as globals, or try and read everything in from another file
-//
-	dBr_vs_N_1->GetXaxis()->SetRangeUser(517848,7.99829e+06);
-	dBr_vs_N_2->GetXaxis()->SetRangeUser(14,209);
-	
-//
-	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_1, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
-	DrawTGraphErrors(dBr_vs_N_1, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");//,0, 225);
-	DrawTGraphErrors(dBr_vs_N_2, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");//,0, 225);
-	
+	TGraphErrors *dBr_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y,ex,ey);
+	TGraphErrors *dBr_vs_N_subrun = new TGraphErrors(N_SUBRUNS,x_subrun,y,ex,ey);
 
+	// These must be hard coded, otherwise the axes won't line up 
 
+	// TODO: either put these as globals, or try and read everything in from another file
+
+	dBr_vs_N_ctag->GetXaxis()->SetRangeUser(517848,7.99829e+06);
+	dBr_vs_N_subrun->GetXaxis()->SetRangeUser(14,209);
+	
+	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_ctag, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
+	DrawTGraphErrors(dBr_vs_N_ctag, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");
+	DrawTGraphErrors(dBr_vs_N_subrun, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");
+	
 	return 0;
 
 }

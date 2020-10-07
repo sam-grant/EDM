@@ -1,7 +1,7 @@
 void Scans_NSUBRUN_50()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  2 13:49:32 2020) by ROOT version 6.22/02
+//=========  (Mon Oct  5 20:04:42 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(14.91429,-3.625,21.77143,2.625);
@@ -16,14 +16,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t -30.000000 ppm_fy1011[2] = {
-   -2.375,
-   -1.9};
+   -2.329389,
+   -1.854389};
    Double_t -30.000000 ppm_fex1011[2] = {
    0,
    0};
    Double_t -30.000000 ppm_fey1011[2] = {
-   0.04177491,
-   0.04177491};
+   0.0456595,
+   0.0456595};
    TGraphErrors *gre = new TGraphErrors(2,-30.000000 ppm_fx1011,-30.000000 ppm_fy1011,-30.000000 ppm_fex1011,-30.000000 ppm_fey1011);
    gre->SetName("-30.000000 ppm");
    gre->SetTitle(";QHV [kV];#LTy#GT [mm]");
@@ -62,18 +62,18 @@ void Scans_NSUBRUN_50()
    lineFit1012->SetFillColor(19);
    lineFit1012->SetFillStyle(0);
    lineFit1012->SetLineWidth(2);
-   lineFit1012->SetChisquare(5.175768e-26);
+   lineFit1012->SetChisquare(2.84974e-26);
    lineFit1012->SetNDF(0);
    lineFit1012->GetXaxis()->SetLabelFont(42);
    lineFit1012->GetXaxis()->SetTitleOffset(1);
    lineFit1012->GetXaxis()->SetTitleFont(42);
    lineFit1012->GetYaxis()->SetLabelFont(42);
    lineFit1012->GetYaxis()->SetTitleFont(42);
-   lineFit1012->SetParameter(0,-4.275);
-   lineFit1012->SetParError(0,0.26749);
+   lineFit1012->SetParameter(0,-4.229389);
+   lineFit1012->SetParError(0,0.2923635);
    lineFit1012->SetParLimits(0,0,0);
    lineFit1012->SetParameter(1,0.11875);
-   lineFit1012->SetParError(1,0.01476966);
+   lineFit1012->SetParError(1,0.01614307);
    lineFit1012->SetParLimits(1,0,0);
    lineFit1012->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1012);
@@ -83,18 +83,18 @@ void Scans_NSUBRUN_50()
    lineFit1013->SetFillColor(19);
    lineFit1013->SetFillStyle(0);
    lineFit1013->SetLineWidth(2);
-   lineFit1013->SetChisquare(5.175768e-26);
+   lineFit1013->SetChisquare(2.84974e-26);
    lineFit1013->SetNDF(0);
    lineFit1013->GetXaxis()->SetLabelFont(42);
    lineFit1013->GetXaxis()->SetTitleOffset(1);
    lineFit1013->GetXaxis()->SetTitleFont(42);
    lineFit1013->GetYaxis()->SetLabelFont(42);
    lineFit1013->GetYaxis()->SetTitleFont(42);
-   lineFit1013->SetParameter(0,-4.275);
-   lineFit1013->SetParError(0,0.26749);
+   lineFit1013->SetParameter(0,-4.229389);
+   lineFit1013->SetParError(0,0.2923635);
    lineFit1013->SetParLimits(0,0,0);
    lineFit1013->SetParameter(1,0.11875);
-   lineFit1013->SetParError(1,0.01476966);
+   lineFit1013->SetParError(1,0.01614307);
    lineFit1013->SetParLimits(1,0,0);
    lineFit1013->Draw("same");
    
@@ -102,14 +102,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t -10.000000 ppm_fy1013[2] = {
-   -1.125,
-   -0.9};
+   -1.079389,
+   -0.8543892};
    Double_t -10.000000 ppm_fex1013[2] = {
    0,
    0};
    Double_t -10.000000 ppm_fey1013[2] = {
-   0.04177491,
-   0.04177491};
+   0.0456595,
+   0.0456595};
    gre = new TGraphErrors(2,-10.000000 ppm_fx1013,-10.000000 ppm_fy1013,-10.000000 ppm_fex1013,-10.000000 ppm_fey1013);
    gre->SetName("-10.000000 ppm");
    gre->SetTitle("Graph");
@@ -118,8 +118,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(2);
    
    TH1F *Graph_Graph_mI10dO000000sPppm10031013 = new TH1F("Graph_Graph_mI10dO000000sPppm10031013","Graph",100,15.6,20.4);
-   Graph_Graph_mI10dO000000sPppm10031013->SetMinimum(-1.19763);
-   Graph_Graph_mI10dO000000sPppm10031013->SetMaximum(-0.8273701);
+   Graph_Graph_mI10dO000000sPppm10031013->SetMinimum(-1.156681);
+   Graph_Graph_mI10dO000000sPppm10031013->SetMaximum(-0.7770978);
    Graph_Graph_mI10dO000000sPppm10031013->SetDirectory(0);
    Graph_Graph_mI10dO000000sPppm10031013->SetStats(0);
 
@@ -141,18 +141,18 @@ void Scans_NSUBRUN_50()
    lineFit1014->SetFillStyle(0);
    lineFit1014->SetLineColor(2);
    lineFit1014->SetLineWidth(2);
-   lineFit1014->SetChisquare(5.155992e-28);
+   lineFit1014->SetChisquare(1.146991e-26);
    lineFit1014->SetNDF(0);
    lineFit1014->GetXaxis()->SetLabelFont(42);
    lineFit1014->GetXaxis()->SetTitleOffset(1);
    lineFit1014->GetXaxis()->SetTitleFont(42);
    lineFit1014->GetYaxis()->SetLabelFont(42);
    lineFit1014->GetYaxis()->SetTitleFont(42);
-   lineFit1014->SetParameter(0,-2.025);
-   lineFit1014->SetParError(0,0.26749);
+   lineFit1014->SetParameter(0,-1.979389);
+   lineFit1014->SetParError(0,0.2923635);
    lineFit1014->SetParLimits(0,0,0);
    lineFit1014->SetParameter(1,0.05625);
-   lineFit1014->SetParError(1,0.01476966);
+   lineFit1014->SetParError(1,0.01614307);
    lineFit1014->SetParLimits(1,0,0);
    lineFit1014->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1014);
@@ -163,18 +163,18 @@ void Scans_NSUBRUN_50()
    lineFit1015->SetFillStyle(0);
    lineFit1015->SetLineColor(2);
    lineFit1015->SetLineWidth(2);
-   lineFit1015->SetChisquare(5.155992e-28);
+   lineFit1015->SetChisquare(1.146991e-26);
    lineFit1015->SetNDF(0);
    lineFit1015->GetXaxis()->SetLabelFont(42);
    lineFit1015->GetXaxis()->SetTitleOffset(1);
    lineFit1015->GetXaxis()->SetTitleFont(42);
    lineFit1015->GetYaxis()->SetLabelFont(42);
    lineFit1015->GetYaxis()->SetTitleFont(42);
-   lineFit1015->SetParameter(0,-2.025);
-   lineFit1015->SetParError(0,0.26749);
+   lineFit1015->SetParameter(0,-1.979389);
+   lineFit1015->SetParError(0,0.2923635);
    lineFit1015->SetParLimits(0,0,0);
    lineFit1015->SetParameter(1,0.05625);
-   lineFit1015->SetParError(1,0.01476966);
+   lineFit1015->SetParError(1,0.01614307);
    lineFit1015->SetParLimits(1,0,0);
    lineFit1015->Draw("same");
    
@@ -182,14 +182,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t 10.000000 ppm_fy1015[2] = {
-   0.125,
-   0.1};
+   0.1706108,
+   0.1456108};
    Double_t 10.000000 ppm_fex1015[2] = {
    0,
    0};
    Double_t 10.000000 ppm_fey1015[2] = {
-   0.04177491,
-   0.04177491};
+   0.0456595,
+   0.0456595};
    gre = new TGraphErrors(2,10.000000 ppm_fx1015,10.000000 ppm_fy1015,10.000000 ppm_fex1015,10.000000 ppm_fey1015);
    gre->SetName("10.000000 ppm");
    gre->SetTitle("Graph");
@@ -198,8 +198,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(3);
    
    TH1F *Graph_Graph_10dO000000sPppm10051015 = new TH1F("Graph_Graph_10dO000000sPppm10051015","Graph",100,15.6,20.4);
-   Graph_Graph_10dO000000sPppm10051015->SetMinimum(0.0473701);
-   Graph_Graph_10dO000000sPppm10051015->SetMaximum(0.1776299);
+   Graph_Graph_10dO000000sPppm10051015->SetMinimum(0.08831937);
+   Graph_Graph_10dO000000sPppm10051015->SetMaximum(0.2279022);
    Graph_Graph_10dO000000sPppm10051015->SetDirectory(0);
    Graph_Graph_10dO000000sPppm10051015->SetStats(0);
 
@@ -221,18 +221,18 @@ void Scans_NSUBRUN_50()
    lineFit1016->SetFillStyle(0);
    lineFit1016->SetLineColor(3);
    lineFit1016->SetLineWidth(2);
-   lineFit1016->SetChisquare(6.731924e-30);
+   lineFit1016->SetChisquare(1.348749e-28);
    lineFit1016->SetNDF(0);
    lineFit1016->GetXaxis()->SetLabelFont(42);
    lineFit1016->GetXaxis()->SetTitleOffset(1);
    lineFit1016->GetXaxis()->SetTitleFont(42);
    lineFit1016->GetYaxis()->SetLabelFont(42);
    lineFit1016->GetYaxis()->SetTitleFont(42);
-   lineFit1016->SetParameter(0,0.225);
-   lineFit1016->SetParError(0,0.26749);
+   lineFit1016->SetParameter(0,0.2706108);
+   lineFit1016->SetParError(0,0.2923635);
    lineFit1016->SetParLimits(0,0,0);
    lineFit1016->SetParameter(1,-0.00625);
-   lineFit1016->SetParError(1,0.01476966);
+   lineFit1016->SetParError(1,0.01614307);
    lineFit1016->SetParLimits(1,0,0);
    lineFit1016->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1016);
@@ -243,18 +243,18 @@ void Scans_NSUBRUN_50()
    lineFit1017->SetFillStyle(0);
    lineFit1017->SetLineColor(3);
    lineFit1017->SetLineWidth(2);
-   lineFit1017->SetChisquare(6.731924e-30);
+   lineFit1017->SetChisquare(1.348749e-28);
    lineFit1017->SetNDF(0);
    lineFit1017->GetXaxis()->SetLabelFont(42);
    lineFit1017->GetXaxis()->SetTitleOffset(1);
    lineFit1017->GetXaxis()->SetTitleFont(42);
    lineFit1017->GetYaxis()->SetLabelFont(42);
    lineFit1017->GetYaxis()->SetTitleFont(42);
-   lineFit1017->SetParameter(0,0.225);
-   lineFit1017->SetParError(0,0.26749);
+   lineFit1017->SetParameter(0,0.2706108);
+   lineFit1017->SetParError(0,0.2923635);
    lineFit1017->SetParLimits(0,0,0);
    lineFit1017->SetParameter(1,-0.00625);
-   lineFit1017->SetParError(1,0.01476966);
+   lineFit1017->SetParError(1,0.01614307);
    lineFit1017->SetParLimits(1,0,0);
    lineFit1017->Draw("same");
    
@@ -262,14 +262,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t 30.000000 ppm_fy1017[2] = {
-   1.375,
-   1.1};
+   1.420611,
+   1.145611};
    Double_t 30.000000 ppm_fex1017[2] = {
    0,
    0};
    Double_t 30.000000 ppm_fey1017[2] = {
-   0.04177491,
-   0.04177491};
+   0.0456595,
+   0.0456595};
    gre = new TGraphErrors(2,30.000000 ppm_fx1017,30.000000 ppm_fy1017,30.000000 ppm_fex1017,30.000000 ppm_fey1017);
    gre->SetName("30.000000 ppm");
    gre->SetTitle("Graph");
@@ -278,8 +278,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(4);
    
    TH1F *Graph_Graph_30dO000000sPppm10071017 = new TH1F("Graph_Graph_30dO000000sPppm10071017","Graph",100,15.6,20.4);
-   Graph_Graph_30dO000000sPppm10071017->SetMinimum(1.02237);
-   Graph_Graph_30dO000000sPppm10071017->SetMaximum(1.45263);
+   Graph_Graph_30dO000000sPppm10071017->SetMinimum(1.063319);
+   Graph_Graph_30dO000000sPppm10071017->SetMaximum(1.502902);
    Graph_Graph_30dO000000sPppm10071017->SetDirectory(0);
    Graph_Graph_30dO000000sPppm10071017->SetStats(0);
 
@@ -301,18 +301,18 @@ void Scans_NSUBRUN_50()
    lineFit1018->SetFillStyle(0);
    lineFit1018->SetLineColor(4);
    lineFit1018->SetLineWidth(2);
-   lineFit1018->SetChisquare(1.358922e-26);
+   lineFit1018->SetChisquare(3.490636e-26);
    lineFit1018->SetNDF(0);
    lineFit1018->GetXaxis()->SetLabelFont(42);
    lineFit1018->GetXaxis()->SetTitleOffset(1);
    lineFit1018->GetXaxis()->SetTitleFont(42);
    lineFit1018->GetYaxis()->SetLabelFont(42);
    lineFit1018->GetYaxis()->SetTitleFont(42);
-   lineFit1018->SetParameter(0,2.475);
-   lineFit1018->SetParError(0,0.26749);
+   lineFit1018->SetParameter(0,2.520611);
+   lineFit1018->SetParError(0,0.2923635);
    lineFit1018->SetParLimits(0,0,0);
    lineFit1018->SetParameter(1,-0.06875);
-   lineFit1018->SetParError(1,0.01476966);
+   lineFit1018->SetParError(1,0.01614307);
    lineFit1018->SetParLimits(1,0,0);
    lineFit1018->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1018);
@@ -323,18 +323,18 @@ void Scans_NSUBRUN_50()
    lineFit1019->SetFillStyle(0);
    lineFit1019->SetLineColor(4);
    lineFit1019->SetLineWidth(2);
-   lineFit1019->SetChisquare(1.358922e-26);
+   lineFit1019->SetChisquare(3.490636e-26);
    lineFit1019->SetNDF(0);
    lineFit1019->GetXaxis()->SetLabelFont(42);
    lineFit1019->GetXaxis()->SetTitleOffset(1);
    lineFit1019->GetXaxis()->SetTitleFont(42);
    lineFit1019->GetYaxis()->SetLabelFont(42);
    lineFit1019->GetYaxis()->SetTitleFont(42);
-   lineFit1019->SetParameter(0,2.475);
-   lineFit1019->SetParError(0,0.26749);
+   lineFit1019->SetParameter(0,2.520611);
+   lineFit1019->SetParError(0,0.2923635);
    lineFit1019->SetParLimits(0,0,0);
    lineFit1019->SetParameter(1,-0.06875);
-   lineFit1019->SetParError(1,0.01476966);
+   lineFit1019->SetParError(1,0.01614307);
    lineFit1019->SetParLimits(1,0,0);
    lineFit1019->Draw("same");
    
@@ -342,14 +342,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t -30.000000 ppm_fy1019[2] = {
-   -2.375,
-   -1.9};
+   -2.350281,
+   -1.875281};
    Double_t -30.000000 ppm_fex1019[2] = {
    0,
    0};
    Double_t -30.000000 ppm_fey1019[2] = {
-   0.02474879,
-   0.02474879};
+   0.0247454,
+   0.0247454};
    gre = new TGraphErrors(2,-30.000000 ppm_fx1019,-30.000000 ppm_fy1019,-30.000000 ppm_fex1019,-30.000000 ppm_fey1019);
    gre->SetName("-30.000000 ppm");
    gre->SetTitle("Graph");
@@ -358,8 +358,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(5);
    
    TH1F *Graph_mI30dO000000sPppm1019 = new TH1F("Graph_mI30dO000000sPppm1019","Graph",100,15.6,20.4);
-   Graph_mI30dO000000sPppm1019->SetMinimum(-2.452199);
-   Graph_mI30dO000000sPppm1019->SetMaximum(-1.822801);
+   Graph_mI30dO000000sPppm1019->SetMinimum(-2.427475);
+   Graph_mI30dO000000sPppm1019->SetMaximum(-1.798087);
    Graph_mI30dO000000sPppm1019->SetDirectory(0);
    Graph_mI30dO000000sPppm1019->SetStats(0);
 
@@ -381,18 +381,18 @@ void Scans_NSUBRUN_50()
    lineFit1020->SetFillStyle(0);
    lineFit1020->SetLineColor(5);
    lineFit1020->SetLineWidth(2);
-   lineFit1020->SetChisquare(1.355547e-25);
+   lineFit1020->SetChisquare(3.969524e-26);
    lineFit1020->SetNDF(0);
    lineFit1020->GetXaxis()->SetLabelFont(42);
    lineFit1020->GetXaxis()->SetTitleOffset(1);
    lineFit1020->GetXaxis()->SetTitleFont(42);
    lineFit1020->GetYaxis()->SetLabelFont(42);
    lineFit1020->GetYaxis()->SetTitleFont(42);
-   lineFit1020->SetParameter(0,-4.275);
-   lineFit1020->SetParError(0,0.1584696);
+   lineFit1020->SetParameter(0,-4.250281);
+   lineFit1020->SetParError(0,0.1584479);
    lineFit1020->SetParLimits(0,0,0);
    lineFit1020->SetParameter(1,0.11875);
-   lineFit1020->SetParError(1,0.008750018);
+   lineFit1020->SetParError(1,0.00874882);
    lineFit1020->SetParLimits(1,0,0);
    lineFit1020->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1020);
@@ -403,18 +403,18 @@ void Scans_NSUBRUN_50()
    lineFit1021->SetFillStyle(0);
    lineFit1021->SetLineColor(5);
    lineFit1021->SetLineWidth(2);
-   lineFit1021->SetChisquare(1.355547e-25);
+   lineFit1021->SetChisquare(3.969524e-26);
    lineFit1021->SetNDF(0);
    lineFit1021->GetXaxis()->SetLabelFont(42);
    lineFit1021->GetXaxis()->SetTitleOffset(1);
    lineFit1021->GetXaxis()->SetTitleFont(42);
    lineFit1021->GetYaxis()->SetLabelFont(42);
    lineFit1021->GetYaxis()->SetTitleFont(42);
-   lineFit1021->SetParameter(0,-4.275);
-   lineFit1021->SetParError(0,0.1584696);
+   lineFit1021->SetParameter(0,-4.250281);
+   lineFit1021->SetParError(0,0.1584479);
    lineFit1021->SetParLimits(0,0,0);
    lineFit1021->SetParameter(1,0.11875);
-   lineFit1021->SetParError(1,0.008750018);
+   lineFit1021->SetParError(1,0.00874882);
    lineFit1021->SetParLimits(1,0,0);
    lineFit1021->Draw("same");
    
@@ -422,14 +422,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t -10.000000 ppm_fy1021[2] = {
-   -1.125,
-   -0.9};
+   -1.100281,
+   -0.875281};
    Double_t -10.000000 ppm_fex1021[2] = {
    0,
    0};
    Double_t -10.000000 ppm_fey1021[2] = {
-   0.02474879,
-   0.02474879};
+   0.0247454,
+   0.0247454};
    gre = new TGraphErrors(2,-10.000000 ppm_fx1021,-10.000000 ppm_fy1021,-10.000000 ppm_fex1021,-10.000000 ppm_fey1021);
    gre->SetName("-10.000000 ppm");
    gre->SetTitle("Graph");
@@ -438,8 +438,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(6);
    
    TH1F *Graph_mI10dO000000sPppm1021 = new TH1F("Graph_mI10dO000000sPppm1021","Graph",100,15.6,20.4);
-   Graph_mI10dO000000sPppm1021->SetMinimum(-1.177199);
-   Graph_mI10dO000000sPppm1021->SetMaximum(-0.8478015);
+   Graph_mI10dO000000sPppm1021->SetMinimum(-1.152475);
+   Graph_mI10dO000000sPppm1021->SetMaximum(-0.8230865);
    Graph_mI10dO000000sPppm1021->SetDirectory(0);
    Graph_mI10dO000000sPppm1021->SetStats(0);
 
@@ -461,18 +461,18 @@ void Scans_NSUBRUN_50()
    lineFit1022->SetFillStyle(0);
    lineFit1022->SetLineColor(6);
    lineFit1022->SetLineWidth(2);
-   lineFit1022->SetChisquare(1.791029e-27);
+   lineFit1022->SetChisquare(2.165927e-26);
    lineFit1022->SetNDF(0);
    lineFit1022->GetXaxis()->SetLabelFont(42);
    lineFit1022->GetXaxis()->SetTitleOffset(1);
    lineFit1022->GetXaxis()->SetTitleFont(42);
    lineFit1022->GetYaxis()->SetLabelFont(42);
    lineFit1022->GetYaxis()->SetTitleFont(42);
-   lineFit1022->SetParameter(0,-2.025);
-   lineFit1022->SetParError(0,0.1584696);
+   lineFit1022->SetParameter(0,-2.000281);
+   lineFit1022->SetParError(0,0.1584479);
    lineFit1022->SetParLimits(0,0,0);
    lineFit1022->SetParameter(1,0.05625);
-   lineFit1022->SetParError(1,0.008750018);
+   lineFit1022->SetParError(1,0.00874882);
    lineFit1022->SetParLimits(1,0,0);
    lineFit1022->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1022);
@@ -483,18 +483,18 @@ void Scans_NSUBRUN_50()
    lineFit1023->SetFillStyle(0);
    lineFit1023->SetLineColor(6);
    lineFit1023->SetLineWidth(2);
-   lineFit1023->SetChisquare(1.791029e-27);
+   lineFit1023->SetChisquare(2.165927e-26);
    lineFit1023->SetNDF(0);
    lineFit1023->GetXaxis()->SetLabelFont(42);
    lineFit1023->GetXaxis()->SetTitleOffset(1);
    lineFit1023->GetXaxis()->SetTitleFont(42);
    lineFit1023->GetYaxis()->SetLabelFont(42);
    lineFit1023->GetYaxis()->SetTitleFont(42);
-   lineFit1023->SetParameter(0,-2.025);
-   lineFit1023->SetParError(0,0.1584696);
+   lineFit1023->SetParameter(0,-2.000281);
+   lineFit1023->SetParError(0,0.1584479);
    lineFit1023->SetParLimits(0,0,0);
    lineFit1023->SetParameter(1,0.05625);
-   lineFit1023->SetParError(1,0.008750018);
+   lineFit1023->SetParError(1,0.00874882);
    lineFit1023->SetParLimits(1,0,0);
    lineFit1023->Draw("same");
    
@@ -502,14 +502,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t 10.000000 ppm_fy1023[2] = {
-   0.125,
-   0.1};
+   0.149719,
+   0.124719};
    Double_t 10.000000 ppm_fex1023[2] = {
    0,
    0};
    Double_t 10.000000 ppm_fey1023[2] = {
-   0.02474879,
-   0.02474879};
+   0.0247454,
+   0.0247454};
    gre = new TGraphErrors(2,10.000000 ppm_fx1023,10.000000 ppm_fy1023,10.000000 ppm_fex1023,10.000000 ppm_fey1023);
    gre->SetName("10.000000 ppm");
    gre->SetTitle("Graph");
@@ -518,8 +518,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(7);
    
    TH1F *Graph_10dO000000sPppm1023 = new TH1F("Graph_10dO000000sPppm1023","Graph",100,15.6,20.4);
-   Graph_10dO000000sPppm1023->SetMinimum(0.06780145);
-   Graph_10dO000000sPppm1023->SetMaximum(0.1571985);
+   Graph_10dO000000sPppm1023->SetMinimum(0.09252451);
+   Graph_10dO000000sPppm1023->SetMaximum(0.1819135);
    Graph_10dO000000sPppm1023->SetDirectory(0);
    Graph_10dO000000sPppm1023->SetStats(0);
 
@@ -541,18 +541,18 @@ void Scans_NSUBRUN_50()
    lineFit1024->SetFillStyle(0);
    lineFit1024->SetLineColor(7);
    lineFit1024->SetLineWidth(2);
-   lineFit1024->SetChisquare(1.336354e-27);
+   lineFit1024->SetChisquare(1.258089e-29);
    lineFit1024->SetNDF(0);
    lineFit1024->GetXaxis()->SetLabelFont(42);
    lineFit1024->GetXaxis()->SetTitleOffset(1);
    lineFit1024->GetXaxis()->SetTitleFont(42);
    lineFit1024->GetYaxis()->SetLabelFont(42);
    lineFit1024->GetYaxis()->SetTitleFont(42);
-   lineFit1024->SetParameter(0,0.225);
-   lineFit1024->SetParError(0,0.1584696);
+   lineFit1024->SetParameter(0,0.249719);
+   lineFit1024->SetParError(0,0.1584479);
    lineFit1024->SetParLimits(0,0,0);
    lineFit1024->SetParameter(1,-0.00625);
-   lineFit1024->SetParError(1,0.008750018);
+   lineFit1024->SetParError(1,0.00874882);
    lineFit1024->SetParLimits(1,0,0);
    lineFit1024->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1024);
@@ -563,18 +563,18 @@ void Scans_NSUBRUN_50()
    lineFit1025->SetFillStyle(0);
    lineFit1025->SetLineColor(7);
    lineFit1025->SetLineWidth(2);
-   lineFit1025->SetChisquare(1.336354e-27);
+   lineFit1025->SetChisquare(1.258089e-29);
    lineFit1025->SetNDF(0);
    lineFit1025->GetXaxis()->SetLabelFont(42);
    lineFit1025->GetXaxis()->SetTitleOffset(1);
    lineFit1025->GetXaxis()->SetTitleFont(42);
    lineFit1025->GetYaxis()->SetLabelFont(42);
    lineFit1025->GetYaxis()->SetTitleFont(42);
-   lineFit1025->SetParameter(0,0.225);
-   lineFit1025->SetParError(0,0.1584696);
+   lineFit1025->SetParameter(0,0.249719);
+   lineFit1025->SetParError(0,0.1584479);
    lineFit1025->SetParLimits(0,0,0);
    lineFit1025->SetParameter(1,-0.00625);
-   lineFit1025->SetParError(1,0.008750018);
+   lineFit1025->SetParError(1,0.00874882);
    lineFit1025->SetParLimits(1,0,0);
    lineFit1025->Draw("same");
    
@@ -582,14 +582,14 @@ void Scans_NSUBRUN_50()
    16,
    20};
    Double_t 30.000000 ppm_fy1025[2] = {
-   1.375,
-   1.1};
+   1.399719,
+   1.124719};
    Double_t 30.000000 ppm_fex1025[2] = {
    0,
    0};
    Double_t 30.000000 ppm_fey1025[2] = {
-   0.02474879,
-   0.02474879};
+   0.0247454,
+   0.0247454};
    gre = new TGraphErrors(2,30.000000 ppm_fx1025,30.000000 ppm_fy1025,30.000000 ppm_fex1025,30.000000 ppm_fey1025);
    gre->SetName("30.000000 ppm");
    gre->SetTitle("Graph");
@@ -598,8 +598,8 @@ void Scans_NSUBRUN_50()
    gre->SetMarkerColor(8);
    
    TH1F *Graph_30dO000000sPppm1025 = new TH1F("Graph_30dO000000sPppm1025","Graph",100,15.6,20.4);
-   Graph_30dO000000sPppm1025->SetMinimum(1.042801);
-   Graph_30dO000000sPppm1025->SetMaximum(1.432199);
+   Graph_30dO000000sPppm1025->SetMinimum(1.067525);
+   Graph_30dO000000sPppm1025->SetMaximum(1.456913);
    Graph_30dO000000sPppm1025->SetDirectory(0);
    Graph_30dO000000sPppm1025->SetStats(0);
 
@@ -621,18 +621,18 @@ void Scans_NSUBRUN_50()
    lineFit1026->SetFillStyle(0);
    lineFit1026->SetLineColor(8);
    lineFit1026->SetLineWidth(2);
-   lineFit1026->SetChisquare(6.439654e-27);
+   lineFit1026->SetChisquare(3.172398e-26);
    lineFit1026->SetNDF(0);
    lineFit1026->GetXaxis()->SetLabelFont(42);
    lineFit1026->GetXaxis()->SetTitleOffset(1);
    lineFit1026->GetXaxis()->SetTitleFont(42);
    lineFit1026->GetYaxis()->SetLabelFont(42);
    lineFit1026->GetYaxis()->SetTitleFont(42);
-   lineFit1026->SetParameter(0,2.475);
-   lineFit1026->SetParError(0,0.1584696);
+   lineFit1026->SetParameter(0,2.499719);
+   lineFit1026->SetParError(0,0.1584479);
    lineFit1026->SetParLimits(0,0,0);
    lineFit1026->SetParameter(1,-0.06875);
-   lineFit1026->SetParError(1,0.008750018);
+   lineFit1026->SetParError(1,0.00874882);
    lineFit1026->SetParLimits(1,0,0);
    lineFit1026->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit1026);
@@ -643,18 +643,18 @@ void Scans_NSUBRUN_50()
    lineFit1027->SetFillStyle(0);
    lineFit1027->SetLineColor(8);
    lineFit1027->SetLineWidth(2);
-   lineFit1027->SetChisquare(6.439654e-27);
+   lineFit1027->SetChisquare(3.172398e-26);
    lineFit1027->SetNDF(0);
    lineFit1027->GetXaxis()->SetLabelFont(42);
    lineFit1027->GetXaxis()->SetTitleOffset(1);
    lineFit1027->GetXaxis()->SetTitleFont(42);
    lineFit1027->GetYaxis()->SetLabelFont(42);
    lineFit1027->GetYaxis()->SetTitleFont(42);
-   lineFit1027->SetParameter(0,2.475);
-   lineFit1027->SetParError(0,0.1584696);
+   lineFit1027->SetParameter(0,2.499719);
+   lineFit1027->SetParError(0,0.1584479);
    lineFit1027->SetParLimits(0,0,0);
    lineFit1027->SetParameter(1,-0.06875);
-   lineFit1027->SetParError(1,0.008750018);
+   lineFit1027->SetParError(1,0.00874882);
    lineFit1027->SetParLimits(1,0,0);
    lineFit1027->Draw("same");
    
@@ -665,7 +665,7 @@ void Scans_NSUBRUN_50()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("30.000000 ppm","2.46e-299 ppm","lpf");
+   TLegendEntry *entry=leg->AddEntry("30.000000 ppm","4.24e-312 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(8);
    entry->SetLineStyle(1);
@@ -674,7 +674,7 @@ void Scans_NSUBRUN_50()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("10.000000 ppm","3.04e-310 ppm","lpf");
+   entry=leg->AddEntry("10.000000 ppm","3.18e-312 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(7);
    entry->SetLineStyle(1);
@@ -683,7 +683,7 @@ void Scans_NSUBRUN_50()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-10.000000 ppm","   20 ppm","lpf");
+   entry=leg->AddEntry("-10.000000 ppm","2.12e-312 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(6);
    entry->SetLineStyle(1);
@@ -692,7 +692,7 @@ void Scans_NSUBRUN_50()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-30.000000 ppm","   16 ppm","lpf");
+   entry=leg->AddEntry("-30.000000 ppm","1.06e-312 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(5);
    entry->SetLineStyle(1);

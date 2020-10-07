@@ -1,10 +1,10 @@
 void Result_NSUBRUN_25()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  2 13:49:32 2020) by ROOT version 6.22/02
+//=========  (Mon Oct  5 20:04:42 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-45,-0.1377795,45,0.1877795);
+   c->Range(-45,-0.1398396,45,0.1898396);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -27,10 +27,10 @@ void Result_NSUBRUN_25()
    0,
    0};
    Double_t Graph0_fey1009[4] = {
-   0.01476966,
-   0.01476966,
-   0.01476966,
-   0.01476966};
+   0.01614307,
+   0.01614307,
+   0.01614307,
+   0.01614307};
    TGraphErrors *gre = new TGraphErrors(4,Graph0_fx1009,Graph0_fy1009,Graph0_fex1009,Graph0_fey1009);
    gre->SetName("Graph0");
    gre->SetTitle("Sub-runs 25");
@@ -38,8 +38,8 @@ void Result_NSUBRUN_25()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01009 = new TH1F("Graph_Graph01009","Sub-runs 25",100,-36,36);
-   Graph_Graph01009->SetMinimum(-0.1052236);
-   Graph_Graph01009->SetMaximum(0.1552236);
+   Graph_Graph01009->SetMinimum(-0.1068717);
+   Graph_Graph01009->SetMaximum(0.1568717);
    Graph_Graph01009->SetDirectory(0);
    Graph_Graph01009->SetStats(0);
 
@@ -73,7 +73,7 @@ void Result_NSUBRUN_25()
    ci = TColor::GetColor("#ff0000");
    lineFit21010->SetLineColor(ci);
    lineFit21010->SetLineWidth(2);
-   lineFit21010->SetChisquare(3.444204e-26);
+   lineFit21010->SetChisquare(3.485156e-27);
    lineFit21010->SetNDF(2);
    lineFit21010->GetXaxis()->SetLabelFont(42);
    lineFit21010->GetXaxis()->SetTitleOffset(1);
@@ -81,10 +81,10 @@ void Result_NSUBRUN_25()
    lineFit21010->GetYaxis()->SetLabelFont(42);
    lineFit21010->GetYaxis()->SetTitleFont(42);
    lineFit21010->SetParameter(0,0.025);
-   lineFit21010->SetParError(0,0.007384831);
+   lineFit21010->SetParError(0,0.008071536);
    lineFit21010->SetParLimits(0,0,0);
    lineFit21010->SetParameter(1,-0.003125);
-   lineFit21010->SetParError(1,0.0003302597);
+   lineFit21010->SetParError(1,0.00036097);
    lineFit21010->SetParLimits(1,0,0);
    lineFit21010->SetParent(gre);
    gre->GetListOfFunctions()->Add(lineFit21010);
@@ -95,10 +95,10 @@ void Result_NSUBRUN_25()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("1.72#times10^{#minus26}");
-   pt_LaTex = pt->AddText("#minus0.00313#pm0.00033");
-   pt_LaTex = pt->AddText("0.025#pm0.00738");
-   pt_LaTex = pt->AddText("    8#pm 2.51");
+   TText *pt_LaTex = pt->AddText("1.74#times10^{#minus27}");
+   pt_LaTex = pt->AddText("#minus0.00312#pm0.000361");
+   pt_LaTex = pt->AddText("0.025#pm0.00807");
+   pt_LaTex = pt->AddText("    8#pm 2.74");
    pt->Draw();
    
    pt = new TPaveText(0.3,0.69,0.62,0.88,"brNDC");
@@ -115,7 +115,7 @@ void Result_NSUBRUN_25()
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(8,-0.1052236,8,0);
+   line = new TLine(8,-0.1068717,8,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -127,7 +127,7 @@ void Result_NSUBRUN_25()
    ci = TColor::GetColor("#ff0000");
    lineFit21011->SetLineColor(ci);
    lineFit21011->SetLineWidth(2);
-   lineFit21011->SetChisquare(3.444204e-26);
+   lineFit21011->SetChisquare(3.485156e-27);
    lineFit21011->SetNDF(2);
    lineFit21011->GetXaxis()->SetLabelFont(42);
    lineFit21011->GetXaxis()->SetTitleOffset(1);
@@ -135,10 +135,10 @@ void Result_NSUBRUN_25()
    lineFit21011->GetYaxis()->SetLabelFont(42);
    lineFit21011->GetYaxis()->SetTitleFont(42);
    lineFit21011->SetParameter(0,0.025);
-   lineFit21011->SetParError(0,0.007384831);
+   lineFit21011->SetParError(0,0.008071536);
    lineFit21011->SetParLimits(0,0,0);
    lineFit21011->SetParameter(1,-0.003125);
-   lineFit21011->SetParError(1,0.0003302597);
+   lineFit21011->SetParError(1,0.00036097);
    lineFit21011->SetParLimits(1,0,0);
    lineFit21011->Draw("same");
    

@@ -10,6 +10,7 @@
 #include "TH1.h"
 #include "TH2.h"
 #include "TGraphErrors.h"
+#include "TDirectory.h"
 
 using namespace std;
 
@@ -31,8 +32,8 @@ double Mean(TH2 *hist) {
 
 }
 
-
-TGraphErrors *DefineTGraph(vector<int> N, vector<float> mean, vector<float> err, int type) { 
+// A bit superfluous but it seems to work fine
+TGraphErrors *DefineTGraph(vector<int> N, vector<double> mean, vector<double> err, int type) { 
 
 	int n = N.size();
 	double x[n];
@@ -44,18 +45,18 @@ TGraphErrors *DefineTGraph(vector<int> N, vector<float> mean, vector<float> err,
 
   		if(type==0) {
 
-  			x[i] = N.at(i); //i+1; // hists.at(i)->GetEntries();
+  			x[i] = N.at(i); 
   			ex[i] = 0; 
-  			y[i] = mean.at(i); //  moduloProf->GetBinContent(i+1); 
+  			y[i] = mean.at(i); 
       		ey[i] = err.at(i); 
 
       	} else if(type==1) {
 
-  			x[i] = N.at(i); //i+1;// hists.at(i)->GetEntries();
+  			x[i] = N.at(i); 
   			ex[i] = 0; 
-  			y[i] = err.at(i); //  moduloProf->GetBinContent(i+1); 
-  			//cout<< errorOnMean(hists.at(i))<< endl;
+  			y[i] = err.at(i); 
       		ey[i] = 0; 
+
       	}
 
   	}
@@ -67,96 +68,106 @@ TGraphErrors *DefineTGraph(vector<int> N, vector<float> mean, vector<float> err,
 int main() {
 
 	TFile *input = TFile::Open("../Plots/Data/MeanCaloPos/plots_calo_15921.root");
-	//TFile *input = TFile::Open("/Users/samuelgrant/Documents/gm2/EDM/ReadTrees/Data/ReadCaloTrees/plots_Data_15921.root");
 
-	cout<<"Opened file\t:"<<input<<endl;
+	TH2D *posHist;
+	TH2D *posHistStack;
 
-	int subruns = 0;
+	// plot sub-runs vs ctag, write to file
+	TH2D *SUBRUN_vs_CTAG = new TH2D("SUBRUN_vs_CTAG","SUBRUN_vs_CTAG",355,0.5,355.5,14e4,0,14e6);
 
-	//TH1 *ctagHist;
-	//TH1 *ctagHistStack;
-	TH2 *posHist;
-	TH2 *posHistStack;
+	vector<int> ctag_; 
+	vector<double> meanY_; 
+	vector<double> meanYErr_;
 
-	//vector<int> N;
-	vector<int> ctag; 
-	vector<float> meanPosY; 
-	vector<float> meanPosYErr;
+	int subruns = 1;
 
 	// Loop through sub-runs 
 
 	// Note that i =/= n_subruns
 	for(int i = 0; i<400; i++) { 
 
-		//ctagHist = (TH1D*)input->Get( ("ctag_"+to_string(i)).c_str() );
+		// Get x-y position, where entries equal CTAGs
 		posHist = (TH2D*)input->Get( ("clusterY_vs_clusterX_"+to_string(i)).c_str() );
 
-		if(posHist == 0) continue;
+		// Dodge non-existent of very low stats sub-runs
+		if(posHist == 0 || posHist->GetEntries() < 1e3) continue; 
 
-		//cout<<"Got posHist\t:"<<posHist<<endl;
-
-		if(subruns==0) {
+		// Stack histograms sub-run by sub-run
+		if(subruns==1) {
 			posHistStack = posHist;
 		} else {
 			posHistStack->Add(posHist);
 		}
 
-		//cout<<"ctagHistStack->GetMean()\t:"<<ctagHistStack->GetMean()<<endl;
-		ctag.push_back(posHistStack->GetEntries());
+		// Get ctags and position with each iteration
+		double ctag = posHistStack->GetEntries();
+		double meanY = posHistStack->ProjectionY()->GetMean();
+		double meanYErr = posHistStack->ProjectionY()->GetMeanError();
 
-		// Do I want mean CTAGS, or the aggregated total CTAGs? 
+		// Append them to a vector
+		ctag_.push_back(ctag);
+		meanY_.push_back(meanY);
+		meanYErr_.push_back(meanYErr);	
 
-		//ctag.push_back(ctagHistStack->GetMean());
-		meanPosY.push_back(posHistStack->ProjectionY()->GetMean());
-		meanPosYErr.push_back(posHistStack->ProjectionY()->GetMeanError());	
+ 		// Fill sub-run vs CTAG
+ 		SUBRUN_vs_CTAG->Fill(subruns, ctag);
 
-		if(subruns==25) {
-			cout<<"SIGMA at 25 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 25 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==50) {
-			cout<<"SIGMA at 50 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 50 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==75) {
-			cout<<"SIGMA at 75 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 75 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==100) {
-			cout<<"SIGMA at 100 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 100 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==125) {
-			cout<<"SIGMA at 125 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 125 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==150) {
-			cout<<"SIGMA at 150 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 150 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==175) {
-			cout<<"SIGMA at 175 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 175 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		} else if(subruns==200) {
-			cout<<"SIGMA at 200 sub-runs:\t"<<posHistStack->ProjectionY()->GetMeanError()<<endl;
-			cout<<"CTAGs at 200 sub-runs:\t"<<posHistStack->ProjectionY()->GetEntries()<<endl;
-		}
- 
 		subruns++;
 
 	}
 
+	// Draw two axis TGraphs for y-pos versus positrons
 
-	TGraphErrors *gr0 = DefineTGraph(ctag, meanPosY, meanPosYErr, 0);
-	TGraphErrors *gr1 = DefineTGraph(ctag, meanPosY, meanPosYErr, 1);
-	//TGraphErrors *gr2 = DefineTGraph(N, meanPos, meanPosErr, 0);
-	//TGraphErrors *gr3 = DefineTGraph(N, meanPos, meanPosErr, 1);
+	TGraphErrors *meanY_vs_subruns = DefineTGraph(ctag_, meanY_, meanYErr_, 0);
+	TGraphErrors *meanYErr_vs_subruns = DefineTGraph(ctag_, meanY_, meanYErr_, 1);
 
-	gr0->GetXaxis()->SetRangeUser(0,ctag.back());
-	gr1->GetXaxis()->SetRangeUser(0,ctag.back());
-	gr0->GetYaxis()->SetRangeUser(75.45,76.1);
-	gr1->GetYaxis()->SetRangeUser(0,0.25);
-	//gr2->GetXaxis()->SetRangeUser(0,N.back());
-	//gr3->GetXaxis()->SetRangeUser(0,N.back());
+	meanY_vs_subruns->GetXaxis()->SetRangeUser(0,ctag_.back());
+	meanYErr_vs_subruns->GetXaxis()->SetRangeUser(0,ctag_.back());
+	meanY_vs_subruns->GetYaxis()->SetRangeUser(75.45,76.1);
+	meanYErr_vs_subruns->GetYaxis()->SetRangeUser(0,0.25);
 
-	DrawTGraphErrorsDoubleXAxis(gr0, ";CTAGs;Cluster mean Y-position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPos_vs_CTAG", 0, subruns);
-	DrawTGraphErrorsDoubleXAxis(gr1, ";CTAGs;Cluster mean Y-position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosYErr_vs_CTAG", 0, subruns);
-	//DrawTGraphErrorsDoubleXAxis(gr2, ";Number of clusters;Cluster mean position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPos_vs_N", 0, counter);
-	//DrawTGraphErrorsDoubleXAxis(gr3, ";Number of clusters;Cluster mean position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanPosErr_vs_N", 0, counter);
+	DrawTGraphErrorsDoubleXAxis(meanY_vs_subruns, ";CTAGs;Cluster mean Y-position [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPos_vs_CTAG", 1, subruns);
+	DrawTGraphErrorsDoubleXAxis(meanYErr_vs_subruns, ";CTAGs;Cluster mean Y-position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPosErr_vs_CTAG", 1, subruns);
+
+	// Draw TH2 of CTAG vs subrun and write to file
+	TFile *output = new TFile("../Plots/Data/MeanCaloPos/SUBRUN_vs_CTAG_15921.root", "RECREATE");
+	DrawTH2(SUBRUN_vs_CTAG,";Sub-runs;CTAGs","../Images/Data/CaloMeanPos/SUBRUN_vs_CTAG_15921");
+	SUBRUN_vs_CTAG->SetDirectory(gDirectory);
+	output->Write();
 
 	return 0;
 }
+
+/*		if(subruns==25) {
+			cout<<"SIGMA at 25 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 25 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==50) {
+			cout<<"SIGMA at 50 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 50 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==75) {
+			cout<<"SIGMA at 75 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 75 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==100) {
+			cout<<"SIGMA at 100 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 100 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==125) {
+			cout<<"SIGMA at 125 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 125 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==150) {
+			cout<<"SIGMA at 150 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 150 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==175) {
+			cout<<"SIGMA at 175 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 175 sub-runs:\t"<<ctag<<endl;
+		} else if(subruns==200) {
+			cout<<"SIGMA at 200 sub-runs:\t"<<meanYErr<<endl;
+			cout<<"CTAGs at 200 sub-runs:\t"<<ctag<<endl;
+		}
+ 
+ 		if(ctag > 7.99e6 && ctag < 8.01e6) {
+ 			cout<<"Sub-runs at "<<ctag<<" CTAGS: "<<subruns<<endl;
+ 		} 
+
+ 		if(ctag > 4.8e5 && ctag < 5.2e5) {
+ 			cout<<"Sub-runs at "<<ctag<<" CTAGS: "<<subruns<<endl;
+ 		}*/ 

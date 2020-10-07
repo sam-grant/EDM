@@ -49,16 +49,16 @@ void Plotter::Run() {
   while( NextTrEvent() ) {
 
     // BEAM VERTEX QUALITY CUT
-    // if(!tr->passVertexQuality) continue;
+    if(!tr->passVertexQuality) continue;
 
     double time = tr->trackT0 * 1e-3; // ns -> us
     double p = tr->trackMomentum;
 
     // MOM CUTS
-    //if(p < 700 || p > 2400) continue; 
+    if(p < 700 || p > 2400) continue; 
     // TIME CUTS
     //if(time > g2Period*70) continue;
-    //if(time < g2Period*7 || time > g2Period*70) continue;
+    if(time < g2Period*7 || time > g2Period*70) continue;
     //if(time > 300) continue;
 
     // Vertical angle

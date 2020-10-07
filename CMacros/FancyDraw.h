@@ -94,6 +94,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetYaxis()->SetMaxDigits(4);
 	graph->SetMarkerStyle(20); //  Full circle
 	graph->Draw("AP");
+	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -215,7 +216,7 @@ void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::st
 	axis->SetLabelColor(kRed);
 	axis->SetLineColor(kRed);
 	axis->Draw("same");
-
+	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -247,7 +248,9 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	function->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.59,0.55,0.69,0.89,"NDC");
-	TPaveText *names = new TPaveText(0.55,0.59,0.69,0.88,"NDC");
+	//TPaveText *names = new TPaveText(0.55,0.59,0.69,0.88,"NDC");
+	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
+
 	names->SetTextAlign(13);
 	names->AddText("N") ; // +SciNotation(double(N))); 
 	names->AddText("#chi^{2}/ndf"); //+SciNotation(chi2ndf));
@@ -259,9 +262,9 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(ThreeSigFig(chi2ndf));//std::to_string(chi2ndf).c_str());
-	values->AddText(SciNotation(par0)+"#pm"+OneSigFig(err0));
-	values->AddText(SciNotation(par1)+"#pm"+OneSigFig(err1));
-	values->AddText(SciNotation(par2)+"#pm"+OneSigFig(err2));
+	values->AddText(ThreeSigFig(par0)+"#pm"+OneSigFig(err0));
+	values->AddText(ThreeSigFig(par1)+"#pm"+OneSigFig(err1));
+	values->AddText(ThreeSigFig(par2)+"#pm"+OneSigFig(err2));
 
 	names->SetTextSize(26);
 	names->SetTextFont(44);
