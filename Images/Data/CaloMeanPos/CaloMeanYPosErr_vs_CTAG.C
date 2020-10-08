@@ -1,7 +1,7 @@
 void CaloMeanYPosErr_vs_CTAG()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Oct  7 17:30:39 2020) by ROOT version 6.22/02
+//=========  (Thu Oct  8 16:00:09 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1674140,-0.03125,1.506726e+07,0.28125);
@@ -12,7 +12,7 @@ void CaloMeanYPosErr_vs_CTAG()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx1002[349] = {
-   6.953119e-310,
+   6.953124e-310,
    14076,
    52517,
    92012,
@@ -712,7 +712,7 @@ void CaloMeanYPosErr_vs_CTAG()
    0.007922622,
    0.007911157};
    Double_t Graph0_fex1002[349] = {
-   6.953119e-310,
+   6.953124e-310,
    0,
    0,
    0,
@@ -1062,7 +1062,7 @@ void CaloMeanYPosErr_vs_CTAG()
    0,
    0};
    Double_t Graph0_fey1002[349] = {
-   6.953119e-310,
+   6.953124e-310,
    0,
    0,
    0,

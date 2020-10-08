@@ -19,25 +19,22 @@
 #include "TGraphErrors.h"
 #include "TLegend.h"
 #include "TRandom3.h"
+#include "TFitResult.h"
+#include "TMatrixD.h"
 
 using namespace std;
 
-// ==================== GLOBAL PARAMETERS ====================
+// ==================== GLOBALS ====================
 const int N_QHV = 2;
 const int N_FIELD = 4;
-const double BR_RES = 8; // ppm, the size of the field that would kill our measurement
+const double BR_BKG = 0; // ppm, the size of the field that would kill our measurement
 const int N_EXP = 1e3;
 const double QHV[N_QHV] = {16, 20}; // Two quad settings, kV
 const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
-const int N_SUBRUNS = 12;
+const int N_SUBRUNS = 13; // Lucky number
 const int SUBRUN_INTERVAL = 25;
 
-// I want to load these from a file, but that's tricky with global params. Maybe I can do it in a header?
-// const int SUBRUNS[N_SUBRUNS] = {25, 50, 75, 100, 125, 150, 175, 200};
-// const double SIGMAS[N_SUBRUNS] = {0.0298227, 0.0209469, 0.0170752, 0.0148505, 0.0132568, 0.0120878, 0.0111837, 0.0104537};
-// const double CTAGS[N_SUBRUNS] = {941719, 1.90707e+06, 2.86835e+06, 3.79245e+06, 4.75873e+06, 5.72386e+06,  6.68638e+06, 7.65107e+06};
-
-// ==================== CLASS TO LOAD CTAGS AND SUBRUNS ====================
+// ==================== CLASS TO LOAD CTAGS, SIGMAS, AND SUBRUNS ====================
 
 class CTAGs_SIGMAS_SUBRUNS { 
 
@@ -62,12 +59,15 @@ public:
 
  	int counter = 0; 
 
-	for (int i_subrun = SUBRUN_INTERVAL; i_subrun < N_SUBRUNS*SUBRUN_INTERVAL; i_subrun = i_subrun + SUBRUN_INTERVAL) { 
+ 	cout<<"MAX SUBRUNS:\t"<<N_SUBRUNS*SUBRUN_INTERVAL<<endl;
+
+	for (int i_subrun = SUBRUN_INTERVAL; i_subrun <= N_SUBRUNS*SUBRUN_INTERVAL; i_subrun = i_subrun + SUBRUN_INTERVAL) { 
 
 		SUBRUNS[counter] = i_subrun; // new int[i_subrun+1]; // new int[i_subrun+1]; //  = ;
 		CTAGS[counter] = CTAG_vs_SUBRUN->GetBinContent(i_subrun+1);
 		SIGMAS[counter] = SIGMA_vs_SUBRUN->GetBinContent(i_subrun+1);
-
+/*		cout<<"SUBRUN\t:"<<i_subrun<<endl;
+		cout<<"counter\t:"<<counter<<endl;*/
 		counter++;
 
 	}
@@ -82,16 +82,42 @@ CTAGs_SIGMAS_SUBRUNS ctags_sigmas_subruns;
 // This is an approximation! 
 double yPosition(double Br_true, double QHV) { return Br_true / QHV; }
 
-double RadialFieldPrecision(TF1 *fit) { 
+// Could put these two functions in a tuple?
+double CalcRadialField(TGraphErrors *graph, string func) { 
 
+	TF1 *fit = graph->GetFunction(func.c_str());
+	double c = fit->GetParameter(0);
+	double m = fit->GetParameter(1);
+	double Br = - c / m;
+	return Br;
+
+}
+
+// double CalcRadialFieldPrecision(TGraphErrors *graph, TFitResultPtr frp, string func) { 
+double CalcRadialFieldPrecision(TGraphErrors *graph, string func) { 
+
+	// Get function
+	TF1 *fit = graph->GetFunction(func.c_str());
+	// Horrible that you have to refit
+	TFitResultPtr fitResult = graph->Fit(fit, "SQM"); // GetFunction(func.c_str());
+	// Get the covarience matrix
+	TMatrixDSym V = fitResult->GetCovarianceMatrix();
+
+	// Get the covarience
+    // Cov(x, y) = E((x - E(x))(y-E(y))) = E((y-E(y))(x-E(x))) = Cov(y,x)
+	// The covarience is either off-diagonal elements V[0][1] or V[1][0] 
+	double cov = V[0][1];
+
+	// Fit params
 	double c = fit->GetParameter(0);
 	double cerr = fit->GetParError(0);
 	double m = fit->GetParameter(1);
 	double merr = fit->GetParError(1);
 	double Br =  - c / m;
 
-	// TODO Add covarience term! 
-	return Br * sqrt( pow(cerr/c, 2) + pow(merr/m, 2) );
+	// Dervied from Taylor 9.9
+	return Br * sqrt( pow(cerr/c, 2) + pow(merr/m, 2) * (2*(cov/(c*m))) );
+
 
 }
 
@@ -107,7 +133,7 @@ double GausSmearing(double yPos, int i_subrun, int seed) {
 
 // I'd rather put these in FancyDraw.h but there are too many dependancies
 
-void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax, std::string func ) {
+void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
@@ -132,7 +158,6 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string title, std:
 	}
 	
 	for(int i = 0; i < graphs.size(); i++) {
-		
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
 		fit->SetLineColor(kBlack);
 		fit->SetLineColor(i+1); 
@@ -160,7 +185,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string title, std:
 
 }
 
-void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string fname, std::string func) {
+void DrawRadialFieldLineFit(TGraphErrors *graph, string func, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -181,8 +206,10 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string 
 	double par1 = fit->GetParameter(1);
 	double err1 = fit->GetParError(1);
 
-	double xint = - par0 / par1;
-	double xint_err = RadialFieldPrecision(fit); 
+
+
+	double xint = CalcRadialField(graph, func); // - par0 / par1;
+	double xint_err = CalcRadialFieldPrecision(graph, func); 
 
 	TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC");
 	names->SetTextAlign(13);
@@ -248,7 +275,9 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, std::string title, std::string 
 
 // ==================== MAIN RESULT ====================
 
-double GetRadialFieldPrecision(int i_experiment, int i_subrun) { 
+// double GetRadialFieldPrecision(int i_experiment, int i_subrun) { 
+// Br and it's uncertainty
+tuple<double, double> GetRadialField(int i_experiment, int i_subrun) { 
 
 	std::vector<TGraphErrors*> QuadScans;
 
@@ -264,7 +293,10 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 		// std::cout<<"Br setting:\t"<<BR_APP[i_field]<<" ppm"<<std::endl; 
 		// std::cout<<"True Br:\t"<<BR_APP[i_field]-BR_RES<<" ppm"<<std::endl;
 
-		double Br_true = BR_APP[i_field]-BR_RES;
+		// The real Br includes contributions from the surface coils and the background
+
+		// NOT SURE ABOUT THIS AND IT'S CRITICAL!!!!!
+		double Br_meas = BR_APP[i_field]-BR_BKG;
 
 		// Average vertical position
 		double y[N_QHV];
@@ -275,7 +307,7 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 		// =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
-			double yPos =  yPosition( Br_true, QHV[i_quad]);
+			double yPos =  yPosition( Br_meas, QHV[i_quad]);
 
 			// Smear y, ensure that it's properly random smearing with a unique seed 
 			int seed = i_experiment*i_subrun*i_field*i_quad;;
@@ -305,17 +337,19 @@ double GetRadialFieldPrecision(int i_experiment, int i_subrun) {
 	TGraphErrors *quadGrads_vs_BrApp = new TGraphErrors(N_FIELD,BR_APP,quadScanGrads,zeros,quadScanGradErrs);
 
 	TF1 *fieldLineFit = new TF1("fieldLineFit", "pol 1");
-
-	// lineFit2->SetLineColor(kRed);
 	quadGrads_vs_BrApp->Fit(fieldLineFit, "QM");
+	// You have to use this if you want to get the covarience matrix out
+	// TFitResultPtr fieldLineFitResult = quadGrads_vs_BrApp->Fit(fieldLineFit, "QM");
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 
-		DrawQuadScanFits(QuadScans, ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-3,2,"quadLineFit");
-		DrawRadialFieldLineFit(quadGrads_vs_BrApp,"Sub-runs "+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),"fieldLineFit");
+		DrawQuadScanFits(QuadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-3,2);
+		DrawRadialFieldLineFit(quadGrads_vs_BrApp,"fieldLineFit", "Sub-runs "+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment));
 	}
 
-	return RadialFieldPrecision(fieldLineFit);
+	// tuple<double, double> result = make_tuple(CalcRadialField(quadGrads_vs_BrApp, "fieldLineFit"), CalcRadialFieldPrecision(quadGrads_vs_BrApp, "fieldLineFit"));
+
+	return make_tuple(CalcRadialField(quadGrads_vs_BrApp, "fieldLineFit"), CalcRadialFieldPrecision(quadGrads_vs_BrApp, "fieldLineFit"));//result; // CalcRadialFieldPrecision(quadGrads_vs_BrApp, "fieldLineFit");
 
 }
 
@@ -328,55 +362,85 @@ int main() {
 	// Draw a TGraph of dBr versus sub-runs and CTAGS
 	// Overlay residual RMS of meas-true 
 
-	// Load CTAGS_SUB
-	//CTAGs_SIGMAS_SUBRUNS ctags_sigmas_subruns;
-
 	// Initialise arrays for TGraphs
 	double x_ctag[N_SUBRUNS];
 	double x_subrun[N_SUBRUNS];
-	double ex[N_SUBRUNS];
-	double y[N_SUBRUNS];
-	double ey[N_SUBRUNS];
+	double zeros[N_SUBRUNS];
+	double y_dBr[N_SUBRUNS];
+	double ey_dBr[N_SUBRUNS];
+	double y_BrRes[N_SUBRUNS];
+	double y_BrResRMS[N_SUBRUNS];
+	double ey_BrResRMS[N_SUBRUNS];
 
 	for ( int i_subrun = 0; i_subrun < N_SUBRUNS; i_subrun++ ) { 
 
 		// Perform many experiments at that sub-run 
+		// Meas - true Br
+		
 
 		// Book histogram for each sub-run 
 		TH1D *dBr = new TH1D("","dBr",300,0,3);
+		TH1D *dBr_res = new TH1D("","dBr_res",400,-2,2);
+
 
 		for ( int i_exp = 0; i_exp < N_EXP; i_exp++ ) {
 
-			dBr->Fill(GetRadialFieldPrecision(i_exp, i_subrun));
+			tuple<double, double> radialField = GetRadialField(i_exp, i_subrun);
+
+			// Residual
+			dBr_res->Fill(get<0>(radialField) - BR_BKG);
+			// Precision
+			dBr->Fill(get<1>(radialField));
 			
 		
 		}
 
-		DrawTH1(dBr,"Number of sub-runs: "+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Residual #deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/dBr_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		cout<<"SUBRUN:\t"<<ctags_sigmas_subruns.SUBRUNS[i_subrun]<<endl;
+		cout<<"CTAG:\t"<<ctags_sigmas_subruns.CTAGS[i_subrun]<<endl;
+		cout<<"SIGMA:\t"<<ctags_sigmas_subruns.SIGMAS[i_subrun]<<endl;
+
+		DrawTH1(dBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Background #deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/dBr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawTH1(dBr_res,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Meas #minus true B_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/resBr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
 
 		x_ctag[i_subrun] = ctags_sigmas_subruns.CTAGS[i_subrun];
 		x_subrun[i_subrun] = ctags_sigmas_subruns.SUBRUNS[i_subrun];
-		ex[i_subrun] = 0;
-		y[i_subrun] = dBr->GetMean();
-		ey[i_subrun] = dBr->GetRMS();
+		zeros[i_subrun] = 0;
+		y_dBr[i_subrun] = dBr->GetMean();
+		ey_dBr[i_subrun] = dBr->GetMeanError();
+		y_BrRes[i_subrun] = dBr_res->GetMean();
+		y_BrResRMS[i_subrun] = dBr_res->GetRMS();
+		ey_BrResRMS[i_subrun] = dBr_res->GetRMSError();
+		// Get residual
+		//double res = abs(dBr->GetMean() - BR_RES);
 		
 	}
 
-	TGraphErrors *dBr_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y,ex,ey);
-	TGraphErrors *dBr_vs_N_subrun = new TGraphErrors(N_SUBRUNS,x_subrun,y,ex,ey);
+	TGraphErrors *dBr_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_dBr,zeros,ey_dBr);
+
+	
+	TGraphErrors *dBr_vs_N_subrun = new TGraphErrors(N_SUBRUNS,x_subrun,y_dBr,zeros,ey_dBr);
+
+	TGraphErrors *BrRes_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_BrRes,zeros,y_BrResRMS);
+	TGraphErrors *BrResRMS_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_BrResRMS,zeros,ey_BrResRMS);
+
+
 
 	// These must be hard coded, otherwise the axes won't line up 
+	// They come from the printouts in CaloMeanPos.C
+	dBr_vs_N_ctag->GetXaxis()->SetRangeUser(517848,1.32464e+07);
+	int subrun_hi = 345;
+	int subrun_lo = 14;
+	dBr_vs_N_subrun->GetXaxis()->SetRangeUser(subrun_lo,subrun_hi);
 
-	// TODO: either put these as globals, or try and read everything in from another file
+	dBr_vs_N_ctag->SetName("Fits");
+	BrResRMS_vs_N_ctag->SetName("Truth");
 
-	dBr_vs_N_ctag->GetXaxis()->SetRangeUser(517848,7.99829e+06);
-	dBr_vs_N_subrun->GetXaxis()->SetRangeUser(14,209);
 	
-	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_ctag, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_test",14, 209);
-	// DrawTGraphErrors(dBr_vs_N_ctag, ";CTAGS;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_2_test");
-	// DrawTGraphErrors(dBr_vs_N_subrun, ";Sub-runs;#deltaB_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_1_test");
-	
-	// delete[] SUBRUNS;
+	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_ctag, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N",subrun_lo,subrun_hi);
+	DrawTGraphErrorsDoubleXAxisOverlay(dBr_vs_N_ctag, BrResRMS_vs_N_ctag, "Fits", "Truth", ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_overlay",subrun_lo,subrun_hi);
+	DrawTGraphErrors(BrRes_vs_N_ctag, ";CTAGs;Meas #minus true B_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBrRes_vs_N");
+	DrawTGraphErrors(BrResRMS_vs_N_ctag, ";CTAGs;RMS of meas #minus true B_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBrResRMS_vs_N");
+
 	return 0; 
 
 } 

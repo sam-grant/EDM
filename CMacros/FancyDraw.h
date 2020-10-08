@@ -26,6 +26,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	hist->SetTitle(title.c_str());
 
 	//hist->SetStats(0);
+	gStyle->SetOptStat(2210);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -165,8 +166,8 @@ void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string tit
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
 		fit->SetLineColor(kBlack);
 		fit->SetLineColor(i+1); 
-			graphs.at(i)->SetMarkerColor(i+1);
-			graphs.at(i)->SetLineColor(i+1);
+		graphs.at(i)->SetMarkerColor(i+1);
+		graphs.at(i)->SetLineColor(i+1);
 		if(i==0) graphs.at(i)->Draw("AP");
 		else {
 
@@ -228,6 +229,56 @@ void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::st
 
 }
 
+void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *graph2, std::string name1, std::string name2, std::string title, std::string axisTitle, std::string fname, double lo, double hi) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graph1->SetTitle(title.c_str());
+	graph1->GetXaxis()->SetTitleSize(.04);
+	graph1->GetYaxis()->SetTitleSize(.04);
+	graph1->GetXaxis()->SetTitleOffset(1.1);
+	graph1->GetYaxis()->SetTitleOffset(1.1);
+	graph1->GetXaxis()->CenterTitle(true);
+	graph1->GetYaxis()->CenterTitle(true);
+	graph1->GetYaxis()->SetMaxDigits(4);
+	graph1->SetMarkerStyle(20); //  Full circle
+	graph1->Draw("AP");
+	graph2->SetMarkerStyle(24); // Open circle
+	graph2->Draw("P same");
+
+	TLegend *l = new TLegend(0.69,0.69,0.89,0.89);
+	graph1->SetName(name1.c_str());
+	graph2->SetName(name2.c_str());
+	gPad->Update();
+	l->SetBorderSize(0);
+	l->AddEntry(graph1,name1.c_str());
+	l->AddEntry(graph2,name2.c_str());
+	l->Draw("same");
+
+	gPad->Update();
+
+	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),lo,hi,510,"-");
+	axis->SetTitle(axisTitle.c_str());
+	axis->SetTitleOffset(1.1);
+	axis->CenterTitle(true);
+	axis->SetTextFont(42);
+	axis->SetLabelFont(42);
+	axis->SetTextColor(kRed);
+	axis->SetLabelColor(kRed);
+	axis->SetLineColor(kRed);
+	axis->Draw("same");
+
+	//c->SetGridx();
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
 void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);

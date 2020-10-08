@@ -77,6 +77,10 @@ int main() {
 		double meanY = posHistStack->ProjectionY()->GetMean();
 		double meanYErr = posHistStack->ProjectionY()->GetMeanError();
 
+		//cout<<ctag<<endl;
+		if(ctag > 0.47e6 && ctag < 0.53e6) cout<<"\nSub-run at "<<ctag<<" CTAGS:\t"<<subruns<<endl;
+		if(ctag > 13.24e6 && ctag < 13.28e6) cout<<"Sub-run at "<<ctag<<" CTAGS:\t"<<subruns<<endl;
+
 		// Append them into arrays
 		x[subruns] = ctag;
 		y[subruns] = meanY; 
@@ -120,6 +124,8 @@ int main() {
 	output->Write();
 
 	cout<<"Written:\t"<<outName<<endl;
+
+
 
 	return 0;
 }
