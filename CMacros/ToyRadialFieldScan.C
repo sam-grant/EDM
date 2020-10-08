@@ -294,9 +294,7 @@ tuple<double, double> GetRadialField(int i_experiment, int i_subrun) {
 		// std::cout<<"True Br:\t"<<BR_APP[i_field]-BR_RES<<" ppm"<<std::endl;
 
 		// The real Br includes contributions from the surface coils and the background
-
-		// NOT SURE ABOUT THIS AND IT'S CRITICAL!!!!!
-		double Br_meas = BR_APP[i_field]-BR_BKG;
+		double Br_meas = BR_APP[i_field]+BR_BKG;
 
 		// Average vertical position
 		double y[N_QHV];
@@ -438,8 +436,8 @@ int main() {
 	
 	DrawTGraphErrorsDoubleXAxis(dBr_vs_N_ctag, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N",subrun_lo,subrun_hi);
 	DrawTGraphErrorsDoubleXAxisOverlay(dBr_vs_N_ctag, BrResRMS_vs_N_ctag, "Fits", "Truth", ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/dBr_vs_N_overlay",subrun_lo,subrun_hi);
-	DrawTGraphErrors(BrRes_vs_N_ctag, ";CTAGs;Meas #minus true B_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBrRes_vs_N");
-	DrawTGraphErrors(BrResRMS_vs_N_ctag, ";CTAGs;RMS of meas #minus true B_{r} [ppm]", "../Images/MC/ToyRadialFieldScan/dBrResRMS_vs_N");
+	DrawTGraphErrorsDoubleXAxis(BrRes_vs_N_ctag, ";CTAGs;Meas #minus true B_{r} [ppm]", "Sub-runs","../Images/MC/ToyRadialFieldScan/dBrRes_vs_N",subrun_lo,subrun_hi);
+	DrawTGraphErrorsDoubleXAxis(BrResRMS_vs_N_ctag, ";CTAGs;RMS of meas #minus true B_{r} [ppm]", "Sub-runs","../Images/MC/ToyRadialFieldScan/dBrResRMS_vs_N",subrun_lo,subrun_hi);
 
 	return 0; 
 
