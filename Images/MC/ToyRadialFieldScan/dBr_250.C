@@ -1,7 +1,7 @@
 void dBr_250()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 09:35:43 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 18:33:05 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,36 +10,41 @@ void dBr_250()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__19 = new TH1D("__19","Number of sub-runs: 250",300,0,3);
-   __19->SetBinContent(49,1);
-   __19->SetBinContent(50,3);
-   __19->SetBinContent(51,77);
-   __19->SetBinContent(52,218);
-   __19->SetBinContent(53,297);
-   __19->SetBinContent(54,258);
-   __19->SetBinContent(55,113);
-   __19->SetBinContent(56,27);
-   __19->SetBinContent(57,4);
-   __19->SetBinContent(58,2);
-   __19->SetEntries(1000);
-   __19->SetLineWidth(3);
-   __19->GetXaxis()->SetTitle("Background #deltaB_{r} [ppm]");
-   __19->GetXaxis()->CenterTitle(true);
-   __19->GetXaxis()->SetLabelFont(42);
-   __19->GetXaxis()->SetTitleSize(0.04);
-   __19->GetXaxis()->SetTitleOffset(1.1);
-   __19->GetXaxis()->SetTitleFont(42);
-   __19->GetYaxis()->SetTitle("Experiments");
-   __19->GetYaxis()->CenterTitle(true);
-   __19->GetYaxis()->SetNdivisions(4000510);
-   __19->GetYaxis()->SetLabelFont(42);
-   __19->GetYaxis()->SetTitleSize(0.04);
-   __19->GetYaxis()->SetTitleOffset(1.1);
-   __19->GetYaxis()->SetTitleFont(42);
-   __19->GetZaxis()->SetLabelFont(42);
-   __19->GetZaxis()->SetTitleOffset(1);
-   __19->GetZaxis()->SetTitleFont(42);
-   __19->Draw("HIST");
+   TH1D *__29 = new TH1D("__29","Number of sub-runs: 250",1000,0,4);
+   __29->SetBinContent(103,1);
+   __29->SetBinContent(104,1);
+   __29->SetBinContent(105,14);
+   __29->SetBinContent(106,33);
+   __29->SetBinContent(107,76);
+   __29->SetBinContent(108,142);
+   __29->SetBinContent(109,185);
+   __29->SetBinContent(110,192);
+   __29->SetBinContent(111,157);
+   __29->SetBinContent(112,101);
+   __29->SetBinContent(113,57);
+   __29->SetBinContent(114,26);
+   __29->SetBinContent(115,12);
+   __29->SetBinContent(116,2);
+   __29->SetBinContent(117,1);
+   __29->SetEntries(1000);
+   __29->SetLineWidth(3);
+   __29->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");
+   __29->GetXaxis()->CenterTitle(true);
+   __29->GetXaxis()->SetLabelFont(42);
+   __29->GetXaxis()->SetTitleSize(0.04);
+   __29->GetXaxis()->SetTitleOffset(1.1);
+   __29->GetXaxis()->SetTitleFont(42);
+   __29->GetYaxis()->SetTitle("Experiments");
+   __29->GetYaxis()->CenterTitle(true);
+   __29->GetYaxis()->SetNdivisions(4000510);
+   __29->GetYaxis()->SetLabelFont(42);
+   __29->GetYaxis()->SetTitleSize(0.04);
+   __29->GetYaxis()->SetTitleOffset(1.1);
+   __29->GetYaxis()->SetTitleFont(42);
+   __29->GetZaxis()->SetLabelFont(42);
+   __29->GetZaxis()->SetTitleOffset(1);
+   __29->GetZaxis()->SetTitleFont(42);
+   __29->Draw("HIST");
    c->Modified();
    c->cd();
    c->SetSelected(c);

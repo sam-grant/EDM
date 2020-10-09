@@ -1,7 +1,7 @@
 void dBr_325()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 09:35:46 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 18:33:09 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,33 +10,37 @@ void dBr_325()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__25 = new TH1D("__25","Number of sub-runs: 325",300,0,3);
-   __25->SetBinContent(44,6);
-   __25->SetBinContent(45,82);
-   __25->SetBinContent(46,335);
-   __25->SetBinContent(47,371);
-   __25->SetBinContent(48,177);
-   __25->SetBinContent(49,24);
-   __25->SetBinContent(50,5);
-   __25->SetEntries(1000);
-   __25->SetLineWidth(3);
-   __25->GetXaxis()->SetTitle("Background #deltaB_{r} [ppm]");
-   __25->GetXaxis()->CenterTitle(true);
-   __25->GetXaxis()->SetLabelFont(42);
-   __25->GetXaxis()->SetTitleSize(0.04);
-   __25->GetXaxis()->SetTitleOffset(1.1);
-   __25->GetXaxis()->SetTitleFont(42);
-   __25->GetYaxis()->SetTitle("Experiments");
-   __25->GetYaxis()->CenterTitle(true);
-   __25->GetYaxis()->SetNdivisions(4000510);
-   __25->GetYaxis()->SetLabelFont(42);
-   __25->GetYaxis()->SetTitleSize(0.04);
-   __25->GetYaxis()->SetTitleOffset(1.1);
-   __25->GetYaxis()->SetTitleFont(42);
-   __25->GetZaxis()->SetLabelFont(42);
-   __25->GetZaxis()->SetTitleOffset(1);
-   __25->GetZaxis()->SetTitleFont(42);
-   __25->Draw("HIST");
+   TH1D *__38 = new TH1D("__38","Number of sub-runs: 325",1000,0,4);
+   __38->SetBinContent(92,8);
+   __38->SetBinContent(93,22);
+   __38->SetBinContent(94,88);
+   __38->SetBinContent(95,168);
+   __38->SetBinContent(96,219);
+   __38->SetBinContent(97,216);
+   __38->SetBinContent(98,182);
+   __38->SetBinContent(99,68);
+   __38->SetBinContent(100,20);
+   __38->SetBinContent(101,8);
+   __38->SetBinContent(102,1);
+   __38->SetEntries(1000);
+   __38->SetLineWidth(3);
+   __38->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");
+   __38->GetXaxis()->CenterTitle(true);
+   __38->GetXaxis()->SetLabelFont(42);
+   __38->GetXaxis()->SetTitleSize(0.04);
+   __38->GetXaxis()->SetTitleOffset(1.1);
+   __38->GetXaxis()->SetTitleFont(42);
+   __38->GetYaxis()->SetTitle("Experiments");
+   __38->GetYaxis()->CenterTitle(true);
+   __38->GetYaxis()->SetNdivisions(4000510);
+   __38->GetYaxis()->SetLabelFont(42);
+   __38->GetYaxis()->SetTitleSize(0.04);
+   __38->GetYaxis()->SetTitleOffset(1.1);
+   __38->GetYaxis()->SetTitleFont(42);
+   __38->GetZaxis()->SetLabelFont(42);
+   __38->GetZaxis()->SetTitleOffset(1);
+   __38->GetZaxis()->SetTitleFont(42);
+   __38->Draw("HIST");
    c->Modified();
    c->cd();
    c->SetSelected(c);

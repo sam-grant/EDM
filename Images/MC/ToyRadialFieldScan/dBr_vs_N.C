@@ -1,10 +1,10 @@
 void dBr_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 09:35:46 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 18:33:09 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1195850,0.1615882,1.486271e+07,1.963345);
+   c->Range(-1195850,0.1340888,1.486271e+07,1.631753);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void dBr_vs_N()
    1.154995e+07,
    1.251354e+07};
    Double_t Fits_fy1131[13] = {
-   1.659195,
-   1.176765,
-   0.9590596,
-   0.8367675,
-   0.7482169,
-   0.6824814,
-   0.6310478,
-   0.5905235,
-   0.5560436,
-   0.526984,
-   0.5035773,
-   0.4822773,
-   0.4621821};
+   1.379523,
+   0.9748765,
+   0.7985805,
+   0.6942673,
+   0.6215311,
+   0.5653571,
+   0.5232692,
+   0.4897627,
+   0.461958,
+   0.4371722,
+   0.4172945,
+   0.3998759,
+   0.3839065};
    Double_t Fits_fex1131[13] = {
    0,
    0,
@@ -54,19 +54,19 @@ void dBr_vs_N()
    0,
    0};
    Double_t Fits_fey1131[13] = {
-   0.003857036,
-   0.001985079,
-   0.001267287,
-   0.0009748052,
-   0.0008034981,
-   0.0006639253,
-   0.0005446472,
-   0.0004742235,
-   0.0004337016,
-   0.0003925233,
-   0.000350129,
-   0.0003108033,
-   0.0003009887};
+   0.002619085,
+   0.00133632,
+   0.0008751913,
+   0.0006847359,
+   0.0005304042,
+   0.0004597602,
+   0.000394157,
+   0.0003385967,
+   0.0002982266,
+   0.0002583972,
+   0.0002434512,
+   0.0002243629,
+   0.0002070887};
    TGraphErrors *gre = new TGraphErrors(13,Fits_fx1131,Fits_fy1131,Fits_fex1131,Fits_fey1131);
    gre->SetName("Fits");
    gre->SetTitle(";CTAGs;#deltaB_{r} [ppm]");
@@ -74,8 +74,8 @@ void dBr_vs_N()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Fits1131 = new TH1F("Graph_Fits1131","",100,0,1.366686e+07);
-   Graph_Fits1131->SetMinimum(0.341764);
-   Graph_Fits1131->SetMaximum(1.78317);
+   Graph_Fits1131->SetMinimum(0.2838552);
+   Graph_Fits1131->SetMaximum(1.481986);
    Graph_Fits1131->SetDirectory(0);
    Graph_Fits1131->SetStats(0);
 
@@ -103,7 +103,7 @@ void dBr_vs_N()
    gre->SetHistogram(Graph_Fits1131);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(410005.7,1.78317,1.325685e+07,1.78317,14,345,510,"-");
+   TGaxis *gaxis = new TGaxis(410005.7,1.481986,1.325685e+07,1.481986,14,345,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);
