@@ -1,7 +1,7 @@
 void dBr_275()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct  8 17:32:51 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 09:35:44 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,15 +11,13 @@ void dBr_275()
    c->SetFrameBorderMode(0);
    
    TH1D *__21 = new TH1D("__21","Number of sub-runs: 275",300,0,3);
-   __21->SetBinContent(0,497);
-   __21->SetBinContent(47,2);
-   __21->SetBinContent(48,8);
-   __21->SetBinContent(49,50);
-   __21->SetBinContent(50,125);
-   __21->SetBinContent(51,172);
-   __21->SetBinContent(52,110);
-   __21->SetBinContent(53,29);
-   __21->SetBinContent(54,6);
+   __21->SetBinContent(48,16);
+   __21->SetBinContent(49,88);
+   __21->SetBinContent(50,285);
+   __21->SetBinContent(51,317);
+   __21->SetBinContent(52,223);
+   __21->SetBinContent(53,66);
+   __21->SetBinContent(54,4);
    __21->SetBinContent(55,1);
    __21->SetEntries(1000);
    __21->SetLineWidth(3);

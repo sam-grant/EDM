@@ -1,10 +1,10 @@
 void QuadScans_NSUBRUN_50_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct  8 17:32:42 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 09:35:34 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(14.91429,-3.625,21.77143,2.625);
+   c->Range(14.91429,-3.125,21.77143,3.125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,8 +16,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    16,
    20};
    Double_t -30.000000 ppm_fy1011[2] = {
-   -1.900731,
-   -1.49937};
+   -2.363712,
+   -1.917586};
    Double_t -30.000000 ppm_fex1011[2] = {
    0,
    0};
@@ -30,8 +30,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    gre->SetFillStyle(1000);
    
    TH1F *Graph_mI30dO000000sPppm1011 = new TH1F("Graph_mI30dO000000sPppm1011","",100,15.6,20.4);
-   Graph_mI30dO000000sPppm1011->SetMinimum(-3);
-   Graph_mI30dO000000sPppm1011->SetMaximum(2);
+   Graph_mI30dO000000sPppm1011->SetMinimum(-2.5);
+   Graph_mI30dO000000sPppm1011->SetMaximum(2.5);
    Graph_mI30dO000000sPppm1011->SetDirectory(0);
    Graph_mI30dO000000sPppm1011->SetStats(0);
 
@@ -62,17 +62,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1012->SetFillColor(19);
    quadLineFit1012->SetFillStyle(0);
    quadLineFit1012->SetLineWidth(2);
-   quadLineFit1012->SetChisquare(1.259834e-20);
+   quadLineFit1012->SetChisquare(2.061644e-19);
    quadLineFit1012->SetNDF(0);
    quadLineFit1012->GetXaxis()->SetLabelFont(42);
    quadLineFit1012->GetXaxis()->SetTitleOffset(1);
    quadLineFit1012->GetXaxis()->SetTitleFont(42);
    quadLineFit1012->GetYaxis()->SetLabelFont(42);
    quadLineFit1012->GetYaxis()->SetTitleFont(42);
-   quadLineFit1012->SetParameter(0,-3.506174);
+   quadLineFit1012->SetParameter(0,-4.148214);
    quadLineFit1012->SetParError(0,0.1328027);
    quadLineFit1012->SetParLimits(0,0,0);
-   quadLineFit1012->SetParameter(1,0.1003402);
+   quadLineFit1012->SetParameter(1,0.1115314);
    quadLineFit1012->SetParError(1,0.007332801);
    quadLineFit1012->SetParLimits(1,0,0);
    quadLineFit1012->SetParent(gre);
@@ -83,17 +83,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1013->SetFillColor(19);
    quadLineFit1013->SetFillStyle(0);
    quadLineFit1013->SetLineWidth(2);
-   quadLineFit1013->SetChisquare(1.259834e-20);
+   quadLineFit1013->SetChisquare(2.061644e-19);
    quadLineFit1013->SetNDF(0);
    quadLineFit1013->GetXaxis()->SetLabelFont(42);
    quadLineFit1013->GetXaxis()->SetTitleOffset(1);
    quadLineFit1013->GetXaxis()->SetTitleFont(42);
    quadLineFit1013->GetYaxis()->SetLabelFont(42);
    quadLineFit1013->GetYaxis()->SetTitleFont(42);
-   quadLineFit1013->SetParameter(0,-3.506174);
+   quadLineFit1013->SetParameter(0,-4.148214);
    quadLineFit1013->SetParError(0,0.1328027);
    quadLineFit1013->SetParLimits(0,0,0);
-   quadLineFit1013->SetParameter(1,0.1003402);
+   quadLineFit1013->SetParameter(1,0.1115314);
    quadLineFit1013->SetParError(1,0.007332801);
    quadLineFit1013->SetParLimits(1,0,0);
    quadLineFit1013->Draw("same");
@@ -102,8 +102,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    16,
    20};
    Double_t -10.000000 ppm_fy1013[2] = {
-   -0.6207766,
-   -0.4683948};
+   -1.145382,
+   -0.9176299};
    Double_t -10.000000 ppm_fex1013[2] = {
    0,
    0};
@@ -118,8 +118,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    gre->SetMarkerColor(2);
    
    TH1F *Graph_mI10dO000000sPppm1013 = new TH1F("Graph_mI10dO000000sPppm1013","Graph",100,15.6,20.4);
-   Graph_mI10dO000000sPppm1013->SetMinimum(-0.6609031);
-   Graph_mI10dO000000sPppm1013->SetMaximum(-0.4282682);
+   Graph_mI10dO000000sPppm1013->SetMinimum(-1.193045);
+   Graph_mI10dO000000sPppm1013->SetMaximum(-0.8699664);
    Graph_mI10dO000000sPppm1013->SetDirectory(0);
    Graph_mI10dO000000sPppm1013->SetStats(0);
 
@@ -141,17 +141,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1014->SetFillStyle(0);
    quadLineFit1014->SetLineColor(2);
    quadLineFit1014->SetLineWidth(2);
-   quadLineFit1014->SetChisquare(5.837665e-21);
+   quadLineFit1014->SetChisquare(2.505308e-21);
    quadLineFit1014->SetNDF(0);
    quadLineFit1014->GetXaxis()->SetLabelFont(42);
    quadLineFit1014->GetXaxis()->SetTitleOffset(1);
    quadLineFit1014->GetXaxis()->SetTitleFont(42);
    quadLineFit1014->GetYaxis()->SetLabelFont(42);
    quadLineFit1014->GetYaxis()->SetTitleFont(42);
-   quadLineFit1014->SetParameter(0,-1.230304);
+   quadLineFit1014->SetParameter(0,-2.056388);
    quadLineFit1014->SetParError(0,0.1328027);
    quadLineFit1014->SetParLimits(0,0,0);
-   quadLineFit1014->SetParameter(1,0.03809545);
+   quadLineFit1014->SetParameter(1,0.05693793);
    quadLineFit1014->SetParError(1,0.007332801);
    quadLineFit1014->SetParLimits(1,0,0);
    quadLineFit1014->SetParent(gre);
@@ -163,17 +163,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1015->SetFillStyle(0);
    quadLineFit1015->SetLineColor(2);
    quadLineFit1015->SetLineWidth(2);
-   quadLineFit1015->SetChisquare(5.837665e-21);
+   quadLineFit1015->SetChisquare(2.505308e-21);
    quadLineFit1015->SetNDF(0);
    quadLineFit1015->GetXaxis()->SetLabelFont(42);
    quadLineFit1015->GetXaxis()->SetTitleOffset(1);
    quadLineFit1015->GetXaxis()->SetTitleFont(42);
    quadLineFit1015->GetYaxis()->SetLabelFont(42);
    quadLineFit1015->GetYaxis()->SetTitleFont(42);
-   quadLineFit1015->SetParameter(0,-1.230304);
+   quadLineFit1015->SetParameter(0,-2.056388);
    quadLineFit1015->SetParError(0,0.1328027);
    quadLineFit1015->SetParLimits(0,0,0);
-   quadLineFit1015->SetParameter(1,0.03809545);
+   quadLineFit1015->SetParameter(1,0.05693793);
    quadLineFit1015->SetParError(1,0.007332801);
    quadLineFit1015->SetParLimits(1,0,0);
    quadLineFit1015->Draw("same");
@@ -182,8 +182,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    16,
    20};
    Double_t 10.000000 ppm_fy1015[2] = {
-   0.6131207,
-   0.4863696};
+   0.1273535,
+   0.1318607};
    Double_t 10.000000 ppm_fex1015[2] = {
    0,
    0};
@@ -198,8 +198,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    gre->SetMarkerColor(3);
    
    TH1F *Graph_10dO000000sPppm1015 = new TH1F("Graph_10dO000000sPppm1015","Graph",100,15.6,20.4);
-   Graph_10dO000000sPppm1015->SetMinimum(0.4488062);
-   Graph_10dO000000sPppm1015->SetMaximum(0.6506841);
+   Graph_10dO000000sPppm1015->SetMinimum(0.1020145);
+   Graph_10dO000000sPppm1015->SetMaximum(0.1571997);
    Graph_10dO000000sPppm1015->SetDirectory(0);
    Graph_10dO000000sPppm1015->SetStats(0);
 
@@ -221,17 +221,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1016->SetFillStyle(0);
    quadLineFit1016->SetLineColor(3);
    quadLineFit1016->SetLineWidth(2);
-   quadLineFit1016->SetChisquare(1.301215e-23);
+   quadLineFit1016->SetChisquare(4.92315e-24);
    quadLineFit1016->SetNDF(0);
    quadLineFit1016->GetXaxis()->SetLabelFont(42);
    quadLineFit1016->GetXaxis()->SetTitleOffset(1);
    quadLineFit1016->GetXaxis()->SetTitleFont(42);
    quadLineFit1016->GetYaxis()->SetLabelFont(42);
    quadLineFit1016->GetYaxis()->SetTitleFont(42);
-   quadLineFit1016->SetParameter(0,1.120125);
+   quadLineFit1016->SetParameter(0,0.1093251);
    quadLineFit1016->SetParError(0,0.1328027);
    quadLineFit1016->SetParLimits(0,0,0);
-   quadLineFit1016->SetParameter(1,-0.03168775);
+   quadLineFit1016->SetParameter(1,0.00112678);
    quadLineFit1016->SetParError(1,0.007332801);
    quadLineFit1016->SetParLimits(1,0,0);
    quadLineFit1016->SetParent(gre);
@@ -243,17 +243,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1017->SetFillStyle(0);
    quadLineFit1017->SetLineColor(3);
    quadLineFit1017->SetLineWidth(2);
-   quadLineFit1017->SetChisquare(1.301215e-23);
+   quadLineFit1017->SetChisquare(4.92315e-24);
    quadLineFit1017->SetNDF(0);
    quadLineFit1017->GetXaxis()->SetLabelFont(42);
    quadLineFit1017->GetXaxis()->SetTitleOffset(1);
    quadLineFit1017->GetXaxis()->SetTitleFont(42);
    quadLineFit1017->GetYaxis()->SetLabelFont(42);
    quadLineFit1017->GetYaxis()->SetTitleFont(42);
-   quadLineFit1017->SetParameter(0,1.120125);
+   quadLineFit1017->SetParameter(0,0.1093251);
    quadLineFit1017->SetParError(0,0.1328027);
    quadLineFit1017->SetParLimits(0,0,0);
-   quadLineFit1017->SetParameter(1,-0.03168775);
+   quadLineFit1017->SetParameter(1,0.00112678);
    quadLineFit1017->SetParError(1,0.007332801);
    quadLineFit1017->SetParLimits(1,0,0);
    quadLineFit1017->Draw("same");
@@ -262,8 +262,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    16,
    20};
    Double_t 30.000000 ppm_fy1017[2] = {
-   1.910842,
-   1.525406};
+   1.413848,
+   1.078041};
    Double_t 30.000000 ppm_fex1017[2] = {
    0,
    0};
@@ -278,8 +278,8 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    gre->SetMarkerColor(4);
    
    TH1F *Graph_30dO000000sPppm1017 = new TH1F("Graph_30dO000000sPppm1017","Graph",100,15.6,20.4);
-   Graph_30dO000000sPppm1017->SetMinimum(1.461974);
-   Graph_30dO000000sPppm1017->SetMaximum(1.974274);
+   Graph_30dO000000sPppm1017->SetMinimum(1.019572);
+   Graph_30dO000000sPppm1017->SetMaximum(1.472317);
    Graph_30dO000000sPppm1017->SetDirectory(0);
    Graph_30dO000000sPppm1017->SetStats(0);
 
@@ -301,17 +301,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1018->SetFillStyle(0);
    quadLineFit1018->SetLineColor(4);
    quadLineFit1018->SetLineWidth(2);
-   quadLineFit1018->SetChisquare(1.670467e-20);
+   quadLineFit1018->SetChisquare(3.178928e-19);
    quadLineFit1018->SetNDF(0);
    quadLineFit1018->GetXaxis()->SetLabelFont(42);
    quadLineFit1018->GetXaxis()->SetTitleOffset(1);
    quadLineFit1018->GetXaxis()->SetTitleFont(42);
    quadLineFit1018->GetYaxis()->SetLabelFont(42);
    quadLineFit1018->GetYaxis()->SetTitleFont(42);
-   quadLineFit1018->SetParameter(0,3.452588);
+   quadLineFit1018->SetParameter(0,2.757074);
    quadLineFit1018->SetParError(0,0.1328027);
    quadLineFit1018->SetParLimits(0,0,0);
-   quadLineFit1018->SetParameter(1,-0.09635908);
+   quadLineFit1018->SetParameter(1,-0.08395164);
    quadLineFit1018->SetParError(1,0.007332801);
    quadLineFit1018->SetParLimits(1,0,0);
    quadLineFit1018->SetParent(gre);
@@ -323,17 +323,17 @@ void QuadScans_NSUBRUN_50_NEXP_0()
    quadLineFit1019->SetFillStyle(0);
    quadLineFit1019->SetLineColor(4);
    quadLineFit1019->SetLineWidth(2);
-   quadLineFit1019->SetChisquare(1.670467e-20);
+   quadLineFit1019->SetChisquare(3.178928e-19);
    quadLineFit1019->SetNDF(0);
    quadLineFit1019->GetXaxis()->SetLabelFont(42);
    quadLineFit1019->GetXaxis()->SetTitleOffset(1);
    quadLineFit1019->GetXaxis()->SetTitleFont(42);
    quadLineFit1019->GetYaxis()->SetLabelFont(42);
    quadLineFit1019->GetYaxis()->SetTitleFont(42);
-   quadLineFit1019->SetParameter(0,3.452588);
+   quadLineFit1019->SetParameter(0,2.757074);
    quadLineFit1019->SetParError(0,0.1328027);
    quadLineFit1019->SetParLimits(0,0,0);
-   quadLineFit1019->SetParameter(1,-0.09635908);
+   quadLineFit1019->SetParameter(1,-0.08395164);
    quadLineFit1019->SetParError(1,0.007332801);
    quadLineFit1019->SetParLimits(1,0,0);
    quadLineFit1019->Draw("same");

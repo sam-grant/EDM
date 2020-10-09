@@ -27,7 +27,7 @@ using namespace std;
 // ==================== GLOBALS ====================
 const int N_QHV = 2;
 const int N_FIELD = 4;
-const double BR_BKG = 0; // ppm, the size of the field that would kill our measurement
+const double BR_BKG = 8; // ppm, the size of the field that would kill our measurement
 const int N_EXP = 1e3;
 const double QHV[N_QHV] = {16, 20}; // Two quad settings, kV
 const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
@@ -294,7 +294,8 @@ tuple<double, double> GetRadialField(int i_experiment, int i_subrun) {
 		// std::cout<<"True Br:\t"<<BR_APP[i_field]-BR_RES<<" ppm"<<std::endl;
 
 		// The real Br includes contributions from the surface coils and the background
-		double Br_meas = BR_APP[i_field]+BR_BKG;
+		// If you add the two fields together, you get a negative radial field out 
+		double Br_meas = BR_APP[i_field]-BR_BKG;
 
 		// Average vertical position
 		double y[N_QHV];
@@ -341,7 +342,7 @@ tuple<double, double> GetRadialField(int i_experiment, int i_subrun) {
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 
-		DrawQuadScanFits(QuadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-3,2);
+		DrawQuadScanFits(QuadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-2.5,2.5);
 		DrawRadialFieldLineFit(quadGrads_vs_BrApp,"fieldLineFit", "Sub-runs "+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/Result_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment));
 	}
 
@@ -367,6 +368,7 @@ int main() {
 	double y_dBr[N_SUBRUNS];
 	double ey_dBr[N_SUBRUNS];
 	double y_BrRes[N_SUBRUNS];
+	double ey_BrRes[N_SUBRUNS];
 	double y_BrResRMS[N_SUBRUNS];
 	double ey_BrResRMS[N_SUBRUNS];
 
@@ -378,7 +380,7 @@ int main() {
 
 		// Book histogram for each sub-run 
 		TH1D *dBr = new TH1D("","dBr",300,0,3);
-		TH1D *dBr_res = new TH1D("","dBr_res",400,-2,2);
+		TH1D *dBr_res = new TH1D("","dBr_res",1000,-5,5);
 
 
 		for ( int i_exp = 0; i_exp < N_EXP; i_exp++ ) {
@@ -406,6 +408,7 @@ int main() {
 		y_dBr[i_subrun] = dBr->GetMean();
 		ey_dBr[i_subrun] = dBr->GetMeanError();
 		y_BrRes[i_subrun] = dBr_res->GetMean();
+		ey_BrRes[i_subrun] = dBr_res->GetMeanError();
 		y_BrResRMS[i_subrun] = dBr_res->GetRMS();
 		ey_BrResRMS[i_subrun] = dBr_res->GetRMSError();
 		// Get residual
@@ -414,13 +417,12 @@ int main() {
 	}
 
 	TGraphErrors *dBr_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_dBr,zeros,ey_dBr);
-
-	
 	TGraphErrors *dBr_vs_N_subrun = new TGraphErrors(N_SUBRUNS,x_subrun,y_dBr,zeros,ey_dBr);
-
-	TGraphErrors *BrRes_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_BrRes,zeros,y_BrResRMS);
+	TGraphErrors *BrRes_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_BrRes,zeros,ey_BrRes);
 	TGraphErrors *BrResRMS_vs_N_ctag = new TGraphErrors(N_SUBRUNS,x_ctag,y_BrResRMS,zeros,ey_BrResRMS);
 
+
+	//DrawTH1(dBr_res,";;Experiments")
 
 
 	// These must be hard coded, otherwise the axes won't line up 

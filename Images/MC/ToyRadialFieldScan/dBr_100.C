@@ -1,7 +1,7 @@
 void dBr_100()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct  8 17:32:45 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 09:35:37 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,27 +11,29 @@ void dBr_100()
    c->SetFrameBorderMode(0);
    
    TH1D *__7 = new TH1D("__7","Number of sub-runs: 100",300,0,3);
-   __7->SetBinContent(0,480);
+   __7->SetBinContent(74,1);
    __7->SetBinContent(75,1);
-   __7->SetBinContent(76,1);
-   __7->SetBinContent(77,1);
-   __7->SetBinContent(78,5);
-   __7->SetBinContent(79,15);
-   __7->SetBinContent(80,26);
-   __7->SetBinContent(81,35);
-   __7->SetBinContent(82,52);
-   __7->SetBinContent(83,62);
-   __7->SetBinContent(84,76);
-   __7->SetBinContent(85,74);
-   __7->SetBinContent(86,55);
-   __7->SetBinContent(87,42);
-   __7->SetBinContent(88,20);
-   __7->SetBinContent(89,20);
-   __7->SetBinContent(90,14);
-   __7->SetBinContent(91,10);
-   __7->SetBinContent(92,5);
-   __7->SetBinContent(93,3);
-   __7->SetBinContent(94,3);
+   __7->SetBinContent(76,4);
+   __7->SetBinContent(77,5);
+   __7->SetBinContent(78,18);
+   __7->SetBinContent(79,29);
+   __7->SetBinContent(80,51);
+   __7->SetBinContent(81,80);
+   __7->SetBinContent(82,101);
+   __7->SetBinContent(83,117);
+   __7->SetBinContent(84,149);
+   __7->SetBinContent(85,123);
+   __7->SetBinContent(86,106);
+   __7->SetBinContent(87,71);
+   __7->SetBinContent(88,58);
+   __7->SetBinContent(89,40);
+   __7->SetBinContent(90,20);
+   __7->SetBinContent(91,18);
+   __7->SetBinContent(92,2);
+   __7->SetBinContent(93,2);
+   __7->SetBinContent(94,2);
+   __7->SetBinContent(95,1);
+   __7->SetBinContent(97,1);
    __7->SetEntries(1000);
    __7->SetLineWidth(3);
    __7->GetXaxis()->SetTitle("Background #deltaB_{r} [ppm]");
