@@ -1,7 +1,7 @@
 void dBr_300()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 18:33:07 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 19:09:44 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,18 +11,18 @@ void dBr_300()
    c->SetFrameBorderMode(0);
    
    TH1D *__35 = new TH1D("__35","Number of sub-runs: 300",1000,0,4);
-   __35->SetBinContent(95,3);
-   __35->SetBinContent(96,5);
+   __35->SetBinContent(95,2);
+   __35->SetBinContent(96,9);
    __35->SetBinContent(97,36);
-   __35->SetBinContent(98,92);
-   __35->SetBinContent(99,158);
-   __35->SetBinContent(100,214);
-   __35->SetBinContent(101,222);
-   __35->SetBinContent(102,148);
-   __35->SetBinContent(103,79);
-   __35->SetBinContent(104,26);
-   __35->SetBinContent(105,14);
-   __35->SetBinContent(106,3);
+   __35->SetBinContent(98,87);
+   __35->SetBinContent(99,175);
+   __35->SetBinContent(100,236);
+   __35->SetBinContent(101,207);
+   __35->SetBinContent(102,129);
+   __35->SetBinContent(103,82);
+   __35->SetBinContent(104,24);
+   __35->SetBinContent(105,12);
+   __35->SetBinContent(106,1);
    __35->SetEntries(1000);
    __35->SetLineWidth(3);
    __35->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");

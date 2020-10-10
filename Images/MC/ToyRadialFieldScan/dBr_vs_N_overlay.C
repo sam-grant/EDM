@@ -1,10 +1,10 @@
 void dBr_vs_N_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 18:33:09 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 19:09:45 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1195850,0.1340888,1.486271e+07,1.631753);
+   c->Range(-1195850,0.1351427,1.486271e+07,1.624291);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void dBr_vs_N_overlay()
    1.154995e+07,
    1.251354e+07};
    Double_t Fits_fy1132[13] = {
-   1.379523,
-   0.9748765,
-   0.7985805,
-   0.6942673,
-   0.6215311,
-   0.5653571,
-   0.5232692,
-   0.4897627,
-   0.461958,
-   0.4371722,
-   0.4172945,
-   0.3998759,
-   0.3839065};
+   1.373291,
+   0.975974,
+   0.7968945,
+   0.6939027,
+   0.6195892,
+   0.5660959,
+   0.5241384,
+   0.4892885,
+   0.4611622,
+   0.4376013,
+   0.417375,
+   0.3994942,
+   0.3835477};
    Double_t Fits_fex1132[13] = {
    0,
    0,
@@ -54,19 +54,19 @@ void dBr_vs_N_overlay()
    0,
    0};
    Double_t Fits_fey1132[13] = {
-   0.002619085,
-   0.00133632,
-   0.0008751913,
-   0.0006847359,
-   0.0005304042,
-   0.0004597602,
-   0.000394157,
-   0.0003385967,
-   0.0002982266,
-   0.0002583972,
-   0.0002434512,
-   0.0002243629,
-   0.0002070887};
+   0.002809036,
+   0.001296789,
+   0.000874301,
+   0.0006385887,
+   0.0005689364,
+   0.0004376881,
+   0.0003764086,
+   0.0003311912,
+   0.0002909647,
+   0.0002683468,
+   0.0002512725,
+   0.0002199563,
+   0.0002136272};
    TGraphErrors *gre = new TGraphErrors(13,Fits_fx1132,Fits_fy1132,Fits_fex1132,Fits_fey1132);
    gre->SetName("Fits");
    gre->SetTitle(";CTAGs;#deltaB_{r} [ppm]");
@@ -74,8 +74,8 @@ void dBr_vs_N_overlay()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Fits1132 = new TH1F("Graph_Fits1132","",100,0,1.366686e+07);
-   Graph_Fits1132->SetMinimum(0.2838552);
-   Graph_Fits1132->SetMaximum(1.481986);
+   Graph_Fits1132->SetMinimum(0.2840575);
+   Graph_Fits1132->SetMaximum(1.475376);
    Graph_Fits1132->SetDirectory(0);
    Graph_Fits1132->SetStats(0);
 
@@ -119,19 +119,19 @@ void dBr_vs_N_overlay()
    1.154995e+07,
    1.251354e+07};
    Double_t Truth_fy1133[13] = {
-   1.456348,
-   1.035781,
-   0.8466198,
-   0.7339232,
-   0.6697203,
-   0.6145993,
-   0.5557322,
-   0.5173576,
-   0.4861609,
-   0.4523336,
-   0.4439485,
-   0.4322913,
-   0.4043285};
+   1.463134,
+   1.002027,
+   0.8387772,
+   0.7084825,
+   0.6738408,
+   0.5961561,
+   0.5494551,
+   0.5251006,
+   0.4984132,
+   0.4685346,
+   0.4509823,
+   0.4098687,
+   0.3921566};
    Double_t Truth_fex1133[13] = {
    0,
    0,
@@ -147,19 +147,19 @@ void dBr_vs_N_overlay()
    0,
    0};
    Double_t Truth_fey1133[13] = {
-   0.03256493,
-   0.02316076,
-   0.01893099,
-   0.01641102,
-   0.0149754,
-   0.01374286,
-   0.01242655,
-   0.01156847,
-   0.01087089,
-   0.01011449,
-   0.00992699,
-   0.009666327,
-   0.00904106};
+   0.03271667,
+   0.02240601,
+   0.01875563,
+   0.01584215,
+   0.01506754,
+   0.01333046,
+   0.01228619,
+   0.01174161,
+   0.01114486,
+   0.01047675,
+   0.01008427,
+   0.009164943,
+   0.008768887};
    gre = new TGraphErrors(13,Truth_fx1133,Truth_fy1133,Truth_fex1133,Truth_fey1133);
    gre->SetName("Truth");
    gre->SetTitle("Graph");
@@ -167,8 +167,8 @@ void dBr_vs_N_overlay()
    gre->SetMarkerStyle(24);
    
    TH1F *Graph_Truth1133 = new TH1F("Graph_Truth1133","Graph",100,0,1.366686e+07);
-   Graph_Truth1133->SetMinimum(0.2859249);
-   Graph_Truth1133->SetMaximum(1.598276);
+   Graph_Truth1133->SetMinimum(0.2721414);
+   Graph_Truth1133->SetMaximum(1.607097);
    Graph_Truth1133->SetDirectory(0);
    Graph_Truth1133->SetStats(0);
 
@@ -212,7 +212,7 @@ void dBr_vs_N_overlay()
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    leg->Draw();
-   TGaxis *gaxis = new TGaxis(410005.7,1.481986,1.325685e+07,1.481986,14,345,510,"-");
+   TGaxis *gaxis = new TGaxis(410005.7,1.475376,1.325685e+07,1.475376,14,345,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

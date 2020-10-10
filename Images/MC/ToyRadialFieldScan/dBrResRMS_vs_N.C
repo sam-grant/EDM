@@ -1,10 +1,10 @@
 void dBrResRMS_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 18:33:09 2020) by ROOT version 6.22/02
+//=========  (Fri Oct  9 19:09:45 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1708357,0.121881,1.537521e+07,1.762319);
+   c->Range(-1708357,0.1052719,1.537521e+07,1.773967);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void dBrResRMS_vs_N()
    1.154995e+07,
    1.251354e+07};
    Double_t Truth_fy1135[13] = {
-   1.456348,
-   1.035781,
-   0.8466198,
-   0.7339232,
-   0.6697203,
-   0.6145993,
-   0.5557322,
-   0.5173576,
-   0.4861609,
-   0.4523336,
-   0.4439485,
-   0.4322913,
-   0.4043285};
+   1.463134,
+   1.002027,
+   0.8387772,
+   0.7084825,
+   0.6738408,
+   0.5961561,
+   0.5494551,
+   0.5251006,
+   0.4984132,
+   0.4685346,
+   0.4509823,
+   0.4098687,
+   0.3921566};
    Double_t Truth_fex1135[13] = {
    0,
    0,
@@ -54,19 +54,19 @@ void dBrResRMS_vs_N()
    0,
    0};
    Double_t Truth_fey1135[13] = {
-   0.03256493,
-   0.02316076,
-   0.01893099,
-   0.01641102,
-   0.0149754,
-   0.01374286,
-   0.01242655,
-   0.01156847,
-   0.01087089,
-   0.01011449,
-   0.00992699,
-   0.009666327,
-   0.00904106};
+   0.03271667,
+   0.02240601,
+   0.01875563,
+   0.01584215,
+   0.01506754,
+   0.01333046,
+   0.01228619,
+   0.01174161,
+   0.01114486,
+   0.01047675,
+   0.01008427,
+   0.009164943,
+   0.008768887};
    TGraphErrors *gre = new TGraphErrors(13,Truth_fx1135,Truth_fy1135,Truth_fex1135,Truth_fey1135);
    gre->SetName("Truth");
    gre->SetTitle(";CTAGs;RMS of meas #minus true B_{r} [ppm]");
@@ -74,8 +74,8 @@ void dBrResRMS_vs_N()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Truth11331135 = new TH1F("Graph_Graph_Truth11331135","",100,0,1.366686e+07);
-   Graph_Graph_Truth11331135->SetMinimum(0.2859249);
-   Graph_Graph_Truth11331135->SetMaximum(1.598276);
+   Graph_Graph_Truth11331135->SetMinimum(0.2721414);
+   Graph_Graph_Truth11331135->SetMaximum(1.607097);
    Graph_Graph_Truth11331135->SetDirectory(0);
    Graph_Graph_Truth11331135->SetStats(0);
 
@@ -102,7 +102,7 @@ void dBrResRMS_vs_N()
    gre->SetHistogram(Graph_Graph_Truth11331135);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,1.598276,1.366686e+07,1.598276,14,345,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.607097,1.366686e+07,1.607097,14,345,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

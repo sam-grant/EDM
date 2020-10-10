@@ -481,6 +481,4 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 	return;
 }
 
-
-
 #endif
