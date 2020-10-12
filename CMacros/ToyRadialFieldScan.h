@@ -21,7 +21,7 @@ using namespace std;
 const int N_QHV = 2;
 const int N_FIELD = 4;
 const double BR_BKG = 8; // ppm, the size of the field that would kill our measurement
-const int N_EXP = 1e3;
+const int N_EXP = 1000;
 const double QHV[N_QHV] = {16, 20}; // Two quad settings, kV
 const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 const int N_SUBRUNS = 13; // Lucky number
@@ -56,8 +56,10 @@ public:
 
 	for (int i_subrun = SUBRUN_INTERVAL; i_subrun <= N_SUBRUNS*SUBRUN_INTERVAL; i_subrun = i_subrun + SUBRUN_INTERVAL) { 
 
+
 		SUBRUNS[counter] = i_subrun; // new int[i_subrun+1]; // new int[i_subrun+1]; //  = ;
 		CTAGS[counter] = CTAG_vs_SUBRUN->GetBinContent(i_subrun+1);
+		//if(i_subrun == 50) SIGMAS[counter] = 0.0247454;
 		SIGMAS[counter] = SIGMA_vs_SUBRUN->GetBinContent(i_subrun+1);
 /*		cout<<"SUBRUN\t:"<<i_subrun<<endl;
 		cout<<"counter\t:"<<counter<<endl;*/
@@ -78,7 +80,7 @@ double yPosition(double Br_tot, double QHV) {
 	double n = 0.108/18.3 * QHV; // // Convert from 60h/EG values
 
 //	cout<<
-	return 7112./n * Br_tot *1e-6 ; // ppm 
+	return 7112./n * Br_tot * 1e-6 ; // ppm 
 
 }
 
@@ -86,30 +88,26 @@ double yPosition(double Br_tot, double QHV) {
 
 
 // Get a random value for the y-poistion based on Gaussian smearing
-double GausSmearing(double yPos, int i_subrun, int seed) {
+/*double GausSmearing(double yPos, int i_subrun, int seed) {
  
  	TRandom3 *rndm = new TRandom3(seed);
  	return rndm->Gaus(yPos,ctags_sigmas_subruns.SIGMAS[i_subrun]);
  
-}
+}*/
 
-double CalcRadialField(TGraphErrors *graph, string func) { 
+double CalcRadialField(TF1 *fit) { 
 
-	TF1 *fit = graph->GetFunction(func.c_str());
 	double c = fit->GetParameter(0);
 	double m = fit->GetParameter(1);
 	double Br = - c / m; // This is why I get a negative intercept
+	//delete fit;
 	return fabs(Br);
 
 }
 
 // double CalcRadialFieldPrecision(TGraphErrors *graph, TFitResultPtr frp, string func) { 
-double CalcRadialFieldPrecision(TGraphErrors *graph, string func) { 
+double CalcRadialFieldPrecision(TF1 *fit, TFitResultPtr fitResult) { // TGraphErrors *graph, string func) { 
 
-	// Get function
-	TF1 *fit = graph->GetFunction(func.c_str());
-	// Horrible that you have to refit
-	TFitResultPtr fitResult = graph->Fit(fit, "SMQ"); // GetFunction(func.c_str());
 	// Get the covarience matrix
 	TMatrixDSym V = fitResult->GetCovarianceMatrix();
 
@@ -126,7 +124,7 @@ double CalcRadialFieldPrecision(TGraphErrors *graph, string func) {
 	double Br =  - c / m;
 
 	// Dervied from Taylor 9.9
-	return fabs(Br) * sqrt( pow(cerr/c, 2) + pow(merr/m, 2) * (2*(cov/(c*m))) );
+	return fabs(Br) * sqrt( pow(cerr/c, 2) + pow(merr/m, 2) * (2*cov)/(c*m) );
 
 
 }
@@ -187,7 +185,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::strin
 
 }
 
-void DrawRadialFieldLineFit(TGraphErrors *graph, string func, std::string title, std::string fname) {
+void DrawRadialFieldLineFit(TGraphErrors *graph, TFitResultPtr fitResult, string func, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -209,7 +207,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, string func, std::string title,
 	double err1 = fit->GetParError(1);
 	// We want to retain the sign here
 	double xint = - par0 / par1; // CalcRadialField(graph, func); // ;
-	double xint_err = CalcRadialFieldPrecision(graph, func); 
+	double xint_err = CalcRadialFieldPrecision(fit, fitResult); 
 
 	TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC");
 	names->SetTextAlign(13);

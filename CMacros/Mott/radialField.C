@@ -26,7 +26,7 @@ void radialField(){
   }
 
   // Uncertainty on each y-measurement (sum of all 24 calorimeters)
-  double sigmaY = 0.0247454; // From Sam's array for ~50 sub-runs
+  double sigmaY = 0.0207403;// 0.0209469;// 0.0247454; // From Sam's array for ~50 sub-runs
 
   // Histograms to store the result (fit - true residual and fit error)
   TH1D* hFitRes = new TH1D("hFitRes", ";Fit - True B_r [ppm]", 1000, -10, 10);

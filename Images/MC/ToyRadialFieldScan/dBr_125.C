@@ -1,7 +1,7 @@
 void dBr_125()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 19:09:36 2020) by ROOT version 6.22/02
+//=========  (Mon Oct 12 12:24:43 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,35 +11,32 @@ void dBr_125()
    c->SetFrameBorderMode(0);
    
    TH1D *__14 = new TH1D("__14","Number of sub-runs: 125",1000,0,4);
-   __14->SetBinContent(142,1);
-   __14->SetBinContent(143,1);
-   __14->SetBinContent(144,4);
-   __14->SetBinContent(145,8);
-   __14->SetBinContent(146,7);
-   __14->SetBinContent(147,16);
-   __14->SetBinContent(148,15);
-   __14->SetBinContent(149,33);
-   __14->SetBinContent(150,44);
-   __14->SetBinContent(151,70);
-   __14->SetBinContent(152,66);
-   __14->SetBinContent(153,83);
-   __14->SetBinContent(154,91);
-   __14->SetBinContent(155,94);
-   __14->SetBinContent(156,85);
-   __14->SetBinContent(157,64);
-   __14->SetBinContent(158,79);
-   __14->SetBinContent(159,57);
-   __14->SetBinContent(160,45);
-   __14->SetBinContent(161,51);
-   __14->SetBinContent(162,24);
+   __14->SetBinContent(141,1);
+   __14->SetBinContent(144,6);
+   __14->SetBinContent(145,2);
+   __14->SetBinContent(146,8);
+   __14->SetBinContent(147,7);
+   __14->SetBinContent(148,24);
+   __14->SetBinContent(149,23);
+   __14->SetBinContent(150,43);
+   __14->SetBinContent(151,56);
+   __14->SetBinContent(152,63);
+   __14->SetBinContent(153,77);
+   __14->SetBinContent(154,103);
+   __14->SetBinContent(155,87);
+   __14->SetBinContent(156,83);
+   __14->SetBinContent(157,98);
+   __14->SetBinContent(158,92);
+   __14->SetBinContent(159,53);
+   __14->SetBinContent(160,56);
+   __14->SetBinContent(161,39);
+   __14->SetBinContent(162,29);
    __14->SetBinContent(163,17);
-   __14->SetBinContent(164,19);
-   __14->SetBinContent(165,15);
-   __14->SetBinContent(166,3);
-   __14->SetBinContent(167,3);
-   __14->SetBinContent(168,2);
+   __14->SetBinContent(164,17);
+   __14->SetBinContent(165,9);
+   __14->SetBinContent(167,2);
+   __14->SetBinContent(168,3);
    __14->SetBinContent(169,1);
-   __14->SetBinContent(170,1);
    __14->SetBinContent(174,1);
    __14->SetEntries(1000);
    __14->SetLineWidth(3);

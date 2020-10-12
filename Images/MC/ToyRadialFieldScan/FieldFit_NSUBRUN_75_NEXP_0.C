@@ -1,10 +1,10 @@
 void FieldFit_NSUBRUN_75_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  9 19:09:33 2020) by ROOT version 6.22/02
+//=========  (Mon Oct 12 12:24:40 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-45,-0.2053121,45,0.1406683);
+   c->Range(-45,-0.2134801,45,0.1495266);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -17,10 +17,10 @@ void FieldFit_NSUBRUN_75_NEXP_0()
    10,
    30};
    Double_t Graph0_fy1029[4] = {
-   0.07700819,
-   0.01337994,
-   -0.08445113,
-   -0.141652};
+   0.0830288,
+   0.006189129,
+   -0.07143006,
+   -0.1469823};
    Double_t Graph0_fex1029[4] = {
    0,
    0,
@@ -38,8 +38,8 @@ void FieldFit_NSUBRUN_75_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01029 = new TH1F("Graph_Graph01029","Sub-runs 75",100,-36,36);
-   Graph_Graph01029->SetMinimum(-0.170714);
-   Graph_Graph01029->SetMaximum(0.1060703);
+   Graph_Graph01029->SetMinimum(-0.1771795);
+   Graph_Graph01029->SetMaximum(0.113226);
    Graph_Graph01029->SetDirectory(0);
    Graph_Graph01029->SetStats(0);
 
@@ -73,17 +73,17 @@ void FieldFit_NSUBRUN_75_NEXP_0()
    ci = TColor::GetColor("#ff0000");
    fieldLineFit1030->SetLineColor(ci);
    fieldLineFit1030->SetLineWidth(2);
-   fieldLineFit1030->SetChisquare(8.073474);
+   fieldLineFit1030->SetChisquare(0.02278909);
    fieldLineFit1030->SetNDF(2);
    fieldLineFit1030->GetXaxis()->SetLabelFont(42);
    fieldLineFit1030->GetXaxis()->SetTitleOffset(1);
    fieldLineFit1030->GetXaxis()->SetTitleFont(42);
    fieldLineFit1030->GetYaxis()->SetLabelFont(42);
    fieldLineFit1030->GetYaxis()->SetTitleFont(42);
-   fieldLineFit1030->SetParameter(0,-0.03392874);
+   fieldLineFit1030->SetParameter(0,-0.0322986);
    fieldLineFit1030->SetParError(0,0.00299836);
    fieldLineFit1030->SetParLimits(0,0,0);
-   fieldLineFit1030->SetParameter(1,-0.003769058);
+   fieldLineFit1030->SetParameter(1,-0.003838262);
    fieldLineFit1030->SetParError(1,0.0001340907);
    fieldLineFit1030->SetParLimits(1,0,0);
    fieldLineFit1030->SetParent(gre);
@@ -95,10 +95,10 @@ void FieldFit_NSUBRUN_75_NEXP_0()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText(" 4.04");
-   pt_LaTex = pt->AddText("#minus0.00377#pm0.000134");
-   pt_LaTex = pt->AddText("#minus0.0339#pm0.003");
-   pt_LaTex = pt->AddText("   #minus9#pm0.796");
+   TText *pt_LaTex = pt->AddText("0.0114");
+   pt_LaTex = pt->AddText("#minus0.00384#pm0.000134");
+   pt_LaTex = pt->AddText("#minus0.0323#pm0.003");
+   pt_LaTex = pt->AddText("#minus8.41#pm0.781");
    pt->Draw();
    
    pt = new TPaveText(0.3,0.69,0.62,0.88,"brNDC");
@@ -111,11 +111,11 @@ void FieldFit_NSUBRUN_75_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Residual B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-36,0,-9.001916,0);
+   TLine *line = new TLine(-36,0,-8.414903,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-9.001916,-0.170714,-9.001916,0);
+   line = new TLine(-8.414903,-0.1771795,-8.414903,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -127,17 +127,17 @@ void FieldFit_NSUBRUN_75_NEXP_0()
    ci = TColor::GetColor("#ff0000");
    fieldLineFit1031->SetLineColor(ci);
    fieldLineFit1031->SetLineWidth(2);
-   fieldLineFit1031->SetChisquare(8.073474);
+   fieldLineFit1031->SetChisquare(0.02278909);
    fieldLineFit1031->SetNDF(2);
    fieldLineFit1031->GetXaxis()->SetLabelFont(42);
    fieldLineFit1031->GetXaxis()->SetTitleOffset(1);
    fieldLineFit1031->GetXaxis()->SetTitleFont(42);
    fieldLineFit1031->GetYaxis()->SetLabelFont(42);
    fieldLineFit1031->GetYaxis()->SetTitleFont(42);
-   fieldLineFit1031->SetParameter(0,-0.03392874);
+   fieldLineFit1031->SetParameter(0,-0.0322986);
    fieldLineFit1031->SetParError(0,0.00299836);
    fieldLineFit1031->SetParLimits(0,0,0);
-   fieldLineFit1031->SetParameter(1,-0.003769058);
+   fieldLineFit1031->SetParameter(1,-0.003838262);
    fieldLineFit1031->SetParError(1,0.0001340907);
    fieldLineFit1031->SetParLimits(1,0,0);
    fieldLineFit1031->Draw("same");

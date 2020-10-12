@@ -57,6 +57,9 @@ int main() {
 
 	// Loop through sub-runs 
 	// Note that i =/= n_subruns
+
+	cout<<"subruns ctag meanYErr"<<endl;
+
 	for(int i = 0; i<400; i++) { 
 
 		// Get x-y position, where entries equal CTAGs
@@ -77,9 +80,10 @@ int main() {
 		double meanY = posHistStack->ProjectionY()->GetMean();
 		double meanYErr = posHistStack->ProjectionY()->GetMeanError();
 
-		//cout<<ctag<<endl;
-		if(ctag > 0.47e6 && ctag < 0.53e6) cout<<"\nSub-run at "<<ctag<<" CTAGS:\t"<<subruns<<endl;
-		if(ctag > 13.24e6 && ctag < 13.28e6) cout<<"Sub-run at "<<ctag<<" CTAGS:\t"<<subruns<<endl;
+		cout<<subruns<<" "<<ctag<<" "<<meanYErr<<endl;
+		//if(subruns==50) cout<<"CTAGs at 50 subruns:\t"<<meanYErr<<endl;
+		//if(ctag > 0.47e6 && ctag < 0.53e6) cout<<"\nSub-run at "<<ctag<<" CTAGS:\t"<<subruns<<endl;
+		//if(ctag > 13.24e6 && ctag < 13.28e6) cout<<"Sub-run at "<<ctag<<" CTAGS:\t"<<subruns<<endl;
 
 		// Append them into arrays
 		x[subruns] = ctag;
