@@ -1,7 +1,7 @@
 void BrRes_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 20:03:16 2020) by ROOT version 6.22/02
+//=========  (Mon Oct 12 20:04:33 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1195850,-0.126873,1.486271e+07,0.1432574);

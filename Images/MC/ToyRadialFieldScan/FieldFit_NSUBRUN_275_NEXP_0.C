@@ -1,10 +1,10 @@
 void FieldFit_NSUBRUN_275_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 12:24:48 2020) by ROOT version 6.22/02
+//=========  (Mon Oct 12 20:04:26 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-45,-0.2082444,45,0.1464737);
+   c->Range(-45,-0.2052103,45,0.1444765);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -17,10 +17,10 @@ void FieldFit_NSUBRUN_275_NEXP_0()
    10,
    30};
    Double_t Graph0_fy1109[4] = {
-   0.08421157,
-   0.006429565,
-   -0.06528814,
-   -0.1459822};
+   0.08305289,
+   0.00823218,
+   -0.06796031,
+   -0.1437867};
    Double_t Graph0_fex1109[4] = {
    0,
    0,
@@ -38,8 +38,8 @@ void FieldFit_NSUBRUN_275_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01109 = new TH1F("Graph_Graph01109","Sub-runs 275",100,-36,36);
-   Graph_Graph01109->SetMinimum(-0.1727725);
-   Graph_Graph01109->SetMaximum(0.1110019);
+   Graph_Graph01109->SetMinimum(-0.1702416);
+   Graph_Graph01109->SetMaximum(0.1095078);
    Graph_Graph01109->SetDirectory(0);
    Graph_Graph01109->SetStats(0);
 
@@ -66,28 +66,28 @@ void FieldFit_NSUBRUN_275_NEXP_0()
    gre->SetHistogram(Graph_Graph01109);
    
    
-   TF1 *fieldLineFit1110 = new TF1("fieldLineFit","pol 1",-36,36, TF1::EAddToList::kNo);
-   fieldLineFit1110->SetFillColor(19);
-   fieldLineFit1110->SetFillStyle(0);
+   TF1 *mainFit1110 = new TF1("mainFit","[0]+[1]*x",-36,36, TF1::EAddToList::kNo);
+   mainFit1110->SetFillColor(19);
+   mainFit1110->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   fieldLineFit1110->SetLineColor(ci);
-   fieldLineFit1110->SetLineWidth(2);
-   fieldLineFit1110->SetChisquare(1.360135);
-   fieldLineFit1110->SetNDF(2);
-   fieldLineFit1110->GetXaxis()->SetLabelFont(42);
-   fieldLineFit1110->GetXaxis()->SetTitleOffset(1);
-   fieldLineFit1110->GetXaxis()->SetTitleFont(42);
-   fieldLineFit1110->GetYaxis()->SetLabelFont(42);
-   fieldLineFit1110->GetYaxis()->SetTitleFont(42);
-   fieldLineFit1110->SetParameter(0,-0.03015731);
-   fieldLineFit1110->SetParError(0,0.001571219);
-   fieldLineFit1110->SetParLimits(0,0,0);
-   fieldLineFit1110->SetParameter(1,-0.003811496);
-   fieldLineFit1110->SetParError(1,7.026757e-05);
-   fieldLineFit1110->SetParLimits(1,0,0);
-   fieldLineFit1110->SetParent(gre);
-   gre->GetListOfFunctions()->Add(fieldLineFit1110);
+   mainFit1110->SetLineColor(ci);
+   mainFit1110->SetLineWidth(2);
+   mainFit1110->SetChisquare(0.04089779);
+   mainFit1110->SetNDF(2);
+   mainFit1110->GetXaxis()->SetLabelFont(42);
+   mainFit1110->GetXaxis()->SetTitleOffset(1);
+   mainFit1110->GetXaxis()->SetTitleFont(42);
+   mainFit1110->GetYaxis()->SetLabelFont(42);
+   mainFit1110->GetYaxis()->SetTitleFont(42);
+   mainFit1110->SetParameter(0,-0.03011549);
+   mainFit1110->SetParError(0,0.001571219);
+   mainFit1110->SetParLimits(0,0,0);
+   mainFit1110->SetParameter(1,-0.003783557);
+   mainFit1110->SetParError(1,7.026704e-05);
+   mainFit1110->SetParLimits(1,0,0);
+   mainFit1110->SetParent(gre);
+   gre->GetListOfFunctions()->Add(mainFit1110);
    gre->Draw("ap");
    
    TPaveText *pt = new TPaveText(0.69,0.68,0.89,0.89,"brNDC");
@@ -95,10 +95,10 @@ void FieldFit_NSUBRUN_275_NEXP_0()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText(" 0.68");
-   pt_LaTex = pt->AddText("#minus0.00381#pm7.03e-05");
-   pt_LaTex = pt->AddText("#minus0.0302#pm0.00157");
-   pt_LaTex = pt->AddText("#minus7.91#pm0.412");
+   TText *pt_LaTex = pt->AddText("0.0204");
+   pt_LaTex = pt->AddText("#minus0.00378#pm7.03e-05");
+   pt_LaTex = pt->AddText("#minus0.0301#pm0.00157");
+   pt_LaTex = pt->AddText("#minus7.96#pm0.441");
    pt->Draw();
    
    pt = new TPaveText(0.3,0.69,0.62,0.88,"brNDC");
@@ -111,36 +111,36 @@ void FieldFit_NSUBRUN_275_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Residual B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-36,0,-7.912199,0);
+   TLine *line = new TLine(-36,0,-7.959571,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-7.912199,-0.1727725,-7.912199,0);
+   line = new TLine(-7.959571,-0.1702416,-7.959571,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
    
-   TF1 *fieldLineFit1111 = new TF1("fieldLineFit","pol 1",-36,36, TF1::EAddToList::kNo);
-   fieldLineFit1111->SetFillColor(19);
-   fieldLineFit1111->SetFillStyle(0);
+   TF1 *mainFit1111 = new TF1("mainFit","[0]+[1]*x",-36,36, TF1::EAddToList::kNo);
+   mainFit1111->SetFillColor(19);
+   mainFit1111->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   fieldLineFit1111->SetLineColor(ci);
-   fieldLineFit1111->SetLineWidth(2);
-   fieldLineFit1111->SetChisquare(1.360135);
-   fieldLineFit1111->SetNDF(2);
-   fieldLineFit1111->GetXaxis()->SetLabelFont(42);
-   fieldLineFit1111->GetXaxis()->SetTitleOffset(1);
-   fieldLineFit1111->GetXaxis()->SetTitleFont(42);
-   fieldLineFit1111->GetYaxis()->SetLabelFont(42);
-   fieldLineFit1111->GetYaxis()->SetTitleFont(42);
-   fieldLineFit1111->SetParameter(0,-0.03015731);
-   fieldLineFit1111->SetParError(0,0.001571219);
-   fieldLineFit1111->SetParLimits(0,0,0);
-   fieldLineFit1111->SetParameter(1,-0.003811496);
-   fieldLineFit1111->SetParError(1,7.026757e-05);
-   fieldLineFit1111->SetParLimits(1,0,0);
-   fieldLineFit1111->Draw("same");
+   mainFit1111->SetLineColor(ci);
+   mainFit1111->SetLineWidth(2);
+   mainFit1111->SetChisquare(0.04089779);
+   mainFit1111->SetNDF(2);
+   mainFit1111->GetXaxis()->SetLabelFont(42);
+   mainFit1111->GetXaxis()->SetTitleOffset(1);
+   mainFit1111->GetXaxis()->SetTitleFont(42);
+   mainFit1111->GetYaxis()->SetLabelFont(42);
+   mainFit1111->GetYaxis()->SetTitleFont(42);
+   mainFit1111->SetParameter(0,-0.03011549);
+   mainFit1111->SetParError(0,0.001571219);
+   mainFit1111->SetParLimits(0,0,0);
+   mainFit1111->SetParameter(1,-0.003783557);
+   mainFit1111->SetParError(1,7.026704e-05);
+   mainFit1111->SetParLimits(1,0,0);
+   mainFit1111->Draw("same");
    
    pt = new TPaveText(0.3750503,0.94,0.6249497,0.995,"blNDC");
    pt->SetName("title");
