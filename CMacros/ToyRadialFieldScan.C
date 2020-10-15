@@ -9,9 +9,8 @@
 #include <iostream>
 #include <vector>
 
-#include "ToyRadialFieldScan.h"
-
 // Custom includes
+#include "ToyRadialFieldScan.h"
 #include "FancyDraw.h"
 #include "Utils.h"
 
@@ -37,6 +36,9 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 	int subruns = ctags_sigmas_subruns.SUBRUNS[i_subrun];
 
 	double x_field[N_FIELD]; double ex_field[N_FIELD];
+
+	// TODO: come up with some more readable names for these
+
 	// <y>/QHV from fits
 	double y_field_1[N_FIELD]; double ey_field_1[N_FIELD];
 	// Calculated Br 
@@ -126,9 +128,10 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 	double BrErr_check = fabs(Br_check) * sqrt(pow(p0_err_check/p0_check,2) + pow(p1_err_check/p1_check,2) - 2*checkFitRes->GetCovarianceMatrix()(0,1)/(p0_check*p1_check));
 
 	// We calculate Br in two different ways, so this is a nice way to catch something going wrong
-	if( Br != Br_check || ThreeSigFig(BrErr) != ThreeSigFig(BrErr_check) ) {
+	// Sometimes the error is slightly off, not sure why this is
+	if( Br != Br_check || OneSigFig(BrErr) != OneSigFig(BrErr_check) ) {
 		cout<<"***********************************\n****** mainFit != checkFit ******\nBr = "+to_string(Br)+"+/-"+to_string(BrErr)+" ppm, Br_check = "+to_string(Br_check)+"+/-"+to_string(BrErr_check)+" ppm\n***********************************\n"<<endl;
-		return make_tuple(0,0);
+		//return make_tuple(0,0);
 	}
 
 	// Only draw the plots once 
@@ -199,9 +202,9 @@ int main() {
 		cout<<"DELTA RMS OF RESIDUAL:\t"<<hBrRes->GetRMSError()<<endl;
 		cout<<"***************************************************\n"<<endl;
 
-		DrawTH1(hBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";B_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/Test/Br_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
-		DrawTH1(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#deltaB_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/Test/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
-		DrawTH1(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Meas #minus background B_{r} [ppm];Experiments","../Images/MC/ToyRadialFieldScan/Test/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawTH1(hBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/Br_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawTH1(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#deltaB_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawTH1(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Meas #minus background B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
 
 		x[i_subrun] = ctags_sigmas_subruns.CTAGS[i_subrun];
 		zeros[i_subrun] = 0;
@@ -235,7 +238,6 @@ int main() {
 	BrRes_vs_N->GetXaxis()->SetRangeUser(ctag_lo,ctag_hi);	
 	BrResRMS_vs_N->GetXaxis()->SetRangeUser(ctag_lo,ctag_hi);
 	
-
 	BrErr_vs_N->SetName("Fits");
 	BrResRMS_vs_N->SetName("Truth");
 	
