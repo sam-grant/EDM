@@ -1,7 +1,7 @@
 void QuadScans_NSUBRUN_25_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 20:04:17 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 22:34:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(14.91429,-3.25,21.77143,4.25);
@@ -345,7 +345,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("30.000000 ppm","   16 ppm","lpf");
+   TLegendEntry *entry=leg->AddEntry("30.000000 ppm","   30 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(4);
    entry->SetLineStyle(1);
@@ -354,7 +354,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("10.000000 ppm","   20 ppm","lpf");
+   entry=leg->AddEntry("10.000000 ppm","   10 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(3);
    entry->SetLineStyle(1);
@@ -363,7 +363,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-10.000000 ppm","8.83e+199 ppm","lpf");
+   entry=leg->AddEntry("-10.000000 ppm","  #minus10 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(2);
    entry->SetLineStyle(1);
@@ -372,7 +372,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-30.000000 ppm","1.96e+26 ppm","lpf");
+   entry=leg->AddEntry("-30.000000 ppm","  #minus30 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);

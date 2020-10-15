@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "Utils.h"
+#include "ToyRadialFieldScan.h"
 
 #include "TH1D.h"
 #include "TH2D.h"
@@ -299,7 +300,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	double err2 = func->GetParError(2);
 
 	TLegend *function = new TLegend(0.11,0.79,0.45,0.89);//,"NDC");
-	function->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c") ;
+	function->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + C");
 	function->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.59,0.55,0.69,0.89,"NDC");
@@ -359,6 +360,8 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 
 }
 
+/*
+// IGNORE
 void DrawSimpleSinFit2(TGraphErrors *graph, std::string title, std::string fname, double N) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -431,21 +434,25 @@ void DrawSimpleSinFit2(TGraphErrors *graph, std::string title, std::string fname
 
 	return;
 
-}
+} */
 
 void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.20);
 	// TLegend *leg = new TLegend(0.25,0.69,0.45,0.89);
 	// TODO: Make legend not look like a pile of shit
-	TLegend *leg = new TLegend(0.15,0.65,0.35,0.85);
-	leg->SetBorderSize(1);
+	TLegend *leg = new TLegend(0.81,0.35,0.99,0.65);// 0.15,0.65,0.35,0.85);
+	leg->SetBorderSize(0);
 	
 	TLine *y_0 = new TLine(0,0,1,0);
 	
 	leg->AddEntry(N," N(y)");
 	leg->AddEntry(A," A(y)");
 	leg->AddEntry(NA2," NA^{2}(y)");
+
+	leg->SetTextSize(26);
+	leg->SetTextFont(44);
 
 	N->SetTitle(title.c_str());		
 	N->GetXaxis()->SetTitleSize(.04);
@@ -487,9 +494,8 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 
  // ==================== RADIAL FIELD SCAN ====================
 
-// I'd rather put these in FancyDraw.h but there are too many dependancies
-
-void DrawQuadScanFits(std::vector<TGraphErrors*> graphs,  const double *BR_APP, string func, std::string title, std::string fname, double ymin, double ymax) {
+// void DrawQuadScanFits(std::vector<TGraphErrors*> graphs,  const double *BR_APP, string func, std::string title, std::string fname, double ymin, double ymax) {
+void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
@@ -511,8 +517,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs,  const double *BR_APP, 
 	//double field = 
 	// Load legend entries backwards
 	for( int i = graphs.size()-1; i>-1; i--) {
-		l->AddEntry(graphs.at(i), FormatNegativeNumber(*BR_APP)+" ppm");
-		BR_APP++;
+		l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
 	}
 	
 	for(int i = 0; i < graphs.size(); i++) {
@@ -572,7 +577,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	names->AddText("#chi^{2}/ndf"); 
 	names->AddText("Gradient [mm/kV#upointppm]"); 
 	names->AddText("Y-intercept [mm/kV]"); 
-	names->AddText("Residual B_{r} [ppm]"); 
+	names->AddText("Background B_{r} [ppm]"); 
 
 	TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
 	values->SetTextAlign(33);

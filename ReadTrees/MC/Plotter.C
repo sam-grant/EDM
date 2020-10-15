@@ -55,7 +55,12 @@ void Plotter::Run() {
     double p = tr->trackMomentum;
 
     // MOM CUTS
-    if(p < 700 || p > 2400) continue; 
+    // if(p < 700 || p > 2400) continue; 
+
+    // Tighter momentum cuts
+    // p/pmax is between 0.3 to 0.75 for pmax = 3500 MeV
+    if(p < 1050 || p > 2625) continue; 
+
     // TIME CUTS
     //if(time > g2Period*70) continue;
     if(time < g2Period*7 || time > g2Period*70) continue;

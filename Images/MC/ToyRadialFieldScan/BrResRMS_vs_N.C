@@ -1,7 +1,7 @@
 void BrResRMS_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 20:04:33 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 22:34:53 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1195850,0.1170441,1.486271e+07,1.777801);
@@ -11,7 +11,7 @@ void BrResRMS_vs_N()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Truth_fx1134[13] = {
+   Double_t Truth_fx1160[13] = {
    980385,
    1945311,
    2907125,
@@ -25,7 +25,7 @@ void BrResRMS_vs_N()
    1.058317e+07,
    1.154995e+07,
    1.251354e+07};
-   Double_t Truth_fy1134[13] = {
+   Double_t Truth_fy1160[13] = {
    1.468178,
    1.035342,
    0.8481669,
@@ -39,7 +39,7 @@ void BrResRMS_vs_N()
    0.4417335,
    0.43844,
    0.4028447};
-   Double_t Truth_fex1134[13] = {
+   Double_t Truth_fex1160[13] = {
    0,
    0,
    0,
@@ -53,7 +53,7 @@ void BrResRMS_vs_N()
    0,
    0,
    0};
-   Double_t Truth_fey1134[13] = {
+   Double_t Truth_fey1160[13] = {
    0.03282947,
    0.02315095,
    0.01896559,
@@ -67,40 +67,40 @@ void BrResRMS_vs_N()
    0.009877462,
    0.009803816,
    0.009007882};
-   TGraphErrors *gre = new TGraphErrors(13,Truth_fx1134,Truth_fy1134,Truth_fex1134,Truth_fey1134);
+   TGraphErrors *gre = new TGraphErrors(13,Truth_fx1160,Truth_fy1160,Truth_fex1160,Truth_fey1160);
    gre->SetName("Truth");
    gre->SetTitle(";CTAGs;RMS of meas #minus true B_{r} [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Truth1134 = new TH1F("Graph_Truth1134","",100,0,1.366686e+07);
-   Graph_Truth1134->SetMinimum(0.2831197);
-   Graph_Truth1134->SetMaximum(1.611725);
-   Graph_Truth1134->SetDirectory(0);
-   Graph_Truth1134->SetStats(0);
+   TH1F *Graph_Truth1160 = new TH1F("Graph_Truth1160","",100,0,1.366686e+07);
+   Graph_Truth1160->SetMinimum(0.2831197);
+   Graph_Truth1160->SetMaximum(1.611725);
+   Graph_Truth1160->SetDirectory(0);
+   Graph_Truth1160->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Truth1134->SetLineColor(ci);
-   Graph_Truth1134->GetXaxis()->SetTitle("CTAGs");
-   Graph_Truth1134->GetXaxis()->SetRange(4,97);
-   Graph_Truth1134->GetXaxis()->CenterTitle(true);
-   Graph_Truth1134->GetXaxis()->SetLabelFont(42);
-   Graph_Truth1134->GetXaxis()->SetTitleSize(0.04);
-   Graph_Truth1134->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Truth1134->GetXaxis()->SetTitleFont(42);
-   Graph_Truth1134->GetYaxis()->SetTitle("RMS of meas #minus true B_{r} [ppm]");
-   Graph_Truth1134->GetYaxis()->CenterTitle(true);
-   Graph_Truth1134->GetYaxis()->SetNdivisions(4000510);
-   Graph_Truth1134->GetYaxis()->SetLabelFont(42);
-   Graph_Truth1134->GetYaxis()->SetTitleSize(0.04);
-   Graph_Truth1134->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Truth1134->GetYaxis()->SetTitleFont(42);
-   Graph_Truth1134->GetZaxis()->SetLabelFont(42);
-   Graph_Truth1134->GetZaxis()->SetTitleOffset(1);
-   Graph_Truth1134->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Truth1134);
+   Graph_Truth1160->SetLineColor(ci);
+   Graph_Truth1160->GetXaxis()->SetTitle("CTAGs");
+   Graph_Truth1160->GetXaxis()->SetRange(4,97);
+   Graph_Truth1160->GetXaxis()->CenterTitle(true);
+   Graph_Truth1160->GetXaxis()->SetLabelFont(42);
+   Graph_Truth1160->GetXaxis()->SetTitleSize(0.04);
+   Graph_Truth1160->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Truth1160->GetXaxis()->SetTitleFont(42);
+   Graph_Truth1160->GetYaxis()->SetTitle("RMS of meas #minus true B_{r} [ppm]");
+   Graph_Truth1160->GetYaxis()->CenterTitle(true);
+   Graph_Truth1160->GetYaxis()->SetNdivisions(4000510);
+   Graph_Truth1160->GetYaxis()->SetLabelFont(42);
+   Graph_Truth1160->GetYaxis()->SetTitleSize(0.04);
+   Graph_Truth1160->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Truth1160->GetYaxis()->SetTitleFont(42);
+   Graph_Truth1160->GetZaxis()->SetLabelFont(42);
+   Graph_Truth1160->GetZaxis()->SetTitleOffset(1);
+   Graph_Truth1160->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Truth1160);
    
    gre->Draw("ap");
    TGaxis *gaxis = new TGaxis(410005.7,1.611725,1.325685e+07,1.611725,13.5,344.5,510,"-");

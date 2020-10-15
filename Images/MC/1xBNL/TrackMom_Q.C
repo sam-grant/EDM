@@ -1,7 +1,7 @@
 void TrackMom_Q()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct  6 19:58:31 2020) by ROOT version 6.22/02
+//=========  (Mon Oct 12 23:45:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,20 +11,6 @@ void TrackMom_Q()
    c->SetFrameBorderMode(0);
    
    TH1D *TrackMom__1 = new TH1D("TrackMom__1","",128,0,3200);
-   TrackMom__1->SetBinContent(29,62531);
-   TrackMom__1->SetBinContent(30,67679);
-   TrackMom__1->SetBinContent(31,72112);
-   TrackMom__1->SetBinContent(32,75905);
-   TrackMom__1->SetBinContent(33,79492);
-   TrackMom__1->SetBinContent(34,82818);
-   TrackMom__1->SetBinContent(35,85316);
-   TrackMom__1->SetBinContent(36,88768);
-   TrackMom__1->SetBinContent(37,90689);
-   TrackMom__1->SetBinContent(38,92198);
-   TrackMom__1->SetBinContent(39,92455);
-   TrackMom__1->SetBinContent(40,92279);
-   TrackMom__1->SetBinContent(41,92027);
-   TrackMom__1->SetBinContent(42,91091);
    TrackMom__1->SetBinContent(43,90295);
    TrackMom__1->SetBinContent(44,89894);
    TrackMom__1->SetBinContent(45,89394);
@@ -79,20 +65,15 @@ void TrackMom_Q()
    TrackMom__1->SetBinContent(94,18574);
    TrackMom__1->SetBinContent(95,17321);
    TrackMom__1->SetBinContent(96,16464);
-   TrackMom__1->SetBinError(29,250.062);
-   TrackMom__1->SetBinError(30,260.1519);
-   TrackMom__1->SetBinError(31,268.5368);
-   TrackMom__1->SetBinError(32,275.5086);
-   TrackMom__1->SetBinError(33,281.9433);
-   TrackMom__1->SetBinError(34,287.7812);
-   TrackMom__1->SetBinError(35,292.089);
-   TrackMom__1->SetBinError(36,297.9396);
-   TrackMom__1->SetBinError(37,301.1461);
-   TrackMom__1->SetBinError(38,303.6412);
-   TrackMom__1->SetBinError(39,304.0641);
-   TrackMom__1->SetBinError(40,303.7746);
-   TrackMom__1->SetBinError(41,303.3595);
-   TrackMom__1->SetBinError(42,301.8129);
+   TrackMom__1->SetBinContent(97,15328);
+   TrackMom__1->SetBinContent(98,14620);
+   TrackMom__1->SetBinContent(99,14245);
+   TrackMom__1->SetBinContent(100,13774);
+   TrackMom__1->SetBinContent(101,13678);
+   TrackMom__1->SetBinContent(102,13470);
+   TrackMom__1->SetBinContent(103,13640);
+   TrackMom__1->SetBinContent(104,13532);
+   TrackMom__1->SetBinContent(105,13592);
    TrackMom__1->SetBinError(43,300.4913);
    TrackMom__1->SetBinError(44,299.8233);
    TrackMom__1->SetBinError(45,298.9883);
@@ -147,7 +128,16 @@ void TrackMom_Q()
    TrackMom__1->SetBinError(94,136.2865);
    TrackMom__1->SetBinError(95,131.6093);
    TrackMom__1->SetBinError(96,128.3121);
-   TrackMom__1->SetEntries(4067781);
+   TrackMom__1->SetBinError(97,123.8063);
+   TrackMom__1->SetBinError(98,120.9132);
+   TrackMom__1->SetBinError(99,119.3524);
+   TrackMom__1->SetBinError(100,117.3627);
+   TrackMom__1->SetBinError(101,116.953);
+   TrackMom__1->SetBinError(102,116.0603);
+   TrackMom__1->SetBinError(103,116.7904);
+   TrackMom__1->SetBinError(104,116.3271);
+   TrackMom__1->SetBinError(105,116.5847);
+   TrackMom__1->SetEntries(3028300);
    TrackMom__1->SetLineWidth(3);
    TrackMom__1->SetMarkerSize(1.5);
    TrackMom__1->GetXaxis()->SetTitle("Track momentum [MeV]");

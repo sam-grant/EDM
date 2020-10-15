@@ -1,7 +1,7 @@
 void FieldFit_NSUBRUN_25_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 20:04:17 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 22:34:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-0.2123983,45,0.1528686);
@@ -109,7 +109,7 @@ void FieldFit_NSUBRUN_25_NEXP_0()
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient [mm/kV#upointppm]");
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
-   pt_LaTex = pt->AddText("Residual B_{r} [ppm]");
+   pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
    TLine *line = new TLine(-36,0,-8.533205,0);
    line->SetLineStyle(2);

@@ -23,7 +23,7 @@ using namespace std;
 
 int main() {
 
-	std::string config = "30xBNL"; // ; // "30xBNL"
+	std::string config = "30xBNL"; // 1xBNL"
 	std::string qualString = "Q";
 	//bool quality = false;
 	//std::string qualString;

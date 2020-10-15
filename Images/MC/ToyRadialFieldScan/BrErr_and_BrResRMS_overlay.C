@@ -1,7 +1,7 @@
 void BrErr_and_BrResRMS_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 20:04:33 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 22:34:53 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1195850,0.1417526,1.486271e+07,1.738903);
@@ -11,7 +11,7 @@ void BrErr_and_BrResRMS_overlay()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Fits_fx1135[13] = {
+   Double_t Fits_fx1161[13] = {
    980385,
    1945311,
    2907125,
@@ -25,7 +25,7 @@ void BrErr_and_BrResRMS_overlay()
    1.058317e+07,
    1.154995e+07,
    1.251354e+07};
-   Double_t Fits_fy1135[13] = {
+   Double_t Fits_fy1161[13] = {
    1.472711,
    1.034487,
    0.8486152,
@@ -39,7 +39,7 @@ void BrErr_and_BrResRMS_overlay()
    0.4438487,
    0.4248802,
    0.4079442};
-   Double_t Fits_fex1135[13] = {
+   Double_t Fits_fex1161[13] = {
    0,
    0,
    0,
@@ -53,7 +53,7 @@ void BrErr_and_BrResRMS_overlay()
    0,
    0,
    0};
-   Double_t Fits_fey1135[13] = {
+   Double_t Fits_fey1161[13] = {
    0,
    0,
    0,
@@ -67,44 +67,44 @@ void BrErr_and_BrResRMS_overlay()
    0,
    0,
    0};
-   TGraphErrors *gre = new TGraphErrors(13,Fits_fx1135,Fits_fy1135,Fits_fex1135,Fits_fey1135);
+   TGraphErrors *gre = new TGraphErrors(13,Fits_fx1161,Fits_fy1161,Fits_fex1161,Fits_fey1161);
    gre->SetName("Fits");
    gre->SetTitle(";CTAGs;#deltaB_{r} [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Fits1135 = new TH1F("Graph_Fits1135","",100,0,1.366686e+07);
-   Graph_Fits1135->SetMinimum(0.3014676);
-   Graph_Fits1135->SetMaximum(1.579188);
-   Graph_Fits1135->SetDirectory(0);
-   Graph_Fits1135->SetStats(0);
+   TH1F *Graph_Fits1161 = new TH1F("Graph_Fits1161","",100,0,1.366686e+07);
+   Graph_Fits1161->SetMinimum(0.3014676);
+   Graph_Fits1161->SetMaximum(1.579188);
+   Graph_Fits1161->SetDirectory(0);
+   Graph_Fits1161->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Fits1135->SetLineColor(ci);
-   Graph_Fits1135->GetXaxis()->SetTitle("CTAGs");
-   Graph_Fits1135->GetXaxis()->SetRange(4,97);
-   Graph_Fits1135->GetXaxis()->CenterTitle(true);
-   Graph_Fits1135->GetXaxis()->SetLabelFont(42);
-   Graph_Fits1135->GetXaxis()->SetTitleSize(0.04);
-   Graph_Fits1135->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Fits1135->GetXaxis()->SetTitleFont(42);
-   Graph_Fits1135->GetYaxis()->SetTitle("#deltaB_{r} [ppm]");
-   Graph_Fits1135->GetYaxis()->CenterTitle(true);
-   Graph_Fits1135->GetYaxis()->SetNdivisions(4000510);
-   Graph_Fits1135->GetYaxis()->SetLabelFont(42);
-   Graph_Fits1135->GetYaxis()->SetTitleSize(0.04);
-   Graph_Fits1135->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Fits1135->GetYaxis()->SetTitleFont(42);
-   Graph_Fits1135->GetZaxis()->SetLabelFont(42);
-   Graph_Fits1135->GetZaxis()->SetTitleOffset(1);
-   Graph_Fits1135->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Fits1135);
+   Graph_Fits1161->SetLineColor(ci);
+   Graph_Fits1161->GetXaxis()->SetTitle("CTAGs");
+   Graph_Fits1161->GetXaxis()->SetRange(4,97);
+   Graph_Fits1161->GetXaxis()->CenterTitle(true);
+   Graph_Fits1161->GetXaxis()->SetLabelFont(42);
+   Graph_Fits1161->GetXaxis()->SetTitleSize(0.04);
+   Graph_Fits1161->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Fits1161->GetXaxis()->SetTitleFont(42);
+   Graph_Fits1161->GetYaxis()->SetTitle("#deltaB_{r} [ppm]");
+   Graph_Fits1161->GetYaxis()->CenterTitle(true);
+   Graph_Fits1161->GetYaxis()->SetNdivisions(4000510);
+   Graph_Fits1161->GetYaxis()->SetLabelFont(42);
+   Graph_Fits1161->GetYaxis()->SetTitleSize(0.04);
+   Graph_Fits1161->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Fits1161->GetYaxis()->SetTitleFont(42);
+   Graph_Fits1161->GetZaxis()->SetLabelFont(42);
+   Graph_Fits1161->GetZaxis()->SetTitleOffset(1);
+   Graph_Fits1161->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Fits1161);
    
    gre->Draw("ap");
    
-   Double_t Truth_fx1136[13] = {
+   Double_t Truth_fx1162[13] = {
    980385,
    1945311,
    2907125,
@@ -118,7 +118,7 @@ void BrErr_and_BrResRMS_overlay()
    1.058317e+07,
    1.154995e+07,
    1.251354e+07};
-   Double_t Truth_fy1136[13] = {
+   Double_t Truth_fy1162[13] = {
    1.468178,
    1.035342,
    0.8481669,
@@ -132,7 +132,7 @@ void BrErr_and_BrResRMS_overlay()
    0.4417335,
    0.43844,
    0.4028447};
-   Double_t Truth_fex1136[13] = {
+   Double_t Truth_fex1162[13] = {
    0,
    0,
    0,
@@ -146,7 +146,7 @@ void BrErr_and_BrResRMS_overlay()
    0,
    0,
    0};
-   Double_t Truth_fey1136[13] = {
+   Double_t Truth_fey1162[13] = {
    0.03282947,
    0.02315095,
    0.01896559,
@@ -160,38 +160,38 @@ void BrErr_and_BrResRMS_overlay()
    0.009877462,
    0.009803816,
    0.009007882};
-   gre = new TGraphErrors(13,Truth_fx1136,Truth_fy1136,Truth_fex1136,Truth_fey1136);
+   gre = new TGraphErrors(13,Truth_fx1162,Truth_fy1162,Truth_fex1162,Truth_fey1162);
    gre->SetName("Truth");
    gre->SetTitle(";CTAGs;RMS of meas #minus true B_{r} [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Truth1136 = new TH1F("Graph_Truth1136","",100,0,1.366686e+07);
-   Graph_Truth1136->SetMinimum(0.2831197);
-   Graph_Truth1136->SetMaximum(1.611725);
-   Graph_Truth1136->SetDirectory(0);
-   Graph_Truth1136->SetStats(0);
+   TH1F *Graph_Truth1162 = new TH1F("Graph_Truth1162","",100,0,1.366686e+07);
+   Graph_Truth1162->SetMinimum(0.2831197);
+   Graph_Truth1162->SetMaximum(1.611725);
+   Graph_Truth1162->SetDirectory(0);
+   Graph_Truth1162->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Truth1136->SetLineColor(ci);
-   Graph_Truth1136->GetXaxis()->SetTitle("CTAGs");
-   Graph_Truth1136->GetXaxis()->SetRange(4,97);
-   Graph_Truth1136->GetXaxis()->CenterTitle(true);
-   Graph_Truth1136->GetXaxis()->SetLabelFont(42);
-   Graph_Truth1136->GetXaxis()->SetTitleSize(0.04);
-   Graph_Truth1136->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Truth1136->GetXaxis()->SetTitleFont(42);
-   Graph_Truth1136->GetYaxis()->SetTitle("RMS of meas #minus true B_{r} [ppm]");
-   Graph_Truth1136->GetYaxis()->CenterTitle(true);
-   Graph_Truth1136->GetYaxis()->SetNdivisions(4000510);
-   Graph_Truth1136->GetYaxis()->SetLabelFont(42);
-   Graph_Truth1136->GetYaxis()->SetTitleSize(0.04);
-   Graph_Truth1136->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Truth1136->GetYaxis()->SetTitleFont(42);
-   Graph_Truth1136->GetZaxis()->SetLabelFont(42);
-   Graph_Truth1136->GetZaxis()->SetTitleOffset(1);
-   Graph_Truth1136->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Truth1136);
+   Graph_Truth1162->SetLineColor(ci);
+   Graph_Truth1162->GetXaxis()->SetTitle("CTAGs");
+   Graph_Truth1162->GetXaxis()->SetRange(4,97);
+   Graph_Truth1162->GetXaxis()->CenterTitle(true);
+   Graph_Truth1162->GetXaxis()->SetLabelFont(42);
+   Graph_Truth1162->GetXaxis()->SetTitleSize(0.04);
+   Graph_Truth1162->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Truth1162->GetXaxis()->SetTitleFont(42);
+   Graph_Truth1162->GetYaxis()->SetTitle("RMS of meas #minus true B_{r} [ppm]");
+   Graph_Truth1162->GetYaxis()->CenterTitle(true);
+   Graph_Truth1162->GetYaxis()->SetNdivisions(4000510);
+   Graph_Truth1162->GetYaxis()->SetLabelFont(42);
+   Graph_Truth1162->GetYaxis()->SetTitleSize(0.04);
+   Graph_Truth1162->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Truth1162->GetYaxis()->SetTitleFont(42);
+   Graph_Truth1162->GetZaxis()->SetLabelFont(42);
+   Graph_Truth1162->GetZaxis()->SetTitleOffset(1);
+   Graph_Truth1162->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Truth1162);
    
    gre->Draw("p ");
    

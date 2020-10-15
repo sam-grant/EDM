@@ -1,7 +1,7 @@
 void Br_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 20:04:32 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 22:34:53 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1195850,5.842741,1.486271e+07,10.26087);
@@ -11,7 +11,7 @@ void Br_vs_N()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1131[13] = {
+   Double_t Graph0_fx1157[13] = {
    980385,
    1945311,
    2907125,
@@ -25,7 +25,7 @@ void Br_vs_N()
    1.058317e+07,
    1.154995e+07,
    1.251354e+07};
-   Double_t Graph0_fy1131[13] = {
+   Double_t Graph0_fy1157[13] = {
    8.051808,
    7.950889,
    7.997621,
@@ -39,7 +39,7 @@ void Br_vs_N()
    8.016232,
    8.014902,
    8.009217};
-   Double_t Graph0_fex1131[13] = {
+   Double_t Graph0_fex1157[13] = {
    0,
    0,
    0,
@@ -53,7 +53,7 @@ void Br_vs_N()
    0,
    0,
    0};
-   Double_t Graph0_fey1131[13] = {
+   Double_t Graph0_fey1157[13] = {
    1.472711,
    1.034487,
    0.8486152,
@@ -67,40 +67,40 @@ void Br_vs_N()
    0.4438487,
    0.4248802,
    0.4079442};
-   TGraphErrors *gre = new TGraphErrors(13,Graph0_fx1131,Graph0_fy1131,Graph0_fex1131,Graph0_fey1131);
+   TGraphErrors *gre = new TGraphErrors(13,Graph0_fx1157,Graph0_fy1157,Graph0_fex1157,Graph0_fey1157);
    gre->SetName("Graph0");
    gre->SetTitle(";CTAGs;B_{r} [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01131 = new TH1F("Graph_Graph01131","",100,0,1.366686e+07);
-   Graph_Graph01131->SetMinimum(6.284555);
-   Graph_Graph01131->SetMaximum(9.819061);
-   Graph_Graph01131->SetDirectory(0);
-   Graph_Graph01131->SetStats(0);
+   TH1F *Graph_Graph01157 = new TH1F("Graph_Graph01157","",100,0,1.366686e+07);
+   Graph_Graph01157->SetMinimum(6.284555);
+   Graph_Graph01157->SetMaximum(9.819061);
+   Graph_Graph01157->SetDirectory(0);
+   Graph_Graph01157->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01131->SetLineColor(ci);
-   Graph_Graph01131->GetXaxis()->SetTitle("CTAGs");
-   Graph_Graph01131->GetXaxis()->SetRange(4,97);
-   Graph_Graph01131->GetXaxis()->CenterTitle(true);
-   Graph_Graph01131->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01131->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01131->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01131->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01131->GetYaxis()->SetTitle("B_{r} [ppm]");
-   Graph_Graph01131->GetYaxis()->CenterTitle(true);
-   Graph_Graph01131->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01131->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01131->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01131->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Graph01131->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01131->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01131->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01131->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01131);
+   Graph_Graph01157->SetLineColor(ci);
+   Graph_Graph01157->GetXaxis()->SetTitle("CTAGs");
+   Graph_Graph01157->GetXaxis()->SetRange(4,97);
+   Graph_Graph01157->GetXaxis()->CenterTitle(true);
+   Graph_Graph01157->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01157->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01157->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01157->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01157->GetYaxis()->SetTitle("B_{r} [ppm]");
+   Graph_Graph01157->GetYaxis()->CenterTitle(true);
+   Graph_Graph01157->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01157->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01157->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01157->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph01157->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01157->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01157->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01157->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01157);
    
    gre->Draw("ap");
    TGaxis *gaxis = new TGaxis(410005.7,9.819061,1.325685e+07,9.819061,13.5,344.5,510,"-");

@@ -36,8 +36,11 @@ int main() {
 	// Draw 2D plots
 	TH2D *DecayX_vs_DecayZ = (TH2D*)input->Get("DecayX_vs_DecayZ");
 	DrawTH2(DecayX_vs_DecayZ, "", ("../Images/MC/"+config+"/DecayX_vs_DecayZ_"+qualString).c_str());
+
 	TH2D *ThetaY_vs_Time = (TH2D*)input->Get("ThetaY_vs_Time");
+	if(quality) ThetaY_vs_Time->GetXaxis()->SetRangeUser(30.6, 306); 
 	DrawTH2(ThetaY_vs_Time, "", ("../Images/MC/"+config+"/ThetaY_vs_Time_2D_"+qualString).c_str());
+
 	TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo_Fine");
 	DrawTH2(ThetaY_vs_Time_Modulo, "", ("../Images/MC/"+config+"/ThetaY_vs_Time_Modulo_2D_"+qualString).c_str());
 

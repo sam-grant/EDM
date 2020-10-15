@@ -1,13 +1,14 @@
 void Asymmetry_wa_restFrame()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat Sep 26 15:51:55 2020) by ROOT version 6.22/02
+//=========  (Mon Oct 12 23:13:52 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
+   c->SetRightMargin(0.2);
    c->SetFrameBorderMode(0);
    
    TF1 *N_11 = new TF1("N_1",";y=p/p_{max};Arbitrary units",0,1, TF1::EAddToList::kDefault);
@@ -31,7 +32,9 @@ void Asymmetry_wa_restFrame()
    N_11->Draw("");
    
    TLegend *leg = new TLegend(0,0,0,0,NULL,"brNDC");
-   leg->SetBorderSize(1);
+   leg->SetBorderSize(0);
+   leg->SetTextFont(44);
+   leg->SetTextSize(26);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);

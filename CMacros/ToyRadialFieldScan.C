@@ -31,8 +31,16 @@ using namespace std;
 // Put the measured radial field and it's uncertainty into a tuple
 tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_subrun) {
 
-	double y_field[N_FIELD]; double ey_field[N_FIELD];
+	// Uncertainty on caloY at this level of stats
+	double sigmaY = ctags_sigmas_subruns.SIGMAS[i_subrun];
+	// ... this level of stats
+	int subruns = ctags_sigmas_subruns.SUBRUNS[i_subrun];
+
 	double x_field[N_FIELD]; double ex_field[N_FIELD];
+	// <y>/QHV from fits
+	double y_field_1[N_FIELD]; double ey_field_1[N_FIELD];
+	// Calculated Br 
+	double y_field_2[N_FIELD]; double ey_field_2[N_FIELD];
 
 	// Vector to hold the quad scans at each field setting
 	vector<TGraphErrors*> quadScans;
@@ -45,18 +53,25 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 		double y_quad[N_QHV]; double ey_quad[N_QHV];
 		double x_quad[N_QHV]; double ex_quad[N_QHV];
 
+		// Field indices
+		double n[N_QHV];
+
+		int counter = 0;
+
 		// =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
-			double n =  0.108/18.3 * QHV[i_quad];
-			double y_true = 7112./n * Br_tot * 1e-6;
-			double sigmaY = ctags_sigmas_subruns.SIGMAS[i_subrun];
+			n[i_quad] =  0.108/18.3 * QHV[i_quad];
+
+			double y_true = R_0/n[i_quad] * Br_tot * 1e-6;
 			double y_meas = rndm->Gaus(y_true,sigmaY);
 		
 			y_quad[i_quad] = y_meas;
 			ey_quad[i_quad] = sigmaY;
 			x_quad[i_quad] = QHV[i_quad];
 			ex_quad[i_quad] = 0;
+
+			counter++;
 
 		}
 
@@ -67,37 +82,63 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
 		quadScan->Fit(quadLineFit,"QM");
 
-		// Push them into the vector
+		// Push scans into a vector
 		quadScans.push_back(quadScan);
 				
 		x_field[i_field] = BR_APP[i_field];
 		ex_field[i_field] = 0;
-		y_field[i_field] = quadLineFit->GetParameter(1);
-		ey_field[i_field] = quadLineFit->GetParError(1);
 
-		//delete quadLineFit; 
+		// <y>/QHV
+		y_field_1[i_field] = quadLineFit->GetParameter(1);
+		ey_field_1[i_field] = quadLineFit->GetParError(1);
+
+		// Calculated Br, from Mott's method
+		double calcGrad = R_0 * ( 1./n[N_QHV-1] - 1./n[0]) * 1e-6; // ppm
+		//double calcGrad = 7112 * (1./nSettings[1] - 1./nSettings[0]) * 1e-6; // ppm 
+		double measDiff = y_quad[N_QHV-1]-y_quad[0];
+		y_field_2[i_field] = measDiff / calcGrad;
+		ey_field_2[i_field] = fabs(sqrt(2)*sigmaY/calcGrad);
 
 	} 
-	
-	TGraphErrors *BrCalc_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field,ex_field,ey_field);
+	// We'll use this for the result
+	TGraphErrors *QuadGrads_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_1,ex_field,ey_field_1);
+	// This is a cross check
+	TGraphErrors *BrCalc_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_2,ex_field,ey_field_2);
 
 	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
-	TFitResultPtr mainFitRes = BrCalc_vs_BrApp->Fit(mainFit,"SMQ");
+	TFitResultPtr mainFitRes = QuadGrads_vs_BrApp->Fit(mainFit,"SMQ");
+
+	TF1 *checkFit = new TF1("checkFit", "[0]+[1]*x");
+	TFitResultPtr checkFitRes = BrCalc_vs_BrApp->Fit(checkFit,"SMQ");
 
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
     double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
 
+   	double p0_check = checkFit->GetParameter(0); double p0_err_check = checkFit->GetParError(0);
+    double p1_check = checkFit->GetParameter(1); double p1_err_check = checkFit->GetParError(1);
+
+    // x-intercept
 	double Br = fabs(p0/p1);
+	double Br_check = fabs(p0/p1);
+
 	// From Taylor 9.9
 	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
+	double BrErr_check = fabs(Br_check) * sqrt(pow(p0_err_check/p0_check,2) + pow(p1_err_check/p1_check,2) - 2*checkFitRes->GetCovarianceMatrix()(0,1)/(p0_check*p1_check));
 
-		// Only draw the plots once 
+	// We calculate Br in two different ways, so this is a nice way to catch something going wrong
+	if( Br != Br_check || ThreeSigFig(BrErr) != ThreeSigFig(BrErr_check) ) {
+		cout<<"***********************************\n****** mainFit != checkFit ******\nBr = "+to_string(Br)+"+/-"+to_string(BrErr)+" ppm, Br_check = "+to_string(Br_check)+"+/-"+to_string(BrErr_check)+" ppm\n***********************************\n"<<endl;
+		return make_tuple(0,0);
+	}
+
+	// Only draw the plots once 
 	if(i_experiment==0) { 
-		DrawQuadScanFits(quadScans, &BR_APP[N_FIELD], "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
-		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr, "mainFit", "Sub-runs "+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+"_NEXP_"+std::to_string(i_experiment));
+		DrawQuadScanFits(quadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
+		DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
 	}
 	
-	delete BrCalc_vs_BrApp; delete mainFit;
+	delete QuadGrads_vs_BrApp; delete BrCalc_vs_BrApp; delete mainFit;
 
 	return make_tuple(Br,BrErr);
 
