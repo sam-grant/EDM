@@ -1,10 +1,10 @@
 void Br_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Oct 14 22:34:53 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 23:20:01 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1195850,5.842741,1.486271e+07,10.26087);
+   c->Range(-1657106,5.842741,1.491396e+07,10.26087);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -84,7 +84,7 @@ void Br_vs_N()
    ci = TColor::GetColor("#000099");
    Graph_Graph01157->SetLineColor(ci);
    Graph_Graph01157->GetXaxis()->SetTitle("CTAGs");
-   Graph_Graph01157->GetXaxis()->SetRange(4,97);
+   Graph_Graph01157->GetXaxis()->SetRange(1,97);
    Graph_Graph01157->GetXaxis()->CenterTitle(true);
    Graph_Graph01157->GetXaxis()->SetLabelFont(42);
    Graph_Graph01157->GetXaxis()->SetTitleSize(0.04);
@@ -103,7 +103,7 @@ void Br_vs_N()
    gre->SetHistogram(Graph_Graph01157);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(410005.7,9.819061,1.325685e+07,9.819061,13.5,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,9.819061,1.325685e+07,9.819061,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

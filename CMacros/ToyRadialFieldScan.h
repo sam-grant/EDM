@@ -21,7 +21,7 @@ const double R_0 = 7112.; // Magic radius
 
 // ==================== LOAD CTAGS, SIGMAS, AND SUBRUNS ====================
 
-class CTAGs_SIGMAS_SUBRUNS { 
+class CTAGS_SIGMAS_SUBRUNS { 
 
 public: 
 
@@ -31,11 +31,12 @@ public:
 	double SIGMAS[N_SUBRUNS];
 
 	// Member functions declaration
-	CTAGs_SIGMAS_SUBRUNS();
+	CTAGS_SIGMAS_SUBRUNS();
 
 };
 
- CTAGs_SIGMAS_SUBRUNS::CTAGs_SIGMAS_SUBRUNS() {
+ // Constructor
+ CTAGS_SIGMAS_SUBRUNS::CTAGS_SIGMAS_SUBRUNS() {
 
  	TFile *file = TFile::Open("../Plots/Data/MeanCaloPos/CTAG_SUBRUN_SIGMA_15921.root");
  	// Load histograms
@@ -57,6 +58,6 @@ public:
  } 
 
 // Store class member function as a global variable
-CTAGs_SIGMAS_SUBRUNS ctags_sigmas_subruns;
+CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns;
 
 #endif

@@ -94,12 +94,12 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 		// Calculated Br, from Mott's method
 		double calcGrad = R_0 * ( 1./n[N_QHV-1] - 1./n[0]) * 1e-6; // ppm
-		//double calcGrad = 7112 * (1./nSettings[1] - 1./nSettings[0]) * 1e-6; // ppm 
 		double measDiff = y_quad[N_QHV-1]-y_quad[0];
 		y_field_2[i_field] = measDiff / calcGrad;
 		ey_field_2[i_field] = fabs(sqrt(2)*sigmaY/calcGrad);
 
 	} 
+
 	// We'll use this for the result
 	TGraphErrors *QuadGrads_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_1,ex_field,ey_field_1);
 	// This is a cross check
@@ -223,9 +223,12 @@ int main() {
 	// RMS of Br truth residual versus stats
 	TGraphErrors *BrResRMS_vs_N = new TGraphErrors(N_SUBRUNS,x,BrResRMS,zeros,BrResRMSErr);
 
-	// They come from the printouts in CaloMeanPos.C
-	double ctag_lo = 517845; double ctag_hi = 1.32464e+07;
-	double subrun_lo = 13.5; double subrun_hi = 344.5;
+	// These come from the printouts in CaloMeanPos.C
+	// Needed to get the two axes to line up correctly 
+	double ctag_lo = 0; double ctag_hi = 1.32464e+07;
+	double subrun_lo = 0; double subrun_hi = 345;
+	//subrun_lo = subrun_lo - 0.5;
+	subrun_hi = subrun_hi - 0.5;
 	
 	Br_vs_N->GetXaxis()->SetRangeUser(ctag_lo,ctag_hi);
 	BrErr_vs_N->GetXaxis()->SetRangeUser(ctag_lo,ctag_hi);

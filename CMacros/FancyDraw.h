@@ -251,11 +251,12 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	graph2->SetMarkerStyle(24); // Open circle
 	graph2->Draw("P same");
 
-	TLegend *l = new TLegend(0.69,0.69,0.89,0.89);
+	TLegend *l = new TLegend(0.70,0.65,0.89,0.85);
 	graph1->SetName(name1.c_str());
 	graph2->SetName(name2.c_str());
 	gPad->Update();
 	l->SetBorderSize(0);
+	l->SetTextFont(42);
 	l->AddEntry(graph1,name1.c_str());
 	l->AddEntry(graph2,name2.c_str());
 	l->Draw("same");
@@ -273,6 +274,32 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	axis->SetLineColor(kRed);
 	axis->Draw("same");
 
+/*	TLine *line0 = new TLine(980385,gPad->GetUymin(),980385,gPad->GetUymax());
+	line0->Draw("same");
+	TLine *line1 = new TLine(1.94531e+06,gPad->GetUymin(),1.94531e+06,gPad->GetUymax());
+	line1->Draw("same");
+	TLine *line2 = new TLine(2.90712e+06,gPad->GetUymin(),2.90712e+06,gPad->GetUymax());
+	line2->Draw("same");
+	TLine *line3 = new TLine(3.83186e+06,gPad->GetUymin(),3.83186e+06,gPad->GetUymax());
+	line3->Draw("same");
+	TLine *line4 = new TLine(4.79715e+06,gPad->GetUymin(),4.79715e+06,gPad->GetUymax());
+	line4->Draw("same");
+	TLine *line5 = new TLine(5.76194e+06,gPad->GetUymin(),5.76194e+06,gPad->GetUymax());
+	line5->Draw("same");
+	TLine *line6 = new TLine(6.72444e+06,gPad->GetUymin(),6.72444e+06,gPad->GetUymax());
+	line6->Draw("same");
+	TLine *line7 = new TLine(7.68956e+06,gPad->GetUymin(),7.68956e+06,gPad->GetUymax());
+	line7->Draw("same");
+	TLine *line8 = new TLine(8.65456e+06,gPad->GetUymin(),8.65456e+06,gPad->GetUymax());
+	line8->Draw("same");
+	TLine *line9 = new TLine(9.61958e+06,gPad->GetUymin(),9.61958e+06,gPad->GetUymax());
+	line9->Draw("same");
+	TLine *line10 = new TLine(1.05832e+07,gPad->GetUymin(),1.05832e+07,gPad->GetUymax());
+	line10->Draw("same");
+	TLine *line11 = new TLine(1.15499e+07,gPad->GetUymin(),1.15499e+07,gPad->GetUymax());
+	line11->Draw("same");
+	TLine *line12 = new TLine(1.25135e+07,gPad->GetUymin(),1.25135e+07,gPad->GetUymax());
+	line12->Draw("same");*/
 	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());

@@ -111,7 +111,7 @@ int main() {
 	DrawTGraphErrorsDoubleXAxis(meanYErr_vs_subruns, ";CTAGs;Cluster mean Y-position uncertainty [mm]", "Number of sub-runs", "../Images/Data/CaloMeanPos/CaloMeanYPosErr_vs_CTAG", 0, subruns);
 
 	// Write everything to ROOT file
-	string outName = "../Plots/Data/MeanCaloPos/CTAG_SUBRUN_SIGMA_15921.root";
+	string outName = "../Plots/Data/MeanCaloPos/CTAG_SUBRUN_SIGMA_15921_recreate.root";
 	TFile *output = new TFile(outName.c_str(), "RECREATE");
 
 	// Write TGraphs to ROOT file

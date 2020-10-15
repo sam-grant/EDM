@@ -1,10 +1,10 @@
 void BrErr_and_BrResRMS_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Oct 14 22:34:53 2020) by ROOT version 6.22/02
+//=========  (Wed Oct 14 23:20:01 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1195850,0.1417526,1.486271e+07,1.738903);
+   c->Range(-1657106,0.1417526,1.491396e+07,1.738903);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -84,7 +84,7 @@ void BrErr_and_BrResRMS_overlay()
    ci = TColor::GetColor("#000099");
    Graph_Fits1161->SetLineColor(ci);
    Graph_Fits1161->GetXaxis()->SetTitle("CTAGs");
-   Graph_Fits1161->GetXaxis()->SetRange(4,97);
+   Graph_Fits1161->GetXaxis()->SetRange(1,97);
    Graph_Fits1161->GetXaxis()->CenterTitle(true);
    Graph_Fits1161->GetXaxis()->SetLabelFont(42);
    Graph_Fits1161->GetXaxis()->SetTitleSize(0.04);
@@ -175,7 +175,7 @@ void BrErr_and_BrResRMS_overlay()
    ci = TColor::GetColor("#000099");
    Graph_Truth1162->SetLineColor(ci);
    Graph_Truth1162->GetXaxis()->SetTitle("CTAGs");
-   Graph_Truth1162->GetXaxis()->SetRange(4,97);
+   Graph_Truth1162->GetXaxis()->SetRange(1,97);
    Graph_Truth1162->GetXaxis()->CenterTitle(true);
    Graph_Truth1162->GetXaxis()->SetLabelFont(42);
    Graph_Truth1162->GetXaxis()->SetTitleSize(0.04);
@@ -195,7 +195,7 @@ void BrErr_and_BrResRMS_overlay()
    
    gre->Draw("p ");
    
-   TLegend *leg = new TLegend(0.69,0.69,0.89,0.89,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.7,0.65,0.89,0.85,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
@@ -221,7 +221,7 @@ void BrErr_and_BrResRMS_overlay()
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    leg->Draw();
-   TGaxis *gaxis = new TGaxis(410005.7,1.579188,1.325685e+07,1.579188,13.5,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.579188,1.325685e+07,1.579188,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);
