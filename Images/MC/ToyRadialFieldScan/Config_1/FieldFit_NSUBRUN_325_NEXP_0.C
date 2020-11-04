@@ -1,93 +1,85 @@
 void FieldFit_NSUBRUN_325_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 15 00:28:28 2020) by ROOT version 6.22/02
+//=========  (Fri Oct 16 07:48:25 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-45,-0.2021342,45,0.1399376);
+   c->Range(-45,-0.201304,45,0.1371889);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1153[4] = {
+   Double_t Graph0_fx1101[2] = {
    -30,
-   -10,
-   10,
    30};
-   Double_t Graph0_fy1153[4] = {
-   0.08003535,
-   0.005491339,
-   -0.06531368,
-   -0.142232};
-   Double_t Graph0_fex1153[4] = {
-   0,
-   0,
+   Double_t Graph0_fy1101[2] = {
+   0.07788318,
+   -0.1419982};
+   Double_t Graph0_fex1101[2] = {
    0,
    0};
-   Double_t Graph0_fey1153[4] = {
-   0.002890265,
-   0.002890265,
+   Double_t Graph0_fey1101[2] = {
    0.002890265,
    0.002890265};
-   TGraphErrors *gre = new TGraphErrors(4,Graph0_fx1153,Graph0_fy1153,Graph0_fex1153,Graph0_fey1153);
+   TGraphErrors *gre = new TGraphErrors(2,Graph0_fx1101,Graph0_fy1101,Graph0_fex1101,Graph0_fey1101);
    gre->SetName("Graph0");
    gre->SetTitle("Sub-runs 325");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01153 = new TH1F("Graph_Graph01153","Sub-runs 325",100,-36,36);
-   Graph_Graph01153->SetMinimum(-0.167927);
-   Graph_Graph01153->SetMaximum(0.1057304);
-   Graph_Graph01153->SetDirectory(0);
-   Graph_Graph01153->SetStats(0);
+   TH1F *Graph_Graph01101 = new TH1F("Graph_Graph01101","Sub-runs 325",100,-36,36);
+   Graph_Graph01101->SetMinimum(-0.1674547);
+   Graph_Graph01101->SetMaximum(0.1033396);
+   Graph_Graph01101->SetDirectory(0);
+   Graph_Graph01101->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01153->SetLineColor(ci);
-   Graph_Graph01153->GetXaxis()->SetTitle("Applied B_{r} [ppm]");
-   Graph_Graph01153->GetXaxis()->CenterTitle(true);
-   Graph_Graph01153->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01153->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01153->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01153->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01153->GetYaxis()->SetTitle("#LTy#GT / QHV [mm/kV]");
-   Graph_Graph01153->GetYaxis()->CenterTitle(true);
-   Graph_Graph01153->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01153->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01153->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01153->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01153->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01153->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01153->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01153->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01153);
+   Graph_Graph01101->SetLineColor(ci);
+   Graph_Graph01101->GetXaxis()->SetTitle("Applied B_{r} [ppm]");
+   Graph_Graph01101->GetXaxis()->CenterTitle(true);
+   Graph_Graph01101->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01101->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01101->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01101->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01101->GetYaxis()->SetTitle("#LTy#GT / QHV [mm/kV]");
+   Graph_Graph01101->GetYaxis()->CenterTitle(true);
+   Graph_Graph01101->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01101->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01101->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01101->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01101->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01101->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01101->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01101->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01101);
    
    
-   TF1 *mainFit1154 = new TF1("mainFit","[0]+[1]*x",-36,36, TF1::EAddToList::kNo);
-   mainFit1154->SetFillColor(19);
-   mainFit1154->SetFillStyle(0);
+   TF1 *mainFit1102 = new TF1("mainFit","[0]+[1]*x",-36,36, TF1::EAddToList::kNo);
+   mainFit1102->SetFillColor(19);
+   mainFit1102->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   mainFit1154->SetLineColor(ci);
-   mainFit1154->SetLineWidth(2);
-   mainFit1154->SetChisquare(0.7496938);
-   mainFit1154->SetNDF(2);
-   mainFit1154->GetXaxis()->SetLabelFont(42);
-   mainFit1154->GetXaxis()->SetTitleOffset(1);
-   mainFit1154->GetXaxis()->SetTitleFont(42);
-   mainFit1154->GetYaxis()->SetLabelFont(42);
-   mainFit1154->GetYaxis()->SetTitleFont(42);
-   mainFit1154->SetParameter(0,-0.03050474);
-   mainFit1154->SetParError(0,0.001445133);
-   mainFit1154->SetParLimits(0,0,0);
-   mainFit1154->SetParameter(1,-0.003688035);
-   mainFit1154->SetParError(1,6.46283e-05);
-   mainFit1154->SetParLimits(1,0,0);
-   mainFit1154->SetParent(gre);
-   gre->GetListOfFunctions()->Add(mainFit1154);
+   mainFit1102->SetLineColor(ci);
+   mainFit1102->SetLineWidth(2);
+   mainFit1102->SetChisquare(3.132457e-14);
+   mainFit1102->SetNDF(0);
+   mainFit1102->GetXaxis()->SetLabelFont(42);
+   mainFit1102->GetXaxis()->SetTitleOffset(1);
+   mainFit1102->GetXaxis()->SetTitleFont(42);
+   mainFit1102->GetYaxis()->SetLabelFont(42);
+   mainFit1102->GetYaxis()->SetTitleFont(42);
+   mainFit1102->SetParameter(0,-0.03205753);
+   mainFit1102->SetParError(0,0.002043726);
+   mainFit1102->SetParLimits(0,0,0);
+   mainFit1102->SetParameter(1,-0.00366469);
+   mainFit1102->SetParError(1,6.812421e-05);
+   mainFit1102->SetParLimits(1,0,0);
+   mainFit1102->SetParent(gre);
+   gre->GetListOfFunctions()->Add(mainFit1102);
    gre->Draw("ap");
    
    TPaveText *pt = new TPaveText(0.69,0.68,0.89,0.89,"brNDC");
@@ -95,10 +87,10 @@ void FieldFit_NSUBRUN_325_NEXP_0()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("0.375");
-   pt_LaTex = pt->AddText("#minus0.00369#pm6.46e-05");
-   pt_LaTex = pt->AddText("#minus0.0305#pm0.00145");
-   pt_LaTex = pt->AddText("#minus8.27#pm0.418");
+   TText *pt_LaTex = pt->AddText("  inf");
+   pt_LaTex = pt->AddText("#minus0.00366#pm6.81e-05");
+   pt_LaTex = pt->AddText("#minus0.0321#pm0.00204");
+   pt_LaTex = pt->AddText("#minus8.75#pm0.581");
    pt->Draw();
    
    pt = new TPaveText(0.3,0.69,0.62,0.88,"brNDC");
@@ -111,36 +103,36 @@ void FieldFit_NSUBRUN_325_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-36,0,-8.271272,0);
+   TLine *line = new TLine(-36,0,-8.747679,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-8.271272,-0.167927,-8.271272,0);
+   line = new TLine(-8.747679,-0.1674547,-8.747679,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
    
-   TF1 *mainFit1155 = new TF1("mainFit","[0]+[1]*x",-36,36, TF1::EAddToList::kNo);
-   mainFit1155->SetFillColor(19);
-   mainFit1155->SetFillStyle(0);
+   TF1 *mainFit1103 = new TF1("mainFit","[0]+[1]*x",-36,36, TF1::EAddToList::kNo);
+   mainFit1103->SetFillColor(19);
+   mainFit1103->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   mainFit1155->SetLineColor(ci);
-   mainFit1155->SetLineWidth(2);
-   mainFit1155->SetChisquare(0.7496938);
-   mainFit1155->SetNDF(2);
-   mainFit1155->GetXaxis()->SetLabelFont(42);
-   mainFit1155->GetXaxis()->SetTitleOffset(1);
-   mainFit1155->GetXaxis()->SetTitleFont(42);
-   mainFit1155->GetYaxis()->SetLabelFont(42);
-   mainFit1155->GetYaxis()->SetTitleFont(42);
-   mainFit1155->SetParameter(0,-0.03050474);
-   mainFit1155->SetParError(0,0.001445133);
-   mainFit1155->SetParLimits(0,0,0);
-   mainFit1155->SetParameter(1,-0.003688035);
-   mainFit1155->SetParError(1,6.46283e-05);
-   mainFit1155->SetParLimits(1,0,0);
-   mainFit1155->Draw("same");
+   mainFit1103->SetLineColor(ci);
+   mainFit1103->SetLineWidth(2);
+   mainFit1103->SetChisquare(3.132457e-14);
+   mainFit1103->SetNDF(0);
+   mainFit1103->GetXaxis()->SetLabelFont(42);
+   mainFit1103->GetXaxis()->SetTitleOffset(1);
+   mainFit1103->GetXaxis()->SetTitleFont(42);
+   mainFit1103->GetYaxis()->SetLabelFont(42);
+   mainFit1103->GetYaxis()->SetTitleFont(42);
+   mainFit1103->SetParameter(0,-0.03205753);
+   mainFit1103->SetParError(0,0.002043726);
+   mainFit1103->SetParLimits(0,0,0);
+   mainFit1103->SetParameter(1,-0.00366469);
+   mainFit1103->SetParError(1,6.812421e-05);
+   mainFit1103->SetParLimits(1,0,0);
+   mainFit1103->Draw("same");
    
    pt = new TPaveText(0.3750503,0.94,0.6249497,0.995,"blNDC");
    pt->SetName("title");

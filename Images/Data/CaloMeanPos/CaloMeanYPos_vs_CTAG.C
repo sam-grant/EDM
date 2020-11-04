@@ -1,7 +1,7 @@
 void CaloMeanYPos_vs_CTAG()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Oct 14 22:42:19 2020) by ROOT version 6.22/02
+//=========  (Tue Oct 20 18:35:37 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1674140,75.36875,1.506726e+07,76.18125);
@@ -12,7 +12,7 @@ void CaloMeanYPos_vs_CTAG()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx1001[349] = {
-   6.953118e-310,
+   6.953129e-310,
    14076,
    52517,
    92012,
@@ -712,7 +712,7 @@ void CaloMeanYPos_vs_CTAG()
    75.56774,
    75.5677};
    Double_t Graph0_fex1001[349] = {
-   6.953118e-310,
+   6.953129e-310,
    0,
    0,
    0,
@@ -1062,7 +1062,7 @@ void CaloMeanYPos_vs_CTAG()
    0,
    0};
    Double_t Graph0_fey1001[349] = {
-   6.953118e-310,
+   6.953129e-310,
    0.2458444,
    0.126379,
    0.09535128,
@@ -1413,7 +1413,7 @@ void CaloMeanYPos_vs_CTAG()
    0.007911157};
    TGraphErrors *gre = new TGraphErrors(349,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
-   gre->SetTitle(";CTAGs;Cluster mean Y-position [mm]");
+   gre->SetTitle(";CTAGs;#LTy#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -1434,7 +1434,7 @@ void CaloMeanYPos_vs_CTAG()
    Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("Cluster mean Y-position [mm]");
+   Graph_Graph01001->GetYaxis()->SetTitle("#LTy#GT [mm]");
    Graph_Graph01001->GetYaxis()->CenterTitle(true);
    Graph_Graph01001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01001->GetYaxis()->SetLabelFont(42);
@@ -1456,7 +1456,7 @@ void CaloMeanYPos_vs_CTAG()
    gaxis->SetTitleSize(0.04);
    gaxis->SetTitleColor(632);
    gaxis->SetTitleFont(42);
-   gaxis->SetTitle("Number of sub-runs");
+   gaxis->SetTitle("Sub-runs");
 
    ci = TColor::GetColor("#ff0000");
    gaxis->SetLabelColor(ci);

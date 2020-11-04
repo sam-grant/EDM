@@ -1,7 +1,7 @@
 void QuadScans_NSUBRUN_25_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 15 00:39:36 2020) by ROOT version 6.22/02
+//=========  (Fri Oct 16 07:50:54 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(14.91429,-3.25,21.77143,4.25);
@@ -98,42 +98,42 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1003->SetParLimits(1,0,0);
    quadLineFit1003->Draw("same");
    
-   Double_t -40.000000 ppm_fx1003[2] = {
+   Double_t -25.000000 ppm_fx1003[2] = {
    16,
    20};
-   Double_t -40.000000 ppm_fy1003[2] = {
-   -2.447042,
-   -1.959691};
-   Double_t -40.000000 ppm_fex1003[2] = {
+   Double_t -25.000000 ppm_fy1003[2] = {
+   -1.317271,
+   -1.055874};
+   Double_t -25.000000 ppm_fex1003[2] = {
    0,
    0};
-   Double_t -40.000000 ppm_fey1003[2] = {
+   Double_t -25.000000 ppm_fey1003[2] = {
    0.02922466,
    0.02922466};
-   gre = new TGraphErrors(2,-40.000000 ppm_fx1003,-40.000000 ppm_fy1003,-40.000000 ppm_fex1003,-40.000000 ppm_fey1003);
-   gre->SetName("-40.000000 ppm");
+   gre = new TGraphErrors(2,-25.000000 ppm_fx1003,-25.000000 ppm_fy1003,-25.000000 ppm_fex1003,-25.000000 ppm_fey1003);
+   gre->SetName("-25.000000 ppm");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
    gre->SetLineColor(2);
    gre->SetMarkerColor(2);
    
-   TH1F *Graph_mI40dO000000sPppm1003 = new TH1F("Graph_mI40dO000000sPppm1003","Graph",100,15.6,20.4);
-   Graph_mI40dO000000sPppm1003->SetMinimum(-2.530847);
-   Graph_mI40dO000000sPppm1003->SetMaximum(-1.875886);
-   Graph_mI40dO000000sPppm1003->SetDirectory(0);
-   Graph_mI40dO000000sPppm1003->SetStats(0);
+   TH1F *Graph_mI25dO000000sPppm1003 = new TH1F("Graph_mI25dO000000sPppm1003","Graph",100,15.6,20.4);
+   Graph_mI25dO000000sPppm1003->SetMinimum(-1.378481);
+   Graph_mI25dO000000sPppm1003->SetMaximum(-0.9946648);
+   Graph_mI25dO000000sPppm1003->SetDirectory(0);
+   Graph_mI25dO000000sPppm1003->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_mI40dO000000sPppm1003->SetLineColor(ci);
-   Graph_mI40dO000000sPppm1003->GetXaxis()->SetLabelFont(42);
-   Graph_mI40dO000000sPppm1003->GetXaxis()->SetTitleOffset(1);
-   Graph_mI40dO000000sPppm1003->GetXaxis()->SetTitleFont(42);
-   Graph_mI40dO000000sPppm1003->GetYaxis()->SetLabelFont(42);
-   Graph_mI40dO000000sPppm1003->GetYaxis()->SetTitleFont(42);
-   Graph_mI40dO000000sPppm1003->GetZaxis()->SetLabelFont(42);
-   Graph_mI40dO000000sPppm1003->GetZaxis()->SetTitleOffset(1);
-   Graph_mI40dO000000sPppm1003->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_-40.000000 ppm1003);
+   Graph_mI25dO000000sPppm1003->SetLineColor(ci);
+   Graph_mI25dO000000sPppm1003->GetXaxis()->SetLabelFont(42);
+   Graph_mI25dO000000sPppm1003->GetXaxis()->SetTitleOffset(1);
+   Graph_mI25dO000000sPppm1003->GetXaxis()->SetTitleFont(42);
+   Graph_mI25dO000000sPppm1003->GetYaxis()->SetLabelFont(42);
+   Graph_mI25dO000000sPppm1003->GetYaxis()->SetTitleFont(42);
+   Graph_mI25dO000000sPppm1003->GetZaxis()->SetLabelFont(42);
+   Graph_mI25dO000000sPppm1003->GetZaxis()->SetTitleOffset(1);
+   Graph_mI25dO000000sPppm1003->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_-25.000000 ppm1003);
    
    
    TF1 *quadLineFit1004 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
@@ -141,17 +141,17 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1004->SetFillStyle(0);
    quadLineFit1004->SetLineColor(2);
    quadLineFit1004->SetLineWidth(2);
-   quadLineFit1004->SetChisquare(5.662926e-20);
+   quadLineFit1004->SetChisquare(1.501897e-20);
    quadLineFit1004->SetNDF(0);
    quadLineFit1004->GetXaxis()->SetLabelFont(42);
    quadLineFit1004->GetXaxis()->SetTitleOffset(1);
    quadLineFit1004->GetXaxis()->SetTitleFont(42);
    quadLineFit1004->GetYaxis()->SetLabelFont(42);
    quadLineFit1004->GetYaxis()->SetTitleFont(42);
-   quadLineFit1004->SetParameter(0,-4.396448);
+   quadLineFit1004->SetParameter(0,-2.36286);
    quadLineFit1004->SetParError(0,0.1871291);
    quadLineFit1004->SetParLimits(0,0,0);
-   quadLineFit1004->SetParameter(1,0.1218378);
+   quadLineFit1004->SetParameter(1,0.06534931);
    quadLineFit1004->SetParError(1,0.01033248);
    quadLineFit1004->SetParLimits(1,0,0);
    quadLineFit1004->SetParent(gre);
@@ -163,57 +163,57 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1005->SetFillStyle(0);
    quadLineFit1005->SetLineColor(2);
    quadLineFit1005->SetLineWidth(2);
-   quadLineFit1005->SetChisquare(5.662926e-20);
+   quadLineFit1005->SetChisquare(1.501897e-20);
    quadLineFit1005->SetNDF(0);
    quadLineFit1005->GetXaxis()->SetLabelFont(42);
    quadLineFit1005->GetXaxis()->SetTitleOffset(1);
    quadLineFit1005->GetXaxis()->SetTitleFont(42);
    quadLineFit1005->GetYaxis()->SetLabelFont(42);
    quadLineFit1005->GetYaxis()->SetTitleFont(42);
-   quadLineFit1005->SetParameter(0,-4.396448);
+   quadLineFit1005->SetParameter(0,-2.36286);
    quadLineFit1005->SetParError(0,0.1871291);
    quadLineFit1005->SetParLimits(0,0,0);
-   quadLineFit1005->SetParameter(1,0.1218378);
+   quadLineFit1005->SetParameter(1,0.06534931);
    quadLineFit1005->SetParError(1,0.01033248);
    quadLineFit1005->SetParLimits(1,0,0);
    quadLineFit1005->Draw("same");
    
-   Double_t -30.000000 ppm_fx1005[2] = {
+   Double_t 0.000000 ppm_fx1005[2] = {
    16,
    20};
-   Double_t -30.000000 ppm_fy1005[2] = {
-   -1.637917,
-   -1.348582};
-   Double_t -30.000000 ppm_fex1005[2] = {
+   Double_t 0.000000 ppm_fy1005[2] = {
+   0.6216244,
+   0.4590511};
+   Double_t 0.000000 ppm_fex1005[2] = {
    0,
    0};
-   Double_t -30.000000 ppm_fey1005[2] = {
+   Double_t 0.000000 ppm_fey1005[2] = {
    0.02922466,
    0.02922466};
-   gre = new TGraphErrors(2,-30.000000 ppm_fx1005,-30.000000 ppm_fy1005,-30.000000 ppm_fex1005,-30.000000 ppm_fey1005);
-   gre->SetName("-30.000000 ppm");
+   gre = new TGraphErrors(2,0.000000 ppm_fx1005,0.000000 ppm_fy1005,0.000000 ppm_fex1005,0.000000 ppm_fey1005);
+   gre->SetName("0.000000 ppm");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
    gre->SetLineColor(3);
    gre->SetMarkerColor(3);
    
-   TH1F *Graph_mI30dO000000sPppm1005 = new TH1F("Graph_mI30dO000000sPppm1005","Graph",100,15.6,20.4);
-   Graph_mI30dO000000sPppm1005->SetMinimum(-1.70192);
-   Graph_mI30dO000000sPppm1005->SetMaximum(-1.284579);
-   Graph_mI30dO000000sPppm1005->SetDirectory(0);
-   Graph_mI30dO000000sPppm1005->SetStats(0);
+   TH1F *Graph_0dO000000sPppm1005 = new TH1F("Graph_0dO000000sPppm1005","Graph",100,15.6,20.4);
+   Graph_0dO000000sPppm1005->SetMinimum(0.4077241);
+   Graph_0dO000000sPppm1005->SetMaximum(0.6729513);
+   Graph_0dO000000sPppm1005->SetDirectory(0);
+   Graph_0dO000000sPppm1005->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_mI30dO000000sPppm1005->SetLineColor(ci);
-   Graph_mI30dO000000sPppm1005->GetXaxis()->SetLabelFont(42);
-   Graph_mI30dO000000sPppm1005->GetXaxis()->SetTitleOffset(1);
-   Graph_mI30dO000000sPppm1005->GetXaxis()->SetTitleFont(42);
-   Graph_mI30dO000000sPppm1005->GetYaxis()->SetLabelFont(42);
-   Graph_mI30dO000000sPppm1005->GetYaxis()->SetTitleFont(42);
-   Graph_mI30dO000000sPppm1005->GetZaxis()->SetLabelFont(42);
-   Graph_mI30dO000000sPppm1005->GetZaxis()->SetTitleOffset(1);
-   Graph_mI30dO000000sPppm1005->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_-30.000000 ppm1005);
+   Graph_0dO000000sPppm1005->SetLineColor(ci);
+   Graph_0dO000000sPppm1005->GetXaxis()->SetLabelFont(42);
+   Graph_0dO000000sPppm1005->GetXaxis()->SetTitleOffset(1);
+   Graph_0dO000000sPppm1005->GetXaxis()->SetTitleFont(42);
+   Graph_0dO000000sPppm1005->GetYaxis()->SetLabelFont(42);
+   Graph_0dO000000sPppm1005->GetYaxis()->SetTitleFont(42);
+   Graph_0dO000000sPppm1005->GetZaxis()->SetLabelFont(42);
+   Graph_0dO000000sPppm1005->GetZaxis()->SetTitleOffset(1);
+   Graph_0dO000000sPppm1005->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_0.000000 ppm1005);
    
    
    TF1 *quadLineFit1006 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
@@ -221,17 +221,17 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1006->SetFillStyle(0);
    quadLineFit1006->SetLineColor(3);
    quadLineFit1006->SetLineWidth(2);
-   quadLineFit1006->SetChisquare(2.896925e-21);
+   quadLineFit1006->SetChisquare(3.478694e-22);
    quadLineFit1006->SetNDF(0);
    quadLineFit1006->GetXaxis()->SetLabelFont(42);
    quadLineFit1006->GetXaxis()->SetTitleOffset(1);
    quadLineFit1006->GetXaxis()->SetTitleFont(42);
    quadLineFit1006->GetYaxis()->SetLabelFont(42);
    quadLineFit1006->GetYaxis()->SetTitleFont(42);
-   quadLineFit1006->SetParameter(0,-2.795257);
+   quadLineFit1006->SetParameter(0,1.271918);
    quadLineFit1006->SetParError(0,0.1871291);
    quadLineFit1006->SetParLimits(0,0,0);
-   quadLineFit1006->SetParameter(1,0.07233374);
+   quadLineFit1006->SetParameter(1,-0.04064334);
    quadLineFit1006->SetParError(1,0.01033248);
    quadLineFit1006->SetParLimits(1,0,0);
    quadLineFit1006->SetParent(gre);
@@ -243,57 +243,57 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1007->SetFillStyle(0);
    quadLineFit1007->SetLineColor(3);
    quadLineFit1007->SetLineWidth(2);
-   quadLineFit1007->SetChisquare(2.896925e-21);
+   quadLineFit1007->SetChisquare(3.478694e-22);
    quadLineFit1007->SetNDF(0);
    quadLineFit1007->GetXaxis()->SetLabelFont(42);
    quadLineFit1007->GetXaxis()->SetTitleOffset(1);
    quadLineFit1007->GetXaxis()->SetTitleFont(42);
    quadLineFit1007->GetYaxis()->SetLabelFont(42);
    quadLineFit1007->GetYaxis()->SetTitleFont(42);
-   quadLineFit1007->SetParameter(0,-2.795257);
+   quadLineFit1007->SetParameter(0,1.271918);
    quadLineFit1007->SetParError(0,0.1871291);
    quadLineFit1007->SetParLimits(0,0,0);
-   quadLineFit1007->SetParameter(1,0.07233374);
+   quadLineFit1007->SetParameter(1,-0.04064334);
    quadLineFit1007->SetParError(1,0.01033248);
    quadLineFit1007->SetParLimits(1,0,0);
    quadLineFit1007->Draw("same");
    
-   Double_t -20.000000 ppm_fx1007[2] = {
+   Double_t 25.000000 ppm_fx1007[2] = {
    16,
    20};
-   Double_t -20.000000 ppm_fy1007[2] = {
-   -0.9311065,
-   -0.7426778};
-   Double_t -20.000000 ppm_fex1007[2] = {
+   Double_t 25.000000 ppm_fy1007[2] = {
+   2.458206,
+   1.968772};
+   Double_t 25.000000 ppm_fex1007[2] = {
    0,
    0};
-   Double_t -20.000000 ppm_fey1007[2] = {
+   Double_t 25.000000 ppm_fey1007[2] = {
    0.02922466,
    0.02922466};
-   gre = new TGraphErrors(2,-20.000000 ppm_fx1007,-20.000000 ppm_fy1007,-20.000000 ppm_fex1007,-20.000000 ppm_fey1007);
-   gre->SetName("-20.000000 ppm");
+   gre = new TGraphErrors(2,25.000000 ppm_fx1007,25.000000 ppm_fy1007,25.000000 ppm_fex1007,25.000000 ppm_fey1007);
+   gre->SetName("25.000000 ppm");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
    gre->SetLineColor(4);
    gre->SetMarkerColor(4);
    
-   TH1F *Graph_mI20dO000000sPppm1007 = new TH1F("Graph_mI20dO000000sPppm1007","Graph",100,15.6,20.4);
-   Graph_mI20dO000000sPppm1007->SetMinimum(-0.985019);
-   Graph_mI20dO000000sPppm1007->SetMaximum(-0.6887654);
-   Graph_mI20dO000000sPppm1007->SetDirectory(0);
-   Graph_mI20dO000000sPppm1007->SetStats(0);
+   TH1F *Graph_25dO000000sPppm1007 = new TH1F("Graph_25dO000000sPppm1007","Graph",100,15.6,20.4);
+   Graph_25dO000000sPppm1007->SetMinimum(1.884759);
+   Graph_25dO000000sPppm1007->SetMaximum(2.542219);
+   Graph_25dO000000sPppm1007->SetDirectory(0);
+   Graph_25dO000000sPppm1007->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_mI20dO000000sPppm1007->SetLineColor(ci);
-   Graph_mI20dO000000sPppm1007->GetXaxis()->SetLabelFont(42);
-   Graph_mI20dO000000sPppm1007->GetXaxis()->SetTitleOffset(1);
-   Graph_mI20dO000000sPppm1007->GetXaxis()->SetTitleFont(42);
-   Graph_mI20dO000000sPppm1007->GetYaxis()->SetLabelFont(42);
-   Graph_mI20dO000000sPppm1007->GetYaxis()->SetTitleFont(42);
-   Graph_mI20dO000000sPppm1007->GetZaxis()->SetLabelFont(42);
-   Graph_mI20dO000000sPppm1007->GetZaxis()->SetTitleOffset(1);
-   Graph_mI20dO000000sPppm1007->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_-20.000000 ppm1007);
+   Graph_25dO000000sPppm1007->SetLineColor(ci);
+   Graph_25dO000000sPppm1007->GetXaxis()->SetLabelFont(42);
+   Graph_25dO000000sPppm1007->GetXaxis()->SetTitleOffset(1);
+   Graph_25dO000000sPppm1007->GetXaxis()->SetTitleFont(42);
+   Graph_25dO000000sPppm1007->GetYaxis()->SetLabelFont(42);
+   Graph_25dO000000sPppm1007->GetYaxis()->SetTitleFont(42);
+   Graph_25dO000000sPppm1007->GetZaxis()->SetLabelFont(42);
+   Graph_25dO000000sPppm1007->GetZaxis()->SetTitleOffset(1);
+   Graph_25dO000000sPppm1007->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_25.000000 ppm1007);
    
    
    TF1 *quadLineFit1008 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
@@ -301,17 +301,17 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1008->SetFillStyle(0);
    quadLineFit1008->SetLineColor(4);
    quadLineFit1008->SetLineWidth(2);
-   quadLineFit1008->SetChisquare(6.487781e-21);
+   quadLineFit1008->SetChisquare(1.68119e-19);
    quadLineFit1008->SetNDF(0);
    quadLineFit1008->GetXaxis()->SetLabelFont(42);
    quadLineFit1008->GetXaxis()->SetTitleOffset(1);
    quadLineFit1008->GetXaxis()->SetTitleFont(42);
    quadLineFit1008->GetYaxis()->SetLabelFont(42);
    quadLineFit1008->GetYaxis()->SetTitleFont(42);
-   quadLineFit1008->SetParameter(0,-1.684821);
+   quadLineFit1008->SetParameter(0,4.415941);
    quadLineFit1008->SetParError(0,0.1871291);
    quadLineFit1008->SetParLimits(0,0,0);
-   quadLineFit1008->SetParameter(1,0.04710718);
+   quadLineFit1008->SetParameter(1,-0.1223584);
    quadLineFit1008->SetParError(1,0.01033248);
    quadLineFit1008->SetParLimits(1,0,0);
    quadLineFit1008->SetParent(gre);
@@ -323,57 +323,57 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1009->SetFillStyle(0);
    quadLineFit1009->SetLineColor(4);
    quadLineFit1009->SetLineWidth(2);
-   quadLineFit1009->SetChisquare(6.487781e-21);
+   quadLineFit1009->SetChisquare(1.68119e-19);
    quadLineFit1009->SetNDF(0);
    quadLineFit1009->GetXaxis()->SetLabelFont(42);
    quadLineFit1009->GetXaxis()->SetTitleOffset(1);
    quadLineFit1009->GetXaxis()->SetTitleFont(42);
    quadLineFit1009->GetYaxis()->SetLabelFont(42);
    quadLineFit1009->GetYaxis()->SetTitleFont(42);
-   quadLineFit1009->SetParameter(0,-1.684821);
+   quadLineFit1009->SetParameter(0,4.415941);
    quadLineFit1009->SetParError(0,0.1871291);
    quadLineFit1009->SetParLimits(0,0,0);
-   quadLineFit1009->SetParameter(1,0.04710718);
+   quadLineFit1009->SetParameter(1,-0.1223584);
    quadLineFit1009->SetParError(1,0.01033248);
    quadLineFit1009->SetParLimits(1,0,0);
    quadLineFit1009->Draw("same");
    
-   Double_t -10.000000 ppm_fx1009[2] = {
+   Double_t 50.000000 ppm_fx1009[2] = {
    16,
    20};
-   Double_t -10.000000 ppm_fy1009[2] = {
-   -0.1266882,
-   -0.09557008};
-   Double_t -10.000000 ppm_fex1009[2] = {
+   Double_t 50.000000 ppm_fy1009[2] = {
+   4.392395,
+   3.519697};
+   Double_t 50.000000 ppm_fex1009[2] = {
    0,
    0};
-   Double_t -10.000000 ppm_fey1009[2] = {
+   Double_t 50.000000 ppm_fey1009[2] = {
    0.02922466,
    0.02922466};
-   gre = new TGraphErrors(2,-10.000000 ppm_fx1009,-10.000000 ppm_fy1009,-10.000000 ppm_fex1009,-10.000000 ppm_fey1009);
-   gre->SetName("-10.000000 ppm");
+   gre = new TGraphErrors(2,50.000000 ppm_fx1009,50.000000 ppm_fy1009,50.000000 ppm_fex1009,50.000000 ppm_fey1009);
+   gre->SetName("50.000000 ppm");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
    gre->SetLineColor(5);
    gre->SetMarkerColor(5);
    
-   TH1F *Graph_mI10dO000000sPppm1009 = new TH1F("Graph_mI10dO000000sPppm1009","Graph",100,15.6,20.4);
-   Graph_mI10dO000000sPppm1009->SetMinimum(-0.1648696);
-   Graph_mI10dO000000sPppm1009->SetMaximum(-0.05738867);
-   Graph_mI10dO000000sPppm1009->SetDirectory(0);
-   Graph_mI10dO000000sPppm1009->SetStats(0);
+   TH1F *Graph_50dO000000sPppm1009 = new TH1F("Graph_50dO000000sPppm1009","Graph",100,15.6,20.4);
+   Graph_50dO000000sPppm1009->SetMinimum(3.397357);
+   Graph_50dO000000sPppm1009->SetMaximum(4.514735);
+   Graph_50dO000000sPppm1009->SetDirectory(0);
+   Graph_50dO000000sPppm1009->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_mI10dO000000sPppm1009->SetLineColor(ci);
-   Graph_mI10dO000000sPppm1009->GetXaxis()->SetLabelFont(42);
-   Graph_mI10dO000000sPppm1009->GetXaxis()->SetTitleOffset(1);
-   Graph_mI10dO000000sPppm1009->GetXaxis()->SetTitleFont(42);
-   Graph_mI10dO000000sPppm1009->GetYaxis()->SetLabelFont(42);
-   Graph_mI10dO000000sPppm1009->GetYaxis()->SetTitleFont(42);
-   Graph_mI10dO000000sPppm1009->GetZaxis()->SetLabelFont(42);
-   Graph_mI10dO000000sPppm1009->GetZaxis()->SetTitleOffset(1);
-   Graph_mI10dO000000sPppm1009->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_-10.000000 ppm1009);
+   Graph_50dO000000sPppm1009->SetLineColor(ci);
+   Graph_50dO000000sPppm1009->GetXaxis()->SetLabelFont(42);
+   Graph_50dO000000sPppm1009->GetXaxis()->SetTitleOffset(1);
+   Graph_50dO000000sPppm1009->GetXaxis()->SetTitleFont(42);
+   Graph_50dO000000sPppm1009->GetYaxis()->SetLabelFont(42);
+   Graph_50dO000000sPppm1009->GetYaxis()->SetTitleFont(42);
+   Graph_50dO000000sPppm1009->GetZaxis()->SetLabelFont(42);
+   Graph_50dO000000sPppm1009->GetZaxis()->SetTitleOffset(1);
+   Graph_50dO000000sPppm1009->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_50.000000 ppm1009);
    
    
    TF1 *quadLineFit1010 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
@@ -381,17 +381,17 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1010->SetFillStyle(0);
    quadLineFit1010->SetLineColor(5);
    quadLineFit1010->SetLineWidth(2);
-   quadLineFit1010->SetChisquare(4.154864e-22);
+   quadLineFit1010->SetChisquare(6.711188e-21);
    quadLineFit1010->SetNDF(0);
    quadLineFit1010->GetXaxis()->SetLabelFont(42);
    quadLineFit1010->GetXaxis()->SetTitleOffset(1);
    quadLineFit1010->GetXaxis()->SetTitleFont(42);
    quadLineFit1010->GetYaxis()->SetLabelFont(42);
    quadLineFit1010->GetYaxis()->SetTitleFont(42);
-   quadLineFit1010->SetParameter(0,-0.2511608);
+   quadLineFit1010->SetParameter(0,7.883189);
    quadLineFit1010->SetParError(0,0.1871291);
    quadLineFit1010->SetParLimits(0,0,0);
-   quadLineFit1010->SetParameter(1,0.007779537);
+   quadLineFit1010->SetParameter(1,-0.2181746);
    quadLineFit1010->SetParError(1,0.01033248);
    quadLineFit1010->SetParLimits(1,0,0);
    quadLineFit1010->SetParent(gre);
@@ -403,500 +403,20 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    quadLineFit1011->SetFillStyle(0);
    quadLineFit1011->SetLineColor(5);
    quadLineFit1011->SetLineWidth(2);
-   quadLineFit1011->SetChisquare(4.154864e-22);
+   quadLineFit1011->SetChisquare(6.711188e-21);
    quadLineFit1011->SetNDF(0);
    quadLineFit1011->GetXaxis()->SetLabelFont(42);
    quadLineFit1011->GetXaxis()->SetTitleOffset(1);
    quadLineFit1011->GetXaxis()->SetTitleFont(42);
    quadLineFit1011->GetYaxis()->SetLabelFont(42);
    quadLineFit1011->GetYaxis()->SetTitleFont(42);
-   quadLineFit1011->SetParameter(0,-0.2511608);
+   quadLineFit1011->SetParameter(0,7.883189);
    quadLineFit1011->SetParError(0,0.1871291);
    quadLineFit1011->SetParLimits(0,0,0);
-   quadLineFit1011->SetParameter(1,0.007779537);
+   quadLineFit1011->SetParameter(1,-0.2181746);
    quadLineFit1011->SetParError(1,0.01033248);
    quadLineFit1011->SetParLimits(1,0,0);
    quadLineFit1011->Draw("same");
-   
-   Double_t 0.000000 ppm_fx1011[2] = {
-   16,
-   20};
-   Double_t 0.000000 ppm_fy1011[2] = {
-   0.6520407,
-   0.5020495};
-   Double_t 0.000000 ppm_fex1011[2] = {
-   0,
-   0};
-   Double_t 0.000000 ppm_fey1011[2] = {
-   0.02922466,
-   0.02922466};
-   gre = new TGraphErrors(2,0.000000 ppm_fx1011,0.000000 ppm_fy1011,0.000000 ppm_fex1011,0.000000 ppm_fey1011);
-   gre->SetName("0.000000 ppm");
-   gre->SetTitle("Graph");
-   gre->SetFillStyle(1000);
-   gre->SetLineColor(6);
-   gre->SetMarkerColor(6);
-   
-   TH1F *Graph_0dO000000sPppm1011 = new TH1F("Graph_0dO000000sPppm1011","Graph",100,15.6,20.4);
-   Graph_0dO000000sPppm1011->SetMinimum(0.4519808);
-   Graph_0dO000000sPppm1011->SetMaximum(0.7021094);
-   Graph_0dO000000sPppm1011->SetDirectory(0);
-   Graph_0dO000000sPppm1011->SetStats(0);
-
-   ci = TColor::GetColor("#000099");
-   Graph_0dO000000sPppm1011->SetLineColor(ci);
-   Graph_0dO000000sPppm1011->GetXaxis()->SetLabelFont(42);
-   Graph_0dO000000sPppm1011->GetXaxis()->SetTitleOffset(1);
-   Graph_0dO000000sPppm1011->GetXaxis()->SetTitleFont(42);
-   Graph_0dO000000sPppm1011->GetYaxis()->SetLabelFont(42);
-   Graph_0dO000000sPppm1011->GetYaxis()->SetTitleFont(42);
-   Graph_0dO000000sPppm1011->GetZaxis()->SetLabelFont(42);
-   Graph_0dO000000sPppm1011->GetZaxis()->SetTitleOffset(1);
-   Graph_0dO000000sPppm1011->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_0.000000 ppm1011);
-   
-   
-   TF1 *quadLineFit1012 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1012->SetFillColor(19);
-   quadLineFit1012->SetFillStyle(0);
-   quadLineFit1012->SetLineColor(6);
-   quadLineFit1012->SetLineWidth(2);
-   quadLineFit1012->SetChisquare(5.803619e-20);
-   quadLineFit1012->SetNDF(0);
-   quadLineFit1012->GetXaxis()->SetLabelFont(42);
-   quadLineFit1012->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1012->GetXaxis()->SetTitleFont(42);
-   quadLineFit1012->GetYaxis()->SetLabelFont(42);
-   quadLineFit1012->GetYaxis()->SetTitleFont(42);
-   quadLineFit1012->SetParameter(0,1.252005);
-   quadLineFit1012->SetParError(0,0.1871291);
-   quadLineFit1012->SetParLimits(0,0,0);
-   quadLineFit1012->SetParameter(1,-0.0374978);
-   quadLineFit1012->SetParError(1,0.01033248);
-   quadLineFit1012->SetParLimits(1,0,0);
-   quadLineFit1012->SetParent(gre);
-   gre->GetListOfFunctions()->Add(quadLineFit1012);
-   gre->Draw("p ");
-   
-   TF1 *quadLineFit1013 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1013->SetFillColor(19);
-   quadLineFit1013->SetFillStyle(0);
-   quadLineFit1013->SetLineColor(6);
-   quadLineFit1013->SetLineWidth(2);
-   quadLineFit1013->SetChisquare(5.803619e-20);
-   quadLineFit1013->SetNDF(0);
-   quadLineFit1013->GetXaxis()->SetLabelFont(42);
-   quadLineFit1013->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1013->GetXaxis()->SetTitleFont(42);
-   quadLineFit1013->GetYaxis()->SetLabelFont(42);
-   quadLineFit1013->GetYaxis()->SetTitleFont(42);
-   quadLineFit1013->SetParameter(0,1.252005);
-   quadLineFit1013->SetParError(0,0.1871291);
-   quadLineFit1013->SetParLimits(0,0,0);
-   quadLineFit1013->SetParameter(1,-0.0374978);
-   quadLineFit1013->SetParError(1,0.01033248);
-   quadLineFit1013->SetParLimits(1,0,0);
-   quadLineFit1013->Draw("same");
-   
-   Double_t 10.000000 ppm_fx1013[2] = {
-   16,
-   20};
-   Double_t 10.000000 ppm_fy1013[2] = {
-   1.354623,
-   1.093556};
-   Double_t 10.000000 ppm_fex1013[2] = {
-   0,
-   0};
-   Double_t 10.000000 ppm_fey1013[2] = {
-   0.02922466,
-   0.02922466};
-   gre = new TGraphErrors(2,10.000000 ppm_fx1013,10.000000 ppm_fy1013,10.000000 ppm_fex1013,10.000000 ppm_fey1013);
-   gre->SetName("10.000000 ppm");
-   gre->SetTitle("Graph");
-   gre->SetFillStyle(1000);
-   gre->SetLineColor(7);
-   gre->SetMarkerColor(7);
-   
-   TH1F *Graph_10dO000000sPppm1013 = new TH1F("Graph_10dO000000sPppm1013","Graph",100,15.6,20.4);
-   Graph_10dO000000sPppm1013->SetMinimum(1.03238);
-   Graph_10dO000000sPppm1013->SetMaximum(1.415799);
-   Graph_10dO000000sPppm1013->SetDirectory(0);
-   Graph_10dO000000sPppm1013->SetStats(0);
-
-   ci = TColor::GetColor("#000099");
-   Graph_10dO000000sPppm1013->SetLineColor(ci);
-   Graph_10dO000000sPppm1013->GetXaxis()->SetLabelFont(42);
-   Graph_10dO000000sPppm1013->GetXaxis()->SetTitleOffset(1);
-   Graph_10dO000000sPppm1013->GetXaxis()->SetTitleFont(42);
-   Graph_10dO000000sPppm1013->GetYaxis()->SetLabelFont(42);
-   Graph_10dO000000sPppm1013->GetYaxis()->SetTitleFont(42);
-   Graph_10dO000000sPppm1013->GetZaxis()->SetLabelFont(42);
-   Graph_10dO000000sPppm1013->GetZaxis()->SetTitleOffset(1);
-   Graph_10dO000000sPppm1013->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_10.000000 ppm1013);
-   
-   
-   TF1 *quadLineFit1014 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1014->SetFillColor(19);
-   quadLineFit1014->SetFillStyle(0);
-   quadLineFit1014->SetLineColor(7);
-   quadLineFit1014->SetLineWidth(2);
-   quadLineFit1014->SetChisquare(1.103455e-20);
-   quadLineFit1014->SetNDF(0);
-   quadLineFit1014->GetXaxis()->SetLabelFont(42);
-   quadLineFit1014->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1014->GetXaxis()->SetTitleFont(42);
-   quadLineFit1014->GetYaxis()->SetLabelFont(42);
-   quadLineFit1014->GetYaxis()->SetTitleFont(42);
-   quadLineFit1014->SetParameter(0,2.398892);
-   quadLineFit1014->SetParError(0,0.1871291);
-   quadLineFit1014->SetParLimits(0,0,0);
-   quadLineFit1014->SetParameter(1,-0.06526678);
-   quadLineFit1014->SetParError(1,0.01033248);
-   quadLineFit1014->SetParLimits(1,0,0);
-   quadLineFit1014->SetParent(gre);
-   gre->GetListOfFunctions()->Add(quadLineFit1014);
-   gre->Draw("p ");
-   
-   TF1 *quadLineFit1015 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1015->SetFillColor(19);
-   quadLineFit1015->SetFillStyle(0);
-   quadLineFit1015->SetLineColor(7);
-   quadLineFit1015->SetLineWidth(2);
-   quadLineFit1015->SetChisquare(1.103455e-20);
-   quadLineFit1015->SetNDF(0);
-   quadLineFit1015->GetXaxis()->SetLabelFont(42);
-   quadLineFit1015->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1015->GetXaxis()->SetTitleFont(42);
-   quadLineFit1015->GetYaxis()->SetLabelFont(42);
-   quadLineFit1015->GetYaxis()->SetTitleFont(42);
-   quadLineFit1015->SetParameter(0,2.398892);
-   quadLineFit1015->SetParError(0,0.1871291);
-   quadLineFit1015->SetParLimits(0,0,0);
-   quadLineFit1015->SetParameter(1,-0.06526678);
-   quadLineFit1015->SetParError(1,0.01033248);
-   quadLineFit1015->SetParLimits(1,0,0);
-   quadLineFit1015->Draw("same");
-   
-   Double_t 20.000000 ppm_fx1015[2] = {
-   16,
-   20};
-   Double_t 20.000000 ppm_fy1015[2] = {
-   2.123384,
-   1.703347};
-   Double_t 20.000000 ppm_fex1015[2] = {
-   0,
-   0};
-   Double_t 20.000000 ppm_fey1015[2] = {
-   0.02922466,
-   0.02922466};
-   gre = new TGraphErrors(2,20.000000 ppm_fx1015,20.000000 ppm_fy1015,20.000000 ppm_fex1015,20.000000 ppm_fey1015);
-   gre->SetName("20.000000 ppm");
-   gre->SetTitle("Graph");
-   gre->SetFillStyle(1000);
-   gre->SetLineColor(8);
-   gre->SetMarkerColor(8);
-   
-   TH1F *Graph_20dO000000sPppm1015 = new TH1F("Graph_20dO000000sPppm1015","Graph",100,15.6,20.4);
-   Graph_20dO000000sPppm1015->SetMinimum(1.626273);
-   Graph_20dO000000sPppm1015->SetMaximum(2.200458);
-   Graph_20dO000000sPppm1015->SetDirectory(0);
-   Graph_20dO000000sPppm1015->SetStats(0);
-
-   ci = TColor::GetColor("#000099");
-   Graph_20dO000000sPppm1015->SetLineColor(ci);
-   Graph_20dO000000sPppm1015->GetXaxis()->SetLabelFont(42);
-   Graph_20dO000000sPppm1015->GetXaxis()->SetTitleOffset(1);
-   Graph_20dO000000sPppm1015->GetXaxis()->SetTitleFont(42);
-   Graph_20dO000000sPppm1015->GetYaxis()->SetLabelFont(42);
-   Graph_20dO000000sPppm1015->GetYaxis()->SetTitleFont(42);
-   Graph_20dO000000sPppm1015->GetZaxis()->SetLabelFont(42);
-   Graph_20dO000000sPppm1015->GetZaxis()->SetTitleOffset(1);
-   Graph_20dO000000sPppm1015->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_20.000000 ppm1015);
-   
-   
-   TF1 *quadLineFit1016 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1016->SetFillColor(19);
-   quadLineFit1016->SetFillStyle(0);
-   quadLineFit1016->SetLineColor(8);
-   quadLineFit1016->SetLineWidth(2);
-   quadLineFit1016->SetChisquare(2.21889e-20);
-   quadLineFit1016->SetNDF(0);
-   quadLineFit1016->GetXaxis()->SetLabelFont(42);
-   quadLineFit1016->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1016->GetXaxis()->SetTitleFont(42);
-   quadLineFit1016->GetYaxis()->SetLabelFont(42);
-   quadLineFit1016->GetYaxis()->SetTitleFont(42);
-   quadLineFit1016->SetParameter(0,3.803535);
-   quadLineFit1016->SetParError(0,0.1871291);
-   quadLineFit1016->SetParLimits(0,0,0);
-   quadLineFit1016->SetParameter(1,-0.1050094);
-   quadLineFit1016->SetParError(1,0.01033248);
-   quadLineFit1016->SetParLimits(1,0,0);
-   quadLineFit1016->SetParent(gre);
-   gre->GetListOfFunctions()->Add(quadLineFit1016);
-   gre->Draw("p ");
-   
-   TF1 *quadLineFit1017 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1017->SetFillColor(19);
-   quadLineFit1017->SetFillStyle(0);
-   quadLineFit1017->SetLineColor(8);
-   quadLineFit1017->SetLineWidth(2);
-   quadLineFit1017->SetChisquare(2.21889e-20);
-   quadLineFit1017->SetNDF(0);
-   quadLineFit1017->GetXaxis()->SetLabelFont(42);
-   quadLineFit1017->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1017->GetXaxis()->SetTitleFont(42);
-   quadLineFit1017->GetYaxis()->SetLabelFont(42);
-   quadLineFit1017->GetYaxis()->SetTitleFont(42);
-   quadLineFit1017->SetParameter(0,3.803535);
-   quadLineFit1017->SetParError(0,0.1871291);
-   quadLineFit1017->SetParLimits(0,0,0);
-   quadLineFit1017->SetParameter(1,-0.1050094);
-   quadLineFit1017->SetParError(1,0.01033248);
-   quadLineFit1017->SetParLimits(1,0,0);
-   quadLineFit1017->Draw("same");
-   
-   Double_t 30.000000 ppm_fx1017[2] = {
-   16,
-   20};
-   Double_t 30.000000 ppm_fy1017[2] = {
-   2.886637,
-   2.245721};
-   Double_t 30.000000 ppm_fex1017[2] = {
-   0,
-   0};
-   Double_t 30.000000 ppm_fey1017[2] = {
-   0.02922466,
-   0.02922466};
-   gre = new TGraphErrors(2,30.000000 ppm_fx1017,30.000000 ppm_fy1017,30.000000 ppm_fex1017,30.000000 ppm_fey1017);
-   gre->SetName("30.000000 ppm");
-   gre->SetTitle("Graph");
-   gre->SetFillStyle(1000);
-   gre->SetLineColor(9);
-   gre->SetMarkerColor(9);
-   
-   TH1F *Graph_30dO000000sPppm1017 = new TH1F("Graph_30dO000000sPppm1017","Graph",100,15.6,20.4);
-   Graph_30dO000000sPppm1017->SetMinimum(2.146559);
-   Graph_30dO000000sPppm1017->SetMaximum(2.985799);
-   Graph_30dO000000sPppm1017->SetDirectory(0);
-   Graph_30dO000000sPppm1017->SetStats(0);
-
-   ci = TColor::GetColor("#000099");
-   Graph_30dO000000sPppm1017->SetLineColor(ci);
-   Graph_30dO000000sPppm1017->GetXaxis()->SetLabelFont(42);
-   Graph_30dO000000sPppm1017->GetXaxis()->SetTitleOffset(1);
-   Graph_30dO000000sPppm1017->GetXaxis()->SetTitleFont(42);
-   Graph_30dO000000sPppm1017->GetYaxis()->SetLabelFont(42);
-   Graph_30dO000000sPppm1017->GetYaxis()->SetTitleFont(42);
-   Graph_30dO000000sPppm1017->GetZaxis()->SetLabelFont(42);
-   Graph_30dO000000sPppm1017->GetZaxis()->SetTitleOffset(1);
-   Graph_30dO000000sPppm1017->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_30.000000 ppm1017);
-   
-   
-   TF1 *quadLineFit1018 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1018->SetFillColor(19);
-   quadLineFit1018->SetFillStyle(0);
-   quadLineFit1018->SetLineColor(9);
-   quadLineFit1018->SetLineWidth(2);
-   quadLineFit1018->SetChisquare(2.544796e-19);
-   quadLineFit1018->SetNDF(0);
-   quadLineFit1018->GetXaxis()->SetLabelFont(42);
-   quadLineFit1018->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1018->GetXaxis()->SetTitleFont(42);
-   quadLineFit1018->GetYaxis()->SetLabelFont(42);
-   quadLineFit1018->GetYaxis()->SetTitleFont(42);
-   quadLineFit1018->SetParameter(0,5.450305);
-   quadLineFit1018->SetParError(0,0.1871291);
-   quadLineFit1018->SetParLimits(0,0,0);
-   quadLineFit1018->SetParameter(1,-0.1602292);
-   quadLineFit1018->SetParError(1,0.01033248);
-   quadLineFit1018->SetParLimits(1,0,0);
-   quadLineFit1018->SetParent(gre);
-   gre->GetListOfFunctions()->Add(quadLineFit1018);
-   gre->Draw("p ");
-   
-   TF1 *quadLineFit1019 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1019->SetFillColor(19);
-   quadLineFit1019->SetFillStyle(0);
-   quadLineFit1019->SetLineColor(9);
-   quadLineFit1019->SetLineWidth(2);
-   quadLineFit1019->SetChisquare(2.544796e-19);
-   quadLineFit1019->SetNDF(0);
-   quadLineFit1019->GetXaxis()->SetLabelFont(42);
-   quadLineFit1019->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1019->GetXaxis()->SetTitleFont(42);
-   quadLineFit1019->GetYaxis()->SetLabelFont(42);
-   quadLineFit1019->GetYaxis()->SetTitleFont(42);
-   quadLineFit1019->SetParameter(0,5.450305);
-   quadLineFit1019->SetParError(0,0.1871291);
-   quadLineFit1019->SetParLimits(0,0,0);
-   quadLineFit1019->SetParameter(1,-0.1602292);
-   quadLineFit1019->SetParError(1,0.01033248);
-   quadLineFit1019->SetParLimits(1,0,0);
-   quadLineFit1019->Draw("same");
-   
-   Double_t 40.000000 ppm_fx1019[2] = {
-   16,
-   20};
-   Double_t 40.000000 ppm_fy1019[2] = {
-   3.561358,
-   2.856767};
-   Double_t 40.000000 ppm_fex1019[2] = {
-   0,
-   0};
-   Double_t 40.000000 ppm_fey1019[2] = {
-   0.02922466,
-   0.02922466};
-   gre = new TGraphErrors(2,40.000000 ppm_fx1019,40.000000 ppm_fy1019,40.000000 ppm_fex1019,40.000000 ppm_fey1019);
-   gre->SetName("40.000000 ppm");
-   gre->SetTitle("Graph");
-   gre->SetFillStyle(1000);
-   gre->SetLineColor(10);
-   gre->SetMarkerColor(10);
-   
-   TH1F *Graph_40dO000000sPppm1019 = new TH1F("Graph_40dO000000sPppm1019","Graph",100,15.6,20.4);
-   Graph_40dO000000sPppm1019->SetMinimum(2.751238);
-   Graph_40dO000000sPppm1019->SetMaximum(3.666886);
-   Graph_40dO000000sPppm1019->SetDirectory(0);
-   Graph_40dO000000sPppm1019->SetStats(0);
-
-   ci = TColor::GetColor("#000099");
-   Graph_40dO000000sPppm1019->SetLineColor(ci);
-   Graph_40dO000000sPppm1019->GetXaxis()->SetLabelFont(42);
-   Graph_40dO000000sPppm1019->GetXaxis()->SetTitleOffset(1);
-   Graph_40dO000000sPppm1019->GetXaxis()->SetTitleFont(42);
-   Graph_40dO000000sPppm1019->GetYaxis()->SetLabelFont(42);
-   Graph_40dO000000sPppm1019->GetYaxis()->SetTitleFont(42);
-   Graph_40dO000000sPppm1019->GetZaxis()->SetLabelFont(42);
-   Graph_40dO000000sPppm1019->GetZaxis()->SetTitleOffset(1);
-   Graph_40dO000000sPppm1019->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_40.000000 ppm1019);
-   
-   
-   TF1 *quadLineFit1020 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1020->SetFillColor(19);
-   quadLineFit1020->SetFillStyle(0);
-   quadLineFit1020->SetLineColor(10);
-   quadLineFit1020->SetLineWidth(2);
-   quadLineFit1020->SetChisquare(2.676197e-20);
-   quadLineFit1020->SetNDF(0);
-   quadLineFit1020->GetXaxis()->SetLabelFont(42);
-   quadLineFit1020->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1020->GetXaxis()->SetTitleFont(42);
-   quadLineFit1020->GetYaxis()->SetLabelFont(42);
-   quadLineFit1020->GetYaxis()->SetTitleFont(42);
-   quadLineFit1020->SetParameter(0,6.379721);
-   quadLineFit1020->SetParError(0,0.1871291);
-   quadLineFit1020->SetParLimits(0,0,0);
-   quadLineFit1020->SetParameter(1,-0.1761477);
-   quadLineFit1020->SetParError(1,0.01033248);
-   quadLineFit1020->SetParLimits(1,0,0);
-   quadLineFit1020->SetParent(gre);
-   gre->GetListOfFunctions()->Add(quadLineFit1020);
-   gre->Draw("p ");
-   
-   TF1 *quadLineFit1021 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1021->SetFillColor(19);
-   quadLineFit1021->SetFillStyle(0);
-   quadLineFit1021->SetLineColor(10);
-   quadLineFit1021->SetLineWidth(2);
-   quadLineFit1021->SetChisquare(2.676197e-20);
-   quadLineFit1021->SetNDF(0);
-   quadLineFit1021->GetXaxis()->SetLabelFont(42);
-   quadLineFit1021->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1021->GetXaxis()->SetTitleFont(42);
-   quadLineFit1021->GetYaxis()->SetLabelFont(42);
-   quadLineFit1021->GetYaxis()->SetTitleFont(42);
-   quadLineFit1021->SetParameter(0,6.379721);
-   quadLineFit1021->SetParError(0,0.1871291);
-   quadLineFit1021->SetParLimits(0,0,0);
-   quadLineFit1021->SetParameter(1,-0.1761477);
-   quadLineFit1021->SetParError(1,0.01033248);
-   quadLineFit1021->SetParLimits(1,0,0);
-   quadLineFit1021->Draw("same");
-   
-   Double_t 50.000000 ppm_fx1021[2] = {
-   16,
-   20};
-   Double_t 50.000000 ppm_fy1021[2] = {
-   4.321764,
-   3.500707};
-   Double_t 50.000000 ppm_fex1021[2] = {
-   0,
-   0};
-   Double_t 50.000000 ppm_fey1021[2] = {
-   0.02922466,
-   0.02922466};
-   gre = new TGraphErrors(2,50.000000 ppm_fx1021,50.000000 ppm_fy1021,50.000000 ppm_fex1021,50.000000 ppm_fey1021);
-   gre->SetName("50.000000 ppm");
-   gre->SetTitle("Graph");
-   gre->SetFillStyle(1000);
-   gre->SetLineColor(11);
-   gre->SetMarkerColor(11);
-   
-   TH1F *Graph_50dO000000sPppm1021 = new TH1F("Graph_50dO000000sPppm1021","Graph",100,15.6,20.4);
-   Graph_50dO000000sPppm1021->SetMinimum(3.383532);
-   Graph_50dO000000sPppm1021->SetMaximum(4.438939);
-   Graph_50dO000000sPppm1021->SetDirectory(0);
-   Graph_50dO000000sPppm1021->SetStats(0);
-
-   ci = TColor::GetColor("#000099");
-   Graph_50dO000000sPppm1021->SetLineColor(ci);
-   Graph_50dO000000sPppm1021->GetXaxis()->SetLabelFont(42);
-   Graph_50dO000000sPppm1021->GetXaxis()->SetTitleOffset(1);
-   Graph_50dO000000sPppm1021->GetXaxis()->SetTitleFont(42);
-   Graph_50dO000000sPppm1021->GetYaxis()->SetLabelFont(42);
-   Graph_50dO000000sPppm1021->GetYaxis()->SetTitleFont(42);
-   Graph_50dO000000sPppm1021->GetZaxis()->SetLabelFont(42);
-   Graph_50dO000000sPppm1021->GetZaxis()->SetTitleOffset(1);
-   Graph_50dO000000sPppm1021->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_50.000000 ppm1021);
-   
-   
-   TF1 *quadLineFit1022 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1022->SetFillColor(19);
-   quadLineFit1022->SetFillStyle(0);
-   quadLineFit1022->SetLineColor(11);
-   quadLineFit1022->SetLineWidth(2);
-   quadLineFit1022->SetChisquare(9.260146e-19);
-   quadLineFit1022->SetNDF(0);
-   quadLineFit1022->GetXaxis()->SetLabelFont(42);
-   quadLineFit1022->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1022->GetXaxis()->SetTitleFont(42);
-   quadLineFit1022->GetYaxis()->SetLabelFont(42);
-   quadLineFit1022->GetYaxis()->SetTitleFont(42);
-   quadLineFit1022->SetParameter(0,7.605989);
-   quadLineFit1022->SetParError(0,0.1871291);
-   quadLineFit1022->SetParLimits(0,0,0);
-   quadLineFit1022->SetParameter(1,-0.2052641);
-   quadLineFit1022->SetParError(1,0.01033248);
-   quadLineFit1022->SetParLimits(1,0,0);
-   quadLineFit1022->SetParent(gre);
-   gre->GetListOfFunctions()->Add(quadLineFit1022);
-   gre->Draw("p ");
-   
-   TF1 *quadLineFit1023 = new TF1("quadLineFit","[0]+[1]*x",15.6,20.4, TF1::EAddToList::kNo);
-   quadLineFit1023->SetFillColor(19);
-   quadLineFit1023->SetFillStyle(0);
-   quadLineFit1023->SetLineColor(11);
-   quadLineFit1023->SetLineWidth(2);
-   quadLineFit1023->SetChisquare(9.260146e-19);
-   quadLineFit1023->SetNDF(0);
-   quadLineFit1023->GetXaxis()->SetLabelFont(42);
-   quadLineFit1023->GetXaxis()->SetTitleOffset(1);
-   quadLineFit1023->GetXaxis()->SetTitleFont(42);
-   quadLineFit1023->GetYaxis()->SetLabelFont(42);
-   quadLineFit1023->GetYaxis()->SetTitleFont(42);
-   quadLineFit1023->SetParameter(0,7.605989);
-   quadLineFit1023->SetParError(0,0.1871291);
-   quadLineFit1023->SetParLimits(0,0,0);
-   quadLineFit1023->SetParameter(1,-0.2052641);
-   quadLineFit1023->SetParError(1,0.01033248);
-   quadLineFit1023->SetParLimits(1,0,0);
-   quadLineFit1023->Draw("same");
    
    TLegend *leg = new TLegend(0.81,0.35,0.99,0.65,NULL,"brNDC");
    leg->SetBorderSize(0);
@@ -907,60 +427,6 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    leg->SetFillStyle(1001);
    TLegendEntry *entry=leg->AddEntry("50.000000 ppm","   50 ppm","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(11);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(11);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("40.000000 ppm","   40 ppm","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(10);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(10);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("30.000000 ppm","   30 ppm","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(9);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(9);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("20.000000 ppm","   20 ppm","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(8);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(8);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("10.000000 ppm","   10 ppm","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(7);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(7);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("0.000000 ppm","    0 ppm","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(6);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(6);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("-10.000000 ppm","  #minus10 ppm","lpf");
-   entry->SetFillStyle(1000);
    entry->SetLineColor(5);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
@@ -968,7 +434,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-20.000000 ppm","  #minus20 ppm","lpf");
+   entry=leg->AddEntry("25.000000 ppm","   25 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(4);
    entry->SetLineStyle(1);
@@ -977,7 +443,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-30.000000 ppm","  #minus30 ppm","lpf");
+   entry=leg->AddEntry("0.000000 ppm","    0 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(3);
    entry->SetLineStyle(1);
@@ -986,7 +452,7 @@ void QuadScans_NSUBRUN_25_NEXP_0()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-40.000000 ppm","  #minus40 ppm","lpf");
+   entry=leg->AddEntry("-25.000000 ppm","  #minus25 ppm","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(2);
    entry->SetLineStyle(1);

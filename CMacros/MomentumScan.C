@@ -121,7 +121,7 @@ int main() {
 		// Fit
 		SimpleSinFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
 	
-		DrawSimpleSinFit(moduloGraph, cut+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/30xBNL/MomScan/simpleModuloFit_"+to_string(i_slice)+qualString).c_str(), double(moduloProf->GetEntries()));
+		DrawSimpleSinFit(moduloGraph, cut+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/30xBNL/MomScan/simpleModuloFit_"+to_string(i_slice)+qualString).c_str(), double(moduloProf->GetEntries()), false);
 
 		// Get function
 		func = moduloGraph->GetFunction("SimpleSinFunc");

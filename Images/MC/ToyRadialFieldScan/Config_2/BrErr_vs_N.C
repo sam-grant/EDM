@@ -1,10 +1,10 @@
 void BrErr_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 15 00:33:01 2020) by ROOT version 6.22/02
+//=========  (Fri Oct 16 07:49:36 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1657106,0.2188863,1.491396e+07,2.804448);
+   c->Range(-1657106,0.1417526,1.491396e+07,1.738903);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void BrErr_vs_N()
    1.154995e+07,
    1.251354e+07};
    Double_t Fits_fy1158[13] = {
-   2.373521,
-   1.65152,
-   1.356101,
-   1.174249,
-   1.052269,
-   0.9586292,
-   0.8876336,
-   0.8283954,
-   0.7816191,
-   0.7411353,
-   0.7073862,
-   0.6771135,
-   0.6498133};
+   1.472711,
+   1.034487,
+   0.8486152,
+   0.7367007,
+   0.6596216,
+   0.6013691,
+   0.5568074,
+   0.5200703,
+   0.4905457,
+   0.465205,
+   0.4438487,
+   0.4248802,
+   0.4079442};
    Double_t Fits_fex1158[13] = {
    0,
    0,
@@ -74,8 +74,8 @@ void BrErr_vs_N()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Fits1158 = new TH1F("Graph_Fits1158","",100,0,1.366686e+07);
-   Graph_Fits1158->SetMinimum(0.4774425);
-   Graph_Fits1158->SetMaximum(2.545892);
+   Graph_Fits1158->SetMinimum(0.3014676);
+   Graph_Fits1158->SetMaximum(1.579188);
    Graph_Fits1158->SetDirectory(0);
    Graph_Fits1158->SetStats(0);
 
@@ -103,7 +103,7 @@ void BrErr_vs_N()
    gre->SetHistogram(Graph_Fits1158);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,2.545892,1.325685e+07,2.545892,0,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.579188,1.325685e+07,1.579188,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

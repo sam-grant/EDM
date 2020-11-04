@@ -1,8 +1,9 @@
 void simpleModuloFit_Q()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 13 00:10:19 2020) by ROOT version 6.22/02
+//=========  (Tue Nov  3 21:01:08 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
    c->Range(-0.5487514,-0.3925314,4.938762,0.4756036);
    c->SetFillColor(0);

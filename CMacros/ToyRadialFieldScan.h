@@ -12,36 +12,44 @@ using namespace std;
 
 const double BR_BKG = 8; // ppm, the size of the field that would kill our measurement
 const int N_EXP = 1000;
-// Config 1
-// const int N_QHV = 2;
-// const int N_FIELD = 4;
-// const double QHV[N_QHV] = {16, 20}; // Two quad settings, kV
-// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
-// Config 2
-// const int N_QHV = 2;
-// const int N_FIELD = 4;
-// const double QHV[N_QHV] = {16, 18.3}; // Two quad settings, kV
-// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
-// Config 3
+
+// New settings proposal
+
+// Config A -- All settings, ideal scenario, 6 hour measurement
+//const int N_QHV = 4;
+//const int N_FIELD = 6;
+//const double QHV[N_QHV] = {14, 16, 18, 20}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+//
+//// Config B -- All field settings without 20 kV (in case untenable)
+//const int N_QHV = 3;
+//const int N_FIELD = 6;
+//const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+//
+//// Config C -- All field settings without 14 kV (in case untenable)
+//const int N_QHV = 3;
+//const int N_FIELD = 6;
+//const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+//
+//// Config D -- All quad settings without high/low field settings, to check if we need them
+//const int N_QHV = 4;
+//const int N_FIELD = 4;
+//const double QHV[N_QHV] = {14, 16, 18, 20}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+//
+//// Config E -- No 20 kV, no high/low field
 const int N_QHV = 3;
 const int N_FIELD = 4;
-const double QHV[N_QHV] = {16, 18, 20}; // Quad settings, kV
+const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
 const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
-// Config 4
-// const int N_QHV = 2;
-// const int N_FIELD = 11;
-// const double QHV[N_QHV] = {16, 20}; // Quad settings, kV
-// const double BR_APP[N_FIELD] = {-50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50}; // Applied radial field, ppm
-// Config 5, Maximum field settings with realistic quad settings (from Jason C.)
-// const int N_QHV = 2;
-// const int N_FIELD = 11;
-// const double QHV[N_QHV] = {16, 18.3}; // Two quad settings, kV
-// const double BR_APP[N_FIELD] = {-50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50}; // Applied radial field, ppm
-// Config 6, Maximum everything
+//
+//// Config F -- No 14 kV, no high/low field
 // const int N_QHV = 3;
-// const int N_FIELD = 11;
-// const double QHV[N_QHV] = {16, 18, 20}; // Two quad settings, kV
-// const double BR_APP[N_FIELD] = {-50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50}; // Applied radial field, ppm
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 
 const int N_SUBRUNS = 13; // Lucky number
 const int SUBRUN_INTERVAL = 25;
@@ -89,3 +97,87 @@ public:
 CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns;
 
 #endif
+
+// Config 1
+// const int N_QHV = 2;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {16, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
+// Config 2
+// const int N_QHV = 2;
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {16, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+// Config 3
+// const int N_QHV = 2;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {16, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, 50}; // Applied radial field, ppm
+// Config 4
+// const int N_QHV = 2;
+// const int N_FIELD = 5;
+// const double QHV[N_QHV] = {16, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, -25, 0, 25, 50}; // Applied radial field, ppm
+
+// Config 5
+// const int N_QHV = 2;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {16, 18.3}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
+// Config 6
+// const int N_QHV = 2;
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {16, 18.3}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+// Config 7
+// const int N_QHV = 2;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {16, 18.3}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, 50}; // Applied radial field, ppm
+// Config 8
+// const int N_QHV = 2;
+// const int N_FIELD = 5;
+// const double QHV[N_QHV] = {16, 18.3}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, -25, 0, 25, 50}; // Applied radial field, ppm
+
+
+// Config 9
+// const int N_QHV = 3;
+// const int N_FIELD = 3;
+// const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
+// Config 10
+// const int N_QHV = 3;
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+// Config 11
+// const int N_QHV = 3;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, 50}; // Applied radial field, ppm
+// Config 12
+// const int N_QHV = 3;
+// const int N_FIELD = 5;
+// const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, -25, 0, 25, 50}; // Applied radial field, ppm
+// Config 13
+// const int N_QHV = 2;
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+// Config 14
+/*const int N_QHV = 3;
+const int N_FIELD = 4;
+const double QHV[N_QHV] = {14.3, 16.3, 18.3}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm*/
+// Config 15 
+// const int N_QHV = 2;
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {14.3, 18.3}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+// Config 16 
+// const int N_QHV = 3;
+// const int N_FIELD = 4;
+// const double QHV[N_QHV] = {14.3, 16.3, 18.3}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm

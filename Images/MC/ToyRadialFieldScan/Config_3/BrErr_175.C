@@ -1,7 +1,7 @@
 void BrErr_175()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 15 00:49:36 2020) by ROOT version 6.22/02
+//=========  (Fri Oct 16 07:50:11 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,31 +11,27 @@ void BrErr_175()
    c->SetFrameBorderMode(0);
    
    TH1D *__20 = new TH1D("__20","Number of sub-runs: 175",1000,0,4);
-   __20->SetBinContent(125,1);
-   __20->SetBinContent(129,2);
-   __20->SetBinContent(130,4);
-   __20->SetBinContent(131,8);
-   __20->SetBinContent(132,10);
-   __20->SetBinContent(133,14);
-   __20->SetBinContent(134,35);
-   __20->SetBinContent(135,49);
-   __20->SetBinContent(136,72);
-   __20->SetBinContent(137,84);
-   __20->SetBinContent(138,92);
-   __20->SetBinContent(139,112);
-   __20->SetBinContent(140,109);
-   __20->SetBinContent(141,93);
-   __20->SetBinContent(142,82);
-   __20->SetBinContent(143,64);
-   __20->SetBinContent(144,43);
-   __20->SetBinContent(145,50);
-   __20->SetBinContent(146,29);
-   __20->SetBinContent(147,20);
-   __20->SetBinContent(148,8);
-   __20->SetBinContent(149,8);
-   __20->SetBinContent(150,8);
-   __20->SetBinContent(151,2);
-   __20->SetBinContent(152,1);
+   __20->SetBinContent(178,1);
+   __20->SetBinContent(179,5);
+   __20->SetBinContent(180,1);
+   __20->SetBinContent(181,7);
+   __20->SetBinContent(182,14);
+   __20->SetBinContent(183,27);
+   __20->SetBinContent(184,59);
+   __20->SetBinContent(185,75);
+   __20->SetBinContent(186,124);
+   __20->SetBinContent(187,134);
+   __20->SetBinContent(188,158);
+   __20->SetBinContent(189,105);
+   __20->SetBinContent(190,94);
+   __20->SetBinContent(191,76);
+   __20->SetBinContent(192,53);
+   __20->SetBinContent(193,39);
+   __20->SetBinContent(194,13);
+   __20->SetBinContent(195,8);
+   __20->SetBinContent(196,4);
+   __20->SetBinContent(197,1);
+   __20->SetBinContent(198,2);
    __20->SetEntries(1000);
    __20->SetLineWidth(3);
    __20->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");

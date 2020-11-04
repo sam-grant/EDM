@@ -18,9 +18,6 @@
 #include "TPaveText.h"
 #include "TVirtualFFT.h"
 
-
-using namespace std;
-
 int main() {
 
 	std::string config = "30xBNL"; // 1xBNL"
@@ -32,23 +29,23 @@ int main() {
 
 	// Read file
 	TFile *input = TFile::Open(("../Plots/MC/"+config+"/moduloPlots"+qualString+".root").c_str());
-	cout << "\nRead input...\t\t: " << input << endl;
+	std::cout << "\nRead input...\t\t: " << input << std::endl;
 
 	TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
-	cout << "Got modulo hist...\t: " << moduloHist <<endl;
+	std::cout << "Got modulo hist...\t: " << moduloHist << std::endl;
 
 	// Make profile
 	TH1D *moduloProf = moduloHist->ProfileX();
-	cout << "Generated x-profile...\t: " << moduloProf << endl; 
+	std::cout << "Generated x-profile...\t: " << moduloProf << std::endl; 
 
 	// Rebin
-	cout << "\nNBins before rebin...\t\t: " << moduloProf->GetNbinsX() <<endl;
-	cout << "Binwidth before rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" <<endl;
+	std::cout << "\nNBins before rebin...\t\t: " << moduloProf->GetNbinsX() << std::endl;
+	std::cout << "Binwidth before rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" << std::endl;
 
 	//moduloProf->Rebin(150);
 
-	cout << "NBins post rebin...\t: " << moduloProf->GetNbinsX() <<endl;
-	cout << "Binwidth post rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" <<endl;
+	std::cout << "NBins post rebin...\t: " << moduloProf->GetNbinsX() << std::endl;
+	std::cout << "Binwidth post rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" << std::endl;
 
 	// Convert to TGraph
 	int n = moduloProf->GetNbinsX();
@@ -66,12 +63,15 @@ int main() {
 
   	}
 
+  	//delete moduloProf; delete moduloHist;
+
 	TGraphErrors *moduloGraph = new TGraphErrors(n,x,y,ex,ey);
 
 	// Fit
 	SimpleSinFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
+	
 
-	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(moduloProf->GetEntries()));
+	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(moduloProf->GetEntries()),false);
 
 
 	return 0;

@@ -121,7 +121,7 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
     // x-intercept
 	double Br = fabs(p0/p1);
-	double Br_check = fabs(p0/p1);
+	double Br_check = fabs(p0_check/p1_check);
 
 	// From Taylor 9.9
 	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
@@ -129,10 +129,10 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 	// We calculate Br in two different ways, so this is a nice way to catch something going wrong
 	// Sometimes the error is slightly off, not sure why this is
-	if( Br != Br_check || OneSigFig(BrErr) != OneSigFig(BrErr_check) ) {
+/*	if( Br != Br_check || OneSigFig(BrErr) != OneSigFig(BrErr_check) ) {
 		cout<<"***********************************\n****** mainFit != checkFit ******\nBr = "+to_string(Br)+"+/-"+to_string(BrErr)+" ppm, Br_check = "+to_string(Br_check)+"+/-"+to_string(BrErr_check)+" ppm\n***********************************\n"<<endl;
 		//return make_tuple(0,0);
-	}
+	}*/
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 

@@ -1,7 +1,7 @@
 void BrErr_225()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 15 00:49:38 2020) by ROOT version 6.22/02
+//=========  (Fri Oct 16 07:50:13 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,26 +11,23 @@ void BrErr_225()
    c->SetFrameBorderMode(0);
    
    TH1D *__26 = new TH1D("__26","Number of sub-runs: 225",1000,0,4);
-   __26->SetBinContent(113,1);
-   __26->SetBinContent(115,1);
-   __26->SetBinContent(116,7);
-   __26->SetBinContent(117,15);
-   __26->SetBinContent(118,39);
-   __26->SetBinContent(119,44);
-   __26->SetBinContent(120,66);
-   __26->SetBinContent(121,129);
-   __26->SetBinContent(122,121);
-   __26->SetBinContent(123,130);
-   __26->SetBinContent(124,135);
-   __26->SetBinContent(125,98);
-   __26->SetBinContent(126,82);
-   __26->SetBinContent(127,59);
-   __26->SetBinContent(128,39);
-   __26->SetBinContent(129,18);
-   __26->SetBinContent(130,11);
-   __26->SetBinContent(131,2);
-   __26->SetBinContent(134,2);
-   __26->SetBinContent(136,1);
+   __26->SetBinContent(158,2);
+   __26->SetBinContent(159,1);
+   __26->SetBinContent(160,7);
+   __26->SetBinContent(161,25);
+   __26->SetBinContent(162,40);
+   __26->SetBinContent(163,87);
+   __26->SetBinContent(164,145);
+   __26->SetBinContent(165,176);
+   __26->SetBinContent(166,170);
+   __26->SetBinContent(167,135);
+   __26->SetBinContent(168,103);
+   __26->SetBinContent(169,60);
+   __26->SetBinContent(170,35);
+   __26->SetBinContent(171,7);
+   __26->SetBinContent(172,4);
+   __26->SetBinContent(173,2);
+   __26->SetBinContent(174,1);
    __26->SetEntries(1000);
    __26->SetLineWidth(3);
    __26->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");

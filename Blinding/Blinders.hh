@@ -9,7 +9,8 @@
  */
 
 // use of typedefs of relevant class doesn't let me forward declare easily.
-#include "RandomLib/Random.hpp" 
+//#include "RandomLib/Random.hpp" 
+#include "RandomLib-1.10/include/RandomLib/Random.hpp" 
 
 #if !defined(BLINDING_BLINDERS_H)
 #define BLINDING_BLINDERS_H

@@ -1,0 +1,70 @@
+void BrErr_150()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Fri Oct 16 07:54:42 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1D *__17 = new TH1D("__17","Number of sub-runs: 150",1000,0,4);
+   __17->SetBinContent(155,1);
+   __17->SetBinContent(156,1);
+   __17->SetBinContent(158,1);
+   __17->SetBinContent(159,1);
+   __17->SetBinContent(160,3);
+   __17->SetBinContent(161,5);
+   __17->SetBinContent(162,8);
+   __17->SetBinContent(163,14);
+   __17->SetBinContent(164,15);
+   __17->SetBinContent(165,26);
+   __17->SetBinContent(166,44);
+   __17->SetBinContent(167,45);
+   __17->SetBinContent(168,57);
+   __17->SetBinContent(169,67);
+   __17->SetBinContent(170,69);
+   __17->SetBinContent(171,68);
+   __17->SetBinContent(172,82);
+   __17->SetBinContent(173,71);
+   __17->SetBinContent(174,75);
+   __17->SetBinContent(175,63);
+   __17->SetBinContent(176,56);
+   __17->SetBinContent(177,41);
+   __17->SetBinContent(178,45);
+   __17->SetBinContent(179,41);
+   __17->SetBinContent(180,29);
+   __17->SetBinContent(181,23);
+   __17->SetBinContent(182,15);
+   __17->SetBinContent(183,11);
+   __17->SetBinContent(184,7);
+   __17->SetBinContent(185,6);
+   __17->SetBinContent(186,4);
+   __17->SetBinContent(187,2);
+   __17->SetBinContent(188,3);
+   __17->SetBinContent(190,1);
+   __17->SetEntries(1000);
+   __17->SetLineWidth(3);
+   __17->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");
+   __17->GetXaxis()->CenterTitle(true);
+   __17->GetXaxis()->SetLabelFont(42);
+   __17->GetXaxis()->SetTitleSize(0.04);
+   __17->GetXaxis()->SetTitleOffset(1.1);
+   __17->GetXaxis()->SetTitleFont(42);
+   __17->GetYaxis()->SetTitle("Trials");
+   __17->GetYaxis()->CenterTitle(true);
+   __17->GetYaxis()->SetNdivisions(4000510);
+   __17->GetYaxis()->SetLabelFont(42);
+   __17->GetYaxis()->SetTitleSize(0.04);
+   __17->GetYaxis()->SetTitleOffset(1.1);
+   __17->GetYaxis()->SetTitleFont(42);
+   __17->GetZaxis()->SetLabelFont(42);
+   __17->GetZaxis()->SetTitleOffset(1);
+   __17->GetZaxis()->SetTitleFont(42);
+   __17->Draw("HIST");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

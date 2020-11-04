@@ -21,6 +21,7 @@
 #include "TGaxis.h"
 #include "TPad.h"
 #include "TFitResultPtr.h"
+#include "TPaveStats.h"
 
 using namespace std;
 
@@ -48,6 +49,48 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	//c->SetRightMargin(0.13);
 
 	hist->Draw("HIST");
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
+
+void DrawTH1Fit(TH1D *hist, TF1 *fit, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gStyle->SetStatFormat("6.3g");
+  	hist->Draw();
+  	gPad->Update();
+
+	hist->SetTitle(title.c_str());
+
+	TPaveStats *statBox = (TPaveStats*) hist->FindObject("stats");
+	statBox->SetBorderSize(0);
+
+	gStyle->SetOptStat(0);
+  	gStyle->SetOptFit(111);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+	hist->SetLineWidth(3);
+	hist->SetLineColor(1);
+
+	//c->SetRightMargin(0.13);
+
+	hist->Draw("HIST");
+
+	fit->SetLineWidth(3);
+	fit->Draw("same");
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -311,9 +354,13 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	return;
 
 }
-void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N) {
+void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool blind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graph->Draw();
+  	gPad->Update();
+  	gStyle->SetOptStat(0);
 
 	// Get functoin
 	TF1 *func = graph->GetFunction("SimpleSinFunc");
@@ -337,7 +384,10 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	names->SetTextAlign(13);
 	names->AddText("N") ; // +SciNotation(double(N))); 
 	names->AddText("#chi^{2}/ndf"); //+SciNotation(chi2ndf));
-	names->AddText("A_{EDM} [mrad]"); // +SciNotation(par0));
+	string amplitude;
+	if(blind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	else amplitude = "A_{EDM} [mrad]";
+	names->AddText(amplitude.c_str()); // +SciNotation(par0));
 	names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));
 	names->AddText("C [mrad]"); // +SciNotation(par2));
 
@@ -612,7 +662,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	values->AddText(ThreeSigFig(chi2ndf));
 	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
-	values->AddText(FormatNegativeNumber(xint)+"#pm"+ThreeSigFig(xint_err));
+	values->AddText(ThreeSigFig(fabs(xint))+"#pm"+ThreeSigFig(xint_err));
 
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 

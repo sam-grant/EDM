@@ -252,6 +252,7 @@ void BlindedEDMAnalysis(){
     double binc = p_pyVsT->GetBinContent(ibin);
     double time = p_pyVsT->GetBinCenter(ibin);
     double new_binc = edmOsc->Eval(time);
+    std::cout<<"y_shift:\t"<<new_binc<<std::endl;
     binc += new_binc;
     if (testFlag) {
       h_pyVsT_EDM->SetBinContent(ibin,new_binc);
@@ -596,6 +597,7 @@ TH1D* RescaleAxis(TH1* input, Double_t Scale) {
 
 int main() {
 
-  std::cout<<"hello"<<std::endl;
+  BlindedEDMAnalysis();
+  
   return 0;
 }

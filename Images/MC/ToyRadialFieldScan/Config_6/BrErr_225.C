@@ -1,7 +1,7 @@
 void BrErr_225()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 15 00:42:42 2020) by ROOT version 6.22/02
+//=========  (Fri Oct 16 07:52:29 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,11 +11,52 @@ void BrErr_225()
    c->SetFrameBorderMode(0);
    
    TH1D *__26 = new TH1D("__26","Number of sub-runs: 225",1000,0,4);
-   __26->SetBinContent(70,5);
-   __26->SetBinContent(71,141);
-   __26->SetBinContent(72,505);
-   __26->SetBinContent(73,317);
-   __26->SetBinContent(74,32);
+   __26->SetBinContent(170,1);
+   __26->SetBinContent(175,1);
+   __26->SetBinContent(177,1);
+   __26->SetBinContent(178,4);
+   __26->SetBinContent(180,6);
+   __26->SetBinContent(181,7);
+   __26->SetBinContent(182,9);
+   __26->SetBinContent(183,11);
+   __26->SetBinContent(184,10);
+   __26->SetBinContent(185,15);
+   __26->SetBinContent(186,22);
+   __26->SetBinContent(187,25);
+   __26->SetBinContent(188,35);
+   __26->SetBinContent(189,43);
+   __26->SetBinContent(190,43);
+   __26->SetBinContent(191,58);
+   __26->SetBinContent(192,50);
+   __26->SetBinContent(193,50);
+   __26->SetBinContent(194,63);
+   __26->SetBinContent(195,46);
+   __26->SetBinContent(196,53);
+   __26->SetBinContent(197,46);
+   __26->SetBinContent(198,48);
+   __26->SetBinContent(199,47);
+   __26->SetBinContent(200,50);
+   __26->SetBinContent(201,40);
+   __26->SetBinContent(202,33);
+   __26->SetBinContent(203,35);
+   __26->SetBinContent(204,27);
+   __26->SetBinContent(205,23);
+   __26->SetBinContent(206,21);
+   __26->SetBinContent(207,14);
+   __26->SetBinContent(208,5);
+   __26->SetBinContent(209,15);
+   __26->SetBinContent(210,11);
+   __26->SetBinContent(211,8);
+   __26->SetBinContent(212,7);
+   __26->SetBinContent(213,4);
+   __26->SetBinContent(214,3);
+   __26->SetBinContent(215,2);
+   __26->SetBinContent(216,1);
+   __26->SetBinContent(217,1);
+   __26->SetBinContent(219,3);
+   __26->SetBinContent(221,1);
+   __26->SetBinContent(222,1);
+   __26->SetBinContent(224,1);
    __26->SetEntries(1000);
    __26->SetLineWidth(3);
    __26->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");
