@@ -20,8 +20,7 @@ double gausWidth = 0.7;
 
 Blinders::fitType ftype = Blinders::kOmega_a;
 //Blinders myBlinder( ftype );
-Blinders getBlinded( ftype, "Inspiral, coalescence, ringdown", boxWidth, gausWidth );
-//Blinders getBlinded( ftype, "TWAT", boxWidth, gausWidth );
+Blinders getBlinded( ftype, "TWAT", boxWidth, gausWidth );
 
 // CONSTANTS
 double e = 1.6e-19; // J
@@ -145,24 +144,23 @@ int main() {
 
   	//std::cout<<"A_EDM\t"<<A_EDM<<std::endl;
 
-  	// ================== Third, inject blinded A_EDM into modulo plot ==================
+  	// ================== Third, inject blinded A_EDM into modulo(?) plot ==================
 
-  	TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
+  	//TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
   	// Do this as a TH1
-  	TH1D *ThetaY_vs_Time_Modulo_Prof = ThetaY_vs_Time_Modulo->ProfileX(); 
+  	//TH1D *ThetaY_vs_Time_Modulo_Prof = ThetaY_vs_Time_Modulo->ProfileX(); 
   	// Reset min/max
-  	xmin = 0;
-  	xmax = G2PERIOD;
+  	//xmin = 0;
+  	//xmax = G2PERIOD;
+
+  	// A bit worried about this, do I need to modulate the function as well? 
 
   	TF1* edmFunc = new TF1("edmFunc",EDMFunc,xmin,xmax,4);
   	edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi","offset");
   	edmFunc->SetParameters(A_edm,omega_a,phi_edm,xmin);
 
-  	// Hmmm mmmm mmmm 
-  	
-
   	// Inject shift into TGraph
-  	int n = ThetaY_vs_Time_Modulo_Prof->GetNbinsX();
+  	int n = ThetaY_vs_Time_Prof->GetNbinsX();
 	double x[n];
   	double ex[n];
   	double y[n];
@@ -170,17 +168,28 @@ int main() {
 
   	for (int i(0); i<n; i++) {
 
-  		double bin_cent = ThetaY_vs_Time_Modulo_Prof->GetBinCenter(i+1);
-  		double bin_cont = ThetaY_vs_Time_Modulo_Prof->GetBinContent(i+1);
-  		double y_shift = edmFunc->Eval(bin_cent);
+  		// Clunky
+  		double time = ThetaY_vs_Time_Prof->GetBinCenter(i+1);
 
-  		std::cout<<"y_shift:\t"<<y_shift<<std::endl;
+  		//if(time < xmin || time > xmax) continue;
 
-  		x[i] = bin_cent;// ThetaY_vs_Time_Modulo_Prof->GetBinCenter(i+1);
+  		double theta_y = ThetaY_vs_Time_Prof->GetBinContent(i+1);
+  		double theta_y_shift = edmFunc->Eval(time);
+
+  		// Time modulate the blinding function 
+    	double g2fracTime = time / G2PERIOD;
+    	int g2fracTimeInt = g2fracTime;
+    	double g2ModTime = (g2fracTime - g2fracTimeInt) * G2PERIOD;
+
+		std::cout<<"time\t"<<time<<std::endl;
+    	std::cout<<"mod time\t"<<g2ModTime<<std::endl;
+  		std::cout<<"theta_y_shift\t"<<theta_y_shift<<std::endl;
+
+  		x[i] = g2ModTime;// ThetaY_vs_Time_Modulo_Prof->GetBinCenter(i+1);
   		ex[i] = 0;
-  		y[i] = bin_cont + y_shift;
+  		y[i] = theta_y + theta_y_shift;
   		//else y[i] = bin_cont;
-  		ey[i] = ThetaY_vs_Time_Modulo_Prof->GetBinError(i+1);
+  		ey[i] = ThetaY_vs_Time_Prof->GetBinError(i+1);
 
   	}
 
@@ -191,10 +200,14 @@ int main() {
   	gPad->Update();
   	gStyle->SetOptStat(0);
 
+  	DrawTGraphErrors(result,"test","test");
+
   	// Fit
 	SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
 
-	DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_BLIND_"+qualString).c_str(), double(ThetaY_vs_Time_Modulo->GetEntries()), true);
+  	std::cout<<"A_EDM:\t"<<result->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
+
+	DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_BLIND_"+qualString).c_str(), double(ThetaY_vs_Time->GetEntries()), true);
 
 	return 0;
 
