@@ -13,7 +13,7 @@
 
 using namespace blinding;
 
-bool unblind = true;
+bool unblind = false;
 
 double R = 3.5; 
 double boxWidth = 0.25;
@@ -88,22 +88,21 @@ double blinded_edm_value(std::string tmp) {
 
 double GetDelta(double dMu) {
   double eta = ((4 * mMuKg * c * dMu)/ (hbar * cm2m) );
-  double dMu_tmp = (hbar * cm2m) / (4 * mMuKg * c * eta);
-
-  std::cout<<"eta tmp:\t"<<eta<<std::endl;
-  std::cout<<"dMu tmp:\t"<<dMu_tmp<<std::endl;
+  double dMu_tmp = (hbar * cm2m * eta) / (4 * mMuKg * c);
+  std::cout<<"eta_check:\t"<<eta<<std::endl;
+  std::cout<<"dMu_check:\t"<<dMu_tmp<<std::endl;
   double tan_delta = (eta * beta) / (2 * aMu);
   double delta = atan(tan_delta);
   return delta;
 }
 
 double OmegaFunc( double *x, double *p )  {
-  double time = x[0]-p[5]; // Time offset
+  double time = x[0];//-p[5]; // Time offset
   return p[0] * exp(-time/p[1]) * ( 1 - p[2] * cos(p[3] * time + p[4]));
 }
 
 double EDMFunc( double *x, double *p )  {
-  double time = x[0] + p[3]; // time offset
+  double time = x[0];// + p[3]; // time offset
   return (-p[0] * cos(p[1]* time + p[2]));
 }
 
@@ -142,25 +141,27 @@ int main() {
     }
 
     // Initial time cuts
-    double xmin = G2PERIOD*7;
-    double xmax = G2PERIOD*70;
+    double xmin = 34.844+G2PERIOD/2;//G2PERIOD*7;
+    double xmax = 34.844+G2PERIOD*10+G2PERIOD/2;//70;
 
     ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(xmin,xmax);
 
     // Fit the number hist to get a guess at the phase
-    TF1* omegaFunc = new TF1("omegaFunc",OmegaFunc,xmin,xmax,6);
+    TF1* omegaFunc = new TF1("omegaFunc",OmegaFunc,xmin,xmax,5);//,6);
     omegaFunc->SetParNames("N","#gamma#tau","A","#omega","#phi");//,"off");//,"Time offset"); 
     omegaFunc->SetNpx(50000);
 
     omegaFunc->SetParameter(1,64.4); // Muon lifetime, assists fit
     // Fix omega_a to blinded reference value
+    omegaFunc->SetParLimits(2,0.0,0.3);
     omegaFunc->SetParameter(3,getBlinded.referenceValue());
     omegaFunc->FixParameter(3,getBlinded.referenceValue());
+    omegaFunc->SetParLimits(4,0,2*M_PI);
     // Fix the time offset to the start time
     omegaFunc->SetParameter(5,xmin);
     //omegaFunc->FixParameter(5,xmin);
 
-    ThetaY_vs_Time_1D->Fit(omegaFunc);
+    ThetaY_vs_Time_1D->Fit(omegaFunc,"MR");
 
     //DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/ThetaY_vs_Time_1D"); 
 
@@ -171,14 +172,14 @@ int main() {
     double t0 = phi_omega * G2PERIOD / (2*M_PI);
     double zeroCrossing = 8*G2PERIOD - t0;
 
-    ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
+    ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+2*G2PERIOD);
 
-    // DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/ThetaY_vs_Time_1D_Check");
+    //DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/ThetaY_vs_Time_1D_Check");
 
     std::cout<<"t0\t"<<t0<<std::endl;
     std::cout<<"zeroCrossing\t"<<zeroCrossing<<std::endl;
 
-    delete ThetaY_vs_Time; delete ThetaY_vs_Time_1D; delete ThetaY_vs_Time_Prof;
+    delete ThetaY_vs_Time; delete ThetaY_vs_Time_1D; delete ThetaY_vs_Time_Prof; delete omegaFunc;
 
     // ================== Second, get blinded A_EDM ================== 
 
@@ -193,11 +194,11 @@ int main() {
     // ================== Third, inject blinded A_EDM into modulo plot ==================
 
     // Define blinded EDM oscillation
-    TF1* edmFunc = new TF1("edmFunc",EDMFunc,zeroCrossing,xmax,4);
-    edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi","offset");
+    TF1* edmFunc = new TF1("edmFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
+    edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
     edmFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
     edmFunc->SetNpx(50000);
-    edmFunc->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
+    //edmFunc->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
 
     DrawTF1(edmFunc,"Blind EDM function;Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/BlindEDMFunc");
 
@@ -242,13 +243,12 @@ int main() {
     // Fit
     SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
 
-    double A_edm_tot = result->GetFunction("SimpleSinFunc")->GetParameter(0);
+    double A_edm_tot = result->GetFunction("SimpleSinFunc")->GetParameter(0) * 2.0;
     
     // Calculate limit for fun, not sure if physical. What's the dilution factor?
 
     double eta_tot = (2*aMu/beta*gmagic) * tan( (A_edm_tot*1e-3) /alpha);
-    double dMu_tot = (hbar * cm2m) / (4 * mMuKg * c * eta_tot);
-
+    double dMu_tot = (hbar * cm2m * eta_tot) / (4 * mMuKg * c);//(hbar * e * cm2m * eta_tot) / (4 * mMu * 1e-6 * c);
     std::cout<<"A_edm_tot:\t"<<A_edm_tot<<std::endl;
     std::cout<<"eta_tot:\t"<<eta_tot<<std::endl;
     std::cout<<"dMu_tot:\t"<<dMu_tot<<std::endl;
