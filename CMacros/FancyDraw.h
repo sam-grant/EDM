@@ -389,7 +389,7 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	return;
 
 }
-void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool blind) {
+void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -420,7 +420,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	names->AddText("N") ; // +SciNotation(double(N))); 
 	names->AddText("#chi^{2}/ndf"); //+SciNotation(chi2ndf));
 	string amplitude;
-	if(blind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
 	else amplitude = "A_{EDM} [mrad]";
 	names->AddText(amplitude.c_str()); // +SciNotation(par0));
 	//if(!blind) names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));

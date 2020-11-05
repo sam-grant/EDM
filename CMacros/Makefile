@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe CaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe BlindedSimpleFitterTest.exe
+Target = Asymmetry.exe CaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe 
 
 all:$(Target)
 
@@ -36,9 +36,6 @@ ToyRadialFieldScan.exe: ToyRadialFieldScan.C
 
 testBlinding.exe: testBlinding.C
 	${C++} -o $@ testBlinding.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 
-
-BlindedSimpleFitterTest.exe: BlindedSimpleFitterTest.C
-	${C++} -o $@ BlindedSimpleFitterTest.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
 
 BlindedSimpleFitter.exe: BlindedSimpleFitter.C
 	${C++} -o $@ BlindedSimpleFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}

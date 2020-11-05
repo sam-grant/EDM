@@ -251,7 +251,7 @@ int main() {
 
   		double theta_y = ThetaY_vs_Time_Prof->GetBinContent(i+1);
   		double theta_y_shift = edmFunc->Eval(time);
-  		//s
+  		s
 
   		// Time modulate the blinding function 
     	double g2fracTime = time / G2PERIOD;

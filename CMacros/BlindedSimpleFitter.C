@@ -13,6 +13,8 @@
 
 using namespace blinding;
 
+bool unblind = false;
+
 double R = 3.5; 
 double boxWidth = 0.25;
 double gausWidth = 0.7;
@@ -37,31 +39,30 @@ double d0 = 1.9e-19; // BNL edm limit in e.cm
 double ppm = 1e-6;
 double TESTEDM = d0 / 2.; 
 
-bool testFlag = false;
 
-double blinded_edm_value() {
-  
-  //
+
+double blinded_edm_value(bool unblind) {
+
   // returns a blinded input edm value. returned dMu will be unphysical. it will be in the range of +- 3*d0 centred around 10*d0
-  //
 
-  //Blinders myBlinder( ftype );
-  
-    double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
-    double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
-    // How far from the ref value are we
-    double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
-    double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
-  
-  if (!testFlag)  {
-    return dMu_blind;
-  }
-  else {
-    return TESTEDM;
+  // How far from the ref value are we
+  double omega_diff;
+  if(!unblind) { // unblinded verions
+    omega_diff = ((getBlinded.paramToFreq(R) / getBlinded.referenceValue()) - 1) / ppm;
+  } else if(unblind) {
+    Blinders myBlinder( ftype ); // Just to print out the warning
+    // I think that you have to reapply the new blinding to the blinded plot to unblind it. 
+    //omega_diff = (myBlinder.paramToFreq(R) / myBlinder.referenceValue() - 1) / ppm;
+    omega_diff = 0.0;
   }
 
+  double dMu_blind = omega_diff * d0; // this is the blinded dMu in e.cm
+  
+  return dMu_blind;
+  
 }
 
+// For sanity check d_mu plot
 double blinded_edm_value(std::string tmp) {
   
   //
@@ -71,20 +72,21 @@ double blinded_edm_value(std::string tmp) {
   //Blinders myBlinder( ftype );
   Blinders getBlinded( ftype, tmp.c_str(), boxWidth, gausWidth );
 
-    double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
-    double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
-    // How far from the ref value are we
-    double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
-    double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
+  double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
+  double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
+  // How far from the ref value are we
+  double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
+  double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
   
-  if (!testFlag)  {
-    return dMu_blind;
-  }
-  else {
-    return TESTEDM;
-  }
+  //if (!testFlag)  {
+  return dMu_blind;
+  //}
+  //else {
+  //  return TESTEDM;
+  //}
 
 }
+
 double GetDelta(double dMu) {
   double eta = ((4 * mMuKg * c * dMu)/ (hbar * cm2m) );
   double tan_delta = (eta * beta) / (2 * aMu);
@@ -98,15 +100,14 @@ double OmegaFunc( double *x, double *p )  {
 }
 
 double EDMFunc( double *x, double *p )  {
-  double time = x[0];// + p[3];
+  double time = x[0] + p[3]; // time offset
   return (-p[0] * cos(p[1]* time + p[2]));
 }
 
 int main() {
 
-    if (testFlag) {
-    std::cout << "\n========= TESTING ==========" << "\n";
-      std::cout << "Using UNBLINDED test edm value of " << TESTEDM << " e.cm" << "\n";
+    if (unblind) {
+      std::cout << "\n========= UNBLINDED ==========" << "\n";
     }
   
     // Read file
@@ -123,7 +124,6 @@ int main() {
     DrawTH2(ThetaY_vs_Time,"","../Images/BlindedFits/ThetaY_vs_Time_2D");
     TProfile *ThetaY_vs_Time_Prof = ThetaY_vs_Time->ProfileX();
     // DrawTH1(ThetaY_vs_Time_Prof,"","../Images/BlindedFits/ThetaY_vs_Time_Prof");
-
 
     // Make n(t) histogram
     int nbinsx = ThetaY_vs_Time_Prof->GetNbinsX();
@@ -145,9 +145,8 @@ int main() {
     ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(xmin,xmax);
 
     // Fit the number hist to get a guess at the phase
-
     TF1* omegaFunc = new TF1("omegaFunc",OmegaFunc,xmin,xmax,6);
-    omegaFunc->SetParNames("N","#gamma#tau","A","#omega","#phi","off");//,"Time offset"); 
+    omegaFunc->SetParNames("N","#gamma#tau","A","#omega","#phi");//,"off");//,"Time offset"); 
     omegaFunc->SetNpx(50000);
 
     omegaFunc->SetParameter(1,64.4); // Muon lifetime, assists fit
@@ -167,9 +166,6 @@ int main() {
     double phi_edm = phi_omega + M_PI/2.; 
     // Find a zero crossing 
     double t0 = phi_omega * G2PERIOD / (2*M_PI);
-    //double t0 = phi_omega * (2*M_PI) / G2PERIOD;
-    // double zeroCrossing = 8*G2PERIOD - ( t0 + (G2PERIOD/4) ); // t0 + xmin;
-    //˚¥double zeroCrossing = 7*G2PERIOD + ((G2PERIOD/2) - t0); // t0 + xmin;
     double zeroCrossing = 8*G2PERIOD - t0;
 
     ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
@@ -183,19 +179,18 @@ int main() {
 
     // ================== Second, get blinded A_EDM ================== 
 
-    double dMu_blind = 1.6e-19*30;//blinded_edm_value();  //1.6e-19*30;//
+    double dMu_blind = blinded_edm_value(unblind);  //1.6e-19*30;//
+    std::cout<<"dMu_blind:\t"<<dMu_blind<<std::endl;
     double delta_blind = GetDelta(dMu_blind);
     double omega_a = getBlinded.referenceValue(); 
     double tan_A_edm = tan(delta_blind) / gmagic;
-    double A_edm = 0.1*atan(tan_A_edm) * 1e3; // 0.1 is asymmetry factor
-
-    //std::cout<<"A_EDM\t"<<A_EDM<<std::endl;
+    double A_edm = 0.13*atan(tan_A_edm) * 1e3; // 0.13 is asymmetry factor
 
     // ================== Third, inject blinded A_EDM into modulo plot ==================
 
     // Define blinded EDM oscillation
-    TF1* edmFunc = new TF1("edmFunc",EDMFunc,zeroCrossing,xmax,3);
-    edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
+    TF1* edmFunc = new TF1("edmFunc",EDMFunc,zeroCrossing,xmax,4);
+    edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi","offset");
     edmFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
     edmFunc->SetNpx(50000);
     edmFunc->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
@@ -208,19 +203,17 @@ int main() {
 
     delete ThetaY_vs_Time_Modulo;
 
-    /*
     // Sanity check
-    TH1D *htmp = new TH1D("","",100,0,20);
-    for (int i(0); i<10e3; i++) htmp->Fill(blinded_edm_value(std::to_string(i))*1e19);
-    DrawTH1(htmp,"","../Images/BlindedFits/dMu");*/
+    // TH1D *htmp = new TH1D("","",100,0,20);
+    // for (int i(0); i<10e3; i++) htmp->Fill(blinded_edm_value(std::to_string(i))*1e19);
+    // DrawTH1(htmp,"","../Images/BlindedFits/dMu");
   
     int nBins = ThetaY_vs_Time_Modulo_Prof->GetNbinsX();
     int nEntries = ThetaY_vs_Time_Modulo_Prof->GetEntries();
 
     double x[nBins];
     double ex[nBins];
-    double y_blind[nBins];
-    double y_unblind[nBins];
+    double y[nBins];
     double ey[nBins];
 
     for (int i(0); i<nBins; i++) {
@@ -229,32 +222,25 @@ int main() {
       double theta_y = ThetaY_vs_Time_Modulo_Prof->GetBinContent(i+1);
       double theta_y_shift = edmFunc->Eval(time);
 
-      x[i] = time;// ThetaY_vs_Time_Modulo_Prof->GetBinCenter(i+1);
+      x[i] = time;
       ex[i] = 0;
-      y_unblind[i] = theta_y;
-      y_blind[i] = theta_y + theta_y_shift;
-      //else y[i] = bin_cont;
+      y[i] = theta_y + theta_y_shift;
       ey[i] = ThetaY_vs_Time_Modulo_Prof->GetBinError(i+1);
 
     }
 
     delete ThetaY_vs_Time_Modulo_Prof; delete edmFunc;
 
-    TGraphErrors *blinded = new TGraphErrors(nBins,x,y_blind,ex,ey);
-    TGraphErrors *unblinded = new TGraphErrors(nBins,x,y_unblind,ex,ey);
+    TGraphErrors *result = new TGraphErrors(nBins,x,y,ex,ey);
 
-    DrawTGraphErrors(blinded,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/BlindModulo");
-    DrawTGraphErrors(unblinded,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/UnblindModulo");
+    DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/Modulo_"+to_string(unblind));
 
     // Fit
-    SimpleSinFit(blinded, 0.15, OMEGA_A * 1e3, 0);
-    SimpleSinFit(unblinded, 0.15, OMEGA_A * 1e3, 0);
+    SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
 
-    std::cout<<"A_EDM (blind):\t"<<blinded->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
-    std::cout<<"A_EDM (unblind):\t"<<unblinded->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
+    std::cout<<"A_EDM:\t"<<result->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
 
-    DrawSimpleSinFit(blinded, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/BlindedFit", nEntries, true);
-    DrawSimpleSinFit(unblinded, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/UnblindedFit", nEntries, false);
+    DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/ModuloFit_"+to_string(unblind), nEntries, unblind);
 
   return 0;
 
