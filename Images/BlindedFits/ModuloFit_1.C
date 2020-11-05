@@ -1,7 +1,7 @@
 void ModuloFit_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov  5 12:28:43 2020) by ROOT version 6.22/02
+//=========  (Thu Nov  5 13:50:47 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5487514,-0.3925314,4.938762,0.4756036);

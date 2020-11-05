@@ -13,7 +13,7 @@
 
 using namespace blinding;
 
-bool unblind = false;
+bool unblind = true;
 
 double R = 3.5; 
 double boxWidth = 0.25;
@@ -37,9 +37,8 @@ double gmagic = std::sqrt( 1.+1./aMu );
 double beta   = std::sqrt( 1.-1./(gmagic*gmagic) );
 double d0 = 1.9e-19; // BNL edm limit in e.cm
 double ppm = 1e-6;
+double alpha = 0.13; // asymmetry factor
 double TESTEDM = d0 / 2.; 
-
-
 
 double blinded_edm_value(bool unblind) {
 
@@ -89,6 +88,10 @@ double blinded_edm_value(std::string tmp) {
 
 double GetDelta(double dMu) {
   double eta = ((4 * mMuKg * c * dMu)/ (hbar * cm2m) );
+  double dMu_tmp = (hbar * cm2m) / (4 * mMuKg * c * eta);
+
+  std::cout<<"eta tmp:\t"<<eta<<std::endl;
+  std::cout<<"dMu tmp:\t"<<dMu_tmp<<std::endl;
   double tan_delta = (eta * beta) / (2 * aMu);
   double delta = atan(tan_delta);
   return delta;
@@ -184,7 +187,8 @@ int main() {
     double delta_blind = GetDelta(dMu_blind);
     double omega_a = getBlinded.referenceValue(); 
     double tan_A_edm = tan(delta_blind) / gmagic;
-    double A_edm = 0.13*atan(tan_A_edm) * 1e3; // 0.13 is asymmetry factor
+
+    double A_edm = alpha*atan(tan_A_edm) * 1e3; // 0.13 is asymmetry factor
 
     // ================== Third, inject blinded A_EDM into modulo plot ==================
 
@@ -238,7 +242,16 @@ int main() {
     // Fit
     SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
 
-    std::cout<<"A_EDM:\t"<<result->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
+    double A_edm_tot = result->GetFunction("SimpleSinFunc")->GetParameter(0);
+    
+    // Calculate limit for fun, not sure if physical. What's the dilution factor?
+
+    double eta_tot = (2*aMu/beta*gmagic) * tan( (A_edm_tot*1e-3) /alpha);
+    double dMu_tot = (hbar * cm2m) / (4 * mMuKg * c * eta_tot);
+
+    std::cout<<"A_edm_tot:\t"<<A_edm_tot<<std::endl;
+    std::cout<<"eta_tot:\t"<<eta_tot<<std::endl;
+    std::cout<<"dMu_tot:\t"<<dMu_tot<<std::endl;
 
     DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/ModuloFit_"+to_string(unblind), nEntries, unblind);
 
