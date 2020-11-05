@@ -37,7 +37,12 @@ void SimpleSinFit(TGraphErrors *graph, double par1, double par2, double par3) {
   //  func->SetParameter(1, par2);  // Omega
 
   // Put 10% limits on omega_a
-  func->SetParLimits(1, par2-(par2*0.10), par2+(par2*0.10));  // Omega
+  // func->SetParLimits(1, par2-(par2*0.10), par2+(par2*0.10));  // Omega
+  func->SetParameter(0, par1);
+  func->SetParameter(1, par2);
+  func->FixParameter(1, par2);  // Omega
+  func->SetParameter(2, par3);
+
 
   graph->Fit(func, "MR"); // ,"MR");
   

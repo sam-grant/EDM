@@ -13,14 +13,13 @@
 
 using namespace blinding;
 
-// 3.5 x BNL 
 double R = 3.5; 
 double boxWidth = 0.25;
 double gausWidth = 0.7;
 
 Blinders::fitType ftype = Blinders::kOmega_a;
-//Blinders myBlinder( ftype );
-Blinders getBlinded( ftype, "TWAT", boxWidth, gausWidth );
+Blinders getBlinded( ftype, "Blinding string", boxWidth, gausWidth );
+
 
 // CONSTANTS
 double e = 1.6e-19; // J
@@ -46,32 +45,60 @@ double blinded_edm_value() {
   // returns a blinded input edm value. returned dMu will be unphysical. it will be in the range of +- 3*d0 centred around 10*d0
   //
 
-  double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
-  double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
-  double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
-  double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
+	//Blinders myBlinder( ftype );
+	
+  	double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
+  	double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
+  	// How far from the ref value are we
+  	double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
+  	double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
   
-  if (!testFlag)  {
-    return dMu_blind;
-  }
-  else {
-    return TESTEDM;
-  }
+	if (!testFlag)  {
+	  return dMu_blind;
+	}
+	else {
+	  return TESTEDM;
+	}
 
 }
 
+double blinded_edm_value(std::string tmp) {
+  
+  //
+  // returns a blinded input edm value. returned dMu will be unphysical. it will be in the range of +- 3*d0 centred around 10*d0
+  //
+
+	//Blinders myBlinder( ftype );
+	Blinders getBlinded( ftype, tmp.c_str(), boxWidth, gausWidth );
+
+  	double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
+  	double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
+  	// How far from the ref value are we
+  	double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
+  	double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
+  
+	if (!testFlag)  {
+	  return dMu_blind;
+	}
+	else {
+	  return TESTEDM;
+	}
+
+}
 double GetDelta(double dMu) {
 	double eta = ((4 * mMuKg * c * dMu)/ (hbar * cm2m) );
-	return atan( (eta * beta) / (2 * aMu) );
+	double tan_delta = (eta * beta) / (2 * aMu);
+	double delta = atan(tan_delta);
+	return delta;
 }
 
 double OmegaFunc( double *x, double *p )  {
-	double time = x[0]-p[5];
+	double time = x[0];//-p[5];
   	return p[0] * exp(-time/p[1]) * ( 1 - p[2] * cos(p[3] * time + p[4]));
 }
 
 double EDMFunc( double *x, double *p )  {
-  double time = x[0] + p[3];
+  double time = x[0];// + p[3];
   return (-p[0] * cos(p[1]* time + p[2]));
 }
 
@@ -93,16 +120,19 @@ int main() {
 
   	// Get unmodulated theta_y vs time for N(t) plot	
   	TH2D *ThetaY_vs_Time = (TH2D*)input->Get("ThetaY_vs_Time");	
+  	DrawTH2(ThetaY_vs_Time,"","../Images/BlindingTest/ThetaY_vs_Time_2D");
   	TProfile *ThetaY_vs_Time_Prof = ThetaY_vs_Time->ProfileX();
+  	DrawTH1(ThetaY_vs_Time_Prof,"","../Images/BlindingTest/ThetaY_vs_Time_Prof");
+
 
    	// Make n(t) histogram
   	int nbinsx = ThetaY_vs_Time_Prof->GetNbinsX();
   	int x1 = ThetaY_vs_Time_Prof->GetXaxis()->GetBinLowEdge(0);
   	int x2 = ThetaY_vs_Time_Prof->GetXaxis()->GetBinUpEdge(nbinsx-1);
-  	TH1D* ThetaY_vs_Time_1D = new TH1D("numberHist","N(t) vs t",nbinsx,x1,x2);
+  	TH1D* ThetaY_vs_Time_1D = new TH1D("ThetaY_vs_Time_1D","",nbinsx,x1,x2);
 
   	for (int i_bin(0); i_bin< ThetaY_vs_Time_Prof->GetNbinsX(); i_bin++) {
-    	double i_entries =  ThetaY_vs_Time_Prof->GetBinEntries(i_bin);
+    	double i_entries =  ThetaY_vs_Time_Prof->GetBinEntries(i_bin+1);
     	ThetaY_vs_Time_1D->SetBinContent(i_bin,i_entries);
   	}
 
@@ -114,9 +144,9 @@ int main() {
 
   	// Fit the number hist to get a guess at the phase
 
-  	TF1* omegaFunc = new TF1("omegaFunc",OmegaFunc,xmin,xmax,6);
-  	omegaFunc->SetParNames("N","#gamma#tau","A","#omega","#phi","off");//,"Time offset");	
-  	omegaFunc->SetNpx(10000);
+  	TF1* omegaFunc = new TF1("omegaFunc",OmegaFunc,xmin,xmax,5);//6);
+  	omegaFunc->SetParNames("N","#gamma#tau","A","#omega","#phi");//,"off");//,"Time offset");	
+  	omegaFunc->SetNpx(50000);
 
   	omegaFunc->SetParameter(1,64.4); // Muon lifetime, assists fit
   	// Fix omega_a to blinded reference value
@@ -128,19 +158,32 @@ int main() {
 
 	ThetaY_vs_Time_1D->Fit(omegaFunc);
 
-  	//DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindingTest/ThetaY_vs_Time_1D"); 
+  	DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindingTest/ThetaY_vs_Time_1D"); 
+
+  	//delete ThetaY_vs_Time_1D;
 
   	double phi_omega = omegaFunc->GetParameter(4);
   	// Shift the phase 90 deg
   	double phi_edm = phi_omega + M_PI/2.; 
 
+  	double t0 = phi_omega * G2PERIOD / (2*M_PI);
+  	//t0 += M_PI/2; // Because we're using cosine
+
+  	double zeroCrossing = G2PERIOD*8 - t0 + (G2PERIOD/4); // t0 + xmin;
+
+	ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
+  	DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindingTest/ThetaY_vs_Time_1D_Check");
+
+  	std::cout<<"t0\t"<<t0<<std::endl;
+  	std::cout<<"zeroCrossing\t"<<zeroCrossing<<std::endl;
+
   	// ================== Second, get blinded A_EDM ================== 
 
-  	double dMu_blind = blinded_edm_value();
+  	double dMu_blind = blinded_edm_value()*30;  //1.6e-19*30;//
   	double delta_blind = GetDelta(dMu_blind);
   	double omega_a = getBlinded.referenceValue(); 
   	double tan_A_edm = tan(delta_blind) / gmagic;
-  	double A_edm = 0.1 * atan(tan_A_edm); // 0.1 is asymmetry factor
+  	double A_edm = 0.1*atan(tan_A_edm) * 1e3; // 0.1 is asymmetry factor
 
   	//std::cout<<"A_EDM\t"<<A_EDM<<std::endl;
 
@@ -149,18 +192,51 @@ int main() {
   	//TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
   	// Do this as a TH1
   	//TH1D *ThetaY_vs_Time_Modulo_Prof = ThetaY_vs_Time_Modulo->ProfileX(); 
-  	// Reset min/max
-  	//xmin = 0;
-  	//xmax = G2PERIOD;
 
-  	// A bit worried about this, do I need to modulate the function as well? 
+  	TF1* edmFunc = new TF1("edmFunc",EDMFunc,zeroCrossing,xmax,3);
+  	edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
+  	edmFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
 
-  	TF1* edmFunc = new TF1("edmFunc",EDMFunc,xmin,xmax,4);
-  	edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi","offset");
-  	edmFunc->SetParameters(A_edm,omega_a,phi_edm,xmin);
+  	edmFunc->SetNpx(50000);
 
-  	// Inject shift into TGraph
-  	int n = ThetaY_vs_Time_Prof->GetNbinsX();
+  	DrawTF1(edmFunc,"Blind EDM function;Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindingTest/BlindEDMFunc");
+
+/*
+	// Sanity check
+  	TH1D *htmp = new TH1D("","",100,0,20);
+  	for (int i(0); i<10e3; i++) htmp->Fill(blinded_edm_value(std::to_string(i))*1e19);
+  	DrawTH1(htmp,"","../Images/BlindingTest/dMu");*/
+
+
+
+
+//  	// Inject shift into new TH1 (so we can rebin) 
+//
+//  	
+//  	TH1D* ThetaY_vs_Time_Modulo = new TH1D("ThetaY_vs_Time_Modulo","",nbins,0,G2PERIOD);
+//
+//	for (int i(0); i<nbins; i++) {
+//
+//		double time = ThetaY_vs_Time_Prof->GetBinCenter(i+1);
+//		double theta_y = ThetaY_vs_Time_Prof->GetBinContent(i+1);
+//		double theta_y_shift = edmFunc->Eval(time);
+//
+//		// Time % g-2
+//		double g2fracTime = time / G2PERIOD;
+//    	int g2fracTimeInt = g2fracTime;
+//    	double g2ModTime = (g2fracTime - g2fracTimeInt) * G2PERIOD;
+//
+//		ThetaY_vs_Time_Modulo->SetBinContent(i+1, theta_y+theta_y_shift);
+//		//ThetaY_vs_Time_Modulo->SetBinCenter(i+1, g2ModTime);
+//
+//
+//	}
+//
+//	DrawTH1(ThetaY_vs_Time_Modulo,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindingTest/Modulo");
+	
+	int n = ThetaY_vs_Time_Prof->GetNbinsX();
+	int N = ThetaY_vs_Time_Prof->GetEntries();
+
 	double x[n];
   	double ex[n];
   	double y[n];
@@ -168,22 +244,23 @@ int main() {
 
   	for (int i(0); i<n; i++) {
 
-  		// Clunky
+
   		double time = ThetaY_vs_Time_Prof->GetBinCenter(i+1);
 
-  		//if(time < xmin || time > xmax) continue;
+  		if(time < zeroCrossing || time > xmax) continue;
 
   		double theta_y = ThetaY_vs_Time_Prof->GetBinContent(i+1);
   		double theta_y_shift = edmFunc->Eval(time);
+  		//s
 
   		// Time modulate the blinding function 
     	double g2fracTime = time / G2PERIOD;
     	int g2fracTimeInt = g2fracTime;
     	double g2ModTime = (g2fracTime - g2fracTimeInt) * G2PERIOD;
 
-		std::cout<<"time\t"<<time<<std::endl;
-    	std::cout<<"mod time\t"<<g2ModTime<<std::endl;
-  		std::cout<<"theta_y_shift\t"<<theta_y_shift<<std::endl;
+		// std::cout<<"time\t"<<time<<std::endl;
+    	// std::cout<<"mod time\t"<<g2ModTime<<std::endl;
+  		// std::cout<<"theta_y_shift\t"<<theta_y_shift<<std::endl;
 
   		x[i] = g2ModTime;// ThetaY_vs_Time_Modulo_Prof->GetBinCenter(i+1);
   		ex[i] = 0;
@@ -193,21 +270,21 @@ int main() {
 
   	}
 
-  	//delete ThetaY_vs_Time_Modulo_Prof;
+  	delete ThetaY_vs_Time_Prof; delete ThetaY_vs_Time; delete edmFunc;
 
   	TGraphErrors *result = new TGraphErrors(n,x,y,ex,ey);
   	result->Draw();
   	gPad->Update();
   	gStyle->SetOptStat(0);
 
-  	DrawTGraphErrors(result,"test","test");
+  	DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindingTest/Modulo");
 
   	// Fit
 	SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
 
   	std::cout<<"A_EDM:\t"<<result->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
 
-	DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_BLIND_"+qualString).c_str(), double(ThetaY_vs_Time->GetEntries()), true);
+	DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindingTest/BlindedFit", N, true);
 
 	return 0;
 

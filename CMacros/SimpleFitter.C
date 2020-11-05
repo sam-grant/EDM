@@ -69,6 +69,8 @@ int main() {
 
 	// Fit
 	SimpleSinFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
+
+	std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
 	
 
 	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(moduloProf->GetEntries()),false);

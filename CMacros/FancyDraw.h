@@ -59,6 +59,39 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	return;
 }
 
+void DrawTF1(TF1 *func, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	func->SetTitle(title.c_str());
+
+	//hist->SetStats(0);
+	gStyle->SetOptStat(2210);
+			
+	func->GetXaxis()->SetTitleSize(.04);
+	func->GetYaxis()->SetTitleSize(.04);
+	func->GetXaxis()->SetTitleOffset(1.1);
+	func->GetYaxis()->SetTitleOffset(1.1);
+	func->GetXaxis()->CenterTitle(1);
+	func->GetYaxis()->CenterTitle(1);
+	func->GetYaxis()->SetMaxDigits(4);
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+
+	//c->SetRightMargin(0.13);
+
+	func->Draw();
+
+	c->SetGrid();
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
 void DrawTH1Fit(TH1D *hist, TF1 *fit, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -87,14 +120,16 @@ void DrawTH1Fit(TH1D *hist, TF1 *fit, std::string title, std::string fname) {
 
 	//c->SetRightMargin(0.13);
 
-	hist->Draw("HIST");
+	hist->Draw();
 
 	fit->SetLineWidth(3);
 	fit->Draw("same");
 	
+
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
+
 
 	delete c;
 
@@ -358,9 +393,9 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-	graph->Draw();
+/*	graph->Draw();
   	gPad->Update();
-  	gStyle->SetOptStat(0);
+  	gStyle->SetOptStat(0);*/
 
 	// Get functoin
 	TF1 *func = graph->GetFunction("SimpleSinFunc");
@@ -388,7 +423,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	if(blind) amplitude = "A_{EDM}^{BLIND} [mrad]";
 	else amplitude = "A_{EDM} [mrad]";
 	names->AddText(amplitude.c_str()); // +SciNotation(par0));
-	names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));
+	//if(!blind) names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));
 	names->AddText("C [mrad]"); // +SciNotation(par2));
 
 	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
@@ -396,7 +431,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(ThreeSigFig(chi2ndf));//std::to_string(chi2ndf).c_str());
 	values->AddText(ThreeSigFig(par0)+"#pm"+OneSigFig(err0));
-	values->AddText(ThreeSigFig(par1)+"#pm"+OneSigFig(err1));
+	//if(!blind) values->AddText(ThreeSigFig(par1)+"#pm"+OneSigFig(err1));
 	values->AddText(ThreeSigFig(par2)+"#pm"+OneSigFig(err2));
 
 	names->SetTextSize(26);
