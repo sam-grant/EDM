@@ -25,6 +25,8 @@
 
 using namespace std;
 
+TH1D *h_ymeas = new TH1D("","",100,2.22,2.36);
+TH1D *h_ytrue = new TH1D("","",100,2.22,2.36);
 // ==================== CALCULATE BR AND BR UNCERTAINTY ====================
 
 // Put the measured radial field and it's uncertainty into a tuple
@@ -69,8 +71,17 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 			double y_meas = rndm->Gaus(y_true,sigmaY);
 		
 			y_quad[i_quad] = y_meas;
+
+			if(BR_APP[i_field]==30. && QHV[i_quad] == 20. && subruns == 100) {
+				//cout<<"BR_APP[i_field]:\t"<<BR_APP[i_field]<<endl;
+				//cout<<" QHV[i_quad][i_field]:\t"<< QHV[i_quad]<<endl;
+				//cout<<"y_meas = "<<y_meas<<std::endl;
+				h_ymeas->Fill(y_meas);
+				h_ytrue->Fill(y_true);
+			}
 			ey_quad[i_quad] = sigmaY;
-			x_quad[i_quad] = QHV[i_quad];
+			x_quad[i_quad] = 1/QHV[i_quad];
+			// if(i_experiment==0) cout<<"1/QHV:\t"<<1/QHV[i_quad]<<endl;
 			ex_quad[i_quad] = 0;
 
 			counter++;
@@ -93,6 +104,8 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 		// <y>/QHV
 		y_field_1[i_field] = quadLineFit->GetParameter(1);
 		ey_field_1[i_field] = quadLineFit->GetParError(1);
+
+		
 
 		// Calculated Br, from Mott's method
 		double calcGrad = R_0 * ( 1./n[N_QHV-1] - 1./n[0]) * 1e-6; // ppm
@@ -136,9 +149,10 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 
-		DrawQuadScanFits(quadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
-		DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
-		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
+		DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", std::to_string(subruns)+" sub-runs;Applied #LTB_{r}#GT [ppm];#LTy#GT QHV [mm#upointkV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		//DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", std::to_string(subruns)+" sub-runs;Applied B_{r} [ppm];Measured B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", std::to_string(subruns)+" sub-runs;Applied #LTB_{r}#GT [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
 	}
 	
 	delete QuadGrads_vs_BrApp; delete BrCalc_vs_BrApp; delete mainFit;
@@ -249,6 +263,10 @@ int main() {
 	// Overlay fit precision with RMS of truth residual
 	DrawTGraphErrorsDoubleXAxisOverlay(BrErr_vs_N, BrResRMS_vs_N, "Fits", "Truth", ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/BrErr_and_BrResRMS_overlay",subrun_lo,subrun_hi);
 
+	// htmp 
+
+	DrawTH1(h_ymeas,";y [mm];Trials","yC0_Br30_QHV20_MC");
+	DrawTH1(h_ytrue,";y [mm];Trials","yC0_Br30_QHV20_truth");
 	return 0; 
 
 }

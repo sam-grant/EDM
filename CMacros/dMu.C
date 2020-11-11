@@ -1,0 +1,111 @@
+void dMu()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Nov  5 12:15:44 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1D *__1 = new TH1D("__1","",100,0,20);
+   __1->SetTitle(";#times d_{0} [e#upointcm];R_{Blind} #minus R_{Ref}");
+   __1->SetStats(0);
+   __1->GetXaxis()->SetRangeUser(0,14);
+
+   __1->Draw();
+
+
+   __1->SetBinContent(9,3);
+   __1->SetBinContent(10,3);
+   __1->SetBinContent(11,3);
+   __1->SetBinContent(12,7);
+   __1->SetBinContent(13,8);
+   __1->SetBinContent(14,16);
+   __1->SetBinContent(15,26);
+   __1->SetBinContent(16,33);
+   __1->SetBinContent(17,58);
+   __1->SetBinContent(18,48);
+   __1->SetBinContent(19,85);
+   __1->SetBinContent(20,124);
+   __1->SetBinContent(21,140);
+   __1->SetBinContent(22,171);
+   __1->SetBinContent(23,202);
+   __1->SetBinContent(24,257);
+   __1->SetBinContent(25,284);
+   __1->SetBinContent(26,336);
+   __1->SetBinContent(27,367);
+   __1->SetBinContent(28,428);
+   __1->SetBinContent(29,435);
+   __1->SetBinContent(30,469);
+   __1->SetBinContent(31,438);
+   __1->SetBinContent(32,498);
+   __1->SetBinContent(33,453);
+   __1->SetBinContent(34,466);
+   __1->SetBinContent(35,475);
+   __1->SetBinContent(36,482);
+   __1->SetBinContent(37,477);
+   __1->SetBinContent(38,461);
+   __1->SetBinContent(39,401);
+   __1->SetBinContent(40,410);
+   __1->SetBinContent(41,348);
+   __1->SetBinContent(42,300);
+   __1->SetBinContent(43,270);
+   __1->SetBinContent(44,238);
+   __1->SetBinContent(45,179);
+   __1->SetBinContent(46,158);
+   __1->SetBinContent(47,131);
+   __1->SetBinContent(48,93);
+   __1->SetBinContent(49,73);
+   __1->SetBinContent(50,46);
+   __1->SetBinContent(51,33);
+   __1->SetBinContent(52,30);
+   __1->SetBinContent(53,12);
+   __1->SetBinContent(54,9);
+   __1->SetBinContent(55,3);
+   __1->SetBinContent(56,7);
+   __1->SetBinContent(58,2);
+   __1->SetBinContent(59,1);
+   __1->SetBinContent(60,1);
+   __1->SetBinContent(61,1);
+   __1->SetBinContent(62,1);
+   __1->SetEntries(10000);
+   __1->SetLineWidth(3);
+   __1->GetXaxis()->CenterTitle(true);
+   __1->GetXaxis()->SetLabelFont(42);
+   __1->GetXaxis()->SetTitleSize(0.04);
+   __1->GetXaxis()->SetTitleOffset(1.1);
+   __1->GetXaxis()->SetTitleFont(42);
+   __1->GetYaxis()->CenterTitle(true);
+   __1->GetYaxis()->SetNdivisions(4000510);
+   __1->GetYaxis()->SetLabelFont(42);
+   __1->GetYaxis()->SetTitleSize(0.04);
+   __1->GetYaxis()->SetTitleOffset(1.1);
+   __1->GetYaxis()->SetTitleFont(42);
+   __1->GetZaxis()->SetLabelFont(42);
+   __1->GetZaxis()->SetTitleOffset(1);
+   __1->GetZaxis()->SetTitleFont(42);
+
+   __1->SetLineWidth(3);
+   __1->SetLineColor(1);
+   __1->Draw("HIST");
+   gPad->Update();
+   TLine *line = new TLine(1.0,gPad->GetUymin(),1.0,gPad->GetUymax());
+   TPaveText *txt = new TPaveText(1.5,400,2.0,500);
+   txt->SetTextSize(26);
+   txt->SetTextFont(44);
+   txt->SetFillColor(0);
+   txt->SetTextColor(kRed);
+   txt->AddText("BNL");
+   txt->Draw("SAME");
+   line->SetLineWidth(3);
+   line->SetLineColor(kRed);
+   line->SetLineStyle(2);
+   line->Draw("SAME");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+   c->SaveAs("dMu.pdf");
+}

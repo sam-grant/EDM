@@ -11,6 +11,13 @@ void dMu()
    c->SetFrameBorderMode(0);
    
    TH1D *__1 = new TH1D("__1","",100,0,20);
+   __1->SetTitle(";#times d_{0} [e#upointcm];R_{Blind} #minus R_{Ref}");
+   __1->SetStats(0);
+   __1->GetXaxis()->SetRangeUser(0,14);
+
+   __1->Draw();
+
+
    __1->SetBinContent(9,3);
    __1->SetBinContent(10,3);
    __1->SetBinContent(11,3);
@@ -80,8 +87,25 @@ void dMu()
    __1->GetZaxis()->SetLabelFont(42);
    __1->GetZaxis()->SetTitleOffset(1);
    __1->GetZaxis()->SetTitleFont(42);
+
+   __1->SetLineWidth(3);
+   __1->SetLineColor(1);
    __1->Draw("HIST");
+   gPad->Update();
+   TLine *line = new TLine(1.0,gPad->GetUymin(),1.0,gPad->GetUymax());
+   TPaveText *txt = new TPaveText(1.5,400,2.0,500);
+   txt->SetTextSize(26);
+   txt->SetTextFont(44);
+   txt->SetFillColor(0);
+   txt->SetTextColor(kRed);
+   txt->AddText("BNL");
+   txt->Draw("SAME");
+   line->SetLineWidth(3);
+   line->SetLineColor(kRed);
+   line->SetLineStyle(2);
+   line->Draw("SAME");
    c->Modified();
    c->cd();
    c->SetSelected(c);
+   c->SaveAs("dMu.pdf");
 }

@@ -13,9 +13,9 @@
 
 using namespace blinding;
 
-bool unblind = false;
+bool unblind = true;
 
-double R = 3.5; 
+double R = 3.5; // ppm shift
 double boxWidth = 0.25;
 double gausWidth = 0.7;
 
@@ -38,7 +38,7 @@ double beta   = std::sqrt( 1.-1./(gmagic*gmagic) );
 double d0 = 1.9e-19; // BNL edm limit in e.cm
 double ppm = 1e-6;
 double alpha = 0.13; // asymmetry factor
-double TESTEDM = d0 / 2.; 
+//double TESTEDM = d0 / 2.; 
 
 double blinded_edm_value(bool unblind) {
 
@@ -123,9 +123,9 @@ int main() {
 
     // Get unmodulated theta_y vs time for N(t) plot  
     TH2D *ThetaY_vs_Time = (TH2D*)input->Get("ThetaY_vs_Time"); 
-    DrawTH2(ThetaY_vs_Time,"","../Images/BlindedFits/ThetaY_vs_Time_2D");
+    DrawTH2(ThetaY_vs_Time,"","../Images/BlindedFits/"+config+"ThetaY_vs_Time_2D");
     TProfile *ThetaY_vs_Time_Prof = ThetaY_vs_Time->ProfileX();
-    // DrawTH1(ThetaY_vs_Time_Prof,"","../Images/BlindedFits/ThetaY_vs_Time_Prof");
+    // DrawTH1(ThetaY_vs_Time_Prof,"","../Images/BlindedFits/"+std::to_string(config)+"ThetaY_vs_Time_Prof");
 
     // Make n(t) histogram
     int nbinsx = ThetaY_vs_Time_Prof->GetNbinsX();
@@ -163,7 +163,7 @@ int main() {
 
     ThetaY_vs_Time_1D->Fit(omegaFunc,"MR");
 
-    //DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/ThetaY_vs_Time_1D"); 
+    //DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/"+std::to_string(config)+"ThetaY_vs_Time_1D"); 
 
     double phi_omega = omegaFunc->GetParameter(4);
     // Shift the phase 90 deg
@@ -174,7 +174,7 @@ int main() {
 
     ThetaY_vs_Time_1D->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+2*G2PERIOD);
 
-    //DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/ThetaY_vs_Time_1D_Check");
+    //DrawTH1Fit(ThetaY_vs_Time_1D,omegaFunc,";Time [#mus];N(t)","../Images/BlindedFits/"+std::to_string(config)+"ThetaY_vs_Time_1D_Check");
 
     std::cout<<"t0\t"<<t0<<std::endl;
     std::cout<<"zeroCrossing\t"<<zeroCrossing<<std::endl;
@@ -200,7 +200,7 @@ int main() {
     edmFunc->SetNpx(50000);
     //edmFunc->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
 
-    DrawTF1(edmFunc,"Blind EDM function;Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/BlindEDMFunc");
+    DrawTF1(edmFunc,"Blind EDM function;Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/"+config+"/BlindEDMFunc");
 
     TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
     // Do this as a TH1
@@ -209,9 +209,9 @@ int main() {
     delete ThetaY_vs_Time_Modulo;
 
     // Sanity check
-    // TH1D *htmp = new TH1D("","",100,0,20);
+    // TH1D *htmp = new TH1D("","",100,0,14);
     // for (int i(0); i<10e3; i++) htmp->Fill(blinded_edm_value(std::to_string(i))*1e19);
-    // DrawTH1(htmp,"","../Images/BlindedFits/dMu");
+    // DrawTH1(htmp,"","../Images/BlindedFits/"+config+"dMu");
   
     int nBins = ThetaY_vs_Time_Modulo_Prof->GetNbinsX();
     int nEntries = ThetaY_vs_Time_Modulo_Prof->GetEntries();
@@ -238,22 +238,23 @@ int main() {
 
     TGraphErrors *result = new TGraphErrors(nBins,x,y,ex,ey);
 
-    DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/Modulo_"+to_string(unblind));
+    DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/"+config+"/Modulo_"+to_string(unblind));
 
     // Fit
     SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
 
-    double A_edm_tot = result->GetFunction("SimpleSinFunc")->GetParameter(0) * 2.0;
+    double accept = 1.8069889;
+    double A_edm_tot = result->GetFunction("SimpleSinFunc")->GetParameter(0) * 1.95;//accept;
     
     // Calculate limit for fun, not sure if physical. What's the dilution factor?
 
     double eta_tot = (2*aMu/beta*gmagic) * tan( (A_edm_tot*1e-3) /alpha);
-    double dMu_tot = (hbar * cm2m * eta_tot) / (4 * mMuKg * c);//(hbar * e * cm2m * eta_tot) / (4 * mMu * 1e-6 * c);
+    double dMu_tot = (hbar * cm2m * eta_tot) / (4 * mMuKg * c); //(hbar * e * cm2m * eta_tot) / (4 * mMu * 1e-6 * c);
     std::cout<<"A_edm_tot:\t"<<A_edm_tot<<std::endl;
     std::cout<<"eta_tot:\t"<<eta_tot<<std::endl;
     std::cout<<"dMu_tot:\t"<<dMu_tot<<std::endl;
 
-    DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/ModuloFit_"+to_string(unblind), nEntries, unblind);
+    DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/"+config+"/ModuloFit_"+to_string(unblind), nEntries, unblind);
 
   return 0;
 

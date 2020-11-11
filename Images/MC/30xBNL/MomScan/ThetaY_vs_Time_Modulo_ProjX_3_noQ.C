@@ -1,14 +1,13 @@
 void ThetaY_vs_Time_Modulo_ProjX_3_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:34:01 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:39:39 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
-   c->SetRightMargin(0.13);
    c->SetFrameBorderMode(0);
    
    TH1D *ThetaY_vs_Time_Modulo_Fine_3_px__19 = new TH1D("ThetaY_vs_Time_Modulo_Fine_3_px__19","1500<p<2000 MeV",1000,0,4.365324);
@@ -2015,22 +2014,21 @@ void ThetaY_vs_Time_Modulo_ProjX_3_noQ()
    ThetaY_vs_Time_Modulo_Fine_3_px__19->SetBinError(999,99.81984);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->SetBinError(1000,99.00505);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->SetEntries(1.223605e+07);
-   ThetaY_vs_Time_Modulo_Fine_3_px__19->SetStats(0);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->SetLineWidth(3);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->CenterTitle(true);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->SetLabelFont(42);
+   ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->SetLabelSize(0.04);
+   ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetXaxis()->SetTitleFont(42);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->CenterTitle(true);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->SetNdivisions(4000510);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->SetLabelSize(0.035);
+   ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetYaxis()->SetTitleFont(42);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetZaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_Modulo_Fine_3_px__19->GetZaxis()->SetLabelSize(0.035);
-   ThetaY_vs_Time_Modulo_Fine_3_px__19->GetZaxis()->SetTitleSize(0.035);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetZaxis()->SetTitleOffset(1);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->GetZaxis()->SetTitleFont(42);
    ThetaY_vs_Time_Modulo_Fine_3_px__19->Draw("HIST");

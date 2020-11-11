@@ -172,8 +172,8 @@ int main(int argc, char *argv[]){
   
   if (argc < 2){
     cout<<"Using hard-coded file list"<<endl;
-
-    fileNames.push_back("../../Trees/MC/30xBNL/simTree.30xBNL.truthT0truthLR.root");
+    fileNames.push_back("../../Trees/MC/1xBNL/simTree.1xBNL.truthT0truthLR.root");
+    //fileNames.push_back("../../Trees/MC/30xBNL/simTree.30xBNL.truthT0truthLR.root");
   }
   
   for (int i = 1; i < argc; ++i){

@@ -550,6 +550,15 @@ void DrawSimpleSinFit2(TGraphErrors *graph, std::string title, std::string fname
 
 void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string fname) {
 
+	double mMu = 105.6583715; // MeV
+	double aMu = 11659208.9e-10; 
+	double gmagic = std::sqrt( 1.+1./aMu );
+	double pmax = 1.01 * mMu * gmagic;
+
+	std::cout<<"pmax\t:"<< pmax <<std::endl;
+	std::cout<<"Low cut\t:"<< 0.3 * pmax <<std::endl;
+	std::cout<<"High cut\t:"<< 0.75 * pmax <<std::endl;
+
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
 	// TLegend *leg = new TLegend(0.25,0.69,0.45,0.89);
@@ -565,6 +574,11 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 
 	leg->SetTextSize(26);
 	leg->SetTextFont(44);
+
+	// Add text 
+	TPaveText *N_txt = new TPaveText(0.30,0.80,0.40,0.89,"NDC");
+	N_txt->AddText("N(y)");
+
 
 	N->SetTitle(title.c_str());		
 	N->GetXaxis()->SetTitleSize(.04);
@@ -593,6 +607,22 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 	A->Draw("same");
 	NA2->Draw("same");
 	y_0->Draw("same");
+	//N_txt->Draw("same");
+
+	gPad->Update();
+
+	// Second axis
+	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),0,pmax,510,"-");
+	axis->SetTitle("Track momentum [MeV]");
+	axis->SetTitleOffset(1.1);
+	axis->CenterTitle(true);
+	axis->SetTextFont(42);
+	axis->SetLabelFont(42);
+	axis->SetTextColor(kRed);
+	axis->SetLabelColor(kRed);
+	axis->SetLineColor(kRed);
+
+	axis->Draw("same");
 	
 	
 	c->SaveAs((fname+".C").c_str());
@@ -625,6 +655,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::strin
 	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
 
 	l->SetBorderSize(0);
+	l->SetHeader("App. #LTB_{r}#GT","C");
 
 	//double field = 
 	// Load legend entries backwards
@@ -634,9 +665,9 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::strin
 	
 	for(int i = 0; i < graphs.size(); i++) {
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
-		fit->SetLineColor(kBlack);
+		//it->SetLineColor(kBlack);
 		fit->SetLineColor(i+1); 
-		graphs.at(i)->SetMarkerColor(i+1);
+		graphs.at(i)->SetMarkerColor(kBlack);//i+1);
 		graphs.at(i)->SetLineColor(i+1);
 
 		if(i==0) graphs.at(i)->Draw("AP");
@@ -684,14 +715,16 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	double xint = - par0 / par1; 
 	double xint_err = BrErr;
 
-	TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC");
+	// TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC"); // QHV
+	TPaveText *names = new TPaveText(0.11,0.68,0.33,0.89,"NDC"); // 1/QHV
 	names->SetTextAlign(13);
 	names->AddText("#chi^{2}/ndf"); 
-	names->AddText("Gradient [mm/kV#upointppm]"); 
+	names->AddText("Gradient"); 
 	names->AddText("Y-intercept [mm/kV]"); 
 	names->AddText("Background B_{r} [ppm]"); 
 
-	TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
+	//TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.50,0.68,0.60,0.89,"NDC");
 	values->SetTextAlign(33);
 
 	values->AddText(ThreeSigFig(chi2ndf));

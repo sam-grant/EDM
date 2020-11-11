@@ -1,10 +1,10 @@
 void C_vs_mom_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:34:05 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:39:43 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.9375,-2.245962,3941.438,1.302026);
+   c->Range(-437.9375,-1.999305,3941.438,0.6294797);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void C_vs_mom_noQ()
    2750,
    3250};
    Double_t Graph0_fy1017[7] = {
-   -1.595742,
-   -0.4374278,
-   -0.1375361,
-   -0.05953982,
-   -0.07809803,
-   -0.132524,
-   -0.07075334};
+   -1.541686,
+   -0.4374734,
+   -0.1371539,
+   -0.05918388,
+   -0.07473272,
+   -0.1188164,
+   -0.2816124};
    Double_t Graph0_fex1017[7] = {
    250,
    250,
@@ -36,13 +36,13 @@ void C_vs_mom_noQ()
    250,
    250};
    Double_t Graph0_fey1017[7] = {
-   0.05888889,
-   0.006365886,
-   0.004675182,
-   0.003941152,
-   0.003977236,
-   0.00674114,
-   0.7814479};
+   0.01948783,
+   0.006365741,
+   0.004662457,
+   0.00390732,
+   0.003738709,
+   0.004601993,
+   0.4729613};
    TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1017,Graph0_fy1017,Graph0_fex1017,Graph0_fey1017);
    gre->SetName("Graph0");
    gre->SetTitle(";Track momentum [MeV];Average vertical offset, c [mrad]");
@@ -50,8 +50,8 @@ void C_vs_mom_noQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01017 = new TH1F("Graph_Graph01017","",100,0,3850);
-   Graph_Graph01017->SetMinimum(-1.891163);
-   Graph_Graph01017->SetMaximum(0.947227);
+   Graph_Graph01017->SetMinimum(-1.736426);
+   Graph_Graph01017->SetMaximum(0.3666012);
    Graph_Graph01017->SetDirectory(0);
    Graph_Graph01017->SetStats(0);
 
@@ -63,19 +63,17 @@ void C_vs_mom_noQ()
    Graph_Graph01017->GetXaxis()->SetRange(1,91);
    Graph_Graph01017->GetXaxis()->CenterTitle(true);
    Graph_Graph01017->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01017->GetXaxis()->SetLabelSize(0.035);
+   Graph_Graph01017->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01017->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01017->GetXaxis()->SetTitleFont(42);
    Graph_Graph01017->GetYaxis()->SetTitle("Average vertical offset, c [mrad]");
    Graph_Graph01017->GetYaxis()->CenterTitle(true);
    Graph_Graph01017->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01017->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01017->GetYaxis()->SetLabelSize(0.035);
+   Graph_Graph01017->GetYaxis()->SetTitleSize(0.04);
    Graph_Graph01017->GetYaxis()->SetTitleOffset(1.1);
    Graph_Graph01017->GetYaxis()->SetTitleFont(42);
    Graph_Graph01017->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01017->GetZaxis()->SetLabelSize(0.035);
-   Graph_Graph01017->GetZaxis()->SetTitleSize(0.035);
    Graph_Graph01017->GetZaxis()->SetTitleOffset(1);
    Graph_Graph01017->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph01017);

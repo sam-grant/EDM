@@ -1,14 +1,13 @@
 void ThetaY_vs_Time_ProjY_2_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:33:59 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:39:37 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
-   c->SetRightMargin(0.13);
    c->SetFrameBorderMode(0);
    
    TH1D *ThetaY_vs_Time_2_py__13 = new TH1D("ThetaY_vs_Time_2_py__13","1000<p<1500 MeV",180,-60,60);
@@ -377,22 +376,21 @@ void ThetaY_vs_Time_ProjY_2_noQ()
    ThetaY_vs_Time_2_py__13->SetBinError(180,28.44293);
    ThetaY_vs_Time_2_py__13->SetBinError(181,193.9871);
    ThetaY_vs_Time_2_py__13->SetEntries(1.51355e+07);
-   ThetaY_vs_Time_2_py__13->SetStats(0);
    ThetaY_vs_Time_2_py__13->SetLineWidth(3);
    ThetaY_vs_Time_2_py__13->GetXaxis()->SetTitle("#theta_{y} [mrad]");
    ThetaY_vs_Time_2_py__13->GetXaxis()->CenterTitle(true);
    ThetaY_vs_Time_2_py__13->GetXaxis()->SetLabelFont(42);
+   ThetaY_vs_Time_2_py__13->GetXaxis()->SetLabelSize(0.04);
+   ThetaY_vs_Time_2_py__13->GetXaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_2_py__13->GetXaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_2_py__13->GetXaxis()->SetTitleFont(42);
    ThetaY_vs_Time_2_py__13->GetYaxis()->CenterTitle(true);
    ThetaY_vs_Time_2_py__13->GetYaxis()->SetNdivisions(4000510);
    ThetaY_vs_Time_2_py__13->GetYaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_2_py__13->GetYaxis()->SetLabelSize(0.035);
+   ThetaY_vs_Time_2_py__13->GetYaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_2_py__13->GetYaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_2_py__13->GetYaxis()->SetTitleFont(42);
    ThetaY_vs_Time_2_py__13->GetZaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_2_py__13->GetZaxis()->SetLabelSize(0.035);
-   ThetaY_vs_Time_2_py__13->GetZaxis()->SetTitleSize(0.035);
    ThetaY_vs_Time_2_py__13->GetZaxis()->SetTitleOffset(1);
    ThetaY_vs_Time_2_py__13->GetZaxis()->SetTitleFont(42);
    ThetaY_vs_Time_2_py__13->Draw("HIST");

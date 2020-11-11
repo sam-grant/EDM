@@ -1,14 +1,13 @@
 void ThetaY_vs_Time_ProjX_0_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:34:49 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:41:13 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
-   c->SetRightMargin(0.13);
    c->SetFrameBorderMode(0);
    
    TH1D *ThetaY_vs_Time_0_px__2 = new TH1D("ThetaY_vs_Time_0_px__2","0<t<100 us",2700,0,402.1272);
@@ -1357,22 +1356,21 @@ void ThetaY_vs_Time_ProjX_0_noQ()
    ThetaY_vs_Time_0_px__2->SetBinError(671,160.7109);
    ThetaY_vs_Time_0_px__2->SetBinError(672,104.1825);
    ThetaY_vs_Time_0_px__2->SetEntries(4.389607e+07);
-   ThetaY_vs_Time_0_px__2->SetStats(0);
    ThetaY_vs_Time_0_px__2->SetLineWidth(3);
    ThetaY_vs_Time_0_px__2->GetXaxis()->SetTitle("Track time [#mus]");
    ThetaY_vs_Time_0_px__2->GetXaxis()->CenterTitle(true);
    ThetaY_vs_Time_0_px__2->GetXaxis()->SetLabelFont(42);
+   ThetaY_vs_Time_0_px__2->GetXaxis()->SetLabelSize(0.04);
+   ThetaY_vs_Time_0_px__2->GetXaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_0_px__2->GetXaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_0_px__2->GetXaxis()->SetTitleFont(42);
    ThetaY_vs_Time_0_px__2->GetYaxis()->CenterTitle(true);
    ThetaY_vs_Time_0_px__2->GetYaxis()->SetNdivisions(4000510);
    ThetaY_vs_Time_0_px__2->GetYaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_0_px__2->GetYaxis()->SetLabelSize(0.035);
+   ThetaY_vs_Time_0_px__2->GetYaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_0_px__2->GetYaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_0_px__2->GetYaxis()->SetTitleFont(42);
    ThetaY_vs_Time_0_px__2->GetZaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_0_px__2->GetZaxis()->SetLabelSize(0.035);
-   ThetaY_vs_Time_0_px__2->GetZaxis()->SetTitleSize(0.035);
    ThetaY_vs_Time_0_px__2->GetZaxis()->SetTitleOffset(1);
    ThetaY_vs_Time_0_px__2->GetZaxis()->SetTitleFont(42);
    ThetaY_vs_Time_0_px__2->Draw("HIST");

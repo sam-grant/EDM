@@ -1,7 +1,7 @@
 void ThetaY_vs_Time_Modulo_2D_6_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:34:05 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:39:42 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -5171,17 +5171,19 @@ void ThetaY_vs_Time_Modulo_2D_6_noQ()
    ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
    ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->CenterTitle(true);
    ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->SetLabelFont(42);
+   ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->SetLabelSize(0.04);
+   ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_Modulo_Fine_6->GetXaxis()->SetTitleFont(42);
    ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetTitle("#theta_{y} [mrad]");
    ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->CenterTitle(true);
    ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetNdivisions(4000510);
    ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetLabelFont(42);
+   ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetLabelSize(0.04);
+   ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_Modulo_Fine_6->GetYaxis()->SetTitleFont(42);
    ThetaY_vs_Time_Modulo_Fine_6->GetZaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_Modulo_Fine_6->GetZaxis()->SetLabelSize(0.035);
-   ThetaY_vs_Time_Modulo_Fine_6->GetZaxis()->SetTitleSize(0.035);
    ThetaY_vs_Time_Modulo_Fine_6->GetZaxis()->SetTitleOffset(1);
    ThetaY_vs_Time_Modulo_Fine_6->GetZaxis()->SetTitleFont(42);
    ThetaY_vs_Time_Modulo_Fine_6->Draw("COLZ");

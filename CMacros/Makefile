@@ -6,15 +6,18 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe CaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe 
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe 
 
 all:$(Target)
 
 Asymmetry.exe: Asymmetry.C
 	${C++} -o $@ Asymmetry.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
-CaloMeanPos.exe: CaloMeanPos.C
-	${C++} -o $@ CaloMeanPos.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+AllCaloMeanPos.exe: AllCaloMeanPos.C
+	${C++} -o $@ AllCaloMeanPos.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
+PerCaloMeanPos.exe: PerCaloMeanPos.C
+	${C++} -o $@ PerCaloMeanPos.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
 MomentumScan.exe: MomentumScan.C
 	${C++} -o $@ MomentumScan.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)

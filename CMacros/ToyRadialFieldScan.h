@@ -16,10 +16,10 @@ const int N_EXP = 1000;
 // New settings proposal
 
 // Config A -- All settings, ideal scenario, 6 hour measurement
-//const int N_QHV = 4;
-//const int N_FIELD = 6;
-//const double QHV[N_QHV] = {14, 16, 18, 20}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+const int N_QHV = 4;
+const int N_FIELD = 6;
+const double QHV[N_QHV] = {14, 16, 18, 20}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
 //
 //// Config B -- All field settings without 20 kV (in case untenable)
 //const int N_QHV = 3;
@@ -40,10 +40,10 @@ const int N_EXP = 1000;
 //const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 //
 //// Config E -- No 20 kV, no high/low field
-const int N_QHV = 3;
-const int N_FIELD = 4;
-const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+//const int N_QHV = 3;
+//const int N_FIELD = 4;
+//const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 //
 //// Config F -- No 14 kV, no high/low field
 // const int N_QHV = 3;

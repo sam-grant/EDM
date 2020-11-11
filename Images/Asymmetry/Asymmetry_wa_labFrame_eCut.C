@@ -1,14 +1,15 @@
 void Asymmetry_wa_labFrame_eCut()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Oct 12 23:13:52 2020) by ROOT version 6.22/02
+//=========  (Mon Nov  9 17:34:29 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(0,0,1,1);
+   c->Range(-0.1428571,-0.25,1.285714,1.25);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetRightMargin(0.2);
+   c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
    TF1 *N_37 = new TF1("N_3",";y=p/p_{max};Arbitrary units",0,1, TF1::EAddToList::kDefault);
@@ -30,7 +31,7 @@ void Asymmetry_wa_labFrame_eCut()
    N_37->GetYaxis()->SetTitleFont(42);
    N_37->Draw("");
    
-   TLegend *leg = new TLegend(0,0,0,0,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.81,0.35,0.99,0.65,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetTextFont(44);
    leg->SetTextSize(26);
@@ -40,34 +41,44 @@ void Asymmetry_wa_labFrame_eCut()
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
    TLegendEntry *entry=leg->AddEntry("N_3"," N(y)","lpf");
+   entry->SetFillColor(19);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
+   entry->SetLineWidth(3);
    entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(21);
+   entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
+   entry->SetTextFont(44);
    entry=leg->AddEntry("A_3"," A(y)","lpf");
-   entry->SetLineColor(1);
+   entry->SetFillColor(19);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   entry->SetLineColor(ci);
    entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
+   entry->SetLineWidth(3);
    entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(21);
+   entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
+   entry->SetTextFont(44);
    entry=leg->AddEntry("NA2_3"," NA^{2}(y)","lpf");
-   entry->SetLineColor(1);
+   entry->SetFillColor(19);
+
+   ci = TColor::GetColor("#0000ff");
+   entry->SetLineColor(ci);
    entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
+   entry->SetLineWidth(3);
    entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(21);
+   entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
+   entry->SetTextFont(44);
    leg->Draw();
    
    TF1 *A_38 = new TF1("A_3","( x * (2*x + 1) ) / ( -x*x + x + 3 )",0,1, TF1::EAddToList::kDefault);
    A_38->SetFillColor(19);
    A_38->SetFillStyle(0);
 
-   Int_t ci;      // for color index setting
-   TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#ff0000");
    A_38->SetLineColor(ci);
    A_38->SetLineWidth(3);
@@ -95,6 +106,24 @@ void Asymmetry_wa_labFrame_eCut()
    line->SetLineStyle(2);
    line->SetLineWidth(3);
    line->Draw();
+   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,3127.114,510,"-");
+   gaxis->SetLabelOffset(0.005);
+   gaxis->SetLabelSize(0.04);
+   gaxis->SetTickSize(0.03);
+   gaxis->SetGridLength(0);
+   gaxis->SetTitleOffset(1.1);
+   gaxis->SetTitleSize(0.04);
+   gaxis->SetTitleColor(632);
+   gaxis->SetTitleFont(42);
+   gaxis->SetTitle("Track momentum [MeV]");
+
+   ci = TColor::GetColor("#ff0000");
+   gaxis->SetLabelColor(ci);
+
+   ci = TColor::GetColor("#ff0000");
+   gaxis->SetLineColor(ci);
+   gaxis->SetLabelFont(42);
+   gaxis->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

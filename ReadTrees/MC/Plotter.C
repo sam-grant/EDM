@@ -9,6 +9,10 @@
 
 double omegaAMagic = 0.00143934; // from gm2geom consts / kHz 
 double g2Period = (2*TMath::Pi()/omegaAMagic) * 1e-3; // 4.3653239 us
+double mMu = 105.6583715; // MeV
+double aMu = 11659208.9e-10; 
+double gmagic = std::sqrt( 1.+1./aMu );
+double pmax = 1.01 * mMu * gmagic;
 
 void Plotter::InitTrees(TString input_file) {
    tr = new trackerReader(input_file);  
@@ -59,8 +63,8 @@ void Plotter::Run() {
 
     // Tighter momentum cuts
     // p/pmax is between 0.3 to 0.75 for pmax = 3500 MeV
-    if(p < 1050 || p > 2625) continue; 
-
+    if(p < pmax*0.3 || p > pmax*0.75) continue; 
+    
     // TIME CUTS
     //if(time > g2Period*70) continue;
     if(time < g2Period*7 || time > g2Period*70) continue;

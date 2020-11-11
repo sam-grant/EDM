@@ -1,14 +1,13 @@
 void ThetaY_vs_Time_ProjY_0_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:34:49 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:41:13 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
-   c->SetRightMargin(0.13);
    c->SetFrameBorderMode(0);
    
    TH1D *ThetaY_vs_Time_0_py__3 = new TH1D("ThetaY_vs_Time_0_py__3","0<t<100 us",180,-60,60);
@@ -377,22 +376,21 @@ void ThetaY_vs_Time_ProjY_0_noQ()
    ThetaY_vs_Time_0_py__3->SetBinError(180,99.56907);
    ThetaY_vs_Time_0_py__3->SetBinError(181,555.6429);
    ThetaY_vs_Time_0_py__3->SetEntries(4.328654e+07);
-   ThetaY_vs_Time_0_py__3->SetStats(0);
    ThetaY_vs_Time_0_py__3->SetLineWidth(3);
    ThetaY_vs_Time_0_py__3->GetXaxis()->SetTitle("#theta_{y} [mrad]");
    ThetaY_vs_Time_0_py__3->GetXaxis()->CenterTitle(true);
    ThetaY_vs_Time_0_py__3->GetXaxis()->SetLabelFont(42);
+   ThetaY_vs_Time_0_py__3->GetXaxis()->SetLabelSize(0.04);
+   ThetaY_vs_Time_0_py__3->GetXaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_0_py__3->GetXaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_0_py__3->GetXaxis()->SetTitleFont(42);
    ThetaY_vs_Time_0_py__3->GetYaxis()->CenterTitle(true);
    ThetaY_vs_Time_0_py__3->GetYaxis()->SetNdivisions(4000510);
    ThetaY_vs_Time_0_py__3->GetYaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_0_py__3->GetYaxis()->SetLabelSize(0.035);
+   ThetaY_vs_Time_0_py__3->GetYaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_0_py__3->GetYaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_0_py__3->GetYaxis()->SetTitleFont(42);
    ThetaY_vs_Time_0_py__3->GetZaxis()->SetLabelFont(42);
-   ThetaY_vs_Time_0_py__3->GetZaxis()->SetLabelSize(0.035);
-   ThetaY_vs_Time_0_py__3->GetZaxis()->SetTitleSize(0.035);
    ThetaY_vs_Time_0_py__3->GetZaxis()->SetTitleOffset(1);
    ThetaY_vs_Time_0_py__3->GetZaxis()->SetTitleFont(42);
    ThetaY_vs_Time_0_py__3->Draw("HIST");

@@ -14,6 +14,7 @@ void clusterReader::Init() {
    //LoadBranch("runNum", runNum, b_runNum);
    LoadBranch("subRunNum", subRunNum, b_subRunNum);
    //LoadBranch("eventNum", eventNum, b_eventNum);
+   LoadBranch("caloNum", caloNum, b_caloNum);
    //LoadBranch("ctag", ctag, b_ctag);
    //LoadBranch("ctagNoCut", ctagNoCut, b_ctagNoCut);
    LoadBranch("clusterEnergy", clusterEnergy, b_clusterEnergy);

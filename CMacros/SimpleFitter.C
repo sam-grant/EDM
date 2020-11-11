@@ -20,7 +20,7 @@
 
 int main() {
 
-	std::string config = "30xBNL"; // 1xBNL"
+	std::string config = "1xBNL"; 
 	std::string qualString = "Q";
 	//bool quality = false;
 	//std::string qualString;
@@ -63,7 +63,9 @@ int main() {
 
   	}
 
-  	//delete moduloProf; delete moduloHist;
+  	int nEntries = moduloProf->GetEntries();
+
+  	delete moduloProf; delete moduloHist;
 
 	TGraphErrors *moduloGraph = new TGraphErrors(n,x,y,ex,ey);
 
@@ -72,8 +74,7 @@ int main() {
 
 	std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
 	
-
-	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(moduloProf->GetEntries()),false);
+	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(nEntries),true);
 
 
 	return 0;

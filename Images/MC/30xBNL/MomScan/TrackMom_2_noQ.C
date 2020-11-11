@@ -1,14 +1,13 @@
 void TrackMom_2_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep 18 16:33:59 2020) by ROOT version 6.16/00
+//=========  (Mon Nov  9 17:39:37 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
-   c->SetRightMargin(0.13);
    c->SetFrameBorderMode(0);
    
    TH1D *TrackMom_2__11 = new TH1D("TrackMom_2__11","1000<p<1500 MeV",128,0,3200);
@@ -55,22 +54,23 @@ void TrackMom_2_noQ()
    TrackMom_2__11->SetBinError(60,841.2003);
    TrackMom_2__11->SetBinError(61,1.414214);
    TrackMom_2__11->SetEntries(1.520567e+07);
-   TrackMom_2__11->SetStats(0);
    TrackMom_2__11->SetLineWidth(3);
    TrackMom_2__11->SetMarkerSize(1.5);
    TrackMom_2__11->GetXaxis()->SetTitle("Track momentum [MeV]");
    TrackMom_2__11->GetXaxis()->CenterTitle(true);
    TrackMom_2__11->GetXaxis()->SetLabelFont(42);
+   TrackMom_2__11->GetXaxis()->SetLabelSize(0.04);
+   TrackMom_2__11->GetXaxis()->SetTitleSize(0.04);
    TrackMom_2__11->GetXaxis()->SetTitleOffset(1.1);
    TrackMom_2__11->GetXaxis()->SetTitleFont(42);
    TrackMom_2__11->GetYaxis()->CenterTitle(true);
    TrackMom_2__11->GetYaxis()->SetNdivisions(4000510);
    TrackMom_2__11->GetYaxis()->SetLabelFont(42);
+   TrackMom_2__11->GetYaxis()->SetLabelSize(0.04);
+   TrackMom_2__11->GetYaxis()->SetTitleSize(0.04);
    TrackMom_2__11->GetYaxis()->SetTitleOffset(1.1);
    TrackMom_2__11->GetYaxis()->SetTitleFont(42);
    TrackMom_2__11->GetZaxis()->SetLabelFont(42);
-   TrackMom_2__11->GetZaxis()->SetLabelSize(0.035);
-   TrackMom_2__11->GetZaxis()->SetTitleSize(0.035);
    TrackMom_2__11->GetZaxis()->SetTitleOffset(1);
    TrackMom_2__11->GetZaxis()->SetTitleFont(42);
    TrackMom_2__11->Draw("HIST");
