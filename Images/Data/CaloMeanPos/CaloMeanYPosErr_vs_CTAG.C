@@ -1,10 +1,10 @@
 void CaloMeanYPosErr_vs_CTAG()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 20 18:35:37 2020) by ROOT version 6.22/02
+//=========  (Wed Nov 11 19:07:21 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1674140,-0.03125,1.506726e+07,0.28125);
+   c->Range(-1676730,-0.0257014,1.509057e+07,0.3024539);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,7 +12,6 @@ void CaloMeanYPosErr_vs_CTAG()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx1002[349] = {
-   6.953129e-310,
    14076,
    52517,
    92012,
@@ -360,9 +359,9 @@ void CaloMeanYPosErr_vs_CTAG()
    1.324637e+07,
    1.328502e+07,
    1.332377e+07,
-   1.336249e+07};
+   1.336249e+07,
+   1.338444e+07};
    Double_t Graph0_fy1002[349] = {
-   6.953129e-310,
    0.2458444,
    0.126379,
    0.09535128,
@@ -710,9 +709,10 @@ void CaloMeanYPosErr_vs_CTAG()
    0.007945793,
    0.007934199,
    0.007922622,
-   0.007911157};
+   0.007911157,
+   0.007904588};
    Double_t Graph0_fex1002[349] = {
-   6.953129e-310,
+   0,
    0,
    0,
    0,
@@ -1062,7 +1062,7 @@ void CaloMeanYPosErr_vs_CTAG()
    0,
    0};
    Double_t Graph0_fey1002[349] = {
-   6.953129e-310,
+   0,
    0,
    0,
    0,
@@ -1417,9 +1417,9 @@ void CaloMeanYPosErr_vs_CTAG()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01002 = new TH1F("Graph_Graph01002","",349,0,1.469874e+07);
-   Graph_Graph01002->SetMinimum(0);
-   Graph_Graph01002->SetMaximum(0.25);
+   TH1F *Graph_Graph01002 = new TH1F("Graph_Graph01002","",349,0,1.472148e+07);
+   Graph_Graph01002->SetMinimum(0.007114129);
+   Graph_Graph01002->SetMaximum(0.2696384);
    Graph_Graph01002->SetDirectory(0);
    Graph_Graph01002->SetStats(0);
 
@@ -1447,7 +1447,7 @@ void CaloMeanYPosErr_vs_CTAG()
    gre->SetHistogram(Graph_Graph01002);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,0.25,1.339312e+07,0.25,0,350,510,"-");
+   TGaxis *gaxis = new TGaxis(0,0.2696384,1.341384e+07,0.2696384,0,350,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

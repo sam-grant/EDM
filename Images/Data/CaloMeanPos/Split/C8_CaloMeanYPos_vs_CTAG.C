@@ -1,18 +1,17 @@
 void C8_CaloMeanYPos_vs_CTAG()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov  6 17:24:59 2020) by ROOT version 6.22/02
+//=========  (Wed Nov 11 19:01:55 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-74201.74,68.75,667815.6,81.25);
+   c->Range(-67535.28,75.09599,607817.5,77.60894);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1015[349] = {
-   6.953128e-310,
+   Double_t Graph0_fx1015[346] = {
    1611,
    3183,
    4811,
@@ -358,11 +357,8 @@ void C8_CaloMeanYPos_vs_CTAG()
    534997,
    536495,
    538108,
-   539649,
-   0,
-   6.953128e-310};
-   Double_t Graph0_fy1015[349] = {
-   6.953128e-310,
+   539649};
+   Double_t Graph0_fy1015[346] = {
    76.45034,
    76.04504,
    76.22607,
@@ -708,11 +704,8 @@ void C8_CaloMeanYPos_vs_CTAG()
    76.17005,
    76.17306,
    76.17427,
-   76.17321,
-   75.43134,
-   2.156011e-314};
-   Double_t Graph0_fex1015[349] = {
-   6.953128e-310,
+   76.17321};
+   Double_t Graph0_fex1015[346] = {
    0,
    0,
    0,
@@ -1058,11 +1051,8 @@ void C8_CaloMeanYPos_vs_CTAG()
    0,
    0,
    0,
-   0,
-   0,
-   1.482197e-323};
-   Double_t Graph0_fey1015[349] = {
-   6.953128e-310,
+   0};
+   Double_t Graph0_fey1015[346] = {
    0.7397769,
    0.5302274,
    0.4292116,
@@ -1408,18 +1398,16 @@ void C8_CaloMeanYPos_vs_CTAG()
    0.04058968,
    0.04053106,
    0.04046984,
-   0.0404125,
-   0.03554236,
-   6.953128e-310};
-   TGraphErrors *gre = new TGraphErrors(349,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
+   0.0404125};
+   TGraphErrors *gre = new TGraphErrors(346,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
    gre->SetName("Graph0");
    gre->SetTitle(";CTAGs;#LTy#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","",349,0,593613.9);
-   Graph_Graph01015->SetMinimum(70);
-   Graph_Graph01015->SetMaximum(80);
+   TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","",346,0,593452.8);
+   Graph_Graph01015->SetMinimum(75.34729);
+   Graph_Graph01015->SetMaximum(77.35765);
    Graph_Graph01015->SetDirectory(0);
    Graph_Graph01015->SetStats(0);
 
@@ -1428,6 +1416,7 @@ void C8_CaloMeanYPos_vs_CTAG()
    ci = TColor::GetColor("#000099");
    Graph_Graph01015->SetLineColor(ci);
    Graph_Graph01015->GetXaxis()->SetTitle("CTAGs");
+   Graph_Graph01015->GetXaxis()->SetRange(1,315);
    Graph_Graph01015->GetXaxis()->CenterTitle(true);
    Graph_Graph01015->GetXaxis()->SetLabelFont(42);
    Graph_Graph01015->GetXaxis()->SetTitleSize(0.04);
@@ -1446,7 +1435,7 @@ void C8_CaloMeanYPos_vs_CTAG()
    gre->SetHistogram(Graph_Graph01015);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,80,593613.9,80,0,347,510,"-");
+   TGaxis *gaxis = new TGaxis(0,77.35765,540282.2,77.35765,0,347,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);
