@@ -1,10 +1,10 @@
 void FieldFitCheck_NSUBRUN_25_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:11 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:13:54 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-66.57159,75,83.4004);
+   c->Range(-75,-66.56282,75,83.4086);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    30,
    50};
    Double_t Graph0_fy1015[6] = {
-   -39.97577,
-   -20.50118,
-   -1.847659,
-   17.32913,
-   40.32339,
-   56.80458};
+   -39.93434,
+   -20.47051,
+   -1.844542,
+   17.31541,
+   40.37093,
+   56.78012};
    Double_t Graph0_fex1015[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    0,
    0};
    Double_t Graph0_fey1015[6] = {
-   1.600487,
-   1.600487,
-   1.600487,
-   1.600487,
-   1.600487,
-   1.600487};
+   1.633239,
+   1.633239,
+   1.633239,
+   1.633239,
+   1.633239,
+   1.633239};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
    gre->SetName("Graph0");
    gre->SetTitle("25 sub-runs");
@@ -46,8 +46,8 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","25 sub-runs",100,-60,60);
-   Graph_Graph01015->SetMinimum(-51.57439);
-   Graph_Graph01015->SetMaximum(68.4032);
+   Graph_Graph01015->SetMinimum(-51.56568);
+   Graph_Graph01015->SetMaximum(68.41145);
    Graph_Graph01015->SetDirectory(0);
    Graph_Graph01015->SetStats(0);
 
@@ -88,11 +88,11 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    checkFit1016->GetXaxis()->SetTitleFont(42);
    checkFit1016->GetYaxis()->SetLabelFont(42);
    checkFit1016->GetYaxis()->SetTitleFont(42);
-   checkFit1016->SetParameter(0,8.688749);
-   checkFit1016->SetParError(0,0.6533962);
+   checkFit1016->SetParameter(0,8.702844);
+   checkFit1016->SetParError(0,0.6667671);
    checkFit1016->SetParLimits(0,0,0);
-   checkFit1016->SetParameter(1,0.9793604);
-   checkFit1016->SetParError(1,0.01912948);
+   checkFit1016->SetParameter(1,0.978938);
+   checkFit1016->SetParError(1,0.01952094);
    checkFit1016->SetParLimits(1,0,0);
    checkFit1016->SetParent(gre);
    gre->GetListOfFunctions()->Add(checkFit1016);
@@ -104,9 +104,9 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText("0.763");
-   pt_LaTex = pt->AddText("0.979#pm0.0191");
-   pt_LaTex = pt->AddText(" 8.69#pm0.653");
-   pt_LaTex = pt->AddText(" 8.87#pm0.689");
+   pt_LaTex = pt->AddText("0.979#pm0.0195");
+   pt_LaTex = pt->AddText("  8.7#pm0.667");
+   pt_LaTex = pt->AddText(" 8.89#pm0.704");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -119,11 +119,11 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-60,0,-8.871861,0);
+   TLine *line = new TLine(-60,0,-8.890087,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-8.871861,-51.57439,-8.871861,0);
+   line = new TLine(-8.890087,-51.56568,-8.890087,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -142,11 +142,11 @@ void FieldFitCheck_NSUBRUN_25_NEXP_0()
    checkFit1017->GetXaxis()->SetTitleFont(42);
    checkFit1017->GetYaxis()->SetLabelFont(42);
    checkFit1017->GetYaxis()->SetTitleFont(42);
-   checkFit1017->SetParameter(0,8.688749);
-   checkFit1017->SetParError(0,0.6533962);
+   checkFit1017->SetParameter(0,8.702844);
+   checkFit1017->SetParError(0,0.6667671);
    checkFit1017->SetParLimits(0,0,0);
-   checkFit1017->SetParameter(1,0.9793604);
-   checkFit1017->SetParError(1,0.01912948);
+   checkFit1017->SetParameter(1,0.978938);
+   checkFit1017->SetParError(1,0.01952094);
    checkFit1017->SetParLimits(1,0,0);
    checkFit1017->Draw("same");
    

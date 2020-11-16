@@ -1,10 +1,10 @@
 void BrErr_and_BrResRMS_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:29 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:14:10 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1657106,0.06318321,1.491396e+07,0.7497239);
+   c->Range(-1669544,0.06026387,1.502589e+07,0.7659232);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,33 +12,33 @@ void BrErr_and_BrResRMS_overlay()
    c->SetFrameBorderMode(0);
    
    Double_t Fits_fx1213[13] = {
-   980385,
-   1945311,
-   2907125,
-   3831858,
-   4797147,
-   5761945,
-   6724437,
-   7689564,
-   8654560,
-   9619580,
-   1.058317e+07,
-   1.154995e+07,
-   1.251354e+07};
+   941716,
+   1907064,
+   2868345,
+   3792445,
+   4758726,
+   5723857,
+   6686373,
+   7651067,
+   8616015,
+   9581050,
+   1.054512e+07,
+   1.151148e+07,
+   1.247554e+07};
    Double_t Fits_fy1213[13] = {
-   0.6353004,
-   0.4510541,
-   0.3683323,
-   0.3209749,
-   0.286927,
-   0.2616491,
-   0.2421535,
-   0.2265601,
-   0.2134792,
-   0.202511,
-   0.1930415,
-   0.1848358,
-   0.1776067};
+   0.6483133,
+   0.455556,
+   0.3708095,
+   0.3226463,
+   0.2880845,
+   0.2625181,
+   0.242849,
+   0.2271299,
+   0.2139569,
+   0.20292,
+   0.1933874,
+   0.1851432,
+   0.1778738};
    Double_t Fits_fex1213[13] = {
    0,
    0,
@@ -73,9 +73,9 @@ void BrErr_and_BrResRMS_overlay()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Fits1213 = new TH1F("Graph_Fits1213","",100,0,1.366686e+07);
-   Graph_Fits1213->SetMinimum(0.1318373);
-   Graph_Fits1213->SetMaximum(0.6810698);
+   TH1F *Graph_Fits1213 = new TH1F("Graph_Fits1213","",100,0,1.362893e+07);
+   Graph_Fits1213->SetMinimum(0.1308298);
+   Graph_Fits1213->SetMaximum(0.6953573);
    Graph_Fits1213->SetDirectory(0);
    Graph_Fits1213->SetStats(0);
 
@@ -84,7 +84,7 @@ void BrErr_and_BrResRMS_overlay()
    ci = TColor::GetColor("#000099");
    Graph_Fits1213->SetLineColor(ci);
    Graph_Fits1213->GetXaxis()->SetTitle("CTAGs");
-   Graph_Fits1213->GetXaxis()->SetRange(1,97);
+   Graph_Fits1213->GetXaxis()->SetRange(1,98);
    Graph_Fits1213->GetXaxis()->CenterTitle(true);
    Graph_Fits1213->GetXaxis()->SetLabelFont(42);
    Graph_Fits1213->GetXaxis()->SetTitleSize(0.04);
@@ -105,33 +105,33 @@ void BrErr_and_BrResRMS_overlay()
    gre->Draw("ap");
    
    Double_t Truth_fx1214[13] = {
-   980385,
-   1945311,
-   2907125,
-   3831858,
-   4797147,
-   5761945,
-   6724437,
-   7689564,
-   8654560,
-   9619580,
-   1.058317e+07,
-   1.154995e+07,
-   1.251354e+07};
+   941716,
+   1907064,
+   2868345,
+   3792445,
+   4758726,
+   5723857,
+   6686373,
+   7651067,
+   8616015,
+   9581050,
+   1.054512e+07,
+   1.151148e+07,
+   1.247554e+07};
    Double_t Truth_fy1214[13] = {
-   0.6391289,
-   0.4451922,
-   0.3649955,
-   0.3089261,
-   0.2898465,
-   0.2694983,
-   0.2454869,
-   0.2327386,
-   0.2060744,
-   0.2028076,
-   0.1963593,
-   0.1893736,
-   0.1776588};
+   0.6522301,
+   0.4496337,
+   0.367446,
+   0.3105331,
+   0.2910145,
+   0.2703952,
+   0.2461954,
+   0.23332,
+   0.2065397,
+   0.2032225,
+   0.1967144,
+   0.1896753,
+   0.1779282};
    Double_t Truth_fex1214[13] = {
    0,
    0,
@@ -147,35 +147,35 @@ void BrErr_and_BrResRMS_overlay()
    0,
    0};
    Double_t Truth_fey1214[13] = {
-   0.01429136,
-   0.009954799,
-   0.008161548,
-   0.006907797,
-   0.006481164,
-   0.006026164,
-   0.005489255,
-   0.005204194,
-   0.004607964,
-   0.004534915,
-   0.004390727,
-   0.004234521,
-   0.003972571};
+   0.01458431,
+   0.01005411,
+   0.008216343,
+   0.006943731,
+   0.006507282,
+   0.00604622,
+   0.005505096,
+   0.005217194,
+   0.004618367,
+   0.004544194,
+   0.004398667,
+   0.004241268,
+   0.003978596};
    gre = new TGraphErrors(13,Truth_fx1214,Truth_fy1214,Truth_fex1214,Truth_fey1214);
    gre->SetName("Truth");
    gre->SetTitle(";CTAGs;RMS of meas #minus true B_{r} [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Truth1214 = new TH1F("Graph_Truth1214","",100,0,1.366686e+07);
-   Graph_Truth1214->SetMinimum(0.1257128);
-   Graph_Truth1214->SetMaximum(0.7013937);
+   TH1F *Graph_Truth1214 = new TH1F("Graph_Truth1214","",100,0,1.362893e+07);
+   Graph_Truth1214->SetMinimum(0.1246631);
+   Graph_Truth1214->SetMaximum(0.7161008);
    Graph_Truth1214->SetDirectory(0);
    Graph_Truth1214->SetStats(0);
 
    ci = TColor::GetColor("#000099");
    Graph_Truth1214->SetLineColor(ci);
    Graph_Truth1214->GetXaxis()->SetTitle("CTAGs");
-   Graph_Truth1214->GetXaxis()->SetRange(1,97);
+   Graph_Truth1214->GetXaxis()->SetRange(1,98);
    Graph_Truth1214->GetXaxis()->CenterTitle(true);
    Graph_Truth1214->GetXaxis()->SetLabelFont(42);
    Graph_Truth1214->GetXaxis()->SetTitleSize(0.04);
@@ -221,7 +221,7 @@ void BrErr_and_BrResRMS_overlay()
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    leg->Draw();
-   TGaxis *gaxis = new TGaxis(0,0.6810698,1.325685e+07,0.6810698,0,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,0.6953573,1.335635e+07,0.6953573,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

@@ -66,7 +66,20 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 			n[i_quad] =  0.108/18.3 * QHV[i_quad];
 
-			double y_true = R_0/n[i_quad] * Br_tot * 1e-6;
+			// Try to add in higher order terms 
+			// What about B0?
+			double Br0 = Br_tot;
+
+			// Uninformed guesses
+			double Br1 = Br_tot/10;
+			double Br2 = Br_tot/100;
+			double theta = TMath::Pi(); // cos(theta) -> -1
+			double phi1 = TMath::Pi()/2;
+			double phi2 = TMath::Pi()/3;
+
+			// Silly
+			double y_true = R_0*1e-6* ( Br0/n[i_quad] + Br1*cos(theta-phi1)/(1-n[i_quad]) + Br2*cos(2*theta-phi2)/(4-n[i_quad]) );
+
 			double y_meas = rndm->Gaus(y_true,sigmaY);
 		
 			y_quad[i_quad] = y_meas;
@@ -82,8 +95,9 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 		quadScan->SetName((std::to_string(BR_APP[i_field])+" ppm").c_str());
 
 		// Fit
-		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
-		quadScan->Fit(quadLineFit,"QM");
+		// Don't fit, just calculated
+		//TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
+		//quadScan->Fit(quadLineFit,"QM");
 
 		// Push scans into a vector
 		quadScans.push_back(quadScan);
@@ -92,8 +106,8 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 		ex_field[i_field] = 0;
 
 		// <y>/QHV
-		y_field_1[i_field] = quadLineFit->GetParameter(1);
-		ey_field_1[i_field] = quadLineFit->GetParError(1);
+		//y_field_1[i_field] = quadLineFit->GetParameter(1);
+		//ey_field_1[i_field] = quadLineFit->GetParError(1);
 
 		// Calculated Br, from Mott's method
 		double calcGrad = R_0 * ( 1./n[N_QHV-1] - 1./n[0]) * 1e-6; // ppm
@@ -103,30 +117,30 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 	} 
 
-	// We'll use this for the result
-	TGraphErrors *QuadGrads_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_1,ex_field,ey_field_1);
-	// This is a cross check
-	TGraphErrors *BrCalc_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_2,ex_field,ey_field_2);
-
-	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
-	TFitResultPtr mainFitRes = QuadGrads_vs_BrApp->Fit(mainFit,"SMQ");
-
-	TF1 *checkFit = new TF1("checkFit", "[0]+[1]*x");
-	TFitResultPtr checkFitRes = BrCalc_vs_BrApp->Fit(checkFit,"SMQ");
-
-	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
-    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
-
-   	double p0_check = checkFit->GetParameter(0); double p0_err_check = checkFit->GetParError(0);
-    double p1_check = checkFit->GetParameter(1); double p1_err_check = checkFit->GetParError(1);
-
-    // x-intercept
-	double Br = fabs(p0/p1);
-	double Br_check = fabs(p0_check/p1_check);
-
-	// From Taylor 9.9
-	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
-	double BrErr_check = fabs(Br_check) * sqrt(pow(p0_err_check/p0_check,2) + pow(p1_err_check/p1_check,2) - 2*checkFitRes->GetCovarianceMatrix()(0,1)/(p0_check*p1_check));
+//	// We'll use this for the result
+//	TGraphErrors *QuadGrads_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_1,ex_field,ey_field_1);
+//	// This is a cross check
+//	TGraphErrors *BrCalc_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_2,ex_field,ey_field_2);
+//
+//	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
+//	TFitResultPtr mainFitRes = QuadGrads_vs_BrApp->Fit(mainFit,"SMQ");
+//
+//	TF1 *checkFit = new TF1("checkFit", "[0]+[1]*x");
+//	TFitResultPtr checkFitRes = BrCalc_vs_BrApp->Fit(checkFit,"SMQ");
+//
+//	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
+//    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+//
+//   	double p0_check = checkFit->GetParameter(0); double p0_err_check = checkFit->GetParError(0);
+//    double p1_check = checkFit->GetParameter(1); double p1_err_check = checkFit->GetParError(1);
+//
+//    // x-intercept
+//	double Br = fabs(p0/p1);
+//	double Br_check = fabs(p0_check/p1_check);
+//
+//	// From Taylor 9.9
+//	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
+//	double BrErr_check = fabs(Br_check) * sqrt(pow(p0_err_check/p0_check,2) + pow(p1_err_check/p1_check,2) - 2*checkFitRes->GetCovarianceMatrix()(0,1)/(p0_check*p1_check));
 
 	// We calculate Br in two different ways, so this is a nice way to catch something going wrong
 	// Sometimes the error is slightly off, not sure why this is
@@ -137,9 +151,9 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 
-		DrawQuadScanFits(quadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
-		DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
-		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		DrawQuadScanFits(quadScans, "quadLineFit", ";QHV [kV];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/HighOrder/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
+		//DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];#LTy#GT / QHV [mm/kV]","../Images/MC/ToyRadialFieldScan/HighOrder/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		//DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", "Sub-runs "+std::to_string(subruns)+";Applied B_{r} [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/HighOrder/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
 	}
 	
 	delete QuadGrads_vs_BrApp; delete BrCalc_vs_BrApp; delete mainFit;
@@ -203,9 +217,9 @@ int main() {
 		cout<<"DELTA RMS OF RESIDUAL:\t"<<hBrRes->GetRMSError()<<endl;
 		cout<<"***************************************************\n"<<endl;
 
-		DrawTH1(hBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/Br_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
-		DrawTH1(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#deltaB_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
-		DrawTH1(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Meas #minus background B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		//DrawTH1(hBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/HighOrder/Br_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		//DrawTH1(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#deltaB_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/HighOrder/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		//DrawTH1(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Meas #minus background B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/HighOrder/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
 
 		x[i_subrun] = ctags_sigmas_subruns.CTAGS[i_subrun];
 		zeros[i_subrun] = 0;
@@ -242,13 +256,13 @@ int main() {
 	BrErr_vs_N->SetName("Fits");
 	BrResRMS_vs_N->SetName("Truth");
 	
-	DrawTGraphErrorsDoubleXAxis(Br_vs_N, ";CTAGs;B_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/Br_vs_N",subrun_lo,subrun_hi);
-	DrawTGraphErrorsDoubleXAxis(BrErr_vs_N, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/BrErr_vs_N",subrun_lo,subrun_hi);
-	DrawTGraphErrorsDoubleXAxis(BrRes_vs_N, ";CTAGs;Meas #minus true B_{r} [ppm]", "Sub-runs","../Images/MC/ToyRadialFieldScan/BrRes_vs_N",subrun_lo,subrun_hi);
-	DrawTGraphErrorsDoubleXAxis(BrResRMS_vs_N, ";CTAGs;RMS of meas #minus true B_{r} [ppm]", "Sub-runs","../Images/MC/ToyRadialFieldScan/BrResRMS_vs_N",subrun_lo,subrun_hi);
+	//DrawTGraphErrorsDoubleXAxis(Br_vs_N, ";CTAGs;B_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/HighOrder/Br_vs_N",subrun_lo,subrun_hi);
+	//DrawTGraphErrorsDoubleXAxis(BrErr_vs_N, ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/HighOrder/BrErr_vs_N",subrun_lo,subrun_hi);
+	//DrawTGraphErrorsDoubleXAxis(BrRes_vs_N, ";CTAGs;Meas #minus true B_{r} [ppm]", "Sub-runs","../Images/MC/ToyRadialFieldScan/HighOrder/BrRes_vs_N",subrun_lo,subrun_hi);
+	//DrawTGraphErrorsDoubleXAxis(BrResRMS_vs_N, ";CTAGs;RMS of meas #minus true B_{r} [ppm]", "Sub-runs","../Images/MC/ToyRadialFieldScan/HighOrder/BrResRMS_vs_N",subrun_lo,subrun_hi);
 
 	// Overlay fit precision with RMS of truth residual
-	DrawTGraphErrorsDoubleXAxisOverlay(BrErr_vs_N, BrResRMS_vs_N, "Fits", "Truth", ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/BrErr_and_BrResRMS_overlay",subrun_lo,subrun_hi);
+	//DrawTGraphErrorsDoubleXAxisOverlay(BrErr_vs_N, BrResRMS_vs_N, "Fits", "Truth", ";CTAGs;#deltaB_{r} [ppm]", "Sub-runs", "../Images/MC/ToyRadialFieldScan/HighOrder/BrErr_and_BrResRMS_overlay",subrun_lo,subrun_hi);
 
 	return 0; 
 

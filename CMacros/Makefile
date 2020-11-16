@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe 
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe
 
 all:$(Target)
 
@@ -34,7 +34,15 @@ TimeScan.exe: TimeScan.C
 ToyRadialFieldScan.exe: ToyRadialFieldScan.C
 	${C++} -o $@ ToyRadialFieldScan.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
+HigherOrderFunc.exe: HigherOrderFunc.C
+	${C++} -o $@ HigherOrderFunc.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
+BeamGunTuningPlotter.exe: BeamGunTuningPlotter.C
+	${C++} -o $@ BeamGunTuningPlotter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
+ToyHO.exe: ToyHO.C
+	${C++} -o $@ ToyHO.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+	
 ############################# BLINDING ###################################
 
 testBlinding.exe: testBlinding.C

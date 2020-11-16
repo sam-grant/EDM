@@ -1,0 +1,73 @@
+void Y_7()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Mon Nov 16 13:12:26 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1F *Y_7__17 = new TH1F("Y_7__17","Plane 7",100,-100,100);
+   Y_7__17->SetBinContent(27,2);
+   Y_7__17->SetBinContent(29,1);
+   Y_7__17->SetBinContent(30,2);
+   Y_7__17->SetBinContent(35,2);
+   Y_7__17->SetBinContent(36,1);
+   Y_7__17->SetBinContent(38,1);
+   Y_7__17->SetBinContent(39,3);
+   Y_7__17->SetBinContent(40,2);
+   Y_7__17->SetBinContent(41,9);
+   Y_7__17->SetBinContent(42,15);
+   Y_7__17->SetBinContent(43,39);
+   Y_7__17->SetBinContent(44,21);
+   Y_7__17->SetBinContent(45,12);
+   Y_7__17->SetBinContent(46,14);
+   Y_7__17->SetBinContent(47,15);
+   Y_7__17->SetBinContent(48,12);
+   Y_7__17->SetBinContent(49,41);
+   Y_7__17->SetBinContent(50,79);
+   Y_7__17->SetBinContent(51,42);
+   Y_7__17->SetBinContent(52,12);
+   Y_7__17->SetBinContent(53,17);
+   Y_7__17->SetBinContent(54,14);
+   Y_7__17->SetBinContent(55,20);
+   Y_7__17->SetBinContent(56,19);
+   Y_7__17->SetBinContent(57,26);
+   Y_7__17->SetBinContent(58,27);
+   Y_7__17->SetBinContent(59,19);
+   Y_7__17->SetBinContent(60,1);
+   Y_7__17->SetBinContent(62,1);
+   Y_7__17->SetBinContent(64,1);
+   Y_7__17->SetBinContent(65,3);
+   Y_7__17->SetBinContent(67,1);
+   Y_7__17->SetBinContent(68,2);
+   Y_7__17->SetBinContent(70,1);
+   Y_7__17->SetBinContent(71,2);
+   Y_7__17->SetBinContent(73,1);
+   Y_7__17->SetBinContent(84,1);
+   Y_7__17->SetEntries(481);
+   Y_7__17->SetLineWidth(3);
+   Y_7__17->GetXaxis()->SetTitle("Y [mm]");
+   Y_7__17->GetXaxis()->CenterTitle(true);
+   Y_7__17->GetXaxis()->SetLabelFont(42);
+   Y_7__17->GetXaxis()->SetTitleSize(0.04);
+   Y_7__17->GetXaxis()->SetTitleOffset(1.1);
+   Y_7__17->GetXaxis()->SetTitleFont(42);
+   Y_7__17->GetYaxis()->SetTitle("Ghost tracks");
+   Y_7__17->GetYaxis()->CenterTitle(true);
+   Y_7__17->GetYaxis()->SetNdivisions(4000510);
+   Y_7__17->GetYaxis()->SetLabelFont(42);
+   Y_7__17->GetYaxis()->SetTitleSize(0.04);
+   Y_7__17->GetYaxis()->SetTitleOffset(1.1);
+   Y_7__17->GetYaxis()->SetTitleFont(42);
+   Y_7__17->GetZaxis()->SetLabelFont(42);
+   Y_7__17->GetZaxis()->SetTitleOffset(1);
+   Y_7__17->GetZaxis()->SetTitleFont(42);
+   Y_7__17->Draw("HIST");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

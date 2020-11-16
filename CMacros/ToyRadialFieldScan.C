@@ -25,8 +25,13 @@
 
 using namespace std;
 
+// Store class member function from header as a global variable
+CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns;
+
+// Temp histograms for David T.
 TH1D *h_ymeas = new TH1D("","",100,2.22,2.36);
 TH1D *h_ytrue = new TH1D("","",100,2.22,2.36);
+
 // ==================== CALCULATE BR AND BR UNCERTAINTY ====================
 
 // Put the measured radial field and it's uncertainty into a tuple

@@ -1,10 +1,10 @@
 void FieldFit_NSUBRUN_100_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:15 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:13:57 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-81.58326,75,100.3802);
+   c->Range(-75,-81.58746,75,100.3821);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    30,
    50};
    Double_t Graph0_fy1061[6] = {
-   -50.33353,
-   -25.98468,
-   -2.648307,
-   21.9781,
-   46.21611,
-   69.13063};
+   -50.33207,
+   -25.98194,
+   -2.649545,
+   21.97958,
+   46.21831,
+   69.12665};
    Double_t Graph0_fex1061[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    0,
    0};
    Double_t Graph0_fey1061[6] = {
-   0.9224794,
-   0.9223591,
-   0.9222847,
-   0.921667,
-   0.9222799,
-   0.9223646};
+   0.9271322,
+   0.9267593,
+   0.927162,
+   0.9271582,
+   0.9271647,
+   0.9271627};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1061,Graph0_fy1061,Graph0_fex1061,Graph0_fey1061);
    gre->SetName("Graph0");
    gre->SetTitle("100 sub-runs");
@@ -46,8 +46,8 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01061 = new TH1F("Graph_Graph01061","100 sub-runs",100,-60,60);
-   Graph_Graph01061->SetMinimum(-63.38691);
-   Graph_Graph01061->SetMaximum(82.18389);
+   Graph_Graph01061->SetMinimum(-63.39051);
+   Graph_Graph01061->SetMaximum(82.18512);
    Graph_Graph01061->SetDirectory(0);
    Graph_Graph01061->SetStats(0);
 
@@ -81,18 +81,18 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    ci = TColor::GetColor("#ff0000");
    mainFit1062->SetLineColor(ci);
    mainFit1062->SetLineWidth(2);
-   mainFit1062->SetChisquare(1.005837);
+   mainFit1062->SetChisquare(1.005659);
    mainFit1062->SetNDF(4);
    mainFit1062->GetXaxis()->SetLabelFont(42);
    mainFit1062->GetXaxis()->SetTitleOffset(1);
    mainFit1062->GetXaxis()->SetTitleFont(42);
    mainFit1062->GetYaxis()->SetLabelFont(42);
    mainFit1062->GetYaxis()->SetTitleFont(42);
-   mainFit1062->SetParameter(0,9.726467);
-   mainFit1062->SetParError(0,0.3765025);
+   mainFit1062->SetParameter(0,9.726862);
+   mainFit1062->SetParError(0,0.3784828);
    mainFit1062->SetParLimits(0,0,0);
-   mainFit1062->SetParameter(1,1.197929);
-   mainFit1062->SetParError(1,0.01102458);
+   mainFit1062->SetParameter(1,1.19789);
+   mainFit1062->SetParError(1,0.01108097);
    mainFit1062->SetParLimits(1,0,0);
    mainFit1062->SetParent(gre);
    gre->GetListOfFunctions()->Add(mainFit1062);
@@ -104,9 +104,9 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText("0.251");
-   pt_LaTex = pt->AddText("  1.2#pm0.011");
-   pt_LaTex = pt->AddText(" 9.73#pm0.377");
-   pt_LaTex = pt->AddText(" 8.12#pm0.323");
+   pt_LaTex = pt->AddText("  1.2#pm0.0111");
+   pt_LaTex = pt->AddText(" 9.73#pm0.378");
+   pt_LaTex = pt->AddText(" 8.12#pm0.325");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -119,11 +119,11 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-60,0,-8.119404,0);
+   TLine *line = new TLine(-60,0,-8.119997,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-8.119404,-63.38691,-8.119404,0);
+   line = new TLine(-8.119997,-63.39051,-8.119997,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -135,18 +135,18 @@ void FieldFit_NSUBRUN_100_NEXP_0()
    ci = TColor::GetColor("#ff0000");
    mainFit1063->SetLineColor(ci);
    mainFit1063->SetLineWidth(2);
-   mainFit1063->SetChisquare(1.005837);
+   mainFit1063->SetChisquare(1.005659);
    mainFit1063->SetNDF(4);
    mainFit1063->GetXaxis()->SetLabelFont(42);
    mainFit1063->GetXaxis()->SetTitleOffset(1);
    mainFit1063->GetXaxis()->SetTitleFont(42);
    mainFit1063->GetYaxis()->SetLabelFont(42);
    mainFit1063->GetYaxis()->SetTitleFont(42);
-   mainFit1063->SetParameter(0,9.726467);
-   mainFit1063->SetParError(0,0.3765025);
+   mainFit1063->SetParameter(0,9.726862);
+   mainFit1063->SetParError(0,0.3784828);
    mainFit1063->SetParLimits(0,0,0);
-   mainFit1063->SetParameter(1,1.197929);
-   mainFit1063->SetParError(1,0.01102458);
+   mainFit1063->SetParameter(1,1.19789);
+   mainFit1063->SetParError(1,0.01108097);
    mainFit1063->SetParLimits(1,0,0);
    mainFit1063->Draw("same");
    

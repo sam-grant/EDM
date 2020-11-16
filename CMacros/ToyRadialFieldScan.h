@@ -55,7 +55,7 @@ const int N_SUBRUNS = 13; // Lucky number
 const int SUBRUN_INTERVAL = 25;
 const double R_0 = 7112.; // Magic radius
 
-// ==================== LOAD CTAGS, SIGMAS, AND SUBRUNS ====================
+// ==================== LOAD CTAGS, SIGMAS, AND SUBRUNS FOR ALL CALOS ====================
 
 class CTAGS_SIGMAS_SUBRUNS { 
 
@@ -67,11 +67,15 @@ public:
 	double SIGMAS[N_SUBRUNS];
 
 	// Member functions declaration
-	CTAGS_SIGMAS_SUBRUNS();
 
+	// All calos
+	CTAGS_SIGMAS_SUBRUNS();
+	// Per calo
+	CTAGS_SIGMAS_SUBRUNS(int caloNum);
+	
 };
 
- // Constructor
+ // Constructor 1
  CTAGS_SIGMAS_SUBRUNS::CTAGS_SIGMAS_SUBRUNS() {
 
  	TFile *file = TFile::Open("../Plots/Data/MeanCaloPos/CTAG_SUBRUN_SIGMA_15921.root");
@@ -84,8 +88,8 @@ public:
 	for (int i_subrun = SUBRUN_INTERVAL; i_subrun <= N_SUBRUNS*SUBRUN_INTERVAL; i_subrun = i_subrun + SUBRUN_INTERVAL) { 
 
 		SUBRUNS[counter] = i_subrun; 
-		CTAGS[counter] = CTAG_vs_SUBRUN->GetBinContent(i_subrun+1);
-		SIGMAS[counter] = SIGMA_vs_SUBRUN->GetBinContent(i_subrun+1);
+		CTAGS[counter] = CTAG_vs_SUBRUN->GetBinContent(i_subrun);
+		SIGMAS[counter] = SIGMA_vs_SUBRUN->GetBinContent(i_subrun);
 
 		counter++;
 
@@ -93,8 +97,28 @@ public:
 
  } 
 
-// Store class member function as a global variable
-CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns;
+ // Constructor 2
+ CTAGS_SIGMAS_SUBRUNS::CTAGS_SIGMAS_SUBRUNS(int caloNum) {
+
+ 	TFile *file = TFile::Open("../Plots/Data/MeanCaloPos/Split/CTAG_SUBRUN_SIGMA_15921.root");
+
+ 	// Load histograms per calo
+	TH1D *CTAG_vs_SUBRUN = (TH1D*)file->Get( ("C"+to_string(caloNum)+"_CTAG_vs_SUBRUN").c_str() ); 
+	TH1D *SIGMA_vs_SUBRUN = (TH1D*)file->Get( ("C"+to_string(caloNum)+"_SIGMA_vs_SUBRUN").c_str() ); 
+
+	int counter = 0; 
+
+	for (int i_subrun = SUBRUN_INTERVAL; i_subrun <= N_SUBRUNS*SUBRUN_INTERVAL; i_subrun = i_subrun + SUBRUN_INTERVAL) { 
+
+		SUBRUNS[counter] = i_subrun; 
+		CTAGS[counter] = CTAG_vs_SUBRUN->GetBinContent(i_subrun);
+		SIGMAS[counter] = SIGMA_vs_SUBRUN->GetBinContent(i_subrun);
+
+		counter++;
+
+	}
+
+ }
 
 #endif
 

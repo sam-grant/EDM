@@ -1,10 +1,10 @@
 void FieldFitCheck_NSUBRUN_50_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:12 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:13:55 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-67.65968,75,84.41337);
+   c->Range(-75,-67.66625,75,84.42745);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    30,
    50};
    Double_t Graph0_fy1031[6] = {
-   -41.17833,
-   -24.16704,
-   -2.887274,
-   18.52282,
-   37.946,
-   57.93202};
+   -41.17014,
+   -24.18862,
+   -2.896111,
+   18.52803,
+   37.94547,
+   57.93135};
    Double_t Graph0_fex1031[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    0,
    0};
    Double_t Graph0_fey1031[6] = {
-   1.135841,
-   1.135841,
-   1.135841,
-   1.135841,
-   1.135841,
-   1.135841};
+   1.147154,
+   1.147154,
+   1.147154,
+   1.147154,
+   1.147154,
+   1.147154};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1031,Graph0_fy1031,Graph0_fex1031,Graph0_fey1031);
    gre->SetName("Graph0");
    gre->SetTitle("50 sub-runs");
@@ -46,8 +46,8 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01031 = new TH1F("Graph_Graph01031","50 sub-runs",100,-60,60);
-   Graph_Graph01031->SetMinimum(-52.45237);
-   Graph_Graph01031->SetMaximum(69.20607);
+   Graph_Graph01031->SetMinimum(-52.45688);
+   Graph_Graph01031->SetMaximum(69.21808);
    Graph_Graph01031->SetDirectory(0);
    Graph_Graph01031->SetStats(0);
 
@@ -88,11 +88,11 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    checkFit1032->GetXaxis()->SetTitleFont(42);
    checkFit1032->GetYaxis()->SetLabelFont(42);
    checkFit1032->GetYaxis()->SetTitleFont(42);
-   checkFit1032->SetParameter(0,7.694702);
-   checkFit1032->SetParError(0,0.4637052);
+   checkFit1032->SetParameter(0,7.691661);
+   checkFit1032->SetParError(0,0.4683235);
    checkFit1032->SetParLimits(0,0,0);
-   checkFit1032->SetParameter(1,1.004716);
-   checkFit1032->SetParError(1,0.0135759);
+   checkFit1032->SetParameter(1,1.004763);
+   checkFit1032->SetParError(1,0.01371111);
    checkFit1032->SetParLimits(1,0,0);
    checkFit1032->SetParent(gre);
    gre->GetListOfFunctions()->Add(checkFit1032);
@@ -104,9 +104,9 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText(" 1.11");
-   pt_LaTex = pt->AddText("    1#pm0.0136");
-   pt_LaTex = pt->AddText(" 7.69#pm0.464");
-   pt_LaTex = pt->AddText(" 7.66#pm0.473");
+   pt_LaTex = pt->AddText("    1#pm0.0137");
+   pt_LaTex = pt->AddText(" 7.69#pm0.468");
+   pt_LaTex = pt->AddText(" 7.66#pm0.478");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -119,11 +119,11 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-60,0,-7.658586,0);
+   TLine *line = new TLine(-60,0,-7.655202,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-7.658586,-52.45237,-7.658586,0);
+   line = new TLine(-7.655202,-52.45688,-7.655202,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -142,11 +142,11 @@ void FieldFitCheck_NSUBRUN_50_NEXP_0()
    checkFit1033->GetXaxis()->SetTitleFont(42);
    checkFit1033->GetYaxis()->SetLabelFont(42);
    checkFit1033->GetYaxis()->SetTitleFont(42);
-   checkFit1033->SetParameter(0,7.694702);
-   checkFit1033->SetParError(0,0.4637052);
+   checkFit1033->SetParameter(0,7.691661);
+   checkFit1033->SetParError(0,0.4683235);
    checkFit1033->SetParLimits(0,0,0);
-   checkFit1033->SetParameter(1,1.004716);
-   checkFit1033->SetParError(1,0.0135759);
+   checkFit1033->SetParameter(1,1.004763);
+   checkFit1033->SetParError(1,0.01371111);
    checkFit1033->SetParLimits(1,0,0);
    checkFit1033->Draw("same");
    

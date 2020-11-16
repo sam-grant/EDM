@@ -39,7 +39,7 @@ int main() {
 	string outName = "../Plots/Data/MeanCaloPos/Split/CTAG_SUBRUN_SIGMA_15921.root";
 	TFile *output = new TFile(outName.c_str(), "RECREATE");
 
-	for(int i_calo = 1; i_calo<24; i_calo++) {
+	for(int i_calo = 1; i_calo<25; i_calo++) {
 
 		//if(i_calo != 1) continue;
 
@@ -50,11 +50,10 @@ int main() {
 		TH2D *posHistStack;
 	
 		// TH1s are for reading in/out data, TGraphs are for presenting data
-		TH1D *CTAG_vs_SUBRUN = new TH1D("CTAG_vs_SUBRUN","CTAG_vs_SUBRUN",349,0.5,349.5); 
-		TH1D *SIGMA_vs_SUBRUN = new TH1D("SIGMA_vs_SUBRUN","SIGMA_vs_SUBRUN",349,0.5,349.5);
+		TH1D *CTAG_vs_SUBRUN = new TH1D( ("C"+to_string(i_calo)+"_CTAG_vs_SUBRUN").c_str(),"CTAG_vs_SUBRUN",349,0.5,349.5); 
+		TH1D *SIGMA_vs_SUBRUN = new TH1D( ("C"+to_string(i_calo)+"_SIGMA_vs_SUBRUN").c_str() ,"SIGMA_vs_SUBRUN",349,0.5,349.5);
 	
 		// Input for TGraphs, these must to be dynamic vectors in this case!!!!
-
 		vector<double> x_;
 		vector<double> y_;
 		vector<double> ey_;

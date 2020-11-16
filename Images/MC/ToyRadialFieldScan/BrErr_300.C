@@ -1,7 +1,7 @@
 void BrErr_300()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:27 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:14:09 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,9 +11,9 @@ void BrErr_300()
    c->SetFrameBorderMode(0);
    
    TH1D *__35 = new TH1D("__35","Number of sub-runs: 300",1000,0,4);
-   __35->SetBinContent(46,212);
-   __35->SetBinContent(47,787);
-   __35->SetBinContent(48,1);
+   __35->SetBinContent(46,131);
+   __35->SetBinContent(47,864);
+   __35->SetBinContent(48,5);
    __35->SetEntries(1000);
    __35->SetLineWidth(3);
    __35->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");

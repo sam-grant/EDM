@@ -1,10 +1,10 @@
 void FieldFitCheck_NSUBRUN_125_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:17 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:13:59 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-66.79909,75,83.91403);
+   c->Range(-75,-66.79828,75,83.91772);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    30,
    50};
    Double_t Graph0_fy1079[6] = {
-   -40.95715,
-   -21.88997,
-   -2.589053,
-   17.65829,
-   39.20713,
-   58.07209};
+   -40.95294,
+   -21.88952,
+   -2.591431,
+   17.65691,
+   39.212,
+   58.07238};
    Double_t Graph0_fex1079[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    0,
    0};
    Double_t Graph0_fey1079[6] = {
-   0.7230883,
-   0.7230883,
-   0.7230883,
-   0.7230883,
-   0.7230883,
-   0.7230883};
+   0.7260072,
+   0.7260072,
+   0.7260072,
+   0.7260072,
+   0.7260072,
+   0.7260072};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1079,Graph0_fy1079,Graph0_fex1079,Graph0_fey1079);
    gre->SetName("Graph0");
    gre->SetTitle("125 sub-runs");
@@ -46,8 +46,8 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01079 = new TH1F("Graph_Graph01079","125 sub-runs",100,-60,60);
-   Graph_Graph01079->SetMinimum(-51.72778);
-   Graph_Graph01079->SetMaximum(68.84272);
+   Graph_Graph01079->SetMinimum(-51.72668);
+   Graph_Graph01079->SetMaximum(68.84612);
    Graph_Graph01079->SetDirectory(0);
    Graph_Graph01079->SetStats(0);
 
@@ -88,11 +88,11 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    checkFit1080->GetXaxis()->SetTitleFont(42);
    checkFit1080->GetYaxis()->SetLabelFont(42);
    checkFit1080->GetYaxis()->SetTitleFont(42);
-   checkFit1080->SetParameter(0,8.250224);
-   checkFit1080->SetParError(0,0.2951996);
+   checkFit1080->SetParameter(0,8.251234);
+   checkFit1080->SetParError(0,0.2963912);
    checkFit1080->SetParLimits(0,0,0);
-   checkFit1080->SetParameter(1,0.9981212);
-   checkFit1080->SetParError(1,0.008642558);
+   checkFit1080->SetParameter(1,0.9981136);
+   checkFit1080->SetParError(1,0.008677446);
    checkFit1080->SetParLimits(1,0,0);
    checkFit1080->SetParent(gre);
    gre->GetListOfFunctions()->Add(checkFit1080);
@@ -104,9 +104,9 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText(" 1.26");
-   pt_LaTex = pt->AddText("0.998#pm0.00864");
-   pt_LaTex = pt->AddText(" 8.25#pm0.295");
-   pt_LaTex = pt->AddText(" 8.27#pm0.304");
+   pt_LaTex = pt->AddText("0.998#pm0.00868");
+   pt_LaTex = pt->AddText(" 8.25#pm0.296");
+   pt_LaTex = pt->AddText(" 8.27#pm0.306");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -119,11 +119,11 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-60,0,-8.265754,0);
+   TLine *line = new TLine(-60,0,-8.266828,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-8.265754,-51.72778,-8.265754,0);
+   line = new TLine(-8.266828,-51.72668,-8.266828,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -142,11 +142,11 @@ void FieldFitCheck_NSUBRUN_125_NEXP_0()
    checkFit1081->GetXaxis()->SetTitleFont(42);
    checkFit1081->GetYaxis()->SetLabelFont(42);
    checkFit1081->GetYaxis()->SetTitleFont(42);
-   checkFit1081->SetParameter(0,8.250224);
-   checkFit1081->SetParError(0,0.2951996);
+   checkFit1081->SetParameter(0,8.251234);
+   checkFit1081->SetParError(0,0.2963912);
    checkFit1081->SetParLimits(0,0,0);
-   checkFit1081->SetParameter(1,0.9981212);
-   checkFit1081->SetParError(1,0.008642558);
+   checkFit1081->SetParameter(1,0.9981136);
+   checkFit1081->SetParError(1,0.008677446);
    checkFit1081->SetParLimits(1,0,0);
    checkFit1081->Draw("same");
    

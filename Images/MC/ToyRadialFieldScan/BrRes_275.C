@@ -1,7 +1,7 @@
 void BrRes_275()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:26 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:14:08 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -20,19 +20,19 @@ void BrRes_275()
    __33->SetBinContent(478,1);
    __33->SetBinContent(479,2);
    __33->SetBinContent(480,7);
-   __33->SetBinContent(481,6);
-   __33->SetBinContent(482,7);
+   __33->SetBinContent(481,7);
+   __33->SetBinContent(482,6);
    __33->SetBinContent(483,14);
-   __33->SetBinContent(484,6);
-   __33->SetBinContent(485,13);
+   __33->SetBinContent(484,7);
+   __33->SetBinContent(485,12);
    __33->SetBinContent(486,16);
    __33->SetBinContent(487,19);
    __33->SetBinContent(488,14);
    __33->SetBinContent(489,19);
    __33->SetBinContent(490,20);
-   __33->SetBinContent(491,29);
-   __33->SetBinContent(492,32);
-   __33->SetBinContent(493,30);
+   __33->SetBinContent(491,30);
+   __33->SetBinContent(492,33);
+   __33->SetBinContent(493,28);
    __33->SetBinContent(494,30);
    __33->SetBinContent(495,44);
    __33->SetBinContent(496,31);
@@ -41,16 +41,16 @@ void BrRes_275()
    __33->SetBinContent(499,44);
    __33->SetBinContent(500,38);
    __33->SetBinContent(501,37);
-   __33->SetBinContent(502,53);
-   __33->SetBinContent(503,27);
-   __33->SetBinContent(504,49);
-   __33->SetBinContent(505,41);
-   __33->SetBinContent(506,30);
+   __33->SetBinContent(502,52);
+   __33->SetBinContent(503,26);
+   __33->SetBinContent(504,51);
+   __33->SetBinContent(505,40);
+   __33->SetBinContent(506,31);
    __33->SetBinContent(507,24);
    __33->SetBinContent(508,22);
    __33->SetBinContent(509,30);
-   __33->SetBinContent(510,24);
-   __33->SetBinContent(511,26);
+   __33->SetBinContent(510,23);
+   __33->SetBinContent(511,27);
    __33->SetBinContent(512,18);
    __33->SetBinContent(513,20);
    __33->SetBinContent(514,13);
@@ -59,13 +59,13 @@ void BrRes_275()
    __33->SetBinContent(517,9);
    __33->SetBinContent(518,6);
    __33->SetBinContent(519,2);
-   __33->SetBinContent(520,7);
-   __33->SetBinContent(521,2);
+   __33->SetBinContent(520,6);
+   __33->SetBinContent(521,3);
    __33->SetBinContent(522,3);
    __33->SetBinContent(523,4);
-   __33->SetBinContent(524,3);
+   __33->SetBinContent(524,2);
    __33->SetBinContent(525,1);
-   __33->SetBinContent(526,3);
+   __33->SetBinContent(526,4);
    __33->SetBinContent(527,1);
    __33->SetBinContent(528,1);
    __33->SetBinContent(530,1);

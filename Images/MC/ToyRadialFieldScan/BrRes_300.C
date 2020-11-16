@@ -1,7 +1,7 @@
 void BrRes_300()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:27 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:14:09 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -21,34 +21,34 @@ void BrRes_300()
    __36->SetBinContent(481,2);
    __36->SetBinContent(482,11);
    __36->SetBinContent(483,9);
-   __36->SetBinContent(484,9);
-   __36->SetBinContent(485,14);
-   __36->SetBinContent(486,14);
-   __36->SetBinContent(487,10);
-   __36->SetBinContent(488,21);
-   __36->SetBinContent(489,27);
+   __36->SetBinContent(484,11);
+   __36->SetBinContent(485,13);
+   __36->SetBinContent(486,13);
+   __36->SetBinContent(487,11);
+   __36->SetBinContent(488,20);
+   __36->SetBinContent(489,29);
    __36->SetBinContent(490,19);
-   __36->SetBinContent(491,27);
+   __36->SetBinContent(491,26);
    __36->SetBinContent(492,29);
    __36->SetBinContent(493,37);
-   __36->SetBinContent(494,34);
-   __36->SetBinContent(495,27);
+   __36->SetBinContent(494,35);
+   __36->SetBinContent(495,25);
    __36->SetBinContent(496,40);
    __36->SetBinContent(497,44);
    __36->SetBinContent(498,37);
    __36->SetBinContent(499,49);
    __36->SetBinContent(500,35);
-   __36->SetBinContent(501,49);
-   __36->SetBinContent(502,33);
-   __36->SetBinContent(503,36);
-   __36->SetBinContent(504,37);
+   __36->SetBinContent(501,48);
+   __36->SetBinContent(502,34);
+   __36->SetBinContent(503,35);
+   __36->SetBinContent(504,38);
    __36->SetBinContent(505,42);
-   __36->SetBinContent(506,35);
+   __36->SetBinContent(506,34);
    __36->SetBinContent(507,32);
-   __36->SetBinContent(508,23);
+   __36->SetBinContent(508,24);
    __36->SetBinContent(509,30);
-   __36->SetBinContent(510,28);
-   __36->SetBinContent(511,18);
+   __36->SetBinContent(510,27);
+   __36->SetBinContent(511,19);
    __36->SetBinContent(512,25);
    __36->SetBinContent(513,21);
    __36->SetBinContent(514,17);

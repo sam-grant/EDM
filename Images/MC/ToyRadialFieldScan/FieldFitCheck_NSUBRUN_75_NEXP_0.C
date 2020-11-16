@@ -1,10 +1,10 @@
 void FieldFitCheck_NSUBRUN_75_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 10 15:16:14 2020) by ROOT version 6.22/02
+//=========  (Mon Nov 16 15:13:56 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-67.12755,75,85.11215);
+   c->Range(-75,-67.12841,75,85.12633);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    30,
    50};
    Double_t Graph0_fy1047[6] = {
-   -40.82539,
-   -22.85123,
-   -1.359938,
-   18.49665,
-   37.07452,
-   58.80998};
+   -40.8175,
+   -22.85695,
+   -1.35564,
+   18.49999,
+   37.06831,
+   58.81542};
    Double_t Graph0_fex1047[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    0,
    0};
    Double_t Graph0_fey1047[6] = {
-   0.9288839,
-   0.9288839,
-   0.9288839,
-   0.9288839,
-   0.9288839,
-   0.9288839};
+   0.935121,
+   0.935121,
+   0.935121,
+   0.935121,
+   0.935121,
+   0.935121};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1047,Graph0_fy1047,Graph0_fex1047,Graph0_fey1047);
    gre->SetName("Graph0");
    gre->SetTitle("75 sub-runs");
@@ -46,8 +46,8 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01047 = new TH1F("Graph_Graph01047","75 sub-runs",100,-60,60);
-   Graph_Graph01047->SetMinimum(-51.90358);
-   Graph_Graph01047->SetMaximum(69.88818);
+   Graph_Graph01047->SetMinimum(-51.90294);
+   Graph_Graph01047->SetMaximum(69.90085);
    Graph_Graph01047->SetDirectory(0);
    Graph_Graph01047->SetStats(0);
 
@@ -88,11 +88,11 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    checkFit1048->GetXaxis()->SetTitleFont(42);
    checkFit1048->GetYaxis()->SetLabelFont(42);
    checkFit1048->GetYaxis()->SetTitleFont(42);
-   checkFit1048->SetParameter(0,8.224099);
-   checkFit1048->SetParError(0,0.3792152);
+   checkFit1048->SetParameter(0,8.225604);
+   checkFit1048->SetParError(0,0.3817615);
    checkFit1048->SetParLimits(0,0,0);
-   checkFit1048->SetParameter(1,0.9968724);
-   checkFit1048->SetParError(1,0.01110229);
+   checkFit1048->SetParameter(1,0.9968514);
+   checkFit1048->SetParError(1,0.01117683);
    checkFit1048->SetParLimits(1,0,0);
    checkFit1048->SetParent(gre);
    gre->GetListOfFunctions()->Add(checkFit1048);
@@ -104,9 +104,9 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText(" 1.13");
-   pt_LaTex = pt->AddText("0.997#pm0.0111");
-   pt_LaTex = pt->AddText(" 8.22#pm0.379");
-   pt_LaTex = pt->AddText(" 8.25#pm0.391");
+   pt_LaTex = pt->AddText("0.997#pm0.0112");
+   pt_LaTex = pt->AddText(" 8.23#pm0.382");
+   pt_LaTex = pt->AddText(" 8.25#pm0.394");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -119,11 +119,11 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    pt_LaTex = pt->AddText("Y-intercept [mm/kV]");
    pt_LaTex = pt->AddText("Background B_{r} [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-60,0,-8.249901,0);
+   TLine *line = new TLine(-60,0,-8.251585,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-8.249901,-51.90358,-8.249901,0);
+   line = new TLine(-8.251585,-51.90294,-8.251585,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -142,11 +142,11 @@ void FieldFitCheck_NSUBRUN_75_NEXP_0()
    checkFit1049->GetXaxis()->SetTitleFont(42);
    checkFit1049->GetYaxis()->SetLabelFont(42);
    checkFit1049->GetYaxis()->SetTitleFont(42);
-   checkFit1049->SetParameter(0,8.224099);
-   checkFit1049->SetParError(0,0.3792152);
+   checkFit1049->SetParameter(0,8.225604);
+   checkFit1049->SetParError(0,0.3817615);
    checkFit1049->SetParLimits(0,0,0);
-   checkFit1049->SetParameter(1,0.9968724);
-   checkFit1049->SetParError(1,0.01110229);
+   checkFit1049->SetParameter(1,0.9968514);
+   checkFit1049->SetParError(1,0.01117683);
    checkFit1049->SetParLimits(1,0,0);
    checkFit1049->Draw("same");
    
