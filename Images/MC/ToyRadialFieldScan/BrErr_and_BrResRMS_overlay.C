@@ -1,7 +1,7 @@
 void BrErr_and_BrResRMS_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 16 15:14:10 2020) by ROOT version 6.22/02
+//=========  (Tue Nov 17 18:03:25 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1669544,0.06026387,1.502589e+07,0.7659232);

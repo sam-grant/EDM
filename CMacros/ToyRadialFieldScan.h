@@ -54,6 +54,7 @@ const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial fi
 const int N_SUBRUNS = 13; // Lucky number
 const int SUBRUN_INTERVAL = 25;
 const double R_0 = 7112.; // Magic radius
+const int N_CALO = 24;
 
 // ==================== LOAD CTAGS, SIGMAS, AND SUBRUNS FOR ALL CALOS ====================
 
@@ -95,6 +96,8 @@ public:
 
 	}
 
+	file->Close();
+
  } 
 
  // Constructor 2
@@ -117,6 +120,8 @@ public:
 		counter++;
 
 	}
+
+	file->Close();
 
  }
 

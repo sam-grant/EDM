@@ -194,9 +194,13 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 // =========================== Custom plotting ===========================
 
-void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax ) {
+void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.20);
+
+	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+	l->SetBorderSize(0);
 
 	graphs.at(0)->SetTitle(title.c_str());
 	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
@@ -211,12 +215,14 @@ void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::string title, 
 	graphs.at(0)->Draw("AP");
 
 	for(int i = 0; i < graphs.size(); i++) {
-		//graphs.at(i)->SetMarkerStyle(20);
+		//graphs.at(i)->SetMarkerStyle(20)
+		l->AddEntry(graphs.at(i), (names.at(i)).c_str() );
 		graphs.at(i)->SetMarkerColor(i+1);
 		graphs.at(i)->SetLineColor(i+1);
 		graphs.at(i)->Draw("P SAME");
 	}
 
+	l->Draw("same");
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
 	c->SaveAs((fname+".C").c_str());
@@ -232,7 +238,7 @@ void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string tit
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.25);
 
-	graphs.at(0)->SetTitle(title.c_str());
+	//graphs.at(0)->SetTitle(title.c_str());
 	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
 	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
 	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
