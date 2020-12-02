@@ -1,0 +1,197 @@
+
+Processing Reader.C...
+eventNum:	4
+
+Cluster:	0
+Calo:	1
+yPos:	3.36977
+
+Cluster:	1
+Calo:	1
+yPos:	3.43713
+
+Cluster:	2
+Calo:	2
+yPos:	2.92059
+
+Cluster:	3
+Calo:	2
+yPos:	2.97864
+
+Cluster:	4
+Calo:	3
+yPos:	2.9849
+
+Cluster:	5
+Calo:	3
+yPos:	2.90694
+
+Cluster:	6
+Calo:	4
+yPos:	2.92696
+
+Cluster:	7
+Calo:	4
+yPos:	2.62921
+
+Cluster:	8
+Calo:	5
+yPos:	2.66791
+
+Cluster:	9
+Calo:	5
+yPos:	2.82845
+
+Cluster:	10
+Calo:	6
+yPos:	3.51703
+
+Cluster:	11
+Calo:	6
+yPos:	3.65955
+
+Cluster:	12
+Calo:	7
+yPos:	2.81293
+
+Cluster:	13
+Calo:	7
+yPos:	3.24066
+
+Cluster:	14
+Calo:	8
+yPos:	3.01368
+
+Cluster:	15
+Calo:	8
+yPos:	2.96701
+
+Cluster:	16
+Calo:	9
+yPos:	3.15964
+
+Cluster:	17
+Calo:	9
+yPos:	3.3691
+
+Cluster:	18
+Calo:	10
+yPos:	3.69776
+
+Cluster:	19
+Calo:	10
+yPos:	3.61331
+
+Cluster:	20
+Calo:	11
+yPos:	3.06421
+
+Cluster:	21
+Calo:	11
+yPos:	3.04703
+
+Cluster:	22
+Calo:	12
+yPos:	2.53185
+
+Cluster:	23
+Calo:	12
+yPos:	2.73635
+
+Cluster:	24
+Calo:	13
+yPos:	2.60082
+
+Cluster:	25
+Calo:	13
+yPos:	2.78822
+
+Cluster:	26
+Calo:	14
+yPos:	3.17611
+
+Cluster:	27
+Calo:	14
+yPos:	3.1765
+
+Cluster:	28
+Calo:	15
+yPos:	3.15497
+
+Cluster:	29
+Calo:	15
+yPos:	3.31235
+
+Cluster:	30
+Calo:	16
+yPos:	2.81987
+
+Cluster:	31
+Calo:	16
+yPos:	2.95449
+
+Cluster:	32
+Calo:	17
+yPos:	3.56879
+
+Cluster:	33
+Calo:	17
+yPos:	3.48868
+
+Cluster:	34
+Calo:	18
+yPos:	3.67886
+
+Cluster:	35
+Calo:	18
+yPos:	3.52305
+
+Cluster:	36
+Calo:	19
+yPos:	3.49674
+
+Cluster:	37
+Calo:	19
+yPos:	3.79095
+
+Cluster:	38
+Calo:	20
+yPos:	3.11664
+
+Cluster:	39
+Calo:	20
+yPos:	3.1663
+
+Cluster:	40
+Calo:	21
+yPos:	3.14121
+
+Cluster:	41
+Calo:	21
+yPos:	2.89809
+
+Cluster:	42
+Calo:	22
+yPos:	3.03763
+
+Cluster:	43
+Calo:	22
+yPos:	2.95281
+
+Cluster:	44
+Calo:	23
+yPos:	3.44603
+
+Cluster:	45
+Calo:	23
+yPos:	3.593
+
+Cluster:	46
+Calo:	24
+yPos:	3.11693
+
+Cluster:	47
+Calo:	24
+yPos:	3.04642
+
+Processing Reader.C...

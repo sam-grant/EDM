@@ -1,0 +1,100 @@
+void TestReader() {
+
+   // ++++++++++++++ Open tree and load branches ++++++++++++++
+
+   // Get file
+   TFile *f1 = TFile::Open("gm2nearline_hists_run34888_00270.root");
+
+   // Get reader for tree
+   TTreeReader treeReader("nearlineHistTree/eventTree",f1);
+
+   // Get branches
+   TTreeReaderValue<unsigned int> runNum(treeReader,"runNum");
+   TTreeReaderValue<unsigned int> subRunNum(treeReader,"subRunNum");
+   TTreeReaderValue<unsigned int> eventNum(treeReader,"eventNum");
+   TTreeReaderValue<unsigned int> ctag(treeReader,"ctag");
+   TTreeReaderValue<vector<int>> caloNum(treeReader,"caloNum");
+   TTreeReaderValue<std::vector<double>> energy(treeReader,"energy");
+   TTreeReaderValue<std::vector<double>> times(treeReader,"time");
+   TTreeReaderValue<std::vector<double>> x(treeReader,"x");
+   TTreeReaderValue<std::vector<double>> y(treeReader,"y");
+
+
+   // ++++++++++++++ Book histograms ++++++++++++++
+
+   // All calos
+   TH2D *hxy = new TH2D("hxy", ";x [mm];y [mm]", 225, 0, 225, 150, 0, 150);
+   TH1D *hy = new TH1D("hy", ";y [mm];Clusters", 150, 0, 150);
+
+   // Individual calos
+   vector<TH1D *> hy_calos;
+   for(int i_calo = 0; i_calo < 24; i_calo++) {
+      TH1D *hy_tmp = (TH1D*) hy->Clone();
+      hy_tmp->SetName( ("hy_"+to_string(i_calo+1)).c_str() );
+      hy_calos.push_back(hy_tmp);
+   }
+
+   // ++++++++++++++ Loop thro events ++++++++++++++
+
+   while (treeReader.Next()){
+
+      // Store calo numbers and vectors
+      vector<int> caloNum_ = *caloNum;
+      vector<double> x_ = *x;
+      vector<double> y_ = *y;
+      vector<double> energy_ = *energy;
+      vector<double> times_ = *times;
+
+      // Number of clusters in this fill
+      int nClu = caloNum_.size(); 
+
+      // Loop through clusters
+      for(int i_clu = 0; i_clu < nClu; i_clu++) { 
+
+         // Get cluster level variables
+         int caloNum =  caloNum_.at(i_clu);
+         double xmm = x_.at(i_clu) * 25;
+         double ymm = y_.at(i_clu) * 25; 
+         double energy = energy_.at(i_clu);
+         double time = times_.at(i_clu);
+
+         // Apply CTAG cuts
+         if(energy > 1700 && energy < 6000 && time > 24000) continue;
+         // Fill y-position for all calos
+         hxy->Fill(xmm, ymm);
+         hy->Fill(ymm);
+         // Fill y-position for individual calos
+         hy_calos.at(caloNum-1)->Fill(ymm);
+
+      }
+      
+   }
+
+   // ++++++++++++++ Draw sanity plots ++++++++++++++
+
+   TCanvas *c1 = new TCanvas("c1","c1",800,600);
+   gStyle->SetOptStat(2210);
+   hy->Draw("HIST");
+   c1->SaveAs("Images/hy.png");
+
+   TCanvas *c2 = new TCanvas("c2","c2",800,600);
+   gStyle->SetOptStat(2210);
+   hy_calos.at(0)->Draw("HIST");
+   c2->SaveAs("Images/hy_1.png");
+
+   TCanvas *c3 = new TCanvas("c3","c3",800,600);
+   gStyle->SetOptStat(0);
+   gStyle->SetPalette(55);
+   hxy->Draw("COLZ");
+   c3->SaveAs("Images/hxy.png");
+
+   // ++++++++++++++ Write to file ++++++++++++++
+
+   TFile *f2 = new TFile("y-pos.root", "RECREATE");
+   hy->Write();
+   f2->cd(); f2->mkdir("PerCalo"); f2->cd("PerCalo");
+   for(int i_calo = 0; i_calo < hy_calos.size(); i_calo++) hy_calos.at(i_calo)->Write();
+   f2->Close();
+
+
+}
