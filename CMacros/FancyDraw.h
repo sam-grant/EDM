@@ -43,7 +43,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
-	hist->SetLineWidth(3);
+	//hist->SetLineWidth(3);
 	hist->SetLineColor(1);
 
 	//c->SetRightMargin(0.13);
@@ -142,7 +142,7 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	hist->SetTitle(title.c_str());
 
-	hist->SetStats(0);
+	//hist->SetStats(0);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -661,7 +661,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::strin
 	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
 
 	l->SetBorderSize(0);
-	l->SetHeader("App. #LTB_{r}#GT","C");
+	l->SetHeader("#LTB_{r}^{App}#GT","C");
 
 	//double field = 
 	// Load legend entries backwards
@@ -727,7 +727,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	names->AddText("#chi^{2}/ndf"); 
 	names->AddText("Gradient"); 
 	names->AddText("Y-intercept [mm/kV]"); 
-	names->AddText("Background B_{r} [ppm]"); 
+	names->AddText("#LTB_{r}^{Bkg}#GT [ppm]"); 
 
 	//TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
 	TPaveText *values = new TPaveText(0.50,0.68,0.60,0.89,"NDC");

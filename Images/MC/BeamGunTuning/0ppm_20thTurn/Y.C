@@ -1,0 +1,70 @@
+void Y()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Mon Nov 23 13:10:18 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1F *Y__1 = new TH1F("Y__1","0ppm_20thTurn",100,-100,100);
+   Y__1->SetBinContent(30,16);
+   Y__1->SetBinContent(31,25);
+   Y__1->SetBinContent(32,36);
+   Y__1->SetBinContent(33,31);
+   Y__1->SetBinContent(34,19);
+   Y__1->SetBinContent(35,26);
+   Y__1->SetBinContent(36,56);
+   Y__1->SetBinContent(37,26);
+   Y__1->SetBinContent(38,26);
+   Y__1->SetBinContent(39,56);
+   Y__1->SetBinContent(40,61);
+   Y__1->SetBinContent(41,74);
+   Y__1->SetBinContent(42,94);
+   Y__1->SetBinContent(43,94);
+   Y__1->SetBinContent(44,84);
+   Y__1->SetBinContent(45,118);
+   Y__1->SetBinContent(46,130);
+   Y__1->SetBinContent(47,122);
+   Y__1->SetBinContent(48,124);
+   Y__1->SetBinContent(49,93);
+   Y__1->SetBinContent(50,116);
+   Y__1->SetBinContent(51,201);
+   Y__1->SetBinContent(52,148);
+   Y__1->SetBinContent(53,108);
+   Y__1->SetBinContent(54,129);
+   Y__1->SetBinContent(55,99);
+   Y__1->SetBinContent(56,100);
+   Y__1->SetBinContent(57,64);
+   Y__1->SetBinContent(58,60);
+   Y__1->SetBinContent(59,89);
+   Y__1->SetBinContent(60,39);
+   Y__1->SetBinContent(61,32);
+   Y__1->SetBinContent(62,27);
+   Y__1->SetBinContent(63,21);
+   Y__1->SetEntries(2544);
+   Y__1->SetLineWidth(3);
+   Y__1->GetXaxis()->SetTitle("Y [mm]");
+   Y__1->GetXaxis()->CenterTitle(true);
+   Y__1->GetXaxis()->SetLabelFont(42);
+   Y__1->GetXaxis()->SetTitleSize(0.04);
+   Y__1->GetXaxis()->SetTitleOffset(1.1);
+   Y__1->GetXaxis()->SetTitleFont(42);
+   Y__1->GetYaxis()->SetTitle("Ghost tracks");
+   Y__1->GetYaxis()->CenterTitle(true);
+   Y__1->GetYaxis()->SetNdivisions(4000510);
+   Y__1->GetYaxis()->SetLabelFont(42);
+   Y__1->GetYaxis()->SetTitleSize(0.04);
+   Y__1->GetYaxis()->SetTitleOffset(1.1);
+   Y__1->GetYaxis()->SetTitleFont(42);
+   Y__1->GetZaxis()->SetLabelFont(42);
+   Y__1->GetZaxis()->SetTitleOffset(1);
+   Y__1->GetZaxis()->SetTitleFont(42);
+   Y__1->Draw("HIST");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

@@ -1,0 +1,75 @@
+void Pz_vs_t()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Nov 19 09:44:48 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetRightMargin(0.13);
+   c->SetFrameBorderMode(0);
+   
+   TH2F *Pz_vs_t = new TH2F("Pz_vs_t","0ppm_20turns",6000,0,893.616,220,-3300,3300);
+   Pz_vs_t->SetBinContent(48015,96);
+   Pz_vs_t->SetBinContent(54017,222);
+   Pz_vs_t->SetBinContent(72023,212);
+   Pz_vs_t->SetBinContent(96031,212);
+   Pz_vs_t->SetBinContent(132043,212);
+   Pz_vs_t->SetBinContent(174057,20);
+   Pz_vs_t->SetBinContent(180059,192);
+   Pz_vs_t->SetBinContent(228075,78);
+   Pz_vs_t->SetBinContent(234077,134);
+   Pz_vs_t->SetBinContent(288095,14);
+   Pz_vs_t->SetBinContent(294097,198);
+   Pz_vs_t->SetBinContent(360119,212);
+   Pz_vs_t->SetBinContent(432143,212);
+   Pz_vs_t->SetBinContent(504167,4);
+   Pz_vs_t->SetBinContent(510169,208);
+   Pz_vs_t->SetBinContent(588195,212);
+   Pz_vs_t->SetBinContent(666221,104);
+   Pz_vs_t->SetBinContent(672223,108);
+   Pz_vs_t->SetBinContent(750249,212);
+   Pz_vs_t->SetBinContent(828275,202);
+   Pz_vs_t->SetBinContent(834277,10);
+   Pz_vs_t->SetBinContent(906301,212);
+   Pz_vs_t->SetBinContent(978325,212);
+   Pz_vs_t->SetBinContent(1044347,176);
+   Pz_vs_t->SetBinContent(1050349,36);
+   Pz_vs_t->SetBinContent(1104367,116);
+   Pz_vs_t->SetBinContent(1110369,96);
+   Pz_vs_t->SetBinContent(1158385,170);
+   Pz_vs_t->SetBinContent(1164387,42);
+   Pz_vs_t->SetBinContent(1206401,212);
+   Pz_vs_t->SetBinContent(1242413,212);
+   Pz_vs_t->SetBinContent(1266421,212);
+   Pz_vs_t->SetBinContent(1284427,222);
+   Pz_vs_t->SetBinContent(1290429,96);
+   Pz_vs_t->SetEntries(5088);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Pz_vs_t->SetLineColor(ci);
+   Pz_vs_t->GetXaxis()->SetTitle("t [ns]");
+   Pz_vs_t->GetXaxis()->CenterTitle(true);
+   Pz_vs_t->GetXaxis()->SetLabelFont(42);
+   Pz_vs_t->GetXaxis()->SetTitleSize(0.04);
+   Pz_vs_t->GetXaxis()->SetTitleOffset(1.1);
+   Pz_vs_t->GetXaxis()->SetTitleFont(42);
+   Pz_vs_t->GetYaxis()->SetTitle("Pz [MeV]");
+   Pz_vs_t->GetYaxis()->CenterTitle(true);
+   Pz_vs_t->GetYaxis()->SetNdivisions(4000510);
+   Pz_vs_t->GetYaxis()->SetLabelFont(42);
+   Pz_vs_t->GetYaxis()->SetTitleSize(0.04);
+   Pz_vs_t->GetYaxis()->SetTitleOffset(1.1);
+   Pz_vs_t->GetYaxis()->SetTitleFont(42);
+   Pz_vs_t->GetZaxis()->SetLabelFont(42);
+   Pz_vs_t->GetZaxis()->SetTitleOffset(1);
+   Pz_vs_t->GetZaxis()->SetTitleFont(42);
+   Pz_vs_t->Draw("COLZ");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

@@ -1,7 +1,7 @@
 void f3()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Nov 11 20:11:59 2020) by ROOT version 6.22/02
+//=========  (Thu Nov 26 10:24:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,7 +12,7 @@ void f3()
    c->SetGridy();
    c->SetFrameBorderMode(0);
    
-   TF1 *f33 = new TF1("f3",";x;y",0,25, TF1::EAddToList::kDefault);
+   TF1 *f33 = new TF1("f3",";x;y",0,6.283185, TF1::EAddToList::kDefault);
    f33->SetFillColor(19);
    f33->SetFillStyle(0);
 
@@ -34,24 +34,12 @@ void f3()
    f33->GetYaxis()->SetTitleSize(0.04);
    f33->GetYaxis()->SetTitleOffset(1.1);
    f33->GetYaxis()->SetTitleFont(42);
-   f33->SetParameter(0,1);
+   f33->SetParameter(0,0.0003333333);
    f33->SetParError(0,0);
    f33->SetParLimits(0,0,0);
-   f33->SetParameter(1,1);
+   f33->SetParameter(1,-0.7853982);
    f33->SetParError(1,0);
    f33->SetParLimits(1,0,0);
-   f33->SetParameter(2,1);
-   f33->SetParError(2,0);
-   f33->SetParLimits(2,0,0);
-   f33->SetParameter(3,1);
-   f33->SetParError(3,0);
-   f33->SetParLimits(3,0,0);
-   f33->SetParameter(4,0.01);
-   f33->SetParError(4,0);
-   f33->SetParLimits(4,0,0);
-   f33->SetParameter(5,1);
-   f33->SetParError(5,0);
-   f33->SetParLimits(5,0,0);
    f33->Draw("");
    c->Modified();
    c->cd();

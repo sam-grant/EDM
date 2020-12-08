@@ -1,0 +1,74 @@
+void P_0()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Nov 19 09:44:50 2020) by ROOT version 6.22/02
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1F *P_0__24 = new TH1F("P_0__24","50ppm",110,0,3300);
+   P_0__24->SetBinContent(70,1);
+   P_0__24->SetBinContent(71,2);
+   P_0__24->SetBinContent(72,2);
+   P_0__24->SetBinContent(73,1);
+   P_0__24->SetBinContent(74,3);
+   P_0__24->SetBinContent(75,4);
+   P_0__24->SetBinContent(76,5);
+   P_0__24->SetBinContent(77,6);
+   P_0__24->SetBinContent(78,7);
+   P_0__24->SetBinContent(79,10);
+   P_0__24->SetBinContent(80,7);
+   P_0__24->SetBinContent(81,12);
+   P_0__24->SetBinContent(82,12);
+   P_0__24->SetBinContent(83,14);
+   P_0__24->SetBinContent(84,23);
+   P_0__24->SetBinContent(85,11);
+   P_0__24->SetBinContent(86,21);
+   P_0__24->SetBinContent(87,13);
+   P_0__24->SetBinContent(88,17);
+   P_0__24->SetBinContent(89,29);
+   P_0__24->SetBinContent(90,36);
+   P_0__24->SetBinContent(91,45);
+   P_0__24->SetBinContent(92,52);
+   P_0__24->SetBinContent(93,56);
+   P_0__24->SetBinContent(94,43);
+   P_0__24->SetBinContent(95,52);
+   P_0__24->SetBinContent(96,67);
+   P_0__24->SetBinContent(97,56);
+   P_0__24->SetBinContent(98,81);
+   P_0__24->SetBinContent(99,63);
+   P_0__24->SetBinContent(100,204);
+   P_0__24->SetBinContent(101,622);
+   P_0__24->SetBinContent(102,770);
+   P_0__24->SetBinContent(103,3925);
+   P_0__24->SetBinContent(104,31125);
+   P_0__24->SetBinContent(105,595);
+   P_0__24->SetBinContent(106,354);
+   P_0__24->SetBinContent(107,47);
+   P_0__24->SetEntries(38393);
+   P_0__24->SetLineWidth(3);
+   P_0__24->GetXaxis()->SetTitle("Momentum [MeV]");
+   P_0__24->GetXaxis()->CenterTitle(true);
+   P_0__24->GetXaxis()->SetLabelFont(42);
+   P_0__24->GetXaxis()->SetTitleSize(0.04);
+   P_0__24->GetXaxis()->SetTitleOffset(1.1);
+   P_0__24->GetXaxis()->SetTitleFont(42);
+   P_0__24->GetYaxis()->SetTitle("Ghost tracks");
+   P_0__24->GetYaxis()->CenterTitle(true);
+   P_0__24->GetYaxis()->SetNdivisions(4000510);
+   P_0__24->GetYaxis()->SetLabelFont(42);
+   P_0__24->GetYaxis()->SetTitleSize(0.04);
+   P_0__24->GetYaxis()->SetTitleOffset(1.1);
+   P_0__24->GetYaxis()->SetTitleFont(42);
+   P_0__24->GetZaxis()->SetLabelFont(42);
+   P_0__24->GetZaxis()->SetTitleOffset(1);
+   P_0__24->GetZaxis()->SetTitleFont(42);
+   P_0__24->Draw("HIST");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

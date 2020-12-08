@@ -189,9 +189,9 @@ void Reader::LoadBranch(TString name, VAR &var, TBranch *&branch) {
 template<class VAR>
 void Reader::LoadBranchVector(TString name, VAR &var, TBranch *&branch) { 
     std::cout<<"Activating branch "<<name<<std::endl;
-    // var=0;
+    var=0;
     fChain->SetBranchStatus(name,1);
-    fChain->SetBranchAddress(name, var, &branch);
+    fChain->SetBranchAddress(name, &var, &branch);
 }
 
 bool Reader::NextEvent() {

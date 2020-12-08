@@ -30,22 +30,14 @@ using namespace std;
 CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns;
 
 // ==================== CALC Y0, Y1 AND Y2 -- APPLY SMEARING ====================
-double GetY0(TRandom3 *rndm, double sigmaY, double n, double Br_0, bool smear) {
-	double y_0 = R_0/n * Br_0 * 1e-6;
-	if(smear) y_0 = rndm->Gaus(y_0,sigmaY);
-	return y_0;
-
+double GetY0(double sigmaY, double n, double Br_0) {
+	return R_0/n * Br_0 * 1e-6;
 }
-double GetY1(TRandom3 *rndm, double sigmaY, double n, double Br_1, double theta, double phi1, bool smear) {
-	double y_1 = R_0/(1-n) * Br_1 * cos(theta + phi1) * 1e-6;
-	if(smear) y_1 = rndm->Gaus(y_1,sigmaY);
-	return y_1;
+double GetY1(double sigmaY, double n, double Br_1, double theta, double phi1) {
+	return R_0/(1-n) * Br_1 * cos(theta + phi1) * 1e-6;
 }
-
-double GetY2(TRandom3 *rndm, double sigmaY, double n, double Br_2, double theta, double phi2, bool smear ) {
-	double y_2 = R_0/(4-n) * Br_2 * cos(2*theta + phi2) * 1e-6;
-	if(smear) y_2 = rndm->Gaus(y_2,sigmaY);
-	return y_2;
+double GetY2(double sigmaY, double n, double Br_2, double theta, double phi2) {
+	return R_0/(4-n) * Br_2 * cos(2*theta + phi2) * 1e-6;
 }
 
 // ==================== APPROX THETA ====================
@@ -55,7 +47,7 @@ double GetTheta(int caloNum) {
 // ==================== MAIN, RUN EXPERIMENTS ====================
 
 // Get corresponding terms (y postion) at theta
-tuple<double, vector<double> > GetTermsAtTheta(TRandom3 *rndm, int i_calo, int i_subrun, bool smear) {
+vector<double> GetTerms(int i_calo, int i_subrun, int i_quad) {
 
 	// Just try to draw the function
 
@@ -63,29 +55,23 @@ tuple<double, vector<double> > GetTermsAtTheta(TRandom3 *rndm, int i_calo, int i
 
 	double phi = TMath::Pi() / 2; double phi1 = phi; double phi2 = phi;
 
-	double Br_app = 30.;
+	double Br_app = 0.;
 	double Br_bkg = 8.;
 	double Br_tot = Br_app + Br_bkg;
-	double QHV = 18.;
-
-
-	// Loop around the ring
-	//for(int i_calo = 1; i_calo < 25; i_calo++) {
 
 	CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns_split(i_calo);
 
-			// 100 sub-runs
 	double sigmaY = ctags_sigmas_subruns_split.SIGMAS[i_subrun];
 	int subruns = ctags_sigmas_subruns_split.SUBRUNS[i_subrun];
 	int ctags = ctags_sigmas_subruns_split.CTAGS[i_subrun];
 
 	double theta = GetTheta(i_calo);
 
-	double n = 0.108/18.3 * QHV;
+	double n = 0.108/18.3 * QHV[i_quad];
 
-	double y0 = GetY0(rndm, sigmaY, n, Br_tot, smear);
-	double y1 = GetY1(rndm, sigmaY, n, Br_tot, theta, phi1, smear);
-	double y2 = GetY2(rndm, sigmaY, n, Br_tot, theta, phi2, smear); 
+	double y0 = GetY0(sigmaY, n, Br_tot);
+	double y1 = GetY1(sigmaY, n, Br_tot, theta, phi1);
+	double y2 = GetY2(sigmaY, n, Br_tot, theta, phi2); 
 
 	cout<<"\n++++++++++++++ Calo "<<i_calo<<"++++++++++++++"<<endl;
 	cout<<"SUBRUN:\t"<<ctags_sigmas_subruns_split.SUBRUNS[i_subrun]<<endl;
@@ -99,13 +85,13 @@ tuple<double, vector<double> > GetTermsAtTheta(TRandom3 *rndm, int i_calo, int i
 	y_.push_back(y1);
 	y_.push_back(y2);
 
-	return make_tuple(theta, y_);
+	return y_;
 
 }
 
 int main() {
 
-	bool smear = true;
+	bool smear = false;//strue;
 
 	TRandom3 *rndm = new TRandom3(12345);
 
@@ -118,7 +104,10 @@ int main() {
 		double y0[n];
 		double y1[n];
 		double y2[n];
+		double yTot1[n];
+		double yTot2[n];
 		double yTot[n];
+		double eyTot[n];
 		double ey[n];
 		double zeros[n];
 
@@ -127,37 +116,69 @@ int main() {
 			//if(i_calo!=1) continue;
 			CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns_split(i_calo);
 
-			tuple<double, vector<double> > termsAtTheta = GetTermsAtTheta(rndm, i_calo, i_subrun, smear);
-
-			double theta = get<0>(termsAtTheta);
+			
+			double theta = GetTheta(i_calo);
 			theta = theta * (180/TMath::Pi());
-			vector<double> y_ = get<1>(termsAtTheta);
 
 			// For TGraph
 			x[i_calo-1] = theta;
-			ey[i_calo-1] = ctags_sigmas_subruns_split.SIGMAS[i_subrun];
+			double sigmaY = ctags_sigmas_subruns_split.SIGMAS[i_subrun];
+			ey[i_calo-1] = sigmaY; 
 			zeros[i_calo-1] = 0;
-			y0[i_calo-1] = y_.at(0);
-			y1[i_calo-1] = y_.at(1);
-			y2[i_calo-1] = y_.at(2);
-			yTot[i_calo-1] = y_.at(0) + y_.at(1) + y_.at(2); //accumulate(y_.begin(), y_.end(), 0);
-			cout<<"y check:\t"<<yTot[i_calo-1]<<" mm"<<endl;
+
+			vector<double> y_;
+			// =========== Quad setting loop ==========
+			for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
+				
+				vector<double> tmp_ = GetTerms(i_calo, i_subrun, i_quad);
+
+				// y0[i_calo-1] = y_.at(0);
+				// y1[i_calo-1] = y_.at(1);
+				// y2[i_calo-1] = y_.at(2);
+
+				double y = tmp_.at(0) + tmp_.at(1) + tmp_.at(2);
+
+				if(smear) y = rndm->Gaus(y, sigmaY);
+
+				y_.push_back(y);
+				cout<<"y check:\t"<<y<<" mm"<<endl;
+
+			}
+
+			//vector<double> y0_ = y_.front(); vector<double> y1_ = y_.back();
+			//double yDiff = 
+
+			// Notes
+
+			// 1. Plot the two that you are subtracting first 
+			yTot1[i_calo-1] = y_.front();
+			yTot2[i_calo-1] = y_.back();
+			
+			yTot[i_calo-1] = y_.front()-y_.back();
+			eyTot[i_calo-1] = sqrt(2)*sigmaY;// - sigmaY);
 
 		}
 
-		TGraphErrors *gr0 = new TGraphErrors(n, x, y0, zeros, ey);
-		TGraphErrors *gr1 = new TGraphErrors(n, x, y1, zeros, ey);
-		TGraphErrors *gr2 = new TGraphErrors(n, x, y2, zeros, ey);
-		TGraphErrors *grTot = new TGraphErrors(n, x, yTot, zeros, ey);
+		//TGraphErrors *gr0 = new TGraphErrors(n, x, y0, zeros, ey);
+		//TGraphErrors *gr1 = new TGraphErrors(n, x, y1, zeros, ey);
+		//TGraphErrors *gr2 = new TGraphErrors(n, x, y2, zeros, ey);
+		TGraphErrors *grTot1 = new TGraphErrors(n, x, yTot1, zeros, ey);
+		TGraphErrors *grTot2 = new TGraphErrors(n, x, yTot2, zeros, ey);
+		TGraphErrors *grTot = new TGraphErrors(n, x, yTot, zeros, eyTot);
 
-		vector<TGraphErrors *> gr_; 
-		vector<string> names_;
+		//vector<TGraphErrors *> gr_; 
+		//vector<string> names_;
 
-		gr_.push_back(gr0); gr_.push_back(gr1); gr_.push_back(gr2); gr_.push_back(grTot);
-		names_.push_back("1st order"); names_.push_back("2nd order"); names_.push_back("3rd order"); names_.push_back("Total");
-		string subruns = to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]); 
-		DrawManyTGraphErrors(gr_, names_, subruns+" sub-runs;#theta [deg];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/HigherOrder/30ppm18kV/y_vs_theta_NSUBRUNS_"+subruns, -1, 3.5);
+		//gr_.push_back(gr0); gr_.push_back(gr1); gr_.push_back(gr2); gr_.push_back(grTot);
+		//names_.push_back("1st order"); names_.push_back("2nd order"); names_.push_back("3rd order"); names_.push_back("Total");
+		string subruns = to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]);
 
+		DrawTGraphErrors(grTot1, subruns+" sub-runs;#theta [deg];#LTy_{1}#GT [mm]", "../Images/MC/ToyRadialFieldScan/HigherOrder/30ppm18kV/y1_vs_theta_NSUBRUNS_"+subruns); 
+		DrawTGraphErrors(grTot2, subruns+" sub-runs;#theta [deg];#LTy_{2}#GT [mm]", "../Images/MC/ToyRadialFieldScan/HigherOrder/30ppm18kV/y2_vs_theta_NSUBRUNS_"+subruns); 
+		DrawTGraphErrors(grTot, subruns+" sub-runs;#theta [deg];#LTy_{1}#GT - #LTy_{2}#GT [mm]", "../Images/MC/ToyRadialFieldScan/HigherOrder/30ppm18kV/y_vs_theta_NSUBRUNS_"+subruns); 
+
+		//DrawManyTGraphErrors(gr_, names_, subruns+" sub-runs;#theta [deg];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/HigherOrder/30ppm18kV/y_vs_theta_overlay_NSUBRUNS_"+subruns, -1, 3.5);
+		
 	}
 
 	return 0;

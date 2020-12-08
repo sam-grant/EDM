@@ -1,7 +1,7 @@
 void BrErr_200()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 17 18:03:18 2020) by ROOT version 6.22/02
+//=========  (Wed Dec  2 23:08:04 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,13 +10,16 @@ void BrErr_200()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__23 = new TH1D("__23","Number of sub-runs: 200",1000,0,4);
-   __23->SetBinContent(56,20);
-   __23->SetBinContent(57,692);
-   __23->SetBinContent(58,288);
+   TH1D *__23 = new TH1D("__23","Number of sub-runs: 200",1000,0,10);
+   __23->SetBinContent(39,9);
+   __23->SetBinContent(40,123);
+   __23->SetBinContent(41,401);
+   __23->SetBinContent(42,357);
+   __23->SetBinContent(43,104);
+   __23->SetBinContent(44,5);
+   __23->SetBinContent(45,1);
    __23->SetEntries(1000);
-   __23->SetLineWidth(3);
-   __23->GetXaxis()->SetTitle("#deltaB_{r} [ppm]");
+   __23->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{Bkg}#GT [ppm]");
    __23->GetXaxis()->CenterTitle(true);
    __23->GetXaxis()->SetLabelFont(42);
    __23->GetXaxis()->SetTitleSize(0.04);

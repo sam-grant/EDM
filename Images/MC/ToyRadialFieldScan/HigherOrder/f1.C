@@ -1,7 +1,7 @@
 void f1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Nov 11 20:11:59 2020) by ROOT version 6.22/02
+//=========  (Thu Nov 26 10:24:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,7 +12,7 @@ void f1()
    c->SetGridy();
    c->SetFrameBorderMode(0);
    
-   TF1 *f11 = new TF1("f1",";x;y",0,25, TF1::EAddToList::kDefault);
+   TF1 *f11 = new TF1("f1",";x;y",0,6.283185, TF1::EAddToList::kDefault);
    f11->SetFillColor(19);
    f11->SetFillStyle(0);
 
@@ -34,7 +34,7 @@ void f1()
    f11->GetYaxis()->SetTitleSize(0.04);
    f11->GetYaxis()->SetTitleOffset(1.1);
    f11->GetYaxis()->SetTitleFont(42);
-   f11->SetParameter(0,1);
+   f11->SetParameter(0,1e-06);
    f11->SetParError(0,0);
    f11->SetParLimits(0,0,0);
    f11->Draw("");

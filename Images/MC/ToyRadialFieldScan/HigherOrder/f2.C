@@ -1,7 +1,7 @@
 void f2()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Nov 11 20:11:59 2020) by ROOT version 6.22/02
+//=========  (Thu Nov 26 10:24:38 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,7 +12,7 @@ void f2()
    c->SetGridy();
    c->SetFrameBorderMode(0);
    
-   TF1 *f22 = new TF1("f2",";x;y",0,25, TF1::EAddToList::kDefault);
+   TF1 *f22 = new TF1("f2",";x;y",0,6.283185, TF1::EAddToList::kDefault);
    f22->SetFillColor(19);
    f22->SetFillStyle(0);
 
@@ -34,18 +34,12 @@ void f2()
    f22->GetYaxis()->SetTitleSize(0.04);
    f22->GetYaxis()->SetTitleOffset(1.1);
    f22->GetYaxis()->SetTitleFont(42);
-   f22->SetParameter(0,1);
+   f22->SetParameter(0,0.0001666667);
    f22->SetParError(0,0);
    f22->SetParLimits(0,0,0);
-   f22->SetParameter(1,0.1);
+   f22->SetParameter(1,-1.570796);
    f22->SetParError(1,0);
    f22->SetParLimits(1,0,0);
-   f22->SetParameter(2,1);
-   f22->SetParError(2,0);
-   f22->SetParLimits(2,0,0);
-   f22->SetParameter(3,1);
-   f22->SetParError(3,0);
-   f22->SetParLimits(3,0,0);
    f22->Draw("");
    c->Modified();
    c->cd();

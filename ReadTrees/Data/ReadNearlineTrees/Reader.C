@@ -52,12 +52,10 @@ void ReadTree(string input, string output) {
 
    while (treeReader.Next()){
 
-      // Get non vector variables
-
       //unsigned int ctag = ctag*;
       tot_ctag = tot_ctag + *ctag;
 
-      // Store calo numbers and vectors
+      // Get leaves
       vector<int> caloNum_ = *caloNum;
       vector<double> x_ = *x;
       vector<double> y_ = *y;
@@ -137,10 +135,37 @@ void ReadTree(string input, string output) {
 
 int main() {
 
+   // TODO: Can we take file list input? 
+
    string input = "TestTrees/gm2nearline_hists_run34888_00270.root";
    string output = "y-pos.root";
 
    ReadTree(input, output);
 
+   // TODO: Write a seperate macro to produce the results
+
    return 0;
 }
+
+ /*
+
+  // Take command line input for the fit mode
+  string fitName;
+  string fitMode;
+  cout << "Select fit mode: '1' (SingleGaus) '2' (DoubleGaus) '3' (LanGaus)\n";
+  cin >> fitName;
+  if (fitName == "1") {
+    fitMode = "SingleGaus";
+    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl; 
+  } else if(fitName == "2") {
+    fitMode = "DoubleGaus";
+    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl;
+  } else if(fitName == "3") {
+    fitMode = "LanGaus";
+    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl;
+  } else {
+    cout<<"Invalid fitmode, stopping"<<endl;
+    exit(0);
+  }
+
+  */
