@@ -5,21 +5,10 @@
 #include "TTreeReader.h"
 #include "TH1D.h"
 #include "TH2D.h"
-#include "TGraphErrors.h"
-
-#include "FancyDraw.h"
 
 using namespace std;
 
-/*const int N_QHV = 2;
-const int N_FIELD = 2;*/
-//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
-
-// Read tree, produce tuple of y and yerr
-// Also store histograms of y-pos 
-
-tuple<double, double> ReadYPos(string input, string output) {
+void ReadTree(string input, string output) {
 
    // ++++++++++++++ Open tree and load branches ++++++++++++++
 
@@ -140,118 +129,24 @@ tuple<double, double> ReadYPos(string input, string output) {
    f1->Close();
    f2->Close();
 
-   return make_tuple(hy->GetMean(),hy->GetMeanError());
-
-}
-
-/*tuple<double, double> GetRadialField(vector<tuple<double, double>> yPos) {
-
-  double x_field[N_FIELD]; double ex_field[N_FIELD];
-  double y_field[N_FIELD]; double ey_field[N_FIELD];
-
-  // Vector to hold the quad scans at each field setting
-  vector<TGraphErrors*> quadScans;
-
-  // =========== Field setting loop =========== 
-  for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
-
-    double y_quad[N_QHV]; double ey_quad[N_QHV];
-    double x_quad[N_QHV]; double ex_quad[N_QHV];
-
-    // =========== Quad setting loop ==========
-    //for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
-    
-      y_quad[0] = get<0>(yPos.at(); // clunky as hell
-
-
-      ey_quad[i_quad] = get<0>(radialField));;
-      x_quad[i_quad] = 1/QHV[i_quad];
-      ex_quad[i_quad] = 0;
-
-
-
-
-  return make_tuple(0,0);
-
-}*/
-
-tuple<double, double> GetQuadSlope(vector<tuple<double, double>> yPos) {
-
-
-  // Loop through y-pos and fill a TGraph
-
-  double x[N_QHV]; double ex[N_QHV];
-  double y[N_QHV]; double ey[N_QHV];
-
-  for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
-
-    x[i_quad] = 1/QHV[i_quad];
-    ex[i_quad] = 0.0;
-    y[i_quad] = get<0>(yPos.at(i_quad));
-    cout<<y[i_quad]<<endl;
-    cout<<ex[i_quad]<<endl;
-    ey[i_quad] = get<1>(yPos.at(i_quad));
-
-  }
-
-
-  TGraphErrors *gr = new TGraphErrors(N_QHV,x,y,ex,ey);
-
-  TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
-  gr->Fit(quadLineFit,"M");
-
-  DrawTGraphErrors(gr,"test","test");
-
-
-  return make_tuple(0,0);
-
+   return;
 
 }
 
 int main() {
 
+   // TODO: Can we take file list input? 
 
-   //int N_SET = N_FIELD*N_QHV;
-
+   // string runs[2] = {"37117-37118", "37119"};
    string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
    string settings[4] = {"14 kV, -30 ppm", "18 kV, -30 ppm", "14 kV, +30 ppm", "18 kV, +30 ppm"};
-
-  int counter = 0;
-
-  vector<tuple<double, double>> quadSlopes;
-  // =========== Field setting loop =========== 
-  for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
-
-    // Book vector for y-pos per field setting
-    vector<tuple<double, double>> yPos;
-
-    // =========== Quad setting loop ==========
-    for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
-
-      //if(i_quad != 0) continue;
-
-      cout<<"Run "<<runs[counter]<<endl;
-      cout<<"Settings "<<settings[counter]<<endl;
-
-      string input = "../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run"+runs[counter]+".root";
-      string output = "../Plots/Data/RadialFieldScan_1/noDQC/y-pos_"+runs[counter]+".root";
-
-      // Get tuple of y-position and error, and store in a vector
-      yPos.push_back(ReadYPos(input, output));
-
-      counter++;
-
-    }
-
-    // Fit for quad gradient and store
-    quadSlopes.push_back(GetQuadSlope(yPos));
-
-  }
-
-  // Now fit for radial field
-
-  //GetRadialField(quadSlopes);
-
+   for (int i_run = 0; i_run < 4; i_run++) {
+      cout<<"Run "<<runs[i_run]<<endl;
+      cout<<"Settings "<<settings[i_run]<<endl;
+      string input = "../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run"+runs[i_run]+".root";
+      string output = "../Plots/Data/RadialFieldScan_1/noDQC/y-pos_"+runs[i_run]+".root";
+      ReadTree(input, output);
+   }
 
    // TODO: Write a seperate macro to produce the results
 
