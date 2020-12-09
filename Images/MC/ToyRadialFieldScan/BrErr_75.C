@@ -1,7 +1,7 @@
 void BrErr_75()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  2 23:07:57 2020) by ROOT version 6.22/02
+//=========  (Tue Dec  8 12:25:41 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,23 +11,28 @@ void BrErr_75()
    c->SetFrameBorderMode(0);
    
    TH1D *__8 = new TH1D("__8","Number of sub-runs: 75",1000,0,10);
-   __8->SetBinContent(61,1);
-   __8->SetBinContent(62,7);
-   __8->SetBinContent(63,18);
-   __8->SetBinContent(64,51);
-   __8->SetBinContent(65,114);
-   __8->SetBinContent(66,161);
-   __8->SetBinContent(67,152);
-   __8->SetBinContent(68,189);
-   __8->SetBinContent(69,127);
-   __8->SetBinContent(70,90);
-   __8->SetBinContent(71,54);
-   __8->SetBinContent(72,25);
-   __8->SetBinContent(73,7);
-   __8->SetBinContent(74,1);
-   __8->SetBinContent(75,1);
-   __8->SetBinContent(76,1);
-   __8->SetBinContent(77,1);
+   __8->SetBinContent(83,1);
+   __8->SetBinContent(84,1);
+   __8->SetBinContent(85,6);
+   __8->SetBinContent(86,10);
+   __8->SetBinContent(87,25);
+   __8->SetBinContent(88,33);
+   __8->SetBinContent(89,56);
+   __8->SetBinContent(90,83);
+   __8->SetBinContent(91,110);
+   __8->SetBinContent(92,126);
+   __8->SetBinContent(93,133);
+   __8->SetBinContent(94,124);
+   __8->SetBinContent(95,107);
+   __8->SetBinContent(96,77);
+   __8->SetBinContent(97,45);
+   __8->SetBinContent(98,25);
+   __8->SetBinContent(99,22);
+   __8->SetBinContent(100,10);
+   __8->SetBinContent(101,2);
+   __8->SetBinContent(102,2);
+   __8->SetBinContent(104,1);
+   __8->SetBinContent(105,1);
    __8->SetEntries(1000);
    __8->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{Bkg}#GT [ppm]");
    __8->GetXaxis()->CenterTitle(true);

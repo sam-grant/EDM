@@ -386,6 +386,16 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	line12->Draw("same");*/
 	//c->SetGridx();
 
+
+	// Put in a line at 1 ppm 
+
+	TLine *line1ppm = new TLine(gPad->GetUxmin(),1.0,gPad->GetUxmax(),1.0);
+	line1ppm->SetLineWidth(3);
+	line1ppm->SetLineStyle(2);
+	line1ppm->SetLineColor(kRed);
+
+
+	line1ppm->Draw("same");
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
 	c->SaveAs((fname+".C").c_str());

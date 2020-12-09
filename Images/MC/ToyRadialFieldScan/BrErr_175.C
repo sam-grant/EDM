@@ -1,7 +1,7 @@
 void BrErr_175()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  2 23:08:03 2020) by ROOT version 6.22/02
+//=========  (Tue Dec  8 12:25:45 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,13 +11,16 @@ void BrErr_175()
    c->SetFrameBorderMode(0);
    
    TH1D *__20 = new TH1D("__20","Number of sub-runs: 175",1000,0,10);
-   __20->SetBinContent(41,1);
-   __20->SetBinContent(42,22);
-   __20->SetBinContent(43,156);
-   __20->SetBinContent(44,394);
-   __20->SetBinContent(45,301);
-   __20->SetBinContent(46,109);
-   __20->SetBinContent(47,17);
+   __20->SetBinContent(57,6);
+   __20->SetBinContent(58,17);
+   __20->SetBinContent(59,92);
+   __20->SetBinContent(60,230);
+   __20->SetBinContent(61,319);
+   __20->SetBinContent(62,194);
+   __20->SetBinContent(63,110);
+   __20->SetBinContent(64,26);
+   __20->SetBinContent(65,5);
+   __20->SetBinContent(66,1);
    __20->SetEntries(1000);
    __20->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{Bkg}#GT [ppm]");
    __20->GetXaxis()->CenterTitle(true);

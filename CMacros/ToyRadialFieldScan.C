@@ -171,7 +171,7 @@ int main() {
 
 		// Perform many experiments at that sub-run 
 
-		//if(i_subrun != 3) continue;
+		//if(i_subrun != 1) continue;
 
 		// Book histogram for each sub-run
 		TH1D *hBr = new TH1D("","hBr",1000,0,20);

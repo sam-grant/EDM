@@ -1,0 +1,40 @@
+Run 37131-37133
+Settings 14 kV, -30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run37131-37133.root 0x7ffd1ab65df0
+
+Mean y-position:	77.5427+/-0.0170837
+Total ctags:	2841578
+Total ctags check:	2839717
+
+Written histograms to:	../Plots/Data/RadialFieldScan_1/noDQC/y-pos_37131-37133.root 0x7ffd1ade2a50
+Run 37119
+Settings 18 kV, -30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run37119.root 0x7ffd1ae0c4e0
+
+Mean y-position:	76.9278+/-0.0163027
+Total ctags:	3123730
+Total ctags check:	3121681
+
+Written histograms to:	../Plots/Data/RadialFieldScan_1/noDQC/y-pos_37119.root 0x7ffd1ae2e550
+Run 37128-37130
+Settings 14 kV, +30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run37128-37130.root 0x7ffd1ae37560
+
+Mean y-position:	73.8099+/-0.0184163
+Total ctags:	2458768
+Total ctags check:	2457050
+
+Written histograms to:	../Plots/Data/RadialFieldScan_1/noDQC/y-pos_37128-37130.root 0x7ffd1ae41e00
+Run 37120-37127
+Settings 18 kV, +30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run37120-37127.root 0x7ffd1ae03ad0
+
+Mean y-position:	74.0176+/-0.0165531
+Total ctags:	3042599
+Total ctags check:	3040573
+
+Written histograms to:	../Plots/Data/RadialFieldScan_1/noDQC/y-pos_37120-37127.root 0x7ffd1adb75f0

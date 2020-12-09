@@ -13,6 +13,13 @@ using namespace std;
 const double BR_BKG = 8; // ppm, the size of the field that would kill our measurement
 const int N_EXP = 1000;
 
+// Prelimary scan
+// 2 million ctags 
+const int N_QHV = 2;
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
+
 // New settings proposal
 
 // Config A -- All settings, ideal scenario, 6 hour measurement
@@ -39,11 +46,11 @@ const int N_EXP = 1000;
 //const double QHV[N_QHV] = {14, 16, 18, 20}; //  quad settings, kV
 //const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 //
-//// Config E -- No 20 kV, no high/low field
-const int N_QHV = 3;
-const int N_FIELD = 4;
-const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+//// Config E -- No 20 kV, no high/low field COLLOBORATION MEETING SETTINGS
+//const int N_QHV = 3;
+//const int N_FIELD = 4;
+//const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 //
 //// Config F -- No 14 kV, no high/low field
 // const int N_QHV = 3;
