@@ -18,7 +18,7 @@ const int N_EXP = 1000;
 const int N_QHV = 2;
 const int N_FIELD = 2;
 const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // New settings proposal
 

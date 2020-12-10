@@ -1,10 +1,10 @@
 void test()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  9 14:08:24 2020) by ROOT version 6.22/02
+//=========  (Thu Dec 10 12:50:10 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(0.0515873,-3.824288e-310,0.07539683,3.441859e-309);
+   c->Range(0.0515873,-2.259597e-309,0.07539683,2.954086e-309);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -15,8 +15,8 @@ void test()
    0.07142857,
    0.05555556};
    Double_t Graph0_fy1001[2] = {
-   1.39065e-309,
-   1.39065e-309};
+   6.944887e-310,
+   1.976263e-323};
    Double_t Graph0_fex1001[2] = {
    0,
    0};
@@ -30,8 +30,8 @@ void test()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","test",100,0.05396825,0.07301587);
-   Graph_Graph01001->SetMinimum(0);
-   Graph_Graph01001->SetMaximum(3.05943e-309);
+   Graph_Graph01001->SetMinimum(-1.738229e-309);
+   Graph_Graph01001->SetMaximum(2.432718e-309);
    Graph_Graph01001->SetDirectory(0);
    Graph_Graph01001->SetStats(0);
 

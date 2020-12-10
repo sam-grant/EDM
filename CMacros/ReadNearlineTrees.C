@@ -6,15 +6,16 @@
 #include "TH1D.h"
 #include "TH2D.h"
 #include "TGraphErrors.h"
+#include "TFitResult.h"
 
 #include "FancyDraw.h"
 
 using namespace std;
 
 /*const int N_QHV = 2;
-const int N_FIELD = 2;*/
-//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {-30, 30}; // Applied radial field, ppm
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm*/
 
 // Read tree, produce tuple of y and yerr
 // Also store histograms of y-pos 
@@ -51,9 +52,9 @@ tuple<double, double> ReadYPos(string input, string output) {
    // Individual calos
    vector<TH1D *> hy_calos;
    for(int i_calo = 0; i_calo < 24; i_calo++) {
-      TH1D *hy_tmp = (TH1D*) hy->Clone();
-      hy_tmp->SetName( ("hy_"+to_string(i_calo+1)).c_str() );
-      hy_calos.push_back(hy_tmp);
+   	TH1D *hy_tmp = (TH1D*) hy->Clone();
+   	hy_tmp->SetName( ("hy_"+to_string(i_calo+1)).c_str() );
+   	hy_calos.push_back(hy_tmp);
    }
 
    // ++++++++++++++ Loop thro events ++++++++++++++
@@ -63,45 +64,45 @@ tuple<double, double> ReadYPos(string input, string output) {
 
    while (treeReader.Next()){
 
-      //unsigned int ctag = ctag*;
-      tot_ctag = tot_ctag + *ctag;
+    //unsigned int ctag = ctag*;
+   	tot_ctag = tot_ctag + *ctag;
 
       // Get leaves
-      vector<int> caloNum_ = *caloNum;
-      vector<double> x_ = *x;
-      vector<double> y_ = *y;
-      vector<double> energy_ = *energy;
-      vector<double> times_ = *times;
+   	vector<int> caloNum_ = *caloNum;
+   	vector<double> x_ = *x;
+   	vector<double> y_ = *y;
+   	vector<double> energy_ = *energy;
+   	vector<double> times_ = *times;
 
       // Number of clusters in this fill
-      int nClu = caloNum_.size(); 
+   	int nClu = caloNum_.size(); 
 
       // Loop through clusters
-      for(int i_clu = 0; i_clu < nClu; i_clu++) { 
+   	for(int i_clu = 0; i_clu < nClu; i_clu++) { 
 
          // Get cluster level variables
-         int caloNum =  caloNum_.at(i_clu);
-         double xmm = x_.at(i_clu) * 25;
-         double ymm = y_.at(i_clu) * 25; 
-         double energy = energy_.at(i_clu);
-         double time = times_.at(i_clu);
+   		int caloNum =  caloNum_.at(i_clu);
+   		double xmm = x_.at(i_clu) * 25;
+   		double ymm = y_.at(i_clu) * 25; 
+   		double energy = energy_.at(i_clu);
+   		double time = times_.at(i_clu);
 
          // Apply CTAG cuts
-         if(energy > 1700 && energy < 6000 && time > 24000) {
+   		if(energy > 1700 && energy < 6000 && time > 24000) {
 
-            tot_ctag_check++;
+   			tot_ctag_check++;
 
             // Fill y-position for all calos
-            hxy->Fill(xmm, ymm);
-            hy->Fill(ymm);
+   			hxy->Fill(xmm, ymm);
+   			hy->Fill(ymm);
             // Fill y-position for individual calos
-            hy_calos.at(caloNum-1)->Fill(ymm);
+   			hy_calos.at(caloNum-1)->Fill(ymm);
 
 
-         }
+   		}
 
-      }
-      
+   	}
+
    }
 
    // ++++++++++++++ Draw sanity plots ++++++++++++++
@@ -129,7 +130,7 @@ tuple<double, double> ReadYPos(string input, string output) {
    hy->Write();
    f2->cd(); f2->mkdir("PerCalo"); f2->cd("PerCalo");
    for(int i_calo = 0; i_calo < hy_calos.size(); i_calo++) hy_calos.at(i_calo)->Write();
-   f2->Close();
+   	f2->Close();
 
    cout<<"\nMean y-position:\t"<<hy->GetMean()<<"+/-"<<hy->GetMeanError()<<endl;
    cout<<"Total ctags:\t"<<tot_ctag<<endl;
@@ -137,10 +138,13 @@ tuple<double, double> ReadYPos(string input, string output) {
 
    cout<<"\nWritten histograms to:\t"<<output<<" "<<f2<<endl;
 
+   // Need this to avoid seg fault after closing files
+   double yPos = hy->GetMean(); double eyPos = hy->GetMeanError();
+
    f1->Close();
    f2->Close();
 
-   return make_tuple(hy->GetMean(),hy->GetMeanError());
+   return make_tuple(yPos,eyPos);
 
 }
 
@@ -175,37 +179,78 @@ tuple<double, double> ReadYPos(string input, string output) {
 
 }*/
 
-tuple<double, double> GetQuadSlope(vector<tuple<double, double>> yPos) {
+/*
+void DrawQuadScans() {
+
+	TCanvas *c1 = new TCanvas("c1","c1",800,600);
+	c1->SetRightMargin(0.20);
+
+	quadScan_1->SetTitle(";1/QHV [kV^{-1}];#LTy#GT [mm]");
+	quadScan_1->GetXaxis()->SetTitleSize(.04);
+	quadScan_1->GetYaxis()->SetTitleSize(.04);
+	quadScan_1->GetXaxis()->SetTitleOffset(1.1);
+	quadScan_1->GetYaxis()->SetTitleOffset(1.1);
+	quadScan_1->GetXaxis()->CenterTitle(true);
+	quadScan_1->GetYaxis()->CenterTitle(true);
+	quadScan_1->GetYaxis()->SetMaxDigits(4);
+	quadScan_1->SetMarkerStyle(20); //  Full circle
+	quadScan_2->SetMarkerStyle(24); //  Full circle
+	quadScan_1->GetYaxis()->SetRangeUser(72,79);
+	quadScan_1->Draw("AP");
+	quadScan_2->Draw("P SAME");
+
+	TLegend *l1 = new TLegend(0.81,0.35,0.99,0.65);
+	l1->SetBorderSize(0);
+	l1->SetHeader("#LTB_{r}^{App}#GT","C");
+	l1->AddEntry(quadScan_1,"+30 ppm");
+	l1->AddEntry(quadScan_2,"#minus30 ppm");
+	l1->Draw("same");
+
+	c1->SaveAs("Images/quadScans.pdf");
+	c1->SaveAs("Images/quadScans.png");
+	c1->SaveAs("Images/quadScans.C");
+
+	return;
+
+
+} */
+
+
+
+TGraphErrors *QuadScan(vector<tuple<double, double>> yPos) {
 
 
   // Loop through y-pos and fill a TGraph
 
-  double x[N_QHV]; double ex[N_QHV];
-  double y[N_QHV]; double ey[N_QHV];
+	double x[N_QHV]; double ex[N_QHV];
+	double y[N_QHV]; double ey[N_QHV];
 
-  for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
+	for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
-    x[i_quad] = 1/QHV[i_quad];
-    ex[i_quad] = 0.0;
-    y[i_quad] = get<0>(yPos.at(i_quad));
-    cout<<y[i_quad]<<endl;
-    cout<<ex[i_quad]<<endl;
-    ey[i_quad] = get<1>(yPos.at(i_quad));
+		x[i_quad] = 1/QHV[i_quad];
+		ex[i_quad] = 0.0;
+		y[i_quad] = get<0>(yPos[i_quad]);
+		ey[i_quad] = get<1>(yPos[i_quad]);
 
-  }
+	}
 
-
-  TGraphErrors *gr = new TGraphErrors(N_QHV,x,y,ex,ey);
-
-  TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
-  gr->Fit(quadLineFit,"M");
-
-  DrawTGraphErrors(gr,"test","test");
+	return new TGraphErrors(N_QHV,x,y,ex,ey);
 
 
-  return make_tuple(0,0);
+}
 
+void tmp(vector<tuple<double, double>> yPos) {
 
+	cout<<"Starting tmp"<<endl;
+
+	for (int i = 0; i < yPos.size(); i++) {
+
+		cout << get<0>(yPos[i]) << " "
+		<< get<1>(yPos[i]) << "\n";
+
+	}
+
+	return;
 }
 
 int main() {
@@ -213,49 +258,79 @@ int main() {
 
    //int N_SET = N_FIELD*N_QHV;
 
-   string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
-   string settings[4] = {"14 kV, -30 ppm", "18 kV, -30 ppm", "14 kV, +30 ppm", "18 kV, +30 ppm"};
+	string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
+	string settings[4] = {"14 kV, +30 ppm", "18 kV, +30 ppm", "14 kV, -30 ppm", "18 kV, -30 ppm"};
 
-  int counter = 0;
+	int counter = 0;
 
-  vector<tuple<double, double>> quadSlopes;
+  	// Vector to hold the quad scans at each field setting
+	vector<TGraphErrors*> quadScans;
+
+	// Field fit variables
+	double x[N_FIELD]; double ex[N_FIELD];
+	double y[N_FIELD]; double ey[N_FIELD];
+
   // =========== Field setting loop =========== 
-  for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
+	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
 
     // Book vector for y-pos per field setting
-    vector<tuple<double, double>> yPos;
+		vector<tuple<double, double>> yPos;
 
     // =========== Quad setting loop ==========
-    for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
+		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
       //if(i_quad != 0) continue;
 
-      cout<<"Run "<<runs[counter]<<endl;
-      cout<<"Settings "<<settings[counter]<<endl;
+			cout<<"Run "<<runs[counter]<<endl;
+			cout<<"Settings "<<settings[counter]<<endl;
 
-      string input = "../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run"+runs[counter]+".root";
-      string output = "../Plots/Data/RadialFieldScan_1/noDQC/y-pos_"+runs[counter]+".root";
+			string input = "../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run"+runs[counter]+".root";
+			string output = "../Plots/Data/RadialFieldScan_1/noDQC/y-pos_"+runs[counter]+".root";
 
-      // Get tuple of y-position and error, and store in a vector
-      yPos.push_back(ReadYPos(input, output));
+			yPos.push_back(ReadYPos(input, output));
 
-      counter++;
+			counter++;
 
-    }
+		}
 
-    // Fit for quad gradient and store
-    quadSlopes.push_back(GetQuadSlope(yPos));
+    	// Fit for quad gradient and store
 
-  }
+		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
+		QuadScan(yPos)->Fit(quadLineFit,"M");
+
+		quadScans.push_back(QuadScan(yPos));
+
+		x[i_field] = BR_APP[i_field]; 
+		ey[i_field] = 0.0;
+		y[i_field] = quadLineFit->GetParameter(1);
+		ey[i_field] = quadLineFit->GetParError(1);
+
+	}
 
   // Now fit for radial field
+
+	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
+
+	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
+	TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
+
+	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
+    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+
+    // x-intercept 
+	double Br = fabs(p0/p1);
+
+	// From Taylor 9.9
+	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
+
+	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GTupointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_1/FieldFit");
 
   //GetRadialField(quadSlopes);
 
 
    // TODO: Write a seperate macro to produce the results
 
-   return 0;
+	return 0;
 }
 
  /*

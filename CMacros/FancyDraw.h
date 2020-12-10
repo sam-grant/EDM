@@ -736,7 +736,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	names->SetTextAlign(13);
 	names->AddText("#chi^{2}/ndf"); 
 	names->AddText("Gradient"); 
-	names->AddText("Y-intercept [mm/kV]"); 
+	names->AddText("Y-intercept [mm#upointkV]"); 
 	names->AddText("#LTB_{r}^{Bkg}#GT [ppm]"); 
 
 	//TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
