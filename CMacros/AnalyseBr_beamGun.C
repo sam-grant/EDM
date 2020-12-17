@@ -12,19 +12,13 @@
 
 using namespace std;
 
-/*const int N_QHV = 2;
+const int N_QHV = 1;
 const int N_FIELD = 2;
-const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double QHV[N_QHV] = {14}; // , 18}; //  quad settings, kV
 const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm*/
 
 // Read tree, produce tuple of y and yerr
 // Also store histograms of y-pos 
-
-
-const int N_QHV = 2;
-const int N_FIELD = 2;
-const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 int unsigned_to_signed(unsigned n){
     return static_cast<int>(n);
@@ -172,49 +166,26 @@ int main() {
 
 	int counter = 0;
 
-    // =========== Field setting loop =========== 
-	for ( int i_field = 0; i_field < 2; i_field++ ) {
-
-		//out<<BR_APP[i_field]<<endl;
-
-		string input = " ../Trees/MC/BrSim_TestTrees/gm2trees_Br_"+settings[counter]+".root";
-		string output = "../Plots/MC/BrSim_TestPlots/y-pos_"+settings[counter]+".root";
-
-		tuple<double, double> tmp = ReadYPos(input, output);
-
-		counter++;
-
-	}
-
-	
-
-
-
-
-/*
-	int counter = 0;
-
-  	// Vector to hold the quad scans at each field setting
+	// Vector to hold the quad scans at each field setting
 	vector<TGraphErrors*> quadScans;
 
 	// Field fit variables
 	double x[N_FIELD]; double ex[N_FIELD];
 	double y[N_FIELD]; double ey[N_FIELD];
 
-  // =========== Field setting loop =========== 
-	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
+    // =========== Field setting loop =========== 
+	for ( int i_field = 0; i_field < 2; i_field++ ) {
 
-    // Book vector for y-pos per field setting
+		//out<<BR_APP[i_field]<<endl;
+
+		// Book vector for y-pos per field setting
 		vector<tuple<double, double>> yPos;
 
+    	// =========== Quad setting loop ==========
+		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
-
-      //if(i_quad != 0) continue;
-
-			cout<<"Settings "<<settings[counter]<<endl;
-
-			string input = " ../Trees/MC/BrSim_TestTrees/gm2trees_Br_"+settings[i_quad]+".root";
-			string output = "../Plots/MC/BrSim_TestPlots/y-pos_"+settings[i_quad]+".root";
+			string input = " ../Trees/MC/BrSim_TestTrees/gm2trees_Br_"+settings[counter]+".root";
+			string output = "../Plots/MC/BrSim_TestPlots/y-pos_"+settings[counter]+".root";
 
 			yPos.push_back(ReadYPos(input, output));
 
@@ -222,20 +193,30 @@ int main() {
 
 		}
 
+		TGraphErrors *quadScan = QuadScan(yPos);
+
     	// Fit for quad gradient and store
+   		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
 
-		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
-		QuadScan(yPos)->Fit(quadLineFit,"M");
+		quadScan->Fit(quadLineFit,"M");
 
-		quadScans.push_back(QuadScan(yPos));
+    	cout<<"quadLineFit\t"<<quadLineFit<<endl;
+
+		quadScans.push_back(quadScan);
 
 		x[i_field] = BR_APP[i_field]; 
 		ey[i_field] = 0.0;
 		y[i_field] = quadLineFit->GetParameter(1);
 		ey[i_field] = quadLineFit->GetParError(1);
 
+
+
 	}
 
+	quadScans.at(0)->SetMarkerStyle(20);
+  	quadScans.at(1)->SetMarkerStyle(20);
+  	DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/BrSim_Test/QuadScans", -50, 50, BR_APP);
+  	
   // Now fit for radial field
 
 	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
@@ -244,7 +225,7 @@ int main() {
 	TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
 
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
-    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+  	double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
 
     // x-intercept 
 	double Br = fabs(p0/p1);
@@ -252,36 +233,7 @@ int main() {
 	// From Taylor 9.9
 	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 
-	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GTupointQHV [mm#upointkV]","../Images/MC/BrSim_Test/FieldFit");
-
-*/
-  //GetRadialField(quadSlopes);
-
-
-   // TODO: Write a seperate macro to produce the results
+	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/MC/BrSim_Test/FieldFit");
 
 	return 0;
 }
-
- /*
-
-  // Take command line input for the fit mode
-  string fitName;
-  string fitMode;
-  cout << "Select fit mode: '1' (SingleGaus) '2' (DoubleGaus) '3' (LanGaus)\n";
-  cin >> fitName;
-  if (fitName == "1") {
-    fitMode = "SingleGaus";
-    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl; 
-  } else if(fitName == "2") {
-    fitMode = "DoubleGaus";
-    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl;
-  } else if(fitName == "3") {
-    fitMode = "LanGaus";
-    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl;
-  } else {
-    cout<<"Invalid fitmode, stopping"<<endl;
-    exit(0);
-  }
-
-  */
