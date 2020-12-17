@@ -5,7 +5,9 @@
 #include <iostream>
 
 #include "Utils.h"
-#include "ToyRadialFieldScan.h"
+
+// This is an issue!
+// #include "ToyRadialFieldScan.h"
 
 #include "TH1D.h"
 #include "TH2D.h"
@@ -653,7 +655,7 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
  // ==================== RADIAL FIELD SCAN ====================
 
 // void DrawQuadScanFits(std::vector<TGraphErrors*> graphs,  const double *BR_APP, string func, std::string title, std::string fname, double ymin, double ymax) {
-void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax) {
+void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
@@ -675,15 +677,19 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::strin
 
 	//double field = 
 	// Load legend entries backwards
+	cout<<"Loading legend entries"<<endl;
 	for( int i = graphs.size()-1; i>-1; i--) {
+		cout<<BR_APP[i]<<endl;
 		l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
 	}
 	
 	for(int i = 0; i < graphs.size(); i++) {
+		//cout<<"Getting function\t";
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
+		//cout<<fit<<endl;
 		//it->SetLineColor(kBlack);
 		fit->SetLineColor(i+1); 
-		graphs.at(i)->SetMarkerColor(kBlack);//i+1);
+		graphs.at(i)->SetMarkerColor(i+1); // kBlack (nearline)
 		graphs.at(i)->SetLineColor(i+1);
 
 		if(i==0) graphs.at(i)->Draw("AP");

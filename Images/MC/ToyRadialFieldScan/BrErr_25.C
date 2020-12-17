@@ -1,7 +1,7 @@
 void BrErr_25()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  8 12:25:39 2020) by ROOT version 6.22/02
+//=========  (Wed Dec 16 20:32:59 2020) by ROOT version 6.22/02
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,60 +11,15 @@ void BrErr_25()
    c->SetFrameBorderMode(0);
    
    TH1D *__2 = new TH1D("__2","Number of sub-runs: 25",1000,0,10);
-   __2->SetBinContent(135,1);
-   __2->SetBinContent(137,1);
-   __2->SetBinContent(139,1);
-   __2->SetBinContent(142,3);
-   __2->SetBinContent(143,4);
-   __2->SetBinContent(144,4);
-   __2->SetBinContent(145,5);
-   __2->SetBinContent(146,11);
-   __2->SetBinContent(147,13);
-   __2->SetBinContent(148,10);
-   __2->SetBinContent(149,18);
-   __2->SetBinContent(150,14);
-   __2->SetBinContent(151,24);
-   __2->SetBinContent(152,24);
-   __2->SetBinContent(153,29);
-   __2->SetBinContent(154,31);
-   __2->SetBinContent(155,35);
-   __2->SetBinContent(156,36);
-   __2->SetBinContent(157,41);
-   __2->SetBinContent(158,33);
-   __2->SetBinContent(159,46);
-   __2->SetBinContent(160,55);
-   __2->SetBinContent(161,45);
-   __2->SetBinContent(162,48);
-   __2->SetBinContent(163,41);
-   __2->SetBinContent(164,47);
-   __2->SetBinContent(165,33);
-   __2->SetBinContent(166,50);
-   __2->SetBinContent(167,39);
-   __2->SetBinContent(168,36);
-   __2->SetBinContent(169,32);
-   __2->SetBinContent(170,24);
-   __2->SetBinContent(171,29);
-   __2->SetBinContent(172,17);
-   __2->SetBinContent(173,11);
-   __2->SetBinContent(174,13);
-   __2->SetBinContent(175,12);
-   __2->SetBinContent(176,19);
-   __2->SetBinContent(177,13);
-   __2->SetBinContent(178,8);
-   __2->SetBinContent(179,10);
-   __2->SetBinContent(180,7);
-   __2->SetBinContent(181,5);
-   __2->SetBinContent(182,2);
-   __2->SetBinContent(183,5);
-   __2->SetBinContent(184,2);
-   __2->SetBinContent(185,1);
-   __2->SetBinContent(186,2);
-   __2->SetBinContent(187,1);
-   __2->SetBinContent(188,2);
-   __2->SetBinContent(189,3);
-   __2->SetBinContent(191,2);
-   __2->SetBinContent(193,1);
-   __2->SetBinContent(195,1);
+   __2->SetBinContent(61,3);
+   __2->SetBinContent(62,13);
+   __2->SetBinContent(63,55);
+   __2->SetBinContent(64,197);
+   __2->SetBinContent(65,279);
+   __2->SetBinContent(66,268);
+   __2->SetBinContent(67,130);
+   __2->SetBinContent(68,47);
+   __2->SetBinContent(69,8);
    __2->SetEntries(1000);
    __2->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{Bkg}#GT [ppm]");
    __2->GetXaxis()->CenterTitle(true);

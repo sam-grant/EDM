@@ -138,7 +138,7 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 	// Only draw the plots once 
 	if(i_experiment==0) { 
-		DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5);
+		DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment),-2.5,3.5, BR_APP);
 		DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", std::to_string(subruns)+" sub-runs;#LTB_{r}^{App}#GT [ppm];#LTy#GT QHV [mm#upointkV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
 		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", std::to_string(subruns)+" sub-runs;#LTB_{r}^{App}#GT [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
 	}

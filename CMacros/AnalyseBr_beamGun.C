@@ -20,6 +20,12 @@ const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm*/
 // Read tree, produce tuple of y and yerr
 // Also store histograms of y-pos 
 
+
+const int N_QHV = 2;
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+
 int unsigned_to_signed(unsigned n){
     return static_cast<int>(n);
 }
@@ -167,9 +173,9 @@ int main() {
 	int counter = 0;
 
     // =========== Field setting loop =========== 
-	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
+	for ( int i_field = 0; i_field < 2; i_field++ ) {
 
-		cout<<BR_APP[i_field]<<endl;
+		//out<<BR_APP[i_field]<<endl;
 
 		string input = " ../Trees/MC/BrSim_TestTrees/gm2trees_Br_"+settings[counter]+".root";
 		string output = "../Plots/MC/BrSim_TestPlots/y-pos_"+settings[counter]+".root";

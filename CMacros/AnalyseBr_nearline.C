@@ -12,10 +12,10 @@
 
 using namespace std;
 
-/*const int N_QHV = 2;
+const int N_QHV = 2;
 const int N_FIELD = 2;
 const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm*/
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // Read tree, produce tuple of y and yerr
 // Also store histograms of y-pos 
@@ -170,19 +170,84 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yPos) {
 
 }
 
-void tmp(vector<tuple<double, double>> yPos) {
+void tmp2(std::vector<TGraphErrors*> graphs, std::string func) {
 
-	cout<<"Starting tmp"<<endl;
+  for(int i = 0; i < graphs.size(); i++) {
+  
+    cout<<"Getting function\t"<<func<<endl;
+  
+    cout<<"Graph\t"<<graphs.at(i)<<endl;
+  
+    cout<<"Function\t"<<graphs.at(i)->GetFunction(func.c_str())<<endl;
 
-	for (int i = 0; i < yPos.size(); i++) {
+  }
 
-		cout << get<0>(yPos[i]) << " "
-		<< get<1>(yPos[i]) << "\n";
+  return;
 
-	}
 
-	return;
 }
+
+void tmp(std::vector<TGraphErrors*> graphs, std::string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+  c->SetRightMargin(0.20);
+
+  graphs.at(0)->SetTitle(title.c_str());
+  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetXaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+
+  l->SetBorderSize(0);
+  l->SetHeader("#LTB_{r}^{App}#GT","C");
+
+  //double field = 
+  // Load legend entries backwards
+  cout<<"Loading legend entries"<<endl;
+  for( int i = graphs.size()-1; i>-1; i--) {
+    cout<<BR_APP[i]<<endl;
+    l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
+  }
+  
+  for(int i = 0; i < graphs.size(); i++) {
+    cout<<"Getting function\t"<<func<<endl;
+    cout<<"Graph\t"<<graphs.at(i)<<endl;
+    cout<<"Function\t"<<graphs.at(i)->GetFunction(func.c_str())<<endl;
+
+    TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
+
+    //it->SetLineColor(kBlack);
+    fit->SetLineColor(i+1); 
+    graphs.at(i)->SetMarkerColor(i+1); // kBlack (nearline)
+    graphs.at(i)->SetLineColor(i+1);
+
+    if(i==0) graphs.at(i)->Draw("AP");
+    else {
+      graphs.at(i)->Draw("P SAME");
+    }
+
+    fit->Draw("same");
+
+  }
+
+  l->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
 
 int main() {
 
@@ -196,6 +261,7 @@ int main() {
 
   	// Vector to hold the quad scans at each field setting
 	vector<TGraphErrors*> quadScans;
+
 
 	// Field fit variables
 	double x[N_FIELD]; double ex[N_FIELD];
@@ -224,12 +290,15 @@ int main() {
 
 		}
 
+    TGraphErrors *quadScan = QuadScan(yPos);
     	// Fit for quad gradient and store
+    TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
 
-		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
-		QuadScan(yPos)->Fit(quadLineFit,"M");
+		quadScan->Fit(quadLineFit,"M");
 
-		quadScans.push_back(QuadScan(yPos));
+    cout<<"quadLineFit\t"<<quadLineFit<<endl;
+
+		quadScans.push_back(quadScan);
 
 		x[i_field] = BR_APP[i_field]; 
 		ey[i_field] = 0.0;
@@ -238,6 +307,18 @@ int main() {
 
 	}
 
+  // Draw quad scans 
+
+  //cout<<"\nDrawQuadScanFits"<<endl;
+  //tmp(quadScans, "quadLineFit");
+
+  //cout<<"quadScans.at(0)->GetFunction(quadLineFit)\t"<<quadScans.at(0)->GetFunction("quadLineFit")<<endl;
+
+  // tmp(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_1/QuadScans", 72., 79., BR_APP);
+  quadScans.at(0)->SetMarkerStyle(20);
+  quadScans.at(1)->SetMarkerStyle(20);
+  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_1/QuadScans", 72., 79., BR_APP);
+  //DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP)
   // Now fit for radial field
 
 	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
@@ -246,7 +327,7 @@ int main() {
 	TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
 
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
-    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+  double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
 
     // x-intercept 
 	double Br = fabs(p0/p1);
