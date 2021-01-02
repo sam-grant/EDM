@@ -669,6 +669,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 	graphs.at(0)->GetYaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
 	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+	graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
 
 	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
 
@@ -689,10 +690,11 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 		//cout<<fit<<endl;
 		//it->SetLineColor(kBlack);
 		fit->SetLineColor(i+1); 
+		graphs.at(i)->SetMarkerStyle(20);
 		graphs.at(i)->SetMarkerColor(i+1); // kBlack (nearline)
 		graphs.at(i)->SetLineColor(i+1);
 
-		if(i==0) graphs.at(i)->Draw("AP");
+		if(i==0) graphs.at(0)->Draw("AP");
 		else {
 			graphs.at(i)->Draw("P SAME");
 		}

@@ -1,7 +1,8 @@
 
 
 
-for i in {37857..37882}; do
+# for i in {37857..37882}; do
+for i in {37875..37876}; do
 
 	echo $i
 

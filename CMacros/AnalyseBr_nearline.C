@@ -64,7 +64,7 @@ vector<vector<string>> csvReader(string infile) {
 
         while(ss >> val){
 
-            cout<<val<<endl;
+            //cout<<val<<endl;
 
             row.push_back(to_string(val));
 
@@ -79,12 +79,12 @@ vector<vector<string>> csvReader(string infile) {
 
     }
 
-/*    cout<<"\n";
+   //cout<<"\n";
 
 
-    for (int i = 1; i < result.size(); i++ ) {
+/*    for (int i = 1; i < result.size(); i++ ) {
 
-        vector<float> tmp = result.at(i);
+        vector<string> tmp = result.at(i);
 
         cout<<tmp.size()<<endl;
 
@@ -236,19 +236,35 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yPos) {
 
   // Loop through y-pos and fill a TGraph
 
-	double x[N_QHV]; double ex[N_QHV];
-	double y[N_QHV]; double ey[N_QHV];
+  int n = yPos.size();
 
-	for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
+	double x[n]; double ex[n];
+	double y[n]; double ey[n];
+
+	for ( int i_quad = 0; i_quad < n; i_quad++ ) {
+
+    double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
+    if( y_tmp == 0. || ey_tmp == 0. ) continue;
 
 		x[i_quad] = 1/QHV[i_quad];
 		ex[i_quad] = 0.0;
-		y[i_quad] = get<0>(yPos[i_quad]);
-		ey[i_quad] = get<1>(yPos[i_quad]);
+		y[i_quad] = y_tmp; // get<0>(yPos[i_quad]);
+		ey[i_quad] = ey_tmp; //get<1>(yPos[i_quad]);
 
 	}
 
-	return new TGraphErrors(N_QHV,x,y,ex,ey);
+
+  // Sanity print out
+  cout<<"\n********** Quad scan printout **********"<<endl;
+
+  for (int i = 0; i<n; i++) {
+
+    cout<<"x\t"<<x[i]<<"+/-"<<ex[i]<<"\n"; 
+    cout<<"y\t"<<x[i]<<"+/-"<<ey[i]<<"\n"; 
+
+  }
+
+	return new TGraphErrors(n,x,y,ex,ey);
 
 
 }
@@ -370,7 +386,9 @@ int main() {
   // =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
 
-    // Book vector for y-pos per field setting
+    //if(i_field != 0) continue;
+
+    // Book vector for y-pos per quad setting
 		vector<tuple<double, double>> yPos;
 
     // =========== Quad setting loop ==========
@@ -378,10 +396,26 @@ int main() {
 
       //if(i_quad != 0) continue;
 
+      yPos.clear();
+
+      cout<<"Counter: "<<counter<<endl;
+
       vector<string> row = csv.at(counter+1);
 
 			cout<<"Run "<<row.at(0)<<endl;
-			cout<<"Settings "<<row.at(1)<<" "<<row.at(2)<<endl;
+
+			cout<<"Settings according to csv "<<row.at(1)<<" "<<row.at(2)<<endl;
+      cout<<"Settings according to global "<<QHV[i_quad]<<" "<<BR_APP[i_field]<<endl;
+
+      if(row.at(0) == "37857" || row.at(0) == "37874") {
+
+        cout<<"Run "<<row.at(0)<<" is bad. Skipping"<<endl;
+        counter++;
+        row.clear();
+        //yPos.push_back(make_tuple(0.,0.));
+        continue;
+
+      }
 
 			string input = "../Trees/Data/RadialFieldScan_"+scan+"/merged_noDQC/gm2nearline_hists_run"+row.at(0)+".root";
 			string output = "../Plots/Data/RadialFieldScan_"+scan+"/noDQC/y-pos_"+row.at(0)+".root";
@@ -400,6 +434,8 @@ int main() {
 
     cout<<"quadLineFit\t"<<quadLineFit<<endl;
 
+    if(i_field==1) DrawTGraphErrors(quadScan, "test_-30_quadscan", "test_-30_quadscan");
+
 		quadScans.push_back(quadScan);
 
 		x[i_field] = BR_APP[i_field]; 
@@ -417,8 +453,8 @@ int main() {
   //cout<<"quadScans.at(0)->GetFunction(quadLineFit)\t"<<quadScans.at(0)->GetFunction("quadLineFit")<<endl;
 
   // tmp(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_1/QuadScans", 72., 79., BR_APP);
-  quadScans.at(0)->SetMarkerStyle(20);
-  quadScans.at(1)->SetMarkerStyle(20);
+  //quadScans.at(0)->SetMarkerStyle(20);
+  //quadScans.at(1)->SetMarkerStyle(20);
   DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadScans", 72., 79., BR_APP);
   //DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP)
   // Now fit for radial field

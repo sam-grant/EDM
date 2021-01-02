@@ -1,7 +1,7 @@
 
 void getTreeInfo(){
 
-	string input = "../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37857.root";
+	string input = "../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37882.root";
 	TFile *f1 = TFile::Open(input.c_str());
    	cout<<"\nOpened tree:\t"<<input<<" "<<f1<<endl;
 
