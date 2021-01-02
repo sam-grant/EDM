@@ -35,7 +35,7 @@ string scan = "2";
 const int N_QHV = 4;
 const int N_FIELD = 6;
 const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
 
 
 // Read csv file of run, QHV, & Br
@@ -44,10 +44,10 @@ vector<vector<string>> csvReader(string infile) {
   // Columns & rows
   vector< vector<string> > result;
 
-    // Open file
+  // Open file
   std::ifstream myFile(infile);
 
-    // Check that it opened correctly 
+  // Check that it opened correctly 
   if(!myFile.is_open()) throw std::runtime_error("Could not open file");
 
     // Helper vars
@@ -79,20 +79,6 @@ vector<vector<string>> csvReader(string infile) {
 
     }
 
-   //cout<<"\n";
-
-
-/*    for (int i = 1; i < result.size(); i++ ) {
-
-        vector<string> tmp = result.at(i);
-
-        cout<<tmp.size()<<endl;
-
-        cout<<tmp.at(0)<<", ";
-        cout<<tmp.at(1)<<", ";
-        cout<<tmp.at(2)<<endl;
-
-    }*/
     // Close file
     myFile.close();
 
@@ -108,7 +94,7 @@ tuple<double, double> ReadYPos(string input, string output) {
    // ++++++++++++++ Open tree and load branches ++++++++++++++
 
    // Get file
-   TFile *f1 = TFile::Open(input.c_str());//"TestTrees/gm2nearline_hists_run34888_00270.root");
+   TFile *f1 = TFile::Open(input.c_str());
    cout<<"\nOpened tree:\t"<<input<<" "<<f1<<endl;
 
    // Get reader for tree
@@ -231,8 +217,11 @@ tuple<double, double> ReadYPos(string input, string output) {
 
 }
 
-TGraphErrors *QuadScan(vector<tuple<double, double>> yPos) {
 
+
+TGraphErrors *QuadScan(vector<tuple<double, double>> yPos, vector<float> QHV_tmp) {
+
+  // CAN'T USE GLOBAL QHV SINCE SOME SETTINGS ARE BROKEN
 
   // Loop through y-pos and fill a TGraph
 
@@ -241,117 +230,36 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yPos) {
 	double x[n]; double ex[n];
 	double y[n]; double ey[n];
 
-	for ( int i_quad = 0; i_quad < n; i_quad++ ) {
-
-    double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
-    if( y_tmp == 0. || ey_tmp == 0. ) continue;
-
-		x[i_quad] = 1/QHV[i_quad];
-		ex[i_quad] = 0.0;
-		y[i_quad] = y_tmp; // get<0>(yPos[i_quad]);
-		ey[i_quad] = ey_tmp; //get<1>(yPos[i_quad]);
-
-	}
-
-
   // Sanity print out
   cout<<"\n********** Quad scan printout **********"<<endl;
 
-  for (int i = 0; i<n; i++) {
 
-    cout<<"x\t"<<x[i]<<"+/-"<<ex[i]<<"\n"; 
-    cout<<"y\t"<<x[i]<<"+/-"<<ey[i]<<"\n"; 
+  cout<<"Entries\t"<<n<<endl;
 
-  }
+	for ( int i_quad = 0; i_quad < n; i_quad++ ) {
+
+    double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
+
+		x[i_quad] = 1/QHV_tmp.at(i_quad);
+		ex[i_quad] = 0.0;
+		y[i_quad] = get<0>(yPos[i_quad]);
+		ey[i_quad] = get<1>(yPos[i_quad]);
+
+    cout<<"QHV [kV]\t"<<QHV[i_quad]<<"\n";
+    cout<<"x\t"<<x[i_quad]<<"+/-"<<ex[i_quad]<<"\n"; 
+    cout<<"y\t"<<y[i_quad]<<"+/-"<<ey[i_quad]<<endl;
+
+	}
 
 	return new TGraphErrors(n,x,y,ex,ey);
 
 
 }
 
-/*void tmp2(std::vector<TGraphErrors*> graphs, std::string func) {
-
-  for(int i = 0; i < graphs.size(); i++) {
-  
-    cout<<"Getting function\t"<<func<<endl;
-  
-    cout<<"Graph\t"<<graphs.at(i)<<endl;
-  
-    cout<<"Function\t"<<graphs.at(i)->GetFunction(func.c_str())<<endl;
-
-  }
-
-  return;
-
-
-}
-
-void tmp(std::vector<TGraphErrors*> graphs, std::string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP) {
-
-  TCanvas *c = new TCanvas("c","c",800,600);
-  c->SetRightMargin(0.20);
-
-  graphs.at(0)->SetTitle(title.c_str());
-  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
-  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
-  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
-  graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
-  graphs.at(0)->GetXaxis()->CenterTitle(true);
-  graphs.at(0)->GetYaxis()->CenterTitle(true);
-  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
-  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
-
-  TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
-
-  l->SetBorderSize(0);
-  l->SetHeader("#LTB_{r}^{App}#GT","C");
-
-  //double field = 
-  // Load legend entries backwards
-  cout<<"Loading legend entries"<<endl;
-  for( int i = graphs.size()-1; i>-1; i--) {
-    cout<<BR_APP[i]<<endl;
-    l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
-  }
-  
-  for(int i = 0; i < graphs.size(); i++) {
-    cout<<"Getting function\t"<<func<<endl;
-    cout<<"Graph\t"<<graphs.at(i)<<endl;
-    cout<<"Function\t"<<graphs.at(i)->GetFunction(func.c_str())<<endl;
-
-    TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
-
-    //it->SetLineColor(kBlack);
-    fit->SetLineColor(i+1); 
-    graphs.at(i)->SetMarkerColor(i+1); // kBlack (nearline)
-    graphs.at(i)->SetLineColor(i+1);
-
-    if(i==0) graphs.at(i)->Draw("AP");
-    else {
-      graphs.at(i)->Draw("P SAME");
-    }
-
-    fit->Draw("same");
-
-  }
-
-  l->Draw("same");
-
-  c->SaveAs((fname+".pdf").c_str());
-  c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
-
-  delete c;
-
-  return;
-
-}*/
-
 
 int main() {
 
 
-   //int N_SET = N_FIELD*N_QHV;
 
   // FIRST SCAN
 	//string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
@@ -359,25 +267,14 @@ int main() {
 
   // SECOND SCAN
 
-  // TODO: MAKE THIS MORE SCALABLE !!!!! 
-
   // Get runs, QHV, & Br 
-
   vector<vector<string>> csv = csvReader("../RadialFieldOps_"+scan+"/scan"+scan+".csv");
 
-  // Loop through settings
-
-  //vector<float> row;
-
-
-  //string runs[14] = {"37857", "37869", "37858", "37868", "37859", "37867", "37860", "37866", "37861", "37865", "37862", "37864"}; //  "37858", "37859", "37860", "37861", "37862", "37864", "37865", "37866", "37867", "37868", "37869", "37871", "37872"};
-  //string settings[14] = {"14 kV, -50 ppm", "16 kV, -50 ppm", "14 kV, -30 ppm", "16kV, -30 ppm", "14kV, -10 ppm", "16kV, -10 ppm", "14kV, +10 ppm", "16kV, +10 ppm", "14kV, +30 ppm", "16kV, +30 ppm","14kV, +50 ppm", "16kV, +50 ppm"};
 
 	int counter = 0;
 
-  	// Vector to hold the quad scans at each field setting
+  // Vector to hold the quad scans at each field setting
 	vector<TGraphErrors*> quadScans;
-
 
 	// Field fit variables
 	double x[N_FIELD]; double ex[N_FIELD];
@@ -386,17 +283,14 @@ int main() {
   // =========== Field setting loop =========== 
 	for ( int i_field = 0; i_field < N_FIELD; i_field++ ) {
 
-    //if(i_field != 0) continue;
-
     // Book vector for y-pos per quad setting
 		vector<tuple<double, double>> yPos;
+
+    vector<float> QHV_tmp; 
 
     // =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
-      //if(i_quad != 0) continue;
-
-      yPos.clear();
 
       cout<<"Counter: "<<counter<<endl;
 
@@ -404,18 +298,20 @@ int main() {
 
 			cout<<"Run "<<row.at(0)<<endl;
 
+      // Compare global to csv
 			cout<<"Settings according to csv "<<row.at(1)<<" "<<row.at(2)<<endl;
       cout<<"Settings according to global "<<QHV[i_quad]<<" "<<BR_APP[i_field]<<endl;
 
+      // CATCH BAD SUBRUNS
       if(row.at(0) == "37857" || row.at(0) == "37874") {
 
         cout<<"Run "<<row.at(0)<<" is bad. Skipping"<<endl;
         counter++;
-        row.clear();
-        //yPos.push_back(make_tuple(0.,0.));
         continue;
 
       }
+
+      QHV_tmp.push_back(QHV[i_quad]);
 
 			string input = "../Trees/Data/RadialFieldScan_"+scan+"/merged_noDQC/gm2nearline_hists_run"+row.at(0)+".root";
 			string output = "../Plots/Data/RadialFieldScan_"+scan+"/noDQC/y-pos_"+row.at(0)+".root";
@@ -426,7 +322,8 @@ int main() {
 
 		}
 
-    TGraphErrors *quadScan = QuadScan(yPos);
+    TGraphErrors *quadScan = QuadScan(yPos, QHV_tmp);
+
     	// Fit for quad gradient and store
     TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
 
@@ -434,7 +331,6 @@ int main() {
 
     cout<<"quadLineFit\t"<<quadLineFit<<endl;
 
-    if(i_field==1) DrawTGraphErrors(quadScan, "test_-30_quadscan", "test_-30_quadscan");
 
 		quadScans.push_back(quadScan);
 
@@ -446,19 +342,9 @@ int main() {
 	}
 
   // Draw quad scans 
+  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadScans", 71., 79., BR_APP);
 
-  //cout<<"\nDrawQuadScanFits"<<endl;
-  //tmp(quadScans, "quadLineFit");
-
-  //cout<<"quadScans.at(0)->GetFunction(quadLineFit)\t"<<quadScans.at(0)->GetFunction("quadLineFit")<<endl;
-
-  // tmp(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_1/QuadScans", 72., 79., BR_APP);
-  //quadScans.at(0)->SetMarkerStyle(20);
-  //quadScans.at(1)->SetMarkerStyle(20);
-  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadScans", 72., 79., BR_APP);
-  //DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP)
   // Now fit for radial field
-
 	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
 
 	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
@@ -473,35 +359,7 @@ int main() {
 	// From Taylor 9.9
 	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 
-	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GTupointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit");
-
-  //GetRadialField(quadSlopes);
-
-
-   // TODO: Write a seperate macro to produce the results
+	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit");
 
 	return 0;
 }
-
- /*
-
-  // Take command line input for the fit mode
-  string fitName;
-  string fitMode;
-  cout << "Select fit mode: '1' (SingleGaus) '2' (DoubleGaus) '3' (LanGaus)\n";
-  cin >> fitName;
-  if (fitName == "1") {
-    fitMode = "SingleGaus";
-    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl; 
-  } else if(fitName == "2") {
-    fitMode = "DoubleGaus";
-    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl;
-  } else if(fitName == "3") {
-    fitMode = "LanGaus";
-    cout << "Using fitMode: "<< fitMode << "\nStarting\n" << endl;
-  } else {
-    cout<<"Invalid fitmode, stopping"<<endl;
-    exit(0);
-  }
-
-  */

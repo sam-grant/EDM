@@ -669,7 +669,7 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 	graphs.at(0)->GetYaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
 	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
-	graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
+	//graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
 
 	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
 
@@ -678,9 +678,9 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 
 	//double field = 
 	// Load legend entries backwards
-	cout<<"Loading legend entries"<<endl;
+	//cout<<"Loading legend entries"<<endl;
 	for( int i = graphs.size()-1; i>-1; i--) {
-		cout<<BR_APP[i]<<endl;
+		//cout<<BR_APP[i]<<endl;
 		l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
 	}
 	
