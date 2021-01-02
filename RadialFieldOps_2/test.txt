@@ -1,0 +1,169 @@
+Run 37857
+Settings 14 kV, -50 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37857.root 0x7fb1ebb8f640
+
+Mean y-position:	72.5851+/-0.0279143
+Total ctags:	1065870
+Total ctags check:	1064792
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37857.root 0x7fb1eb9e2d00
+Run 37869
+Settings 16 kV, -50 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37869.root 0x7fb1e97cb6e0
+
+Mean y-position:	72.0732+/-0.0225984
+Total ctags:	1621080
+Total ctags check:	1619373
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37869.root 0x7fb1ebdf1ff0
+ FCN=1.82345e-14 FROM HESSE     STATUS=OK             10 CALLS         102 TOTAL
+                     EDM=3.6469e-14    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           6.84898e+01   2.66205e-01   1.63292e-05  -1.53679e-05
+   2  p1           5.73340e+01   4.02250e+00   3.14773e-05  -1.01703e-06
+quadLineFit	0x7fb1ebbbd030
+Run 37858
+Settings 14 kV, -30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37858.root 0x7fb1ebf0e130
+
+Mean y-position:	72.9288+/-0.0226779
+Total ctags:	1616137
+Total ctags check:	1614611
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37858.root 0x7fb1ebf116c0
+Run 37868
+Settings 16kV, -30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37868.root 0x7fb1ebe1f8b0
+
+Mean y-position:	73.119+/-0.022902
+Total ctags:	1583888
+Total ctags check:	1582426
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37868.root 0x7fb1ebe2e050
+ FCN=1.4224e-16 FROM HESSE     STATUS=OK             10 CALLS         102 TOTAL
+                     EDM=2.84465e-16    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           7.44504e+01   2.42421e-01   1.77504e-05  -1.47935e-06
+   2  p1          -2.13022e+01   3.60979e+00   3.66530e-05  -9.93509e-08
+quadLineFit	0x7fb1ebe2c830
+Run 37859
+Settings 14kV, -10 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37859.root 0x7fb1ebe1e1b0
+
+Mean y-position:	74.1448+/-0.0178356
+Total ctags:	2621994
+Total ctags check:	2619615
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37859.root 0x7fb1ebf0f9c0
+Run 37867
+Settings 16kV, -10 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37867.root 0x7fb1ebe20500
+
+Mean y-position:	74.2453+/-0.0190314
+Total ctags:	2300274
+Total ctags check:	2298296
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37867.root 0x7fb1ebf0ef90
+ FCN=9.33822e-16 FROM HESSE     STATUS=OK             10 CALLS          62 TOTAL
+                     EDM=1.86761e-15    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           7.49489e+01   1.96895e-01   1.78692e-05   4.69373e-06
+   2  p1          -1.12570e+01   2.92125e+00   3.62301e-05   3.16355e-07
+quadLineFit	0x7fb1ebe2f7d0
+Run 37860
+Settings 14kV, +10 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37860.root 0x7fb1ebe1c220
+
+Mean y-position:	75.3559+/-0.0217483
+Total ctags:	1762916
+Total ctags check:	1761429
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37860.root 0x7fb1e96e7e50
+Run 37866
+Settings 16kV, +10 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37866.root 0x7fb1ebf11040
+
+Mean y-position:	75.2584+/-0.0147147
+Total ctags:	3856510
+Total ctags check:	3852797
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37866.root 0x7fb1ebf12eb0
+ FCN=1.86581e-14 FROM HESSE     STATUS=OK             10 CALLS         102 TOTAL
+                     EDM=3.73163e-14    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           7.45762e+01   1.92442e-01   1.77804e-05  -2.24048e-05
+   2  p1           1.09158e+01   2.94095e+00   3.48866e-05  -1.46606e-06
+quadLineFit	0x7fb1ebe3a620
+Run 37861
+Settings 14kV, +30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37861.root 0x7fb1ebe249e0
+
+Mean y-position:	76.5313+/-0.0178466
+Total ctags:	2614294
+Total ctags check:	2611998
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37861.root 0x7fb1ebf161b0
+Run 37865
+Settings 16kV, +30 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37865.root 0x7fb1ebe2a3d0
+
+Mean y-position:	76.3535+/-0.0254065
+Total ctags:	1289722
+Total ctags check:	1288589
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37865.root 0x7fb1ebf25200
+ FCN=1.16914e-14 FROM HESSE     STATUS=OK             10 CALLS          62 TOTAL
+                     EDM=2.33828e-14    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           7.51090e+01   2.38575e-01   1.79074e-05   1.48012e-05
+   2  p1           1.99118e+01   3.47740e+00   3.21107e-05   1.01547e-06
+quadLineFit	0x7fb1ebe2a840
+Run 37862
+Settings 14kV, +50 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37862.root 0x7fb1ebe317b0
+
+Mean y-position:	77.7892+/-0.0249031
+Total ctags:	1335639
+Total ctags check:	1334549
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37862.root 0x7fb1ebe435b0
+Run 37864
+Settings 16kV, +50 ppm
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37864.root 0x7fb1ebe357b0
+
+Mean y-position:	77.436+/-0.0198802
+Total ctags:	2097942
+Total ctags check:	2096121
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37864.root 0x7fb1ebf18810
+ FCN=6.71549e-15 FROM HESSE     STATUS=OK             10 CALLS         102 TOTAL
+                     EDM=1.3431e-14    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           7.49635e+01   2.35971e-01   1.78727e-05  -1.05433e-05
+   2  p1           3.95598e+01   3.56889e+00   3.51584e-05  -6.97107e-07
+quadLineFit	0x7fb1ebf114a0
+Loading legend entries
+50
+30
+10
+-10
+-30
+-50

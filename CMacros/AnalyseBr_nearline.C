@@ -1,6 +1,15 @@
 #include <iostream>
 #include <vector>
 
+
+#include <fstream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <utility> 
+#include <stdexcept> 
+#include <sstream> 
+
 #include "TFile.h"
 #include "TTreeReader.h"
 #include "TH1D.h"
@@ -12,10 +21,84 @@
 
 using namespace std;
 
-const int N_QHV = 2;
-const int N_FIELD = 2;
-const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+
+
+string scan = "2";
+
+// FIRST SCAN
+// const int N_QHV = 2;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+
+// SECOND SCAN
+const int N_QHV = 4;
+const int N_FIELD = 6;
+const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+
+
+// Read csv file of run, QHV, & Br
+vector<vector<string>> csvReader(string infile) {
+
+  // Columns & rows
+  vector< vector<string> > result;
+
+    // Open file
+  std::ifstream myFile(infile);
+
+    // Check that it opened correctly 
+  if(!myFile.is_open()) throw std::runtime_error("Could not open file");
+
+    // Helper vars
+    std::string line; int val; 
+
+    // Read data, line by line
+    while(std::getline(myFile, line))
+    {
+        // Create a stringstream of the current line
+        std::stringstream ss(line);
+
+        // Put each row in a vector
+        vector<string> row;
+
+        while(ss >> val){
+
+            cout<<val<<endl;
+
+            row.push_back(to_string(val));
+
+            // If the next token is a comma, ignore it and move on
+            if(ss.peek() == ',') ss.ignore();
+            
+        }
+
+        // Store the row vectors in a vector of vectors
+
+        result.push_back(row);
+
+    }
+
+/*    cout<<"\n";
+
+
+    for (int i = 1; i < result.size(); i++ ) {
+
+        vector<float> tmp = result.at(i);
+
+        cout<<tmp.size()<<endl;
+
+        cout<<tmp.at(0)<<", ";
+        cout<<tmp.at(1)<<", ";
+        cout<<tmp.at(2)<<endl;
+
+    }*/
+    // Close file
+    myFile.close();
+
+    return result;
+
+}
 
 // Read tree, produce tuple of y and yerr
 // Also store histograms of y-pos 
@@ -170,7 +253,7 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yPos) {
 
 }
 
-void tmp2(std::vector<TGraphErrors*> graphs, std::string func) {
+/*void tmp2(std::vector<TGraphErrors*> graphs, std::string func) {
 
   for(int i = 0; i < graphs.size(); i++) {
   
@@ -246,7 +329,7 @@ void tmp(std::vector<TGraphErrors*> graphs, std::string func, std::string title,
 
   return;
 
-}
+}*/
 
 
 int main() {
@@ -254,8 +337,25 @@ int main() {
 
    //int N_SET = N_FIELD*N_QHV;
 
-	string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
-	string settings[4] = {"14 kV, +30 ppm", "18 kV, +30 ppm", "14 kV, -30 ppm", "18 kV, -30 ppm"};
+  // FIRST SCAN
+	//string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
+	//string settings[4] = {"14 kV, +30 ppm", "18 kV, +30 ppm", "14 kV, -30 ppm", "18 kV, -30 ppm"};
+
+  // SECOND SCAN
+
+  // TODO: MAKE THIS MORE SCALABLE !!!!! 
+
+  // Get runs, QHV, & Br 
+
+  vector<vector<string>> csv = csvReader("../RadialFieldOps_"+scan+"/scan"+scan+".csv");
+
+  // Loop through settings
+
+  //vector<float> row;
+
+
+  //string runs[14] = {"37857", "37869", "37858", "37868", "37859", "37867", "37860", "37866", "37861", "37865", "37862", "37864"}; //  "37858", "37859", "37860", "37861", "37862", "37864", "37865", "37866", "37867", "37868", "37869", "37871", "37872"};
+  //string settings[14] = {"14 kV, -50 ppm", "16 kV, -50 ppm", "14 kV, -30 ppm", "16kV, -30 ppm", "14kV, -10 ppm", "16kV, -10 ppm", "14kV, +10 ppm", "16kV, +10 ppm", "14kV, +30 ppm", "16kV, +30 ppm","14kV, +50 ppm", "16kV, +50 ppm"};
 
 	int counter = 0;
 
@@ -278,11 +378,13 @@ int main() {
 
       //if(i_quad != 0) continue;
 
-			cout<<"Run "<<runs[counter]<<endl;
-			cout<<"Settings "<<settings[counter]<<endl;
+      vector<string> row = csv.at(counter+1);
 
-			string input = "../Trees/Data/RadialFieldScan_1/merged_noDQC/gm2nearline_hists_run"+runs[counter]+".root";
-			string output = "../Plots/Data/RadialFieldScan_1/noDQC/y-pos_"+runs[counter]+".root";
+			cout<<"Run "<<row.at(0)<<endl;
+			cout<<"Settings "<<row.at(1)<<" "<<row.at(2)<<endl;
+
+			string input = "../Trees/Data/RadialFieldScan_"+scan+"/merged_noDQC/gm2nearline_hists_run"+row.at(0)+".root";
+			string output = "../Plots/Data/RadialFieldScan_"+scan+"/noDQC/y-pos_"+row.at(0)+".root";
 
 			yPos.push_back(ReadYPos(input, output));
 
@@ -317,7 +419,7 @@ int main() {
   // tmp(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_1/QuadScans", 72., 79., BR_APP);
   quadScans.at(0)->SetMarkerStyle(20);
   quadScans.at(1)->SetMarkerStyle(20);
-  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_1/QuadScans", 72., 79., BR_APP);
+  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadScans", 72., 79., BR_APP);
   //DrawQuadScanFits(std::vector<TGraphErrors*> graphs, string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP)
   // Now fit for radial field
 
@@ -335,7 +437,7 @@ int main() {
 	// From Taylor 9.9
 	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 
-	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GTupointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_1/FieldFit");
+	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GTupointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit");
 
   //GetRadialField(quadSlopes);
 

@@ -14,10 +14,14 @@ int main() {
 	DrawTF1(f1,";x;y","../Images/MC/ToyRadialFieldScan/HigherOrder/f1");
 
 
-	TF1 *f2 = new TF1("f2","[0]*cos(x-[1])/(1-0.108)",0,2*TMath::Pi());
+	// TF1 *f2 = new TF1("f2","[0]*cos(x-[1])/(1-0.108)",0,2*TMath::Pi());
+	TF1 *f2 = new TF1("f2","([0]*cos(x) + [1]*sin(x))/(1-0.108)",0,2*TMath::Pi());
+
 	//f2->SetParameters(8,10000,TMath::Pi(),TMath::Pi()/2);
 	f2->SetParameters(0.5e-3/3,-TMath::Pi()/2);//8,10000,TMath::Pi(),TMath::Pi()/2);
 	DrawTF1(f2,";x;y","../Images/MC/ToyRadialFieldScan/HigherOrder/f2");
+
+	/*
 
 	TF1 *f3 = new TF1("f3","[0]*cos(2*x-[1])/(4-0.108)",0,2*TMath::Pi());
 	//f3->SetParameters(8,8,TMath::Pi(),TMath::Pi()/2,1000,-TMath::Pi()/2);
@@ -62,6 +66,8 @@ int main() {
 
 	c1->SaveAs("../Images/MC/ToyRadialFieldScan/HigherOrder/FuncOverlay.pdf");
 	c1->SaveAs("../Images/MC/ToyRadialFieldScan/HigherOrder/FuncOverlay.png");
+
+	*/
 
 	return 0;
 }
