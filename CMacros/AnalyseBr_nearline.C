@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 
-
 #include <fstream>
 #include <string>
 #include <fstream>
@@ -86,10 +85,10 @@ vector<vector<string>> csvReader(string infile) {
 
 }
 
-// Read tree, produce tuple of y and yerr
+// Read tree, produce tuple of y, yerr, & ctag
 // Also store histograms of y-pos 
 
-tuple<double, double> ReadYPos(string input, string output) {
+tuple<double, double, int> ReadYPos(string input, string output) {
 
    // ++++++++++++++ Open tree and load branches ++++++++++++++
 
@@ -213,19 +212,19 @@ tuple<double, double> ReadYPos(string input, string output) {
    f1->Close();
    f2->Close();
 
-   return make_tuple(yPos,eyPos);
+   return make_tuple(yPos, eyPos, tot_ctag);
 
 }
 
 
 
-TGraphErrors *QuadScan(vector<tuple<double, double>> yPos, vector<float> QHV_tmp) {
+TGraphErrors *QuadScan(vector<tuple<double, double>> yVal, vector<float> QHV_tmp) {
 
   // CAN'T USE GLOBAL QHV SINCE SOME SETTINGS ARE BROKEN
 
   // Loop through y-pos and fill a TGraph
 
-  int n = yPos.size();
+  int n = yVal.size();
 
 	double x[n]; double ex[n];
 	double y[n]; double ey[n];
@@ -238,21 +237,222 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yPos, vector<float> QHV_tmp
 
 	for ( int i_quad = 0; i_quad < n; i_quad++ ) {
 
-    double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
+    //double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
 
 		x[i_quad] = 1/QHV_tmp.at(i_quad);
 		ex[i_quad] = 0.0;
-		y[i_quad] = get<0>(yPos[i_quad]);
-		ey[i_quad] = get<1>(yPos[i_quad]);
+		y[i_quad] = get<0>(yVal[i_quad]);
+		ey[i_quad] = get<1>(yVal[i_quad]);
 
-    cout<<"QHV [kV]\t"<<QHV[i_quad]<<"\n";
-    cout<<"x\t"<<x[i_quad]<<"+/-"<<ex[i_quad]<<"\n"; 
-    cout<<"y\t"<<y[i_quad]<<"+/-"<<ey[i_quad]<<endl;
+    //cout<<"QHV [kV]\t"<<QHV[i_quad]<<"\n";
+    //cout<<"x\t"<<x[i_quad]<<"+/-"<<ex[i_quad]<<"\n"; 
+    //cout<<"y\t"<<y[i_quad]<<"+/-"<<ey[i_quad]<<endl;
 
 	}
 
 	return new TGraphErrors(n,x,y,ex,ey);
 
+
+}
+
+// Pass quad scans to chi square drawer
+// DrawQuadScanFitQual(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT;#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/QuadChiSqrs"); 
+void DrawQuadScanChiSqr(vector<TGraphErrors*> graphs, string func, string title, string fname) { 
+
+  //vector<double> chiSqrs;
+
+  int n = graphs.size();
+
+  double chiSqrs[n]; double zeros[n];
+
+  // Loop through fits and grab the chi sqr
+  for (int i_fit = 0; i_fit < graphs.size(); i_fit++) {
+
+    TF1 *fit = graphs.at(i_fit)->GetFunction(func.c_str());
+
+    chiSqrs[i_fit] = fit->GetChisquare() / fit->GetNDF();
+
+  }
+
+  // Draw them in TGraph
+
+  TGraphErrors *gr = new TGraphErrors(n, BR_APP, chiSqrs, zeros, zeros);
+
+  DrawTGraphErrors(gr, title, fname);
+
+  return;
+
+}
+
+vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func) { // ;// , string title, string fname) { 
+
+  vector<TGraphErrors*> residuals;
+
+  int n_graphs = graphs.size();
+
+
+  // Loop through fits and grab the chi sqr
+  for (int i_fit = 0; i_fit < n_graphs; i_fit++) {
+
+    TF1 *fit = graphs.at(i_fit)->GetFunction(func.c_str());
+
+    // Loop thro data points
+
+    int n_points = graphs.at(i_fit)->GetN();
+
+    double x[n_points]; double y[n_points]; double zeros[n_points]; 
+
+    for (int i_point = 0; i_point < n_points; i_point++) { 
+
+      x[i_point] = graphs.at(i_fit)->GetPointX(i_point);
+      y[i_point] = graphs.at(i_fit)->GetPointY(i_point) - fit->Eval(x[i_point]); 
+      zeros[i_point] = 0.;
+
+    }
+
+    TGraphErrors *gr = new TGraphErrors(n_points, x, y, zeros, zeros);
+
+    residuals.push_back(gr); 
+
+  }
+
+  return residuals;
+  
+}
+
+void DrawQuadScanNoFit(vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax) { // const double *BR_APP) { , ,  {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+  c->SetRightMargin(0.20);
+
+  graphs.at(0)->SetTitle(title.c_str());
+  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetYaxis()->SetTitleOffset(1.25);
+  graphs.at(0)->GetXaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+  //graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
+
+  TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+
+  l->SetBorderSize(0);
+  l->SetHeader("#LTB_{r}^{App}#GT","C");
+
+  //double field = 
+  // Load legend entries backwards
+  //cout<<"Loading legend entries"<<endl;
+  for( int i = graphs.size()-1; i>-1; i--) {
+    //cout<<BR_APP[i]<<endl;
+    l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
+  }
+  
+  for(int i = 0; i < graphs.size(); i++) {
+    
+    graphs.at(i)->SetMarkerStyle(20);
+    if(i+1 != 5) {
+      graphs.at(i)->SetMarkerColor(i+1); // Stop that yellow colour at all costs
+      graphs.at(i)->SetLineColor(i+1);
+    } else {
+      graphs.at(i)->SetMarkerColor(kOrange-3);
+      graphs.at(i)->SetLineColor(kOrange-3);
+    }
+    
+
+    if(i==0) graphs.at(0)->Draw("APL");
+    else {
+      graphs.at(i)->Draw("PL SAME");
+    }
+
+  }
+
+  l->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
+
+double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_point) { 
+
+  double pVal;
+
+  if(i_point == -1) {
+
+    TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
+
+    TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
+    TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
+
+    double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
+    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+
+    // x-intercept 
+    double Br = fabs(p0/p1);
+
+    // From Taylor 9.9
+    double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
+
+    // Sanity check
+    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit_pValCheck"+to_string(i_point));
+
+    pVal = mainFit->GetProb();
+
+  } else {
+
+    int n_new = 5;
+
+    double y_new[n_new]; double ey_new[n_new];
+    double x_new[n_new]; double ex_new[n_new];
+
+    for (int i = 0; i<N_FIELD; i++) {
+
+      if(i<i_point) { 
+
+        x_new[i] = x[i]; ex_new[i] = ex[i]; 
+        y_new[i] = y[i]; ey_new[i] = ey[i];
+
+      } else {
+
+        x_new[i] = x[i+1]; ex_new[i] = ex[i+1]; 
+        y_new[i] = y[i+1]; ey_new[i] = ey[i+1];
+
+      }
+
+    }
+
+    TGraphErrors *result = new TGraphErrors(n_new, x_new, y_new, ex_new, ey_new);
+
+    TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
+    TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
+
+    double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
+    double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+
+    // x-intercept 
+    double Br = fabs(p0/p1);
+
+    // From Taylor 9.9
+    double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
+
+    // Sanity check
+    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit_pValCheck"+to_string(i_point));
+
+    pVal = mainFit->GetProb();
+
+    delete result; 
+
+  }
+
+  return pVal;
 
 }
 
@@ -274,7 +474,11 @@ int main() {
 	int counter = 0;
 
   // Vector to hold the quad scans at each field setting
-	vector<TGraphErrors*> quadScans;
+	vector<TGraphErrors*> quadScans; 
+
+  // vector<TGraphErrors*> quadScanResiduals;
+
+  vector<TGraphErrors*> quadScanCTAGs;
 
 	// Field fit variables
 	double x[N_FIELD]; double ex[N_FIELD];
@@ -286,11 +490,13 @@ int main() {
     // Book vector for y-pos per quad setting
 		vector<tuple<double, double>> yPos;
 
+    // Book vector for ctag, should be ints but need doubles for function to work
+    vector<tuple<double, double>> ctags; // Second one is just a dummy
+
     vector<float> QHV_tmp; 
 
     // =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
-
 
       cout<<"Counter: "<<counter<<endl;
 
@@ -311,18 +517,29 @@ int main() {
 
       }
 
+      string input = "../Trees/Data/RadialFieldScan_"+scan+"/merged_noDQC/gm2nearline_hists_run"+row.at(0)+".root";
+      string output = "../Plots/Data/RadialFieldScan_"+scan+"/noDQC/y-pos_"+row.at(0)+".root";
+
+      // Get info
+      tuple<double, double, int> data_tuple = ReadYPos(input, output);
+
       QHV_tmp.push_back(QHV[i_quad]);
 
-			string input = "../Trees/Data/RadialFieldScan_"+scan+"/merged_noDQC/gm2nearline_hists_run"+row.at(0)+".root";
-			string output = "../Plots/Data/RadialFieldScan_"+scan+"/noDQC/y-pos_"+row.at(0)+".root";
+			yPos.push_back(make_tuple(get<0>(data_tuple), get<1>(data_tuple)));
 
-			yPos.push_back(ReadYPos(input, output));
+      ctags.push_back(make_tuple(double(get<2>(data_tuple)), 0.));
 
 			counter++;
 
 		}
 
-    TGraphErrors *quadScan = QuadScan(yPos, QHV_tmp);
+    // TODO: sort out this "tmp" thing. Introduced to patch the fact that some settings are broken.
+
+    TGraphErrors *quadScan = QuadScan(yPos, QHV_tmp); // QHV_tmp);
+
+    //TGraphErrors *quadScanCTAG = ; 
+
+    quadScanCTAGs.push_back(QuadScan(ctags, QHV_tmp));
 
     	// Fit for quad gradient and store
     TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
@@ -330,7 +547,6 @@ int main() {
 		quadScan->Fit(quadLineFit,"M");
 
     cout<<"quadLineFit\t"<<quadLineFit<<endl;
-
 
 		quadScans.push_back(quadScan);
 
@@ -344,7 +560,19 @@ int main() {
   // Draw quad scans 
   DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadScans", 71., 79., BR_APP);
 
-  // Now fit for radial field
+  // ++++++++++++++++ Some checks on the quad scans ++++++++++++++++ 
+  // Pass quad scans to chi square drawer
+  DrawQuadScanChiSqr(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/QuadChiSqrs"); 
+
+  // Get fit residual, this is crazy... TODO: make this more in line with the ctag one
+  vector<TGraphErrors*> quadScanResiduals = GetQuadScanRes(quadScans, "quadLineFit");//, "Residual", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes");
+  DrawQuadScanNoFit(quadScanResiduals, ";1/QHV [kV^{-1}];Fit residual [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes", -0.05, 0.05);
+
+  // Draw CTAGs per fit
+  DrawQuadScanNoFit(quadScanCTAGs, ";1/QHV [kV^{-1}];Integrated CTAGs / setting", "../Images/Data/RadialFieldScan_"+scan+"/QuadCTAGs", 1e6, 4.5e6); 
+
+  // ++++++++++++++++ Fit for radial field ++++++++++++++++ 
+
 	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
 
 	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
@@ -361,5 +589,29 @@ int main() {
 
 	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit");
 
+  // ++++++++++++++++ Check p-values ++++++++++++++++ 
+
+
+  cout<<"\nP-VALUE STUFF\n";
+
+  // twat
+
+  double x_tmp[N_FIELD+1]; double y_tmp[N_FIELD+1]; double zeros[N_FIELD+1];
+
+  for (int i_point = -1; i_point < N_FIELD; i_point++) { 
+
+    double pVal = pValuePointCheck(x,y,ex,ey,i_point);
+
+    cout<<"\np-value at "<<i_point<<"\t"<<pVal<<endl;
+
+    x_tmp[i_point+1] = i_point+1;
+    y_tmp[i_point+1] = pVal;
+    zeros[i_point+1] = 0.;  
+
+  }
+
+  TGraphErrors *pValGr = new TGraphErrors(N_FIELD+1, x_tmp, y_tmp, zeros, zeros);
+
+  DrawTGraphErrors(pValGr,"test","../Images/Data/RadialFieldScan_"+scan+"/pVals");
 	return 0;
 }

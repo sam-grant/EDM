@@ -80,14 +80,43 @@ void analyser(){
 	quadScan_m10->Fit(quadFit_m10, "M"); 
 	quadScan_p10->Fit(quadFit_p10, "M"); 
 	quadScan_p30->Fit(quadFit_p30, "M"); 
-	quadScan_p50->Fit(quadFit_p50, "M");  
+	quadScan_p50->Fit(quadFit_p50, "M"); 
 
-	//cout<<"NDF 1:\t"<<quadFit1->GetNDF()<<endl;
-	//cout<<"chi2ndf 1:\t"<<quadFit1->GetChisquare()<<endl;
-	//cout<<"chi2ndf red 1:\t"<<quadFit1->GetChisquare()/quadFit1->GetNDF()<<endl;
-	//cout<<"NDF 2:\t"<<quadFit2->GetNDF()<<endl;
-	//cout<<"chi2ndf 2:\t"<<quadFit2->GetChisquare()<<endl;
-	//cout<<"chi2ndf red 2:\t"<<quadFit2->GetChisquare()/quadFit2->GetNDF()<<endl;
+	double chi_p50 = quadFit_p50->GetChisquare()/quadFit_p50->GetNDF();
+	double chi_p30 = quadFit_p30->GetChisquare()/quadFit_p30->GetNDF();
+	double chi_p10 = quadFit_p10->GetChisquare()/quadFit_p10->GetNDF();
+	double chi_m10 = quadFit_m10->GetChisquare()/quadFit_m10->GetNDF();
+	double chi_m30 = quadFit_m30->GetChisquare()/quadFit_m30->GetNDF();
+	double chi_m50 = quadFit_m50->GetChisquare()/quadFit_m50->GetNDF();
+
+	cout<<"chi_m50\t"<<chi_m50<<endl;
+	cout<<"chi_m30\t"<<chi_m30<<endl;
+	cout<<"chi_m10\t"<<chi_m10<<endl;
+	cout<<"chi_p10\t"<<chi_p10<<endl;
+	cout<<"chi_p30\t"<<chi_p30<<endl;
+	cout<<"chi_p50\t"<<chi_p50<<endl;
+
+	double chis[6] = {chi_m50, chi_m30, chi_m10, chi_p10, chi_p30, chi_p50};
+	double br_app[6] = {-50., -30., -10., 10., 30., 50.};
+
+	TGraph *quad_chi = new TGraph(6, br_app, chis);
+
+	TCanvas *c0 = new TCanvas("c0", "c0", 800, 600);
+
+	quad_chi->SetMarkerStyle(20);
+	quad_chi->SetTitle(";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf");
+	quad_chi->GetXaxis()->SetTitleSize(.04);
+	quad_chi->GetYaxis()->SetTitleSize(.04);
+	quad_chi->GetXaxis()->SetTitleOffset(1.1);
+	quad_chi->GetYaxis()->SetTitleOffset(1.1);
+	quad_chi->GetXaxis()->CenterTitle(true);
+	quad_chi->GetYaxis()->CenterTitle(true);
+	quad_chi->Draw("AP");
+
+	c0->SaveAs("Images/quad_chi.pdf");
+	c0->SaveAs("Images/quad_chi.png");
+	c0->SaveAs("Images/quad_chi.C");
+	
 
 	// Draw
 	TCanvas *c1 = new TCanvas("c1","c1",800,600);
@@ -135,7 +164,7 @@ void analyser(){
 
 	double BrTot[6] = {
 		quadFit_m50->GetParameter(1),
-		quadFit_m30->GetParameter(1),
+		//quadFit_m30->GetParameter(1),
 		quadFit_m10->GetParameter(1),
 		quadFit_p10->GetParameter(1),
 		quadFit_p30->GetParameter(1),
@@ -148,7 +177,7 @@ void analyser(){
 	double BrToTErr[6] = {
 
 		quadFit_m50->GetParError(1),
-		quadFit_m30->GetParError(1),
+		//quadFit_m30->GetParError(1),
 		quadFit_m10->GetParError(1),
 		quadFit_p10->GetParError(1),
 		quadFit_p30->GetParError(1),
@@ -156,11 +185,12 @@ void analyser(){
 
 	}; 
 
-	//double BrToTErr[6] = {0., 0., 0., 0., 0., 0.,};
+	double BrToTErr[6] = {0., 0., 0., 0., 0., 0.,};
 
 	double BrApp[6] = {-50, -30, -10, 10, 30, 50};
+	// double BrApp[5] = {-50, -10, 10, 30, 50};
 
-	TGraphErrors *result = new TGraphErrors(6, BrApp, BrTot, zeros, BrToTErr);
+	TGraphErrors *result = new TGraphErrors(5, BrApp, BrTot, zeros, BrToTErr);
 	TF1 *finalFit = new TF1("finalFit", "[0]+[1]*x");
 	TFitResultPtr mainFitRes = result->Fit(finalFit,"SMQ");
 	//result->Fit(finalFit,"M");
@@ -170,12 +200,16 @@ void analyser(){
 	double err0 = finalFit->GetParError(0);
 	double par1 = finalFit->GetParameter(1);
 	double err1 = finalFit->GetParError(1);
+	double pval = finalFit->GetProb();
 	// We want to retain the sign here
 	double xint = - par0 / par1; 
 		// From Taylor 9.9
 	
 	double BrErr = fabs(xint) * sqrt(pow(err0/par0,2) + pow(err1/par1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(par0*par1));
 	double xint_err = BrErr;
+
+	// Print p-value
+	cout<<"Main fit p-value\t"<<pval<<endl;
 
 	// Draw
 	TCanvas *c2 = new TCanvas("c2","c2",800,600);

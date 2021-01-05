@@ -1,7 +1,7 @@
 void QuadScans()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat Jan  2 16:26:03 2021) by ROOT version 6.22/06
+//=========  (Mon Jan  4 18:20:54 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0.04581371,70,0.08035061,80);
@@ -394,8 +394,12 @@ void QuadScans()
    gre->SetName("Graph4");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
-   gre->SetLineColor(5);
-   gre->SetMarkerColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   gre->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff9900");
+   gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph41009 = new TH1F("Graph_Graph41009","Graph",100,0.0492674,0.07344323);
@@ -420,7 +424,9 @@ void QuadScans()
    TF1 *quadLineFit1010 = new TF1("quadLineFit","[0]+[1]*x",0.0492674,0.07344323, TF1::EAddToList::kNo);
    quadLineFit1010->SetFillColor(19);
    quadLineFit1010->SetFillStyle(0);
-   quadLineFit1010->SetLineColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   quadLineFit1010->SetLineColor(ci);
    quadLineFit1010->SetLineWidth(2);
    quadLineFit1010->SetChisquare(0.3781269);
    quadLineFit1010->SetNDF(2);
@@ -442,7 +448,9 @@ void QuadScans()
    TF1 *quadLineFit1011 = new TF1("quadLineFit","[0]+[1]*x",0.0492674,0.07344323, TF1::EAddToList::kNo);
    quadLineFit1011->SetFillColor(19);
    quadLineFit1011->SetFillStyle(0);
-   quadLineFit1011->SetLineColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   quadLineFit1011->SetLineColor(ci);
    quadLineFit1011->SetLineWidth(2);
    quadLineFit1011->SetChisquare(0.3781269);
    quadLineFit1011->SetNDF(2);
@@ -571,10 +579,14 @@ void QuadScans()
    entry->SetTextFont(42);
    entry=leg->AddEntry("Graph4","  #minus30 ppm","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   entry->SetLineColor(ci);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
-   entry->SetMarkerColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   entry->SetMarkerColor(ci);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);

@@ -689,10 +689,18 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
 		//cout<<fit<<endl;
 		//it->SetLineColor(kBlack);
-		fit->SetLineColor(i+1); 
+		
 		graphs.at(i)->SetMarkerStyle(20);
-		graphs.at(i)->SetMarkerColor(i+1); // kBlack (nearline)
-		graphs.at(i)->SetLineColor(i+1);
+
+    	if(i+1 != 5) {
+    		fit->SetLineColor(i+1); 
+      		graphs.at(i)->SetMarkerColor(i+1); // Stop that yellow colour at all costs
+      		graphs.at(i)->SetLineColor(i+1);
+    	} else {
+    		fit->SetLineColor(kOrange-3); 
+    		graphs.at(i)->SetMarkerColor(kOrange-3);
+    		graphs.at(i)->SetLineColor(kOrange-3);
+    	}		
 
 		if(i==0) graphs.at(0)->Draw("AP");
 		else {

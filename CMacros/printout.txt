@@ -1,0 +1,347 @@
+Counter: 0
+Run 37857
+Settings according to csv 14 -50
+Settings according to global 14 -50
+Run 37857 is bad. Skipping
+Counter: 1
+Run 37869
+Settings according to csv 16 -50
+Settings according to global 16 -50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37869.root 0x7fbf41b866e0
+
+Mean y-position:	72.0732+/-0.0225984
+Total ctags:	1621080
+Total ctags check:	1619373
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37869.root 0x7fbf41ce65b0
+Counter: 2
+Run 37871
+Settings according to csv 18 -50
+Settings according to global 18 -50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37871.root 0x7fbf41bc72f0
+
+Mean y-position:	72.3307+/-0.0175252
+Total ctags:	2695379
+Total ctags check:	2692482
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37871.root 0x7fbf3f7ca120
+Counter: 3
+Run 37882
+Settings according to csv 195 -50
+Settings according to global 19.5 -50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37882.root 0x7fbf3f7d7da0
+
+Mean y-position:	72.5039+/-0.0187124
+Total ctags:	2362827
+Total ctags check:	2360453
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37882.root 0x7fbf41cd8300
+
+********** Quad scan printout **********
+x	0.0714286+/-0
+y	0.0714286+/-0.0187124
+ FCN=0 FROM HESSE     STATUS=NOT POSDEF     10 CALLS          52 TOTAL
+                     EDM=0    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.62519e+01   2.96016e-01   3.54023e-04   0.00000e+00
+   2  p1           5.07527e+02   4.14423e+00   4.95632e-03   0.00000e+00
+quadLineFit	0x7fbf41ce5ef0
+Counter: 4
+Run 37858
+Settings according to csv 14 -30
+Settings according to global 14 -30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37858.root 0x7fbf41f0fec0
+
+Mean y-position:	72.9288+/-0.0226779
+Total ctags:	1616137
+Total ctags check:	1614611
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37858.root 0x7fbf41bd6610
+Counter: 5
+Run 37868
+Settings according to csv 16 -30
+Settings according to global 16 -30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37868.root 0x7fbf41e081c0
+
+Mean y-position:	73.119+/-0.022902
+Total ctags:	1583888
+Total ctags check:	1582426
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37868.root 0x7fbf41e21550
+Counter: 6
+Run 37872
+Settings according to csv 18 -30
+Settings according to global 18 -30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37872.root 0x7fbf41f11460
+
+Mean y-position:	73.2948+/-0.0172034
+Total ctags:	2807389
+Total ctags check:	2804680
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37872.root 0x7fbf41bde920
+Counter: 7
+Run 37881
+Settings according to csv 195 -30
+Settings according to global 19.5 -30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37881.root 0x7fbf41e20800
+
+Mean y-position:	73.395+/-0.0139087
+Total ctags:	4296272
+Total ctags check:	4292010
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37881.root 0x7fbf41f13350
+
+********** Quad scan printout **********
+x	0.0714286+/-0
+y	0.0714286+/-0.0139087
+ FCN=0 FROM HESSE     STATUS=NOT POSDEF     10 CALLS          52 TOTAL
+                     EDM=0    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.66975e+01   2.20026e-01   3.58374e-04   0.00000e+00
+   2  p1           5.13765e+02   3.08036e+00   5.01724e-03   0.00000e+00
+quadLineFit	0x7fbf41e0c520
+Counter: 8
+Run 37859
+Settings according to csv 14 -10
+Settings according to global 14 -10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37859.root 0x7fbf41f280c0
+
+Mean y-position:	74.1448+/-0.0178356
+Total ctags:	2621994
+Total ctags check:	2619615
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37859.root 0x7fbf3f7f07b0
+Counter: 9
+Run 37867
+Settings according to csv 16 -10
+Settings according to global 16 -10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37867.root 0x7fbf41f297c0
+
+Mean y-position:	74.2453+/-0.0190314
+Total ctags:	2300274
+Total ctags check:	2298296
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37867.root 0x7fbf41f3d1d0
+Counter: 10
+Run 37873
+Settings according to csv 18 -10
+Settings according to global 18 -10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37873.root 0x7fbf41e444b0
+
+Mean y-position:	74.2103+/-0.0186503
+Total ctags:	2395007
+Total ctags check:	2392819
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37873.root 0x7fbf41be8a10
+Counter: 11
+Run 37880
+Settings according to csv 194 -10
+Settings according to global 19.5 -10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37880.root 0x7fbf41be84f0
+
+Mean y-position:	74.3001+/-0.021126
+Total ctags:	1866255
+Total ctags check:	1864351
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37880.root 0x7fbf3f7f1170
+
+********** Quad scan printout **********
+x	0.0714286+/-0
+y	0.0714286+/-0.021126
+ FCN=0 FROM HESSE     STATUS=NOT POSDEF     10 CALLS          56 TOTAL
+                     EDM=5.70694e-23    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.71500e+01   3.34198e-01   8.85726e-06   3.18409e-11
+   2  p1           5.20101e+02   4.67877e+00   1.24002e-04   4.54871e-12
+quadLineFit	0x7fbf3f7f1cd0
+Counter: 12
+Run 37860
+Settings according to csv 14 10
+Settings according to global 14 10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37860.root 0x7fbf3f7f5ae0
+
+Mean y-position:	75.3559+/-0.0217483
+Total ctags:	1762916
+Total ctags check:	1761429
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37860.root 0x7fbf41e52db0
+Counter: 13
+Run 37866
+Settings according to csv 16 10
+Settings according to global 16 10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37866.root 0x7fbf41f2bbd0
+
+Mean y-position:	75.2584+/-0.0147147
+Total ctags:	3856510
+Total ctags check:	3852797
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37866.root 0x7fbf41e3cf30
+Counter: 14
+Run 37874
+Settings according to csv 18 10
+Settings according to global 18 10
+Run 37874 is bad. Skipping
+Counter: 15
+Run 37879
+Settings according to csv 195 10
+Settings according to global 19.5 10
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37879.root 0x7fbf41e39e70
+
+Mean y-position:	75.1707+/-0.0190428
+Total ctags:	2300539
+Total ctags check:	2298394
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37879.root 0x7fbf3f7f6630
+
+********** Quad scan printout **********
+x	0.0714286+/-0
+y	0.0714286+/-0.0190428
+ FCN=5.569e-25 FROM HESSE     STATUS=NOT POSDEF     10 CALLS          52 TOTAL
+                     EDM=1.11269e-24    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.75853e+01   3.01244e-01   8.96104e-06  -7.83767e-11
+   2  p1           5.26195e+02   4.21742e+00   1.25455e-04  -5.59833e-12
+quadLineFit	0x7fbf41e38f70
+Counter: 16
+Run 37861
+Settings according to csv 14 30
+Settings according to global 14 30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37861.root 0x7fbf41e3a680
+
+Mean y-position:	76.5313+/-0.0178466
+Total ctags:	2614294
+Total ctags check:	2611998
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37861.root 0x7fbf3f7f31b0
+Counter: 17
+Run 37865
+Settings according to csv 16 30
+Settings according to global 16 30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37865.root 0x7fbf41f3e260
+
+Mean y-position:	76.3535+/-0.0254065
+Total ctags:	1289722
+Total ctags check:	1288589
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37865.root 0x7fbf3f7fa370
+Counter: 18
+Run 37875
+Settings according to csv 18 30
+Settings according to global 18 30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37875.root 0x7fbf41e54a00
+
+Mean y-position:	76.1957+/-0.0168674
+Total ctags:	2927326
+Total ctags check:	2924385
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37875.root 0x7fbf41f37230
+Counter: 19
+Run 37878
+Settings according to csv 195 30
+Settings according to global 19.5 30
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37878.root 0x7fbf41f3f070
+
+Mean y-position:	76.1127+/-0.0204641
+Total ctags:	1985619
+Total ctags check:	1983781
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37878.root 0x7fbf41e3ff50
+
+********** Quad scan printout **********
+x	0.0714286+/-0
+y	0.0714286+/-0.0204641
+ FCN=0 FROM HESSE     STATUS=NOT POSDEF     10 CALLS          52 TOTAL
+                     EDM=0    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.80563e+01   3.23728e-01   3.71644e-04   0.00000e+00
+   2  p1           5.32789e+02   4.53219e+00   5.20302e-03   0.00000e+00
+quadLineFit	0x7fbf41f3fa30
+Counter: 20
+Run 37862
+Settings according to csv 14 50
+Settings according to global 14 50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37862.root 0x7fbf430031e0
+
+Mean y-position:	77.7892+/-0.0249031
+Total ctags:	1335639
+Total ctags check:	1334549
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37862.root 0x7fbf43004670
+Counter: 21
+Run 37864
+Settings according to csv 16 50
+Settings according to global 16 50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37864.root 0x7fbf41f40070
+
+Mean y-position:	77.436+/-0.0198802
+Total ctags:	2097942
+Total ctags check:	2096121
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37864.root 0x7fbf41f36850
+Counter: 22
+Run 37876
+Settings according to csv 18 50
+Settings according to global 18 50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37876.root 0x7fbf41f32510
+
+Mean y-position:	77.1666+/-0.0206094
+Total ctags:	1956313
+Total ctags check:	1954344
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37876.root 0x7fbf41f33910
+Counter: 23
+Run 37877
+Settings according to csv 195 50
+Settings according to global 19.5 50
+
+Opened tree:	../Trees/Data/RadialFieldScan_2/merged_noDQC/gm2nearline_hists_run37877.root 0x7fbf41bef010
+
+Mean y-position:	77.0001+/-0.0201256
+Total ctags:	2051103
+Total ctags check:	2049274
+
+Written histograms to:	../Plots/Data/RadialFieldScan_2/noDQC/y-pos_37877.root 0x7fbf43005d00
+
+********** Quad scan printout **********
+x	0.0714286+/-0
+y	0.0714286+/-0.0201256
+ FCN=4.98591e-25 FROM HESSE     STATUS=NOT POSDEF     10 CALLS          54 TOTAL
+                     EDM=2.49046e-25    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.85001e+01   3.18372e-01   9.17913e-06  -3.50852e-11
+   2  p1           5.39001e+02   4.45721e+00   1.28508e-04  -2.50609e-12
+quadLineFit	0x7fbf41e49660
+Loading legend entries
+50
+30
+10
+-10
+-30
+-50
