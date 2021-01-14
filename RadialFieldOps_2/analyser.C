@@ -162,35 +162,36 @@ void analyser(){
 
 	// Now calc the background field
 
-	double BrTot[6] = {
-		quadFit_m50->GetParameter(1),
+	double BrTot[2] = {
+		//quadFit_m50->GetParameter(1),
 		//quadFit_m30->GetParameter(1),
 		quadFit_m10->GetParameter(1),
 		quadFit_p10->GetParameter(1),
-		quadFit_p30->GetParameter(1),
-		quadFit_p50->GetParameter(1)
+		//quadFit_p30->GetParameter(1),
+		//quadFit_p50->GetParameter(1)
 	};
 
 
 
 
-	double BrToTErr[6] = {
+	double BrToTErr[2] = {
 
-		quadFit_m50->GetParError(1),
+		//quadFit_m50->GetParError(1),
 		//quadFit_m30->GetParError(1),
 		quadFit_m10->GetParError(1),
 		quadFit_p10->GetParError(1),
-		quadFit_p30->GetParError(1),
-		quadFit_p50->GetParError(1)
+		//quadFit_p30->GetParError(1),
+		//quadFit_p50->GetParError(1)
 
 	}; 
 
-	double BrToTErr[6] = {0., 0., 0., 0., 0., 0.,};
+	// double BrToTErr[6] = {0., 0., 0., 0., 0., 0.,};
+	//double BrToTErr[2] = {0., 0.};//, 0., 0., 0., 0.,};
 
-	double BrApp[6] = {-50, -30, -10, 10, 30, 50};
-	// double BrApp[5] = {-50, -10, 10, 30, 50};
+	//double BrApp[6] = {-50, -30, -10, 10, 30, 50};
+	double BrApp[2] = {-10, 10};
 
-	TGraphErrors *result = new TGraphErrors(5, BrApp, BrTot, zeros, BrToTErr);
+	TGraphErrors *result = new TGraphErrors(2, BrApp, BrTot, zeros, BrToTErr);
 	TF1 *finalFit = new TF1("finalFit", "[0]+[1]*x");
 	TFitResultPtr mainFitRes = result->Fit(finalFit,"SMQ");
 	//result->Fit(finalFit,"M");
@@ -264,9 +265,9 @@ void analyser(){
 	x_line->Draw("same");
 	y_line->Draw("same");
 
-	c2->SaveAs("Images/result.pdf");
-	c2->SaveAs("Images/result.png");
-	c2->SaveAs("Images/result.C");
+	c2->SaveAs("Images/result_+-10ppm.pdf");
+	c2->SaveAs("Images/result_+-10ppm.png");
+	c2->SaveAs("Images/result_+-10ppm.C");
 
 	delete c2;
 	//fit->Draw("same");

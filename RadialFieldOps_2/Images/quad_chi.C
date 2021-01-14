@@ -1,8 +1,8 @@
 void quad_chi()
 {
 //=========Macro generated from canvas: c0/c0
-//=========  (Sun Jan  3 12:08:33 2021) by ROOT version 6.22/06
-   TCanvas *c0 = new TCanvas("c0", "c0",0,0,800,600);
+//=========  (Tue Jan  5 12:34:50 2021) by ROOT version 6.22/06
+   TCanvas *c0 = new TCanvas("c0", "c0",1120,480,800,600);
    c0->Range(-75,-0.673563,75,6.144407);
    c0->SetFillColor(0);
    c0->SetBorderMode(0);

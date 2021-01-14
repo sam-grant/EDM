@@ -1,8 +1,8 @@
 void quadScans()
 {
 //=========Macro generated from canvas: c1/c1
-//=========  (Sun Jan  3 12:08:33 2021) by ROOT version 6.22/06
-   TCanvas *c1 = new TCanvas("c1", "c1",0,0,800,600);
+//=========  (Tue Jan  5 12:34:51 2021) by ROOT version 6.22/06
+   TCanvas *c1 = new TCanvas("c1", "c1",1120,480,800,600);
    c1->Range(0.04581371,71.125,0.0803506,79.875);
    c1->SetFillColor(0);
    c1->SetBorderMode(0);

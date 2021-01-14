@@ -407,6 +407,53 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	return;
 
 }
+
+void DrawTGraphResiduals(TGraphErrors *graph, string func, string title, string fname) { 
+
+  // Get function 
+  TF1 *fit = graph->GetFunction(func.c_str());
+
+  // Loop through points
+  int n_points = graph->GetN();
+
+  // Setup arrays for new TGraph
+  double x[n_points]; double y[n_points]; double zeros[n_points]; 
+
+  for (int i_point = 0; i_point < n_points; i_point++) { 
+
+      x[i_point] = graph->GetPointX(i_point);
+      y[i_point] = graph->GetPointY(i_point) - fit->Eval(x[i_point]); 
+      zeros[i_point] = 0.;
+
+    }
+
+  TGraphErrors *residuals = new TGraphErrors(n_points, x, y, zeros, zeros);
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  residuals->SetTitle(title.c_str());
+  residuals->GetXaxis()->SetTitleSize(.04);
+  residuals->GetYaxis()->SetTitleSize(.04);
+  residuals->GetXaxis()->SetTitleOffset(1.1);
+  residuals->GetYaxis()->SetTitleOffset(1.1);
+  residuals->GetXaxis()->CenterTitle(true);
+  residuals->GetYaxis()->CenterTitle(true);
+  residuals->GetYaxis()->SetMaxDigits(4);
+  residuals->SetMarkerStyle(20); //  Full circle
+  residuals->Draw("APL");
+  //c->SetGridx();
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
+
 void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -720,6 +767,93 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 	delete c;
 
 	return;
+
+}
+
+void DrawQuadScanNoFit(vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP) { 
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+  c->SetRightMargin(0.20);
+
+  graphs.at(0)->SetTitle(title.c_str());
+  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetYaxis()->SetTitleOffset(1.25);
+  graphs.at(0)->GetXaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+  //graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
+
+  TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+
+  l->SetBorderSize(0);
+  l->SetHeader("#LTB_{r}^{App}#GT","C");
+
+  //double field = 
+  // Load legend entries backwards
+  //cout<<"Loading legend entries"<<endl;
+  for( int i = graphs.size()-1; i>-1; i--) {
+    //cout<<BR_APP[i]<<endl;
+    l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
+  }
+  
+  for(int i = 0; i < graphs.size(); i++) {
+    
+    graphs.at(i)->SetMarkerStyle(20);
+    if(i+1 != 5) {
+      graphs.at(i)->SetMarkerColor(i+1); // Stop that yellow colour at all costs
+      graphs.at(i)->SetLineColor(i+1);
+    } else {
+      graphs.at(i)->SetMarkerColor(kOrange-3);
+      graphs.at(i)->SetLineColor(kOrange-3);
+    }
+    
+
+    if(i==0) graphs.at(0)->Draw("APL");
+    else {
+      graphs.at(i)->Draw("PL SAME");
+    }
+
+  }
+
+  l->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
+void DrawQuadScanChiSqr(vector<TGraphErrors*> graphs, string func, string title, string fname, const double *BR_APP) { 
+
+  //vector<double> chiSqrs;
+
+  int n = graphs.size();
+
+  double chiSqrs[n]; double zeros[n];
+
+  // Loop through fits and grab the chi sqr
+  for (int i_fit = 0; i_fit < graphs.size(); i_fit++) {
+
+    TF1 *fit = graphs.at(i_fit)->GetFunction(func.c_str());
+
+    chiSqrs[i_fit] = fit->GetChisquare() / fit->GetNDF();
+
+  }
+
+  // Draw them in TGraph
+
+  TGraphErrors *gr = new TGraphErrors(n, BR_APP, chiSqrs, zeros, zeros);
+
+  DrawTGraphErrors(gr, title, fname);
+
+  return;
 
 }
 

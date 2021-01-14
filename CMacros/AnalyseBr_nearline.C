@@ -142,8 +142,10 @@ tuple<double, double, int> ReadYPos(string input, string output) {
    	vector<double> energy_ = *energy;
    	vector<double> times_ = *times;
 
-      // Number of clusters in this fill
+    // Number of clusters in this fill
    	int nClu = caloNum_.size(); 
+
+    cout<<"nClu\t"<<nClu<<endl;
 
       // Loop through clusters
    	for(int i_clu = 0; i_clu < nClu; i_clu++) { 
@@ -257,32 +259,6 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yVal, vector<float> QHV_tmp
 
 // Pass quad scans to chi square drawer
 // DrawQuadScanFitQual(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT;#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/QuadChiSqrs"); 
-void DrawQuadScanChiSqr(vector<TGraphErrors*> graphs, string func, string title, string fname) { 
-
-  //vector<double> chiSqrs;
-
-  int n = graphs.size();
-
-  double chiSqrs[n]; double zeros[n];
-
-  // Loop through fits and grab the chi sqr
-  for (int i_fit = 0; i_fit < graphs.size(); i_fit++) {
-
-    TF1 *fit = graphs.at(i_fit)->GetFunction(func.c_str());
-
-    chiSqrs[i_fit] = fit->GetChisquare() / fit->GetNDF();
-
-  }
-
-  // Draw them in TGraph
-
-  TGraphErrors *gr = new TGraphErrors(n, BR_APP, chiSqrs, zeros, zeros);
-
-  DrawTGraphErrors(gr, title, fname);
-
-  return;
-
-}
 
 vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func) { // ;// , string title, string fname) { 
 
@@ -320,65 +296,7 @@ vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func) 
   
 }
 
-void DrawQuadScanNoFit(vector<TGraphErrors*> graphs, std::string title, std::string fname, double ymin, double ymax) { // const double *BR_APP) { , ,  {
 
-  TCanvas *c = new TCanvas("c","c",800,600);
-  c->SetRightMargin(0.20);
-
-  graphs.at(0)->SetTitle(title.c_str());
-  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
-  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
-  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
-  graphs.at(0)->GetYaxis()->SetTitleOffset(1.25);
-  graphs.at(0)->GetXaxis()->CenterTitle(true);
-  graphs.at(0)->GetYaxis()->CenterTitle(true);
-  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
-  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
-  //graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
-
-  TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
-
-  l->SetBorderSize(0);
-  l->SetHeader("#LTB_{r}^{App}#GT","C");
-
-  //double field = 
-  // Load legend entries backwards
-  //cout<<"Loading legend entries"<<endl;
-  for( int i = graphs.size()-1; i>-1; i--) {
-    //cout<<BR_APP[i]<<endl;
-    l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
-  }
-  
-  for(int i = 0; i < graphs.size(); i++) {
-    
-    graphs.at(i)->SetMarkerStyle(20);
-    if(i+1 != 5) {
-      graphs.at(i)->SetMarkerColor(i+1); // Stop that yellow colour at all costs
-      graphs.at(i)->SetLineColor(i+1);
-    } else {
-      graphs.at(i)->SetMarkerColor(kOrange-3);
-      graphs.at(i)->SetLineColor(kOrange-3);
-    }
-    
-
-    if(i==0) graphs.at(0)->Draw("APL");
-    else {
-      graphs.at(i)->Draw("PL SAME");
-    }
-
-  }
-
-  l->Draw("same");
-
-  c->SaveAs((fname+".pdf").c_str());
-  c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
-
-  delete c;
-
-  return;
-
-}
 
 
 double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_point) { 
@@ -427,6 +345,9 @@ double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_poin
 
       }
 
+      //cout<<"The applied field is "<<BR_APP[i_point]<<endl;
+
+
     }
 
     TGraphErrors *result = new TGraphErrors(n_new, x_new, y_new, ex_new, ey_new);
@@ -448,9 +369,14 @@ double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_poin
 
     pVal = mainFit->GetProb();
 
+
+
     delete result; 
 
   }
+
+
+  if(i_point!=-1) cout<<"\nThe p-value is "<<pVal<<" with "<<BR_APP[i_point]<<" removed."<<endl;
 
   return pVal;
 
@@ -562,14 +488,14 @@ int main() {
 
   // ++++++++++++++++ Some checks on the quad scans ++++++++++++++++ 
   // Pass quad scans to chi square drawer
-  DrawQuadScanChiSqr(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/QuadChiSqrs"); 
+  DrawQuadScanChiSqr(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/QuadChiSqrs", BR_APP); 
 
   // Get fit residual, this is crazy... TODO: make this more in line with the ctag one
   vector<TGraphErrors*> quadScanResiduals = GetQuadScanRes(quadScans, "quadLineFit");//, "Residual", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes");
-  DrawQuadScanNoFit(quadScanResiduals, ";1/QHV [kV^{-1}];Fit residual [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes", -0.05, 0.05);
+  DrawQuadScanNoFit(quadScanResiduals, ";1/QHV [kV^{-1}];Fit residual [mm]", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes", -0.05, 0.05, BR_APP);
 
   // Draw CTAGs per fit
-  DrawQuadScanNoFit(quadScanCTAGs, ";1/QHV [kV^{-1}];Integrated CTAGs / setting", "../Images/Data/RadialFieldScan_"+scan+"/QuadCTAGs", 1e6, 4.5e6); 
+  DrawQuadScanNoFit(quadScanCTAGs, ";1/QHV [kV^{-1}];Integrated CTAGs / setting", "../Images/Data/RadialFieldScan_"+scan+"/QuadCTAGs", 1e6, 4.5e6, BR_APP); 
 
   // ++++++++++++++++ Fit for radial field ++++++++++++++++ 
 
@@ -589,20 +515,19 @@ int main() {
 
 	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit");
 
+  // Draw main fit residuals 
+
+  DrawTGraphResiduals(result, "mainFit", ";#LTB_{r}^{App}#GT [ppm];Fit residual [ppm]", "../Images/Data/RadialFieldScan_"+scan+"/FieldFitRes");
+
+
   // ++++++++++++++++ Check p-values ++++++++++++++++ 
-
-
-  cout<<"\nP-VALUE STUFF\n";
-
-  // twat
 
   double x_tmp[N_FIELD+1]; double y_tmp[N_FIELD+1]; double zeros[N_FIELD+1];
 
   for (int i_point = -1; i_point < N_FIELD; i_point++) { 
+  //for (int i_point = N_FIELD-1; i_point > -2; i_point--) { 
 
     double pVal = pValuePointCheck(x,y,ex,ey,i_point);
-
-    cout<<"\np-value at "<<i_point<<"\t"<<pVal<<endl;
 
     x_tmp[i_point+1] = i_point+1;
     y_tmp[i_point+1] = pVal;
@@ -611,7 +536,18 @@ int main() {
   }
 
   TGraphErrors *pValGr = new TGraphErrors(N_FIELD+1, x_tmp, y_tmp, zeros, zeros);
+  pValGr->GetXaxis()->SetRangeUser(-1,7);
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(-1 + 1.),"None");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(0 + 1.),"+50");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(1 + 1.),"+30");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(2 + 1.),"+10");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(3 + 1.),"#minus10");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(4 + 1.),"#minus30");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(5 + 1.),"#minus50");
+  pValGr->GetXaxis()->LabelsOption("h");
+  pValGr->GetXaxis()->SetNdivisions(7);
 
-  DrawTGraphErrors(pValGr,"test","../Images/Data/RadialFieldScan_"+scan+"/pVals");
-	return 0;
+  DrawTGraphErrors(pValGr,";Data point removed;p-value","../Images/Data/RadialFieldScan_"+scan+"/pVals");
+	
+  return 0;
 }

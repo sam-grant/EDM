@@ -1,7 +1,7 @@
 void FieldFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan  4 18:20:54 2021) by ROOT version 6.22/06
+//=========  (Thu Jan  7 21:43:38 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75,-61.36538,75,60.9951);
@@ -26,12 +26,12 @@ void FieldFit()
    -23.37896,
    -38.35743};
    Double_t Graph0_fex1026[6] = {
-   6.953117e-310,
+   6.953123e-310,
    0,
    0,
-   6.953117e-310,
-   6.953117e-310,
-   2.250438e-314};
+   6.953123e-310,
+   6.953123e-310,
+   2.194952e-314};
    Double_t Graph0_fey1026[6] = {
    1.483591,
    1.222034,
