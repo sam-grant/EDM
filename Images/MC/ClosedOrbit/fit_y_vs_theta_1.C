@@ -1,8 +1,9 @@
 void fit_y_vs_theta_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 13 20:40:43 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 16:06:30 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.8639313,-0.419288,7.775382,0.388894);
    c->SetFillColor(0);
@@ -786,6 +787,20 @@ void fit_y_vs_theta_1()
    fCOD_13->SetParLimits(0,0,0);
    fCOD_13->SetParent(graph);
    graph->GetListOfFunctions()->Add(fCOD_13);
+   
+   TPaveStats *ptstats = new TPaveStats(0.62,0.735,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf =  10.6 / 359");
+   ptstats_LaTex = ptstats->AddText("p0       = 0.0003039 #pm 0.0009783 ");
+   ptstats->SetOptStat(0);
+   ptstats->SetOptFit(20222);
+   ptstats->Draw();
+   graph->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(graph->GetListOfFunctions());
    graph->Draw("ap");
    c->Modified();
    c->cd();

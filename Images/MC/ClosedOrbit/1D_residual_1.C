@@ -1,8 +1,9 @@
 void 1D_residual_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 13 20:40:44 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 16:06:31 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.4375,-4.2,0.4375,37.8);
    c->SetFillColor(0);
@@ -92,19 +93,19 @@ void 1D_residual_1()
    h_res__1->SetBinContent(86,13);
    h_res__1->SetEntries(360);
    
-   TPaveStats *ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
+   TPaveStats *ptstats = new TPaveStats(0.78,0.615,0.98,0.935,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
    ptstats->SetTextAlign(12);
    ptstats->SetTextFont(42);
    TText *ptstats_LaTex = ptstats->AddText("h_res");
-   ptstats_LaTex->SetTextSize(0.0368);
+   ptstats_LaTex->SetTextSize(0.0736);
    ptstats_LaTex = ptstats->AddText("Entries = 360    ");
    ptstats_LaTex = ptstats->AddText("Mean  = 2.396e-14");
    ptstats_LaTex = ptstats->AddText("Std Dev   = 0.1716");
    ptstats->SetOptStat(1111);
-   ptstats->SetOptFit(0);
+   ptstats->SetOptFit(20222);
    ptstats->Draw();
    h_res__1->GetListOfFunctions()->Add(ptstats);
    ptstats->SetParent(h_res__1);

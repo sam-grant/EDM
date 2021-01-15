@@ -1,8 +1,9 @@
 void fit_residual_5()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 13 20:40:47 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 16:06:37 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.8615382,-0.01942571,7.753843,0.01536825);
    c->SetFillColor(0);
@@ -11,7 +12,7 @@ void fit_residual_5()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx16[360] = {
+   Double_t Graph0_fx21[360] = {
    0,
    0.01745329,
    0.03490658,
@@ -372,7 +373,7 @@ void fit_residual_5()
    6.230825,
    6.248279,
    6.265732};
-   Double_t Graph0_fy16[360] = {
+   Double_t Graph0_fy21[360] = {
    -0.001389372,
    -0.0002118847,
    0.0008934472,
@@ -733,39 +734,39 @@ void fit_residual_5()
    -0.004658111,
    -0.003662378,
    -0.002554772};
-   TGraph *graph = new TGraph(360,Graph0_fx16,Graph0_fy16);
+   TGraph *graph = new TGraph(360,Graph0_fx21,Graph0_fy21);
    graph->SetName("Graph0");
    graph->SetTitle(";#theta [rad];Fit residual [mm]");
    graph->SetFillStyle(1000);
    graph->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph016 = new TH1F("Graph_Graph016","",360,0,6.892305);
-   Graph_Graph016->SetMinimum(-0.01594632);
-   Graph_Graph016->SetMaximum(0.01188885);
-   Graph_Graph016->SetDirectory(0);
-   Graph_Graph016->SetStats(0);
+   TH1F *Graph_Graph021 = new TH1F("Graph_Graph021","",360,0,6.892305);
+   Graph_Graph021->SetMinimum(-0.01594632);
+   Graph_Graph021->SetMaximum(0.01188885);
+   Graph_Graph021->SetDirectory(0);
+   Graph_Graph021->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph016->SetLineColor(ci);
-   Graph_Graph016->GetXaxis()->SetTitle("#theta [rad]");
-   Graph_Graph016->GetXaxis()->CenterTitle(true);
-   Graph_Graph016->GetXaxis()->SetLabelFont(42);
-   Graph_Graph016->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph016->GetXaxis()->SetTitleOffset(1.2);
-   Graph_Graph016->GetXaxis()->SetTitleFont(42);
-   Graph_Graph016->GetYaxis()->SetTitle("Fit residual [mm]");
-   Graph_Graph016->GetYaxis()->CenterTitle(true);
-   Graph_Graph016->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph016->GetYaxis()->SetLabelFont(42);
-   Graph_Graph016->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph016->GetYaxis()->SetTitleOffset(1.25);
-   Graph_Graph016->GetYaxis()->SetTitleFont(42);
-   Graph_Graph016->GetZaxis()->SetLabelFont(42);
-   Graph_Graph016->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph016->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_Graph016);
+   Graph_Graph021->SetLineColor(ci);
+   Graph_Graph021->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_Graph021->GetXaxis()->CenterTitle(true);
+   Graph_Graph021->GetXaxis()->SetLabelFont(42);
+   Graph_Graph021->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph021->GetXaxis()->SetTitleOffset(1.2);
+   Graph_Graph021->GetXaxis()->SetTitleFont(42);
+   Graph_Graph021->GetYaxis()->SetTitle("Fit residual [mm]");
+   Graph_Graph021->GetYaxis()->CenterTitle(true);
+   Graph_Graph021->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph021->GetYaxis()->SetLabelFont(42);
+   Graph_Graph021->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph021->GetYaxis()->SetTitleOffset(1.25);
+   Graph_Graph021->GetYaxis()->SetTitleFont(42);
+   Graph_Graph021->GetZaxis()->SetLabelFont(42);
+   Graph_Graph021->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph021->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_Graph021);
    
    graph->Draw("ap");
    c->Modified();

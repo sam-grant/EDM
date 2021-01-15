@@ -1,7 +1,7 @@
 void ctag_vs_subrun_37885()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 13 20:57:43 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 15:59:08 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-66.6875,244,600.1875,1060);

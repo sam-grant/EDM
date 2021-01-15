@@ -186,7 +186,7 @@ double GetTheta(int caloNum) {
 
 TGraphErrors *VCOD(tuple<vector<double>, vector<double>> yVal) {
 
-  // CAN'T USE GLOBAL QHV SINCE SOME SETTINGS ARE BROKEN
+  // CAN"T USE GLOBAL QHV SINCE SOME SETTINGS ARE BROKEN
 
   // Loop through y-pos and fill a TGraph
 
@@ -252,6 +252,7 @@ void DrawVCOD(TGraphErrors *graph, string title, string fname) {
 	graph->GetYaxis()->SetRangeUser(-0.325, 0.325);
 	graph->Draw("AP");
 
+	/*
 	// Mark the quads
 	// From diagram in TDR pg. 406  
 	TLine *Q1l = new TLine(GetTheta(3),0,GetTheta(6),0);
@@ -275,7 +276,7 @@ void DrawVCOD(TGraphErrors *graph, string title, string fname) {
 
 	Q1t->AddText("Q1"); Q2t->AddText("Q2"); Q3t->AddText("Q3"); Q4t->AddText("Q4"); 
 	Q1l->Draw("same"); Q2l->Draw("same"); Q3l->Draw("same"); Q4l->Draw("same");
-	Q1t->Draw("same"); Q2t->Draw("same"); Q3t->Draw("same"); Q4t->Draw("same");
+	Q1t->Draw("same"); Q2t->Draw("same"); Q3t->Draw("same"); Q4t->Draw("same"); */
 	// Draw the sim 
 	TFile *simFile = TFile::Open("../Plots/MC/ClosedOrbit/y_vs_theta.root"); 
 	TGraphErrors *sim = (TGraphErrors*)simFile->Get("y_vs_theta"); 
@@ -339,12 +340,61 @@ int main() {
 	DrawVCOD(gr2, ";#theta [rad];#LTy#GT [mm]", "../Images/Data/VCOD/ytot_vs_theta");
 
 	//TF1 *fCOD_10 = new TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )", 0, 360);
-	TF1 *fCOD_10 = new TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.108) + ([19]*cos(10*x)+[20]*sin(10*x))/(100-0.108))", 0, 2*TMath::Pi());
+	//TF1 *fCOD_10 = new TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.108) + ([19]*cos(10*x)+[20]*sin(10*x))/(100-0.108))", 0, 2*TMath::Pi());
 	
+	TF1 *fCOD_1 = new TF1("fCOD_1", "( ([0]/0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_2 = new TF1("fCOD_2", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_3 = new TF1("fCOD_3", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_4 = new TF1("fCOD_4", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_5 = new TF1("fCOD_5", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_6 = new TF1("fCOD_6", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_7 = new TF1("fCOD_7", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_8 = new TF1("fCOD_8", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_9 = new TF1("fCOD_9", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )", 0, 2*TMath::Pi());
+	TF1 *fCOD_10 =new  TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.108) + ([19]*cos(10*x)+[20]*sin(10*x))/(100-0.108))", 0, 2*TMath::Pi());
 
-	gr2->Fit(fCOD_10, "R");
 
-	DrawTGraphErrors(gr2, ";#theta [deg];#LTy#GT [mm]", "../Images/Data/VCOD/fit_ytot_vs_theta");
+	// Loop through HO fits 
+
+	TF1 *fCOD[10] = {fCOD_1, fCOD_2, fCOD_3, fCOD_4, fCOD_5, fCOD_6, fCOD_7, fCOD_8, fCOD_9, fCOD_10};	
+
+	//gr2->Fit(fCOD_10, "R");
+
+	double chis[10]; double chisFromOne[10]; double orders[10]; double zeros[10];
+
+	int bestFitOrder = 0; double tmp = 100;
+
+	for( int i_fit = 0; i_fit<10; i_fit++ ) {
+
+		gr2->Fit(fCOD[i_fit], "R");
+
+		chis[i_fit] = fCOD[i_fit]->GetChisquare() / fCOD[i_fit]->GetNDF();
+		orders[i_fit] = i_fit+1; zeros[i_fit] = 0.;
+
+		chisFromOne[i_fit] = 1-chis[i_fit];
+
+		if(abs(chisFromOne[i_fit]) < tmp) {
+			tmp = abs(chisFromOne[i_fit]);
+			bestFitOrder = i_fit+1;
+		}
+ 
+		gStyle->SetOptFit(20222);
+
+		DrawTGraphErrors(gr2, ";#theta [deg];#LTy#GT [mm]", "../Images/Data/VCOD/fit_ytot_vs_theta_"+to_string(i_fit+1));
+
+	}
+
+	cout<<"Best fit order\t"<<bestFitOrder<<endl;
+
+	TGraphErrors *gr3 = new TGraphErrors(10, orders, chis, zeros, zeros);
+	TGraphErrors *gr4 = new TGraphErrors(10, orders, chisFromOne, zeros, zeros);	
+
+	DrawTGraphErrorsLine(gr3, ";Fit order;#chi^{2}/ndf", "../Images/Data/VCOD/fit_chi_vs_order");
+	DrawTGraphErrorsLine(gr4, ";Fit order;1#minus#chi^{2}/ndf", "../Images/Data/VCOD/fit_1-chi_vs_order");
+	//
+
+
+	//DrawTGraphErrors(gr2, ";#theta [deg];#LTy#GT [mm]", "../Images/Data/VCOD/fit_ytot_vs_theta");
 
 	return 0;
 

@@ -1,8 +1,9 @@
 void fit_ytot_vs_theta()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 13 20:58:04 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 10:05:56 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.8606656,-0.40625,7.745989,0.40625);
    c->SetFillColor(0);
@@ -223,6 +224,40 @@ void fit_ytot_vs_theta()
    fCOD_101007->SetParLimits(20,0,0);
    fCOD_101007->SetParent(gre);
    gre->GetListOfFunctions()->Add(fCOD_101007);
+   
+   TPaveStats *ptstats = new TPaveStats(0.62,-0.06499998,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 2.869 / 3");
+   ptstats_LaTex = ptstats->AddText("p0       = 0.004348 #pm 0.001533 ");
+   ptstats_LaTex = ptstats->AddText("p1       = 0.02249 #pm 0.0178 ");
+   ptstats_LaTex = ptstats->AddText("p2       = -0.04317 #pm 0.01801 ");
+   ptstats_LaTex = ptstats->AddText("p3       = -4.178e-05 #pm 0.07804 ");
+   ptstats_LaTex = ptstats->AddText("p4       = 0.04723 #pm 0.07849 ");
+   ptstats_LaTex = ptstats->AddText("p5       = -0.1695 #pm 0.1809 ");
+   ptstats_LaTex = ptstats->AddText("p6       = -0.1254 #pm 0.1767 ");
+   ptstats_LaTex = ptstats->AddText("p7       = -0.591 #pm 0.3209 ");
+   ptstats_LaTex = ptstats->AddText("p8       = -0.3951 #pm 0.3177 ");
+   ptstats_LaTex = ptstats->AddText("p9       = -0.1117 #pm 0.5045 ");
+   ptstats_LaTex = ptstats->AddText("p10      = 0.2089 #pm 0.4955 ");
+   ptstats_LaTex = ptstats->AddText("p11      = -0.9617 #pm 0.7419 ");
+   ptstats_LaTex = ptstats->AddText("p12      = 0.5039 #pm 0.6995 ");
+   ptstats_LaTex = ptstats->AddText("p13      = -0.4879 #pm 0.993 ");
+   ptstats_LaTex = ptstats->AddText("p14      = 1.155 #pm 0.9729 ");
+   ptstats_LaTex = ptstats->AddText("p15      = -1.604 #pm  1.29 ");
+   ptstats_LaTex = ptstats->AddText("p16      = -1.086 #pm 1.276 ");
+   ptstats_LaTex = ptstats->AddText("p17      = 0.6505 #pm 1.643 ");
+   ptstats_LaTex = ptstats->AddText("p18      = 1.984 #pm 1.605 ");
+   ptstats_LaTex = ptstats->AddText("p19      = 0.2972 #pm 2.002 ");
+   ptstats_LaTex = ptstats->AddText("p20      = -0.335 #pm 2.009 ");
+   ptstats->SetOptStat(0);
+   ptstats->SetOptFit(20222);
+   ptstats->Draw();
+   gre->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(gre->GetListOfFunctions());
    gre->Draw("ap");
    c->Modified();
    c->cd();

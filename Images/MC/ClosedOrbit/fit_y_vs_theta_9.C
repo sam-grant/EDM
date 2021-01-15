@@ -1,8 +1,9 @@
 void fit_y_vs_theta_9()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 13 20:40:50 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 16:06:43 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.8639313,-0.419288,7.775382,0.388894);
    c->SetFillColor(0);
@@ -11,7 +12,7 @@ void fit_y_vs_theta_9()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t y_vs_theta_fx26[360] = {
+   Double_t y_vs_theta_fx34[360] = {
    0,
    0.01745329,
    0.03490658,
@@ -372,7 +373,7 @@ void fit_y_vs_theta_9()
    6.230825,
    6.248279,
    6.265732};
-   Double_t y_vs_theta_fy26[360] = {
+   Double_t y_vs_theta_fy34[360] = {
    0.0729551,
    0.0668455,
    0.0606425,
@@ -733,107 +734,137 @@ void fit_y_vs_theta_9()
    0.0913241,
    0.0851543,
    0.0790461};
-   TGraph *graph = new TGraph(360,y_vs_theta_fx26,y_vs_theta_fy26);
+   TGraph *graph = new TGraph(360,y_vs_theta_fx34,y_vs_theta_fy34);
    graph->SetName("y_vs_theta");
    graph->SetTitle(";#theta [rad];#LTy#GT [mm]");
    graph->SetFillStyle(1000);
    graph->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326 = new TH1F("Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326","",360,0,6.892305);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->SetMinimum(-0.3384698);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->SetMaximum(0.3080758);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->SetDirectory(0);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->SetStats(0);
+   TH1F *Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034 = new TH1F("Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034","",360,0,6.892305);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->SetMinimum(-0.3384698);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->SetMaximum(0.3080758);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->SetDirectory(0);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->SetLineColor(ci);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->SetTitle("#theta [rad]");
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->SetRange(1,361);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->CenterTitle(true);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->SetTitleOffset(1.2);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->SetTitle("#LTy#GT [mm]");
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->CenterTitle(true);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->SetTitleOffset(1.25);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta258111417202326);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->SetLineColor(ci);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->SetRange(1,361);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->SetTitleOffset(1.2);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->SetTitleOffset(1.25);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_y_vs_theta2610141822263034);
    
    
-   TF1 *fCOD_927 = new TF1("fCOD_9","( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )",0,6.283185, TF1::EAddToList::kNo);
-   fCOD_927->SetFillColor(19);
-   fCOD_927->SetFillStyle(0);
-   fCOD_927->SetLineColor(2);
-   fCOD_927->SetLineWidth(2);
-   fCOD_927->SetChisquare(0.0005237556);
-   fCOD_927->SetNDF(343);
-   fCOD_927->GetXaxis()->SetLabelFont(42);
-   fCOD_927->GetXaxis()->SetTitleOffset(1);
-   fCOD_927->GetXaxis()->SetTitleFont(42);
-   fCOD_927->GetYaxis()->SetLabelFont(42);
-   fCOD_927->GetYaxis()->SetTitleFont(42);
-   fCOD_927->SetParameter(0,0.0003038574);
-   fCOD_927->SetParError(0,7.033796e-06);
-   fCOD_927->SetParLimits(0,0,0);
-   fCOD_927->SetParameter(1,0.01592866);
-   fCOD_927->SetParError(1,8.215725e-05);
-   fCOD_927->SetParLimits(1,0,0);
-   fCOD_927->SetParameter(2,-0.2019881);
-   fCOD_927->SetParError(2,8.215725e-05);
-   fCOD_927->SetParLimits(2,0,0);
-   fCOD_927->SetParameter(3,0.2569918);
-   fCOD_927->SetParError(3,0.0003584709);
-   fCOD_927->SetParLimits(3,0,0);
-   fCOD_927->SetParameter(4,-0.192147);
-   fCOD_927->SetParError(4,0.0003584709);
-   fCOD_927->SetParLimits(4,0,0);
-   fCOD_927->SetParameter(5,-0.02124024);
-   fCOD_927->SetParError(5,0.0008189935);
-   fCOD_927->SetParLimits(5,0,0);
-   fCOD_927->SetParameter(6,-0.1172077);
-   fCOD_927->SetParError(6,0.0008189935);
-   fCOD_927->SetParLimits(6,0,0);
-   fCOD_927->SetParameter(7,-0.1584169);
-   fCOD_927->SetParError(7,0.001463725);
-   fCOD_927->SetParLimits(7,0,0);
-   fCOD_927->SetParameter(8,-0.2066054);
-   fCOD_927->SetParError(8,0.001463725);
-   fCOD_927->SetParLimits(8,0,0);
-   fCOD_927->SetParameter(9,0.08708819);
-   fCOD_927->SetParError(9,0.002292666);
-   fCOD_927->SetParLimits(9,0,0);
-   fCOD_927->SetParameter(10,-0.03899973);
-   fCOD_927->SetParError(10,0.002292666);
-   fCOD_927->SetParLimits(10,0,0);
-   fCOD_927->SetParameter(11,-0.2251136);
-   fCOD_927->SetParError(11,0.003305816);
-   fCOD_927->SetParLimits(11,0,0);
-   fCOD_927->SetParameter(12,0.09481175);
-   fCOD_927->SetParError(12,0.003305816);
-   fCOD_927->SetParLimits(12,0,0);
-   fCOD_927->SetParameter(13,0.02666244);
-   fCOD_927->SetParError(13,0.004503175);
-   fCOD_927->SetParLimits(13,0,0);
-   fCOD_927->SetParameter(14,0.1114357);
-   fCOD_927->SetParError(14,0.004503175);
-   fCOD_927->SetParLimits(14,0,0);
-   fCOD_927->SetParameter(15,-0.002234109);
-   fCOD_927->SetParError(15,0.005884743);
-   fCOD_927->SetParLimits(15,0,0);
-   fCOD_927->SetParameter(16,0.1024589);
-   fCOD_927->SetParError(16,0.005884743);
-   fCOD_927->SetParLimits(16,0,0);
-   fCOD_927->SetParent(graph);
-   graph->GetListOfFunctions()->Add(fCOD_927);
+   TPaveStats *ptstats = new TPaveStats(0.62,0.735,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 0.0005238 / 343");
+   ptstats_LaTex = ptstats->AddText("p0       = 0.0003039 #pm 7.034e-06 ");
+   ptstats_LaTex = ptstats->AddText("p1       = 0.01593 #pm 8.216e-05 ");
+   ptstats_LaTex = ptstats->AddText("p2       = -0.202 #pm 8.216e-05 ");
+   ptstats_LaTex = ptstats->AddText("p3       = 0.257 #pm 0.0003585 ");
+   ptstats_LaTex = ptstats->AddText("p4       = -0.1921 #pm 0.0003585 ");
+   ptstats_LaTex = ptstats->AddText("p5       = -0.02124 #pm 0.000819 ");
+   ptstats_LaTex = ptstats->AddText("p6       = -0.1172 #pm 0.000819 ");
+   ptstats_LaTex = ptstats->AddText("p7       = -0.1584 #pm 0.001464 ");
+   ptstats_LaTex = ptstats->AddText("p8       = -0.2066 #pm 0.001464 ");
+   ptstats_LaTex = ptstats->AddText("p9       = 0.08709 #pm 0.002293 ");
+   ptstats_LaTex = ptstats->AddText("p10      = -0.039 #pm 0.002293 ");
+   ptstats_LaTex = ptstats->AddText("p11      = -0.2251 #pm 0.003306 ");
+   ptstats_LaTex = ptstats->AddText("p12      = 0.09481 #pm 0.003306 ");
+   ptstats_LaTex = ptstats->AddText("p13      = 0.02666 #pm 0.004503 ");
+   ptstats_LaTex = ptstats->AddText("p14      = 0.1114 #pm 0.004503 ");
+   ptstats_LaTex = ptstats->AddText("p15      = -0.002234 #pm 0.005885 ");
+   ptstats_LaTex = ptstats->AddText("p16      = 0.1025 #pm 0.005885 ");
+   ptstats->SetOptStat(0);
+   ptstats->SetOptFit(20222);
+   ptstats->Draw();
+   graph->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(graph->GetListOfFunctions());
+   
+   TF1 *fCOD_936 = new TF1("fCOD_9","( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )",0,6.283185, TF1::EAddToList::kNo);
+   fCOD_936->SetFillColor(19);
+   fCOD_936->SetFillStyle(0);
+   fCOD_936->SetLineColor(2);
+   fCOD_936->SetLineWidth(2);
+   fCOD_936->SetChisquare(0.0005237556);
+   fCOD_936->SetNDF(343);
+   fCOD_936->GetXaxis()->SetLabelFont(42);
+   fCOD_936->GetXaxis()->SetTitleOffset(1);
+   fCOD_936->GetXaxis()->SetTitleFont(42);
+   fCOD_936->GetYaxis()->SetLabelFont(42);
+   fCOD_936->GetYaxis()->SetTitleFont(42);
+   fCOD_936->SetParameter(0,0.0003038574);
+   fCOD_936->SetParError(0,7.033796e-06);
+   fCOD_936->SetParLimits(0,0,0);
+   fCOD_936->SetParameter(1,0.01592866);
+   fCOD_936->SetParError(1,8.215725e-05);
+   fCOD_936->SetParLimits(1,0,0);
+   fCOD_936->SetParameter(2,-0.2019881);
+   fCOD_936->SetParError(2,8.215725e-05);
+   fCOD_936->SetParLimits(2,0,0);
+   fCOD_936->SetParameter(3,0.2569918);
+   fCOD_936->SetParError(3,0.0003584709);
+   fCOD_936->SetParLimits(3,0,0);
+   fCOD_936->SetParameter(4,-0.192147);
+   fCOD_936->SetParError(4,0.0003584709);
+   fCOD_936->SetParLimits(4,0,0);
+   fCOD_936->SetParameter(5,-0.02124024);
+   fCOD_936->SetParError(5,0.0008189935);
+   fCOD_936->SetParLimits(5,0,0);
+   fCOD_936->SetParameter(6,-0.1172077);
+   fCOD_936->SetParError(6,0.0008189935);
+   fCOD_936->SetParLimits(6,0,0);
+   fCOD_936->SetParameter(7,-0.1584169);
+   fCOD_936->SetParError(7,0.001463725);
+   fCOD_936->SetParLimits(7,0,0);
+   fCOD_936->SetParameter(8,-0.2066054);
+   fCOD_936->SetParError(8,0.001463725);
+   fCOD_936->SetParLimits(8,0,0);
+   fCOD_936->SetParameter(9,0.08708819);
+   fCOD_936->SetParError(9,0.002292666);
+   fCOD_936->SetParLimits(9,0,0);
+   fCOD_936->SetParameter(10,-0.03899973);
+   fCOD_936->SetParError(10,0.002292666);
+   fCOD_936->SetParLimits(10,0,0);
+   fCOD_936->SetParameter(11,-0.2251136);
+   fCOD_936->SetParError(11,0.003305816);
+   fCOD_936->SetParLimits(11,0,0);
+   fCOD_936->SetParameter(12,0.09481175);
+   fCOD_936->SetParError(12,0.003305816);
+   fCOD_936->SetParLimits(12,0,0);
+   fCOD_936->SetParameter(13,0.02666244);
+   fCOD_936->SetParError(13,0.004503175);
+   fCOD_936->SetParLimits(13,0,0);
+   fCOD_936->SetParameter(14,0.1114357);
+   fCOD_936->SetParError(14,0.004503175);
+   fCOD_936->SetParLimits(14,0,0);
+   fCOD_936->SetParameter(15,-0.002234109);
+   fCOD_936->SetParError(15,0.005884743);
+   fCOD_936->SetParLimits(15,0,0);
+   fCOD_936->SetParameter(16,0.1024589);
+   fCOD_936->SetParError(16,0.005884743);
+   fCOD_936->SetParLimits(16,0,0);
+   fCOD_936->SetParent(graph);
+   graph->GetListOfFunctions()->Add(fCOD_936);
    graph->Draw("ap");
    c->Modified();
    c->cd();

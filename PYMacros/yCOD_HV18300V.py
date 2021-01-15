@@ -27,6 +27,30 @@ def DrawTGraph(graph, title, fname): #, grid):
 
 	return
 
+def DrawTGraphLine(graph, title, fname): #, grid):
+
+	c = TCanvas("c","c",800,600)
+
+	graph.SetTitle(title)			
+	graph.GetXaxis().SetTitleSize(.04)
+	graph.GetYaxis().SetTitleSize(.04)
+	graph.GetXaxis().SetTitleOffset(1.2)
+	graph.GetYaxis().SetTitleOffset(1.25)
+	graph.GetXaxis().CenterTitle(1)
+	graph.GetYaxis().CenterTitle(1)
+	graph.GetYaxis().SetMaxDigits(4)
+	graph.SetMarkerStyle(20) # Full circle
+	graph.Draw("APL")
+
+
+	# c.SetGridy()
+	c.SaveAs(fname+".pdf")
+	c.SaveAs(fname+".png")
+	c.SaveAs(fname+".C")
+	# c2.SaveAs(fname+".pdf")
+
+	return
+
 def DrawTH1(hist, title, fname): #, grid):
 
 	c = TCanvas("c","c",800,600)
@@ -77,8 +101,8 @@ gr.GetXaxis().SetRangeUser(0,360) #2*np.pi)
 DrawTGraph(gr, ';#theta [rad];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/y_vs_theta')
 
 gr.SetName('y_vs_theta')
-# output = TFile('../Plots/MC/ClosedOrbit/y_vs_theta.root', 'RECREATE')
-# gr.Write()
+output = TFile('../Plots/MC/ClosedOrbit/y_vs_theta.root', 'RECREATE')
+gr.Write()
 
 # Fit 
 
@@ -99,17 +123,27 @@ funcs = [ fCOD_1, fCOD_2, fCOD_3, fCOD_4, fCOD_5, fCOD_6, fCOD_7, fCOD_8, fCOD_9
 
 residuals = []
 
+chis = array('f')
+
+fitOrder = array('f')
+
+zeros = []
+
+
 h_res = TH1F('h_res',';Fit residuals [mm];Entries', 100, -0.35, 0.35)
 
 for i_fit in range(10):
 
 	print('Fit order '+str(i_fit+1))
 	gr.Fit(funcs[i_fit],"R")
-	chiSqr = funcs[i_fit].GetChisquare() / funcs[i_fit].GetNDF()
-	print("chiSqr/ndf\t"+str(chiSqr)) 
-	gStyle.SetOptFit(0)
+	
+	gStyle.SetOptFit(20222)
 
 	DrawTGraph(gr, ';#theta [rad];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/fit_y_vs_theta_'+str(i_fit+1))
+
+	chis.append( funcs[i_fit].GetChisquare() / funcs[i_fit].GetNDF() )
+
+	fitOrder.append( i_fit+1 )
 
 	y_res = array('f')
 
@@ -123,6 +157,11 @@ for i_fit in range(10):
 	DrawTGraph(res, ';#theta [rad];Fit residual [mm]', '../Images/MC/ClosedOrbit/fit_residual_'+str(i_fit+1))
 
 	DrawTH1(h_res, ';Fit residual [mm];Entries', '../Images/MC/ClosedOrbit/1D_residual_'+str(i_fit+1))
+
+chi_vs_order = TGraph(10, fitOrder, chis)
+
+DrawTGraphLine(chi_vs_order, ';Fit order;#chi^{2}/ndf', '../Images/MC/ClosedOrbit/fit_chi_vs_order');#theta [rad];Fit residual [mm]', '../Images/MC/ClosedOrbit/fit_residual_'+str(i_fit+1))
+
 
 
 
