@@ -190,9 +190,12 @@ TGraphErrors *VCOD(tuple<vector<double>, vector<double>> yVal) {
 
   // Loop through y-pos and fill a TGraph
 
-  int n_calo = 24;//yVal.size();
+  	int n_calo = 24;//yVal.size();
 
-  cout<<"n_calo\t"<<n_calo<<endl;
+
+  	//
+
+  	//cout<<"n_calo\t"<<n_calo<<endl;
 
 	double x[n_calo]; double ex[n_calo];
 	double y[n_calo]; double ey[n_calo];
@@ -200,6 +203,8 @@ TGraphErrors *VCOD(tuple<vector<double>, vector<double>> yVal) {
 	for ( int i_calo = 0; i_calo < n_calo; i_calo++ ) {
 
     //double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
+
+		//cout<<GetTheta(i_calo+1)*(180/TMath::Pi())<<"\t"<<get<0>(yVal)[i_calo]*1e-3<<"\t"<<get<1>(yVal)[i_calo]*1e-3<<"\n";
 
 		x[i_calo] = GetTheta(i_calo+1);
 		ex[i_calo] = 0.0;
@@ -219,11 +224,15 @@ tuple<vector<double>, vector<double>> SubtractYPos(vector<tuple<vector<double>, 
 	//tuple<vector<double>, vector<double>> yPos;
 	vector<double> y; vector<double> ey; 
 
+	cout<<"Calo,Angle[deg],<y>[m],delta<y>[m]"<<endl;
+
 	for( int i_calo = 0; i_calo < 24; i_calo++ ) {
 
 		double y1 = get<0>(vcods.at(0))[i_calo]; double y2 = get<0>(vcods.at(1))[i_calo];
 		double ey1 = get<1>(vcods.at(0))[i_calo]; double ey2 = get<1>(vcods.at(1))[i_calo];
 		double ytot = y1 - y2; double eytot = sqrt(ey1*ey1 + ey2*ey2);
+
+		cout<<i_calo+1<<","<<GetTheta(i_calo+1)*(180/TMath::Pi())<<","<<ytot*1e-3<<","<<eytot*1e-3<<"\n";
 
 		y.push_back(ytot); ey.push_back(eytot);
 
@@ -366,7 +375,7 @@ int main() {
 
 	for( int i_fit = 0; i_fit<10; i_fit++ ) {
 
-		gr2->Fit(fCOD[i_fit], "R");
+		gr2->Fit(fCOD[i_fit], "QR");
 
 		chis[i_fit] = fCOD[i_fit]->GetChisquare() / fCOD[i_fit]->GetNDF();
 		orders[i_fit] = i_fit+1; zeros[i_fit] = 0.;

@@ -1,7 +1,7 @@
 void fit_residual_5()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jan 15 16:06:37 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 20:04:02 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,45,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);

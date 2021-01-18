@@ -1,18 +1,10 @@
-	
 
-void tmp() {
+#include <iostream>
+using namespace std;
+int main(int argc, char *argv[]) {
 
-	TFile *simFile = TFile::Open("../Plots/MC/ClosedOrbit/y_vs_theta.root"); 
+	string run = argv[1];
+   	cout << "Running\t" <<run<<endl;;
 
-	TGraphErrors *sim = (TGraphErrors*)simFile->Get("y_vs_theta"); 
-
-	TCanvas *c = new TCanvas("c","c",800,600);
-
-	sim->Draw();
-
-	c->SaveAs("tmp.png");
-
-	return;
-
-
+	return 0;
 }

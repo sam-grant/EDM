@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe
 
 all:$(Target)
 
@@ -52,6 +52,9 @@ AnalyseBr_beamGun.exe: AnalyseBr_beamGun.C
 AnalyseVCOD_nearline.exe: AnalyseVCOD_nearline.C
 	${C++} -o $@ AnalyseVCOD_nearline.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
+ReadNearlineTrees.exe: ReadNearlineTrees.C
+	${C++} -o $@ ReadNearlineTrees.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+	
 ############################# BLINDING ###################################
 
 testBlinding.exe: testBlinding.C

@@ -127,10 +127,7 @@ chis = array('f')
 
 fitOrder = array('f')
 
-zeros = []
 
-
-h_res = TH1F('h_res',';Fit residuals [mm];Entries', 100, -0.35, 0.35)
 
 for i_fit in range(10):
 
@@ -146,6 +143,8 @@ for i_fit in range(10):
 	fitOrder.append( i_fit+1 )
 
 	y_res = array('f')
+
+	h_res = TH1F('h_res',';Fit residuals [mm];Entries', 100, -0.35, 0.35)
 
 	for i_point in range(gr.GetN()): 
 		res_val = float(gr.GetPointY(i_point) - funcs[i_fit].Eval(x[i_point]))

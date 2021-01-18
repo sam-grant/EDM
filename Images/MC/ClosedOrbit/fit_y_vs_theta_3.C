@@ -1,7 +1,7 @@
 void fit_y_vs_theta_3()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jan 15 16:06:33 2021) by ROOT version 6.22/06
+//=========  (Fri Jan 15 20:03:58 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,45,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
