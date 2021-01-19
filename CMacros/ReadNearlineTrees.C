@@ -138,6 +138,10 @@ int main(int argc, char *argv[]) {
    string run = argv[1];
    cout << "Running\t" <<run<<endl;
 
+   // string input = "/Volumes/BACKUP/gm2/EDM/Trees/Data/"+study+"/"+stage+"/merged/gm2nearline_hists_run"+run+".root";
+   // // string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/y-pos_"+run+".root";
+   // 
+   // 
    string input = "/Volumes/BACKUP/gm2/EDM/Trees/Data/"+study+"/"+stage+"/merged/gm2nearline_hists_run"+run+".root";
    string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/y-pos_"+run+".root";
 
