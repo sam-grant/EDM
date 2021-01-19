@@ -169,7 +169,7 @@ void DrawVCOD(TGraphErrors *graph, string title, string fname) {
 	TGraphErrors *sim = (TGraphErrors*)simFile->Get("y_vs_theta"); 
 	sim->SetLineColor(kRed); sim->SetMarkerColor(kRed); sim->SetLineWidth(3);
 
-	sim->Draw("L same");
+	//sim->Draw("L same");
 
 	TLegend *leg = new TLegend(0.11,0.69,0.33,0.89); // 0.81,0.35,0.99,0.65);
   	leg->SetBorderSize(0);
@@ -181,7 +181,7 @@ void DrawVCOD(TGraphErrors *graph, string title, string fname) {
   leg->AddEntry(Q3, "Q3");
   leg->AddEntry(Q4, "Q4");*/
 
-  	leg->Draw("same");
+  	//leg->Draw("same");
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -197,7 +197,7 @@ void DrawVCOD(TGraphErrors *graph, string title, string fname) {
 
 int main() {
 
-	string stage = "raw";//"reprocessed";//"raw";;//// // 
+	string stage = "reprocessed";//"raw";;//// // 
 
 	string runs[N_QHV] = {"37884-37885","37886"}; // ,"-37885"};
 
@@ -242,8 +242,7 @@ int main() {
 	TF1 *fCOD_8 = new TF1("fCOD_8", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) )", xmin, xmax);
 	TF1 *fCOD_9 = new TF1("fCOD_9", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )", xmin, xmax);
 	TF1 *fCOD_10 =new  TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.108) + ([19]*cos(10*x)+[20]*sin(10*x))/(100-0.108))", xmin, xmax);
-
-
+	
 	// Loop through HO fits 
 
 	TF1 *fCOD[10] = {fCOD_1, fCOD_2, fCOD_3, fCOD_4, fCOD_5, fCOD_6, fCOD_7, fCOD_8, fCOD_9, fCOD_10};	

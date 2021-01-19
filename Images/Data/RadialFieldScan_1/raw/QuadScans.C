@@ -1,10 +1,10 @@
 void QuadScans()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 21:14:43 2020) by ROOT version 6.22/02
+//=========  (Mon Jan 18 20:20:51 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(0.05124717,71.125,0.07845805,79.875);
+   c->Range(0.05124717,70,0.07845805,80);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -30,8 +30,8 @@ void QuadScans()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,0.05396825,0.07301587);
-   Graph_Graph01001->SetMinimum(72);
+   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,0.05396825,0.07301588);
+   Graph_Graph01001->SetMinimum(71);
    Graph_Graph01001->SetMaximum(79);
    Graph_Graph01001->SetDirectory(0);
    Graph_Graph01001->SetStats(0);
@@ -59,11 +59,11 @@ void QuadScans()
    gre->SetHistogram(Graph_Graph01001);
    
    
-   TF1 *quadLineFit1002 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301587, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1002 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301588, TF1::EAddToList::kNo);
    quadLineFit1002->SetFillColor(19);
    quadLineFit1002->SetFillStyle(0);
    quadLineFit1002->SetLineWidth(2);
-   quadLineFit1002->SetChisquare(1.266665e-15);
+   quadLineFit1002->SetChisquare(1.303336e-16);
    quadLineFit1002->SetNDF(0);
    quadLineFit1002->GetXaxis()->SetLabelFont(42);
    quadLineFit1002->GetXaxis()->SetTitleOffset(1);
@@ -71,20 +71,20 @@ void QuadScans()
    quadLineFit1002->GetYaxis()->SetLabelFont(42);
    quadLineFit1002->GetYaxis()->SetTitleFont(42);
    quadLineFit1002->SetParameter(0,74.77585);
-   quadLineFit1002->SetParError(0,0.09464238);
+   quadLineFit1002->SetParError(0,0.09464236);
    quadLineFit1002->SetParLimits(0,0,0);
-   quadLineFit1002->SetParameter(1,38.73574);
+   quadLineFit1002->SetParameter(1,38.73573);
    quadLineFit1002->SetParError(1,1.487694);
    quadLineFit1002->SetParLimits(1,0,0);
    quadLineFit1002->SetParent(gre);
    gre->GetListOfFunctions()->Add(quadLineFit1002);
    gre->Draw("ap");
    
-   TF1 *quadLineFit1003 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301587, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1003 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301588, TF1::EAddToList::kNo);
    quadLineFit1003->SetFillColor(19);
    quadLineFit1003->SetFillStyle(0);
    quadLineFit1003->SetLineWidth(2);
-   quadLineFit1003->SetChisquare(1.266665e-15);
+   quadLineFit1003->SetChisquare(1.303336e-16);
    quadLineFit1003->SetNDF(0);
    quadLineFit1003->GetXaxis()->SetLabelFont(42);
    quadLineFit1003->GetXaxis()->SetTitleOffset(1);
@@ -92,9 +92,9 @@ void QuadScans()
    quadLineFit1003->GetYaxis()->SetLabelFont(42);
    quadLineFit1003->GetYaxis()->SetTitleFont(42);
    quadLineFit1003->SetParameter(0,74.77585);
-   quadLineFit1003->SetParError(0,0.09464238);
+   quadLineFit1003->SetParError(0,0.09464236);
    quadLineFit1003->SetParLimits(0,0,0);
-   quadLineFit1003->SetParameter(1,38.73574);
+   quadLineFit1003->SetParameter(1,38.73573);
    quadLineFit1003->SetParError(1,1.487694);
    quadLineFit1003->SetParLimits(1,0,0);
    quadLineFit1003->Draw("same");
@@ -119,7 +119,7 @@ void QuadScans()
    gre->SetMarkerColor(2);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph11003 = new TH1F("Graph_Graph11003","Graph",100,0.05396825,0.07301587);
+   TH1F *Graph_Graph11003 = new TH1F("Graph_Graph11003","Graph",100,0.05396825,0.07301588);
    Graph_Graph11003->SetMinimum(73.76716);
    Graph_Graph11003->SetMaximum(74.05843);
    Graph_Graph11003->SetDirectory(0);
@@ -138,12 +138,12 @@ void QuadScans()
    gre->SetHistogram(Graph_Graph11003);
    
    
-   TF1 *quadLineFit1004 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301587, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1004 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301588, TF1::EAddToList::kNo);
    quadLineFit1004->SetFillColor(19);
    quadLineFit1004->SetFillStyle(0);
    quadLineFit1004->SetLineColor(2);
    quadLineFit1004->SetLineWidth(2);
-   quadLineFit1004->SetChisquare(3.612865e-15);
+   quadLineFit1004->SetChisquare(1.250442e-15);
    quadLineFit1004->SetNDF(0);
    quadLineFit1004->GetXaxis()->SetLabelFont(42);
    quadLineFit1004->GetXaxis()->SetTitleOffset(1);
@@ -151,21 +151,21 @@ void QuadScans()
    quadLineFit1004->GetYaxis()->SetLabelFont(42);
    quadLineFit1004->GetYaxis()->SetTitleFont(42);
    quadLineFit1004->SetParameter(0,74.74476);
-   quadLineFit1004->SetParError(0,0.09850521);
+   quadLineFit1004->SetParError(0,0.0985052);
    quadLineFit1004->SetParLimits(0,0,0);
-   quadLineFit1004->SetParameter(1,-13.0887);
+   quadLineFit1004->SetParameter(1,-13.08869);
    quadLineFit1004->SetParError(1,1.560014);
    quadLineFit1004->SetParLimits(1,0,0);
    quadLineFit1004->SetParent(gre);
    gre->GetListOfFunctions()->Add(quadLineFit1004);
    gre->Draw("p ");
    
-   TF1 *quadLineFit1005 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301587, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1005 = new TF1("quadLineFit","[0]+[1]*x",0.05396825,0.07301588, TF1::EAddToList::kNo);
    quadLineFit1005->SetFillColor(19);
    quadLineFit1005->SetFillStyle(0);
    quadLineFit1005->SetLineColor(2);
    quadLineFit1005->SetLineWidth(2);
-   quadLineFit1005->SetChisquare(3.612865e-15);
+   quadLineFit1005->SetChisquare(1.250442e-15);
    quadLineFit1005->SetNDF(0);
    quadLineFit1005->GetXaxis()->SetLabelFont(42);
    quadLineFit1005->GetXaxis()->SetTitleOffset(1);
@@ -173,9 +173,9 @@ void QuadScans()
    quadLineFit1005->GetYaxis()->SetLabelFont(42);
    quadLineFit1005->GetYaxis()->SetTitleFont(42);
    quadLineFit1005->SetParameter(0,74.74476);
-   quadLineFit1005->SetParError(0,0.09850521);
+   quadLineFit1005->SetParError(0,0.0985052);
    quadLineFit1005->SetParLimits(0,0,0);
-   quadLineFit1005->SetParameter(1,-13.0887);
+   quadLineFit1005->SetParameter(1,-13.08869);
    quadLineFit1005->SetParError(1,1.560014);
    quadLineFit1005->SetParLimits(1,0,0);
    quadLineFit1005->Draw("same");

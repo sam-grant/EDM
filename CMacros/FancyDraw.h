@@ -902,8 +902,10 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	double err0 = fit->GetParError(0);
 	double par1 = fit->GetParameter(1);
 	double err1 = fit->GetParError(1);
+
 	// We want to retain the sign here
 	double xint = - par0 / par1; 
+
 	double xint_err = BrErr;
 
 	// TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC"); // QHV
@@ -921,7 +923,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	values->AddText(ThreeSigFig(chi2ndf));
 	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
-	values->AddText(ThreeSigFig(fabs(xint))+"#pm"+ThreeSigFig(xint_err));
+	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));
 
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 
