@@ -20,7 +20,7 @@
 
 using namespace std;
 
-const string scan = "2";
+// const string scan = "2";
 const int N_QHV = 2;
 const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
 const int eLoCut = 1700;
@@ -217,8 +217,9 @@ int main() {
 
 	}
 
-	// Subtract the two settings 
+	// Plot 18 kV and subtract the function
 
+	// Subtract the two settings 
 	tuple<vector<double>, vector<double>> yPosTot = SubtractYPos(vcods); 
 
 	TGraphErrors *gr2 = VCOD(yPosTot);
@@ -255,7 +256,7 @@ int main() {
 
 	for( int i_fit = 0; i_fit<10; i_fit++ ) {
 
-		gr2->Fit(fCOD[i_fit], "RQ");
+		gr2->Fit(fCOD[i_fit], "QR");
 
 		chis[i_fit] = fCOD[i_fit]->GetChisquare() / fCOD[i_fit]->GetNDF();
 		orders[i_fit] = i_fit+1; zeros[i_fit] = 0.;

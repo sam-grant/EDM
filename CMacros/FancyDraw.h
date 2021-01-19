@@ -194,6 +194,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 }
 
+
 void DrawTGraphErrorsLine(TGraphErrors *graph, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);

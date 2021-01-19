@@ -1,10 +1,11 @@
-void y_vs_theta_14()
+void pol0Fit_18kV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 18 21:15:54 2021) by ROOT version 6.22/06
+//=========  (Mon Jan 18 21:53:07 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
-   c->Range(-0.8601201,71.67192,7.741081,76.59612);
+   c->Range(-0.8601201,71.68723,7.741081,76.72211);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -37,30 +38,30 @@ void y_vs_theta_14()
    6.278822,
    0.2574361};
    Double_t Graph0_fy1001[24] = {
-   73.9686,
-   73.00176,
-   75.72923,
-   74.68851,
-   75.72019,
-   75.67672,
-   75.74703,
-   73.18425,
-   72.52103,
-   74.10549,
-   74.3165,
-   74.63376,
-   75.17622,
-   74.95607,
-   74.96971,
-   74.30707,
-   75.38395,
-   75.4262,
-   73.70084,
-   74.61627,
-   74.43446,
-   74.18047,
-   74.12001,
-   74.91119};
+   73.97516,
+   73.06382,
+   75.74202,
+   74.66793,
+   75.71632,
+   75.75077,
+   75.84951,
+   73.30171,
+   72.55987,
+   74.17875,
+   74.32578,
+   74.64594,
+   75.18098,
+   74.83665,
+   74.99617,
+   74.24688,
+   75.36023,
+   75.44162,
+   73.69796,
+   74.53648,
+   74.40368,
+   74.05648,
+   74.07534,
+   74.98078};
    Double_t Graph0_fex1001[24] = {
    0,
    0,
@@ -87,30 +88,30 @@ void y_vs_theta_14()
    0,
    0};
    Double_t Graph0_fey1001[24] = {
-   0.02555849,
-   0.02699339,
-   0.02924633,
-   0.02889748,
-   0.02729902,
-   0.02737063,
-   0.02838708,
-   0.02748234,
-   0.02841047,
-   0.02747545,
-   0.02711457,
-   0.02513751,
-   0.02229784,
-   0.02579631,
-   0.02473424,
-   0.02757373,
-   0.02746297,
-   0.02480495,
-   0.02388164,
-   0.02704174,
-   0.02743652,
-   0.02694526,
-   0.0260959,
-   0.02520245};
+   0.03000487,
+   0.03190531,
+   0.03397258,
+   0.0339174,
+   0.03221173,
+   0.03240799,
+   0.03345652,
+   0.03234269,
+   0.03349269,
+   0.03232917,
+   0.03202328,
+   0.02953827,
+   0.02629211,
+   0.03040165,
+   0.02925919,
+   0.03259314,
+   0.03233834,
+   0.02916653,
+   0.0281354,
+   0.0317217,
+   0.03253015,
+   0.03178197,
+   0.03078477,
+   0.02974569};
    TGraphErrors *gre = new TGraphErrors(24,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
    gre->SetTitle(";#theta [rad];y [mm]");
@@ -118,8 +119,8 @@ void y_vs_theta_14()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,0,6.880961);
-   Graph_Graph01001->SetMinimum(72.16434);
-   Graph_Graph01001->SetMaximum(76.1037);
+   Graph_Graph01001->SetMinimum(72.19072);
+   Graph_Graph01001->SetMaximum(76.21863);
    Graph_Graph01001->SetDirectory(0);
    Graph_Graph01001->SetStats(0);
 
@@ -145,6 +146,38 @@ void y_vs_theta_14()
    Graph_Graph01001->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph01001);
    
+   
+   TF1 *pol01002 = new TF1("pol0","pol0",0,6.880961, TF1::EAddToList::kNo);
+   pol01002->SetFillColor(19);
+   pol01002->SetFillStyle(0);
+   pol01002->SetLineColor(2);
+   pol01002->SetLineWidth(2);
+   pol01002->SetChisquare(17342.73);
+   pol01002->SetNDF(23);
+   pol01002->GetXaxis()->SetLabelFont(42);
+   pol01002->GetXaxis()->SetTitleOffset(1);
+   pol01002->GetXaxis()->SetTitleFont(42);
+   pol01002->GetYaxis()->SetLabelFont(42);
+   pol01002->GetYaxis()->SetTitleFont(42);
+   pol01002->SetParameter(0,74.57367);
+   pol01002->SetParError(0,0.006361465);
+   pol01002->SetParLimits(0,0,0);
+   pol01002->SetParent(gre);
+   gre->GetListOfFunctions()->Add(pol01002);
+   
+   TPaveStats *ptstats = new TPaveStats(0.62,0.735,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 1.734e+04 / 23");
+   ptstats_LaTex = ptstats->AddText("p0       = 74.57 #pm 0.006361 ");
+   ptstats->SetOptStat(0);
+   ptstats->SetOptFit(20222);
+   ptstats->Draw();
+   gre->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(gre->GetListOfFunctions());
    gre->Draw("ap");
    c->Modified();
    c->cd();
