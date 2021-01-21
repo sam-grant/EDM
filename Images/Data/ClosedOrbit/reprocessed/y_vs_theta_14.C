@@ -1,7 +1,7 @@
 void y_vs_theta_14()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 18 21:15:54 2021) by ROOT version 6.22/06
+//=========  (Wed Jan 20 18:34:13 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8601201,71.67192,7.741081,76.59612);
@@ -113,7 +113,7 @@ void y_vs_theta_14()
    0.02520245};
    TGraphErrors *gre = new TGraphErrors(24,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
-   gre->SetTitle(";#theta [rad];y [mm]");
+   gre->SetTitle(";#theta [rad];#LTy#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -133,12 +133,12 @@ void y_vs_theta_14()
    Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("y [mm]");
+   Graph_Graph01001->GetYaxis()->SetTitle("#LTy#GT [mm]");
    Graph_Graph01001->GetYaxis()->CenterTitle(true);
    Graph_Graph01001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01001->GetYaxis()->SetLabelFont(42);
    Graph_Graph01001->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01001->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph01001->GetYaxis()->SetTitleOffset(1.25);
    Graph_Graph01001->GetYaxis()->SetTitleFont(42);
    Graph_Graph01001->GetZaxis()->SetLabelFont(42);
    Graph_Graph01001->GetZaxis()->SetTitleOffset(1);

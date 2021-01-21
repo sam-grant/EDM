@@ -135,7 +135,7 @@ double GetYMean(TGraphErrors *gr) {
 
 	gStyle->SetOptFit(20222);
 
-	DrawTGraphErrors(gr, ";#theta [rad];y [mm]", "../Images/Data/ClosedOrbit/"+stage+"/pol0Fit_18kV");
+	DrawTGraphErrors(gr, ";#theta [rad];#LTy#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/pol0Fit_18kV");
 
 	double p0 = func->GetParameter(0);
 
@@ -169,33 +169,7 @@ TGraphErrors *SubtractYPos(TGraphErrors *gr, TF1 *func, double yMean) {
 
 }
 
-void DrawBarChart(TGraphErrors *graph, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
-
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.1);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->SetLineColor(kBlack);
-	graph->SetFillColor(kBlack);
-	graph->Draw("AB");
-	//c->SetGridx();
-
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
-
-	delete c;
-
-	return;
-
-}
 
 
 int main() {
@@ -209,20 +183,24 @@ int main() {
 	double xmin = 0; 
 	double xmax = 2*TMath::Pi();
 
-	TF1 *fCOD_5 = new TF1("fCOD_5", "( (-6.12010e-04/0.108) +  (2.48682e-02*cos(x)-4.09261e-02*sin(x))/(1-0.108) + (1.68082e-02*cos(2*x)+4.98955e-02*sin(2*x))/(4-0.108) + (-4.67237e-03*cos(3*x)-3.19369e-01*sin(3*x))/(9-0.108) + (1.22918e-01*cos(4*x)-4.20146e-01*sin(4*x))/(16-0.108) )", xmin, xmax);
-
-	DrawTF1(fCOD_5, ";#theta [rad];y [mm]","../Images/Data/ClosedOrbit/"+stage+"/fCOD_5");
+	TF1 *fCOD_4 = new TF1("fCOD_4", "( (-6.12010e-04/0.106) +  (2.48682e-02*cos(x)-4.09261e-02*sin(x))/(1-0.106) + (1.68082e-02*cos(2*x)+4.98955e-02*sin(2*x))/(4-0.106) + (-4.67237e-03*cos(3*x)-3.19369e-01*sin(3*x))/(9-0.106) + (1.22918e-01*cos(4*x)-4.20146e-01*sin(4*x))/(16-0.106) )", xmin, xmax);
+	TF1 *fCOD_9 =new  TF1("fCOD_9", "( ([0]/0.106) +  ([1]*cos(x)+[2]*sin(x))/(1-0.106) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.106) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.106) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.106) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.106) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.106) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.106) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.106) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.106) )", xmin, xmax);
 	
+	DrawTF1(fCOD_4, ";#theta [rad];y [mm]","../Images/Data/ClosedOrbit/"+stage+"/fCOD_4");
+	DrawTF1(fCOD_9, ";#theta [rad];y [mm]","../Images/Data/ClosedOrbit/"+stage+"/fCOD_9");
+
 	TGraphErrors *gr1 = VCOD(yPos);//, fCOD_5);
 
 	double yMean = GetYMean(gr1);
 
-	TGraphErrors *gr2 = SubtractYPos(gr1, fCOD_5, yMean);
+	TGraphErrors *gr2 = SubtractYPos(gr1, fCOD_4, yMean);
+	TGraphErrors *gr3 = SubtractYPos(gr1, fCOD_9, yMean);
 
 	gr2->GetXaxis()->SetRangeUser(0,25);
+	gr3->GetXaxis()->SetRangeUser(0,25);
 
-	DrawBarChart(gr2, "18 kV;Calo number;y_{data} #minus y_{func} [mm]", "../Images/Data/ClosedOrbit/"+stage+"/CaloMisalignment");
-
+	DrawBarChart(gr2, "18 kV, N=4;Calo number;y_{data} #minus y_{func} [mm]", "../Images/Data/ClosedOrbit/"+stage+"/CaloMisalignment_4");
+	DrawBarChart(gr3, "18 kV, N=9;Calo number;y_{data} #minus y_{func} [mm]", "../Images/Data/ClosedOrbit/"+stage+"/CaloMisalignment_9");
 
 	return 0;
 

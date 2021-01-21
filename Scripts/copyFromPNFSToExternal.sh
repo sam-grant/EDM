@@ -14,24 +14,26 @@ rm -f ../txt/FileLists/${i}.txt && touch ../txt/FileLists/${i}.txt
 ssh gm2gpvm04 ls ${pnfsPath}/${i}/*/data/gm2offline_hadd_*.root >> ../txt/FileLists/${i}.txt
 
 # Delete this line after first run
-rm -rf ${extPath}/${i} && mkdir ${extPath}/${i}
+#rm -rf ${extPath}/${i} && 
+if [[ ! -d ${extPath}/${i} ]]; then
+	echo "${extPath}/${i} does not exists, creating directory"
+	mkdir ${extPath}/${i}
+fi
 
 echo "Run num ${i}"
 
 for file in `cat ../txt/FileLists/${i}.txt`; do
 
 	file=${file##*/} # Retain part after the last slash
-	echo $file
+	# echo $file
 
-	if [[ -f ${extPath}/${i}/${file} ]]; then
-		echo "${file} already exists on external, skipping..."
+	if [[ -f ${extPath}/${i}/gm2offline_hadd_${i}.root ]]; then
+		echo "gm2offline_hadd_${i}.root already exists on external, skipping..."
 		continue
 	fi
 
-	echo "Copying ${file}..."
+	echo "Copying ${file} to ${extPath}/${i}/gm2offline_hadd_${i}.root"
 
 	scp gm2gpvm04:${pnfsPath}/${i}/*/data/${file} ${extPath}/${i}/gm2offline_hadd_${i}.root #../../Trees/Data/RadialFieldScan_2/${i}/
 
 done
-
-#for j in `cat ../txt/FileLists/AllRunNumbers.txt`; do . copyFromPNFSToExternal.sh $j; done

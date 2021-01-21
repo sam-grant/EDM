@@ -15,38 +15,35 @@
 #include "TH2D.h"
 #include "TGraphErrors.h"
 #include "TFitResult.h"
+#include "TF1.h"
+#include "TLine.h"
 
 #include "FancyDraw.h"
 
 using namespace std;
 
-// const string scan = "2";
 const int N_QHV = 2;
 const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const int eLoCut = 1700;
 
 // Read histograms, produce tuple of y, yerr
 tuple<vector<double>, vector<double>> ReadYPos(string input) { 
 
-	// ++++++++++++++ Open tree and load branches ++++++++++++++
+	//  ====================  Open tree and load branches  ==================== 
 
 	// Get file
 	TFile *f1 = TFile::Open(input.c_str());
 	cout<<"\nOpened file:\t"<<input<<" "<<f1<<endl;
 
-	vector<TH1D *> hy_calos;// vector<unsigned int> tot_ctags;
+	vector<TH1D *> hy_calos;
 
 	vector<double> yPos; vector<double> eyPos;
 
 	for(int i_calo = 0; i_calo < 24; i_calo++) {
 
-		TH1D *hy = (TH1D*)f1->Get( ("PerCalo/hy_"+to_string(i_calo+1)).c_str() );//hy->Clone();
+		TH1D *hy = (TH1D*)f1->Get( ("PerCalo/hy_"+to_string(i_calo+1)).c_str() );
 
 		yPos.push_back(hy->GetMean());
 		eyPos.push_back(hy->GetMeanError());
-
-		//cout<<hy->GetMean()<<"±"<<hy->GetMeanError()<<endl;
-
 	}
 
 	return make_tuple(yPos,eyPos);
@@ -56,8 +53,8 @@ tuple<vector<double>, vector<double>> ReadYPos(string input) {
 // ==================== ACCURATE THETA ====================
 double GetTheta(int caloNum) { 
 
+	// From Josh, don't get too hung up on these
 	double caloPosRad[24] = {0.19896753472735357, 0.46076692252650303, 0.7225663103256524, 0.9843656981248019, 1.2461650859239513, 1.5079644737231008, 1.7697638615222502, 2.0315632493213998, 2.293362637120549, 2.5551620249196985, 2.816961412718848, 3.0787608005179976, 3.3405601883171467, 3.6023595761162963, 3.864158963915446, 4.125958351714595, 4.387757739513744, 4.649557127312894, 4.911356515112043, 5.173155902911193, 5.4349552907103424, 5.696754678509492, 5.958554066308642, 6.220353454107791};
-	//return (2*TMath::Pi() * caloNum/24);// * (180/TMath::Pi());
 	double theta = caloPosRad[caloNum-1] + (18.35*(TMath::Pi()/180)); 
 
 	if(theta > 2*TMath::Pi()) theta = theta - 2*TMath::Pi();
@@ -67,32 +64,23 @@ double GetTheta(int caloNum) {
 
 TGraphErrors *VCOD(tuple<vector<double>, vector<double>> yVal) {
 
-  // CAN"T USE GLOBAL QHV SINCE SOME SETTINGS ARE BROKEN
+  	// Loop through y-pos and fill a TGraph
 
-  // Loop through y-pos and fill a TGraph
-
-  	int n_calo = 24;//yVal.size();
-
-  	//cout<<"n_calo\t"<<n_calo<<endl;
+  	int n_calo = 24;
 
 	double x[n_calo]; double ex[n_calo];
 	double y[n_calo]; double ey[n_calo];
 
 	for ( int i_calo = 0; i_calo < n_calo; i_calo++ ) {
 
-    //double y_tmp = get<0>(yPos[i_quad]); double ey_tmp = get<1>(yPos[i_quad]);
-
-		//cout<<GetTheta(i_calo+1)*(180/TMath::Pi())<<"\t"<<get<0>(yVal)[i_calo]*1e-3<<"\t"<<get<1>(yVal)[i_calo]*1e-3<<"\n";
-
 		x[i_calo] = GetTheta(i_calo+1);
 		ex[i_calo] = 0.0;
-		y[i_calo] = get<0>(yVal)[i_calo];//get<0>(yVal[i_calo]);
+		y[i_calo] = get<0>(yVal)[i_calo];
 		ey[i_calo] = get<1>(yVal)[i_calo];
 
 	}
 
 	return new TGraphErrors(n_calo,x,y,ex,ey);
-
 
 }
 
@@ -108,7 +96,9 @@ tuple<vector<double>, vector<double>> SubtractYPos(vector<tuple<vector<double>, 
 
 		double y1 = get<0>(vcods.at(0))[i_calo]; double y2 = get<0>(vcods.at(1))[i_calo];
 		double ey1 = get<1>(vcods.at(0))[i_calo]; double ey2 = get<1>(vcods.at(1))[i_calo];
-		double ytot = y1 - y2; double eytot = sqrt(ey1*ey1 + ey2*ey2);
+
+		// y_18 - y_14
+		double ytot = y2 - y1; double eytot = sqrt(ey1*ey1 + ey2*ey2);
 
 		cout<<i_calo+1<<","<<GetTheta(i_calo+1)*(180/TMath::Pi())<<","<<ytot*1e-3<<","<<eytot*1e-3<<"\n";
 
@@ -120,68 +110,319 @@ tuple<vector<double>, vector<double>> SubtractYPos(vector<tuple<vector<double>, 
 
 }
 
-void DrawVCOD(TGraphErrors *graph, string title, string fname) {
+// ================================ START OF FIT FUNCTIONS ================================ 
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+const double n_1 = 0.0826; // 14 kV
+const double n_2 = 0.106; // 18 kV
 
-	//c->SetRightMargin(0.20);
+double fVCOD_0(double *x, double *par) {
 
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-  	graph->GetXaxis()->SetTitleOffset(1.1);
-  	graph->GetYaxis()->SetTitleOffset(1.25);
-  	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
+  	vector<double> quadFactor_;
 
-	graph->GetYaxis()->SetRangeUser(-0.325, 0.325);
-	graph->Draw("AP");
+  	for (int i_order = 0; i_order < 1; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
 
-	/*
-	// Mark the quads
-	// From diagram in TDR pg. 406  
-	TLine *Q1l = new TLine(GetTheta(3),0,GetTheta(6),0);
-	TPaveText *Q1t = new TPaveText(GetTheta(3),0.025,GetTheta(6),0.025);
-	TLine *Q2l = new TLine(GetTheta(9),0,GetTheta(12),0);
-	TPaveText *Q2t = new TPaveText(GetTheta(9),0.025,GetTheta(12),0.025);
-	TLine *Q3l = new TLine(GetTheta(15),0,GetTheta(18),0);
-	TPaveText *Q3t = new TPaveText(GetTheta(15),0.025,GetTheta(18),0.025);
-	TLine *Q4l = new TLine(GetTheta(21),0,GetTheta(24),0);
-	TPaveText *Q4t = new TPaveText(GetTheta(21),0.025,GetTheta(24),0.025);
+  	return ( par[0]*cos(0*x[0]) ) * quadFactor_.at(0);
 
-	Q1l->SetLineWidth(3); Q1l->SetLineStyle(2); Q1l->SetLineColor(kBlue); 
-	Q2l->SetLineWidth(3); Q2l->SetLineStyle(2); Q2l->SetLineColor(kOrange-3); 
-	Q3l->SetLineWidth(3); Q3l->SetLineStyle(2); Q3l->SetLineColor(kGreen+3); 
-	Q4l->SetLineWidth(3); Q4l->SetLineStyle(2); Q4l->SetLineColor(kMagenta+2); 
+}
 
-	Q1t->SetTextSize(26); Q2t->SetTextSize(26); Q3t->SetTextSize(26); Q4t->SetTextSize(26);
-	Q1t->SetTextFont(44); Q2t->SetTextFont(44); Q3t->SetTextFont(44); Q4t->SetTextFont(44);
-	Q1t->SetFillColor(0); Q2t->SetFillColor(0); Q3t->SetFillColor(0); Q4t->SetFillColor(0);
-	Q1t->SetTextColor(kBlue); Q2t->SetTextColor(kOrange-3); Q3t->SetTextColor(kGreen+3); Q4t->SetTextColor(kMagenta+2);
+double fVCOD_1(double *x, double *par) {
 
-	Q1t->AddText("Q1"); Q2t->AddText("Q2"); Q3t->AddText("Q3"); Q4t->AddText("Q4"); 
-	Q1l->Draw("same"); Q2l->Draw("same"); Q3l->Draw("same"); Q4l->Draw("same");
-	Q1t->Draw("same"); Q2t->Draw("same"); Q3t->Draw("same"); Q4t->Draw("same"); */
-	// Draw the sim 
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 2; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) );
+
+}
+
+double fVCOD_2(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 3; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) );
+
+}
+
+double fVCOD_3(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 4; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) );
+
+}
+
+double fVCOD_4(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 5; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) );
+
+}
+
+double fVCOD_4_183(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	double n = 0.108; // 18.3 kV
+
+  	for (int i_order = 0; i_order < 5; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n))  );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) );
+
+}
+
+double fVCOD_5(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 6; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) );
+}
+
+double fVCOD_6(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 7; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) );
+}
+
+double fVCOD_7(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 8; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) );
+}
+
+double fVCOD_8(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 9; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) )
+  			+ ( (par[15]*cos(8*x[0])+par[16]*sin(8*x[0])) * quadFactor_.at(8) );
+}
+
+
+double fVCOD_9(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 10; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) )
+  			+ ( (par[15]*cos(8*x[0])+par[16]*sin(8*x[0])) * quadFactor_.at(8) )
+  			+ ( (par[17]*cos(9*x[0])+par[18]*sin(9*x[0])) * quadFactor_.at(9) );
+}
+
+double fVCOD_9_183(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	double n = 0.108; // 18.3 kV
+
+  	for (int i_order = 0; i_order < 10; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n))  );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) )
+  			+ ( (par[15]*cos(8*x[0])+par[16]*sin(8*x[0])) * quadFactor_.at(8) )
+  			+ ( (par[17]*cos(9*x[0])+par[18]*sin(9*x[0])) * quadFactor_.at(9) );
+}
+
+double fVCOD_10(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 11; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) )
+  			+ ( (par[15]*cos(8*x[0])+par[16]*sin(8*x[0])) * quadFactor_.at(8) )
+  			+ ( (par[17]*cos(9*x[0])+par[18]*sin(9*x[0])) * quadFactor_.at(9) )
+  			+ ( (par[19]*cos(10*x[0])+par[20]*sin(10*x[0])) * quadFactor_.at(10) );
+}
+
+double fVCOD_11(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 12; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) )
+  			+ ( (par[15]*cos(8*x[0])+par[16]*sin(8*x[0])) * quadFactor_.at(8) )
+  			+ ( (par[17]*cos(9*x[0])+par[18]*sin(9*x[0])) * quadFactor_.at(9) )
+  			+ ( (par[19]*cos(10*x[0])+par[20]*sin(10*x[0])) * quadFactor_.at(10) )
+  			+ ( (par[21]*cos(11*x[0])+par[22]*sin(11*x[0])) * quadFactor_.at(11) );
+  			
+}
+
+// At this point with have more fit parameters than data points so it's a good place to stop.
+// Actually gives you an infinite chi sqr
+
+double fVCOD_12(double *x, double *par) {
+
+  	vector<double> quadFactor_;
+
+  	for (int i_order = 0; i_order < 13; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+
+  	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+  			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+  			+ ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+  			+ ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+  			+ ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) )
+  			+ ( (par[9]*cos(5*x[0])+par[10]*sin(5*x[0])) * quadFactor_.at(5) )
+  			+ ( (par[11]*cos(6*x[0])+par[12]*sin(6*x[0])) * quadFactor_.at(6) )
+  			+ ( (par[13]*cos(7*x[0])+par[14]*sin(7*x[0])) * quadFactor_.at(7) )
+  			+ ( (par[15]*cos(8*x[0])+par[16]*sin(8*x[0])) * quadFactor_.at(8) )
+  			+ ( (par[17]*cos(9*x[0])+par[18]*sin(9*x[0])) * quadFactor_.at(9) )
+  			+ ( (par[19]*cos(10*x[0])+par[20]*sin(10*x[0])) * quadFactor_.at(10) )
+  			+ ( (par[21]*cos(11*x[0])+par[22]*sin(11*x[0])) * quadFactor_.at(11) )
+  			+ ( (par[23]*cos(13*x[0])+par[24]*sin(12*x[0])) * quadFactor_.at(12) );
+
+}
+
+// ================================ CUSTOM PLOTTING ================================ 
+
+
+void VCOD_183(TF1 *funcs[], string title, string fname) {
+
+	// HV 14/16/18/20 kV  corresponds to n= 0.108/0.0944/0.106/0.118
+	// n = 0.108 corresponds to 18.3 kV 
+
+	// Get BD sim
 	TFile *simFile = TFile::Open("../Plots/MC/ClosedOrbit/y_vs_theta.root"); 
 	TGraphErrors *sim = (TGraphErrors*)simFile->Get("y_vs_theta"); 
 	sim->SetLineColor(kRed); sim->SetMarkerColor(kRed); sim->SetLineWidth(3);
 
-	//sim->Draw("L same");
+	TF1 *fit_4 = funcs[4];
+	TF1 *fit_9 = funcs[9];
 
-	TLegend *leg = new TLegend(0.11,0.69,0.33,0.89); // 0.81,0.35,0.99,0.65);
+	double xmin = 0.;
+	double xmax = 2*TMath::Pi();
+
+	// "Empty" functions for 18.3 kV
+	TF1 *f_4 = new TF1("fVCOD_4_183", fVCOD_4_183, xmin, xmax, 9);
+	TF1 *f_9 = new TF1("fVCOD_9_183", fVCOD_9_183, xmin, xmax, 19);
+
+/*	f_4->SetParameter(0, 2.12034e-03);
+	f_4->SetParameter(1, -9.77146e-01);
+	f_4->SetParameter(2, 1.60811e+00);
+	f_4->SetParameter(3, -2.81531e+00);
+	f_4->SetParameter(4, -8.35731e+00);
+	f_4->SetParameter(5, 1.78097e+00);
+	f_4->SetParameter(6, 1.21734e+02);
+	f_4->SetParameter(7, -8.36230e+01);
+	f_4->SetParameter(8, 2.85832e+02); */
+
+	// Set parameters based on fit results
+	for( int i_param = 0; i_param < 9; i_param++ ) f_4->SetParameter(i_param, fit_4->GetParameter(i_param));
+	for( int i_param = 0; i_param < 19; i_param++ ) f_9->SetParameter(i_param, fit_9->GetParameter(i_param)); 
+
+  	TLegend *leg = new TLegend(0.11,0.69,0.50,0.89); // 0.81,0.35,0.99,0.65);
+  	leg->AddEntry(f_4, "N = 4");
+  	leg->AddEntry(f_9, "N = 9");
+  	leg->AddEntry(sim, "BD sim");
   	leg->SetBorderSize(0);
 
-  	leg->AddEntry(graph, "Data");
-  	leg->AddEntry(sim, "BD sim");
-/*  leg->AddEntry(Q1, "Q1");
-  leg->AddEntry(Q2, "Q2");
-  leg->AddEntry(Q3, "Q3");
-  leg->AddEntry(Q4, "Q4");*/
+  	TCanvas *c = new TCanvas("c","c",800,600);
 
-  	//leg->Draw("same");
+  	f_9->Draw();
+  	gPad->Update();
+
+	f_9->SetTitle(title.c_str());
+	//9_4->GetYaxis()->SetRangeUser(-.4,.4);
+	f_9->GetXaxis()->SetTitleSize(.04);
+	f_9->GetYaxis()->SetTitleSize(.04);
+	f_9->GetXaxis()->SetTitleOffset(1.1);
+	f_9->GetYaxis()->SetTitleOffset(1.1);
+	f_9->GetXaxis()->CenterTitle(true);
+	f_9->GetYaxis()->CenterTitle(true);
+	f_9->GetYaxis()->SetMaxDigits(4);
+	f_4->SetLineColor(kBlue); f_4->SetMarkerColor(kBlue); f_4->SetLineWidth(3);
+	f_9->SetLineColor(kGreen-3); f_9->SetMarkerColor(kGreen-3); f_9->SetLineWidth(3);
+	f_4->SetNpx(1000); 
+	f_9->SetNpx(1000);
+	f_9->Draw();
+	f_4->Draw("same");
+	sim->Draw("same");
+	leg->Draw("same");
+	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -189,11 +430,8 @@ void DrawVCOD(TGraphErrors *graph, string title, string fname) {
 
 	delete c;
 
-	return;
-
+	return ;
 }
-
-
 
 int main() {
 
@@ -212,7 +450,7 @@ int main() {
 		vcods.push_back(yPos);
 
 		TGraphErrors *gr1 = VCOD(yPos);//
-		DrawTGraphErrors(gr1, ";#theta [rad];y [mm]", "../Images/Data/ClosedOrbit/"+stage+"/y_vs_theta_"+to_string(int(QHV[i_quad])));
+		DrawTGraphErrors(gr1, ";#theta [rad];#LTy#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/y_vs_theta_"+to_string(int(QHV[i_quad])));
 		// Plot y(theta) for each quad setting
 
 	}
@@ -222,71 +460,108 @@ int main() {
 	// Subtract the two settings 
 	tuple<vector<double>, vector<double>> yPosTot = SubtractYPos(vcods); 
 
+	// Plot the difference 
 	TGraphErrors *gr2 = VCOD(yPosTot);
 
-	//DrawVCOD(gr2, "Low energy threshold: "+to_string(eLoCut)+" MeV;#theta [rad];y [mm]", "../Images/Data/VCOD/eLoCut_"+to_string(eLoCut)+"/ytot_vs_theta");
-	DrawVCOD(gr2, ";#theta [rad];#LTy#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/ytot_vs_theta");
+	gr2->GetYaxis()->SetRangeUser(-0.25, 0.25);
+	gr2->GetXaxis()->SetRangeUser(0, 2.01*TMath::Pi());
 
-	//TF1 *fCOD_10 = new TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )", 0, 360);
-	//TF1 *fCOD_10 = new TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.108) + ([19]*cos(10*x)+[20]*sin(10*x))/(100-0.108))", 0, 2*TMath::Pi());
+	DrawTGraphErrors(gr2, ";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/ytot_vs_theta");
+
 	// Unfortunate complication of having calo 24 in front of calo 1
-	double xmin = gr2->GetPointX(23);//0;//
-	double xmax = gr2->GetPointX(22);//2*TMath::Pi();//
+	double xmin = gr2->GetPointX(23);
+	double xmax = gr2->GetPointX(22); //2*TMath::Pi();
 
-	TF1 *fCOD_1 = new TF1("fCOD_1", "( ([0]/0.108) )", xmin, xmax);
-	TF1 *fCOD_2 = new TF1("fCOD_2", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) )", xmin, xmax);
-	TF1 *fCOD_3 = new TF1("fCOD_3", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) )", xmin, xmax);
-	TF1 *fCOD_4 = new TF1("fCOD_4", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) )", xmin, xmax);
-	TF1 *fCOD_5 = new TF1("fCOD_5", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) )", xmin, xmax);
-	TF1 *fCOD_6 = new TF1("fCOD_6", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) )", xmin, xmax);
-	TF1 *fCOD_7 = new TF1("fCOD_7", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) )", xmin, xmax);
-	TF1 *fCOD_8 = new TF1("fCOD_8", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) )", xmin, xmax);
-	TF1 *fCOD_9 = new TF1("fCOD_9", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) )", xmin, xmax);
-	TF1 *fCOD_10 =new  TF1("fCOD_10", "( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) + ([5]*cos(3*x)+[6]*sin(3*x))/(9-0.108) + ([7]*cos(4*x)+[8]*sin(4*x))/(16-0.108) + ([9]*cos(5*x)+[10]*sin(5*x))/(25-0.108) + ([11]*cos(6*x)+[12]*sin(6*x))/(36-0.108) + ([13]*cos(7*x)+[14]*sin(7*x))/(49-0.108) + ([15]*cos(8*x)+[16]*sin(8*x))/(64-0.108) + ([17]*cos(9*x)+[18]*sin(9*x))/(81-0.108) + ([19]*cos(10*x)+[20]*sin(10*x))/(100-0.108))", xmin, xmax);
-	
-	// Loop through HO fits 
+	// Get funnctions up to N=12 (25 params)
 
-	TF1 *fCOD[10] = {fCOD_1, fCOD_2, fCOD_3, fCOD_4, fCOD_5, fCOD_6, fCOD_7, fCOD_8, fCOD_9, fCOD_10};	
+	TF1 *f_0 = new TF1("fVCOD_0", fVCOD_0, xmin, xmax, 1);
+	TF1 *f_1 = new TF1("fVCOD_1", fVCOD_1, xmin, xmax, 3);
+	TF1 *f_2 = new TF1("fVCOD_2", fVCOD_2, xmin, xmax, 5);
+	TF1 *f_3 = new TF1("fVCOD_3", fVCOD_3, xmin, xmax, 7);
+	TF1 *f_4 = new TF1("fVCOD_4", fVCOD_4, xmin, xmax, 9);
+	TF1 *f_5 = new TF1("fVCOD_5", fVCOD_5, xmin, xmax, 11);
+	TF1 *f_6 = new TF1("fVCOD_6", fVCOD_6, xmin, xmax, 13);
+	TF1 *f_7 = new TF1("fVCOD_7", fVCOD_7, xmin, xmax, 15);
+	TF1 *f_8 = new TF1("fVCOD_8", fVCOD_8, xmin, xmax, 17);
+	TF1 *f_9 = new TF1("fVCOD_9", fVCOD_9, xmin, xmax, 19);
+	TF1 *f_10 = new TF1("fVCOD_10", fVCOD_10, xmin, xmax, 21);
+	TF1 *f_11 = new TF1("fVCOD_11", fVCOD_11, xmin, xmax, 23);
+	//TF1 *f_12 = new TF1("fVCOD_12", fVCOD_12, xmin, xmax, 25);
 
-	//gr2->Fit(fCOD_10, "R");
+	int maxN = 12; 
 
-	double chis[10]; double chisFromOne[10]; double orders[10]; double zeros[10];
+	TF1 *funcs[12] = {f_0, f_1, f_2, f_3, f_4, f_5, f_6, f_7, f_8, f_9, f_10, f_11};//, f_12};	
 
-	int bestFitOrder = 0; double tmp = 100;
+	double chis[12]; double orders[12]; double zeros[12];
 
-	for( int i_fit = 0; i_fit<10; i_fit++ ) {
+	int bestFitOrder = 0; double tmp = 1e6;
 
-		gr2->Fit(fCOD[i_fit], "QR");
+//	int count = ;
+	// Loop through functions and fit 
+	for( int i_fit = 0; i_fit < 12; i_fit++ ) {
 
-		chis[i_fit] = fCOD[i_fit]->GetChisquare() / fCOD[i_fit]->GetNDF();
-		orders[i_fit] = i_fit+1; zeros[i_fit] = 0.;
+		gr2->Fit(funcs[i_fit], "R");
 
-		chisFromOne[i_fit] = 1-chis[i_fit];
+		chis[i_fit] = funcs[i_fit]->GetChisquare() / funcs[i_fit]->GetNDF();
+		orders[i_fit] = i_fit; zeros[i_fit] = 0.;
 
-		if(abs(chisFromOne[i_fit]) < tmp) {
-			tmp = abs(chisFromOne[i_fit]);
-			bestFitOrder = i_fit+1;
+		if(abs(1-chis[i_fit]) < tmp) {
+			tmp = abs(1-chis[i_fit]);
+			bestFitOrder = i_fit;
 		}
  
 		gStyle->SetOptFit(20222);
+		gr2->Draw();
+		gPad->Update();
 
-		DrawTGraphErrors(gr2, ";#theta [rad];#LTy#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/fit_ytot_vs_theta_"+to_string(i_fit+1));
+/*		for( int i_ord = 0; i_ord < i_fit+1; i_ord++) {
+
+			fVCOD[i_fit]->SetParName(i_ord, (names[i_ord]).c_str());
+		}*/
+
+		cout<<"CHI\t"<<chis[i_fit]<<endl;
+		DrawTGraphErrors(gr2, ";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/fit_ytot_vs_theta_"+to_string(i_fit));
 
 	}
 
+	// Print out the fit which gives a reduced chi^2 closest to one
 	cout<<"Best fit order\t"<<bestFitOrder<<endl;
 
-	TGraphErrors *gr3 = new TGraphErrors(10, orders, chis, zeros, zeros);
-	TGraphErrors *gr4 = new TGraphErrors(10, orders, chisFromOne, zeros, zeros);	
+	// Now plot yCOD for 18.3 kV and compare with BD sim 
 
-	DrawTGraphErrorsLine(gr3, ";Fit order, N;#chi^{2}/ndf", "../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order");
-	DrawTGraphErrorsLine(gr4, ";Fit order, N;1#minus#chi^{2}/ndf", "../Images/Data/ClosedOrbit/"+stage+"/fit_1-chi_vs_order");
-	//
+	VCOD_183(funcs, ";#theta [rad];#LTy#GT [mm]", "../Images/Data/ClosedOrbit/sim_N4_N9_183kV");
 
+	// Draw TGraph of chi^2/ndf versus fit order
+	TGraphErrors *gr3 = new TGraphErrors(maxN, orders, chis, zeros, zeros);
+	gr3->GetXaxis()->SetRangeUser(-0.5, 11.25);
+	gr3->SetMinimum(0);
 
-	//DrawTGraphErrors(gr2, ";#theta [deg];#LTy#GT [mm]", "../Images/Data/VCOD/fit_ytot_vs_theta");
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gr3->SetTitle(";Fit order, N;#chi^{2}/ndf");
+	gr3->GetXaxis()->SetTitleSize(.04);
+	gr3->GetYaxis()->SetTitleSize(.04);
+	gr3->GetXaxis()->SetTitleOffset(1.1);
+	gr3->GetYaxis()->SetTitleOffset(1.1);
+	gr3->GetXaxis()->CenterTitle(true);
+	gr3->GetYaxis()->CenterTitle(true);
+	gr3->GetYaxis()->SetMaxDigits(4);
+	gr3->SetMarkerStyle(20); //  Full circle
+	gr3->Draw("APL");
+
+	gPad->Update();
+	TLine *l1 = new TLine(gPad->GetUxmin(),1.,gPad->GetUxmax(),1.);
+	l1->SetLineStyle(2);
+	l1->SetLineWidth(2);
+	l1->SetLineColor(kRed);
+	l1->Draw("same");
+
+	c->SaveAs( ("../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order.pdf").c_str() );
+	c->SaveAs( ("../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order.png").c_str() );
+	c->SaveAs( ("../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order.C").c_str() );
 
 	return 0;
+
 
 }
 
@@ -449,4 +724,77 @@ tuple<vector<double>, vector<double>> ReadYPos(string input, string output) {
 
 }
 
-*/
+
+
+void DrawVCOD(TGraphErrors *graph, string title, string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	//c->SetRightMargin(0.20);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+  	graph->GetXaxis()->SetTitleOffset(1.1);
+  	graph->GetYaxis()->SetTitleOffset(1.25);
+  	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+
+	graph->Draw("AP");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+	
+	// Mark the quads
+	// From diagram in TDR pg. 406  
+	TLine *Q1l = new TLine(GetTheta(3),0,GetTheta(6),0);
+	TPaveText *Q1t = new TPaveText(GetTheta(3),0.025,GetTheta(6),0.025);
+	TLine *Q2l = new TLine(GetTheta(9),0,GetTheta(12),0);
+	TPaveText *Q2t = new TPaveText(GetTheta(9),0.025,GetTheta(12),0.025);
+	TLine *Q3l = new TLine(GetTheta(15),0,GetTheta(18),0);
+	TPaveText *Q3t = new TPaveText(GetTheta(15),0.025,GetTheta(18),0.025);
+	TLine *Q4l = new TLine(GetTheta(21),0,GetTheta(24),0);
+	TPaveText *Q4t = new TPaveText(GetTheta(21),0.025,GetTheta(24),0.025);
+
+	Q1l->SetLineWidth(3); Q1l->SetLineStyle(2); Q1l->SetLineColor(kBlue); 
+	Q2l->SetLineWidth(3); Q2l->SetLineStyle(2); Q2l->SetLineColor(kOrange-3); 
+	Q3l->SetLineWidth(3); Q3l->SetLineStyle(2); Q3l->SetLineColor(kGreen+3); 
+	Q4l->SetLineWidth(3); Q4l->SetLineStyle(2); Q4l->SetLineColor(kMagenta+2); 
+
+	Q1t->SetTextSize(26); Q2t->SetTextSize(26); Q3t->SetTextSize(26); Q4t->SetTextSize(26);
+	Q1t->SetTextFont(44); Q2t->SetTextFont(44); Q3t->SetTextFont(44); Q4t->SetTextFont(44);
+	Q1t->SetFillColor(0); Q2t->SetFillColor(0); Q3t->SetFillColor(0); Q4t->SetFillColor(0);
+	Q1t->SetTextColor(kBlue); Q2t->SetTextColor(kOrange-3); Q3t->SetTextColor(kGreen+3); Q4t->SetTextColor(kMagenta+2);
+
+	Q1t->AddText("Q1"); Q2t->AddText("Q2"); Q3t->AddText("Q3"); Q4t->AddText("Q4"); 
+	Q1l->Draw("same"); Q2l->Draw("same"); Q3l->Draw("same"); Q4l->Draw("same");
+	Q1t->Draw("same"); Q2t->Draw("same"); Q3t->Draw("same"); Q4t->Draw("same"); 
+
+	// Draw the sim 
+	//TFile *simFile = TFile::Open("../Plots/MC/ClosedOrbit/y_vs_theta.root"); 
+	//TGraphErrors *sim = (TGraphErrors*)simFile->Get("y_vs_theta"); 
+	//sim->SetLineColor(kRed); sim->SetMarkerColor(kRed); sim->SetLineWidth(3);
+//
+//	////sim->Draw("L same");
+//
+//	//TLegend *leg = new TLegend(0.11,0.69,0.33,0.89); // 0.81,0.35,0.99,0.65);
+//  	//leg->SetBorderSize(0);
+//
+//  	//leg->AddEntry(graph, "Data");
+  	//leg->AddEntry(sim, "BD sim");
+ leg->AddEntry(Q1, "Q1");
+  leg->AddEntry(Q2, "Q2");
+  leg->AddEntry(Q3, "Q3");
+  leg->AddEntry(Q4, "Q4");
+
+  	//leg->Draw("same");
+
+}*/

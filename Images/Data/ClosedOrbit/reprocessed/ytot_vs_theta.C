@@ -1,10 +1,10 @@
 void ytot_vs_theta()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 18 21:15:54 2021) by ROOT version 6.22/06
+//=========  (Wed Jan 20 18:34:14 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.8601201,-0.40625,7.741081,0.40625);
+   c->Range(-0.7913105,-0.3125,7.121794,0.3125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -37,30 +37,30 @@ void ytot_vs_theta()
    6.278822,
    0.2574361};
    Double_t Graph0_fy1003[24] = {
-   -0.006562985,
-   -0.06206024,
-   -0.0127903,
-   0.02058143,
-   0.003870004,
-   -0.07405092,
-   -0.102477,
-   -0.1174621,
-   -0.03883636,
-   -0.07325296,
-   -0.009276232,
-   -0.01217671,
-   -0.004751873,
-   0.1194191,
-   -0.02645731,
-   0.06019055,
-   0.02371367,
-   -0.01542529,
-   0.002887453,
-   0.07978954,
-   0.03078049,
-   0.1239876,
-   0.0446683,
-   -0.06959394};
+   0.006562985,
+   0.06206024,
+   0.0127903,
+   -0.02058143,
+   -0.003870004,
+   0.07405092,
+   0.102477,
+   0.1174621,
+   0.03883636,
+   0.07325296,
+   0.009276232,
+   0.01217671,
+   0.004751873,
+   -0.1194191,
+   0.02645731,
+   -0.06019055,
+   -0.02371367,
+   0.01542529,
+   -0.002887453,
+   -0.07978954,
+   -0.03078049,
+   -0.1239876,
+   -0.0446683,
+   0.06959394};
    Double_t Graph0_fex1003[24] = {
    0,
    0,
@@ -113,13 +113,13 @@ void ytot_vs_theta()
    0.03898679};
    TGraphErrors *gre = new TGraphErrors(24,Graph0_fx1003,Graph0_fy1003,Graph0_fex1003,Graph0_fey1003);
    gre->SetName("Graph0");
-   gre->SetTitle(";#theta [rad];#LTy#GT [mm]");
+   gre->SetTitle(";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01003 = new TH1F("Graph_Graph01003","",100,0,6.880961);
-   Graph_Graph01003->SetMinimum(-0.325);
-   Graph_Graph01003->SetMaximum(0.325);
+   Graph_Graph01003->SetMinimum(-0.25);
+   Graph_Graph01003->SetMaximum(0.25);
    Graph_Graph01003->SetDirectory(0);
    Graph_Graph01003->SetStats(0);
 
@@ -128,12 +128,13 @@ void ytot_vs_theta()
    ci = TColor::GetColor("#000099");
    Graph_Graph01003->SetLineColor(ci);
    Graph_Graph01003->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_Graph01003->GetXaxis()->SetRange(1,92);
    Graph_Graph01003->GetXaxis()->CenterTitle(true);
    Graph_Graph01003->GetXaxis()->SetLabelFont(42);
    Graph_Graph01003->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01003->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01003->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01003->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_Graph01003->GetYaxis()->SetTitle("#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
    Graph_Graph01003->GetYaxis()->CenterTitle(true);
    Graph_Graph01003->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01003->GetYaxis()->SetLabelFont(42);

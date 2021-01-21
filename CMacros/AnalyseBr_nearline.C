@@ -22,14 +22,14 @@ using namespace std;
 
 
 
-const string stage = "reprocessed";////"raw";
+const string stage = "reprocessed"; // "//// // ////
 
 // FIRST SCAN
-//string scan = "1";
-//const int N_QHV = 2;
-//const int N_FIELD = 2;
-//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+// string scan = "1";
+// const int N_QHV = 2;
+// const int N_FIELD = 2;
+// const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // SECOND SCAN
 string scan = "2";
@@ -124,10 +124,9 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yVal, vector<float> QHV_tmp
 	double y[n]; double ey[n];
 
   // Sanity print out
-  cout<<"\n********** Quad scan printout **********"<<endl;
+  //cout<<"\n********** Quad scan printout **********"<<endl;
 
-
-  cout<<"Entries\t"<<n<<endl;
+  cout<<"QHV [kV], y [mm], ey [mm]"<<endl;
 
 	for ( int i_quad = 0; i_quad < n; i_quad++ ) {
 
@@ -138,9 +137,7 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yVal, vector<float> QHV_tmp
 		y[i_quad] = get<0>(yVal[i_quad]);
 		ey[i_quad] = get<1>(yVal[i_quad]);
 
-    //cout<<"QHV [kV]\t"<<QHV[i_quad]<<"\n";
-    //cout<<"x\t"<<x[i_quad]<<"+/-"<<ex[i_quad]<<"\n"; 
-    //cout<<"y\t"<<y[i_quad]<<"+/-"<<ey[i_quad]<<endl;
+    cout<<QHV[i_quad]<<", "<<y[i_quad]<<", "<<ey[i_quad]<<endl;//" y [mm],ey [mm]"<<endl;
 
 	}
 
@@ -170,13 +167,19 @@ vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func) 
 
     double x[n_points]; double y[n_points]; double zeros[n_points]; 
 
+    TH1D *h_res = new TH1D("h_res",";Fit residual [mm];Entries",100, -0.05, 0.05);
+
     for (int i_point = 0; i_point < n_points; i_point++) { 
 
       x[i_point] = graphs.at(i_fit)->GetPointX(i_point);
       y[i_point] = graphs.at(i_fit)->GetPointY(i_point) - fit->Eval(x[i_point]); 
       zeros[i_point] = 0.;
 
+      h_res->Fill(y[i_point]);
+
     }
+
+    DrawTH1(h_res,";Fit residual [mm];Entries","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/1D_res_"+to_string(BR_APP[i_fit]));
 
     TGraphErrors *gr = new TGraphErrors(n_points, x, y, zeros, zeros);
 
@@ -212,7 +215,7 @@ double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_poin
     double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 
     // Sanity check
-    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/FieldFit_pValCheck"+to_string(i_point));
+    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFit_pValCheck"+to_string(i_point));
 
     pVal = mainFit->GetProb();
 
@@ -269,11 +272,44 @@ double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_poin
 
 
   if(i_point!=-1) cout<<"\nThe p-value is "<<pVal<<" with "<<BR_APP[i_point]<<" removed."<<endl;
+  else cout<<"\nThe p-value is "<<pVal<<" with no points removed."<<endl;
 
   return pVal;
 
 }
+/*
+void WriteQuadScan(vector<TGraphErrors*> graphs, string ouput) {
 
+
+  // Loop through graphs and write to text the chi sqr
+  for (int i_graph = 0; i_graph < n_graphs; i_graph++) {
+
+    // Loop thro data points
+    int n_points = graphs.at(i_fit)->GetN();
+
+    cout
+
+    for (int i_point = 0; i_point < n_points; i_point++) { 
+
+      x[i_point] = graphs.at(i_fit)->GetPointX(i_point);
+      y[i_point] = graphs.at(i_fit)->GetPointY(i_point) - fit->Eval(x[i_point]); 
+      zeros[i_point] = 0.;
+
+      h_res->Fill(y[i_point]);
+
+    }
+
+    DrawTH1(h_res,";Fit residual [mm];Entries","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/1D_res_"+to_string(BR_APP[i_fit]));
+
+    TGraphErrors *gr = new TGraphErrors(n_points, x, y, zeros, zeros);
+
+    residuals.push_back(gr); 
+
+
+
+
+
+}*/
 
 int main() {
 
@@ -313,6 +349,10 @@ int main() {
     vector<tuple<double, double>> ctags; // Second one is just a dummy
 
     vector<float> QHV_tmp; 
+
+    //if(BR_APP[i_field] != -50 && row.at(2) != -50) continue;
+
+    cout<<"Applied field: "<<BR_APP[i_field]<<" ppm"<<endl;
 
     // =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
@@ -357,7 +397,7 @@ int main() {
 
     //TGraphErrors *quadScanCTAG = ; 
 
-    quadScanCTAGs.push_back(QuadScan(ctags, QHV_tmp));
+    //quadScanCTAGs.push_back(QuadScan(ctags, QHV_tmp));
 
     	// Fit for quad gradient and store
     TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
@@ -376,7 +416,11 @@ int main() {
 	}
 
   // Draw quad scans 
-  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadScans", 71., 79., BR_APP);
+  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadScans", 71.5, 78.5, BR_APP);
+
+  // Write quad scans to text
+
+  // WriteQuadScan(quadScans, "../Images/txt/QuadScans2.txt");
 
   // ++++++++++++++++ Some checks on the quad scans ++++++++++++++++ 
   // Pass quad scans to chi square drawer
@@ -387,7 +431,7 @@ int main() {
   DrawQuadScanNoFit(quadScanResiduals, ";1/QHV [kV^{-1}];Fit residual [mm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadFitRes", -0.05, 0.05, BR_APP);
 
   // Draw CTAGs per fit
-  DrawQuadScanNoFit(quadScanCTAGs, ";1/QHV [kV^{-1}];Integrated CTAGs / setting", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadCTAGs", 1e6, 4.5e6, BR_APP); 
+  //DrawQuadScanNoFit(quadScanCTAGs, ";1/QHV [kV^{-1}];Integrated CTAGs / setting", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadCTAGs", 1e6, 4.5e6, BR_APP); 
 
   // ++++++++++++++++ Fit for radial field ++++++++++++++++ 
 
@@ -409,7 +453,7 @@ int main() {
 
   // Draw main fit residuals 
 
-  //DrawTGraphResiduals(result, "mainFit", ";#LTB_{r}^{App}#GT [ppm];Fit residual [ppm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFitRes");
+  DrawTGraphResiduals(result, "mainFit", ";#LTB_{r}^{App}#GT [ppm];Fit residual [ppm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFitRes");
 
 
   // ++++++++++++++++ Check p-values ++++++++++++++++ 
@@ -421,25 +465,25 @@ int main() {
 
     double pVal = pValuePointCheck(x,y,ex,ey,i_point);
 
-    x_tmp[i_point+1] = i_point+1;
+    x_tmp[i_point+1] = i_point+2;
     y_tmp[i_point+1] = pVal;
     zeros[i_point+1] = 0.;  
 
   }
 
   TGraphErrors *pValGr = new TGraphErrors(N_FIELD+1, x_tmp, y_tmp, zeros, zeros);
-  pValGr->GetXaxis()->SetRangeUser(-1,7);
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(-1 + 1.),"None");
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(0 + 1.),"+50");
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(1 + 1.),"+30");
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(2 + 1.),"+10");
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(3 + 1.),"#minus10");
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(4 + 1.),"#minus30");
-  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(5 + 1.),"#minus50");
+  //pValGr->GetXaxis()->SetRangeUser(-10,7);
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(0 + 1.),"None");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(1 + 1.),"+50");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(2 + 1.),"+30");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(3 + 1.),"+10");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(4 + 1.),"#minus10");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(5 + 1.),"#minus30");
+  pValGr->GetXaxis()->SetBinLabel(pValGr->GetXaxis()->FindBin(6 + 1.),"#minus50");
   pValGr->GetXaxis()->LabelsOption("h");
   pValGr->GetXaxis()->SetNdivisions(7);
 
-  DrawTGraphErrors(pValGr,";Data point removed;p-value","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/pVals");
+  DrawBarChart(pValGr,";Data point removed in re-fit;p-value","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/pVals");
 	
   return 0;
 }

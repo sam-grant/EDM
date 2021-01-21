@@ -1,7 +1,7 @@
 void FieldFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 18 20:10:11 2021) by ROOT version 6.22/06
+//=========  (Tue Jan 19 00:01:03 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-26.45885,45,49.43258);

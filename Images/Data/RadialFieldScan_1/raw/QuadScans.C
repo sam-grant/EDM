@@ -1,10 +1,10 @@
 void QuadScans()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 18 20:20:51 2021) by ROOT version 6.22/06
+//=========  (Mon Jan 18 23:55:19 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(0.05124717,70,0.07845805,80);
+   c->Range(0.05124717,72.375,0.07845805,78.625);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -31,8 +31,8 @@ void QuadScans()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,0.05396825,0.07301588);
-   Graph_Graph01001->SetMinimum(71);
-   Graph_Graph01001->SetMaximum(79);
+   Graph_Graph01001->SetMinimum(73);
+   Graph_Graph01001->SetMaximum(78);
    Graph_Graph01001->SetDirectory(0);
    Graph_Graph01001->SetStats(0);
 
