@@ -1,0 +1,11 @@
+quadFactor at N = 0:	2.67258
+quadFactor at N = 1:	0.0285312
+quadFactor at N = 2:	0.00153399
+quadFactor at N = 3:	0.00029504
+quadFactor at N = 4:	9.24934e-05
+quadFactor at N = 5:	3.77241e-05
+quadFactor at N = 6:	1.81505e-05
+quadFactor at N = 7:	9.78356e-06
+quadFactor at N = 8:	5.72976e-06
+quadFactor at N = 9:	3.57485e-06
+quadFactor at N = 10:	2.34442e-06

@@ -132,7 +132,7 @@ void ReadYPos(string input, string output) {
 
 int main(int argc, char *argv[]) {
 
-   const string study = "ClosedOrbit"; // "RadialFieldScan_1" "RadialFieldScan_1"
+   const string study = "BeamYPosMonitoring"; // ClosedOrbit"; // "RadialFieldScan_1" "RadialFieldScan_1"
    const string stage = "raw"; // "reprocessed"
 
    string run = argv[1];

@@ -1,11 +1,11 @@
 void fit_chi_vs_order()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jan 15 20:04:11 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+//=========  (Mon Jan 25 05:05:06 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
-   c->Range(-1.25,-0.004060387,12.25,0.03655374);
+   c->Range(-1.2375,-0.004060094,11.1375,0.03655368);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -13,6 +13,7 @@ void fit_chi_vs_order()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx42[10] = {
+   0,
    1,
    2,
    3,
@@ -21,8 +22,7 @@ void fit_chi_vs_order()
    6,
    7,
    8,
-   9,
-   10};
+   9};
    Double_t Graph0_fy42[10] = {
    0.02953858,
    0.003689372,
@@ -33,16 +33,16 @@ void fit_chi_vs_order()
    5.692982e-06,
    2.860467e-06,
    1.526984e-06,
-   1.140151e-06};
+   1.425459e-06};
    TGraph *graph = new TGraph(10,Graph0_fx42,Graph0_fy42);
    graph->SetName("Graph0");
    graph->SetTitle(";Fit order;#chi^{2}/ndf");
    graph->SetFillStyle(1000);
    graph->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph042 = new TH1F("Graph_Graph042","",100,0.1,10.9);
-   Graph_Graph042->SetMinimum(1.026136e-06);
-   Graph_Graph042->SetMaximum(0.03249233);
+   TH1F *Graph_Graph042 = new TH1F("Graph_Graph042","",100,0,9.9);
+   Graph_Graph042->SetMinimum(1.282913e-06);
+   Graph_Graph042->SetMaximum(0.0324923);
    Graph_Graph042->SetDirectory(0);
    Graph_Graph042->SetStats(0);
 

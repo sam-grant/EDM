@@ -1,0 +1,294 @@
+void fit_ytot_vs_theta_0()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Mon Jan 25 05:55:06 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptFit(1);
+   c->SetHighLightColor(2);
+   c->Range(-0.7913105,-0.3125,7.121794,0.3125);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   Double_t ytot_vs_theta_fx1004[24] = {
+   0.5192355,
+   0.7810348,
+   1.042834,
+   1.304634,
+   1.566433,
+   1.828232,
+   2.090032,
+   2.351831,
+   2.613631,
+   2.87543,
+   3.137229,
+   3.399029,
+   3.660828,
+   3.922627,
+   4.184427,
+   4.446226,
+   4.708026,
+   4.969825,
+   5.231624,
+   5.493424,
+   5.755223,
+   6.017023,
+   6.278822,
+   0.2574361};
+   Double_t ytot_vs_theta_fy1004[24] = {
+   0.006562985,
+   0.06206024,
+   0.0127903,
+   -0.02058143,
+   -0.003870004,
+   0.07405092,
+   0.102477,
+   0.1174621,
+   0.03883636,
+   0.07325296,
+   0.009276232,
+   0.01217671,
+   0.004751873,
+   -0.1194191,
+   0.02645731,
+   -0.06019055,
+   -0.02371367,
+   0.01542529,
+   -0.002887453,
+   -0.07978954,
+   -0.03078049,
+   -0.1239876,
+   -0.0446683,
+   0.06959394};
+   Double_t ytot_vs_theta_fex1004[24] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t ytot_vs_theta_fey1004[24] = {
+   0.03941483,
+   0.04179225,
+   0.04482726,
+   0.04455844,
+   0.0422236,
+   0.04241968,
+   0.04387671,
+   0.04244206,
+   0.04391941,
+   0.0424273,
+   0.04196058,
+   0.03878665,
+   0.03447418,
+   0.03987117,
+   0.03831296,
+   0.04269219,
+   0.04242621,
+   0.03828801,
+   0.03690439,
+   0.04168359,
+   0.04255553,
+   0.04166702,
+   0.04035714,
+   0.03898679};
+   TGraphErrors *gre = new TGraphErrors(24,ytot_vs_theta_fx1004,ytot_vs_theta_fy1004,ytot_vs_theta_fex1004,ytot_vs_theta_fey1004);
+   gre->SetName("ytot_vs_theta");
+   gre->SetTitle(";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_ytot_vs_theta1004 = new TH1F("Graph_ytot_vs_theta1004","",100,0,6.880961);
+   Graph_ytot_vs_theta1004->SetMinimum(-0.25);
+   Graph_ytot_vs_theta1004->SetMaximum(0.25);
+   Graph_ytot_vs_theta1004->SetDirectory(0);
+   Graph_ytot_vs_theta1004->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_ytot_vs_theta1004->SetLineColor(ci);
+   Graph_ytot_vs_theta1004->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_ytot_vs_theta1004->GetXaxis()->SetRange(1,92);
+   Graph_ytot_vs_theta1004->GetXaxis()->CenterTitle(true);
+   Graph_ytot_vs_theta1004->GetXaxis()->SetLabelFont(42);
+   Graph_ytot_vs_theta1004->GetXaxis()->SetTitleSize(0.04);
+   Graph_ytot_vs_theta1004->GetXaxis()->SetTitleOffset(1.1);
+   Graph_ytot_vs_theta1004->GetXaxis()->SetTitleFont(42);
+   Graph_ytot_vs_theta1004->GetYaxis()->SetTitle("#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
+   Graph_ytot_vs_theta1004->GetYaxis()->CenterTitle(true);
+   Graph_ytot_vs_theta1004->GetYaxis()->SetNdivisions(4000510);
+   Graph_ytot_vs_theta1004->GetYaxis()->SetLabelFont(42);
+   Graph_ytot_vs_theta1004->GetYaxis()->SetTitleSize(0.04);
+   Graph_ytot_vs_theta1004->GetYaxis()->SetTitleOffset(1.25);
+   Graph_ytot_vs_theta1004->GetYaxis()->SetTitleFont(42);
+   Graph_ytot_vs_theta1004->GetZaxis()->SetLabelFont(42);
+   Graph_ytot_vs_theta1004->GetZaxis()->SetTitleOffset(1);
+   Graph_ytot_vs_theta1004->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_ytot_vs_theta1004);
+   
+   
+   TF1 *fVCOD_01005 = new TF1("*fVCOD_0",0.2574361,6.278822,1);
+    //The original function : fVCOD_0 had originally been created by:
+    //TF1 *fVCOD_0 = new TF1("fVCOD_0",fVCOD_0,0.2574361,6.278822,1, 1, TF1::EAddToList::kNo);
+   fVCOD_01005->SetRange(0.2574361,6.278822);
+   fVCOD_01005->SetName("fVCOD_0");
+   fVCOD_01005->SetTitle("fVCOD_0");
+   fVCOD_01005->SetSavedPoint(0,0.004212102);
+   fVCOD_01005->SetSavedPoint(1,0.004212102);
+   fVCOD_01005->SetSavedPoint(2,0.004212102);
+   fVCOD_01005->SetSavedPoint(3,0.004212102);
+   fVCOD_01005->SetSavedPoint(4,0.004212102);
+   fVCOD_01005->SetSavedPoint(5,0.004212102);
+   fVCOD_01005->SetSavedPoint(6,0.004212102);
+   fVCOD_01005->SetSavedPoint(7,0.004212102);
+   fVCOD_01005->SetSavedPoint(8,0.004212102);
+   fVCOD_01005->SetSavedPoint(9,0.004212102);
+   fVCOD_01005->SetSavedPoint(10,0.004212102);
+   fVCOD_01005->SetSavedPoint(11,0.004212102);
+   fVCOD_01005->SetSavedPoint(12,0.004212102);
+   fVCOD_01005->SetSavedPoint(13,0.004212102);
+   fVCOD_01005->SetSavedPoint(14,0.004212102);
+   fVCOD_01005->SetSavedPoint(15,0.004212102);
+   fVCOD_01005->SetSavedPoint(16,0.004212102);
+   fVCOD_01005->SetSavedPoint(17,0.004212102);
+   fVCOD_01005->SetSavedPoint(18,0.004212102);
+   fVCOD_01005->SetSavedPoint(19,0.004212102);
+   fVCOD_01005->SetSavedPoint(20,0.004212102);
+   fVCOD_01005->SetSavedPoint(21,0.004212102);
+   fVCOD_01005->SetSavedPoint(22,0.004212102);
+   fVCOD_01005->SetSavedPoint(23,0.004212102);
+   fVCOD_01005->SetSavedPoint(24,0.004212102);
+   fVCOD_01005->SetSavedPoint(25,0.004212102);
+   fVCOD_01005->SetSavedPoint(26,0.004212102);
+   fVCOD_01005->SetSavedPoint(27,0.004212102);
+   fVCOD_01005->SetSavedPoint(28,0.004212102);
+   fVCOD_01005->SetSavedPoint(29,0.004212102);
+   fVCOD_01005->SetSavedPoint(30,0.004212102);
+   fVCOD_01005->SetSavedPoint(31,0.004212102);
+   fVCOD_01005->SetSavedPoint(32,0.004212102);
+   fVCOD_01005->SetSavedPoint(33,0.004212102);
+   fVCOD_01005->SetSavedPoint(34,0.004212102);
+   fVCOD_01005->SetSavedPoint(35,0.004212102);
+   fVCOD_01005->SetSavedPoint(36,0.004212102);
+   fVCOD_01005->SetSavedPoint(37,0.004212102);
+   fVCOD_01005->SetSavedPoint(38,0.004212102);
+   fVCOD_01005->SetSavedPoint(39,0.004212102);
+   fVCOD_01005->SetSavedPoint(40,0.004212102);
+   fVCOD_01005->SetSavedPoint(41,0.004212102);
+   fVCOD_01005->SetSavedPoint(42,0.004212102);
+   fVCOD_01005->SetSavedPoint(43,0.004212102);
+   fVCOD_01005->SetSavedPoint(44,0.004212102);
+   fVCOD_01005->SetSavedPoint(45,0.004212102);
+   fVCOD_01005->SetSavedPoint(46,0.004212102);
+   fVCOD_01005->SetSavedPoint(47,0.004212102);
+   fVCOD_01005->SetSavedPoint(48,0.004212102);
+   fVCOD_01005->SetSavedPoint(49,0.004212102);
+   fVCOD_01005->SetSavedPoint(50,0.004212102);
+   fVCOD_01005->SetSavedPoint(51,0.004212102);
+   fVCOD_01005->SetSavedPoint(52,0.004212102);
+   fVCOD_01005->SetSavedPoint(53,0.004212102);
+   fVCOD_01005->SetSavedPoint(54,0.004212102);
+   fVCOD_01005->SetSavedPoint(55,0.004212102);
+   fVCOD_01005->SetSavedPoint(56,0.004212102);
+   fVCOD_01005->SetSavedPoint(57,0.004212102);
+   fVCOD_01005->SetSavedPoint(58,0.004212102);
+   fVCOD_01005->SetSavedPoint(59,0.004212102);
+   fVCOD_01005->SetSavedPoint(60,0.004212102);
+   fVCOD_01005->SetSavedPoint(61,0.004212102);
+   fVCOD_01005->SetSavedPoint(62,0.004212102);
+   fVCOD_01005->SetSavedPoint(63,0.004212102);
+   fVCOD_01005->SetSavedPoint(64,0.004212102);
+   fVCOD_01005->SetSavedPoint(65,0.004212102);
+   fVCOD_01005->SetSavedPoint(66,0.004212102);
+   fVCOD_01005->SetSavedPoint(67,0.004212102);
+   fVCOD_01005->SetSavedPoint(68,0.004212102);
+   fVCOD_01005->SetSavedPoint(69,0.004212102);
+   fVCOD_01005->SetSavedPoint(70,0.004212102);
+   fVCOD_01005->SetSavedPoint(71,0.004212102);
+   fVCOD_01005->SetSavedPoint(72,0.004212102);
+   fVCOD_01005->SetSavedPoint(73,0.004212102);
+   fVCOD_01005->SetSavedPoint(74,0.004212102);
+   fVCOD_01005->SetSavedPoint(75,0.004212102);
+   fVCOD_01005->SetSavedPoint(76,0.004212102);
+   fVCOD_01005->SetSavedPoint(77,0.004212102);
+   fVCOD_01005->SetSavedPoint(78,0.004212102);
+   fVCOD_01005->SetSavedPoint(79,0.004212102);
+   fVCOD_01005->SetSavedPoint(80,0.004212102);
+   fVCOD_01005->SetSavedPoint(81,0.004212102);
+   fVCOD_01005->SetSavedPoint(82,0.004212102);
+   fVCOD_01005->SetSavedPoint(83,0.004212102);
+   fVCOD_01005->SetSavedPoint(84,0.004212102);
+   fVCOD_01005->SetSavedPoint(85,0.004212102);
+   fVCOD_01005->SetSavedPoint(86,0.004212102);
+   fVCOD_01005->SetSavedPoint(87,0.004212102);
+   fVCOD_01005->SetSavedPoint(88,0.004212102);
+   fVCOD_01005->SetSavedPoint(89,0.004212102);
+   fVCOD_01005->SetSavedPoint(90,0.004212102);
+   fVCOD_01005->SetSavedPoint(91,0.004212102);
+   fVCOD_01005->SetSavedPoint(92,0.004212102);
+   fVCOD_01005->SetSavedPoint(93,0.004212102);
+   fVCOD_01005->SetSavedPoint(94,0.004212102);
+   fVCOD_01005->SetSavedPoint(95,0.004212102);
+   fVCOD_01005->SetSavedPoint(96,0.004212102);
+   fVCOD_01005->SetSavedPoint(97,0.004212102);
+   fVCOD_01005->SetSavedPoint(98,0.004212102);
+   fVCOD_01005->SetSavedPoint(99,0.004212102);
+   fVCOD_01005->SetSavedPoint(100,0.004212102);
+   fVCOD_01005->SetSavedPoint(101,0.2574361);
+   fVCOD_01005->SetSavedPoint(102,6.278822);
+   fVCOD_01005->SetFillColor(19);
+   fVCOD_01005->SetFillStyle(0);
+   fVCOD_01005->SetLineColor(2);
+   fVCOD_01005->SetLineWidth(2);
+   fVCOD_01005->SetChisquare(51.74194);
+   fVCOD_01005->SetNDF(23);
+   fVCOD_01005->GetXaxis()->SetLabelFont(42);
+   fVCOD_01005->GetXaxis()->SetTitleOffset(1);
+   fVCOD_01005->GetXaxis()->SetTitleFont(42);
+   fVCOD_01005->GetYaxis()->SetLabelFont(42);
+   fVCOD_01005->GetYaxis()->SetTitleFont(42);
+   fVCOD_01005->SetParameter(0,0.001576046);
+   fVCOD_01005->SetParError(0,0.003122069);
+   fVCOD_01005->SetParLimits(0,0,0);
+   fVCOD_01005->SetParent(gre);
+   gre->GetListOfFunctions()->Add(fVCOD_01005);
+   
+   TPaveStats *ptstats = new TPaveStats(0.62,0.735,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 51.74 / 23");
+   ptstats_LaTex = ptstats->AddText("p0       = 0.001576 #pm 0.003122 ");
+   ptstats->SetOptStat(0);
+   ptstats->SetOptFit(20222);
+   ptstats->Draw();
+   gre->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(gre->GetListOfFunctions());
+   gre->Draw("ap");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

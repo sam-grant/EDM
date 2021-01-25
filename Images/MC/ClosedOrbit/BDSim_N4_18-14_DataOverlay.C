@@ -1,0 +1,309 @@
+void BDSim_N4_18-14_DataOverlay()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Mon Jan 25 08:54:25 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->Range(-0.7913105,-0.3125,7.121794,0.3125);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   Double_t ytot_vs_theta_fx1001[24] = {
+   0.5192355,
+   0.7810348,
+   1.042834,
+   1.304634,
+   1.566433,
+   1.828232,
+   2.090032,
+   2.351831,
+   2.613631,
+   2.87543,
+   3.137229,
+   3.399029,
+   3.660828,
+   3.922627,
+   4.184427,
+   4.446226,
+   4.708026,
+   4.969825,
+   5.231624,
+   5.493424,
+   5.755223,
+   6.017023,
+   6.278822,
+   0.2574361};
+   Double_t ytot_vs_theta_fy1001[24] = {
+   0.006562985,
+   0.06206024,
+   0.0127903,
+   -0.02058143,
+   -0.003870004,
+   0.07405092,
+   0.102477,
+   0.1174621,
+   0.03883636,
+   0.07325296,
+   0.009276232,
+   0.01217671,
+   0.004751873,
+   -0.1194191,
+   0.02645731,
+   -0.06019055,
+   -0.02371367,
+   0.01542529,
+   -0.002887453,
+   -0.07978954,
+   -0.03078049,
+   -0.1239876,
+   -0.0446683,
+   0.06959394};
+   Double_t ytot_vs_theta_fex1001[24] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t ytot_vs_theta_fey1001[24] = {
+   0.03941483,
+   0.04179225,
+   0.04482726,
+   0.04455844,
+   0.0422236,
+   0.04241968,
+   0.04387671,
+   0.04244206,
+   0.04391941,
+   0.0424273,
+   0.04196058,
+   0.03878665,
+   0.03447418,
+   0.03987117,
+   0.03831296,
+   0.04269219,
+   0.04242621,
+   0.03828801,
+   0.03690439,
+   0.04168359,
+   0.04255553,
+   0.04166702,
+   0.04035714,
+   0.03898679};
+   TGraphErrors *gre = new TGraphErrors(24,ytot_vs_theta_fx1001,ytot_vs_theta_fy1001,ytot_vs_theta_fex1001,ytot_vs_theta_fey1001);
+   gre->SetName("ytot_vs_theta");
+   gre->SetTitle(";#theta [rad];#LTy#GT [mm]");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_ytot_vs_theta1001 = new TH1F("Graph_ytot_vs_theta1001","",100,0,6.880961);
+   Graph_ytot_vs_theta1001->SetMinimum(-0.25);
+   Graph_ytot_vs_theta1001->SetMaximum(0.25);
+   Graph_ytot_vs_theta1001->SetDirectory(0);
+   Graph_ytot_vs_theta1001->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_ytot_vs_theta1001->SetLineColor(ci);
+   Graph_ytot_vs_theta1001->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_ytot_vs_theta1001->GetXaxis()->SetRange(1,92);
+   Graph_ytot_vs_theta1001->GetXaxis()->CenterTitle(true);
+   Graph_ytot_vs_theta1001->GetXaxis()->SetLabelFont(42);
+   Graph_ytot_vs_theta1001->GetXaxis()->SetTitleSize(0.04);
+   Graph_ytot_vs_theta1001->GetXaxis()->SetTitleOffset(1.1);
+   Graph_ytot_vs_theta1001->GetXaxis()->SetTitleFont(42);
+   Graph_ytot_vs_theta1001->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_ytot_vs_theta1001->GetYaxis()->CenterTitle(true);
+   Graph_ytot_vs_theta1001->GetYaxis()->SetNdivisions(4000510);
+   Graph_ytot_vs_theta1001->GetYaxis()->SetLabelFont(42);
+   Graph_ytot_vs_theta1001->GetYaxis()->SetTitleSize(0.04);
+   Graph_ytot_vs_theta1001->GetYaxis()->SetTitleOffset(1.25);
+   Graph_ytot_vs_theta1001->GetYaxis()->SetTitleFont(42);
+   Graph_ytot_vs_theta1001->GetZaxis()->SetLabelFont(42);
+   Graph_ytot_vs_theta1001->GetZaxis()->SetTitleOffset(1);
+   Graph_ytot_vs_theta1001->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_ytot_vs_theta1001);
+   
+   gre->Draw("ap");
+   
+   TF1 *fVCOD_4_18144 = new TF1("*fVCOD_4_1814",0,6.283185,9);
+    //The original function : ;#theta [rad];#LTy#GT [mm] had originally been created by:
+    //TF1 *fVCOD_4_1814 = new TF1("fVCOD_4_1814",;#theta [rad];#LTy#GT [mm],0,6.283185,9, 1, TF1::EAddToList::kDefault);
+   fVCOD_4_18144->SetRange(0,6.283185);
+   fVCOD_4_18144->SetName("fVCOD_4_1814");
+   fVCOD_4_18144->SetTitle(";#theta [rad];#LTy#GT [mm]");
+   fVCOD_4_18144->SetSavedPoint(0,0.001639848);
+   fVCOD_4_18144->SetSavedPoint(1,0.001226381);
+   fVCOD_4_18144->SetSavedPoint(2,0.0008086038);
+   fVCOD_4_18144->SetSavedPoint(3,0.0003890749);
+   fVCOD_4_18144->SetSavedPoint(4,-2.968648e-05);
+   fVCOD_4_18144->SetSavedPoint(5,-0.0004452301);
+   fVCOD_4_18144->SetSavedPoint(6,-0.0008552007);
+   fVCOD_4_18144->SetSavedPoint(7,-0.001257357);
+   fVCOD_4_18144->SetSavedPoint(8,-0.001649585);
+   fVCOD_4_18144->SetSavedPoint(9,-0.002029904);
+   fVCOD_4_18144->SetSavedPoint(10,-0.002396465);
+   fVCOD_4_18144->SetSavedPoint(11,-0.002747552);
+   fVCOD_4_18144->SetSavedPoint(12,-0.00308157);
+   fVCOD_4_18144->SetSavedPoint(13,-0.003397037);
+   fVCOD_4_18144->SetSavedPoint(14,-0.003692578);
+   fVCOD_4_18144->SetSavedPoint(15,-0.003966908);
+   fVCOD_4_18144->SetSavedPoint(16,-0.004218834);
+   fVCOD_4_18144->SetSavedPoint(17,-0.004447244);
+   fVCOD_4_18144->SetSavedPoint(18,-0.004651107);
+   fVCOD_4_18144->SetSavedPoint(19,-0.004829483);
+   fVCOD_4_18144->SetSavedPoint(20,-0.004981521);
+   fVCOD_4_18144->SetSavedPoint(21,-0.005106477);
+   fVCOD_4_18144->SetSavedPoint(22,-0.005203729);
+   fVCOD_4_18144->SetSavedPoint(23,-0.005272787);
+   fVCOD_4_18144->SetSavedPoint(24,-0.005313321);
+   fVCOD_4_18144->SetSavedPoint(25,-0.00532517);
+   fVCOD_4_18144->SetSavedPoint(26,-0.005308362);
+   fVCOD_4_18144->SetSavedPoint(27,-0.005263129);
+   fVCOD_4_18144->SetSavedPoint(28,-0.005189913);
+   fVCOD_4_18144->SetSavedPoint(29,-0.005089372);
+   fVCOD_4_18144->SetSavedPoint(30,-0.004962382);
+   fVCOD_4_18144->SetSavedPoint(31,-0.004810023);
+   fVCOD_4_18144->SetSavedPoint(32,-0.004633572);
+   fVCOD_4_18144->SetSavedPoint(33,-0.00443448);
+   fVCOD_4_18144->SetSavedPoint(34,-0.004214347);
+   fVCOD_4_18144->SetSavedPoint(35,-0.003974897);
+   fVCOD_4_18144->SetSavedPoint(36,-0.003717941);
+   fVCOD_4_18144->SetSavedPoint(37,-0.003445349);
+   fVCOD_4_18144->SetSavedPoint(38,-0.003159009);
+   fVCOD_4_18144->SetSavedPoint(39,-0.0028608);
+   fVCOD_4_18144->SetSavedPoint(40,-0.002552561);
+   fVCOD_4_18144->SetSavedPoint(41,-0.002236061);
+   fVCOD_4_18144->SetSavedPoint(42,-0.001912982);
+   fVCOD_4_18144->SetSavedPoint(43,-0.0015849);
+   fVCOD_4_18144->SetSavedPoint(44,-0.001253277);
+   fVCOD_4_18144->SetSavedPoint(45,-0.0009194542);
+   fVCOD_4_18144->SetSavedPoint(46,-0.0005846565);
+   fVCOD_4_18144->SetSavedPoint(47,-0.0002499966);
+   fVCOD_4_18144->SetSavedPoint(48,8.351318e-05);
+   fVCOD_4_18144->SetSavedPoint(49,0.000414948);
+   fVCOD_4_18144->SetSavedPoint(50,0.000743455);
+   fVCOD_4_18144->SetSavedPoint(51,0.001068237);
+   fVCOD_4_18144->SetSavedPoint(52,0.001388538);
+   fVCOD_4_18144->SetSavedPoint(53,0.00170363);
+   fVCOD_4_18144->SetSavedPoint(54,0.002012802);
+   fVCOD_4_18144->SetSavedPoint(55,0.002315353);
+   fVCOD_4_18144->SetSavedPoint(56,0.002610589);
+   fVCOD_4_18144->SetSavedPoint(57,0.002897824);
+   fVCOD_4_18144->SetSavedPoint(58,0.003176381);
+   fVCOD_4_18144->SetSavedPoint(59,0.003445604);
+   fVCOD_4_18144->SetSavedPoint(60,0.003704865);
+   fVCOD_4_18144->SetSavedPoint(61,0.003953572);
+   fVCOD_4_18144->SetSavedPoint(62,0.004191185);
+   fVCOD_4_18144->SetSavedPoint(63,0.004417219);
+   fVCOD_4_18144->SetSavedPoint(64,0.004631257);
+   fVCOD_4_18144->SetSavedPoint(65,0.004832952);
+   fVCOD_4_18144->SetSavedPoint(66,0.005022025);
+   fVCOD_4_18144->SetSavedPoint(67,0.005198263);
+   fVCOD_4_18144->SetSavedPoint(68,0.005361511);
+   fVCOD_4_18144->SetSavedPoint(69,0.005511656);
+   fVCOD_4_18144->SetSavedPoint(70,0.005648611);
+   fVCOD_4_18144->SetSavedPoint(71,0.005772294);
+   fVCOD_4_18144->SetSavedPoint(72,0.005882605);
+   fVCOD_4_18144->SetSavedPoint(73,0.005979406);
+   fVCOD_4_18144->SetSavedPoint(74,0.006062493);
+   fVCOD_4_18144->SetSavedPoint(75,0.006131584);
+   fVCOD_4_18144->SetSavedPoint(76,0.006186293);
+   fVCOD_4_18144->SetSavedPoint(77,0.006226129);
+   fVCOD_4_18144->SetSavedPoint(78,0.006250484);
+   fVCOD_4_18144->SetSavedPoint(79,0.006258639);
+   fVCOD_4_18144->SetSavedPoint(80,0.006249777);
+   fVCOD_4_18144->SetSavedPoint(81,0.006222993);
+   fVCOD_4_18144->SetSavedPoint(82,0.00617733);
+   fVCOD_4_18144->SetSavedPoint(83,0.006111802);
+   fVCOD_4_18144->SetSavedPoint(84,0.006025436);
+   fVCOD_4_18144->SetSavedPoint(85,0.005917311);
+   fVCOD_4_18144->SetSavedPoint(86,0.005786603);
+   fVCOD_4_18144->SetSavedPoint(87,0.005632628);
+   fVCOD_4_18144->SetSavedPoint(88,0.005454882);
+   fVCOD_4_18144->SetSavedPoint(89,0.00525308);
+   fVCOD_4_18144->SetSavedPoint(90,0.00502719);
+   fVCOD_4_18144->SetSavedPoint(91,0.004777453);
+   fVCOD_4_18144->SetSavedPoint(92,0.004504408);
+   fVCOD_4_18144->SetSavedPoint(93,0.00420889);
+   fVCOD_4_18144->SetSavedPoint(94,0.003892038);
+   fVCOD_4_18144->SetSavedPoint(95,0.003555276);
+   fVCOD_4_18144->SetSavedPoint(96,0.003200301);
+   fVCOD_4_18144->SetSavedPoint(97,0.002829048);
+   fVCOD_4_18144->SetSavedPoint(98,0.00244366);
+   fVCOD_4_18144->SetSavedPoint(99,0.002046448);
+   fVCOD_4_18144->SetSavedPoint(100,0.001639848);
+   fVCOD_4_18144->SetSavedPoint(101,0);
+   fVCOD_4_18144->SetSavedPoint(102,6.283185);
+   fVCOD_4_18144->SetFillColor(19);
+   fVCOD_4_18144->SetFillStyle(0);
+
+   ci = TColor::GetColor("#ff0000");
+   fVCOD_4_18144->SetLineColor(ci);
+   fVCOD_4_18144->SetLineWidth(3);
+   fVCOD_4_18144->GetXaxis()->SetTitle("#theta [rad]");
+   fVCOD_4_18144->GetXaxis()->CenterTitle(true);
+   fVCOD_4_18144->GetXaxis()->SetLabelFont(42);
+   fVCOD_4_18144->GetXaxis()->SetTitleSize(0.04);
+   fVCOD_4_18144->GetXaxis()->SetTitleOffset(1.1);
+   fVCOD_4_18144->GetXaxis()->SetTitleFont(42);
+   fVCOD_4_18144->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   fVCOD_4_18144->GetYaxis()->CenterTitle(true);
+   fVCOD_4_18144->GetYaxis()->SetNdivisions(4000510);
+   fVCOD_4_18144->GetYaxis()->SetLabelFont(42);
+   fVCOD_4_18144->GetYaxis()->SetTitleSize(0.04);
+   fVCOD_4_18144->GetYaxis()->SetTitleOffset(1.1);
+   fVCOD_4_18144->GetYaxis()->SetTitleFont(42);
+   fVCOD_4_18144->SetParameter(0,0.0003038574);
+   fVCOD_4_18144->SetParError(0,3.458423e-05);
+   fVCOD_4_18144->SetParLimits(0,0,0);
+   fVCOD_4_18144->SetParameter(1,0.01592866);
+   fVCOD_4_18144->SetParError(1,0.0004039561);
+   fVCOD_4_18144->SetParLimits(1,0,0);
+   fVCOD_4_18144->SetParameter(2,-0.2019881);
+   fVCOD_4_18144->SetParError(2,0.0004039561);
+   fVCOD_4_18144->SetParLimits(2,0,0);
+   fVCOD_4_18144->SetParameter(3,0.2569918);
+   fVCOD_4_18144->SetParError(3,0.001762553);
+   fVCOD_4_18144->SetParLimits(3,0,0);
+   fVCOD_4_18144->SetParameter(4,-0.192147);
+   fVCOD_4_18144->SetParError(4,0.001762553);
+   fVCOD_4_18144->SetParLimits(4,0,0);
+   fVCOD_4_18144->SetParameter(5,-0.02124024);
+   fVCOD_4_18144->SetParError(5,0.004026881);
+   fVCOD_4_18144->SetParLimits(5,0,0);
+   fVCOD_4_18144->SetParameter(6,-0.1172077);
+   fVCOD_4_18144->SetParError(6,0.004026881);
+   fVCOD_4_18144->SetParLimits(6,0,0);
+   fVCOD_4_18144->SetParameter(7,-0.1584169);
+   fVCOD_4_18144->SetParError(7,0.00719694);
+   fVCOD_4_18144->SetParLimits(7,0,0);
+   fVCOD_4_18144->SetParameter(8,-0.2066054);
+   fVCOD_4_18144->SetParError(8,0.00719694);
+   fVCOD_4_18144->SetParLimits(8,0,0);
+   fVCOD_4_18144->Draw("same");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

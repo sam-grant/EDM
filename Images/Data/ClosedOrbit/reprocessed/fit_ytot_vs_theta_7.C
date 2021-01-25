@@ -1,7 +1,7 @@
 void fit_ytot_vs_theta_7()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan 20 18:34:15 2021) by ROOT version 6.22/06
+//=========  (Mon Jan 25 06:45:55 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
@@ -12,7 +12,7 @@ void fit_ytot_vs_theta_7()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1025[24] = {
+   Double_t ytot_vs_theta_fx1025[24] = {
    0.5192355,
    0.7810348,
    1.042834,
@@ -37,7 +37,7 @@ void fit_ytot_vs_theta_7()
    6.017023,
    6.278822,
    0.2574361};
-   Double_t Graph0_fy1025[24] = {
+   Double_t ytot_vs_theta_fy1025[24] = {
    0.006562985,
    0.06206024,
    0.0127903,
@@ -62,7 +62,7 @@ void fit_ytot_vs_theta_7()
    -0.1239876,
    -0.0446683,
    0.06959394};
-   Double_t Graph0_fex1025[24] = {
+   Double_t ytot_vs_theta_fex1025[24] = {
    0,
    0,
    0,
@@ -87,7 +87,7 @@ void fit_ytot_vs_theta_7()
    0,
    0,
    0};
-   Double_t Graph0_fey1025[24] = {
+   Double_t ytot_vs_theta_fey1025[24] = {
    0.03941483,
    0.04179225,
    0.04482726,
@@ -112,40 +112,40 @@ void fit_ytot_vs_theta_7()
    0.04166702,
    0.04035714,
    0.03898679};
-   TGraphErrors *gre = new TGraphErrors(24,Graph0_fx1025,Graph0_fy1025,Graph0_fex1025,Graph0_fey1025);
-   gre->SetName("Graph0");
+   TGraphErrors *gre = new TGraphErrors(24,ytot_vs_theta_fx1025,ytot_vs_theta_fy1025,ytot_vs_theta_fex1025,ytot_vs_theta_fey1025);
+   gre->SetName("ytot_vs_theta");
    gre->SetTitle(";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025 = new TH1F("Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025","",100,0,6.880961);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->SetMinimum(-0.25);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->SetMaximum(0.25);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->SetDirectory(0);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->SetStats(0);
+   TH1F *Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025 = new TH1F("Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025","",100,0,6.880961);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->SetMinimum(-0.25);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->SetMaximum(0.25);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->SetDirectory(0);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->SetLineColor(ci);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->SetTitle("#theta [rad]");
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->SetRange(1,92);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->CenterTitle(true);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->SetTitle("#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->CenterTitle(true);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->SetTitleOffset(1.25);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph0100310041007101010131016101910221025);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->SetLineColor(ci);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->SetRange(1,92);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->SetTitle("#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]");
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->SetTitleOffset(1.25);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph_Graph_Graph_Graph_Graph_Graph_ytot_vs_theta10041007101010131016101910221025);
    
    
    TPaveStats *ptstats = new TPaveStats(0.62,0.735,0.98,0.935,"brNDC");

@@ -296,7 +296,10 @@ double fVCOD_10(double *x, double *par) {
 
   	vector<double> quadFactor_;
 
-  	for (int i_order = 0; i_order < 11; i_order++ ) quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+  	for (int i_order = 0; i_order < 11; i_order++ ) {
+      quadFactor_.push_back( (1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1)) );
+      //cout<<"quadFactor at N = "<<i_order<<":\t"<<(1/(pow(i_order,2) - n_2)) - (1/(pow(i_order,2) - n_1))<<endl;
+    }
 
   	return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
   			+ ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
@@ -441,6 +444,8 @@ int main() {
 
 	vector<tuple<vector<double>, vector<double>>> vcods;
 
+
+
 	for( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
 
 		string input = "../Plots/Data/ClosedOrbit/"+stage+"/merged/y-pos_"+runs[i_quad]+".root"; 
@@ -467,6 +472,13 @@ int main() {
 	gr2->GetXaxis()->SetRangeUser(0, 2.01*TMath::Pi());
 
 	DrawTGraphErrors(gr2, ";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/ytot_vs_theta");
+
+  // Store ytot_vs_theta
+  TFile *out1 = new TFile("../Plots/Data/ClosedOrbit/reprocessed/ytot_vs_theta.root","RECREATE");
+  gr2->SetName("ytot_vs_theta");
+  gr2->Write();
+  out1->Close();
+
 
 	// Unfortunate complication of having calo 24 in front of calo 1
 	double xmin = gr2->GetPointX(23);
@@ -495,6 +507,19 @@ int main() {
 	double chis[12]; double orders[12]; double zeros[12];
 
 	int bestFitOrder = 0; double tmp = 1e6;
+
+  // Set par limits for N=4
+
+  f_4->SetParLimits(0,-0.25,0.25);
+  f_4->SetParLimits(1,-0.25,0.25);
+  f_4->SetParLimits(2,-0.25,0.25);
+  f_4->SetParLimits(3,-0.25,0.25);
+  f_4->SetParLimits(4,-0.25,0.25);
+  f_4->SetParLimits(5,-0.25,0.25);
+  f_4->SetParLimits(6,-0.25,0.25);
+  f_4->SetParLimits(7,-0.25,0.25);
+  f_4->SetParLimits(8,-0.25,0.25);
+
 
 //	int count = ;
 	// Loop through functions and fit 

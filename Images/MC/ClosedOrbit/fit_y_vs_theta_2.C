@@ -1,8 +1,8 @@
 void fit_y_vs_theta_2()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jan 15 20:03:57 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+//=========  (Mon Jan 25 05:04:53 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.8639313,-0.419288,7.775382,0.388894);
@@ -12,7 +12,7 @@ void fit_y_vs_theta_2()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t y_vs_theta_fx6[360] = {
+   Double_t fit_y_vs_theta_2_fx10[360] = {
    0,
    0.01745329,
    0.03490658,
@@ -373,7 +373,7 @@ void fit_y_vs_theta_2()
    6.230825,
    6.248279,
    6.265732};
-   Double_t y_vs_theta_fy6[360] = {
+   Double_t fit_y_vs_theta_2_fy10[360] = {
    0.0729551,
    0.0668455,
    0.0606425,
@@ -734,40 +734,40 @@ void fit_y_vs_theta_2()
    0.0913241,
    0.0851543,
    0.0790461};
-   TGraph *graph = new TGraph(360,y_vs_theta_fx6,y_vs_theta_fy6);
-   graph->SetName("y_vs_theta");
+   TGraph *graph = new TGraph(360,fit_y_vs_theta_2_fx10,fit_y_vs_theta_2_fy10);
+   graph->SetName("fit_y_vs_theta_2");
    graph->SetTitle(";#theta [rad];#LTy#GT [mm]");
    graph->SetFillStyle(1000);
    graph->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_y_vs_theta26 = new TH1F("Graph_Graph_y_vs_theta26","",360,0,6.892305);
-   Graph_Graph_y_vs_theta26->SetMinimum(-0.3384698);
-   Graph_Graph_y_vs_theta26->SetMaximum(0.3080758);
-   Graph_Graph_y_vs_theta26->SetDirectory(0);
-   Graph_Graph_y_vs_theta26->SetStats(0);
+   TH1F *Graph_fit_y_vs_theta_210 = new TH1F("Graph_fit_y_vs_theta_210","",360,0,6.892305);
+   Graph_fit_y_vs_theta_210->SetMinimum(-0.3384698);
+   Graph_fit_y_vs_theta_210->SetMaximum(0.3080758);
+   Graph_fit_y_vs_theta_210->SetDirectory(0);
+   Graph_fit_y_vs_theta_210->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph_y_vs_theta26->SetLineColor(ci);
-   Graph_Graph_y_vs_theta26->GetXaxis()->SetTitle("#theta [rad]");
-   Graph_Graph_y_vs_theta26->GetXaxis()->SetRange(1,361);
-   Graph_Graph_y_vs_theta26->GetXaxis()->CenterTitle(true);
-   Graph_Graph_y_vs_theta26->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_y_vs_theta26->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_y_vs_theta26->GetXaxis()->SetTitleOffset(1.2);
-   Graph_Graph_y_vs_theta26->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_y_vs_theta26->GetYaxis()->SetTitle("#LTy#GT [mm]");
-   Graph_Graph_y_vs_theta26->GetYaxis()->CenterTitle(true);
-   Graph_Graph_y_vs_theta26->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_y_vs_theta26->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_y_vs_theta26->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_y_vs_theta26->GetYaxis()->SetTitleOffset(1.25);
-   Graph_Graph_y_vs_theta26->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_y_vs_theta26->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_y_vs_theta26->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_y_vs_theta26->GetZaxis()->SetTitleFont(42);
-   graph->SetHistogram(Graph_Graph_y_vs_theta26);
+   Graph_fit_y_vs_theta_210->SetLineColor(ci);
+   Graph_fit_y_vs_theta_210->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_fit_y_vs_theta_210->GetXaxis()->SetRange(1,361);
+   Graph_fit_y_vs_theta_210->GetXaxis()->CenterTitle(true);
+   Graph_fit_y_vs_theta_210->GetXaxis()->SetLabelFont(42);
+   Graph_fit_y_vs_theta_210->GetXaxis()->SetTitleSize(0.04);
+   Graph_fit_y_vs_theta_210->GetXaxis()->SetTitleOffset(1.2);
+   Graph_fit_y_vs_theta_210->GetXaxis()->SetTitleFont(42);
+   Graph_fit_y_vs_theta_210->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_fit_y_vs_theta_210->GetYaxis()->CenterTitle(true);
+   Graph_fit_y_vs_theta_210->GetYaxis()->SetNdivisions(4000510);
+   Graph_fit_y_vs_theta_210->GetYaxis()->SetLabelFont(42);
+   Graph_fit_y_vs_theta_210->GetYaxis()->SetTitleSize(0.04);
+   Graph_fit_y_vs_theta_210->GetYaxis()->SetTitleOffset(1.25);
+   Graph_fit_y_vs_theta_210->GetYaxis()->SetTitleFont(42);
+   Graph_fit_y_vs_theta_210->GetZaxis()->SetLabelFont(42);
+   Graph_fit_y_vs_theta_210->GetZaxis()->SetTitleOffset(1);
+   Graph_fit_y_vs_theta_210->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_fit_y_vs_theta_210);
    
    
    TPaveStats *ptstats = new TPaveStats(0.62,0.735,0.98,0.935,"brNDC");
@@ -776,39 +776,47 @@ void fit_y_vs_theta_2()
    ptstats->SetFillColor(0);
    ptstats->SetTextAlign(12);
    ptstats->SetTextFont(42);
-   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 1.317 / 357");
-   ptstats_LaTex = ptstats->AddText("p0       = 0.0003039 #pm 0.0003457 ");
-   ptstats_LaTex = ptstats->AddText("p1       = 0.01593 #pm 0.004038 ");
-   ptstats_LaTex = ptstats->AddText("p2       = -0.202 #pm 0.004038 ");
+   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 0.09357 / 355");
+   ptstats_LaTex = ptstats->AddText("p0       = 0.0003039 #pm 9.241e-05 ");
+   ptstats_LaTex = ptstats->AddText("p1       = 0.01593 #pm 0.001079 ");
+   ptstats_LaTex = ptstats->AddText("p2       = -0.202 #pm 0.001079 ");
+   ptstats_LaTex = ptstats->AddText("p3       = 0.257 #pm 0.00471 ");
+   ptstats_LaTex = ptstats->AddText("p4       = -0.1921 #pm 0.00471 ");
    ptstats->SetOptStat(0);
    ptstats->SetOptFit(20222);
    ptstats->Draw();
    graph->GetListOfFunctions()->Add(ptstats);
    ptstats->SetParent(graph->GetListOfFunctions());
    
-   TF1 *fCOD_28 = new TF1("fCOD_2","( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) )",0,6.283185, TF1::EAddToList::kNo);
-   fCOD_28->SetFillColor(19);
-   fCOD_28->SetFillStyle(0);
-   fCOD_28->SetLineColor(2);
-   fCOD_28->SetLineWidth(2);
-   fCOD_28->SetChisquare(1.317106);
-   fCOD_28->SetNDF(357);
-   fCOD_28->GetXaxis()->SetLabelFont(42);
-   fCOD_28->GetXaxis()->SetTitleOffset(1);
-   fCOD_28->GetXaxis()->SetTitleFont(42);
-   fCOD_28->GetYaxis()->SetLabelFont(42);
-   fCOD_28->GetYaxis()->SetTitleFont(42);
-   fCOD_28->SetParameter(0,0.0003038574);
-   fCOD_28->SetParError(0,0.0003457393);
-   fCOD_28->SetParLimits(0,0,0);
-   fCOD_28->SetParameter(1,0.01592866);
-   fCOD_28->SetParError(1,0.004038358);
-   fCOD_28->SetParLimits(1,0,0);
-   fCOD_28->SetParameter(2,-0.2019881);
-   fCOD_28->SetParError(2,0.004038358);
-   fCOD_28->SetParLimits(2,0,0);
-   fCOD_28->SetParent(graph);
-   graph->GetListOfFunctions()->Add(fCOD_28);
+   TF1 *fCOD_212 = new TF1("fCOD_2","( ([0]/0.108) +  ([1]*cos(x)+[2]*sin(x))/(1-0.108) + ([3]*cos(2*x)+[4]*sin(2*x))/(4-0.108) )",0,6.283185, TF1::EAddToList::kNo);
+   fCOD_212->SetFillColor(19);
+   fCOD_212->SetFillStyle(0);
+   fCOD_212->SetLineColor(2);
+   fCOD_212->SetLineWidth(2);
+   fCOD_212->SetChisquare(0.09356767);
+   fCOD_212->SetNDF(355);
+   fCOD_212->GetXaxis()->SetLabelFont(42);
+   fCOD_212->GetXaxis()->SetTitleOffset(1);
+   fCOD_212->GetXaxis()->SetTitleFont(42);
+   fCOD_212->GetYaxis()->SetLabelFont(42);
+   fCOD_212->GetYaxis()->SetTitleFont(42);
+   fCOD_212->SetParameter(0,0.0003038574);
+   fCOD_212->SetParError(0,9.241048e-05);
+   fCOD_212->SetParLimits(0,0,0);
+   fCOD_212->SetParameter(1,0.01592866);
+   fCOD_212->SetParError(1,0.001079387);
+   fCOD_212->SetParLimits(1,0,0);
+   fCOD_212->SetParameter(2,-0.2019881);
+   fCOD_212->SetParError(2,0.001079387);
+   fCOD_212->SetParLimits(2,0,0);
+   fCOD_212->SetParameter(3,0.2569918);
+   fCOD_212->SetParError(3,0.004709614);
+   fCOD_212->SetParLimits(3,0,0);
+   fCOD_212->SetParameter(4,-0.192147);
+   fCOD_212->SetParError(4,0.004709614);
+   fCOD_212->SetParLimits(4,0,0);
+   fCOD_212->SetParent(graph);
+   graph->GetListOfFunctions()->Add(fCOD_212);
    graph->Draw("ap");
    c->Modified();
    c->cd();

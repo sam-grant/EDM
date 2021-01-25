@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe SimpleFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedSimpleFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe
 
 all:$(Target)
 
@@ -57,7 +57,12 @@ ReadNearlineTrees.exe: ReadNearlineTrees.C
 
 CaloMisalignment18kV.exe: CaloMisalignment18kV.C
 	${C++} -o $@ CaloMisalignment18kV.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
+BeamYPos.exe: BeamYPos.C
+	${C++} -o $@ BeamYPos.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 	
+PlotBeamYPosVsRun.exe: PlotBeamYPosVsRun.C
+	${C++} -o $@ PlotBeamYPosVsRun.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) 
 ############################# BLINDING ###################################
 
 testBlinding.exe: testBlinding.C
