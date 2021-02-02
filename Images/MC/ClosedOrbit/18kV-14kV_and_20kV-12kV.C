@@ -1,8 +1,8 @@
 void 18kV-14kV_and_20kV-12kV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 25 09:45:06 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+//=========  (Mon Feb  1 18:36:01 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
    c->Range(-0.7853982,-0.01505647,7.068584,0.01715566);
    c->SetFillColor(0);
    c->SetBorderMode(0);
@@ -11,11 +11,11 @@ void 18kV-14kV_and_20kV-12kV()
    c->SetFrameBorderMode(0);
    
    TF1 *fVCOD_4_20126 = new TF1("*fVCOD_4_2012",0,6.283185,9);
-    //The original function : ;#theta [rad];#LTy#GT [mm] had originally been created by:
-    //TF1 *fVCOD_4_2012 = new TF1("fVCOD_4_2012",;#theta [rad];#LTy#GT [mm],0,6.283185,9, 1, TF1::EAddToList::kDefault);
+    //The original function : ;#theta [rad];#LTy_{2}#GT #minus #LTy_{1}#GT [mm] had originally been created by:
+    //TF1 *fVCOD_4_2012 = new TF1("fVCOD_4_2012",;#theta [rad];#LTy_{2}#GT #minus #LTy_{1}#GT [mm],0,6.283185,9, 1, TF1::EAddToList::kDefault);
    fVCOD_4_20126->SetRange(0,6.283185);
    fVCOD_4_20126->SetName("fVCOD_4_2012");
-   fVCOD_4_20126->SetTitle(";#theta [rad];#LTy#GT [mm]");
+   fVCOD_4_20126->SetTitle(";#theta [rad];#LTy_{2}#GT #minus #LTy_{1}#GT [mm]");
    fVCOD_4_20126->SetSavedPoint(0,0.003387125);
    fVCOD_4_20126->SetSavedPoint(1,0.002552579);
    fVCOD_4_20126->SetSavedPoint(2,0.001709339);
@@ -133,7 +133,7 @@ void 18kV-14kV_and_20kV-12kV()
    fVCOD_4_20126->GetXaxis()->SetTitleSize(0.04);
    fVCOD_4_20126->GetXaxis()->SetTitleOffset(1.1);
    fVCOD_4_20126->GetXaxis()->SetTitleFont(42);
-   fVCOD_4_20126->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   fVCOD_4_20126->GetYaxis()->SetTitle("#LTy_{2}#GT #minus #LTy_{1}#GT [mm]");
    fVCOD_4_20126->GetYaxis()->CenterTitle(true);
    fVCOD_4_20126->GetYaxis()->SetNdivisions(4000510);
    fVCOD_4_20126->GetYaxis()->SetLabelFont(42);

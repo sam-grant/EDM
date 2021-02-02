@@ -175,6 +175,21 @@ double fVCOD_4(double *x, double *par) {
 
 }
 
+double fVCOD_4_E(double *x, double *par) {
+
+    vector<double> quadFactor_;
+
+    quadFactor_.push_back(1.);
+    for (int i_order = 1; i_order < 5; i_order++ ) quadFactor_.push_back( (n_2/(pow(i_order,2) - n_2)) - (n_1/(pow(i_order,2) - n_1)) );
+
+    return ( (par[0]*cos(0*x[0])) * quadFactor_.at(0) ) 
+        + ( (par[1]*cos(1*x[0])+par[2]*sin(1*x[0])) * quadFactor_.at(1) )
+        + ( (par[3]*cos(2*x[0])+par[4]*sin(2*x[0])) * quadFactor_.at(2) )
+        + ( (par[5]*cos(3*x[0])+par[6]*sin(3*x[0])) * quadFactor_.at(3) ) 
+        + ( (par[7]*cos(4*x[0])+par[8]*sin(4*x[0])) * quadFactor_.at(4) );
+
+}
+
 double fVCOD_4_183(double *x, double *par) {
 
   	vector<double> quadFactor_;
@@ -491,6 +506,7 @@ int main() {
 	TF1 *f_2 = new TF1("fVCOD_2", fVCOD_2, xmin, xmax, 5);
 	TF1 *f_3 = new TF1("fVCOD_3", fVCOD_3, xmin, xmax, 7);
 	TF1 *f_4 = new TF1("fVCOD_4", fVCOD_4, xmin, xmax, 9);
+
 	TF1 *f_5 = new TF1("fVCOD_5", fVCOD_5, xmin, xmax, 11);
 	TF1 *f_6 = new TF1("fVCOD_6", fVCOD_6, xmin, xmax, 13);
 	TF1 *f_7 = new TF1("fVCOD_7", fVCOD_7, xmin, xmax, 15);
@@ -500,6 +516,8 @@ int main() {
 	TF1 *f_11 = new TF1("fVCOD_11", fVCOD_11, xmin, xmax, 23);
 	//TF1 *f_12 = new TF1("fVCOD_12", fVCOD_12, xmin, xmax, 25);
 
+  // E-field
+  
 	int maxN = 12; 
 
 	TF1 *funcs[12] = {f_0, f_1, f_2, f_3, f_4, f_5, f_6, f_7, f_8, f_9, f_10, f_11};//, f_12};	
@@ -510,7 +528,7 @@ int main() {
 
   // Set par limits for N=4
 
-  f_4->SetParLimits(0,-0.25,0.25);
+/*  f_4->SetParLimits(0,-0.25,0.25);
   f_4->SetParLimits(1,-0.25,0.25);
   f_4->SetParLimits(2,-0.25,0.25);
   f_4->SetParLimits(3,-0.25,0.25);
@@ -519,7 +537,7 @@ int main() {
   f_4->SetParLimits(6,-0.25,0.25);
   f_4->SetParLimits(7,-0.25,0.25);
   f_4->SetParLimits(8,-0.25,0.25);
-
+*/
 
 //	int count = ;
 	// Loop through functions and fit 
@@ -584,6 +602,24 @@ int main() {
 	c->SaveAs( ("../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order.pdf").c_str() );
 	c->SaveAs( ("../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order.png").c_str() );
 	c->SaveAs( ("../Images/Data/ClosedOrbit/"+stage+"/fit_chi_vs_order.C").c_str() );
+
+
+  // Fit for E-field
+
+  TF1 *f_4_E = new TF1("fVCOD_4_E", fVCOD_4_E, xmin, xmax, 9); 
+
+/*  f_4_E->SetParLimits(0,-0.25,0.25);
+  f_4_E->SetParLimits(1,-0.25,0.25);
+  f_4_E->SetParLimits(2,-0.25,0.25);
+  f_4_E->SetParLimits(3,-0.25,0.25);
+  f_4_E->SetParLimits(4,-0.25,0.25);
+  f_4_E->SetParLimits(5,-0.25,0.25);
+  f_4_E->SetParLimits(6,-0.25,0.25);
+  f_4_E->SetParLimits(7,-0.25,0.25);
+  f_4_E->SetParLimits(8,-0.25,0.25);*/
+  gr2->Fit(f_4_E, "R");
+  DrawTGraphErrors(gr2, "E-field;#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT [mm]", "../Images/Data/ClosedOrbit/"+stage+"/Efit_ytot_vs_theta_4");
+
 
 	return 0;
 

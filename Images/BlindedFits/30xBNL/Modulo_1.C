@@ -1,7 +1,7 @@
 void Modulo_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov  9 17:13:29 2020) by ROOT version 6.22/02
+//=========  (Wed Jan 27 20:44:32 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5964689,-0.4024702,5.36822,0.5912432);
@@ -390,7 +390,7 @@ void Modulo_1()
    Graph_Graph01001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01001->GetYaxis()->SetLabelFont(42);
    Graph_Graph01001->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01001->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph01001->GetYaxis()->SetTitleOffset(1.25);
    Graph_Graph01001->GetYaxis()->SetTitleFont(42);
    Graph_Graph01001->GetZaxis()->SetLabelFont(42);
    Graph_Graph01001->GetZaxis()->SetTitleOffset(1);

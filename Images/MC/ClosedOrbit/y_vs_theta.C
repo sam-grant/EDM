@@ -1,8 +1,8 @@
 void y_vs_theta()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 25 05:04:47 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
+//=========  (Mon Feb  1 16:55:16 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8639313,-0.419288,7.775382,0.388894);
    c->SetFillColor(0);

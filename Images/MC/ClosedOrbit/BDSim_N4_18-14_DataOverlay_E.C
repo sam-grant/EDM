@@ -1,8 +1,8 @@
 void BDSim_N4_18-14_DataOverlay_E()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 25 09:45:06 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+//=========  (Mon Feb  1 16:57:15 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(-0.7913105,-0.3125,7.121794,0.3125);
    c->SetFillColor(0);
    c->SetBorderMode(0);

@@ -217,7 +217,7 @@ void yCOD_1814_BDSim() {
 
 	TCanvas *c1 = new TCanvas("c","c",800,600);
 
-	gr2->SetTitle(";#theta [rad];#LTy#GT [mm]");
+	gr2->SetTitle(";#theta [rad];#LTy_{18 kV}#GT#minus#LTy_{14 kV}#GT [mm]");
 	gr2->GetXaxis()->SetTitleSize(.04);
 	gr2->GetYaxis()->SetTitleSize(.04);
 	gr2->GetXaxis()->SetTitleOffset(1.1);
@@ -227,8 +227,9 @@ void yCOD_1814_BDSim() {
 	gr2->GetYaxis()->SetMaxDigits(4);
 	gr2->SetMarkerStyle(20); //  Full circle
 	gr2->Draw("AP");
-	func_4_1814_E->Draw("same");
-/*	func_4_2012->Draw("same");
+	//func_4_1814_E->Draw("same");
+	func_4_1814->Draw("same");
+	/*func_4_2012->Draw("same");
 
 	TLegend *l1 = new TLegend(0.81,0.35,0.99,0.65)
 	l1->SetBorderSize(0);
@@ -236,7 +237,8 @@ void yCOD_1814_BDSim() {
 	l1->AddEntry(gr2,"Data");
 	l*/
 
-	string fname = "../Images/MC/ClosedOrbit/BDSim_N4_18-14_DataOverlay_E";
+	string fname = "../Images/Data/ClosedOrbit/BDSim_N4_18-14_DataOverlay";
+	//string fname = "../Images/MC/ClosedOrbit/Data/BDSim_N4_18-14_DataOverlay_E";
 	//string fname = "../Images/MC/ClosedOrbit/BDSim_N4_20-12_DataOverlay";
 	c1->SaveAs((fname+".pdf").c_str());
 	c1->SaveAs((fname+".png").c_str());
@@ -247,7 +249,7 @@ void yCOD_1814_BDSim() {
 
 	TCanvas *c2 = new TCanvas("c","c",800,600);
 
-	func_4_2012->SetTitle(";#theta [rad];#LTy#GT [mm]");
+	func_4_2012->SetTitle(";#theta [rad];#LTy_{2}#GT #minus #LTy_{1}#GT [mm]");
 	func_4_2012->GetXaxis()->SetTitleSize(.04);
 	func_4_2012->GetYaxis()->SetTitleSize(.04);
 	func_4_2012->GetXaxis()->SetTitleOffset(1.1);

@@ -1,11 +1,11 @@
 void fit_chi_vs_order()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 25 06:45:57 2021) by ROOT version 6.22/06
+//=========  (Thu Jan 28 10:59:59 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
-   c->Range(-1.54275,-0.4138872,12.67475,3.724984);
+   c->Range(-1.54275,-0.3075922,12.67475,2.76833);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -30,7 +30,7 @@ void fit_chi_vs_order()
    1.567991,
    1.658861,
    1.324011,
-   3.022704,
+   1.13515,
    1.280286,
    1.432721,
    1.747642,
@@ -72,7 +72,7 @@ void fit_chi_vs_order()
    
    TH1F *Graph_Graph01040 = new TH1F("Graph_Graph01040","",100,0,12.1);
    Graph_Graph01040->SetMinimum(0);
-   Graph_Graph01040->SetMaximum(3.311097);
+   Graph_Graph01040->SetMaximum(2.460738);
    Graph_Graph01040->SetDirectory(0);
    Graph_Graph01040->SetStats(0);
 

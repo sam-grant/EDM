@@ -1,8 +1,8 @@
 void fit_y_vs_theta_4()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 25 05:04:56 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
+//=========  (Mon Feb  1 16:55:21 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.8639313,-0.419288,7.775382,0.388894);
@@ -736,7 +736,7 @@ void fit_y_vs_theta_4()
    0.0790461};
    TGraph *graph = new TGraph(360,fit_y_vs_theta_4_fx18,fit_y_vs_theta_4_fy18);
    graph->SetName("fit_y_vs_theta_4");
-   graph->SetTitle(";#theta [rad];#LTy#GT [mm]");
+   graph->SetTitle(";#theta [rad];#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT[mm]");
    graph->SetFillStyle(1000);
    graph->SetMarkerStyle(20);
    
@@ -757,7 +757,7 @@ void fit_y_vs_theta_4()
    Graph_fit_y_vs_theta_418->GetXaxis()->SetTitleSize(0.04);
    Graph_fit_y_vs_theta_418->GetXaxis()->SetTitleOffset(1.2);
    Graph_fit_y_vs_theta_418->GetXaxis()->SetTitleFont(42);
-   Graph_fit_y_vs_theta_418->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_fit_y_vs_theta_418->GetYaxis()->SetTitle("#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT[mm]");
    Graph_fit_y_vs_theta_418->GetYaxis()->CenterTitle(true);
    Graph_fit_y_vs_theta_418->GetYaxis()->SetNdivisions(4000510);
    Graph_fit_y_vs_theta_418->GetYaxis()->SetLabelFont(42);

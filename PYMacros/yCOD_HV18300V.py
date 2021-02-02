@@ -141,7 +141,7 @@ for i_fit in range(10):
 	gr.Write()
 
 	DrawTGraph(gr, ';#theta [rad];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/fit_y_vs_theta_'+str(i_fit))
-
+#LTy_{18 kV}#GT #minus #LTy_{14 kV}#GT
 	chis.append( funcs[i_fit].GetChisquare() / funcs[i_fit].GetNDF() )
 
 	fitOrder.append( i_fit )

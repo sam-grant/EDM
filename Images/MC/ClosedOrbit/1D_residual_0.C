@@ -1,8 +1,8 @@
 void 1D_residual_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 25 05:04:50 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
+//=========  (Mon Feb  1 16:55:18 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.4375,-4.2,0.4375,37.8);
