@@ -15,6 +15,7 @@
 #include "TH2D.h"
 #include "TGraphErrors.h"
 #include "TFitResult.h"
+#include "TDirectory.h"
 
 #include "FancyDraw.h"
 
@@ -25,18 +26,18 @@ using namespace std;
 const string stage = "reprocessed"; // "//// // ////
 
 // FIRST SCAN
-// string scan = "1";
-// const int N_QHV = 2;
-// const int N_FIELD = 2;
-// const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-// const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+string scan = "1";
+const int N_QHV = 2;
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // SECOND SCAN
-string scan = "2";
-const int N_QHV = 4;
-const int N_FIELD = 6;
-const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
+//string scan = "2";
+//const int N_QHV = 4;
+//const int N_FIELD = 6;
+//const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
 
 
 // Read csv file of run, QHV, & Br
@@ -313,8 +314,9 @@ void WriteQuadScan(vector<TGraphErrors*> graphs, string ouput) {
 
 int main() {
 
-
-
+  // Output to store basic fits (quad scans and final fit)
+  TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/fits.root").c_str(), "RECREATE");
+  output->cd(); output->mkdir("quadFits"); output->mkdir("mainFit");
 
   // FIRST SCAN
 	//string runs[4] = {"37131-37133", "37119", "37128-37130", "37120-37127"};
@@ -399,12 +401,20 @@ int main() {
 
     //quadScanCTAGs.push_back(QuadScan(ctags, QHV_tmp));
 
-    	// Fit for quad gradient and store
+    // Fit for quad gradient and store
     TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
 
 		quadScan->Fit(quadLineFit,"M");
 
     cout<<"quadLineFit\t"<<quadLineFit<<endl;
+
+    // Save raw quad fits to ROOT file
+    output->cd("quadFits");
+    quadScan->SetName((to_string(int(BR_APP[i_field]))+"_ppm").c_str());
+    quadScan->SetTitle(";1/QHV [kV^{-1}];#LTy#GT [mm]");
+    quadScan->GetXaxis()->CenterTitle(1);
+    quadScan->GetYaxis()->CenterTitle(1);
+    quadScan->Write();
 
 		quadScans.push_back(quadScan);
 
@@ -443,7 +453,7 @@ int main() {
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
   double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
 
-    // x-intercept 
+  // x-intercept 
 	double Br = -p0/p1;
 
 	// From Taylor 9.9
@@ -451,10 +461,15 @@ int main() {
 
 	DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFit");
 
+  // Save fit
+  output->cd("mainFit");
+  result->SetName("mainFit");
+  result->Write();
+  //output->Write();
+  output->Close();
   // Draw main fit residuals 
 
   DrawTGraphResiduals(result, "mainFit", ";#LTB_{r}^{App}#GT [ppm];Fit residual [ppm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFitRes");
-
 
   // ++++++++++++++++ Check p-values ++++++++++++++++ 
 
@@ -484,143 +499,7 @@ int main() {
   pValGr->GetXaxis()->SetNdivisions(7);
 
   DrawBarChart(pValGr,";Data point removed in re-fit;p-value","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/pVals");
-	
+
   return 0;
-}
-
-/*
-
-// Read tree, produce tuple of y, yerr, & ctag
-// Also store histograms of y-pos 
-
-tuple<double, double, int> ReadYPos(string input, string output) {
-
-   // ++++++++++++++ Open tree and load branches ++++++++++++++
-
-   // Get file
-   TFile *f1 = TFile::Open(input.c_str());
-   cout<<"\nOpened tree:\t"<<input<<" "<<f1<<endl;
-
-   // Get reader for tree
-   TTreeReader treeReader("nearlineHistTree/eventTree",f1);
-
-   // Get branches
-   TTreeReaderValue<unsigned int> runNum(treeReader,"runNum");
-   TTreeReaderValue<unsigned int> subRunNum(treeReader,"subRunNum");
-   TTreeReaderValue<unsigned int> eventNum(treeReader,"eventNum");
-   TTreeReaderValue<unsigned int> ctag(treeReader,"ctag");
-   TTreeReaderValue<vector<int>> caloNum(treeReader,"caloNum");
-   TTreeReaderValue<std::vector<double>> energy(treeReader,"energy");
-   TTreeReaderValue<std::vector<double>> times(treeReader,"time");
-   TTreeReaderValue<std::vector<double>> x(treeReader,"x");
-   TTreeReaderValue<std::vector<double>> y(treeReader,"y");
-
-
-   // ++++++++++++++ Book histograms ++++++++++++++
-
-   // All calos
-   TH2D *hxy = new TH2D("hxy", ";x [mm];y [mm]", 225, 0, 225, 150, 0, 150);
-   TH1D *hy = new TH1D("hy", ";y [mm];Clusters", 150, 0, 150);
-
-   // Individual calos
-   vector<TH1D *> hy_calos;
-   for(int i_calo = 0; i_calo < 24; i_calo++) {
-   	TH1D *hy_tmp = (TH1D*) hy->Clone();
-   	hy_tmp->SetName( ("hy_"+to_string(i_calo+1)).c_str() );
-   	hy_calos.push_back(hy_tmp);
-   }
-
-   // ++++++++++++++ Loop thro events ++++++++++++++
-
-   unsigned int tot_ctag = 0;
-   unsigned int tot_ctag_check = 0;
-
-   while (treeReader.Next()){
-
-    //unsigned int ctag = ctag*;
-   	tot_ctag = tot_ctag + *ctag;
-
-      // Get leaves
-   	vector<int> caloNum_ = *caloNum;
-   	vector<double> x_ = *x;
-   	vector<double> y_ = *y;
-   	vector<double> energy_ = *energy;
-   	vector<double> times_ = *times;
-
-    // Number of clusters in this fill
-   	int nClu = caloNum_.size(); 
-
-    cout<<"nClu\t"<<nClu<<endl;
-
-      // Loop through clusters
-   	for(int i_clu = 0; i_clu < nClu; i_clu++) { 
-
-         // Get cluster level variables
-   		int caloNum =  caloNum_.at(i_clu);
-   		double xmm = x_.at(i_clu) * 25;
-   		double ymm = y_.at(i_clu) * 25; 
-   		double energy = energy_.at(i_clu);
-   		double time = times_.at(i_clu);
-
-         // Apply CTAG cuts
-   		if(energy > 1700 && energy < 6000 && time > 24000) {
-
-   			tot_ctag_check++;
-
-            // Fill y-position for all calos
-   			hxy->Fill(xmm, ymm);
-   			hy->Fill(ymm);
-            // Fill y-position for individual calos
-   			hy_calos.at(caloNum-1)->Fill(ymm);
-
-
-   		}
-
-   	}
-
-   }
-
-   // ++++++++++++++ Draw sanity plots ++++++++++++++
-
-   // use fancy draw
-   TCanvas *c1 = new TCanvas("c1","c1",800,600);
-   gStyle->SetOptStat(2210);
-   hy->Draw("HIST");
-   c1->SaveAs("Images/hy.png");
-
-   TCanvas *c2 = new TCanvas("c2","c2",800,600);
-   gStyle->SetOptStat(2210);
-   hy_calos.at(0)->Draw("HIST");
-   c2->SaveAs("Images/hy_1.png");
-
-   TCanvas *c3 = new TCanvas("c3","c3",800,600);
-   gStyle->SetOptStat(0);
-   gStyle->SetPalette(55);
-   hxy->Draw("COLZ");
-   c3->SaveAs("Images/hxy.png");
-
-   // ++++++++++++++ Write to file ++++++++++++++
-
-   TFile *f2 = new TFile(output.c_str(), "RECREATE");
-   hy->Write();
-   f2->cd(); f2->mkdir("PerCalo"); f2->cd("PerCalo");
-   for(int i_calo = 0; i_calo < hy_calos.size(); i_calo++) hy_calos.at(i_calo)->Write();
-   	f2->Close();
-
-   cout<<"\nMean y-position:\t"<<hy->GetMean()<<"+/-"<<hy->GetMeanError()<<endl;
-   cout<<"Total ctags:\t"<<tot_ctag<<endl;
-   cout<<"Total ctags check:\t"<<tot_ctag_check<<endl;
-
-   cout<<"\nWritten histograms to:\t"<<output<<" "<<f2<<endl;
-
-   // Need this to avoid seg fault after closing files
-   double yPos = hy->GetMean(); double eyPos = hy->GetMeanError();
-
-   f1->Close();
-   f2->Close();
-
-   return make_tuple(yPos, eyPos, tot_ctag);
 
 }
-
-*/
