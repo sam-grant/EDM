@@ -1,7 +1,7 @@
 void y-pos_37970-38675()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Feb  1 23:11:14 2021) by ROOT version 6.22/06
+//=========  (Wed Feb  3 09:46:06 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(37687.5,74.45,39382.5,74.95);
@@ -1848,35 +1848,6 @@ void y-pos_37970-38675()
    pt->SetTextFont(44);
    pt->SetTextSize(18);
    TText *pt_LaTex = pt->AddText("#minus0.742#pm0.475 ppm");
-   pt->Draw();
-   
-   TF1 *shiftLine1Copy1005 = new TF1("shiftLine1Copy","[0]",37857,39213, TF1::EAddToList::kDefault);
-   shiftLine1Copy1005->SetFillColor(19);
-   shiftLine1Copy1005->SetFillStyle(0);
-
-   ci = TColor::GetColor("#ff0000");
-   shiftLine1Copy1005->SetLineColor(ci);
-   shiftLine1Copy1005->SetLineWidth(3);
-   shiftLine1Copy1005->SetLineStyle(2);
-   shiftLine1Copy1005->GetXaxis()->SetLabelFont(42);
-   shiftLine1Copy1005->GetXaxis()->SetTitleOffset(1);
-   shiftLine1Copy1005->GetXaxis()->SetTitleFont(42);
-   shiftLine1Copy1005->GetYaxis()->SetLabelFont(42);
-   shiftLine1Copy1005->GetYaxis()->SetTitleFont(42);
-   shiftLine1Copy1005->SetParameter(0,74.79889);
-   shiftLine1Copy1005->SetParError(0,0);
-   shiftLine1Copy1005->SetParLimits(0,0,0);
-   shiftLine1Copy1005->Draw("same");
-   
-   pt = new TPaveText(38310,74.80389,38510,74.85389,"br");
-   pt->SetFillColor(0);
-   pt->SetTextAlign(13);
-
-   ci = TColor::GetColor("#ff0000");
-   pt->SetTextColor(ci);
-   pt->SetTextFont(44);
-   pt->SetTextSize(18);
-   pt_LaTex = pt->AddText("0.905#pm0.476 ppm");
    pt->Draw();
    TLine *line = new TLine(38800,74.5,38800,74.9);
 

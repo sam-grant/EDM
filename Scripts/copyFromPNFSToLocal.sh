@@ -1,0 +1,75 @@
+#Sam grant
+#Copy all files from nearline according to run num
+# Input
+
+study="BeamYPosMonitoring"
+
+touch tmp.txt
+
+ssh gm2gpvm01 ls /pnfs/gm2/scratch/users/sgrant/CaloBeamPositionPlots_Run1a >> tmp.txt 
+
+for run in `cat tmp.txt`; do
+
+	echo "+++++++++ START +++++++++"
+
+	rm -f ../txt/FileLists/${i}.txt && touch ../txt/FileLists/${i}.txt
+
+	dir=`ssh gm2gpvm01 ls /pnfs/gm2/scratch/users/sgrant/CaloBeamPositionPlots_Run1a/${run}`
+	path=/pnfs/gm2/scratch/users/sgrant/CaloBeamPositionPlots_Run1a/${run}/${dir}/data
+
+	echo $path
+
+	# Store file lists (don't really need this but it's nice for a sanity check)
+	for file in `ssh gm2gpvm01 ls ${path}`; do
+		echo $path"/"$file >> ../txt/FileLists/${i}.txt
+	done
+
+	n=`cat ../txt/FileLists/${i}.txt | wc -l`
+
+	if [[ ! -d ../Plots/Data/BeamYPosMonitoring/stagedForHadd/${run} ]]; then
+		mkdir ../Plots/Data/BeamYPosMonitoring/stagedForHadd/${run}
+	else 
+		continue
+	fi
+
+
+	echo "Copying ${n} files for sub-run ${run} from ${path}"
+
+	scp gm2gpvm01:${path}/*.root ../Plots/Data/${study}/stagedForHadd/${run}
+
+	echo "+++++++++ END +++++++++"
+
+	# break
+
+done
+
+rm -f tmp.txt
+
+
+
+# rm -f ../txt/FileLists/${i}.txt && touch ../txt/FileLists/${i}.txt
+
+# ssh gm2gpvm01 ls /pnfs/GM2/daq/run4/nearline/nearlineHists/runs_37000/${i}/gm2nearline_hists_run${i}_*.root >> ../txt/FileLists/${i}.txt
+
+# if [[ ! -d /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i} ]]; then 
+# 	mkdir /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i}
+# fi
+
+# echo "Run num ${i}"
+
+# for file in `cat ../txt/FileLists/${i}.txt`; do
+
+# 	#echo $file
+# 	file=${file##*/} # Retain part after the last slash
+
+# 	# echo $file
+# 	if [[ -f /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i}/${file} ]]; then
+# 		echo "${file} already exists on external, skipping..."
+# 		continue
+# 	fi
+
+# 	echo "Copying ${file}..."
+
+# 	scp gm2gpvm01:/pnfs/GM2/daq/run4/nearline/nearlineHists/runs_37000/${i}/${file} /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i}/ #../../Trees/Data/RadialFieldScan_2/${i}/
+
+# done

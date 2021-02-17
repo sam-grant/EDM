@@ -1,7 +1,7 @@
 void QuadChiSqrs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jan 19 00:01:03 2021) by ROOT version 6.22/06
+//=========  (Tue Feb 16 21:37:23 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,nan,45,nan);
@@ -18,16 +18,16 @@ void QuadChiSqrs()
    inf,
    inf};
    Double_t Graph0_fex1005[2] = {
-   2.178592e-314,
-   6.953125e-310};
+   2.195506e-314,
+   6.953123e-310};
    Double_t Graph0_fey1005[2] = {
-   2.178592e-314,
-   6.953125e-310};
+   2.195506e-314,
+   6.953123e-310};
    TGraphErrors *gre = new TGraphErrors(2,Graph0_fx1005,Graph0_fy1005,Graph0_fex1005,Graph0_fey1005);
    gre->SetName("Graph0");
    gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf");
+   gre->SetFillColor(1);
    gre->SetFillStyle(1000);
-   gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01005 = new TH1F("Graph_Graph01005","",100,-36,36);
    Graph_Graph01005->SetMinimum(nan);
@@ -41,6 +41,7 @@ void QuadChiSqrs()
    Graph_Graph01005->SetLineColor(ci);
    Graph_Graph01005->GetXaxis()->SetTitle("#LTB_{r}^{App}#GT [ppm]");
    Graph_Graph01005->GetXaxis()->CenterTitle(true);
+   Graph_Graph01005->GetXaxis()->SetNdivisions(6);
    Graph_Graph01005->GetXaxis()->SetLabelFont(42);
    Graph_Graph01005->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01005->GetXaxis()->SetTitleOffset(1.1);
@@ -57,7 +58,7 @@ void QuadChiSqrs()
    Graph_Graph01005->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph01005);
    
-   gre->Draw("ap");
+   gre->Draw("ab");
    c->Modified();
    c->cd();
    c->SetSelected(c);
