@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe UnblindedEDMSimFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzFitter.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe MomentumScan.exe SanityPlots.exe UnblindedEDMSimFitter.exe TimeScan.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzFitter.exe dY_and_dBr.exe
 
 all:$(Target)
 
@@ -66,6 +66,10 @@ BeamYPos.exe: BeamYPos.C
 	
 PlotBeamYPosVsRun.exe: PlotBeamYPosVsRun.C
 	${C++} -o $@ PlotBeamYPosVsRun.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) 
+
+dY_and_dBr.exe: dY_and_dBr.C
+	${C++} -o $@ dY_and_dBr.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
 ############################# BLINDING ###################################
 
 testBlinding.exe: testBlinding.C
