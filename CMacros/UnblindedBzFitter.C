@@ -60,7 +60,10 @@ void FitBz(TGraphErrors *graph, double par0, double par1, double par2, double pa
 	TF1 *func = new TF1("BzFunc", BzFunc, min, max, 7);
 
 	//func->SetParLimits(0, par0/4, par0);
-	func->SetParameter(0, par0); // A_Bz
+	// A_Bz
+	func->FixParameter(0, par0);
+	//func->SetParLimits(0, par0-par0*0.5, par0+par0*0.5);
+	 
 	func->FixParameter(1, par1); // omega_a
 	func->FixParameter(2, par2); // phi
 	func->SetParameter(3, 0); // A_EDM
@@ -299,7 +302,7 @@ int main() {
 
 	// ======= Fit for A_Bz =====
 	// Bz should be 1700 ppm or 0.17 mrad
-	FitBz(gr_thetaY_mod, 0.008, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
+	FitBz(gr_thetaY_mod, 0.00825, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
 	TF1 *BzWiggle = gr_thetaY_mod->GetFunction("BzFunc");
 	BzWiggle->SetParName(0,"A_{Bz} [mrad]");
 	BzWiggle->SetParName(1,"#omega_{a} (fixed) [MHz]");

@@ -117,7 +117,7 @@ void Plotter::Run() {
     // p/pmax is between 0.3 to 0.75 for pmax
     // if(p > pmax*0.3 && p < pmax*0.75) {
 
-    if(p > 700 && p < 2400) {
+    if(p > 1500 && p < 1600) {
 
       // Vertical angle plots
       Fill1D("ThetaY", theta_y);

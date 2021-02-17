@@ -1,7 +1,7 @@
 void gr_wiggle()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Feb 16 14:47:52 2021) by ROOT version 6.22/06
+//=========  (Wed Feb 17 12:52:49 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-55.28132,-532.6395,497.5319,4793.755);
