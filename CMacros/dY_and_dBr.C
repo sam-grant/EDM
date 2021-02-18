@@ -7,6 +7,8 @@
 #include "TLegend.h"
 #include "TGraphErrors.h"
 #include "TF1.h"
+#include "TStyle.h"
+#include "TPaveStats.h"
 
 using namespace std;
 
@@ -14,7 +16,53 @@ string ThreeSigFig(double num) {
   return Form("%5.3g", num);
 }
 
-void DrawFits(vector<TGraphErrors*> graphs, vector<string> names, string func, string title, string fname, double ymin, double ymax) {
+void DrawMainFit(TGraphErrors *graph, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gStyle->SetStatFormat("6.3g");
+
+  	graph->Draw();
+  	gPad->Update();
+
+  	// gStyle->SetStatY(0.89);
+  	gStyle->SetStatY(0.89);
+  	// gStyle->SetStatX(0.89);
+  	gStyle->SetStatX(0.49);
+  	gStyle->SetStatBorderSize(0);
+
+	//gStyle->SetOptStat(0);
+  	gStyle->SetOptFit(111);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.35);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->Draw("AP");
+
+	TF1 *fit = graph->GetFunction("fit");
+	fit->SetParName(0, "c [mm/ppm]");
+	fit->SetParName(1, "m [mm#upointkV/ppm]");
+	fit->Draw("same");
+	//c->SetGridx();
+
+	c->SetLeftMargin(0.11);
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawQuadFits(vector<TGraphErrors*> graphs, vector<string> names, string func, string title, string fname, double ymin, double ymax) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
@@ -147,22 +195,43 @@ int main() {
 		names_.push_back(ThreeSigFig(QHVs[i_quad]));
 	}
 
-	DrawFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/tmp", 71, 79);
+	DrawQuadFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits", 71, 79);
+
+	// Now plot the gradients against QHV for the graident, this will give you a conversion factor between 
+	int n = gr_.size();
+
+	double x[n]; double ex[n];
+	double y[n]; double ey[n];
 
 	for (int i_gr = 0; i_gr < gr_.size(); i_gr++) { 
 
-		double grad = gr_.at(i_gr)->GetFunction("fit")->GetParameter(1);
-		double egrad = gr_.at(i_gr)->GetFunction("fit")->GetParError(1);
-		cout<<"Grad\t"<<grad<<"±"<<egrad<<endl;
+		y[i_gr] = gr_.at(i_gr)->GetFunction("fit")->GetParameter(1);
+		ey[i_gr] = gr_.at(i_gr)->GetFunction("fit")->GetParError(1);
+		x[i_gr] = 1/QHVs[i_gr]; ex[i_gr] = 0.;
+
+		// cout<<"Grad\t"<<grad<<"±"<<egrad<<endl;
 
 		// Calc
-		double grad_calc = 1.0 / QHVs[i_gr];
-		cout<<grad_calc<<endl;
+		//double grad_calc = 1.0 / QHVs[i_gr];
+		// cout<<grad_calc<<endl;
 
 
 	}
+
+	TGraphErrors *mainFit = new TGraphErrors(n, x, y, ex, ey);
+	TF1 *fit = new TF1("fit", "[0]+[1]*x");
+	mainFit->Fit(fit);
+
+	//gStyle->SetOptFit(222);
+
+	DrawMainFit(mainFit, ";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
+
+
 	
 	
+
+
+
 
 	return 0;
 

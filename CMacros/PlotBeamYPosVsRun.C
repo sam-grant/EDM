@@ -51,7 +51,6 @@ vector<string> csvReader(string infile) {
 
         // Store the row vectors in a vector of vectors
 
-
     }
 
     // Close file
@@ -337,10 +336,13 @@ void DrawManyTGraphErrors2(std::vector<TGraphErrors*> graphs, std::vector<string
 
 int main() {
 
+  // string dataset = "Run4_Jan";
   string dataset = "Run1";
 
   // Get file list
-  vector<string> runs = csvReader("../txt/DatasetRunNumbers/BeamPosRunNumbers_"+dataset+".txt");
+
+  // vector<string> runs = csvReader("../txt/DatasetRunNumbers/CurrentRunNumbers_"+dataset+".txt");
+  vector<string> runs = csvReader("../txt/"+dataset+".txt");
 
   vector<double> y_; vector<double> ey_; 
   vector<double> x_; vector<double> ex_;
@@ -351,44 +353,14 @@ int main() {
 
     string run = runs.at(i_run);
 
-    string input = "../Plots/Data/BeamYPosMonitoring/"+dataset+"/y-pos_"+run+".root";
+    string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/"+dataset+"/y-pos_"+run+".root";
 
     TFile *fin = TFile::Open(input.c_str());
 
     if(fin==0) continue;
 
-/*
-    double y = 0.; double ey = 0.;
-
-    int count = 0;
-
-    // Do this calo by calo in so that we can add/remove calos at will 
-    for( int i_calo = 1; i_calo < 25; i_calo++ ) {
-
-      if(std::stod(run) >= 38951 && i_calo == 5) continue;
-
-      TH1D *hy = (TH1D*)fin->Get(("PerCalo/hy_"+to_string(i_calo)).c_str());
-      if(hy==0) continue;
-
-      y = y + hy->GetMean(); 
-      ey = sqrt(pow(ey,2)+pow(hy->GetMeanError(),2));
-
-       count++;
-
-    }
-
-    y = y/count;
-    ey = ey/count;
-
-    if(y < 70 ) {
-      fin->Close();
-      continue;
-    }*/
-
-
-
-    // TH1D *hy = (TH1D*)fin->Get("hy");
     TH1D *hy = (TH1D*)fin->Get("CaloBeamPosition/clusterY");
+
     double y = hy->GetMean(); double ey = hy->GetMeanError();
     if(hy->GetMean()==0) {
       fin->Close();
@@ -402,12 +374,7 @@ int main() {
   
     fin->Close();
 
-    //delete fin;
-
   }
-
-
-
 
   int n = y_.size();
 
@@ -425,28 +392,9 @@ int main() {
 
   TGraphErrors *gr = new TGraphErrors(n, x, y, ex, ey);
 
-  //return 0;
-
-  // Fit pol0 to runs 37970 thro 
-  //TF1 *zeroLine = new TF1("zeroLine", "[0]", 37970, 38293);
-  // Fit without drawing
-  //gr->Fit(zeroLine, "0R");
-
-  //TF1 *shiftLine1 = new TF1("shiftLine1", "[0]", 38951, 39100);
-  // Fit without drawing
-  //gr->Fit(shiftLine1, "0R+");
-
-
-
-  //gr->GetYaxis()->SetRangeUser(74.5,74.9);
-
-
-
   //gr->GetXaxis()->SetRangeUser(38881, 39100);  
-  DrawPlot(gr, ";Run number;#LTy_{Calo}#GT [mm]", "Day of Jan 2021", "../Images/Data/BeamYPosMonitoring/"+dataset+"/y-pos_"+runs.at(0)+"-"+runs.at(runs.size()-1), 1., 31.);  
+  DrawPlot(gr, ";Run number;#LTy_{Calo}#GT [mm]", "Day of Jan 2021", "../Images/Data/RadialFieldEstimation/BeamYPosMonitoring/"+dataset+"/y-pos_"+runs.at(0)+"-"+runs.at(runs.size()-1), 1., 31.);  
 
-
-  //return 0;
   // Now draw / calo
 
   vector<TGraphErrors*> caloGraphs_;
@@ -454,19 +402,16 @@ int main() {
 
   for( int i_calo = 1; i_calo < 25; i_calo++ ) {
 
+    cout<<"\nProcessing calo "<<i_calo<<endl;
+
     vector<double> yCalo_; vector<double> eyCalo_; 
     vector<double> xCalo_; vector<double> exCalo_;
 
     for( int i_run = 0; i_run < runs.size(); i_run++ ) {
 
       string run = runs.at(i_run);
-      string input = "../Plots/Data/BeamYPosMonitoring/"+dataset+"/y-pos_"+run+".root";
-      cout<<input<<endl;
+      string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/"+dataset+"/y-pos_"+run+".root";
       TFile *fin = TFile::Open(input.c_str());
-      //cout<<"fin\t"<<fin<<endl;
-      //if(fin==0) continue;
-
-      // TH1D *hy_calo = (TH1D*)fin->Get(("PerCalo/hy_"+to_string(i_calo)).c_str());
       TH1D *hy_calo = (TH1D*)fin->Get(("CaloBeamPosition/PerCalo/clusterY_"+to_string(i_calo)).c_str());
       if(hy_calo->GetMean()==0) {
         fin->Close();
@@ -496,60 +441,13 @@ int main() {
     caloGraphs_.push_back(gr_calo);
     caloNames_.push_back("Calo "+to_string(i_calo));
 
+    cout<<"Done"<<endl;
+
   }
 
-  DrawManyTGraphErrors2(caloGraphs_, caloNames_, "Run 1 (partial);Run number;#LTy_{Calo}#GT [mm]", "Day of Jan 2021", "../Images/Data/BeamYPosMonitoring/"+dataset+"/y-pos_calos_"+runs.at(0)+"-"+runs.at(runs.size()-1), 73, 80, 1., 31.); 
+  DrawManyTGraphErrors2(caloGraphs_, caloNames_, ";Run number;#LTy_{Calo}#GT [mm]", "Day of Jan 2021", "../Images/Data/RadialFieldEstimation/BeamYPosMonitoring/"+dataset+"/y-pos_calos_"+runs.at(0)+"-"+runs.at(runs.size()-1), 70, 80, 1., 31.); 
 
 
   return 0;
 
 }
-
-/*    
-    // Fit pol0 to runs 37970 thro 
-    TF1 *zeroLine_calo = new TF1("zeroLine_calo", "[0]", 37970, 38293);
-
-    // Fit without drawing
-    gr_calo->Fit(zeroLine_calo, "0R");
-
-    TF1 *shiftLine1_calo = new TF1("shiftLine1_calo", "[0]", 38951, 39100);
-
-
-    // Fit without drawing
-    gr_calo->Fit(shiftLine1_calo, "0R+");
-
-
-    gr_calo->GetYaxis()->SetRangeUser(74.5,74.9);
-    
-    //gr->GetXaxis()->SetRangeUser(38881, 39100);  
-    DrawPlotCalo(gr_calo, "Calo "+to_string(i_calo)+";Run number;#LTy_{Calo}#GT [mm]", "Day of Jan 2021", "../Images/Data/BeamYPosMonitoring/raw/y-pos_calo"+to_string(i_calo)+"_"+runs.at(0)+"-"+runs.at(n_calo-1), 1., 31.);  
-*/
-
-  
-
-/*    yCalos_.push_back(yCalo_); eyCalos_.push_back(eyCalo_); 
-    xCalos_.push_back(xCalo_); exCalos_.push_back(eyCalo_);*/
-
-
-
-
-  // void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::string axisTitle, std::string fname, double lo, double hi) {
-  //DrawTGraphErrorsDoubleXAxis()
-  //gr->GetXaxis()->SetRangeUser(38630,39101);
-  // DrawTGraphErrors(gr, ";Run number;#LTy_{Calo}#GT [mm]", "../Images/tmp");
-
-
-
-/*
-	cout << "Running\t" <<run<<endl;
-
-	const string study = "BeamYPosMonitoring"; // ClosedOrbit"; // "RadialFieldScan_1" "RadialFieldScan_1"
-   	const string stage = "raw"; // "reprocessed"
-
-	string input = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/y-pos_"+run+".root";
-	string output = "/Users/samuelgrant/Documents/gm2/EDM/Images/Data/"+study+"/"+stage+"/y-pos_"+run;
-
-	string title = "Run "+run+";#LTy#GT [mm];Entries";
-
-	ReadYPos(input, title, output);*/
-

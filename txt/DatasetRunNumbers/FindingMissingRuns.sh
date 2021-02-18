@@ -1,1 +1,1 @@
-comm -3 <(sort BeamPosRunNumbers_Run1.txt) <(sort RunNumbers_Run1.txt) >> MissingRuns_Run1.txt
+comm -3 <(sort AllRunNumbers_Run1.txt) <(sort CurrentRunNumbers_Run1.txt) >> MissingRuns_Run1.txt
