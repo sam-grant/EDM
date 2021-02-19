@@ -176,7 +176,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
 	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.25);
+	graph->GetYaxis()->SetTitleOffset(1.2);
 	graph->GetXaxis()->CenterTitle(true);
 	graph->GetYaxis()->CenterTitle(true);
 	graph->GetYaxis()->SetMaxDigits(4);
@@ -254,7 +254,8 @@ void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::vector<string>
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
 
-	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+	//TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+	TLegend *l = new TLegend(0.81,0.15,0.99,0.85);
 	l->SetBorderSize(0);
 
 	graphs.at(0)->SetTitle(title.c_str());
@@ -265,17 +266,18 @@ void DrawManyTGraphErrors(std::vector<TGraphErrors*> graphs, std::vector<string>
 	graphs.at(0)->GetXaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
-	//graphs.at(0)->SetMarkerStyle(20); //  Full circle
 	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
-	graphs.at(0)->Draw("AP");
 
-	for(int i = 0; i < graphs.size(); i++) {
-		//graphs.at(i)->SetMarkerStyle(20)
-		l->AddEntry(graphs.at(i), (names.at(i)).c_str() );
-		graphs.at(i)->SetMarkerColor(i+1);
-		graphs.at(i)->SetLineColor(i+1);
-		graphs.at(i)->Draw("P SAME");
-	}
+	int nGraphs = graphs.size();
+
+	gStyle->SetPalette(kBird);
+
+	for(int i = 0; i < nGraphs; i++) {
+    	graphs.at(i)->SetMarkerStyle(20);
+    	l->AddEntry(graphs.at(i), (names.at(i)).c_str());
+      	if(i==0) graphs.at(i)->Draw("AP PLC PMC");
+      	else graphs.at(i)->Draw("P PLC PMC SAME");
+  	}
 
 	l->Draw("same");
 	c->SaveAs((fname+".pdf").c_str());

@@ -1,7 +1,7 @@
-void tmp()
+void tmp1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 20:42:22 2021) by ROOT version 6.22/06
+//=========  (Thu Feb 18 20:57:46 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
@@ -12,7 +12,7 @@ void tmp()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1001[217] = {
+   Double_t Graph0_fx1004[217] = {
    15921,
    15922,
    15924,
@@ -230,7 +230,7 @@ void tmp()
    17297,
    17298,
    17299};
-   Double_t Graph0_fy1001[217] = {
+   Double_t Graph0_fy1004[217] = {
    0.8571109,
    0.8572284,
    0.8759067,
@@ -448,7 +448,7 @@ void tmp()
    1.76721,
    1.774112,
    1.798255};
-   Double_t Graph0_fex1001[217] = {
+   Double_t Graph0_fex1004[217] = {
    0,
    0,
    0,
@@ -666,7 +666,7 @@ void tmp()
    0,
    0,
    0};
-   Double_t Graph0_fey1001[217] = {
+   Double_t Graph0_fey1004[217] = {
    0.008082507,
    0.006823955,
    0.006912916,
@@ -884,39 +884,39 @@ void tmp()
    0.008656842,
    0.009234434,
    0.006317542};
-   TGraphErrors *gre = new TGraphErrors(217,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
+   TGraphErrors *gre = new TGraphErrors(217,Graph0_fx1004,Graph0_fy1004,Graph0_fex1004,Graph0_fey1004);
    gre->SetName("Graph0");
    gre->SetTitle(";Sub-run;y_{calo} #minus y_{#LTB_{r}#GT=0} [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",217,15783.2,17436.8);
-   Graph_Graph01001->SetMinimum(0.5524049);
-   Graph_Graph01001->SetMaximum(2.010913);
-   Graph_Graph01001->SetDirectory(0);
-   Graph_Graph01001->SetStats(0);
+   TH1F *Graph_Graph01004 = new TH1F("Graph_Graph01004","",217,15783.2,17436.8);
+   Graph_Graph01004->SetMinimum(0.5524049);
+   Graph_Graph01004->SetMaximum(2.010913);
+   Graph_Graph01004->SetDirectory(0);
+   Graph_Graph01004->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("Sub-run");
-   Graph_Graph01001->GetXaxis()->CenterTitle(true);
-   Graph_Graph01001->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01001->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("y_{calo} #minus y_{#LTB_{r}#GT=0} [mm]");
-   Graph_Graph01001->GetYaxis()->CenterTitle(true);
-   Graph_Graph01001->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01001->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01001->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01001->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01001->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01001);
+   Graph_Graph01004->SetLineColor(ci);
+   Graph_Graph01004->GetXaxis()->SetTitle("Sub-run");
+   Graph_Graph01004->GetXaxis()->CenterTitle(true);
+   Graph_Graph01004->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01004->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01004->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01004->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01004->GetYaxis()->SetTitle("y_{calo} #minus y_{#LTB_{r}#GT=0} [mm]");
+   Graph_Graph01004->GetYaxis()->CenterTitle(true);
+   Graph_Graph01004->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01004->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01004->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01004->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01004->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01004->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01004->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01004->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01004);
    
    gre->Draw("ap");
    c->Modified();

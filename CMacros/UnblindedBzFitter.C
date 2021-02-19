@@ -28,7 +28,7 @@ double xmax = 70*G2PERIOD;
 using namespace std;
 
 double FiveParFunc(double *x, double *par) {
- 	return par[0] * exp(-x[0]/par[1]) * (1 + (par[2] * cos((par[3] * x[0]) + par[4])));
+ 	return par[0] * exp(-x[0]/par[1]) * (1 - (par[2] * cos((par[3] * x[0]) + par[4])));
 }
 
 
@@ -61,7 +61,7 @@ void FitBz(TGraphErrors *graph, double par0, double par1, double par2, double pa
 
 	//func->SetParLimits(0, par0/4, par0);
 	// A_Bz
-	func->FixParameter(0, par0);
+	func->SetParameter(0, par0);
 	//func->SetParLimits(0, par0-par0*0.5, par0+par0*0.5);
 	 
 	func->FixParameter(1, par1); // omega_a
@@ -165,7 +165,7 @@ int main() {
 	bool sanityPlots = true;
 
 	string config = "Bz"; 
-	string field = "82ppm"; // 1700ppm";
+	string field = "1700ppm";//"82ppm"; // 
 	// Read file
 	TFile *input = TFile::Open(("../Plots/MC/"+config+"/simPlots.Bz."+field+".root").c_str());
 	cout << "\nRead input...\t\t: " << input << endl;
@@ -302,7 +302,7 @@ int main() {
 
 	// ======= Fit for A_Bz =====
 	// Bz should be 1700 ppm or 0.17 mrad
-	FitBz(gr_thetaY_mod, 0.00825, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
+	FitBz(gr_thetaY_mod, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
 	TF1 *BzWiggle = gr_thetaY_mod->GetFunction("BzFunc");
 	BzWiggle->SetParName(0,"A_{Bz} [mrad]");
 	BzWiggle->SetParName(1,"#omega_{a} (fixed) [MHz]");

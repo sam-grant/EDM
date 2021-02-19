@@ -215,23 +215,17 @@ int main() {
 		//double grad_calc = 1.0 / QHVs[i_gr];
 		// cout<<grad_calc<<endl;
 
-
 	}
 
 	TGraphErrors *mainFit = new TGraphErrors(n, x, y, ex, ey);
 	TF1 *fit = new TF1("fit", "[0]+[1]*x");
 	mainFit->Fit(fit);
 
-	//gStyle->SetOptFit(222);
-
 	DrawMainFit(mainFit, ";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
-
-
-	
 	
 
-
-
+	
+	//DrawMainFit(mainFit, ";QHV [kV];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
 
 	return 0;
 
