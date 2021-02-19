@@ -32,13 +32,23 @@ void Plotter::InitHistos() {
   plot1D("Wiggle_Full", 2700, 0, 2700*0.148936, "t_{g#minus2}^{mod} [#mus]", "Tracks");
 
   //=========== Time modulo plots ===========
+
   plot1D("Wiggle_Modulo", 87, 0, g2Period, "t_{g#minus2}^{mod} [#mus]", "Tracks");
   plot1D("Wiggle_Modulo_Full", 87, 0, g2Period, "t_{g#minus2}^{mod} [#mus]", "Tracks");
-  // plot1D("Wiggle_Modulo_Shift", 87, 0, g2Period, "t_{g#minus2}^{mod} [#mus]", "Tracks");
-
-  // 50 ns bins 
   plot2D("ThetaY_vs_Time_Modulo", 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
-  // plot2D("ThetaY_vs_Time_Modulo_Shift", 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+
+  int pmin = 700.; 
+  int pmax = 800.;
+
+  for(int i_cut = 0; i_cut < 17; i_cut++) {
+
+      plot2D("ThetaY_vs_Time_Modulo_"+std::to_string(pmin)+"_"+std::to_string(pmax), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+
+      pmin = pmin + 100; 
+      pmax = pmax + 100; 
+
+  }
+
 }
 
 //=========================================================
@@ -112,33 +122,32 @@ void Plotter::Run() {
       }
 
     }
-   
+
     // EDM cuts
     // p/pmax is between 0.3 to 0.75 for pmax
-    // if(p > pmax*0.3 && p < pmax*0.75) {
 
-    if(p > 1500 && p < 1600) {
-
-      // Vertical angle plots
+    if(p > pmax*0.3 && p < pmax*0.75) {
       Fill1D("ThetaY", theta_y);
       Fill2D("ThetaY_vs_Time", time, theta_y);
-
-      //=========== Time modulo for Bz ===========
-      // No phase shift? 
-/*      double g2fracTime3 = g2fracTime;
-      int g2fracTimeInt3 = (g2fracTime3);// - 0.25;
-      double g2ModTime3 = (g2fracTime3 - g2fracTimeInt3) * g2Period;*/
-
-
       Fill2D("ThetaY_vs_Time_Modulo", g2ModTime, theta_y);
-      //Fill2D("ThetaY_vs_Time_Modulo_Shift", g2ModTime_shift, theta_y);
-
-
-
-    } 
-
-
-
+    }
+    if(p >= 700 && p < 800) Fill2D("ThetaY_vs_Time_Modulo_700_800", g2ModTime, theta_y);
+    else if(p >= 800 && p < 900) Fill2D("ThetaY_vs_Time_Modulo_800_900", g2ModTime, theta_y);
+    else if(p >= 900 && p < 1000) Fill2D("ThetaY_vs_Time_Modulo_900_1000", g2ModTime, theta_y);
+    else if(p >= 1000 && p < 1100) Fill2D("ThetaY_vs_Time_Modulo_1000_1100", g2ModTime, theta_y);
+    else if(p >= 1100 && p < 1200) Fill2D("ThetaY_vs_Time_Modulo_1100_1200", g2ModTime, theta_y);
+    else if(p >= 1200 && p < 1300) Fill2D("ThetaY_vs_Time_Modulo_1200_1300", g2ModTime, theta_y);
+    else if(p >= 1300 && p < 1400) Fill2D("ThetaY_vs_Time_Modulo_1300_1400", g2ModTime, theta_y);
+    else if(p >= 1400 && p < 1500) Fill2D("ThetaY_vs_Time_Modulo_1400_1500", g2ModTime, theta_y);
+    else if(p >= 1500 && p < 1600) Fill2D("ThetaY_vs_Time_Modulo_1500_1600", g2ModTime, theta_y);
+    else if(p >= 1600 && p < 1700) Fill2D("ThetaY_vs_Time_Modulo_1600_1700", g2ModTime, theta_y);
+    else if(p >= 1700 && p < 1800) Fill2D("ThetaY_vs_Time_Modulo_1700_1800", g2ModTime, theta_y);
+    else if(p >= 1800 && p < 1900) Fill2D("ThetaY_vs_Time_Modulo_1800_1900", g2ModTime, theta_y);
+    else if(p >= 1900 && p < 2000) Fill2D("ThetaY_vs_Time_Modulo_1900_2000", g2ModTime, theta_y);
+    else if(p >= 2000 && p < 2100) Fill2D("ThetaY_vs_Time_Modulo_2000_2100", g2ModTime, theta_y);
+    else if(p >= 2100 && p < 2200) Fill2D("ThetaY_vs_Time_Modulo_2100_2200", g2ModTime, theta_y);
+    else if(p >= 2200 && p < 2300) Fill2D("ThetaY_vs_Time_Modulo_2200_2300", g2ModTime, theta_y);
+    else if(p >= 2300 && p < 2400) Fill2D("ThetaY_vs_Time_Modulo_2300_2400", g2ModTime, theta_y);
 
   }
 

@@ -1,7 +1,7 @@
-void tmp()
+void C_vs_Momentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 22:39:33 2021) by ROOT version 6.22/06
+//=========  (Thu Feb 18 22:57:19 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(350,-0.649432,2750,0.05404591);
@@ -85,7 +85,7 @@ void tmp()
    0.02576411};
    TGraphErrors *gre = new TGraphErrors(17,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
-   gre->SetTitle(";p [MeV]: in range p#minus50 < p < p#plus50 MeV;c [mrad]");
+   gre->SetTitle(";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -99,7 +99,7 @@ void tmp()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("p [MeV]: in range p#minus50 < p < p#plus50 MeV");
+   Graph_Graph01001->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
    Graph_Graph01001->GetXaxis()->CenterTitle(true);
    Graph_Graph01001->GetXaxis()->SetLabelFont(42);
    Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);

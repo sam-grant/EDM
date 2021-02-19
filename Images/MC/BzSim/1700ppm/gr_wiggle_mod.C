@@ -1,7 +1,7 @@
 void gr_wiggle_mod()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 00:17:49 2021) by ROOT version 6.22/06
+//=========  (Thu Feb 18 22:31:23 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5964689,4190.867,5.36822,14622.64);
@@ -388,7 +388,7 @@ void gr_wiggle_mod()
    Graph_Graph01003->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01003->GetYaxis()->SetLabelFont(42);
    Graph_Graph01003->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01003->GetYaxis()->SetTitleOffset(1.25);
+   Graph_Graph01003->GetYaxis()->SetTitleOffset(1.2);
    Graph_Graph01003->GetYaxis()->SetTitleFont(42);
    Graph_Graph01003->GetZaxis()->SetLabelFont(42);
    Graph_Graph01003->GetZaxis()->SetTitleOffset(1);
