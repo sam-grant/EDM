@@ -1,7 +1,7 @@
 void tmp3()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 20:57:46 2021) by ROOT version 6.22/06
+//=========  (Tue Feb 23 13:51:08 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);

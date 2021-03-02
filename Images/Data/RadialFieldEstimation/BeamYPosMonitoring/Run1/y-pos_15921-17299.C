@@ -1,7 +1,7 @@
 void y-pos_15921-17299()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 18:40:05 2021) by ROOT version 6.22/06
+//=========  (Sat Feb 27 14:09:26 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(15576.5,72.125,17643.5,80.875);
@@ -910,7 +910,7 @@ void y-pos_15921-17299()
    Graph_gr1001->GetYaxis()->SetNdivisions(4000510);
    Graph_gr1001->GetYaxis()->SetLabelFont(42);
    Graph_gr1001->GetYaxis()->SetTitleSize(0.04);
-   Graph_gr1001->GetYaxis()->SetTitleOffset(1.25);
+   Graph_gr1001->GetYaxis()->SetTitleOffset(1.2);
    Graph_gr1001->GetYaxis()->SetTitleFont(42);
    Graph_gr1001->GetZaxis()->SetLabelFont(42);
    Graph_gr1001->GetZaxis()->SetTitleOffset(1);

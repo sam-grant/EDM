@@ -1,0 +1,6 @@
+dataset=Run1
+for file in `ls ../../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/${dataset}`; do
+	run=${file##*_}
+	run=${run%%.*}
+	echo $run >> CurrentRunNumbers_${dataset}.txt
+done

@@ -26,18 +26,18 @@ using namespace std;
 const string stage = "reprocessed"; // "//// // ////
 
 // FIRST SCAN
-string scan = "1";
-const int N_QHV = 2;
-const int N_FIELD = 2;
-const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+//string scan = "1";
+//const int N_QHV = 2;
+//const int N_FIELD = 2;
+//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // SECOND SCAN
-//string scan = "2";
-//const int N_QHV = 4;
-//const int N_FIELD = 6;
-//const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
+string scan = "2";
+const int N_QHV = 4;
+const int N_FIELD = 6;
+const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
 
 
 // Read csv file of run, QHV, & Br

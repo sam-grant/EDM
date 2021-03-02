@@ -16,5 +16,5 @@
 #include "TStyle.h"
 #include "TGaxis.h"
 #include "TPad.h"
-#include "TFitResultPtr.h"
+#include "TFitResult.h"
 // TODO ADD MORE AND REMOVE HEADERS FROM OTHER FILES

@@ -20,7 +20,7 @@
 
 int main() {
 
-	std::string config = "1xBNL"; 
+	std::string config = "5.4e-18";//30xBNL"; 
 	std::string qualString = "Q";
 	//bool quality = false;
 	//std::string qualString;
@@ -28,7 +28,7 @@ int main() {
 	//else qualString = "NoQ";
 
 	// Read file
-	TFile *input = TFile::Open(("../Plots/MC/"+config+"/moduloPlots"+qualString+".root").c_str());
+	TFile *input = TFile::Open(("../Plots/MC/dMU/"+config+"/moduloPlots_"+qualString+".root").c_str());
 	std::cout << "\nRead input...\t\t: " << input << std::endl;
 
 	TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");

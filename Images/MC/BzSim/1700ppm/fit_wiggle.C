@@ -1,7 +1,7 @@
 void fit_wiggle()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 22:31:25 2021) by ROOT version 6.22/06
+//=========  (Tue Mar  2 08:23:40 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
@@ -20892,7 +20892,7 @@ void fit_wiggle()
    FiveParFunc1006->SetParent(gre);
    gre->GetListOfFunctions()->Add(FiveParFunc1006);
    
-   TPaveStats *ptstats = new TPaveStats(0.62,0.575,0.98,0.935,"brNDC");
+   TPaveStats *ptstats = new TPaveStats(0.62,0.655,0.98,0.935,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
@@ -20905,7 +20905,7 @@ void fit_wiggle()
    ptstats_LaTex = ptstats->AddText("#omega_{a} (fixed) [MHz] = 1.439 #pm     0 ");
    ptstats_LaTex = ptstats->AddText("#phi [rad] = -0.04007 #pm 0.004512 ");
    ptstats->SetOptStat(0);
-   ptstats->SetOptFit(20222);
+   ptstats->SetOptFit(111);
    ptstats->Draw();
    gre->GetListOfFunctions()->Add(ptstats);
    ptstats->SetParent(gre->GetListOfFunctions());

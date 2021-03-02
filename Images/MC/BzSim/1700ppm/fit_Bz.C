@@ -1,7 +1,7 @@
 void fit_Bz()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 22:31:26 2021) by ROOT version 6.22/06
+//=========  (Tue Mar  2 08:23:41 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
@@ -10446,7 +10446,7 @@ void fit_Bz()
    BzFunc1012->SetParent(gre);
    gre->GetListOfFunctions()->Add(BzFunc1012);
    
-   TPaveStats *ptstats = new TPaveStats(0.62,0.495,0.98,0.935,"brNDC");
+   TPaveStats *ptstats = new TPaveStats(0.62,0.575,0.98,0.935,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
@@ -10454,14 +10454,14 @@ void fit_Bz()
    ptstats->SetTextFont(42);
    TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 70.17 / 84");
    ptstats_LaTex = ptstats->AddText("A_{Bz} [mrad] = 0.1521 #pm 0.009955 ");
-   ptstats_LaTex = ptstats->AddText("#omega_{a} (fixed) [MHz] = 1.439 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("#phi (fixed) [rad] = -0.02235 #pm     0 ");
+   ptstats_LaTex = ptstats->AddText("#omega_{a}^{FIXED} [MHz] = 1.439 #pm     0 ");
+   ptstats_LaTex = ptstats->AddText("#phi^{FIXED} [rad] = -0.02235 #pm     0 ");
    ptstats_LaTex = ptstats->AddText("A_{EDM} [mrad] = -0.009056 #pm 0.009903 ");
    ptstats_LaTex = ptstats->AddText("#omega_{a} (fixed) [MHz] = 1.439 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("#phi (fixed) [rad] = -0.02235 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("C [mrad] = -0.2773 #pm 0.007037 ");
+   ptstats_LaTex = ptstats->AddText("#phi^{FIXED} [rad] = -0.02235 #pm     0 ");
+   ptstats_LaTex = ptstats->AddText("c [mrad] = -0.2773 #pm 0.007037 ");
    ptstats->SetOptStat(2210);
-   ptstats->SetOptFit(20222);
+   ptstats->SetOptFit(111);
    ptstats->Draw();
    gre->GetListOfFunctions()->Add(ptstats);
    ptstats->SetParent(gre->GetListOfFunctions());

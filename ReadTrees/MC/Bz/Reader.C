@@ -46,7 +46,7 @@ void trackerReader::Init() {
    LoadBranch("maxDriftTime", maxDriftTime, b_maxDriftTime);
    LoadBranch("maxResidual", maxResidual, b_maxResidual);
    LoadBranch("extrapolatedDistance", extrapolatedDistance, b_extrapolatedDistance);*/
-/*   LoadBranch("passTrackQuality", passTrackQuality, b_passTrackQuality);*/
+   LoadBranch("passTrackQuality", passTrackQuality, b_passTrackQuality);
    LoadBranch("passVertexQuality", passVertexQuality, b_passVertexQuality);
  //  LoadBranch("passCandidateQuality", passCandidateQuality, b_passCandidateQuality);   
    

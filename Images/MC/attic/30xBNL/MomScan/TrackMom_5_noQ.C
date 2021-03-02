@@ -1,0 +1,78 @@
+void TrackMom_5_noQ()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Feb 25 07:16:21 2021) by ROOT version 6.22/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1D *TrackMom_5__26 = new TH1D("TrackMom_5__26","2500<p<3000 MeV",128,0,3200);
+   TrackMom_5__26->SetBinContent(101,247284);
+   TrackMom_5__26->SetBinContent(102,234405);
+   TrackMom_5__26->SetBinContent(103,222881);
+   TrackMom_5__26->SetBinContent(104,211132);
+   TrackMom_5__26->SetBinContent(105,199077);
+   TrackMom_5__26->SetBinContent(106,188171);
+   TrackMom_5__26->SetBinContent(107,175801);
+   TrackMom_5__26->SetBinContent(108,164994);
+   TrackMom_5__26->SetBinContent(109,153705);
+   TrackMom_5__26->SetBinContent(110,142053);
+   TrackMom_5__26->SetBinContent(111,131159);
+   TrackMom_5__26->SetBinContent(112,119790);
+   TrackMom_5__26->SetBinContent(113,108959);
+   TrackMom_5__26->SetBinContent(114,95705);
+   TrackMom_5__26->SetBinContent(115,77813);
+   TrackMom_5__26->SetBinContent(116,58472);
+   TrackMom_5__26->SetBinContent(117,37280);
+   TrackMom_5__26->SetBinContent(118,19183);
+   TrackMom_5__26->SetBinContent(119,8518);
+   TrackMom_5__26->SetBinContent(120,3684);
+   TrackMom_5__26->SetBinError(101,497.2766);
+   TrackMom_5__26->SetBinError(102,484.1539);
+   TrackMom_5__26->SetBinError(103,472.1027);
+   TrackMom_5__26->SetBinError(104,459.491);
+   TrackMom_5__26->SetBinError(105,446.1805);
+   TrackMom_5__26->SetBinError(106,433.7868);
+   TrackMom_5__26->SetBinError(107,419.2863);
+   TrackMom_5__26->SetBinError(108,406.1945);
+   TrackMom_5__26->SetBinError(109,392.0523);
+   TrackMom_5__26->SetBinError(110,376.8992);
+   TrackMom_5__26->SetBinError(111,362.1588);
+   TrackMom_5__26->SetBinError(112,346.1069);
+   TrackMom_5__26->SetBinError(113,330.0894);
+   TrackMom_5__26->SetBinError(114,309.3622);
+   TrackMom_5__26->SetBinError(115,278.9498);
+   TrackMom_5__26->SetBinError(116,241.8098);
+   TrackMom_5__26->SetBinError(117,193.0803);
+   TrackMom_5__26->SetBinError(118,138.5027);
+   TrackMom_5__26->SetBinError(119,92.29301);
+   TrackMom_5__26->SetBinError(120,60.69596);
+   TrackMom_5__26->SetEntries(2600066);
+   TrackMom_5__26->SetLineWidth(2);
+   TrackMom_5__26->SetMarkerSize(1.5);
+   TrackMom_5__26->GetXaxis()->SetTitle("Track momentum [MeV]");
+   TrackMom_5__26->GetXaxis()->CenterTitle(true);
+   TrackMom_5__26->GetXaxis()->SetLabelFont(42);
+   TrackMom_5__26->GetXaxis()->SetLabelSize(0.04);
+   TrackMom_5__26->GetXaxis()->SetTitleSize(0.04);
+   TrackMom_5__26->GetXaxis()->SetTitleOffset(1.1);
+   TrackMom_5__26->GetXaxis()->SetTitleFont(42);
+   TrackMom_5__26->GetYaxis()->CenterTitle(true);
+   TrackMom_5__26->GetYaxis()->SetNdivisions(4000510);
+   TrackMom_5__26->GetYaxis()->SetLabelFont(42);
+   TrackMom_5__26->GetYaxis()->SetLabelSize(0.04);
+   TrackMom_5__26->GetYaxis()->SetTitleSize(0.04);
+   TrackMom_5__26->GetYaxis()->SetTitleOffset(1.1);
+   TrackMom_5__26->GetYaxis()->SetTitleFont(42);
+   TrackMom_5__26->GetZaxis()->SetLabelFont(42);
+   TrackMom_5__26->GetZaxis()->SetTitleOffset(1);
+   TrackMom_5__26->GetZaxis()->SetTitleFont(42);
+   TrackMom_5__26->Draw("HIST");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

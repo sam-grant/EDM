@@ -78,8 +78,20 @@ double ModTime(double time) {
 
 void Plotter::Run() {
 
+  int nTrk = 0; int nVert = 0;
+  int nQTrk = 0; int nQVert = 0;
+
   // Loop through track tree
   while( NextTrEvent() ) {
+
+    nTrk++; 
+
+    if(tr->passVertexQuality) {
+      nQVert++;
+      nVert++;
+    } else if(!tr->passVertexQuality) nVert++;
+
+    if(tr->passTrackQuality) nQTrk++;
 
     // BEAM VERTEX QUALITY CUT
     if(!tr->passVertexQuality) continue;
@@ -125,12 +137,12 @@ void Plotter::Run() {
 
     // EDM cuts
     // p/pmax is between 0.3 to 0.75 for pmax
-
     if(p > pmax*0.3 && p < pmax*0.75) {
       Fill1D("ThetaY", theta_y);
       Fill2D("ThetaY_vs_Time", time, theta_y);
       Fill2D("ThetaY_vs_Time_Modulo", g2ModTime, theta_y);
     }
+
     if(p >= 700 && p < 800) Fill2D("ThetaY_vs_Time_Modulo_700_800", g2ModTime, theta_y);
     else if(p >= 800 && p < 900) Fill2D("ThetaY_vs_Time_Modulo_800_900", g2ModTime, theta_y);
     else if(p >= 900 && p < 1000) Fill2D("ThetaY_vs_Time_Modulo_900_1000", g2ModTime, theta_y);
@@ -150,6 +162,12 @@ void Plotter::Run() {
     else if(p >= 2300 && p < 2400) Fill2D("ThetaY_vs_Time_Modulo_2300_2400", g2ModTime, theta_y);
 
   }
+
+  cout<<"Number of tracks:\t"<<nTrk<<"\n"; 
+  cout<<"Number of quality tracks:\t"<<nQTrk<<"\n"; 
+  cout<<"Number of vertices:\t"<<nVert<<"\n";
+  cout<<"Number of quality vertices:\t"<<nQVert<<"\n";
+  
 
   delete tr;
   return;

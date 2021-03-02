@@ -56,9 +56,10 @@ vector<string> csvReader(string infile) {
 
 int main() {
 
-  //string dataset = "Run1";
-  string dataset = "Run4_Jan";
+  string dataset = "Run1";
+  //string dataset = "Run4_Jan";
   //string dataset = "Run3NW";
+  // string dataset = "Run2";
 
   string outputName = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Results/"+dataset+".root";
   TFile *output = new TFile( outputName.c_str(), "RECREATE");

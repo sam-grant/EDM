@@ -172,7 +172,7 @@ int main(int argc, char *argv[]){
   
   if (argc < 2){
     cout<<"Using hard-coded file list"<<endl;
-    fileNames.push_back("../../../Trees/MC/BzSim/simTree.Bz.1700ppm.root");
+    fileNames.push_back("../../../Trees/MC/Bz/simTree.Bz.1700ppm.root");
     //fileNames.push_back("../../Trees/MC/30xBNL/simTree.30xBNL.truthT0truthLR.root");
   }
   
