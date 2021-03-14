@@ -1,7 +1,7 @@
 void gr_thetaY_mod()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar  2 08:23:38 2021) by ROOT version 6.22/06
+//=========  (Thu Mar  4 01:58:28 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5964689,-0.7551172,5.36822,0.2211339);

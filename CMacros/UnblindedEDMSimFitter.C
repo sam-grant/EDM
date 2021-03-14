@@ -21,7 +21,7 @@
 int main() {
 
 	std::string config = "5.4e-18";//30xBNL"; 
-	std::string qualString = "Q";
+	std::string qualString = "noQ";
 	//bool quality = false;
 	//std::string qualString;
 	//if(quality) qualString = "Q";
@@ -39,13 +39,13 @@ int main() {
 	std::cout << "Generated x-profile...\t: " << moduloProf << std::endl; 
 
 	// Rebin
-	std::cout << "\nNBins before rebin...\t\t: " << moduloProf->GetNbinsX() << std::endl;
-	std::cout << "Binwidth before rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" << std::endl;
+	//std::cout << "\nNBins before rebin...\t\t: " << moduloProf->GetNbinsX() << std::endl;
+	//std::cout << "Binwidth before rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" << std::endl;
 
 	//moduloProf->Rebin(150);
 
-	std::cout << "NBins post rebin...\t: " << moduloProf->GetNbinsX() << std::endl;
-	std::cout << "Binwidth post rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" << std::endl;
+	//std::cout << "NBins post rebin...\t: " << moduloProf->GetNbinsX() << std::endl;
+	//std::cout << "Binwidth post rebin...\t: " << moduloProf->GetXaxis()->GetBinWidth(1) << "\n" << std::endl;
 
 	// Convert to TGraph
 	int n = moduloProf->GetNbinsX();
@@ -63,7 +63,7 @@ int main() {
 
   	}
 
-  	int nEntries = moduloProf->GetEntries();
+  	int nEntries = moduloHist->GetEntries();
 
   	delete moduloProf; delete moduloHist;
 
@@ -74,7 +74,7 @@ int main() {
 
 	std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
 	
-	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(nEntries),true);
+	DrawSimpleSinFit(moduloGraph, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/"+config+"/simpleModuloFit_"+qualString).c_str(), double(nEntries),true);
 
 
 	return 0;

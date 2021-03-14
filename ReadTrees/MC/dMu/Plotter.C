@@ -62,21 +62,28 @@ void Plotter::Run() {
   while( NextTrEvent() ) {
 
     // BEAM VERTEX QUALITY CUT
-    if(!tr->passVertexQuality) continue;
+    //if(!tr->passVertexQuality) continue;
 
     double time = tr->trackT0 * 1e-3; // ns -> us
     double p = tr->trackMomentum;
 
+    // Gleb sim cuts
+    if(p < 700 || p > 2400) continue;
+    if(time > 300) continue;
+
+
     // p/pmax is between 0.3 to 0.75 for pmax ~3100 MeV
-    if(p < pmax*0.3 || p > pmax*0.75) continue;
+    //if(p < pmax*0.3 || p > pmax*0.75) continue;
     //if(p < 1500 || p > 1800) continue;
-    //if(time > 300) continue;
+    //if(time > 300) continue;x
     // TIME CUTS
     //if(time > g2Period*70) continue;
     //if(time < g2Period*7 || time > g2Period*70) continue;
     //if(time > 300) continue;
 
     // Vertical angle
+    // pY is flipped for the positron
+
     double theta_y = TMath::ATan2(tr->trackMomentumY,p) * 1e3; // rad -> mrad
 
     // Sanity plots

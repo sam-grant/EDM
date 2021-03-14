@@ -1,0 +1,1 @@
+comm -23 <(sort ../CaloRunNumbers/run1.txt) <(sort ../CurrentRunNumbers/run1.txt) >> run1.txt

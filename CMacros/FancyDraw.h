@@ -529,7 +529,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	double err2 = func->GetParError(2);
 
 	TLegend *function = new TLegend(0.11,0.79,0.45,0.89);//,"NDC");
-	function->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + C");
+	function->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c");
 	function->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.59,0.55,0.69,0.89,"NDC");
@@ -544,7 +544,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	else amplitude = "A_{EDM} [mrad]";
 	names->AddText(amplitude.c_str()); // +SciNotation(par0));
 	//if(!blind) names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));
-	names->AddText("C [mrad]"); // +SciNotation(par2));
+	names->AddText("c [mrad]"); // +SciNotation(par2));
 
 	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
 	values->SetTextAlign(33);

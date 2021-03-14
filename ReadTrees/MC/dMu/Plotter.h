@@ -172,7 +172,7 @@ int main(int argc, char *argv[]){
   
   if (argc < 2){
     cout<<"Using hard-coded file list"<<endl;
-    fileNames.push_back("../../../Trees/MC/dMu/simTree.dMu.5.4e-18.root");
+    fileNames.push_back("../../../Trees/MC/dMu/simTree.root");//.dMu.5.4e-18.root");
   }
   
   for (int i = 1; i < argc; ++i){

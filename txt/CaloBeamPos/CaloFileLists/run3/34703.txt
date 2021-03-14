@@ -1,0 +1,3 @@
+/pnfs/GM2/daq/run3/offline/gm2_5203A/runs_34000/34703/gm2offline_final_37033845_34703.00038.root
+/pnfs/GM2/daq/run3/offline/gm2_5203A/runs_34000/34703/gm2offline_final_37033451_34703.00039.root
+/pnfs/GM2/daq/run3/offline/gm2_5203A/runs_34000/34703/gm2offline_final_37033708_34703.00040.root

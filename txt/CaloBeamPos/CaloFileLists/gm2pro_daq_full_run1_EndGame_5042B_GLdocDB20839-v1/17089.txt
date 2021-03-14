@@ -1,0 +1,4 @@
+/pnfs/GM2/daq/run1/offline/gm2_5042B/runs_17000/17089/gm2offline_full_2992884_17089.00004.root
+/pnfs/GM2/daq/run1/offline/gm2_5042B/runs_17000/17089/gm2offline_full_2992299_17089.00005.root
+/pnfs/GM2/daq/run1/offline/gm2_5042B/runs_17000/17089/gm2offline_full_2992526_17089.00013.root
+/pnfs/GM2/daq/run1/offline/gm2_5042B/runs_17000/17089/gm2offline_full_2992867_17089.00019.root
