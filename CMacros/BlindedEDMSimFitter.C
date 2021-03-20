@@ -13,7 +13,7 @@
 
 using namespace blinding;
 
-bool unblind = true;
+bool unblind = false; // true; // false;
 
 double R = 3.5; // ppm shift
 double boxWidth = 0.25;
@@ -106,24 +106,35 @@ double EDMFunc( double *x, double *p )  {
   return (-p[0] * cos(p[1]* time + p[2]));
 }
 
-int main() {
+// int main() {
+int main(int argc, char *argv[]) {
+
+    //std::string unblindStr = "unblinded"
 
     if (unblind) {
       std::cout << "\n========= UNBLINDED ==========" << "\n";
     }
-  
-    // Read file
-    std::string config = "30xBNL"; // 1xBNL"
-    std::string qualString = "Q";
 
-    TFile *input = TFile::Open(("../Plots/MC/"+config+"/moduloPlots"+qualString+".root").c_str());
+    std::string config = "5.4e-18";//30xBNL"; 
+    std::string cuts = argv[1];
+    std::string qualString = cuts+"Q";
+    
+    // // Read file
+    // std::string config = "30xBNL"; // 1xBNL"
+    // std::string qualString = "Q";
+
+    // Read file
+    TFile *input = TFile::Open(("../Plots/MC/dMu/"+config+"/dMuSim_"+qualString+".root").c_str());
     std::cout << "\nRead input...\t\t: " << input << std::endl;
+    
+    // TFile *input = TFile::Open(("../Plots/MC/"+config+"/moduloPlots"+qualString+".root").c_str());
+    // std::cout << "\nRead input...\t\t: " << input << std::endl;
 
     // ================== First, fit N(t) for the phase ================== 
 
     // Get unmodulated theta_y vs time for N(t) plot  
     TH2D *ThetaY_vs_Time = (TH2D*)input->Get("ThetaY_vs_Time"); 
-    DrawTH2(ThetaY_vs_Time,"","../Images/BlindedFits/"+config+"ThetaY_vs_Time_2D");
+    DrawTH2(ThetaY_vs_Time,"","../Images/BlindedFits/"+config+"/ThetaY_vs_Time_2D");
     TProfile *ThetaY_vs_Time_Prof = ThetaY_vs_Time->ProfileX();
     // DrawTH1(ThetaY_vs_Time_Prof,"","../Images/BlindedFits/"+std::to_string(config)+"ThetaY_vs_Time_Prof");
 
@@ -200,7 +211,7 @@ int main() {
     edmFunc->SetNpx(50000);
     //edmFunc->GetXaxis()->SetRangeUser(zeroCrossing,zeroCrossing+G2PERIOD);
 
-    DrawTF1(edmFunc,"Blind EDM function;Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/"+config+"/BlindEDMFunc");
+    DrawTF1(edmFunc,"Blind EDM function;Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMu/"+config+"/Blinded/BlindEDMFunc"+qualString+"_"+to_string(unblind));
 
     TH2D *ThetaY_vs_Time_Modulo = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
     // Do this as a TH1
@@ -238,7 +249,7 @@ int main() {
 
     TGraphErrors *result = new TGraphErrors(nBins,x,y,ex,ey);
 
-    DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindedFits/"+config+"/Modulo_"+to_string(unblind));
+    DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMu/"+config+"/Blinded/Modulo_"+qualString+"_"+to_string(unblind));
 
     // Fit
     SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
@@ -254,7 +265,7 @@ int main() {
     std::cout<<"eta_tot:\t"<<eta_tot<<std::endl;
     std::cout<<"dMu_tot:\t"<<dMu_tot<<std::endl;
 
-    DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindedFits/"+config+"/ModuloFit_"+to_string(unblind), nEntries, unblind);
+    DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/MC/dMu/"+config+"/Blinded/ModuloFit_"+qualString+"_"+to_string(unblind), nEntries, unblind);
 
   return 0;
 
