@@ -59,7 +59,7 @@ double ModTime(double time) {
 
 void Plotter::Run() {
 
-  bool quality = true;
+  bool quality = true;//true;
 
   // Loop through track tree
   while( NextTrEvent() ) {
@@ -74,7 +74,7 @@ void Plotter::Run() {
     double p = sqrt(px*px + py*py + pz*pz);
 
     // Vertical angle
-    double theta_y = TMath::ATan2(tr->trackMomentumY,p) * 1e3; // rad -> mrad
+    double theta_y = TMath::ATan2(-py,p) * 1e3; // rad -> mrad
 
     if(quality) { 
       // Beam vertex 

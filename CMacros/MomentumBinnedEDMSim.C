@@ -23,10 +23,10 @@ using namespace std;
 
 int main() {
 
-	bool quality = false; // true;
+	bool quality = true;//false; // true;
 
 	std::string qualString;
-	if(quality) qualString = "_pValQ";
+	if(quality) qualString = "_test_pValQ";
 	else qualString = "_test_noQ";
 
 	// Read file
@@ -46,7 +46,8 @@ int main() {
 
 		cout << name <<endl;
 
-		int n_slice = 7;
+		// 7th slice is not really fitabble, only got to 3000 Mev
+		int n_slice = 6;
 		//if(quality) n_slice = 6;
 		//else n_slice = 7;
 
@@ -86,20 +87,27 @@ int main() {
   			double y[n];
   			double ey[n];
 
+  			int counter = 0;
   			for(int i = 0; i < n; i++) {
+
+  				// Cut away empty bins 
+  				if(moduloProf->GetBinContent(i+1) == 0.) { // } || moduloProf->GetBinContent(i+1) == 1.) { 
+  					counter++; 
+  					continue;
+  				}
 
   				x[i] = moduloProf->GetBinCenter(i+1);
   				ex[i] = 0; 
   				y[i] = moduloProf->GetBinContent(i+1); 
       			ey[i] = moduloProf->GetBinError(i+1); 
-
+      			counter++;
   			}
 
   			int nEntries = moduloHist->GetEntries();
 
   			//delete moduloProf; delete moduloHist;
 
-			TGraphErrors *moduloGraph = new TGraphErrors(n,x,y,ex,ey);
+			TGraphErrors *moduloGraph = new TGraphErrors(counter,x,y,ex,ey);
 
 			// Fit
 			SimpleSinFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
@@ -128,8 +136,8 @@ int main() {
 		TGraphErrors *A_vs_mom = new TGraphErrors(n_slice,mom,A,mom_err,A_err);
 		TGraphErrors *c_vs_mom = new TGraphErrors(n_slice,mom,c,mom_err,c_err);
 
-		A_vs_mom->GetXaxis()->SetRangeUser(0,3500);
-		c_vs_mom->GetXaxis()->SetRangeUser(0,3500);
+		A_vs_mom->GetXaxis()->SetRangeUser(0,3000);
+		c_vs_mom->GetXaxis()->SetRangeUser(0,3000);
 	
   		DrawTGraphErrors(c_vs_mom, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/dMu/5.4e-18/Unblinded/MomScan/"+name+"_c_vs_p"+qualString).c_str());
   		// DrawTGraphErrors(ABz_vs_p, ";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", "../Images/MC/BzSim/1700ppm/ABz_vs_Momentum");

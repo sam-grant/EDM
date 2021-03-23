@@ -20,8 +20,7 @@ void Plotter::InitTrees(TString input_file) {
 
 void Plotter::InitHistos() {
 
-
-  for ( int i_slice = 0; i_slice < 7; i_slice++ ) { 
+  for ( int i_slice = 0; i_slice < 14; i_slice++ ) { 
   
     // Vertical angle plots
     plot1D("ThetaY_"+std::to_string(i_slice), 180, -60, 60, "#theta_{y} [mrad]","Tracks");
@@ -32,6 +31,9 @@ void Plotter::InitHistos() {
   
     // 50 ns bins 
     plot2D("ThetaY_vs_Time_Modulo_"+std::to_string(i_slice), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+    plot2D("S0_ThetaY_vs_Time_Modulo_"+std::to_string(i_slice), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+    plot2D("S12_ThetaY_vs_Time_Modulo_"+std::to_string(i_slice), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+    plot2D("S18_ThetaY_vs_Time_Modulo_"+std::to_string(i_slice), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
     // Coarse bin 
     plot2D("ThetaY_vs_Time_Modulo_Coarse_"+std::to_string(i_slice), 15, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
     // Fine bin
@@ -56,11 +58,12 @@ double ModTime(double time) {
 
 void Plotter::Run() {
 
-  bool quality = true;
+  bool quality = true;//false;//true;//true;
 
   // Loop through track tree
   while( NextTrEvent() ) {
 
+    int stn = tr->station;
 
     double time = tr->decayTime * 1e-3; // ns -> us
 
@@ -70,7 +73,7 @@ void Plotter::Run() {
     double p = sqrt(px*px + py*py + pz*pz);
 
     // Vertical angle
-    double theta_y = TMath::ATan2(tr->trackMomentumY,p) * 1e3; // rad -> mrad
+    double theta_y = TMath::ATan2(-py,p) * 1e3; // rad -> mrad
 
     if(quality) { 
       // Beam vertex 
@@ -85,10 +88,10 @@ void Plotter::Run() {
 
     double g2ModTime = ModTime(time);
 
-    for ( int i_slice = 0; i_slice < 7; i_slice++ ) { 
+    for ( int i_slice = 0; i_slice < 14; i_slice++ ) { 
 
       // Slice momentum in 500 MeV up to 3500 MeV
-      int step = 500;
+      int step = 250;
       double lo = 0 + i_slice*step; 
       double hi = step + i_slice*step;
 
@@ -99,6 +102,8 @@ void Plotter::Run() {
       Fill2D("ThetaY_vs_Time_"+std::to_string(i_slice), time, theta_y);
     
       Fill2D("ThetaY_vs_Time_Modulo_"+std::to_string(i_slice), g2ModTime, theta_y);
+      Fill2D("S"+std::to_string(stn)+"_ThetaY_vs_Time_Modulo_"+std::to_string(i_slice), g2ModTime, theta_y);
+      
       Fill2D("ThetaY_vs_Time_Modulo_Coarse_"+std::to_string(i_slice), g2ModTime, theta_y);
       Fill2D("ThetaY_vs_Time_Modulo_Fine_"+std::to_string(i_slice), g2ModTime, theta_y);
 

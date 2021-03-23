@@ -38,6 +38,19 @@ void Plotter::InitHistos() {
   // Fine bin
   plot2D("ThetaY_vs_Time_Modulo_Fine", 1000, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
 
+  // Slice momentum in 100 MeV up to 3100 MeV
+  for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
+
+    int step = 100;
+    int lo = 0 + i_slice*step; 
+    int hi = step + i_slice*step;
+
+    plot2D(("S0_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+    plot2D(("S12_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+    plot2D(("S18_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+
+  }
+
 }
 
 //=========================================================
@@ -55,7 +68,7 @@ double ModTime(double time) {
 
 void Plotter::Run() {
 
-  bool quality = true;
+  bool quality = true;//true;
 
   // Loop through track tree
   while( NextTrEvent() ) {
@@ -78,8 +91,8 @@ void Plotter::Run() {
       // if(p < 700 || p > 2400) continue;
       //if(tr->hitVolume) continue;
       if(tr->trackPValue < 0.05) continue;
-      if(p < 700 || p > 2400) continue;
-      if(time > 300) continue;
+      //if(p < 700 || p > 2400) continue;
+      //if(time > 300) continue;
     }
 
 
@@ -95,6 +108,17 @@ void Plotter::Run() {
     Fill2D(("S"+std::to_string(stn)+"_ThetaY_vs_Time_Modulo").c_str(), g2ModTime, theta_y);
     Fill2D("ThetaY_vs_Time_Modulo_Coarse", g2ModTime, theta_y);
     Fill2D("ThetaY_vs_Time_Modulo_Fine", g2ModTime, theta_y);
+
+    // Slice momentum in 100 MeV up to 3100 MeV
+    for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
+
+      int step = 100;
+      int lo = 0 + i_slice*step; 
+      int hi = step + i_slice*step;
+
+      if(p >= double(lo) && p < double(hi)) Fill2D(("S"+std::to_string(stn)+"_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), g2ModTime, theta_y);
+
+    }
 
   }
 
