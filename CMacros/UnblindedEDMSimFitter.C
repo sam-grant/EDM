@@ -2,26 +2,14 @@
 
 #include "FancyDraw.h"
 #include "Utils.h"
-
-#include "TFile.h"
-#include "TMath.h"
-#include "TH1D.h"
-#include "TH2D.h"
-#include "TProfile.h"
-#include "TF1.h"
-#include "TDirectory.h"
-#include "TObject.h"
-#include "TGraphErrors.h"
-#include "TCanvas.h"
-#include "TLegend.h"
-#include "TPaveStats.h"
-#include "TPaveText.h"
-#include "TVirtualFFT.h"
+#include "RootInclude.h"
 
 std::string config = "5.4e-18";
-std::string qual = "pValQ";
+//std::string qual = "pValQ";
 //std::string qual = "noQ";
-//std::string qual = "eQ";
+//std::string qual = "vertCorr_eQ_eQ";
+std::string qual = "eQ";
+
 
 TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
@@ -58,10 +46,13 @@ TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y
 void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
-	c->SetRightMargin(0.20);
+	//c->SetRightMargin(0.20);
 
 	//TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
-	TLegend *l = new TLegend(0.81,0.15,0.99,0.85);
+	//TLegend *l = new TLegend(0.81,0.15,0.99,0.85);
+	//TLegend *l = new TLegend(0.79,0.69,0.89,0.89);
+	TLegend *l = new TLegend(0.55,0.79,0.89,0.89);
+	l->SetNColumns(3);
 	l->SetBorderSize(0);
 
 	graphs.at(0)->SetTitle(title.c_str());
@@ -77,9 +68,13 @@ void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names,
 	int nGraphs = graphs.size();
 
 	//gStyle->SetPalette(kBird);
+	graphs.at(0)->SetMarkerColor(kBlack);
+	graphs.at(1)->SetMarkerColor(kBlue);
+	graphs.at(2)->SetMarkerColor(kRed);
 
 	for(int i = 0; i < nGraphs; i++) {
     	graphs.at(i)->SetMarkerStyle(20);
+    	//graphs.at(i)->SetMarkerColor(i+1);
     	l->AddEntry(graphs.at(i), (names.at(i)).c_str());
       	if(i==0) graphs.at(i)->Draw("AP");
       	else graphs.at(i)->Draw("P SAME");
@@ -215,6 +210,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
   		c_vs_p->GetXaxis()->SetRangeUser(0,3000);
   		AEDM_vs_p->GetXaxis()->SetRangeUser(0,3000);
 
+
+
   		DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
   		DrawTGraphErrors(AEDM_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{EDM} [mrad]", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/"+name+"_AEDM_vs_p_"+qual).c_str());
 
@@ -229,7 +226,24 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
   	}
   	
-  	// OverlayGraphs()
+  	double c_ymin; double c_ymax;
+  	double A_ymin; double A_ymax;
+  	if(qual=="eQ" || qual=="vertCorr_eQ") { 
+  		c_ymin = -0.6; c_ymax = 0.15;
+  		A_ymin = 0.0; A_ymax = 0.35;
+  	} else if(qual=="noQ"  || qual=="vertCorr_noQ") { 
+  		c_ymin = -2; c_ymax = 2;
+  		A_ymin = -2; A_ymax = 2;
+  	} else if(qual=="pValQ"  || qual=="vertCorr_pValQ") { 
+  		c_ymin = -2.5; c_ymax = 1.25;
+  		A_ymin = -2; A_ymax = 2;
+  	} else if(qual=="vertCorr_eQ_eQ") { 
+  		c_ymin = -0.065; c_ymax = 0.05;
+  		A_ymin = -0.05; A_ymax = 0.4;
+  	}
+
+  	OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/c_vs_p_overlay_"+qual).c_str(), c_ymin, c_ymax);
+  	OverlayGraphs(AEDMGraphs_, names_, "", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/AEDM_vs_p_overlay_"+qual).c_str(), A_ymin, A_ymax);
 
 
 	return; 
@@ -238,9 +252,15 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
 int main() {
 
+	bool write = false;
 	// Read file
-	TFile *input = TFile::Open(("../Plots/MC/dMu/"+config+"/dMuSim_"+qual+".root").c_str());
-	TFile *output = new TFile(("../Plots/MC/dMu/"+config+"/dMuSim_unblindedFits_"+qual+".root").c_str(), "RECREATE");
+	std::string inputName = "../Plots/MC/dMu/"+config+"/dMuSim_"+qual+".root";
+	TFile *input = TFile::Open(inputName.c_str());
+
+	std::string outputName = "../Plots/MC/dMu/"+config+"/dMuSim_unblindedFits_"+qual+".root"; 
+	if(!write) outputName = "tmp.root";
+
+	TFile *output = new TFile(outputName.c_str(), "RECREATE");
 
 	output->mkdir("SimultaneousAnalysis");
 	output->cd("SimultaneousAnalysis");
@@ -251,12 +271,12 @@ int main() {
 	output->mkdir("MomentumBinnedAnalysis/ModuloFits");
 	output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
-	MomentumBinnedAnalysis(input, output);
+	// MomentumBinnedAnalysis(input, output);
 
 	input->Close();
 	output->Close();
 
-	std::cout<<"\nWritten plots to root file:\n../Plots/MC/dMu/"+config+"/dMuSim_unblindedFits_"+qual+".root"<<std::endl;
+	std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
 
 	return 0;
 

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
+#include <iomanip>
+#include <sstream>
 
 #include "TMath.h"
 #include "TF1.h"
@@ -53,6 +55,14 @@ void SimpleSinFit(TGraphErrors *graph, double par1, double par2, double par3) {
 }
 
 // ====================== Misc ======================
+
+TString Round(double N, double n) { 
+  std::stringstream roundedValue;
+  roundedValue.precision(n);
+  roundedValue << N << std::endl;
+  return roundedValue.str();
+
+}
 
 TString OneSigFig(double num) { 
   return Form("%5.1g", num);

@@ -1,7 +1,7 @@
 void S12_AEDM_vs_p_noQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 23 12:42:25 2021) by ROOT version 6.22/06
+//=========  (Tue Mar 23 15:27:09 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-375.375,-10.13676,3378.375,3.55472);
@@ -11,7 +11,7 @@ void S12_AEDM_vs_p_noQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1004[30] = {
+   Double_t Graph0_fx1014[30] = {
    50,
    150,
    250,
@@ -42,7 +42,7 @@ void S12_AEDM_vs_p_noQ()
    2750,
    2850,
    2950};
-   Double_t Graph0_fy1004[30] = {
+   Double_t Graph0_fy1014[30] = {
    -6.276479,
    -0.9527241,
    0.8918606,
@@ -73,7 +73,7 @@ void S12_AEDM_vs_p_noQ()
    0.1105297,
    0.06422719,
    -0.05861488};
-   Double_t Graph0_fex1004[30] = {
+   Double_t Graph0_fex1014[30] = {
    50,
    50,
    50,
@@ -104,7 +104,7 @@ void S12_AEDM_vs_p_noQ()
    50,
    50,
    50};
-   Double_t Graph0_fey1004[30] = {
+   Double_t Graph0_fey1014[30] = {
    1.578369,
    0.8194422,
    0.380946,
@@ -135,40 +135,40 @@ void S12_AEDM_vs_p_noQ()
    0.02905025,
    0.0331633,
    0.07703949};
-   TGraphErrors *gre = new TGraphErrors(30,Graph0_fx1004,Graph0_fy1004,Graph0_fex1004,Graph0_fey1004);
+   TGraphErrors *gre = new TGraphErrors(30,Graph0_fx1014,Graph0_fy1014,Graph0_fex1014,Graph0_fey1014);
    gre->SetName("Graph0");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01004 = new TH1F("Graph_Graph01004","S12",100,0,3300);
-   Graph_Graph01004->SetMinimum(-8.767613);
-   Graph_Graph01004->SetMaximum(2.185572);
-   Graph_Graph01004->SetDirectory(0);
-   Graph_Graph01004->SetStats(0);
+   TH1F *Graph_Graph01014 = new TH1F("Graph_Graph01014","S12",100,0,3300);
+   Graph_Graph01014->SetMinimum(-8.767613);
+   Graph_Graph01014->SetMaximum(2.185572);
+   Graph_Graph01014->SetDirectory(0);
+   Graph_Graph01014->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01004->SetLineColor(ci);
-   Graph_Graph01004->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
-   Graph_Graph01004->GetXaxis()->SetRange(1,91);
-   Graph_Graph01004->GetXaxis()->CenterTitle(true);
-   Graph_Graph01004->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01004->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01004->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01004->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01004->GetYaxis()->SetTitle("A_{EDM} [mrad]");
-   Graph_Graph01004->GetYaxis()->CenterTitle(true);
-   Graph_Graph01004->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01004->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01004->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01004->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01004->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01004->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01004->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01004->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01004);
+   Graph_Graph01014->SetLineColor(ci);
+   Graph_Graph01014->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
+   Graph_Graph01014->GetXaxis()->SetRange(1,91);
+   Graph_Graph01014->GetXaxis()->CenterTitle(true);
+   Graph_Graph01014->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01014->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01014->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01014->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01014->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01014->GetYaxis()->CenterTitle(true);
+   Graph_Graph01014->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01014->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01014->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01014->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01014->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01014->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01014->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01014->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01014);
    
    gre->Draw("ap");
    

@@ -549,10 +549,10 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
-	values->AddText(ThreeSigFig(chi2ndf));//std::to_string(chi2ndf).c_str());
-	values->AddText(ThreeSigFig(par0)+"#pm"+OneSigFig(err0));
+	values->AddText(Round(chi2ndf, 3));//std::to_string(chi2ndf).c_str());
+	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
 	//if(!blind) values->AddText(ThreeSigFig(par1)+"#pm"+OneSigFig(err1));
-	values->AddText(ThreeSigFig(par2)+"#pm"+OneSigFig(err2));
+	values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
 
 	names->SetTextSize(26);
 	names->SetTextFont(44);

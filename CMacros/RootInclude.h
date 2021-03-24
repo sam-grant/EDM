@@ -17,4 +17,5 @@
 #include "TGaxis.h"
 #include "TPad.h"
 #include "TFitResult.h"
+#include "TProfile.h"
 // TODO ADD MORE AND REMOVE HEADERS FROM OTHER FILES
