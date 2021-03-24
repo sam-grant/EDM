@@ -2,21 +2,7 @@
 
 #include "FancyDraw.h"
 #include "Utils.h"
-
-#include "TFile.h"
-#include "TMath.h"
-#include "TH1D.h"
-#include "TH2D.h"
-#include "TProfile.h"
-#include "TF1.h"
-#include "TDirectory.h"
-#include "TObject.h"
-#include "TGraphErrors.h"
-#include "TCanvas.h"
-#include "TLegend.h"
-#include "TPaveStats.h"
-#include "TPaveText.h"
-#include "TVirtualFFT.h"
+#include "RootInclude.h"
 
 /*double xmin = 8.25*G2PERIOD;
 double xmax = 16.25*G2PERIOD;*/
@@ -143,6 +129,7 @@ void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
+
 	gStyle->SetStatFormat("6.3g");
   	graph->Draw();
   	gPad->Update();
@@ -162,12 +149,16 @@ void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
 	graph->SetMarkerStyle(20); //  Full circle
 	graph->Draw("AP");
 
+
+
 	func->SetLineWidth(3);
 	func->SetLineColor(kRed);
 	func->SetNpx(1e4);	
 
 	gPad->Update();
 	gStyle->SetOptFit(20222); 
+
+
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -179,22 +170,109 @@ void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
 
 }
 
+
+void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs,  std::string title, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.20);
+	c->SetLogy();
+
+	//TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+	// TLegend *l = new TLegend(0.81,0.15,0.99,0.85);
+	// l->SetBorderSize(0);
+
+	graphs.at(0)->SetTitle(title.c_str());
+	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(0)->GetXaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->CenterTitle(true);
+	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+	graphs.at(0)->GetXaxis()->SetRangeUser(xmin,xmax);
+	graphs.at(0)->SetMinimum(ymin); 
+	graphs.at(0)->SetMaximum(ymax); 
+	
+
+
+	
+
+	int nGraphs = graphs.size();
+
+	for(int i = 0; i < nGraphs; i++) {
+    	graphs.at(i)->SetMarkerStyle(20);
+    	//l->AddEntry(graphs.at(i), (names.at(i)).c_str());
+      	if(i==0) graphs.at(i)->Draw("AP");
+      	else graphs.at(i)->Draw("P SAME");
+  	}
+
+	//l->Draw("same");
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+
 void FoldWiggle(TGraphErrors *gr) {
 
+
+	// Split TGraph and fit into sections based on t_mod
 	// Gleb method 
-	int right = 0;
-	int left = 0;
-	int i_section = 0; 
+	int t_mod = 100;
 
-	for(int i_point = 0; i_point < gr->GetN(); i_point++) { 
+	int lo = 0; 
+	int hi = t_mod;
 
-		int x = gr->GetPointX(i_point);
-		int y = gr->GetPointY(i_point);
-		
+	vector<TGraphErrors*> gr_;
 
-		// cout<<x<<" "<<y<<endl;
+	double t_max = gr->GetPointX(gr->GetN()-1);
+	int folds = t_max / t_mod;
+
+	int i_point = 0; 
+
+	for (int i_fold = 0; i_fold < folds; i_fold++) { 
+
+		TGraphErrors *gr_tmp = new TGraphErrors();
+
+		int n = 0; 
+		int x_point = 0; 
+		while(gr->GetPointX(i_point) >= lo && gr->GetPointX(i_point) < hi) {
+
+			double x = gr->GetPointX(x_point); double ex = gr->GetErrorX(x_point);
+			double y = gr->GetPointY(i_point); double ey = gr->GetErrorY(i_point);
+
+			if(y == 0) { 
+				i_point++;
+				x_point++;
+				continue;
+			}
+
+			gr_tmp->SetPoint(n, x, y);
+			gr_tmp->SetPointError(n, ex, ey); 
+
+			n++; i_point++; x_point++;
+
+		}
+
+		// cout<<gr_tmp<<endl;
+		// DrawTGraphErrors(gr_tmp, "tmp", "../Images/tmp");
+
+		gr_.push_back(gr_tmp);
+
+		lo = lo + t_mod; 
+		hi = hi + t_mod;
 
 	}
+
+	DrawFoldedWiggle(gr_, "folded wiggle", "../Images/tmp", 0, t_mod, 10, 1e5);
+
+
+
 
 	return;
 }
@@ -276,19 +354,19 @@ void MomentumBinnedAnalysis(TFile *input, const double phi) {
 
 int main() {
 
-	bool sanityPlots = true;
+	bool sanityPlots = false;
 
 	string config = "BzSim"; 
-	string field = "1700ppm";//"82ppm"; // 
+	string field = "1700ppm.vertCorr";//"82ppm"; // 
 	// Read file
 	TFile *input = TFile::Open(("../Plots/MC/"+config+"/simPlots.Bz."+field+".root").c_str());
 	cout << "\nRead input...\t\t: " << input << endl;
 
 	// Get histograms
 	TH1D *h1_wiggle = (TH1D*)input->Get("Wiggle");
-	TH1D *h1_wiggle_full = (TH1D*)input->Get("Wiggle_Full");
+	//TH1D *h1_wiggle_full = (TH1D*)input->Get("Wiggle_Full");
 	TH1D *h1_wiggle_mod = (TH1D*)input->Get("Wiggle_Modulo");
-	TH1D *h1_wiggle_mod_full = (TH1D*)input->Get("Wiggle_Modulo_Full");
+	//TH1D *h1_wiggle_mod_full = (TH1D*)input->Get("Wiggle_Modulo_Full");
 	//TH1D *h1_wiggle_mod_shift = (TH1D*)input->Get("Wiggle_Modulo_Shift");
 
 	TH2D *h2_thetaY_mod = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
@@ -296,7 +374,7 @@ int main() {
 
 	cout << "Got histograms...\n: ";
 	cout << h1_wiggle << endl;
-	cout << h1_wiggle_full << endl;
+	//cout << h1_wiggle_full << endl;
 	cout << h1_wiggle_mod << endl;
 	//cout << h1_wiggle_mod_shift << endl;
 	cout << h2_thetaY_mod << endl;
@@ -310,28 +388,30 @@ int main() {
 
 	// Rebin
 	
-	cout << "\nNBins before rebin...\t\t: " << px_thetaY_mod->GetNbinsX() << endl;
-	cout << "Binwidth before rebin...\t: " << px_thetaY_mod->GetXaxis()->GetBinWidth(1) << "\n" << endl;
-	//px_thetaY_mod->Rebin(2);
-	cout << "NBins post rebin...\t: " << px_thetaY_mod->GetNbinsX() << endl;
-	cout << "Binwidth post rebin...\t: " << px_thetaY_mod->GetXaxis()->GetBinWidth(1) << "\n" << endl;
+	// cout << "\nNBins before rebin...\t\t: " << px_thetaY_mod->GetNbinsX() << endl;
+	// cout << "Binwidth before rebin...\t: " << px_thetaY_mod->GetXaxis()->GetBinWidth(1) << "\n" << endl;
+	// //px_thetaY_mod->Rebin(2);
+	// cout << "NBins post rebin...\t: " << px_thetaY_mod->GetNbinsX() << endl;
+	// cout << "Binwidth post rebin...\t: " << px_thetaY_mod->GetXaxis()->GetBinWidth(1) << "\n" << endl;
 	
 
 	TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
-	TGraphErrors *gr_wiggle_full = ConvertToTGraphErrors(h1_wiggle_full);
+	//TGraphErrors *gr_wiggle_full = ConvertToTGraphErrors(h1_wiggle_full);
 	TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
-	TGraphErrors *gr_wiggle_mod_full = ConvertToTGraphErrors(h1_wiggle_mod_full);
+	//TGraphErrors *gr_wiggle_mod_full = ConvertToTGraphErrors(h1_wiggle_mod_full);
 	TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+
+	delete px_thetaY_mod;
 	//TGraphErrors *gr_thetaY_mod_shift = ConvertToTGraphErrors(px_thetaY_mod_shift);
 
 	// Draw all base plots
 	if(sanityPlots) { 
 
 		DrawTH1(h1_wiggle,"h1_wiggle","../Images/MC/BzSim/"+field+"/h1_wiggle");
-		DrawTH1(h1_wiggle_full,"h1_wiggle","../Images/MC/BzSim/"+field+"/h1_wiggle_full");
+		//DrawTH1(h1_wiggle_full,"h1_wiggle","../Images/MC/BzSim/"+field+"/h1_wiggle_full");
 		DrawTH1(h1_wiggle_mod,"h1_wiggle_mod","../Images/MC/BzSim/"+field+"/h1_wiggle_mod");
 		DrawTGraphErrors(gr_wiggle,"gr_wiggle","../Images/MC/BzSim/"+field+"/gr_wiggle");
-		DrawTGraphErrors(gr_wiggle_full,"gr_wiggle_full","../Images/MC/BzSim/"+field+"/gr_wiggle_full");
+		//DrawTGraphErrors(gr_wiggle_full,"gr_wiggle_full","../Images/MC/BzSim/"+field+"/gr_wiggle_full");
 		DrawTGraphErrors(gr_wiggle_mod,"gr_wiggle_mod","../Images/MC/BzSim/"+field+"/gr_wiggle_mod");
 		//DrawTGraphErrors(gr_wiggle_mod_shift,"gr_wiggle_mod_shift","../Images/MC/BzSim/"+field+"/gr_wiggle_mod_shift");
 		DrawTH2(h2_thetaY_mod,"h2_thetaY_mod","../Images/MC/BzSim/"+field+"/h2_thetaY_mod");
@@ -341,7 +421,7 @@ int main() {
 
 	}
 
-	// Fit full wiggle
+/*	// Fit full wiggle
 	FitFivePar(gr_wiggle_full, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
 
 	//gr_wiggle_full->GetXaxis()->SetRangeUser(xmin, xmax);
@@ -358,9 +438,13 @@ int main() {
 
 	// Now fold the wiggle over 20*T_g-2 on the x-axis
 
-	FoldWiggle(gr_wiggle_full);
+	 */
 
-	// Now fit the modulo wiggle
+	FoldWiggle(gr_wiggle);
+
+	return 0;
+
+	// Now fit the modulo wiggle 
 
 	// No shift 
 	FitFivePar(gr_wiggle_mod, 1300, 64, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
@@ -371,6 +455,7 @@ int main() {
 	modWiggle->SetParName(2,"A");
 	modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
 	modWiggle->SetParName(4,"#phi [rad]");
+
 	DrawWiggleFit(gr_wiggle_mod, modWiggle,";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/BzSim/"+field+"/fit_mod_wiggle");
 
 		// ======= SET PHASE =======
@@ -386,13 +471,15 @@ int main() {
 	BzWiggle->SetParName(4,"#omega_{a} (fixed) [MHz]");
 	BzWiggle->SetParName(5,"#phi^{FIXED} [rad]");
 	BzWiggle->SetParName(6,"c [mrad]");
+
+
 	DrawWiggleFit(gr_thetaY_mod, BzWiggle,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+field+"/fit_Bz");
 
 	cout<<"Number of tracks in fit:\t"<<px_thetaY_mod->GetEntries()<<endl;
 
 	// Momentum binned 
-	//cout<<"\nPerforming momentum binned analysis"<<endl;
-	//MomentumBinnedAnalysis(input, phi);
+	// cout<<"\nPerforming momentum binned analysis"<<endl;
+	// MomentumBinnedAnalysis(input, phi, );
 
 	return 0;
 }
