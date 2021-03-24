@@ -1,7 +1,7 @@
 void S18ModuloFit_vertCorr_noQ_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 23 19:04:43 2021) by ROOT version 6.22/06
+//=========  (Tue Mar 23 21:33:47 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5487514,-0.6142498,4.938762,0.5103095);
@@ -538,9 +538,14 @@ void S18ModuloFit_vertCorr_noQ_eQ()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText("4.92#times10^{6}");
-   pt_LaTex = pt->AddText("0.975");
-   pt_LaTex = pt->AddText("0.154#pm 0.01");
-   pt_LaTex = pt->AddText("-0.00327#pm0.008");
+   pt_LaTex = pt->AddText("0.975
+");
+   pt_LaTex = pt->AddText("0.154
+#pm0.01
+");
+   pt_LaTex = pt->AddText("-0.003
+#pm0.008
+");
    pt->Draw();
    
    pt = new TPaveText(0.52,0.595,0.69,0.88,"brNDC");

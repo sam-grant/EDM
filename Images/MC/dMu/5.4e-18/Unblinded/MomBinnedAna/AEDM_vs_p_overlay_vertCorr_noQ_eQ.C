@@ -1,10 +1,10 @@
 void AEDM_vs_p_overlay_vertCorr_noQ_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 23 19:04:44 2021) by ROOT version 6.22/06
+//=========  (Tue Mar 23 21:33:48 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(249.5,-8.650858e-311,2850.5,7.79426e-310);
+   c->Range(249.5,-2.5,2850.5,2.5);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -90,8 +90,8 @@ void AEDM_vs_p_overlay_vertCorr_noQ_eQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S0_AEDM_vs_p1020 = new TH1F("Graph_S0_AEDM_vs_p1020","",100,530,2570);
-   Graph_S0_AEDM_vs_p1020->SetMinimum(8.487983e-314);
-   Graph_S0_AEDM_vs_p1020->SetMaximum(6.928325e-310);
+   Graph_S0_AEDM_vs_p1020->SetMinimum(-2);
+   Graph_S0_AEDM_vs_p1020->SetMaximum(2);
    Graph_S0_AEDM_vs_p1020->SetDirectory(0);
    Graph_S0_AEDM_vs_p1020->SetStats(0);
 

@@ -23,6 +23,8 @@ void Plotter::InitTrees(TString input_file) {
 
 void Plotter::InitHistos() {
 
+  // Wiggle
+  plot1D("Wiggle", 2700, 0, 2700*0.148936, "t_{g#minus2}^{mod} [#mus]", "Tracks");
 
   // Vertical angle plots
   plot1D("ThetaY", 180, -60, 60, "#theta_{y} [mrad]","Tracks");
@@ -30,6 +32,8 @@ void Plotter::InitHistos() {
   plot2D("ThetaY_vs_Time", 2700, 0, 2700*0.148936, 180, -60, 60, "Track time [#mus]", "#theta_{y} [mrad]");
 
   //=========== Time modulo plots ===========
+
+  plot1D("Wiggle_Modulo", 87, 0, g2Period, "t_{g#minus2}^{mod} [#mus]", "Tracks");
 
   // 50 ns bins 
   plot2D("ThetaY_vs_Time_Modulo", 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
@@ -74,7 +78,7 @@ void Plotter::Run() {
   bool quality = true;//true;
   bool vertCorr = true; 
 
-  TFile *input = TFile::Open("../../../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_pValQ.root");
+  TFile *input = TFile::Open("../../../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_eQ.root");
 
   //long long counter = 0; 
   
@@ -93,13 +97,21 @@ void Plotter::Run() {
     double p = sqrt(px*px + py*py + pz*pz);
     double theta_y = TMath::ATan2(-py,p) * 1e3; // rad -> mrad
 
+    //=========== Time modulo ===========
+
+    double g2ModTime = ModTime(time);
+
+    // Wiggle plots 
+    // To do: base omega_a cuts on pmax
+    if(tr->trackPValue > 0.05 && p > 1800 && p < 3100 && time > 7*g2Period && time < 70*g2Period) {
+
+      // N(t), full wiggle with no time constraints
+      Fill1D("Wiggle", time);
+      Fill1D("Wiggle_Modulo",g2ModTime);
+
+    }
 
     if(quality) { 
-      // Beam vertex 
-      //if(!tr->passTrackQuality) continue;
-      // Gleb sim cuts
-      // if(p < 700 || p > 2400) continue;
-      //if(tr->hitVolume) continue;
       if(tr->trackPValue < 0.05) continue;
       if(p < 700 || p > 2400) continue;
       if(time > 300) continue;
@@ -115,9 +127,6 @@ void Plotter::Run() {
 
     TGraphErrors *c_vs_mom = (TGraphErrors*)input->Get(("MomentumBinnedAnalysis/ParameterScans/S"+std::to_string(stn)+"_c_vs_p").c_str());
 
-    //=========== Time modulo ===========
-
-    double g2ModTime = ModTime(time);
 
     // Slice momentum in 100 MeV up to 3100 MeV
     for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
@@ -140,9 +149,6 @@ void Plotter::Run() {
     Fill2D(("S"+std::to_string(stn)+"_ThetaY_vs_Time_Modulo").c_str(), g2ModTime, theta_y);
     Fill2D("ThetaY_vs_Time_Modulo_Coarse", g2ModTime, theta_y);
     Fill2D("ThetaY_vs_Time_Modulo_Fine", g2ModTime, theta_y);
-
-
-    //counter++;
 
     delete c_vs_mom;
 

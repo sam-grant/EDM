@@ -552,7 +552,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	values->AddText(Round(chi2ndf, 3));//std::to_string(chi2ndf).c_str());
 	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
 	//if(!blind) values->AddText(ThreeSigFig(par1)+"#pm"+OneSigFig(err1));
-	values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+	values->AddText(Round(par2, 1)+"#pm"+Round(err2, 1));
 
 	names->SetTextSize(26);
 	names->SetTextFont(44);

@@ -1,7 +1,7 @@
 void S12ModuloFit_vertCorr_eQ_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 23 19:57:20 2021) by ROOT version 6.22/06
+//=========  (Tue Mar 23 23:18:12 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5487514,-0.5673715,4.938762,0.5971422);
@@ -543,7 +543,7 @@ void S12ModuloFit_vertCorr_eQ_eQ()
    pt_LaTex = pt->AddText("0.176
 #pm0.01
 ");
-   pt_LaTex = pt->AddText("-0.0027
+   pt_LaTex = pt->AddText("-0.003
 #pm0.008
 ");
    pt->Draw();

@@ -7,9 +7,12 @@
 std::string config = "5.4e-18";
 //std::string qual = "pValQ";
 //std::string qual = "noQ";
-//std::string qual = "vertCorr_eQ_eQ";
-std::string qual = "eQ";
 
+//std::string qual = "eQ";
+
+//std::string qual = "vertCorr_noQ_eQ";
+//std::string qual = "vertCorr_pValQ_eQ";
+std::string qual = "vertCorr_eQ_eQ";
 
 TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
@@ -228,6 +231,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
   	
   	double c_ymin; double c_ymax;
   	double A_ymin; double A_ymax;
+
   	if(qual=="eQ" || qual=="vertCorr_eQ") { 
   		c_ymin = -0.6; c_ymax = 0.15;
   		A_ymin = 0.0; A_ymax = 0.35;
@@ -240,6 +244,12 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
   	} else if(qual=="vertCorr_eQ_eQ") { 
   		c_ymin = -0.065; c_ymax = 0.05;
   		A_ymin = -0.05; A_ymax = 0.4;
+  	} else if(qual=="vertCorr_pValQ_eQ") {
+  		c_ymin = -0.065; c_ymax = 0.05;
+  		A_ymin = -0.05; A_ymax = 0.4;
+  	} else {
+  		c_ymin = -2; c_ymax = 2;
+  		A_ymin = -2; A_ymax = 2;
   	}
 
   	OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/c_vs_p_overlay_"+qual).c_str(), c_ymin, c_ymax);
@@ -252,7 +262,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
 int main() {
 
-	bool write = false;
+	bool write = true;
 	// Read file
 	std::string inputName = "../Plots/MC/dMu/"+config+"/dMuSim_"+qual+".root";
 	TFile *input = TFile::Open(inputName.c_str());
@@ -271,7 +281,7 @@ int main() {
 	output->mkdir("MomentumBinnedAnalysis/ModuloFits");
 	output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
-	// MomentumBinnedAnalysis(input, output);
+	MomentumBinnedAnalysis(input, output);
 
 	input->Close();
 	output->Close();

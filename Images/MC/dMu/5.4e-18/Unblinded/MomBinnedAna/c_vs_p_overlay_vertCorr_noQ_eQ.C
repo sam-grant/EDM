@@ -1,10 +1,10 @@
 void c_vs_p_overlay_vertCorr_noQ_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 23 19:04:44 2021) by ROOT version 6.22/06
+//=========  (Tue Mar 23 21:33:47 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(249.5,-1.732081e-310,2850.5,1.558873e-309);
+   c->Range(249.5,-2.5,2850.5,2.5);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -90,8 +90,8 @@ void c_vs_p_overlay_vertCorr_noQ_eQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S0_c_vs_p1017 = new TH1F("Graph_S0_c_vs_p1017","",100,530,2570);
-   Graph_S0_c_vs_p1017->SetMinimum(1.390671e-309);
-   Graph_S0_c_vs_p1017->SetMaximum(6.928325e-310);
+   Graph_S0_c_vs_p1017->SetMinimum(-2);
+   Graph_S0_c_vs_p1017->SetMaximum(2);
    Graph_S0_c_vs_p1017->SetDirectory(0);
    Graph_S0_c_vs_p1017->SetStats(0);
 
