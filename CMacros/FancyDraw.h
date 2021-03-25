@@ -5,25 +5,11 @@
 #include <iostream>
 
 #include "Utils.h"
+#include "RootInclude.h"
+
 
 // This is an issue!
 // #include "ToyRadialFieldScan.h"
-
-#include "TH1D.h"
-#include "TH2D.h"
-#include "TStyle.h"
-#include "TGraphErrors.h"
-#include "TCanvas.h"
-#include "TAxis.h"
-#include "TPaveText.h"
-#include "TF1.h"
-#include "TString.h"
-#include "TLegend.h"
-#include "TLatex.h"
-#include "TGaxis.h"
-#include "TPad.h"
-#include "TFitResultPtr.h"
-#include "TPaveStats.h"
 
 using namespace std;
 
@@ -508,17 +494,55 @@ void DrawTGraphResiduals(TGraphErrors *graph, string func, string title, string 
 
 }
 
+void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gStyle->SetStatFormat("6.3g");
+  	graph->Draw();
+  	gPad->Update();
+  	gStyle->SetStatY(0.89);
+  	gStyle->SetStatX(0.69);
+  	gStyle->SetStatBorderSize(0);
+  	gStyle->SetOptFit(111);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.25);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->Draw("AP");
+
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	gPad->Update();
+	gStyle->SetOptFit(20222); 
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
 
 void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-/*	graph->Draw();
-  	gPad->Update();
-  	gStyle->SetOptStat(0);*/
-
-	// Get functoin
 	TF1 *func = graph->GetFunction("SimpleSinFunc");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
 
 	double chi2ndf = func->GetChisquare() / func->GetNDF();
 	double par0 = func->GetParameter(0);
@@ -528,35 +552,28 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	double par2 = func->GetParameter(2);
 	double err2 = func->GetParError(2);
 
-	TLegend *function = new TLegend(0.11,0.79,0.45,0.89);//,"NDC");
-	function->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c");
-	function->SetBorderSize(0);
+	TLegend *leg = new TLegend(0.11,0.79,0.45,0.89);
+	leg->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c");
+	leg->SetBorderSize(0);
 
-	//TPaveText *names = new TPaveText(0.59,0.55,0.69,0.89,"NDC");
-	//TPaveText *names = new TPaveText(0.55,0.59,0.69,0.88,"NDC");
 	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
 
 	names->SetTextAlign(13);
-	names->AddText("N") ; // +SciNotation(double(N))); 
-	names->AddText("#chi^{2}/ndf"); //+SciNotation(chi2ndf));
+	names->AddText("N") ; 
+	names->AddText("#chi^{2}/ndf");
 	string amplitude;
 	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
 	else amplitude = "A_{EDM} [mrad]";
-	names->AddText(amplitude.c_str()); // +SciNotation(par0));
-	//if(!blind) names->AddText("#omega_{a} [MHz]"); // +SciNotation(par1));
-	names->AddText("c [mrad]"); // +SciNotation(par2));
+	names->AddText(amplitude.c_str());
+	names->AddText("c [mrad]"); 
 
 	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
-	values->AddText(Round(chi2ndf, 3));//std::to_string(chi2ndf).c_str());
+	values->AddText(Round(chi2ndf, 3));
 	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
-	//if(!blind) values->AddText(ThreeSigFig(par1)+"#pm"+OneSigFig(err1));
 	values->AddText(Round(par2, 1)+"#pm"+Round(err2, 1));
 
-	names->SetTextSize(26);
-	names->SetTextFont(44);
-	names->SetFillColor(0);
 	names->SetTextSize(26);
 	names->SetTextFont(44);
 	names->SetFillColor(0);
@@ -577,9 +594,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	graph->Draw("AP");
 	values->Draw("same");
 	names->Draw("same");
-	function->Draw("same");
-	
-	func->SetLineWidth(3);
+	leg->Draw("same");
 	func->Draw("same");
 
 	c->SaveAs((fname+".pdf").c_str());
@@ -993,6 +1008,50 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	fit->Draw("same");
 	
 
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetLogy();
+
+	TLegend *l = new TLegend(0.15,0.71,0.85,0.89);
+	l->SetBorderSize(0);
+	l->SetNColumns(2);//BorderSize(0);
+	l->AddEntry(graphs.at(1), "Sim   ");
+	l->AddEntry(graphs.at(1)->GetFunction("FiveParFunc"), "N_{0}e^{-t/#tau}[1+Acos(#omega_{a}t+#phi)]");
+
+	graphs.at(1)->SetTitle(title.c_str());
+	graphs.at(1)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(1)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(1)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(1)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(1)->GetXaxis()->CenterTitle(true);
+	graphs.at(1)->GetYaxis()->CenterTitle(true);
+	graphs.at(1)->GetYaxis()->SetMaxDigits(4);
+	graphs.at(1)->GetXaxis()->SetRangeUser(xmin,xmax);
+	graphs.at(1)->SetMinimum(ymin); 
+	graphs.at(1)->SetMaximum(ymax); 
+
+
+	int nGraphs = graphs.size();
+
+	for(int i = 0; i < nGraphs; i++) graphs.at(i)->SetMarkerStyle(20);
+
+	// Can't draw graph zero first because it messes up the x-axis
+	graphs.at(1)->Draw("AP");
+
+	for(int i = 0; i < nGraphs; i++) if(i!=1) graphs.at(i)->Draw("P SAME");
+
+	l->Draw("same");
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
 	c->SaveAs((fname+".C").c_str());

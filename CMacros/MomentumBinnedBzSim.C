@@ -12,76 +12,7 @@ double xmax = 70*G2PERIOD;
 
 using namespace std;
 
-double FiveParFunc(double *x, double *par) {
- 	return par[0] * exp(-x[0]/par[1]) * (1 - (par[2] * cos((par[3] * x[0]) + par[4])));
-}
 
-
-void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double min, double max) {
-  
-	TF1 *func = new TF1("FiveParFunc", FiveParFunc, min, max, 5);
-
-	func->SetParameter(0, par0); // N0
-	func->SetParameter(1, par1); // tau
-	func->SetParameter(2, par2); // A
-	func->FixParameter(3, par3); // Omega
-	//func->SetParameter(4, par4);
-  	//func->SetParLimits(4, -TMath::Pi(), TMath::Pi());
-
-  	graph->Fit(func, "MR"); // ,"MR");
-
-  	std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
-
-  	return;
-
-}
-
-double BzFunc(double *x, double *par) {
-	return  (par[0] * cos((par[1]*x[0]) + par[2])) + (par[3] * sin((par[4]*x[0]) + par[5])) + par[6]; 
-}
-
-void FitBz(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double par5, double par6, double min, double max) {
-
-	TF1 *func = new TF1("BzFunc", BzFunc, min, max, 7);
-
-	//func->SetParLimits(0, par0/4, par0);
-	// A_Bz
-	func->SetParameter(0, par0);
-	//func->SetParLimits(0, par0-par0*0.5, par0+par0*0.5);
-	 
-	func->FixParameter(1, par1); // omega_a
-	func->FixParameter(2, par2); // phi
-	func->SetParameter(3, 0); // A_EDM
-	func->FixParameter(4, par4); // omega_a
-	func->FixParameter(5, par5); // phi
-	func->SetParameter(6, par6); // C
-
-  	graph->Fit(func, "MR"); // ,"MR");
-
-  	std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
-  	//std::cout << "\nN...\t:" << graph->GetEn << std::endl;
-	return;
-
-}
-
-TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
-
-	int n = hist->GetNbinsX();
-	double x[n]; double ex[n];
-  	double y[n]; double ey[n];
-
-  	for(int i = 0; i < n; i++) {
-
-  		x[i] = hist->GetBinCenter(i+1);
-  		ex[i] = 0; 
-  		y[i] = hist->GetBinContent(i+1); 
-      	ey[i] = hist->GetBinError(i+1); 
-
-  	}
-
-  	return new TGraphErrors(n, x, y, ex, ey);
-
-}
 
 void DrawFit(TGraphErrors *graph, string title, string fname) {
 

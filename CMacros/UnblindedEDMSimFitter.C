@@ -14,38 +14,6 @@ std::string config = "5.4e-18";
 //std::string qual = "vertCorr_pValQ_eQ";
 std::string qual = "vertCorr_eQ_eQ";
 
-TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
-
-	int n = hist->GetNbinsX();
-	double x[n]; double ex[n];
-  	double y[n]; double ey[n];
-
-  	for(int i = 0; i < n; i++) {
-  		x[i] = hist->GetBinCenter(i+1);
-  		ex[i] = 0; 
-  		y[i] = hist->GetBinContent(i+1); 
-      	ey[i] = hist->GetBinError(i+1); 
-  	}
-
-  	return new TGraphErrors(n, x, y, ex, ey);
-
-}
-
-TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y_, std::vector<double> ex_, std::vector<double> ey_) {
-
-	int n = x_.size();
-	double x[n]; double ex[n];
-	double y[n]; double ey[n];
-
-	for(int i = 0; i < n; i++) {
-		x[i] = x_.at(i); ex[i] = ex_.at(i);
-		y[i] = y_.at(i); ey[i] = ey_.at(i);
-	}
-
-	return new TGraphErrors(n, x, y, ex, ey);
-
-}
-
 void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -133,7 +101,7 @@ void SimultaneousAnalysis(TFile *input, TFile *output) {
 
 		std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
 	
-		DrawSimpleSinFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMu/"+config+"/Unblinded/"+name+"ModuloFit_"+qual).c_str(), double(nEntries),true);
+		DrawSimpleSinFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/"+name+"ModuloFit_"+qual).c_str(), double(nEntries),true);
 
 		moduloGraph->SetName((name+"_fit").c_str());
 		moduloGraph->Write();
@@ -215,8 +183,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
 
 
-  		DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
-  		DrawTGraphErrors(AEDM_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{EDM} [mrad]", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/"+name+"_AEDM_vs_p_"+qual).c_str());
+  		DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
+  		DrawTGraphErrors(AEDM_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_AEDM_vs_p_"+qual).c_str());
 
   		cGraphs_.push_back(c_vs_p);
   		AEDMGraphs_.push_back(AEDM_vs_p);
@@ -252,8 +220,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
   		A_ymin = -2; A_ymax = 2;
   	}
 
-  	OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/c_vs_p_overlay_"+qual).c_str(), c_ymin, c_ymax);
-  	OverlayGraphs(AEDMGraphs_, names_, "", ("../Images/MC/dMu/"+config+"/Unblinded/MomBinnedAna/AEDM_vs_p_overlay_"+qual).c_str(), A_ymin, A_ymax);
+  	OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/c_vs_p_overlay_"+qual).c_str(), c_ymin, c_ymax);
+  	OverlayGraphs(AEDMGraphs_, names_, "", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/AEDM_vs_p_overlay_"+qual).c_str(), A_ymin, A_ymax);
 
 
 	return; 

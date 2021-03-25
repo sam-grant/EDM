@@ -13,42 +13,40 @@
 
 void trackerReader::Init() {
   // Declaration of leaf types
-
-
-/*   LoadBranch("runNum", runNum, b_runNum);
+   LoadBranch("runNum", runNum, b_runNum);
    LoadBranch("subRunNum", subRunNum, b_subRunNum);
-   LoadBranch("eventNum", eventNum, b_eventNum);*/
+   LoadBranch("eventNum", eventNum, b_eventNum);
    LoadBranch("trackMomentum", trackMomentum, b_trackMomentum);
-/*   LoadBranch("trackMomentumX", trackMomentumX, b_trackMomentumX);*/
+   LoadBranch("trackMomentumX", trackMomentumX, b_trackMomentumX);
    LoadBranch("trackMomentumY", trackMomentumY, b_trackMomentumY);
-/*   LoadBranch("trackMomentumZ", trackMomentumZ, b_trackMomentumZ);*/
-  // LoadBranch("trackMomentumUnc", trackMomentumUnc, b_trackMomentumUnc);
+   LoadBranch("trackMomentumZ", trackMomentumZ, b_trackMomentumZ);
+   LoadBranch("trackMomentumUnc", trackMomentumUnc, b_trackMomentumUnc);
    LoadBranch("decayVertexPosX", decayVertexPosX, b_decayVertexPosX);
    LoadBranch("decayVertexPosY", decayVertexPosY, b_decayVertexPosY);
    LoadBranch("decayVertexPosZ", decayVertexPosZ, b_decayVertexPosZ);
-/*   LoadBranch("decayVertexMomX", decayVertexMomX, b_decayVertexMomX);
+   LoadBranch("decayVertexMomX", decayVertexMomX, b_decayVertexMomX);
    LoadBranch("decayVertexMomY", decayVertexMomY, b_decayVertexMomY);
-   LoadBranch("decayVertexMomZ", decayVertexMomZ, b_decayVertexMomZ);*/
-/*   LoadBranch("decayVertexUncR", decayVertexUncR, b_decayVertexUncR);
+   LoadBranch("decayVertexMomZ", decayVertexMomZ, b_decayVertexMomZ);
+   LoadBranch("decayVertexUncR", decayVertexUncR, b_decayVertexUncR);
    LoadBranch("decayVertexUncY", decayVertexUncY, b_decayVertexUncY);
    LoadBranch("decayVertexUncPR", decayVertexUncPR, b_decayVertexUncPR);
-   LoadBranch("decayVertexUncPY", decayVertexUncPY, b_decayVertexUncPY);*/
+   LoadBranch("decayVertexUncPY", decayVertexUncPY, b_decayVertexUncPY);
    LoadBranch("trackT0", trackT0, b_trackT0);
-/*   LoadBranch("decayTime", decayTime, b_decayTime);
-   LoadBranch("hitVolume", hitVolume, b_hitVolume);*/
+   LoadBranch("decayTime", decayTime, b_decayTime);
+   LoadBranch("hitVolume", hitVolume, b_hitVolume);
    LoadBranch("trackPValue", trackPValue, b_trackPValue);
    LoadBranch("station", station, b_station);
    LoadBranch("nHits", nHits, b_nHits);
-/*   LoadBranch("nUHits", nUHits, b_nUHits);
+   LoadBranch("nUHits", nUHits, b_nUHits);
    LoadBranch("nVHits", nVHits, b_nVHits);
    LoadBranch("missedLayersFrac", missedLayersFrac, b_missedLayersFrac);
    LoadBranch("minDriftTime", minDriftTime, b_minDriftTime);
    LoadBranch("maxDriftTime", maxDriftTime, b_maxDriftTime);
    LoadBranch("maxResidual", maxResidual, b_maxResidual);
-   LoadBranch("extrapolatedDistance", extrapolatedDistance, b_extrapolatedDistance);*/
+   LoadBranch("extrapolatedDistance", extrapolatedDistance, b_extrapolatedDistance);
    LoadBranch("passTrackQuality", passTrackQuality, b_passTrackQuality);
    LoadBranch("passVertexQuality", passVertexQuality, b_passVertexQuality);
- //  LoadBranch("passCandidateQuality", passCandidateQuality, b_passCandidateQuality);   
+   LoadBranch("passCandidateQuality", passCandidateQuality, b_passCandidateQuality);   
    
 }
 
