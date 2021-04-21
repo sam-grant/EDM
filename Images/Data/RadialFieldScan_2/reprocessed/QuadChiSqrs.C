@@ -1,7 +1,7 @@
 void QuadChiSqrs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Feb 16 21:34:32 2021) by ROOT version 6.22/06
+//=========  (Tue Apr 20 22:14:05 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75,-1.182824,75,13.84944);
@@ -26,19 +26,19 @@ void QuadChiSqrs()
    1.989639,
    3.171674};
    Double_t Graph0_fex1013[6] = {
+   6.953123e-310,
+   6.95317e-310,
    4.74303e-322,
-   2.173889e-322,
-   6.953278e-310,
    4.74303e-322,
-   6.95312e-310,
-   6.953233e-310};
+   2.964394e-323,
+   2.197419e-314};
    Double_t Graph0_fey1013[6] = {
+   6.953123e-310,
+   6.95317e-310,
    4.74303e-322,
-   2.173889e-322,
-   6.953278e-310,
    4.74303e-322,
-   6.95312e-310,
-   6.953233e-310};
+   2.964394e-323,
+   2.197419e-314};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
    gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf");

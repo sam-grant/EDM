@@ -1,7 +1,7 @@
 void QuadFitRes()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Feb 16 21:34:33 2021) by ROOT version 6.22/06
+//=========  (Tue Apr 20 22:14:05 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0.04581371,-0.0625,0.08035061,0.0625);

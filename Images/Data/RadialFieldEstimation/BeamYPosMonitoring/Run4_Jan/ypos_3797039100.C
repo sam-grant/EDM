@@ -1,7 +1,7 @@
 void ypos_3797039100()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Feb 17 19:53:36 2021) by ROOT version 6.22/06
+//=========  (Fri Apr  9 01:06:03 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(37687.5,68.75,39382.5,81.25);
@@ -11,7 +11,7 @@ void ypos_3797039100()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1001[388] = {
+   Double_t gr_fx1001[388] = {
    37970,
    37971,
    37972,
@@ -400,7 +400,7 @@ void ypos_3797039100()
    39098,
    39099,
    39100};
-   Double_t Graph0_fy1001[388] = {
+   Double_t gr_fy1001[388] = {
    74.70282,
    74.71727,
    74.70544,
@@ -789,7 +789,7 @@ void ypos_3797039100()
    74.81596,
    74.77905,
    74.83378};
-   Double_t Graph0_fex1001[388] = {
+   Double_t gr_fex1001[388] = {
    0,
    0,
    0,
@@ -1178,7 +1178,7 @@ void ypos_3797039100()
    0,
    0,
    0};
-   Double_t Graph0_fey1001[388] = {
+   Double_t gr_fey1001[388] = {
    0.009848177,
    0.01233053,
    0.01074715,
@@ -1567,41 +1567,56 @@ void ypos_3797039100()
    0.01359093,
    0.01187072,
    0.01152595};
-   TGraphErrors *gre = new TGraphErrors(388,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
-   gre->SetName("Graph0");
+   TGraphErrors *gre = new TGraphErrors(388,gr_fx1001,gr_fy1001,gr_fex1001,gr_fey1001);
+   gre->SetName("gr");
    gre->SetTitle(";Run number;#LTy_{Calo}#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",388,37857,39213);
-   Graph_Graph01001->SetMinimum(70);
-   Graph_Graph01001->SetMaximum(80);
-   Graph_Graph01001->SetDirectory(0);
-   Graph_Graph01001->SetStats(0);
+   TH1F *Graph_gr1001 = new TH1F("Graph_gr1001","",388,37857,39213);
+   Graph_gr1001->SetMinimum(70);
+   Graph_gr1001->SetMaximum(80);
+   Graph_gr1001->SetDirectory(0);
+   Graph_gr1001->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("Run number");
-   Graph_Graph01001->GetXaxis()->CenterTitle(true);
-   Graph_Graph01001->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01001->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("#LTy_{Calo}#GT [mm]");
-   Graph_Graph01001->GetYaxis()->CenterTitle(true);
-   Graph_Graph01001->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01001->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01001->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01001->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01001->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01001->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01001);
+   Graph_gr1001->SetLineColor(ci);
+   Graph_gr1001->GetXaxis()->SetTitle("Run number");
+   Graph_gr1001->GetXaxis()->CenterTitle(true);
+   Graph_gr1001->GetXaxis()->SetLabelFont(42);
+   Graph_gr1001->GetXaxis()->SetTitleSize(0.04);
+   Graph_gr1001->GetXaxis()->SetTitleOffset(1.1);
+   Graph_gr1001->GetXaxis()->SetTitleFont(42);
+   Graph_gr1001->GetYaxis()->SetTitle("#LTy_{Calo}#GT [mm]");
+   Graph_gr1001->GetYaxis()->CenterTitle(true);
+   Graph_gr1001->GetYaxis()->SetNdivisions(4000510);
+   Graph_gr1001->GetYaxis()->SetLabelFont(42);
+   Graph_gr1001->GetYaxis()->SetTitleSize(0.04);
+   Graph_gr1001->GetYaxis()->SetTitleOffset(1.2);
+   Graph_gr1001->GetYaxis()->SetTitleFont(42);
+   Graph_gr1001->GetZaxis()->SetLabelFont(42);
+   Graph_gr1001->GetZaxis()->SetTitleOffset(1);
+   Graph_gr1001->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_gr1001);
    
    gre->Draw("ap");
+   TLine *line = new TLine(37857,0,39213,0);
+
+   ci = TColor::GetColor("#0000ff");
+   line->SetLineColor(ci);
+   line->SetLineStyle(2);
+   line->SetLineWidth(3);
+   line->Draw();
+   
+   TPaveText *pt = new TPaveText(16700,0.5,16900,0.5,"br");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(18);
+   TText *pt_LaTex = pt->AddText("Run-4 zero");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

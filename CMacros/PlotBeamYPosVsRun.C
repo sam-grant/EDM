@@ -56,12 +56,13 @@ vector<string> csvReader(string infile) {
 
 int main() {
 
-  string dataset = "Run1";
+  //string dataset = "Run1";
   //string dataset = "Run4_Jan";
+  //string dataset = "run4";
   //string dataset = "Run3NW";
-  // string dataset = "Run2";
+  string dataset = "Run2";
 
-  string outputName = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Results/"+dataset+".root";
+  string outputName = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Results/run4.root";//+dataset+".root";
   TFile *output = new TFile( outputName.c_str(), "RECREATE");
   output->mkdir("CaloAverage"); output->mkdir("PerCalo"); output->mkdir("PerCaloMeanSubtracted");
 
@@ -72,7 +73,7 @@ int main() {
     ymax1=80;
     ymin2=-1.5;
     ymax2=1.5;
-  } else if(dataset=="Run4_Jan") {
+  } else if(dataset=="run4") { // "Run4_Jan") {
     ymin1=70;
     ymax1=80;
     ymin2=-15;
@@ -89,7 +90,7 @@ int main() {
     ymax2=15;
   }
 
-  vector<string> runs = csvReader("../txt/DatasetRunNumbers/CurrentRunNumbers_"+dataset+".txt");
+  vector<string> runs = csvReader("../txt/CaloBeamPos/CurrentRunNumbers/"+dataset+".txt"); // ../txt/DatasetRunNumbers/CurrentRunNumbers_"+dataset+".txt");
 
   vector<double> y_; vector<double> ey_; 
   vector<double> x_; vector<double> ex_;
@@ -100,7 +101,8 @@ int main() {
 
     string run = runs.at(i_run);
 
-    string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/"+dataset+"/y-pos_"+run+".root";
+    //string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/"+dataset+"/y-pos_"+run+".root";
+    string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/Run4_Jan/y-pos_"+run+".root";
 
     TFile *fin = TFile::Open(input.c_str());
 
@@ -165,7 +167,8 @@ int main() {
     for( int i_run = 0; i_run < runs.size(); i_run++ ) {
 
       string run = runs.at(i_run);
-      string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/"+dataset+"/y-pos_"+run+".root";
+      //string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/"+dataset+"/y-pos_"+run+".root";
+      string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/Run4_Jan/y-pos_"+run+".root";
       TFile *fin = TFile::Open(input.c_str());
       TH1D *hy_calo = (TH1D*)fin->Get(("CaloBeamPosition/PerCalo/clusterY_"+to_string(i_calo)).c_str());
       if(hy_calo->GetMean()==0) {

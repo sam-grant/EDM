@@ -1,7 +1,7 @@
 void QuadScans()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Feb 16 21:34:32 2021) by ROOT version 6.22/06
+//=========  (Tue Apr 20 22:14:05 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0.04581371,70.625,0.08035061,79.375);
@@ -144,10 +144,12 @@ void QuadScans()
    ci = TColor::GetColor("#000099");
    Graph_30_ppm1003->SetLineColor(ci);
    Graph_30_ppm1003->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_30_ppm1003->GetXaxis()->CenterTitle(true);
    Graph_30_ppm1003->GetXaxis()->SetLabelFont(42);
    Graph_30_ppm1003->GetXaxis()->SetTitleOffset(1);
    Graph_30_ppm1003->GetXaxis()->SetTitleFont(42);
    Graph_30_ppm1003->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_30_ppm1003->GetYaxis()->CenterTitle(true);
    Graph_30_ppm1003->GetYaxis()->SetLabelFont(42);
    Graph_30_ppm1003->GetYaxis()->SetTitleFont(42);
    Graph_30_ppm1003->GetZaxis()->SetLabelFont(42);
@@ -231,10 +233,12 @@ void QuadScans()
    ci = TColor::GetColor("#000099");
    Graph_10_ppm1005->SetLineColor(ci);
    Graph_10_ppm1005->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_10_ppm1005->GetXaxis()->CenterTitle(true);
    Graph_10_ppm1005->GetXaxis()->SetLabelFont(42);
    Graph_10_ppm1005->GetXaxis()->SetTitleOffset(1);
    Graph_10_ppm1005->GetXaxis()->SetTitleFont(42);
    Graph_10_ppm1005->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_10_ppm1005->GetYaxis()->CenterTitle(true);
    Graph_10_ppm1005->GetYaxis()->SetLabelFont(42);
    Graph_10_ppm1005->GetYaxis()->SetTitleFont(42);
    Graph_10_ppm1005->GetZaxis()->SetLabelFont(42);
@@ -322,10 +326,12 @@ void QuadScans()
    ci = TColor::GetColor("#000099");
    Graph_mI10_ppm1007->SetLineColor(ci);
    Graph_mI10_ppm1007->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_mI10_ppm1007->GetXaxis()->CenterTitle(true);
    Graph_mI10_ppm1007->GetXaxis()->SetLabelFont(42);
    Graph_mI10_ppm1007->GetXaxis()->SetTitleOffset(1);
    Graph_mI10_ppm1007->GetXaxis()->SetTitleFont(42);
    Graph_mI10_ppm1007->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_mI10_ppm1007->GetYaxis()->CenterTitle(true);
    Graph_mI10_ppm1007->GetYaxis()->SetLabelFont(42);
    Graph_mI10_ppm1007->GetYaxis()->SetTitleFont(42);
    Graph_mI10_ppm1007->GetZaxis()->SetLabelFont(42);
@@ -417,10 +423,12 @@ void QuadScans()
    ci = TColor::GetColor("#000099");
    Graph_mI30_ppm1009->SetLineColor(ci);
    Graph_mI30_ppm1009->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_mI30_ppm1009->GetXaxis()->CenterTitle(true);
    Graph_mI30_ppm1009->GetXaxis()->SetLabelFont(42);
    Graph_mI30_ppm1009->GetXaxis()->SetTitleOffset(1);
    Graph_mI30_ppm1009->GetXaxis()->SetTitleFont(42);
    Graph_mI30_ppm1009->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_mI30_ppm1009->GetYaxis()->CenterTitle(true);
    Graph_mI30_ppm1009->GetYaxis()->SetLabelFont(42);
    Graph_mI30_ppm1009->GetYaxis()->SetTitleFont(42);
    Graph_mI30_ppm1009->GetZaxis()->SetLabelFont(42);
@@ -508,10 +516,12 @@ void QuadScans()
    ci = TColor::GetColor("#000099");
    Graph_mI50_ppm1011->SetLineColor(ci);
    Graph_mI50_ppm1011->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_mI50_ppm1011->GetXaxis()->CenterTitle(true);
    Graph_mI50_ppm1011->GetXaxis()->SetLabelFont(42);
    Graph_mI50_ppm1011->GetXaxis()->SetTitleOffset(1);
    Graph_mI50_ppm1011->GetXaxis()->SetTitleFont(42);
    Graph_mI50_ppm1011->GetYaxis()->SetTitle("#LTy#GT [mm]");
+   Graph_mI50_ppm1011->GetYaxis()->CenterTitle(true);
    Graph_mI50_ppm1011->GetYaxis()->SetLabelFont(42);
    Graph_mI50_ppm1011->GetYaxis()->SetTitleFont(42);
    Graph_mI50_ppm1011->GetZaxis()->SetLabelFont(42);

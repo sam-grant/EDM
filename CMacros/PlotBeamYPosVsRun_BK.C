@@ -354,7 +354,7 @@ void DrawManyTGraphErrors2(std::vector<TGraphErrors*> graphs, std::vector<string
 
 tuple<double, double> ZeroPoint() { 
 
-  vector<string> runs = csvReader("../txt/DatasetRunNumbers/CurrentRunNumbers_Run4_Jan.txt");
+  vector<string> runs = csvReader("../txt/CaloRunNumbers/CurrentRunNumbers_Run4_Jan.txt");
 
   vector<double> y_; vector<double> ey_; 
   vector<double> x_; vector<double> ex_;
@@ -457,7 +457,7 @@ int main() {
 
   // Get file list
 
-  vector<string> runs = csvReader("../txt/DatasetRunNumbers/CurrentRunNumbers_"+dataset+".txt");
+  vector<string> runs = csvReader("../txt/DatasetRunNumbers/CurrentRunNumbers/"+dataset+".txt");
   //vector<string> runs = csvReader("../txt/"+dataset+".txt");
 
   vector<double> y_; vector<double> ey_; 

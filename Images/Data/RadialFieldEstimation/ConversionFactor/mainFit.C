@@ -1,9 +1,9 @@
 void mainFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 18:58:09 2021) by ROOT version 6.22/06
+//=========  (Thu Mar 25 17:55:13 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   gStyle->SetOptFit(1);
+   gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
    c->Range(0.04590115,0.04041512,0.07650345,0.06440087);
    c->SetFillColor(0);
@@ -68,10 +68,13 @@ void mainFit()
    
    
    TF1 *fit1010 = new TF1("fit","[0]+[1]*x",0.0492674,0.07344322, TF1::EAddToList::kNo);
+   fit1010->SetNpx(10000);
    fit1010->SetFillColor(19);
    fit1010->SetFillStyle(0);
-   fit1010->SetLineColor(2);
-   fit1010->SetLineWidth(2);
+
+   ci = TColor::GetColor("#ff0000");
+   fit1010->SetLineColor(ci);
+   fit1010->SetLineWidth(3);
    fit1010->SetChisquare(1.672759);
    fit1010->SetNDF(2);
    fit1010->GetXaxis()->SetLabelFont(42);
@@ -87,28 +90,41 @@ void mainFit()
    fit1010->SetParLimits(1,0,0);
    fit1010->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1010);
-   
-   TPaveStats *ptstats = new TPaveStats(0.13,0.73,0.49,0.89,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(0);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 1.673 / 2");
-   ptstats_LaTex = ptstats->AddText("c [mm/ppm] = 0.004605 #pm 0.0006819 ");
-   ptstats_LaTex = ptstats->AddText("m [mm#upointkV/ppm] = 0.7768 #pm 0.01159 ");
-   ptstats->SetOptStat(0);
-   ptstats->SetOptFit(111);
-   ptstats->Draw();
-   gre->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(gre->GetListOfFunctions());
    gre->Draw("ap");
    
+   TPaveText *pt = new TPaveText(0.15,0.62,0.3,0.89,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("#chi^{2}/ndf");
+   pt_LaTex = pt->AddText("c [mm/ppm]");
+   pt_LaTex = pt->AddText("m [mm#upointkV/ppm]");
+   pt->Draw();
+   
+   pt = new TPaveText(0.4,0.62,0.55,0.89,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(33);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("0.836
+");
+   pt_LaTex = pt->AddText("0.0046
+#pm0.0007
+");
+   pt_LaTex = pt->AddText("0.78
+#pm0.01
+");
+   pt->Draw();
+   
    TF1 *fit1011 = new TF1("fit","[0]+[1]*x",0.0492674,0.07344322, TF1::EAddToList::kNo);
+   fit1011->SetNpx(10000);
    fit1011->SetFillColor(19);
    fit1011->SetFillStyle(0);
-   fit1011->SetLineColor(2);
-   fit1011->SetLineWidth(2);
+
+   ci = TColor::GetColor("#ff0000");
+   fit1011->SetLineColor(ci);
+   fit1011->SetLineWidth(3);
    fit1011->SetChisquare(1.672759);
    fit1011->SetNDF(2);
    fit1011->GetXaxis()->SetLabelFont(42);

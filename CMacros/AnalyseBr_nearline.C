@@ -21,9 +21,16 @@
 
 using namespace std;
 
+//const string stage = "reprocessed_newCuts"; // "//// // ////
+//const string stage = "raw_newCuts"; // "//// // ////
 
 
-const string stage = "reprocessed"; // "//// // ////
+// const string stage = "raw"; // "//// // ////
+
+//const string stage = "raw/cutsTesting";
+
+
+//const string stage = "raw"; // "//// // ////
 
 // FIRST SCAN
 //string scan = "1";
@@ -107,6 +114,11 @@ tuple<double, double, int> ReadYPos(string input) {
   vector<double> yPos; vector<double> eyPos;
 
   TH1D *hy = (TH1D*)f1->Get("hy");
+  if(hy==0) {
+
+    cout<<"Warning: "+input+" is empty, returning zeros"<<endl;
+    return make_tuple(0.,0.,0.);
+  }
 
   return make_tuple(hy->GetMean(),hy->GetMeanError(),hy->GetEntries());
 
@@ -150,7 +162,7 @@ TGraphErrors *QuadScan(vector<tuple<double, double>> yVal, vector<float> QHV_tmp
 // Pass quad scans to chi square drawer
 // DrawQuadScanFitQual(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT;#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/QuadChiSqrs"); 
 
-vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func) { // ;// , string title, string fname) { 
+vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func, string stage) { // ;// , string title, string fname) { 
 
   vector<TGraphErrors*> residuals;
 
@@ -195,7 +207,7 @@ vector<TGraphErrors*> GetQuadScanRes(vector<TGraphErrors*> graphs, string func) 
 
 
 
-double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_point) { 
+double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_point, string stage) { 
 
   double pVal;
 
@@ -312,10 +324,12 @@ void WriteQuadScan(vector<TGraphErrors*> graphs, string ouput) {
 
 }*/
 
-int main() {
+int main(int argc, char *argv[]) {
+
+  string stage = argv[1]; // "raw/cutsTesting";
 
   // Output to store basic fits (quad scans and final fit)
-  TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/fits.root").c_str(), "RECREATE");
+  TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/fits.root").c_str(), "RECREATE");
   output->cd(); output->mkdir("quadFits"); output->mkdir("mainFit");
 
   // FIRST SCAN
@@ -378,10 +392,16 @@ int main() {
 
       } 
 
-      string input = "../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/merged/y-pos_"+row.at(0)+".root";
+      string input = "../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/y-pos_"+row.at(0)+".root";
       
       // Get info
       tuple<double, double, int> data_tuple = ReadYPos(input);
+
+      // CATCH EMPTY SUBRUNS 
+      if(get<0>(data_tuple)==0. || get<1>(data_tuple)==0. || get<0>(data_tuple)==0.) {
+        counter++;
+        continue;
+      }
 
       QHV_tmp.push_back(QHV[i_quad]);
 
@@ -437,7 +457,7 @@ int main() {
   DrawQuadScanChiSqr(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadChiSqrs", BR_APP); 
 
   // Get fit residual, this is crazy... TODO: make this more in line with the ctag one
-  vector<TGraphErrors*> quadScanResiduals = GetQuadScanRes(quadScans, "quadLineFit");//, "Residual", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes");
+  vector<TGraphErrors*> quadScanResiduals = GetQuadScanRes(quadScans, "quadLineFit", stage);//, "Residual", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes");
   DrawQuadScanNoFit(quadScanResiduals, ";1/QHV [kV^{-1}];Fit residual [mm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadFitRes", -0.05, 0.05, BR_APP);
 
   // Draw CTAGs per fit
@@ -478,7 +498,7 @@ int main() {
   for (int i_point = -1; i_point < N_FIELD; i_point++) { 
   //for (int i_point = N_FIELD-1; i_point > -2; i_point--) { 
 
-    double pVal = pValuePointCheck(x,y,ex,ey,i_point);
+    double pVal = pValuePointCheck(x, y, ex, ey, i_point, stage);
 
     x_tmp[i_point+1] = i_point+2;
     y_tmp[i_point+1] = pVal;

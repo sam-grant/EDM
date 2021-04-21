@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void ReadYPos(string input, string output) {
+void ReadYPos(string input, string output, double eMin, double eMax, double tMin) {
 
    // ++++++++++++++ Open tree and load branches ++++++++++++++
    // Get file
@@ -73,7 +73,11 @@ void ReadYPos(string input, string output) {
    		double time = times_.at(i_clu);
 
          // Apply CTAG cuts
-   		if(energy > 1700 && energy < 6000 && time > 24000) {
+   		//if(energy > 1700 && energy < 6000 && time > 24000) {
+         // Apply new cuts 
+         //if(energy > 1000 && energy < 6000 && time > 30000) {
+         // Variable cuts
+         if(energy > eMin && energy < eMax && time > tMin) {
 
    			tot_ctag_check++;
 
@@ -132,20 +136,27 @@ void ReadYPos(string input, string output) {
 
 int main(int argc, char *argv[]) {
 
-   const string study = "BeamYPosMonitoring"; // ClosedOrbit"; // "RadialFieldScan_1" "RadialFieldScan_1"
-   const string stage = "raw"; // "reprocessed"
+   const string study = "RadialFieldScan_2"; // "BeamYPosMonitoring"; // ClosedOrbit"; // "RadialFieldScan_1" "RadialFieldScan_1"
+   const string stage = "raw";//"reprocessed"; //"raw"; // "reprocessed"
 
    string run = argv[1];
+   string eMin = argv[2];
+   string eMax = argv[3];
+   string tMin = argv[4];
+
+   string outDir = eMin+"MeV_"+eMax+"MeV_"+tMin+"ns";
+
    cout << "Running\t" <<run<<endl;
 
    // string input = "/Volumes/BACKUP/gm2/EDM/Trees/Data/"+study+"/"+stage+"/merged/gm2nearline_hists_run"+run+".root";
-   // // string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/y-pos_"+run+".root";
-   // 
-   // 
-   string input = "/Volumes/BACKUP/gm2/EDM/Trees/Data/"+study+"/"+stage+"/merged/gm2nearline_hists_run"+run+".root";
-   string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/y-pos_"+run+".root";
+   // string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/y-pos_"+run+".root";
 
-   ReadYPos(input, output);
+   string input = "/Volumes/BACKUP/gm2/EDM/Trees/Data/"+study+"/"+stage+"/merged/gm2nearline_hists_run"+run+".root";
+   string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/cutsTesting/"+outDir+"/y-pos_"+run+".root";
+
+   cout<<std::stod(eMin)<<" < E [MeV] < "<<std::stod(eMax)<<", t [ns] > "<<std::stod(tMin)<<endl;
+
+   ReadYPos(input, output, std::stod(eMin), std::stod(eMax), std::stod(tMin));
 
    return 0;
 }

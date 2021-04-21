@@ -574,12 +574,20 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
 	values->AddText(Round(par2, 1)+"#pm"+Round(err2, 1));
 
+	TPaveText *cuts = new TPaveText(0.15,0.20,0.45,0.40,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("700 < p [MeV] < 2400");
+	cuts->AddText("0 < t [#mus] < 300");
+
 	names->SetTextSize(26);
 	names->SetTextFont(44);
 	names->SetFillColor(0);
 	values->SetFillColor(0);
 	values->SetTextFont(44);
 	values->SetTextSize(26);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(26);
 
 	graph->SetTitle(title.c_str());
 	graph->GetXaxis()->SetTitleSize(.04);
@@ -596,6 +604,7 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 	names->Draw("same");
 	leg->Draw("same");
 	func->Draw("same");
+	cuts->Draw("same");
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());

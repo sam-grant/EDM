@@ -1,7 +1,7 @@
 void c_vs_p_overlay_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 23 16:05:55 2021) by ROOT version 6.22/06
+//=========  (Tue Mar 30 10:38:04 2021) by ROOT version 6.22/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(249.5,-0.69375,2850.5,0.24375);
@@ -11,7 +11,7 @@ void c_vs_p_overlay_eQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t S0_c_vs_p_fx1017[17] = {
+   Double_t S0_c_vs_p_fx1119[17] = {
    750,
    850,
    950,
@@ -29,7 +29,7 @@ void c_vs_p_overlay_eQ()
    2150,
    2250,
    2350};
-   Double_t S0_c_vs_p_fy1017[17] = {
+   Double_t S0_c_vs_p_fy1119[17] = {
    -0.03738807,
    -0.008189739,
    0.01338615,
@@ -47,7 +47,7 @@ void c_vs_p_overlay_eQ()
    0.01099902,
    -0.02800448,
    0.01256072};
-   Double_t S0_c_vs_p_fex1017[17] = {
+   Double_t S0_c_vs_p_fex1119[17] = {
    50,
    50,
    50,
@@ -65,7 +65,7 @@ void c_vs_p_overlay_eQ()
    50,
    50,
    50};
-   Double_t S0_c_vs_p_fey1017[17] = {
+   Double_t S0_c_vs_p_fey1119[17] = {
    0.03897799,
    0.03639912,
    0.0343799,
@@ -83,44 +83,44 @@ void c_vs_p_overlay_eQ()
    0.0238368,
    0.02364758,
    0.02349824};
-   TGraphErrors *gre = new TGraphErrors(17,S0_c_vs_p_fx1017,S0_c_vs_p_fy1017,S0_c_vs_p_fex1017,S0_c_vs_p_fey1017);
+   TGraphErrors *gre = new TGraphErrors(17,S0_c_vs_p_fx1119,S0_c_vs_p_fy1119,S0_c_vs_p_fex1119,S0_c_vs_p_fey1119);
    gre->SetName("S0_c_vs_p");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S0_c_vs_p1017 = new TH1F("Graph_S0_c_vs_p1017","",100,530,2570);
-   Graph_S0_c_vs_p1017->SetMinimum(-0.6);
-   Graph_S0_c_vs_p1017->SetMaximum(0.15);
-   Graph_S0_c_vs_p1017->SetDirectory(0);
-   Graph_S0_c_vs_p1017->SetStats(0);
+   TH1F *Graph_S0_c_vs_p1119 = new TH1F("Graph_S0_c_vs_p1119","",100,530,2570);
+   Graph_S0_c_vs_p1119->SetMinimum(-0.6);
+   Graph_S0_c_vs_p1119->SetMaximum(0.15);
+   Graph_S0_c_vs_p1119->SetDirectory(0);
+   Graph_S0_c_vs_p1119->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_S0_c_vs_p1017->SetLineColor(ci);
-   Graph_S0_c_vs_p1017->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
-   Graph_S0_c_vs_p1017->GetXaxis()->SetRange(0,101);
-   Graph_S0_c_vs_p1017->GetXaxis()->CenterTitle(true);
-   Graph_S0_c_vs_p1017->GetXaxis()->SetLabelFont(42);
-   Graph_S0_c_vs_p1017->GetXaxis()->SetTitleSize(0.04);
-   Graph_S0_c_vs_p1017->GetXaxis()->SetTitleOffset(1.1);
-   Graph_S0_c_vs_p1017->GetXaxis()->SetTitleFont(42);
-   Graph_S0_c_vs_p1017->GetYaxis()->SetTitle("c [mrad]");
-   Graph_S0_c_vs_p1017->GetYaxis()->CenterTitle(true);
-   Graph_S0_c_vs_p1017->GetYaxis()->SetNdivisions(4000510);
-   Graph_S0_c_vs_p1017->GetYaxis()->SetLabelFont(42);
-   Graph_S0_c_vs_p1017->GetYaxis()->SetTitleSize(0.04);
-   Graph_S0_c_vs_p1017->GetYaxis()->SetTitleOffset(1.1);
-   Graph_S0_c_vs_p1017->GetYaxis()->SetTitleFont(42);
-   Graph_S0_c_vs_p1017->GetZaxis()->SetLabelFont(42);
-   Graph_S0_c_vs_p1017->GetZaxis()->SetTitleOffset(1);
-   Graph_S0_c_vs_p1017->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_S0_c_vs_p1017);
+   Graph_S0_c_vs_p1119->SetLineColor(ci);
+   Graph_S0_c_vs_p1119->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
+   Graph_S0_c_vs_p1119->GetXaxis()->SetRange(0,101);
+   Graph_S0_c_vs_p1119->GetXaxis()->CenterTitle(true);
+   Graph_S0_c_vs_p1119->GetXaxis()->SetLabelFont(42);
+   Graph_S0_c_vs_p1119->GetXaxis()->SetTitleSize(0.04);
+   Graph_S0_c_vs_p1119->GetXaxis()->SetTitleOffset(1.1);
+   Graph_S0_c_vs_p1119->GetXaxis()->SetTitleFont(42);
+   Graph_S0_c_vs_p1119->GetYaxis()->SetTitle("c [mrad]");
+   Graph_S0_c_vs_p1119->GetYaxis()->CenterTitle(true);
+   Graph_S0_c_vs_p1119->GetYaxis()->SetNdivisions(4000510);
+   Graph_S0_c_vs_p1119->GetYaxis()->SetLabelFont(42);
+   Graph_S0_c_vs_p1119->GetYaxis()->SetTitleSize(0.04);
+   Graph_S0_c_vs_p1119->GetYaxis()->SetTitleOffset(1.1);
+   Graph_S0_c_vs_p1119->GetYaxis()->SetTitleFont(42);
+   Graph_S0_c_vs_p1119->GetZaxis()->SetLabelFont(42);
+   Graph_S0_c_vs_p1119->GetZaxis()->SetTitleOffset(1);
+   Graph_S0_c_vs_p1119->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_S0_c_vs_p1119);
    
    gre->Draw("ap");
    
-   Double_t S12_c_vs_p_fx1018[17] = {
+   Double_t S12_c_vs_p_fx1120[17] = {
    750,
    850,
    950,
@@ -138,7 +138,7 @@ void c_vs_p_overlay_eQ()
    2150,
    2250,
    2350};
-   Double_t S12_c_vs_p_fy1018[17] = {
+   Double_t S12_c_vs_p_fy1120[17] = {
    -0.5203179,
    -0.4442912,
    -0.3674899,
@@ -156,7 +156,7 @@ void c_vs_p_overlay_eQ()
    -0.1104056,
    -0.1015458,
    -0.1175515};
-   Double_t S12_c_vs_p_fex1018[17] = {
+   Double_t S12_c_vs_p_fex1120[17] = {
    50,
    50,
    50,
@@ -174,7 +174,7 @@ void c_vs_p_overlay_eQ()
    50,
    50,
    50};
-   Double_t S12_c_vs_p_fey1018[17] = {
+   Double_t S12_c_vs_p_fey1120[17] = {
    0.03892491,
    0.03645888,
    0.03442789,
@@ -192,7 +192,7 @@ void c_vs_p_overlay_eQ()
    0.02400538,
    0.02384765,
    0.02386942};
-   gre = new TGraphErrors(17,S12_c_vs_p_fx1018,S12_c_vs_p_fy1018,S12_c_vs_p_fex1018,S12_c_vs_p_fey1018);
+   gre = new TGraphErrors(17,S12_c_vs_p_fx1120,S12_c_vs_p_fy1120,S12_c_vs_p_fex1120,S12_c_vs_p_fey1120);
    gre->SetName("S12_c_vs_p");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
@@ -201,36 +201,36 @@ void c_vs_p_overlay_eQ()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12_c_vs_p1018 = new TH1F("Graph_S12_c_vs_p1018","S12",100,530,2570);
-   Graph_S12_c_vs_p1018->SetMinimum(-0.6073972);
-   Graph_S12_c_vs_p1018->SetMaximum(-0.02954367);
-   Graph_S12_c_vs_p1018->SetDirectory(0);
-   Graph_S12_c_vs_p1018->SetStats(0);
+   TH1F *Graph_S12_c_vs_p1120 = new TH1F("Graph_S12_c_vs_p1120","S12",100,530,2570);
+   Graph_S12_c_vs_p1120->SetMinimum(-0.6073972);
+   Graph_S12_c_vs_p1120->SetMaximum(-0.02954367);
+   Graph_S12_c_vs_p1120->SetDirectory(0);
+   Graph_S12_c_vs_p1120->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_S12_c_vs_p1018->SetLineColor(ci);
-   Graph_S12_c_vs_p1018->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
-   Graph_S12_c_vs_p1018->GetXaxis()->SetRange(0,101);
-   Graph_S12_c_vs_p1018->GetXaxis()->CenterTitle(true);
-   Graph_S12_c_vs_p1018->GetXaxis()->SetLabelFont(42);
-   Graph_S12_c_vs_p1018->GetXaxis()->SetTitleSize(0.04);
-   Graph_S12_c_vs_p1018->GetXaxis()->SetTitleOffset(1.1);
-   Graph_S12_c_vs_p1018->GetXaxis()->SetTitleFont(42);
-   Graph_S12_c_vs_p1018->GetYaxis()->SetTitle("c [mrad]");
-   Graph_S12_c_vs_p1018->GetYaxis()->CenterTitle(true);
-   Graph_S12_c_vs_p1018->GetYaxis()->SetNdivisions(4000510);
-   Graph_S12_c_vs_p1018->GetYaxis()->SetLabelFont(42);
-   Graph_S12_c_vs_p1018->GetYaxis()->SetTitleSize(0.04);
-   Graph_S12_c_vs_p1018->GetYaxis()->SetTitleOffset(1.2);
-   Graph_S12_c_vs_p1018->GetYaxis()->SetTitleFont(42);
-   Graph_S12_c_vs_p1018->GetZaxis()->SetLabelFont(42);
-   Graph_S12_c_vs_p1018->GetZaxis()->SetTitleOffset(1);
-   Graph_S12_c_vs_p1018->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_S12_c_vs_p1018);
+   Graph_S12_c_vs_p1120->SetLineColor(ci);
+   Graph_S12_c_vs_p1120->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
+   Graph_S12_c_vs_p1120->GetXaxis()->SetRange(0,101);
+   Graph_S12_c_vs_p1120->GetXaxis()->CenterTitle(true);
+   Graph_S12_c_vs_p1120->GetXaxis()->SetLabelFont(42);
+   Graph_S12_c_vs_p1120->GetXaxis()->SetTitleSize(0.04);
+   Graph_S12_c_vs_p1120->GetXaxis()->SetTitleOffset(1.1);
+   Graph_S12_c_vs_p1120->GetXaxis()->SetTitleFont(42);
+   Graph_S12_c_vs_p1120->GetYaxis()->SetTitle("c [mrad]");
+   Graph_S12_c_vs_p1120->GetYaxis()->CenterTitle(true);
+   Graph_S12_c_vs_p1120->GetYaxis()->SetNdivisions(4000510);
+   Graph_S12_c_vs_p1120->GetYaxis()->SetLabelFont(42);
+   Graph_S12_c_vs_p1120->GetYaxis()->SetTitleSize(0.04);
+   Graph_S12_c_vs_p1120->GetYaxis()->SetTitleOffset(1.2);
+   Graph_S12_c_vs_p1120->GetYaxis()->SetTitleFont(42);
+   Graph_S12_c_vs_p1120->GetZaxis()->SetLabelFont(42);
+   Graph_S12_c_vs_p1120->GetZaxis()->SetTitleOffset(1);
+   Graph_S12_c_vs_p1120->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_S12_c_vs_p1120);
    
    gre->Draw("p ");
    
-   Double_t S18_c_vs_p_fx1019[17] = {
+   Double_t S18_c_vs_p_fx1121[17] = {
    750,
    850,
    950,
@@ -248,7 +248,7 @@ void c_vs_p_overlay_eQ()
    2150,
    2250,
    2350};
-   Double_t S18_c_vs_p_fy1019[17] = {
+   Double_t S18_c_vs_p_fy1121[17] = {
    -0.3253699,
    -0.1697023,
    -0.1987142,
@@ -266,7 +266,7 @@ void c_vs_p_overlay_eQ()
    -0.09299046,
    -0.09385252,
    -0.08510264};
-   Double_t S18_c_vs_p_fex1019[17] = {
+   Double_t S18_c_vs_p_fex1121[17] = {
    50,
    50,
    50,
@@ -284,7 +284,7 @@ void c_vs_p_overlay_eQ()
    50,
    50,
    50};
-   Double_t S18_c_vs_p_fey1019[17] = {
+   Double_t S18_c_vs_p_fey1121[17] = {
    0.03904355,
    0.03663242,
    0.03448767,
@@ -302,7 +302,7 @@ void c_vs_p_overlay_eQ()
    0.02420898,
    0.02405391,
    0.02399792};
-   gre = new TGraphErrors(17,S18_c_vs_p_fx1019,S18_c_vs_p_fy1019,S18_c_vs_p_fex1019,S18_c_vs_p_fey1019);
+   gre = new TGraphErrors(17,S18_c_vs_p_fx1121,S18_c_vs_p_fy1121,S18_c_vs_p_fex1121,S18_c_vs_p_fey1121);
    gre->SetName("S18_c_vs_p");
    gre->SetTitle("S18");
    gre->SetFillStyle(1000);
@@ -311,32 +311,32 @@ void c_vs_p_overlay_eQ()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S18_c_vs_p1019 = new TH1F("Graph_S18_c_vs_p1019","S18",100,530,2570);
-   Graph_S18_c_vs_p1019->SetMinimum(-0.3964849);
-   Graph_S18_c_vs_p1019->SetMaximum(-0.01162743);
-   Graph_S18_c_vs_p1019->SetDirectory(0);
-   Graph_S18_c_vs_p1019->SetStats(0);
+   TH1F *Graph_S18_c_vs_p1121 = new TH1F("Graph_S18_c_vs_p1121","S18",100,530,2570);
+   Graph_S18_c_vs_p1121->SetMinimum(-0.3964849);
+   Graph_S18_c_vs_p1121->SetMaximum(-0.01162743);
+   Graph_S18_c_vs_p1121->SetDirectory(0);
+   Graph_S18_c_vs_p1121->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_S18_c_vs_p1019->SetLineColor(ci);
-   Graph_S18_c_vs_p1019->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
-   Graph_S18_c_vs_p1019->GetXaxis()->SetRange(0,101);
-   Graph_S18_c_vs_p1019->GetXaxis()->CenterTitle(true);
-   Graph_S18_c_vs_p1019->GetXaxis()->SetLabelFont(42);
-   Graph_S18_c_vs_p1019->GetXaxis()->SetTitleSize(0.04);
-   Graph_S18_c_vs_p1019->GetXaxis()->SetTitleOffset(1.1);
-   Graph_S18_c_vs_p1019->GetXaxis()->SetTitleFont(42);
-   Graph_S18_c_vs_p1019->GetYaxis()->SetTitle("c [mrad]");
-   Graph_S18_c_vs_p1019->GetYaxis()->CenterTitle(true);
-   Graph_S18_c_vs_p1019->GetYaxis()->SetNdivisions(4000510);
-   Graph_S18_c_vs_p1019->GetYaxis()->SetLabelFont(42);
-   Graph_S18_c_vs_p1019->GetYaxis()->SetTitleSize(0.04);
-   Graph_S18_c_vs_p1019->GetYaxis()->SetTitleOffset(1.2);
-   Graph_S18_c_vs_p1019->GetYaxis()->SetTitleFont(42);
-   Graph_S18_c_vs_p1019->GetZaxis()->SetLabelFont(42);
-   Graph_S18_c_vs_p1019->GetZaxis()->SetTitleOffset(1);
-   Graph_S18_c_vs_p1019->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_S18_c_vs_p1019);
+   Graph_S18_c_vs_p1121->SetLineColor(ci);
+   Graph_S18_c_vs_p1121->GetXaxis()->SetTitle("p [MeV]: in range p #minus 50 < p < p #plus 50 MeV");
+   Graph_S18_c_vs_p1121->GetXaxis()->SetRange(0,101);
+   Graph_S18_c_vs_p1121->GetXaxis()->CenterTitle(true);
+   Graph_S18_c_vs_p1121->GetXaxis()->SetLabelFont(42);
+   Graph_S18_c_vs_p1121->GetXaxis()->SetTitleSize(0.04);
+   Graph_S18_c_vs_p1121->GetXaxis()->SetTitleOffset(1.1);
+   Graph_S18_c_vs_p1121->GetXaxis()->SetTitleFont(42);
+   Graph_S18_c_vs_p1121->GetYaxis()->SetTitle("c [mrad]");
+   Graph_S18_c_vs_p1121->GetYaxis()->CenterTitle(true);
+   Graph_S18_c_vs_p1121->GetYaxis()->SetNdivisions(4000510);
+   Graph_S18_c_vs_p1121->GetYaxis()->SetLabelFont(42);
+   Graph_S18_c_vs_p1121->GetYaxis()->SetTitleSize(0.04);
+   Graph_S18_c_vs_p1121->GetYaxis()->SetTitleOffset(1.2);
+   Graph_S18_c_vs_p1121->GetYaxis()->SetTitleFont(42);
+   Graph_S18_c_vs_p1121->GetZaxis()->SetLabelFont(42);
+   Graph_S18_c_vs_p1121->GetZaxis()->SetTitleOffset(1);
+   Graph_S18_c_vs_p1121->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_S18_c_vs_p1121);
    
    gre->Draw("p ");
    

@@ -1,19 +1,20 @@
 #include <iostream>
 #include <vector>
-
-#include "TFile.h"
-#include "TAxis.h"
-#include "TCanvas.h"
-#include "TLegend.h"
-#include "TGraphErrors.h"
-#include "TF1.h"
-#include "TStyle.h"
-#include "TPaveStats.h"
+#include <sstream>
+#include "RootInclude.h"
 
 using namespace std;
 
 string ThreeSigFig(double num) { 
   return Form("%5.3g", num);
+}
+
+TString Round(double N, double n) { 
+  std::stringstream roundedValue;
+  roundedValue.precision(n);
+  roundedValue << N << std::endl;
+  return roundedValue.str();
+
 }
 
 void DrawMainFit(TGraphErrors *graph, std::string title, std::string fname) {
@@ -24,15 +25,26 @@ void DrawMainFit(TGraphErrors *graph, std::string title, std::string fname) {
 
   	graph->Draw();
   	gPad->Update();
+  	gStyle->SetOptStat(0);
+  	gStyle->SetOptFit(0);
+
+ 	TF1 *func = graph->GetFunction("fit");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+	double par1 = func->GetParameter(1); double err1 = func->GetParError(1);
 
   	// gStyle->SetStatY(0.89);
-  	gStyle->SetStatY(0.89);
-  	// gStyle->SetStatX(0.89);
-  	gStyle->SetStatX(0.49);
-  	gStyle->SetStatBorderSize(0);
+  	//gStyle->SetStatY(0.89);
+  	//// gStyle->SetStatX(0.89);
+  	//gStyle->SetStatX(0.49);
+  	//gStyle->SetStatBorderSize(0);
 
 	//gStyle->SetOptStat(0);
-  	gStyle->SetOptFit(111);
+  	//gStyle->SetOptFit(111);
 
 	graph->SetTitle(title.c_str());
 	graph->GetXaxis()->SetTitleSize(.04);
@@ -45,10 +57,36 @@ void DrawMainFit(TGraphErrors *graph, std::string title, std::string fname) {
 	graph->SetMarkerStyle(20); //  Full circle
 	graph->Draw("AP");
 
-	TF1 *fit = graph->GetFunction("fit");
-	fit->SetParName(0, "c [mm/ppm]");
-	fit->SetParName(1, "m [mm#upointkV/ppm]");
-	fit->Draw("same");
+	TPaveText *names = new TPaveText(0.15,0.62,0.30,0.89,"NDC");
+	names->SetTextAlign(13);
+	names->AddText("#chi^{2}/ndf");
+	names->AddText("c [mm/ppm]");
+	names->AddText("m [mm#upointkV/ppm]");
+
+	TPaveText *values = new TPaveText(0.40,0.62,0.55,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(Round(chi2ndf, 3));
+	values->AddText(Round(par0, 3)+"#pm"+Round(err0,1));
+	values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
+
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+
+	names->Draw("same");
+	values->Draw("same");
+
+	//TLegend *leg = new TLegend(0.25,0.15,.75,0.25);
+	//leg->SetNColumns(2);
+	//leg->AddEntry(graph, "Sim   ");
+	//leg->AddEntry(func,"N_{0}e^{-t/#tau}[1+Acos(#omega_{a}t+#phi)]");
+	//leg->SetBorderSize(0);
+
+
+	func->Draw("same");
 	//c->SetGridx();
 
 	c->SetLeftMargin(0.11);

@@ -1,7 +1,7 @@
 void y-pos_37970-39100()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb 18 18:41:05 2021) by ROOT version 6.22/06
+//=========  (Fri Apr  9 01:36:10 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(37687.5,68.75,39382.5,81.25);
@@ -1594,7 +1594,7 @@ void y-pos_37970-39100()
    Graph_gr1001->GetYaxis()->SetNdivisions(4000510);
    Graph_gr1001->GetYaxis()->SetLabelFont(42);
    Graph_gr1001->GetYaxis()->SetTitleSize(0.04);
-   Graph_gr1001->GetYaxis()->SetTitleOffset(1.25);
+   Graph_gr1001->GetYaxis()->SetTitleOffset(1.2);
    Graph_gr1001->GetYaxis()->SetTitleFont(42);
    Graph_gr1001->GetZaxis()->SetLabelFont(42);
    Graph_gr1001->GetZaxis()->SetTitleOffset(1);
@@ -1602,6 +1602,21 @@ void y-pos_37970-39100()
    gre->SetHistogram(Graph_gr1001);
    
    gre->Draw("ap");
+   TLine *line = new TLine(37857,0,39213,0);
+
+   ci = TColor::GetColor("#0000ff");
+   line->SetLineColor(ci);
+   line->SetLineStyle(2);
+   line->SetLineWidth(3);
+   line->Draw();
+   
+   TPaveText *pt = new TPaveText(16700,0.5,16900,0.5,"br");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(18);
+   TText *pt_LaTex = pt->AddText("Run-4 zero");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

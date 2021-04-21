@@ -1,7 +1,7 @@
 void pVals()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jan 19 01:22:32 2021) by ROOT version 6.22/06
+//=========  (Wed Apr 21 00:28:03 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5000001,-0.002005693,8.5,0.912593);
@@ -11,7 +11,7 @@ void pVals()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1043[7] = {
+   Double_t Graph0_fx1037[7] = {
    1,
    2,
    3,
@@ -19,7 +19,7 @@ void pVals()
    5,
    6,
    7};
-   Double_t Graph0_fy1043[7] = {
+   Double_t Graph0_fy1037[7] = {
    0.2511357,
    0.2132712,
    0.7601599,
@@ -27,7 +27,7 @@ void pVals()
    0.2703824,
    0.2032787,
    0.1504274};
-   Double_t Graph0_fex1043[7] = {
+   Double_t Graph0_fex1037[7] = {
    0,
    0,
    0,
@@ -35,7 +35,7 @@ void pVals()
    0,
    0,
    0};
-   Double_t Graph0_fey1043[7] = {
+   Double_t Graph0_fey1037[7] = {
    0,
    0,
    0,
@@ -43,48 +43,48 @@ void pVals()
    0,
    0,
    0};
-   TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1043,Graph0_fy1043,Graph0_fex1043,Graph0_fey1043);
+   TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1037,Graph0_fy1037,Graph0_fex1037,Graph0_fey1037);
    gre->SetName("Graph0");
    gre->SetTitle(";Data point removed in re-fit;p-value");
    gre->SetFillColor(1);
    gre->SetFillStyle(1000);
    
-   TH1F *Graph_Graph01043 = new TH1F("Graph_Graph01043","",100,0.4,7.6);
-   Graph_Graph01043->SetMinimum(0.08945419);
-   Graph_Graph01043->SetMaximum(0.8211332);
-   Graph_Graph01043->SetDirectory(0);
-   Graph_Graph01043->SetStats(0);
+   TH1F *Graph_Graph01037 = new TH1F("Graph_Graph01037","",100,0.4,7.6);
+   Graph_Graph01037->SetMinimum(0.08945419);
+   Graph_Graph01037->SetMaximum(0.8211332);
+   Graph_Graph01037->SetDirectory(0);
+   Graph_Graph01037->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01043->SetLineColor(ci);
-   Graph_Graph01043->GetXaxis()->SetTitle("Data point removed in re-fit");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(9,"None");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(23,"+50");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(37,"+30");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(51,"+10");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(64,"#minus10");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(78,"#minus30");
-   Graph_Graph01043->GetXaxis()->SetBinLabel(92,"#minus50");
-   Graph_Graph01043->GetXaxis()->SetBit(TAxis::kLabelsHori);
-   Graph_Graph01043->GetXaxis()->CenterTitle(true);
-   Graph_Graph01043->GetXaxis()->SetNdivisions(7);
-   Graph_Graph01043->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01043->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01043->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01043->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01043->GetYaxis()->SetTitle("p-value");
-   Graph_Graph01043->GetYaxis()->CenterTitle(true);
-   Graph_Graph01043->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01043->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01043->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01043->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Graph01043->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01043->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01043->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01043->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01043);
+   Graph_Graph01037->SetLineColor(ci);
+   Graph_Graph01037->GetXaxis()->SetTitle("Data point removed in re-fit");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(9,"None");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(23,"+50");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(37,"+30");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(51,"+10");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(64,"#minus10");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(78,"#minus30");
+   Graph_Graph01037->GetXaxis()->SetBinLabel(92,"#minus50");
+   Graph_Graph01037->GetXaxis()->SetBit(TAxis::kLabelsHori);
+   Graph_Graph01037->GetXaxis()->CenterTitle(true);
+   Graph_Graph01037->GetXaxis()->SetNdivisions(7);
+   Graph_Graph01037->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01037->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01037->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01037->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01037->GetYaxis()->SetTitle("p-value");
+   Graph_Graph01037->GetYaxis()->CenterTitle(true);
+   Graph_Graph01037->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01037->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01037->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01037->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph01037->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01037->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01037->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01037->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01037);
    
    gre->Draw("ab");
    c->Modified();

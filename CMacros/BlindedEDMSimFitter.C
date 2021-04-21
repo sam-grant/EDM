@@ -8,7 +8,207 @@
 std::string config = "5.4e-18";
 std::string qual = "vertCorr_eQ_eQ";
 
-bool unblind = false; //false; //true;
+bool unblind = true;//false;//true;//false; //false; //true;
+
+void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	TF1 *func = graph->GetFunction("FullEDMFunc");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0);
+	double err0 = func->GetParError(0);
+	double par2 = func->GetParameter(2);
+	double err2 = func->GetParError(2);
+	double par3 = func->GetParameter(3);
+	double err3 = func->GetParError(3);
+	double par4 = func->GetParameter(4);
+	double err4 = func->GetParError(4);
+
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
+	leg->SetNColumns(2);
+	leg->AddEntry(graph, "Sim   ");
+	if(!unblind) leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) + A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) + c");
+	else leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) + A_{EDM} sin(#omega_{a}t+#phi) + c");
+	leg->SetBorderSize(0);
+
+	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
+	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("N") ; 
+	names->AddText("#chi^{2}/ndf");
+	//names->AddText("A_{g-2} [mrad]");
+	//names->AddText("#phi");
+	string amplitude;
+	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	else amplitude = "A_{EDM} [mrad]";
+	names->AddText(amplitude.c_str());
+	names->AddText("c [mrad]"); 
+
+	//TPaveText *values = new TPaveText(0.65,0.55,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.65,0.59,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(SciNotation(double(N))); 
+	values->AddText(Round(chi2ndf, 3));
+	//values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+
+	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
+	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("700 < p [MeV] < 2400");
+	cuts->AddText("0 < t [#mus] < 300");
+
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(26);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);
+	graph->Draw("AP");
+	values->Draw("same");
+	names->Draw("same");
+	leg->Draw("same");
+	func->Draw("same");
+	cuts->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	TF1 *func = graph->GetFunction("FiveParFunc");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+	double par1 = func->GetParameter(1); double err1 = func->GetParError(1);
+	double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
+	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
+
+	TLegend *leg = new TLegend(0.25,0.15,.75,0.25);
+	leg->SetNColumns(2);
+	leg->AddEntry(graph, "Sim   ");
+	leg->AddEntry(func,"N_{0}e^{-t/#tau}[1+Acos(#omega_{a}t+#phi)]");
+	leg->SetBorderSize(0);
+
+	TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("N"); 
+	names->AddText("#chi^{2}/ndf");
+	names->AddText("N_{0}");
+	names->AddText("#tau [#mus]");
+	names->AddText("A"); 
+	names->AddText("#phi [rad]"); 
+
+	TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(SciNotation(double(N))); 
+	values->AddText(Round(chi2ndf, 3));
+	values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
+	values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
+	values->AddText(Round(par2, 4)+"#pm"+Round(err2, 1));
+	//values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+
+	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("1800 < p [MeV] < 3100");
+	cuts->AddText("30 < t [#mus] < 300");
+
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(26);
+
+	graph->SetTitle(title.c_str());
+
+	graph->GetXaxis()->SetRangeUser(0, G2PERIOD);
+	graph->GetYaxis()->SetRangeUser(ymin, ymax);
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->Draw("AP");
+
+	values->Draw("same");
+	names->Draw("same");
+	cuts->Draw("same");
+	leg->Draw("same");
+	func->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+double FullEDMFunc(double *x, double *par) {
+  return ( par[0] * TMath::Cos((par[1] * x[0]) + par[2]) ) + ( par[3] * TMath::Sin((par[1] * x[0]) + par[2]) ) + par[4];
+}
+
+
+void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4) {
+  
+  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, 0, G2PERIOD, 5);
+
+  func->SetParameter(0, par0); // A_g-2
+  func->FixParameter(1, par1); // Omega
+  func->FixParameter(2, par2); // Phi
+  func->SetParameter(3, par3); // A_EDM
+  func->SetParameter(4, par4); // c
+
+  graph->Fit(func, "MR"); // ,"MR");
+
+  return;
+
+}
 
 TGraphErrors *BlindedModuloGraph(TFile *input, TGraphErrors *gr_thetaY_mod) { 
 
@@ -97,7 +297,32 @@ void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names,
 
 }
 
-void SimultaneousAnalysis(TFile *input, TFile *output) { 
+double GetPhase(TFile *input) { 
+
+	TH1D *h1_wiggle_mod = (TH1D*)input->Get("Wiggle_Modulo");
+	TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
+
+	FitFivePar(gr_wiggle_mod, 1300, 64, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
+
+	TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
+	modWiggle->SetParName(0,"N_{0}");
+	modWiggle->SetParName(1,"#tau [#mus]");
+	modWiggle->SetParName(2,"A");
+	//modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
+	modWiggle->SetParName(4,"#phi [rad]");
+
+	DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Blinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 15e3, 61e3);
+
+	return modWiggle->GetParameter(4);
+
+}
+
+
+void SimultaneousAnalysis(TFile *input, TFile *output) {
+
+  const double phi = GetPhase(input); 
+
+  std::cout<<"Phase is "<<phi<<std::endl;
 
   TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
   TH2D *moduloHistS0 = (TH2D*)input->Get("S0_ThetaY_vs_Time_Modulo");
@@ -116,6 +341,8 @@ void SimultaneousAnalysis(TFile *input, TFile *output) {
 
     string name = names.at(counter);
 
+    if(name != "S0S12S18") continue;
+
     std::cout<<"Got modulo for "<<name<<std::endl;
 
     int nEntries = hist->GetEntries();
@@ -123,16 +350,16 @@ void SimultaneousAnalysis(TFile *input, TFile *output) {
     TH1D *moduloProf = hist->ProfileX();
     std::cout << "Generated x-profile...\t: " << moduloProf << std::endl;
 
-
-
     TGraphErrors *moduloGraph = BlindedModuloGraph(input, ConvertToTGraphErrors(moduloProf)); // 	;
     moduloGraph->GetYaxis()->SetRangeUser(-.425, .425);
-    // Fit
-    SimpleSinFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
 
-    std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
+    // Fit
+    FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
+
+    std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParameter(0)<<std::endl;
 	
-    DrawSimpleSinFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/"+name+"_ModuloFit_"+qual+"_"+to_string(unblind)).c_str(), double(nEntries),unblind);
+
+    DrawFullEDMFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/"+name+"_ModuloFit_"+qual+"_"+to_string(unblind)).c_str(), double(nEntries),unblind);
 
     moduloGraph->SetName((name+"_fit").c_str());
     moduloGraph->Write();
@@ -253,7 +480,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
 int main() {
 
-  bool write = true;
+  bool write = false;//true;
   // Read file
   std::string inputName = "../Plots/MC/dMu/"+config+"/dMuSim_"+qual+".root";
   TFile *input = TFile::Open(inputName.c_str());
@@ -272,7 +499,7 @@ int main() {
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
-  MomentumBinnedAnalysis(input, output);
+  //MomentumBinnedAnalysis(input, output);
 
   input->Close();
   output->Close();

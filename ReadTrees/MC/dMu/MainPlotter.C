@@ -76,7 +76,7 @@ double ModTime(double time) {
 void Plotter::Run() {
 
   bool quality = true;//true;
-  bool vertCorr = true; 
+  bool vertCorr = false;//true; 
 
   TFile *input = TFile::Open("../../../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_eQ.root");
 
@@ -112,8 +112,8 @@ void Plotter::Run() {
     }
 
     if(quality) { 
-      if(tr->trackPValue < 0.05) continue;
-      if(p < 700 || p > 2400) continue;
+      //if(tr->trackPValue < 0.05) continue;
+      //if(p < 700 || p > 2400) continue;
       if(time > 300) continue;
     }
 
