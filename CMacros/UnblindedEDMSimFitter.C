@@ -9,7 +9,7 @@ std::string config = "5.4e-18";
 //std::string qual = "pValQ";
 //std::string qual = "noQ";
 
-std::string qual = "eQ";
+std::string qual = "vertCorr_eQ_eQ";
 
 //std::string qual = "vertCorr_noQ_eQ";
 //std::string qual = "vertCorr_pValQ_eQ";

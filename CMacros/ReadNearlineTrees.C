@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void ReadYPos(string input, string output, double eMin, double eMax, double tMin) {
+void ReadYPos(string input, string output, double eMin, double eMax, double tMin, double tMax) {
 
    // ++++++++++++++ Open tree and load branches ++++++++++++++
    // Get file
@@ -70,14 +70,14 @@ void ReadYPos(string input, string output, double eMin, double eMax, double tMin
    		double xmm = x_.at(i_clu) * 25;
    		double ymm = y_.at(i_clu) * 25; 
    		double energy = energy_.at(i_clu);
-   		double time = times_.at(i_clu);
+   		double time = times_.at(i_clu) * 1.25 * 1e-3; // ct -> us
 
          // Apply CTAG cuts
    		//if(energy > 1700 && energy < 6000 && time > 24000) {
          // Apply new cuts 
          //if(energy > 1000 && energy < 6000 && time > 30000) {
          // Variable cuts
-         if(energy > eMin && energy < eMax && time > tMin) {
+         if(energy > eMin && energy < eMax && time > tMin && time < tMax) {
 
    			tot_ctag_check++;
 
@@ -143,8 +143,10 @@ int main(int argc, char *argv[]) {
    string eMin = argv[2];
    string eMax = argv[3];
    string tMin = argv[4];
+   string tMax = argv[5];
 
-   string outDir = eMin+"MeV_"+eMax+"MeV_"+tMin+"ns";
+
+   string outDir = eMin+"MeV_"+eMax+"MeV_"+tMin+"us_"+tMax+"us";
 
    cout << "Running\t" <<run<<endl;
 
@@ -154,9 +156,9 @@ int main(int argc, char *argv[]) {
    string input = "/Volumes/BACKUP/gm2/EDM/Trees/Data/"+study+"/"+stage+"/merged/gm2nearline_hists_run"+run+".root";
    string output = "/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/"+study+"/"+stage+"/cutsTesting/"+outDir+"/y-pos_"+run+".root";
 
-   cout<<std::stod(eMin)<<" < E [MeV] < "<<std::stod(eMax)<<", t [ns] > "<<std::stod(tMin)<<endl;
+   cout<<std::stod(eMin)<<" < E [MeV] < "<<std::stod(eMax)<<", "<<std::stod(tMin)<<" < t [us] < "<<std::stod(tMax)<<endl;
 
-   ReadYPos(input, output, std::stod(eMin), std::stod(eMax), std::stod(tMin));
+   ReadYPos(input, output, std::stod(eMin), std::stod(eMax), std::stod(tMin), std::stod(tMax));
 
    return 0;
 }

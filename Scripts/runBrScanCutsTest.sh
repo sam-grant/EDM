@@ -1,27 +1,36 @@
+eMax=2750
+eMinArray=(0 250 500 750 1000 1250 1500)
+tMinArray=(0 23 30)
+tMaxArray=(300) # 600000)
 
-eMin=1700
-eMax=6000
-tMin=30000 
+for tMin in ${tMinArray}; do
+	for tMax in ${tMaxArray}; do
+		for eMin in ${eMinArray}; do
 
-cd ../CMacros 
+			# eMax=$((eMin+500))
+			#echo $eMax 
+			# continue
 
-outDir1=/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/RadialFieldScan_2/raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}ns
-if [ ! -d $outDir1 ]; then
-	mkdir $outDir1
-fi
+			cd ../CMacros 
 
-outDir2=/Users/samuelgrant/Documents/gm2/EDM/Images/Data/RadialFieldScan_2/raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}ns
-if [ ! -d $outDir2 ]; then
-	mkdir $outDir2
-fi
-#mkdir /Users/samuelgrant/Documents/gm2/EDM/Plots/Data/RadialFieldScan_2/raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}
+			outDir1=/Users/samuelgrant/Documents/gm2/EDM/Plots/Data/RadialFieldScan_2/raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}us_${tMax}us
+			if [ ! -d $outDir1 ]; then
+				mkdir $outDir1
+			fi
 
-for run in `cat ../txt/RadialFieldScanRunNumbers_2.txt | sort -V`; do
+			outDir2=/Users/samuelgrant/Documents/gm2/EDM/Images/Data/RadialFieldScan_2/raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}us_${tMax}us
+			if [ ! -d $outDir2 ]; then
+				mkdir $outDir2
+			fi
 
-	./ReadNearlineTrees.exe $run $eMin $eMax $tMin
+			for run in `cat ../txt/RadialFieldScanRunNumbers_2.txt | sort -V`; do
+				./ReadNearlineTrees.exe $run $eMin $eMax $tMin $tMax
+			done
 
+			./AnalyseBr_nearline.exe raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}us_${tMax}us
+
+			cd ../Scripts
+
+		done
+	done
 done
-
-./AnalyseBr_nearline.exe raw/cutsTesting/${eMin}MeV_${eMax}MeV_${tMin}ns
-
-cd ../Scripts

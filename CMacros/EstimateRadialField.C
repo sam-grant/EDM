@@ -139,7 +139,7 @@ TGraphErrors *GetBr(TGraphErrors *input, double BrBkg, double BrBkgErr) {
 int main() {
 
   // Get the background radial field at the zero point
-  tuple<double, double> bkg_field = GetBrBkg(TFile::Open("../Plots/Data/RadialFieldScan_2/fits.root","READ"));
+  tuple<double, double> bkg_field = GetBrBkg(TFile::Open("../Plots/Data/RadialFieldScan_2/raw/fits.root","READ"));
   double BrBkg = get<0>(bkg_field); double BrBkgErr = get<1>(bkg_field);
 
 	// Get zero point in mm 

@@ -489,7 +489,7 @@ int main(int argc, char *argv[]) {
   output->Close();
   // Draw main fit residuals 
 
-  DrawTGraphResiduals(result, "mainFit", ";#LTB_{r}^{App}#GT [ppm];Fit residual [ppm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFitRes");
+  DrawTGraphResiduals(result, "mainFit", ";#LTB_{r}^{App}#GT [ppm];Fit residual [mm#upointkV]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFitRes");
 
   // ++++++++++++++++ Check p-values ++++++++++++++++ 
 

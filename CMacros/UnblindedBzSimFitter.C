@@ -5,7 +5,8 @@
 #include "RootInclude.h"
 
 std::string config = "1700ppm";
-std::string qual = "vertCorr_eQ_eQ";
+std::string qual = "vertCorr_eQ_eQ_2";
+//std::string qual = "gQ_coarse";
 // std::string qual = "eQ";
 
 double xmin = 7*G2PERIOD;
@@ -110,6 +111,8 @@ void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names,
 
   for(int i = 0; i < nGraphs; i++) {
     graphs.at(i)->SetMarkerStyle(20);
+    if(i==3) graphs.at(i)->SetMarkerColor(kGreen-3);
+    else if(i==4) graphs.at(i)->SetMarkerColor(kOrange+7);
     l->AddEntry(graphs.at(i), (names.at(i)).c_str());
     if(i==0) graphs.at(i)->Draw("AP");
     else graphs.at(i)->Draw("P SAME");
@@ -143,8 +146,9 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
     std::vector<double> ABz_;
     std::vector<double> eABz_;
 
+    int step = 100;
     int pmin = 0.; 
-    int pmax = 100.;
+    int pmax = step+pmin;
 
     for(int i_cut = 0; i_cut < 50; i_cut++) {
 
@@ -157,8 +161,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
       //std::cout<<name<<" , "<<moduloHist<<std::endl;
       
       if(moduloHist == 0) {
-        pmin = pmin + 100;
-        pmax = pmax + 100;
+        pmin = pmin + step;
+        pmax = pmax + step;
         continue;
       }
 
@@ -185,8 +189,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
       ABz_.push_back(moduloGraph->GetFunction("BzFunc")->GetParameter(0));
       eABz_.push_back(moduloGraph->GetFunction("BzFunc")->GetParError(0));
 
-      pmin = pmin + 100;
-      pmax = pmax + 100;
+      pmin = pmin + step;
+      pmax = pmax + step;
 
       delete moduloProf; delete moduloHist;
 
@@ -198,8 +202,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
     c_vs_p->GetXaxis()->SetRangeUser(0,3000);
     ABz_vs_p->GetXaxis()->SetRangeUser(0,3000);
 
-    DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/BzSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
-    DrawTGraphErrors(ABz_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{Bz} [mrad]", ("../Images/MC/BzSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_ABz_vs_p_"+qual).c_str());
+    DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/BzSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
+    DrawTGraphErrors(ABz_vs_p, name+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{Bz} [mrad]", ("../Images/MC/BzSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_ABz_vs_p_"+qual).c_str());
 
     cGraphs_.push_back(c_vs_p);
     ABzGraphs_.push_back(ABz_vs_p);
@@ -227,6 +231,9 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
   } else if(qual=="vertCorr_eQ_eQ") { 
     c_ymin = -0.065; c_ymax = 0.05;
     A_ymin = -0.05; A_ymax = 0.4;
+  } else if(qual=="eQ_coarse") {
+    c_ymin = -0.6; c_ymax = 0.15;
+    A_ymin = 0.0; A_ymax = 0.35;
   } else { 
   	c_ymin = -2; c_ymax = 2;
     A_ymin = -2; A_ymax = 2;
@@ -302,7 +309,7 @@ void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
 int main() {
 
 	bool sanityPlots = false;//true;
-	bool write = false;//true; 
+	bool write = true; 
 
 	// Read file
 	TFile *input = TFile::Open(("../Plots/MC/BzSim/"+config+"/BzSim_"+qual+".root").c_str());
@@ -393,16 +400,18 @@ int main() {
 
 	DrawBzFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+config+"/Unblinded/fit_Bz_"+qual);
 
+  gr_thetaY_mod->Write();
+
 	cout<<"Number of tracks in fit:\t"<<px_thetaY_mod->GetEntries()<<endl;
 
 	// Momentum binned 
 	cout<<"\nPerforming momentum binned analysis"<<endl;
 	
 	output->mkdir("MomentumBinnedAnalysis");
-  	output->mkdir("MomentumBinnedAnalysis/ModuloFits");
-  	output->mkdir("MomentumBinnedAnalysis/ParameterScans");
+  output->mkdir("MomentumBinnedAnalysis/ModuloFits");
+  output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
-	//MomentumBinnedAnalysis(input, output, phi);
+	MomentumBinnedAnalysis(input, output, phi);
 
 	input->Close();
 	output->Close();

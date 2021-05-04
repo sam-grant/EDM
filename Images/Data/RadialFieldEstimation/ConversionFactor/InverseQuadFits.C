@@ -1,7 +1,7 @@
 void InverseQuadFits()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Mar 25 17:55:13 2021) by ROOT version 6.22/06
+//=========  (Wed Apr 28 20:53:09 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-51.71429,70,85.42857,80);
@@ -19,11 +19,11 @@ void InverseQuadFits()
    -10,
    -30};
    Double_t Graph0_fy1001[5] = {
-   77.58543,
-   76.35108,
-   75.15796,
-   73.95424,
-   72.76476};
+   77.66587,
+   76.30882,
+   75.0715,
+   73.7531,
+   72.4789};
    Double_t Graph0_fex1001[5] = {
    0,
    0,
@@ -31,11 +31,11 @@ void InverseQuadFits()
    0,
    0};
    Double_t Graph0_fey1001[5] = {
-   0.01318635,
-   0.01313844,
-   0.01307321,
-   0.0134169,
-   0.01342478};
+   0.02030086,
+   0.01453961,
+   0.01771062,
+   0.01452874,
+   0.01847127};
    TGraphErrors *gre = new TGraphErrors(5,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
    gre->SetTitle(";#LTB_{r}^{App}#GT;#LTy#GT [mm]");
@@ -75,18 +75,18 @@ void InverseQuadFits()
    fit1002->SetFillColor(19);
    fit1002->SetFillStyle(0);
    fit1002->SetLineWidth(2);
-   fit1002->SetChisquare(3.464162);
+   fit1002->SetChisquare(9.651593);
    fit1002->SetNDF(3);
    fit1002->GetXaxis()->SetLabelFont(42);
    fit1002->GetXaxis()->SetTitleOffset(1);
    fit1002->GetXaxis()->SetTitleFont(42);
    fit1002->GetYaxis()->SetLabelFont(42);
    fit1002->GetYaxis()->SetTitleFont(42);
-   fit1002->SetParameter(0,74.56069);
-   fit1002->SetParError(0,0.006318158);
+   fit1002->SetParameter(0,74.40498);
+   fit1002->SetParError(0,0.007867342);
    fit1002->SetParLimits(0,0,0);
-   fit1002->SetParameter(1,0.06019296);
-   fit1002->SetParError(1,0.0002102907);
+   fit1002->SetParameter(1,0.0645117);
+   fit1002->SetParError(1,0.0002847164);
    fit1002->SetParLimits(1,0,0);
    fit1002->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1002);
@@ -96,18 +96,18 @@ void InverseQuadFits()
    fit1003->SetFillColor(19);
    fit1003->SetFillStyle(0);
    fit1003->SetLineWidth(2);
-   fit1003->SetChisquare(3.464162);
+   fit1003->SetChisquare(9.651593);
    fit1003->SetNDF(3);
    fit1003->GetXaxis()->SetLabelFont(42);
    fit1003->GetXaxis()->SetTitleOffset(1);
    fit1003->GetXaxis()->SetTitleFont(42);
    fit1003->GetYaxis()->SetLabelFont(42);
    fit1003->GetYaxis()->SetTitleFont(42);
-   fit1003->SetParameter(0,74.56069);
-   fit1003->SetParError(0,0.006318158);
+   fit1003->SetParameter(0,74.40498);
+   fit1003->SetParError(0,0.007867342);
    fit1003->SetParLimits(0,0,0);
-   fit1003->SetParameter(1,0.06019296);
-   fit1003->SetParError(1,0.0002102907);
+   fit1003->SetParameter(1,0.0645117);
+   fit1003->SetParError(1,0.0002847164);
    fit1003->SetParLimits(1,0,0);
    fit1003->Draw("same");
    
@@ -119,12 +119,12 @@ void InverseQuadFits()
    -30,
    -50};
    Double_t Graph1_fy1003[6] = {
-   77.24747,
-   76.13956,
-   75.0552,
-   74.06051,
-   72.95215,
-   71.91741};
+   77.25431,
+   76.13916,
+   74.97153,
+   73.85256,
+   72.73378,
+   71.58552};
    Double_t Graph1_fex1003[6] = {
    0,
    0,
@@ -133,12 +133,12 @@ void InverseQuadFits()
    0,
    0};
    Double_t Graph1_fey1003[6] = {
-   0.01268397,
-   0.01125804,
-   0.01192798,
-   0.01242639,
-   0.01255356,
-   0.0121433};
+   0.01619135,
+   0.02068126,
+   0.01197841,
+   0.0155008,
+   0.01865954,
+   0.01841166};
    gre = new TGraphErrors(6,Graph1_fx1003,Graph1_fy1003,Graph1_fex1003,Graph1_fey1003);
    gre->SetName("Graph1");
    gre->SetTitle("Graph");
@@ -148,8 +148,8 @@ void InverseQuadFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph11003 = new TH1F("Graph_Graph11003","Graph",100,-60,60);
-   Graph_Graph11003->SetMinimum(71.36977);
-   Graph_Graph11003->SetMaximum(77.79564);
+   Graph_Graph11003->SetMinimum(70.99677);
+   Graph_Graph11003->SetMaximum(77.84084);
    Graph_Graph11003->SetDirectory(0);
    Graph_Graph11003->SetStats(0);
 
@@ -171,18 +171,18 @@ void InverseQuadFits()
    fit1004->SetFillStyle(0);
    fit1004->SetLineColor(2);
    fit1004->SetLineWidth(2);
-   fit1004->SetChisquare(25.80655);
+   fit1004->SetChisquare(2.976334);
    fit1004->SetNDF(4);
    fit1004->GetXaxis()->SetLabelFont(42);
    fit1004->GetXaxis()->SetTitleOffset(1);
    fit1004->GetXaxis()->SetTitleFont(42);
    fit1004->GetYaxis()->SetLabelFont(42);
    fit1004->GetYaxis()->SetTitleFont(42);
-   fit1004->SetParameter(0,74.56092);
-   fit1004->SetParError(0,0.004955272);
+   fit1004->SetParameter(0,74.41901);
+   fit1004->SetParError(0,0.006597912);
    fit1004->SetParLimits(0,0,0);
-   fit1004->SetParameter(1,0.05312037);
-   fit1004->SetParError(1,0.0001464241);
+   fit1004->SetParameter(1,0.05664662);
+   fit1004->SetParError(1,0.00021044);
    fit1004->SetParLimits(1,0,0);
    fit1004->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1004);
@@ -193,18 +193,18 @@ void InverseQuadFits()
    fit1005->SetFillStyle(0);
    fit1005->SetLineColor(2);
    fit1005->SetLineWidth(2);
-   fit1005->SetChisquare(25.80655);
+   fit1005->SetChisquare(2.976334);
    fit1005->SetNDF(4);
    fit1005->GetXaxis()->SetLabelFont(42);
    fit1005->GetXaxis()->SetTitleOffset(1);
    fit1005->GetXaxis()->SetTitleFont(42);
    fit1005->GetYaxis()->SetLabelFont(42);
    fit1005->GetYaxis()->SetTitleFont(42);
-   fit1005->SetParameter(0,74.56092);
-   fit1005->SetParError(0,0.004955272);
+   fit1005->SetParameter(0,74.41901);
+   fit1005->SetParError(0,0.006597912);
    fit1005->SetParLimits(0,0,0);
-   fit1005->SetParameter(1,0.05312037);
-   fit1005->SetParError(1,0.0001464241);
+   fit1005->SetParameter(1,0.05664662);
+   fit1005->SetParError(1,0.00021044);
    fit1005->SetParLimits(1,0,0);
    fit1005->Draw("same");
    
@@ -215,11 +215,11 @@ void InverseQuadFits()
    -30,
    -50};
    Double_t Graph2_fy1005[5] = {
-   76.96306,
-   75.98884,
-   74.04461,
-   73.14082,
-   72.203};
+   76.97646,
+   75.94393,
+   73.87522,
+   72.90405,
+   71.89776};
    Double_t Graph2_fex1005[5] = {
    0,
    0,
@@ -227,11 +227,11 @@ void InverseQuadFits()
    0,
    0};
    Double_t Graph2_fey1005[5] = {
-   0.01212545,
-   0.01188426,
-   0.01167433,
-   0.01212539,
-   0.01229377};
+   0.01679603,
+   0.01376328,
+   0.01520311,
+   0.01402425,
+   0.01427944};
    gre = new TGraphErrors(5,Graph2_fx1005,Graph2_fy1005,Graph2_fex1005,Graph2_fey1005);
    gre->SetName("Graph2");
    gre->SetTitle("Graph");
@@ -241,8 +241,8 @@ void InverseQuadFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph21005 = new TH1F("Graph_Graph21005","Graph",100,-60,60);
-   Graph_Graph21005->SetMinimum(71.71226);
-   Graph_Graph21005->SetMaximum(77.45363);
+   Graph_Graph21005->SetMinimum(71.3725);
+   Graph_Graph21005->SetMaximum(77.50424);
    Graph_Graph21005->SetDirectory(0);
    Graph_Graph21005->SetStats(0);
 
@@ -264,18 +264,18 @@ void InverseQuadFits()
    fit1006->SetFillStyle(0);
    fit1006->SetLineColor(3);
    fit1006->SetLineWidth(2);
-   fit1006->SetChisquare(18.76197);
+   fit1006->SetChisquare(8.628963);
    fit1006->SetNDF(3);
    fit1006->GetXaxis()->SetLabelFont(42);
    fit1006->GetXaxis()->SetTitleOffset(1);
    fit1006->GetXaxis()->SetTitleFont(42);
    fit1006->GetYaxis()->SetLabelFont(42);
    fit1006->GetYaxis()->SetTitleFont(42);
-   fit1006->SetParameter(0,74.56254);
-   fit1006->SetParError(0,0.005378306);
+   fit1006->SetParameter(0,74.42102);
+   fit1006->SetParError(0,0.006625675);
    fit1006->SetParLimits(0,0,0);
-   fit1006->SetParameter(1,0.04763511);
-   fit1006->SetParError(1,0.0001463598);
+   fit1006->SetParameter(1,0.05076836);
+   fit1006->SetParError(1,0.0001813621);
    fit1006->SetParLimits(1,0,0);
    fit1006->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1006);
@@ -286,18 +286,18 @@ void InverseQuadFits()
    fit1007->SetFillStyle(0);
    fit1007->SetLineColor(3);
    fit1007->SetLineWidth(2);
-   fit1007->SetChisquare(18.76197);
+   fit1007->SetChisquare(8.628963);
    fit1007->SetNDF(3);
    fit1007->GetXaxis()->SetLabelFont(42);
    fit1007->GetXaxis()->SetTitleOffset(1);
    fit1007->GetXaxis()->SetTitleFont(42);
    fit1007->GetYaxis()->SetLabelFont(42);
    fit1007->GetYaxis()->SetTitleFont(42);
-   fit1007->SetParameter(0,74.56254);
-   fit1007->SetParError(0,0.005378306);
+   fit1007->SetParameter(0,74.42102);
+   fit1007->SetParError(0,0.006625675);
    fit1007->SetParLimits(0,0,0);
-   fit1007->SetParameter(1,0.04763511);
-   fit1007->SetParError(1,0.0001463598);
+   fit1007->SetParameter(1,0.05076836);
+   fit1007->SetParError(1,0.0001813621);
    fit1007->SetParLimits(1,0,0);
    fit1007->Draw("same");
    
@@ -309,12 +309,12 @@ void InverseQuadFits()
    -30,
    -50};
    Double_t Graph3_fy1007[6] = {
-   76.80587,
-   75.91636,
-   75.00336,
-   74.14382,
-   73.25735,
-   72.33542};
+   76.80487,
+   75.84816,
+   74.88405,
+   73.94443,
+   72.99069,
+   72.06276};
    Double_t Graph3_fex1007[6] = {
    0,
    0,
@@ -323,12 +323,12 @@ void InverseQuadFits()
    0,
    0};
    Double_t Graph3_fey1007[6] = {
-   0.01225522,
-   0.01181116,
-   0.01168544,
-   0.01180172,
-   0.01213645,
-   0.01190349};
+   0.01638699,
+   0.01669002,
+   0.01550752,
+   0.01722104,
+   0.01133484,
+   0.01523482};
    gre = new TGraphErrors(6,Graph3_fx1007,Graph3_fy1007,Graph3_fex1007,Graph3_fey1007);
    gre->SetName("Graph3");
    gre->SetTitle("Graph");
@@ -338,8 +338,8 @@ void InverseQuadFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph31007 = new TH1F("Graph_Graph31007","Graph",100,-60,60);
-   Graph_Graph31007->SetMinimum(71.87406);
-   Graph_Graph31007->SetMaximum(77.26759);
+   Graph_Graph31007->SetMinimum(71.57015);
+   Graph_Graph31007->SetMaximum(77.29863);
    Graph_Graph31007->SetDirectory(0);
    Graph_Graph31007->SetStats(0);
 
@@ -361,18 +361,18 @@ void InverseQuadFits()
    fit1008->SetFillStyle(0);
    fit1008->SetLineColor(4);
    fit1008->SetLineWidth(2);
-   fit1008->SetChisquare(7.167245);
+   fit1008->SetChisquare(2.30741);
    fit1008->SetNDF(4);
    fit1008->GetXaxis()->SetLabelFont(42);
    fit1008->GetXaxis()->SetTitleOffset(1);
    fit1008->GetXaxis()->SetTitleFont(42);
    fit1008->GetYaxis()->SetLabelFont(42);
    fit1008->GetYaxis()->SetTitleFont(42);
-   fit1008->SetParameter(0,74.57684);
-   fit1008->SetParError(0,0.004869354);
+   fit1008->SetParameter(0,74.42147);
+   fit1008->SetParError(0,0.006173438);
    fit1008->SetParLimits(0,0,0);
-   fit1008->SetParameter(1,0.04455664);
-   fit1008->SetParError(1,0.0001438884);
+   fit1008->SetParameter(1,0.04747224);
+   fit1008->SetParError(1,0.00018177);
    fit1008->SetParLimits(1,0,0);
    fit1008->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1008);
@@ -383,18 +383,18 @@ void InverseQuadFits()
    fit1009->SetFillStyle(0);
    fit1009->SetLineColor(4);
    fit1009->SetLineWidth(2);
-   fit1009->SetChisquare(7.167245);
+   fit1009->SetChisquare(2.30741);
    fit1009->SetNDF(4);
    fit1009->GetXaxis()->SetLabelFont(42);
    fit1009->GetXaxis()->SetTitleOffset(1);
    fit1009->GetXaxis()->SetTitleFont(42);
    fit1009->GetYaxis()->SetLabelFont(42);
    fit1009->GetYaxis()->SetTitleFont(42);
-   fit1009->SetParameter(0,74.57684);
-   fit1009->SetParError(0,0.004869354);
+   fit1009->SetParameter(0,74.42147);
+   fit1009->SetParError(0,0.006173438);
    fit1009->SetParLimits(0,0,0);
-   fit1009->SetParameter(1,0.04455664);
-   fit1009->SetParError(1,0.0001438884);
+   fit1009->SetParameter(1,0.04747224);
+   fit1009->SetParError(1,0.00018177);
    fit1009->SetParLimits(1,0,0);
    fit1009->Draw("same");
    

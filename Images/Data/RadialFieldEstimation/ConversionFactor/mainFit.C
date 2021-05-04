@@ -1,11 +1,11 @@
 void mainFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Mar 25 17:55:13 2021) by ROOT version 6.22/06
+//=========  (Wed Apr 28 20:53:09 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(0.04590115,0.04041512,0.07650345,0.06440087);
+   c->Range(0.04590115,0.04291398,0.07650345,0.06917291);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -18,20 +18,20 @@ void mainFit()
    0.05555556,
    0.05128205};
    Double_t Graph0_fy1009[4] = {
-   0.06019296,
-   0.05312037,
-   0.04763511,
-   0.04455664};
+   0.0645117,
+   0.05664662,
+   0.05076836,
+   0.04747224};
    Double_t Graph0_fex1009[4] = {
    0,
    0,
    0,
    0};
    Double_t Graph0_fey1009[4] = {
-   0.0002102907,
-   0.0001464241,
-   0.0001463598,
-   0.0001438884};
+   0.0002847164,
+   0.00021044,
+   0.0001813621,
+   0.00018177};
    TGraphErrors *gre = new TGraphErrors(4,Graph0_fx1009,Graph0_fy1009,Graph0_fex1009,Graph0_fey1009);
    gre->SetName("Graph0");
    gre->SetTitle(";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]");
@@ -39,8 +39,8 @@ void mainFit()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01009 = new TH1F("Graph_Graph01009","",100,0.0492674,0.07344322);
-   Graph_Graph01009->SetMinimum(0.0428137);
-   Graph_Graph01009->SetMaximum(0.0620023);
+   Graph_Graph01009->SetMinimum(0.04553987);
+   Graph_Graph01009->SetMaximum(0.06654702);
    Graph_Graph01009->SetDirectory(0);
    Graph_Graph01009->SetStats(0);
 
@@ -75,18 +75,18 @@ void mainFit()
    ci = TColor::GetColor("#ff0000");
    fit1010->SetLineColor(ci);
    fit1010->SetLineWidth(3);
-   fit1010->SetChisquare(1.672759);
+   fit1010->SetChisquare(2.338509);
    fit1010->SetNDF(2);
    fit1010->GetXaxis()->SetLabelFont(42);
    fit1010->GetXaxis()->SetTitleOffset(1);
    fit1010->GetXaxis()->SetTitleFont(42);
    fit1010->GetYaxis()->SetLabelFont(42);
    fit1010->GetYaxis()->SetTitleFont(42);
-   fit1010->SetParameter(0,0.00460494);
-   fit1010->SetParError(0,0.0006818875);
+   fit1010->SetParameter(0,0.00406094);
+   fit1010->SetParError(0,0.000896149);
    fit1010->SetParLimits(0,0,0);
-   fit1010->SetParameter(1,0.7768459);
-   fit1010->SetParError(1,0.01158826);
+   fit1010->SetParameter(1,0.8434073);
+   fit1010->SetParError(1,0.01537865);
    fit1010->SetParLimits(1,0,0);
    fit1010->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1010);
@@ -107,13 +107,13 @@ void mainFit()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("0.836
+   pt_LaTex = pt->AddText("1.17
 ");
-   pt_LaTex = pt->AddText("0.0046
-#pm0.0007
+   pt_LaTex = pt->AddText("0.00406
+#pm0.0009
 ");
-   pt_LaTex = pt->AddText("0.78
-#pm0.01
+   pt_LaTex = pt->AddText("0.84
+#pm0.02
 ");
    pt->Draw();
    
@@ -125,18 +125,18 @@ void mainFit()
    ci = TColor::GetColor("#ff0000");
    fit1011->SetLineColor(ci);
    fit1011->SetLineWidth(3);
-   fit1011->SetChisquare(1.672759);
+   fit1011->SetChisquare(2.338509);
    fit1011->SetNDF(2);
    fit1011->GetXaxis()->SetLabelFont(42);
    fit1011->GetXaxis()->SetTitleOffset(1);
    fit1011->GetXaxis()->SetTitleFont(42);
    fit1011->GetYaxis()->SetLabelFont(42);
    fit1011->GetYaxis()->SetTitleFont(42);
-   fit1011->SetParameter(0,0.00460494);
-   fit1011->SetParError(0,0.0006818875);
+   fit1011->SetParameter(0,0.00406094);
+   fit1011->SetParError(0,0.000896149);
    fit1011->SetParLimits(0,0,0);
-   fit1011->SetParameter(1,0.7768459);
-   fit1011->SetParError(1,0.01158826);
+   fit1011->SetParameter(1,0.8434073);
+   fit1011->SetParError(1,0.01537865);
    fit1011->SetParLimits(1,0,0);
    fit1011->Draw("same");
    c->Modified();

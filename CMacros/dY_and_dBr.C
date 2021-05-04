@@ -218,7 +218,8 @@ int main() {
 
 	// Get file for reprocessed scan 2 (current best)
 
-	TFile *input = TFile::Open("../Plots/Data/RadialFieldScan_2/fits.root");
+	TFile *input = TFile::Open("../Plots/Data/RadialFieldScan_2/raw/fits.root");
+	TFile *output = new TFile("../Plots/Data/RadialFieldEstimation/ConversionFactor/fits.root", "RECREATE");
 
 	double QHVs[4] = {14.0, 16.0, 18.0, 19.5};
 
@@ -261,8 +262,13 @@ int main() {
 
 	DrawMainFit(mainFit, ";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
 	
+	mainFit->SetName("mainFit");
 
-	
+	mainFit->Write(); 
+
+	output->Write();
+
+	input->Close();	
 	//DrawMainFit(mainFit, ";QHV [kV];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
 
 	return 0;

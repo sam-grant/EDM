@@ -130,7 +130,7 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	hist->SetTitle(title.c_str());
 
-	//hist->SetStats(0);
+	hist->SetStats(0);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -144,6 +144,8 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 	c->SetRightMargin(0.13);
 
 	hist->Draw("COLZ");
+
+	c->SetLogz();
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -358,6 +360,59 @@ void DrawTGraphErrorsDoubleXAxis(TGraphErrors *graph, std::string title, std::st
 	delete c;
 
 	return;
+
+}
+
+void OverlayThreeGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  //TLegend *l = new TLegend(0.45,0.79,0.89,0.89);
+  TLegend *l = new TLegend(0.15,0.79,0.59,0.89);
+  l->SetNColumns(3);
+  l->SetBorderSize(0);
+
+  graphs.at(0)->SetTitle(title.c_str());
+  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetXaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  // Hack together x-axis range
+  int N = graphs.at(0)->GetN();
+  double xmax = graphs.at(0)->GetPointX(N-1);// + 50;
+  double xmin = graphs.at(0)->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.05;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  graphs.at(0)->GetXaxis()->SetRangeUser(xmin, xmax);
+
+  int nGraphs = graphs.size();
+
+  graphs.at(0)->SetMarkerColor(kBlack);
+  graphs.at(1)->SetMarkerColor(kBlue);
+  graphs.at(2)->SetMarkerColor(kRed);
+
+  for(int i = 0; i < nGraphs; i++) {
+    graphs.at(i)->SetMarkerStyle(20);
+    l->AddEntry(graphs.at(i), (names.at(i)).c_str());
+    if(i==0) graphs.at(i)->Draw("AP");
+    else graphs.at(i)->Draw("P SAME");
+  }
+
+  l->Draw("same");
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
 
 }
 

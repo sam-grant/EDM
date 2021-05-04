@@ -1,0 +1,76 @@
+// Produce histograms for calo y-position
+
+// Sam Grant - Feb 2021
+
+// Running on the grid
+
+process_name : ana 
+  
+//-----------------------------------------------
+  
+source : {
+  
+  module_type : RootInput
+  maxEvents   : -1  
+  inputCommands : [ "keep *",
+    "drop gm2strawtracker*_*_*_*",
+    "keep gm2strawtracker::StrawDigitArtRecords_digitizer_straws_caloReco"
+  ]
+
+}
+  
+//-----------------------------------------------
+
+services : 
+{
+   message: {
+      debugModules : ["*"]
+      suppressInfo : []
+        
+      destinations: {
+         LogToFile: {
+            append    : false
+            filename  : "gm2calo_ana.log"
+            threshold : "INFO"
+            type      : "file"
+         }
+      }
+   }
+
+   scheduler: {
+      errorOnFailureToPut: false
+   }
+
+   TFileService : {
+      fileName : "gm2calo_ana.root"
+   }
+}
+
+//-----------------------------------------------
+  
+physics : {
+  
+  analyzers : { 
+   
+    caloBeamPositionPlots : {
+  
+      module_type : CaloBeamPositionPlots
+      clusterModuleLabel : hitClusterDAQ
+      clusterInstanceLabel : cluster
+//      SelectEvents : ["offline:muonPath"] // Works for Run-1
+	SelectEvents : ["caloReco:muonPathWithDQC"] // Works for run-3
+//	SelectEvents : ["caloReco:muonPath"] // Works for run-4
+    }
+
+  } // analyzers  
+   
+  // Define paths/streams
+  plotPath : [ caloBeamPositionPlots ]  
+  end_paths     : [ plotPath ]
+  
+}
+
+
+physics.analyzers.caloBeamPositionPlots.eMin : 0
+physics.analyzers.caloBeamPositionPlots.eMax : 5500
+physics.analyzers.caloBeamPositionPlots.tMin : 0

@@ -44,8 +44,10 @@ void Plotter::InitHistos() {
   plot2D("ThetaY_vs_Time_Modulo_Fine", 1000, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
 
   // Slice momentum in 100 MeV up to 3100 MeV
-  for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
+  //for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
+  for ( int i_slice = 0; i_slice < 15; i_slice++ ) { 
 
+    //int step = 100;
     int step = 100;
     int lo = 0 + i_slice*step; 
     int hi = step + i_slice*step;
@@ -53,6 +55,7 @@ void Plotter::InitHistos() {
     plot2D(("S0_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
     plot2D(("S12_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
     plot2D(("S18_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
+    plot2D(("S12S18_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
     plot2D(("S0S12S18_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), 87, 0, g2Period, 180, -60, 60, "t_{g#minus2}^{mod} [#mus]", "#theta_{y} [mrad]");
 
   }
@@ -111,14 +114,21 @@ void Plotter::Run() {
     }
 
     if(quality) { 
-      if(tr->trackPValue < 0.05) continue;
-      if(p < 700 || p > 2400) continue;
-      if(time > 300) continue;
-    }
 
-    // Vertical angle plots
+      if(tr->trackPValue < 0.05) continue;
+      if(p < 700) continue;
+      if(p > 2400) continue;
+      if(time > 300) continue;
+
+    } 
+
+      // Vertical angle plots
     Fill1D("ThetaY", theta_y);
     Fill2D("ThetaY_vs_Time", time, theta_y);
+      //if(time < 30) continue;
+    //}
+
+    //i//f(quality && tr->trackPValue > 0.05 && time < 300) continue;
 
     // Vertical offset correction
 
@@ -127,8 +137,10 @@ void Plotter::Run() {
     TGraphErrors *c_vs_mom = (TGraphErrors*)input->Get(("MomentumBinnedAnalysis/ParameterScans/S"+std::to_string(stn)+"_c_vs_p").c_str());
 
     // Slice momentum in 100 MeV up to 3100 MeV
-    for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
+    //for ( int i_slice = 0; i_slice < 30; i_slice++ ) { 
+    for ( int i_slice = 0; i_slice < 15; i_slice++ ) { 
 
+      //int step = 100;
       int step = 100;
       int lo = 0 + i_slice*step; 
       int hi = step + i_slice*step;
@@ -141,6 +153,7 @@ void Plotter::Run() {
 
       if(p >= double(lo) && p < double(hi)) {
         Fill2D(("S0S12S18_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), g2ModTime, theta_y);
+        if(stn!=0) Fill2D(("S12S18_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), g2ModTime, theta_y);
         Fill2D(("S"+std::to_string(stn)+"_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), g2ModTime, theta_y);
       }
 
