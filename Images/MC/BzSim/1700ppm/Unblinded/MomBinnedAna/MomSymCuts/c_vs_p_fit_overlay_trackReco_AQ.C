@@ -1,11 +1,11 @@
 void c_vs_p_fit_overlay_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu May 13 01:19:34 2021) by ROOT version 6.22/08
+//=========  (Thu May 13 11:33:49 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(-0.5000001,-2.5,8.5,2.5);
+   c->Range(-0.5000001,-0.925,8.5,0.325);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -51,8 +51,8 @@ void c_vs_p_fit_overlay_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S0_c_vs_p1413 = new TH1F("Graph_S0_c_vs_p1413","",100,0.4,7.6);
-   Graph_S0_c_vs_p1413->SetMinimum(-2);
-   Graph_S0_c_vs_p1413->SetMaximum(2);
+   Graph_S0_c_vs_p1413->SetMinimum(-0.8);
+   Graph_S0_c_vs_p1413->SetMaximum(0.2);
    Graph_S0_c_vs_p1413->SetDirectory(0);
    Graph_S0_c_vs_p1413->SetStats(0);
 

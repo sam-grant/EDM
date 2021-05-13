@@ -1,11 +1,11 @@
 void S0S12S18_FullModuloFit_200_3127_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu May 13 01:19:32 2021) by ROOT version 6.22/08
+//=========  (Thu May 13 14:54:28 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(-0.5487514,-0.1875,4.938762,0.1875);
+   c->Range(-0.5487514,-1.25,4.938762,1.25);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -371,8 +371,8 @@ void S0S12S18_FullModuloFit_200_3127_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01377 = new TH1F("Graph_Graph01377","S0S12S18, 200 < p [MeV] < 3127",100,0,4.771751);
-   Graph_Graph01377->SetMinimum(-0.15);
-   Graph_Graph01377->SetMaximum(0.15);
+   Graph_Graph01377->SetMinimum(-1);
+   Graph_Graph01377->SetMaximum(1);
    Graph_Graph01377->SetDirectory(0);
    Graph_Graph01377->SetStats(0);
 

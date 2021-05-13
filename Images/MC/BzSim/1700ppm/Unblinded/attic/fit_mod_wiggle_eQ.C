@@ -1,9 +1,8 @@
 void fit_mod_wiggle_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu May  6 16:42:19 2021) by ROOT version 6.22/08
+//=========  (Thu May  6 19:12:50 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-0.5964689,12945.11,5.36822,51574.12);
    c->SetFillColor(0);
@@ -10439,24 +10438,6 @@ void fit_mod_wiggle_eQ()
    FiveParFunc1012->SetParLimits(4,0,0);
    FiveParFunc1012->SetParent(gre);
    gre->GetListOfFunctions()->Add(FiveParFunc1012);
-   
-   TPaveStats *ptstats = new TPaveStats(0.62,0.655,0.98,0.935,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(1);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf =   120 / 83");
-   ptstats_LaTex = ptstats->AddText("N_{0}    = 3.339e+04 #pm 83.13 ");
-   ptstats_LaTex = ptstats->AddText("#tau [#mus] = 73.35 #pm 5.963 ");
-   ptstats_LaTex = ptstats->AddText("A        = 0.3825 #pm 0.0007944 ");
-   ptstats_LaTex = ptstats->AddText("#omega_{a} (fixed) [MHz] = 1.439 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("#phi [rad] = -0.0083 #pm 0.004436 ");
-   ptstats->SetOptStat(0);
-   ptstats->SetOptFit(111);
-   ptstats->Draw();
-   gre->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(gre->GetListOfFunctions());
    gre->Draw("ap");
    c->Modified();
    c->cd();

@@ -1,7 +1,7 @@
 void fit_Bz_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu May  6 16:42:19 2021) by ROOT version 6.22/08
+//=========  (Thu May  6 19:12:50 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
@@ -12,7 +12,7 @@ void fit_Bz_eQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1014[87] = {
+   Double_t Graph0_fx1013[87] = {
    0.02508807,
    0.07526421,
    0.1254403,
@@ -100,7 +100,7 @@ void fit_Bz_eQ()
    4.239884,
    4.29006,
    4.340236};
-   Double_t Graph0_fy1014[87] = {
+   Double_t Graph0_fy1013[87] = {
    -0.03472371,
    -0.04617044,
    0.04540585,
@@ -188,7 +188,7 @@ void fit_Bz_eQ()
    -0.03188664,
    0.03532659,
    0.05903823};
-   Double_t Graph0_fex1014[87] = {
+   Double_t Graph0_fex1013[87] = {
    0,
    0,
    0,
@@ -276,7 +276,7 @@ void fit_Bz_eQ()
    0,
    0,
    0};
-   Double_t Graph0_fey1014[87] = {
+   Double_t Graph0_fey1013[87] = {
    0.04707628,
    0.04642023,
    0.04554832,
@@ -364,40 +364,251 @@ void fit_Bz_eQ()
    0.04717403,
    0.04676836,
    0.04682489};
-   TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1014,Graph0_fy1014,Graph0_fex1014,Graph0_fey1014);
+   TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
    gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01014 = new TH1F("Graph_Graph01014","",100,0,4.771751);
-   Graph_Graph01014->SetMinimum(-0.5059744);
-   Graph_Graph01014->SetMaximum(0.1614847);
-   Graph_Graph01014->SetDirectory(0);
-   Graph_Graph01014->SetStats(0);
+   TH1F *Graph_Graph01013 = new TH1F("Graph_Graph01013","",100,0,4.771751);
+   Graph_Graph01013->SetMinimum(-0.5059744);
+   Graph_Graph01013->SetMaximum(0.1614847);
+   Graph_Graph01013->SetDirectory(0);
+   Graph_Graph01013->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01014->SetLineColor(ci);
-   Graph_Graph01014->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
-   Graph_Graph01014->GetXaxis()->CenterTitle(true);
-   Graph_Graph01014->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01014->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01014->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01014->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01014->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad]");
-   Graph_Graph01014->GetYaxis()->CenterTitle(true);
-   Graph_Graph01014->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01014->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01014->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01014->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Graph01014->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01014->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01014->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01014->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01014);
+   Graph_Graph01013->SetLineColor(ci);
+   Graph_Graph01013->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
+   Graph_Graph01013->GetXaxis()->CenterTitle(true);
+   Graph_Graph01013->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01013->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01013->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01013->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01013->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad]");
+   Graph_Graph01013->GetYaxis()->CenterTitle(true);
+   Graph_Graph01013->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01013->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01013->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01013->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph01013->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01013->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01013->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01013->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01013);
    
+   
+   TF1 *BzFunc1014 = new TF1("*BzFunc",0,4.365324,7);
+    //The original function : BzFunc had originally been created by:
+    //TF1 *BzFunc = new TF1("BzFunc",BzFunc,0,4.365324,7, 1, TF1::EAddToList::kNo);
+   BzFunc1014->SetRange(0,4.365324);
+   BzFunc1014->SetName("BzFunc");
+   BzFunc1014->SetTitle("BzFunc");
+   BzFunc1014->SetSavedPoint(0,-0.005363622);
+   BzFunc1014->SetSavedPoint(1,-0.00569893);
+   BzFunc1014->SetSavedPoint(2,-0.006648688);
+   BzFunc1014->SetSavedPoint(3,-0.008209148);
+   BzFunc1014->SetSavedPoint(4,-0.01037415);
+   BzFunc1014->SetSavedPoint(5,-0.01313516);
+   BzFunc1014->SetSavedPoint(6,-0.01648126);
+   BzFunc1014->SetSavedPoint(7,-0.02039927);
+   BzFunc1014->SetSavedPoint(8,-0.0248737);
+   BzFunc1014->SetSavedPoint(9,-0.02988692);
+   BzFunc1014->SetSavedPoint(10,-0.03541913);
+   BzFunc1014->SetSavedPoint(11,-0.04144849);
+   BzFunc1014->SetSavedPoint(12,-0.04795122);
+   BzFunc1014->SetSavedPoint(13,-0.05490165);
+   BzFunc1014->SetSavedPoint(14,-0.06227235);
+   BzFunc1014->SetSavedPoint(15,-0.07003423);
+   BzFunc1014->SetSavedPoint(16,-0.07815666);
+   BzFunc1014->SetSavedPoint(17,-0.08660758);
+   BzFunc1014->SetSavedPoint(18,-0.09535364);
+   BzFunc1014->SetSavedPoint(19,-0.1043603);
+   BzFunc1014->SetSavedPoint(20,-0.1135921);
+   BzFunc1014->SetSavedPoint(21,-0.1230125);
+   BzFunc1014->SetSavedPoint(22,-0.1325844);
+   BzFunc1014->SetSavedPoint(23,-0.14227);
+   BzFunc1014->SetSavedPoint(24,-0.152031);
+   BzFunc1014->SetSavedPoint(25,-0.161829);
+   BzFunc1014->SetSavedPoint(26,-0.1716252);
+   BzFunc1014->SetSavedPoint(27,-0.1813811);
+   BzFunc1014->SetSavedPoint(28,-0.1910581);
+   BzFunc1014->SetSavedPoint(29,-0.200618);
+   BzFunc1014->SetSavedPoint(30,-0.2100231);
+   BzFunc1014->SetSavedPoint(31,-0.2192363);
+   BzFunc1014->SetSavedPoint(32,-0.2282212);
+   BzFunc1014->SetSavedPoint(33,-0.2369423);
+   BzFunc1014->SetSavedPoint(34,-0.2453653);
+   BzFunc1014->SetSavedPoint(35,-0.2534569);
+   BzFunc1014->SetSavedPoint(36,-0.2611852);
+   BzFunc1014->SetSavedPoint(37,-0.2685196);
+   BzFunc1014->SetSavedPoint(38,-0.2754312);
+   BzFunc1014->SetSavedPoint(39,-0.2818928);
+   BzFunc1014->SetSavedPoint(40,-0.2878788);
+   BzFunc1014->SetSavedPoint(41,-0.2933656);
+   BzFunc1014->SetSavedPoint(42,-0.2983316);
+   BzFunc1014->SetSavedPoint(43,-0.3027572);
+   BzFunc1014->SetSavedPoint(44,-0.3066248);
+   BzFunc1014->SetSavedPoint(45,-0.3099193);
+   BzFunc1014->SetSavedPoint(46,-0.3126276);
+   BzFunc1014->SetSavedPoint(47,-0.3147391);
+   BzFunc1014->SetSavedPoint(48,-0.3162453);
+   BzFunc1014->SetSavedPoint(49,-0.3171405);
+   BzFunc1014->SetSavedPoint(50,-0.3174209);
+   BzFunc1014->SetSavedPoint(51,-0.3170856);
+   BzFunc1014->SetSavedPoint(52,-0.3161359);
+   BzFunc1014->SetSavedPoint(53,-0.3145754);
+   BzFunc1014->SetSavedPoint(54,-0.3124104);
+   BzFunc1014->SetSavedPoint(55,-0.3096494);
+   BzFunc1014->SetSavedPoint(56,-0.3063033);
+   BzFunc1014->SetSavedPoint(57,-0.3023853);
+   BzFunc1014->SetSavedPoint(58,-0.2979108);
+   BzFunc1014->SetSavedPoint(59,-0.2928976);
+   BzFunc1014->SetSavedPoint(60,-0.2873654);
+   BzFunc1014->SetSavedPoint(61,-0.2813361);
+   BzFunc1014->SetSavedPoint(62,-0.2748333);
+   BzFunc1014->SetSavedPoint(63,-0.2678829);
+   BzFunc1014->SetSavedPoint(64,-0.2605122);
+   BzFunc1014->SetSavedPoint(65,-0.2527503);
+   BzFunc1014->SetSavedPoint(66,-0.2446279);
+   BzFunc1014->SetSavedPoint(67,-0.236177);
+   BzFunc1014->SetSavedPoint(68,-0.2274309);
+   BzFunc1014->SetSavedPoint(69,-0.2184242);
+   BzFunc1014->SetSavedPoint(70,-0.2091925);
+   BzFunc1014->SetSavedPoint(71,-0.199772);
+   BzFunc1014->SetSavedPoint(72,-0.1902002);
+   BzFunc1014->SetSavedPoint(73,-0.1805146);
+   BzFunc1014->SetSavedPoint(74,-0.1707536);
+   BzFunc1014->SetSavedPoint(75,-0.1609556);
+   BzFunc1014->SetSavedPoint(76,-0.1511593);
+   BzFunc1014->SetSavedPoint(77,-0.1414034);
+   BzFunc1014->SetSavedPoint(78,-0.1317265);
+   BzFunc1014->SetSavedPoint(79,-0.1221665);
+   BzFunc1014->SetSavedPoint(80,-0.1127614);
+   BzFunc1014->SetSavedPoint(81,-0.1035483);
+   BzFunc1014->SetSavedPoint(82,-0.09456337);
+   BzFunc1014->SetSavedPoint(83,-0.08584222);
+   BzFunc1014->SetSavedPoint(84,-0.07741923);
+   BzFunc1014->SetSavedPoint(85,-0.06932764);
+   BzFunc1014->SetSavedPoint(86,-0.06159939);
+   BzFunc1014->SetSavedPoint(87,-0.05426497);
+   BzFunc1014->SetSavedPoint(88,-0.04735334);
+   BzFunc1014->SetSavedPoint(89,-0.04089177);
+   BzFunc1014->SetSavedPoint(90,-0.03490576);
+   BzFunc1014->SetSavedPoint(91,-0.02941893);
+   BzFunc1014->SetSavedPoint(92,-0.02445294);
+   BzFunc1014->SetSavedPoint(93,-0.02002739);
+   BzFunc1014->SetSavedPoint(94,-0.01615974);
+   BzFunc1014->SetSavedPoint(95,-0.01286526);
+   BzFunc1014->SetSavedPoint(96,-0.01015695);
+   BzFunc1014->SetSavedPoint(97,-0.00804549);
+   BzFunc1014->SetSavedPoint(98,-0.006539222);
+   BzFunc1014->SetSavedPoint(99,-0.005644089);
+   BzFunc1014->SetSavedPoint(100,-0.005363622);
+   BzFunc1014->SetSavedPoint(101,0);
+   BzFunc1014->SetSavedPoint(102,4.365324);
+   BzFunc1014->SetFillColor(19);
+   BzFunc1014->SetFillStyle(0);
+   BzFunc1014->SetLineColor(2);
+   BzFunc1014->SetLineWidth(2);
+   BzFunc1014->SetChisquare(133.3541);
+   BzFunc1014->SetNDF(84);
+   BzFunc1014->GetXaxis()->SetLabelFont(42);
+   BzFunc1014->GetXaxis()->SetTitleOffset(1);
+   BzFunc1014->GetXaxis()->SetTitleFont(42);
+   BzFunc1014->GetYaxis()->SetLabelFont(42);
+   BzFunc1014->GetYaxis()->SetTitleFont(42);
+   BzFunc1014->SetParameter(0,0.1560197);
+   BzFunc1014->SetParError(0,0.006476408);
+   BzFunc1014->SetParLimits(0,0,0);
+   BzFunc1014->SetParameter(1,1.43934);
+   BzFunc1014->SetParError(1,0);
+   BzFunc1014->SetParLimits(1,1.43934,1.43934);
+   BzFunc1014->SetParameter(2,-0.008300154);
+   BzFunc1014->SetParError(2,0);
+   BzFunc1014->SetParLimits(2,-0.008300154,-0.008300154);
+   BzFunc1014->SetParameter(3,-0.001731729);
+   BzFunc1014->SetParError(3,0.006437001);
+   BzFunc1014->SetParLimits(3,0,0);
+   BzFunc1014->SetParameter(4,1.43934);
+   BzFunc1014->SetParError(4,0);
+   BzFunc1014->SetParLimits(4,1.43934,1.43934);
+   BzFunc1014->SetParameter(5,-0.008300154);
+   BzFunc1014->SetParError(5,0);
+   BzFunc1014->SetParLimits(5,-0.008300154,-0.008300154);
+   BzFunc1014->SetParameter(6,-0.1613923);
+   BzFunc1014->SetParError(6,0.004581625);
+   BzFunc1014->SetParLimits(6,0,0);
+   BzFunc1014->SetParent(gre);
+   gre->GetListOfFunctions()->Add(BzFunc1014);
+   gre->Draw("ap");
+   
+   TPaveText *pt = new TPaveText(0.7,0.62,0.89,0.89,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(33);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("1.45#times10^{7}");
+   pt_LaTex = pt->AddText("1.59
+");
+   pt_LaTex = pt->AddText("0.156
+#pm0.006
+");
+   pt_LaTex = pt->AddText("-0.0017
+#pm0.006
+");
+   pt_LaTex = pt->AddText("-0.2
+#pm0.005
+");
+   pt->Draw();
+   
+   pt = new TPaveText(0.5,0.62,0.7,0.89,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("N");
+   pt_LaTex = pt->AddText("#chi^{2}/ndf");
+   pt_LaTex = pt->AddText("A_{Bz} [mrad]");
+   pt_LaTex = pt->AddText("A_{EDM} [mrad]");
+   pt_LaTex = pt->AddText("c [mrad]");
+   pt->Draw();
+   
+   pt = new TPaveText(0.2,0.7,0.4,0.8,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("700 < p [MeV] < 2400");
+   pt_LaTex = pt->AddText("0 < t [#mus] < 300");
+   pt->Draw();
+   
+   TLegend *leg = new TLegend(0.125,0.15,0.875,0.25,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("Graph0","Sim   ","lpf");
+   entry->SetFillStyle(1000);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("BzFunc","A_{Bz}cos(#omega_{a}t #plus #phi) #plus A_{EDM}sin(#omega_{a}t #plus #phi) #plus c","lpf");
+   entry->SetFillColor(19);
+   entry->SetLineColor(2);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(1);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   leg->Draw();
    
    TF1 *BzFunc1015 = new TF1("*BzFunc",0,4.365324,7);
     //The original function : BzFunc had originally been created by:
@@ -540,238 +751,7 @@ void fit_Bz_eQ()
    BzFunc1015->SetParameter(6,-0.1613923);
    BzFunc1015->SetParError(6,0.004581625);
    BzFunc1015->SetParLimits(6,0,0);
-   BzFunc1015->SetParent(gre);
-   gre->GetListOfFunctions()->Add(BzFunc1015);
-   
-   TPaveStats *ptstats = new TPaveStats(0.62,0.575,0.98,0.935,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(1);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   TText *ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 133.4 / 84");
-   ptstats_LaTex = ptstats->AddText("A_{Bz} [mrad] = 0.156 #pm 0.006476 ");
-   ptstats_LaTex = ptstats->AddText("#omega_{a}^{FIXED} [MHz] = 1.439 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("#phi^{FIXED} [rad] = -0.0083 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("A_{EDM} [mrad] = -0.001732 #pm 0.006437 ");
-   ptstats_LaTex = ptstats->AddText("#omega_{a} (fixed) [MHz] = 1.439 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("#phi^{FIXED} [rad] = -0.0083 #pm     0 ");
-   ptstats_LaTex = ptstats->AddText("c [mrad] = -0.1614 #pm 0.004582 ");
-   ptstats->SetOptStat(0);
-   ptstats->SetOptFit(0);
-   ptstats->Draw();
-   gre->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(gre->GetListOfFunctions());
-   gre->Draw("ap");
-   
-   TPaveText *pt = new TPaveText(0.7,0.62,0.89,0.89,"brNDC");
-   pt->SetFillColor(0);
-   pt->SetTextAlign(33);
-   pt->SetTextFont(44);
-   pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("1.45#times10^{7}");
-   pt_LaTex = pt->AddText("1.59
-");
-   pt_LaTex = pt->AddText("0.156
-#pm0.006
-");
-   pt_LaTex = pt->AddText("-0.0017
-#pm0.006
-");
-   pt_LaTex = pt->AddText("-0.2
-#pm0.005
-");
-   pt->Draw();
-   
-   pt = new TPaveText(0.5,0.62,0.7,0.89,"brNDC");
-   pt->SetFillColor(0);
-   pt->SetTextAlign(13);
-   pt->SetTextFont(44);
-   pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("N");
-   pt_LaTex = pt->AddText("#chi^{2}/ndf");
-   pt_LaTex = pt->AddText("A_{Bz} [mrad]");
-   pt_LaTex = pt->AddText("A_{EDM} [mrad]");
-   pt_LaTex = pt->AddText("c [mrad]");
-   pt->Draw();
-   
-   pt = new TPaveText(0.2,0.7,0.4,0.8,"brNDC");
-   pt->SetFillColor(0);
-   pt->SetTextFont(44);
-   pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("700 < p [MeV] < 2400");
-   pt_LaTex = pt->AddText("0 < t [#mus] < 300");
-   pt->Draw();
-   
-   TLegend *leg = new TLegend(0.125,0.15,0.875,0.25,NULL,"brNDC");
-   leg->SetBorderSize(0);
-   leg->SetLineColor(1);
-   leg->SetLineStyle(1);
-   leg->SetLineWidth(1);
-   leg->SetFillColor(0);
-   leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("Graph0","Sim   ","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(1);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-   entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(20);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("BzFunc","A_{Bz}cos(#omega_{a}t #plus #phi) #plus A_{EDM}sin(#omega_{a}t #plus #phi) #plus c","lpf");
-   entry->SetFillColor(19);
-   entry->SetLineColor(2);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(2);
-   entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   leg->Draw();
-   
-   TF1 *BzFunc1016 = new TF1("*BzFunc",0,4.365324,7);
-    //The original function : BzFunc had originally been created by:
-    //TF1 *BzFunc = new TF1("BzFunc",BzFunc,0,4.365324,7, 1, TF1::EAddToList::kNo);
-   BzFunc1016->SetRange(0,4.365324);
-   BzFunc1016->SetName("BzFunc");
-   BzFunc1016->SetTitle("BzFunc");
-   BzFunc1016->SetSavedPoint(0,-0.005363622);
-   BzFunc1016->SetSavedPoint(1,-0.00569893);
-   BzFunc1016->SetSavedPoint(2,-0.006648688);
-   BzFunc1016->SetSavedPoint(3,-0.008209148);
-   BzFunc1016->SetSavedPoint(4,-0.01037415);
-   BzFunc1016->SetSavedPoint(5,-0.01313516);
-   BzFunc1016->SetSavedPoint(6,-0.01648126);
-   BzFunc1016->SetSavedPoint(7,-0.02039927);
-   BzFunc1016->SetSavedPoint(8,-0.0248737);
-   BzFunc1016->SetSavedPoint(9,-0.02988692);
-   BzFunc1016->SetSavedPoint(10,-0.03541913);
-   BzFunc1016->SetSavedPoint(11,-0.04144849);
-   BzFunc1016->SetSavedPoint(12,-0.04795122);
-   BzFunc1016->SetSavedPoint(13,-0.05490165);
-   BzFunc1016->SetSavedPoint(14,-0.06227235);
-   BzFunc1016->SetSavedPoint(15,-0.07003423);
-   BzFunc1016->SetSavedPoint(16,-0.07815666);
-   BzFunc1016->SetSavedPoint(17,-0.08660758);
-   BzFunc1016->SetSavedPoint(18,-0.09535364);
-   BzFunc1016->SetSavedPoint(19,-0.1043603);
-   BzFunc1016->SetSavedPoint(20,-0.1135921);
-   BzFunc1016->SetSavedPoint(21,-0.1230125);
-   BzFunc1016->SetSavedPoint(22,-0.1325844);
-   BzFunc1016->SetSavedPoint(23,-0.14227);
-   BzFunc1016->SetSavedPoint(24,-0.152031);
-   BzFunc1016->SetSavedPoint(25,-0.161829);
-   BzFunc1016->SetSavedPoint(26,-0.1716252);
-   BzFunc1016->SetSavedPoint(27,-0.1813811);
-   BzFunc1016->SetSavedPoint(28,-0.1910581);
-   BzFunc1016->SetSavedPoint(29,-0.200618);
-   BzFunc1016->SetSavedPoint(30,-0.2100231);
-   BzFunc1016->SetSavedPoint(31,-0.2192363);
-   BzFunc1016->SetSavedPoint(32,-0.2282212);
-   BzFunc1016->SetSavedPoint(33,-0.2369423);
-   BzFunc1016->SetSavedPoint(34,-0.2453653);
-   BzFunc1016->SetSavedPoint(35,-0.2534569);
-   BzFunc1016->SetSavedPoint(36,-0.2611852);
-   BzFunc1016->SetSavedPoint(37,-0.2685196);
-   BzFunc1016->SetSavedPoint(38,-0.2754312);
-   BzFunc1016->SetSavedPoint(39,-0.2818928);
-   BzFunc1016->SetSavedPoint(40,-0.2878788);
-   BzFunc1016->SetSavedPoint(41,-0.2933656);
-   BzFunc1016->SetSavedPoint(42,-0.2983316);
-   BzFunc1016->SetSavedPoint(43,-0.3027572);
-   BzFunc1016->SetSavedPoint(44,-0.3066248);
-   BzFunc1016->SetSavedPoint(45,-0.3099193);
-   BzFunc1016->SetSavedPoint(46,-0.3126276);
-   BzFunc1016->SetSavedPoint(47,-0.3147391);
-   BzFunc1016->SetSavedPoint(48,-0.3162453);
-   BzFunc1016->SetSavedPoint(49,-0.3171405);
-   BzFunc1016->SetSavedPoint(50,-0.3174209);
-   BzFunc1016->SetSavedPoint(51,-0.3170856);
-   BzFunc1016->SetSavedPoint(52,-0.3161359);
-   BzFunc1016->SetSavedPoint(53,-0.3145754);
-   BzFunc1016->SetSavedPoint(54,-0.3124104);
-   BzFunc1016->SetSavedPoint(55,-0.3096494);
-   BzFunc1016->SetSavedPoint(56,-0.3063033);
-   BzFunc1016->SetSavedPoint(57,-0.3023853);
-   BzFunc1016->SetSavedPoint(58,-0.2979108);
-   BzFunc1016->SetSavedPoint(59,-0.2928976);
-   BzFunc1016->SetSavedPoint(60,-0.2873654);
-   BzFunc1016->SetSavedPoint(61,-0.2813361);
-   BzFunc1016->SetSavedPoint(62,-0.2748333);
-   BzFunc1016->SetSavedPoint(63,-0.2678829);
-   BzFunc1016->SetSavedPoint(64,-0.2605122);
-   BzFunc1016->SetSavedPoint(65,-0.2527503);
-   BzFunc1016->SetSavedPoint(66,-0.2446279);
-   BzFunc1016->SetSavedPoint(67,-0.236177);
-   BzFunc1016->SetSavedPoint(68,-0.2274309);
-   BzFunc1016->SetSavedPoint(69,-0.2184242);
-   BzFunc1016->SetSavedPoint(70,-0.2091925);
-   BzFunc1016->SetSavedPoint(71,-0.199772);
-   BzFunc1016->SetSavedPoint(72,-0.1902002);
-   BzFunc1016->SetSavedPoint(73,-0.1805146);
-   BzFunc1016->SetSavedPoint(74,-0.1707536);
-   BzFunc1016->SetSavedPoint(75,-0.1609556);
-   BzFunc1016->SetSavedPoint(76,-0.1511593);
-   BzFunc1016->SetSavedPoint(77,-0.1414034);
-   BzFunc1016->SetSavedPoint(78,-0.1317265);
-   BzFunc1016->SetSavedPoint(79,-0.1221665);
-   BzFunc1016->SetSavedPoint(80,-0.1127614);
-   BzFunc1016->SetSavedPoint(81,-0.1035483);
-   BzFunc1016->SetSavedPoint(82,-0.09456337);
-   BzFunc1016->SetSavedPoint(83,-0.08584222);
-   BzFunc1016->SetSavedPoint(84,-0.07741923);
-   BzFunc1016->SetSavedPoint(85,-0.06932764);
-   BzFunc1016->SetSavedPoint(86,-0.06159939);
-   BzFunc1016->SetSavedPoint(87,-0.05426497);
-   BzFunc1016->SetSavedPoint(88,-0.04735334);
-   BzFunc1016->SetSavedPoint(89,-0.04089177);
-   BzFunc1016->SetSavedPoint(90,-0.03490576);
-   BzFunc1016->SetSavedPoint(91,-0.02941893);
-   BzFunc1016->SetSavedPoint(92,-0.02445294);
-   BzFunc1016->SetSavedPoint(93,-0.02002739);
-   BzFunc1016->SetSavedPoint(94,-0.01615974);
-   BzFunc1016->SetSavedPoint(95,-0.01286526);
-   BzFunc1016->SetSavedPoint(96,-0.01015695);
-   BzFunc1016->SetSavedPoint(97,-0.00804549);
-   BzFunc1016->SetSavedPoint(98,-0.006539222);
-   BzFunc1016->SetSavedPoint(99,-0.005644089);
-   BzFunc1016->SetSavedPoint(100,-0.005363622);
-   BzFunc1016->SetSavedPoint(101,0);
-   BzFunc1016->SetSavedPoint(102,4.365324);
-   BzFunc1016->SetFillColor(19);
-   BzFunc1016->SetFillStyle(0);
-   BzFunc1016->SetLineColor(2);
-   BzFunc1016->SetLineWidth(2);
-   BzFunc1016->SetChisquare(133.3541);
-   BzFunc1016->SetNDF(84);
-   BzFunc1016->GetXaxis()->SetLabelFont(42);
-   BzFunc1016->GetXaxis()->SetTitleOffset(1);
-   BzFunc1016->GetXaxis()->SetTitleFont(42);
-   BzFunc1016->GetYaxis()->SetLabelFont(42);
-   BzFunc1016->GetYaxis()->SetTitleFont(42);
-   BzFunc1016->SetParameter(0,0.1560197);
-   BzFunc1016->SetParError(0,0.006476408);
-   BzFunc1016->SetParLimits(0,0,0);
-   BzFunc1016->SetParameter(1,1.43934);
-   BzFunc1016->SetParError(1,0);
-   BzFunc1016->SetParLimits(1,1.43934,1.43934);
-   BzFunc1016->SetParameter(2,-0.008300154);
-   BzFunc1016->SetParError(2,0);
-   BzFunc1016->SetParLimits(2,-0.008300154,-0.008300154);
-   BzFunc1016->SetParameter(3,-0.001731729);
-   BzFunc1016->SetParError(3,0.006437001);
-   BzFunc1016->SetParLimits(3,0,0);
-   BzFunc1016->SetParameter(4,1.43934);
-   BzFunc1016->SetParError(4,0);
-   BzFunc1016->SetParLimits(4,1.43934,1.43934);
-   BzFunc1016->SetParameter(5,-0.008300154);
-   BzFunc1016->SetParError(5,0);
-   BzFunc1016->SetParLimits(5,-0.008300154,-0.008300154);
-   BzFunc1016->SetParameter(6,-0.1613923);
-   BzFunc1016->SetParError(6,0.004581625);
-   BzFunc1016->SetParLimits(6,0,0);
-   BzFunc1016->Draw("same");
+   BzFunc1015->Draw("same");
    c->Modified();
    c->cd();
    c->SetSelected(c);

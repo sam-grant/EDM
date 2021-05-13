@@ -1,11 +1,11 @@
 void S12S18_FullModuloFit_800_2600_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu May 13 01:19:27 2021) by ROOT version 6.22/08
+//=========  (Thu May 13 14:54:23 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(-0.5487514,-0.1875,4.938762,0.1875);
+   c->Range(-0.5487514,-1.25,4.938762,1.25);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -366,13 +366,13 @@ void S12S18_FullModuloFit_800_2600_trackReco_AQ()
    0.09376735};
    TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1283,Graph0_fy1283,Graph0_fex1283,Graph0_fey1283);
    gre->SetName("Graph0");
-   gre->SetTitle("S12S18, 800 < p [MeV] < 2600");
+   gre->SetTitle("S12S18, 800-2600");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01283 = new TH1F("Graph_Graph01283","S12S18, 800 < p [MeV] < 2600",100,0,4.771751);
-   Graph_Graph01283->SetMinimum(-0.15);
-   Graph_Graph01283->SetMaximum(0.15);
+   TH1F *Graph_Graph01283 = new TH1F("Graph_Graph01283","S12S18, 800-2600",100,0,4.771751);
+   Graph_Graph01283->SetMinimum(-1);
+   Graph_Graph01283->SetMaximum(1);
    Graph_Graph01283->SetDirectory(0);
    Graph_Graph01283->SetStats(0);
 
@@ -754,13 +754,13 @@ void S12S18_FullModuloFit_800_2600_trackReco_AQ()
    FullBzFunc1285->SetParLimits(6,0,0);
    FullBzFunc1285->Draw("same");
    
-   pt = new TPaveText(0.2374874,0.9341608,0.7625126,0.995,"blNDC");
+   pt = new TPaveText(0.3386181,0.9362587,0.6613819,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);
    pt->SetFillStyle(0);
    pt->SetTextFont(42);
-   pt_LaTex = pt->AddText("S12S18, 800 < p [MeV] < 2600");
+   pt_LaTex = pt->AddText("S12S18, 800-2600");
    pt->Draw();
    c->Modified();
    c->cd();
