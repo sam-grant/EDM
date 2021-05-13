@@ -103,7 +103,7 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 
 }
 
-void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+void DrawModWiggle_tmp(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -186,27 +186,6 @@ void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, do
 	delete c;
 
 	return;
-
-}
-
-double FullEDMFunc(double *x, double *par) {
-  return ( par[0] * TMath::Cos((par[1] * x[0]) + par[2]) ) + ( par[3] * TMath::Sin((par[1] * x[0]) + par[2]) ) + par[4];
-}
-
-
-void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4) {
-  
-  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, 0, G2PERIOD, 5);
-
-  func->SetParameter(0, par0); // A_g-2
-  func->FixParameter(1, par1); // Omega
-  func->FixParameter(2, par2); // Phi
-  func->SetParameter(3, par3); // A_EDM
-  func->SetParameter(4, par4); // c
-
-  graph->Fit(func, "MR"); // ,"MR");
-
-  return;
 
 }
 
@@ -311,7 +290,7 @@ double GetPhase(TFile *input) {
 	//modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
 	modWiggle->SetParName(4,"#phi [rad]");
 
-	DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Blinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 15e3, 61e3);
+	DrawModWiggle_tmp(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Blinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 15e3, 61e3);
 
 	return modWiggle->GetParameter(4);
 
@@ -358,7 +337,6 @@ void SimultaneousAnalysis(TFile *input, TFile *output) {
 
     std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParameter(0)<<std::endl;
 	
-
     DrawFullEDMFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/"+name+"_ModuloFit_"+qual+"_"+to_string(unblind)).c_str(), double(nEntries),unblind);
 
     moduloGraph->SetName((name+"_fit").c_str());
@@ -413,9 +391,9 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
       TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
 
-      SimpleSinFit(moduloGraph, 0.17, OMEGA_A * 1e3, 0);
+      SimpleEDMFit(moduloGraph, 0.17, OMEGA_A * 1e3, 0);
 
-      DrawSimpleSinFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), true);
+      DrawSimpleEDMFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), true);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 
@@ -424,10 +402,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
       p_.push_back(p);
       ep_.push_back(pmax - p);
-      c_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(2));
-      ec_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParError(2));
-      AEDM_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0));
-      eAEDM_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParError(0));
+      c_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(2));
+      ec_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(2));
+      AEDM_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0));
+      eAEDM_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(0));
 
       pmin = pmin + 100;
       pmax = pmax + 100;

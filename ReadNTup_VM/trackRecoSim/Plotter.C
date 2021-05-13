@@ -1,0 +1,385 @@
+// Read ROOT trees 
+// Sam Grant
+
+// I'm concerned that S12 and S18 are the wrong way around
+
+#include <iostream>
+#include <vector>
+
+#include "Plotter.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TTreeReader.h"
+#include "TH1D.h"
+#include "TH2D.h"
+#include "TMath.h"
+
+using namespace std;
+
+double omegaAMagic = 0.00143934; // from gm2geom consts / kHz 
+double g2Period = (2*TMath::Pi()/omegaAMagic) * 1e-3; // 4.3653239 us
+double mMu = 105.6583715; // MeV
+double aMu = 11659208.9e-10; 
+double gmagic = std::sqrt( 1.+1./aMu );
+double pmax = 1.01 * mMu * gmagic; // 3127.1144
+
+TTree *InitTree(string fileName, string treeName) { 
+
+   // ++++++++++++++ Open tree and load branches ++++++++++++++
+   // Get file
+   TFile *fin = TFile::Open(fileName.c_str());
+   cout<<"\nOpened tree:\t"<<fileName<<" "<<fin<<endl;
+
+   // Get tree
+   TTree *tree = (TTree*)fin->Get(treeName.c_str());
+
+   cout<<"\nOpened tree:"<<treeName<<" "<<tree<<" from file "<<fileName<<" "<<fin<<endl;
+
+   return tree;
+
+}
+
+double ModTime(double time) {
+
+  double g2fracTime = time / g2Period;
+  int g2fracTimeInt = int(g2fracTime);
+  double g2ModTime = (g2fracTime - g2fracTimeInt) * g2Period;
+
+  return g2ModTime;
+
+}
+
+void Run(TTree *tree, TFile *output, bool quality) {
+
+   // ==================================================
+   // Book hisotograms
+
+   string stns[] = {"S0S12S18", "S12S18", "S12", "S18", "S0"}; 
+
+   int n_stn = sizeof(stns)/sizeof(stns[0]);
+
+   TH1D* momentum_[n_stn]; 
+   TH1D* wiggle_[n_stn];
+   TH1D* wiggle_mod_[n_stn];
+   TH1D* thetaY_[n_stn];
+   TH2D* thetaY_vs_time_[n_stn];
+   TH2D* thetaY_vs_time_mod_[n_stn];
+   TH2D* decayZ_vs_decayX_[n_stn];
+
+   vector<TH2D*> mom_slices_[n_stn];
+   vector<TH2D*> mom_sym_cuts_[n_stn];
+   vector<TH2D*> mom_min_scan_[n_stn]; 
+
+   // Slice momentum in 200 MeV up to 3100 MeV
+   int step = 200;
+   int nSlices = pmax / step;
+
+   int lo = -1; 
+   int hi = -1;
+
+   for (int i_stn = 0; i_stn < n_stn; i_stn++) { 
+
+      momentum_[i_stn] = new TH1D((stns[i_stn]+"_Momentum").c_str(), ";Track momentum [MeV];Tracks", int(pmax), 0, pmax); 
+      wiggle_[i_stn] = new TH1D((stns[i_stn]+"_Wiggle").c_str(), ";Decay time [#mus];Tracks", 2700, 0, 2700*0.148936);
+      wiggle_mod_[i_stn] = new TH1D((stns[i_stn]+"_Wiggle_Modulo").c_str(), ";t_{g#minus2}^{mod} [#mus];Tracks", 87, 0, g2Period);
+      thetaY_[i_stn] = new TH1D((stns[i_stn]+"_ThetaY").c_str(), ";#theta_{y} [mrad];Tracks", 180, -60, 60);
+      thetaY_vs_time_[i_stn] = new TH2D((stns[i_stn]+"_ThetaY_vs_Time").c_str(), ";Decay time [#mus]; #theta_{y} [mrad]", 2700, 0, 2700*0.148936, 180, -60, 60);
+      thetaY_vs_time_mod_[i_stn] = new TH2D((stns[i_stn]+"_ThetaY_vs_Time_Modulo").c_str(), ";t_{g#minus2}^{mod} [#mus]; #theta_{y} [mrad]", 87, 0, g2Period, 180, -60, 60);
+      decayZ_vs_decayX_[i_stn] = new TH2D((stns[i_stn]+"_DecayZ_vs_DecayX").c_str(), ";Decay vertex position X [mm];Decay vertex position Z [mm]", 800, -8000, 8000, 800, -8000, 8000);
+
+      // Momentum slices 
+      for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
+         
+         lo = 0 + i_slice*step; 
+         hi = step + i_slice*step;
+
+         TH2D *tmp = new TH2D((stns[i_stn]+"_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), ";t_{g#minus2}^{mod} [#mus]; #theta_{y} [mrad]", 87, 0, g2Period, 180, -60, 60);
+
+         mom_slices_[i_stn].push_back(tmp);
+      }
+
+      // Symmetric cuts
+      for ( int i_slice = 0; i_slice < (nSlices/2); i_slice++ ) { 
+
+         lo = 400 + i_slice*step; 
+         hi = 3000 - i_slice*step;
+
+         TH2D *tmp = new TH2D((stns[i_stn]+"_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), ";t_{g#minus2}^{mod} [#mus]; #theta_{y} [mrad]", 87, 0, g2Period, 180, -60, 60);
+         
+         mom_sym_cuts_[i_stn].push_back(tmp);
+
+      }
+
+      // Pmin cut
+      for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
+
+         lo = 0 + i_slice*step;
+         hi = pmax;
+
+         TH2D *tmp = new TH2D((stns[i_stn]+"_ThetaY_vs_Time_Modulo_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str(), ";t_{g#minus2}^{mod} [#mus]; #theta_{y} [mrad]", 87, 0, g2Period, 180, -60, 60);
+
+         mom_min_scan_[i_stn].push_back(tmp);
+      }
+
+   }
+
+   // ==================================================
+   // Fill histograms
+
+   // Get branches (using header file)
+   InitBranches br(tree);
+
+   int64_t nEntries = tree->GetEntries();
+
+   int stn_id = -1;
+
+   for(int64_t entry = 0; entry < nEntries; entry++) {
+
+      tree->GetEntry(entry);
+
+      // Get variables
+      int stn = br.station; 
+      double time = br.decayTime * 1e-3; // us
+      double py = br.decayVertexMomY; // MeV
+      double p = sqrt(pow(br.decayVertexMomX,2)+pow(br.decayVertexMomY,2)+pow(br.decayVertexMomZ,2)); // MeV
+      double theta_y = atan2(py,p) * 1e3; // mrad
+      double g2ModTime = ModTime(time);
+      double pVal = br.trackPValue;
+      bool hitVol = br.hitVolume;
+
+      // Sanity
+      double decayX = br.decayVertexPosX;
+      double decayZ = br.decayVertexPosZ;
+
+      // Track quality
+      if(quality && (pVal < 0.05 || hitVol)) continue;
+
+      // Time cuts
+      if(quality && (time < 30 || time > 300)) continue; 
+
+      // g-2 cuts. See Fienberg thesis figure 2.10
+      if(quality && (p > 1900 && p < pmax)) {
+
+         // Fill S0S12S18
+         stn_id = 0;
+         wiggle_mod_[stn_id]->Fill(g2ModTime);
+         wiggle_[stn_id]->Fill(time);
+         decayZ_vs_decayX_[stn_id]->Fill(decayX, decayZ);
+
+         if(stn == 12 || stn == 18) { 
+            stn_id = 1; 
+            wiggle_mod_[stn_id]->Fill(g2ModTime);
+            wiggle_[stn_id]->Fill(time);
+            decayZ_vs_decayX_[stn_id]->Fill(decayX, decayZ);
+            if(stn == 12) { 
+               stn_id = 2; 
+               wiggle_mod_[stn_id]->Fill(g2ModTime);
+               wiggle_[stn_id]->Fill(time);
+               decayZ_vs_decayX_[stn_id]->Fill(decayX, decayZ);
+            } else if(stn == 18) {
+               stn_id = 3; 
+               wiggle_mod_[stn_id]->Fill(g2ModTime);
+               wiggle_[stn_id]->Fill(time);
+               decayZ_vs_decayX_[stn_id]->Fill(decayX, decayZ);
+            }
+         } else if(stn == 0) { 
+            stn_id = 4;
+            wiggle_mod_[stn_id]->Fill(g2ModTime);
+            wiggle_[stn_id]->Fill(time);
+            decayZ_vs_decayX_[stn_id]->Fill(decayX, decayZ); 
+         } else { 
+            cout<<"***** ERROR: STATION NUMBER NOT EQUAL TO 0, 12, OR 18"<<endl;
+            return;
+         }
+
+      }
+
+      // === EDM cuts
+
+      if(quality && (p > 700 && p < 2400)) {
+
+         stn_id = 0;
+         momentum_[stn_id]->Fill(p);
+         thetaY_[stn_id]->Fill(theta_y);
+         thetaY_vs_time_[stn_id]->Fill(time, theta_y);
+         thetaY_vs_time_mod_[stn_id]->Fill(g2ModTime, theta_y);
+
+         if(stn == 12 || stn == 18) { 
+            stn_id = 1; 
+            momentum_[stn_id]->Fill(p);
+            thetaY_[stn_id]->Fill(theta_y);
+            thetaY_vs_time_[stn_id]->Fill(time, theta_y);
+            thetaY_vs_time_mod_[stn_id]->Fill(g2ModTime, theta_y);
+            if(stn == 12) { 
+               stn_id = 2; 
+               momentum_[stn_id]->Fill(p);
+               thetaY_[stn_id]->Fill(theta_y);
+               thetaY_vs_time_[stn_id]->Fill(time, theta_y);
+               thetaY_vs_time_mod_[stn_id]->Fill(g2ModTime, theta_y);
+            } else if(stn == 18) {
+               stn_id = 3; 
+               momentum_[stn_id]->Fill(p);
+               thetaY_[stn_id]->Fill(theta_y);
+               thetaY_vs_time_[stn_id]->Fill(time, theta_y);
+               thetaY_vs_time_mod_[stn_id]->Fill(g2ModTime, theta_y);
+            }
+         } else if(stn == 0) { 
+            stn_id = 4;
+            momentum_[stn_id]->Fill(p);
+            thetaY_[stn_id]->Fill(theta_y);
+            thetaY_vs_time_[stn_id]->Fill(time, theta_y);
+            thetaY_vs_time_mod_[stn_id]->Fill(g2ModTime, theta_y);
+         } else { 
+            cout<<"***** ERROR: STATION NUMBER NOT EQUAL TO 0, 12, OR 18"<<endl;
+            return;
+         }
+
+      }
+
+      // Slice momentum 
+      for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
+
+         int lo = 0 + i_slice*step; 
+         int hi = step + i_slice*step;
+
+         if(p >= double(lo) && p < double(hi)) {
+
+            stn_id=0;
+            mom_slices_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+            if(stn == 12 || stn == 18) { 
+               stn_id = 1; 
+               mom_slices_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               if(stn == 12) { 
+                  stn_id = 2; 
+                  mom_slices_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               } else if(stn == 18) { 
+                  stn_id = 3; 
+                  mom_slices_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               }
+            } else if(stn == 0) { 
+               stn_id = 4;
+               mom_slices_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+            } else { 
+               cout<<"***** ERROR: STATION NUMBER NOT EQUAL TO 0, 12, OR 18"<<endl;
+               return;
+            }
+
+         }
+
+         lo = 400 + i_slice*step; 
+         hi = 3000 - i_slice*step;
+
+         if(p >= double(lo) && p < double(hi) && i_slice < nSlices/2) {
+
+            stn_id=0;
+            mom_sym_cuts_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+            if(stn == 12 || stn == 18) { 
+               stn_id = 1; 
+               mom_sym_cuts_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               if(stn == 12) { 
+                  stn_id = 2; 
+                  mom_sym_cuts_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               } else if(stn == 18) { 
+                  stn_id = 3; 
+                  mom_sym_cuts_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               }
+            } else if(stn == 0) { 
+               stn_id = 4;
+               mom_sym_cuts_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+            } else { 
+               cout<<"***** ERROR: STATION NUMBER NOT EQUAL TO 0, 12, OR 18"<<endl;
+               return;
+            }
+
+         }
+
+         lo = 0 + i_slice*step;
+         hi = pmax;
+
+         if(p >= double(lo) && p < double(hi)) {
+
+            stn_id=0;
+            mom_min_scan_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+            if(stn == 12 || stn == 18) { 
+               stn_id = 1; 
+               mom_min_scan_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               if(stn == 12) { 
+                  stn_id = 2; 
+                  mom_min_scan_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               } else if(stn == 18) { 
+                  stn_id = 3; 
+                  mom_min_scan_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+               }
+            } else if(stn == 0) { 
+               stn_id = 4;
+               mom_min_scan_[stn_id].at(i_slice)->Fill(g2ModTime, theta_y);
+            } else { 
+               cout<<"***** ERROR: STATION NUMBER NOT EQUAL TO 0, 12, OR 18"<<endl;
+               return;
+            }
+
+         }
+      
+      }
+
+   }
+
+   // Write to output
+   // Set output directory
+   output->mkdir("MainPlots"); output->mkdir("MomSlices"); output->mkdir("MomSymCuts"); output->mkdir("MomMinScan");
+   
+
+   for (int i_stn = 0; i_stn < n_stn; i_stn++) { 
+
+      output->cd("MainPlots");
+      decayZ_vs_decayX_[i_stn]->Write();
+      momentum_[i_stn]->Write();
+      wiggle_[i_stn]->Write();
+      wiggle_mod_[i_stn]->Write();
+      thetaY_[i_stn]->Write();
+      thetaY_vs_time_[i_stn]->Write();
+      thetaY_vs_time_mod_[i_stn]->Write();
+
+      for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) {
+         output->cd("MomSlices"); mom_slices_[i_stn].at(i_slice)->Write();
+         output->cd("MomSymCuts"); if(i_slice < nSlices/2) mom_sym_cuts_[i_stn].at(i_slice)->Write();
+         output->cd("MomMinScan"); mom_min_scan_[i_stn].at(i_slice)->Write();
+      }
+
+   }
+
+   return;
+
+}
+
+int main(int argc, char *argv[]) {
+
+   bool quality = true;
+
+   string inFileName = argv[1]; // "/pnfs/GM2/persistent/EDM/MC/dMu/TruthNTup/truthTrees.000.root";//
+   string outFileName = argv[2]; //"tmp.root";
+
+   string treeName = "trackerNTup/tracker";
+
+   // Open tree and load branches
+   TFile *fin = TFile::Open(inFileName .c_str());
+   // Get tree
+   TTree *tree = (TTree*)fin->Get(treeName.c_str());
+
+   cout<<"\nOpened tree:\t"<<treeName<<" "<<tree<<" from file "<<inFileName<<" "<<fin<<endl;
+
+   // Book output
+
+   TFile *fout = new TFile(outFileName.c_str(),"RECREATE");
+   
+   // Fill histograms
+   Run(tree, fout, quality);
+
+   // Close
+   fout->Close();
+   fin->Close();
+
+   cout<<"\nDone. Histogram written to:\t"<<outFileName<<" "<<fout<<endl;
+   
+   return 0;
+}

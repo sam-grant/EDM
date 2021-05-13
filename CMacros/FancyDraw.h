@@ -590,11 +590,11 @@ void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
 }
 
 
-void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
+void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-	TF1 *func = graph->GetFunction("SimpleSinFunc");
+	TF1 *func = graph->GetFunction("SimpleEDMFunc");
 	func->SetLineWidth(3);
 	func->SetLineColor(kRed);
 	func->SetNpx(1e4);	
@@ -673,12 +673,12 @@ void DrawSimpleSinFit(TGraphErrors *graph, std::string title, std::string fname,
 
 /*
 // IGNORE
-void DrawSimpleSinFit2(TGraphErrors *graph, std::string title, std::string fname, double N) {
+void DrawSimpleEDMFit2(TGraphErrors *graph, std::string title, std::string fname, double N) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
 	// Get functoin
-	TF1 *func = graph->GetFunction("SimpleSinFunc");
+	TF1 *func = graph->GetFunction("SimpleEDMFunc");
 
 	double chi2ndf = func->GetChisquare() / func->GetNDF();
 	double par0 = func->GetParameter(0);
@@ -1082,6 +1082,182 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 
 }
 
+void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, double xmin, double xmax, double ymin, double ymax) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  TF1 *func = graph->GetFunction("FiveParFunc");
+  //func->SetLineWidth(3);
+  func->SetLineColor(kRed);
+  func->SetNpx(1e4);  
+
+  double chi2ndf = func->GetChisquare() / func->GetNDF();
+  double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+  double par1 = func->GetParameter(1); double err1 = func->GetParError(1);
+  double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
+  double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
+
+  TLegend *leg = new TLegend(0.15,0.15,.65,0.25);
+  leg->SetNColumns(2);
+  leg->AddEntry(graph, "Sim   ");
+  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
+  leg->SetBorderSize(0);
+
+  TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+
+  names->SetTextAlign(13);
+  names->AddText("N"); 
+  names->AddText("#chi^{2}/ndf");
+  //names->AddText("N_{0}");
+  names->AddText("#gamma#tau [#mus]");
+  names->AddText("A"); 
+  names->AddText("#phi [rad]"); 
+
+  TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+  values->SetTextAlign(33);
+  values->AddText(SciNotation(double(N))); 
+  values->AddText(Round(chi2ndf, 3));
+  //values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
+  values->AddText(Round(par1, 4)+"#pm"+Round(err1, 1));
+  values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+  //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
+  values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
+
+  TPaveText *cuts = new TPaveText(0.25,0.70,0.40,0.80,"NDC");
+  cuts->SetTextAlign(22);
+  cuts->AddText("1900 < p [MeV] < 3100");
+  cuts->AddText("30.6 < t [#mus] < 305.6");
+
+  names->SetTextSize(26);
+  names->SetTextFont(44);
+  names->SetFillColor(0);
+  values->SetFillColor(0);
+  values->SetTextFont(44);
+  values->SetTextSize(26);
+  cuts->SetFillColor(0);
+  cuts->SetTextFont(44);
+  cuts->SetTextSize(26);
+
+  graph->SetTitle(title.c_str());
+
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
+  graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  graph->GetXaxis()->SetTitleSize(.04);
+  graph->GetYaxis()->SetTitleSize(.04);
+  graph->GetXaxis()->SetTitleOffset(1.1);
+  graph->GetYaxis()->SetTitleOffset(1.1);
+  graph->GetXaxis()->CenterTitle(true);
+  graph->GetYaxis()->CenterTitle(true);
+  graph->GetYaxis()->SetMaxDigits(4);
+  graph->SetMarkerStyle(20); //  Full circle
+  graph->Draw("AP");
+
+  values->Draw("same");
+  names->Draw("same");
+  cuts->Draw("same");
+  leg->Draw("same");
+  func->Draw("same");
+
+  c->SetLogy();
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
+void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  TF1 *func = graph->GetFunction("FiveParFunc");
+  func->SetLineWidth(3);
+  func->SetLineColor(kRed);
+  func->SetNpx(1e4);  
+
+  double chi2ndf = func->GetChisquare() / func->GetNDF();
+  double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+  double par1 = func->GetParameter(1); double err1 = func->GetParError(1);
+  double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
+  double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
+
+  TLegend *leg = new TLegend(0.25,0.15,.75,0.25);
+  leg->SetNColumns(2);
+  leg->AddEntry(graph, "Sim   ");
+  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
+  leg->SetBorderSize(0);
+
+  TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+
+  names->SetTextAlign(13);
+  names->AddText("N"); 
+  names->AddText("#chi^{2}/ndf");
+  //names->AddText("N_{0}");
+  names->AddText("#gamma#tau [#mus]");
+  names->AddText("A"); 
+  names->AddText("#phi [rad]"); 
+
+  TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+  values->SetTextAlign(33);
+  values->AddText(SciNotation(double(N))); 
+  values->AddText(Round(chi2ndf, 3));
+  //values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
+  values->AddText(Round(par1, 2)+"#pm"+Round(err1, 2));
+  values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+  //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
+  values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+
+  TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+  cuts->SetTextAlign(22);
+  cuts->AddText("1900 < p [MeV] < 3100");
+  cuts->AddText("30.6 < t [#mus] < 305.6");
+
+  names->SetTextSize(26);
+  names->SetTextFont(44);
+  names->SetFillColor(0);
+  values->SetFillColor(0);
+  values->SetTextFont(44);
+  values->SetTextSize(26);
+  cuts->SetFillColor(0);
+  cuts->SetTextFont(44);
+  cuts->SetTextSize(26);
+
+  graph->SetTitle(title.c_str());
+
+  graph->GetXaxis()->SetRangeUser(0, G2PERIOD);
+  graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  graph->GetXaxis()->SetTitleSize(.04);
+  graph->GetYaxis()->SetTitleSize(.04);
+  graph->GetXaxis()->SetTitleOffset(1.1);
+  graph->GetYaxis()->SetTitleOffset(1.1);
+  graph->GetXaxis()->CenterTitle(true);
+  graph->GetYaxis()->CenterTitle(true);
+  graph->GetYaxis()->SetMaxDigits(4);
+  graph->SetMarkerStyle(20); //  Full circle
+  graph->Draw("AP");
+
+  values->Draw("same");
+  names->Draw("same");
+  cuts->Draw("same");
+  leg->Draw("same");
+  func->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
 void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -1091,7 +1267,7 @@ void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std:
 	l->SetBorderSize(0);
 	l->SetNColumns(2);//BorderSize(0);
 	l->AddEntry(graphs.at(1), "Sim   ");
-	l->AddEntry(graphs.at(1)->GetFunction("FiveParFunc"), "N_{0}e^{-t/#tau}[1+Acos(#omega_{a}t+#phi)]");
+	l->AddEntry(graphs.at(1)->GetFunction("FiveParFunc"), "N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
 
 	graphs.at(1)->SetTitle(title.c_str());
 	graphs.at(1)->GetXaxis()->SetTitleSize(.04);
@@ -1108,7 +1284,10 @@ void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std:
 
 	int nGraphs = graphs.size();
 
-	for(int i = 0; i < nGraphs; i++) graphs.at(i)->SetMarkerStyle(20);
+	for(int i = 0; i < nGraphs; i++) {
+		//graphs.at(i)->GetXaxis()->SetRangeUser(xmin,xmax);
+		graphs.at(i)->SetMarkerStyle(20);
+	}
 
 	// Can't draw graph zero first because it messes up the x-axis
 	graphs.at(1)->Draw("AP");
@@ -1118,12 +1297,186 @@ void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std:
 	l->Draw("same");
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
+	//c->SaveAs((fname+".C").c_str());
 
 	delete c;
 
 	return;
 
 }
+
+void DrawFullBzFit(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) { 
+
+  graph->Draw();
+  gPad->Update();
+  gStyle->SetOptStat(0);
+  gStyle->SetOptFit(0);
+  gROOT->ForceStyle();
+
+  TF1 *func = graph->GetFunction("FullBzFunc");
+  func->SetLineWidth(3);
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  double chi2ndf = func->GetChisquare() / func->GetNDF();
+  double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+  double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
+  double par6 = func->GetParameter(6); double err6 = func->GetParError(6);
+
+  //TLegend *leg = new TLegend(0.15,0.79,0.85,0.89);
+  TLegend *leg = new TLegend(0.125,0.15,0.875,0.25);
+  leg->SetNColumns(2);
+  leg->AddEntry(graph, "Sim   ");
+  leg->AddEntry(func,"A_{Bz}cos(#omega_{a}t #plus #phi) #plus A_{EDM}sin(#omega_{a}t #plus #phi) #plus c");
+  leg->SetBorderSize(0);
+
+  TPaveText *names = new TPaveText(0.50,0.62,0.70,0.89,"NDC");
+
+  names->SetTextAlign(13);
+  names->AddText("N"); 
+  names->AddText("#chi^{2}/ndf");
+  names->AddText("A_{Bz} [mrad]");
+  names->AddText("A_{EDM} [mrad]");
+  //names->AddText("#phi [rad]");
+  names->AddText("c [mrad]"); 
+
+  //TPaveText *values = new TPaveText(0.31,0.15,0.51,0.40,"NDC");
+  TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+  values->SetTextAlign(33);
+  values->AddText(SciNotation(double(N))); 
+  values->AddText(Round(chi2ndf, 3));
+  values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+  values->AddText(Round(par3, 1)+"#pm"+Round(err3, 1));
+  //values->AddText(Round(phi, 1)+"#pm"+Round(phi_err, 1));
+  values->AddText(Round(par6, 3)+"#pm"+Round(err6, 1));
+
+  TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+  cuts->SetTextAlign(22);
+  cuts->AddText("700 < p [MeV] < 2400");
+  cuts->AddText("30.6 < t [#mus] < 305.6");
+
+  //leg->SetTextSize(26);
+  names->SetTextSize(26);
+  names->SetTextFont(44);
+  names->SetFillColor(0);
+  values->SetFillColor(0);
+  values->SetTextFont(44);
+  values->SetTextSize(26);
+  cuts->SetFillColor(0);
+  cuts->SetTextFont(44);
+  cuts->SetTextSize(26);
+
+  graph->SetTitle(title.c_str());
+  graph->GetXaxis()->SetTitleSize(.04);
+  graph->GetYaxis()->SetTitleSize(.04);
+  graph->GetXaxis()->SetTitleOffset(1.1);
+  graph->GetYaxis()->SetTitleOffset(1.1);
+  graph->GetXaxis()->CenterTitle(true);
+  graph->GetYaxis()->CenterTitle(true);
+  graph->GetYaxis()->SetMaxDigits(4);
+  graph->SetMarkerStyle(20); //  Full circle
+
+  graph->GetXaxis()->SetRangeUser(0, G2PERIOD);
+  graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  graph->Draw("AP");
+  values->Draw("same");
+  names->Draw("same");
+  cuts->Draw("same");
+  leg->Draw("same");
+  func->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+}
+
+void DrawSimpleBzFit(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) { 
+
+  graph->Draw();
+  gPad->Update();
+  gStyle->SetOptStat(0);
+  gStyle->SetOptFit(0);
+  gROOT->ForceStyle();
+
+  TF1 *func = graph->GetFunction("SimpleBzFunc");
+  func->SetLineWidth(3);
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  double chi2ndf = func->GetChisquare() / func->GetNDF();
+  double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+  double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
+
+  //TLegend *leg = new TLegend(0.15,0.79,0.85,0.89);
+  TLegend *leg = new TLegend(0.125,0.15,0.875,0.25);
+  leg->SetNColumns(2);
+  leg->AddEntry(graph, "Sim   ");
+  leg->AddEntry(func,"A_{Bz}cos(#omega_{a}t) #plus c");
+  leg->SetBorderSize(0);
+
+  TPaveText *names = new TPaveText(0.50,0.62,0.70,0.89,"NDC");
+
+  names->SetTextAlign(13);
+  names->AddText("N"); 
+  names->AddText("#chi^{2}/ndf");
+  names->AddText("A_{Bz} [mrad]");
+  names->AddText("c [mrad]"); 
+
+  //TPaveText *values = new TPaveText(0.31,0.15,0.51,0.40,"NDC");
+  TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+  values->SetTextAlign(33);
+  values->AddText(SciNotation(double(N))); 
+  values->AddText(Round(chi2ndf, 3));
+  values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
+  values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+
+  TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+  cuts->SetTextAlign(22);
+  cuts->AddText("700 < p [MeV] < 2400");
+  cuts->AddText("30.6 < t [#mus] < 305.6");
+
+  //leg->SetTextSize(26);
+  names->SetTextSize(26);
+  names->SetTextFont(44);
+  names->SetFillColor(0);
+  values->SetFillColor(0);
+  values->SetTextFont(44);
+  values->SetTextSize(26);
+  cuts->SetFillColor(0);
+  cuts->SetTextFont(44);
+  cuts->SetTextSize(26);
+
+  graph->SetTitle(title.c_str());
+  graph->GetXaxis()->SetTitleSize(.04);
+  graph->GetYaxis()->SetTitleSize(.04);
+  graph->GetXaxis()->SetTitleOffset(1.1);
+  graph->GetYaxis()->SetTitleOffset(1.1);
+  graph->GetXaxis()->CenterTitle(true);
+  graph->GetYaxis()->CenterTitle(true);
+  graph->GetYaxis()->SetMaxDigits(4);
+  graph->SetMarkerStyle(20); //  Full circle
+  //graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  graph->Draw("AP");
+  values->Draw("same");
+  names->Draw("same");
+  cuts->Draw("same");
+  leg->Draw("same");
+  func->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+}
+
 
 #endif

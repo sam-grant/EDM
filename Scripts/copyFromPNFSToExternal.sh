@@ -2,11 +2,13 @@
 #Copy all files from nearline according to run num
 i=$1
 
-study="RadialFieldScanReprocessed" #"BeamYPosMonitoring"
+id=`echo $i | cut -c -2`
+
+study="BeamYPosMonitoring" #"RadialFieldScanReprocessed" #"BeamYPosMonitoring"
 
 rm -f ../txt/FileLists/${i}.txt && touch ../txt/FileLists/${i}.txt
 
-ssh gm2gpvm01 ls /pnfs/GM2/daq/run4/nearline/nearlineHists/runs_37000/${i}/gm2nearline_hists_run${i}_*.root >> ../txt/FileLists/${i}.txt
+ssh gm2gpvm01 ls /pnfs/GM2/daq/run4/nearline/nearlineHists/runs_${id}000/${i} >> ../txt/FileLists/${i}.txt
 
 if [[ ! -d /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i} ]]; then 
 	mkdir /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i}
@@ -27,6 +29,6 @@ for file in `cat ../txt/FileLists/${i}.txt`; do
 
 	echo "Copying ${file}..."
 
-	scp gm2gpvm01:/pnfs/GM2/daq/run4/nearline/nearlineHists/runs_37000/${i}/${file} /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i}/ #../../Trees/Data/RadialFieldScan_2/${i}/
+	scp gm2gpvm01:/pnfs/GM2/daq/run4/nearline/nearlineHists/runs_${id}000/${i}/${file} /Volumes/BACKUP/gm2/EDM/Trees/Data/${study}/${i}/ #../../Trees/Data/RadialFieldScan_2/${i}/
 
 done

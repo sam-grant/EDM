@@ -6,19 +6,17 @@
 #include "EDMBlinding.h"
 
 std::string config = "1700ppm";
-std::string qual = "vertCorr_eQ_eQ";
-// std::string qual = "eQ";
+//std::string qual = "vertCorr_eQ_eQ";
+std::string qual = "eQ";
 
 double xmin = 7*G2PERIOD;
 double xmax = 70*G2PERIOD;
 
-bool unblind = true;//false;//true;//false;//false;//true;//true;//l//false;
-
-
+bool unblind = false;//true;//false;//true;//false;//false;//true;//true;//l//false;
 
 // TODO: improve these drawing functions
 
-void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+void DrawModWiggle_tmp(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -103,7 +101,6 @@ void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, do
 	return;
 
 }
-
 
 void DrawBzFit(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax, bool unblind) { 
 
@@ -250,7 +247,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
 
   vector<TGraphErrors*> cGraphs_; vector<TGraphErrors*> ABzGraphs_;
 
-  std::vector<string> names_ = { "S0", "S12", "S18", "S0S12S18"};
+  std::vector<string> names_ = { "S0", "S12", "S18", "S12S18", "S0S12S18"};
 
   for(int i_stn = 0; i_stn < names_.size(); i_stn++) {
 
@@ -263,22 +260,23 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
     std::vector<double> ABz_;
     std::vector<double> eABz_;
 
-    int pmin = 0.; 
-    int pmax = 100.;
+    int step = 200; 
+    int pmin = 0; 
+    int pmax = step+pmin;
 
-    for(int i_cut = 0; i_cut < 50; i_cut++) {
+    for(int i_cut = 0; i_cut < 15; i_cut++) {
 
       std::string momSlice = std::to_string(pmin)+"_"+std::to_string(pmax);
       int p = (pmax+pmin)/2;
 
-      std::string moduloHistName = name+"_ThetaY_vs_Time_Modulo_"+momSlice;
+      std::string moduloHistName = name+"_ThetaY_vs_Time_Modulo_Slice_"+momSlice;
       //if(name=="S0S12S18") moduloHistName = "ThetaY_vs_Time_Modulo_"+momSlice;
       TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
       //std::cout<<name<<" , "<<moduloHist<<std::endl;
       
       if(moduloHist == 0) {
-        pmin = pmin + 100;
-        pmax = pmax + 100;
+        pmin = pmin + step;
+        pmax = pmax + step;
         continue;
       }
 
@@ -289,7 +287,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
       TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
 
 
-      FitBz(moduloGraph, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
+      FullBzFit(moduloGraph, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
 
       DrawBzFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -.35, .35, unblind);// , double(nEntries), true);
 
@@ -305,8 +303,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
       ABz_.push_back(moduloGraph->GetFunction("BzFunc")->GetParameter(0));
       eABz_.push_back(moduloGraph->GetFunction("BzFunc")->GetParError(0));
 
-      pmin = pmin + 100;
-      pmax = pmax + 100;
+      pmin = pmin + step;
+      pmax = pmax + step;
 
       delete moduloProf; delete moduloHist;
 
@@ -318,8 +316,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
     c_vs_p->GetXaxis()->SetRangeUser(0,3000);
     ABz_vs_p->GetXaxis()->SetRangeUser(0,3000);
 
-    DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
-    DrawTGraphErrors(ABz_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{Bz} [mrad]", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ABz_vs_p_"+qual).c_str());
+    DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/"+name+"_c_vs_p_slice_"+qual).c_str());
+    DrawTGraphErrors(ABz_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{Bz} [mrad]", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ABz_vs_p_slice_"+qual).c_str());
 
     cGraphs_.push_back(c_vs_p);
     ABzGraphs_.push_back(ABz_vs_p);
@@ -352,8 +350,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
     A_ymin = -2; A_ymax = 2;
   }
 
-  OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/c_vs_p_overlay_"+qual).c_str(), c_ymin, c_ymax);
-  OverlayGraphs(ABzGraphs_, names_, "", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/ABz_vs_p_overlay_"+qual).c_str(), A_ymin, A_ymax);
+  OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/c_vs_p_slice_overlay_"+qual).c_str(), c_ymin, c_ymax);
+  OverlayGraphs(ABzGraphs_, names_, "", ("../Images/MC/BzSim/"+config+"/Blinded/MomBinnedAna/ABz_vs_p_slice_overlay_"+qual).c_str(), A_ymin, A_ymax);
 
   // Perform line fit
 
@@ -363,6 +361,62 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {
   return; 
 
 }
+
+// Should be a seperate macro!!!
+void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
+
+  // Split TGraph and fit into sections based on t_mod
+  std::vector<TGraphErrors*> gr_;
+  std::vector<TF1*> f_;
+  TF1 *f = gr->GetFunction("FiveParFunc");
+
+  int t_mod = 70;
+  int lo = 0; 
+  int hi = t_mod;
+  double t_max = gr->GetPointX(gr->GetN()-1);
+  int folds = t_max / t_mod;
+
+  int i_point = 0; 
+
+  for (int i_fold = 0; i_fold < folds; i_fold++) { 
+
+    TGraphErrors *gr_tmp = new TGraphErrors();
+    
+    int n = 0; 
+    int i_point_mod = 0; 
+
+    while(gr->GetPointX(i_point) >= lo && gr->GetPointX(i_point) < hi) {
+
+      double x = gr->GetPointX(i_point_mod); double ex = gr->GetErrorX(i_point_mod);
+      double y = gr->GetPointY(i_point); double ey = gr->GetErrorY(i_point);
+
+      if(y == 0) { 
+        i_point++;
+        i_point_mod++;
+        continue;
+      }
+
+      gr_tmp->SetPoint(n, x, y);
+      gr_tmp->SetPointError(n, ex, ey); 
+
+      n++; i_point++; i_point_mod++;
+
+    }
+
+    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A*1e3, 0, gr_tmp->GetPointX(0), gr_tmp->GetPointX(n-1));
+
+    gr_.push_back(gr_tmp);
+
+    lo = lo + t_mod; 
+    hi = hi + t_mod;
+
+  }
+
+  DrawFoldedWiggle(gr_, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../Images/MC/BzSim/"+config+"/Blinded/WiggleMod_"+to_string(t_mod)+"_"+qual, 0, t_mod, 10, 1e5);
+
+  return;
+}
+
 
 int main() {
 
@@ -409,10 +463,10 @@ int main() {
 	}
 
 	// Already did this in UnblindedMacro
-	// cout<<"Folding wiggle"<<endl;
+	cout<<"Folding wiggle"<<endl;
 	// // Fold wiggle for illustration 
-	// FitFivePar(gr_wiggle, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
-	// FoldWiggle(gr_wiggle);
+	FitFivePar(gr_wiggle, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
+	FoldWiggle(gr_wiggle);
 	// cout<<"Folded wiggle"<<endl;
 	// Now fit the modulo wiggle 
 
@@ -427,8 +481,9 @@ int main() {
 	//modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
 	modWiggle->SetParName(4,"#phi [rad]");
 
-	DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/BzSim/"+config+"/Blinded/fit_mod_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), 15e3, 61e3);//+"_"+to_string(unblind));
+	DrawModWiggle_tmp(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/BzSim/"+config+"/Blinded/fit_mod_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), 15e3, 61e3);//+"_"+to_string(unblind));
 
+	gr_wiggle_mod->Write();
 	// ======= SET PHASE =======
 	const double phi = modWiggle->GetParameter(4);
 
@@ -459,7 +514,7 @@ int main() {
 
 	// ======= Fit for A_Bz =====
 	// Bz should be 1700 ppm or 0.17 mrad
-	FitBz(gr_thetaY_mod_blind, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
+	FullBzFit(gr_thetaY_mod_blind, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
 
 	TF1 *BzWiggle = gr_thetaY_mod_blind->GetFunction("BzFunc");
 	// BzWiggle->SetParName(0,"A_{Bz} [mrad]");
@@ -474,6 +529,8 @@ int main() {
 
 	gr_thetaY_mod_blind->GetXaxis()->SetRangeUser(0, G2PERIOD);
 	DrawBzFit(gr_thetaY_mod_blind, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns","../Images/MC/BzSim/"+config+"/Blinded/fit_Bz_"+qual+"_"+to_string(unblind), N, -.5, .7, unblind);
+
+	gr_thetaY_mod_blind->Write();
 
 	// Momentum binned 
 	cout<<"\nPerforming momentum binned analysis"<<endl;

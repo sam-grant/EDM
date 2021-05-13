@@ -1,7 +1,7 @@
 void WiggleMod_70_vertCorr_eQ_eQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May  3 23:15:15 2021) by ROOT version 6.22/08
+//=========  (Fri May  7 06:35:09 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-8.754712,0.5,78.7924,5.5);

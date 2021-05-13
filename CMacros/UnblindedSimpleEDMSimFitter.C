@@ -98,11 +98,11 @@ void SimultaneousAnalysis(TFile *input, TFile *output) {
 
 
 		// Fit
-		SimpleSinFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
+		SimpleEDMFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
 
-		std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
+		std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0)<<std::endl;
 	
-		DrawSimpleSinFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/"+name+"ModuloFit_"+qual).c_str(), double(nEntries),true);
+		DrawSimpleEDMFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/"+name+"ModuloFit_"+qual).c_str(), double(nEntries),true);
 
 		moduloGraph->SetName((name+"_fit").c_str());
 		moduloGraph->Write();
@@ -153,9 +153,9 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
   			TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
 
-			SimpleSinFit(moduloGraph, 0.17, OMEGA_A * 1e3, 0);
+			SimpleEDMFit(moduloGraph, 0.17, OMEGA_A * 1e3, 0);
 
-			DrawSimpleSinFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/ForJoe/"+name+"_ModuloFit_"+std::to_string(pmin)+"_"+std::to_string(pmax)+"_"+qual).c_str(), double(nEntries), true);
+			DrawSimpleEDMFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/ForJoe/"+name+"_ModuloFit_"+std::to_string(pmin)+"_"+std::to_string(pmax)+"_"+qual).c_str(), double(nEntries), true);
 
 			output->cd("MomentumBinnedAnalysis/ModuloFits");
 
@@ -166,10 +166,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
 			p_.push_back(p);
 			ep_.push_back(pmax - p);
-			c_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(2));
-			ec_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParError(2));
-			AEDM_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParameter(0));
-			eAEDM_.push_back(moduloGraph->GetFunction("SimpleSinFunc")->GetParError(0));
+			c_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(2));
+			ec_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(2));
+			AEDM_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0));
+			eAEDM_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(0));
 
 			pmin = pmin + 100;
 			pmax = pmax + 100;
@@ -183,8 +183,6 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
   		c_vs_p->GetXaxis()->SetRangeUser(0,3000);
   		AEDM_vs_p->GetXaxis()->SetRangeUser(0,3000);
-
-
 
   		DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
   		DrawTGraphErrors(AEDM_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+name+"_AEDM_vs_p_"+qual).c_str());

@@ -280,11 +280,11 @@ int main() {
   	DrawTGraphErrors(result,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/BlindingTest/Modulo");
 
   	// Fit
-	SimpleSinFit(result, 0.15, OMEGA_A * 1e3, 0);
+	SimpleEDMFit(result, 0.15, OMEGA_A * 1e3, 0);
 
-  	std::cout<<"A_EDM:\t"<<result->GetFunction("SimpleSinFunc")->GetParameter(0)<<std::endl;
+  	std::cout<<"A_EDM:\t"<<result->GetFunction("SimpleEDMFunc")->GetParameter(0)<<std::endl;
 
-	DrawSimpleSinFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindingTest/BlindedFit", N, true);
+	DrawSimpleEDMFit(result, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]", "../Images/BlindingTest/BlindedFit", N, true);
 
 	return 0;
 

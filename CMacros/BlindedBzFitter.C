@@ -2,470 +2,408 @@
 
 #include "FancyDraw.h"
 #include "Utils.h"
+#include "RootInclude.h"
+#include "EDMBlinding.h"
 
-#include "TFile.h"
-#include "TMath.h"
-#include "TH1D.h"
-#include "TH2D.h"
-#include "TProfile.h"
-#include "TF1.h"
-#include "TDirectory.h"
-#include "TObject.h"
-#include "TGraphErrors.h"
-#include "TCanvas.h"
-#include "TLegend.h"
-#include "TPaveStats.h"
-#include "TPaveText.h"
-#include "TVirtualFFT.h"
-
-#include "../Blinding/Blinders.hh"
-#include "FancyDraw.h"
+std::string dataset = "Test";
+//std::string qual = "vertCorr_eQ_eQ";
+std::string qual = "gQ";
 
 double xmin = 7*G2PERIOD;
 double xmax = 70*G2PERIOD;
 
-// SETUP BLINDING
-
-using namespace blinding;
-
 bool unblind = true;
 
-double R = 3.5; // ppm shift
-double boxWidth = 0.25;
-double gausWidth = 0.7;
+// TODO: improve these drawing functions
 
-Blinders::fitType ftype = Blinders::kOmega_a;
-Blinders getBlinded( ftype, "Blinding string", boxWidth, gausWidth );
+void DrawBzFit(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax, bool unblind) { 
 
-// CONSTANTS
-double e = 1.6e-19; // J
-double aMu = 11659208.9e-10; 
-double mMu = 105.6583715; // u
-double mMuKg = mMu * 1.79e-30; // kg
-double B = 1.451269; // T
-double c = 299792458.; // m/s
-double cm2m = 100.0; // cm -> m
-double hbar = 1.05457e-34;
-double pmagic = mMu/std::sqrt(aMu);
-double gmagic = std::sqrt( 1.+1./aMu );
-double beta   = std::sqrt( 1.-1./(gmagic*gmagic) );
-double d0 = 1.9e-19; // BNL edm limit in e.cm
-double ppm = 1e-6;
-double alpha = 0.13; // asymmetry factor
-//double TESTEDM = d0 / 2.; 
+	graph->Draw();
+	gPad->Update();
+	gStyle->SetOptStat(0);
+	gStyle->SetOptFit(0);
 
-double blinded_edm_value(bool unblind) {
+	gStyle->SetOptStat(0);
+	gROOT->ForceStyle();
+	TF1 *func = graph->GetFunction("BzFunc");
 
-  // returns a blinded input edm value. returned dMu will be unphysical. it will be in the range of +- 3*d0 centred around 10*d0
+	TCanvas *c = new TCanvas("c","c",800,600);
 
-  // How far from the ref value are we
-  double omega_diff;
-  if(!unblind) { // unblinded verions
-    omega_diff = ((getBlinded.paramToFreq(R) / getBlinded.referenceValue()) - 1) / ppm;
-  } else if(unblind) {
-    Blinders myBlinder( ftype ); // Just to print out the warning
-    // I think that you have to reapply the new blinding to the blinded plot to unblind it. 
-    //omega_diff = (myBlinder.paramToFreq(R) / myBlinder.referenceValue() - 1) / ppm;
-    omega_diff = 0.0;
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
+	double par6 = func->GetParameter(6); double err6 = func->GetParError(6);
+
+	//TLegend *leg = new TLegend(0.15,0.79,0.85,0.89);
+	TLegend *leg = new TLegend(0.125,0.15,0.875,0.25);
+	leg->SetNColumns(2);
+	leg->AddEntry(graph, "Sim   ");
+	if(!unblind) leg->AddEntry(func,"A_{Bz}cos(#omega_{a}t #plus #phi) #plus A_{EDM}^{BLIND}sin(#omega_{a}t #plus #phi) #plus c");
+	else leg->AddEntry(func,"A_{Bz}cos(#omega_{a}t #plus #phi) #plus A_{EDM}sin(#omega_{a}t #plus #phi) #plus c");
+	leg->SetBorderSize(0);
+
+	TPaveText *names = new TPaveText(0.50,0.62,0.70,0.89,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("N"); 
+	names->AddText("#chi^{2}/ndf");
+	names->AddText("A_{Bz} [mrad]");
+	string amplitude;
+	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	else amplitude = "A_{EDM} [mrad]";
+	names->AddText(amplitude.c_str());
+	names->AddText("c [mrad]"); 
+
+	//TPaveText *values = new TPaveText(0.31,0.15,0.51,0.40,"NDC");
+	TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(SciNotation(double(N))); 
+	values->AddText(Round(chi2ndf, 3));
+	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par6, 1)+"#pm"+Round(err6, 1));
+
+	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("700 < p [MeV] < 2400");
+	cuts->AddText("0 < t [#mus] < 300");
+
+	//leg->SetTextSize(26);
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(26);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+/*	graph->Draw();
+	gPad->Update();
+	gStyle->SetOptStat(0);
+	gStyle->SetOptFit(0);
+	gPad->Update();
+
+	gStyle->SetOptStat(0);
+	gROOT->ForceStyle();*/
+
+	graph->Draw("AP");
+	values->Draw("same");
+	names->Draw("same");
+	cuts->Draw("same");
+	leg->Draw("same");
+	func->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+}
+
+void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  TLegend *l = new TLegend(0.55,0.79,0.89,0.89);
+  l->SetNColumns(3);
+  l->SetBorderSize(0);
+
+  graphs.at(0)->SetTitle(title.c_str());
+  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetXaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  int nGraphs = graphs.size();
+
+  graphs.at(0)->SetMarkerColor(kBlack);
+  graphs.at(1)->SetMarkerColor(kBlue);
+  graphs.at(2)->SetMarkerColor(kRed);
+
+  for(int i = 0; i < nGraphs; i++) {
+    graphs.at(i)->SetMarkerStyle(20);
+    l->AddEntry(graphs.at(i), (names.at(i)).c_str());
+    if(i==0) graphs.at(i)->Draw("AP");
+    else graphs.at(i)->Draw("P SAME");
   }
 
-  double dMu_blind = omega_diff * d0; // this is the blinded dMu in e.cm
-  
-  return dMu_blind;
-  
-}
+  l->Draw("same");
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
 
-// For sanity check d_mu plot
-double blinded_edm_value(std::string tmp) {
-  
-  //
-  // returns a blinded input edm value. returned dMu will be unphysical. it will be in the range of +- 3*d0 centred around 10*d0
-  //
+  delete c;
 
-  //Blinders myBlinder( ftype );
-  Blinders getBlinded( ftype, tmp.c_str(), boxWidth, gausWidth );
-
-  double omega_blind = getBlinded.paramToFreq(R); // this is the blinded omegaA value
-  double omega_ref   = getBlinded.referenceValue(); // this is the reference omegaA value
-  // How far from the ref value are we
-  double omega_diff  =  ((omega_blind / omega_ref) - 1) / ppm; // this is (omega_blind - omega_ref) in units of ppm
-  double dMu_blind   = omega_diff * d0; // this is the blinded dMu in e.cm
-  
-  return dMu_blind;
+  return;
 
 }
 
-double GetDelta(double dMu) {
-  double eta = ((4 * mMuKg * c * dMu)/ (hbar * cm2m) );
-  double dMu_tmp = (hbar * cm2m * eta) / (4 * mMuKg * c);
-  std::cout<<"eta_check:\t"<<eta<<std::endl;
-  std::cout<<"dMu_check:\t"<<dMu_tmp<<std::endl;
-  double tan_delta = (eta * beta) / (2 * aMu);
-  double delta = atan(tan_delta);
-  return delta;
-}
+void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi) {  
 
-double EDMFunc( double *x, double *p )  {
-  double time = x[0];// + p[3]; // time offset
-  return (-p[0] * cos(p[1]* time + p[2]));
-}
+  vector<TGraphErrors*> cGraphs_; vector<TGraphErrors*> ABzGraphs_;
 
-////////////////////////////////////
+  std::vector<string> names_ = { "S12", "S18", "S12S18", "S0S12S18"};
+
+  for(int i_stn = 0; i_stn < names_.size(); i_stn++) {
+
+    std::string name = names_.at(i_stn);
+
+    std::vector<double> c_;
+    std::vector<double> ec_;
+    std::vector<double> p_;
+    std::vector<double> ep_;
+    std::vector<double> ABz_;
+    std::vector<double> eABz_;
+
+    int step = 200; 
+    int pmin = 0; 
+    int pmax = step+pmin;
+
+    for(int i_cut = 0; i_cut < 15; i_cut++) {
+
+      std::string momSlice = std::to_string(pmin)+"_"+std::to_string(pmax);
+      int p = (pmax+pmin)/2;
+
+      std::string moduloHistName = name+"_ThetaY_vs_Time_Modulo_Slice_"+momSlice;
+      //if(name=="S0S12S18") moduloHistName = "ThetaY_vs_Time_Modulo_"+momSlice;
+      TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
+      //std::cout<<name<<" , "<<moduloHist<<std::endl;
+      
+      if(moduloHist == 0) {
+        pmin = pmin + step;
+        pmax = pmax + step;
+        continue;
+      }
+
+      int nEntries = moduloHist->GetEntries();
+
+      TH1D *moduloProf = moduloHist->ProfileX();
+
+      TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
 
 
-double FiveParFunc(double *x, double *par) {
- 	return par[0] * exp(-x[0]/par[1]) * (1 - (par[2] * cos((par[3] * x[0]) + par[4])));
-}
+      FullBzFit(moduloGraph, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
+
+      DrawBzFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/Data/Bz/"+dataset+"/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -.35, .35, unblind);// , double(nEntries), true);
+
+      output->cd("MomentumBinnedAnalysis/ModuloFits");
+
+      moduloGraph->SetName((name+"_fit_"+std::to_string(pmin)+"_"+std::to_string(pmax)).c_str());
+      moduloGraph->Write();
+
+      p_.push_back(p);
+      ep_.push_back(pmax - p);
+      c_.push_back(moduloGraph->GetFunction("BzFunc")->GetParameter(6));
+      ec_.push_back(moduloGraph->GetFunction("BzFunc")->GetParError(6));
+      ABz_.push_back(moduloGraph->GetFunction("BzFunc")->GetParameter(0));
+      eABz_.push_back(moduloGraph->GetFunction("BzFunc")->GetParError(0));
+
+      pmin = pmin + step;
+      pmax = pmax + step;
+
+      delete moduloProf; delete moduloHist;
+
+    }
+
+    TGraphErrors *c_vs_p = GenerateTGraphErrors(p_, c_, ep_, ec_);
+    TGraphErrors *ABz_vs_p = GenerateTGraphErrors(p_, ABz_, ep_, eABz_);
+
+    c_vs_p->GetXaxis()->SetRangeUser(0,3000);
+    ABz_vs_p->GetXaxis()->SetRangeUser(0,3000);
+
+    DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/Data/Bz/"+dataset+"/MomBinnedAna/"+name+"_c_vs_p_slice_"+qual).c_str());
+    DrawTGraphErrors(ABz_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{Bz} [mrad]", ("../Images/Data/Bz/"+dataset+"/MomBinnedAna/"+name+"_ABz_vs_p_slice_"+qual).c_str());
+
+    cGraphs_.push_back(c_vs_p);
+    ABzGraphs_.push_back(ABz_vs_p);
+
+    output->cd("MomentumBinnedAnalysis/ParameterScans");
+    c_vs_p->SetName((name+"_c_vs_p").c_str());
+    ABz_vs_p->SetName((name+"_ABz_vs_p").c_str());
+    c_vs_p->Write();
+    ABz_vs_p->Write();
+
+  }
+  	
+  double c_ymin; double c_ymax;
+  double A_ymin; double A_ymax;
+
+  if(qual=="eQ" || qual=="vertCorr_eQ") { 
+    c_ymin = -0.6; c_ymax = 0.15;
+    A_ymin = 0.0; A_ymax = 0.35;
+  } else if(qual=="noQ"  || qual=="vertCorr_noQ") { 
+    c_ymin = -2; c_ymax = 2;
+    A_ymin = -2; A_ymax = 2;
+  } else if(qual=="pValQ"  || qual=="vertCorr_pValQ") { 
+    c_ymin = -2.5; c_ymax = 1.25;
+    A_ymin = -2; A_ymax = 2;
+  } else if(qual=="vertCorr_eQ_eQ") { 
+    c_ymin = -0.065; c_ymax = 0.05;
+    A_ymin = -0.05; A_ymax = 0.4;
+  } else { 
+  	c_ymin = -2; c_ymax = 2;
+    A_ymin = -2; A_ymax = 2;
+  }
+
+  OverlayGraphs(cGraphs_, names_, "", ("../Images/Data/Bz/"+dataset+"/MomBinnedAna/c_vs_p_slice_overlay_"+qual).c_str(), c_ymin, c_ymax);
+  OverlayGraphs(ABzGraphs_, names_, "", ("../Images/Data/Bz/"+dataset+"/MomBinnedAna/ABz_vs_p_slice_overlay_"+qual).c_str(), A_ymin, A_ymax);
+
+  // Perform line fit
+
+  //LineFit(ABzGraphs_); 
 
 
-void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double min, double max) {
-  
-	TF1 *func = new TF1("FiveParFunc", FiveParFunc, min, max, 5);
-
-	func->SetParameter(0, par0); // N0
-	func->SetParameter(1, par1); // tau
-	func->SetParameter(2, par2); // A
-	func->FixParameter(3, par3); // Omega
-	//func->SetParameter(4, par4);
-  	//func->SetParLimits(4, -TMath::Pi(), TMath::Pi());
-
-  	graph->Fit(func, "MR"); // ,"MR");
-
-  	std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
-
-  	return;
-
-}
-
-
-
-double BzFunc(double *x, double *par) {
-	return  (par[0] * cos((par[1]*x[0]) + par[2])) + (par[3] * sin((par[4]*x[0]) + par[5])) + par[6]; 
-}
-
-void FitBz(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double par5, double par6, double min, double max) {
-
-	TF1 *func = new TF1("BzFunc", BzFunc, min, max, 7);
-
-	//func->SetParLimits(0, par0/4, par0);
-	// A_Bz
-	func->SetParameter(0, par0);
-	//func->SetParLimits(0, par0-par0*0.5, par0+par0*0.5);
-	 
-	func->FixParameter(1, par1); // omega_a
-	func->FixParameter(2, par2); // phi
-	func->SetParameter(3, 0); // A_EDM
-	func->FixParameter(4, par4); // omega_a
-	func->FixParameter(5, par5); // phi
-	func->SetParameter(6, par6); // C
-
-  	graph->Fit(func, "MR"); // ,"MR");
-
-  	std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
-  	//std::cout << "\nN...\t:" << graph->GetEn << std::endl;
-	return;
-
-}
-
-TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
-
-	int n = hist->GetNbinsX();
-	double x[n]; double ex[n];
-  	double y[n]; double ey[n];
-
-  	for(int i = 0; i < n; i++) {
-
-  		x[i] = hist->GetBinCenter(i+1);
-  		ex[i] = 0; 
-  		y[i] = hist->GetBinContent(i+1); 
-      	ey[i] = hist->GetBinError(i+1); 
-
-  	}
-
-  	return new TGraphErrors(n, x, y, ex, ey);
-
-}
-
-void DrawWiggleFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
-
-	TCanvas *c = new TCanvas("c","c",800,600);
-
-	gStyle->SetStatFormat("6.3g");
-  	graph->Draw();
-  	gPad->Update();
-  	gStyle->SetStatY(0.89);
-  	gStyle->SetStatX(0.49);
-  	gStyle->SetStatBorderSize(0);
-  	gStyle->SetOptFit(111);
-
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.25);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("AP");
-
-	func->SetLineWidth(3);
-	func->SetLineColor(kRed);
-	func->SetNpx(1e4);	
-
-	gPad->Update();
-	gStyle->SetOptFit(20222); 
-
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
-
-	delete c;
-
-	return;
+  return; 
 
 }
 
-void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
+// Should be a seperate macro!!!
+void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+  // Split TGraph and fit into sections based on t_mod
+  std::vector<TGraphErrors*> gr_;
+  std::vector<TF1*> f_;
+  TF1 *f = gr->GetFunction("FiveParFunc");
 
-	gStyle->SetStatFormat("6.3g");
-  	graph->Draw();
-  	gPad->Update();
-  	gStyle->SetStatY(0.89);
-  	gStyle->SetStatX(0.69);
-  	gStyle->SetStatBorderSize(0);
-  	gStyle->SetOptFit(111);
+  int t_mod = 80;
+  int lo = 0; 
+  int hi = t_mod;
+  double t_max = gr->GetPointX(gr->GetN()-1);
+  int folds = t_max / t_mod;
 
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.25);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("AP");
+  int i_point = 0; 
 
-	func->SetLineWidth(3);
-	func->SetLineColor(kRed);
-	func->SetNpx(1e4);	
+  for (int i_fold = 0; i_fold < folds; i_fold++) { 
 
-	gPad->Update();
-	gStyle->SetOptFit(20222); 
+    TGraphErrors *gr_tmp = new TGraphErrors();
+    
+    int n = 0; 
+    int i_point_mod = 0; 
 
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
+    while(gr->GetPointX(i_point) >= lo && gr->GetPointX(i_point) < hi) {
 
-	delete c;
+      double x = gr->GetPointX(i_point_mod); double ex = gr->GetErrorX(i_point_mod);
+      double y = gr->GetPointY(i_point); double ey = gr->GetErrorY(i_point);
 
-	return;
+      if(y == 0) { 
+        i_point++;
+        i_point_mod++;
+        continue;
+      }
 
-}
+      gr_tmp->SetPoint(n, x, y);
+      gr_tmp->SetPointError(n, ex, ey); 
 
-void FoldWiggle(TGraphErrors *gr) {
+      n++; i_point++; i_point_mod++;
 
-	// Gleb method 
-	int right = 0;
-	int left = 0;
-	int i_section = 0; 
+    }
 
-	for(int i_point = 0; i_point < gr->GetN(); i_point++) { 
+    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A*1e3, 0, gr_tmp->GetPointX(0), gr_tmp->GetPointX(n-1));
 
-		int x = gr->GetPointX(i_point);
-		int y = gr->GetPointY(i_point);
-		
+    gr_.push_back(gr_tmp);
 
-		// cout<<x<<" "<<y<<endl;
+    lo = lo + t_mod; 
+    hi = hi + t_mod;
 
-	}
+  }
 
-	return;
-}
+  DrawFoldedWiggle(gr_, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../Images/Data/Bz/"+dataset+"/WiggleMod_"+to_string(t_mod)+"_"+qual, 0, t_mod, -10, 1.75e3);
 
-void MomentumBinnedAnalysis(TFile *input, const double phi) { 
+  cout<<"Folded"<<endl;
 
-	vector<TGraphErrors*> gr_;
-
-	vector<double> c_; 
-	vector<double> ec_;
-	vector<double> mom_;
-	vector<double> ABz_;
-	vector<double> eABz_;
-
-	double pmin = 700; double pmax = 800;
-
-	int count = 0;
-
-  	for(int i_cut = 0; i_cut < 17; i_cut++) {
-
-  		TH2D *h2_thetaY_mod = (TH2D*)input->Get(("ThetaY_vs_Time_Modulo_"+to_string(int(pmin))+"_"+to_string(int(pmax))).c_str());
-  		TH1D *px_thetaY_mod = (TH1D*)h2_thetaY_mod->ProfileX();
-  		TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
-
-  		FitBz(gr_thetaY_mod, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
-  		gr_.push_back(gr_thetaY_mod);
-
-  		//cout<<gr_thetaY_mod->GetFunction("BzFunc")->GetParameter(6)<<endl;
-  		c_.push_back(gr_thetaY_mod->GetFunction("BzFunc")->GetParameter(6));
-  		ec_.push_back(gr_thetaY_mod->GetFunction("BzFunc")->GetParError(6));
-  		ABz_.push_back(gr_thetaY_mod->GetFunction("BzFunc")->GetParameter(0));
-  		eABz_.push_back(gr_thetaY_mod->GetFunction("BzFunc")->GetParError(0));
-
-  		mom_.push_back((pmin+pmax)/2);
-
-  		pmin = pmin + 100; 
-     	pmax = pmax + 100; 
-
-     	delete h2_thetaY_mod;
-     	delete px_thetaY_mod;
-     	delete gr_thetaY_mod;
-
-     	count++;
-  	}
-
-  	int n = c_.size();
-
-  	double c[n]; double ec[n];
-  	double p[n]; double ep[n];
-  	double ABz[n]; double eABz[n];
-
-  	for(int i_point = 0; i_point < n; i_point++) { 
-
-  		p[i_point] = mom_.at(i_point); ep[i_point] = 0.;
-  		c[i_point] = c_.at(i_point); ec[i_point] = ec_.at(i_point);
-  		ABz[i_point] = ABz_.at(i_point); eABz[i_point] = eABz_.at(i_point); 
-
-  	}
-
-  	TGraphErrors *c_vs_p = new TGraphErrors(n, p, c, ep, ec);
-  	TGraphErrors *ABz_vs_p = new TGraphErrors(n, p, ABz, ep, eABz);
-
-  	ABz_vs_p->Fit("pol0");
-  	TF1 *fit = ABz_vs_p->GetFunction("pol0");
-  	fit->SetParName(0, "#LTA_{B_{z}}#GT [ppm]");
-
-  	double avgBz = fit->GetParameter(0);
-  	ABz_vs_p->GetYaxis()->SetRangeUser(0., avgBz+.25);
-
-
-
-  	DrawTGraphErrors(c_vs_p, ";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", "../Images/MC/BzSim/1700ppm/C_vs_Momentum");
-  	// DrawTGraphErrors(ABz_vs_p, ";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", "../Images/MC/BzSim/1700ppm/ABz_vs_Momentum");
-  	DrawLineFit(ABz_vs_p, fit, ";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{Bz} [mrad]", "../Images/MC/BzSim/1700ppm/ABz_vs_Momentum");
-
-  	return;
+  return;
 }
 
 
 int main() {
 
-	if (unblind) {
-      std::cout << "\n========= UNBLINDED ==========" << "\n";
-    }
-  
 	bool sanityPlots = false;//true;
+	bool write = false;// true; 
 
-	string config = "BzSim"; 
-	string field = "1700ppm";//"82ppm"; // 
 	// Read file
-	TFile *input = TFile::Open(("../Plots/MC/"+config+"/simPlots.Bz."+field+".root").c_str());
+	TFile *input = TFile::Open(("../Plots/Data/Bz/"+dataset+"/Bz_"+qual+".root").c_str());
 	cout << "\nRead input...\t\t: " << input << endl;
+
+	std::string outputName = "../Plots/Data/Bz/"+dataset+"/Bz_blindedFits_"+qual+".root"; 
+	if(!write) outputName = "delete_me.root";
+
+	TFile *output = new TFile(outputName.c_str(), "RECREATE");
+
+	output->mkdir("SimultaneousAnalysis");
+ 	output->cd("SimultaneousAnalysis");
 
 	// Get histograms
 	TH1D *h1_wiggle = (TH1D*)input->Get("Wiggle");
-	TH1D *h1_wiggle_full = (TH1D*)input->Get("Wiggle_Full");
 	TH1D *h1_wiggle_mod = (TH1D*)input->Get("Wiggle_Modulo");
-	TH1D *h1_wiggle_mod_full = (TH1D*)input->Get("Wiggle_Modulo_Full");
-	//TH1D *h1_wiggle_mod_shift = (TH1D*)input->Get("Wiggle_Modulo_Shift");
-
 	TH2D *h2_thetaY_mod = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
-	//TH2D *h2_thetaY_mod_shift = (TH2D*)input->Get("ThetaY_vs_Time_Modulo_Shift");
 
-	cout << "Got histograms...\n: ";
-	cout << h1_wiggle << endl;
-	cout << h1_wiggle_full << endl;
-	cout << h1_wiggle_mod << endl;
-	//cout << h1_wiggle_mod_shift << endl;
-	cout << h2_thetaY_mod << endl;
-
-	// Make profiles
+	// Make profile
 	TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
-	//TH1D *px_thetaY_mod_shift = h2_thetaY_mod_shift->ProfileX();
+	px_thetaY_mod->SetStats(0);
 
-	cout << "Generated x-profile...\n: ";
-	cout << px_thetaY_mod << endl; 
-
-	// Rebin
-	
-	cout << "\nNBins before rebin...\t\t: " << px_thetaY_mod->GetNbinsX() << endl;
-	cout << "Binwidth before rebin...\t: " << px_thetaY_mod->GetXaxis()->GetBinWidth(1) << "\n" << endl;
-	//px_thetaY_mod->Rebin(2);
-	cout << "NBins post rebin...\t: " << px_thetaY_mod->GetNbinsX() << endl;
-	cout << "Binwidth post rebin...\t: " << px_thetaY_mod->GetXaxis()->GetBinWidth(1) << "\n" << endl;
-	
 
 	TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
-	TGraphErrors *gr_wiggle_full = ConvertToTGraphErrors(h1_wiggle_full);
 	TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
-	TGraphErrors *gr_wiggle_mod_full = ConvertToTGraphErrors(h1_wiggle_mod_full);
 	TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
-	//TGraphErrors *gr_thetaY_mod_shift = ConvertToTGraphErrors(px_thetaY_mod_shift);
 
 	// Draw all base plots
 	if(sanityPlots) { 
 
-		DrawTH1(h1_wiggle,"h1_wiggle","../Images/MC/BzSim/"+field+"/h1_wiggle");
-		DrawTH1(h1_wiggle_full,"h1_wiggle","../Images/MC/BzSim/"+field+"/h1_wiggle_full");
-		DrawTH1(h1_wiggle_mod,"h1_wiggle_mod","../Images/MC/BzSim/"+field+"/h1_wiggle_mod");
-		DrawTGraphErrors(gr_wiggle,"gr_wiggle","../Images/MC/BzSim/"+field+"/gr_wiggle");
-		DrawTGraphErrors(gr_wiggle_full,"gr_wiggle_full","../Images/MC/BzSim/"+field+"/gr_wiggle_full");
-		DrawTGraphErrors(gr_wiggle_mod,"gr_wiggle_mod","../Images/MC/BzSim/"+field+"/gr_wiggle_mod");
-		//DrawTGraphErrors(gr_wiggle_mod_shift,"gr_wiggle_mod_shift","../Images/MC/BzSim/"+field+"/gr_wiggle_mod_shift");
-		DrawTH2(h2_thetaY_mod,"h2_thetaY_mod","../Images/MC/BzSim/"+field+"/h2_thetaY_mod");
-		//DrawTH2(h2_thetaY_mod_shift,"h2_thetaY_mod_shift","../Images/MC/BzSim/"+field+"/h2_thetaY_mod_shift");
-		DrawTH1(px_thetaY_mod,"px_thetaY_mod","../Images/MC/BzSim/"+field+"/px_thetaY_mod");
-		DrawTGraphErrors(gr_thetaY_mod, "gr_thetaY_mod", "../Images/MC/BzSim/"+field+"/gr_thetaY_mod");
+		DrawTH1(h1_wiggle,"h1_wiggle","../Images/Data/Bz/"+dataset+"/SanityPlots/h1_wiggle_"+qual);
+		DrawTH1(h1_wiggle_mod,"h1_wiggle_mod","../Images/Data/Bz/"+dataset+"/SanityPlots/h1_wiggle_mod_"+qual);
+		DrawTGraphErrors(gr_wiggle,"gr_wiggle","../Images/Data/Bz/"+dataset+"/SanityPlots/gr_wiggle_"+qual);
+		DrawTGraphErrors(gr_wiggle_mod,"gr_wiggle_mod","../Images/Data/Bz/"+dataset+"/SanityPlots/gr_wiggle_mod_"+qual);
+		DrawTH2(h2_thetaY_mod,"h2_thetaY_mod","../Images/Data/Bz/"+dataset+"/SanityPlots/h2_thetaY_mod_"+qual);
+		DrawTH1(px_thetaY_mod,"px_thetaY_mod","../Images/Data/Bz/"+dataset+"/SanityPlots/px_thetaY_mod_"+qual);
+		DrawTGraphErrors(gr_thetaY_mod, "gr_thetaY_mod", "../Images/Data/Bz/"+dataset+"/SanityPlots/gr_thetaY_mod_"+qual);
 
 	}
 
-	// Fit full wiggle
-	FitFivePar(gr_wiggle_full, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
-
-	//gr_wiggle_full->GetXaxis()->SetRangeUser(xmin, xmax);
-	
-	TF1 *wiggle = gr_wiggle_full->GetFunction("FiveParFunc");
-
-	wiggle->SetParName(0,"N_{0}");
-	wiggle->SetParName(1,"#tau [#mus]");
-	wiggle->SetParName(2,"A");
-	wiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
-	wiggle->SetParName(4,"#phi [rad]");
-
-	DrawWiggleFit(gr_wiggle_full, wiggle,";Time [#mus];Tracks / 149 ns","../Images/MC/BzSim/"+field+"/fit_wiggle");
-
-	// Now fold the wiggle over 20*T_g-2 on the x-axis
-
-	FoldWiggle(gr_wiggle_full);
-
-	// Now fit the modulo wiggle
+	// Already did this in UnblindedMacro
+	cout<<"Folding wiggle"<<endl;
+	// // Fold wiggle for illustration 
+	//FitFivePar(gr_wiggle, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
+	FoldWiggle(gr_wiggle);
+	// cout<<"Folded wiggle"<<endl;
+	// Now fit the modulo wiggle 
 
 	// No shift 
 	FitFivePar(gr_wiggle_mod, 1300, 64, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
 	cout<<"G2PERIOD\t"<<G2PERIOD<<endl;
+	cout<<"Getting five par func"<<endl;
 	TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 	modWiggle->SetParName(0,"N_{0}");
 	modWiggle->SetParName(1,"#tau [#mus]");
 	modWiggle->SetParName(2,"A");
-	modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
+	//modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
 	modWiggle->SetParName(4,"#phi [rad]");
-	DrawWiggleFit(gr_wiggle_mod, modWiggle,";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/BzSim/"+field+"/fit_mod_wiggle");
 
+	DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/Data/Bz/"+dataset+"/fit_mod_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), 0, 3e3);//+"_"+to_string(unblind));
+
+	gr_wiggle_mod->Write();
 	// ======= SET PHASE =======
 	const double phi = modWiggle->GetParameter(4);
+
+	std::cout<<"g-2 phase:\t"<<phi<<std::endl;
 
 	// Shift the phase 90 deg
     double phi_edm = phi + M_PI/2.; 
@@ -476,65 +414,54 @@ int main() {
 	// ================== get blinded A_EDM ================== 
 
     double dMu_blind = blinded_edm_value(unblind);  //1.6e-19*30;//
-    std::cout<<"dMu_blind:\t"<<dMu_blind<<std::endl;
     double delta_blind = GetDelta(dMu_blind);
     double omega_a = getBlinded.referenceValue(); 
     double tan_A_edm = tan(delta_blind) / gmagic;
 
     double A_edm = alpha*atan(tan_A_edm) * 1e3; // 0.13 is asymmetry factor
 
-   // ================== Third, inject blinded A_EDM into modulo plot ==================
+   // ================== Inject blinded A_EDM into modulo plot ==================
 
     // Define blinded EDM oscillation
-    TF1* edmFunc = new TF1("edmFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
-    edmFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
-    edmFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
-    edmFunc->SetNpx(50000);
+    TF1* blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
+    blindEDMFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
+    blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
+    blindEDMFunc->SetNpx(50000);
 
-    // Inject into modulo
-
-    int n = gr_thetaY_mod->GetN();//binsX();
-    //int nEntries = ThetaY_vs_Time_Modulo_Prof->GetEntries();
-
-    double x[n];
-    double ex[n];
-    double y[n];
-    double ey[n];
-
-    for (int i(0); i<n; i++) {
-
-      double time = gr_thetaY_mod->GetPointX(i);
-      double theta_y = gr_thetaY_mod->GetPointY(i);
-      double theta_y_shift = edmFunc->Eval(time);
-
-      x[i] = time;
-      ex[i] = 0;
-      y[i] = theta_y + theta_y_shift;
-      ey[i] = gr_thetaY_mod->GetErrorY(i);
-
-    }
-
-    TGraphErrors *gr_thetaY_mod_blind = new TGraphErrors(n, x, y, ex, ey);
-
+    TGraphErrors *gr_thetaY_mod_blind = BlindedModulo(gr_thetaY_mod, blindEDMFunc); 
 
 	// ======= Fit for A_Bz =====
 	// Bz should be 1700 ppm or 0.17 mrad
-	FitBz(gr_thetaY_mod_blind, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
-	TF1 *BzWiggle = gr_thetaY_mod_blind->GetFunction("BzFunc");
-	BzWiggle->SetParName(0,"A_{Bz} [mrad]");
-	BzWiggle->SetParName(1,"#omega_{a} (fixed) [MHz]");
-	BzWiggle->SetParName(2,"#phi (fixed) [rad]");
-	BzWiggle->SetParName(3,"A_{EDM}^{Blind} [mrad]");
-	BzWiggle->SetParName(4,"#omega_{a} (fixed) [MHz]");
-	BzWiggle->SetParName(5,"#phi (fixed) [rad]");
-	BzWiggle->SetParName(6,"C [mrad]");
-	DrawWiggleFit(gr_thetaY_mod_blind, BzWiggle,";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+field+"/fit_blind_Bz");
+	FullBzFit(gr_thetaY_mod_blind, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
 
-	cout<<"Number of tracks in fit:\t"<<h1_wiggle_mod->GetEntries()<<endl;
+	TF1 *BzWiggle = gr_thetaY_mod_blind->GetFunction("BzFunc");
+	// BzWiggle->SetParName(0,"A_{Bz} [mrad]");
+	// BzWiggle->SetParName(1,"#omega_{a}^{FIXED} [MHz]");
+	// BzWiggle->SetParName(2,"#phi^{FIXED} [rad]");
+	// if(unblind) BzWiggle->SetParName(3,"A_{EDM} [mrad]");
+	// else BzWiggle->SetParName(3,"A_{EDM}^{BLIND} [mrad]");
+	// BzWiggle->SetParName(5,"#phi^{FIXED} [rad]");
+	// BzWiggle->SetParName(6,"c [mrad]");
+
+	double N = px_thetaY_mod->GetEntries();
+
+	gr_thetaY_mod_blind->GetXaxis()->SetRangeUser(0, G2PERIOD);
+	DrawBzFit(gr_thetaY_mod_blind, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns","../Images/Data/Bz/"+dataset+"/fit_Bz_"+qual+"_"+to_string(unblind), N, -.5, .7, unblind);
+
+	gr_thetaY_mod_blind->Write();
 
 	// Momentum binned 
 	cout<<"\nPerforming momentum binned analysis"<<endl;
-	MomentumBinnedAnalysis(input, phi);
+	
+	output->mkdir("MomentumBinnedAnalysis");
+  	output->mkdir("MomentumBinnedAnalysis/ModuloFits");
+  	output->mkdir("MomentumBinnedAnalysis/ParameterScans");
+
+	// MomentumBinnedAnalysis(input, output, phi);
+
+	input->Close();
+	output->Close();
+	std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
 
 	return 0;
 }
