@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe TruthEDMSimFitter.exe Dilution.exe EDMBlindingIllustration.exe
 
 all:$(Target)
 
@@ -85,13 +85,20 @@ TruthBzSimFitter.exe: TruthBzSimFitter.C
 PlotYvsBr.exe: PlotYvsBr.C
 	${C++} -o $@ PlotYvsBr.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
+TruthEDMSimFitter.exe: TruthEDMSimFitter.C
+	${C++} -o $@ TruthEDMSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
+Dilution.exe: Dilution.C
+	${C++} -o $@ Dilution.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
 ############################# BLINDING ###################################
 
 testBlinding.exe: testBlinding.C
 	${C++} -o $@ testBlinding.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 
 
+EDMBlindingIllustration.exe: EDMBlindingIllustration.C
+	${C++} -o $@ EDMBlindingIllustration.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 
+	
 BlindedEDMSimFitter.exe: BlindedEDMSimFitter.C
 	${C++} -o $@ BlindedEDMSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
 
@@ -100,5 +107,7 @@ BlindedBzSimFitter.exe: BlindedBzSimFitter.C
 
 BlindedBzFitter.exe: BlindedBzFitter.C
 	${C++} -o $@ BlindedBzFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
+
+
 clean:
 	rm *exe

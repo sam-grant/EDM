@@ -393,7 +393,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
 
       SimpleEDMFit(moduloGraph, 0.17, OMEGA_A * 1e3, 0);
 
-      DrawSimpleEDMFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), true);
+      DrawSimpleEDMFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), 1, 1, true);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 

@@ -590,86 +590,7 @@ void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
 }
 
 
-void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
-
-	TF1 *func = graph->GetFunction("SimpleEDMFunc");
-	func->SetLineWidth(3);
-	func->SetLineColor(kRed);
-	func->SetNpx(1e4);	
-
-	double chi2ndf = func->GetChisquare() / func->GetNDF();
-	double par0 = func->GetParameter(0);
-	double err0 = func->GetParError(0);
-	double par1 = func->GetParameter(1);
-	double err1 = func->GetParError(1);
-	double par2 = func->GetParameter(2);
-	double err2 = func->GetParError(2);
-
-	TLegend *leg = new TLegend(0.11,0.79,0.45,0.89);
-	leg->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c");
-	leg->SetBorderSize(0);
-
-	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
-
-	names->SetTextAlign(13);
-	names->AddText("N") ; 
-	names->AddText("#chi^{2}/ndf");
-	string amplitude;
-	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
-	else amplitude = "A_{EDM} [mrad]";
-	names->AddText(amplitude.c_str());
-	names->AddText("c [mrad]"); 
-
-	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
-	values->SetTextAlign(33);
-	values->AddText(SciNotation(double(N))); 
-	values->AddText(Round(chi2ndf, 3));
-	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
-	values->AddText(Round(par2, 1)+"#pm"+Round(err2, 1));
-
-	TPaveText *cuts = new TPaveText(0.15,0.20,0.45,0.40,"NDC");
-	cuts->SetTextAlign(22);
-	cuts->AddText("700 < p [MeV] < 2400");
-	cuts->AddText("0 < t [#mus] < 300");
-
-	names->SetTextSize(26);
-	names->SetTextFont(44);
-	names->SetFillColor(0);
-	values->SetFillColor(0);
-	values->SetTextFont(44);
-	values->SetTextSize(26);
-	cuts->SetFillColor(0);
-	cuts->SetTextFont(44);
-	cuts->SetTextSize(26);
-
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.1);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);
-	graph->Draw("AP");
-	values->Draw("same");
-	names->Draw("same");
-	leg->Draw("same");
-	func->Draw("same");
-	cuts->Draw("same");
-
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
-
-	delete c;
-
-	return;
-
-}
 
 /*
 // IGNORE
@@ -1229,8 +1150,17 @@ void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, do
 
   graph->SetTitle(title.c_str());
 
-  graph->GetXaxis()->SetRangeUser(0, G2PERIOD);
   graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  // Hack together x-axis range
+  int n_points = graph->GetN();
+  double xmax = graph->GetPointX(n_points-1);// + 50;
+  double xmin = graph->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.01;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
   graph->GetXaxis()->SetTitleSize(.04);
   graph->GetYaxis()->SetTitleSize(.04);
@@ -1305,6 +1235,196 @@ void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std:
 
 }
 
+void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, double ymin, double ymax, bool unblind) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	TF1 *func = graph->GetFunction("SimpleEDMFunc");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0);
+	double err0 = func->GetParError(0);
+	double par1 = func->GetParameter(1);
+	double err1 = func->GetParError(1);
+	double par2 = func->GetParameter(2);
+	double err2 = func->GetParError(2);
+
+	TLegend *leg = new TLegend(0.11,0.79,0.45,0.89);
+	leg->AddEntry(func,"A_{EDM} sin(#omega_{a}t) + c");
+	leg->SetBorderSize(0);
+
+	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("N") ; 
+	names->AddText("#chi^{2}/ndf");
+	string amplitude;
+	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	else amplitude = "A_{EDM} [mrad]";
+	names->AddText(amplitude.c_str());
+	names->AddText("c [mrad]"); 
+
+	TPaveText *values = new TPaveText(0.69,0.59,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(SciNotation(double(N))); 
+	values->AddText(Round(chi2ndf, 3));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+
+	TPaveText *cuts = new TPaveText(0.15,0.20,0.45,0.40,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("700 < p [MeV] < 2400");
+	cuts->AddText("30.6 < t [#mus] < 305.6");
+
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(26);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+
+	graph->GetYaxis()->SetRangeUser(ymin,ymax);
+  	int n_points = graph->GetN();
+  	double xmax = graph->GetPointX(n_points-1);// + 50;
+  	double xmin = graph->GetPointX(0);// - 50; 
+  	double offset = (xmax - xmin) * 0.01;
+  	xmin = xmin - offset; 
+  	xmax = xmax + offset;
+  	graph->GetXaxis()->SetRangeUser(xmin, xmax);
+	//graph->GetXaxis()->SetRangeUser(0,G2PERIOD);
+
+	graph->Draw("AP");
+	values->Draw("same");
+	names->Draw("same");
+	leg->Draw("same");
+	func->Draw("same");
+	cuts->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, double ymin, double ymax, bool unblind) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	TF1 *func = graph->GetFunction("FullEDMFunc");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+	double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
+	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
+	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
+
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
+	leg->SetNColumns(2);
+	leg->AddEntry(graph, "Sim   ");
+	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) + A_{EDM} sin(#omega_{a}t+#phi) + c");
+	leg->SetBorderSize(0);
+
+	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
+	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("N") ; 
+	names->AddText("#chi^{2}/ndf");
+	names->AddText("A_{g-2} [mrad]");
+	//names->AddText("#phi");
+	string amplitude;
+	amplitude = "A_{EDM} [mrad]";
+	names->AddText(amplitude.c_str());
+	names->AddText("c [mrad]"); 
+
+	//TPaveText *values = new TPaveText(0.65,0.55,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.65,0.59,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(SciNotation(double(N))); 
+	values->AddText(Round(chi2ndf, 3));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
+
+	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
+	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("700 < p [MeV] < 2400");
+	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+
+	names->SetTextSize(26);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(26);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(26);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  	// Hack together x-axis range
+  	int n_points = graph->GetN();
+  	double xmax = graph->GetPointX(n_points-1);// + 50;
+  	double xmin = graph->GetPointX(0);// - 50; 
+  	double offset = (xmax - xmin) * 0.01;
+  	xmin = xmin - offset; 
+  	xmax = xmax + offset;
+
+  	graph->GetXaxis()->SetRangeUser(xmin, xmax);
+
+/*	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);*/
+	graph->Draw("AP");
+	values->Draw("same");
+	names->Draw("same");
+	leg->Draw("same");
+	func->Draw("same");
+	cuts->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
 void DrawFullBzFit(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) { 
 
   graph->Draw();
@@ -1347,8 +1467,13 @@ void DrawFullBzFit(TGraphErrors *graph, string title, string fname, double N, do
   values->AddText(Round(chi2ndf, 3));
   values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
   values->AddText(Round(par3, 1)+"#pm"+Round(err3, 1));
-  //values->AddText(Round(phi, 1)+"#pm"+Round(phi_err, 1));
   values->AddText(Round(par6, 3)+"#pm"+Round(err6, 1));
+  //values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
+  //values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+  //values->AddText(Round(par6, 1)+"#pm"+Round(err6, 1));
+  //values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+  //values->AddText(Round(par3, 1)+"#pm"+Round(err3, 1));
+  //values->AddText(Round(par6, 3)+"#pm"+Round(err6, 1));
 
   TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
@@ -1376,8 +1501,17 @@ void DrawFullBzFit(TGraphErrors *graph, string title, string fname, double N, do
   graph->GetYaxis()->SetMaxDigits(4);
   graph->SetMarkerStyle(20); //  Full circle
 
-  graph->GetXaxis()->SetRangeUser(0, G2PERIOD);
   graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  // Hack together x-axis range
+  int n_points = graph->GetN();
+  double xmax = graph->GetPointX(n_points-1);// + 50;
+  double xmin = graph->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.01;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
   graph->Draw("AP");
   values->Draw("same");
@@ -1410,10 +1544,11 @@ void DrawSimpleBzFit(TGraphErrors *graph, string title, string fname, double N, 
 
   double chi2ndf = func->GetChisquare() / func->GetNDF();
   double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
-  double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
+  double par3 = func->GetParameter(2); double err3 = func->GetParError(2);
 
   //TLegend *leg = new TLegend(0.15,0.79,0.85,0.89);
-  TLegend *leg = new TLegend(0.125,0.15,0.875,0.25);
+  // TLegend *leg = new TLegend(0.225,0.15,0.775,0.25);
+  TLegend *leg = new TLegend(0.30,0.15,0.70,0.25);
   leg->SetNColumns(2);
   leg->AddEntry(graph, "Sim   ");
   leg->AddEntry(func,"A_{Bz}cos(#omega_{a}t) #plus c");
@@ -1433,7 +1568,7 @@ void DrawSimpleBzFit(TGraphErrors *graph, string title, string fname, double N, 
   values->AddText(SciNotation(double(N))); 
   values->AddText(Round(chi2ndf, 3));
   values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
-  values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+  values->AddText(Round(par3, 1)+"#pm"+Round(err3, 1));
 
   TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
@@ -1461,6 +1596,18 @@ void DrawSimpleBzFit(TGraphErrors *graph, string title, string fname, double N, 
   graph->GetYaxis()->SetMaxDigits(4);
   graph->SetMarkerStyle(20); //  Full circle
   //graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  graph->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  // Hack together x-axis range
+  int n_points = graph->GetN();
+  double xmax = graph->GetPointX(n_points-1);// + 50;
+  double xmin = graph->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.01;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
   graph->Draw("AP");
   values->Draw("same");

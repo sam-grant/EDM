@@ -390,21 +390,22 @@ void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
   DrawFoldedWiggle(gr_, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../Images/MC/BzSim/"+config+"/Unblinded/WiggleMod_"+to_string(t_mod)+"_"+qual, 0, t_mod, 10, 5e4);
 
   return;
+
 }
 
 int main() {
 
   bool sanityPlots = false;//true;
   bool write = true; 
-  bool fullFit = true;//false;
+  bool fullFit = true;//true;//true;//false;
 
   // Read file
   string inputName = "../Plots/MC/BzSim/"+config+"/BzSim_"+qual+".root";
   TFile *input = TFile::Open((inputName).c_str());
   cout << "\nRead input...\t: " << inputName << " " << input << endl;
 
-  std::string outputName = "../Plots/MC/BzSim/"+config+"/BzSim_trackReco_unblinded_"+qual+".root"; 
-  if(!fullFit) outputName = "../Plots/MC/BzSim/"+config+"/BzSim_trackReco_simple_unblinded_"+qual+".root";
+  std::string outputName = "../Plots/MC/BzSim/"+config+"/BzSim_unblindedFits_"+qual+".root"; 
+  if(!fullFit) outputName = "../Plots/MC/BzSim/"+config+"/BzSim_simple_unblindedFits_"+qual+".root";
   if(!write) outputName = "delete_me.root";
 
   TFile *output = new TFile(outputName.c_str(), "RECREATE");
@@ -473,13 +474,13 @@ int main() {
   if(fullFit) {
     FullBzFit(gr_thetaY_mod, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
     TF1 *BzWiggle = gr_thetaY_mod->GetFunction("FullBzFunc");
-    DrawFullBzFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+config+"/Unblinded/fit_Bz_full_"+qual, nEntries, -1, 1);
+    DrawFullBzFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+config+"/Unblinded/fit_Bz_full_"+qual, nEntries, -0.6, 0.85);
     gr_thetaY_mod->SetName("BzFit");
     gr_thetaY_mod->Write();
   } else if(!fullFit) {
     SimpleBzFit(gr_thetaY_mod, 0.17, OMEGA_A*1e3, 0.5, 0, G2PERIOD);
     TF1 *BzWiggle = gr_thetaY_mod->GetFunction("SimpleBzFunc");
-    DrawSimpleBzFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+config+"/Unblinded/fit_Bz_simple_"+qual, nEntries, -1, 1);
+    DrawSimpleBzFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/BzSim/"+config+"/Unblinded/fit_Bz_simple_"+qual, nEntries, -0.5, 0.75);
     gr_thetaY_mod->SetName("BzFit");
     gr_thetaY_mod->Write();
   }

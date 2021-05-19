@@ -42,7 +42,7 @@ double blinded_edm_value(bool unblind) {
     omega_diff = 0.0;
   }
 
-  double dMu_blind = omega_diff * d0; // this is the blinded dMu in e.cm
+  double dMu_blind = omega_diff * d0; // this is the blinded dMu in e.cm?
   
   return dMu_blind;
   

@@ -62,7 +62,7 @@ void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, doub
   func->SetParameter(3, par3); // A_EDM
   func->SetParameter(4, par4); // c
 
-  graph->Fit(func, "MR"); // ,"MR");
+  graph->Fit(func, "QMR"); // ,"MR");
 
   return;
 
