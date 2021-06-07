@@ -3,3 +3,4 @@
 *.root
 *.dSYM
 *.exe
+CMacros/BlindingStrings/
