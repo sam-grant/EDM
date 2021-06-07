@@ -1,3 +1,7 @@
+// DEPRACTED 
+
+// SEE /gm2/app/users/sgrant/analysis/EDM/RadialField/RadialFieldEstimation/CMacros
+
 #include <iostream>
 
 #include "RootInclude.h"

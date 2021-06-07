@@ -6,7 +6,7 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe TruthEDMSimFitter.exe Dilution.exe EDMBlindingIllustration.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe TruthEDMSimFitter.exe Dilution.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe
 
 all:$(Target)
 
@@ -101,6 +101,9 @@ EDMBlindingIllustration.exe: EDMBlindingIllustration.C
 	
 BlindedEDMSimFitter.exe: BlindedEDMSimFitter.C
 	${C++} -o $@ BlindedEDMSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
+
+BlindedEDMFitter.exe: BlindedEDMFitter.C 
+	${C++} -o $@ BlindedEDMFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
 
 BlindedBzSimFitter.exe: BlindedBzSimFitter.C
 	${C++} -o $@ BlindedBzSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}

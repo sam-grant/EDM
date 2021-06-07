@@ -1,11 +1,11 @@
 void c_vs_p_full_overlay_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 18 00:07:47 2021) by ROOT version 6.22/08
+//=========  (Wed May 19 17:15:30 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(-535,-0.7125,3335,0.4125);
+   c->Range(-404.25,-0.7125,3330.25,0.4125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -45,21 +45,21 @@ void c_vs_p_full_overlay_trackReco_AQ()
    0.03217606,
    0.0382381};
    Double_t S0_c_vs_p_fex1419[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t S0_c_vs_p_fey1419[15] = {
    0.01274493,
    0.01274509,
@@ -82,7 +82,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S0_c_vs_p1419 = new TH1F("Graph_S0_c_vs_p1419","",100,-400,3200);
+   TH1F *Graph_S0_c_vs_p1419 = new TH1F("Graph_S0_c_vs_p1419","",100,0,3080);
    Graph_S0_c_vs_p1419->SetMinimum(-0.6);
    Graph_S0_c_vs_p1419->SetMaximum(0.3);
    Graph_S0_c_vs_p1419->SetDirectory(0);
@@ -93,7 +93,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    ci = TColor::GetColor("#000099");
    Graph_S0_c_vs_p1419->SetLineColor(ci);
    Graph_S0_c_vs_p1419->GetXaxis()->SetTitle("p_{min} [MeV]");
-   Graph_S0_c_vs_p1419->GetXaxis()->SetRange(8,93);
+   Graph_S0_c_vs_p1419->GetXaxis()->SetRange(0,96);
    Graph_S0_c_vs_p1419->GetXaxis()->CenterTitle(true);
    Graph_S0_c_vs_p1419->GetXaxis()->SetLabelFont(42);
    Graph_S0_c_vs_p1419->GetXaxis()->SetTitleSize(0.04);
@@ -146,21 +146,21 @@ void c_vs_p_full_overlay_trackReco_AQ()
    -0.08672831,
    -0.1175135};
    Double_t S12_c_vs_p_fex1420[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t S12_c_vs_p_fey1420[15] = {
    0.01292298,
    0.01292279,
@@ -186,7 +186,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12_c_vs_p1420 = new TH1F("Graph_S12_c_vs_p1420","S12",100,-400,3200);
+   TH1F *Graph_S12_c_vs_p1420 = new TH1F("Graph_S12_c_vs_p1420","S12",100,0,3080);
    Graph_S12_c_vs_p1420->SetMinimum(-0.5496723);
    Graph_S12_c_vs_p1420->SetMaximum(0.01451796);
    Graph_S12_c_vs_p1420->SetDirectory(0);
@@ -195,7 +195,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    ci = TColor::GetColor("#000099");
    Graph_S12_c_vs_p1420->SetLineColor(ci);
    Graph_S12_c_vs_p1420->GetXaxis()->SetTitle("p_{min} [MeV]");
-   Graph_S12_c_vs_p1420->GetXaxis()->SetRange(8,93);
+   Graph_S12_c_vs_p1420->GetXaxis()->SetRange(0,100);
    Graph_S12_c_vs_p1420->GetXaxis()->CenterTitle(true);
    Graph_S12_c_vs_p1420->GetXaxis()->SetLabelFont(42);
    Graph_S12_c_vs_p1420->GetXaxis()->SetTitleSize(0.04);
@@ -248,21 +248,21 @@ void c_vs_p_full_overlay_trackReco_AQ()
    -0.08296317,
    0.002848353};
    Double_t S18_c_vs_p_fex1421[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t S18_c_vs_p_fey1421[15] = {
    0.01301885,
    0.01301883,
@@ -288,7 +288,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S18_c_vs_p1421 = new TH1F("Graph_S18_c_vs_p1421","S18",100,-400,3200);
+   TH1F *Graph_S18_c_vs_p1421 = new TH1F("Graph_S18_c_vs_p1421","S18",100,0,3080);
    Graph_S18_c_vs_p1421->SetMinimum(-0.5078371);
    Graph_S18_c_vs_p1421->SetMaximum(0.1056376);
    Graph_S18_c_vs_p1421->SetDirectory(0);
@@ -297,7 +297,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    ci = TColor::GetColor("#000099");
    Graph_S18_c_vs_p1421->SetLineColor(ci);
    Graph_S18_c_vs_p1421->GetXaxis()->SetTitle("p_{min} [MeV]");
-   Graph_S18_c_vs_p1421->GetXaxis()->SetRange(8,93);
+   Graph_S18_c_vs_p1421->GetXaxis()->SetRange(0,100);
    Graph_S18_c_vs_p1421->GetXaxis()->CenterTitle(true);
    Graph_S18_c_vs_p1421->GetXaxis()->SetLabelFont(42);
    Graph_S18_c_vs_p1421->GetXaxis()->SetTitleSize(0.04);

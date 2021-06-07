@@ -1,0 +1,5 @@
+- Use Joe's module to generate some muon decay plots for the full dataset in order to verfiy the simulation 
+- Cross check the shape in the 60 hour
+- Report results and say that it's not understood.
+- Redo symmetric cuts scan based on the pmin/pmax scans 
+- Use pmin/pmax scans to pick some symmetric momentum cuts, get diluton for those. 

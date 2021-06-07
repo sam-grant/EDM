@@ -1,0 +1,72 @@
+void h_yRunAvg_gm2pro_daq_full_run1_HighKick_5042B_GLdocDB20949-v3_16113_16234()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Tue May 25 06:12:20 2021) by ROOT version 6.12/04
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1D *h_yRunAvg__2 = new TH1D("h_yRunAvg__2","",15000,0,150);
+   h_yRunAvg__2->SetBinContent(7530,1);
+   h_yRunAvg__2->SetBinContent(7531,2);
+   h_yRunAvg__2->SetBinContent(7532,3);
+   h_yRunAvg__2->SetBinContent(7533,4);
+   h_yRunAvg__2->SetBinContent(7534,3);
+   h_yRunAvg__2->SetBinContent(7536,1);
+   h_yRunAvg__2->SetBinContent(7537,1);
+   h_yRunAvg__2->SetBinContent(7539,2);
+   h_yRunAvg__2->SetBinContent(7540,1);
+   h_yRunAvg__2->SetBinContent(7541,1);
+   h_yRunAvg__2->SetBinContent(7542,2);
+   h_yRunAvg__2->SetBinContent(7543,1);
+   h_yRunAvg__2->SetBinContent(7546,1);
+   h_yRunAvg__2->SetBinContent(7547,1);
+   h_yRunAvg__2->SetBinContent(7548,1);
+   h_yRunAvg__2->SetBinContent(7549,4);
+   h_yRunAvg__2->SetBinContent(7550,6);
+   h_yRunAvg__2->SetBinContent(7551,5);
+   h_yRunAvg__2->SetBinContent(7552,2);
+   h_yRunAvg__2->SetBinContent(7553,7);
+   h_yRunAvg__2->SetBinContent(7554,2);
+   h_yRunAvg__2->SetBinContent(7555,2);
+   h_yRunAvg__2->SetBinContent(7556,4);
+   h_yRunAvg__2->SetBinContent(7557,4);
+   h_yRunAvg__2->SetBinContent(7559,5);
+   h_yRunAvg__2->SetBinContent(7560,3);
+   h_yRunAvg__2->SetBinContent(7561,2);
+   h_yRunAvg__2->SetBinContent(7562,2);
+   h_yRunAvg__2->SetBinContent(7563,1);
+   h_yRunAvg__2->SetBinContent(7564,4);
+   h_yRunAvg__2->SetBinContent(7565,2);
+   h_yRunAvg__2->SetBinContent(7566,1);
+   h_yRunAvg__2->SetBinContent(7567,1);
+   h_yRunAvg__2->SetBinContent(7568,2);
+   h_yRunAvg__2->SetBinContent(7571,1);
+   h_yRunAvg__2->SetBinContent(7573,1);
+   h_yRunAvg__2->SetEntries(86);
+   h_yRunAvg__2->GetXaxis()->SetTitle("#LTy_{All calos}#GT [mm]");
+   h_yRunAvg__2->GetXaxis()->CenterTitle(true);
+   h_yRunAvg__2->GetXaxis()->SetLabelFont(42);
+   h_yRunAvg__2->GetXaxis()->SetLabelSize(0.035);
+   h_yRunAvg__2->GetXaxis()->SetTitleOffset(1.1);
+   h_yRunAvg__2->GetXaxis()->SetTitleFont(42);
+   h_yRunAvg__2->GetYaxis()->SetTitle("Runs");
+   h_yRunAvg__2->GetYaxis()->CenterTitle(true);
+   h_yRunAvg__2->GetYaxis()->SetNdivisions(4000510);
+   h_yRunAvg__2->GetYaxis()->SetLabelFont(42);
+   h_yRunAvg__2->GetYaxis()->SetLabelSize(0.035);
+   h_yRunAvg__2->GetYaxis()->SetTitleOffset(1.1);
+   h_yRunAvg__2->GetYaxis()->SetTitleFont(42);
+   h_yRunAvg__2->GetZaxis()->SetLabelFont(42);
+   h_yRunAvg__2->GetZaxis()->SetLabelSize(0.035);
+   h_yRunAvg__2->GetZaxis()->SetTitleSize(0.035);
+   h_yRunAvg__2->GetZaxis()->SetTitleFont(42);
+   h_yRunAvg__2->Draw("HIST");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

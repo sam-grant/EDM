@@ -1,0 +1,13 @@
+... - Finish hadding muon beam plots
+* Just take one sample, files are too big 
+- Write quick macro to get plots out, think about them and understand
+X - Submit jobs for Bz 
+X- Cross check the shape in the 60 hour
+X * How does this make sense? If you see an assymetry then you're saying you've discovered an EDM !!!
+X * Just have a look anyway, might not be worth admitting to anyone that you did this. (Looks very similar)
+- Report results and say that it's not understood.
+- Redo symmetric cuts scan based on the pmin/pmax scans 
+- Use pmin/pmax scans to pick some symmetric momentum cuts, get diluton for those. 
+- Write function to correct for vertical offset 
+- Write function to refill histogram bins with equal stats / bin 
+X - Congratulate J. H. 

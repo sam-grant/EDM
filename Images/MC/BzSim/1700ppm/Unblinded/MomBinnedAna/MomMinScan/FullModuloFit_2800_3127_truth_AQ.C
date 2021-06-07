@@ -1,7 +1,7 @@
 void FullModuloFit_2800_3127_truth_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May 15 17:25:52 2021) by ROOT version 6.22/08
+//=========  (Wed May 19 17:16:10 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
@@ -553,13 +553,13 @@ void FullModuloFit_2800_3127_truth_AQ()
    TText *pt_LaTex = pt->AddText("1.37#times10^{6}");
    pt_LaTex = pt->AddText("1.99
 ");
-   pt_LaTex = pt->AddText("0.0592
+   pt_LaTex = pt->AddText("0.059
 #pm0.007
 ");
-   pt_LaTex = pt->AddText("-0.0074
+   pt_LaTex = pt->AddText("-0.007
 #pm0.005
 ");
-   pt_LaTex = pt->AddText("0.03
+   pt_LaTex = pt->AddText("0.0343
 #pm0.005
 ");
    pt->Draw();

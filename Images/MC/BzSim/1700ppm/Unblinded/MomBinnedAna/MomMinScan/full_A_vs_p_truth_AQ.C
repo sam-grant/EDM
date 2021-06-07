@@ -1,11 +1,11 @@
 void full_A_vs_p_truth_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May 15 17:25:52 2021) by ROOT version 6.22/08
+//=========  (Wed May 19 17:16:10 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(-535,0.01038417,3335,0.2634381);
+   c->Range(-404.25,0.01038417,3330.25,0.2634381);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -45,21 +45,21 @@ void full_A_vs_p_truth_AQ()
    0.1064111,
    0.05921124};
    Double_t Graph0_fex1086[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t Graph0_fey1086[15] = {
    0.00300686,
    0.002991174,
@@ -82,7 +82,7 @@ void full_A_vs_p_truth_AQ()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01086 = new TH1F("Graph_Graph01086","",100,-400,3200);
+   TH1F *Graph_Graph01086 = new TH1F("Graph_Graph01086","",100,0,3080);
    Graph_Graph01086->SetMinimum(0.03568956);
    Graph_Graph01086->SetMaximum(0.2381327);
    Graph_Graph01086->SetDirectory(0);
@@ -93,7 +93,7 @@ void full_A_vs_p_truth_AQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01086->SetLineColor(ci);
    Graph_Graph01086->GetXaxis()->SetTitle("p_{min} [MeV]");
-   Graph_Graph01086->GetXaxis()->SetRange(8,93);
+   Graph_Graph01086->GetXaxis()->SetRange(0,96);
    Graph_Graph01086->GetXaxis()->CenterTitle(true);
    Graph_Graph01086->GetXaxis()->SetLabelFont(42);
    Graph_Graph01086->GetXaxis()->SetTitleSize(0.04);

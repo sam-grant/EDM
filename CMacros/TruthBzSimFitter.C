@@ -7,6 +7,7 @@
 std::string config = "1700ppm";
 
 std::string qual = "truth_AQ";
+//std::string qual = "truth_equalStats_500e3_AQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -101,12 +102,14 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
       TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
 
       if(moduloHist==0) continue;
+      
+      int nEntries = moduloHist->GetEntries();
+      if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
 
       p_[i_cut_config].push_back(p);
       ep_[i_cut_config].push_back(step/2);
-      // Run fits
-      int nEntries = moduloHist->GetEntries();
 
+      // Run fits
       TH1D *moduloProf = moduloHist->ProfileX();
 
       TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
@@ -183,12 +186,13 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
 
         if(moduloHist==0) continue;
 
+        int nEntries = moduloHist->GetEntries();
+        if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
+
         p_[i_cut_config].push_back(p);
         ep_[i_cut_config].push_back(0);
 
         // Run fits
-        int nEntries = moduloHist->GetEntries();
-
         TH1D *moduloProf = moduloHist->ProfileX();
 
         TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
@@ -269,12 +273,13 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
 
         if(moduloHist==0) continue;
 
+        int nEntries = moduloHist->GetEntries();
+        if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
+
         p_[i_cut_config].push_back(p);
-        ep_[i_cut_config].push_back(step/2);
+        ep_[i_cut_config].push_back(0);
 
         // Run fits
-        int nEntries = moduloHist->GetEntries();
-
         TH1D *moduloProf = moduloHist->ProfileX();
 
         TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);

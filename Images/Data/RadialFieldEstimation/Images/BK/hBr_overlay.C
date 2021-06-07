@@ -1,0 +1,196 @@
+void hBr_overlay()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Apr 29 01:05:02 2021) by ROOT version 6.12/04
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptStat(0);
+   c->SetHighLightColor(2);
+   c->Range(-21.25,-16.875,41.25,151.875);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   TH1D *h1_Br__1 = new TH1D("h1_Br__1","",100,-50,50);
+   h1_Br__1->SetBinContent(56,6);
+   h1_Br__1->SetBinContent(57,10);
+   h1_Br__1->SetBinContent(58,5);
+   h1_Br__1->SetBinContent(59,14);
+   h1_Br__1->SetBinContent(60,34);
+   h1_Br__1->SetBinContent(61,20);
+   h1_Br__1->SetBinContent(62,27);
+   h1_Br__1->SetBinContent(63,15);
+   h1_Br__1->SetBinContent(64,12);
+   h1_Br__1->SetBinContent(65,26);
+   h1_Br__1->SetBinContent(66,44);
+   h1_Br__1->SetBinContent(67,37);
+   h1_Br__1->SetBinContent(68,17);
+   h1_Br__1->SetBinContent(69,25);
+   h1_Br__1->SetBinContent(70,38);
+   h1_Br__1->SetBinContent(71,32);
+   h1_Br__1->SetBinContent(72,27);
+   h1_Br__1->SetBinContent(73,44);
+   h1_Br__1->SetBinContent(74,20);
+   h1_Br__1->SetBinContent(75,13);
+   h1_Br__1->SetBinContent(76,9);
+   h1_Br__1->SetBinContent(77,25);
+   h1_Br__1->SetBinContent(78,13);
+   h1_Br__1->SetBinContent(79,5);
+   h1_Br__1->SetBinContent(80,2);
+   h1_Br__1->SetMinimum(0);
+   h1_Br__1->SetMaximum(135);
+   h1_Br__1->SetEntries(520);
+   h1_Br__1->SetLineWidth(3);
+   h1_Br__1->GetXaxis()->SetTitle("#LTB_{r}#GT [ppm]");
+   h1_Br__1->GetXaxis()->SetRange(36,85);
+   h1_Br__1->GetXaxis()->CenterTitle(true);
+   h1_Br__1->GetXaxis()->SetLabelFont(42);
+   h1_Br__1->GetXaxis()->SetLabelSize(0.035);
+   h1_Br__1->GetXaxis()->SetTitleOffset(1.1);
+   h1_Br__1->GetXaxis()->SetTitleFont(42);
+   h1_Br__1->GetYaxis()->SetTitle("Entries");
+   h1_Br__1->GetYaxis()->CenterTitle(true);
+   h1_Br__1->GetYaxis()->SetNdivisions(4000510);
+   h1_Br__1->GetYaxis()->SetLabelFont(42);
+   h1_Br__1->GetYaxis()->SetLabelSize(0.035);
+   h1_Br__1->GetYaxis()->SetTitleOffset(1.1);
+   h1_Br__1->GetYaxis()->SetTitleFont(42);
+   h1_Br__1->GetZaxis()->SetLabelFont(42);
+   h1_Br__1->GetZaxis()->SetLabelSize(0.035);
+   h1_Br__1->GetZaxis()->SetTitleSize(0.035);
+   h1_Br__1->GetZaxis()->SetTitleFont(42);
+   h1_Br__1->Draw("][ HIST");
+   
+   TH1D *h1_Br__2 = new TH1D("h1_Br__2","",100,-50,50);
+   h1_Br__2->SetBinContent(49,1);
+   h1_Br__2->SetBinContent(51,4);
+   h1_Br__2->SetBinContent(52,63);
+   h1_Br__2->SetBinContent(53,124);
+   h1_Br__2->SetBinContent(54,91);
+   h1_Br__2->SetBinContent(55,43);
+   h1_Br__2->SetBinContent(56,102);
+   h1_Br__2->SetBinContent(57,63);
+   h1_Br__2->SetBinContent(58,98);
+   h1_Br__2->SetBinContent(59,19);
+   h1_Br__2->SetBinContent(60,3);
+   h1_Br__2->SetEntries(611);
+   
+   TPaveStats *ptstats = new TPaveStats(0.29,0.61,0.49,0.89,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(0);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("Entries = 611    ");
+   ptstats_LaTex = ptstats->AddText("Mean  =   4.61 #pm  0.086");
+   ptstats_LaTex = ptstats->AddText("Std Dev   =   2.13 #pm 0.0608");
+   ptstats->SetOptStat(2210);
+   ptstats->SetOptFit(111);
+   ptstats->Draw();
+   h1_Br__2->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(h1_Br__2);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   h1_Br__2->SetLineColor(ci);
+   h1_Br__2->SetLineWidth(3);
+   h1_Br__2->GetXaxis()->SetTitle("#LTB_{r}#GT [ppm]");
+   h1_Br__2->GetXaxis()->CenterTitle(true);
+   h1_Br__2->GetXaxis()->SetLabelFont(42);
+   h1_Br__2->GetXaxis()->SetLabelSize(0.035);
+   h1_Br__2->GetXaxis()->SetTitleOffset(1.1);
+   h1_Br__2->GetXaxis()->SetTitleFont(42);
+   h1_Br__2->GetYaxis()->SetTitle("Entries");
+   h1_Br__2->GetYaxis()->CenterTitle(true);
+   h1_Br__2->GetYaxis()->SetNdivisions(4000510);
+   h1_Br__2->GetYaxis()->SetLabelFont(42);
+   h1_Br__2->GetYaxis()->SetLabelSize(0.035);
+   h1_Br__2->GetYaxis()->SetTitleOffset(1.1);
+   h1_Br__2->GetYaxis()->SetTitleFont(42);
+   h1_Br__2->GetZaxis()->SetLabelFont(42);
+   h1_Br__2->GetZaxis()->SetLabelSize(0.035);
+   h1_Br__2->GetZaxis()->SetTitleSize(0.035);
+   h1_Br__2->GetZaxis()->SetTitleFont(42);
+   h1_Br__2->Draw("][ HIST SAME");
+   
+   TH1D *h1_Br__3 = new TH1D("h1_Br__3","",100,-50,50);
+   h1_Br__3->SetBinContent(44,1);
+   h1_Br__3->SetBinContent(48,3);
+   h1_Br__3->SetBinContent(49,37);
+   h1_Br__3->SetBinContent(50,69);
+   h1_Br__3->SetBinContent(51,32);
+   h1_Br__3->SetBinContent(52,1);
+   h1_Br__3->SetEntries(143);
+   
+   ptstats = new TPaveStats(0.29,0.61,0.49,0.89,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(0);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   ptstats_LaTex = ptstats->AddText("Entries = 143    ");
+   ptstats_LaTex = ptstats->AddText("Mean  = -0.559 #pm 0.0696");
+   ptstats_LaTex = ptstats->AddText("Std Dev   =  0.832 #pm 0.0492");
+   ptstats->SetOptStat(2210);
+   ptstats->SetOptFit(111);
+   ptstats->Draw();
+   h1_Br__3->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(h1_Br__3);
+
+   ci = TColor::GetColor("#0000ff");
+   h1_Br__3->SetLineColor(ci);
+   h1_Br__3->SetLineWidth(3);
+   h1_Br__3->GetXaxis()->SetTitle("#LTB_{r}#GT [ppm]");
+   h1_Br__3->GetXaxis()->CenterTitle(true);
+   h1_Br__3->GetXaxis()->SetLabelFont(42);
+   h1_Br__3->GetXaxis()->SetLabelSize(0.035);
+   h1_Br__3->GetXaxis()->SetTitleOffset(1.1);
+   h1_Br__3->GetXaxis()->SetTitleFont(42);
+   h1_Br__3->GetYaxis()->SetTitle("Entries");
+   h1_Br__3->GetYaxis()->CenterTitle(true);
+   h1_Br__3->GetYaxis()->SetNdivisions(4000510);
+   h1_Br__3->GetYaxis()->SetLabelFont(42);
+   h1_Br__3->GetYaxis()->SetLabelSize(0.035);
+   h1_Br__3->GetYaxis()->SetTitleOffset(1.1);
+   h1_Br__3->GetYaxis()->SetTitleFont(42);
+   h1_Br__3->GetZaxis()->SetLabelFont(42);
+   h1_Br__3->GetZaxis()->SetLabelSize(0.035);
+   h1_Br__3->GetZaxis()->SetTitleSize(0.035);
+   h1_Br__3->GetZaxis()->SetTitleFont(42);
+   h1_Br__3->Draw("][ HIST SAME");
+   TLine *line = new TLine(5,0,5,6);
+   line->SetLineWidth(3);
+   line->Draw();
+   line = new TLine(30,0,30,2);
+   line->SetLineWidth(3);
+   line->Draw();
+   line = new TLine(-2,0,-2,1);
+
+   ci = TColor::GetColor("#ff0000");
+   line->SetLineColor(ci);
+   line->SetLineWidth(3);
+   line->Draw();
+   line = new TLine(10,0,10,3);
+
+   ci = TColor::GetColor("#ff0000");
+   line->SetLineColor(ci);
+   line->SetLineWidth(3);
+   line->Draw();
+   line = new TLine(-7,0,-7,1);
+
+   ci = TColor::GetColor("#0000ff");
+   line->SetLineColor(ci);
+   line->SetLineWidth(3);
+   line->Draw();
+   line = new TLine(2,0,2,1);
+
+   ci = TColor::GetColor("#0000ff");
+   line->SetLineColor(ci);
+   line->SetLineWidth(3);
+   line->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

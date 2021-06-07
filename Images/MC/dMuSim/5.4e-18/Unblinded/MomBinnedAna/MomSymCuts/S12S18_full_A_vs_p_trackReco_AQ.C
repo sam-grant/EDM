@@ -1,17 +1,17 @@
 void S12S18_full_A_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 17 13:47:34 2021) by ROOT version 6.22/08
+//=========  (Fri May 21 13:25:54 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.1400001,0.1065653,8.14,0.2122029);
+   c->Range(-0.5000001,0.1065653,8.5,0.2122029);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1298[7] = {
+   Double_t Graph0_fx1376[7] = {
    1,
    2,
    3,
@@ -19,7 +19,7 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    5,
    6,
    7};
-   Double_t Graph0_fy1298[7] = {
+   Double_t Graph0_fy1376[7] = {
    0.1554112,
    0.1677634,
    0.1588796,
@@ -27,7 +27,7 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    0.1599839,
    0.1766585,
    0.1543155};
-   Double_t Graph0_fex1298[7] = {
+   Double_t Graph0_fex1376[7] = {
    0,
    0,
    0,
@@ -35,7 +35,7 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    0,
    0,
    0};
-   Double_t Graph0_fey1298[7] = {
+   Double_t Graph0_fey1376[7] = {
    0.01276816,
    0.01264464,
    0.01275853,
@@ -43,49 +43,49 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    0.01465017,
    0.01793814,
    0.03014398};
-   TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1298,Graph0_fy1298,Graph0_fex1298,Graph0_fey1298);
+   TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1376,Graph0_fy1376,Graph0_fex1376,Graph0_fey1376);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01298 = new TH1F("Graph_Graph01298","S12S18",100,0.4,7.6);
-   Graph_Graph01298->SetMinimum(0.117129);
-   Graph_Graph01298->SetMaximum(0.2016391);
-   Graph_Graph01298->SetDirectory(0);
-   Graph_Graph01298->SetStats(0);
+   TH1F *Graph_Graph01376 = new TH1F("Graph_Graph01376","S12S18",100,0.4,7.6);
+   Graph_Graph01376->SetMinimum(0.117129);
+   Graph_Graph01376->SetMaximum(0.2016391);
+   Graph_Graph01376->SetDirectory(0);
+   Graph_Graph01376->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01298->SetLineColor(ci);
-   Graph_Graph01298->GetXaxis()->SetTitle("p_{min} #minus p_{max} [MeV]");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(9,"400-3000");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(23,"600-2800");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(37,"800-2600");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(51,"1000-2400");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(64,"1200-2200");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(78,"1400-2000");
-   Graph_Graph01298->GetXaxis()->SetBinLabel(92,"1600-1800");
-   Graph_Graph01298->GetXaxis()->SetRange(5,96);
-   Graph_Graph01298->GetXaxis()->SetBit(TAxis::kLabelsHori);
-   Graph_Graph01298->GetXaxis()->CenterTitle(true);
-   Graph_Graph01298->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01298->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01298->GetXaxis()->SetTickLength(0);
-   Graph_Graph01298->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01298->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01298->GetYaxis()->SetTitle("A_{EDM} [mrad]");
-   Graph_Graph01298->GetYaxis()->CenterTitle(true);
-   Graph_Graph01298->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01298->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01298->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01298->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01298->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01298->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01298->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01298->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01298);
+   Graph_Graph01376->SetLineColor(ci);
+   Graph_Graph01376->GetXaxis()->SetTitle("p_{min} #minus p_{max} [MeV]");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(9,"400-3000");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(23,"600-2800");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(37,"800-2600");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(51,"1000-2400");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(64,"1200-2200");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(78,"1400-2000");
+   Graph_Graph01376->GetXaxis()->SetBinLabel(92,"1600-1800");
+   Graph_Graph01376->GetXaxis()->SetRange(1,100);
+   Graph_Graph01376->GetXaxis()->SetBit(TAxis::kLabelsHori);
+   Graph_Graph01376->GetXaxis()->CenterTitle(true);
+   Graph_Graph01376->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01376->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01376->GetXaxis()->SetTickLength(0);
+   Graph_Graph01376->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01376->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01376->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01376->GetYaxis()->CenterTitle(true);
+   Graph_Graph01376->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01376->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01376->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01376->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01376->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01376->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01376->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01376->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01376);
    
    gre->Draw("0ap");
    
@@ -97,7 +97,7 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    pt->SetTextFont(42);
    TText *pt_LaTex = pt->AddText("S12S18");
    pt->Draw();
-   TGaxis *gaxis = new TGaxis(0.688,0.117129,7.312,0.117129,0.688,7.312,8,"");
+   TGaxis *gaxis = new TGaxis(0.4,0.117129,7.6,0.117129,0.4,7.6,8,"");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0);
    gaxis->SetTickSize(0.03);

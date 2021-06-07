@@ -1,18 +1,17 @@
 void BrVsRun_gm2pro_daq_offline_dqc_run2E_26478_26611()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 10 19:41:06 2021) by ROOT version 6.12/04
+//=========  (Tue May 25 06:38:49 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
-   c->Range(26444.75,-4.624394,26644.25,7.185748);
+   c->Range(26444.75,-5.615011,26644.25,23.43079);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1006[61] = {
+   Double_t Graph0_fx1003[61] = {
    26478,
    26482,
    26483,
@@ -74,69 +73,69 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2E_26478_26611()
    26609,
    26610,
    26611};
-   Double_t Graph0_fy1006[61] = {
-   -0.6291319,
-   -0.814729,
-   -0.6429955,
-   -0.6551349,
-   -0.9296836,
-   -0.6601672,
-   -0.8117341,
-   -0.4801852,
-   -0.6988954,
-   -0.6541685,
-   -0.528989,
-   -0.7929872,
-   -0.5686518,
-   -0.6578724,
-   -0.3599691,
-   -0.3644023,
-   -0.2122262,
-   -0.04133859,
-   -0.5300096,
-   -0.1356263,
-   -0.06047874,
-   0.03779287,
-   0.183531,
-   0.1394521,
-   0.1182582,
-   0.169782,
-   0.384784,
-   0.7609288,
-   0.3164573,
-   3.748604,
-   0.38281,
-   0.2675486,
-   0.3219869,
-   0.173534,
-   -0.1965385,
-   -0.1733223,
-   -0.9252374,
-   -0.6535156,
-   -0.9500914,
-   -0.9756772,
-   -0.9872055,
-   -1.023619,
-   -0.8748454,
-   -1.098161,
-   -1.035494,
-   -1.045089,
-   -0.9294897,
-   -1.094312,
-   -1.260808,
-   -1.971319,
-   -1.420197,
-   -0.9099904,
-   -0.7722563,
-   -0.8458443,
-   -0.5209579,
-   -0.3843175,
-   -0.4069312,
-   0.05006732,
-   0.366346,
-   0.586783,
-   0.3132247};
-   Double_t Graph0_fex1006[61] = {
+   Double_t Graph0_fy1003[61] = {
+   7.327107,
+   7.14151,
+   7.313243,
+   7.301104,
+   7.026555,
+   7.296072,
+   7.144505,
+   7.476054,
+   7.257343,
+   7.30207,
+   7.42725,
+   7.163252,
+   7.387587,
+   7.298366,
+   7.59627,
+   7.591836,
+   7.744013,
+   7.9149,
+   7.426229,
+   7.820612,
+   7.89576,
+   7.994032,
+   8.13977,
+   8.095691,
+   8.074497,
+   8.126021,
+   8.341023,
+   8.717168,
+   8.272696,
+   11.70484,
+   8.339049,
+   8.223787,
+   8.278226,
+   8.129773,
+   7.7597,
+   7.782917,
+   7.031001,
+   7.302723,
+   7.006147,
+   6.980562,
+   6.969033,
+   6.93262,
+   7.081393,
+   6.858077,
+   6.920745,
+   6.911149,
+   7.026749,
+   6.861927,
+   6.695431,
+   5.98492,
+   6.536042,
+   7.046248,
+   7.183983,
+   7.110394,
+   7.435281,
+   7.571921,
+   7.549308,
+   8.006306,
+   8.322585,
+   8.543022,
+   8.269463};
+   Double_t Graph0_fex1003[61] = {
    0,
    0,
    0,
@@ -198,102 +197,102 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2E_26478_26611()
    0,
    0,
    0};
-   Double_t Graph0_fey1006[61] = {
-   0.5911011,
-   0.5945339,
-   0.6249109,
-   0.5926025,
-   0.5896518,
-   0.597514,
-   0.5908602,
-   0.5915668,
-   0.5924571,
-   0.5964425,
-   0.5914312,
-   0.5985227,
-   0.5908283,
-   0.5950289,
-   0.592769,
-   0.592521,
-   0.5970068,
-   0.6080649,
-   0.9601214,
-   0.6071646,
-   0.5926103,
-   0.5930696,
-   0.5936883,
-   0.5955576,
-   0.5935015,
-   0.5936754,
-   0.5944666,
-   0.6819624,
-   0.5946114,
-   1.468786,
-   0.5990188,
-   0.594283,
-   0.5941329,
-   0.5990781,
-   0.6030838,
-   0.5966525,
-   0.5900311,
-   0.8433012,
-   0.5915919,
-   0.5910206,
-   0.5902503,
-   0.589566,
-   0.5902464,
-   0.6598549,
-   0.5894586,
-   0.5907558,
-   0.5960366,
-   0.589363,
-   0.594874,
-   0.6847176,
-   0.5905321,
-   0.594312,
-   0.5903023,
-   0.5900483,
-   0.5914175,
-   0.5916715,
-   0.5914968,
-   1.198765,
-   0.5951506,
-   0.7587453,
-   0.6114993};
-   TGraphErrors *gre = new TGraphErrors(61,Graph0_fx1006,Graph0_fy1006,Graph0_fex1006,Graph0_fey1006);
+   Double_t Graph0_fey1003[61] = {
+   6.750659,
+   6.750886,
+   6.753698,
+   6.75078,
+   6.750412,
+   6.751211,
+   6.750565,
+   6.750759,
+   6.75075,
+   6.751119,
+   6.750728,
+   6.751248,
+   6.750659,
+   6.750993,
+   6.750913,
+   6.750889,
+   6.751345,
+   6.7524,
+   6.792964,
+   6.752282,
+   6.751019,
+   6.751098,
+   6.751211,
+   6.751358,
+   6.751168,
+   6.751204,
+   6.75136,
+   6.759776,
+   6.751345,
+   6.884979,
+   6.751761,
+   6.751297,
+   6.751305,
+   6.751683,
+   6.751892,
+   6.751329,
+   6.750447,
+   6.777391,
+   6.750574,
+   6.750514,
+   6.750442,
+   6.750367,
+   6.750486,
+   6.756839,
+   6.750353,
+   6.750463,
+   6.750973,
+   6.750321,
+   6.750738,
+   6.758964,
+   6.750293,
+   6.750829,
+   6.750532,
+   6.75048,
+   6.75073,
+   6.750807,
+   6.750782,
+   6.83101,
+   6.751412,
+   6.767884,
+   6.752852};
+   TGraphErrors *gre = new TGraphErrors(61,Graph0_fx1003,Graph0_fy1003,Graph0_fex1003,Graph0_fey1003);
    gre->SetName("Graph0");
    gre->SetTitle(";Run number;#LTB_{r}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","",100,26464.7,26624.3);
-   Graph_Graph1006->SetMinimum(-3.443379);
-   Graph_Graph1006->SetMaximum(6.004733);
-   Graph_Graph1006->SetDirectory(0);
-   Graph_Graph1006->SetStats(0);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,26464.7,26624.3);
+   Graph_Graph1003->SetMinimum(-2.710431);
+   Graph_Graph1003->SetMaximum(20.52621);
+   Graph_Graph1003->SetDirectory(0);
+   Graph_Graph1003->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph1006->SetLineColor(ci);
-   Graph_Graph1006->GetXaxis()->SetTitle("Run number");
-   Graph_Graph1006->GetXaxis()->CenterTitle(true);
-   Graph_Graph1006->GetXaxis()->SetLabelFont(42);
-   Graph_Graph1006->GetXaxis()->SetLabelSize(0.035);
-   Graph_Graph1006->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph1006->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1006->GetYaxis()->SetTitle("#LTB_{r}#GT [ppm]");
-   Graph_Graph1006->GetYaxis()->CenterTitle(true);
-   Graph_Graph1006->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph1006->GetYaxis()->SetLabelFont(42);
-   Graph_Graph1006->GetYaxis()->SetLabelSize(0.035);
-   Graph_Graph1006->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph1006->GetYaxis()->SetTitleFont(42);
-   Graph_Graph1006->GetZaxis()->SetLabelFont(42);
-   Graph_Graph1006->GetZaxis()->SetLabelSize(0.035);
-   Graph_Graph1006->GetZaxis()->SetTitleSize(0.035);
-   Graph_Graph1006->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph1006);
+   Graph_Graph1003->SetLineColor(ci);
+   Graph_Graph1003->GetXaxis()->SetTitle("Run number");
+   Graph_Graph1003->GetXaxis()->CenterTitle(true);
+   Graph_Graph1003->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetXaxis()->SetLabelSize(0.035);
+   Graph_Graph1003->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1003->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1003->GetYaxis()->SetTitle("#LTB_{r}#GT [ppm]");
+   Graph_Graph1003->GetYaxis()->CenterTitle(true);
+   Graph_Graph1003->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1003->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetYaxis()->SetLabelSize(0.035);
+   Graph_Graph1003->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph1003->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1003->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetZaxis()->SetLabelSize(0.035);
+   Graph_Graph1003->GetZaxis()->SetTitleSize(0.035);
+   Graph_Graph1003->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1003);
    
    gre->Draw("ap");
    c->Modified();

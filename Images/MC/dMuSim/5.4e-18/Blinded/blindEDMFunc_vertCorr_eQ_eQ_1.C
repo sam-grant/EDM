@@ -1,7 +1,7 @@
 void blindEDMFunc_vertCorr_eQ_eQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Apr  9 00:11:11 2021) by ROOT version 6.22/08
+//=========  (Mon Jun  7 10:24:40 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -50049,7 +50049,7 @@ void blindEDMFunc_vertCorr_eQ_eQ_1()
    blindEDMFunc1004->SetParameter(1,1.439478);
    blindEDMFunc1004->SetParError(1,0);
    blindEDMFunc1004->SetParLimits(1,0,0);
-   blindEDMFunc1004->SetParameter(2,1.726716);
+   blindEDMFunc1004->SetParameter(2,1.726715);
    blindEDMFunc1004->SetParError(2,0);
    blindEDMFunc1004->SetParLimits(2,0,0);
    blindEDMFunc1004->Draw("");

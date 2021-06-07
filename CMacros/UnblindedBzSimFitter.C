@@ -7,6 +7,7 @@
 std::string config = "1700ppm";
 
 std::string qual = "trackReco_AQ";
+//std::string qual = "trackReco_equalStats_500e3_AQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -105,7 +106,7 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, bo
   int N = graph->GetN();
   double xmax = graph->GetPointX(N-1);// + 50;
   double xmin = graph->GetPointX(0);// - 50; 
-  double offset = (xmax - xmin) * 0.05;
+  double offset = (xmax - xmin) * 0.1;
   xmin = xmin - offset; 
   xmax = xmax + offset;
   graph->GetXaxis()->SetRangeUser(xmin, xmax);
@@ -182,13 +183,14 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
 
         if(moduloHist==0) continue;
 
+        int nEntries = moduloHist->GetEntries();
+
+        if(qual=="trackReco_equalStats_500e3_AQ" && nEntries!=500e3 && stn == "S0S12S18") continue;
+
         p_[i_cut_config].push_back(p);
         ep_[i_cut_config].push_back(step/2);
 
         // Run fits
-
-        int nEntries = moduloHist->GetEntries();
-
         TH1D *moduloProf = moduloHist->ProfileX();
 
         TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
@@ -265,11 +267,14 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
 
         if(moduloHist==0) continue;
 
+        int nEntries = moduloHist->GetEntries();
+
+        if(qual=="trackReco_equalStats_500e3_AQ" && nEntries!=500e3 && stn == "S0S12S18") continue;
+
         p_[i_cut_config].push_back(p);
         ep_[i_cut_config].push_back(0);
 
         // Run fits
-        int nEntries = moduloHist->GetEntries();
 
         TH1D *moduloProf = moduloHist->ProfileX();
 
@@ -351,12 +356,14 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
 
         if(moduloHist==0) continue;
 
-        p_[i_cut_config].push_back(p);
-        ep_[i_cut_config].push_back(step/2);
-
-        // Run fits
         int nEntries = moduloHist->GetEntries();
 
+        if(qual=="trackReco_equalStats_500e3_AQ" && nEntries!=500e3 && stn == "S0S12S18") continue;
+
+        p_[i_cut_config].push_back(p);
+        ep_[i_cut_config].push_back(0);
+
+        // Run fits
         TH1D *moduloProf = moduloHist->ProfileX();
 
         TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
@@ -498,7 +505,7 @@ void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
 int main() {
 
 	bool sanityPlots = false;//true;
-	bool write = false; 
+	bool write = true; 
   bool fullFit = true;//true;//false;
 
 	// Read file

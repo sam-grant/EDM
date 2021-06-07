@@ -3,14 +3,17 @@
 #include "../Blinding/Blinders.hh"
 #include "RootInclude.h"
 
+// Unique for each dataset
+#include "BlindingStrings/Run1a.h"
+
 using namespace blinding;
 
-double R = 3.5; // ppm shift
+double R = 4.81; // ppm shift
 double boxWidth = 0.25;
 double gausWidth = 0.7;
 
 Blinders::fitType ftype = Blinders::kOmega_a;
-Blinders getBlinded( ftype, "Blinding string", boxWidth, gausWidth );
+Blinders getBlinded( ftype, blindingString, boxWidth, gausWidth );
 
 // CONSTANTS
 double e = 1.6e-19; // J

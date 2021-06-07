@@ -1,11 +1,11 @@
 void S18_full_c_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 18 00:07:30 2021) by ROOT version 6.22/08
+//=========  (Wed May 19 17:15:17 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
-   c->Range(-0.1400001,-0.5093824,8.14,0.02407933);
+   c->Range(-0.5000001,-0.5093824,8.5,0.02407933);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -68,7 +68,7 @@ void S18_full_c_vs_p_trackReco_AQ()
    Graph_Graph01213->GetXaxis()->SetBinLabel(64,"1200-2200");
    Graph_Graph01213->GetXaxis()->SetBinLabel(78,"1400-2000");
    Graph_Graph01213->GetXaxis()->SetBinLabel(92,"1600-1800");
-   Graph_Graph01213->GetXaxis()->SetRange(5,96);
+   Graph_Graph01213->GetXaxis()->SetRange(1,100);
    Graph_Graph01213->GetXaxis()->SetBit(TAxis::kLabelsHori);
    Graph_Graph01213->GetXaxis()->CenterTitle(true);
    Graph_Graph01213->GetXaxis()->SetLabelFont(42);
@@ -98,7 +98,7 @@ void S18_full_c_vs_p_trackReco_AQ()
    pt->SetTextFont(42);
    TText *pt_LaTex = pt->AddText("S18");
    pt->Draw();
-   TGaxis *gaxis = new TGaxis(0.688,-0.4560363,7.312,-0.4560363,0.688,7.312,8,"");
+   TGaxis *gaxis = new TGaxis(0.4,-0.4560363,7.6,-0.4560363,0.4,7.6,8,"");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0);
    gaxis->SetTickSize(0.03);

@@ -1,9 +1,8 @@
 void hBr_gm2pro_daq_offline_dqc_run2G_26999_27042()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 10 19:41:17 2021) by ROOT version 6.12/04
+//=========  (Tue May 25 06:38:57 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -12,10 +11,10 @@ void hBr_gm2pro_daq_offline_dqc_run2G_26999_27042()
    c->SetFrameBorderMode(0);
    
    TH1D *h1__1 = new TH1D("h1__1","",100,-50,50);
-   h1__1->SetBinContent(51,2);
-   h1__1->SetBinContent(52,4);
-   h1__1->SetBinContent(53,3);
-   h1__1->SetBinContent(56,1);
+   h1__1->SetBinContent(59,2);
+   h1__1->SetBinContent(60,5);
+   h1__1->SetBinContent(61,2);
+   h1__1->SetBinContent(64,1);
    h1__1->SetEntries(10);
    h1__1->GetXaxis()->SetTitle("#LTB_{r}#GT [ppm]");
    h1__1->GetXaxis()->CenterTitle(true);

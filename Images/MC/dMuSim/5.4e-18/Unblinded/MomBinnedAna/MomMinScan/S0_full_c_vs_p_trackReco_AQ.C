@@ -1,10 +1,10 @@
 void S0_full_c_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 17 13:46:48 2021) by ROOT version 6.22/08
+//=========  (Fri May 21 13:24:58 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-535,-0.2535579,3335,0.2025284);
+   c->Range(-419.65,-0.2535579,3468.85,0.2025284);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -44,21 +44,21 @@ void S0_full_c_vs_p_trackReco_AQ()
    0.04555892,
    0.08145083};
    Double_t Graph0_fex1089[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t Graph0_fey1089[15] = {
    0.01264703,
    0.01264673,
@@ -81,7 +81,7 @@ void S0_full_c_vs_p_trackReco_AQ()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01089 = new TH1F("Graph_Graph01089","S0",100,-400,3200);
+   TH1F *Graph_Graph01089 = new TH1F("Graph_Graph01089","S0",100,0,3080);
    Graph_Graph01089->SetMinimum(-0.2079493);
    Graph_Graph01089->SetMaximum(0.1569198);
    Graph_Graph01089->SetDirectory(0);
@@ -92,7 +92,7 @@ void S0_full_c_vs_p_trackReco_AQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01089->SetLineColor(ci);
    Graph_Graph01089->GetXaxis()->SetTitle("p_{min} [MeV]");
-   Graph_Graph01089->GetXaxis()->SetRange(8,93);
+   Graph_Graph01089->GetXaxis()->SetRange(0,100);
    Graph_Graph01089->GetXaxis()->CenterTitle(true);
    Graph_Graph01089->GetXaxis()->SetLabelFont(42);
    Graph_Graph01089->GetXaxis()->SetTitleSize(0.04);

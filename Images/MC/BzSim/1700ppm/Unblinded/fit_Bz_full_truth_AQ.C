@@ -1,7 +1,7 @@
 void fit_Bz_full_truth_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May 15 17:25:45 2021) by ROOT version 6.22/08
+//=========  (Wed May 19 17:16:05 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
@@ -553,13 +553,13 @@ void fit_Bz_full_truth_AQ()
    TText *pt_LaTex = pt->AddText("7.55#times10^{7}");
    pt_LaTex = pt->AddText("1.17
 ");
-   pt_LaTex = pt->AddText("0.234
+   pt_LaTex = pt->AddText("0.23
 #pm0.003
 ");
-   pt_LaTex = pt->AddText("0.013
+   pt_LaTex = pt->AddText("0.01
 #pm0.003
 ");
-   pt_LaTex = pt->AddText("-0.01
+   pt_LaTex = pt->AddText("-0.00981
 #pm0.002
 ");
    pt->Draw();

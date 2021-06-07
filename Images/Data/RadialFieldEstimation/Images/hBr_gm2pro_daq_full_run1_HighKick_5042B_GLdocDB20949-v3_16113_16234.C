@@ -1,9 +1,8 @@
 void hBr_gm2pro_daq_full_run1_HighKick_5042B_GLdocDB20949-v3_16113_16234()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 10 19:40:08 2021) by ROOT version 6.12/04
+//=========  (Tue May 25 06:38:16 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -12,16 +11,16 @@ void hBr_gm2pro_daq_full_run1_HighKick_5042B_GLdocDB20949-v3_16113_16234()
    c->SetFrameBorderMode(0);
    
    TH1D *h1__1 = new TH1D("h1__1","",100,-50,50);
-   h1__1->SetBinContent(53,1);
-   h1__1->SetBinContent(54,12);
-   h1__1->SetBinContent(55,5);
-   h1__1->SetBinContent(56,4);
-   h1__1->SetBinContent(57,9);
-   h1__1->SetBinContent(58,21);
-   h1__1->SetBinContent(59,15);
-   h1__1->SetBinContent(60,12);
-   h1__1->SetBinContent(61,5);
-   h1__1->SetBinContent(62,2);
+   h1__1->SetBinContent(61,1);
+   h1__1->SetBinContent(62,12);
+   h1__1->SetBinContent(63,5);
+   h1__1->SetBinContent(64,4);
+   h1__1->SetBinContent(65,9);
+   h1__1->SetBinContent(66,21);
+   h1__1->SetBinContent(67,15);
+   h1__1->SetBinContent(68,12);
+   h1__1->SetBinContent(69,5);
+   h1__1->SetBinContent(70,2);
    h1__1->SetEntries(86);
    h1__1->GetXaxis()->SetTitle("#LTB_{r}#GT [ppm]");
    h1__1->GetXaxis()->CenterTitle(true);

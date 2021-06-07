@@ -1,7 +1,7 @@
 void c_vs_p_full_overlay_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 18 00:07:47 2021) by ROOT version 6.22/08
+//=========  (Wed May 19 17:15:30 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
@@ -147,7 +147,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    Graph_S12_c_vs_p1414->GetXaxis()->SetBinLabel(64,"1200-2200");
    Graph_S12_c_vs_p1414->GetXaxis()->SetBinLabel(78,"1400-2000");
    Graph_S12_c_vs_p1414->GetXaxis()->SetBinLabel(92,"1600-1800");
-   Graph_S12_c_vs_p1414->GetXaxis()->SetRange(5,96);
+   Graph_S12_c_vs_p1414->GetXaxis()->SetRange(1,100);
    Graph_S12_c_vs_p1414->GetXaxis()->SetBit(TAxis::kLabelsHori);
    Graph_S12_c_vs_p1414->GetXaxis()->CenterTitle(true);
    Graph_S12_c_vs_p1414->GetXaxis()->SetLabelFont(42);
@@ -226,7 +226,7 @@ void c_vs_p_full_overlay_trackReco_AQ()
    Graph_S18_c_vs_p1415->GetXaxis()->SetBinLabel(64,"1200-2200");
    Graph_S18_c_vs_p1415->GetXaxis()->SetBinLabel(78,"1400-2000");
    Graph_S18_c_vs_p1415->GetXaxis()->SetBinLabel(92,"1600-1800");
-   Graph_S18_c_vs_p1415->GetXaxis()->SetRange(5,96);
+   Graph_S18_c_vs_p1415->GetXaxis()->SetRange(1,100);
    Graph_S18_c_vs_p1415->GetXaxis()->SetBit(TAxis::kLabelsHori);
    Graph_S18_c_vs_p1415->GetXaxis()->CenterTitle(true);
    Graph_S18_c_vs_p1415->GetXaxis()->SetLabelFont(42);
