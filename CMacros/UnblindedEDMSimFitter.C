@@ -5,7 +5,8 @@
 #include "RootInclude.h"
 
 std::string config = "5.4e-18";
-std::string qual = "trackReco_AQ";
+// std::string qual = "trackReco_AQ";
+std::string qual = "trackReco_500MeV_AQ";
 //std::string qual = "trackReco_equalStats_500e3_AQ";
 
 double xmin = 30;//7*G2PERIOD;
@@ -150,7 +151,10 @@ double GetPhase(TFile *input) {
 	TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 	DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 5e3, 25e3);
 
-	return modWiggle->GetParameter(4);
+  // Currently don't truth the phase from the modulo
+  // Phase from regular wiggle seems more stable.
+
+	return wiggle->GetParameter(4);
 
 }
 
@@ -217,7 +221,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   TGraphErrors* eA_vs_p_[n_cut_config];
 
   //}
-  int step = 200;
+  int step = 500;//200;
   int n_cuts = PMAX / step;
   int lo = -1; 
   int hi = -1;
@@ -272,7 +276,50 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
         	continue;
         }
 
-        cout<<"nEntries\t"<<nEntries<<endl;
+        /*
+        // Refill hist (doesn't work)
+
+        TH1D *moduloProf;
+
+        if(true) { 
+
+          // Clone old hist 
+          TH2D *moduloHist_clone = (TH2D*)moduloHist->Clone("moduloHist_clone");
+          // Empty it 
+          moduloHist_clone->Reset("ICESM");
+
+          //TF1 *fx = new TF1("fx", "x", 0, moduloHist->GetNbinsX());
+          //TF1 *fy = new TF1("fy", "x", 0, moduloHist->GetNbinsY());
+
+          TRandom3 rand(0); 
+
+          while( moduloHist_clone->GetEntries() < 500e3) { 
+
+            int i_xbin = rand.Uniform(moduloHist->GetNbinsX());
+            int i_ybin = rand.Uniform(moduloHist->GetNbinsY());
+
+            double binContent = moduloHist->GetBinContent(i_xbin+1, i_ybin+1);
+            moduloHist_clone->SetBinContent(i_xbin+1, i_ybin+1, binContent);
+
+          }
+
+          DrawTH2(moduloHist_clone, "tmp", "tmp");
+
+          cout<<"Positrons in refilled hist: "<<moduloHist_clone->GetEntries()<<endl;
+
+          //moduloHist_clone = moduloHist;
+
+          moduloProf = moduloHist_clone->ProfileX();
+
+        } else { 
+
+          moduloProf = moduloHist->ProfileX();
+
+        }
+        */
+        
+
+        
 
         p_[i_cut_config].push_back(p);
         ep_[i_cut_config].push_back(step/2);
@@ -392,11 +439,6 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       eA_vs_p_[i_cut_config]->Write();
 
     }
-
-
-
-    // COMMENT
-    // continue;
 
     // ============ Symmetric cuts ============
     i_cut_config = 1; 
@@ -657,10 +699,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
     if(i_cut==1) {
       xLabel = true;
       // Set bin labels for sym cuts
-      /*for (int i = 0; i < xLabels_.size(); i++) { 
-        c_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(c_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
-        A_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(A_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
-      }*/
+      ///for (int i = 0; i < xLabels_.size(); i++) { 
+      // c_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(c_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
+      // A_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(A_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
+      //}/
     } 
 
     cout<<"Overlaying "<<cuts_configs[i_cut]<<endl;

@@ -11,7 +11,7 @@ void OverlayScanGraphs(vector<TGraphErrors*> graphs, string names[], std::string
   TCanvas *c = new TCanvas("c","c",800,600);
 
   TLegend *l = new TLegend(0.59,0.79,0.89,0.89);
-  l->SetNColumns(3);
+  l->SetNColumns(2);
   l->SetBorderSize(0);
 
   graphs.at(1)->SetTitle(title.c_str());
@@ -59,20 +59,85 @@ void OverlayScanGraphs(vector<TGraphErrors*> graphs, string names[], std::string
 
 }
 
+void OverlayScanGraphs2(vector<TGraphErrors*> graphs, string names[], std::string title, std::string fname, double ymin, double ymax, bool sym) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  TLegend *l = new TLegend(0.49,0.79,0.89,0.89);
+  l->SetNColumns(2); // l->SetNColumns(3);
+  l->SetBorderSize(0);
+
+  graphs.at(1)->SetTitle(title.c_str());
+  graphs.at(1)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(1)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(1)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(1)->GetYaxis()->SetTitleOffset(1.1);
+  graphs.at(1)->GetXaxis()->CenterTitle(true);
+  graphs.at(1)->GetYaxis()->CenterTitle(true);
+  graphs.at(1)->GetYaxis()->SetMaxDigits(4);
+  graphs.at(1)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  int nGraphs = graphs.size();
+
+  // Hack together x-axis range
+  int N = graphs.at(1)->GetN();
+  double xmax = graphs.at(1)->GetPointX(N-1); 
+  double xmin = graphs.at(1)->GetPointX(1);// Cut lowest momentum bin - 50; 
+  if(sym) xmin = graphs.at(1)->GetPointX(0);
+
+  double offset = (xmax - xmin) * 5; //0.05;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  xmin = -25;
+  xmax = 3025;
+  graphs.at(0)->GetXaxis()->SetRangeUser(xmin, xmax);
+  graphs.at(1)->GetXaxis()->SetRangeUser(xmin, xmax);
+
+  graphs.at(0)->SetMarkerStyle(20);
+  graphs.at(1)->SetMarkerStyle(24);
+  //graphs.at(2)->SetMarkerStyle(20);
+
+  //graphs.at(0)->SetMarkerColor(kBlack);
+  //graphs.at(1)->SetMarkerColor(kRed);
+  //graphs.at(2)->SetMarkerColor(kBlue);
+
+  graphs.at(1)->Draw("AP"); 
+  graphs.at(0)->Draw("P SAME"); 
+  //graphs.at(2)->Draw("P SAME");
+
+  for(int i = 0; i < nGraphs; i++) l->AddEntry(graphs.at(i), (names[i]).c_str());
+
+  l->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+
+  delete c;
+
+  return;
+
+}
+
 void plot_EDM_mom_scans(string qual) {
 
 	cout<<"\nPlotting EDM momementum scans"<<endl; 
 
-	string names[] = {"Reco", "Truth"};
+	string names[] = {"Tracker decays", "All decays"}; // "Truth", "Truth (all decays)"}; //{"Reco", "Truth", "Truth (all decays)"};
 
 	string recoFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_trackReco_"+qual+".root"; //dMuSim_unblindedFits_"+config[0]+"_"+qual+".root";// dMuSim_unblindedFits_trackReco_"+qual+".root"; 
 	string truthFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truth_"+qual+".root"; //dMuSim_unblindedFits_"+config[1]+"_"+qual+".root";// dMuSim_unblindedFits_truth_"+qual+".root"; 
+	string truthAllDecaysFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truthAllDecays_"+qual+".root"; //dMuSim_unblindedFits_"+config[1]+"_"+qual+".root";// dMuSim_unblindedFits_truth_"+qual+".root"; 
 
 	TFile *recoFile = TFile::Open((recoFileName).c_str()); 
 	TFile *truthFile = TFile::Open((truthFileName).c_str());
+	TFile *truthAllDecaysFile = TFile::Open((truthAllDecaysFileName).c_str());
 
 	cout<<"\nGot reco file "<<recoFileName<<" "<<recoFile<<endl;
-	cout<<"Got truth file "<<truthFileName<<" "<<truthFile<<"\n"<<endl;
+	cout<<"Got truth file "<<truthFileName<<" "<<truthFile<<endl;
+	cout<<"Got truth (all decays) file "<<truthAllDecaysFileName<<" "<<truthAllDecaysFile<<"\n"<<endl;
 
 	TGraphErrors *gr_reco_p_slice = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p");
 	TGraphErrors *gr_reco_p_sym = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/S0S12S18_A_vs_p");
@@ -84,6 +149,11 @@ void plot_EDM_mom_scans(string qual) {
 	TGraphErrors *gr_truth_p_min = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/A_vs_p");
 	TGraphErrors *gr_truth_p_max = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMaxScan/A_vs_p");
 
+	TGraphErrors *gr_truthAllDecays_p_slice = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
+	TGraphErrors *gr_truthAllDecays_p_sym = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/A_vs_p");
+	TGraphErrors *gr_truthAllDecays_p_min = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/A_vs_p");
+	TGraphErrors *gr_truthAllDecays_p_max = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMaxScan/A_vs_p");
+
 	cout<<"Got reco momentum slice graph "<<gr_reco_p_slice<<endl;
 	cout<<"Got reco momentum symmetric cuts graph "<<gr_reco_p_sym<<endl;
 	cout<<"Got reco momentum min scan graph "<<gr_reco_p_min<<endl;
@@ -94,18 +164,25 @@ void plot_EDM_mom_scans(string qual) {
 	cout<<"Got truth momentum min scan graph "<<gr_truth_p_min<<endl;
 	cout<<"Got truth momentum max scan graph "<<gr_truth_p_max<<"\n"<<endl;
 
+	cout<<"Got truth (all decays) momentum slice graph "<<gr_truthAllDecays_p_slice<<endl;
+	cout<<"Got truth (all decays) momentum symmetric cuts graph "<<gr_truthAllDecays_p_sym<<endl;
+	cout<<"Got truth (all decays) momentum min scan graph "<<gr_truthAllDecays_p_min<<endl;
+	cout<<"Got truth (all decays) momentum max scan graph "<<gr_truthAllDecays_p_max<<"\n"<<endl;
+
+
 	double ymin = -0.15; double ymax = 0.35;
 
-	vector<TGraphErrors*> gr_p_slice_ = {gr_reco_p_slice, gr_truth_p_slice}; 
-	vector<TGraphErrors*> gr_p_sym_ = {gr_reco_p_sym, gr_truth_p_sym}; 
-	vector<TGraphErrors*> gr_p_min_ = {gr_reco_p_min, gr_truth_p_min}; 
-	vector<TGraphErrors*> gr_p_max_ = {gr_reco_p_max, gr_truth_p_max}; 
+	vector<TGraphErrors*> gr_p_slice_ = {gr_truth_p_slice, gr_truthAllDecays_p_slice}; // {gr_reco_p_slice, gr_truth_p_slice, gr_truthAllDecays_p_slice}; 
+	vector<TGraphErrors*> gr_p_sym_ = {gr_reco_p_sym, gr_truth_p_sym, gr_truthAllDecays_p_sym}; 
+	vector<TGraphErrors*> gr_p_min_ = {gr_reco_p_min, gr_truth_p_min, gr_truthAllDecays_p_min}; 
+	vector<TGraphErrors*> gr_p_max_ = {gr_reco_p_max, gr_truth_p_max, gr_truthAllDecays_p_max}; 
 
-	OverlayScanGraphs(gr_p_slice_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_slice_"+qual, -0.15, 0.35, false);
-	OverlayScanGraphs(gr_p_sym_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_sym_"+qual, 0.1, 0.26, true);
-	OverlayScanGraphs(gr_p_min_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_min_"+qual, -0.025, 0.25, false);
-	//OverlayScanGraphs(gr_p_max_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_max_"+qual, -0.025, 0.55, false);
-	OverlayScanGraphs(gr_p_max_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_max_"+qual, 0.15, 0.27, false);
+	OverlayScanGraphs2(gr_p_slice_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_slice_"+qual, -0.15, 0.425, false);
+	
+	//OverlayScanGraphs2(gr_p_sym_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_sym_"+qual, 0.1, 0.325, true);
+	//OverlayScanGraphs2(gr_p_min_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_min_"+qual, -0.025, 0.3, false);
+	////OverlayScanGraphs(gr_p_max_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_max_"+qual, -0.025, 0.55, false);
+	//OverlayScanGraphs2(gr_p_max_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_max_"+qual, 0.15, 0.325, false);
 
 	recoFile->Close();
 	truthFile->Close();
@@ -209,7 +286,7 @@ void plot_EDM_mom_scans_equalStats(string qual) {
 
 int main() { 
 
-	plot_EDM_mom_scans("AQ");
+	plot_EDM_mom_scans("500MeV_AQ");
 	//plot_Bz_mom_scans("AQ");
 	//plot_EDM_mom_scans_equalStats("equalStats_500e3_AQ");
 

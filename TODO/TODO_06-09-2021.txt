@@ -1,0 +1,30 @@
+* Gas gun for all decays
+X - Test fcl file for all decays, run small sample 100 jobs at 5000 events each or something (do some testing)
+X - Think about how to run this directly into an ntuple, either chain fcl files or write a new fcl 
+X - Run new sample based on the size of the output files
+- Tidy up EDM directory again, espcially the fcl files. Will need to rename some stuff. 
+
+Currently running for 2.5 million decays, hopefully the grid can handle it. Didn't really test it. 
+
+---------------------
+
+Other misc 
+
+- Generaralise FoldedWiggle into a single drawing function and stick it in FancyDraw for use in data.
+- Move Bz simulatenous anaylsis into it's own function in the UnblindedEDMSimFitter.
+- Take a look at beam gun sim and communicate with Renee 
+- Sort out radial field calo alignment 
+
+
+Hi all, 
+
+I'm having some trouble while trying to run two fcl files consecutively on the grid. I'd like to generate a gas gun file, and then run an analyzer on the output, without saving the intermediate file. 
+
+
+My problem at the moment is that intermediate file name is not being updated. The first fcl file generates a file simply called gm2ringsim_particle_gun.root, but then the second fcl file gets told to run on a file called gm2offline_muon_gasgun_truth_18969_1623241357.1_1.root, which doesn’t exist. 
+
+I’m running a test job using the standard script:
+
+./gridSetupAndSubmitGM2Data.sh --mc --truth --noifdh_art --schemas=None --fcl runGasGunRing_EDM.fcl,RunPhaseAnalyzer.fcl --gasGun --localArea --output-dir=/pnfs/GM2/scratch/users/sgrant/dMuSim/TruthTreesAllDecays --njobs 1 --nevents 50 --lifetime=30m --noGrid
+
+Thanks!

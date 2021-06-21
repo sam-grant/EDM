@@ -1,7 +1,7 @@
 void fit_wiggle_truth_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May 21 09:49:29 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 15 11:12:58 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-3.787797,0.375,333.8378,6.625);
@@ -10919,7 +10919,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(57,55638.47);
    FiveParFunc1008->SetSavedPoint(58,56531.23);
    FiveParFunc1008->SetSavedPoint(59,57421.59);
-   FiveParFunc1008->SetSavedPoint(60,58308.16);
+   FiveParFunc1008->SetSavedPoint(60,58308.17);
    FiveParFunc1008->SetSavedPoint(61,59189.59);
    FiveParFunc1008->SetSavedPoint(62,60064.5);
    FiveParFunc1008->SetSavedPoint(63,60931.54);
@@ -10941,7 +10941,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(79,72705.81);
    FiveParFunc1008->SetSavedPoint(80,73252.59);
    FiveParFunc1008->SetSavedPoint(81,73771.25);
-   FiveParFunc1008->SetSavedPoint(82,74260.98);
+   FiveParFunc1008->SetSavedPoint(82,74260.99);
    FiveParFunc1008->SetSavedPoint(83,74721.05);
    FiveParFunc1008->SetSavedPoint(84,75150.74);
    FiveParFunc1008->SetSavedPoint(85,75549.4);
@@ -10968,7 +10968,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(106,76118.55);
    FiveParFunc1008->SetSavedPoint(107,75770.12);
    FiveParFunc1008->SetSavedPoint(108,75389.58);
-   FiveParFunc1008->SetSavedPoint(109,74977.5);
+   FiveParFunc1008->SetSavedPoint(109,74977.51);
    FiveParFunc1008->SetSavedPoint(110,74534.5);
    FiveParFunc1008->SetSavedPoint(111,74061.22);
    FiveParFunc1008->SetSavedPoint(112,73558.38);
@@ -10987,7 +10987,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(125,64726.86);
    FiveParFunc1008->SetSavedPoint(126,63906.5);
    FiveParFunc1008->SetSavedPoint(127,63071.69);
-   FiveParFunc1008->SetSavedPoint(128,62223.65);
+   FiveParFunc1008->SetSavedPoint(128,62223.66);
    FiveParFunc1008->SetSavedPoint(129,61363.66);
    FiveParFunc1008->SetSavedPoint(130,60492.99);
    FiveParFunc1008->SetSavedPoint(131,59612.92);
@@ -11071,7 +11071,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(209,44061.58);
    FiveParFunc1008->SetSavedPoint(210,44851.04);
    FiveParFunc1008->SetSavedPoint(211,45650.65);
-   FiveParFunc1008->SetSavedPoint(212,46459.16);
+   FiveParFunc1008->SetSavedPoint(212,46459.17);
    FiveParFunc1008->SetSavedPoint(213,47275.31);
    FiveParFunc1008->SetSavedPoint(214,48097.83);
    FiveParFunc1008->SetSavedPoint(215,48925.44);
@@ -11083,7 +11083,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(221,53925.65);
    FiveParFunc1008->SetSavedPoint(222,54752.72);
    FiveParFunc1008->SetSavedPoint(223,55574.57);
-   FiveParFunc1008->SetSavedPoint(224,56389.92);
+   FiveParFunc1008->SetSavedPoint(224,56389.93);
    FiveParFunc1008->SetSavedPoint(225,57197.53);
    FiveParFunc1008->SetSavedPoint(226,57996.13);
    FiveParFunc1008->SetSavedPoint(227,58784.51);
@@ -11126,7 +11126,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(264,72062.93);
    FiveParFunc1008->SetSavedPoint(265,71851.54);
    FiveParFunc1008->SetSavedPoint(266,71608.58);
-   FiveParFunc1008->SetSavedPoint(267,71334.42);
+   FiveParFunc1008->SetSavedPoint(267,71334.43);
    FiveParFunc1008->SetSavedPoint(268,71029.47);
    FiveParFunc1008->SetSavedPoint(269,70694.18);
    FiveParFunc1008->SetSavedPoint(270,70329.05);
@@ -11137,7 +11137,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(275,68076.34);
    FiveParFunc1008->SetSavedPoint(276,67545.09);
    FiveParFunc1008->SetSavedPoint(277,66988.69);
-   FiveParFunc1008->SetSavedPoint(278,66407.97);
+   FiveParFunc1008->SetSavedPoint(278,66407.98);
    FiveParFunc1008->SetSavedPoint(279,65803.81);
    FiveParFunc1008->SetSavedPoint(280,65177.09);
    FiveParFunc1008->SetSavedPoint(281,64528.75);
@@ -11173,7 +11173,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(311,40566.52);
    FiveParFunc1008->SetSavedPoint(312,39816.15);
    FiveParFunc1008->SetSavedPoint(313,39081.53);
-   FiveParFunc1008->SetSavedPoint(314,38363.72);
+   FiveParFunc1008->SetSavedPoint(314,38363.73);
    FiveParFunc1008->SetSavedPoint(315,37663.78);
    FiveParFunc1008->SetSavedPoint(316,36982.7);
    FiveParFunc1008->SetSavedPoint(317,36321.46);
@@ -11186,7 +11186,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(324,32324.11);
    FiveParFunc1008->SetSavedPoint(325,31852.99);
    FiveParFunc1008->SetSavedPoint(326,31408.99);
-   FiveParFunc1008->SetSavedPoint(327,30992.74);
+   FiveParFunc1008->SetSavedPoint(327,30992.75);
    FiveParFunc1008->SetSavedPoint(328,30604.82);
    FiveParFunc1008->SetSavedPoint(329,30245.75);
    FiveParFunc1008->SetSavedPoint(330,29916.01);
@@ -11271,9 +11271,9 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(409,66182.05);
    FiveParFunc1008->SetSavedPoint(410,66484.52);
    FiveParFunc1008->SetSavedPoint(411,66758.58);
-   FiveParFunc1008->SetSavedPoint(412,67003.79);
+   FiveParFunc1008->SetSavedPoint(412,67003.8);
    FiveParFunc1008->SetSavedPoint(413,67219.8);
-   FiveParFunc1008->SetSavedPoint(414,67406.26);
+   FiveParFunc1008->SetSavedPoint(414,67406.27);
    FiveParFunc1008->SetSavedPoint(415,67562.9);
    FiveParFunc1008->SetSavedPoint(416,67689.46);
    FiveParFunc1008->SetSavedPoint(417,67785.74);
@@ -11296,7 +11296,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(434,64824.01);
    FiveParFunc1008->SetSavedPoint(435,64394.06);
    FiveParFunc1008->SetSavedPoint(436,63938.71);
-   FiveParFunc1008->SetSavedPoint(437,63458.64);
+   FiveParFunc1008->SetSavedPoint(437,63458.65);
    FiveParFunc1008->SetSavedPoint(438,62954.57);
    FiveParFunc1008->SetSavedPoint(439,62427.25);
    FiveParFunc1008->SetSavedPoint(440,61877.45);
@@ -11355,7 +11355,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(493,27591.34);
    FiveParFunc1008->SetSavedPoint(494,27348.37);
    FiveParFunc1008->SetSavedPoint(495,27134.03);
-   FiveParFunc1008->SetSavedPoint(496,26948.58);
+   FiveParFunc1008->SetSavedPoint(496,26948.59);
    FiveParFunc1008->SetSavedPoint(497,26792.26);
    FiveParFunc1008->SetSavedPoint(498,26665.24);
    FiveParFunc1008->SetSavedPoint(499,26567.65);
@@ -11363,7 +11363,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(501,26461.14);
    FiveParFunc1008->SetSavedPoint(502,26452.26);
    FiveParFunc1008->SetSavedPoint(503,26472.93);
-   FiveParFunc1008->SetSavedPoint(504,26523.06);
+   FiveParFunc1008->SetSavedPoint(504,26523.07);
    FiveParFunc1008->SetSavedPoint(505,26602.53);
    FiveParFunc1008->SetSavedPoint(506,26711.15);
    FiveParFunc1008->SetSavedPoint(507,26848.72);
@@ -11440,7 +11440,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(578,63286.04);
    FiveParFunc1008->SetSavedPoint(579,63366.9);
    FiveParFunc1008->SetSavedPoint(580,63419.29);
-   FiveParFunc1008->SetSavedPoint(581,63443.14);
+   FiveParFunc1008->SetSavedPoint(581,63443.15);
    FiveParFunc1008->SetSavedPoint(582,63438.41);
    FiveParFunc1008->SetSavedPoint(583,63405.09);
    FiveParFunc1008->SetSavedPoint(584,63343.24);
@@ -11449,7 +11449,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(587,62987.57);
    FiveParFunc1008->SetSavedPoint(588,62812.89);
    FiveParFunc1008->SetSavedPoint(589,62610.54);
-   FiveParFunc1008->SetSavedPoint(590,62380.83);
+   FiveParFunc1008->SetSavedPoint(590,62380.84);
    FiveParFunc1008->SetSavedPoint(591,62124.1);
    FiveParFunc1008->SetSavedPoint(592,61840.73);
    FiveParFunc1008->SetSavedPoint(593,61531.14);
@@ -11484,7 +11484,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(622,44262.22);
    FiveParFunc1008->SetSavedPoint(623,43520.52);
    FiveParFunc1008->SetSavedPoint(624,42779.79);
-   FiveParFunc1008->SetSavedPoint(625,42041.1);
+   FiveParFunc1008->SetSavedPoint(625,42041.11);
    FiveParFunc1008->SetSavedPoint(626,41305.55);
    FiveParFunc1008->SetSavedPoint(627,40574.22);
    FiveParFunc1008->SetSavedPoint(628,39848.17);
@@ -11575,7 +11575,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(713,48580.77);
    FiveParFunc1008->SetSavedPoint(714,49204.84);
    FiveParFunc1008->SetSavedPoint(715,49817.67);
-   FiveParFunc1008->SetSavedPoint(716,50418.32);
+   FiveParFunc1008->SetSavedPoint(716,50418.33);
    FiveParFunc1008->SetSavedPoint(717,51005.87);
    FiveParFunc1008->SetSavedPoint(718,51579.41);
    FiveParFunc1008->SetSavedPoint(719,52138.06);
@@ -11635,7 +11635,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(773,48551.38);
    FiveParFunc1008->SetSavedPoint(774,47911.82);
    FiveParFunc1008->SetSavedPoint(775,47262.46);
-   FiveParFunc1008->SetSavedPoint(776,46604.24);
+   FiveParFunc1008->SetSavedPoint(776,46604.25);
    FiveParFunc1008->SetSavedPoint(777,45938.17);
    FiveParFunc1008->SetSavedPoint(778,45265.2);
    FiveParFunc1008->SetSavedPoint(779,44586.35);
@@ -11770,7 +11770,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(908,55266.12);
    FiveParFunc1008->SetSavedPoint(909,55171.36);
    FiveParFunc1008->SetSavedPoint(910,55051.96);
-   FiveParFunc1008->SetSavedPoint(911,54908.11);
+   FiveParFunc1008->SetSavedPoint(911,54908.12);
    FiveParFunc1008->SetSavedPoint(912,54740.02);
    FiveParFunc1008->SetSavedPoint(913,54547.94);
    FiveParFunc1008->SetSavedPoint(914,54332.14);
@@ -11898,7 +11898,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1036,42225.8);
    FiveParFunc1008->SetSavedPoint(1037,42774.07);
    FiveParFunc1008->SetSavedPoint(1038,43312.82);
-   FiveParFunc1008->SetSavedPoint(1039,43841.22);
+   FiveParFunc1008->SetSavedPoint(1039,43841.23);
    FiveParFunc1008->SetSavedPoint(1040,44358.48);
    FiveParFunc1008->SetSavedPoint(1041,44863.77);
    FiveParFunc1008->SetSavedPoint(1042,45356.35);
@@ -11970,7 +11970,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1108,35535.45);
    FiveParFunc1008->SetSavedPoint(1109,34930.96);
    FiveParFunc1008->SetSavedPoint(1110,34328.1);
-   FiveParFunc1008->SetSavedPoint(1111,33727.76);
+   FiveParFunc1008->SetSavedPoint(1111,33727.77);
    FiveParFunc1008->SetSavedPoint(1112,33130.84);
    FiveParFunc1008->SetSavedPoint(1113,32538.2);
    FiveParFunc1008->SetSavedPoint(1114,31950.71);
@@ -12036,7 +12036,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1174,26807.36);
    FiveParFunc1008->SetSavedPoint(1175,27286.37);
    FiveParFunc1008->SetSavedPoint(1176,27776.18);
-   FiveParFunc1008->SetSavedPoint(1177,28276.02);
+   FiveParFunc1008->SetSavedPoint(1177,28276.03);
    FiveParFunc1008->SetSavedPoint(1178,28785.12);
    FiveParFunc1008->SetSavedPoint(1179,29302.65);
    FiveParFunc1008->SetSavedPoint(1180,29827.83);
@@ -12060,7 +12060,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1198,39624.46);
    FiveParFunc1008->SetSavedPoint(1199,40134.03);
    FiveParFunc1008->SetSavedPoint(1200,40634.46);
-   FiveParFunc1008->SetSavedPoint(1201,41124.97);
+   FiveParFunc1008->SetSavedPoint(1201,41124.98);
    FiveParFunc1008->SetSavedPoint(1202,41604.82);
    FiveParFunc1008->SetSavedPoint(1203,42073.27);
    FiveParFunc1008->SetSavedPoint(1204,42529.59);
@@ -12083,7 +12083,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1221,47841.7);
    FiveParFunc1008->SetSavedPoint(1222,47982.88);
    FiveParFunc1008->SetSavedPoint(1223,48102.87);
-   FiveParFunc1008->SetSavedPoint(1224,48201.5);
+   FiveParFunc1008->SetSavedPoint(1224,48201.51);
    FiveParFunc1008->SetSavedPoint(1225,48278.62);
    FiveParFunc1008->SetSavedPoint(1226,48334.09);
    FiveParFunc1008->SetSavedPoint(1227,48367.84);
@@ -12225,7 +12225,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1363,38575.43);
    FiveParFunc1008->SetSavedPoint(1364,39020.48);
    FiveParFunc1008->SetSavedPoint(1365,39454.66);
-   FiveParFunc1008->SetSavedPoint(1366,39877.3);
+   FiveParFunc1008->SetSavedPoint(1366,39877.31);
    FiveParFunc1008->SetSavedPoint(1367,40287.76);
    FiveParFunc1008->SetSavedPoint(1368,40685.39);
    FiveParFunc1008->SetSavedPoint(1369,41069.59);
@@ -12383,7 +12383,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1521,34440.92);
    FiveParFunc1008->SetSavedPoint(1522,34888.58);
    FiveParFunc1008->SetSavedPoint(1523,35328.51);
-   FiveParFunc1008->SetSavedPoint(1524,35760.01);
+   FiveParFunc1008->SetSavedPoint(1524,35760.02);
    FiveParFunc1008->SetSavedPoint(1525,36182.44);
    FiveParFunc1008->SetSavedPoint(1526,36595.14);
    FiveParFunc1008->SetSavedPoint(1527,36997.47);
@@ -12534,7 +12534,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1672,27441.1);
    FiveParFunc1008->SetSavedPoint(1673,27894.86);
    FiveParFunc1008->SetSavedPoint(1674,28348.65);
-   FiveParFunc1008->SetSavedPoint(1675,28801.77);
+   FiveParFunc1008->SetSavedPoint(1675,28801.78);
    FiveParFunc1008->SetSavedPoint(1676,29253.53);
    FiveParFunc1008->SetSavedPoint(1677,29703.21);
    FiveParFunc1008->SetSavedPoint(1678,30150.12);
@@ -12542,7 +12542,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1680,31032.91);
    FiveParFunc1008->SetSavedPoint(1681,31467.42);
    FiveParFunc1008->SetSavedPoint(1682,31896.44);
-   FiveParFunc1008->SetSavedPoint(1683,32319.31);
+   FiveParFunc1008->SetSavedPoint(1683,32319.32);
    FiveParFunc1008->SetSavedPoint(1684,32735.39);
    FiveParFunc1008->SetSavedPoint(1685,33144.03);
    FiveParFunc1008->SetSavedPoint(1686,33544.6);
@@ -12594,7 +12594,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1732,36433.69);
    FiveParFunc1008->SetSavedPoint(1733,36119.54);
    FiveParFunc1008->SetSavedPoint(1734,35792.6);
-   FiveParFunc1008->SetSavedPoint(1735,35453.35);
+   FiveParFunc1008->SetSavedPoint(1735,35453.36);
    FiveParFunc1008->SetSavedPoint(1736,35102.3);
    FiveParFunc1008->SetSavedPoint(1737,34739.97);
    FiveParFunc1008->SetSavedPoint(1738,34366.89);
@@ -12781,7 +12781,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(1919,24201.86);
    FiveParFunc1008->SetSavedPoint(1920,23775.47);
    FiveParFunc1008->SetSavedPoint(1921,23351.89);
-   FiveParFunc1008->SetSavedPoint(1922,22931.73);
+   FiveParFunc1008->SetSavedPoint(1922,22931.74);
    FiveParFunc1008->SetSavedPoint(1923,22515.62);
    FiveParFunc1008->SetSavedPoint(1924,22104.17);
    FiveParFunc1008->SetSavedPoint(1925,21697.96);
@@ -12902,7 +12902,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(2040,34376.51);
    FiveParFunc1008->SetSavedPoint(2041,34313.71);
    FiveParFunc1008->SetSavedPoint(2042,34235.61);
-   FiveParFunc1008->SetSavedPoint(2043,34142.32);
+   FiveParFunc1008->SetSavedPoint(2043,34142.33);
    FiveParFunc1008->SetSavedPoint(2044,34033.99);
    FiveParFunc1008->SetSavedPoint(2045,33910.77);
    FiveParFunc1008->SetSavedPoint(2046,33772.84);
@@ -12917,7 +12917,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(2055,31910.65);
    FiveParFunc1008->SetSavedPoint(2056,31640.41);
    FiveParFunc1008->SetSavedPoint(2057,31358.86);
-   FiveParFunc1008->SetSavedPoint(2058,31066.4);
+   FiveParFunc1008->SetSavedPoint(2058,31066.41);
    FiveParFunc1008->SetSavedPoint(2059,30763.48);
    FiveParFunc1008->SetSavedPoint(2060,30450.55);
    FiveParFunc1008->SetSavedPoint(2061,30128.06);
@@ -13178,7 +13178,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(2316,19990.31);
    FiveParFunc1008->SetSavedPoint(2317,20333.55);
    FiveParFunc1008->SetSavedPoint(2318,20678.27);
-   FiveParFunc1008->SetSavedPoint(2319,21023.93);
+   FiveParFunc1008->SetSavedPoint(2319,21023.94);
    FiveParFunc1008->SetSavedPoint(2320,21370.01);
    FiveParFunc1008->SetSavedPoint(2321,21715.96);
    FiveParFunc1008->SetSavedPoint(2322,22061.24);
@@ -13224,7 +13224,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(2362,30071.9);
    FiveParFunc1008->SetSavedPoint(2363,30035.33);
    FiveParFunc1008->SetSavedPoint(2364,29985.29);
-   FiveParFunc1008->SetSavedPoint(2365,29921.85);
+   FiveParFunc1008->SetSavedPoint(2365,29921.86);
    FiveParFunc1008->SetSavedPoint(2366,29845.12);
    FiveParFunc1008->SetSavedPoint(2367,29755.2);
    FiveParFunc1008->SetSavedPoint(2368,29652.22);
@@ -13429,7 +13429,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(2567,18037.6);
    FiveParFunc1008->SetSavedPoint(2568,17715.29);
    FiveParFunc1008->SetSavedPoint(2569,17395.73);
-   FiveParFunc1008->SetSavedPoint(2570,17079.39);
+   FiveParFunc1008->SetSavedPoint(2570,17079.4);
    FiveParFunc1008->SetSavedPoint(2571,16766.73);
    FiveParFunc1008->SetSavedPoint(2572,16458.21);
    FiveParFunc1008->SetSavedPoint(2573,16154.27);
@@ -13796,7 +13796,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(2934,9831.893);
    FiveParFunc1008->SetSavedPoint(2935,9910.64);
    FiveParFunc1008->SetSavedPoint(2936,9999.415);
-   FiveParFunc1008->SetSavedPoint(2937,10098.06);
+   FiveParFunc1008->SetSavedPoint(2937,10098.07);
    FiveParFunc1008->SetSavedPoint(2938,10206.42);
    FiveParFunc1008->SetSavedPoint(2939,10324.3);
    FiveParFunc1008->SetSavedPoint(2940,10451.51);
@@ -13878,7 +13878,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3016,22495.96);
    FiveParFunc1008->SetSavedPoint(3017,22395.16);
    FiveParFunc1008->SetSavedPoint(3018,22284.83);
-   FiveParFunc1008->SetSavedPoint(3019,22165.15);
+   FiveParFunc1008->SetSavedPoint(3019,22165.16);
    FiveParFunc1008->SetSavedPoint(3020,22036.31);
    FiveParFunc1008->SetSavedPoint(3021,21898.48);
    FiveParFunc1008->SetSavedPoint(3022,21751.88);
@@ -14028,7 +14028,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3166,21428.91);
    FiveParFunc1008->SetSavedPoint(3167,21445.26);
    FiveParFunc1008->SetSavedPoint(3168,21451.96);
-   FiveParFunc1008->SetSavedPoint(3169,21448.99);
+   FiveParFunc1008->SetSavedPoint(3169,21449);
    FiveParFunc1008->SetSavedPoint(3170,21436.36);
    FiveParFunc1008->SetSavedPoint(3171,21414.09);
    FiveParFunc1008->SetSavedPoint(3172,21382.2);
@@ -14283,7 +14283,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3421,8156.989);
    FiveParFunc1008->SetSavedPoint(3422,8237.202);
    FiveParFunc1008->SetSavedPoint(3423,8325.341);
-   FiveParFunc1008->SetSavedPoint(3424,8421.258);
+   FiveParFunc1008->SetSavedPoint(3424,8421.259);
    FiveParFunc1008->SetSavedPoint(3425,8524.794);
    FiveParFunc1008->SetSavedPoint(3426,8635.777);
    FiveParFunc1008->SetSavedPoint(3427,8754.024);
@@ -14431,7 +14431,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3569,7388.332);
    FiveParFunc1008->SetSavedPoint(3570,7354.139);
    FiveParFunc1008->SetSavedPoint(3571,7328.072);
-   FiveParFunc1008->SetSavedPoint(3572,7310.156);
+   FiveParFunc1008->SetSavedPoint(3572,7310.157);
    FiveParFunc1008->SetSavedPoint(3573,7300.404);
    FiveParFunc1008->SetSavedPoint(3574,7298.815);
    FiveParFunc1008->SetSavedPoint(3575,7305.376);
@@ -14454,7 +14454,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3592,8593.76);
    FiveParFunc1008->SetSavedPoint(3593,8731.397);
    FiveParFunc1008->SetSavedPoint(3594,8874.754);
-   FiveParFunc1008->SetSavedPoint(3595,9023.6);
+   FiveParFunc1008->SetSavedPoint(3595,9023.601);
    FiveParFunc1008->SetSavedPoint(3596,9177.7);
    FiveParFunc1008->SetSavedPoint(3597,9336.807);
    FiveParFunc1008->SetSavedPoint(3598,9500.669);
@@ -14565,7 +14565,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3703,10385.11);
    FiveParFunc1008->SetSavedPoint(3704,10193.81);
    FiveParFunc1008->SetSavedPoint(3705,10005.44);
-   FiveParFunc1008->SetSavedPoint(3706,9820.258);
+   FiveParFunc1008->SetSavedPoint(3706,9820.259);
    FiveParFunc1008->SetSavedPoint(3707,9638.548);
    FiveParFunc1008->SetSavedPoint(3708,9460.567);
    FiveParFunc1008->SetSavedPoint(3709,9286.574);
@@ -14647,7 +14647,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3785,13422.49);
    FiveParFunc1008->SetSavedPoint(3786,13594.37);
    FiveParFunc1008->SetSavedPoint(3787,13763.12);
-   FiveParFunc1008->SetSavedPoint(3788,13928.47);
+   FiveParFunc1008->SetSavedPoint(3788,13928.48);
    FiveParFunc1008->SetSavedPoint(3789,14090.19);
    FiveParFunc1008->SetSavedPoint(3790,14248.02);
    FiveParFunc1008->SetSavedPoint(3791,14401.71);
@@ -14733,7 +14733,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3871,8626.645);
    FiveParFunc1008->SetSavedPoint(3872,8469.337);
    FiveParFunc1008->SetSavedPoint(3873,8316.292);
-   FiveParFunc1008->SetSavedPoint(3874,8167.731);
+   FiveParFunc1008->SetSavedPoint(3874,8167.732);
    FiveParFunc1008->SetSavedPoint(3875,8023.868);
    FiveParFunc1008->SetSavedPoint(3876,7884.907);
    FiveParFunc1008->SetSavedPoint(3877,7751.048);
@@ -14762,7 +14762,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3900,6404.157);
    FiveParFunc1008->SetSavedPoint(3901,6428.563);
    FiveParFunc1008->SetSavedPoint(3902,6459.957);
-   FiveParFunc1008->SetSavedPoint(3903,6498.277);
+   FiveParFunc1008->SetSavedPoint(3903,6498.278);
    FiveParFunc1008->SetSavedPoint(3904,6543.455);
    FiveParFunc1008->SetSavedPoint(3905,6595.407);
    FiveParFunc1008->SetSavedPoint(3906,6654.045);
@@ -14779,7 +14779,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(3917,7704.511);
    FiveParFunc1008->SetSavedPoint(3918,7832.8);
    FiveParFunc1008->SetSavedPoint(3919,7965.751);
-   FiveParFunc1008->SetSavedPoint(3920,8103.152);
+   FiveParFunc1008->SetSavedPoint(3920,8103.153);
    FiveParFunc1008->SetSavedPoint(3921,8244.786);
    FiveParFunc1008->SetSavedPoint(3922,8390.427);
    FiveParFunc1008->SetSavedPoint(3923,8539.846);
@@ -15042,7 +15042,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(4180,9787.2);
    FiveParFunc1008->SetSavedPoint(4181,9620.445);
    FiveParFunc1008->SetSavedPoint(4182,9454.169);
-   FiveParFunc1008->SetSavedPoint(4183,9288.615);
+   FiveParFunc1008->SetSavedPoint(4183,9288.616);
    FiveParFunc1008->SetSavedPoint(4184,9124.028);
    FiveParFunc1008->SetSavedPoint(4185,8960.647);
    FiveParFunc1008->SetSavedPoint(4186,8798.713);
@@ -15064,7 +15064,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(4202,6586.629);
    FiveParFunc1008->SetSavedPoint(4203,6482.293);
    FiveParFunc1008->SetSavedPoint(4204,6382.985);
-   FiveParFunc1008->SetSavedPoint(4205,6288.843);
+   FiveParFunc1008->SetSavedPoint(4205,6288.844);
    FiveParFunc1008->SetSavedPoint(4206,6200);
    FiveParFunc1008->SetSavedPoint(4207,6116.578);
    FiveParFunc1008->SetSavedPoint(4208,6038.692);
@@ -15420,7 +15420,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(4558,5391.608);
    FiveParFunc1008->SetSavedPoint(4559,5466.298);
    FiveParFunc1008->SetSavedPoint(4560,5545.356);
-   FiveParFunc1008->SetSavedPoint(4561,5628.655);
+   FiveParFunc1008->SetSavedPoint(4561,5628.656);
    FiveParFunc1008->SetSavedPoint(4562,5716.061);
    FiveParFunc1008->SetSavedPoint(4563,5807.433);
    FiveParFunc1008->SetSavedPoint(4564,5902.624);
@@ -16802,7 +16802,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(5940,6004.889);
    FiveParFunc1008->SetSavedPoint(5941,5942.014);
    FiveParFunc1008->SetSavedPoint(5942,5877.329);
-   FiveParFunc1008->SetSavedPoint(5943,5810.93);
+   FiveParFunc1008->SetSavedPoint(5943,5810.929);
    FiveParFunc1008->SetSavedPoint(5944,5742.914);
    FiveParFunc1008->SetSavedPoint(5945,5673.384);
    FiveParFunc1008->SetSavedPoint(5946,5602.442);
@@ -16812,7 +16812,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(5950,5306.691);
    FiveParFunc1008->SetSavedPoint(5951,5230.306);
    FiveParFunc1008->SetSavedPoint(5952,5153.166);
-   FiveParFunc1008->SetSavedPoint(5953,5075.386);
+   FiveParFunc1008->SetSavedPoint(5953,5075.385);
    FiveParFunc1008->SetSavedPoint(5954,4997.079);
    FiveParFunc1008->SetSavedPoint(5955,4918.363);
    FiveParFunc1008->SetSavedPoint(5956,4839.353);
@@ -17088,7 +17088,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(6226,5661.027);
    FiveParFunc1008->SetSavedPoint(6227,5695.569);
    FiveParFunc1008->SetSavedPoint(6228,5727.787);
-   FiveParFunc1008->SetSavedPoint(6229,5757.633);
+   FiveParFunc1008->SetSavedPoint(6229,5757.632);
    FiveParFunc1008->SetSavedPoint(6230,5785.06);
    FiveParFunc1008->SetSavedPoint(6231,5810.027);
    FiveParFunc1008->SetSavedPoint(6232,5832.495);
@@ -17145,7 +17145,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(6283,3974.049);
    FiveParFunc1008->SetSavedPoint(6284,3905.197);
    FiveParFunc1008->SetSavedPoint(6285,3836.663);
-   FiveParFunc1008->SetSavedPoint(6286,3768.547);
+   FiveParFunc1008->SetSavedPoint(6286,3768.546);
    FiveParFunc1008->SetSavedPoint(6287,3700.948);
    FiveParFunc1008->SetSavedPoint(6288,3633.966);
    FiveParFunc1008->SetSavedPoint(6289,3567.699);
@@ -17461,7 +17461,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(6599,3912.672);
    FiveParFunc1008->SetSavedPoint(6600,3853.237);
    FiveParFunc1008->SetSavedPoint(6601,3793.427);
-   FiveParFunc1008->SetSavedPoint(6602,3733.329);
+   FiveParFunc1008->SetSavedPoint(6602,3733.328);
    FiveParFunc1008->SetSavedPoint(6603,3673.032);
    FiveParFunc1008->SetSavedPoint(6604,3612.625);
    FiveParFunc1008->SetSavedPoint(6605,3552.198);
@@ -17756,7 +17756,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(6894,4461.159);
    FiveParFunc1008->SetSavedPoint(6895,4445.726);
    FiveParFunc1008->SetSavedPoint(6896,4428.358);
-   FiveParFunc1008->SetSavedPoint(6897,4409.082);
+   FiveParFunc1008->SetSavedPoint(6897,4409.081);
    FiveParFunc1008->SetSavedPoint(6898,4387.926);
    FiveParFunc1008->SetSavedPoint(6899,4364.922);
    FiveParFunc1008->SetSavedPoint(6900,4340.104);
@@ -18204,7 +18204,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7342,3024.825);
    FiveParFunc1008->SetSavedPoint(7343,3063.476);
    FiveParFunc1008->SetSavedPoint(7344,3101.419);
-   FiveParFunc1008->SetSavedPoint(7345,3138.596);
+   FiveParFunc1008->SetSavedPoint(7345,3138.595);
    FiveParFunc1008->SetSavedPoint(7346,3174.948);
    FiveParFunc1008->SetSavedPoint(7347,3210.42);
    FiveParFunc1008->SetSavedPoint(7348,3244.958);
@@ -18280,10 +18280,10 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7418,2334.486);
    FiveParFunc1008->SetSavedPoint(7419,2292.512);
    FiveParFunc1008->SetSavedPoint(7420,2250.937);
-   FiveParFunc1008->SetSavedPoint(7421,2209.823);
+   FiveParFunc1008->SetSavedPoint(7421,2209.822);
    FiveParFunc1008->SetSavedPoint(7422,2169.228);
    FiveParFunc1008->SetSavedPoint(7423,2129.212);
-   FiveParFunc1008->SetSavedPoint(7424,2089.835);
+   FiveParFunc1008->SetSavedPoint(7424,2089.834);
    FiveParFunc1008->SetSavedPoint(7425,2051.152);
    FiveParFunc1008->SetSavedPoint(7426,2013.22);
    FiveParFunc1008->SetSavedPoint(7427,1976.094);
@@ -18570,7 +18570,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7708,3099.796);
    FiveParFunc1008->SetSavedPoint(7709,3081.34);
    FiveParFunc1008->SetSavedPoint(7710,3061.635);
-   FiveParFunc1008->SetSavedPoint(7711,3040.71);
+   FiveParFunc1008->SetSavedPoint(7711,3040.709);
    FiveParFunc1008->SetSavedPoint(7712,3018.596);
    FiveParFunc1008->SetSavedPoint(7713,2995.326);
    FiveParFunc1008->SetSavedPoint(7714,2970.936);
@@ -18597,7 +18597,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7735,2276.204);
    FiveParFunc1008->SetSavedPoint(7736,2238.607);
    FiveParFunc1008->SetSavedPoint(7737,2201.011);
-   FiveParFunc1008->SetSavedPoint(7738,2163.472);
+   FiveParFunc1008->SetSavedPoint(7738,2163.471);
    FiveParFunc1008->SetSavedPoint(7739,2126.043);
    FiveParFunc1008->SetSavedPoint(7740,2088.782);
    FiveParFunc1008->SetSavedPoint(7741,2051.741);
@@ -18672,7 +18672,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7810,1891.871);
    FiveParFunc1008->SetSavedPoint(7811,1925.352);
    FiveParFunc1008->SetSavedPoint(7812,1959.143);
-   FiveParFunc1008->SetSavedPoint(7813,1993.193);
+   FiveParFunc1008->SetSavedPoint(7813,1993.192);
    FiveParFunc1008->SetSavedPoint(7814,2027.447);
    FiveParFunc1008->SetSavedPoint(7815,2061.853);
    FiveParFunc1008->SetSavedPoint(7816,2096.358);
@@ -18709,7 +18709,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7847,2940.323);
    FiveParFunc1008->SetSavedPoint(7848,2952.732);
    FiveParFunc1008->SetSavedPoint(7849,2963.867);
-   FiveParFunc1008->SetSavedPoint(7850,2973.714);
+   FiveParFunc1008->SetSavedPoint(7850,2973.713);
    FiveParFunc1008->SetSavedPoint(7851,2982.255);
    FiveParFunc1008->SetSavedPoint(7852,2989.478);
    FiveParFunc1008->SetSavedPoint(7853,2995.372);
@@ -18861,7 +18861,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(7999,2578.305);
    FiveParFunc1008->SetSavedPoint(8000,2600.234);
    FiveParFunc1008->SetSavedPoint(8001,2621.218);
-   FiveParFunc1008->SetSavedPoint(8002,2641.224);
+   FiveParFunc1008->SetSavedPoint(8002,2641.223);
    FiveParFunc1008->SetSavedPoint(8003,2660.221);
    FiveParFunc1008->SetSavedPoint(8004,2678.18);
    FiveParFunc1008->SetSavedPoint(8005,2695.075);
@@ -19013,7 +19013,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(8151,2172.209);
    FiveParFunc1008->SetSavedPoint(8152,2199.45);
    FiveParFunc1008->SetSavedPoint(8153,2226.161);
-   FiveParFunc1008->SetSavedPoint(8154,2252.301);
+   FiveParFunc1008->SetSavedPoint(8154,2252.3);
    FiveParFunc1008->SetSavedPoint(8155,2277.829);
    FiveParFunc1008->SetSavedPoint(8156,2302.707);
    FiveParFunc1008->SetSavedPoint(8157,2326.896);
@@ -19216,7 +19216,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(8354,2373.214);
    FiveParFunc1008->SetSavedPoint(8355,2359.834);
    FiveParFunc1008->SetSavedPoint(8356,2345.487);
-   FiveParFunc1008->SetSavedPoint(8357,2330.193);
+   FiveParFunc1008->SetSavedPoint(8357,2330.192);
    FiveParFunc1008->SetSavedPoint(8358,2313.975);
    FiveParFunc1008->SetSavedPoint(8359,2296.858);
    FiveParFunc1008->SetSavedPoint(8360,2278.867);
@@ -19286,7 +19286,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(8424,955.534);
    FiveParFunc1008->SetSavedPoint(8425,956.0093);
    FiveParFunc1008->SetSavedPoint(8426,957.5497);
-   FiveParFunc1008->SetSavedPoint(8427,960.1512);
+   FiveParFunc1008->SetSavedPoint(8427,960.1511);
    FiveParFunc1008->SetSavedPoint(8428,963.8076);
    FiveParFunc1008->SetSavedPoint(8429,968.5117);
    FiveParFunc1008->SetSavedPoint(8430,974.2544);
@@ -19615,7 +19615,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(8753,848.8639);
    FiveParFunc1008->SetSavedPoint(8754,854.4568);
    FiveParFunc1008->SetSavedPoint(8755,860.9406);
-   FiveParFunc1008->SetSavedPoint(8756,868.3041);
+   FiveParFunc1008->SetSavedPoint(8756,868.304);
    FiveParFunc1008->SetSavedPoint(8757,876.5343);
    FiveParFunc1008->SetSavedPoint(8758,885.6173);
    FiveParFunc1008->SetSavedPoint(8759,895.5377);
@@ -19691,7 +19691,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(8829,1999.445);
    FiveParFunc1008->SetSavedPoint(8830,1997.145);
    FiveParFunc1008->SetSavedPoint(8831,1993.95);
-   FiveParFunc1008->SetSavedPoint(8832,1989.863);
+   FiveParFunc1008->SetSavedPoint(8832,1989.862);
    FiveParFunc1008->SetSavedPoint(8833,1984.89);
    FiveParFunc1008->SetSavedPoint(8834,1979.04);
    FiveParFunc1008->SetSavedPoint(8835,1972.321);
@@ -19751,7 +19751,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(8889,948.9142);
    FiveParFunc1008->SetSavedPoint(8890,933.1595);
    FiveParFunc1008->SetSavedPoint(8891,918.0737);
-   FiveParFunc1008->SetSavedPoint(8892,903.6784);
+   FiveParFunc1008->SetSavedPoint(8892,903.6783);
    FiveParFunc1008->SetSavedPoint(8893,889.9936);
    FiveParFunc1008->SetSavedPoint(8894,877.0387);
    FiveParFunc1008->SetSavedPoint(8895,864.8317);
@@ -20064,7 +20064,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9202,1000.288);
    FiveParFunc1008->SetSavedPoint(9203,981.7757);
    FiveParFunc1008->SetSavedPoint(9204,963.6078);
-   FiveParFunc1008->SetSavedPoint(9205,945.8104);
+   FiveParFunc1008->SetSavedPoint(9205,945.8103);
    FiveParFunc1008->SetSavedPoint(9206,928.4092);
    FiveParFunc1008->SetSavedPoint(9207,911.4294);
    FiveParFunc1008->SetSavedPoint(9208,894.8956);
@@ -20118,9 +20118,9 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9256,874.7963);
    FiveParFunc1008->SetSavedPoint(9257,890.1894);
    FiveParFunc1008->SetSavedPoint(9258,905.9959);
-   FiveParFunc1008->SetSavedPoint(9259,922.1909);
+   FiveParFunc1008->SetSavedPoint(9259,922.1908);
    FiveParFunc1008->SetSavedPoint(9260,938.7487);
-   FiveParFunc1008->SetSavedPoint(9261,955.6435);
+   FiveParFunc1008->SetSavedPoint(9261,955.6434);
    FiveParFunc1008->SetSavedPoint(9262,972.8485);
    FiveParFunc1008->SetSavedPoint(9263,990.337);
    FiveParFunc1008->SetSavedPoint(9264,1008.082);
@@ -20226,14 +20226,14 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9364,929.1504);
    FiveParFunc1008->SetSavedPoint(9365,911.952);
    FiveParFunc1008->SetSavedPoint(9366,895.0832);
-   FiveParFunc1008->SetSavedPoint(9367,878.5684);
+   FiveParFunc1008->SetSavedPoint(9367,878.5683);
    FiveParFunc1008->SetSavedPoint(9368,862.4314);
    FiveParFunc1008->SetSavedPoint(9369,846.6957);
-   FiveParFunc1008->SetSavedPoint(9370,831.384);
+   FiveParFunc1008->SetSavedPoint(9370,831.3839);
    FiveParFunc1008->SetSavedPoint(9371,816.5182);
    FiveParFunc1008->SetSavedPoint(9372,802.1198);
    FiveParFunc1008->SetSavedPoint(9373,788.2094);
-   FiveParFunc1008->SetSavedPoint(9374,774.807);
+   FiveParFunc1008->SetSavedPoint(9374,774.8069);
    FiveParFunc1008->SetSavedPoint(9375,761.9314);
    FiveParFunc1008->SetSavedPoint(9376,749.6012);
    FiveParFunc1008->SetSavedPoint(9377,737.8337);
@@ -20392,14 +20392,14 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9530,801.1526);
    FiveParFunc1008->SetSavedPoint(9531,786.573);
    FiveParFunc1008->SetSavedPoint(9532,772.3963);
-   FiveParFunc1008->SetSavedPoint(9533,758.6429);
+   FiveParFunc1008->SetSavedPoint(9533,758.6428);
    FiveParFunc1008->SetSavedPoint(9534,745.3324);
    FiveParFunc1008->SetSavedPoint(9535,732.484);
    FiveParFunc1008->SetSavedPoint(9536,720.1161);
    FiveParFunc1008->SetSavedPoint(9537,708.2462);
    FiveParFunc1008->SetSavedPoint(9538,696.8911);
    FiveParFunc1008->SetSavedPoint(9539,686.067);
-   FiveParFunc1008->SetSavedPoint(9540,675.7891);
+   FiveParFunc1008->SetSavedPoint(9540,675.789);
    FiveParFunc1008->SetSavedPoint(9541,666.0716);
    FiveParFunc1008->SetSavedPoint(9542,656.9283);
    FiveParFunc1008->SetSavedPoint(9543,648.3718);
@@ -20535,7 +20535,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9673,1044.922);
    FiveParFunc1008->SetSavedPoint(9674,1028.333);
    FiveParFunc1008->SetSavedPoint(9675,1011.692);
-   FiveParFunc1008->SetSavedPoint(9676,995.023);
+   FiveParFunc1008->SetSavedPoint(9676,995.0229);
    FiveParFunc1008->SetSavedPoint(9677,978.351);
    FiveParFunc1008->SetSavedPoint(9678,961.7004);
    FiveParFunc1008->SetSavedPoint(9679,945.0957);
@@ -20589,7 +20589,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9727,583.2627);
    FiveParFunc1008->SetSavedPoint(9728,589.2705);
    FiveParFunc1008->SetSavedPoint(9729,595.8366);
-   FiveParFunc1008->SetSavedPoint(9730,602.9502);
+   FiveParFunc1008->SetSavedPoint(9730,602.9501);
    FiveParFunc1008->SetSavedPoint(9731,610.5993);
    FiveParFunc1008->SetSavedPoint(9732,618.7714);
    FiveParFunc1008->SetSavedPoint(9733,627.4531);
@@ -20605,7 +20605,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9743,738.8423);
    FiveParFunc1008->SetSavedPoint(9744,752.0466);
    FiveParFunc1008->SetSavedPoint(9745,765.5479);
-   FiveParFunc1008->SetSavedPoint(9746,779.3249);
+   FiveParFunc1008->SetSavedPoint(9746,779.3248);
    FiveParFunc1008->SetSavedPoint(9747,793.3558);
    FiveParFunc1008->SetSavedPoint(9748,807.6189);
    FiveParFunc1008->SetSavedPoint(9749,822.0916);
@@ -20617,7 +20617,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9755,912.0485);
    FiveParFunc1008->SetSavedPoint(9756,927.3434);
    FiveParFunc1008->SetSavedPoint(9757,942.6615);
-   FiveParFunc1008->SetSavedPoint(9758,957.9793);
+   FiveParFunc1008->SetSavedPoint(9758,957.9792);
    FiveParFunc1008->SetSavedPoint(9759,973.2728);
    FiveParFunc1008->SetSavedPoint(9760,988.5184);
    FiveParFunc1008->SetSavedPoint(9761,1003.693);
@@ -20693,7 +20693,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9831,1032.687);
    FiveParFunc1008->SetSavedPoint(9832,1017.561);
    FiveParFunc1008->SetSavedPoint(9833,1002.302);
-   FiveParFunc1008->SetSavedPoint(9834,986.9335);
+   FiveParFunc1008->SetSavedPoint(9834,986.9334);
    FiveParFunc1008->SetSavedPoint(9835,971.4777);
    FiveParFunc1008->SetSavedPoint(9836,955.9576);
    FiveParFunc1008->SetSavedPoint(9837,940.396);
@@ -20709,7 +20709,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9847,787.5259);
    FiveParFunc1008->SetSavedPoint(9848,773.0077);
    FiveParFunc1008->SetSavedPoint(9849,758.7165);
-   FiveParFunc1008->SetSavedPoint(9850,744.673);
+   FiveParFunc1008->SetSavedPoint(9850,744.6729);
    FiveParFunc1008->SetSavedPoint(9851,730.8976);
    FiveParFunc1008->SetSavedPoint(9852,717.4104);
    FiveParFunc1008->SetSavedPoint(9853,704.2309);
@@ -20740,7 +20740,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9878,519.6108);
    FiveParFunc1008->SetSavedPoint(9879,519.2261);
    FiveParFunc1008->SetSavedPoint(9880,519.4218);
-   FiveParFunc1008->SetSavedPoint(9881,520.1965);
+   FiveParFunc1008->SetSavedPoint(9881,520.1964);
    FiveParFunc1008->SetSavedPoint(9882,521.5479);
    FiveParFunc1008->SetSavedPoint(9883,523.4731);
    FiveParFunc1008->SetSavedPoint(9884,525.9679);
@@ -20780,10 +20780,10 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9918,871.1767);
    FiveParFunc1008->SetSavedPoint(9919,885.4934);
    FiveParFunc1008->SetSavedPoint(9920,899.8025);
-   FiveParFunc1008->SetSavedPoint(9921,914.082);
+   FiveParFunc1008->SetSavedPoint(9921,914.0819);
    FiveParFunc1008->SetSavedPoint(9922,928.3096);
    FiveParFunc1008->SetSavedPoint(9923,942.4634);
-   FiveParFunc1008->SetSavedPoint(9924,956.5216);
+   FiveParFunc1008->SetSavedPoint(9924,956.5215);
    FiveParFunc1008->SetSavedPoint(9925,970.4623);
    FiveParFunc1008->SetSavedPoint(9926,984.2642);
    FiveParFunc1008->SetSavedPoint(9927,997.906);
@@ -20794,7 +20794,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9932,1062.987);
    FiveParFunc1008->SetSavedPoint(9933,1075.238);
    FiveParFunc1008->SetSavedPoint(9934,1087.188);
-   FiveParFunc1008->SetSavedPoint(9935,1098.821);
+   FiveParFunc1008->SetSavedPoint(9935,1098.82);
    FiveParFunc1008->SetSavedPoint(9936,1110.116);
    FiveParFunc1008->SetSavedPoint(9937,1121.058);
    FiveParFunc1008->SetSavedPoint(9938,1131.63);
@@ -20815,7 +20815,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->SetSavedPoint(9953,1236.286);
    FiveParFunc1008->SetSavedPoint(9954,1239.181);
    FiveParFunc1008->SetSavedPoint(9955,1241.525);
-   FiveParFunc1008->SetSavedPoint(9956,1243.315);
+   FiveParFunc1008->SetSavedPoint(9956,1243.314);
    FiveParFunc1008->SetSavedPoint(9957,1244.546);
    FiveParFunc1008->SetSavedPoint(9958,1245.217);
    FiveParFunc1008->SetSavedPoint(9959,1245.328);
@@ -20876,20 +20876,20 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1008->GetYaxis()->SetLabelFont(42);
    FiveParFunc1008->GetYaxis()->SetTitleFont(42);
    FiveParFunc1008->SetParameter(0,90501.11);
-   FiveParFunc1008->SetParError(0,35.46313);
+   FiveParFunc1008->SetParError(0,35.45938);
    FiveParFunc1008->SetParLimits(0,0,0);
    FiveParFunc1008->SetParameter(1,64.41234);
-   FiveParFunc1008->SetParError(1,0.01535654);
+   FiveParFunc1008->SetParError(1,0.01535488);
    FiveParFunc1008->SetParLimits(1,0,0);
-   FiveParFunc1008->SetParameter(2,0.4253708);
+   FiveParFunc1008->SetParameter(2,-0.4253708);
    FiveParFunc1008->SetParError(2,0.0002654792);
    FiveParFunc1008->SetParLimits(2,0,0);
    FiveParFunc1008->SetParameter(3,1.43934);
    FiveParFunc1008->SetParError(3,0);
    FiveParFunc1008->SetParLimits(3,1.43934,1.43934);
    FiveParFunc1008->SetParameter(4,0.1651779);
-   FiveParFunc1008->SetParError(4,0.0006621057);
-   FiveParFunc1008->SetParLimits(4,-1.570796,1.570796);
+   FiveParFunc1008->SetParError(4,0.0006621129);
+   FiveParFunc1008->SetParLimits(4,0,0);
    FiveParFunc1008->SetParent(gre);
    gre->GetListOfFunctions()->Add(FiveParFunc1008);
    gre->Draw("ap");
@@ -20905,10 +20905,10 @@ void fit_wiggle_truth_AQ()
    pt_LaTex = pt->AddText("64.41
 #pm0.02
 ");
-   pt_LaTex = pt->AddText("0.425
+   pt_LaTex = pt->AddText("-0.425
 #pm0.0003
 ");
-   pt_LaTex = pt->AddText("0.17
+   pt_LaTex = pt->AddText("0.1652
 #pm0.0007
 ");
    pt->Draw();
@@ -21029,7 +21029,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(57,55638.47);
    FiveParFunc1009->SetSavedPoint(58,56531.23);
    FiveParFunc1009->SetSavedPoint(59,57421.59);
-   FiveParFunc1009->SetSavedPoint(60,58308.16);
+   FiveParFunc1009->SetSavedPoint(60,58308.17);
    FiveParFunc1009->SetSavedPoint(61,59189.59);
    FiveParFunc1009->SetSavedPoint(62,60064.5);
    FiveParFunc1009->SetSavedPoint(63,60931.54);
@@ -21051,7 +21051,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(79,72705.81);
    FiveParFunc1009->SetSavedPoint(80,73252.59);
    FiveParFunc1009->SetSavedPoint(81,73771.25);
-   FiveParFunc1009->SetSavedPoint(82,74260.98);
+   FiveParFunc1009->SetSavedPoint(82,74260.99);
    FiveParFunc1009->SetSavedPoint(83,74721.05);
    FiveParFunc1009->SetSavedPoint(84,75150.74);
    FiveParFunc1009->SetSavedPoint(85,75549.4);
@@ -21078,7 +21078,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(106,76118.55);
    FiveParFunc1009->SetSavedPoint(107,75770.12);
    FiveParFunc1009->SetSavedPoint(108,75389.58);
-   FiveParFunc1009->SetSavedPoint(109,74977.5);
+   FiveParFunc1009->SetSavedPoint(109,74977.51);
    FiveParFunc1009->SetSavedPoint(110,74534.5);
    FiveParFunc1009->SetSavedPoint(111,74061.22);
    FiveParFunc1009->SetSavedPoint(112,73558.38);
@@ -21097,7 +21097,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(125,64726.86);
    FiveParFunc1009->SetSavedPoint(126,63906.5);
    FiveParFunc1009->SetSavedPoint(127,63071.69);
-   FiveParFunc1009->SetSavedPoint(128,62223.65);
+   FiveParFunc1009->SetSavedPoint(128,62223.66);
    FiveParFunc1009->SetSavedPoint(129,61363.66);
    FiveParFunc1009->SetSavedPoint(130,60492.99);
    FiveParFunc1009->SetSavedPoint(131,59612.92);
@@ -21181,7 +21181,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(209,44061.58);
    FiveParFunc1009->SetSavedPoint(210,44851.04);
    FiveParFunc1009->SetSavedPoint(211,45650.65);
-   FiveParFunc1009->SetSavedPoint(212,46459.16);
+   FiveParFunc1009->SetSavedPoint(212,46459.17);
    FiveParFunc1009->SetSavedPoint(213,47275.31);
    FiveParFunc1009->SetSavedPoint(214,48097.83);
    FiveParFunc1009->SetSavedPoint(215,48925.44);
@@ -21193,7 +21193,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(221,53925.65);
    FiveParFunc1009->SetSavedPoint(222,54752.72);
    FiveParFunc1009->SetSavedPoint(223,55574.57);
-   FiveParFunc1009->SetSavedPoint(224,56389.92);
+   FiveParFunc1009->SetSavedPoint(224,56389.93);
    FiveParFunc1009->SetSavedPoint(225,57197.53);
    FiveParFunc1009->SetSavedPoint(226,57996.13);
    FiveParFunc1009->SetSavedPoint(227,58784.51);
@@ -21236,7 +21236,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(264,72062.93);
    FiveParFunc1009->SetSavedPoint(265,71851.54);
    FiveParFunc1009->SetSavedPoint(266,71608.58);
-   FiveParFunc1009->SetSavedPoint(267,71334.42);
+   FiveParFunc1009->SetSavedPoint(267,71334.43);
    FiveParFunc1009->SetSavedPoint(268,71029.47);
    FiveParFunc1009->SetSavedPoint(269,70694.18);
    FiveParFunc1009->SetSavedPoint(270,70329.05);
@@ -21247,7 +21247,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(275,68076.34);
    FiveParFunc1009->SetSavedPoint(276,67545.09);
    FiveParFunc1009->SetSavedPoint(277,66988.69);
-   FiveParFunc1009->SetSavedPoint(278,66407.97);
+   FiveParFunc1009->SetSavedPoint(278,66407.98);
    FiveParFunc1009->SetSavedPoint(279,65803.81);
    FiveParFunc1009->SetSavedPoint(280,65177.09);
    FiveParFunc1009->SetSavedPoint(281,64528.75);
@@ -21283,7 +21283,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(311,40566.52);
    FiveParFunc1009->SetSavedPoint(312,39816.15);
    FiveParFunc1009->SetSavedPoint(313,39081.53);
-   FiveParFunc1009->SetSavedPoint(314,38363.72);
+   FiveParFunc1009->SetSavedPoint(314,38363.73);
    FiveParFunc1009->SetSavedPoint(315,37663.78);
    FiveParFunc1009->SetSavedPoint(316,36982.7);
    FiveParFunc1009->SetSavedPoint(317,36321.46);
@@ -21296,7 +21296,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(324,32324.11);
    FiveParFunc1009->SetSavedPoint(325,31852.99);
    FiveParFunc1009->SetSavedPoint(326,31408.99);
-   FiveParFunc1009->SetSavedPoint(327,30992.74);
+   FiveParFunc1009->SetSavedPoint(327,30992.75);
    FiveParFunc1009->SetSavedPoint(328,30604.82);
    FiveParFunc1009->SetSavedPoint(329,30245.75);
    FiveParFunc1009->SetSavedPoint(330,29916.01);
@@ -21381,9 +21381,9 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(409,66182.05);
    FiveParFunc1009->SetSavedPoint(410,66484.52);
    FiveParFunc1009->SetSavedPoint(411,66758.58);
-   FiveParFunc1009->SetSavedPoint(412,67003.79);
+   FiveParFunc1009->SetSavedPoint(412,67003.8);
    FiveParFunc1009->SetSavedPoint(413,67219.8);
-   FiveParFunc1009->SetSavedPoint(414,67406.26);
+   FiveParFunc1009->SetSavedPoint(414,67406.27);
    FiveParFunc1009->SetSavedPoint(415,67562.9);
    FiveParFunc1009->SetSavedPoint(416,67689.46);
    FiveParFunc1009->SetSavedPoint(417,67785.74);
@@ -21406,7 +21406,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(434,64824.01);
    FiveParFunc1009->SetSavedPoint(435,64394.06);
    FiveParFunc1009->SetSavedPoint(436,63938.71);
-   FiveParFunc1009->SetSavedPoint(437,63458.64);
+   FiveParFunc1009->SetSavedPoint(437,63458.65);
    FiveParFunc1009->SetSavedPoint(438,62954.57);
    FiveParFunc1009->SetSavedPoint(439,62427.25);
    FiveParFunc1009->SetSavedPoint(440,61877.45);
@@ -21465,7 +21465,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(493,27591.34);
    FiveParFunc1009->SetSavedPoint(494,27348.37);
    FiveParFunc1009->SetSavedPoint(495,27134.03);
-   FiveParFunc1009->SetSavedPoint(496,26948.58);
+   FiveParFunc1009->SetSavedPoint(496,26948.59);
    FiveParFunc1009->SetSavedPoint(497,26792.26);
    FiveParFunc1009->SetSavedPoint(498,26665.24);
    FiveParFunc1009->SetSavedPoint(499,26567.65);
@@ -21473,7 +21473,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(501,26461.14);
    FiveParFunc1009->SetSavedPoint(502,26452.26);
    FiveParFunc1009->SetSavedPoint(503,26472.93);
-   FiveParFunc1009->SetSavedPoint(504,26523.06);
+   FiveParFunc1009->SetSavedPoint(504,26523.07);
    FiveParFunc1009->SetSavedPoint(505,26602.53);
    FiveParFunc1009->SetSavedPoint(506,26711.15);
    FiveParFunc1009->SetSavedPoint(507,26848.72);
@@ -21550,7 +21550,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(578,63286.04);
    FiveParFunc1009->SetSavedPoint(579,63366.9);
    FiveParFunc1009->SetSavedPoint(580,63419.29);
-   FiveParFunc1009->SetSavedPoint(581,63443.14);
+   FiveParFunc1009->SetSavedPoint(581,63443.15);
    FiveParFunc1009->SetSavedPoint(582,63438.41);
    FiveParFunc1009->SetSavedPoint(583,63405.09);
    FiveParFunc1009->SetSavedPoint(584,63343.24);
@@ -21559,7 +21559,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(587,62987.57);
    FiveParFunc1009->SetSavedPoint(588,62812.89);
    FiveParFunc1009->SetSavedPoint(589,62610.54);
-   FiveParFunc1009->SetSavedPoint(590,62380.83);
+   FiveParFunc1009->SetSavedPoint(590,62380.84);
    FiveParFunc1009->SetSavedPoint(591,62124.1);
    FiveParFunc1009->SetSavedPoint(592,61840.73);
    FiveParFunc1009->SetSavedPoint(593,61531.14);
@@ -21594,7 +21594,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(622,44262.22);
    FiveParFunc1009->SetSavedPoint(623,43520.52);
    FiveParFunc1009->SetSavedPoint(624,42779.79);
-   FiveParFunc1009->SetSavedPoint(625,42041.1);
+   FiveParFunc1009->SetSavedPoint(625,42041.11);
    FiveParFunc1009->SetSavedPoint(626,41305.55);
    FiveParFunc1009->SetSavedPoint(627,40574.22);
    FiveParFunc1009->SetSavedPoint(628,39848.17);
@@ -21685,7 +21685,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(713,48580.77);
    FiveParFunc1009->SetSavedPoint(714,49204.84);
    FiveParFunc1009->SetSavedPoint(715,49817.67);
-   FiveParFunc1009->SetSavedPoint(716,50418.32);
+   FiveParFunc1009->SetSavedPoint(716,50418.33);
    FiveParFunc1009->SetSavedPoint(717,51005.87);
    FiveParFunc1009->SetSavedPoint(718,51579.41);
    FiveParFunc1009->SetSavedPoint(719,52138.06);
@@ -21745,7 +21745,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(773,48551.38);
    FiveParFunc1009->SetSavedPoint(774,47911.82);
    FiveParFunc1009->SetSavedPoint(775,47262.46);
-   FiveParFunc1009->SetSavedPoint(776,46604.24);
+   FiveParFunc1009->SetSavedPoint(776,46604.25);
    FiveParFunc1009->SetSavedPoint(777,45938.17);
    FiveParFunc1009->SetSavedPoint(778,45265.2);
    FiveParFunc1009->SetSavedPoint(779,44586.35);
@@ -21880,7 +21880,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(908,55266.12);
    FiveParFunc1009->SetSavedPoint(909,55171.36);
    FiveParFunc1009->SetSavedPoint(910,55051.96);
-   FiveParFunc1009->SetSavedPoint(911,54908.11);
+   FiveParFunc1009->SetSavedPoint(911,54908.12);
    FiveParFunc1009->SetSavedPoint(912,54740.02);
    FiveParFunc1009->SetSavedPoint(913,54547.94);
    FiveParFunc1009->SetSavedPoint(914,54332.14);
@@ -22008,7 +22008,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1036,42225.8);
    FiveParFunc1009->SetSavedPoint(1037,42774.07);
    FiveParFunc1009->SetSavedPoint(1038,43312.82);
-   FiveParFunc1009->SetSavedPoint(1039,43841.22);
+   FiveParFunc1009->SetSavedPoint(1039,43841.23);
    FiveParFunc1009->SetSavedPoint(1040,44358.48);
    FiveParFunc1009->SetSavedPoint(1041,44863.77);
    FiveParFunc1009->SetSavedPoint(1042,45356.35);
@@ -22080,7 +22080,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1108,35535.45);
    FiveParFunc1009->SetSavedPoint(1109,34930.96);
    FiveParFunc1009->SetSavedPoint(1110,34328.1);
-   FiveParFunc1009->SetSavedPoint(1111,33727.76);
+   FiveParFunc1009->SetSavedPoint(1111,33727.77);
    FiveParFunc1009->SetSavedPoint(1112,33130.84);
    FiveParFunc1009->SetSavedPoint(1113,32538.2);
    FiveParFunc1009->SetSavedPoint(1114,31950.71);
@@ -22146,7 +22146,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1174,26807.36);
    FiveParFunc1009->SetSavedPoint(1175,27286.37);
    FiveParFunc1009->SetSavedPoint(1176,27776.18);
-   FiveParFunc1009->SetSavedPoint(1177,28276.02);
+   FiveParFunc1009->SetSavedPoint(1177,28276.03);
    FiveParFunc1009->SetSavedPoint(1178,28785.12);
    FiveParFunc1009->SetSavedPoint(1179,29302.65);
    FiveParFunc1009->SetSavedPoint(1180,29827.83);
@@ -22170,7 +22170,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1198,39624.46);
    FiveParFunc1009->SetSavedPoint(1199,40134.03);
    FiveParFunc1009->SetSavedPoint(1200,40634.46);
-   FiveParFunc1009->SetSavedPoint(1201,41124.97);
+   FiveParFunc1009->SetSavedPoint(1201,41124.98);
    FiveParFunc1009->SetSavedPoint(1202,41604.82);
    FiveParFunc1009->SetSavedPoint(1203,42073.27);
    FiveParFunc1009->SetSavedPoint(1204,42529.59);
@@ -22193,7 +22193,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1221,47841.7);
    FiveParFunc1009->SetSavedPoint(1222,47982.88);
    FiveParFunc1009->SetSavedPoint(1223,48102.87);
-   FiveParFunc1009->SetSavedPoint(1224,48201.5);
+   FiveParFunc1009->SetSavedPoint(1224,48201.51);
    FiveParFunc1009->SetSavedPoint(1225,48278.62);
    FiveParFunc1009->SetSavedPoint(1226,48334.09);
    FiveParFunc1009->SetSavedPoint(1227,48367.84);
@@ -22335,7 +22335,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1363,38575.43);
    FiveParFunc1009->SetSavedPoint(1364,39020.48);
    FiveParFunc1009->SetSavedPoint(1365,39454.66);
-   FiveParFunc1009->SetSavedPoint(1366,39877.3);
+   FiveParFunc1009->SetSavedPoint(1366,39877.31);
    FiveParFunc1009->SetSavedPoint(1367,40287.76);
    FiveParFunc1009->SetSavedPoint(1368,40685.39);
    FiveParFunc1009->SetSavedPoint(1369,41069.59);
@@ -22493,7 +22493,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1521,34440.92);
    FiveParFunc1009->SetSavedPoint(1522,34888.58);
    FiveParFunc1009->SetSavedPoint(1523,35328.51);
-   FiveParFunc1009->SetSavedPoint(1524,35760.01);
+   FiveParFunc1009->SetSavedPoint(1524,35760.02);
    FiveParFunc1009->SetSavedPoint(1525,36182.44);
    FiveParFunc1009->SetSavedPoint(1526,36595.14);
    FiveParFunc1009->SetSavedPoint(1527,36997.47);
@@ -22644,7 +22644,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1672,27441.1);
    FiveParFunc1009->SetSavedPoint(1673,27894.86);
    FiveParFunc1009->SetSavedPoint(1674,28348.65);
-   FiveParFunc1009->SetSavedPoint(1675,28801.77);
+   FiveParFunc1009->SetSavedPoint(1675,28801.78);
    FiveParFunc1009->SetSavedPoint(1676,29253.53);
    FiveParFunc1009->SetSavedPoint(1677,29703.21);
    FiveParFunc1009->SetSavedPoint(1678,30150.12);
@@ -22652,7 +22652,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1680,31032.91);
    FiveParFunc1009->SetSavedPoint(1681,31467.42);
    FiveParFunc1009->SetSavedPoint(1682,31896.44);
-   FiveParFunc1009->SetSavedPoint(1683,32319.31);
+   FiveParFunc1009->SetSavedPoint(1683,32319.32);
    FiveParFunc1009->SetSavedPoint(1684,32735.39);
    FiveParFunc1009->SetSavedPoint(1685,33144.03);
    FiveParFunc1009->SetSavedPoint(1686,33544.6);
@@ -22704,7 +22704,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1732,36433.69);
    FiveParFunc1009->SetSavedPoint(1733,36119.54);
    FiveParFunc1009->SetSavedPoint(1734,35792.6);
-   FiveParFunc1009->SetSavedPoint(1735,35453.35);
+   FiveParFunc1009->SetSavedPoint(1735,35453.36);
    FiveParFunc1009->SetSavedPoint(1736,35102.3);
    FiveParFunc1009->SetSavedPoint(1737,34739.97);
    FiveParFunc1009->SetSavedPoint(1738,34366.89);
@@ -22891,7 +22891,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(1919,24201.86);
    FiveParFunc1009->SetSavedPoint(1920,23775.47);
    FiveParFunc1009->SetSavedPoint(1921,23351.89);
-   FiveParFunc1009->SetSavedPoint(1922,22931.73);
+   FiveParFunc1009->SetSavedPoint(1922,22931.74);
    FiveParFunc1009->SetSavedPoint(1923,22515.62);
    FiveParFunc1009->SetSavedPoint(1924,22104.17);
    FiveParFunc1009->SetSavedPoint(1925,21697.96);
@@ -23012,7 +23012,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(2040,34376.51);
    FiveParFunc1009->SetSavedPoint(2041,34313.71);
    FiveParFunc1009->SetSavedPoint(2042,34235.61);
-   FiveParFunc1009->SetSavedPoint(2043,34142.32);
+   FiveParFunc1009->SetSavedPoint(2043,34142.33);
    FiveParFunc1009->SetSavedPoint(2044,34033.99);
    FiveParFunc1009->SetSavedPoint(2045,33910.77);
    FiveParFunc1009->SetSavedPoint(2046,33772.84);
@@ -23027,7 +23027,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(2055,31910.65);
    FiveParFunc1009->SetSavedPoint(2056,31640.41);
    FiveParFunc1009->SetSavedPoint(2057,31358.86);
-   FiveParFunc1009->SetSavedPoint(2058,31066.4);
+   FiveParFunc1009->SetSavedPoint(2058,31066.41);
    FiveParFunc1009->SetSavedPoint(2059,30763.48);
    FiveParFunc1009->SetSavedPoint(2060,30450.55);
    FiveParFunc1009->SetSavedPoint(2061,30128.06);
@@ -23288,7 +23288,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(2316,19990.31);
    FiveParFunc1009->SetSavedPoint(2317,20333.55);
    FiveParFunc1009->SetSavedPoint(2318,20678.27);
-   FiveParFunc1009->SetSavedPoint(2319,21023.93);
+   FiveParFunc1009->SetSavedPoint(2319,21023.94);
    FiveParFunc1009->SetSavedPoint(2320,21370.01);
    FiveParFunc1009->SetSavedPoint(2321,21715.96);
    FiveParFunc1009->SetSavedPoint(2322,22061.24);
@@ -23334,7 +23334,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(2362,30071.9);
    FiveParFunc1009->SetSavedPoint(2363,30035.33);
    FiveParFunc1009->SetSavedPoint(2364,29985.29);
-   FiveParFunc1009->SetSavedPoint(2365,29921.85);
+   FiveParFunc1009->SetSavedPoint(2365,29921.86);
    FiveParFunc1009->SetSavedPoint(2366,29845.12);
    FiveParFunc1009->SetSavedPoint(2367,29755.2);
    FiveParFunc1009->SetSavedPoint(2368,29652.22);
@@ -23539,7 +23539,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(2567,18037.6);
    FiveParFunc1009->SetSavedPoint(2568,17715.29);
    FiveParFunc1009->SetSavedPoint(2569,17395.73);
-   FiveParFunc1009->SetSavedPoint(2570,17079.39);
+   FiveParFunc1009->SetSavedPoint(2570,17079.4);
    FiveParFunc1009->SetSavedPoint(2571,16766.73);
    FiveParFunc1009->SetSavedPoint(2572,16458.21);
    FiveParFunc1009->SetSavedPoint(2573,16154.27);
@@ -23906,7 +23906,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(2934,9831.893);
    FiveParFunc1009->SetSavedPoint(2935,9910.64);
    FiveParFunc1009->SetSavedPoint(2936,9999.415);
-   FiveParFunc1009->SetSavedPoint(2937,10098.06);
+   FiveParFunc1009->SetSavedPoint(2937,10098.07);
    FiveParFunc1009->SetSavedPoint(2938,10206.42);
    FiveParFunc1009->SetSavedPoint(2939,10324.3);
    FiveParFunc1009->SetSavedPoint(2940,10451.51);
@@ -23988,7 +23988,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3016,22495.96);
    FiveParFunc1009->SetSavedPoint(3017,22395.16);
    FiveParFunc1009->SetSavedPoint(3018,22284.83);
-   FiveParFunc1009->SetSavedPoint(3019,22165.15);
+   FiveParFunc1009->SetSavedPoint(3019,22165.16);
    FiveParFunc1009->SetSavedPoint(3020,22036.31);
    FiveParFunc1009->SetSavedPoint(3021,21898.48);
    FiveParFunc1009->SetSavedPoint(3022,21751.88);
@@ -24138,7 +24138,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3166,21428.91);
    FiveParFunc1009->SetSavedPoint(3167,21445.26);
    FiveParFunc1009->SetSavedPoint(3168,21451.96);
-   FiveParFunc1009->SetSavedPoint(3169,21448.99);
+   FiveParFunc1009->SetSavedPoint(3169,21449);
    FiveParFunc1009->SetSavedPoint(3170,21436.36);
    FiveParFunc1009->SetSavedPoint(3171,21414.09);
    FiveParFunc1009->SetSavedPoint(3172,21382.2);
@@ -24393,7 +24393,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3421,8156.989);
    FiveParFunc1009->SetSavedPoint(3422,8237.202);
    FiveParFunc1009->SetSavedPoint(3423,8325.341);
-   FiveParFunc1009->SetSavedPoint(3424,8421.258);
+   FiveParFunc1009->SetSavedPoint(3424,8421.259);
    FiveParFunc1009->SetSavedPoint(3425,8524.794);
    FiveParFunc1009->SetSavedPoint(3426,8635.777);
    FiveParFunc1009->SetSavedPoint(3427,8754.024);
@@ -24541,7 +24541,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3569,7388.332);
    FiveParFunc1009->SetSavedPoint(3570,7354.139);
    FiveParFunc1009->SetSavedPoint(3571,7328.072);
-   FiveParFunc1009->SetSavedPoint(3572,7310.156);
+   FiveParFunc1009->SetSavedPoint(3572,7310.157);
    FiveParFunc1009->SetSavedPoint(3573,7300.404);
    FiveParFunc1009->SetSavedPoint(3574,7298.815);
    FiveParFunc1009->SetSavedPoint(3575,7305.376);
@@ -24564,7 +24564,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3592,8593.76);
    FiveParFunc1009->SetSavedPoint(3593,8731.397);
    FiveParFunc1009->SetSavedPoint(3594,8874.754);
-   FiveParFunc1009->SetSavedPoint(3595,9023.6);
+   FiveParFunc1009->SetSavedPoint(3595,9023.601);
    FiveParFunc1009->SetSavedPoint(3596,9177.7);
    FiveParFunc1009->SetSavedPoint(3597,9336.807);
    FiveParFunc1009->SetSavedPoint(3598,9500.669);
@@ -24675,7 +24675,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3703,10385.11);
    FiveParFunc1009->SetSavedPoint(3704,10193.81);
    FiveParFunc1009->SetSavedPoint(3705,10005.44);
-   FiveParFunc1009->SetSavedPoint(3706,9820.258);
+   FiveParFunc1009->SetSavedPoint(3706,9820.259);
    FiveParFunc1009->SetSavedPoint(3707,9638.548);
    FiveParFunc1009->SetSavedPoint(3708,9460.567);
    FiveParFunc1009->SetSavedPoint(3709,9286.574);
@@ -24757,7 +24757,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3785,13422.49);
    FiveParFunc1009->SetSavedPoint(3786,13594.37);
    FiveParFunc1009->SetSavedPoint(3787,13763.12);
-   FiveParFunc1009->SetSavedPoint(3788,13928.47);
+   FiveParFunc1009->SetSavedPoint(3788,13928.48);
    FiveParFunc1009->SetSavedPoint(3789,14090.19);
    FiveParFunc1009->SetSavedPoint(3790,14248.02);
    FiveParFunc1009->SetSavedPoint(3791,14401.71);
@@ -24843,7 +24843,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3871,8626.645);
    FiveParFunc1009->SetSavedPoint(3872,8469.337);
    FiveParFunc1009->SetSavedPoint(3873,8316.292);
-   FiveParFunc1009->SetSavedPoint(3874,8167.731);
+   FiveParFunc1009->SetSavedPoint(3874,8167.732);
    FiveParFunc1009->SetSavedPoint(3875,8023.868);
    FiveParFunc1009->SetSavedPoint(3876,7884.907);
    FiveParFunc1009->SetSavedPoint(3877,7751.048);
@@ -24872,7 +24872,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3900,6404.157);
    FiveParFunc1009->SetSavedPoint(3901,6428.563);
    FiveParFunc1009->SetSavedPoint(3902,6459.957);
-   FiveParFunc1009->SetSavedPoint(3903,6498.277);
+   FiveParFunc1009->SetSavedPoint(3903,6498.278);
    FiveParFunc1009->SetSavedPoint(3904,6543.455);
    FiveParFunc1009->SetSavedPoint(3905,6595.407);
    FiveParFunc1009->SetSavedPoint(3906,6654.045);
@@ -24889,7 +24889,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(3917,7704.511);
    FiveParFunc1009->SetSavedPoint(3918,7832.8);
    FiveParFunc1009->SetSavedPoint(3919,7965.751);
-   FiveParFunc1009->SetSavedPoint(3920,8103.152);
+   FiveParFunc1009->SetSavedPoint(3920,8103.153);
    FiveParFunc1009->SetSavedPoint(3921,8244.786);
    FiveParFunc1009->SetSavedPoint(3922,8390.427);
    FiveParFunc1009->SetSavedPoint(3923,8539.846);
@@ -25152,7 +25152,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(4180,9787.2);
    FiveParFunc1009->SetSavedPoint(4181,9620.445);
    FiveParFunc1009->SetSavedPoint(4182,9454.169);
-   FiveParFunc1009->SetSavedPoint(4183,9288.615);
+   FiveParFunc1009->SetSavedPoint(4183,9288.616);
    FiveParFunc1009->SetSavedPoint(4184,9124.028);
    FiveParFunc1009->SetSavedPoint(4185,8960.647);
    FiveParFunc1009->SetSavedPoint(4186,8798.713);
@@ -25174,7 +25174,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(4202,6586.629);
    FiveParFunc1009->SetSavedPoint(4203,6482.293);
    FiveParFunc1009->SetSavedPoint(4204,6382.985);
-   FiveParFunc1009->SetSavedPoint(4205,6288.843);
+   FiveParFunc1009->SetSavedPoint(4205,6288.844);
    FiveParFunc1009->SetSavedPoint(4206,6200);
    FiveParFunc1009->SetSavedPoint(4207,6116.578);
    FiveParFunc1009->SetSavedPoint(4208,6038.692);
@@ -25530,7 +25530,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(4558,5391.608);
    FiveParFunc1009->SetSavedPoint(4559,5466.298);
    FiveParFunc1009->SetSavedPoint(4560,5545.356);
-   FiveParFunc1009->SetSavedPoint(4561,5628.655);
+   FiveParFunc1009->SetSavedPoint(4561,5628.656);
    FiveParFunc1009->SetSavedPoint(4562,5716.061);
    FiveParFunc1009->SetSavedPoint(4563,5807.433);
    FiveParFunc1009->SetSavedPoint(4564,5902.624);
@@ -26912,7 +26912,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(5940,6004.889);
    FiveParFunc1009->SetSavedPoint(5941,5942.014);
    FiveParFunc1009->SetSavedPoint(5942,5877.329);
-   FiveParFunc1009->SetSavedPoint(5943,5810.93);
+   FiveParFunc1009->SetSavedPoint(5943,5810.929);
    FiveParFunc1009->SetSavedPoint(5944,5742.914);
    FiveParFunc1009->SetSavedPoint(5945,5673.384);
    FiveParFunc1009->SetSavedPoint(5946,5602.442);
@@ -26922,7 +26922,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(5950,5306.691);
    FiveParFunc1009->SetSavedPoint(5951,5230.306);
    FiveParFunc1009->SetSavedPoint(5952,5153.166);
-   FiveParFunc1009->SetSavedPoint(5953,5075.386);
+   FiveParFunc1009->SetSavedPoint(5953,5075.385);
    FiveParFunc1009->SetSavedPoint(5954,4997.079);
    FiveParFunc1009->SetSavedPoint(5955,4918.363);
    FiveParFunc1009->SetSavedPoint(5956,4839.353);
@@ -27198,7 +27198,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(6226,5661.027);
    FiveParFunc1009->SetSavedPoint(6227,5695.569);
    FiveParFunc1009->SetSavedPoint(6228,5727.787);
-   FiveParFunc1009->SetSavedPoint(6229,5757.633);
+   FiveParFunc1009->SetSavedPoint(6229,5757.632);
    FiveParFunc1009->SetSavedPoint(6230,5785.06);
    FiveParFunc1009->SetSavedPoint(6231,5810.027);
    FiveParFunc1009->SetSavedPoint(6232,5832.495);
@@ -27255,7 +27255,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(6283,3974.049);
    FiveParFunc1009->SetSavedPoint(6284,3905.197);
    FiveParFunc1009->SetSavedPoint(6285,3836.663);
-   FiveParFunc1009->SetSavedPoint(6286,3768.547);
+   FiveParFunc1009->SetSavedPoint(6286,3768.546);
    FiveParFunc1009->SetSavedPoint(6287,3700.948);
    FiveParFunc1009->SetSavedPoint(6288,3633.966);
    FiveParFunc1009->SetSavedPoint(6289,3567.699);
@@ -27571,7 +27571,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(6599,3912.672);
    FiveParFunc1009->SetSavedPoint(6600,3853.237);
    FiveParFunc1009->SetSavedPoint(6601,3793.427);
-   FiveParFunc1009->SetSavedPoint(6602,3733.329);
+   FiveParFunc1009->SetSavedPoint(6602,3733.328);
    FiveParFunc1009->SetSavedPoint(6603,3673.032);
    FiveParFunc1009->SetSavedPoint(6604,3612.625);
    FiveParFunc1009->SetSavedPoint(6605,3552.198);
@@ -27866,7 +27866,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(6894,4461.159);
    FiveParFunc1009->SetSavedPoint(6895,4445.726);
    FiveParFunc1009->SetSavedPoint(6896,4428.358);
-   FiveParFunc1009->SetSavedPoint(6897,4409.082);
+   FiveParFunc1009->SetSavedPoint(6897,4409.081);
    FiveParFunc1009->SetSavedPoint(6898,4387.926);
    FiveParFunc1009->SetSavedPoint(6899,4364.922);
    FiveParFunc1009->SetSavedPoint(6900,4340.104);
@@ -28314,7 +28314,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7342,3024.825);
    FiveParFunc1009->SetSavedPoint(7343,3063.476);
    FiveParFunc1009->SetSavedPoint(7344,3101.419);
-   FiveParFunc1009->SetSavedPoint(7345,3138.596);
+   FiveParFunc1009->SetSavedPoint(7345,3138.595);
    FiveParFunc1009->SetSavedPoint(7346,3174.948);
    FiveParFunc1009->SetSavedPoint(7347,3210.42);
    FiveParFunc1009->SetSavedPoint(7348,3244.958);
@@ -28390,10 +28390,10 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7418,2334.486);
    FiveParFunc1009->SetSavedPoint(7419,2292.512);
    FiveParFunc1009->SetSavedPoint(7420,2250.937);
-   FiveParFunc1009->SetSavedPoint(7421,2209.823);
+   FiveParFunc1009->SetSavedPoint(7421,2209.822);
    FiveParFunc1009->SetSavedPoint(7422,2169.228);
    FiveParFunc1009->SetSavedPoint(7423,2129.212);
-   FiveParFunc1009->SetSavedPoint(7424,2089.835);
+   FiveParFunc1009->SetSavedPoint(7424,2089.834);
    FiveParFunc1009->SetSavedPoint(7425,2051.152);
    FiveParFunc1009->SetSavedPoint(7426,2013.22);
    FiveParFunc1009->SetSavedPoint(7427,1976.094);
@@ -28680,7 +28680,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7708,3099.796);
    FiveParFunc1009->SetSavedPoint(7709,3081.34);
    FiveParFunc1009->SetSavedPoint(7710,3061.635);
-   FiveParFunc1009->SetSavedPoint(7711,3040.71);
+   FiveParFunc1009->SetSavedPoint(7711,3040.709);
    FiveParFunc1009->SetSavedPoint(7712,3018.596);
    FiveParFunc1009->SetSavedPoint(7713,2995.326);
    FiveParFunc1009->SetSavedPoint(7714,2970.936);
@@ -28707,7 +28707,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7735,2276.204);
    FiveParFunc1009->SetSavedPoint(7736,2238.607);
    FiveParFunc1009->SetSavedPoint(7737,2201.011);
-   FiveParFunc1009->SetSavedPoint(7738,2163.472);
+   FiveParFunc1009->SetSavedPoint(7738,2163.471);
    FiveParFunc1009->SetSavedPoint(7739,2126.043);
    FiveParFunc1009->SetSavedPoint(7740,2088.782);
    FiveParFunc1009->SetSavedPoint(7741,2051.741);
@@ -28782,7 +28782,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7810,1891.871);
    FiveParFunc1009->SetSavedPoint(7811,1925.352);
    FiveParFunc1009->SetSavedPoint(7812,1959.143);
-   FiveParFunc1009->SetSavedPoint(7813,1993.193);
+   FiveParFunc1009->SetSavedPoint(7813,1993.192);
    FiveParFunc1009->SetSavedPoint(7814,2027.447);
    FiveParFunc1009->SetSavedPoint(7815,2061.853);
    FiveParFunc1009->SetSavedPoint(7816,2096.358);
@@ -28819,7 +28819,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7847,2940.323);
    FiveParFunc1009->SetSavedPoint(7848,2952.732);
    FiveParFunc1009->SetSavedPoint(7849,2963.867);
-   FiveParFunc1009->SetSavedPoint(7850,2973.714);
+   FiveParFunc1009->SetSavedPoint(7850,2973.713);
    FiveParFunc1009->SetSavedPoint(7851,2982.255);
    FiveParFunc1009->SetSavedPoint(7852,2989.478);
    FiveParFunc1009->SetSavedPoint(7853,2995.372);
@@ -28971,7 +28971,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(7999,2578.305);
    FiveParFunc1009->SetSavedPoint(8000,2600.234);
    FiveParFunc1009->SetSavedPoint(8001,2621.218);
-   FiveParFunc1009->SetSavedPoint(8002,2641.224);
+   FiveParFunc1009->SetSavedPoint(8002,2641.223);
    FiveParFunc1009->SetSavedPoint(8003,2660.221);
    FiveParFunc1009->SetSavedPoint(8004,2678.18);
    FiveParFunc1009->SetSavedPoint(8005,2695.075);
@@ -29123,7 +29123,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(8151,2172.209);
    FiveParFunc1009->SetSavedPoint(8152,2199.45);
    FiveParFunc1009->SetSavedPoint(8153,2226.161);
-   FiveParFunc1009->SetSavedPoint(8154,2252.301);
+   FiveParFunc1009->SetSavedPoint(8154,2252.3);
    FiveParFunc1009->SetSavedPoint(8155,2277.829);
    FiveParFunc1009->SetSavedPoint(8156,2302.707);
    FiveParFunc1009->SetSavedPoint(8157,2326.896);
@@ -29326,7 +29326,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(8354,2373.214);
    FiveParFunc1009->SetSavedPoint(8355,2359.834);
    FiveParFunc1009->SetSavedPoint(8356,2345.487);
-   FiveParFunc1009->SetSavedPoint(8357,2330.193);
+   FiveParFunc1009->SetSavedPoint(8357,2330.192);
    FiveParFunc1009->SetSavedPoint(8358,2313.975);
    FiveParFunc1009->SetSavedPoint(8359,2296.858);
    FiveParFunc1009->SetSavedPoint(8360,2278.867);
@@ -29396,7 +29396,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(8424,955.534);
    FiveParFunc1009->SetSavedPoint(8425,956.0093);
    FiveParFunc1009->SetSavedPoint(8426,957.5497);
-   FiveParFunc1009->SetSavedPoint(8427,960.1512);
+   FiveParFunc1009->SetSavedPoint(8427,960.1511);
    FiveParFunc1009->SetSavedPoint(8428,963.8076);
    FiveParFunc1009->SetSavedPoint(8429,968.5117);
    FiveParFunc1009->SetSavedPoint(8430,974.2544);
@@ -29725,7 +29725,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(8753,848.8639);
    FiveParFunc1009->SetSavedPoint(8754,854.4568);
    FiveParFunc1009->SetSavedPoint(8755,860.9406);
-   FiveParFunc1009->SetSavedPoint(8756,868.3041);
+   FiveParFunc1009->SetSavedPoint(8756,868.304);
    FiveParFunc1009->SetSavedPoint(8757,876.5343);
    FiveParFunc1009->SetSavedPoint(8758,885.6173);
    FiveParFunc1009->SetSavedPoint(8759,895.5377);
@@ -29801,7 +29801,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(8829,1999.445);
    FiveParFunc1009->SetSavedPoint(8830,1997.145);
    FiveParFunc1009->SetSavedPoint(8831,1993.95);
-   FiveParFunc1009->SetSavedPoint(8832,1989.863);
+   FiveParFunc1009->SetSavedPoint(8832,1989.862);
    FiveParFunc1009->SetSavedPoint(8833,1984.89);
    FiveParFunc1009->SetSavedPoint(8834,1979.04);
    FiveParFunc1009->SetSavedPoint(8835,1972.321);
@@ -29861,7 +29861,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(8889,948.9142);
    FiveParFunc1009->SetSavedPoint(8890,933.1595);
    FiveParFunc1009->SetSavedPoint(8891,918.0737);
-   FiveParFunc1009->SetSavedPoint(8892,903.6784);
+   FiveParFunc1009->SetSavedPoint(8892,903.6783);
    FiveParFunc1009->SetSavedPoint(8893,889.9936);
    FiveParFunc1009->SetSavedPoint(8894,877.0387);
    FiveParFunc1009->SetSavedPoint(8895,864.8317);
@@ -30174,7 +30174,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9202,1000.288);
    FiveParFunc1009->SetSavedPoint(9203,981.7757);
    FiveParFunc1009->SetSavedPoint(9204,963.6078);
-   FiveParFunc1009->SetSavedPoint(9205,945.8104);
+   FiveParFunc1009->SetSavedPoint(9205,945.8103);
    FiveParFunc1009->SetSavedPoint(9206,928.4092);
    FiveParFunc1009->SetSavedPoint(9207,911.4294);
    FiveParFunc1009->SetSavedPoint(9208,894.8956);
@@ -30228,9 +30228,9 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9256,874.7963);
    FiveParFunc1009->SetSavedPoint(9257,890.1894);
    FiveParFunc1009->SetSavedPoint(9258,905.9959);
-   FiveParFunc1009->SetSavedPoint(9259,922.1909);
+   FiveParFunc1009->SetSavedPoint(9259,922.1908);
    FiveParFunc1009->SetSavedPoint(9260,938.7487);
-   FiveParFunc1009->SetSavedPoint(9261,955.6435);
+   FiveParFunc1009->SetSavedPoint(9261,955.6434);
    FiveParFunc1009->SetSavedPoint(9262,972.8485);
    FiveParFunc1009->SetSavedPoint(9263,990.337);
    FiveParFunc1009->SetSavedPoint(9264,1008.082);
@@ -30336,14 +30336,14 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9364,929.1504);
    FiveParFunc1009->SetSavedPoint(9365,911.952);
    FiveParFunc1009->SetSavedPoint(9366,895.0832);
-   FiveParFunc1009->SetSavedPoint(9367,878.5684);
+   FiveParFunc1009->SetSavedPoint(9367,878.5683);
    FiveParFunc1009->SetSavedPoint(9368,862.4314);
    FiveParFunc1009->SetSavedPoint(9369,846.6957);
-   FiveParFunc1009->SetSavedPoint(9370,831.384);
+   FiveParFunc1009->SetSavedPoint(9370,831.3839);
    FiveParFunc1009->SetSavedPoint(9371,816.5182);
    FiveParFunc1009->SetSavedPoint(9372,802.1198);
    FiveParFunc1009->SetSavedPoint(9373,788.2094);
-   FiveParFunc1009->SetSavedPoint(9374,774.807);
+   FiveParFunc1009->SetSavedPoint(9374,774.8069);
    FiveParFunc1009->SetSavedPoint(9375,761.9314);
    FiveParFunc1009->SetSavedPoint(9376,749.6012);
    FiveParFunc1009->SetSavedPoint(9377,737.8337);
@@ -30502,14 +30502,14 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9530,801.1526);
    FiveParFunc1009->SetSavedPoint(9531,786.573);
    FiveParFunc1009->SetSavedPoint(9532,772.3963);
-   FiveParFunc1009->SetSavedPoint(9533,758.6429);
+   FiveParFunc1009->SetSavedPoint(9533,758.6428);
    FiveParFunc1009->SetSavedPoint(9534,745.3324);
    FiveParFunc1009->SetSavedPoint(9535,732.484);
    FiveParFunc1009->SetSavedPoint(9536,720.1161);
    FiveParFunc1009->SetSavedPoint(9537,708.2462);
    FiveParFunc1009->SetSavedPoint(9538,696.8911);
    FiveParFunc1009->SetSavedPoint(9539,686.067);
-   FiveParFunc1009->SetSavedPoint(9540,675.7891);
+   FiveParFunc1009->SetSavedPoint(9540,675.789);
    FiveParFunc1009->SetSavedPoint(9541,666.0716);
    FiveParFunc1009->SetSavedPoint(9542,656.9283);
    FiveParFunc1009->SetSavedPoint(9543,648.3718);
@@ -30645,7 +30645,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9673,1044.922);
    FiveParFunc1009->SetSavedPoint(9674,1028.333);
    FiveParFunc1009->SetSavedPoint(9675,1011.692);
-   FiveParFunc1009->SetSavedPoint(9676,995.023);
+   FiveParFunc1009->SetSavedPoint(9676,995.0229);
    FiveParFunc1009->SetSavedPoint(9677,978.351);
    FiveParFunc1009->SetSavedPoint(9678,961.7004);
    FiveParFunc1009->SetSavedPoint(9679,945.0957);
@@ -30699,7 +30699,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9727,583.2627);
    FiveParFunc1009->SetSavedPoint(9728,589.2705);
    FiveParFunc1009->SetSavedPoint(9729,595.8366);
-   FiveParFunc1009->SetSavedPoint(9730,602.9502);
+   FiveParFunc1009->SetSavedPoint(9730,602.9501);
    FiveParFunc1009->SetSavedPoint(9731,610.5993);
    FiveParFunc1009->SetSavedPoint(9732,618.7714);
    FiveParFunc1009->SetSavedPoint(9733,627.4531);
@@ -30715,7 +30715,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9743,738.8423);
    FiveParFunc1009->SetSavedPoint(9744,752.0466);
    FiveParFunc1009->SetSavedPoint(9745,765.5479);
-   FiveParFunc1009->SetSavedPoint(9746,779.3249);
+   FiveParFunc1009->SetSavedPoint(9746,779.3248);
    FiveParFunc1009->SetSavedPoint(9747,793.3558);
    FiveParFunc1009->SetSavedPoint(9748,807.6189);
    FiveParFunc1009->SetSavedPoint(9749,822.0916);
@@ -30727,7 +30727,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9755,912.0485);
    FiveParFunc1009->SetSavedPoint(9756,927.3434);
    FiveParFunc1009->SetSavedPoint(9757,942.6615);
-   FiveParFunc1009->SetSavedPoint(9758,957.9793);
+   FiveParFunc1009->SetSavedPoint(9758,957.9792);
    FiveParFunc1009->SetSavedPoint(9759,973.2728);
    FiveParFunc1009->SetSavedPoint(9760,988.5184);
    FiveParFunc1009->SetSavedPoint(9761,1003.693);
@@ -30803,7 +30803,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9831,1032.687);
    FiveParFunc1009->SetSavedPoint(9832,1017.561);
    FiveParFunc1009->SetSavedPoint(9833,1002.302);
-   FiveParFunc1009->SetSavedPoint(9834,986.9335);
+   FiveParFunc1009->SetSavedPoint(9834,986.9334);
    FiveParFunc1009->SetSavedPoint(9835,971.4777);
    FiveParFunc1009->SetSavedPoint(9836,955.9576);
    FiveParFunc1009->SetSavedPoint(9837,940.396);
@@ -30819,7 +30819,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9847,787.5259);
    FiveParFunc1009->SetSavedPoint(9848,773.0077);
    FiveParFunc1009->SetSavedPoint(9849,758.7165);
-   FiveParFunc1009->SetSavedPoint(9850,744.673);
+   FiveParFunc1009->SetSavedPoint(9850,744.6729);
    FiveParFunc1009->SetSavedPoint(9851,730.8976);
    FiveParFunc1009->SetSavedPoint(9852,717.4104);
    FiveParFunc1009->SetSavedPoint(9853,704.2309);
@@ -30850,7 +30850,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9878,519.6108);
    FiveParFunc1009->SetSavedPoint(9879,519.2261);
    FiveParFunc1009->SetSavedPoint(9880,519.4218);
-   FiveParFunc1009->SetSavedPoint(9881,520.1965);
+   FiveParFunc1009->SetSavedPoint(9881,520.1964);
    FiveParFunc1009->SetSavedPoint(9882,521.5479);
    FiveParFunc1009->SetSavedPoint(9883,523.4731);
    FiveParFunc1009->SetSavedPoint(9884,525.9679);
@@ -30890,10 +30890,10 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9918,871.1767);
    FiveParFunc1009->SetSavedPoint(9919,885.4934);
    FiveParFunc1009->SetSavedPoint(9920,899.8025);
-   FiveParFunc1009->SetSavedPoint(9921,914.082);
+   FiveParFunc1009->SetSavedPoint(9921,914.0819);
    FiveParFunc1009->SetSavedPoint(9922,928.3096);
    FiveParFunc1009->SetSavedPoint(9923,942.4634);
-   FiveParFunc1009->SetSavedPoint(9924,956.5216);
+   FiveParFunc1009->SetSavedPoint(9924,956.5215);
    FiveParFunc1009->SetSavedPoint(9925,970.4623);
    FiveParFunc1009->SetSavedPoint(9926,984.2642);
    FiveParFunc1009->SetSavedPoint(9927,997.906);
@@ -30904,7 +30904,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9932,1062.987);
    FiveParFunc1009->SetSavedPoint(9933,1075.238);
    FiveParFunc1009->SetSavedPoint(9934,1087.188);
-   FiveParFunc1009->SetSavedPoint(9935,1098.821);
+   FiveParFunc1009->SetSavedPoint(9935,1098.82);
    FiveParFunc1009->SetSavedPoint(9936,1110.116);
    FiveParFunc1009->SetSavedPoint(9937,1121.058);
    FiveParFunc1009->SetSavedPoint(9938,1131.63);
@@ -30925,7 +30925,7 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->SetSavedPoint(9953,1236.286);
    FiveParFunc1009->SetSavedPoint(9954,1239.181);
    FiveParFunc1009->SetSavedPoint(9955,1241.525);
-   FiveParFunc1009->SetSavedPoint(9956,1243.315);
+   FiveParFunc1009->SetSavedPoint(9956,1243.314);
    FiveParFunc1009->SetSavedPoint(9957,1244.546);
    FiveParFunc1009->SetSavedPoint(9958,1245.217);
    FiveParFunc1009->SetSavedPoint(9959,1245.328);
@@ -30986,20 +30986,20 @@ void fit_wiggle_truth_AQ()
    FiveParFunc1009->GetYaxis()->SetLabelFont(42);
    FiveParFunc1009->GetYaxis()->SetTitleFont(42);
    FiveParFunc1009->SetParameter(0,90501.11);
-   FiveParFunc1009->SetParError(0,35.46313);
+   FiveParFunc1009->SetParError(0,35.45938);
    FiveParFunc1009->SetParLimits(0,0,0);
    FiveParFunc1009->SetParameter(1,64.41234);
-   FiveParFunc1009->SetParError(1,0.01535654);
+   FiveParFunc1009->SetParError(1,0.01535488);
    FiveParFunc1009->SetParLimits(1,0,0);
-   FiveParFunc1009->SetParameter(2,0.4253708);
+   FiveParFunc1009->SetParameter(2,-0.4253708);
    FiveParFunc1009->SetParError(2,0.0002654792);
    FiveParFunc1009->SetParLimits(2,0,0);
    FiveParFunc1009->SetParameter(3,1.43934);
    FiveParFunc1009->SetParError(3,0);
    FiveParFunc1009->SetParLimits(3,1.43934,1.43934);
    FiveParFunc1009->SetParameter(4,0.1651779);
-   FiveParFunc1009->SetParError(4,0.0006621057);
-   FiveParFunc1009->SetParLimits(4,-1.570796,1.570796);
+   FiveParFunc1009->SetParError(4,0.0006621129);
+   FiveParFunc1009->SetParLimits(4,0,0);
    FiveParFunc1009->Draw("same");
    c->Modified();
    c->cd();

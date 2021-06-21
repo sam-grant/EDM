@@ -1,0 +1,32 @@
+- Possible issues that might be causing problem
+	
+	1. Vertical offset
+	2. Biasing towards the momentum distribution somehow (can prove otherwise)
+	3. Acceptance (appears to require new sim at this point)
+	4. Problem in sim 
+
+X - Use slopeTest macro to get plot out one of the muon beam hists
+	* DEADLINE 10:15
+
+- Write function to correct for vertical offset
+	* DEADLINE 11:30 
+
+- Overlay corrected vertical offset truth scans with uncorrected (preferably do the same for reco)
+	* DEALINE 12:30
+
+- Overlay fixed stats with floating stats scan (truth)
+	* DEADLINE 13:30 
+
+- Rewrite talk, include phase shift? 
+	* DEADLINE 14:30 
+
+- Practice talk
+
+---------------------
+
+Other misc 
+
+- Generaralise FoldedWiggle into a single drawing function and stick it in FancyDraw for use in data.
+- Move Bz simulatenous anaylsis into it's own function in the UnblindedEDMSimFitter.
+- Take a look at beam gun sim and communicate with Renee 
+- Sort out radial field calo alignment 

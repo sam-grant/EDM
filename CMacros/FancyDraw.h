@@ -1021,7 +1021,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, doubl
   TLegend *leg = new TLegend(0.15,0.15,.65,0.25);
   leg->SetNColumns(2);
   leg->AddEntry(graph, "Sim   ");
-  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1+Acos(#omega_{a}t+#phi)]");
+  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
 
   TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
@@ -1042,7 +1042,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, doubl
   values->AddText(Round(par1, 4)+"#pm"+Round(err1, 1));
   values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
   //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-  values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
+  values->AddText(Round(par4, 4)+"#pm"+Round(err4, 1));
 
   TPaveText *cuts = new TPaveText(0.25,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
@@ -1111,7 +1111,7 @@ void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, do
   TLegend *leg = new TLegend(0.15,0.15,.85,0.25);
   leg->SetNColumns(2);
   leg->AddEntry(graph, "Sim   ");
-  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1+Acos(#omega_{a}t+#phi)]");
+  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
 
   TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
@@ -1129,10 +1129,10 @@ void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, do
   values->AddText(SciNotation(double(N))); 
   values->AddText(Round(chi2ndf, 3));
   //values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
-  values->AddText(Round(par1, 2)+"#pm"+Round(err1, 2));
+  values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
   values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
   //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-  values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+  values->AddText(Round(par4, 3)+"#pm"+Round(err4, 1));
 
   TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);

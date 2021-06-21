@@ -1,10 +1,10 @@
 void S12_full_c_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May 21 13:25:23 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 15 11:30:14 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(250,-0.8034826,3550,-0.2067875);
+   c->Range(250,0.2081193,3550,0.8055169);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S12_full_c_vs_p_trackReco_AQ()
    1000,
    800};
    Double_t Graph0_fy1221[12] = {
-   -0.3188215,
-   -0.320372,
-   -0.3233753,
-   -0.3280048,
-   -0.3355759,
-   -0.350173,
-   -0.367605,
-   -0.3885471,
-   -0.4178487,
-   -0.4615399,
-   -0.5452506,
-   -0.6608705};
+   0.3203131,
+   0.321869,
+   0.3247711,
+   0.3293145,
+   0.3367372,
+   0.3512837,
+   0.3686414,
+   0.3894734,
+   0.4187853,
+   0.4625308,
+   0.5462946,
+   0.6627374};
    Double_t Graph0_fex1221[12] = {
    0,
    0,
@@ -51,18 +51,18 @@ void S12_full_c_vs_p_trackReco_AQ()
    0,
    0};
    Double_t Graph0_fey1221[12] = {
-   0.01258473,
-   0.01264423,
-   0.01282486,
-   0.01310848,
-   0.01357697,
-   0.01430347,
-   0.01538209,
-   0.01694823,
-   0.01925002,
-   0.02277806,
-   0.02889877,
-   0.04316291};
+   0.01262762,
+   0.01268668,
+   0.01286623,
+   0.01314857,
+   0.01361564,
+   0.01434071,
+   0.01541789,
+   0.01698292,
+   0.01928433,
+   0.02281379,
+   0.02893851,
+   0.04321322};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1221,Graph0_fy1221,Graph0_fex1221,Graph0_fey1221);
    gre->SetName("Graph0");
    gre->SetTitle("S12");
@@ -70,8 +70,8 @@ void S12_full_c_vs_p_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01221 = new TH1F("Graph_Graph01221","S12",100,580,3220);
-   Graph_Graph01221->SetMinimum(-0.7438131);
-   Graph_Graph01221->SetMaximum(-0.2664571);
+   Graph_Graph01221->SetMinimum(0.267859);
+   Graph_Graph01221->SetMaximum(0.7457771);
    Graph_Graph01221->SetDirectory(0);
    Graph_Graph01221->SetStats(0);
 

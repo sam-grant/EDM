@@ -1,10 +1,10 @@
 void S0_full_A_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May 21 13:24:52 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 15 11:29:48 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.5000001,0.05136521,8.5,0.2297456);
+   c->Range(-0.5000001,-9.658755e-11,8.5,-6.941844e-11);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void S0_full_A_vs_p_trackReco_AQ()
    6,
    7};
    Double_t Graph0_fy1058[7] = {
-   0.1559975,
-   0.1797219,
-   0.182307,
-   0.1661796,
-   0.1610492,
-   0.1334498,
-   0.1236307};
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11};
    Double_t Graph0_fex1058[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void S0_full_A_vs_p_trackReco_AQ()
    0,
    0};
    Double_t Graph0_fey1058[7] = {
-   0.01774602,
-   0.01756633,
-   0.01770852,
-   0.0184756,
-   0.02044804,
-   0.02515727,
-   0.0425354};
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12};
    TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1058,Graph0_fy1058,Graph0_fex1058,Graph0_fey1058);
    gre->SetName("Graph0");
    gre->SetTitle("S0");
@@ -50,8 +50,8 @@ void S0_full_A_vs_p_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01058 = new TH1F("Graph_Graph01058","S0",100,0.4,7.6);
-   Graph_Graph01058->SetMinimum(0.06920325);
-   Graph_Graph01058->SetMaximum(0.2119075);
+   Graph_Graph01058->SetMinimum(-9.387064e-11);
+   Graph_Graph01058->SetMaximum(-7.213535e-11);
    Graph_Graph01058->SetDirectory(0);
    Graph_Graph01058->SetStats(0);
 
@@ -97,7 +97,7 @@ void S0_full_A_vs_p_trackReco_AQ()
    pt->SetTextFont(42);
    TText *pt_LaTex = pt->AddText("S0");
    pt->Draw();
-   TGaxis *gaxis = new TGaxis(0.4,0.06920325,7.6,0.06920325,0.4,7.6,8,"");
+   TGaxis *gaxis = new TGaxis(0.4,-9.387064e-11,7.6,-9.387064e-11,0.4,7.6,8,"");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0);
    gaxis->SetTickSize(0.03);

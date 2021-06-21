@@ -1,10 +1,10 @@
 void S0_full_c_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May 21 13:24:49 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 15 11:29:46 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.25,-3.370057,3605.25,6.119579);
+   c->Range(-437.25,-7.855046,3605.25,1.571009);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,21 +28,21 @@ void S0_full_c_vs_p_trackReco_AQ()
    2700,
    2900};
    Double_t Graph0_fy1041[15] = {
-   3.72327,
-   -1.623167,
-   -1.058335,
-   -0.1677722,
-   0.01904389,
-   -0.009656159,
-   -0.0183379,
-   0.002839417,
-   0.01738169,
-   -0.07034816,
-   -0.005321265,
-   -0.06270887,
-   -0.02264054,
-   0.03490538,
-   0.08025249};
+   -6.284034,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15,
+   -2.126864e-15};
    Double_t Graph0_fex1041[15] = {
    100,
    100,
@@ -60,21 +60,21 @@ void S0_full_c_vs_p_trackReco_AQ()
    100,
    100};
    Double_t Graph0_fey1041[15] = {
-   0.814703,
-   0.1652839,
-   0.05548527,
-   0.04325791,
-   0.03833127,
-   0.03533737,
-   0.03302138,
-   0.03127218,
-   0.0302226,
-   0.02974269,
-   0.02983174,
-   0.0309019,
-   0.03277263,
-   0.03400849,
-   0.0451238};
+   2.052493e-06,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12,
+   6.40382e-12};
    TGraphErrors *gre = new TGraphErrors(15,Graph0_fx1041,Graph0_fy1041,Graph0_fex1041,Graph0_fey1041);
    gre->SetName("Graph0");
    gre->SetTitle("S0");
@@ -82,8 +82,8 @@ void S0_full_c_vs_p_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01041 = new TH1F("Graph_Graph01041","S0",100,0,3300);
-   Graph_Graph01041->SetMinimum(-2.421094);
-   Graph_Graph01041->SetMaximum(5.170615);
+   Graph_Graph01041->SetMinimum(-6.91244);
+   Graph_Graph01041->SetMaximum(0.6284037);
    Graph_Graph01041->SetDirectory(0);
    Graph_Graph01041->SetStats(0);
 

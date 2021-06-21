@@ -1,0 +1,16 @@
+* Hadd 1.5 million decay sample
+* Keep monitoring main sample 
+* Run plottter on 1.5 mil 
+* Take a look at the curve
+* Put on some slides 
+* Ultimately I need dilution for decay assymetry and acceptance, and then tracker based stuff (such as alignment).
+* Tidy up EDM directory, espcially the fcl files. Will need to rename some stuff. 
+
+---------------------
+
+Other misc 
+
+- Generaralise FoldedWiggle into a single drawing function and stick it in FancyDraw for use in data.
+- Move Bz simulatenous anaylsis into it's own function in the UnblindedEDMSimFitter.
+- Take a look at beam gun sim and communicate with Renee 
+- Sort out radial field calo alignment 

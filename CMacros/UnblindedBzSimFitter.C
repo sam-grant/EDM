@@ -428,10 +428,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
     if(i_cut==1) {
       xLabel = true;
       // Set bin labels for sym cuts
-      /*for (int i = 0; i < xLabels_.size(); i++) { 
-        c_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(c_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
-        A_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(A_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
-      }*/
+      //for (int i = 0; i < xLabels_.size(); i++) { 
+      //  c_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(c_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
+      //  A_vs_p_[i_cut].at(0)->GetXaxis()->SetBinLabel(A_vs_p_[i_cut].at(0)->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
+      //}
     } 
     OverlayScanGraphs(c_vs_p_[i_cut], stns, "", ("../Images/MC/BzSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut]+"/c_vs_p_"+fitType+"_overlay_"+qual).c_str(), c_ymin[i_cut], c_ymax[i_cut], xLabel);
     OverlayScanGraphs(A_vs_p_[i_cut], stns, "", ("../Images/MC/BzSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut]+"/A_vs_p_"+fitType+"_overlay_"+qual).c_str(), A_ymin[i_cut], A_ymax[i_cut], xLabel);
@@ -439,7 +439,6 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, const double phi, bool 
 
 
   return; 
-
 }
 
 void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
@@ -521,6 +520,8 @@ int main() {
 
 	output->mkdir("SimultaneousAnalysis");
  	output->cd("SimultaneousAnalysis");
+
+  // TODO: simulatenous analysis should be kept in a function as in BlindedEDMSimFitter
 
 	// Get histograms
 	TH1D *h1_wiggle = (TH1D*)input->Get("MainPlots/S0S12S18_Wiggle");

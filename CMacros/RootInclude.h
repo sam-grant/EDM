@@ -18,4 +18,6 @@
 #include "TPad.h"
 #include "TFitResult.h"
 #include "TProfile.h"
+#include "TRandom3.h"
+#include "TVirtualFFT.h"
 // TODO ADD MORE AND REMOVE HEADERS FROM OTHER FILES

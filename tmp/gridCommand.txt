@@ -1,0 +1,5 @@
+./gridSetupAndSubmitGM2Data.sh --daq --reco --samelocal --UKsites --site=Manchester,Liverpool,Lancaster --noifdh_art --onebyone --schemas=None --input-filelist=$files --output-dir=$outDir/$runNum --fcl RunTrackingDAQ.fcl,RunTrackingPlots.fcl --multipleroot --njobs=$nFiles --memory=3
+
+./gridSetupAndSubmitGM2Data.sh --mc --truth --noifdh_art --schemas=None --fcl runGasGunRing_EDM.fcl,RunPhaseAnalyzer.fcl --gasGun --localArea --output-dir=/pnfs/GM2/scratch/users/sgrant/dMuSim/TruthTreesAllDecays --njobs 1 --nevents 50 --lifetime=1h --noGrid --samelocal # --grace
+
+

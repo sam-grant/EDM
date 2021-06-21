@@ -1,10 +1,10 @@
 void S12S18_full_A_vs_p_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May 21 13:25:54 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 15 11:30:38 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.5000001,0.1065653,8.5,0.2122029);
+   c->Range(-0.5000001,-0.2531674,8.5,-0.08321325);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    6,
    7};
    Double_t Graph0_fy1376[7] = {
-   0.1554112,
-   0.1677634,
-   0.1588796,
-   0.1426966,
-   0.1599839,
-   0.1766585,
-   0.1543155};
+   -0.1877248,
+   -0.1956978,
+   -0.1759596,
+   -0.1433048,
+   -0.1558283,
+   -0.1906751,
+   -0.1681903};
    Double_t Graph0_fex1376[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    0,
    0};
    Double_t Graph0_fey1376[7] = {
-   0.01276816,
-   0.01264464,
-   0.01275853,
-   0.01329834,
-   0.01465017,
-   0.01793814,
-   0.03014398};
+   0.01842329,
+   0.01882209,
+   0.02005162,
+   0.02220521,
+   0.02582545,
+   0.03288433,
+   0.05665139};
    TGraphErrors *gre = new TGraphErrors(7,Graph0_fx1376,Graph0_fy1376,Graph0_fex1376,Graph0_fey1376);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18");
@@ -50,8 +50,8 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01376 = new TH1F("Graph_Graph01376","S12S18",100,0.4,7.6);
-   Graph_Graph01376->SetMinimum(0.117129);
-   Graph_Graph01376->SetMaximum(0.2016391);
+   Graph_Graph01376->SetMinimum(-0.236172);
+   Graph_Graph01376->SetMaximum(-0.1002087);
    Graph_Graph01376->SetDirectory(0);
    Graph_Graph01376->SetStats(0);
 
@@ -97,7 +97,7 @@ void S12S18_full_A_vs_p_trackReco_AQ()
    pt->SetTextFont(42);
    TText *pt_LaTex = pt->AddText("S12S18");
    pt->Draw();
-   TGaxis *gaxis = new TGaxis(0.4,0.117129,7.6,0.117129,0.4,7.6,8,"");
+   TGaxis *gaxis = new TGaxis(0.4,-0.236172,7.6,-0.236172,0.4,7.6,8,"");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0);
    gaxis->SetTickSize(0.03);

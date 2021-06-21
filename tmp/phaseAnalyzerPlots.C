@@ -1,0 +1,65 @@
+void DrawTH2(TH2D *hist, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(title.c_str());
+
+	//	hist->SetStats(0);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+
+	gStyle->SetPalette(55);
+	c->SetRightMargin(0.13);
+
+	hist->Draw("COLZ");
+
+	c->SetLogz();
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
+
+void phaseAnalyzerPlots() { 
+
+	bool allDecays = false;
+
+	//string inFileName = "phaseAnalyzerPlots.root";
+	string inFileName; string outFileName;
+
+	if(allDecays) {
+		inFileName = "testPlots_100events_allDecays.root";//"phaseAnalyzerPlots.root";
+		outFileName = "decayX_vs_decayZ_allDecays";
+	} else{
+		inFileName = "testPlots_100events_trackFilter.root";
+		outFileName = "decayX_vs_decayZ_trackFilter";
+	} 
+
+	// Just checking the 50k events ones ... 
+ 
+ 	inFileName = "testPlots_50e3events_allDecays.root";
+ 	outFileName = "decayX_vs_decayZ_allDecays_50e3";
+
+	TFile *inFile = TFile::Open(inFileName.c_str()); 
+	cout<<"Got input file "<<inFileName<<", "<<inFile<<endl;
+
+	string histName = "MainPlots/decayX_vs_decayZ";
+	TH2D *hist = (TH2D*)inFile->Get(histName.c_str());
+	cout<<"Got hist "<<histName<<", "<<hist<<endl;
+
+
+	DrawTH2(hist, ";Decay position X [mm];Decay position Z [mm]", outFileName);
+
+	return;
+
+}

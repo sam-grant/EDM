@@ -1,0 +1,2 @@
+- Simplying code and make some muon beam plots 
+- Send over to Joe 

@@ -1,7 +1,7 @@
 void A_vs_p_full_overlay_trackReco_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May 21 13:26:32 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 15 11:31:01 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5000001,-0.0375,8.5,0.3375);
@@ -20,13 +20,13 @@ void A_vs_p_full_overlay_trackReco_AQ()
    6,
    7};
    Double_t S0_A_vs_p_fy1555[7] = {
-   0.1559975,
-   0.1797219,
-   0.182307,
-   0.1661796,
-   0.1610492,
-   0.1334498,
-   0.1236307};
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11,
+   -8.300299e-11};
    Double_t S0_A_vs_p_fex1555[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void A_vs_p_full_overlay_trackReco_AQ()
    0,
    0};
    Double_t S0_A_vs_p_fey1555[7] = {
-   0.01774602,
-   0.01756633,
-   0.01770852,
-   0.0184756,
-   0.02044804,
-   0.02515727,
-   0.0425354};
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12,
+   9.056369e-12};
    TGraphErrors *gre = new TGraphErrors(7,S0_A_vs_p_fx1555,S0_A_vs_p_fy1555,S0_A_vs_p_fex1555,S0_A_vs_p_fey1555);
    gre->SetName("S0_A_vs_p");
    gre->SetTitle("");
@@ -98,13 +98,13 @@ void A_vs_p_full_overlay_trackReco_AQ()
    6,
    7};
    Double_t S12_A_vs_p_fy1556[7] = {
-   0.1800418,
-   0.1903633,
-   0.1690531,
-   0.1328435,
-   0.1484612,
-   0.1823079,
-   0.1614487};
+   -0.1815746,
+   -0.1915133,
+   -0.1706211,
+   -0.1343788,
+   -0.150013,
+   -0.1840819,
+   -0.1642867};
    Double_t S12_A_vs_p_fex1556[7] = {
    0,
    0,
@@ -114,13 +114,13 @@ void A_vs_p_full_overlay_trackReco_AQ()
    0,
    0};
    Double_t S12_A_vs_p_fey1556[7] = {
-   0.01797224,
-   0.01779058,
-   0.01795022,
-   0.01870565,
-   0.0206167,
-   0.02524201,
-   0.04250828};
+   0.01802286,
+   0.01785172,
+   0.01802729,
+   0.01880314,
+   0.02074405,
+   0.02542022,
+   0.04282789};
    gre = new TGraphErrors(7,S12_A_vs_p_fx1556,S12_A_vs_p_fy1556,S12_A_vs_p_fex1556,S12_A_vs_p_fey1556);
    gre->SetName("S12_A_vs_p");
    gre->SetTitle("S12");
@@ -131,8 +131,8 @@ void A_vs_p_full_overlay_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S12_A_vs_p1556 = new TH1F("Graph_S12_A_vs_p1556","S12",100,0.4,7.6);
-   Graph_S12_A_vs_p1556->SetMinimum(0.1047363);
-   Graph_S12_A_vs_p1556->SetMaximum(0.2175555);
+   Graph_S12_A_vs_p1556->SetMinimum(-0.2188948);
+   Graph_S12_A_vs_p1556->SetMaximum(-0.106183);
    Graph_S12_A_vs_p1556->SetDirectory(0);
    Graph_S12_A_vs_p1556->SetStats(0);
 
@@ -177,13 +177,13 @@ void A_vs_p_full_overlay_trackReco_AQ()
    6,
    7};
    Double_t S18_A_vs_p_fy1557[7] = {
-   0.1304178,
-   0.1449177,
-   0.1485739,
-   0.1527221,
-   0.1720499,
-   0.1710054,
-   0.1485899};
+   -0.2156216,
+   -0.2141608,
+   -0.1986464,
+   -0.1747414,
+   -0.1732148,
+   -0.2079404,
+   -0.1742514};
    Double_t S18_A_vs_p_fex1557[7] = {
    0,
    0,
@@ -193,13 +193,13 @@ void A_vs_p_full_overlay_trackReco_AQ()
    0,
    0};
    Double_t S18_A_vs_p_fey1557[7] = {
-   0.01814153,
-   0.01797383,
-   0.01813623,
-   0.0189073,
-   0.0208186,
-   0.02549089,
-   0.04272397};
+   0.06141324,
+   0.06278412,
+   0.06719246,
+   0.07421955,
+   0.08563,
+   0.1083475,
+   0.1843345};
    gre = new TGraphErrors(7,S18_A_vs_p_fx1557,S18_A_vs_p_fy1557,S18_A_vs_p_fex1557,S18_A_vs_p_fey1557);
    gre->SetName("S18_A_vs_p");
    gre->SetTitle("S18");
@@ -210,8 +210,8 @@ void A_vs_p_full_overlay_trackReco_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S18_A_vs_p1557 = new TH1F("Graph_S18_A_vs_p1557","S18",100,0.4,7.6);
-   Graph_S18_A_vs_p1557->SetMinimum(0.09680293);
-   Graph_S18_A_vs_p1557->SetMaximum(0.2055594);
+   Graph_S18_A_vs_p1557->SetMinimum(-0.3954528);
+   Graph_S18_A_vs_p1557->SetMaximum(0.04694994);
    Graph_S18_A_vs_p1557->SetDirectory(0);
    Graph_S18_A_vs_p1557->SetStats(0);
 

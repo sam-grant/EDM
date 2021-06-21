@@ -1,0 +1,11 @@
+- Add muon beam plots, just nick them from decay reader
+- Collect suite of plots for the three reference frames in both 200 Mev and 500 MeV bins 
+* WORLD 500
+* WORLD 200
+* AAR 500
+* AAR 200
+* MRF 500
+* X MRF 200
+- Put them on slides 
+
+- Present

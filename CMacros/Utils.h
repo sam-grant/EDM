@@ -58,7 +58,8 @@ void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, doub
 
   func->SetParameter(0, par0); // A_g-2
   func->FixParameter(1, par1); // Omega
-  func->FixParameter(2, par2); // Phi
+  func->SetParameter(2, par2); // Phi
+  func->FixParameter(2, par2);
   func->SetParameter(3, par3); // A_EDM
   func->SetParameter(4, par4); // c
 

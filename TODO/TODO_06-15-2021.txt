@@ -1,0 +1,6 @@
+X - Hadd most recent sample
+X - Fill out expenses form
+X- Print out & submit expenses form 
+X- Talk to Joe about py/pz
+X - Rebin into 500 MeV
+X - Rotate momentum into AAR frame using decayReader.C 

@@ -1,13 +1,35 @@
 ... - Finish hadding muon beam plots
+
 * Just take one sample, files are too big 
 - Write quick macro to get plots out, think about them and understand
+
 X - Submit jobs for Bz 
-X- Cross check the shape in the 60 hour
-X * How does this make sense? If you see an assymetry then you're saying you've discovered an EDM !!!
-X * Just have a look anyway, might not be worth admitting to anyone that you did this. (Looks very similar)
+
+X- Cross check the shape in the 60 hour.
+
+X * How does this make sense? If you see an assymetry then you're saying you've discovered an EDM !!!.
+
+X * Just have a look anyway, might not be worth admitting to anyone that you did this. (Looks very similar). 
+
 - Report results and say that it's not understood.
+
 - Redo symmetric cuts scan based on the pmin/pmax scans 
+
 - Use pmin/pmax scans to pick some symmetric momentum cuts, get diluton for those. 
-- Write function to correct for vertical offset 
-- Write function to refill histogram bins with equal stats / bin 
+
+- Write function to correct for vertical offset, may be a part of the issue 
+
+- Need to fully rule out dependance on the momentum distribution 
+
 X - Congratulate J. H. 
+
+- Move Bz simulatenous anaylsis into it's own function in the UnblindedEDMSimFitter.
+
+- Generaralise FoldedWiggle into a single drawing function and stick it in FancyDraw for use in data.
+
+- List of possible issues that might be causing problem
+	
+	1. Vertical offset
+	2. Biasing towards the momentum distribution somehow (can prove otherwise)
+	3. Acceptance (appears to require new sim at this point)
+	4. Problem in sim 
