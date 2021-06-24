@@ -1,0 +1,3202 @@
+%MSG-i MF_INIT_OK:  Early 23-Jun-2021 09:51:15 CDT JobSetup
+Messagelogger initialization complete.
+%MSG
+
+=============== GasGunBdyn ===========
+            setPolarization: 1
+                          n: 0.153
+                         x0: 0 mm
+                         y0: 0 mm
+                      AxCBO: 5 mm
+                      AyCBO: 0 mm
+                  tDecayMin: 0 microsecond
+                  tDecayMax: 700 microsecond
+                     xdistr: 2 // {DELTA=0, FLAT=1, GAUS=2}
+                     ydistr: 2 // {DELTA=0, FLAT=1, GAUS=2}
+                     pdistr: 2 // {DELTA=0, FLAT=1, GAUS=2}
+                     tdistr: 989 // {DELTA=0, FLAT=1, GAUS=2, E989=989}
+                     xwidth: 12.5 mm
+                     ywidth: 12.5 mm
+                     twidth: 120 ns
+                     pwidth: 0.1 percent
+
+========== Gm2Constants ==========
+printPrecision: 12
+         mMuon: 105.6583745 MeV/c^2
+         aMuon: 0.00116592089 (unitless)
+         eMuon: 0 e*cm
+        RMagic: 7112 mm
+        BMagic: 1.45129912113 T
+        pMagic: 3094.34963118 MeV/c
+        EMagic: 3096.15298913 MeV
+       KEMagic: 2990.49461463 MeV
+     betaMagic: 0.999417548825 (unitless)
+    gammaMagic: 29.3034319691 (unitless)
+betaGammaMagic: 29.2863641507 (unitless)
+   omegaCMagic: 42.1284931848 rad/us
+   omegaAMagic: 1.439340338 rad/us
+   omegaSMagic: 43.5678335228 rad/us
+       fCMagic: 6.70495793538 MHz
+       fAMagic: 0.229078129585 MHz
+       fSMagic: 6.93403606496 MHz
+     BrhoMagic: 10.3216393495 T*m
+     trolleyAzimuthOffset: -17.91 deg
+
+========== KillTracks ==========
+     killElectrons: NO
+     killPositrons: NO
+       killPhotons: NO
+killOpticalPhotons: NO
+      killNeutrons: YES, no threshold
+     killNeutrinos: YES, no threshold
+      doTimingCuts: YES, tlocalMax=1ns, tglobalMax=700us
+
+======== Magnet Iron And Cryostat ========
+ringIsCadmesh:        0
+cryoIsCadmesh:        0
+ringMaterial:         Fe
+cryoMaterial:         Al
+buildPoleTips:        1
+buildYokeTopBottom:   1
+buildYokeBackleg:     1
+buildYokeBacklegHole: 1
+buildCryoInnerUpper:  1
+buildCryoInnerLower:  1
+buildCryoOuter:       1
+buildCryoOuterHole:   1
+ringSphi:             0 deg
+ringDphi:             360 deg
+----------------------
+BLUEPRINT D19-M-3195-5
+----------------------
+      poleTipRmin: 690.2 cm
+                   683.2 cm
+                   683.2 cm
+      poleTipRmax: 732.2 cm
+                   739.2 cm
+                   739.2 cm
+        poleTipDz: 9 cm
+                   14.2176 cm
+                   22.3 cm
+topBottomYokeRmin: 683.2 cm
+                   685.8 cm
+                   729.8 cm
+topBottomYokeRmax: 822.55 cm
+                   820 cm
+                   776 cm
+  topBottomYokeDz: 24.5 cm
+                   51.5 cm
+                   78.5 cm
+  backlegYokeRmin: 768.2 cm
+  backlegYokeRmax: 822.55 cm
+    backlegYokeDz: 24.5 cm
+backlegYokeHoleD1: 4 inch
+backlegYokeHoleD2: 5.25 inch
+    innerCryoRmin: 653.07 cm
+    innerCryoRmax: 682.33 cm
+      innerCryoDz: 25.72 cm
+                   54.98 cm
+                   ...
+cryoAngle: 6 deg
+cryoRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+ironAngle: 6 deg
+ironRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+RingSD is not found in /
+================ TrackingAction Parameters ================
+| OnlyTrackPrimary:  0
+| TrackPrimaryDecay: 1
+| TrackOrphans:      1
+================================================
+======== Magnet Iron And Cryostat ========
+ringIsCadmesh:        0
+cryoIsCadmesh:        0
+ringMaterial:         Fe
+cryoMaterial:         Al
+buildPoleTips:        1
+buildYokeTopBottom:   1
+buildYokeBackleg:     1
+buildYokeBacklegHole: 1
+buildCryoInnerUpper:  1
+buildCryoInnerLower:  1
+buildCryoOuter:       1
+buildCryoOuterHole:   1
+ringSphi:             0 deg
+ringDphi:             360 deg
+----------------------
+BLUEPRINT D19-M-3195-5
+----------------------
+      poleTipRmin: 690.2 cm
+                   683.2 cm
+                   683.2 cm
+      poleTipRmax: 732.2 cm
+                   739.2 cm
+                   739.2 cm
+        poleTipDz: 9 cm
+                   14.2176 cm
+                   22.3 cm
+topBottomYokeRmin: 683.2 cm
+                   685.8 cm
+                   729.8 cm
+topBottomYokeRmax: 822.55 cm
+                   820 cm
+                   776 cm
+  topBottomYokeDz: 24.5 cm
+                   51.5 cm
+                   78.5 cm
+  backlegYokeRmin: 768.2 cm
+  backlegYokeRmax: 822.55 cm
+    backlegYokeDz: 24.5 cm
+backlegYokeHoleD1: 4 inch
+backlegYokeHoleD2: 5.25 inch
+    innerCryoRmin: 653.07 cm
+    innerCryoRmax: 682.33 cm
+      innerCryoDz: 25.72 cm
+                   54.98 cm
+                   ...
+cryoAngle: 6 deg
+cryoRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+ironAngle: 6 deg
+ironRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+======== NewInflectorGeometry ========
+       cadmesh: F
+ infLengthWarm: 1696.4 mm
+ infLengthCold: 1689.11 mm
+          dL/L: -0.0043 (unitless)
+    infPivotDx: 108 mm
+   infFringeDz: 100 mm
+  avoidOverlap: 0.1 mm
+----------------------------
+   infUSCryoWindowThickness: 1.5
+         infUSCoilThickness: 3.3
+infUSMandrelWindowThickness: 1.5
+infDSMandrelWindowThickness: 1.5
+         infDSCoilThickness: 3.3
+   infDSCryoWindowThickness: 1.5
+----------------------------
+    infBoundingBoxZmin: -944.553
+   infUSCryoFlangeZmin: -856.303
+   infUSCryoFlangeZmax: -846.303
+   infUSCryoWindowZmin: -847.803
+   infUSCryoWindowZmax: -846.303
+         infUSCoilZmin: -846.203
+         infUSCoilZmax: -842.903
+infUSMandrelWindowZmin: -842.803
+infUSMandrelWindowZmax: -841.303
+       infApertureZmin: -841.203
+       infApertureZmax: 841.203
+infDSMandrelWindowZmin: 841.303
+infDSMandrelWindowZmax: 842.803
+         infDSCoilZmin: 842.903
+         infDSCoilZmax: 846.203
+   infDSCryoWindowZmin: 846.303
+   infDSCryoWindowZmax: 847.803
+   infDSCryoFlangeZmin: 846.303
+   infDSCryoFlangeZmax: 856.303
+    infBoundingBoxZmax: 944.553
+       infCryoWindowHx: 12.175
+       infCryoWindowHy: 31.175
+-----------------------
+infUS: (6976.98, 0, -2431.97)mm
+infMP: (7063.29, 0, -1591.84)mm
+infDS: (7149.59, 0, -751.708)mm
+
+======== Kicker Geometry ========
+ cadmesh            : false
+ numKickers         : 3
+ kPlateType         : 989
+ kPlateArcLength    : 1270 mm
+ kPlateGapLength    : 571.5 mm
+ kArrayCenterline   : 88.17 deg
+ kCenterline[0]     : 73.3345 deg
+ kCenterline[1]     : 88.17 deg
+ kCenterline[2]     : 103.006 deg
+
+======== NewQuadGeometry ========
+  cadmesh            : 1
+  qShortSpanAngle    : 13 deg
+  qLongSpanAngle     : 26 deg
+  qShortLongGapAngle : 4 deg
+  qFillFactor        : 0.433333
+
+qUseLargeFieldRegion : 0
+qFieldRegionR0       : 7112 mm
+qFieldRegionRhwhm    : 50 mm
+qFieldRegionRmin     : 7062 mm
+qFieldRegionRmax     : 7162 mm
+qFieldRegionY0       : 0 mm
+qFieldRegionYhwhm    : 50 mm
+qFieldRegionYmin     : -50 mm
+qFieldRegionYmax     : 50 mm
+qFiducialEdge        : 1 mm
+qFiducialEdgeFrac    : 0.9 (unitless)
+
+======== Quad ========
+          muonCharge: 1
+         qFillFactor: 0.433333
+  desired_fieldIndex: 0.153 (unitless)
+  a2_from_fieldIndex: -21.8573 kV
+             a2_user: -20.1778 kV
+ quad_rescale_factor: 1.08324
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RingBfield2d_SmallFine.dat.txt"
+7827 lines
+15652 data
+
+gm2geom::RingBfieldMap2d::LoadRadialBField() Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RadialField-avgSamePositions-anchor.data.txt"
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RingBfield2d_LargeCoarse.dat.txt"
+30402 lines
+60802 data
+
+gm2geom::RingBfieldMap2d::LoadRadialBField() Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RadialField-avgSamePositions-anchor.data.txt"
+
+gm2geom::gm2FieldMap3d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/ring_inject_bfield3d_wuzheng_large.dat"
+376188 lines
+1128561 data
+
+======== WuzhengBacklegBfield3D ========
+  filePath: /cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/ring_inject_bfield3d_wuzheng_large.dat
+lengthUnit: 10
+ fieldUnit: -9.99944e-08
+   nx: 61
+ xmin: 7110
+ xmax: 7410
+   dx: 5
+   ny: 7
+ ymin: 0
+ ymax: 30
+   dy: 5
+   nz: 881
+ zmin: -4300
+ zmax: 100
+   dz: 5
+
+gm2geom::gm2FieldMap3d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/renormalized_inflector_bfield3d_meng_closed-closed.dat"
+15835 lines
+47502 data
+
+======== WuzhengInflectorBfield3D ========
+  filePath: /cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/renormalized_inflector_bfield3d_meng_closed-closed.dat
+lengthUnit: 1000
+ fieldUnit: -0.0014513
+   nx: 7
+ xmin: -15
+ xmax: 15
+   dx: 5
+   ny: 6
+ ymin: 0
+ ymax: 25
+   dy: 5
+   nz: 377
+ zmin: -940
+ zmax: 940
+   dz: 5
+
+======== KickerPulseE989 ========
+   pulseShape: Cornell15
+          By0: -290 Gauss
+       tbegin: -121.36 ns
+        tpeak: 50 ns
+         tend: 200.398 ns
+  includeTail: false
+echoAmplitude: 0
+     echoTime: 450 ns
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/KickerBfield2d_E989.dat"
+5786 lines
+11570 data
+
+======== KickerPulseE989 ========
+   pulseShape: Cornell15
+          By0: -290 Gauss
+       tbegin: -116.36 ns
+        tpeak: 55 ns
+         tend: 205.398 ns
+  includeTail: false
+echoAmplitude: 0
+     echoTime: 450 ns
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/KickerBfield2d_E989.dat"
+5786 lines
+11570 data
+
+======== KickerPulseE989 ========
+   pulseShape: Cornell15
+          By0: -290 Gauss
+       tbegin: -111.36 ns
+        tpeak: 60 ns
+         tend: 210.398 ns
+  includeTail: false
+echoAmplitude: 0
+     echoTime: 450 ns
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/KickerBfield2d_E989.dat"
+5786 lines
+11570 data
+
+QuadEfield[0][0]  qbadResistor_[0][0]
+QuadEfield[0][1]  qbadResistor_[0][0]
+QuadEfield[1][0]  qbadResistor_[0][0]
+QuadEfield[1][1]  qbadResistor_[0][0]
+QuadEfield[2][0]  qbadResistor_[0][0]
+QuadEfield[2][1]  qbadResistor_[0][0]
+QuadEfield[3][0]  qbadResistor_[0][0]
+QuadEfield[3][1]  qbadResistor_[0][0]
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/QuadField_xOuterPlate5.00cm_n141.dat"
+57670 lines
+115338 data
+
+======== gm2FieldManager ========
+buildBacklegBfield   : 1
+buildInflectorBfield : 1
+buildKickerBfields   : 1
+buildQuadBfields     : 1
+
+kFieldsAreUnified : 1
+qFieldsAreUnified : 1
+...
+
+%MSG-i ArcGeometry:  artg4Main:artg4@Construction 23-Jun-2021 09:51:19 CDT  ModuleConstruction
+Arc geometry is
+    arc_rMin=6000
+    arc_rMax=8500
+    arc_z=245
+    arc_Sphi=0
+    arc_Dphi=6.28319
+%MSG
+Including arc 0
+%MSG-i WorldGeometry:  artg4Main:artg4@Construction 23-Jun-2021 09:51:19 CDT  ModuleConstruction
+World geometry is world_x=10000 world_y=3500 world_z=10000
+%MSG
+%MSG-i Ring_service:  artg4Main:artg4@Construction 23-Jun-2021 09:51:19 CDT  ModuleConstruction
+About to doCallArtProduces
+%MSG
+%MSG-i Ring_service:  artg4Main:artg4@Construction 23-Jun-2021 09:51:19 CDT  ModuleConstruction
+done with doCallArtProduces
+%MSG
+%MSG-i RANDOM:  artg4Main:artg4@Construction 23-Jun-2021 09:51:19 CDT  ModuleConstruction
+Instantiated G4Engine engine "artg4:0:" with seed 476215251.
+
+%MSG
+
+*************************************************************
+ Geant4 version Name: geant4-10-03-patch-03    (20-October-2017)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+RootManager::SetFile : Using ROOT file ./TFileService-0516-e57d-0ac8-5c3c.root
+RootManager::GetDir : Created ROOT dir ./TFileService-0516-e57d-0ac8-5c3c.root:/PositronDecay
+%MSG-i PositronDecay:  DecayNtup:decay@BeginJob 23-Jun-2021 09:51:19 CDT  ModuleBeginJob
+start of beginJob() 
+
+%MSG
+G4PhysListFactory::GetReferencePhysList <FTFP_BERT>  EMoption= 0
+<<< Geant4 Physics List simulation engine: FTFP_BERT 2.0
+
+<<< Reference Physics List FTFP_BERT is built
+
+Checking overlaps for volume RingPoleTipUpper ... OK! 
+Checking overlaps for volume RingPoleTipLower ... OK! 
+Checking overlaps for volume RingYokeTop ... OK! 
+Checking overlaps for volume RingYokeBottom ... OK! 
+Checking overlaps for volume RingYokeBackleg ... OK! 
+Checking overlaps for volume RingInnerCryostatUpper ... OK! 
+Checking overlaps for volume RingInnerCryostatLower ... OK! 
+Checking overlaps for volume RingCryoOuter ... OK! 
+Checking overlaps for volume RingOuterCryoPipe ... OK! 
+%MSG-i artg4Main:  artg4Main:artg4@BeginRun 23-Jun-2021 09:51:19 CDT run: 1
+Calling G4RunManager::Initialize()
+%MSG
+
+ FTFP_BERT : new threshold between BERT and FTFP is over the interval 
+ for pions :   3 to 12 GeV
+ for kaons :   3 to 12 GeV
+ for proton :  3 to 12 GeV
+ for neutron : 3 to 12 GeV
+
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+### Birks coefficients used in run time
+
+phot:   for  gamma    SubType= 12  BuildTable= 0
+      LambdaPrime table from 200 keV to 100 TeV in 61 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric :  Emin=        0 eV    Emax=      100 TeV   AngularGenSauterGavrila  FluoActive
+
+compt:   for  gamma    SubType= 13  BuildTable= 1
+      Lambda table from 100 eV  to 1 MeV, 7 bins per decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 56 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina :  Emin=        0 eV    Emax=      100 TeV
+
+conv:   for  gamma    SubType= 14  BuildTable= 1
+      Lambda table from 1.022 MeV to 100 TeV, 18 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        BetheHeitler :  Emin=        0 eV    Emax=       80 GeV
+     BetheHeitlerLPM :  Emin=       80 GeV   Emax=      100 TeV
+
+msc:   for e-    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 MeV  Table with 42 bins Emin=    100 eV    Emax=    100 MeV
+        WentzelVIUni :  Emin=      100 MeV   Emax=      100 TeV  Table with 42 bins Emin=    100 MeV   Emax=    100 TeV
+
+eIoni:   for  e-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=      100 TeV
+
+eBrem:   for  e-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=      100 TeV   DipBustGen
+
+CoulombScat:   for  e-, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from 100 MeV to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=      100 MeV   Emax=      100 TeV
+
+msc:   for e+    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 MeV  Table with 42 bins Emin=    100 eV    Emax=    100 MeV
+        WentzelVIUni :  Emin=      100 MeV   Emax=      100 TeV  Table with 42 bins Emin=    100 MeV   Emax=    100 TeV
+
+eIoni:   for  e+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=      100 TeV
+
+eBrem:   for  e+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=      100 TeV   DipBustGen
+
+annihil:   for  e+, integral: 1     SubType= 5  BuildTable= 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  e+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from 100 MeV to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=      100 MeV   Emax=      100 TeV
+
+msc:   for proton    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=      100 TeV
+
+hBrems:   for  proton    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  proton    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  proton, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of anti_proton
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for GenericIon    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 TeV
+
+ionIoni:   for  GenericIon    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.02
+      Stopping Power data for 17 ion/material pairs 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=      100 TeV
+
+msc:   for alpha    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+ionIoni:   for  alpha    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon :  Emin=        0 eV    Emax=   7.9452 MeV
+          BetheBloch :  Emin=   7.9452 MeV   Emax=      100 TeV
+
+msc:   for anti_proton    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  anti_proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=      100 TeV
+
+hBrems:   for  anti_proton    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  anti_proton    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  anti_proton, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for kaon+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  kaon+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=      100 TeV
+
+hBrems:   for  kaon+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  kaon+    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  kaon+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for kaon-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  kaon-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=      100 TeV
+
+hBrems:   for  kaon-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  kaon-    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  kaon-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of kaon+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for mu+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+muIoni:   for  mu+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=      100 TeV
+
+muBrems:   for  mu+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=      100 TeV
+
+muPairProd:   for  mu+    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  mu+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for mu-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+muIoni:   for  mu-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=      100 TeV
+
+muBrems:   for  mu-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=      100 TeV
+
+muPairProd:   for  mu-    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  mu-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of mu+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for pi+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  pi+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=      100 TeV
+
+hBrems:   for  pi+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  pi+    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  pi+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for pi-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  pi-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=      100 TeV
+
+hBrems:   for  pi-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  pi-    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  pi-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of pi+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+====================================================================
+                  HADRONIC PROCESSES SUMMARY (verbose level 1)
+
+---------------------------------------------------
+                           Hadronic Processes for neutron
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronElasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: neutronInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:      G4NeutronInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: nCapture
+        Model:               nRadCapture: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronCaptureXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaCaptureXS: 0 eV  ---> 100 TeV
+
+  Process: nKiller
+
+---------------------------------------------------
+                           Hadronic Processes for GenericIon
+
+  Process: ionInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: He3Inelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: alphaInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_He3Inelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_alphaInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_deuteronInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_neutron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_neutronInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_proton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_protonInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_tritonInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: dInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e+
+
+  Process: positronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e-
+
+  Process: electronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for gamma
+
+  Process: photonNuclear
+        Model:            BertiniCascade: 0 eV  ---> 3.5 GeV
+        Model:           TheoFSGenerator: 3 GeV ---> 100 TeV
+     Cr_sctns:            PhotoNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: kaon+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:  ChipsKaonPlusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: kaon-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns: ChipsKaonMinusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: lambdaInelastic
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+        Model:                      FTFP: 2 GeV ---> 100 TeV
+     Cr_sctns:   ChipsHyperonInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu+
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu-
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+  Process: muMinusCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for pi+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 1.0001 GeV
+        Model:           hElasticGlauber: 1 GeV ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: pi+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:      G4CrossSectionPairGG: 0 eV  ---> 100 TeV
+                         G4CrossSectionPairGG: G4PiNuclearCrossSection cross sections 
+                           below 91 GeV, Glauber-Gribov above 
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 1.0001 GeV
+        Model:           hElasticGlauber: 1 GeV ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: pi-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:      G4CrossSectionPairGG: 0 eV  ---> 100 TeV
+                         G4CrossSectionPairGG: G4PiNuclearCrossSection cross sections 
+                           below 91 GeV, Glauber-Gribov above 
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for proton
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:      ChipsProtonElasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: protonInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: tInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+================================================================
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.01
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1e+12
+Use new data files                                  1
+Use complete data files                             0
+Correlated gamma emission flag                      0
+=======================================================================
+Number of de-excitation channels                    8
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomMgt0001
+      issued by : G4UPolycone::Extent()
+Inconsistency in bounding boxes for solid: RingPoleTipUpper !
+BBox min: wrapper = (-7392,-7392,90) solid = (-7392, -7392, 90)
+BBox max: wrapper = (7392,7392,223) solid = (7392, 7392, 223)
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+Begin processing the 1st record. run: 1 subRun: 1 event: 1 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 1GeV
+ is now defined in terms Momentum: 3.09895GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: 5746.56, 5.13162, -4187.96
+pol: -0.588966, 0, -0.808157
+mom: 1830.4, -1.24336, 2500.63, tot: 3098.95
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 5746.56, 5.13162, -4187.96
+pol: -0.588967, 0, -0.808157
+mom: 1830.4, -1.24336, 2500.63, tot: 3098.95
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 5746.56, 5.13162, -4187.96
+pol: 0, 0, 0
+mom: 642, -20.031, 956.478, tot: 1152.14
+
+
+Begin processing the 2nd record. run: 1 subRun: 1 event: 2 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.99509GeV
+ is now defined in terms Momentum: 3.09663GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: 7052.31, 6.96654, 995.408
+pol: 0.153929, 0, -0.988082
+mom: -433.017, 0.115365, 3066.2, tot: 3096.63
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 7052.31, 6.96654, 995.408
+pol: 0.153929, 0, -0.988082
+mom: -433.017, 0.115365, 3066.2, tot: 3096.63
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 7052.31, 6.96654, 995.408
+pol: 0, 0, 0
+mom: -138.919, -32.4615, 1154.03, tot: 1162.81
+
+
+Begin processing the 3rd record. run: 1 subRun: 1 event: 3 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.99277GeV
+ is now defined in terms Momentum: 3.09163GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: -3299.7, -11.7248, 6273.07
+pol: 0.871359, 0, 0.490647
+mom: -2735, -0.733019, -1441.5, tot: 3091.63
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -3299.7, -11.7248, 6273.07
+pol: 0.871359, 0, 0.490647
+mom: -2735, -0.733019, -1441.5, tot: 3091.63
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -3299.7, -11.7248, 6273.07
+pol: 0, 0, 0
+mom: -214.662, 24.1045, -126.003, tot: 250.075
+
+
+Begin processing the 4th record. run: 1 subRun: 1 event: 4 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98777GeV
+ is now defined in terms Momentum: 3.09362GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: 6920.59, -9.50108, 1591.95
+pol: 0.265787, 0, -0.964032
+mom: -696.71, -3.45389, 3014.14, tot: 3093.62
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 6920.59, -9.50108, 1591.95
+pol: 0.265787, 0, -0.964032
+mom: -696.71, -3.45389, 3014.14, tot: 3093.62
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 6920.59, -9.50108, 1591.95
+pol: 0, 0, 0
+mom: -517.589, -18.2556, 2337.23, tot: 2393.92
+
+
+Begin processing the 5th record. run: 1 subRun: 1 event: 5 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98976GeV
+ is now defined in terms Momentum: 3.09072GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: -6091.94, 2.87893, -3666.03
+pol: -0.563731, 0, 0.825958
+mom: 1594.64, 1.36025, -2647.57, tot: 3090.72
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -6091.94, 2.87893, -3666.03
+pol: -0.563731, 0, 0.825958
+mom: 1594.64, 1.36025, -2647.57, tot: 3090.72
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -6091.94, 2.87893, -3666.03
+pol: 0, 0, 0
+mom: 155.832, -3.65613, -219.621, tot: 269.314
+
+
+Begin processing the 6th record. run: 1 subRun: 1 event: 6 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98686GeV
+ is now defined in terms Momentum: 3.09576GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: 313.2, -16.5788, 7108.29
+pol: 0.99962, 0, 0.0275582
+mom: -3092.54, 0.733146, 141.156, tot: 3095.76
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 313.2, -16.5788, 7108.29
+pol: 0.99962, 0, 0.0275582
+mom: -3092.54, 0.733146, 141.156, tot: 3095.76
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 313.2, -16.5788, 7108.29
+pol: 0, 0, 0
+mom: -875.925, 34.1511, 13.8998, tot: 876.701
+
+
+Begin processing the 7th record. run: 1 subRun: 1 event: 7 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.9919GeV
+ is now defined in terms Momentum: 3.09016GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: 6647.92, -4.39968, -2559.17
+pol: -0.27803, 0, -0.960572
+mom: 1111.49, 0.0272284, 2883.34, tot: 3090.16
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 6647.92, -4.39968, -2559.17
+pol: -0.27803, 0, -0.960572
+mom: 1111.49, 0.0272284, 2883.34, tot: 3090.16
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 6647.92, -4.39968, -2559.17
+pol: 0, 0, 0
+mom: 209.478, 1.80741, 574.998, tot: 611.97
+
+
+Begin processing the 8th record. run: 1 subRun: 1 event: 8 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.9863GeV
+ is now defined in terms Momentum: 3.09866GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: -4923.93, -3.30791, -5191.53
+pol: -0.790846, 0, 0.612015
+mom: 2246.94, -1.64036, -2133.76, tot: 3098.66
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -4923.93, -3.30791, -5191.53
+pol: -0.790846, 0, 0.612015
+mom: 2246.94, -1.64036, -2133.76, tot: 3098.66
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -4923.93, -3.30791, -5191.53
+pol: 0, 0, 0
+mom: 465.372, 17.6211, -432.651, tot: 635.664
+
+
+Begin processing the 9th record. run: 1 subRun: 1 event: 9 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.9948GeV
+ is now defined in terms Momentum: 3.08943GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: -117.733, -3.0173, -7110.71
+pol: -0.995229, 0, -0.0975639
+mom: 3089.13, 2.89266, -43.2543, tot: 3089.43
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -117.733, -3.0173, -7110.71
+pol: -0.995229, 0, -0.0975639
+mom: 3089.13, 2.89266, -43.2543, tot: 3089.43
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -117.733, -3.0173, -7110.71
+pol: 0, 0, 0
+mom: 1097.3, 2.17421, -57.3612, tot: 1098.8
+
+
+Begin processing the 10th record. run: 1 subRun: 1 event: 10 at 23-Jun-2021 09:51:20 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98558GeV
+ is now defined in terms Momentum: 3.09137GeV/c
+DecayNtup, GasGun: 
+
+Muon
+pos: -6942.6, -42.3172, -1485.74
+pol: -0.332995, 0, 0.942928
+mom: 656.255, -0.347261, -3020.91, tot: 3091.37
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -6942.6, -42.3172, -1485.74
+pol: -0.332995, 0, 0.942928
+mom: 656.255, -0.347261, -3020.91, tot: 3091.37
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -6942.6, -42.3172, -1485.74
+pol: 0, 0, 0
+mom: 436.826, 7.78148, -2002.68, tot: 2049.78
+
+
+========== KillTracks Summary ==========
+  Events: 10
+  Tracks: 40
+  Killed: 30
+          DecayWithSpin: 20
+          tlocalMax: 10
+
+%MSG-i PhysicalVolumeStore:  artg4Main:artg4@EndRun 23-Jun-2021 09:51:20 CDT  run: 1
+Storing 1 items in the physical volume store
+%MSG
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 10 passed = 10 failed = 0
+
+TrigReport ------ Modules in End-Path: end_path ------------
+TrigReport  Trig Bit#        Run    Success      Error Name
+TrigReport     0    0         10         10          0 decay
+
+TimeReport ---------- Time  Summary ---[sec]----
+TimeReport CPU = 1.157705 Real = 1.247825
+
+MemReport  ---------- Memory  Summary ---[base-10 MB]----
+MemReport  VmPeak = 1207.11 VmHWM = 505.86
+
+%MSG-i ArtG4Main:  PostEndJob 23-Jun-2021 09:51:19 CDT ModuleEndJob
+
+%MSG
+%MSG-i CoordSystemsStore:  PostEndJob 23-Jun-2021 09:51:17 CDT ModuleEndJob
+CoordSystemsStore::initialize called
+
+%MSG
+%MSG-i ClockAction:  PostEndJob 23-Jun-2021 09:51:17 CDT ModuleEndJob
+Elapsed time this run: 0.18589 seconds
+
+%MSG
+%MSG-i TrackingAction:  PostEndJob 23-Jun-2021 09:51:17 CDT ModuleEndJob
+============== TrackingAction::RunEnd ==============	Muons injected     : 10	Muons decayed      : 10	Muons lost         : 0	Muons stored       : 0====================================================
+%MSG
+%MSG-i PhysicalVolumeStore:  PostEndJob 23-Jun-2021 09:51:17 CDT ModuleEndJob
+
+%MSG
+Art has completed and will exit with status 0.
+%MSG-i MF_INIT_OK:  Early 23-Jun-2021 11:25:12 CDT JobSetup
+Messagelogger initialization complete.
+%MSG
+
+=============== GasGunBdyn ===========
+            setPolarization: 1
+                          n: 0.153
+                         x0: 0 mm
+                         y0: 0 mm
+                      AxCBO: 5 mm
+                      AyCBO: 0 mm
+                  tDecayMin: 0 microsecond
+                  tDecayMax: 700 microsecond
+                     xdistr: 2 // {DELTA=0, FLAT=1, GAUS=2}
+                     ydistr: 2 // {DELTA=0, FLAT=1, GAUS=2}
+                     pdistr: 2 // {DELTA=0, FLAT=1, GAUS=2}
+                     tdistr: 989 // {DELTA=0, FLAT=1, GAUS=2, E989=989}
+                     xwidth: 12.5 mm
+                     ywidth: 12.5 mm
+                     twidth: 120 ns
+                     pwidth: 0.1 percent
+
+========== Gm2Constants ==========
+printPrecision: 12
+         mMuon: 105.6583745 MeV/c^2
+         aMuon: 0.00116592089 (unitless)
+         eMuon: 0 e*cm
+        RMagic: 7112 mm
+        BMagic: 1.45129912113 T
+        pMagic: 3094.34963118 MeV/c
+        EMagic: 3096.15298913 MeV
+       KEMagic: 2990.49461463 MeV
+     betaMagic: 0.999417548825 (unitless)
+    gammaMagic: 29.3034319691 (unitless)
+betaGammaMagic: 29.2863641507 (unitless)
+   omegaCMagic: 42.1284931848 rad/us
+   omegaAMagic: 1.439340338 rad/us
+   omegaSMagic: 43.5678335228 rad/us
+       fCMagic: 6.70495793538 MHz
+       fAMagic: 0.229078129585 MHz
+       fSMagic: 6.93403606496 MHz
+     BrhoMagic: 10.3216393495 T*m
+     trolleyAzimuthOffset: -17.91 deg
+
+========== KillTracks ==========
+     killElectrons: NO
+     killPositrons: NO
+       killPhotons: NO
+killOpticalPhotons: NO
+      killNeutrons: YES, no threshold
+     killNeutrinos: YES, no threshold
+      doTimingCuts: YES, tlocalMax=1ns, tglobalMax=700us
+
+======== Magnet Iron And Cryostat ========
+ringIsCadmesh:        0
+cryoIsCadmesh:        0
+ringMaterial:         Fe
+cryoMaterial:         Al
+buildPoleTips:        1
+buildYokeTopBottom:   1
+buildYokeBackleg:     1
+buildYokeBacklegHole: 1
+buildCryoInnerUpper:  1
+buildCryoInnerLower:  1
+buildCryoOuter:       1
+buildCryoOuterHole:   1
+ringSphi:             0 deg
+ringDphi:             360 deg
+----------------------
+BLUEPRINT D19-M-3195-5
+----------------------
+      poleTipRmin: 690.2 cm
+                   683.2 cm
+                   683.2 cm
+      poleTipRmax: 732.2 cm
+                   739.2 cm
+                   739.2 cm
+        poleTipDz: 9 cm
+                   14.2176 cm
+                   22.3 cm
+topBottomYokeRmin: 683.2 cm
+                   685.8 cm
+                   729.8 cm
+topBottomYokeRmax: 822.55 cm
+                   820 cm
+                   776 cm
+  topBottomYokeDz: 24.5 cm
+                   51.5 cm
+                   78.5 cm
+  backlegYokeRmin: 768.2 cm
+  backlegYokeRmax: 822.55 cm
+    backlegYokeDz: 24.5 cm
+backlegYokeHoleD1: 4 inch
+backlegYokeHoleD2: 5.25 inch
+    innerCryoRmin: 653.07 cm
+    innerCryoRmax: 682.33 cm
+      innerCryoDz: 25.72 cm
+                   54.98 cm
+                   ...
+cryoAngle: 6 deg
+cryoRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+ironAngle: 6 deg
+ironRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+RingSD is not found in /
+================ TrackingAction Parameters ================
+| OnlyTrackPrimary:  0
+| TrackPrimaryDecay: 1
+| TrackOrphans:      1
+================================================
+======== Magnet Iron And Cryostat ========
+ringIsCadmesh:        0
+cryoIsCadmesh:        0
+ringMaterial:         Fe
+cryoMaterial:         Al
+buildPoleTips:        1
+buildYokeTopBottom:   1
+buildYokeBackleg:     1
+buildYokeBacklegHole: 1
+buildCryoInnerUpper:  1
+buildCryoInnerLower:  1
+buildCryoOuter:       1
+buildCryoOuterHole:   1
+ringSphi:             0 deg
+ringDphi:             360 deg
+----------------------
+BLUEPRINT D19-M-3195-5
+----------------------
+      poleTipRmin: 690.2 cm
+                   683.2 cm
+                   683.2 cm
+      poleTipRmax: 732.2 cm
+                   739.2 cm
+                   739.2 cm
+        poleTipDz: 9 cm
+                   14.2176 cm
+                   22.3 cm
+topBottomYokeRmin: 683.2 cm
+                   685.8 cm
+                   729.8 cm
+topBottomYokeRmax: 822.55 cm
+                   820 cm
+                   776 cm
+  topBottomYokeDz: 24.5 cm
+                   51.5 cm
+                   78.5 cm
+  backlegYokeRmin: 768.2 cm
+  backlegYokeRmax: 822.55 cm
+    backlegYokeDz: 24.5 cm
+backlegYokeHoleD1: 4 inch
+backlegYokeHoleD2: 5.25 inch
+    innerCryoRmin: 653.07 cm
+    innerCryoRmax: 682.33 cm
+      innerCryoDz: 25.72 cm
+                   54.98 cm
+                   ...
+cryoAngle: 6 deg
+cryoRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+ironAngle: 6 deg
+ironRot:
+ 0.994522         0  0.104528
+        0         1         0
+-0.104528         0  0.994522
+
+======== NewInflectorGeometry ========
+       cadmesh: F
+ infLengthWarm: 1696.4 mm
+ infLengthCold: 1689.11 mm
+          dL/L: -0.0043 (unitless)
+    infPivotDx: 108 mm
+   infFringeDz: 100 mm
+  avoidOverlap: 0.1 mm
+----------------------------
+   infUSCryoWindowThickness: 1.5
+         infUSCoilThickness: 3.3
+infUSMandrelWindowThickness: 1.5
+infDSMandrelWindowThickness: 1.5
+         infDSCoilThickness: 3.3
+   infDSCryoWindowThickness: 1.5
+----------------------------
+    infBoundingBoxZmin: -944.553
+   infUSCryoFlangeZmin: -856.303
+   infUSCryoFlangeZmax: -846.303
+   infUSCryoWindowZmin: -847.803
+   infUSCryoWindowZmax: -846.303
+         infUSCoilZmin: -846.203
+         infUSCoilZmax: -842.903
+infUSMandrelWindowZmin: -842.803
+infUSMandrelWindowZmax: -841.303
+       infApertureZmin: -841.203
+       infApertureZmax: 841.203
+infDSMandrelWindowZmin: 841.303
+infDSMandrelWindowZmax: 842.803
+         infDSCoilZmin: 842.903
+         infDSCoilZmax: 846.203
+   infDSCryoWindowZmin: 846.303
+   infDSCryoWindowZmax: 847.803
+   infDSCryoFlangeZmin: 846.303
+   infDSCryoFlangeZmax: 856.303
+    infBoundingBoxZmax: 944.553
+       infCryoWindowHx: 12.175
+       infCryoWindowHy: 31.175
+-----------------------
+infUS: (6976.98, 0, -2431.97)mm
+infMP: (7063.29, 0, -1591.84)mm
+infDS: (7149.59, 0, -751.708)mm
+
+======== Kicker Geometry ========
+ cadmesh            : false
+ numKickers         : 3
+ kPlateType         : 989
+ kPlateArcLength    : 1270 mm
+ kPlateGapLength    : 571.5 mm
+ kArrayCenterline   : 88.17 deg
+ kCenterline[0]     : 73.3345 deg
+ kCenterline[1]     : 88.17 deg
+ kCenterline[2]     : 103.006 deg
+
+======== NewQuadGeometry ========
+  cadmesh            : 1
+  qShortSpanAngle    : 13 deg
+  qLongSpanAngle     : 26 deg
+  qShortLongGapAngle : 4 deg
+  qFillFactor        : 0.433333
+
+qUseLargeFieldRegion : 0
+qFieldRegionR0       : 7112 mm
+qFieldRegionRhwhm    : 50 mm
+qFieldRegionRmin     : 7062 mm
+qFieldRegionRmax     : 7162 mm
+qFieldRegionY0       : 0 mm
+qFieldRegionYhwhm    : 50 mm
+qFieldRegionYmin     : -50 mm
+qFieldRegionYmax     : 50 mm
+qFiducialEdge        : 1 mm
+qFiducialEdgeFrac    : 0.9 (unitless)
+
+======== Quad ========
+          muonCharge: 1
+         qFillFactor: 0.433333
+  desired_fieldIndex: 0.153 (unitless)
+  a2_from_fieldIndex: -21.8573 kV
+             a2_user: -20.1778 kV
+ quad_rescale_factor: 1.08324
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RingBfield2d_SmallFine.dat.txt"
+7827 lines
+15652 data
+
+gm2geom::RingBfieldMap2d::LoadRadialBField() Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RadialField-avgSamePositions-anchor.data.txt"
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RingBfield2d_LargeCoarse.dat.txt"
+30402 lines
+60802 data
+
+gm2geom::RingBfieldMap2d::LoadRadialBField() Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/RadialField-avgSamePositions-anchor.data.txt"
+
+gm2geom::gm2FieldMap3d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/ring_inject_bfield3d_wuzheng_large.dat"
+376188 lines
+1128561 data
+
+======== WuzhengBacklegBfield3D ========
+  filePath: /cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/ring_inject_bfield3d_wuzheng_large.dat
+lengthUnit: 10
+ fieldUnit: -9.99944e-08
+   nx: 61
+ xmin: 7110
+ xmax: 7410
+   dx: 5
+   ny: 7
+ ymin: 0
+ ymax: 30
+   dy: 5
+   nz: 881
+ zmin: -4300
+ zmax: 100
+   dz: 5
+
+gm2geom::gm2FieldMap3d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/renormalized_inflector_bfield3d_meng_closed-closed.dat"
+15835 lines
+47502 data
+
+======== WuzhengInflectorBfield3D ========
+  filePath: /cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/renormalized_inflector_bfield3d_meng_closed-closed.dat
+lengthUnit: 1000
+ fieldUnit: -0.0014513
+   nx: 7
+ xmin: -15
+ xmax: 15
+   dx: 5
+   ny: 6
+ ymin: 0
+ ymax: 25
+   dy: 5
+   nz: 377
+ zmin: -940
+ zmax: 940
+   dz: 5
+
+======== KickerPulseE989 ========
+   pulseShape: Cornell15
+          By0: -290 Gauss
+       tbegin: -121.36 ns
+        tpeak: 50 ns
+         tend: 200.398 ns
+  includeTail: false
+echoAmplitude: 0
+     echoTime: 450 ns
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/KickerBfield2d_E989.dat"
+5786 lines
+11570 data
+
+======== KickerPulseE989 ========
+   pulseShape: Cornell15
+          By0: -290 Gauss
+       tbegin: -116.36 ns
+        tpeak: 55 ns
+         tend: 205.398 ns
+  includeTail: false
+echoAmplitude: 0
+     echoTime: 450 ns
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/KickerBfield2d_E989.dat"
+5786 lines
+11570 data
+
+======== KickerPulseE989 ========
+   pulseShape: Cornell15
+          By0: -290 Gauss
+       tbegin: -111.36 ns
+        tpeak: 60 ns
+         tend: 210.398 ns
+  includeTail: false
+echoAmplitude: 0
+     echoTime: 450 ns
+
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/KickerBfield2d_E989.dat"
+5786 lines
+11570 data
+
+QuadEfield[0][0]  qbadResistor_[0][0]
+QuadEfield[0][1]  qbadResistor_[0][0]
+QuadEfield[1][0]  qbadResistor_[0][0]
+QuadEfield[1][1]  qbadResistor_[0][0]
+QuadEfield[2][0]  qbadResistor_[0][0]
+QuadEfield[2][1]  qbadResistor_[0][0]
+QuadEfield[3][0]  qbadResistor_[0][0]
+QuadEfield[3][1]  qbadResistor_[0][0]
+gm2geom::gm2FieldMap2d::ReadFieldMap()
+Successfully read file "/cvmfs/gm2.opensciencegrid.org/prod/g-2/gm2geom/v9_65_00/runTimeFiles/QuadField_xOuterPlate5.00cm_n141.dat"
+57670 lines
+115338 data
+
+======== gm2FieldManager ========
+buildBacklegBfield   : 1
+buildInflectorBfield : 1
+buildKickerBfields   : 1
+buildQuadBfields     : 1
+
+kFieldsAreUnified : 1
+qFieldsAreUnified : 1
+...
+
+%MSG-i ArcGeometry:  artg4Main:artg4@Construction 23-Jun-2021 11:25:17 CDT  ModuleConstruction
+Arc geometry is
+    arc_rMin=6000
+    arc_rMax=8500
+    arc_z=245
+    arc_Sphi=0
+    arc_Dphi=6.28319
+%MSG
+Including arc 0
+%MSG-i WorldGeometry:  artg4Main:artg4@Construction 23-Jun-2021 11:25:17 CDT  ModuleConstruction
+World geometry is world_x=10000 world_y=3500 world_z=10000
+%MSG
+%MSG-i Ring_service:  artg4Main:artg4@Construction 23-Jun-2021 11:25:17 CDT  ModuleConstruction
+About to doCallArtProduces
+%MSG
+%MSG-i Ring_service:  artg4Main:artg4@Construction 23-Jun-2021 11:25:17 CDT  ModuleConstruction
+done with doCallArtProduces
+%MSG
+%MSG-i RANDOM:  artg4Main:artg4@Construction 23-Jun-2021 11:25:17 CDT  ModuleConstruction
+Instantiated G4Engine engine "artg4:0:" with seed 189173459.
+
+%MSG
+
+*************************************************************
+ Geant4 version Name: geant4-10-03-patch-03    (20-October-2017)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+RootManager::SetFile : Using ROOT file ./TFileService-98f5-a2b2-8d0f-8049.root
+RootManager::GetDir : Created ROOT dir ./TFileService-98f5-a2b2-8d0f-8049.root:/PositronDecay
+%MSG-i PositronDecay:  DecayNtup:decay@BeginJob 23-Jun-2021 11:25:17 CDT  ModuleBeginJob
+start of beginJob() 
+
+%MSG
+G4PhysListFactory::GetReferencePhysList <FTFP_BERT>  EMoption= 0
+<<< Geant4 Physics List simulation engine: FTFP_BERT 2.0
+
+<<< Reference Physics List FTFP_BERT is built
+
+Checking overlaps for volume RingPoleTipUpper ... OK! 
+Checking overlaps for volume RingPoleTipLower ... OK! 
+Checking overlaps for volume RingYokeTop ... OK! 
+Checking overlaps for volume RingYokeBottom ... OK! 
+Checking overlaps for volume RingYokeBackleg ... OK! 
+Checking overlaps for volume RingInnerCryostatUpper ... OK! 
+Checking overlaps for volume RingInnerCryostatLower ... OK! 
+Checking overlaps for volume RingCryoOuter ... OK! 
+Checking overlaps for volume RingOuterCryoPipe ... OK! 
+%MSG-i artg4Main:  artg4Main:artg4@BeginRun 23-Jun-2021 11:25:17 CDT run: 1
+Calling G4RunManager::Initialize()
+%MSG
+
+ FTFP_BERT : new threshold between BERT and FTFP is over the interval 
+ for pions :   3 to 12 GeV
+ for kaons :   3 to 12 GeV
+ for proton :  3 to 12 GeV
+ for neutron : 3 to 12 GeV
+
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+### Birks coefficients used in run time
+
+phot:   for  gamma    SubType= 12  BuildTable= 0
+      LambdaPrime table from 200 keV to 100 TeV in 61 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric :  Emin=        0 eV    Emax=      100 TeV   AngularGenSauterGavrila  FluoActive
+
+compt:   for  gamma    SubType= 13  BuildTable= 1
+      Lambda table from 100 eV  to 1 MeV, 7 bins per decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 56 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina :  Emin=        0 eV    Emax=      100 TeV
+
+conv:   for  gamma    SubType= 14  BuildTable= 1
+      Lambda table from 1.022 MeV to 100 TeV, 18 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        BetheHeitler :  Emin=        0 eV    Emax=       80 GeV
+     BetheHeitlerLPM :  Emin=       80 GeV   Emax=      100 TeV
+
+msc:   for e-    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 MeV  Table with 42 bins Emin=    100 eV    Emax=    100 MeV
+        WentzelVIUni :  Emin=      100 MeV   Emax=      100 TeV  Table with 42 bins Emin=    100 MeV   Emax=    100 TeV
+
+eIoni:   for  e-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=      100 TeV
+
+eBrem:   for  e-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=      100 TeV   DipBustGen
+
+CoulombScat:   for  e-, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from 100 MeV to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=      100 MeV   Emax=      100 TeV
+
+msc:   for e+    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 MeV  Table with 42 bins Emin=    100 eV    Emax=    100 MeV
+        WentzelVIUni :  Emin=      100 MeV   Emax=      100 TeV  Table with 42 bins Emin=    100 MeV   Emax=    100 TeV
+
+eIoni:   for  e+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=      100 TeV
+
+eBrem:   for  e+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=      100 TeV   DipBustGen
+
+annihil:   for  e+, integral: 1     SubType= 5  BuildTable= 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  e+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from 100 MeV to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=      100 MeV   Emax=      100 TeV
+
+msc:   for proton    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=      100 TeV
+
+hBrems:   for  proton    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  proton    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  proton, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of anti_proton
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for GenericIon    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 TeV
+
+ionIoni:   for  GenericIon    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.02
+      Stopping Power data for 17 ion/material pairs 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=      100 TeV
+
+msc:   for alpha    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+ionIoni:   for  alpha    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon :  Emin=        0 eV    Emax=   7.9452 MeV
+          BetheBloch :  Emin=   7.9452 MeV   Emax=      100 TeV
+
+msc:   for anti_proton    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  anti_proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=      100 TeV
+
+hBrems:   for  anti_proton    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  anti_proton    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  anti_proton, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for kaon+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  kaon+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=      100 TeV
+
+hBrems:   for  kaon+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  kaon+    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  kaon+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for kaon-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  kaon-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=      100 TeV
+
+hBrems:   for  kaon-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  kaon-    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  kaon-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of kaon+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for mu+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+muIoni:   for  mu+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=      100 TeV
+
+muBrems:   for  mu+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=      100 TeV
+
+muPairProd:   for  mu+    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  mu+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for mu-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+muIoni:   for  mu-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=      100 TeV
+
+muBrems:   for  mu-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=      100 TeV
+
+muPairProd:   for  mu-    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  mu-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of mu+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for pi+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  pi+    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=      100 TeV
+
+hBrems:   for  pi+    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  pi+    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  pi+, integral: 1     SubType= 1  BuildTable= 1
+      Lambda table from threshold  to 100 TeV, 7 bins per decade, spline: 1
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+msc:   for pi-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 0, polarAngleLimit(deg)= 180
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni :  Emin=        0 eV    Emax=      100 TeV  Table with 84 bins Emin=    100 eV    Emax=    100 TeV
+
+hIoni:   for  pi-    SubType= 2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=      100 TeV
+
+hBrems:   for  pi-    SubType= 3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem :  Emin=        0 eV    Emax=      100 TeV
+
+hPairProd:   for  pi-    SubType= 4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins per decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd :  Emin=        0 eV    Emax=      100 TeV
+
+CoulombScat:   for  pi-, integral: 1     SubType= 1  BuildTable= 1
+      Used Lambda table of pi+
+      180 < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering :  Emin=        0 eV    Emax=      100 TeV
+
+====================================================================
+                  HADRONIC PROCESSES SUMMARY (verbose level 1)
+
+---------------------------------------------------
+                           Hadronic Processes for neutron
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronElasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: neutronInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:      G4NeutronInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: nCapture
+        Model:               nRadCapture: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronCaptureXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaCaptureXS: 0 eV  ---> 100 TeV
+
+  Process: nKiller
+
+---------------------------------------------------
+                           Hadronic Processes for GenericIon
+
+  Process: ionInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: He3Inelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: alphaInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_He3Inelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_alphaInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_deuteronInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_neutron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_neutronInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_proton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_protonInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: anti_tritonInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: dInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e+
+
+  Process: positronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e-
+
+  Process: electronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for gamma
+
+  Process: photonNuclear
+        Model:            BertiniCascade: 0 eV  ---> 3.5 GeV
+        Model:           TheoFSGenerator: 3 GeV ---> 100 TeV
+     Cr_sctns:            PhotoNuclearXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: kaon+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:  ChipsKaonPlusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: kaon-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns: ChipsKaonMinusInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: lambdaInelastic
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+        Model:                      FTFP: 2 GeV ---> 100 TeV
+     Cr_sctns:   ChipsHyperonInelasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu+
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu-
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+  Process: muMinusCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for pi+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 1.0001 GeV
+        Model:           hElasticGlauber: 1 GeV ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: pi+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:      G4CrossSectionPairGG: 0 eV  ---> 100 TeV
+                         G4CrossSectionPairGG: G4PiNuclearCrossSection cross sections 
+                           below 91 GeV, Glauber-Gribov above 
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 1.0001 GeV
+        Model:           hElasticGlauber: 1 GeV ---> 100 TeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: pi-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:      G4CrossSectionPairGG: 0 eV  ---> 100 TeV
+                         G4CrossSectionPairGG: G4PiNuclearCrossSection cross sections 
+                           below 91 GeV, Glauber-Gribov above 
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for proton
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:      ChipsProtonElasticXS: 0 eV  ---> 100 TeV
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: protonInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 12 GeV
+     Cr_sctns:       Barashenkov-Glauber: 0 eV  ---> 100 TeV
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:            GheishaElastic: 0 eV  ---> 100 TeV
+
+  Process: tInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 4 GeV/n
+        Model:                      FTFP: 2 GeV/n ---> 100 TeV/n
+     Cr_sctns: Glauber-Gribov nucleus nucleus: 0 eV  ---> 2.88022e+295 J  
+     Cr_sctns:          GheishaInelastic: 0 eV  ---> 100 TeV
+
+================================================================
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Type of de-excitation inverse x-section             3
+Min excitation energy (keV)                         0.01
+Level density (1/MeV)                               0.1
+Time limit for long lived isomeres (ns)             1e+12
+Use new data files                                  1
+Use complete data files                             0
+Correlated gamma emission flag                      0
+=======================================================================
+Number of de-excitation channels                    8
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomMgt0001
+      issued by : G4UPolycone::Extent()
+Inconsistency in bounding boxes for solid: RingPoleTipUpper !
+BBox min: wrapper = (-7392,-7392,90) solid = (-7392, -7392, 90)
+BBox max: wrapper = (7392,7392,223) solid = (7392, 7392, 223)
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+Begin processing the 1st record. run: 1 subRun: 1 event: 1 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 1GeV
+ is now defined in terms Momentum: 3.09529GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(0.307952,0,-0.951402)
+
+Trajectory point: 0
+Trajectory position: (6778.04,-13.4015,2193.94)
+Trajectory momentum: (-949.76,-0.944155,2945.97)
+Trajectory polarisation: (0.307952,0,-0.951402)
+
+Trajectory point: 1
+Trajectory position: (6778.04,-13.4015,2193.94)
+Trajectory momentum: (-949.76,-0.944155,2945.97)
+Trajectory polarisation: (0.307952,0,-0.951402)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (6778.04,-13.4015,2193.94)
+Trajectory momentum: (-555.912,-36.747,1669.06)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (6672.8,-19.659,2474.73)
+Trajectory momentum: (-678.024,-36.6509,1623.29)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: 6778.04, -13.4015, 2193.94
+pol: 0.307952, 0, -0.951402
+mom: -949.76, -0.944155, 2945.97, tot: 3095.29
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 6778.04, -13.4015, 2193.94
+pol: 0.307952, 0, -0.951402
+mom: -949.76, -0.944155, 2945.97, tot: 3095.29
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 6778.04, -13.4015, 2193.94
+pol: 0, 0, 0
+mom: -555.912, -36.747, 1669.06, tot: 1759.59
+
+
+Begin processing the 2nd record. run: 1 subRun: 1 event: 2 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.99143GeV
+ is now defined in terms Momentum: 3.09294GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(-0.750465,0,0.66091)
+
+Trajectory point: 0
+Trajectory position: (-4790.75,3.18697,-5285.53)
+Trajectory momentum: (2297.48,2.27844,-2070.71)
+Trajectory polarisation: (-0.750465,0,0.66091)
+
+Trajectory point: 1
+Trajectory position: (-4790.75,3.18697,-5285.53)
+Trajectory momentum: (2297.48,2.27844,-2070.71)
+Trajectory polarisation: (-0.750465,0,0.66091)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (-4790.75,3.18697,-5285.53)
+Trajectory momentum: (31.5674,-8.45947,-22.6865)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (-4697.43,-60.3352,-5134.26)
+Trajectory momentum: (-34.7417,-8.35559,17.5358)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: -4790.75, 3.18697, -5285.53
+pol: -0.750465, 0, 0.66091
+mom: 2297.48, 2.27844, -2070.71, tot: 3092.94
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -4790.75, 3.18697, -5285.53
+pol: -0.750465, 0, 0.66091
+mom: 2297.48, 2.27844, -2070.71, tot: 3092.94
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -4790.75, 3.18697, -5285.53
+pol: 0, 0, 0
+mom: 31.5674, -8.45947, -22.6865, tot: 39.7837
+
+
+Begin processing the 3rd record. run: 1 subRun: 1 event: 3 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98908GeV
+ is now defined in terms Momentum: 3.0896GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(0.849898,0,-0.526947)
+
+Trajectory point: 0
+Trajectory position: (3921.38,-21.1118,5938.88)
+Trajectory momentum: (-2579.62,-0.420406,1700.34)
+Trajectory polarisation: (0.849898,0,-0.526947)
+
+Trajectory point: 1
+Trajectory position: (3921.38,-21.1118,5938.88)
+Trajectory momentum: (-2579.62,-0.420406,1700.34)
+Trajectory polarisation: (0.849898,0,-0.526947)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (3921.38,-21.1118,5938.88)
+Trajectory momentum: (-338.456,-10.8019,216.284)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (3647.1,-29.1158,6056.85)
+Trajectory momentum: (-389.817,-10.6281,96.8881)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: 3921.38, -21.1118, 5938.88
+pol: 0.849898, 0, -0.526947
+mom: -2579.62, -0.420406, 1700.34, tot: 3089.6
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 3921.38, -21.1118, 5938.88
+pol: 0.849898, 0, -0.526947
+mom: -2579.62, -0.420406, 1700.34, tot: 3089.6
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 3921.38, -21.1118, 5938.88
+pol: 0, 0, 0
+mom: -338.456, -10.8019, 216.284, tot: 401.806
+
+
+Begin processing the 4th record. run: 1 subRun: 1 event: 4 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98575GeV
+ is now defined in terms Momentum: 3.09639GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(0.992338,0,0.123557)
+
+Trajectory point: 0
+Trajectory position: (-576.389,-14.1375,7108.62)
+Trajectory momentum: (-3086.03,4.35028,-253.026)
+Trajectory polarisation: (0.992338,0,0.123557)
+
+Trajectory point: 1
+Trajectory position: (-576.389,-14.1375,7108.62)
+Trajectory momentum: (-3086.03,4.35028,-253.026)
+Trajectory polarisation: (0.992338,0,0.123557)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (-576.389,-14.1375,7108.62)
+Trajectory momentum: (-167.31,-13.6897,-27.5871)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (-826.547,-38.6035,6958.26)
+Trajectory momentum: (-102.203,-14.3684,-135.237)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: -576.389, -14.1375, 7108.62
+pol: 0.992338, 0, 0.123557
+mom: -3086.03, 4.35028, -253.026, tot: 3096.39
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -576.389, -14.1375, 7108.62
+pol: 0.992338, 0, 0.123557
+mom: -3086.03, 4.35028, -253.026, tot: 3096.39
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -576.389, -14.1375, 7108.62
+pol: 0, 0, 0
+mom: -167.31, -13.6897, -27.5871, tot: 170.121
+
+
+Begin processing the 5th record. run: 1 subRun: 1 event: 5 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.99254GeV
+ is now defined in terms Momentum: 3.0887GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(0.748742,0,0.662861)
+
+Trajectory point: 0
+Trajectory position: (-4382.24,-2.52445,5559.72)
+Trajectory momentum: (-2429.58,-1.67948,-1907.14)
+Trajectory polarisation: (0.748742,0,0.662861)
+
+Trajectory point: 1
+Trajectory position: (-4382.24,-2.52445,5559.72)
+Trajectory momentum: (-2429.58,-1.67948,-1907.14)
+Trajectory polarisation: (0.748742,0,0.662861)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (-4382.24,-2.52445,5559.72)
+Trajectory momentum: (-844.562,41.8859,-673.416)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (-4604.77,9.10096,5359.13)
+Trajectory momentum: (-757.133,41.8861,-770.42)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: -4382.24, -2.52445, 5559.72
+pol: 0.748742, 0, 0.662861
+mom: -2429.58, -1.67948, -1907.14, tot: 3088.7
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -4382.24, -2.52445, 5559.72
+pol: 0.748742, 0, 0.662861
+mom: -2429.58, -1.67948, -1907.14, tot: 3088.7
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -4382.24, -2.52445, 5559.72
+pol: 0, 0, 0
+mom: -844.562, 41.8859, -673.416, tot: 1080.98
+
+
+Begin processing the 6th record. run: 1 subRun: 1 event: 6 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98485GeV
+ is now defined in terms Momentum: 3.09383GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(-0.0528638,0,-0.998602)
+
+Trajectory point: 0
+Trajectory position: (7041.94,-20.3768,-880.78)
+Trajectory momentum: (370.992,-1.10176,3071.5)
+Trajectory polarisation: (-0.0528638,0,-0.998602)
+
+Trajectory point: 1
+Trajectory position: (7041.94,-20.3768,-880.78)
+Trajectory momentum: (370.992,-1.10176,3071.5)
+Trajectory polarisation: (-0.0528638,0,-0.998602)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (7041.94,-20.3768,-880.78)
+Trajectory momentum: (290.617,-37.5769,2352.39)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (7070.5,-25.1328,-582.219)
+Trajectory momentum: (160.716,-37.5858,2364.82)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: 7041.94, -20.3768, -880.78
+pol: -0.0528638, 0, -0.998602
+mom: 370.992, -1.10176, 3071.5, tot: 3093.83
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 7041.94, -20.3768, -880.78
+pol: -0.0528638, 0, -0.998602
+mom: 370.992, -1.10176, 3071.5, tot: 3093.83
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 7041.94, -20.3768, -880.78
+pol: 0, 0, 0
+mom: 290.617, -37.5769, 2352.39, tot: 2370.58
+
+
+Begin processing the 7th record. run: 1 subRun: 1 event: 7 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98997GeV
+ is now defined in terms Momentum: 3.09311GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(0.997929,0,-0.0643234)
+
+Trajectory point: 0
+Trajectory position: (1060.71,1.43747,7009.08)
+Trajectory momentum: (-3059.84,3.29709,452.415)
+Trajectory polarisation: (0.997929,0,-0.0643234)
+
+Trajectory point: 1
+Trajectory position: (1060.71,1.43747,7009.08)
+Trajectory momentum: (-3059.84,3.29709,452.415)
+Trajectory polarisation: (0.997929,0,-0.0643234)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (1060.71,1.43747,7009.08)
+Trajectory momentum: (-1446.8,6.21398,221.363)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (762.566,2.71433,7041.47)
+Trajectory momentum: (-1460.58,6.24415,94.5055)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: 1060.71, 1.43747, 7009.08
+pol: 0.997929, 0, -0.0643234
+mom: -3059.84, 3.29709, 452.415, tot: 3093.11
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: 1060.71, 1.43747, 7009.08
+pol: 0.997929, 0, -0.0643234
+mom: -3059.84, 3.29709, 452.415, tot: 3093.11
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: 1060.71, 1.43747, 7009.08
+pol: 0, 0, 0
+mom: -1446.8, 6.21398, 221.363, tot: 1463.65
+
+
+Begin processing the 8th record. run: 1 subRun: 1 event: 8 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.98926GeV
+ is now defined in terms Momentum: 3.09859GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(-0.157762,0,0.987477)
+
+Trajectory point: 0
+Trajectory position: (-7105.86,-17.602,-413.196)
+Trajectory momentum: (175.894,-1.76502,-3093.59)
+Trajectory polarisation: (-0.157762,0,0.987477)
+
+Trajectory point: 1
+Trajectory position: (-7105.86,-17.602,-413.196)
+Trajectory momentum: (175.894,-1.76502,-3093.59)
+Trajectory polarisation: (-0.157762,0,0.987477)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (-7105.86,-17.602,-413.196)
+Trajectory momentum: (-8.58597,2.29045,-456.687)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (-7068.85,-16.0952,-709.874)
+Trajectory momentum: (120.495,2.29879,-440.588)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: -7105.86, -17.602, -413.196
+pol: -0.157762, 0, 0.987477
+mom: 175.894, -1.76502, -3093.59, tot: 3098.59
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -7105.86, -17.602, -413.196
+pol: -0.157762, 0, 0.987477
+mom: 175.894, -1.76502, -3093.59, tot: 3098.59
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -7105.86, -17.602, -413.196
+pol: 0, 0, 0
+mom: -8.58597, 2.29045, -456.687, tot: 456.774
+
+
+Begin processing the 9th record. run: 1 subRun: 1 event: 9 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.99473GeV
+ is now defined in terms Momentum: 3.09701GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(-0.967505,0,0.252851)
+
+Trajectory point: 0
+Trajectory position: (-2572.4,5.35787,-6627.69)
+Trajectory momentum: (2888.89,-4.15197,-1116.15)
+Trajectory polarisation: (-0.967505,0,0.252851)
+
+Trajectory point: 1
+Trajectory position: (-2572.4,5.35787,-6627.69)
+Trajectory momentum: (2888.89,-4.15197,-1116.15)
+Trajectory polarisation: (-0.967505,0,0.252851)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (-2572.4,5.35787,-6627.69)
+Trajectory momentum: (1618.31,9.0449,-613.553)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (-2288.15,6.92523,-6723.37)
+Trajectory momentum: (1659.93,9.04072,-489.877)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: -2572.4, 5.35787, -6627.69
+pol: -0.967505, 0, 0.252851
+mom: 2888.89, -4.15197, -1116.15, tot: 3097.01
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -2572.4, 5.35787, -6627.69
+pol: -0.967505, 0, 0.252851
+mom: 2888.89, -4.15197, -1116.15, tot: 3097.01
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -2572.4, 5.35787, -6627.69
+pol: 0, 0, 0
+mom: 1618.31, 9.0449, -613.553, tot: 1730.73
+
+
+Begin processing the 10th record. run: 1 subRun: 1 event: 10 at 23-Jun-2021 11:25:19 CDT
+G4ParticleGun::mu+
+ was defined in terms of KineticEnergy: 2.99316GeV
+ is now defined in terms Momentum: 3.09534GeV/c
+
+Current track is a positron, with PDG ID -11
+Track polarisation is (0,0,0)
+Filling trajectories
+Trajectory polarisation(0.941668,0,0.336542)
+
+Trajectory point: 0
+Trajectory position: (-1512.49,-6.20758,6946.33)
+Trajectory momentum: (-3024.05,-1.90041,-660.491)
+Trajectory polarisation: (0.941668,0,0.336542)
+
+Trajectory point: 1
+Trajectory position: (-1512.49,-6.20758,6946.33)
+Trajectory momentum: (-3024.05,-1.90041,-660.491)
+Trajectory polarisation: (0.941668,0,0.336542)
+Filling trajectories
+Trajectory polarisation(0,0,0)
+
+Trajectory point: 0
+Trajectory position: (-1512.49,-6.20758,6946.33)
+Trajectory momentum: (-2750.9,-0.543735,-615.558)
+Trajectory polarisation: (0,0,0)
+
+Trajectory point: 1
+Trajectory position: (-1803.63,-6.26497,6874.07)
+Trajectory momentum: (-2719.45,-0.535221,-742.23)
+Trajectory polarisation: (0,0,0)
+DecayNtup, GasGun: 
+
+Muon
+pos: -1512.49, -6.20758, 6946.33
+pol: 0.941669, 0, 0.336542
+mom: -3024.05, -1.90041, -660.491, tot: 3095.34
+
+
+DecayNtup, Trajectory: 
+
+PDG: -13
+pos: -1512.49, -6.20758, 6946.33
+pol: 0.941668, 0, 0.336542
+mom: -3024.05, -1.90041, -660.491, tot: 3095.34
+
+
+DecayNtup, Trajectory: 
+
+PDG: -11
+pos: -1512.49, -6.20758, 6946.33
+pol: 0, 0, 0
+mom: -2750.9, -0.543735, -615.558, tot: 2818.93
+
+
+========== KillTracks Summary ==========
+  Events: 10
+  Tracks: 40
+  Killed: 30
+          DecayWithSpin: 20
+          tlocalMax: 10
+
+%MSG-i PhysicalVolumeStore:  artg4Main:artg4@EndRun 23-Jun-2021 11:25:19 CDT  run: 1
+Storing 1 items in the physical volume store
+%MSG
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 10 passed = 10 failed = 0
+
+TrigReport ------ Modules in End-Path: end_path ------------
+TrigReport  Trig Bit#        Run    Success      Error Name
+TrigReport     0    0         10         10          0 decay
+
+TimeReport ---------- Time  Summary ---[sec]----
+TimeReport CPU = 1.159246 Real = 1.659786
+
+MemReport  ---------- Memory  Summary ---[base-10 MB]----
+MemReport  VmPeak = 1207.11 VmHWM = 505.844
+
+%MSG-i ArtG4Main:  PostEndJob 23-Jun-2021 11:25:17 CDT ModuleEndJob
+
+%MSG
+%MSG-i CoordSystemsStore:  PostEndJob 23-Jun-2021 11:25:16 CDT ModuleEndJob
+CoordSystemsStore::initialize called
+
+%MSG
+%MSG-i ClockAction:  PostEndJob 23-Jun-2021 11:25:16 CDT ModuleEndJob
+Elapsed time this run: 0.284124 seconds
+
+%MSG
+%MSG-i TrackingAction:  PostEndJob 23-Jun-2021 11:25:16 CDT ModuleEndJob
+============== TrackingAction::RunEnd ==============	Muons injected     : 10	Muons decayed      : 10	Muons lost         : 0	Muons stored       : 0====================================================
+%MSG
+%MSG-i PhysicalVolumeStore:  PostEndJob 23-Jun-2021 11:25:16 CDT ModuleEndJob
+
+%MSG
+Art has completed and will exit with status 0.

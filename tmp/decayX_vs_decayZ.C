@@ -1,140 +1,65 @@
-void decayX_vs_decayZ()
-{
-//=========Macro generated from canvas: c/c
-//=========  (Wed Jun  9 18:13:24 2021) by ROOT version 6.22/08
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0,0,1,1);
-   c->SetFillColor(0);
-   c->SetBorderMode(0);
-   c->SetBorderSize(2);
-   c->SetLogz();
-   c->SetRightMargin(0.13);
-   c->SetFrameBorderMode(0);
-   
-   TH2D *decayX_vs_decayZ = new TH2D("decayX_vs_decayZ","",800,-8000,8000,800,-8000,8000);
-   decayX_vs_decayZ->SetBinContent(36462,1);
-   decayX_vs_decayZ->SetBinContent(37319,1);
-   decayX_vs_decayZ->SetBinContent(37336,1);
-   decayX_vs_decayZ->SetBinContent(38076,1);
-   decayX_vs_decayZ->SetBinContent(40434,1);
-   decayX_vs_decayZ->SetBinContent(40551,1);
-   decayX_vs_decayZ->SetBinContent(43628,2);
-   decayX_vs_decayZ->SetBinContent(43795,1);
-   decayX_vs_decayZ->SetBinContent(44426,1);
-   decayX_vs_decayZ->SetBinContent(49216,1);
-   decayX_vs_decayZ->SetBinContent(50815,1);
-   decayX_vs_decayZ->SetBinContent(51614,1);
-   decayX_vs_decayZ->SetBinContent(52416,1);
-   decayX_vs_decayZ->SetBinContent(54254,1);
-   decayX_vs_decayZ->SetBinContent(59609,1);
-   decayX_vs_decayZ->SetBinContent(62807,1);
-   decayX_vs_decayZ->SetBinContent(64714,1);
-   decayX_vs_decayZ->SetBinContent(67931,1);
-   decayX_vs_decayZ->SetBinContent(87219,1);
-   decayX_vs_decayZ->SetBinContent(88024,1);
-   decayX_vs_decayZ->SetBinContent(88411,1);
-   decayX_vs_decayZ->SetBinContent(92417,1);
-   decayX_vs_decayZ->SetBinContent(92419,1);
-   decayX_vs_decayZ->SetBinContent(92843,1);
-   decayX_vs_decayZ->SetBinContent(94017,1);
-   decayX_vs_decayZ->SetBinContent(94021,1);
-   decayX_vs_decayZ->SetBinContent(100426,1);
-   decayX_vs_decayZ->SetBinContent(102828,1);
-   decayX_vs_decayZ->SetBinContent(104430,1);
-   decayX_vs_decayZ->SetBinContent(112439,1);
-   decayX_vs_decayZ->SetBinContent(122558,1);
-   decayX_vs_decayZ->SetBinContent(124165,1);
-   decayX_vs_decayZ->SetBinContent(129259,1);
-   decayX_vs_decayZ->SetBinContent(132194,1);
-   decayX_vs_decayZ->SetBinContent(141829,1);
-   decayX_vs_decayZ->SetBinContent(151463,1);
-   decayX_vs_decayZ->SetBinContent(155697,1);
-   decayX_vs_decayZ->SetBinContent(160508,1);
-   decayX_vs_decayZ->SetBinContent(175732,1);
-   decayX_vs_decayZ->SetBinContent(178138,1);
-   decayX_vs_decayZ->SetBinContent(182764,1);
-   decayX_vs_decayZ->SetBinContent(183746,1);
-   decayX_vs_decayZ->SetBinContent(193367,1);
-   decayX_vs_decayZ->SetBinContent(201381,1);
-   decayX_vs_decayZ->SetBinContent(230913,1);
-   decayX_vs_decayZ->SetBinContent(246157,1);
-   decayX_vs_decayZ->SetBinContent(252686,1);
-   decayX_vs_decayZ->SetBinContent(255091,1);
-   decayX_vs_decayZ->SetBinContent(276740,1);
-   decayX_vs_decayZ->SetBinContent(283154,1);
-   decayX_vs_decayZ->SetBinContent(283956,1);
-   decayX_vs_decayZ->SetBinContent(298297,1);
-   decayX_vs_decayZ->SetBinContent(299100,1);
-   decayX_vs_decayZ->SetBinContent(316836,1);
-   decayX_vs_decayZ->SetBinContent(317637,1);
-   decayX_vs_decayZ->SetBinContent(344103,1);
-   decayX_vs_decayZ->SetBinContent(347314,1);
-   decayX_vs_decayZ->SetBinContent(354436,1);
-   decayX_vs_decayZ->SetBinContent(367267,1);
-   decayX_vs_decayZ->SetBinContent(397850,1);
-   decayX_vs_decayZ->SetBinContent(401059,1);
-   decayX_vs_decayZ->SetBinContent(407355,1);
-   decayX_vs_decayZ->SetBinContent(408155,1);
-   decayX_vs_decayZ->SetBinContent(409885,1);
-   decayX_vs_decayZ->SetBinContent(412164,1);
-   decayX_vs_decayZ->SetBinContent(414570,1);
-   decayX_vs_decayZ->SetBinContent(424326,1);
-   decayX_vs_decayZ->SetBinContent(428999,1);
-   decayX_vs_decayZ->SetBinContent(436211,1);
-   decayX_vs_decayZ->SetBinContent(445028,1);
-   decayX_vs_decayZ->SetBinContent(450640,1);
-   decayX_vs_decayZ->SetBinContent(453214,1);
-   decayX_vs_decayZ->SetBinContent(457855,1);
-   decayX_vs_decayZ->SetBinContent(465067,1);
-   decayX_vs_decayZ->SetBinContent(468272,1);
-   decayX_vs_decayZ->SetBinContent(474684,1);
-   decayX_vs_decayZ->SetBinContent(485320,1);
-   decayX_vs_decayZ->SetBinContent(489106,1);
-   decayX_vs_decayZ->SetBinContent(493913,1);
-   decayX_vs_decayZ->SetBinContent(527071,1);
-   decayX_vs_decayZ->SetBinContent(541524,1);
-   decayX_vs_decayZ->SetBinContent(544380,1);
-   decayX_vs_decayZ->SetBinContent(547147,1);
-   decayX_vs_decayZ->SetBinContent(569644,1);
-   decayX_vs_decayZ->SetBinContent(569996,1);
-   decayX_vs_decayZ->SetBinContent(570795,1);
-   decayX_vs_decayZ->SetBinContent(578798,1);
-   decayX_vs_decayZ->SetBinContent(579291,1);
-   decayX_vs_decayZ->SetBinContent(583596,1);
-   decayX_vs_decayZ->SetBinContent(585191,1);
-   decayX_vs_decayZ->SetBinContent(585993,1);
-   decayX_vs_decayZ->SetBinContent(592162,1);
-   decayX_vs_decayZ->SetBinContent(593982,1);
-   decayX_vs_decayZ->SetBinContent(593986,1);
-   decayX_vs_decayZ->SetBinContent(597182,1);
-   decayX_vs_decayZ->SetBinContent(600223,1);
-   decayX_vs_decayZ->SetBinContent(601174,1);
-   decayX_vs_decayZ->SetBinContent(603550,1);
-   decayX_vs_decayZ->SetBinContent(605075,1);
-   decayX_vs_decayZ->SetEntries(100);
+void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
-   Int_t ci;      // for color index setting
-   TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#000099");
-   decayX_vs_decayZ->SetLineColor(ci);
-   decayX_vs_decayZ->GetXaxis()->SetTitle("Decay position X [mm]");
-   decayX_vs_decayZ->GetXaxis()->CenterTitle(true);
-   decayX_vs_decayZ->GetXaxis()->SetLabelFont(42);
-   decayX_vs_decayZ->GetXaxis()->SetTitleSize(0.04);
-   decayX_vs_decayZ->GetXaxis()->SetTitleOffset(1.1);
-   decayX_vs_decayZ->GetXaxis()->SetTitleFont(42);
-   decayX_vs_decayZ->GetYaxis()->SetTitle("Decay position Z [mm]");
-   decayX_vs_decayZ->GetYaxis()->CenterTitle(true);
-   decayX_vs_decayZ->GetYaxis()->SetNdivisions(4000510);
-   decayX_vs_decayZ->GetYaxis()->SetLabelFont(42);
-   decayX_vs_decayZ->GetYaxis()->SetTitleSize(0.04);
-   decayX_vs_decayZ->GetYaxis()->SetTitleOffset(1.1);
-   decayX_vs_decayZ->GetYaxis()->SetTitleFont(42);
-   decayX_vs_decayZ->GetZaxis()->SetLabelFont(42);
-   decayX_vs_decayZ->GetZaxis()->SetTitleOffset(1);
-   decayX_vs_decayZ->GetZaxis()->SetTitleFont(42);
-   decayX_vs_decayZ->Draw("COLZ");
-   c->Modified();
-   c->cd();
-   c->SetSelected(c);
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(title.c_str());
+
+	hist->SetStats(0);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+
+	gStyle->SetPalette(55);
+	c->SetRightMargin(0.13);
+
+	hist->Draw("COLZ");
+
+	c->SetLogz();
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
+
+void DecayX_vs_DecayZ() { 
+
+	bool allDecays = false;//true;
+
+	//string inFileName = "phaseAnalyzerPlots.root";
+	string inFileName; string outFileName;
+
+	string title = "";
+
+	if(allDecays) {
+		inFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_truthAllDecays_WORLD_200MeV_AQ.root";
+		outFileName = "decayX_vs_decayZ_truthAllDecays";
+		title+="All decays";
+	} else{
+		inFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_truth_WORLD_200MeV_AQ.root";
+		outFileName = "decayX_vs_decayZ_truth";
+		title+="Tracker decays";
+	} 
+
+	TFile *inFile = TFile::Open(inFileName.c_str()); 
+	cout<<"Got input file "<<inFileName<<", "<<inFile<<endl;
+
+	string histName = "MainPlots/DecayZ_vs_DecayX";
+	TH2D *hist = (TH2D*)inFile->Get(histName.c_str());
+	cout<<"Got hist "<<histName<<", "<<hist<<endl;
+
+	title += ";Decay position X [mm];Decay position Z [mm]";
+
+	DrawTH2(hist, ";Decay position X [mm];Decay position Z [mm]", outFileName);
+
+	return;
+
 }

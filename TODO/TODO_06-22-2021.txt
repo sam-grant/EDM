@@ -1,0 +1,27 @@
+
+---- Coding: deadline midday ---- 
+- Re-run scans in 500 MeV slices
+X * MRF
+X * AAR
+X * WORLD
+X - Re-run muon plots in mrad (just take AAR)
+- Re-run all scans for "truth" //  and "trackReco" - prioritising truth in MRF 
+X * MRF 200 mEV 500 Mev
+* AAR 200 mEV 500 Mev
+* WORLD
+- 
+
+X- Overlay modulo plots and vertical position plots.
+X	truthAllDecays_AAR_500MeV
+X	// truthAllDecays_MRF_500MeV 
+- Get decay vertex plots for all decays and truth
+
+- Refit the muon plots (just allow phase to float). 
+- Overlay the NA^2 plot onto the A_EDM scans. 
+- Fit the scans? 
+
+---- Slides  -----
+- Put scans in all reference frames onto slides. Just simplify it into "LAB" and "MRF", although do mention AAR.
+- Discuss the vertical angle RMS and the vertical angle distributions. 
+
+

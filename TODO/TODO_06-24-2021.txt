@@ -1,0 +1,19 @@
+- Update talk from yesterday and post to doc db.
+
+X - Fix muon parameters in gas gun (hack it in).
+	pol(0,0,1), mom(0,0,pMagic), pos(0,0,rMagic)
+
+X - Boost 1000 decays in z to MRF.
+
+X - Share plots with Dominika.
+
+X - Produce 1e4 decays and repeat.
+
+X - Sort out ranges & binning.
+
+X - Generate lab frame momentum of zero and check that it matches MRF.
+
+X - Overlay Dominika and my plots
+
+- Run through calo misalignment stuff. 
+

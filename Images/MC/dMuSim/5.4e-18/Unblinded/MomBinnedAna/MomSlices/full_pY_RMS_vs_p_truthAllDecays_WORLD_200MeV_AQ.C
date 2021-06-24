@@ -1,10 +1,10 @@
 void full_pY_RMS_vs_p_truthAllDecays_WORLD_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jun 18 13:17:29 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 22 01:02:12 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.25,5.644145,3605.25,30.40184);
+   c->Range(-420.75,5.665555,3456.75,30.36064);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,21 +28,21 @@ void full_pY_RMS_vs_p_truthAllDecays_WORLD_200MeV_AQ()
    2700,
    2900};
    Double_t Graph0_fy1046[15] = {
-   9.778732,
-   16.31942,
-   20.07598,
-   22.60088,
-   24.31293,
-   25.43903,
-   26.06811,
-   26.24751,
-   26.04207,
-   25.39799,
-   24.34962,
-   22.78886,
-   20.65251,
-   17.65266,
-   13.38599};
+   9.78453,
+   16.31735,
+   20.08681,
+   22.59976,
+   24.31572,
+   25.41506,
+   26.04793,
+   26.23425,
+   26.0365,
+   25.41792,
+   24.34968,
+   22.79608,
+   20.64311,
+   17.66891,
+   13.38316};
    Double_t Graph0_fex1046[15] = {
    100,
    100,
@@ -60,30 +60,30 @@ void full_pY_RMS_vs_p_truthAllDecays_WORLD_200MeV_AQ()
    100,
    100};
    Double_t Graph0_fey1046[15] = {
-   0.008303465,
-   0.01406975,
-   0.01764268,
-   0.02036426,
-   0.02259439,
-   0.02456736,
-   0.02634535,
-   0.0280506,
-   0.02970035,
-   0.03127134,
-   0.03292299,
-   0.03472177,
-   0.03669669,
-   0.03916147,
-   0.04311919};
+   0.003127922,
+   0.005295029,
+   0.006644876,
+   0.007663795,
+   0.00850316,
+   0.009231556,
+   0.009905258,
+   0.01053892,
+   0.01116497,
+   0.01178687,
+   0.01241921,
+   0.01309964,
+   0.01385206,
+   0.01475561,
+   0.01621221};
    TGraphErrors *gre = new TGraphErrors(15,Graph0_fx1046,Graph0_fy1046,Graph0_fex1046,Graph0_fey1046);
    gre->SetName("Graph0");
-   gre->SetTitle(";e^{+} p_{WORLD}  [MeV] in range: p #minus 100 < p < p #plus 100 MeV;#sigma_{py}} [MeV]");
+   gre->SetTitle(";e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100 MeV;#sigma_{py} [MeV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01046 = new TH1F("Graph_Graph01046","",100,0,3300);
-   Graph_Graph01046->SetMinimum(8.119915);
-   Graph_Graph01046->SetMaximum(27.92607);
+   Graph_Graph01046->SetMinimum(8.135063);
+   Graph_Graph01046->SetMaximum(27.89113);
    Graph_Graph01046->SetDirectory(0);
    Graph_Graph01046->SetStats(0);
 
@@ -91,14 +91,14 @@ void full_pY_RMS_vs_p_truthAllDecays_WORLD_200MeV_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01046->SetLineColor(ci);
-   Graph_Graph01046->GetXaxis()->SetTitle("e^{+} p_{WORLD}  [MeV] in range: p #minus 100 < p < p #plus 100 MeV");
-   Graph_Graph01046->GetXaxis()->SetRange(0,97);
+   Graph_Graph01046->GetXaxis()->SetTitle("e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100 MeV");
+   Graph_Graph01046->GetXaxis()->SetRange(0,93);
    Graph_Graph01046->GetXaxis()->CenterTitle(true);
    Graph_Graph01046->GetXaxis()->SetLabelFont(42);
    Graph_Graph01046->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01046->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01046->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01046->GetYaxis()->SetTitle("#sigma_{py}} [MeV]");
+   Graph_Graph01046->GetYaxis()->SetTitle("#sigma_{py} [MeV]");
    Graph_Graph01046->GetYaxis()->CenterTitle(true);
    Graph_Graph01046->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01046->GetYaxis()->SetLabelFont(42);

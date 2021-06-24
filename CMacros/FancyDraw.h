@@ -1447,7 +1447,7 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 	leg->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
-	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
+	TPaveText *names = new TPaveText(0.50,0.595,0.67,0.88,"NDC");
 
 	names->SetTextAlign(13);
 	names->AddText("N") ; 

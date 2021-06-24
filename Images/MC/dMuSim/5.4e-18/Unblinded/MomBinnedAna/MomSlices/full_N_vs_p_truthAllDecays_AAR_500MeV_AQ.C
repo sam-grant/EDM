@@ -1,10 +1,10 @@
 void full_N_vs_p_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun 17 13:39:27 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 22 10:12:50 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-420.75,-1033571,3456.75,1.454621e+07);
+   c->Range(-251.625,-1033571,3254.625,1.454621e+07);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -41,13 +41,13 @@ void full_N_vs_p_truthAllDecays_AAR_500MeV_AQ()
    0};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1029,Graph0_fy1029,Graph0_fex1029,Graph0_fey1029);
    gre->SetName("Graph0");
-   gre->SetTitle(";p [MeV] in range: p #minus 250 < p < p #plus 250 MeV;Positrons");
+   gre->SetTitle(";e^{+}_{LAB} p [MeV] in range: p #minus 250 < p < p #plus 250 MeV;Positrons");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01029 = new TH1F("Graph_Graph01029","",100,0,3300);
-   Graph_Graph01029->SetMinimum(524407.7);
-   Graph_Graph01029->SetMaximum(1.298824e+07);
+   Graph_Graph01029->SetMinimum(524407.8);
+   Graph_Graph01029->SetMaximum(1.298823e+07);
    Graph_Graph01029->SetDirectory(0);
    Graph_Graph01029->SetStats(0);
 
@@ -55,8 +55,8 @@ void full_N_vs_p_truthAllDecays_AAR_500MeV_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01029->SetLineColor(ci);
-   Graph_Graph01029->GetXaxis()->SetTitle("p [MeV] in range: p #minus 250 < p < p #plus 250 MeV");
-   Graph_Graph01029->GetXaxis()->SetRange(0,93);
+   Graph_Graph01029->GetXaxis()->SetTitle("e^{+}_{LAB} p [MeV] in range: p #minus 250 < p < p #plus 250 MeV");
+   Graph_Graph01029->GetXaxis()->SetRange(4,88);
    Graph_Graph01029->GetXaxis()->CenterTitle(true);
    Graph_Graph01029->GetXaxis()->SetLabelFont(42);
    Graph_Graph01029->GetXaxis()->SetTitleSize(0.04);

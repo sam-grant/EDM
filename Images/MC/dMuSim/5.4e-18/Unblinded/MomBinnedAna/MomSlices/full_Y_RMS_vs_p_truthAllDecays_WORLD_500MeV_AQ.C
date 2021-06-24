@@ -1,7 +1,7 @@
 void full_Y_RMS_vs_p_truthAllDecays_WORLD_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun 17 13:03:34 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 22 10:24:10 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-251.625,13.20361,3254.625,13.23893);
@@ -41,7 +41,7 @@ void full_Y_RMS_vs_p_truthAllDecays_WORLD_500MeV_AQ()
    0.007480168};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1026,Graph0_fy1026,Graph0_fex1026,Graph0_fey1026);
    gre->SetName("Graph0");
-   gre->SetTitle(";p [MeV] in range: p #minus 250 < p < p #plus 250 MeV;#sigma_{y} [mm]");
+   gre->SetTitle(";e^{+}_{LAB} p [MeV] in range: p #minus 250 < p < p #plus 250 MeV;#sigma_{y} [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -55,7 +55,7 @@ void full_Y_RMS_vs_p_truthAllDecays_WORLD_500MeV_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01026->SetLineColor(ci);
-   Graph_Graph01026->GetXaxis()->SetTitle("p [MeV] in range: p #minus 250 < p < p #plus 250 MeV");
+   Graph_Graph01026->GetXaxis()->SetTitle("e^{+}_{LAB} p [MeV] in range: p #minus 250 < p < p #plus 250 MeV");
    Graph_Graph01026->GetXaxis()->SetRange(4,88);
    Graph_Graph01026->GetXaxis()->CenterTitle(true);
    Graph_Graph01026->GetXaxis()->SetLabelFont(42);

@@ -1,2 +1,21 @@
-- Simplying code and make some muon beam plots 
-- Send over to Joe 
+X - Simplying code and make some muon beam polaration plots 
+- Produce plots in all reference frames with and without quality
+X * MRF 
+* AAR 
+* WORLD
+- Produce plots with muon pol angle 
+* AAR
+* WORLD
+
+- Write seperate macro to present muon plots
+
+- Look more closely at the vertical angle. Maybe we actually need a cut here? How to investigate.
+- Look at the plots for the vertical angle and overlay them. 
+* AAR
+* WORLD
+* MRF
+
+Also overlay the modulo plots themselves! Might be quite interesting. Same as Dominika.
+
+
+

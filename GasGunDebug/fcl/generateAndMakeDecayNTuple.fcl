@@ -1,0 +1,222 @@
+#include "geom/gm2FieldManager.fcl"
+//#include "geom/quad_multipole_coefficients.fcl"
+//#include "geom/quad_time_sequence_sorted_multipole_coefficients.fcl"
+#include "geom/world.fcl"
+#include "geom/arc.fcl"
+#include "geom/magnetIronAndCryostat.fcl"
+#include "geom/vac.fcl"
+//#include "geom/t0.fcl"
+#include "geom/inflector.fcl"
+//#include "geom/ibms.fcl"	 
+#include "geom/kicker.fcl"
+#include "geom/quad.fcl"
+//#include "geom/collimator.fcl"
+//#include "geom/station.fcl"
+//#include "geom/calorimeter.fcl"
+#include "geom/PGA.fcl"
+//#include "geom/strawtracker.fcl"
+//#include "geom/trackerdummyplane.fcl"
+#include "conDBParams.fcl"
+
+
+process_name : generateAndMakeDecayNTuple
+
+source: {
+  module_type : EmptyEvent
+  maxEvents   : 150
+
+  firstRun    : 1
+  firstSubRun : 1
+}
+
+services : 
+{
+   message : {
+      debugModules : ["*"]
+      suppressInfo : []
+     
+      destinations : {
+	 LogToConsole : {
+            type      : "cout"
+            threshold : "INFO"
+	 }
+	 LogToFile: {
+	    type : "file"
+	    filename : "generate.log"
+	    append : false
+	    threshold : "INFO"
+	 }
+      }
+   }
+   
+
+   DetectorHolder         : {}
+   ActionHolder           : {}
+   PhysicsListHolder      : {}
+   RandomNumberGenerator  : {}
+   Gm2Constants           : {}
+   TurnCounter            : {} 
+
+   // Create coordinate frames in the various straw tracker components and calorimeters
+   CoordSystemsStore : {}
+   
+    // Geometry
+    Geometry: {
+      world:        @local::world_geom
+      arc:          @local::arc_geom
+      magnetIronAndCryostat : @local::magnetIronAndCryostat_geom
+      vac:          @local::vac_geom
+      //t0:           @local::t0_geom
+      inflector:    @local::inflector_geom
+      //ibms :        @local::ibms_geom
+      kicker:       @local::kicker_geom
+      quad:         @local::quad_geom
+      //collimator:   @local::collimator_geom
+      //station:      @local::station_geom
+      //calorimeter:  @local::calorimeter_geom
+      pga:          @local::PGA_geom
+      //strawtracker: @local::strawtracker_geom
+      //trackerdummyplane: @local::trackerdummyplane_geom
+    }
+
+    // Actions for the simulation
+    KillTracks: {
+      // Print level (none=0, some=1, more=2)
+      verbosity: 1
+
+      // Stacking action (see cut values below)
+      killElectrons:      false
+      killPositrons:      false
+      killPhotons:        false
+      killOpticalPhotons: false
+      killNeutrons:       true
+      killNeutrinos:      false // true
+
+      // Apply these cuts if above variables are true
+      electronPmin: 5 //MeV
+      positronPmin: 5 //MeV
+      photonEmin:   1 //MeV
+      opticalPhotonMinWavelength: 250 //nm
+      opticalPhotonMaxWavelength: 950 //nm
+
+      // Stepping action
+      tlocalMax:  1 //500 //ns, "time since birth"
+      tglobalMax: 700 //microsecond, "lab time"
+    }
+
+    physicalVolumeStore : {}
+
+    Gm2PhysicsList: {
+       decayMode           : "sm"
+       physicsListName     : "FTFP_BERT"
+       cerenkovProcessMode : "lookup" // (tracking, lookup, comparison, none)
+    }
+
+    TrackingAction : {
+       name : "trackingAction"
+       StorePrimaryTrajectory           : true
+       StorePrimaryDaughterTrajectories : true
+       StoreOrphanTrajectories          : false
+       StorePrimaryTrajectory           : true
+    }
+
+    PrimaryParticleTrack: {}
+    ClockAction: {}
+
+    // All field parameters are set in gm2FieldManger
+    gm2FieldManager: @local::gm2FieldManager	
+
+
+    // Gas gun with beam dynamics
+    GasGunBdyn: {
+      name: "gasGunBdyn"
+      verbosity: 1
+ 
+      // Particle distributions
+      tdistr: 989  //{0, 1, 2, 989} = {DELTA, FLAT, GAUS, E989}
+      xdistr: 2    //{0, 1, 2} = {DELTA, FLAT, GAUS}
+      ydistr: 2    //{0, 1, 2} = {DELTA, FLAT, GAUS}
+      pdistr: 2    //{0, 1, 2} = {DELTA, FLAT, GAUS}
+
+      // Distribution widths (see above)
+      twidth: 120  //ns
+      xwidth:  12.5  //mm
+      ywidth:  12.5  //mm
+      pwidth: 0.1  //percent
+
+      // Other stuff
+      setPolarization: true //false=randomly-polarized muons
+      quadFieldIndex: 0.153
+      AxCBO:       5 //mm
+      AyCBO:       0 //mm
+      tDecayMin:   0 //microsecond
+      tDecayMax: 700 //microsecond
+      infExitX:   77 //mm
+      infBetaX:  1.5 //m
+      infBetaY: 10.0 //m
+
+      seqEvents: true
+
+      fixMuonParams: true
+    }
+
+    // Detectors
+    //------------------------
+    World : {}	
+    Ring  : {}
+    Arc   : {
+       arc_which : [0]
+    }
+    MagnetIronAndCryostat : {verbosity: 0}
+   //NewInflector : {}
+    //IBMS : {}
+    //VacuumChamberCadMesh: {}	
+    //Collimator   : {}
+    //TrolleyRailCadMesh : {}
+    //Kicker    : {}
+    //Quad      : {}
+    //Station   : {}
+
+
+   TFileService: {
+      fileName: "decayNTuple.root"
+   }
+
+
+   
+} # end of services block
+
+physics : 
+{
+   producers: {
+      artg4 : { 
+          module_type : artg4Main
+          enableVisualization : false
+          macroPath   : ".:./macros:../macros:../../macros"
+          visMacro    : "vis.mac"
+          afterEvent  : pass  // (ui, pause, pass)
+      }
+
+      randomsaver :  {
+         module_type : RandomNumberSaver
+      }
+   } // end of producers block
+
+
+  analyzers : {
+      decay : {
+         module_type : DecayNtup
+	 makeTree : true
+      }
+  }
+
+   path1   : [ randomsaver, artg4 ]
+  pathMake  : [decay]
+
+
+   trigger_paths : [ path1 ]
+   end_paths     : [ pathMake ]
+
+} # end of physics block
+
+// services.gm2FieldManager.doSpinTracking : true

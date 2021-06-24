@@ -1,10 +1,10 @@
 void full_theta_Y_vs_p_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun 17 13:39:27 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 22 10:12:49 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-420.75,-0.03501618,3456.75,0.02568331);
+   c->Range(-251.625,-0.1142391,3254.625,0.04152757);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void full_theta_Y_vs_p_truthAllDecays_AAR_500MeV_AQ()
    2250,
    2750};
    Double_t Graph0_fy1023[6] = {
-   -0.01130545,
-   -0.005410629,
-   0.001247942,
-   -0.002025116,
-   0.005439688,
-   0.01023437};
+   -0.06067455,
+   0.001412611,
+   0.001249666,
+   -0.002025123,
+   0.005439406,
+   0.01023421};
    Double_t Graph0_fex1023[6] = {
    250,
    250,
@@ -33,21 +33,21 @@ void full_theta_Y_vs_p_truthAllDecays_AAR_500MeV_AQ()
    250,
    250};
    Double_t Graph0_fey1023[6] = {
-   0.01359415,
-   0.00942611,
-   0.007121986,
-   0.005900581,
-   0.00528311,
-   0.005332352};
+   0.02760339,
+   0.009752374,
+   0.007120885,
+   0.005900106,
+   0.005282891,
+   0.005332255};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1023,Graph0_fy1023,Graph0_fex1023,Graph0_fey1023);
    gre->SetName("Graph0");
-   gre->SetTitle(";p [MeV] in range: p #minus 250 < p < p #plus 250 MeV;#LT#theta_{y}#GT [mrad]");
+   gre->SetTitle(";e^{+}_{LAB} p [MeV] in range: p #minus 250 < p < p #plus 250 MeV;#LT#theta_{y}#GT [mrad]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01023 = new TH1F("Graph_Graph01023","",100,0,3300);
-   Graph_Graph01023->SetMinimum(-0.02894623);
-   Graph_Graph01023->SetMaximum(0.01961336);
+   Graph_Graph01023->SetMinimum(-0.09866239);
+   Graph_Graph01023->SetMaximum(0.02595091);
    Graph_Graph01023->SetDirectory(0);
    Graph_Graph01023->SetStats(0);
 
@@ -55,8 +55,8 @@ void full_theta_Y_vs_p_truthAllDecays_AAR_500MeV_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01023->SetLineColor(ci);
-   Graph_Graph01023->GetXaxis()->SetTitle("p [MeV] in range: p #minus 250 < p < p #plus 250 MeV");
-   Graph_Graph01023->GetXaxis()->SetRange(0,93);
+   Graph_Graph01023->GetXaxis()->SetTitle("e^{+}_{LAB} p [MeV] in range: p #minus 250 < p < p #plus 250 MeV");
+   Graph_Graph01023->GetXaxis()->SetRange(4,88);
    Graph_Graph01023->GetXaxis()->CenterTitle(true);
    Graph_Graph01023->GetXaxis()->SetLabelFont(42);
    Graph_Graph01023->GetXaxis()->SetTitleSize(0.04);

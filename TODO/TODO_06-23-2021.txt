@@ -1,0 +1,22 @@
+- Update talk from yesterday and post to doc db 
+X - Get /gm2/app/users/sgrant/analysis/EDM/EDMSim/GasGunDebug/fcl/generateAndMakeDecayNTuple.fcl up and running. Also gm2analyses/DecayNtup_module.cc
+- Read through code base & understand
+X - Produce 10 decays, print out all info.
+- Try to calculate what you think they should be. 
+- Compare to Dominika
+
+---- 
+
+Positron polarisation always get to zero, does this effect anything? 
+Seems like everything is just calculated by Geant
+
+- Turning on spin tracking doesn't help
+- setPolarization doesn't help
+
+------
+
+Set mom to (0,0,magicMom)
+Set pos to (0,0,magicRad)
+
+// Not sure you really need to do this if you're setting the momemntum like that
+Set pol to (0,0,1);

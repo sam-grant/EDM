@@ -1,10 +1,10 @@
 void full_Y_vs_p_truthAllDecays_MRF_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jun 18 13:58:17 2021) by ROOT version 6.22/08
+//=========  (Tue Jun 22 01:04:47 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.25,-0.03003181,3605.25,0.04860969);
+   c->Range(-420.75,-0.06270409,3456.75,0.0370107);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,21 +28,21 @@ void full_Y_vs_p_truthAllDecays_MRF_200MeV_AQ()
    2700,
    2900};
    Double_t Graph0_fy1043[15] = {
-   0.005460814,
-   0.002858519,
-   -0.001030575,
-   0.002594899,
-   -0.01155574,
-   -0.01045583,
-   -0.00331791,
-   7.658982e-05,
-   0.003177284,
-   0.01523685,
-   -0.005070861,
-   0.004487798,
-   -0.001324022,
-   0.001355446,
-   0.01695287};
+   -0.0004621313,
+   0.0009037231,
+   0.01009624,
+   -0.002220607,
+   0.01385047,
+   0.005677794,
+   -0.01495074,
+   0.006926675,
+   -0.01151878,
+   0.005300584,
+   -0.001564216,
+   -0.0122445,
+   -0.02956351,
+   0.002225675,
+   -0.02344616};
    Double_t Graph0_fex1043[15] = {
    100,
    100,
@@ -60,30 +60,30 @@ void full_Y_vs_p_truthAllDecays_MRF_200MeV_AQ()
    100,
    100};
    Double_t Graph0_fey1043[15] = {
-   0.004917999,
-   0.004996242,
-   0.005089708,
-   0.005198133,
-   0.005369157,
-   0.005572398,
-   0.005852477,
-   0.006188967,
-   0.006563237,
-   0.007151893,
-   0.007789989,
-   0.008824025,
-   0.01020134,
-   0.01275671,
-   0.0185499};
+   0.005976035,
+   0.006067728,
+   0.006185362,
+   0.00634055,
+   0.006541096,
+   0.00678445,
+   0.007106582,
+   0.007509517,
+   0.008014402,
+   0.008676263,
+   0.009538342,
+   0.01074539,
+   0.01255384,
+   0.01562833,
+   0.0226388};
    TGraphErrors *gre = new TGraphErrors(15,Graph0_fx1043,Graph0_fy1043,Graph0_fex1043,Graph0_fey1043);
    gre->SetName("Graph0");
-   gre->SetTitle(";e^{+} p_{WORLD}  [MeV] in range: p #minus 100 < p < p #plus 100 MeV;#LTy#GT [mm]");
+   gre->SetTitle(";e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100 MeV;#LTy#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01043 = new TH1F("Graph_Graph01043","",100,0,3300);
-   Graph_Graph01043->SetMinimum(-0.02216766);
-   Graph_Graph01043->SetMaximum(0.04074554);
+   Graph_Graph01043->SetMinimum(-0.05273261);
+   Graph_Graph01043->SetMaximum(0.02703922);
    Graph_Graph01043->SetDirectory(0);
    Graph_Graph01043->SetStats(0);
 
@@ -91,8 +91,8 @@ void full_Y_vs_p_truthAllDecays_MRF_200MeV_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01043->SetLineColor(ci);
-   Graph_Graph01043->GetXaxis()->SetTitle("e^{+} p_{WORLD}  [MeV] in range: p #minus 100 < p < p #plus 100 MeV");
-   Graph_Graph01043->GetXaxis()->SetRange(0,97);
+   Graph_Graph01043->GetXaxis()->SetTitle("e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100 MeV");
+   Graph_Graph01043->GetXaxis()->SetRange(0,93);
    Graph_Graph01043->GetXaxis()->CenterTitle(true);
    Graph_Graph01043->GetXaxis()->SetLabelFont(42);
    Graph_Graph01043->GetXaxis()->SetTitleSize(0.04);

@@ -1,0 +1,40 @@
+/*DecayNtup, Trajectory:
+
+  PDG: -13
+  pos: 610.274, -6.48728, 7060.09
+  pol: 0.996285, 0, -0.0861188
+  mom: -3079.79, -0.17785, 271.174, tot: 3091.7
+
+
+  DecayNtup, Trajectory:
+
+  PDG: -11
+  pos: 610.274, -6.48728, 7060.09
+  pol: 0, 0, 0
+  mom: -311.788, 6.65035, 56.2608, tot: 316.893 */
+
+void decayKinematics() {
+
+  double eMass = 0.51099895; // MeV
+  double muMass = 105.6583715; // MeV
+  double nuMass = 0.;
+
+  TVector3 muMom (-3079.79, -0.17785, 271.174); // MeV
+  TVector3 muPol (0.996285, 0, -0.0861188);
+  
+  TVector3 eMom (-311.788, 6.65035, 56.2608);
+
+  double muEne = sqrt(pow(muMass,2)+pow(muMom.Mag(),2));
+  double eEne = sqrt(pow(eMass,2)+pow(eMom.Mag(),2));
+  double nuEne = muEne - eEne; // This correct?
+  //  cout<<"Muon momentum\t"<<muMom.Mag()<<" MeV"<<endl;
+  cout<<"Muon energy\t"<<muEne<<" MeV"<<endl;
+  cout<<"Positron energy\t"<<eEne<<" MeV"<<endl;
+  cout<<"Neutrino energy\t"<<nuEne<<" MeV"<<endl;
+
+  
+
+
+  return;
+
+}

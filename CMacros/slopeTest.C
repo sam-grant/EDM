@@ -48,7 +48,7 @@ void run_dMu() {
 	TCanvas *c = new TCanvas("c","c", 800, 600);
 
 
-	mod_poly_t->SetTitle(";t_{g#minus2}^{mod} [ns];Spin polarisation Y");
+	mod_poly_t->SetTitle(";t_{g#minus2}^{mod} [ns];Spin polarisation Y [rad]");
 	mod_poly_t->GetYaxis()->CenterTitle(1);
 	mod_poly_t->GetXaxis()->CenterTitle(1);
 	mod_poly_t->GetYaxis()->SetTitleOffset(1.25);
