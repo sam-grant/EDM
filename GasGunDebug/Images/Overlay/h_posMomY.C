@@ -1,7 +1,7 @@
 void h_posMomY()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun 24 18:25:09 2021) by ROOT version 6.22/08
+//=========  (Thu Jun 24 18:45:08 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(0,0,1,1);
@@ -55,27 +55,19 @@ void h_posMomY()
    h_posMomY__5->Draw("HIST E");
    
    TH1F *h_posMomY__6 = new TH1F("h_posMomY__6","",20,-100,100);
-   h_posMomY__6->SetBinContent(1,0.03607428);
-   h_posMomY__6->SetBinContent(2,0.04668434);
-   h_posMomY__6->SetBinContent(3,0.06206921);
-   h_posMomY__6->SetBinContent(4,0.09230775);
-   h_posMomY__6->SetBinContent(5,0.1251988);
-   h_posMomY__6->SetBinContent(6,0.1793105);
-   h_posMomY__6->SetBinContent(7,0.1888596);
-   h_posMomY__6->SetBinContent(8,0.2896551);
-   h_posMomY__6->SetBinContent(9,0.425464);
-   h_posMomY__6->SetBinContent(10,0.9761274);
-   h_posMomY__6->SetBinContent(11,1);
-   h_posMomY__6->SetBinContent(12,0.4387266);
-   h_posMomY__6->SetBinContent(13,0.297082);
-   h_posMomY__6->SetBinContent(14,0.2079574);
-   h_posMomY__6->SetBinContent(15,0.1602122);
-   h_posMomY__6->SetBinContent(16,0.1262597);
-   h_posMomY__6->SetBinContent(17,0.09177706);
-   h_posMomY__6->SetBinContent(18,0.07586198);
-   h_posMomY__6->SetBinContent(19,0.04774524);
-   h_posMomY__6->SetBinContent(20,0.03289107);
-   h_posMomY__6->SetEntries(20);
+   h_posMomY__6->SetBinContent(5,0.005739796);
+   h_posMomY__6->SetBinContent(6,0.1964286);
+   h_posMomY__6->SetBinContent(7,0.4343112);
+   h_posMomY__6->SetBinContent(8,0.6957908);
+   h_posMomY__6->SetBinContent(9,0.8577806);
+   h_posMomY__6->SetBinContent(10,1);
+   h_posMomY__6->SetBinContent(11,0.9521683);
+   h_posMomY__6->SetBinContent(12,0.9107143);
+   h_posMomY__6->SetBinContent(13,0.6830357);
+   h_posMomY__6->SetBinContent(14,0.4330357);
+   h_posMomY__6->SetBinContent(15,0.2002551);
+   h_posMomY__6->SetBinContent(16,0.008928572);
+   h_posMomY__6->SetEntries(19);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha

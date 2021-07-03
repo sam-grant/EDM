@@ -1,17 +1,18 @@
 void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
 {
-//=========Macro generated from canvas: c/c
-//=========  (Fri May 28 00:33:52 2021) by ROOT version 6.12/04
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->SetHighLightColor(2);
-   c->Range(-3.1375,-1.375,28.2375,2.375);
-   c->SetFillColor(0);
-   c->SetBorderMode(0);
-   c->SetBorderSize(2);
-   c->SetFrameBorderMode(0);
-   c->SetFrameBorderMode(0);
+//=========Macro generated from canvas: gr_comp/c
+//=========  (Thu Jul  1 08:43:49 2021) by ROOT version 6.12/04
+   TCanvas *gr_comp = new TCanvas("gr_comp", "c",0,0,800,600);
+   gr_comp->SetHighLightColor(2);
+   gr_comp->Range(-3.15,-1.375,28.35,2.375);
+   gr_comp->SetFillColor(0);
+   gr_comp->SetBorderMode(0);
+   gr_comp->SetBorderSize(2);
+   gr_comp->SetFrameBorderMode(0);
+   gr_comp->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1001[22] = {
+   Double_t Run-4_fx1001[23] = {
+   1,
    2,
    3,
    4,
@@ -34,30 +35,32 @@ void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
    21,
    22,
    23};
-   Double_t Graph0_fy1001[22] = {
-   -0.377654,
-   0.7715347,
-   -0.1488592,
-   0.9972225,
-   0.5664609,
-   0.9763969,
-   0.2786522,
-   -0.3363587,
-   0.1050221,
-   -0.3526227,
-   -0.172879,
-   0.455428,
-   -0.08901151,
-   0.7445214,
-   -0.08062357,
-   0.8270818,
-   1.013909,
-   0.04767717,
-   0.1964405,
-   0.2400456,
-   0.1849336,
-   -0.001267469};
-   Double_t Graph0_fex1001[22] = {
+   Double_t Run-4_fy1001[23] = {
+   -0.3775018,
+   1.148504,
+   -0.9203161,
+   1.146136,
+   -0.4307777,
+   0.4097943,
+   -0.697443,
+   -0.6150108,
+   0.4413807,
+   -0.4576447,
+   0.1797437,
+   0.628307,
+   -0.5444395,
+   0.8335329,
+   -0.825145,
+   0.9074943,
+   0.186827,
+   -0.9662316,
+   0.1487633,
+   0.04360515,
+   -0.05511206,
+   -0.186201,
+   0.3988316};
+   Double_t Run-4_fex1001[23] = {
+   0,
    0,
    0,
    0,
@@ -80,36 +83,37 @@ void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
    0,
    0,
    0};
-   Double_t Graph0_fey1001[22] = {
-   0.003605843,
-   0.003640453,
-   0.003627373,
-   0.003638436,
-   0.003626414,
-   0.003647339,
-   0.003637308,
-   0.003626705,
-   0.003624608,
-   0.003593768,
-   0.003557695,
-   0.003453573,
-   0.003562917,
-   0.003581594,
-   0.003623798,
-   0.003602393,
-   0.003544762,
-   0.003492513,
-   0.00358014,
-   0.003630543,
-   0.003630353,
-   0.003604157};
-   TGraphErrors *gre = new TGraphErrors(22,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
-   gre->SetName("Graph0");
-   gre->SetTitle(";Calo number;#LTy_{n}#GT #minus #LTy_{1}#GT [mm]");
+   Double_t Run-4_fey1001[23] = {
+   0.003606182,
+   0.003696062,
+   0.003717074,
+   0.003715124,
+   0.003714199,
+   0.003722916,
+   0.003733515,
+   0.003713029,
+   0.003700589,
+   0.003668315,
+   0.003602213,
+   0.00346236,
+   0.003467726,
+   0.003595243,
+   0.003655585,
+   0.003675175,
+   0.003610692,
+   0.003501073,
+   0.003536888,
+   0.00367325,
+   0.003722208,
+   0.003696476,
+   0.003634978};
+   TGraphErrors *gre = new TGraphErrors(23,Run-4_fx1001,Run-4_fy1001,Run-4_fex1001,Run-4_fey1001);
+   gre->SetName("Run-4");
+   gre->SetTitle(";Calo number, n;#LTy_{n+1}#GT #minus #LTy_{n}#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,25.1);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,25.2);
    Graph_Graph1001->SetMinimum(-1);
    Graph_Graph1001->SetMaximum(2);
    Graph_Graph1001->SetDirectory(0);
@@ -119,13 +123,13 @@ void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
-   Graph_Graph1001->GetXaxis()->SetTitle("Calo number");
+   Graph_Graph1001->GetXaxis()->SetTitle("Calo number, n");
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
    Graph_Graph1001->GetXaxis()->SetLabelSize(0.035);
    Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1001->GetYaxis()->SetTitle("#LTy_{n}#GT #minus #LTy_{1}#GT [mm]");
+   Graph_Graph1001->GetYaxis()->SetTitle("#LTy_{n+1}#GT #minus #LTy_{n}#GT [mm]");
    Graph_Graph1001->GetYaxis()->CenterTitle(true);
    Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1001->GetYaxis()->SetLabelFont(42);
@@ -140,7 +144,8 @@ void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
    
    gre->Draw("ap");
    
-   Double_t Graph1_fx1002[22] = {
+   Double_t Run-1a_fx1002[23] = {
+   1,
    2,
    3,
    4,
@@ -163,30 +168,32 @@ void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
    21,
    22,
    23};
-   Double_t Graph1_fy1002[22] = {
+   Double_t Run-1a_fy1002[23] = {
    -0.5883327,
-   0.9468075,
-   0.1934024,
-   1.706382,
-   0.7869013,
-   1.311446,
-   0.3514128,
-   -0.3715163,
-   0.0351295,
-   -0.3789026,
-   -0.4206487,
-   0.2313947,
-   -0.03258479,
-   0.2262473,
-   -0.1333736,
-   0.5937826,
-   0.9181863,
-   -0.2826412,
-   0.2654812,
-   0.2656849,
-   0.9184378,
-   -0.06892606};
-   Double_t Graph1_fex1002[22] = {
+   1.53514,
+   -0.7534051,
+   1.512979,
+   -0.9194802,
+   0.5245444,
+   -0.9600329,
+   -0.7229291,
+   0.4066458,
+   -0.4140321,
+   -0.04174611,
+   0.6520434,
+   -0.2639795,
+   0.2588321,
+   -0.3596209,
+   0.7271562,
+   0.3244037,
+   -1.200828,
+   0.5481224,
+   0.000203739,
+   0.6527529,
+   -0.9873639,
+   0.5127857};
+   Double_t Run-1a_fex1002[23] = {
+   0,
    0,
    0,
    0,
@@ -209,60 +216,88 @@ void Comp_gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2()
    0,
    0,
    0};
-   Double_t Graph1_fey1002[22] = {
+   Double_t Run-1a_fey1002[23] = {
    0.007349983,
-   0.006743831,
-   0.006759802,
-   0.006896073,
-   0.006797275,
-   0.006771499,
-   0.006755332,
-   0.006996331,
-   0.006698025,
-   0.006662764,
-   0.006618266,
-   0.006450881,
-   0.006663305,
-   0.006703884,
-   0.006761305,
-   0.006713783,
-   0.006616036,
-   0.006487681,
-   0.006696905,
-   0.006780042,
-   0.006823219,
-   0.006698223};
-   gre = new TGraphErrors(22,Graph1_fx1002,Graph1_fy1002,Graph1_fex1002,Graph1_fey1002);
-   gre->SetName("Graph1");
+   0.007464951,
+   0.006884632,
+   0.007033827,
+   0.007069848,
+   0.00694839,
+   0.006907364,
+   0.007127912,
+   0.007073624,
+   0.006743882,
+   0.006664672,
+   0.006452852,
+   0.006499038,
+   0.006750236,
+   0.006846991,
+   0.006856683,
+   0.006713479,
+   0.006487367,
+   0.006569819,
+   0.006858679,
+   0.006982068,
+   0.006902644,
+   0.006857504};
+   gre = new TGraphErrors(23,Run-1a_fx1002,Run-1a_fy1002,Run-1a_fex1002,Run-1a_fey1002);
+   gre->SetName("Run-1a");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","Graph",100,0,25.1);
-   Graph_Graph1002->SetMinimum(-0.8265788);
-   Graph_Graph1002->SetMaximum(1.944174);
-   Graph_Graph1002->SetDirectory(0);
-   Graph_Graph1002->SetStats(0);
+   TH1F *Graph_RunmI1a1002 = new TH1F("Graph_RunmI1a1002","Graph",100,0,25.2);
+   Graph_RunmI1a1002->SetMinimum(-1.482307);
+   Graph_RunmI1a1002->SetMaximum(1.817597);
+   Graph_RunmI1a1002->SetDirectory(0);
+   Graph_RunmI1a1002->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph1002->SetLineColor(ci);
-   Graph_Graph1002->GetXaxis()->SetLabelFont(42);
-   Graph_Graph1002->GetXaxis()->SetLabelSize(0.035);
-   Graph_Graph1002->GetXaxis()->SetTitleSize(0.035);
-   Graph_Graph1002->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1002->GetYaxis()->SetLabelFont(42);
-   Graph_Graph1002->GetYaxis()->SetLabelSize(0.035);
-   Graph_Graph1002->GetYaxis()->SetTitleSize(0.035);
-   Graph_Graph1002->GetYaxis()->SetTitleOffset(0);
-   Graph_Graph1002->GetYaxis()->SetTitleFont(42);
-   Graph_Graph1002->GetZaxis()->SetLabelFont(42);
-   Graph_Graph1002->GetZaxis()->SetLabelSize(0.035);
-   Graph_Graph1002->GetZaxis()->SetTitleSize(0.035);
-   Graph_Graph1002->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph1002);
+   Graph_RunmI1a1002->SetLineColor(ci);
+   Graph_RunmI1a1002->GetXaxis()->SetLabelFont(42);
+   Graph_RunmI1a1002->GetXaxis()->SetLabelSize(0.035);
+   Graph_RunmI1a1002->GetXaxis()->SetTitleSize(0.035);
+   Graph_RunmI1a1002->GetXaxis()->SetTitleFont(42);
+   Graph_RunmI1a1002->GetYaxis()->SetLabelFont(42);
+   Graph_RunmI1a1002->GetYaxis()->SetLabelSize(0.035);
+   Graph_RunmI1a1002->GetYaxis()->SetTitleSize(0.035);
+   Graph_RunmI1a1002->GetYaxis()->SetTitleOffset(0);
+   Graph_RunmI1a1002->GetYaxis()->SetTitleFont(42);
+   Graph_RunmI1a1002->GetZaxis()->SetLabelFont(42);
+   Graph_RunmI1a1002->GetZaxis()->SetLabelSize(0.035);
+   Graph_RunmI1a1002->GetZaxis()->SetTitleSize(0.035);
+   Graph_RunmI1a1002->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Run-1a1002);
    
    gre->Draw("p ");
-   c->Modified();
-   c->cd();
-   c->SetSelected(c);
+   
+   TLegend *leg = new TLegend(0.59,0.79,0.89,0.89,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("Run-4","Run-4","lpf");
+   entry->SetFillStyle(1000);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("Run-1a","Run-1a","lpf");
+   entry->SetFillStyle(1000);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(24);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   leg->Draw();
+   gr_comp->Modified();
+   gr_comp->cd();
+   gr_comp->SetSelected(gr_comp);
 }

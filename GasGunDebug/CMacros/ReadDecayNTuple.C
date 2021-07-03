@@ -4,12 +4,14 @@ double A_MU = 11659208.9e-10;
 double GMAGIC = std::sqrt( 1.+1./A_MU );
 double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
 
-bool boost = true;//false;//false;//true; // true;
+bool boost = false;//true;//false;//false;//true; // true;
 
 void ReadDecayNTuple() { 
 
    //string config = "1e4_0MeV";
-   string config = "1e4_noPol";
+   //string config = "1e4_noPol";
+   string config = "1e4_xPol";
+
    //string config = "1e4";
 
 	TFile *input = TFile::Open(("../trees/decayNTuple_"+config+".root").c_str());
@@ -89,11 +91,27 @@ void ReadDecayNTuple() {
    TH1F *h_posPosZ = new TH1F("h_posPosZ",";Positron position Z [mm];Entries",500,7111,7113);
 
    // Only truly care about this one
-   TH1F *h_posMom = new TH1F("h_posMom",";Positron momentum [MeV];Entries",310,0,3100);
-   TH1F *h_posMomX = new TH1F("h_posMomX",";Positron momentum X [MeV];Entries",20,-100,100);
-   TH1F *h_posMomY = new TH1F("h_posMomY",";Positron momentum Y [MeV];Entries",20,-100,100);
-   TH1F *h_posMomZ = new TH1F("h_posMomZ",";Positron momentum Z [MeV];Entries",310,0,3100);
- 
+   TH1F *h_posMom;
+   TH1F *h_posMomX;
+   TH1F *h_posMomY;
+   TH1F *h_posMomZ;
+
+   if(!boost) {
+
+      h_posMom = new TH1F("h_posMom",";Positron momentum [MeV];Entries",310,0,3100);
+      h_posMomX = new TH1F("h_posMomX",";Positron momentum X [MeV];Entries",20,-100,100);
+      h_posMomY = new TH1F("h_posMomY",";Positron momentum Y [MeV];Entries",20,-100,100);
+      h_posMomZ = new TH1F("h_posMomZ",";Positron momentum Z [MeV];Entries",620,-3100,3100);
+
+   } else if(boost) {
+
+      h_posMom = new TH1F("h_posMom",";Positron momentum [MeV];Entries",10,0,100);
+      h_posMomX = new TH1F("h_posMomX",";Positron momentum X [MeV];Entries",20,-100,100);
+      h_posMomY = new TH1F("h_posMomY",";Positron momentum Y [MeV];Entries",20,-100,100);
+      h_posMomZ = new TH1F("h_posMomZ",";Positron momentum Z [MeV];Entries",20,-100,100);
+
+   }
+
  	int64_t nEntries = tree->GetEntries();
 
  	double targetPerc = 0.;

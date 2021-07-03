@@ -84,7 +84,12 @@ vector<float> pXLAB = {0.        , 0.        , 0.        , 0.        , 0.0001399
         0.01587841, 0.01388861, 0.01083892, 0.00668933, 0.00326967,
         0.00015998, 0.        , 0.        , 0.        , 0.        };
 
-vector<float> pyLAB = {0.00073617, 0.00095269, 0.00126665, 0.00188373, 0.00255494,
+vector<float> pyLAB = { 0.        , 0.        , 0.        , 0.        , 0.00020998,
+        0.00305969, 0.00713929, 0.01067893, 0.01360864, 0.01539846,
+        0.01525847, 0.01365863, 0.01053895, 0.00748925, 0.00276972,
+        0.00018998, 0.        , 0.        , 0.        };
+
+vector<float> pyLAB_0 = {0.00073617, 0.00095269, 0.00126665, 0.00188373, 0.00255494,
         0.0036592 , 0.00385407, 0.00591101, 0.00868247, 0.01991989,
         0.02040706, 0.00895312, 0.00606257, 0.0042438 , 0.00326946,
         0.00257659, 0.0018729 , 0.00154812, 0.00097434, 0.00067121};
@@ -190,8 +195,6 @@ vector<float> pzMRF = {0.        , 0.        , 0.        , 0.        , 0.0001699
 vector<vector<float>> LAB_ = {pTotLAB, pXLAB, pyLAB, pzLAB}; 
 vector<vector<float>> MRF_ = {pTotMRF, pXMRF, pyMRF, pzMRF}; 
 
-
-
 vector<TH1F*> GetRingSimHists(string inputName) {
 
 	cout<<"\nGetting ringSim hists"<<endl; 
@@ -221,15 +224,31 @@ vector<TH1F*> GetEDMSimHists(string frame) {
 
 	cout<<"\nGetting edmSim hists"<<endl;
 
-	vector<vector<float>> data_; 
+	vector<vector<float>> data_;
 
-	if(frame=="LAB") data_ = LAB_;
-	else if(frame=="MRF") data_ = MRF_;
+	TH1F *h_posMom;
+   	TH1F *h_posMomX;
+   	TH1F *h_posMomY;
+   	TH1F *h_posMomZ;
 
-   	TH1F *h_posMom = new TH1F("h_posMom",";Positron momentum [MeV];Entries",310,0,3100);
-   	TH1F *h_posMomX = new TH1F("h_posMomX",";Positron momentum X [MeV];Entries",20,-100,100);
-   	TH1F *h_posMomY = new TH1F("h_posMomY",";Positron momentum Y [MeV];Entries",20,-100,100);
-   	TH1F *h_posMomZ = new TH1F("h_posMomZ",";Positron momentum Z [MeV];Entries",310,0,3100);
+	if(frame=="LAB") {
+
+		data_ = LAB_;
+		h_posMom = new TH1F("h_posMom",";Positron momentum [MeV];Entries",310,0,3100);
+   		h_posMomX = new TH1F("h_posMomX",";Positron momentum X [MeV];Entries",20,-100,100);
+   		h_posMomY = new TH1F("h_posMomY",";Positron momentum Y [MeV];Entries",20,-100,100);
+   		h_posMomZ = new TH1F("h_posMomZ",";Positron momentum Z [MeV];Entries",620,-3100,3100);
+
+   	} else if(frame=="MRF") {
+
+   		data_ = MRF_;
+
+   		h_posMom = new TH1F("h_posMom",";Positron momentum [MeV];Entries",10,0,100);
+   		h_posMomX = new TH1F("h_posMomX",";Positron momentum X [MeV];Entries",20,-100,100);
+   		h_posMomY = new TH1F("h_posMomY",";Positron momentum Y [MeV];Entries",20,-100,100);
+   		h_posMomZ = new TH1F("h_posMomZ",";Positron momentum Z [MeV];Entries",20,-100,100);
+
+   	}
 
    	vector<TH1F*> hists_ = {h_posMom, h_posMomX, h_posMomY,h_posMomZ};
 
@@ -310,13 +329,11 @@ void DrawHists(TH1F* h_ringSim, TH1F* h_edmSim, string title, string fname) {
 
 void Run(bool boost) { 
 
-	
-
 	string frame = "";
 	if(boost) frame = "MRF"; 
 	else frame = "LAB";
 
-	vector<TH1F*> h_ringSim_ = GetRingSimHists("../plots/decayNTuplePlots_1e4_noPol_"+frame+".root");
+	vector<TH1F*> h_ringSim_ = GetRingSimHists("../plots/decayNTuplePlots_1e4_xPol_"+frame+".root");
 	vector<TH1F*> h_edmSim_ = GetEDMSimHists(frame); 
 
 	cout<<"\nOverlaying"<<endl;
@@ -324,6 +341,18 @@ void Run(bool boost) {
 	vector<string> labels_ = {"", "X", "Y", "Z"};
 
 	for(int i = 0; i<h_ringSim_.size(); i++) { 
+
+
+		string name = "h_posMom"+labels_.at(i);
+
+		if(boost) {
+
+			//if(i == 0) h_ringSim_.at(i)->GetXaxis()->SetRangeUser(0,100);
+			//if(i == 3) h_ringSim_.at(i)->GetXaxis()->SetRangeUser(-100,100);
+
+			name += "_MRF";
+
+		} else name += "_LAB";
 
 		// Normalise
 
@@ -333,10 +362,6 @@ void Run(bool boost) {
 
 		h_ringSim_.at(i)->Scale(1/h_ringSim_.at(i)->GetBinContent(h_ringSim_.at(i)->GetMaximumBin()));//h_ringSim_.at(i)->Integral());
 		h_edmSim_.at(i)->Scale(1/h_edmSim_.at(i)->GetBinContent(h_edmSim_.at(i)->GetMaximumBin()));//h_edmSim_.at(i)->Integral());//h_edmSim_.at(i)->GetEntries());
-
-		cout<<h_edmSim_.at(i)->GetBinError(1)<<endl;
-
-		string name = "h_posMom"+labels_.at(i);
 
 		DrawHists(h_ringSim_.at(i), h_edmSim_.at(i), ";Positron momentum "+labels_.at(i)+" [MeV];Normalised units", "../Images/Overlay/"+name);
 

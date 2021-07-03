@@ -1,0 +1,18 @@
+X - Update talk from yesterday and post to doc db.
+
+X - Make notes on the stuff we went over on Thurday (Dominika already did this)
+
+X - Re-run with tan(py/pz), ask Dominika for text files
+
+- Do a quick calculation for the small angle approx
+	I think around 0.4 is the limit
+
+- Re-run with just py/p
+- Re-run with py/pz
+- Re-run with atan2(py,pz)
+
+- Overlay mine and Dominika's 
+
+- Re-run all decays at 10xBNL
+
+- Run through calo misalignment stuff. 

@@ -1,0 +1,15 @@
+X - Do a quick calculation for the small angle approx
+	I think around 0.4 is the limit
+
+X - Re-run with just py/p
+X - Re-run with py/pz
+X - Re-run with atan2(py,pz)
+
+X - Overlay mine and Dominika's 30xBNL
+
+X - Re-run all decays at 10xBNL
+
+- X Run through calo misalignment stuff. 
+	- X Just take the numbers we have and see what uncertainty you get in a spreadsheet
+	- X Redo the calo alignment errors using adjacent calos
+

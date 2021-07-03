@@ -1,7 +1,7 @@
 void h_posMomX()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun 24 18:25:09 2021) by ROOT version 6.22/08
+//=========  (Thu Jun 24 18:45:08 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(0,0,1,1);
@@ -55,19 +55,19 @@ void h_posMomX()
    h_posMomX__3->Draw("HIST E");
    
    TH1F *h_posMomX__4 = new TH1F("h_posMomX__4","",20,-100,100);
-   h_posMomX__4->SetBinContent(5,0.008816374);
-   h_posMomX__4->SetBinContent(6,0.1807303);
-   h_posMomX__4->SetBinContent(7,0.4193953);
-   h_posMomX__4->SetBinContent(8,0.63665);
-   h_posMomX__4->SetBinContent(9,0.8790931);
-   h_posMomX__4->SetBinContent(10,0.9785899);
-   h_posMomX__4->SetBinContent(11,1);
-   h_posMomX__4->SetBinContent(12,0.8746852);
-   h_posMomX__4->SetBinContent(13,0.68262);
-   h_posMomX__4->SetBinContent(14,0.4212846);
-   h_posMomX__4->SetBinContent(15,0.2059193);
-   h_posMomX__4->SetBinContent(16,0.01007532);
-   h_posMomX__4->SetEntries(20);
+   h_posMomX__4->SetBinContent(5,0.008491377);
+   h_posMomX__4->SetBinContent(6,0.2031353);
+   h_posMomX__4->SetBinContent(7,0.4617895);
+   h_posMomX__4->SetBinContent(8,0.7263227);
+   h_posMomX__4->SetBinContent(9,0.9007183);
+   h_posMomX__4->SetBinContent(10,1);
+   h_posMomX__4->SetBinContent(11,0.9823646);
+   h_posMomX__4->SetBinContent(12,0.9000651);
+   h_posMomX__4->SetBinContent(13,0.6753758);
+   h_posMomX__4->SetBinContent(14,0.4624427);
+   h_posMomX__4->SetBinContent(15,0.202482);
+   h_posMomX__4->SetBinContent(16,0.009144611);
+   h_posMomX__4->SetEntries(19);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
