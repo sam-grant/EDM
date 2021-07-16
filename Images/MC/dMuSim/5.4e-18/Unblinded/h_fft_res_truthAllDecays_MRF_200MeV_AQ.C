@@ -1,7 +1,7 @@
 void h_fft_res_truthAllDecays_MRF_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 01:04:42 2021) by ROOT version 6.22/08
+//=========  (Fri Jul 16 17:58:41 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,8 +12,8 @@ void h_fft_res_truthAllDecays_MRF_200MeV_AQ()
    Double_t xAxis2[88] = {0, 0.2290781, 0.4581562, 0.6872342, 0.9163123, 1.14539, 1.374468, 1.603547, 1.832625, 2.061703, 2.290781, 2.519859, 2.748937, 2.978015, 3.207093, 3.436171, 3.665249, 3.894327, 4.123405, 4.352483, 4.581562, 4.81064, 5.039718, 5.268796, 5.497874, 5.726952, 5.95603, 6.185108, 6.414186, 6.643264, 6.872342, 7.10142, 7.330498, 7.559577, 7.788655, 8.017733, 8.246811, 8.475889, 8.704967, 8.934045, 9.163123, 9.392201, 9.621279, 9.850357, 10.07944, 10.30851, 10.53759, 10.76667, 10.99575, 11.22483, 11.4539, 11.68298, 11.91206, 12.14114, 12.37022, 12.59929, 12.82837, 13.05745, 13.28653, 13.51561, 13.74468, 13.97376, 14.20284, 14.43192, 14.661, 14.89007, 15.11915, 15.34823, 15.57731, 15.80639, 16.03547, 16.26454, 16.49362, 16.7227, 16.95178, 17.18086, 17.40993, 17.63901, 17.86809, 18.09717, 18.32625, 18.55532, 18.7844, 19.01348, 19.24256, 19.47164, 19.70071, 19.92979}; 
    
    TH1D *FFT__3 = new TH1D("FFT__3","",87, xAxis2);
-   FFT__3->SetBinContent(1,0.0001079028);
-   FFT__3->SetBinContent(2,0.0003671506);
+   FFT__3->SetBinContent(1,0.0001079027);
+   FFT__3->SetBinContent(2,0.00036715);
    FFT__3->SetBinContent(3,0.01045974);
    FFT__3->SetBinContent(4,0.00496695);
    FFT__3->SetBinContent(5,0.01008364);
@@ -98,9 +98,9 @@ void h_fft_res_truthAllDecays_MRF_200MeV_AQ()
    FFT__3->SetBinContent(84,0.01008364);
    FFT__3->SetBinContent(85,0.00496695);
    FFT__3->SetBinContent(86,0.01045974);
-   FFT__3->SetBinContent(87,0.0003671506);
-   FFT__3->SetBinError(1,0.0003082874);
-   FFT__3->SetBinError(2,0.0005686717);
+   FFT__3->SetBinContent(87,0.00036715);
+   FFT__3->SetBinError(1,0.0003082873);
+   FFT__3->SetBinError(2,0.0005686713);
    FFT__3->SetBinError(3,0.003035289);
    FFT__3->SetBinError(4,0.002091628);
    FFT__3->SetBinError(5,0.002980219);
@@ -185,7 +185,7 @@ void h_fft_res_truthAllDecays_MRF_200MeV_AQ()
    FFT__3->SetBinError(84,0.002980219);
    FFT__3->SetBinError(85,0.002091628);
    FFT__3->SetBinError(86,0.003035289);
-   FFT__3->SetBinError(87,0.0005686717);
+   FFT__3->SetBinError(87,0.0005686713);
    FFT__3->SetEntries(88);
    FFT__3->SetStats(0);
    FFT__3->GetXaxis()->SetTitle("Frequency [MHz]");

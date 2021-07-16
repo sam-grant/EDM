@@ -1,0 +1,13 @@
+Asymmetry 
+
+X - Fit the A curve damn thing
+- Review method for up/down stuff
+- Get it working
+
+
+Radial field
+--------
+- Per calo analysis 
+- Calo align jumps / run (way to do this more cleverly?)
+- Take a closer look at the CBO thing 
+- Prove the g-2 assymetry with forwards backward asymmetry

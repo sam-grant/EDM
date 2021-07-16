@@ -5,6 +5,14 @@
 #include "RootInclude.h"
 
 std::string config = "5.4e-18";
+
+std::string qual = "truthAllDecays_MRF_200MeV_AQ";
+
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option0";
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option1";
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option2";
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option3";
+
 // std::string qual = "truth_AQ";//_DEBUG";
 //std::string qual = "truthAllDecays_500MeV_AQ";//_DEBUG"/;
 //std::string qual = "truthAllDecays_AAR_500MeV_AQ";//_DEBUG";
@@ -12,7 +20,12 @@ std::string config = "5.4e-18";
 //std::string qual = "truthAllDecays_MRF_200MeV_noQ";//_DEBUG";
 //std::string qual = "truthAllDecays_WORLD_200MeV_AQ";//_DEBUG";
 //std::string qual = "truthAllDecays_AAR_200MeV_pyp_AQ";//_DEBUG";
-std::string qual = "truthAllDecays_AAR_200MeV_atanpypz_AQ";//.root";
+//std::string qual = "truthAllDecays_AAR_200MeV_atanpypz_AQ";//.root";
+//std::string qual = "truthAllDecays_AAR_200MeV_pxpz_AQ";//.root";
+//std::string qual = "truthAllDecays_200MeV_AAR_AQ_phi";
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ_pypx";//truthAllDecays_AAR_200MeV_AQ_phi";
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ_test";
+//std::string qual = "truth_AAR_200MeV_AQ_phi";
 //std::string qual = "truth_AAR_200MeV_AQ";//_DEBUG";
 //std::string qual = "truth_AAR_200MeV_tan_AQ";//_DEBUG";
 //std::string qual = "truth_WORLD_200MeV_AQ";//_DEBUG";
@@ -23,12 +36,12 @@ std::string qual = "truthAllDecays_AAR_200MeV_atanpypz_AQ";//.root";
 //std::string qual = "truthAllDecays_MRF_500MeV_AQ";//_DEBUG";
 //std::string qual = "truth_MRF_500MeV_AQ";
 //std::string qual = "truth_MRF_200MeV_AQ";
-// std::string qual = "truthAllDecays_AAR_5`00MeV_AQ";//_DEBUG";
+// std::string qual = "truthAllDecays_AAR_500MeV_AQ";//_DEBUG";
 //std::string qual = "truthAllDecays_WORLD_500MeV_AQ";//_DEBUG";
 //std::string qual = "truthAllDecays_WORLD_500MeV_AQ";//_DEBUG";
 //std::string qual = "truthAllDecays_AQ";//_DEBUG";
 
-double scaleFactor = 1.0;//30;//0.25e3;//0.25;//1.0;//0.75;//30;//1.0;//30;//1.0;//30; //1.0;
+double scaleFactor = 1.0;
 
 string mainTitle = "e^{+}_{LAB}";
 
@@ -39,7 +52,7 @@ using namespace std;
 
 /////
 
-TH1D* GetResidual(TH1D* data, TF1* fit) { // , double min, double max) { // , TH1F* pull){
+TH1D* GetResidual(TH1D* data, TF1* fit) { 
 
   int nbins = data->GetXaxis()->GetNbins();
   double binWidth = data->GetBinWidth(1);
@@ -50,17 +63,13 @@ TH1D* GetResidual(TH1D* data, TF1* fit) { // , double min, double max) { // , TH
   for (int ibin(1); ibin <= nbins; ibin++){
     residual->SetBinContent(ibin, 0.0);
     double time = residual->GetXaxis()->GetBinCenter(ibin);
-    //if (time > max) break;// residual->SetBinContent(ibin,0);// break;
-    //else if (time >= min) {
-      double cont = data->GetBinContent(ibin);
-      double err = data->GetBinError(ibin);
-      //double integral = fit->Integral( data->GetBinLowEdge(ibin), data->GetBinLowEdge(ibin) + binWidth );
-      double integral = fit->Eval(time);
-      residual->SetBinContent(ibin, integral - cont);
-      residual->SetBinError(ibin, err);
-      // pull->Fill( (integral - cont) / err);
-    //}
+    double cont = data->GetBinContent(ibin);
+    double err = data->GetBinError(ibin);
+    double integral = fit->Eval(time);
+    residual->SetBinContent(ibin, integral - cont);
+    residual->SetBinError(ibin, err);
   }
+
   return residual;
 }
 
@@ -90,8 +99,6 @@ TH1D* GetFFT(TH1D* hist) {
       fft->SetBinError(i, hm->GetBinError(i));
   }
 
-  //TH1D* fftResidual = (TH1D*)hm->Clone("residualFFT");
-  
   fft->SetStats(0);
   fft->SetName("FFT");
   fft->Scale(1.0 / fft->Integral());
@@ -110,6 +117,7 @@ TH1D* GetFFT(TH1D* hist) {
   cout << "nyquistFreq\t" <<nyquistFreq<<" MHz"<<endl;
 
   return fft;
+
 }
 
 ///////////////////
@@ -130,14 +138,15 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, bool x
 
   // Hack together x-axis range
   int N = graph->GetN();
-  double xmax = graph->GetPointX(N-1);// + 50;
-  double xmin = graph->GetPointX(0);// - 50; 
-  double offset = (xmax - xmin) * 0.05;//0.25;//300;//150;//300;//100;//(xmax - xmin) * 0.25;
+  double xmax = graph->GetPointX(N-1);
+  double xmin = graph->GetPointX(0);
+  double offset = (xmax - xmin) * 0.05;
   xmin = xmin - offset; 
   xmax = xmax + offset;
   graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
   if(!xLabel) graph->Draw("AP");
+
   else { 
     graph->Draw("0AP");
     gPad->Update();
@@ -179,8 +188,6 @@ double GetPhase(TFile *input) {
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
   DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 25e3, 150e3);//100e3, 500e3);
 
-  // return modWiggle->GetParameter(4);
-
   // Currently don't truth the phase from the modulo
   // Phase from regular wiggle seems more stable.
 
@@ -208,9 +215,6 @@ void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
   // Get FFT
   TH1D *px_thetaY_mod_fft = GetFFT(px_thetaY_mod);
   DrawTH1(px_thetaY_mod_fft, ";Frequency [MHz];Entries", ("../Images/MC/dMuSim/"+config+"/Unblinded/fft_h_thetaY_mod_"+qual).c_str());
-
-  //TGraphErrors *gr_thetaY_mod_fft = ConvertToTGraphErrors(px_thetaY_mod_fft);
-  //DrawGraph(gr_thetaY_mod_fft, "fft", ("../Images/MC/dMuSim/"+config+"/Unblinded/fft_gr_thetaY_mod_"+qual).c_str(), false);
 
   delete px_thetaY_mod_fft;
 
@@ -250,7 +254,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
   const double phi = GetPhase(input);  
 
-  string cuts_configs[] = {"MomSlices", "MomSymCuts", "MomMinScan", "MomMaxScan"};
+  string cuts_configs[] = {"MomSlices"};//, "MomSymCuts", "MomMinScan", "MomMaxScan"};
 
   int n_cut_config = sizeof(cuts_configs)/sizeof(cuts_configs[0]);
 
@@ -258,6 +262,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
   TGraphErrors* c_vs_p_[n_cut_config];
   TGraphErrors* A_vs_p_[n_cut_config];
+  
   
   int step = 200;//200;///500;//250;//500;//200;
   int n_cuts = PMAX / step;
@@ -272,46 +277,52 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   vector<double> ec_[n_cut_config];
   vector<double> p_[n_cut_config];
   vector<double> ep_[n_cut_config];
+
   vector<double> A_[n_cut_config];
   vector<double> eA_[n_cut_config];
 
-  // extra scans
-  //if(extraScans) { 
 
-    TGraphErrors* thetaY_vs_p_[n_cut_config];
-    TGraphErrors* thetaY_RMS_vs_p_[n_cut_config];
-    TGraphErrors* Y_vs_p_[n_cut_config];
-    TGraphErrors* Y_RMS_vs_p_[n_cut_config];
-    TGraphErrors* pY_vs_p_[n_cut_config];
-    TGraphErrors* pY_RMS_vs_p_[n_cut_config];
-    TGraphErrors* N_vs_p_[n_cut_config];
-    TGraphErrors* eA_vs_p_[n_cut_config];
-    TGraphErrors* chiSqrNDF_vs_p_[n_cut_config];
 
-    vector<double> thetaY_[n_cut_config];
-    vector<double> e_thetaY_[n_cut_config];
+  TGraphErrors* thetaY_vs_p_[n_cut_config];
+  TGraphErrors* thetaY_RMS_vs_p_[n_cut_config];
+  TGraphErrors* Y_vs_p_[n_cut_config];
+  TGraphErrors* Y_RMS_vs_p_[n_cut_config];
+  TGraphErrors* pY_vs_p_[n_cut_config];
+  TGraphErrors* pY_RMS_vs_p_[n_cut_config];
+  TGraphErrors* N_vs_p_[n_cut_config];
+  TGraphErrors* eA_vs_p_[n_cut_config];
+  TGraphErrors* chiSqrNDF_vs_p_[n_cut_config];
 
-    vector<double> thetaY_RMS_[n_cut_config];
-    vector<double> e_thetaY_RMS_[n_cut_config];
+  // Max angular difference
+  TGraphErrors* thetaYMaxDiff_vs_p_[n_cut_config];
+  TGraphErrors* AOverMaxDiff_vs_p_[n_cut_config];
 
-    vector<double> Y_[n_cut_config];
-    vector<double> e_Y_[n_cut_config];
+  vector<double> thetaY_[n_cut_config];
+  vector<double> e_thetaY_[n_cut_config];
 
-    vector<double> Y_RMS_[n_cut_config];
-    vector<double> e_Y_RMS_[n_cut_config];
+  vector<double> thetaY_RMS_[n_cut_config];
+  vector<double> e_thetaY_RMS_[n_cut_config];
 
-    vector<double> pY_[n_cut_config];
-    vector<double> e_pY_[n_cut_config];
+  vector<double> Y_[n_cut_config];
+  vector<double> e_Y_[n_cut_config];
 
-    vector<double> pY_RMS_[n_cut_config];
-    vector<double> e_pY_RMS_[n_cut_config];
+  vector<double> Y_RMS_[n_cut_config];
+  vector<double> e_Y_RMS_[n_cut_config];
 
-    vector<double> N_[n_cut_config];
-    vector<double> zeros_[n_cut_config];
+  vector<double> pY_[n_cut_config];
+  vector<double> e_pY_[n_cut_config];
 
-    vector<double> chiSqrNDF_[n_cut_config];
+  vector<double> pY_RMS_[n_cut_config];
+  vector<double> e_pY_RMS_[n_cut_config];
 
-  //}
+  vector<double> N_[n_cut_config];
+  vector<double> zeros_[n_cut_config];
+
+  vector<double> chiSqrNDF_[n_cut_config];
+
+  vector<double> thetaYMaxDiff_[n_cut_config];
+  vector<double> AOverMaxDiff_[n_cut_config];
+
 
   // ============ 200 MeV slices ============
   i_cut_config = 0; 
@@ -347,7 +358,6 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       double chiSqrNDF = -1;
 
       if(!fullFit) { 
-          //output->mkdir(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
           
         // Simple fit with a phase of zero
         SimpleEDMFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
@@ -363,7 +373,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
         chiSqrNDF = moduloGraph->GetFunction("SimpleEDMFunc")->GetChisquare() /  moduloGraph->GetFunction("SimpleEDMFunc")->GetNDF(); 
 
         } else if(fullFit) { 
-          //output->mkdir(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
+
           // Full EDM fit
           FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
           DrawFullEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);//-5*1e-3, 5*1e-3, true);// , double(nEntries), true);
@@ -417,6 +427,12 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
           chiSqrNDF_[i_cut_config].push_back(chiSqrNDF);
 
+          double thetaYMaxDiff = thetaYHist->FindLastBinAbove(0,1) - thetaYHist->FindFirstBinAbove(0,1);
+          thetaYMaxDiff_[i_cut_config].push_back(thetaYMaxDiff);
+
+          double AOverMaxDiff = A_[i_cut_config].at(i_cut) / thetaYMaxDiff;
+          AOverMaxDiff_[i_cut_config].push_back(AOverMaxDiff);
+
         }
 
     }
@@ -427,6 +443,15 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
     //TGraphErrors *A_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_
     c_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
     A_vs_p_[i_cut_config] = (GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]));
+
+    DrawGraph(c_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
+    DrawGraph(A_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
+  
+    c_vs_p_[i_cut_config]->SetName("c_vs_p");
+    A_vs_p_[i_cut_config]->SetName("A_vs_p");
+
+    c_vs_p_[i_cut_config]->Write();
+    A_vs_p_[i_cut_config]->Write();
 
     if(extraScans) {
 
@@ -476,257 +501,29 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       chiSqrNDF_vs_p_[i_cut_config]->SetName("chiSqrNDF_vs_p");
       chiSqrNDF_vs_p_[i_cut_config]->Write();
 
-    }
 
-    DrawGraph(c_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
-    DrawGraph(A_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
-  
-    c_vs_p_[i_cut_config]->SetName("c_vs_p");
-    A_vs_p_[i_cut_config]->SetName("A_vs_p");
+      // Normalise A_EDM by max angular diff
+      cout<<"-3"<<endl;
+      thetaYMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], thetaYMaxDiff_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
+      cout<<"-2"<<endl;
+      DrawGraph(thetaYMaxDiff_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_thetaYMaxDiff_vs_p_"+qual).c_str(), false);
+      cout<<"-1"<<endl;
+      thetaYMaxDiff_vs_p_[i_cut_config]->SetName("thetaYMaxDiff_vs_p");
+      cout<<"0"<<endl;
+      //cout<<thetaYMaxDiff_vs_p_[_cut_config]<<endl;
+      thetaYMaxDiff_vs_p_[i_cut_config]->Write();
 
-    c_vs_p_[i_cut_config]->Write();
-    A_vs_p_[i_cut_config]->Write();
-
-    // ============ Symmetric cuts ============
-    i_cut_config = 1; 
-
-    for(int i_cut = 0; i_cut < n_cuts/2; i_cut++) {
-
-         lo = 400 + i_cut*step; 
-         hi = 3000 - i_cut*step;
-
-         xLabels_.push_back(to_string(lo)+"-"+to_string(hi));
-
-        // Get hist
-        std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
-        int p = i_cut + 1;
-
-        std::string moduloHistName = cuts_configs[i_cut_config]+"/ThetaY_vs_Time_Modulo_"+momSlice;
-        TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
-
-        if(moduloHist==0) continue;
-
-        int nEntries = moduloHist->GetEntries();
-        if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
-
-        p_[i_cut_config].push_back(p);
-        ep_[i_cut_config].push_back(0);
-
-        // Run fits
-        TH1D *moduloProf = moduloHist->ProfileX();
-
-        TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
-
-        output->cd(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
-
-        if(!fullFit) { 
-          // Simple fit with a phase of zero
-          SimpleEDMFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
-          DrawSimpleEDMFit(moduloGraph, std::to_string(lo)+"-"+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/SimpleModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);;// , double(nEntries), true);
-          moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
-          moduloGraph->Write();
-
-          c_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(2));
-          ec_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(2));
-          A_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0));
-          eA_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(0));
-
-        } else if(fullFit) { 
-          // Full EDM fit
-          FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
-          DrawFullEDMFit(moduloGraph, std::to_string(lo)+"-"+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);;// , double(nEntries), true);
-          moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
-          moduloGraph->Write();
-
-          c_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(4));
-          ec_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(4));
-          A_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(3));
-          eA_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(3));
-        
-        }
-        
-        delete moduloProf;
-        delete moduloHist;
-        delete moduloGraph;
+      cout<<"1"<<endl;
+      AOverMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], AOverMaxDiff_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
+      cout<<"2"<<endl;
+      DrawGraph(AOverMaxDiff_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_AOverMaxDiff_vs_p_"+qual).c_str(), false);
+      cout<<"3"<<endl;
+      AOverMaxDiff_vs_p_[i_cut_config]->SetName("AOverMaxDiff_vs_p");
+      cout<<"4"<<endl;
+      AOverMaxDiff_vs_p_[i_cut_config]->Write();
+      cout<<"5"<<endl;
 
     }
-
-    output->cd(("MomentumBinnedAnalysis/ParameterScans/"+cuts_configs[i_cut_config]).c_str());
-
-    c_vs_p_[i_cut_config] = (GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]));
-    A_vs_p_[i_cut_config] = (GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]));
-
-
-    bool xLabel = false; 
-    if(i_cut_config==1) {
-      xLabel = true;
-      // Set bin labels for sym cuts
-      for (int i = 0; i < xLabels_.size(); i++) { 
-        c_vs_p_[i_cut_config]->GetXaxis()->SetBinLabel(c_vs_p_[i_cut_config]->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
-        A_vs_p_[i_cut_config]->GetXaxis()->SetBinLabel(A_vs_p_[i_cut_config]->GetXaxis()->FindBin(i+1.), (xLabels_.at(i)).c_str());
-      }
-    }
-
-    DrawGraph(c_vs_p_[i_cut_config], ";e^{+}_{LAB} p_{min} #minus p_{max} [MeV];c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), xLabel);
-    DrawGraph(A_vs_p_[i_cut_config], ";e^{+}_{LAB} p_{min} #minus p_{max} [MeV];A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), xLabel);
-    
-    c_vs_p_[i_cut_config]->SetName("c_vs_p");
-    A_vs_p_[i_cut_config]->SetName("A_vs_p");
-
-    c_vs_p_[i_cut_config]->Write();
-    A_vs_p_[i_cut_config]->Write();
-
-    i_cut_config = 2;
-
-    // ============ pmin scan ============
-    for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
-
-        lo = 0 + i_cut*step;
-        hi = PMAX;
-
-        // Get hist
-        std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
-        int p = lo;
-
-        std::string moduloHistName = cuts_configs[i_cut_config]+"/ThetaY_vs_Time_Modulo_"+momSlice;
-        TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
-
-        if(moduloHist==0) continue;
-
-        int nEntries = moduloHist->GetEntries();
-        if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
-
-        p_[i_cut_config].push_back(p);
-        ep_[i_cut_config].push_back(0);
-
-        // Run fits
-        TH1D *moduloProf = moduloHist->ProfileX();
-
-        TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
-
-        output->cd(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
-
-        if(!fullFit) { 
-          // Simple fit with a phase of zero
-          SimpleEDMFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
-          DrawSimpleEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/SimpleModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);
-          moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
-          moduloGraph->Write();
-
-          c_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(2));
-          ec_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(2));
-          A_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0));
-          eA_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(0));
-
-        } else if(fullFit) { 
-          // Full EDM fit
-          FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
-          DrawFullEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);
-          moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
-          moduloGraph->Write();
-
-          c_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(4));
-          ec_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(4));
-          A_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(3));
-          eA_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(3));
-        
-        }
-        
-        delete moduloProf;
-        delete moduloHist;
-        delete moduloGraph;
-
-    }
-
-    output->cd(("MomentumBinnedAnalysis/ParameterScans/"+cuts_configs[i_cut_config]).c_str());
-
-    c_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
-    A_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]);
-
-    DrawGraph(c_vs_p_[i_cut_config], ";e^{+}_{LAB} p_{min} [MeV];c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
-    DrawGraph(A_vs_p_[i_cut_config], ";e^{+}_{LAB} p_{min} [MeV];A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
-
-    c_vs_p_[i_cut_config]->SetName("c_vs_p");
-    A_vs_p_[i_cut_config]->SetName("A_vs_p");
-
-    c_vs_p_[i_cut_config]->Write();
-    A_vs_p_[i_cut_config]->Write();
-
-    i_cut_config = 3;
-
-    // ============ pmax scan ============
-    for(int i_cut = 0; i_cut < n_cuts-(600/step); i_cut++) { //(n_cuts-(600/step)); i_cut++) {
-
-        lo = 600;// + i_cut*step;
-        hi = 3000 - i_cut*step;
-
-        // Get hist
-        std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
-        int p = lo;
-
-        std::string moduloHistName = cuts_configs[i_cut_config]+"/ThetaY_vs_Time_Modulo_"+momSlice;
-        TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
-
-        if(moduloHist==0) continue;
-
-        int nEntries = moduloHist->GetEntries();
-        if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
-
-        p_[i_cut_config].push_back(hi);
-        ep_[i_cut_config].push_back(0);
-
-        // Run fits
-        TH1D *moduloProf = moduloHist->ProfileX();
-
-        TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
-
-        output->cd(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
-
-        if(!fullFit) { 
-          // Simple fit with a phase of zero
-          SimpleEDMFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
-          DrawSimpleEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/SimpleModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);
-          moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
-          moduloGraph->Write();
-
-          c_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(2));
-          ec_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(2));
-          A_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0));
-          eA_[i_cut_config].push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(0));
-
-        } else if(fullFit) { 
-          // Full EDM fit
-          FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
-          DrawFullEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);
-          moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
-          moduloGraph->Write();
-
-          c_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(4));
-          ec_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(4));
-          A_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(3));
-          eA_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(3));
-        
-        }
-        
-        delete moduloProf;
-        delete moduloHist;
-        delete moduloGraph;
-
-    }
-
-    output->cd(("MomentumBinnedAnalysis/ParameterScans/"+cuts_configs[i_cut_config]).c_str());
-
-    c_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
-    A_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]);
-
-    DrawGraph(c_vs_p_[i_cut_config], ";e^{+}_{LAB} p_{max} [MeV];c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
-    DrawGraph(A_vs_p_[i_cut_config], ";e^{+}_{LAB} p_{max} [MeV];A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
-
-    c_vs_p_[i_cut_config]->SetName("c_vs_p");
-    A_vs_p_[i_cut_config]->SetName("A_vs_p");
-
-    c_vs_p_[i_cut_config]->Write();
-    A_vs_p_[i_cut_config]->Write();
   
     return; 
 
@@ -816,17 +613,10 @@ int main() {
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSlices");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSymCuts");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomMinScan");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomMaxScan");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSymCuts");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomMinScan");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomMaxScan");
 
   MomentumBinnedAnalysis(input, output, fullFit, extraScans);
-  // VertOffset(input, output);
 
   input->Close();
   output->Close();
@@ -836,124 +626,3 @@ int main() {
   return 0;
 
 }
-
-/*
-
-int main() {
-
-  bool sanityPlots = false;//true;
-  bool write = true; 
-  bool fullFit = false;//true;//false;
-
-  // Read file
-  string inputName = "../Plots/MC/dMuSim/"+config+"/dMuSim_"+qual+".root";
-  TFile *input = TFile::Open((inputName).c_str());
-  cout << "\nRead input...\t: " << inputName << " " << input << endl;
-
-  std::string outputName = "../Plots/MC/dMuSim/"+config+"/dMuSim_trackReco_unblinded_"+qual+".root"; 
-  if(!fullFit) outputName = "../Plots/MC/dMuSim/"+config+"/dMuSim_trackReco_simple_unblinded_"+qual+".root";
-  if(!write) outputName = "delete_me.root";
-
-  TFile *output = new TFile(outputName.c_str(), "RECREATE");
-
-  output->mkdir("SimultaneousAnalysis");
-  output->cd("SimultaneousAnalysis");
-
-  // Get histograms
-  TH1D *h1_wiggle = (TH1D*)input->Get("MainPlots/Wiggle");
-  TH1D *h1_wiggle_mod = (TH1D*)input->Get("MainPlots/Wiggle_Modulo");
-  TH2D *h2_thetaY_mod = (TH2D*)input->Get("MainPlots/ThetaY_vs_Time_Modulo");
-
-  cout << "Got histograms...: "<< h1_wiggle << h1_wiggle_mod << h2_thetaY_mod << endl;
-
-  double nEntries = h2_thetaY_mod->GetEntries();
-
-  // Make profile
-  TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
-
-  cout << "Generated x-profile...: "<< px_thetaY_mod << endl; 
-
-  TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
-  TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
-  TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
-
-  // Draw all base plots
-  if(sanityPlots) { 
-
-    DrawTH1(h1_wiggle,"h1_wiggle","../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/h1_wiggle_"+qual);
-    DrawTH1(h1_wiggle_mod,"h1_wiggle_mod","../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/h1_wiggle_mod_"+qual);
-    DrawTGraphErrors(gr_wiggle,"gr_wiggle","../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/gr_wiggle_"+qual);
-    DrawTGraphErrors(gr_wiggle_mod,"gr_wiggle_mod","../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/gr_wiggle_mod_"+qual);
-    DrawTH2(h2_thetaY_mod,"h2_thetaY_mod","../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/h2_thetaY_mod_"+qual);
-    DrawTH1(px_thetaY_mod,"px_thetaY_mod","../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/px_thetaY_mod_"+qual);
-    DrawTGraphErrors(gr_thetaY_mod, "gr_thetaY_mod", "../Images/MC/dMuSim/"+config+"/Unblinded/SanityPlots/gr_thetaY_mod_"+qual);
-
-  }
-
-  cout<<"Folding wiggle"<<endl;
-
-  // Fold wiggle for illustration 
-  FitFivePar(gr_wiggle, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
-  TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
-  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), xmin, xmax, 0, 100e3);
-  gr_wiggle->SetName("WiggleFit");
-  gr_wiggle->Write();
-
-  FoldWiggle(gr_wiggle);//, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../Images/MC/dMuSim/"+config+"/Blinded/WiggleMod_"+to_string(t_mod)+"_"+qual);
-
-  // Now fit the modulo wiggle
-  cout<<"Running main modulo wiggle fit"<<endl; 
-  FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
-  TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
-  DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_mod_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), 140e3, 500e3);
-
-  gr_wiggle_mod->SetName("ModWiggleFit");
-  gr_wiggle_mod->Write();
-
-  // ======= SET PHASE =======
-  const double phi = modWiggle->GetParameter(4); //modWiggle->GetParameter(4);
-  const double phi_err = modWiggle->GetParError(4);
-  cout<<"Got phase: "<<phi<<endl;
-
-  // ======= Fit for A_Bz =====
-  // Bz should be 1700 ppm or 0.17 mrad
-  if(fullFit) {
-    FullEDMFit(gr_thetaY_mod, 0.17, OMEGA_A*1e3, phi, 0, OMEGA_A*1e3, phi, 0.5, 0, G2PERIOD);
-    TF1 *EDMWiggle = gr_thetaY_mod->GetFunction("FullEDMFunc");
-    DrawFullEDMFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMuSim/"+config+"/Unblinded/fit_EDM_full_"+qual, nEntries, -1, 1, true);
-    gr_thetaY_mod->SetName("EDMFit");
-    gr_thetaY_mod->Write();
-  } else if(!fullFit) {
-    SimpleEDMFit(gr_thetaY_mod, 0.17, OMEGA_A*1e3, 0.5, 0, G2PERIOD);
-    TF1 *EDMWiggle = gr_thetaY_mod->GetFunction("SimpleEDMFunc");
-    DrawSimpleEDMFit(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMuSim/"+config+"/Unblinded/fit_EDM_simple_"+qual, nEntries, -1, 1, true);
-    gr_thetaY_mod->SetName("EDMFit");
-    gr_thetaY_mod->Write();
-  }
-
-  cout<<"Number of tracks in fit:\t"<<px_thetaY_mod->GetEntries()<<endl;
-
-  // Momentum binned 
-  cout<<"\nPerforming momentum binned analysis"<<endl;
-  
-  output->mkdir("MomentumBinnedAnalysis");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSlices");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSymCuts");
-  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomMinScan");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSymCuts");
-  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomMinScan");
-
-  MomentumBinnedAnalysis(input, output, phi, fullFit);
-
-  // VertOffset(input, output, phi);
-
-  input->Close();
-  output->Close();
-  std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
-
-  return 0;
-}
-*/

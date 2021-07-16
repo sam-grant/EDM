@@ -19,7 +19,7 @@ TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y
 
 void DrawOverlay(TGraphErrors *graph1, TGraphErrors *graph2, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+	TCanvas *c = new TCanvas("c","c",500,350);//800,600);
 
 	graph1->SetTitle(title.c_str());
 	graph1->GetXaxis()->SetTitleSize(.04);
@@ -91,7 +91,8 @@ void Run(bool boost) {
 //	gr_ringsim->Scale(100);
 	gr_ringsim->GetYaxis()->SetRangeUser(-0.25,1.25);
 
-	DrawOverlay(gr_ringsim, gr_edmsim, ";e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100;A_{EDM} [a.u.]", "tmp");
+	// TODO: WHY DID YOU SAVE THIS AS TMP NO WONDER I WAS LOOKING FOR IT FOR AGES 
+	DrawOverlay(gr_ringsim, gr_edmsim, ";e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100;A_{EDM} [a.u.]", "../Images/A_EDM_overlay");
 
 
 	return;

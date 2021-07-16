@@ -1,0 +1,20 @@
+Asymmetry 
+---------
+
+X - Review Paul's note
+X - Review method for up/down stuff
+X - Review vertical angle mysteries, make notes
+X - Clean up Plotter.C and TruthEDMSim.C to remove the min/max and sym scans
+X - Ensure that Plotter.C includes all components of momentum
+- Important: why does tan(px/py) produce a uniform distribution? 
+- Try to redfine the vertical so that it doesn't include Z-component
+- Important: prove that the vertical angle RMS does not decrease with momentum if you define theta_y this way
+- Didn't work? What else could be driving the drop in vertical angle RMS?
+
+Radial field
+------------
+
+- Per calo analysis 
+- Calo align jumps / run (way to do this more cleverly?)
+- Take a closer look at the CBO thing 
+- Prove the g-2 assymetry with forwards backward asymmetry

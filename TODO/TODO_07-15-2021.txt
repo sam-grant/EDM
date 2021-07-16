@@ -1,0 +1,14 @@
+--------------------------------------------------------------------
+
+Asymmetry 
+---------
+
+- Dominika needs to agree with gas gun
+- Finish up the checks with trying to get the assymetry via the angles
+- After that put it to one side and carry on 
+
+Radial field
+------------
+
+- Set up per calo analysis
+- 

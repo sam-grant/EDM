@@ -1,0 +1,19 @@
+Asymmetry 
+
+X- Figure out how to make a TH1 go negative
+- Fit the damn thing
+- Put the g-2 asymetry on slides 
+	- Can we do this for actual sample that you're using? 
+- Review method for up/down stuff
+
+
+
+
+
+
+Radial field
+--------
+- Per calo analysis 
+- Calo align jumps / run (way to do this more cleverly?)
+- Take a closer look at the CBO thing 
+- Prove the g-2 assymetry with forwards backward asymmetry

@@ -1,0 +1,21 @@
+Asymmetry 
+---------
+
+- Important: why do tan(px/py) and others produce a uniform distribution? 
+- Important: Why does the vertical angle RMS bias towards low/mid momentum in the MRF?
+X - Finish up the checks with trying to get the assymetry via the angles
+X - Contact Dominika
+X - Can we plot the ampltidude over the maximum angular difference? (Fitted amplitdue over the max angular diff)
+- Tidy up SimulatedAsymmetry.C
+- Normalise the differential asymmetry plots 
+- Perform a fit the vertical asymmetry plot 
+
+
+Radial field
+------------
+
+- Per calo analysis 
+- Calo align jumps / run (way to do this more cleverly?)
+- Take a closer look at the CBO thing 
+- Take a look at the radial field simulation 
+- Start work on slides for collaboration meeting

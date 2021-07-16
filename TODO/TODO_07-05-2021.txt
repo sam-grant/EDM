@@ -1,0 +1,23 @@
+X - Read debevacs note again 
+X - Organise mail to Debevec asking for ideas. Was the analytic curve ever verfied in simulation? Are there any assumptions or effects excluded? Attach plot over laid simulations. Explains that it exclues any detector effects including acceptance. 
+- Go through "notes" in EstimateRadialField.C
+X - Are we going to use the mean of the dist of the fit (calo 5 + 9) excluded.
+	yes I think so. Just use the simple error combination and then fit. 
+X - What is the true QHV throughout Run-1?
+X	- Look at DB? 
+X	- Make plot per dataset using pandas
+X - Set up QHV for each DS
+X - Write dataset average results into tree (test)
+X- Write abs Br per run 
+x- Run over all DS
+X- Remake plots for each DS
+x	- Avg Br and Br per run
+
+- Are we going to include the momentum dependance? (No just a footnote)
+
+
+- Re-run estimates and start work on slides. 
+- Make sure you overwrite the first version to avoid confusion
+
+For another day: 
+- Need calo align plots per run

@@ -1,7 +1,7 @@
 void h_res_truthAllDecays_MRF_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 01:04:41 2021) by ROOT version 6.22/08
+//=========  (Fri Jul 16 17:58:41 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,24 +11,24 @@ void h_res_truthAllDecays_MRF_200MeV_AQ()
    c->SetFrameBorderMode(0);
    
    TH1D *residual__2 = new TH1D("residual__2","",87,0,4.365324);
-   residual__2->SetBinContent(1,0.9743067);
+   residual__2->SetBinContent(1,0.9743068);
    residual__2->SetBinContent(2,-1.443888);
    residual__2->SetBinContent(3,-3.243564);
    residual__2->SetBinContent(4,-3.541398);
    residual__2->SetBinContent(5,-0.4959709);
-   residual__2->SetBinContent(6,0.0202785);
+   residual__2->SetBinContent(6,0.02027854);
    residual__2->SetBinContent(7,2.685703);
    residual__2->SetBinContent(8,-3.123572);
    residual__2->SetBinContent(9,-1.28996);
    residual__2->SetBinContent(10,-2.183923);
-   residual__2->SetBinContent(11,2.159204);
+   residual__2->SetBinContent(11,2.159205);
    residual__2->SetBinContent(12,1.110781);
    residual__2->SetBinContent(13,1.492817);
    residual__2->SetBinContent(14,-0.6134264);
-   residual__2->SetBinContent(15,0.6651248);
+   residual__2->SetBinContent(15,0.6651249);
    residual__2->SetBinContent(16,0.4985128);
    residual__2->SetBinContent(17,-0.8438651);
-   residual__2->SetBinContent(18,-0.3203394);
+   residual__2->SetBinContent(18,-0.3203393);
    residual__2->SetBinContent(19,-1.502517);
    residual__2->SetBinContent(20,2.009792);
    residual__2->SetBinContent(21,-2.319994);
@@ -42,12 +42,12 @@ void h_res_truthAllDecays_MRF_200MeV_AQ()
    residual__2->SetBinContent(29,-2.341109);
    residual__2->SetBinContent(30,0.9590373);
    residual__2->SetBinContent(31,1.669491);
-   residual__2->SetBinContent(32,0.1731885);
+   residual__2->SetBinContent(32,0.1731884);
    residual__2->SetBinContent(33,-2.711364);
    residual__2->SetBinContent(34,2.202958);
    residual__2->SetBinContent(35,-0.554549);
    residual__2->SetBinContent(36,0.8954694);
-   residual__2->SetBinContent(37,-0.760305);
+   residual__2->SetBinContent(37,-0.7603051);
    residual__2->SetBinContent(38,1.345897);
    residual__2->SetBinContent(39,1.68373);
    residual__2->SetBinContent(40,3.406635);
@@ -62,9 +62,9 @@ void h_res_truthAllDecays_MRF_200MeV_AQ()
    residual__2->SetBinContent(49,2.782452);
    residual__2->SetBinContent(50,0.1430428);
    residual__2->SetBinContent(51,-0.2329382);
-   residual__2->SetBinContent(52,-1.585984);
-   residual__2->SetBinContent(53,-0.1679135);
-   residual__2->SetBinContent(54,-0.3811555);
+   residual__2->SetBinContent(52,-1.585985);
+   residual__2->SetBinContent(53,-0.1679136);
+   residual__2->SetBinContent(54,-0.3811556);
    residual__2->SetBinContent(55,0.6221806);
    residual__2->SetBinContent(56,1.21604);
    residual__2->SetBinContent(57,-2.280411);
@@ -86,15 +86,15 @@ void h_res_truthAllDecays_MRF_200MeV_AQ()
    residual__2->SetBinContent(73,-0.4209898);
    residual__2->SetBinContent(74,-0.3312968);
    residual__2->SetBinContent(75,0.2197635);
-   residual__2->SetBinContent(76,-0.1088485);
-   residual__2->SetBinContent(77,0.1084295);
+   residual__2->SetBinContent(76,-0.1088484);
+   residual__2->SetBinContent(77,0.1084296);
    residual__2->SetBinContent(78,-1.366249);
    residual__2->SetBinContent(79,-0.6363783);
    residual__2->SetBinContent(80,3.535926);
-   residual__2->SetBinContent(81,0.7616131);
+   residual__2->SetBinContent(81,0.7616132);
    residual__2->SetBinContent(82,1.600338);
    residual__2->SetBinContent(83,-0.308313);
-   residual__2->SetBinContent(84,-0.1348451);
+   residual__2->SetBinContent(84,-0.134845);
    residual__2->SetBinContent(85,-1.560891);
    residual__2->SetBinContent(86,2.584182);
    residual__2->SetBinContent(87,2.711759);
