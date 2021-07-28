@@ -1,10 +1,10 @@
 void BrVsDS()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jul  6 08:07:56 2021) by ROOT version 6.12/04
+//=========  (Wed Jul 21 07:15:48 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1.775,-3.949295,15.975,51.93136);
+   c->Range(-1.775,-4.025085,15.975,52.47887);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void BrVsDS()
    12,
    13};
    Double_t Graph0_fy1001[13] = {
-   21.57803,
-   22.35396,
-   29.64106,
-   33.92595,
-   11.2892,
-   14.79155,
-   17.23072,
-   12.59608,
-   12.575,
-   14.75457,
-   16.36835,
-   10.7554,
-   10.73588};
+   22.19565,
+   22.72126,
+   29.60311,
+   34.27966,
+   11.29031,
+   14.85245,
+   17.31795,
+   12.68988,
+   12.62024,
+   14.7471,
+   16.39363,
+   10.86647,
+   10.78958};
    Double_t Graph0_fex1001[13] = {
    0,
    0,
@@ -54,28 +54,28 @@ void BrVsDS()
    0,
    0};
    Double_t Graph0_fey1001[13] = {
-   7.098951,
-   8.042353,
-   8.25343,
-   8.691963,
-   3.547244,
-   3.72447,
-   6.014344,
-   3.493359,
-   3.504007,
-   4.954327,
-   4.965355,
-   4.918062,
-   5.371737};
+   7.297995,
+   8.172041,
+   8.242971,
+   8.781881,
+   3.547573,
+   3.739166,
+   6.04393,
+   3.518048,
+   3.515971,
+   4.95191,
+   4.972777,
+   4.966378,
+   5.397335};
    TGraphErrors *gre = new TGraphErrors(13,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
-   gre->SetTitle(";Dataset;B_{r} [ppm]");
+   gre->SetTitle(";Dataset;#LTB_{r}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,14.2);
-   Graph_Graph1001->SetMinimum(1.638771);
-   Graph_Graph1001->SetMaximum(46.34329);
+   Graph_Graph1001->SetMinimum(1.625311);
+   Graph_Graph1001->SetMaximum(46.82848);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 
@@ -103,7 +103,7 @@ void BrVsDS()
    Graph_Graph1001->GetXaxis()->SetLabelSize(0.035);
    Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1001->GetYaxis()->SetTitle("B_{r} [ppm]");
+   Graph_Graph1001->GetYaxis()->SetTitle("#LTB_{r}#GT [ppm]");
    Graph_Graph1001->GetYaxis()->CenterTitle(true);
    Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1001->GetYaxis()->SetLabelFont(42);

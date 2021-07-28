@@ -1,10 +1,10 @@
 void BrVsDS()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 25 06:41:05 2021) by ROOT version 6.12/04
+//=========  (Tue Jul 20 12:51:38 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1.775,-10.29115,15.975,44.60014);
+   c->Range(-1.775,-4.025085,15.975,52.47887);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void BrVsDS()
    12,
    13};
    Double_t Graph0_fy1001[13] = {
-   17.02032,
-   15.21331,
-   21.75367,
-   28.66775,
-   6.165968,
-   9.541027,
-   12.19575,
-   7.573244,
-   7.393016,
-   9.95429,
-   11.24352,
-   5.680748,
-   5.619418};
+   22.19565,
+   22.72126,
+   29.60311,
+   34.27966,
+   11.29031,
+   14.85245,
+   17.31795,
+   12.68988,
+   12.62024,
+   14.7471,
+   16.39363,
+   10.86647,
+   10.78958};
    Double_t Graph0_fex1001[13] = {
    0,
    0,
@@ -54,19 +54,19 @@ void BrVsDS()
    0,
    0};
    Double_t Graph0_fey1001[13] = {
-   6.761172,
-   6.759828,
-   6.767719,
-   6.783848,
-   6.751787,
-   6.757447,
-   6.769416,
-   6.756351,
-   6.751597,
-   6.756233,
-   6.755984,
-   6.760304,
-   6.762022};
+   7.297995,
+   8.172041,
+   8.242971,
+   8.781881,
+   3.547573,
+   3.739166,
+   6.04393,
+   3.518048,
+   3.515971,
+   4.95191,
+   4.972777,
+   4.966378,
+   5.397335};
    TGraphErrors *gre = new TGraphErrors(13,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
    gre->SetTitle(";Dataset;B_{r} [ppm]");
@@ -74,8 +74,8 @@ void BrVsDS()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,14.2);
-   Graph_Graph1001->SetMinimum(-4.802023);
-   Graph_Graph1001->SetMaximum(39.11101);
+   Graph_Graph1001->SetMinimum(1.625311);
+   Graph_Graph1001->SetMaximum(46.82848);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 

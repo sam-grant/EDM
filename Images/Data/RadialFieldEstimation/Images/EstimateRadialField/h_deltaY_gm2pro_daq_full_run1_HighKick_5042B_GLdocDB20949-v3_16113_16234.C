@@ -1,7 +1,7 @@
 void h_deltaY_gm2pro_daq_full_run1_HighKick_5042B_GLdocDB20949-v3_16113_16234()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jul  6 07:17:55 2021) by ROOT version 6.12/04
+//=========  (Wed Jul 21 05:28:59 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

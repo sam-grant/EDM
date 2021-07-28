@@ -6,7 +6,8 @@
 
 std::string config = "5.4e-18";
 
-std::string qual = "truthAllDecays_MRF_200MeV_AQ";
+std::string qual = "truthAllDecays_AAR_200MeV_AQ_test";
+//std::string qual = "truthAllDecays_MRF_200MeV_AQ_test";
 
 //std::string qual = "truthAllDecays_AAR_200MeV_AQ_option0";
 //std::string qual = "truthAllDecays_AAR_200MeV_AQ_option1";
@@ -43,7 +44,11 @@ std::string qual = "truthAllDecays_MRF_200MeV_AQ";
 
 double scaleFactor = 1.0;
 
-string mainTitle = "e^{+}_{LAB}";
+double momBoostFactor = 1;
+//double momBoostFactor = (1/(2*GMAGIC));
+
+
+string mainTitle = "e^{+}";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -264,8 +269,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   TGraphErrors* A_vs_p_[n_cut_config];
   
   
-  int step = 200;//200;///500;//250;//500;//200;
-  int n_cuts = PMAX / step;
+  int step = 200 * momBoostFactor;//200;///500;//250;//500;//200;
+  int n_cuts = (PMAX / step) * momBoostFactor;
   int lo = -1; 
   int hi = -1;
   int i_cut_config = -1;
@@ -281,8 +286,6 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   vector<double> A_[n_cut_config];
   vector<double> eA_[n_cut_config];
 
-
-
   TGraphErrors* thetaY_vs_p_[n_cut_config];
   TGraphErrors* thetaY_RMS_vs_p_[n_cut_config];
   TGraphErrors* Y_vs_p_[n_cut_config];
@@ -292,6 +295,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   TGraphErrors* N_vs_p_[n_cut_config];
   TGraphErrors* eA_vs_p_[n_cut_config];
   TGraphErrors* chiSqrNDF_vs_p_[n_cut_config];
+  TGraphErrors* alpha_vs_p_[n_cut_config];
+  TGraphErrors* alpha_RMS_vs_p_[n_cut_config];
 
   // Max angular difference
   TGraphErrors* thetaYMaxDiff_vs_p_[n_cut_config];
@@ -320,11 +325,17 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
   vector<double> chiSqrNDF_[n_cut_config];
 
+  vector<double> alpha_[n_cut_config];
+  vector<double> alpha_RMS_[n_cut_config];
+
+  vector<double> e_alpha_[n_cut_config];
+  vector<double> e_alpha_RMS_[n_cut_config];
+
   vector<double> thetaYMaxDiff_[n_cut_config];
   vector<double> AOverMaxDiff_[n_cut_config];
 
 
-  // ============ 200 MeV slices ============
+  // ============ Momentum slices ============
   i_cut_config = 0; 
 
   for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
@@ -427,6 +438,15 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
           chiSqrNDF_[i_cut_config].push_back(chiSqrNDF);
 
+          std::string alphaHistName = cuts_configs[i_cut_config]+"/Alpha_"+momSlice;
+          TH1D *alphaHist = (TH1D*)input->Get((alphaHistName).c_str());
+
+          alpha_[i_cut_config].push_back(alphaHist->GetMean());
+          alpha_RMS_[i_cut_config].push_back(alphaHist->GetRMS());
+
+          e_alpha_[i_cut_config].push_back(alphaHist->GetMeanError());
+          e_alpha_RMS_[i_cut_config].push_back(alphaHist->GetRMSError());
+
           double thetaYMaxDiff = thetaYHist->FindLastBinAbove(0,1) - thetaYHist->FindFirstBinAbove(0,1);
           thetaYMaxDiff_[i_cut_config].push_back(thetaYMaxDiff);
 
@@ -444,8 +464,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
     c_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
     A_vs_p_[i_cut_config] = (GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]));
 
-    DrawGraph(c_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
-    DrawGraph(A_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
+    DrawGraph(c_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
+    DrawGraph(A_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
   
     c_vs_p_[i_cut_config]->SetName("c_vs_p");
     A_vs_p_[i_cut_config]->SetName("A_vs_p");
@@ -455,52 +475,60 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
     if(extraScans) {
 
-
       thetaY_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], thetaY_[i_cut_config], ep_[i_cut_config], e_thetaY_[i_cut_config]);
-      DrawGraph(thetaY_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#LT#theta_{y}#GT [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_theta_Y_vs_p_"+qual).c_str(), false);
+      DrawGraph(thetaY_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#LT#theta_{y}#GT [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_theta_Y_vs_p_"+qual).c_str(), false);
       thetaY_vs_p_[i_cut_config]->SetName("thetaY_vs_p");
       thetaY_vs_p_[i_cut_config]->Write();
 
       thetaY_RMS_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], thetaY_RMS_[i_cut_config], ep_[i_cut_config], e_thetaY_RMS_[i_cut_config]);
-      DrawGraph(thetaY_RMS_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{#thetay} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_theta_Y_RMS_vs_p_"+qual).c_str(), false);
+      DrawGraph(thetaY_RMS_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{#thetay} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_theta_Y_RMS_vs_p_"+qual).c_str(), false);
       thetaY_RMS_vs_p_[i_cut_config]->SetName("thetaY_RMS_vs_p");
       thetaY_RMS_vs_p_[i_cut_config]->Write();
 
       Y_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], Y_[i_cut_config], ep_[i_cut_config], e_Y_[i_cut_config]);
-      DrawGraph(Y_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#LTy#GT [mm]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_Y_vs_p_"+qual).c_str(), false);
+      DrawGraph(Y_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#LTy#GT [mm]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_Y_vs_p_"+qual).c_str(), false);
       Y_vs_p_[i_cut_config]->SetName("Y_vs_p");
       Y_vs_p_[i_cut_config]->Write();
 
       Y_RMS_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], Y_RMS_[i_cut_config], ep_[i_cut_config], e_Y_RMS_[i_cut_config]);
-      DrawGraph(Y_RMS_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{y} [mm]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_Y_RMS_vs_p_"+qual).c_str(), false);
+      DrawGraph(Y_RMS_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{y} [mm]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_Y_RMS_vs_p_"+qual).c_str(), false);
       Y_RMS_vs_p_[i_cut_config]->SetName("Y_RMS_vs_p");
       Y_RMS_vs_p_[i_cut_config]->Write();
 
       pY_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], pY_[i_cut_config], ep_[i_cut_config], e_pY_[i_cut_config]);
-      DrawGraph(pY_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#LTp_{y}#GT [MeV]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_pY_vs_p_"+qual).c_str(), false);
+      DrawGraph(pY_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#LTp_{y}#GT [MeV]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_pY_vs_p_"+qual).c_str(), false);
       pY_vs_p_[i_cut_config]->SetName("pY_vs_p");
       pY_vs_p_[i_cut_config]->Write();
 
       pY_RMS_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], pY_RMS_[i_cut_config], ep_[i_cut_config], e_pY_RMS_[i_cut_config]);
-      DrawGraph(pY_RMS_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{py} [MeV]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_pY_RMS_vs_p_"+qual).c_str(), false);
+      DrawGraph(pY_RMS_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{py} [MeV]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_pY_RMS_vs_p_"+qual).c_str(), false);
       pY_RMS_vs_p_[i_cut_config]->SetName("pY_RMS_vs_p");
       pY_RMS_vs_p_[i_cut_config]->Write();
 
       N_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], N_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
-      DrawGraph(N_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;Positrons", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_N_vs_p_"+qual).c_str(), false);
+      DrawGraph(N_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;Positrons", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_N_vs_p_"+qual).c_str(), false);
       N_vs_p_[i_cut_config]->SetName("N_vs_p");
       N_vs_p_[i_cut_config]->Write();
 
       eA_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], eA_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
-      DrawGraph(eA_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#deltaA_{EDM}", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_eA_vs_p_"+qual).c_str(), false);
+      DrawGraph(eA_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#deltaA_{EDM}", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_eA_vs_p_"+qual).c_str(), false);
       eA_vs_p_[i_cut_config]->SetName("eA_vs_p");
       eA_vs_p_[i_cut_config]->Write();
 
       chiSqrNDF_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], chiSqrNDF_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
-      DrawGraph(chiSqrNDF_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#chi^{2}/NDF", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
+      DrawGraph(chiSqrNDF_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#chi^{2}/NDF", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
       chiSqrNDF_vs_p_[i_cut_config]->SetName("chiSqrNDF_vs_p");
       chiSqrNDF_vs_p_[i_cut_config]->Write();
 
+      alpha_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], alpha_[i_cut_config], ep_[i_cut_config], e_alpha_[i_cut_config]);
+      DrawGraph(chiSqrNDF_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#alpha [rad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
+      alpha_vs_p_[i_cut_config]->SetName("alpha_vs_p");
+      alpha_vs_p_[i_cut_config]->Write();
+
+      alpha_RMS_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], alpha_RMS_[i_cut_config], ep_[i_cut_config], e_alpha_RMS_[i_cut_config]);
+      DrawGraph(alpha_RMS_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{#alpha} [rad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
+      alpha_RMS_vs_p_[i_cut_config]->SetName("alpha_RMS_vs_p");
+      alpha_RMS_vs_p_[i_cut_config]->Write();
 
       // Normalise A_EDM by max angular diff
       cout<<"-3"<<endl;
