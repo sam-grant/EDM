@@ -7,4 +7,4 @@ if [[ ! -f $todo_list ]]; then
 else 
 	echo "This action would overwrite today's TODO list. Instead edit ${todo_list}."
 fi
-
+echo "Opening ${todo_list}" && sublime ${todo_list}

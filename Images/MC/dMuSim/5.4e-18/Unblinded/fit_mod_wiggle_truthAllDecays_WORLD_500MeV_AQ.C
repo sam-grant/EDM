@@ -1,7 +1,7 @@
 void fit_mod_wiggle_truthAllDecays_WORLD_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 10:24:08 2021) by ROOT version 6.22/08
+//=========  (Tue Aug 24 00:17:21 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,9374.999,4.944727,165625);

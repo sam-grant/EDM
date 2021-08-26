@@ -75,21 +75,27 @@ void DecaysOverlay(int step, int frame) {
 	}
 	else cerr<<"No frame supplied";
 
-	frameName += "_"+to_string(step);
+	//frameName += "_"+to_string(step);
 
-	TFile *f_allDecays = TFile::Open(("../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truthAllDecays_"+frameName+"MeV_AQ.root").c_str());
-	TFile *f_trackDecays = TFile::Open(("../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truth_"+frameName+"MeV_AQ.root").c_str());
+	string fname_tmp = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truthAllDecays_"+frameName+"_"+to_string(step)+"MeV_AQ.root";
+	TFile *f_allDecays = TFile::Open(("../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truthAllDecays_"+frameName+"_"+to_string(step)+"MeV_AQ.root").c_str());
+	cout<<fname_tmp<<" "<<f_allDecays<<endl;
+	TFile *f_trackDecays = TFile::Open(("../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truth_"+frameName+"_"+to_string(step)+"MeV_AQ.root").c_str());
+	TFile *f_recoDecays = TFile::Open(("../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_trackReco_"+frameName+"_"+to_string(step)+"MeV_AQ.root").c_str());
 
-	TGraphErrors *gr_allDecays = (TGraphErrors*)f_allDecays->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
-	TGraphErrors *gr_trackDecays = (TGraphErrors*)f_trackDecays->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
+	TGraphErrors *gr_allDecays = (TGraphErrors*)f_allDecays->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/AOverMaxDiff_vs_p");
+	TGraphErrors *gr_trackDecays = (TGraphErrors*)f_trackDecays->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/AOverMaxDiff_vs_p");
+	TGraphErrors *gr_recoDecays = (TGraphErrors*)f_recoDecays->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_AOverMaxDiff_vs_p");
 
 	gr_allDecays->SetMarkerStyle(20);
-	gr_trackDecays->SetMarkerStyle(24);
+	gr_trackDecays->SetMarkerStyle(20);
+	gr_recoDecays->SetMarkerStyle(20);
 
 	gr_allDecays->SetMarkerColor(kBlack);
-	gr_trackDecays->SetMarkerColor(kBlack);
+	gr_trackDecays->SetMarkerColor(kBlue);
+	gr_recoDecays->SetMarkerColor(kRed);
 
-	title += ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]";
+	title += ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX}";
 
 	TCanvas *c = new TCanvas("c", "c", 800, 600); 
 
@@ -107,13 +113,15 @@ void DecaysOverlay(int step, int frame) {
 	gr_allDecays->GetXaxis()->SetRangeUser(-50, 3050);
 	gr_allDecays->Draw("AP");
 	gr_trackDecays->Draw("P SAME");
+	gr_recoDecays->Draw("P SAME");
 
-	TLegend *leg = new TLegend(.59,.79,.89,.89);
-	//TLegend *leg = new TLegend(.11,.79,.49,.89);
+	//TLegend *leg = new TLegend(.59,.79,.89,.89);
+	TLegend *leg = new TLegend(.11,.79,.49,.89);
 	//leg->SetNColumns(2);
 
-	leg->AddEntry(gr_allDecays, "All decays");
-	leg->AddEntry(gr_trackDecays, "Tracker decays");
+	leg->AddEntry(gr_allDecays, "Truth (all decays)");
+	leg->AddEntry(gr_trackDecays, "Truth (track decays)");
+	leg->AddEntry(gr_recoDecays, "Track reco");
 
 	leg->SetBorderSize(0);
 
@@ -234,11 +242,13 @@ void OverlayAnaForm(int step, int frame) {
 
 void overlay_A_vs_p() {
 
-	//FramesOverlay(step);
+	// FramesOverlay(step);
 
-	// DecaysOverlay(200, 1);
+	DecaysOverlay(200, 1);
 
-	OverlayAnaForm(200 ,1); 
+	// OverlayAnaForm(200 ,1);
+
+
 
 
 

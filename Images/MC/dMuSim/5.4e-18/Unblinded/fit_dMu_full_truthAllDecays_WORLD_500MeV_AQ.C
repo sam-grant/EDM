@@ -1,7 +1,7 @@
 void fit_dMu_full_truthAllDecays_WORLD_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 10:24:05 2021) by ROOT version 6.22/08
+//=========  (Tue Aug 24 00:17:19 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-0.9375,4.944727,0.9375);
@@ -365,11 +365,11 @@ void fit_dMu_full_truthAllDecays_WORLD_500MeV_AQ()
    0.0417328};
    TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1005,Graph0_fy1005,Graph0_fex1005,Graph0_fey1005);
    gre->SetName("Graph0");
-   gre->SetTitle("e^{+}_{LAB}");
+   gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01005 = new TH1F("Graph_Graph01005","e^{+}_{LAB}",100,0,4.771751);
+   TH1F *Graph_Graph01005 = new TH1F("Graph_Graph01005","",100,0,4.771751);
    Graph_Graph01005->SetMinimum(-0.75);
    Graph_Graph01005->SetMaximum(0.75);
    Graph_Graph01005->SetDirectory(0);
@@ -20547,15 +20547,6 @@ void fit_dMu_full_truthAllDecays_WORLD_500MeV_AQ()
    pt->SetTextSize(26);
    pt_LaTex = pt->AddText("700 < p [MeV] < 2400");
    pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
-   pt->Draw();
-   
-   pt = new TPaveText(0.454196,0.9320629,0.545804,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   pt_LaTex = pt->AddText("e^{+}_{LAB}");
    pt->Draw();
    c->Modified();
    c->cd();

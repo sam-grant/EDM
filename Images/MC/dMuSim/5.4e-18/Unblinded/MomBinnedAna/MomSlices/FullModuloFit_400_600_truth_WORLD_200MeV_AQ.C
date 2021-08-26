@@ -1,10 +1,10 @@
 void FullModuloFit_400_600_truth_WORLD_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 13:59:11 2021) by ROOT version 6.22/08
+//=========  (Tue Aug 24 14:02:38 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.6024336,-6.25,4.944727,6.25);
+   c->Range(-0.6024336,-0.9375,4.944727,0.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -370,8 +370,8 @@ void FullModuloFit_400_600_truth_WORLD_200MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01015 = new TH1F("Graph_Graph01015","400 < p [MeV] < 600",100,0,4.771751);
-   Graph_Graph01015->SetMinimum(-5);
-   Graph_Graph01015->SetMaximum(5);
+   Graph_Graph01015->SetMinimum(-0.75);
+   Graph_Graph01015->SetMaximum(0.75);
    Graph_Graph01015->SetDirectory(0);
    Graph_Graph01015->SetStats(0);
 
@@ -10422,7 +10422,7 @@ void FullModuloFit_400_600_truth_WORLD_200MeV_AQ()
    FullEDMFunc1016->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1016->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1016->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1016->SetParameter(0,0.001003902);
+   FullEDMFunc1016->SetParameter(0,0.001003895);
    FullEDMFunc1016->SetParError(0,0.01802727);
    FullEDMFunc1016->SetParLimits(0,0,0);
    FullEDMFunc1016->SetParameter(1,1.43934);
@@ -20524,7 +20524,7 @@ void FullModuloFit_400_600_truth_WORLD_200MeV_AQ()
    FullEDMFunc1017->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1017->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1017->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1017->SetParameter(0,0.001003902);
+   FullEDMFunc1017->SetParameter(0,0.001003895);
    FullEDMFunc1017->SetParError(0,0.01802727);
    FullEDMFunc1017->SetParLimits(0,0,0);
    FullEDMFunc1017->SetParameter(1,1.43934);

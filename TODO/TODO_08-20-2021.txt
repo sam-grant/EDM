@@ -1,0 +1,33 @@
+Asymmetry 
+---------
+
+- Also produce plots for 500 MeV
+- Put error bars on plots!!
+- Take another look at the hit volume cut in trackRecoSim, why isn't it working? 
+- Why is trackRecoSim such a mess in general, take another look at this. May be assisted by using wider bins. 
+- Use 500 MeV bins for all plots
+- Interpreting the y-axis
+	- Does this come from the Lorentz boost? MRF plots suggest that it does. 
+	- What is the expectation then? 
+	- Produce scan of max vertical angle versus rest frame momentum (use wider ranges)
+- Make a fit and report the function 
+
+- Closure test on the size of acceptance + decay corrections in MC
+
+Radial field
+------------
+
+- Per calo analysis 
+- Calo align jumps / run (way to do this more cleverly?)
+- Take a closer look at the CBO thing 
+- Take a look at the radial field simulation 
+- Urgent: take a second look at the QHV VALUES
+- Need to update the field e-log 
+- Fix the QHV thing: there's literally a table in the beam dynamics paper.
+- Produce a gas gun sim with a radial field of 30 ppm or more/less. Try and fit the vertical angle plot.
+
+Thesis
+-------
+
+- Draft radial field chapter/note
+- Start intro (theory + experiment)

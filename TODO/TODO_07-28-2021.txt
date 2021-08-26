@@ -8,9 +8,19 @@ X - Contact Dominika
 X - Can we plot the ampltidude over the maximum angular difference? (Fitted amplitdue over the max angular diff)
 X - Tidy up SimulatedAsymmetry.C
 X - Normalise the differential asymmetry plots 
-X - Perform a fit the vertical asymmetry plots
-- Plot the RMS of cos(alpha)
-- Plot rest frame A vs p_MRF
+X - Perform a fit to all vertical asymmetry plots
+X - Plot the RMS of cos(alpha)
+X - Plot rest frame A vs p_MRF
+- Add plots for delta*theta 
+
+- Consilidate plot and image files, with current setup we only want
+
+	- truthAllDecays_AAR_200MeV_AQ
+	- truthAllDecays_MRF_200MeV_AQ
+	- truth_AAR_200MeV_AQ
+	- truth_MRF_200MeV_AQ
+
+- Attempt to interpret the y-axis...
 - Document the asymmetry stuff, try and formalise argument for the lorentz boost.
 
 Radial field

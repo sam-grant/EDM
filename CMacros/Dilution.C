@@ -6,45 +6,65 @@
 
 using namespace std;
 
-void OverlayScanGraphs(vector<TGraphErrors*> graphs, string names[], std::string title, std::string fname, double ymin, double ymax, bool sym) {
+const double delta_calc = 1.7; // mrad
+
+void DrawGraphs(vector<TGraphErrors*> graphs_, vector<string> labels_, std::string title, std::string fname, bool corr, double ymin, double ymax) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
-  TLegend *l = new TLegend(0.59,0.79,0.89,0.89);
-  l->SetNColumns(2);
+  TLegend *l;
+  if(corr) l = new TLegend(0.15, 0.69, 0.35, 0.89);
+  else l =  new TLegend(0.69, 0.69, 0.89, 0.89);
+//  l->SetNColumns(3);
   l->SetBorderSize(0);
 
-  graphs.at(1)->SetTitle(title.c_str());
-  graphs.at(1)->GetXaxis()->SetTitleSize(.04);
-  graphs.at(1)->GetYaxis()->SetTitleSize(.04);
-  graphs.at(1)->GetXaxis()->SetTitleOffset(1.1);
-  graphs.at(1)->GetYaxis()->SetTitleOffset(1.1);
-  graphs.at(1)->GetXaxis()->CenterTitle(true);
-  graphs.at(1)->GetYaxis()->CenterTitle(true);
-  graphs.at(1)->GetYaxis()->SetMaxDigits(4);
-  graphs.at(1)->GetYaxis()->SetRangeUser(ymin,ymax);
+  // NOTES: not using this functionality atm, is it worth it?
+  // Hack together x-axis range 
+  int N = graphs_.at(0)->GetN();
+  double xmax = graphs_.at(0)->GetPointX(N-1); 
+  double xmin = graphs_.at(0)->GetPointX(0);// Cut lowest momentum bin - 50; 
 
-  int nGraphs = graphs.size();
-
-  // Hack together x-axis range
-  int N = graphs.at(1)->GetN();
-  double xmax = graphs.at(1)->GetPointX(N-1); 
-  double xmin = graphs.at(1)->GetPointX(1);// Cut lowest momentum bin - 50; 
-  if(sym) xmin = graphs.at(1)->GetPointX(0);
-
-  double offset = (xmax - xmin) * 0.05;
+  double offset = (xmax - xmin) * 0.2;
   xmin = xmin - offset; 
   xmax = xmax + offset;
-  graphs.at(0)->GetXaxis()->SetRangeUser(xmin, xmax);
-  graphs.at(1)->GetXaxis()->SetRangeUser(xmin, xmax);
 
-  graphs.at(0)->SetMarkerStyle(20);
-  graphs.at(1)->SetMarkerStyle(24);
+  vector<int> colors_ = {1, 2, 4};
 
-  graphs.at(1)->Draw("AP"); 
-  graphs.at(0)->Draw("P"); 
+  //for(int i_gr = 0; i_gr < graphs_.size(); i_gr++) { 
 
-  for(int i = 0; i < nGraphs; i++) l->AddEntry(graphs.at(i), (names[i]).c_str());
+  int i_gr = 0;
+
+  for(auto& gr : graphs_) { 
+
+  	gr->SetTitle(title.c_str());
+  	gr->GetXaxis()->SetTitleSize(.04);
+  	gr->GetYaxis()->SetTitleSize(.04);
+  	gr->GetXaxis()->SetTitleOffset(1.1);
+  	gr->GetYaxis()->SetTitleOffset(1.1);
+  	gr->GetXaxis()->CenterTitle(true);
+  	gr->GetYaxis()->CenterTitle(true);
+  	gr->GetYaxis()->SetMaxDigits(4);
+  	gr->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  	gr->GetXaxis()->SetRangeUser(-50, 3050); // xmin, xmax);
+  	gr->SetMarkerStyle(20);
+  	gr->SetMarkerColor(colors_.at(i_gr));
+
+  	if(i_gr==0) gr->Draw("AP");
+  	else gr->Draw("P");
+
+  	TF1 *fnc = gr->GetFunction("ParabolaFunc");
+
+  	if(fnc!=0) {
+			fnc->SetLineColor(colors_.at(i_gr));
+			fnc->Draw("same");
+		}
+
+  	l->AddEntry(gr, (labels_.at(i_gr)).c_str());
+
+  	i_gr++;
+
+  }
 
   l->Draw("same");
 
@@ -59,226 +79,180 @@ void OverlayScanGraphs(vector<TGraphErrors*> graphs, string names[], std::string
 
 }
 
-void OverlayScanGraphs2(vector<TGraphErrors*> graphs, string names[], std::string title, std::string fname, double ymin, double ymax, bool sym) {
-
-  TCanvas *c = new TCanvas("c","c",800,600);
-
-  TLegend *l = new TLegend(0.49,0.79,0.89,0.89);
-  l->SetNColumns(2); // l->SetNColumns(3);
-  l->SetBorderSize(0);
-
-  graphs.at(1)->SetTitle(title.c_str());
-  graphs.at(1)->GetXaxis()->SetTitleSize(.04);
-  graphs.at(1)->GetYaxis()->SetTitleSize(.04);
-  graphs.at(1)->GetXaxis()->SetTitleOffset(1.1);
-  graphs.at(1)->GetYaxis()->SetTitleOffset(1.1);
-  graphs.at(1)->GetXaxis()->CenterTitle(true);
-  graphs.at(1)->GetYaxis()->CenterTitle(true);
-  graphs.at(1)->GetYaxis()->SetMaxDigits(4);
-  graphs.at(1)->GetYaxis()->SetRangeUser(ymin,ymax);
-
-  int nGraphs = graphs.size();
-
-  // Hack together x-axis range
-  int N = graphs.at(1)->GetN();
-  double xmax = graphs.at(1)->GetPointX(N-1); 
-  double xmin = graphs.at(1)->GetPointX(1);// Cut lowest momentum bin - 50; 
-  if(sym) xmin = graphs.at(1)->GetPointX(0);
-
-  double offset = (xmax - xmin) * 5; //0.05;
-  xmin = xmin - offset; 
-  xmax = xmax + offset;
-
-  xmin = -25;
-  xmax = 3025;
-  graphs.at(0)->GetXaxis()->SetRangeUser(xmin, xmax);
-  graphs.at(1)->GetXaxis()->SetRangeUser(xmin, xmax);
-
-  graphs.at(0)->SetMarkerStyle(20);
-  graphs.at(1)->SetMarkerStyle(24);
-  //graphs.at(2)->SetMarkerStyle(20);
-
-  //graphs.at(0)->SetMarkerColor(kBlack);
-  //graphs.at(1)->SetMarkerColor(kRed);
-  //graphs.at(2)->SetMarkerColor(kBlue);
-
-  graphs.at(1)->Draw("AP"); 
-  graphs.at(0)->Draw("P SAME"); 
-  //graphs.at(2)->Draw("P SAME");
-
-  for(int i = 0; i < nGraphs; i++) l->AddEntry(graphs.at(i), (names[i]).c_str());
-
-  l->Draw("same");
-
-  c->SaveAs((fname+".pdf").c_str());
-  c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
+double ParabolaFunc(double *x, double *par) {
+  return par[0] * pow(x[0],2) + par[1] * x[0] + par[2];
+}
 
 
-  delete c;
+void ParabolaFit(TGraphErrors *graph, string name, bool corr) { // double p0, double p1, double p2, 
+  
+  TF1 *fnc = new TF1("ParabolaFunc", ParabolaFunc, 0, 3000, 3);
+
+/*  if(name == "truthAllDecays") { 
+  	fnc->SetParameter(0, -11e-10);
+  	fnc->SetParameter(1, 4e-06);
+  	fnc->SetParameter(2, -4e-04);
+  }*/
+  if(corr) {
+	  if(name == "trackReco") {
+	  	fnc->SetParameter(0, -7.0e-11);
+	  	fnc->SetParameter(1, 2e-07);
+	  	fnc->SetParameter(2, -5.0e-05);
+	  } else if(name == "truth") { 
+	  	fnc->SetParameter(0, -8.5e-10);
+	  	fnc->SetParameter(1, 3.5e-06);
+	  	fnc->SetParameter(2, -6.0e-04);
+	  } else if(name == "truthAllDecays") { 
+	  	fnc->SetParameter(0, -1.2e-10);
+	  	fnc->SetParameter(1, 4.5e-06);
+	  	fnc->SetParameter(2, -6.5e-04);
+	  }
+	} else {
+	  if(name == "trackReco") {
+	  	fnc->SetParameter(0, -6e-8);
+	  	fnc->SetParameter(1, 2.0e-4);
+	  	fnc->SetParameter(2, 0.05);
+	  } else if(name == "truth") { 
+	  	fnc->SetParameter(0, -5.5e-8);
+	  	fnc->SetParameter(1, 8.0e-5);
+	  	fnc->SetParameter(2, 2.5e-1);
+	  } else if(name == "truthAllDecays") { 
+	  	fnc->SetParameter(0, -5.5e-8);
+	  	fnc->SetParameter(1, 7.0e-5);
+	  	fnc->SetParameter(2, 3.0e-1);
+	  }
+	}
+
+  graph->Fit(fnc, "R"); 	
 
   return;
 
 }
 
-void plot_EDM_mom_scans(string qual) {
+TGraphErrors *RemoveSpuriousPoint(TGraphErrors *gr) {
 
-	cout<<"\nPlotting EDM momementum scans"<<endl; 
+	int n = gr->GetN();
 
-	string names[] = {"Tracker decays", "All decays"}; // "Truth", "Truth (all decays)"}; //{"Reco", "Truth", "Truth (all decays)"};
+	double x[n-1]; double ex[n-1]; 
+	double y[n-1]; double ey[n-1];
 
-	string recoFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_trackReco_"+qual+".root"; //dMuSim_unblindedFits_"+config[0]+"_"+qual+".root";// dMuSim_unblindedFits_trackReco_"+qual+".root"; 
-	string truthFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truth_"+qual+".root"; //dMuSim_unblindedFits_"+config[1]+"_"+qual+".root";// dMuSim_unblindedFits_truth_"+qual+".root"; 
-	string truthAllDecaysFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truthAllDecays_"+qual+".root"; //dMuSim_unblindedFits_"+config[1]+"_"+qual+".root";// dMuSim_unblindedFits_truth_"+qual+".root"; 
+	int counter = 0;
 
-	TFile *recoFile = TFile::Open((recoFileName).c_str()); 
-	TFile *truthFile = TFile::Open((truthFileName).c_str());
-	TFile *truthAllDecaysFile = TFile::Open((truthAllDecaysFileName).c_str());
+	for(int i = 0; i<n; i++) { 
 
-	cout<<"\nGot reco file "<<recoFileName<<" "<<recoFile<<endl;
-	cout<<"Got truth file "<<truthFileName<<" "<<truthFile<<endl;
-	cout<<"Got truth (all decays) file "<<truthAllDecaysFileName<<" "<<truthAllDecaysFile<<"\n"<<endl;
+		if(i==1) continue;
 
-	TGraphErrors *gr_reco_p_slice = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_sym = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_min = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_max = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMaxScan/S0S12S18_A_vs_p");
+		x[counter] = gr->GetX()[i]; ex[counter] = gr->GetEX()[i];
+		y[counter] = gr->GetY()[i]; ey[counter] = gr->GetEY()[i];
 
-	TGraphErrors *gr_truth_p_slice = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
-	TGraphErrors *gr_truth_p_sym = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/A_vs_p");
-	TGraphErrors *gr_truth_p_min = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/A_vs_p");
-	TGraphErrors *gr_truth_p_max = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMaxScan/A_vs_p");
+		counter++;
 
-	TGraphErrors *gr_truthAllDecays_p_slice = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
-	TGraphErrors *gr_truthAllDecays_p_sym = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/A_vs_p");
-	TGraphErrors *gr_truthAllDecays_p_min = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/A_vs_p");
-	TGraphErrors *gr_truthAllDecays_p_max = (TGraphErrors*)truthAllDecaysFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMaxScan/A_vs_p");
+	}
 
-	cout<<"Got reco momentum slice graph "<<gr_reco_p_slice<<endl;
-	cout<<"Got reco momentum symmetric cuts graph "<<gr_reco_p_sym<<endl;
-	cout<<"Got reco momentum min scan graph "<<gr_reco_p_min<<endl;
-	cout<<"Got reco momentum max scan graph "<<gr_reco_p_max<<endl;
+	if(counter != n-1) cerr<<"ALERT";
 
-	cout<<"Got truth momentum slice graph "<<gr_truth_p_slice<<endl;
-	cout<<"Got truth momentum symmetric cuts graph "<<gr_truth_p_sym<<endl;
-	cout<<"Got truth momentum min scan graph "<<gr_truth_p_min<<endl;
-	cout<<"Got truth momentum max scan graph "<<gr_truth_p_max<<"\n"<<endl;
-
-	cout<<"Got truth (all decays) momentum slice graph "<<gr_truthAllDecays_p_slice<<endl;
-	cout<<"Got truth (all decays) momentum symmetric cuts graph "<<gr_truthAllDecays_p_sym<<endl;
-	cout<<"Got truth (all decays) momentum min scan graph "<<gr_truthAllDecays_p_min<<endl;
-	cout<<"Got truth (all decays) momentum max scan graph "<<gr_truthAllDecays_p_max<<"\n"<<endl;
-
-
-	double ymin = -0.15; double ymax = 0.35;
-
-	vector<TGraphErrors*> gr_p_slice_ = {gr_truth_p_slice, gr_truthAllDecays_p_slice}; // {gr_reco_p_slice, gr_truth_p_slice, gr_truthAllDecays_p_slice}; 
-	vector<TGraphErrors*> gr_p_sym_ = {gr_reco_p_sym, gr_truth_p_sym, gr_truthAllDecays_p_sym}; 
-	vector<TGraphErrors*> gr_p_min_ = {gr_reco_p_min, gr_truth_p_min, gr_truthAllDecays_p_min}; 
-	vector<TGraphErrors*> gr_p_max_ = {gr_reco_p_max, gr_truth_p_max, gr_truthAllDecays_p_max}; 
-
-	OverlayScanGraphs2(gr_p_slice_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_slice_"+qual, -0.15, 0.425, false);
-	
-	//OverlayScanGraphs2(gr_p_sym_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_sym_"+qual, 0.1, 0.325, true);
-	//OverlayScanGraphs2(gr_p_min_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_min_"+qual, -0.025, 0.3, false);
-	////OverlayScanGraphs(gr_p_max_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_max_"+qual, -0.025, 0.55, false);
-	//OverlayScanGraphs2(gr_p_max_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_max_"+qual, 0.15, 0.325, false);
-
-	recoFile->Close();
-	truthFile->Close();
-
-	return; 
+	return new TGraphErrors(counter, x, y, ex, ey);
 
 }
 
-void plot_Bz_mom_scans(string qual) { //string config[], string names[], string qual) { // string names[], string qual) { 
+TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
-	cout<<"\nPlotting Bz momementum scans"<<endl; 
+	int n = gr->GetN();
 
-	string names[] = {"Reco", "Truth"};
+	double x[n]; double ex[n]; 
+	double y[n]; double ey[n];
 
-	string recoFileName = "../Plots/MC/BzSim/1700ppm/BzSim_unblindedFits_trackReco_"+qual+".root";
-	string truthFileName = "../Plots/MC/BzSim/1700ppm/BzSim_unblindedFits_truth_"+qual+".root";
+	for(int i = 0; i<n; i++) { 
 
-	TFile *recoFile = TFile::Open((recoFileName).c_str()); 
-	TFile *truthFile = TFile::Open((truthFileName).c_str());
+		x[i] = gr->GetX()[i]; ex[i] = gr->GetEX()[i];
+		y[i] = gr->GetY()[i] / delta_calc; ey[i] = gr->GetEY()[i] / delta_calc;
 
-	cout<<"\nGot reco file "<<recoFileName<<" "<<recoFile<<endl;
-	cout<<"Got truth file "<<truthFileName<<" "<<truthFile<<"\n"<<endl;
+	}
 
-	TGraphErrors *gr_reco_p_slice = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_sym = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_min = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/S0S12S18_A_vs_p");
-
-	TGraphErrors *gr_truth_p_slice = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
-	TGraphErrors *gr_truth_p_sym = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/A_vs_p");
-	TGraphErrors *gr_truth_p_min = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/A_vs_p");
-
-	cout<<"Got reco momentum slice graph "<<gr_reco_p_slice<<endl;
-	cout<<"Got reco momentum symmetric cuts graph "<<gr_reco_p_sym<<endl;
-	cout<<"Got reco momentum min scan graph "<<gr_reco_p_min<<endl;
-
-	cout<<"Got truth momentum slice graph "<<gr_truth_p_slice<<endl;
-	cout<<"Got truth momentum symmetric cuts graph "<<gr_truth_p_sym<<endl;
-	cout<<"Got truth momentum min scan graph "<<gr_truth_p_min<<"\n"<<endl;
-
-	double ymin = -0.15; double ymax = 0.35;
-
-	vector<TGraphErrors*> gr_p_slice_ = {gr_reco_p_slice, gr_truth_p_slice}; 
-	vector<TGraphErrors*> gr_p_sym_ = {gr_reco_p_sym, gr_truth_p_sym}; 
-	vector<TGraphErrors*> gr_p_min_ = {gr_reco_p_min, gr_truth_p_min}; 
-
-	OverlayScanGraphs(gr_p_slice_, names, "", "../Images/MC/Dilution/Bz/A_vs_p_slice_"+qual, -0.35, 0.35, false);
-	OverlayScanGraphs(gr_p_sym_, names, "", "../Images/MC/Dilution/Bz/A_vs_p_sym_"+qual, 0.1, 0.26, true);
-	OverlayScanGraphs(gr_p_min_, names, "", "../Images/MC/Dilution/Bz/A_vs_p_min_"+qual, -0.06, 0.25, false);
-
-	return; 
+	return new TGraphErrors(n, x, y, ex, ey);
 
 }
 
-void plot_EDM_mom_scans_equalStats(string qual) {
 
-	cout<<"\nPlotting EDM momementum scans (equal stats)"<<endl; 
 
-	string names[] = {"Reco", "Truth"};
+void RunAEDM(int step, string frame, bool corr, double ymin, double ymax, TFile *output) {
 
-	string recoFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_trackReco_"+qual+".root"; //dMuSim_unblindedFits_"+config[0]+"_"+qual+".root";// dMuSim_unblindedFits_trackReco_"+qual+".root"; 
-	string truthFileName = "../Plots/MC/dMu/5.4e-18/dMuSim_unblindedFits_truth_"+qual+".root"; //dMuSim_unblindedFits_"+config[1]+"_"+qual+".root";// dMuSim_unblindedFits_truth_"+qual+".root"; 
+	string dname = "";//DilutionFits/d_vs_p_"+to_string(step)+"MeV";
 
-	TFile *recoFile = TFile::Open((recoFileName).c_str()); 
-	TFile *truthFile = TFile::Open((truthFileName).c_str());
+	if(!corr) dname += "DilutionFits/d_vs_p_"+to_string(step)+"MeV";
+	else if(corr) dname += "DilutionFits/dOverThetaYDiff_vs_p_"+to_string(step)+"MeV";
 
-	cout<<"\nGot reco file "<<recoFileName<<" "<<recoFile<<endl;
-	cout<<"Got truth file "<<truthFileName<<" "<<truthFile<<"\n"<<endl;
+	output->mkdir(dname.c_str()); 
 
-	TGraphErrors *gr_reco_p_slice = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_sym = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/S0S12S18_A_vs_p");
-	TGraphErrors *gr_reco_p_min = (TGraphErrors*)recoFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/S0S12S18_A_vs_p");
+	string type = "";
+	if(corr) type += "AOverMaxDiff";
+	else type += "A";
 
-	TGraphErrors *gr_truth_p_slice = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
-	TGraphErrors *gr_truth_p_sym = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomSymCuts/A_vs_p");
-	TGraphErrors *gr_truth_p_min = (TGraphErrors*)truthFile->Get("MomentumBinnedAnalysis/ParameterScans/MomMinScan/A_vs_p");
+	cout<<"\n***************************\nRunning with:\nstep: "<<step<<"\nframe: "<<frame<<"\ntype: "<<type<<"\n***************************"<<endl;
 
-	cout<<"Got reco momentum slice graph "<<gr_reco_p_slice<<endl;
-	cout<<"Got reco momentum symmetric cuts graph "<<gr_reco_p_sym<<endl;
-	cout<<"Got reco momentum min scan graph "<<gr_reco_p_min<<endl;
+	vector<string> names_ = {"trackReco", "truth", "truthAllDecays"};
+	vector<string> labels_ = {"Reco (tracks)", "Truth (tracks)", "Truth (all decays)"}; //{"Track reco", "Track truth", "All truth"};
 
-	cout<<"Got truth momentum slice graph "<<gr_truth_p_slice<<endl;
-	cout<<"Got truth momentum symmetric cuts graph "<<gr_truth_p_sym<<endl;
-	cout<<"Got truth momentum min scan graph "<<gr_truth_p_min<<"\n"<<endl;
+	vector<TGraphErrors*> graphs_; 
 
-	double ymin = -0.15; double ymax = 0.35;
+	for(string name : names_) {
 
-	vector<TGraphErrors*> gr_p_slice_ = {gr_reco_p_slice, gr_truth_p_slice}; 
-	vector<TGraphErrors*> gr_p_sym_ = {gr_reco_p_sym, gr_truth_p_sym}; 
-	vector<TGraphErrors*> gr_p_min_ = {gr_reco_p_min, gr_truth_p_min}; 
+		string fn = "../Plots/MC/dMu/5.4e-18/fits/dMuSim_unblinded_"+name+"_"+frame+"_"+to_string(step)+"MeV_AQ.root";//
+		// if(name == "trackReco") fn += "_BQ.root"; 
+		// else fn += "_AQ.root";
 
-	OverlayScanGraphs(gr_p_slice_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_slice_"+qual, -0.05, 0.4, false);
-	OverlayScanGraphs(gr_p_sym_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_sym_"+qual, 0.075, 0.35, true);
-	OverlayScanGraphs(gr_p_min_, names, "", "../Images/MC/Dilution/dMu/A_vs_p_min_"+qual, 0, 0.35, false);
+		TFile *f = TFile::Open(fn.c_str()); 
 
-	recoFile->Close();
-	truthFile->Close();
+		cout<<"***************************\nOpened file "<<fn<<", "<<f<<"\n***************************"<<endl;
+
+		string grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
+		if(name == "trackReco") grn += "S0S12S18_"+type+"_vs_p";
+		else grn += type+"_vs_p";
+
+		TGraphErrors *gr = (TGraphErrors*)f->Get(grn.c_str());
+
+		if(false) {
+			gr = RemoveSpuriousPoint(gr);
+		}
+
+		if(true) { 
+			gr = ConvertToDilution(gr);
+		}
+
+
+		gr->SetName(name.c_str());
+
+		// Remove spurious data point
+		//TGraphErrors *gr = RemoveSpuriousPoint(gr);
+
+		// Fit
+		ParabolaFit(gr, name, corr);
+
+		TF1 *fnc = gr->GetFunction("ParabolaFunc");
+
+		cout<<"chisqr/ndf\t"<<fnc->GetChisquare() / fnc->GetNDF()<<endl;
+
+		graphs_.push_back(gr);
+
+		f->Close();
+
+	}
+
+	string title = ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2);
+
+	if(corr) title += ";d_{EDM}(p) / #Delta_{max}#theta_{y}(p)";
+	else title += ";d_{EDM}(p)";
+
+	// if(corr) title += ";A_{EDM} / #Delta_{max}#theta_{y}";
+	// else title += ";A_{EDM} [mrad]";
+
+	DrawGraphs(graphs_, labels_, title, "../Images/MC/Dilution/dMu/Overlay_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV", corr, ymin, ymax);
+
+
+	// Write
+
+	output->cd(dname.c_str());
+	for(auto& gr : graphs_) gr->Write();		
 
 	return; 
 
@@ -286,10 +260,78 @@ void plot_EDM_mom_scans_equalStats(string qual) {
 
 int main() { 
 
-	plot_EDM_mom_scans("500MeV_AQ");
-	//plot_Bz_mom_scans("AQ");
-	//plot_EDM_mom_scans_equalStats("equalStats_500e3_AQ");
+	string fname = "../Plots/MC/dMu/5.4e-18/fits/dilution.root";
+	TFile *output = new TFile(fname.c_str(), "RECREATE");
+
+	output->mkdir("DilutionFits"); output->cd("DilutionFits");
+
+	// Get the dilution for all graphs at 500 MeV step and AAR frame
+	output->mkdir("DilutionFits/d_vs_p_500MeV");
+	output->cd("DilutionFits/d_vs_p_500MeV");
+
+	RunAEDM(500, "AAR", false, 0, 2.25e-1, output);
+
+	output->mkdir("DilutionFits/dOverThetaYDiff_vs_p_500MeV");
+	output->cd("DilutionFits/dOverThetaYDiff_vs_p_500MeV");
+
+	RunAEDM(500, "AAR", true, -5e-4, 2.25e-3, output); 
+
+	output->Write();
+	output->Close();
+
+	cout<<"\nWritten fits to "<<fname<<", "<<output<<endl;
+
+/*	
+	These ones are for pure A_EDM
+	RunAEDM(500, "AAR", false, 0, 3.65e-1);
+	RunAEDM(200, "AAR", false, -1, .65);
+
+	RunAEDM(500, "AAR", true, -5e-4, 3.65e-3); 
+	RunAEDM(200, "AAR", true, -5e-3, 4.5e-3); */
+
+
+	// RunThetaYMax(500, "AAR", 0, 1200);//3.65e-3); 
+	// Run(200, "AAR", true, 0, 3.65e-3); 
+	//Run(500, "WORLD", true, 0, 3.65e-3); 
 
 	return 0; 
 
 }
+
+/*void RunThetaYMax(int step, string frame, double ymin, double ymax) {
+
+	string type = "thetaYMaxDiff";
+
+	cout<<"\n***************************\nRunning with:\nstep: "<<step<<"\nframe: "<<frame<<"\ntype: "<<type<<"\n***************************"<<endl;
+
+	vector<string> names_ = {"trackReco", "truth", "truthAllDecays"};
+	vector<string> labels_ = {"Reco (tracks)", "Truth (tracks)", "Truth (all decays)"}; //{"Track reco", "Track truth", "All truth"};
+
+	vector<TGraphErrors*> graphs_; 
+
+	for(string name : names_) {
+
+		string fn = "../Plots/MC/dMu/5.4e-18/fits/dMuSim_unblinded_"+name+"_"+frame+"_"+to_string(step)+"MeV_AQ.root"; 
+		TFile *f = TFile::Open(fn.c_str()); 
+
+		cout<<"***************************\nOpened file "<<fn<<", "<<f<<"\n***************************"<<endl;
+
+		string grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
+		if(name == "trackReco") grn += "S0S12S18"+type+"_vs_p";
+		else grn += type+"_vs_p";
+
+		TGraphErrors *gr = (TGraphErrors*)f->Get(grn.c_str());
+
+		graphs_.push_back(gr);
+
+		f->Close();
+
+	}
+
+	string title = ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#Delta_{max}#theta_{y} [mrad];";
+
+	DrawGraphs(graphs_, labels_, title, "../Images/MC/Dilution/dMu/Overlay_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV", false, ymin, ymax);
+
+	return; 
+
+}*/

@@ -8,7 +8,7 @@ double A_MU = 11659208.9e-10;
 double GMAGIC = std::sqrt( 1.+1./A_MU );
 double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
 
-bool boost = true;
+bool boost = false;
 
 using namespace std;
 
@@ -63,7 +63,10 @@ double GetBoostFactor(bool boost) {
 void NormaliseHistsByIntegral(vector<TH1F*> hists_) {
 
 	for(int i = 0; i < hists_.size(); i++) {
-		hists_.at(i)->Scale(1/(hists_.at(i)->Integral()));
+		// Ensure errors are dealt with correctly
+		hists_.at(i)->Sumw2();
+		int integral = hists_.at(i)->Integral();
+		hists_.at(i)->Scale(1/integral);//hists_.at(i)->Integral()));
 	}
 
 	return;
@@ -72,13 +75,11 @@ void NormaliseHistsByIntegral(vector<TH1F*> hists_) {
 void NormaliseHistsByMax(vector<TH1F*> hists_) {
 
 	for(int i = 0; i < hists_.size(); i++) {
-
-		double sf = hists_.at(i)->GetMaximum();
-
-		cout<<"Hist\t"<<hists_.at(i)->GetName()<<endl;
-		cout<<"Scale factor\t"<<sf<<endl;
-
-		hists_.at(i)->Scale(1./sf);
+		// Ensure errors are dealt with correctly
+		//hists_.at(i)->Sumw2();
+		// Scale hist
+		double max = hists_.at(i)->GetMaximum();
+		hists_.at(i)->Scale(1/max);
 	}
 
 	return;
@@ -171,6 +172,7 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
 		}
 		if(edm) { 
 			// Rescale A_EDM hist (hacky af)
+			hists_.at(1)->Sumw2();
 			hists_.at(1)->Scale(2 * 0.266991);//GetMaximum()
 		}
 	}
@@ -191,9 +193,6 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
 
     	l->AddEntry(hists_.at(i), (names.at(i)).c_str());
 
-      //if(i==0) hists_.at(i)->Draw("E");
-      //else hists_.at(i)->Draw("E SAME");
-
       if(i==0) hists_.at(i)->Draw("HIST");
       else hists_.at(i)->Draw("HIST SAME");
   	}
@@ -209,6 +208,90 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
 
 }
 
+void FitAsym(TH1F *hist, bool edm, string boostLabel) { 
+
+	TF1 *fitFunc; 
+	hist->GetXaxis()->SetLimits(0,1);
+
+	string config = "";
+	if(edm) {
+		config += "EDM";
+		if(!boost) {
+			fitFunc = new TF1("fitFunc", "0.5 * (1/0.266991) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x)", 0, 1);
+			config += " (LAB)";
+		} else if(boost) {
+			fitFunc = new TF1("fitFunc", "(2*x-1) / (3-2*x)", 0, 1);
+			config += " (MRF)";
+		}
+	} else if(!edm) {
+		config += "g-2"; 
+		hist->Rebin(15); // EDM hist has already been rebinned at this level.
+		hist->Scale(1./hist->GetMaximum());
+		if(!boost) {
+			fitFunc = new TF1("fitFunc", "(-1-x+8*x*x)/(5+5*x-4*x*x)", 0, 1);
+			config += " (LAB)";
+		} else if(boost) {
+			fitFunc = new TF1("fitFunc", "(2*x-1) / (3-2*x)", 0, 1);
+			config += " (MRF)";
+		}
+	} 
+
+	cout<<"... Fitting asymmetry for "<<config<<" with function "<<fitFunc<<endl;
+
+	hist->Fit(fitFunc);
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(";#lambda = p/p_{max}; Normalised events");
+
+	hist->SetStats(0);
+
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+	hist->SetLineWidth(3);
+	hist->SetLineColor(1);
+
+	hist->Draw("E");
+
+	fitFunc->SetLineWidth(3);
+	fitFunc->Draw("same");
+
+	TLegend *leg = new TLegend(.15, .69, .59, .89);
+	leg->SetBorderSize(0);
+	leg->AddEntry(hist, ("Decay asymmetry, "+config).c_str());
+
+	string legEntry = "";
+	string fname = "../Images/";
+
+	if(!edm) {
+		fname += "edm/hFit_A";
+		if(!boost) legEntry += "Fit: #frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}";
+		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}"; 
+	} else { 
+		fname += "g2/hFit_A";
+		if(!boost) legEntry += "Fit: #frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}"; 
+		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}";
+	}
+
+	fname += "_"+boostLabel;
+
+	leg->AddEntry(fitFunc, legEntry.c_str());
+
+	leg->Draw("SAME");
+
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+
+	return;
+
+}
 
 void RunG2Asym(TFile *fin, string boostLabel) { 
 
@@ -259,6 +342,9 @@ void RunG2Asym(TFile *fin, string boostLabel) {
 
 	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Events", "../Images/g2/DiffDecayAsymHists_"+boostLabel,  false, false, false, true);
 	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Normalised events", "../Images/g2/NormDiffDecayAsymHists_"+boostLabel, false, true, true, true);
+
+	h_A->Scale(1./h_A->GetMaximum());
+	FitAsym(h_A, false, boostLabel);
 
 	delete h_N;
 	delete h_A;
@@ -334,6 +420,11 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Events", "../Images/edm/DiffDecayAsymHists_"+boostLabel, true, false, false, topLegend);
 	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Normalised events", "../Images/edm/NormDiffDecayAsymHists_"+boostLabel, true, true, true, topLegend);
 
+
+	// Perform fit
+	if(!boost) h_A->GetYaxis()->SetRangeUser(-1.5,3.0);
+	FitAsym(h_A, true, boostLabel);
+	
 	delete h_N;
 	delete h_A;
 	delete h_NA2;
@@ -366,7 +457,40 @@ int main() {
 
 	RunEDMAsym(fin, boostLabel);
 
+	cout<<"\n**********************************\nEnd.\n**********************************"<<endl;
 
 	return 0;
 
 }
+
+/*void DrawTH1(TH1F *hist, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(title.c_str());
+
+	//hist->SetStats(0);
+	gStyle->SetOptStat(2210);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+	//hist->SetLineWidth(3);
+	hist->SetLineColor(1);
+
+	//c->SetRightMargin(0.13);
+
+	hist->Draw("E");
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}*/

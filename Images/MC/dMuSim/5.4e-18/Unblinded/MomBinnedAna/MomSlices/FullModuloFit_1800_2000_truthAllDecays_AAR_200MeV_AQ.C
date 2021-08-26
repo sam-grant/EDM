@@ -1,10 +1,10 @@
 void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jul 16 17:52:12 2021) by ROOT version 6.22/08
+//=========  (Mon Aug 23 23:26:03 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.6024336,-6.25,4.944727,6.25);
+   c->Range(-0.6024336,-0.9375,4.944727,0.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -370,8 +370,8 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01029 = new TH1F("Graph_Graph01029","1800 < p [MeV] < 2000",100,0,4.771751);
-   Graph_Graph01029->SetMinimum(-5);
-   Graph_Graph01029->SetMaximum(5);
+   Graph_Graph01029->SetMinimum(-0.75);
+   Graph_Graph01029->SetMaximum(0.75);
    Graph_Graph01029->SetDirectory(0);
    Graph_Graph01029->SetStats(0);
 
@@ -4669,7 +4669,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(4260,0.0507699);
    FullEDMFunc1030->SetSavedPoint(4261,0.05063559);
    FullEDMFunc1030->SetSavedPoint(4262,0.05050126);
-   FullEDMFunc1030->SetSavedPoint(4263,0.05036692);
+   FullEDMFunc1030->SetSavedPoint(4263,0.05036691);
    FullEDMFunc1030->SetSavedPoint(4264,0.05023254);
    FullEDMFunc1030->SetSavedPoint(4265,0.05009815);
    FullEDMFunc1030->SetSavedPoint(4266,0.04996373);
@@ -5074,7 +5074,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(4665,-0.004836562);
    FullEDMFunc1030->SetSavedPoint(4666,-0.004975384);
    FullEDMFunc1030->SetSavedPoint(4667,-0.005114206);
-   FullEDMFunc1030->SetSavedPoint(4668,-0.005253028);
+   FullEDMFunc1030->SetSavedPoint(4668,-0.005253027);
    FullEDMFunc1030->SetSavedPoint(4669,-0.005391849);
    FullEDMFunc1030->SetSavedPoint(4670,-0.005530671);
    FullEDMFunc1030->SetSavedPoint(4671,-0.005669493);
@@ -9101,7 +9101,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(8692,-0.1323014);
    FullEDMFunc1030->SetSavedPoint(8693,-0.1321878);
    FullEDMFunc1030->SetSavedPoint(8694,-0.1320742);
-   FullEDMFunc1030->SetSavedPoint(8695,-0.1319606);
+   FullEDMFunc1030->SetSavedPoint(8695,-0.1319605);
    FullEDMFunc1030->SetSavedPoint(8696,-0.1318468);
    FullEDMFunc1030->SetSavedPoint(8697,-0.1317331);
    FullEDMFunc1030->SetSavedPoint(8698,-0.1316192);
@@ -9438,7 +9438,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(9029,-0.09148211);
    FullEDMFunc1030->SetSavedPoint(9030,-0.09135429);
    FullEDMFunc1030->SetSavedPoint(9031,-0.09122645);
-   FullEDMFunc1030->SetSavedPoint(9032,-0.09109857);
+   FullEDMFunc1030->SetSavedPoint(9032,-0.09109856);
    FullEDMFunc1030->SetSavedPoint(9033,-0.09097065);
    FullEDMFunc1030->SetSavedPoint(9034,-0.0908427);
    FullEDMFunc1030->SetSavedPoint(9035,-0.09071472);
@@ -10100,18 +10100,18 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(9691,-0.001941552);
    FullEDMFunc1030->SetSavedPoint(9692,-0.001802746);
    FullEDMFunc1030->SetSavedPoint(9693,-0.001663941);
-   FullEDMFunc1030->SetSavedPoint(9694,-0.001525138);
+   FullEDMFunc1030->SetSavedPoint(9694,-0.001525137);
    FullEDMFunc1030->SetSavedPoint(9695,-0.001386336);
    FullEDMFunc1030->SetSavedPoint(9696,-0.001247535);
    FullEDMFunc1030->SetSavedPoint(9697,-0.001108736);
    FullEDMFunc1030->SetSavedPoint(9698,-0.0009699388);
-   FullEDMFunc1030->SetSavedPoint(9699,-0.0008311432);
+   FullEDMFunc1030->SetSavedPoint(9699,-0.0008311431);
    FullEDMFunc1030->SetSavedPoint(9700,-0.0006923492);
    FullEDMFunc1030->SetSavedPoint(9701,-0.0005535571);
    FullEDMFunc1030->SetSavedPoint(9702,-0.0004147668);
    FullEDMFunc1030->SetSavedPoint(9703,-0.0002759783);
-   FullEDMFunc1030->SetSavedPoint(9704,-0.0001371919);
-   FullEDMFunc1030->SetSavedPoint(9705,1.592633e-06);
+   FullEDMFunc1030->SetSavedPoint(9704,-0.0001371918);
+   FullEDMFunc1030->SetSavedPoint(9705,1.592642e-06);
    FullEDMFunc1030->SetSavedPoint(9706,0.0001403751);
    FullEDMFunc1030->SetSavedPoint(9707,0.0002791554);
    FullEDMFunc1030->SetSavedPoint(9708,0.0004179336);
@@ -10160,7 +10160,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(9751,0.006382574);
    FullEDMFunc1030->SetSavedPoint(9752,0.006521203);
    FullEDMFunc1030->SetSavedPoint(9753,0.006659827);
-   FullEDMFunc1030->SetSavedPoint(9754,0.006798446);
+   FullEDMFunc1030->SetSavedPoint(9754,0.006798447);
    FullEDMFunc1030->SetSavedPoint(9755,0.006937061);
    FullEDMFunc1030->SetSavedPoint(9756,0.007075671);
    FullEDMFunc1030->SetSavedPoint(9757,0.007214277);
@@ -10306,7 +10306,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(9897,0.02654568);
    FullEDMFunc1030->SetSavedPoint(9898,0.02668305);
    FullEDMFunc1030->SetSavedPoint(9899,0.02682041);
-   FullEDMFunc1030->SetSavedPoint(9900,0.02695776);
+   FullEDMFunc1030->SetSavedPoint(9900,0.02695777);
    FullEDMFunc1030->SetSavedPoint(9901,0.0270951);
    FullEDMFunc1030->SetSavedPoint(9902,0.02723243);
    FullEDMFunc1030->SetSavedPoint(9903,0.02736974);
@@ -10348,7 +10348,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->SetSavedPoint(9939,0.032304);
    FullEDMFunc1030->SetSavedPoint(9940,0.0324408);
    FullEDMFunc1030->SetSavedPoint(9941,0.03257758);
-   FullEDMFunc1030->SetSavedPoint(9942,0.03271435);
+   FullEDMFunc1030->SetSavedPoint(9942,0.03271436);
    FullEDMFunc1030->SetSavedPoint(9943,0.03285111);
    FullEDMFunc1030->SetSavedPoint(9944,0.03298785);
    FullEDMFunc1030->SetSavedPoint(9945,0.03312458);
@@ -10422,15 +10422,15 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1030->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1030->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1030->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1030->SetParameter(0,0.009365898);
+   FullEDMFunc1030->SetParameter(0,0.009365974);
    FullEDMFunc1030->SetParError(0,0.0125387);
    FullEDMFunc1030->SetParLimits(0,0,0);
    FullEDMFunc1030->SetParameter(1,1.43934);
    FullEDMFunc1030->SetParError(1,0);
    FullEDMFunc1030->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1030->SetParameter(2,0.1664669);
+   FullEDMFunc1030->SetParameter(2,0.1664665);
    FullEDMFunc1030->SetParError(2,0);
-   FullEDMFunc1030->SetParLimits(2,0.1664669,0.1664669);
+   FullEDMFunc1030->SetParLimits(2,0.1664665,0.1664665);
    FullEDMFunc1030->SetParameter(3,0.2207432);
    FullEDMFunc1030->SetParError(3,0.01247728);
    FullEDMFunc1030->SetParLimits(3,0,0);
@@ -14771,7 +14771,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(4260,0.0507699);
    FullEDMFunc1031->SetSavedPoint(4261,0.05063559);
    FullEDMFunc1031->SetSavedPoint(4262,0.05050126);
-   FullEDMFunc1031->SetSavedPoint(4263,0.05036692);
+   FullEDMFunc1031->SetSavedPoint(4263,0.05036691);
    FullEDMFunc1031->SetSavedPoint(4264,0.05023254);
    FullEDMFunc1031->SetSavedPoint(4265,0.05009815);
    FullEDMFunc1031->SetSavedPoint(4266,0.04996373);
@@ -15176,7 +15176,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(4665,-0.004836562);
    FullEDMFunc1031->SetSavedPoint(4666,-0.004975384);
    FullEDMFunc1031->SetSavedPoint(4667,-0.005114206);
-   FullEDMFunc1031->SetSavedPoint(4668,-0.005253028);
+   FullEDMFunc1031->SetSavedPoint(4668,-0.005253027);
    FullEDMFunc1031->SetSavedPoint(4669,-0.005391849);
    FullEDMFunc1031->SetSavedPoint(4670,-0.005530671);
    FullEDMFunc1031->SetSavedPoint(4671,-0.005669493);
@@ -19203,7 +19203,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(8692,-0.1323014);
    FullEDMFunc1031->SetSavedPoint(8693,-0.1321878);
    FullEDMFunc1031->SetSavedPoint(8694,-0.1320742);
-   FullEDMFunc1031->SetSavedPoint(8695,-0.1319606);
+   FullEDMFunc1031->SetSavedPoint(8695,-0.1319605);
    FullEDMFunc1031->SetSavedPoint(8696,-0.1318468);
    FullEDMFunc1031->SetSavedPoint(8697,-0.1317331);
    FullEDMFunc1031->SetSavedPoint(8698,-0.1316192);
@@ -19540,7 +19540,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(9029,-0.09148211);
    FullEDMFunc1031->SetSavedPoint(9030,-0.09135429);
    FullEDMFunc1031->SetSavedPoint(9031,-0.09122645);
-   FullEDMFunc1031->SetSavedPoint(9032,-0.09109857);
+   FullEDMFunc1031->SetSavedPoint(9032,-0.09109856);
    FullEDMFunc1031->SetSavedPoint(9033,-0.09097065);
    FullEDMFunc1031->SetSavedPoint(9034,-0.0908427);
    FullEDMFunc1031->SetSavedPoint(9035,-0.09071472);
@@ -20202,18 +20202,18 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(9691,-0.001941552);
    FullEDMFunc1031->SetSavedPoint(9692,-0.001802746);
    FullEDMFunc1031->SetSavedPoint(9693,-0.001663941);
-   FullEDMFunc1031->SetSavedPoint(9694,-0.001525138);
+   FullEDMFunc1031->SetSavedPoint(9694,-0.001525137);
    FullEDMFunc1031->SetSavedPoint(9695,-0.001386336);
    FullEDMFunc1031->SetSavedPoint(9696,-0.001247535);
    FullEDMFunc1031->SetSavedPoint(9697,-0.001108736);
    FullEDMFunc1031->SetSavedPoint(9698,-0.0009699388);
-   FullEDMFunc1031->SetSavedPoint(9699,-0.0008311432);
+   FullEDMFunc1031->SetSavedPoint(9699,-0.0008311431);
    FullEDMFunc1031->SetSavedPoint(9700,-0.0006923492);
    FullEDMFunc1031->SetSavedPoint(9701,-0.0005535571);
    FullEDMFunc1031->SetSavedPoint(9702,-0.0004147668);
    FullEDMFunc1031->SetSavedPoint(9703,-0.0002759783);
-   FullEDMFunc1031->SetSavedPoint(9704,-0.0001371919);
-   FullEDMFunc1031->SetSavedPoint(9705,1.592633e-06);
+   FullEDMFunc1031->SetSavedPoint(9704,-0.0001371918);
+   FullEDMFunc1031->SetSavedPoint(9705,1.592642e-06);
    FullEDMFunc1031->SetSavedPoint(9706,0.0001403751);
    FullEDMFunc1031->SetSavedPoint(9707,0.0002791554);
    FullEDMFunc1031->SetSavedPoint(9708,0.0004179336);
@@ -20262,7 +20262,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(9751,0.006382574);
    FullEDMFunc1031->SetSavedPoint(9752,0.006521203);
    FullEDMFunc1031->SetSavedPoint(9753,0.006659827);
-   FullEDMFunc1031->SetSavedPoint(9754,0.006798446);
+   FullEDMFunc1031->SetSavedPoint(9754,0.006798447);
    FullEDMFunc1031->SetSavedPoint(9755,0.006937061);
    FullEDMFunc1031->SetSavedPoint(9756,0.007075671);
    FullEDMFunc1031->SetSavedPoint(9757,0.007214277);
@@ -20408,7 +20408,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(9897,0.02654568);
    FullEDMFunc1031->SetSavedPoint(9898,0.02668305);
    FullEDMFunc1031->SetSavedPoint(9899,0.02682041);
-   FullEDMFunc1031->SetSavedPoint(9900,0.02695776);
+   FullEDMFunc1031->SetSavedPoint(9900,0.02695777);
    FullEDMFunc1031->SetSavedPoint(9901,0.0270951);
    FullEDMFunc1031->SetSavedPoint(9902,0.02723243);
    FullEDMFunc1031->SetSavedPoint(9903,0.02736974);
@@ -20450,7 +20450,7 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->SetSavedPoint(9939,0.032304);
    FullEDMFunc1031->SetSavedPoint(9940,0.0324408);
    FullEDMFunc1031->SetSavedPoint(9941,0.03257758);
-   FullEDMFunc1031->SetSavedPoint(9942,0.03271435);
+   FullEDMFunc1031->SetSavedPoint(9942,0.03271436);
    FullEDMFunc1031->SetSavedPoint(9943,0.03285111);
    FullEDMFunc1031->SetSavedPoint(9944,0.03298785);
    FullEDMFunc1031->SetSavedPoint(9945,0.03312458);
@@ -20524,15 +20524,15 @@ void FullModuloFit_1800_2000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1031->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1031->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1031->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1031->SetParameter(0,0.009365898);
+   FullEDMFunc1031->SetParameter(0,0.009365974);
    FullEDMFunc1031->SetParError(0,0.0125387);
    FullEDMFunc1031->SetParLimits(0,0,0);
    FullEDMFunc1031->SetParameter(1,1.43934);
    FullEDMFunc1031->SetParError(1,0);
    FullEDMFunc1031->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1031->SetParameter(2,0.1664669);
+   FullEDMFunc1031->SetParameter(2,0.1664665);
    FullEDMFunc1031->SetParError(2,0);
-   FullEDMFunc1031->SetParLimits(2,0.1664669,0.1664669);
+   FullEDMFunc1031->SetParLimits(2,0.1664665,0.1664665);
    FullEDMFunc1031->SetParameter(3,0.2207432);
    FullEDMFunc1031->SetParError(3,0.01247728);
    FullEDMFunc1031->SetParLimits(3,0,0);

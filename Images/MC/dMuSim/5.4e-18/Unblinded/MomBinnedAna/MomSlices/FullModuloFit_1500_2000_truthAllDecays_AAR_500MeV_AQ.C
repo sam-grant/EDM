@@ -1,10 +1,10 @@
 void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 10:12:49 2021) by ROOT version 6.22/08
+//=========  (Tue Aug 24 22:37:26 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.6024336,-6.25,4.944727,6.25);
+   c->Range(-0.6024336,-0.9375,4.944727,0.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -370,8 +370,8 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01017 = new TH1F("Graph_Graph01017","1500 < p [MeV] < 2000",100,0,4.771751);
-   Graph_Graph01017->SetMinimum(-5);
-   Graph_Graph01017->SetMaximum(5);
+   Graph_Graph01017->SetMinimum(-0.75);
+   Graph_Graph01017->SetMaximum(0.75);
    Graph_Graph01017->SetDirectory(0);
    Graph_Graph01017->SetStats(0);
 
@@ -5071,7 +5071,7 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    FullEDMFunc1018->SetSavedPoint(4662,0.0004635682);
    FullEDMFunc1018->SetSavedPoint(4663,0.0003090325);
    FullEDMFunc1018->SetSavedPoint(4664,0.0001544953);
-   FullEDMFunc1018->SetSavedPoint(4665,-4.353297e-08);
+   FullEDMFunc1018->SetSavedPoint(4665,-4.353173e-08);
    FullEDMFunc1018->SetSavedPoint(4666,-0.0001545838);
    FullEDMFunc1018->SetSavedPoint(4667,-0.0003091254);
    FullEDMFunc1018->SetSavedPoint(4668,-0.0004636684);
@@ -10123,7 +10123,7 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    FullEDMFunc1018->SetSavedPoint(9714,0.0001956909);
    FullEDMFunc1018->SetSavedPoint(9715,0.0003502278);
    FullEDMFunc1018->SetSavedPoint(9716,0.000504763);
-   FullEDMFunc1018->SetSavedPoint(9717,0.0006592967);
+   FullEDMFunc1018->SetSavedPoint(9717,0.0006592966);
    FullEDMFunc1018->SetSavedPoint(9718,0.0008138285);
    FullEDMFunc1018->SetSavedPoint(9719,0.0009683587);
    FullEDMFunc1018->SetSavedPoint(9720,0.001122887);
@@ -10422,15 +10422,15 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    FullEDMFunc1018->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1018->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1018->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1018->SetParameter(0,0.007138452);
-   FullEDMFunc1018->SetParError(0,0.008368496);
+   FullEDMFunc1018->SetParameter(0,0.007138537);
+   FullEDMFunc1018->SetParError(0,0.008368495);
    FullEDMFunc1018->SetParLimits(0,0,0);
    FullEDMFunc1018->SetParameter(1,1.43934);
    FullEDMFunc1018->SetParError(1,0);
    FullEDMFunc1018->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1018->SetParameter(2,0.1664669);
+   FullEDMFunc1018->SetParameter(2,0.1664665);
    FullEDMFunc1018->SetParError(2,0);
-   FullEDMFunc1018->SetParLimits(2,0.1664669,0.1664669);
+   FullEDMFunc1018->SetParLimits(2,0.1664665,0.1664665);
    FullEDMFunc1018->SetParameter(3,0.2458814);
    FullEDMFunc1018->SetParError(3,0.008364897);
    FullEDMFunc1018->SetParLimits(3,0,0);
@@ -15173,7 +15173,7 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    FullEDMFunc1019->SetSavedPoint(4662,0.0004635682);
    FullEDMFunc1019->SetSavedPoint(4663,0.0003090325);
    FullEDMFunc1019->SetSavedPoint(4664,0.0001544953);
-   FullEDMFunc1019->SetSavedPoint(4665,-4.353297e-08);
+   FullEDMFunc1019->SetSavedPoint(4665,-4.353173e-08);
    FullEDMFunc1019->SetSavedPoint(4666,-0.0001545838);
    FullEDMFunc1019->SetSavedPoint(4667,-0.0003091254);
    FullEDMFunc1019->SetSavedPoint(4668,-0.0004636684);
@@ -20225,7 +20225,7 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    FullEDMFunc1019->SetSavedPoint(9714,0.0001956909);
    FullEDMFunc1019->SetSavedPoint(9715,0.0003502278);
    FullEDMFunc1019->SetSavedPoint(9716,0.000504763);
-   FullEDMFunc1019->SetSavedPoint(9717,0.0006592967);
+   FullEDMFunc1019->SetSavedPoint(9717,0.0006592966);
    FullEDMFunc1019->SetSavedPoint(9718,0.0008138285);
    FullEDMFunc1019->SetSavedPoint(9719,0.0009683587);
    FullEDMFunc1019->SetSavedPoint(9720,0.001122887);
@@ -20524,15 +20524,15 @@ void FullModuloFit_1500_2000_truthAllDecays_AAR_500MeV_AQ()
    FullEDMFunc1019->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1019->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1019->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1019->SetParameter(0,0.007138452);
-   FullEDMFunc1019->SetParError(0,0.008368496);
+   FullEDMFunc1019->SetParameter(0,0.007138537);
+   FullEDMFunc1019->SetParError(0,0.008368495);
    FullEDMFunc1019->SetParLimits(0,0,0);
    FullEDMFunc1019->SetParameter(1,1.43934);
    FullEDMFunc1019->SetParError(1,0);
    FullEDMFunc1019->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1019->SetParameter(2,0.1664669);
+   FullEDMFunc1019->SetParameter(2,0.1664665);
    FullEDMFunc1019->SetParError(2,0);
-   FullEDMFunc1019->SetParLimits(2,0.1664669,0.1664669);
+   FullEDMFunc1019->SetParLimits(2,0.1664665,0.1664665);
    FullEDMFunc1019->SetParameter(3,0.2458814);
    FullEDMFunc1019->SetParError(3,0.008364897);
    FullEDMFunc1019->SetParLimits(3,0,0);

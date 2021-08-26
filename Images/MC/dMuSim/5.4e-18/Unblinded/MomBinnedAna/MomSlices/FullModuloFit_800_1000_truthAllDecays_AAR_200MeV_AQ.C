@@ -1,10 +1,10 @@
 void FullModuloFit_800_1000_truthAllDecays_AAR_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jul 16 17:52:11 2021) by ROOT version 6.22/08
+//=========  (Mon Aug 23 23:26:01 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.6024336,-6.25,4.944727,6.25);
+   c->Range(-0.6024336,-0.9375,4.944727,0.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -370,8 +370,8 @@ void FullModuloFit_800_1000_truthAllDecays_AAR_200MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01019 = new TH1F("Graph_Graph01019","800 < p [MeV] < 1000",100,0,4.771751);
-   Graph_Graph01019->SetMinimum(-5);
-   Graph_Graph01019->SetMaximum(5);
+   Graph_Graph01019->SetMinimum(-0.75);
+   Graph_Graph01019->SetMaximum(0.75);
    Graph_Graph01019->SetDirectory(0);
    Graph_Graph01019->SetStats(0);
 
@@ -10422,15 +10422,15 @@ void FullModuloFit_800_1000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1020->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1020->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1020->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1020->SetParameter(0,0.0009641445);
+   FullEDMFunc1020->SetParameter(0,0.0009642508);
    FullEDMFunc1020->SetParError(0,0.01895719);
    FullEDMFunc1020->SetParLimits(0,0,0);
    FullEDMFunc1020->SetParameter(1,1.43934);
    FullEDMFunc1020->SetParError(1,0);
    FullEDMFunc1020->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1020->SetParameter(2,0.1664669);
+   FullEDMFunc1020->SetParameter(2,0.1664665);
    FullEDMFunc1020->SetParError(2,0);
-   FullEDMFunc1020->SetParLimits(2,0.1664669,0.1664669);
+   FullEDMFunc1020->SetParLimits(2,0.1664665,0.1664665);
    FullEDMFunc1020->SetParameter(3,0.3077968);
    FullEDMFunc1020->SetParError(3,0.019049);
    FullEDMFunc1020->SetParLimits(3,0,0);
@@ -20524,15 +20524,15 @@ void FullModuloFit_800_1000_truthAllDecays_AAR_200MeV_AQ()
    FullEDMFunc1021->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1021->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1021->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1021->SetParameter(0,0.0009641445);
+   FullEDMFunc1021->SetParameter(0,0.0009642508);
    FullEDMFunc1021->SetParError(0,0.01895719);
    FullEDMFunc1021->SetParLimits(0,0,0);
    FullEDMFunc1021->SetParameter(1,1.43934);
    FullEDMFunc1021->SetParError(1,0);
    FullEDMFunc1021->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1021->SetParameter(2,0.1664669);
+   FullEDMFunc1021->SetParameter(2,0.1664665);
    FullEDMFunc1021->SetParError(2,0);
-   FullEDMFunc1021->SetParLimits(2,0.1664669,0.1664669);
+   FullEDMFunc1021->SetParLimits(2,0.1664665,0.1664665);
    FullEDMFunc1021->SetParameter(3,0.3077968);
    FullEDMFunc1021->SetParError(3,0.019049);
    FullEDMFunc1021->SetParLimits(3,0,0);

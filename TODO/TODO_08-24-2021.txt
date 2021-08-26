@@ -1,0 +1,63 @@
+
+Today's goal: 
+
+Fit the simulation for acceptance, decay assymetry, and detector effects. 
+
+Plot dilution functions. 
+
+Write a macro to apply corrections (as read out from tree), see what you get. Looking for 1.7 mrad. 
+
+- Bump to latest release
+
+
+Asymmetry 
+---------
+
+- Reply to Paul, not sure what to say though... 
+
+X - Something has gone wrong with the momentum slices in the MRF -> debug pls
+
+X - Interpreting the y-axis
+
+	- Does this come from the Lorentz boost? MRF plots suggest that it does. 
+	
+	Yes it does. 
+
+	Higher pz positrons are boosted more. 
+
+	Higher pz positrons are emitted on a narrower decay cone. I think this makes sense. It's paritiy violation in weak decays. 
+
+	- What is the expectation then? 
+
+	It means that high pz positrons have a reduced vertical angle. Duh. 
+
+	X - Produce scan of max vertical angle versus rest frame momentum (use wider ranges)
+
+- Make a fit and report the function 
+
+	- Finish the simple plotting in Dilution.C. Need a flag to distinguish A and AOverMaxThetaY. 
+	- Do this with the 500 MeV scans. 
+	- Start with the truthAllDecays, and try to fit with the actual decay function
+	- Then try to fit with a 3 par pol 
+	- Then expand to the others
+
+- Closure test on the size of acceptance + decay corrections in MC
+	- Basically, if you apply those corrections, do you get the correct answer out?
+
+Radial field
+------------
+
+- Per calo analysis 
+- Calo align jumps / run (way to do this more cleverly?)
+- Take a closer look at the CBO thing 
+- Take a look at the radial field simulation 
+- Urgent: take a second look at the QHV VALUES
+- Need to update the field e-log 
+- Fix the QHV thing: there's literally a table in the beam dynamics paper.
+- Produce a gas gun sim with a radial field of 30 ppm or more/less. Try and fit the vertical angle plot.
+
+Thesis
+-------
+
+- Draft radial field chapter/note
+- Start intro (theory + experiment)

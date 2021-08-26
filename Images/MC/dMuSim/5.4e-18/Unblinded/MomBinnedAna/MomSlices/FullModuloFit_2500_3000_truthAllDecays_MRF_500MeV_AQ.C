@@ -1,10 +1,10 @@
 void FullModuloFit_2500_3000_truthAllDecays_MRF_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun 22 11:42:04 2021) by ROOT version 6.22/08
+//=========  (Tue Aug 24 14:17:02 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.6024336,-6.25,4.944727,6.25);
+   c->Range(-0.6024336,-0.9375,4.944727,0.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -370,8 +370,8 @@ void FullModuloFit_2500_3000_truthAllDecays_MRF_500MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01021 = new TH1F("Graph_Graph01021","2500 < p [MeV] < 3000",100,0,4.771751);
-   Graph_Graph01021->SetMinimum(-5);
-   Graph_Graph01021->SetMaximum(5);
+   Graph_Graph01021->SetMinimum(-0.75);
+   Graph_Graph01021->SetMaximum(0.75);
    Graph_Graph01021->SetDirectory(0);
    Graph_Graph01021->SetStats(0);
 

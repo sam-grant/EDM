@@ -6,126 +6,35 @@
 
 std::string config = "5.4e-18";
 
-std::string qual = "truthAllDecays_AAR_200MeV_AQ_test";
-//std::string qual = "truthAllDecays_MRF_200MeV_AQ_test";
+//std::string qual = "truthAllDecays_WORLD_200MeV_AQ";
+//std::string qual = "truthAllDecays_AAR_200MeV_AQ";
+//std::string qual = "truthAllDecays_MRF_200MeV_AQ";
 
-//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option0";
-//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option1";
-//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option2";
-//std::string qual = "truthAllDecays_AAR_200MeV_AQ_option3";
+//std::string qual = "truthAllDecays_WORLD_500MeV_AQ";
+//std::string qual = "truthAllDecays_AAR_500MeV_AQ";
+//std::string qual = "truthAllDecays_MRF_500MeV_AQ";
 
-// std::string qual = "truth_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_500MeV_AQ";//_DEBUG"/;
-//std::string qual = "truthAllDecays_AAR_500MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_MRF_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_MRF_200MeV_noQ";//_DEBUG";
-//std::string qual = "truthAllDecays_WORLD_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_AAR_200MeV_pyp_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_AAR_200MeV_atanpypz_AQ";//.root";
-//std::string qual = "truthAllDecays_AAR_200MeV_pxpz_AQ";//.root";
-//std::string qual = "truthAllDecays_200MeV_AAR_AQ_phi";
-//std::string qual = "truthAllDecays_AAR_200MeV_AQ_pypx";//truthAllDecays_AAR_200MeV_AQ_phi";
-//std::string qual = "truthAllDecays_AAR_200MeV_AQ_test";
-//std::string qual = "truth_AAR_200MeV_AQ_phi";
-//std::string qual = "truth_AAR_200MeV_AQ";//_DEBUG";
-//std::string qual = "truth_AAR_200MeV_tan_AQ";//_DEBUG";
-//std::string qual = "truth_WORLD_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_MRF_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_AAR_muPol_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_WORLD_muPol_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_MRF_200MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_MRF_500MeV_AQ";//_DEBUG";
+// std::string qual = "truth_WORLD_200MeV_AQ";
+std::string qual = "truth_AAR_200MeV_AQ";
+// std::string qual = "truth_MRF_200MeV_AQ";
+
+// std::string qual = "truth_WORLD_500MeV_AQ";
+// std::string qual = "truth_AAR_500MeV_AQ";
 //std::string qual = "truth_MRF_500MeV_AQ";
-//std::string qual = "truth_MRF_200MeV_AQ";
-// std::string qual = "truthAllDecays_AAR_500MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_WORLD_500MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_WORLD_500MeV_AQ";//_DEBUG";
-//std::string qual = "truthAllDecays_AQ";//_DEBUG";
 
-double scaleFactor = 1.0;
+// double scaleFactor = 1.0;
+//int interval = 500;
 
-double momBoostFactor = 1;
+// TODO: make this automatic
+// double momBoostFactor = 1;
 //double momBoostFactor = (1/(2*GMAGIC));
 
-
-string mainTitle = "e^{+}";
+string mainTitle = "";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
 
 using namespace std;
-
-/////
-
-TH1D* GetResidual(TH1D* data, TF1* fit) { 
-
-  int nbins = data->GetXaxis()->GetNbins();
-  double binWidth = data->GetBinWidth(1);
-  double low = data->GetXaxis()->GetBinLowEdge(1);
-  double high = low + nbins*binWidth;
-  TH1D* residual = new TH1D("residual", "", nbins, low, high);  
-
-  for (int ibin(1); ibin <= nbins; ibin++){
-    residual->SetBinContent(ibin, 0.0);
-    double time = residual->GetXaxis()->GetBinCenter(ibin);
-    double cont = data->GetBinContent(ibin);
-    double err = data->GetBinError(ibin);
-    double integral = fit->Eval(time);
-    residual->SetBinContent(ibin, integral - cont);
-    residual->SetBinError(ibin, err);
-  }
-
-  return residual;
-}
-
-
-TH1D* GetFFT(TH1D* hist) {
-
-  TH1 *hm = 0;
-  TVirtualFFT::SetTransform(0);
-  hm = hist->FFT(hm, "MAG");
-
-  //Rescale x-axis by dividing by the function domain              
-  TAxis *xaxis = hm->GetXaxis();
-
-  int nBins = hist->GetXaxis()->GetNbins();
-  double *ba = new double[nBins+1];
-  xaxis -> GetLowEdge(ba);
-  double Scale = 1./(hist->GetXaxis()->GetXmax() - hist->GetXaxis()->GetXmin());
-  ba[nBins] = ba[nBins-1] + xaxis->GetBinWidth(nBins);
-
-  for (int i = 0; i < nBins + 1; i++) {
-       ba[i] *= Scale;
-  }
- 
-  TH1D* fft = new TH1D(hm->GetName(), hm->GetTitle(), nBins, ba);
-  for (int i = 0; i <= nBins; i++) {
-      fft->SetBinContent(i, hm->GetBinContent(i));
-      fft->SetBinError(i, hm->GetBinError(i));
-  }
-
-  fft->SetStats(0);
-  fft->SetName("FFT");
-  fft->Scale(1.0 / fft->Integral());
-
-  //Calculate Nyquist frequency, which is twice the highest frequeny in the signal or half of the sampling rate.                                                                                            
-  //...the maximum frequency before sampling errors start              
-
-  double binWidth = hist->GetXaxis()->GetBinWidth(0);
-  double sampleRate = 1 / binWidth;
-  double nyquistFreq = 0.5 * sampleRate;
-
-  fft->GetXaxis()->SetRangeUser(0, nyquistFreq);
-
-  cout << "binWidth\t" <<binWidth<<" us"<<endl;
-  cout << "sampleRate\t" <<sampleRate<<" MHz"<<endl;
-  cout << "nyquistFreq\t" <<nyquistFreq<<" MHz"<<endl;
-
-  return fft;
-
-}
-
-///////////////////
 
 void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, bool xLabel) {
 
@@ -153,6 +62,7 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, bool x
   if(!xLabel) graph->Draw("AP");
 
   else { 
+
     graph->Draw("0AP");
     gPad->Update();
     graph->GetXaxis()->LabelsOption("h");
@@ -166,7 +76,9 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, bool x
 
   c->SaveAs((fname+".pdf").c_str());
   c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
+
+  // Drawing a .C file causes a seg fault (could be due to the labelling)
+  //c->SaveAs((fname+".C").c_str());
 
   delete c;
 
@@ -200,7 +112,34 @@ double GetPhase(TFile *input) {
 
 }
 
+bool MRF() {
+
+  bool mrf = false;
+  string key = "MRF";
+  if(qual.find(key) != std::string::npos) { 
+    mrf = true;
+  }
+
+  return mrf;
+
+}
+
+double MomBoostFactor(bool mrf) {
+  if(mrf) return 1/(2*GMAGIC);
+  else return 1.;
+
+}
+
+double ScaleFactor(bool mrf) { 
+  if(mrf) return GMAGIC;
+  else return 1.;
+}
+
 void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
+
+  bool mrf = MRF();
+
+  double scaleFactor = ScaleFactor(mrf);
 
   const double phi = GetPhase(input); 
 
@@ -218,10 +157,11 @@ void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
   TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
 
   // Get FFT
+  /*
   TH1D *px_thetaY_mod_fft = GetFFT(px_thetaY_mod);
   DrawTH1(px_thetaY_mod_fft, ";Frequency [MHz];Entries", ("../Images/MC/dMuSim/"+config+"/Unblinded/fft_h_thetaY_mod_"+qual).c_str());
-
   delete px_thetaY_mod_fft;
+  */
 
   gr_thetaY_mod->GetYaxis()->SetRangeUser(-.425, .425);
 
@@ -235,12 +175,12 @@ void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
       std::cout<<"A_EDM:\t"<<gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(3)<<std::endl;
 
       // Get residual FFT
+      /*
       TH1D *h_res = GetResidual(px_thetaY_mod, func);
       TH1D *h_res_fft = GetFFT(h_res);
-
       DrawTH1(h_res, ";t_{g#minus2}^{mod} [#mus];Fit residual [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/h_res_"+qual).c_str());
       DrawTH1(h_res_fft, ";Frequency [MHz];Entries", ("../Images/MC/dMuSim/"+config+"/Unblinded/h_fft_res_"+qual).c_str());
-
+      */
 
     } else if(!fullFit) {
       SimpleEDMFit(gr_thetaY_mod, 0.15, OMEGA_A * 1e3, 0);
@@ -252,6 +192,25 @@ void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
     }
 
   return; 
+
+}
+
+int GetStep() {
+
+  int step = 0;
+
+  string key1 = "200MeV";
+  string key2 = "500MeV";
+
+  if(qual.find(key1) != std::string::npos) { 
+    step = 200;
+  } else if(qual.find(key2) != std::string::npos) { 
+    step = 500;
+  } else { 
+    cerr<<"Step size is unknown";
+  }
+
+  return step;
 
 }
 
@@ -268,8 +227,15 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   TGraphErrors* c_vs_p_[n_cut_config];
   TGraphErrors* A_vs_p_[n_cut_config];
   
+  // Detect if we are in the world frame
+  bool mrf = MRF();
+  // Get momentum boost factor for MRF
+  double momBoostFactor = MomBoostFactor(mrf);
+  double scaleFactor = ScaleFactor(mrf);
+
+  cout<<"\nMomentum boost factor\t"<<momBoostFactor<<endl;
   
-  int step = 200 * momBoostFactor;//200;///500;//250;//500;//200;
+  int step = GetStep() * momBoostFactor;//200;///500;//250;//500;//200;
   int n_cuts = (PMAX / step) * momBoostFactor;
   int lo = -1; 
   int hi = -1;
@@ -332,8 +298,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   vector<double> e_alpha_RMS_[n_cut_config];
 
   vector<double> thetaYMaxDiff_[n_cut_config];
-  vector<double> AOverMaxDiff_[n_cut_config];
+  vector<double> e_thetaYMaxDiff_[n_cut_config];
 
+  vector<double> AOverMaxDiff_[n_cut_config];
+  vector<double> e_AOverMaxDiff_[n_cut_config];
 
   // ============ Momentum slices ============
   i_cut_config = 0; 
@@ -348,13 +316,13 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       int p = (hi+lo)/2;
 
       std::string moduloHistName = cuts_configs[i_cut_config]+"/ThetaY_vs_Time_Modulo_"+momSlice;
+      cout<<"Modulo hist name\t"<<moduloHistName<<endl;
+
       TH2D *moduloHist = (TH2D*)input->Get((moduloHistName).c_str());
 
       if(moduloHist==0) continue;
 
       int nEntries = moduloHist->GetEntries();
-
-      if(qual=="truth_equalStats_500e3_AQ" && (nEntries < 450e3 || nEntries > 550e3)) continue;
 
       p_[i_cut_config].push_back(p);
       ep_[i_cut_config].push_back(step/2);
@@ -364,6 +332,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
       TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
 
+      cout<<"Modulo graph\t"<<moduloGraph<<endl;
+
       output->cd(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
 
       double chiSqrNDF = -1;
@@ -372,7 +342,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
           
         // Simple fit with a phase of zero
         SimpleEDMFit(moduloGraph, 0.15, OMEGA_A * 1e3, 0);
-        DrawSimpleEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/SimpleModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);//-5*1e-3, 5*1e-3, true);// , double(nEntries), true);
+        DrawSimpleEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/SimpleModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -.45*scaleFactor, .45*scaleFactor, true);
         moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
         moduloGraph->Write();
 
@@ -387,7 +357,9 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
           // Full EDM fit
           FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
-          DrawFullEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);//-5*1e-3, 5*1e-3, true);// , double(nEntries), true);
+
+          DrawFullEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -.75*scaleFactor, .75*scaleFactor, true);
+
           moduloGraph->SetName(("ModuloFit_"+momSlice).c_str());
           moduloGraph->Write();
 
@@ -395,6 +367,20 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
           ec_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(4));
           A_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(3));
           eA_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(3));
+/*
+          cout<<"\n\n********* DEBUGGING ********* \n\n"<<endl;
+
+          cout<<"graph\t"<<moduloGraph<<endl;
+          cout<<"function\t"<<moduloGraph->GetFunction("FullEDMFunc")<<endl;
+
+          cout<<"c\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParameter(4)<<endl;
+          cout<<"ec\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParError(4)<<endl;
+          cout<<"vector entry\t"<<c_[i_cut_config].at(i_cut)<<endl;
+
+          cout<<"\n\n********* DEBUGGING ********* \n\n"<<endl;*/
+
+          //cout<<"c\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParameter(4)<<"±"<<moduloGraph->GetFunction("FullEDMFunc")->GetParError(4)<<endl;
+          //cout<<"A\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParameter(3)<<"±"<<moduloGraph->GetFunction("FullEDMFunc")->GetParError(3)<<endl;
 
           chiSqrNDF = moduloGraph->GetFunction("FullEDMFunc")->GetChisquare() /  moduloGraph->GetFunction("FullEDMFunc")->GetNDF(); 
         
@@ -438,20 +424,38 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
           chiSqrNDF_[i_cut_config].push_back(chiSqrNDF);
 
-          std::string alphaHistName = cuts_configs[i_cut_config]+"/Alpha_"+momSlice;
-          TH1D *alphaHist = (TH1D*)input->Get((alphaHistName).c_str());
+          if(false) { 
 
-          alpha_[i_cut_config].push_back(alphaHist->GetMean());
-          alpha_RMS_[i_cut_config].push_back(alphaHist->GetRMS());
+            std::string alphaHistName = cuts_configs[i_cut_config]+"/Alpha_"+momSlice;
+            TH1D *alphaHist = (TH1D*)input->Get((alphaHistName).c_str());
+            
+            alpha_[i_cut_config].push_back(alphaHist->GetMean());
+            alpha_RMS_[i_cut_config].push_back(alphaHist->GetRMS());
 
-          e_alpha_[i_cut_config].push_back(alphaHist->GetMeanError());
-          e_alpha_RMS_[i_cut_config].push_back(alphaHist->GetRMSError());
+            e_alpha_[i_cut_config].push_back(alphaHist->GetMeanError());
+            e_alpha_RMS_[i_cut_config].push_back(alphaHist->GetRMSError());
 
-          double thetaYMaxDiff = thetaYHist->FindLastBinAbove(0,1) - thetaYHist->FindFirstBinAbove(0,1);
+         }
+
+          double thetaYMin = thetaYHist->GetBinCenter(thetaYHist->FindFirstBinAbove(0,1));
+          double thetaYMax = thetaYHist->GetBinCenter(thetaYHist->FindLastBinAbove(0,1));
+
+          double e_thetaYMin = thetaYHist->GetBinWidth(thetaYHist->FindFirstBinAbove(0,1));
+          double e_thetaYMax = thetaYHist->GetBinWidth(thetaYHist->FindLastBinAbove(0,1));
+
+          double thetaYMaxDiff = thetaYMax - thetaYMin; 
+          double e_thetaYMaxDiff = sqrt( pow(e_thetaYMax,2) + pow(e_thetaYMin,2) );
+
           thetaYMaxDiff_[i_cut_config].push_back(thetaYMaxDiff);
+          e_thetaYMaxDiff_[i_cut_config].push_back(e_thetaYMaxDiff);
+
+          //double e_thetaYMaxDiff = sqrt( thetaYHist->FindLastBinAbove(0,1))
 
           double AOverMaxDiff = A_[i_cut_config].at(i_cut) / thetaYMaxDiff;
+          double e_AOverMaxDiff = AOverMaxDiff * sqrt( pow( (eA_[i_cut_config].at(i_cut)/A_[i_cut_config].at(i_cut)), 2) + pow( (e_thetaYMaxDiff/thetaYMaxDiff), 2) );
+
           AOverMaxDiff_[i_cut_config].push_back(AOverMaxDiff);
+          e_AOverMaxDiff_[i_cut_config].push_back(e_AOverMaxDiff);
 
         }
 
@@ -461,12 +465,19 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
     //TGraphErrors *c_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
     //TGraphErrors *A_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_
+    cout<<"Generating graphs"<<endl;
+
     c_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
-    A_vs_p_[i_cut_config] = (GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]));
+    A_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], A_[i_cut_config], ep_[i_cut_config], eA_[i_cut_config]);
+
+/*    cout<<"\n\n********* DEBUGGING ********* \n\n"<<endl;
+    cout<<"graph\t"<<c_vs_p_[i_cut_config]<<endl;
+    cout<<"N\t"<<c_vs_p_[i_cut_config]->GetN()<<endl;
+    cout<<"\n\n********* DEBUGGING ********* \n\n"<<endl;*/
 
     DrawGraph(c_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_c_vs_p_"+qual).c_str(), false);
     DrawGraph(A_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_A_vs_p_"+qual).c_str(), false);
-  
+
     c_vs_p_[i_cut_config]->SetName("c_vs_p");
     A_vs_p_[i_cut_config]->SetName("A_vs_p");
 
@@ -520,36 +531,31 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       chiSqrNDF_vs_p_[i_cut_config]->SetName("chiSqrNDF_vs_p");
       chiSqrNDF_vs_p_[i_cut_config]->Write();
 
-      alpha_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], alpha_[i_cut_config], ep_[i_cut_config], e_alpha_[i_cut_config]);
-      DrawGraph(chiSqrNDF_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#alpha [rad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
-      alpha_vs_p_[i_cut_config]->SetName("alpha_vs_p");
-      alpha_vs_p_[i_cut_config]->Write();
+      if(false) { 
 
-      alpha_RMS_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], alpha_RMS_[i_cut_config], ep_[i_cut_config], e_alpha_RMS_[i_cut_config]);
-      DrawGraph(alpha_RMS_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{#alpha} [rad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
-      alpha_RMS_vs_p_[i_cut_config]->SetName("alpha_RMS_vs_p");
-      alpha_RMS_vs_p_[i_cut_config]->Write();
+        alpha_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], alpha_[i_cut_config], ep_[i_cut_config], e_alpha_[i_cut_config]);
+        DrawGraph(chiSqrNDF_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#alpha [rad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
+        alpha_vs_p_[i_cut_config]->SetName("alpha_vs_p");
+        alpha_vs_p_[i_cut_config]->Write();
+
+        alpha_RMS_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], alpha_RMS_[i_cut_config], ep_[i_cut_config], e_alpha_RMS_[i_cut_config]);
+        DrawGraph(alpha_RMS_vs_p_[i_cut_config], ";e^{+} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{#alpha} [rad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_chiSqrNDF_vs_p_"+qual).c_str(), false);
+        alpha_RMS_vs_p_[i_cut_config]->SetName("alpha_RMS_vs_p");
+        alpha_RMS_vs_p_[i_cut_config]->Write();
+
+      }
 
       // Normalise A_EDM by max angular diff
-      cout<<"-3"<<endl;
-      thetaYMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], thetaYMaxDiff_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
-      cout<<"-2"<<endl;
+      thetaYMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], thetaYMaxDiff_[i_cut_config], ep_[i_cut_config], e_thetaYMaxDiff_[i_cut_config]);
       DrawGraph(thetaYMaxDiff_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_thetaYMaxDiff_vs_p_"+qual).c_str(), false);
-      cout<<"-1"<<endl;
       thetaYMaxDiff_vs_p_[i_cut_config]->SetName("thetaYMaxDiff_vs_p");
-      cout<<"0"<<endl;
       //cout<<thetaYMaxDiff_vs_p_[_cut_config]<<endl;
       thetaYMaxDiff_vs_p_[i_cut_config]->Write();
 
-      cout<<"1"<<endl;
-      AOverMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], AOverMaxDiff_[i_cut_config], ep_[i_cut_config], zeros_[i_cut_config]);
-      cout<<"2"<<endl;
-      DrawGraph(AOverMaxDiff_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_AOverMaxDiff_vs_p_"+qual).c_str(), false);
-      cout<<"3"<<endl;
+      AOverMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], AOverMaxDiff_[i_cut_config], ep_[i_cut_config], e_AOverMaxDiff_[i_cut_config]);
+      DrawGraph(AOverMaxDiff_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX}", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+fitType+"_AOverMaxDiff_vs_p_"+qual).c_str(), false);
       AOverMaxDiff_vs_p_[i_cut_config]->SetName("AOverMaxDiff_vs_p");
-      cout<<"4"<<endl;
       AOverMaxDiff_vs_p_[i_cut_config]->Write();
-      cout<<"5"<<endl;
 
     }
   
@@ -620,15 +626,15 @@ void FoldWiggle(TGraphErrors *gr) { //, std::string title, std::string fname) {
 int main() { 
 
   bool write = true;
-  bool fullFit = true;//false;//true;//true;
+  bool fullFit = true;
   bool extraScans = true;
 
   // Read file
-  std::string inputName = "../Plots/MC/dMu/"+config+"/dMuSim_"+qual+".root";
+  std::string inputName = "../Plots/MC/dMu/"+config+"/plots/dMuSim_"+qual+".root";
   TFile *input = TFile::Open(inputName.c_str());
   cout<<"Reading\t"<<inputName<<" "<<input<<endl;
 
-  std::string outputName = "../Plots/MC/dMu/"+config+"/dMuSim_unblindedFits_"+qual+".root"; 
+  std::string outputName = "../Plots/MC/dMu/"+config+"/fits/dMuSim_unblinded_"+qual+".root"; 
   if(!write) outputName = "delete_me.root";
 
   TFile *output = new TFile(outputName.c_str(), "RECREATE");
@@ -643,6 +649,7 @@ int main() {
   output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSlices");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
+  output->cd("MomentumBinnedAnalysis");
 
   MomentumBinnedAnalysis(input, output, fullFit, extraScans);
 
@@ -654,3 +661,80 @@ int main() {
   return 0;
 
 }
+
+
+/////
+
+/*
+
+TH1D* GetResidual(TH1D* data, TF1* fit) { 
+
+  int nbins = data->GetXaxis()->GetNbins();
+  double binWidth = data->GetBinWidth(1);
+  double low = data->GetXaxis()->GetBinLowEdge(1);
+  double high = low + nbins*binWidth;
+  TH1D* residual = new TH1D("residual", "", nbins, low, high);  
+
+  for (int ibin(1); ibin <= nbins; ibin++){
+    residual->SetBinContent(ibin, 0.0);
+    double time = residual->GetXaxis()->GetBinCenter(ibin);
+    double cont = data->GetBinContent(ibin);
+    double err = data->GetBinError(ibin);
+    double integral = fit->Eval(time);
+    residual->SetBinContent(ibin, integral - cont);
+    residual->SetBinError(ibin, err);
+  }
+
+  return residual;
+}
+
+
+TH1D* GetFFT(TH1D* hist) {
+
+  TH1 *hm = 0;
+  TVirtualFFT::SetTransform(0);
+  hm = hist->FFT(hm, "MAG");
+
+  //Rescale x-axis by dividing by the function domain              
+  TAxis *xaxis = hm->GetXaxis();
+
+  int nBins = hist->GetXaxis()->GetNbins();
+  double *ba = new double[nBins+1];
+  xaxis -> GetLowEdge(ba);
+  double Scale = 1./(hist->GetXaxis()->GetXmax() - hist->GetXaxis()->GetXmin());
+  ba[nBins] = ba[nBins-1] + xaxis->GetBinWidth(nBins);
+
+  for (int i = 0; i < nBins + 1; i++) {
+       ba[i] *= Scale;
+  }
+ 
+  TH1D* fft = new TH1D(hm->GetName(), hm->GetTitle(), nBins, ba);
+  for (int i = 0; i <= nBins; i++) {
+      fft->SetBinContent(i, hm->GetBinContent(i));
+      fft->SetBinError(i, hm->GetBinError(i));
+  }
+
+  fft->SetStats(0);
+  fft->SetName("FFT");
+  fft->Scale(1.0 / fft->Integral());
+
+  //Calculate Nyquist frequency, which is twice the highest frequeny in the signal or half of the sampling rate.                                                                                            
+  //...the maximum frequency before sampling errors start              
+
+  double binWidth = hist->GetXaxis()->GetBinWidth(0);
+  double sampleRate = 1 / binWidth;
+  double nyquistFreq = 0.5 * sampleRate;
+
+  fft->GetXaxis()->SetRangeUser(0, nyquistFreq);
+
+  cout << "binWidth\t" <<binWidth<<" us"<<endl;
+  cout << "sampleRate\t" <<sampleRate<<" MHz"<<endl;
+  cout << "nyquistFreq\t" <<nyquistFreq<<" MHz"<<endl;
+
+  return fft;
+
+}
+
+*/
+
+///////////////////
