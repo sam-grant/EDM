@@ -1,7 +1,7 @@
 void FullModuloFit_200_400_truthAllDecays_AAR_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Aug 23 23:26:00 2021) by ROOT version 6.22/08
+//=========  (Thu Aug 26 11:39:03 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-0.9375,4.944727,0.9375);

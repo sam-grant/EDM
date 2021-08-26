@@ -1,7 +1,7 @@
 void fit_dMu_full_truth_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Aug 24 00:32:48 2021) by ROOT version 6.22/08
+//=========  (Thu Aug 26 11:42:11 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-0.9375,4.944727,0.9375);
