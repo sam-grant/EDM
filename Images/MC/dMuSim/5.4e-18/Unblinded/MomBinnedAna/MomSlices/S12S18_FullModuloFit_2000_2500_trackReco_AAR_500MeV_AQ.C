@@ -1,7 +1,7 @@
 void S12S18_FullModuloFit_2000_2500_trackReco_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 12:13:01 2021) by ROOT version 6.22/08
+//=========  (Thu Aug 26 13:04:30 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-6.25,4.944727,6.25);

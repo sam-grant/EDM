@@ -1,10 +1,10 @@
-void tmp()
+void WeightedFit_trackReco_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 12:40:40 2021) by ROOT version 6.22/08
+//=========  (Thu Aug 26 13:50:52 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-420.75,1.4375,3456.75,2.0625);
+   c->Range(-420.75,-0.28125,3456.75,2.53125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void tmp()
    2250,
    2750};
    Double_t delta_A_vs_p_fy1001[6] = {
-   1.748151,
-   1.687508,
-   1.717532,
-   1.68707,
-   1.674983,
-   1.725824};
+   0.8139453,
+   1.925995,
+   1.524164,
+   1.760498,
+   1.757572,
+   1.666631};
    Double_t delta_A_vs_p_fex1001[6] = {
    250,
    250,
@@ -33,12 +33,12 @@ void tmp()
    250,
    250};
    Double_t delta_A_vs_p_fey1001[6] = {
-   0.161977,
-   0.05361558,
-   0.0369018,
-   0.03325765,
-   0.03862026,
-   0.06971001};
+   0.6207731,
+   0.2068717,
+   0.17705,
+   0.1808788,
+   0.2278966,
+   0.3592338};
    TGraphErrors *gre = new TGraphErrors(6,delta_A_vs_p_fx1001,delta_A_vs_p_fy1001,delta_A_vs_p_fex1001,delta_A_vs_p_fey1001);
    gre->SetName("delta_A_vs_p");
    gre->SetTitle("");
@@ -46,8 +46,8 @@ void tmp()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_delta_A_vs_p1001 = new TH1F("Graph_delta_A_vs_p1001","",100,0,3300);
-   Graph_delta_A_vs_p1001->SetMinimum(1.5);
-   Graph_delta_A_vs_p1001->SetMaximum(2);
+   Graph_delta_A_vs_p1001->SetMinimum(0);
+   Graph_delta_A_vs_p1001->SetMaximum(2.25);
    Graph_delta_A_vs_p1001->SetDirectory(0);
    Graph_delta_A_vs_p1001->SetStats(0);
 
@@ -80,19 +80,48 @@ void tmp()
    pol01002->SetFillStyle(0);
    pol01002->SetLineColor(2);
    pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(1.020006);
+   pol01002->SetChisquare(4.401328);
    pol01002->SetNDF(5);
    pol01002->GetXaxis()->SetLabelFont(42);
    pol01002->GetXaxis()->SetTitleOffset(1);
    pol01002->GetXaxis()->SetTitleFont(42);
    pol01002->GetYaxis()->SetLabelFont(42);
    pol01002->GetYaxis()->SetTitleFont(42);
-   pol01002->SetParameter(0,1.695593);
-   pol01002->SetParError(0,0.01856736);
+   pol01002->SetParameter(0,1.700616);
+   pol01002->SetParError(0,0.09307616);
    pol01002->SetParLimits(0,0,0);
    pol01002->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01002);
    gre->Draw("ap");
+   
+   TLegend *leg = new TLegend(0.36,0.27,0.83,0.42,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("delta_A_vs_p","Sim","lpf");
+   entry->SetFillStyle(1000);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("pol0","Fit: #LT#delta'#GT = 1.7
+#pm0.09
+ mrad","lpf");
+   entry->SetFillColor(19);
+   entry->SetLineColor(2);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(1);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   leg->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

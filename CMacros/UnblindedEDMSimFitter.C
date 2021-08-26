@@ -11,9 +11,9 @@ std::string config = "5.4e-18";
 // std::string qual = "trackReco_WORLD_200MeV_BQ";
 // std::string qual = "trackReco_WORLD_500MeV_BQ";
 //std::string qual = "trackReco_AAR_200MeV_AQ";
-//std::string qual = "trackReco_AAR_500MeV_AQ";
+std::string qual = "trackReco_AAR_500MeV_AQ";
 // std::string qual = "trackReco_AAR_200MeV_BQ";
-std::string qual = "trackReco_AAR_200MeV_AQ";
+//std::string qual = "trackReco_AAR_200MeV_AQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -91,6 +91,25 @@ void OverlayScanGraphs(std::vector<TGraphErrors*> graphs, string stns[], std::st
 
 }
 
+int GetStep() {
+
+  int step = 0;
+
+  string key1 = "200MeV";
+  string key2 = "500MeV";
+
+  if(qual.find(key1) != std::string::npos) { 
+    step = 200;
+  } else if(qual.find(key2) != std::string::npos) { 
+    step = 500;
+  } else { 
+    cerr<<"Step size is unknown";
+  }
+
+  return step;
+
+}
+
 void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, bool xLabel) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
@@ -107,12 +126,18 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, bo
 
   // Hack together x-axis range
   int N = graph->GetN();
-  double xmax = graph->GetPointX(N-1);// + 50;
-  double xmin = graph->GetPointX(0);// - 50; 
-  double offset = (xmax - xmin) * 0.1;
+  double xmax = graph->GetPointX(N-1);
+  double xmin = graph->GetPointX(0);
+
+  int step = GetStep(); 
+  double scale = 0.;
+  if(step == 200) scale = 0.05;
+  else if(step == 500) scale = 0.125;
+  double offset = (xmax - xmin) * scale;
   xmin = xmin - offset; 
   xmax = xmax + offset;
   graph->GetXaxis()->SetRangeUser(xmin, xmax);
+
 
   if(!xLabel) graph->Draw("AP");
   else { 
@@ -137,24 +162,7 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, bo
 
 }
 
-int GetStep() {
 
-  int step = 0;
-
-  string key1 = "200MeV";
-  string key2 = "500MeV";
-
-  if(qual.find(key1) != std::string::npos) { 
-    step = 200;
-  } else if(qual.find(key2) != std::string::npos) { 
-    step = 500;
-  } else { 
-    cerr<<"Step size is unknown";
-  }
-
-  return step;
-
-}
 
 double GetPhase(TFile *input) { 
 

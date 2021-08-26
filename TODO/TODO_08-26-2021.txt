@@ -12,10 +12,13 @@ TODO:
 
 - Closure test on the size of acceptance + decay corrections in MC. Basically, if you apply those corrections, do you get the correct answer out?
 
-At the level of the fitting code: 
+X At the level of the fitting code: 
 
-	- Include an evalution function to get the dilution at set momentum, just at the centre of the momentum bin.
-	- Simply divide A_EDM by the dilution and replot (that's it!).
+	X - Include an evalution function to get the dilution at set momentum, just at the centre of the momentum bin.
+	X - Simply divide A_EDM by the dilution and replot (that's it!).
+
+- Get the error weighted average (just fit a straight line)
+- Think about which range to use.
 
 At post fitting: 
 

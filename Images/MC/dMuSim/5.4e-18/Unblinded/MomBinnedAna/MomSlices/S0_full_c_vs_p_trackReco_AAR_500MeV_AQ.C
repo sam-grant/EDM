@@ -1,10 +1,10 @@
 void S0_full_c_vs_p_trackReco_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 12:12:54 2021) by ROOT version 6.22/08
+//=========  (Thu Aug 26 13:04:22 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-375.375,-1.829391,3378.375,0.4409522);
+   c->Range(-420.75,-1.829391,3456.75,0.4409522);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -56,7 +56,7 @@ void S0_full_c_vs_p_trackReco_AAR_500MeV_AQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01023->SetLineColor(ci);
    Graph_Graph01023->GetXaxis()->SetTitle("p [MeV]: in range p #minus 250 < p < p #plus 250 MeV");
-   Graph_Graph01023->GetXaxis()->SetRange(1,91);
+   Graph_Graph01023->GetXaxis()->SetRange(0,93);
    Graph_Graph01023->GetXaxis()->CenterTitle(true);
    Graph_Graph01023->GetXaxis()->SetLabelFont(42);
    Graph_Graph01023->GetXaxis()->SetTitleSize(0.04);
