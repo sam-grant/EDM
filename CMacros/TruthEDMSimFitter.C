@@ -4,14 +4,15 @@
 #include "Utils.h"
 #include "RootInclude.h"
 
-std::string config = "5.4e-18";
+//std::string config = "5.4e-18";
+std::string config = "1.8e-18";
 
 //std::string qual = "truthAllDecays_WORLD_200MeV_AQ";
 //std::string qual = "truthAllDecays_AAR_200MeV_AQ";
 //std::string qual = "truthAllDecays_MRF_200MeV_AQ";
 
 //std::string qual = "truthAllDecays_WORLD_500MeV_AQ";
-//std::string qual = "truthAllDecays_AAR_500MeV_AQ";
+std::string qual = "truthAllDecays_AAR_500MeV_AQ";
 //std::string qual = "truthAllDecays_MRF_500MeV_AQ";
 
 // std::string qual = "truth_WORLD_200MeV_AQ";
@@ -19,7 +20,7 @@ std::string config = "5.4e-18";
 // std::string qual = "truth_MRF_200MeV_AQ";
 
 // std::string qual = "truth_WORLD_500MeV_AQ";
-std::string qual = "truth_AAR_500MeV_AQ";
+//std::string qual = "truth_AAR_500MeV_AQ";
 //std::string qual = "truth_MRF_500MeV_AQ";
 
 // double scaleFactor = 1.0;

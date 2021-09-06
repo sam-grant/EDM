@@ -1,10 +1,10 @@
 void S0S12S18_full_delta_A_vs_p_trackReco_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 13:04:34 2021) by ROOT version 6.22/08
+//=========  (Mon Aug 30 07:30:54 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-420.75,-0.09526777,3456.75,2.595959);
+   c->Range(-420.75,0.1153274,3456.75,2.543032);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void S0S12S18_full_delta_A_vs_p_trackReco_AAR_500MeV_AQ()
    2250,
    2750};
    Double_t Graph0_fy1088[6] = {
-   0.8139453,
-   1.925995,
-   1.524164,
-   1.760498,
-   1.757572,
-   1.666631};
+   1.101409,
+   1.94439,
+   1.621505,
+   1.774731,
+   1.875457,
+   1.647808};
    Double_t Graph0_fex1088[6] = {
    250,
    250,
@@ -33,12 +33,12 @@ void S0S12S18_full_delta_A_vs_p_trackReco_AAR_500MeV_AQ()
    250,
    250};
    Double_t Graph0_fey1088[6] = {
-   0.6207731,
-   0.2068717,
-   0.17705,
-   0.1808788,
-   0.2278966,
-   0.3592338};
+   0.5814645,
+   0.1940253,
+   0.1660839,
+   0.1697546,
+   0.2140044,
+   0.3369048};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1088,Graph0_fy1088,Graph0_fex1088,Graph0_fey1088);
    gre->SetName("Graph0");
    gre->SetTitle(";p [MeV] in range: p #minus 250 < p < p #plus 250;#delta' [mrad]");
@@ -46,8 +46,8 @@ void S0S12S18_full_delta_A_vs_p_trackReco_AAR_500MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01088 = new TH1F("Graph_Graph01088","",100,0,3300);
-   Graph_Graph01088->SetMinimum(0.1738549);
-   Graph_Graph01088->SetMaximum(2.326836);
+   Graph_Graph01088->SetMinimum(0.3580979);
+   Graph_Graph01088->SetMaximum(2.300262);
    Graph_Graph01088->SetDirectory(0);
    Graph_Graph01088->SetStats(0);
 

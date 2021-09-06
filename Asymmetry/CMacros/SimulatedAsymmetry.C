@@ -8,7 +8,7 @@ double A_MU = 11659208.9e-10;
 double GMAGIC = std::sqrt( 1.+1./A_MU );
 double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
 
-bool boost = false;
+bool boost = true;
 
 using namespace std;
 
@@ -76,7 +76,7 @@ void NormaliseHistsByMax(vector<TH1F*> hists_) {
 
 	for(int i = 0; i < hists_.size(); i++) {
 		// Ensure errors are dealt with correctly
-		//hists_.at(i)->Sumw2();
+		hists_.at(i)->Sumw2();
 		// Scale hist
 		double max = hists_.at(i)->GetMaximum();
 		hists_.at(i)->Scale(1/max);
@@ -211,6 +211,7 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
 void FitAsym(TH1F *hist, bool edm, string boostLabel) { 
 
 	TF1 *fitFunc; 
+	// Convert momentum to lambda
 	hist->GetXaxis()->SetLimits(0,1);
 
 	string config = "";
@@ -225,7 +226,9 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 		}
 	} else if(!edm) {
 		config += "g-2"; 
-		hist->Rebin(15); // EDM hist has already been rebinned at this level.
+
+		// No need to rebin
+		//hist->Rebin(15); // EDM hist has already been rebinned at this level.
 		hist->Scale(1./hist->GetMaximum());
 		if(!boost) {
 			fitFunc = new TF1("fitFunc", "(-1-x+8*x*x)/(5+5*x-4*x*x)", 0, 1);
@@ -268,7 +271,7 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 	string legEntry = "";
 	string fname = "../Images/";
 
-	if(!edm) {
+	if(edm) {
 		fname += "edm/hFit_A";
 		if(!boost) legEntry += "Fit: #frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}";
 		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}"; 
@@ -289,6 +292,74 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 	c->SaveAs((fname+".png").c_str());
 
 
+	return;
+
+}
+
+void DrawDeltaThetaHist(TH1F *h1, string boostLabel) { 
+
+	// Clone hist
+
+	cout<<"\nDrawing deltaTheta hist."<<endl;
+
+	string fname = "../Images/edm/deltaTheta_"+boostLabel;
+	string title = boostLabel+";#delta#upoint#theta [rad^{2}];Entries";
+
+	TH1F *h2 = (TH1F*)h1->Clone("h2");
+
+	for(int i = 0; i<h1->GetXaxis()->GetNbins(); i++) {
+		float binCent = h1->GetBinCenter(i+1);
+		if(h1->GetBinCenter(i+1) < 1e-4) h1->SetBinContent(i+1,0);
+	}
+
+	for(int i = 0; i<h2->GetXaxis()->GetNbins(); i++) {
+		float binCent = h2->GetBinCenter(i+1);
+		if(h2->GetBinCenter(i+1) > 0) h2->SetBinContent(i+1,0);
+	}
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	h1->SetTitle(title.c_str());
+	h1->GetXaxis()->SetTitleSize(.04);
+	h1->GetYaxis()->SetTitleSize(.04);
+	h1->GetXaxis()->SetTitleOffset(1.1);
+	h1->GetYaxis()->SetTitleOffset(1.1);
+	h1->GetXaxis()->CenterTitle(true);
+	h1->GetYaxis()->CenterTitle(true);
+	h1->GetYaxis()->SetMaxDigits(4);
+	h1->SetStats(0);
+
+  	h1->SetLineColor(kBlue);
+  	h2->SetLineColor(kRed);
+  	h1->SetFillColor(kBlue);
+  	h2->SetFillColor(kRed);
+
+  	h1->GetXaxis()->SetRangeUser(-0.01, 0.01);//h1->GetBinCenter(h1->FindFirstBinAbove(0)));
+  	// h1->SetMaximum(5.0e6);
+  	// h2->GetXaxis()->SetRangeUser(h2->GetBinCenter(h2->FindLastBinAbove(0)), 0);
+
+   h1->Draw("HIST");
+   h2->Draw("HIST ][ SAME");
+   //h2->Draw("HIST");// SAME");
+
+	TLegend *l = new TLegend(0.69,0.69,0.89,0.89);
+
+	//l->SetNColumns(2);
+	l->SetTextFont(42);
+	l->SetBorderSize(0);
+
+   l->AddEntry(h1,"Aligned");
+   l->AddEntry(h2,"Anti-aligned");
+
+   //l->SetNColumns(2);
+
+	l->Draw("SAME");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
 	return;
 
 }
@@ -325,6 +396,8 @@ void RunG2Asym(TFile *fin, string boostLabel) {
 		float A = (N_1 - N_2) / (N_1 + N_2); 
 		float NA2 = N * pow(A,2);
 
+		float eA = sqrt((1-pow(A,2))/(N_1+N_2));
+
 		if(N==0) continue;
 
 		A_.push_back(A);
@@ -335,6 +408,8 @@ void RunG2Asym(TFile *fin, string boostLabel) {
 		h_A->SetBinContent(i_bin+1, A);
 		h_NA2->SetBinContent(i_bin+1, NA2);
 
+		h_A->SetBinError(i_bin+1, eA);
+
 	}
 
 	vector<TH1F*> hists_ = {h_N, h_A, h_NA2};
@@ -343,7 +418,7 @@ void RunG2Asym(TFile *fin, string boostLabel) {
 	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Events", "../Images/g2/DiffDecayAsymHists_"+boostLabel,  false, false, false, true);
 	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Normalised events", "../Images/g2/NormDiffDecayAsymHists_"+boostLabel, false, true, true, true);
 
-	h_A->Scale(1./h_A->GetMaximum());
+	//h_A->Scale(1./h_A->GetMaximum());
 	FitAsym(h_A, false, boostLabel);
 
 	delete h_N;
@@ -392,6 +467,8 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 
 		//if(A < 0) cout<<"A is negative at "<<A<<endl;
 
+		float eA = sqrt((1-pow(A,2))/(N_1+N_2));
+
 		if(N==0) continue;
 
 		//if(A < 0) continue;
@@ -403,6 +480,8 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 		h_N->SetBinContent(i_bin+1, N);
 		h_A->SetBinContent(i_bin+1, A);
 		h_NA2->SetBinContent(i_bin+1, NA2);
+
+		h_A->SetBinError(i_bin+1, eA);
 
 	}
 
@@ -422,7 +501,7 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 
 
 	// Perform fit
-	if(!boost) h_A->GetYaxis()->SetRangeUser(-1.5,3.0);
+	if(!boost) h_A->GetYaxis()->SetRangeUser(0,.70);
 	FitAsym(h_A, true, boostLabel);
 	
 	delete h_N;
@@ -445,15 +524,15 @@ int main() {
 
 	cout<<"...Start\n**********************************\nFrame is "<<boostLabel<<". File is "<<fname<<", "<<fin<<"\n**********************************"<<endl;
 
-
 	cout<<"Got file "<<fname<<", "<<fin<<endl;
-
 
 	cout<<"**********************************\nRunning g-2 asymmetry\n**********************************"<<endl;
 
 	RunG2Asym(fin, boostLabel);
 
 	cout<<"**********************************\nRunning EDM asymmetry\n**********************************"<<endl;
+
+	DrawDeltaThetaHist((TH1F*)fin->Get("angles/h_deltaTheta"), boostLabel); 
 
 	RunEDMAsym(fin, boostLabel);
 

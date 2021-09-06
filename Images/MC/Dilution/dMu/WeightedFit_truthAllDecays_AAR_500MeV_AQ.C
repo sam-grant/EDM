@@ -1,7 +1,7 @@
 void WeightedFit_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 13:50:52 2021) by ROOT version 6.22/08
+//=========  (Thu Aug 26 13:54:06 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-420.75,1.3,3456.75,2.3);

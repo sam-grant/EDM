@@ -13,8 +13,8 @@ void DrawGraphs(vector<TGraphErrors*> graphs_, vector<string> labels_, std::stri
   TCanvas *c = new TCanvas("c","c",800,600);
 
   TLegend *l;
-  if(corr) l = new TLegend(0.15, 0.69, 0.35, 0.89);
-  else l =  new TLegend(0.69, 0.69, 0.89, 0.89);
+  if(corr) l = new TLegend(0.15, 0.64, 0.40, 0.89);
+  else l =  new TLegend(0.64, 0.64, 0.89, 0.89);
 //  l->SetNColumns(3);
   l->SetBorderSize(0);
 
@@ -129,6 +129,7 @@ void ParabolaFit(TGraphErrors *graph, string name, bool corr) { // double p0, do
 
 }
 
+// Not being used currently
 TGraphErrors *RemoveSpuriousPoint(TGraphErrors *gr) {
 
 	int n = gr->GetN();
@@ -175,7 +176,7 @@ TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
 
 
-void RunAEDM(int step, string frame, bool corr, double ymin, double ymax, TFile *output) {
+void RunAEDM(int step, string frame, bool corr, double ymin, double ymax, TFile *output, bool fit) {
 
 	string dname = "";//DilutionFits/d_vs_p_"+to_string(step)+"MeV";
 
@@ -226,11 +227,11 @@ void RunAEDM(int step, string frame, bool corr, double ymin, double ymax, TFile 
 		//TGraphErrors *gr = RemoveSpuriousPoint(gr);
 
 		// Fit
-		ParabolaFit(gr, name, corr);
-
-		TF1 *fnc = gr->GetFunction("ParabolaFunc");
-
-		cout<<"chisqr/ndf\t"<<fnc->GetChisquare() / fnc->GetNDF()<<endl;
+		if(fit) { 
+			ParabolaFit(gr, name, corr);
+			TF1 *fnc = gr->GetFunction("ParabolaFunc");
+			cout<<"chisqr/ndf\t"<<fnc->GetChisquare() / fnc->GetNDF()<<endl;
+		}
 
 		graphs_.push_back(gr);
 
@@ -243,10 +244,11 @@ void RunAEDM(int step, string frame, bool corr, double ymin, double ymax, TFile 
 	if(corr) title += ";d_{EDM}(p) / #Delta_{max}#theta_{y}(p)";
 	else title += ";d_{EDM}(p)";
 
-	// if(corr) title += ";A_{EDM} / #Delta_{max}#theta_{y}";
-	// else title += ";A_{EDM} [mrad]";
+	string fname = "../Images/MC/Dilution/dMu/"; 
+	if(fit) fname += "ParabolaFits_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV";
+	else fname += "Graphs_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV";
 
-	DrawGraphs(graphs_, labels_, title, "../Images/MC/Dilution/dMu/Overlay_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV", corr, ymin, ymax);
+	DrawGraphs(graphs_, labels_, title, fname, corr, ymin, ymax);
 
 
 	// Write
@@ -260,21 +262,34 @@ void RunAEDM(int step, string frame, bool corr, double ymin, double ymax, TFile 
 
 int main() { 
 
+	bool fit = true;
+
 	string fname = "../Plots/MC/dMu/5.4e-18/fits/dilution.root";
 	TFile *output = new TFile(fname.c_str(), "RECREATE");
 
-	output->mkdir("DilutionFits"); output->cd("DilutionFits");
+	output->mkdir("DilutionFits");// output->cd("DilutionFits");
 
 	// Get the dilution for all graphs at 500 MeV step and AAR frame
 	output->mkdir("DilutionFits/d_vs_p_500MeV");
 	output->cd("DilutionFits/d_vs_p_500MeV");
 
-	RunAEDM(500, "AAR", false, 0, 2.25e-1, output);
+	RunAEDM(500, "AAR", false, 0, 2.25e-1, output, fit);
 
 	output->mkdir("DilutionFits/dOverThetaYDiff_vs_p_500MeV");
 	output->cd("DilutionFits/dOverThetaYDiff_vs_p_500MeV");
 
-	RunAEDM(500, "AAR", true, -5e-4, 2.25e-3, output); 
+	RunAEDM(500, "AAR", true, -5e-4, 2.25e-3, output, fit); 
+
+	// Try 200 MeV
+	output->mkdir("DilutionFits/d_vs_p_500MeV");
+	output->cd("DilutionFits/d_vs_p_500MeV");
+
+	RunAEDM(200, "AAR", false, 0, 2.25e-1, output, fit);
+
+	output->mkdir("DilutionFits/dOverThetaYDiff_vs_p_500MeV");
+	output->cd("DilutionFits/dOverThetaYDiff_vs_p_500MeV");
+
+	RunAEDM(200, "AAR", true, -5e-4, 2.25e-3, output, fit); 
 
 	output->Write();
 	output->Close();

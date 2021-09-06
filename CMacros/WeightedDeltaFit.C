@@ -6,6 +6,9 @@
 
 using namespace std;
 
+std::string dMu = "5.4e-18";
+//std::string dMu = "1.8e-18";
+
 void DrawFit(TGraphErrors *gr, string config, string title, string fname, double ymin, double ymax) {
 
 	cout<<"\nDrawing"<<endl;
@@ -15,11 +18,29 @@ void DrawFit(TGraphErrors *gr, string config, string title, string fname, double
 	// 0.47 wide, 0.15 high. 0.06 seperation from borders
 	TLegend *l; // l = new TLegend(0.22, 0.28, 0.77, 0.43); 
 	// Bottom right (shifted up by 0.1)
+	if(dMu == "5.4e-18") {
+
 	if(config == "trackReco_AAR_500MeV_AQ") l = new TLegend(0.36, 0.27, 0.83, 0.42); 
 	// Top right
 	else if(config == "truth_AAR_500MeV_AQ") l = new TLegend(0.36, 0.68, 0.83, 0.83); 
 	// Top left
-	else l = new TLegend(0.17, 0.68, 0.64, 0.83); 
+	else if(config == "truthAllDecays_AAR_500MeV_AQ") l = new TLegend(0.17, 0.68, 0.64, 0.83); 
+	// Bottom centre
+	else l = new TLegend(0.30, 0.27, 0.70, 0.42); 
+
+	} else if(dMu == "1.8e-18") {
+
+	if(config == "trackReco_AAR_500MeV_AQ") l = new TLegend(0.36, 0.27, 0.83, 0.42); 
+	// Top right
+	else if(config == "truth_AAR_500MeV_AQ") l = new TLegend(0.36, 0.68, 0.83, 0.83); 
+	// Top centre
+	else if(config == "truthAllDecays_AAR_500MeV_AQ") l = new TLegend(0.30, 0.68, 0.70, 0.83); 
+	// Bottom centre
+	else l = new TLegend(0.30, 0.27, 0.70, 0.42); 
+
+
+
+	}
 
 	l->SetBorderSize(0);
 
@@ -57,7 +78,7 @@ void DrawFit(TGraphErrors *gr, string config, string title, string fname, double
 void Fit(string config, double ymin, double ymax) { //, TFile *output) {
 
 	// Get file 
-	string fname = "../Plots/MC/dMu/5.4e-18/fits/dMuSim_unblinded_"+config+".root";
+	string fname = "../Plots/MC/dMu/"+dMu+"/fits/dMuSim_unblinded_"+config+".root";
 	TFile *fin = TFile::Open(fname.c_str());
 
 	cout<<"\nOpened input file "<<fname<<", "<<fin<<endl;
@@ -73,16 +94,25 @@ void Fit(string config, double ymin, double ymax) { //, TFile *output) {
 
 	cout<<"\nFitted with function "<<gr->GetFunction("pol0")<<endl;
 
-	DrawFit(gr, config, "", "../Images/MC/Dilution/dMu/WeightedFit_"+config, ymin, ymax);
+	DrawFit(gr, config, "", "../Images/MC/Dilution/dMu/"+dMu+"/WeightedFit_"+config, ymin, ymax);
 
 	return; 
 }
 
 int main() { 
 
-	Fit("trackReco_AAR_500MeV_AQ", 0, 2.25); 
-	Fit("truth_AAR_500MeV_AQ", 1.55, 1.95); 
+	// 10xBNL
+	// Fit("truthAllDecays_AAR_500MeV_AQ", 0.4, 0.9); 
+	// 30xBNL
 	Fit("truthAllDecays_AAR_500MeV_AQ", 1.4, 2.2); 
+
+	// Fit("trackReco_AAR_500MeV_AQ", 0, 2.25); 
+	// Fit("truth_AAR_500MeV_AQ", 1.55, 1.95); 
+
+
+	// Fit("trackReco_AAR_200MeV_AQ", -18, 7); 
+	// Fit("truth_AAR_200MeV_AQ", 0.8, 2.5); 
+	// Fit("truthAllDecays_AAR_200MeV_AQ", 0.6, 2.3); 
 
 	return 0;
 }
