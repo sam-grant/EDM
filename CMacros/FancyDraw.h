@@ -1472,7 +1472,7 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("700 < p [MeV] < 2400");
+//	cuts->AddText("700 < p [MeV] < 2400");
 	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(26);

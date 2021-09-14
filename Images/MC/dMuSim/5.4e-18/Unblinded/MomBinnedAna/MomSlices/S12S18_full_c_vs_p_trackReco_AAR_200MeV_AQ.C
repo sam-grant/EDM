@@ -1,10 +1,10 @@
 void S12S18_full_c_vs_p_trackReco_AAR_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 12:14:16 2021) by ROOT version 6.22/08
+//=========  (Sun Sep 12 20:09:45 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.25,-3.052243,3605.25,0.6177709);
+   c->Range(-420.75,-4.109839,3456.75,0.8033578);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,21 +28,21 @@ void S12S18_full_c_vs_p_trackReco_AAR_200MeV_AQ()
    2700,
    2900};
    Double_t Graph0_fy1137[15] = {
-   -1.362128,
-   -2.304659,
-   -1.476362,
-   -0.5322585,
-   -0.3286318,
-   -0.2657971,
-   -0.1893562,
-   -0.2141325,
-   -0.1766988,
-   -0.1384979,
-   -0.07390271,
-   -0.1322209,
-   -0.1124812,
-   -0.1287221,
-   -0.02995061};
+   -1.14666,
+   -3.214603,
+   -1.645835,
+   -0.6260191,
+   -0.4045263,
+   -0.2779471,
+   -0.2388497,
+   -0.2038846,
+   -0.1576418,
+   -0.144601,
+   -0.1515121,
+   -0.1554635,
+   -0.1160356,
+   -0.1092185,
+   -0.03690442};
    Double_t Graph0_fex1137[15] = {
    100,
    100,
@@ -60,21 +60,21 @@ void S12S18_full_c_vs_p_trackReco_AAR_200MeV_AQ()
    100,
    100};
    Double_t Graph0_fey1137[15] = {
-   1.013843,
-   0.135915,
-   0.0417046,
-   0.03099315,
-   0.02714085,
-   0.02500861,
-   0.0233491,
-   0.02210183,
-   0.02144149,
-   0.02140013,
-   0.02214468,
-   0.02364502,
-   0.02548832,
-   0.02605249,
-   0.03605247};
+   0.6467683,
+   0.07636993,
+   0.02415157,
+   0.01806224,
+   0.01579789,
+   0.01458943,
+   0.01361956,
+   0.01292134,
+   0.01252643,
+   0.01255331,
+   0.0129156,
+   0.0138059,
+   0.01496327,
+   0.01529234,
+   0.02139606};
    TGraphErrors *gre = new TGraphErrors(15,Graph0_fx1137,Graph0_fy1137,Graph0_fex1137,Graph0_fey1137);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18");
@@ -82,8 +82,8 @@ void S12S18_full_c_vs_p_trackReco_AAR_200MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01137 = new TH1F("Graph_Graph01137","S12S18",100,0,3300);
-   Graph_Graph01137->SetMinimum(-2.685242);
-   Graph_Graph01137->SetMaximum(0.2507695);
+   Graph_Graph01137->SetMinimum(-3.618519);
+   Graph_Graph01137->SetMaximum(0.3120381);
    Graph_Graph01137->SetDirectory(0);
    Graph_Graph01137->SetStats(0);
 
@@ -92,7 +92,7 @@ void S12S18_full_c_vs_p_trackReco_AAR_200MeV_AQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01137->SetLineColor(ci);
    Graph_Graph01137->GetXaxis()->SetTitle("p [MeV]: in range p #minus 100 < p < p #plus 100 MeV");
-   Graph_Graph01137->GetXaxis()->SetRange(0,97);
+   Graph_Graph01137->GetXaxis()->SetRange(0,93);
    Graph_Graph01137->GetXaxis()->CenterTitle(true);
    Graph_Graph01137->GetXaxis()->SetLabelFont(42);
    Graph_Graph01137->GetXaxis()->SetTitleSize(0.04);

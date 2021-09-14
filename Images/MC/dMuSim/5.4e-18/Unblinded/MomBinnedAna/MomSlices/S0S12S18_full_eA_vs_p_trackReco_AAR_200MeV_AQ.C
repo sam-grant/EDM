@@ -1,10 +1,10 @@
 void S0S12S18_full_eA_vs_p_trackReco_AAR_200MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 12:14:24 2021) by ROOT version 6.22/08
+//=========  (Sun Sep 12 20:09:50 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-437.25,-0.1492204,3605.25,1.562173);
+   c->Range(-420.75,-0.09054484,3456.75,0.9436829);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,21 +28,21 @@ void S0S12S18_full_eA_vs_p_trackReco_AAR_200MeV_AQ()
    2700,
    2900};
    Double_t Graph0_fy1175[15] = {
-   1.26679,
-   0.1585937,
-   0.04808675,
-   0.03583077,
-   0.03143368,
-   0.0289252,
-   0.02706657,
-   0.02555316,
-   0.02466551,
-   0.02435447,
-   0.02472155,
-   0.02557559,
-   0.02695337,
-   0.02620632,
-   0.03350202};
+   0.7651736,
+   0.08958767,
+   0.02790195,
+   0.02086566,
+   0.01829458,
+   0.01688493,
+   0.01579653,
+   0.01493384,
+   0.01442311,
+   0.01430881,
+   0.01445825,
+   0.01493099,
+   0.01569164,
+   0.0153594,
+   0.0197864};
    Double_t Graph0_fex1175[15] = {
    100,
    100,
@@ -82,8 +82,8 @@ void S0S12S18_full_eA_vs_p_trackReco_AAR_200MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01175 = new TH1F("Graph_Graph01175","",100,0,3300);
-   Graph_Graph01175->SetMinimum(0.02191903);
-   Graph_Graph01175->SetMaximum(1.391034);
+   Graph_Graph01175->SetMinimum(0.01287793);
+   Graph_Graph01175->SetMaximum(0.8402601);
    Graph_Graph01175->SetDirectory(0);
    Graph_Graph01175->SetStats(0);
 
@@ -92,7 +92,7 @@ void S0S12S18_full_eA_vs_p_trackReco_AAR_200MeV_AQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01175->SetLineColor(ci);
    Graph_Graph01175->GetXaxis()->SetTitle("p [MeV]: in range p #minus 100 < p < p #plus 100 MeV");
-   Graph_Graph01175->GetXaxis()->SetRange(0,97);
+   Graph_Graph01175->GetXaxis()->SetRange(0,93);
    Graph_Graph01175->GetXaxis()->CenterTitle(true);
    Graph_Graph01175->GetXaxis()->SetLabelFont(42);
    Graph_Graph01175->GetXaxis()->SetTitleSize(0.04);

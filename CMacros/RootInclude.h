@@ -20,4 +20,7 @@
 #include "TProfile.h"
 #include "TRandom3.h"
 #include "TVirtualFFT.h"
+#include "TVirtualFitter.h"
+#include "TArrow.h"
+#include "TMatrixD.h"
 // TODO ADD MORE AND REMOVE HEADERS FROM OTHER FILES

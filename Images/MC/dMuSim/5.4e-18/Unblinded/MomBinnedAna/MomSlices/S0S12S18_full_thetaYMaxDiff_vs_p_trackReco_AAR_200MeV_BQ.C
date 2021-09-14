@@ -1,10 +1,10 @@
 void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_200MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Aug 25 16:47:18 2021) by ROOT version 6.22/08
+//=========  (Sun Sep 12 22:37:03 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-360.8,-19.55776,3575.2,221.1107);
+   c->Range(-196.8,-20.09381,3411.2,223.791);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -27,17 +27,17 @@ void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_200MeV_BQ()
    2700,
    2900};
    Double_t Graph0_fy1166[14] = {
-   177.967,
-   175.8228,
-   143.6601,
+   180.1112,
+   180.1112,
+   150.0926,
    130.795,
    115.7858,
-   107.209,
-   92.19977,
-   77.1905,
+   117.9299,
+   100.7765,
+   98.63231,
    70.75796,
-   70.75796,
-   49.31616,
+   68.61378,
+   60.03706,
    40.73943,
    32.16271,
    23.58599};
@@ -78,8 +78,8 @@ void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_200MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01166 = new TH1F("Graph_Graph01166","",100,0,3280);
-   Graph_Graph01166->SetMinimum(4.509091);
-   Graph_Graph01166->SetMaximum(197.0439);
+   Graph_Graph01166->SetMinimum(4.294673);
+   Graph_Graph01166->SetMaximum(199.4025);
    Graph_Graph01166->SetDirectory(0);
    Graph_Graph01166->SetStats(0);
 
@@ -88,7 +88,7 @@ void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_200MeV_BQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01166->SetLineColor(ci);
    Graph_Graph01166->GetXaxis()->SetTitle("e^{+}_{LAB} p [MeV] in range: p #minus 100 < p < p #plus 100 MeV");
-   Graph_Graph01166->GetXaxis()->SetRange(2,97);
+   Graph_Graph01166->GetXaxis()->SetRange(6,93);
    Graph_Graph01166->GetXaxis()->CenterTitle(true);
    Graph_Graph01166->GetXaxis()->SetLabelFont(42);
    Graph_Graph01166->GetXaxis()->SetTitleSize(0.04);

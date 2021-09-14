@@ -11,9 +11,27 @@ std::string config = "5.4e-18";
 // std::string qual = "trackReco_WORLD_200MeV_BQ";
 // std::string qual = "trackReco_WORLD_500MeV_BQ";
 //std::string qual = "trackReco_AAR_200MeV_AQ";
-std::string qual = "trackReco_AAR_500MeV_AQ";
+// std::string qual = "trackReco_AAR_500MeV_AQ";
 // std::string qual = "trackReco_AAR_200MeV_BQ";
 //std::string qual = "trackReco_AAR_200MeV_AQ";
+
+//std::string qual = "trackReco_AAR_500MeV_AQ";
+//std::string qual = "trackTruth_AAR_500MeV_AQ";
+
+//std::string qual = "trackReco_AAR_500MeV_BQ";
+//std::string qual = "trackTruth_AAR_500MeV_BQ";
+
+// std::string qual = "trackReco_AAR_200MeV_AQ";
+// std::string qual = "trackTruth_AAR_200MeV_AQ";
+
+// std::string qual = "trackTruth_AAR_200MeV_BQ";
+// std::string qual = "trackReco_AAR_200MeV_BQ";
+
+//std::string qual = "trackTruth_AAR_250MeV_AQ";
+//std::string qual = "trackReco_AAR_250MeV_AQ";
+
+//std::string qual = "trackTruth_AAR_250MeV_BQ";
+std::string qual = "trackReco_AAR_250MeV_BQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -97,16 +115,55 @@ int GetStep() {
 
   string key1 = "200MeV";
   string key2 = "500MeV";
+  string key3 = "250MeV";
 
   if(qual.find(key1) != std::string::npos) { 
     step = 200;
   } else if(qual.find(key2) != std::string::npos) { 
     step = 500;
-  } else { 
+  } else if(qual.find(key3) != std::string::npos) { 
+    step = 250;
+  } else {
     cerr<<"Step size is unknown";
   }
 
   return step;
+
+}
+
+string GetQualString() {
+
+  int step = 0;
+
+  string key1 = "AQ";
+  string key2 = "BQ";
+
+  if(qual.find(key1) != std::string::npos) { 
+    return "A";//key1;
+  } else if(qual.find(key2) != std::string::npos) { 
+    return "B";//key2;
+  } else { 
+    cerr<<"Quality string unknown";
+    return "ERROR";
+  }
+
+}
+
+string GetConfigString() {
+
+  int step = 0;
+
+  string key1 = "trackReco";
+  string key2 = "trackTruth";
+
+  if(qual.find(key1) != std::string::npos) { 
+    return key1;
+  } else if(qual.find(key2) != std::string::npos) { 
+    return key2;
+  } else { 
+    cerr<<"Config string unknown";
+    return "ERROR";
+  }
 
 }
 
@@ -193,10 +250,15 @@ double GetPhase(TFile *input) {
 double GetDilution(double p) { 
 
   // Get dilution fit
-  TFile *fin = TFile::Open("../Plots/MC/dMu/5.4e-18/fits/dilution.root");
+  TFile *fin = TFile::Open("../Plots/MC/dMu/Dilution/dilutionCurves.root");//.c_str());
 
   // Do no currently have 200 MeV one
-  TGraphErrors *gr = (TGraphErrors*)fin->Get("DilutionFits/d_vs_p_500MeV/trackReco");
+  int step = GetStep();
+  string qual = GetQualString();
+  string config = GetConfigString();
+
+  TGraphErrors *gr = (TGraphErrors*)fin->Get(("DilutionFits/"+qual+"/Tracks/"+to_string(step)+"MeV/d_vs_p/"+config).c_str());
+  // DilutionFits/Tracks/500MeV/d_vs_p/"+GetConfigString()).c_str());
   TF1 *d_EDM = gr->GetFunction("ParabolaFunc");
 
   return d_EDM->Eval(p);
@@ -333,11 +395,13 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
         // Avoid out of range errors after skipping an empty bin
         if(nEntries == 0) continue;
 
-        // COMMENT
+        //cout<<momSlice<<endl;
+
+/*        // COMMENT
         if(qual=="trackReco_equalStats_500e3_AQ" && nEntries!=500e3 && stn == "S0S12S18") {
         	cout<<momSlice<<endl;
         	continue;
-        }
+        }*/
 
         p_[i_cut_config].push_back(p);
         ep_[i_cut_config].push_back(step/2);
@@ -373,7 +437,6 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
           c_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(4));
           ec_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(4));
           A_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParameter(3));
-
           eA_[i_cut_config].push_back(moduloGraph->GetFunction("FullEDMFunc")->GetParError(3));
 
         }
@@ -384,13 +447,19 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
         if(extraScans && stn=="S0S12S18") { 
 
+          cout<<momSlice<<endl;
+
           //if(stn!="S0S12S18") continue;
 
           std::string thetaYHistName = cuts_configs[i_cut_config]+"/"+stn+"_ThetaY_"+momSlice;
           TH1D *thetaYHist = (TH1D*)input->Get((thetaYHistName).c_str());
 
+          cout<<thetaYHistName<<endl;
+
           thetaY_RMS_[i_cut_config].push_back(thetaYHist->GetRMS());
           e_thetaY_RMS_[i_cut_config].push_back(thetaYHist->GetRMSError());
+
+          cout<<"Got RMS"<<endl;  
 
           std::string yHistName = cuts_configs[i_cut_config]+"/"+stn+"_Y_"+momSlice;
           TH1D *yHist = (TH1D*)input->Get((yHistName).c_str());
@@ -427,16 +496,20 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
           e_thetaYMaxDiff_[i_cut_config].push_back(e_thetaYMaxDiff);
 
           double AOverMaxDiff = A_[i_cut_config].at(count) / thetaYMaxDiff;
-
           double e_AOverMaxDiff = AOverMaxDiff * sqrt( pow( (eA_[i_cut_config].at(count)/A_[i_cut_config].at(count)), 2) + pow( (e_thetaYMaxDiff/thetaYMaxDiff), 2) );
 
           AOverMaxDiff_[i_cut_config].push_back(AOverMaxDiff);
           e_AOverMaxDiff_[i_cut_config].push_back(e_AOverMaxDiff);
 
-          double d_EDM = GetDilution(p);
-          delta_A_[i_cut_config].push_back(A_[i_cut_config].at(i_cut) / d_EDM);
-          e_delta_A_[i_cut_config].push_back(eA_[i_cut_config].at(i_cut) / d_EDM);
+          if(p>750 && p<2500) {
+            double d_EDM = GetDilution(p);
+            delta_A_[i_cut_config].push_back( A_[i_cut_config].at(count) / d_EDM );
+            e_delta_A_[i_cut_config].push_back( eA_[i_cut_config].at(count) / d_EDM );
+          }  else {
+              delta_A_[i_cut_config].push_back( 0.);//A_[i_cut_config].at(count) / d_EDM );
+              e_delta_A_[i_cut_config].push_back( 0.);//eA_[i_cut_config].at(count) / d_EDM );
 
+          }
 
         }
 
@@ -491,7 +564,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       // Normalise A_EDM by max angular diff
       thetaYMaxDiff_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], thetaYMaxDiff_[i_cut_config], ep_[i_cut_config], e_thetaYMaxDiff_[i_cut_config]);
       DrawScanGraph(thetaYMaxDiff_vs_p_[i_cut_config], ";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+stn+"_"+fitType+"_thetaYMaxDiff_vs_p_"+qual).c_str(), false);
-      thetaYMaxDiff_vs_p_[i_cut_config]->SetName((stn+"thetaYMaxDiff_vs_p").c_str());
+      thetaYMaxDiff_vs_p_[i_cut_config]->SetName((stn+"_thetaYMaxDiff_vs_p").c_str());
       //cout<<thetaYMaxDiff_vs_p_[_cut_config]<<endl;
       thetaYMaxDiff_vs_p_[i_cut_config]->Write();
 

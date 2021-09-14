@@ -1,7 +1,7 @@
 void VerticalAngleResVsMom()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Sep  6 14:39:36 2021) by ROOT version 6.22/08
+//=========  (Tue Sep  7 12:29:46 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

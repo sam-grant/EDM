@@ -4,15 +4,15 @@
 #include "Utils.h"
 #include "RootInclude.h"
 
-//std::string config = "5.4e-18";
-std::string config = "1.8e-18";
+std::string config = "5.4e-18";
+//std::string config = "1.8e-18";
 
 //std::string qual = "truthAllDecays_WORLD_200MeV_AQ";
 //std::string qual = "truthAllDecays_AAR_200MeV_AQ";
 //std::string qual = "truthAllDecays_MRF_200MeV_AQ";
 
 //std::string qual = "truthAllDecays_WORLD_500MeV_AQ";
-std::string qual = "truthAllDecays_AAR_500MeV_AQ";
+// std::string qual = "truthAllDecays_AAR_500MeV_AQ";
 //std::string qual = "truthAllDecays_MRF_500MeV_AQ";
 
 // std::string qual = "truth_WORLD_200MeV_AQ";
@@ -22,6 +22,9 @@ std::string qual = "truthAllDecays_AAR_500MeV_AQ";
 // std::string qual = "truth_WORLD_500MeV_AQ";
 //std::string qual = "truth_AAR_500MeV_AQ";
 //std::string qual = "truth_MRF_500MeV_AQ";
+
+std::string qual = "truthAllDecays_AAR_250MeV_AQ";
+//std::string qual = "truth_AAR_250MeV_AQ";
 
 // double scaleFactor = 1.0;
 //int interval = 500;
@@ -41,11 +44,14 @@ int GetStep() {
 
   string key1 = "200MeV";
   string key2 = "500MeV";
+  string key3 = "250MeV";
 
   if(qual.find(key1) != std::string::npos) { 
     return 200;
   } else if(qual.find(key2) != std::string::npos) { 
     return 500;
+  } else if(qual.find(key3) != std::string::npos) { 
+    return 250;
   } else { 
     cerr<<"Step size is unknown";
     return -1;
@@ -113,7 +119,7 @@ double GetPhase(TFile *input) {
 
   TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
-
+  
   FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
   FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
 
@@ -153,6 +159,8 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, bool x
   double scale = 0.;
   if(step == 200) scale = 0.05;
   else if(step == 500) scale = 0.125;
+  else if(step == 250) scale = 0.05;
+
   double offset = (xmax - xmin) * scale;
 
   xmin = xmin - offset; 
@@ -344,6 +352,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   // ============ Momentum slices ============
   i_cut_config = 0; 
 
+  int count = 0;
+
   for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
 
       lo = 0 + i_cut*step; 
@@ -362,6 +372,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
       int nEntries = moduloHist->GetEntries();
 
+      if(nEntries == 0) continue;
+
+
+
       p_[i_cut_config].push_back(p);
       ep_[i_cut_config].push_back(step/2);
 
@@ -375,6 +389,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       output->cd(("MomentumBinnedAnalysis/ModuloFits/"+cuts_configs[i_cut_config]).c_str());
 
       double chiSqrNDF = -1;
+
+
 
       if(!fullFit) { 
           
@@ -393,8 +409,12 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
         } else if(fullFit) { 
 
+
+
           // Full EDM fit
           FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
+
+
 
           DrawFullEDMFit(moduloGraph, std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/FullModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -.75*scaleFactor, .75*scaleFactor, true);
 
@@ -416,12 +436,13 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
         // Corrected A_EDM
 
-        double d_EDM = GetDilution(p);
+        double d_EDM = 1.0;//GetDilution(p);
         delta_A_[i_cut_config].push_back(A_[i_cut_config].at(i_cut) / d_EDM);
         e_delta_A_[i_cut_config].push_back(eA_[i_cut_config].at(i_cut) / d_EDM);
 
         if(extraScans) { 
 
+          cout<<"Doing extra scans"<<endl;
           std::string thetaYHistName = cuts_configs[i_cut_config]+"/ThetaY_"+momSlice;
           TH1D *thetaYHist = (TH1D*)input->Get((thetaYHistName).c_str());
 
@@ -481,13 +502,15 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
 
           //double e_thetaYMaxDiff = sqrt( thetaYHist->FindLastBinAbove(0,1))
 
-          double AOverMaxDiff = A_[i_cut_config].at(i_cut) / thetaYMaxDiff;
-          double e_AOverMaxDiff = AOverMaxDiff * sqrt( pow( (eA_[i_cut_config].at(i_cut)/A_[i_cut_config].at(i_cut)), 2) + pow( (e_thetaYMaxDiff/thetaYMaxDiff), 2) );
+          double AOverMaxDiff = A_[i_cut_config].at(count) / thetaYMaxDiff;
+          double e_AOverMaxDiff = AOverMaxDiff * sqrt( pow( (eA_[i_cut_config].at(count)/A_[i_cut_config].at(count)), 2) + pow( (e_thetaYMaxDiff/thetaYMaxDiff), 2) );
 
           AOverMaxDiff_[i_cut_config].push_back(AOverMaxDiff);
           e_AOverMaxDiff_[i_cut_config].push_back(e_AOverMaxDiff);
 
         }
+
+        count++;
 
     }
 
@@ -679,6 +702,7 @@ int main() {
   output->cd("SimultaneousAnalysis");
 
   SimultaneousAnalysis(input, output, fullFit);
+  cout<<"Completed SimultaneousAnalysis"<<endl;
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
@@ -688,6 +712,7 @@ int main() {
   output->cd("MomentumBinnedAnalysis");
 
   MomentumBinnedAnalysis(input, output, fullFit, extraScans);
+  cout<<"Completed MomentumBinnedAnalysis"<<endl;
 
   input->Close();
   output->Close();

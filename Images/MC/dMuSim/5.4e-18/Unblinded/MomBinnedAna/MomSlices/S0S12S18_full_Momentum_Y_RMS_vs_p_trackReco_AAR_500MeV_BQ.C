@@ -1,10 +1,10 @@
 void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Aug 25 17:57:41 2021) by ROOT version 6.22/08
+//=========  (Sat Sep 11 15:27:42 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-375.375,12.14062,3378.375,23.42104);
+   c->Range(-420.75,12.2103,3456.75,23.17843);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_BQ()
    2250,
    2750};
    Double_t Graph0_fy1083[6] = {
-   14.06266,
-   18.00884,
-   20.68923,
-   21.52542,
-   19.84975,
-   16.00804};
+   14.06267,
+   17.99918,
+   20.56969,
+   21.3413,
+   19.72241,
+   16.02392};
    Double_t Graph0_fex1083[6] = {
    250,
    250,
@@ -33,12 +33,12 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_BQ()
    250,
    250};
    Double_t Graph0_fey1083[6] = {
-   0.04197417,
-   0.01237529,
-   0.01221425,
-   0.01554629,
-   0.02152046,
-   0.03386687};
+   0.02434525,
+   0.007217727,
+   0.007131054,
+   0.009103565,
+   0.01265571,
+   0.01997014};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1083,Graph0_fy1083,Graph0_fex1083,Graph0_fey1083);
    gre->SetName("Graph0");
    gre->SetTitle(";p [MeV]: in range p #minus 250 < p < p #plus 250 MeV;#sigma_{p_{y}} [MeV]");
@@ -46,8 +46,8 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01083 = new TH1F("Graph_Graph01083","",100,0,3300);
-   Graph_Graph01083->SetMinimum(13.26866);
-   Graph_Graph01083->SetMaximum(22.293);
+   Graph_Graph01083->SetMinimum(13.30711);
+   Graph_Graph01083->SetMaximum(22.08161);
    Graph_Graph01083->SetDirectory(0);
    Graph_Graph01083->SetStats(0);
 
@@ -56,7 +56,7 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_BQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01083->SetLineColor(ci);
    Graph_Graph01083->GetXaxis()->SetTitle("p [MeV]: in range p #minus 250 < p < p #plus 250 MeV");
-   Graph_Graph01083->GetXaxis()->SetRange(1,91);
+   Graph_Graph01083->GetXaxis()->SetRange(0,93);
    Graph_Graph01083->GetXaxis()->CenterTitle(true);
    Graph_Graph01083->GetXaxis()->SetLabelFont(42);
    Graph_Graph01083->GetXaxis()->SetTitleSize(0.04);

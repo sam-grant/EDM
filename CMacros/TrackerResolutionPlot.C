@@ -49,7 +49,7 @@ void DrawManyTH1(vector<TH1D*> hists_, string title, string fname, double ymin, 
 
 }
 
-void DrawRMSGraph(vector<TH1D*> hists_, int sliceWidth, string title, string fname) { 
+void DrawGraph(vector<TH1D*> hists_, int sliceWidth, double ymin, bool useRMS, string title, string fname) { 
 
 	int n = hists_.size();
 	double x[n]; double ex[n];
@@ -67,8 +67,19 @@ void DrawRMSGraph(vector<TH1D*> hists_, int sliceWidth, string title, string fna
 		double RMS = h->GetRMS();
 		double eRMS = h->GetRMSError();
 
+		double eMean = h->GetMeanError();
+
 		x[i] = p; ex[i] = sliceWidth/2.;
-		y[i] = RMS; ey[i] = eRMS;
+
+		if(useRMS) { 
+			y[i] = RMS; ey[i] = eRMS;
+		} else if(!useRMS) { 
+			y[i] = eMean; ey[i] = 0.;
+			cout<<eMean<<endl;
+		}
+
+		//cout<<"Error on the mean\t"<<eMean<<endl;
+		//cout<<"RMS\t"<<RMS<<
 
 		p += sliceWidth;
 
@@ -80,6 +91,8 @@ void DrawRMSGraph(vector<TH1D*> hists_, int sliceWidth, string title, string fna
   	double xmax = gr->GetPointX(n-1)+offset;//(sliceWidth/2+100; 
   	double xmin = gr->GetPointX(0)-offset;
   	gr->GetXaxis()->SetRangeUser(xmin, xmax);
+
+  	//gr->SetMinimum(ymin);//GetXaxis()->SetRangeUser(xmin, xmax); 
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -97,11 +110,22 @@ void DrawRMSGraph(vector<TH1D*> hists_, int sliceWidth, string title, string fna
 
 	// TLine
 	gPad->Update();
-	TLine *line = new TLine(500,gPad->GetUymin(),500,gPad->GetUymax());
-	line->SetLineWidth(3);
-	line->SetLineStyle(2);
-	line->SetLineColor(kRed);
-	line->Draw("same");
+	TLine *line1 = new TLine(500,gPad->GetUymin(),500,gPad->GetUymax());
+	line1->SetLineWidth(3);
+	line1->SetLineStyle(2);
+	line1->SetLineColor(kRed);
+	//line1->Draw("same");
+
+	TLine *line2 = new TLine(2900,gPad->GetUymin(),2900,gPad->GetUymax());
+	line2->SetLineWidth(3);
+	line2->SetLineStyle(2);
+	line2->SetLineColor(kRed);
+	//line2->Draw("same");
+
+	// c->SetLogy();
+	// c->SaveAs((fname+"_log.pdf").c_str());
+	// c->SaveAs((fname+"_log.png").c_str());
+	// c->SaveAs((fname+"_log.C").c_str());
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -120,7 +144,7 @@ void DoRebin(TH2D *hist, int newBinWidth) {
 	return;
 }
 
-void SliceY(TH2D *hist, int sliceWidth) { 
+void SliceY(TH2D *hist, int sliceWidth, double ymin) { 
 
 	//Clone input to stop overwrites
   	TH2D *hist_clone = (TH2D*)hist->Clone("hist_clone");
@@ -143,9 +167,10 @@ void SliceY(TH2D *hist, int sliceWidth) {
 
 	}
 
-	DrawManyTH1(slices_, ";True #minus reco #theta_{y} [mrad];Tracks", "../Images/MC/TrackerResolution/TrackerResSlicesOverlay_"+to_string(sliceWidth), 0, (sliceWidth/3.5)*1e3);
+	// DrawManyTH1(slices_, ";True #minus reco #theta_{y} [mrad];Tracks", "../Images/MC/TrackerResolution/TrackerResSlicesOverlay_"+to_string(sliceWidth), 0, (sliceWidth/3.5)*1e3);
+	// DrawGraph(slices_, sliceWidth, true, ";p [MeV]: in range p #minus "+to_string(sliceWidth/2)+" < p < p #plus "+to_string(sliceWidth/2)+";True #minus reco #theta_{y} RMS [mrad]", "../Images/MC/TrackerResolution/TrackerResRMSGraph_"+to_string(sliceWidth)); 
 
-	DrawRMSGraph(slices_, sliceWidth, ";p [MeV]: in range p #minus "+to_string(sliceWidth/2)+" < p < p #plus "+to_string(sliceWidth/2)+";True #minus reco #theta_{y} RMS [mrad]", "../Images/MC/TrackerResolution/TrackerResRMSGraph_"+to_string(sliceWidth)); 
+	DrawGraph(slices_, sliceWidth, ymin, false, ";p [MeV]: in range p #minus "+to_string(sliceWidth/2)+" < p < p #plus "+to_string(sliceWidth/2)+";True #minus reco #delta #LT#theta_{y}#GT [mrad]", "../Images/MC/TrackerResolution/TrackerResMeanErrorGraph_"+to_string(sliceWidth)); 
 
 
   	return;
@@ -159,13 +184,15 @@ void Run(TFile *fin) {
 	TH2D *h_recoRes = (TH2D*)fin->Get("Plots/VerticalAngleResVsMom");
 	TH2D *h_trueRes = (TH2D*)fin->Get("Plots/VerticalAngleResVsTrueMom");
 
-	DrawTH2(h_recoRes, "", "../Images/MC/dMuSim/5.4e-18/trackerResolution/VerticalAngleResVsMom");
-	DrawTH2(h_trueRes, "", "../Images/MC/dMuSim/5.4e-18/trackerResolution/VerticalAngleResVsTrMom");
+	DrawTH2(h_recoRes, "", "../Images/MC/TrackerResolution/VerticalAngleResVsMom");
+	DrawTH2(h_trueRes, "", "../Images/MC/TrackerResolution/VerticalAngleResVsTrMom");
 
-	SliceY(h_recoRes, 50);
-	SliceY(h_recoRes, 100);
-	SliceY(h_recoRes, 200); 
-	SliceY(h_recoRes, 500); 
+	//SliceY(h_recoRes, 10);
+	//SliceY(h_recoRes, 50);
+	//SliceY(h_recoRes, 100);
+	SliceY(h_recoRes, 200, 0); 
+	SliceY(h_recoRes, 250, -0.01); 
+	SliceY(h_recoRes, 500, .8); 
 
 	return;
 

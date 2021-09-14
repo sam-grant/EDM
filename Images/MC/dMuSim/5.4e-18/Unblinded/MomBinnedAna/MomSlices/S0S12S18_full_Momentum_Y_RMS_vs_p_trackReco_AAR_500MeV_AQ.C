@@ -1,10 +1,10 @@
 void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Aug 30 07:30:54 2021) by ROOT version 6.22/08
+//=========  (Sat Sep 11 15:29:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-420.75,12.52362,3456.75,24.87891);
+   c->Range(-420.75,12.41704,3456.75,24.64846);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_AQ()
    2250,
    2750};
    Double_t Graph0_fy1083[6] = {
-   14.59665,
-   18.81083,
-   22.17308,
-   22.80711,
-   21.22645,
-   16.50654};
+   14.46422,
+   18.70094,
+   21.99537,
+   22.60203,
+   21.05342,
+   16.39518};
    Double_t Graph0_fex1083[6] = {
    250,
    250,
@@ -33,12 +33,12 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_AQ()
    250,
    250};
    Double_t Graph0_fey1083[6] = {
-   0.01382054,
-   0.007668754,
-   0.01001342,
-   0.01258474,
-   0.01664774,
-   0.02336345};
+   0.008604188,
+   0.004773429,
+   0.006239918,
+   0.007855968,
+   0.01040119,
+   0.01461223};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1083,Graph0_fy1083,Graph0_fex1083,Graph0_fey1083);
    gre->SetName("Graph0");
    gre->SetTitle(";p [MeV]: in range p #minus 250 < p < p #plus 250 MeV;#sigma_{p_{y}} [MeV]");
@@ -46,8 +46,8 @@ void S0S12S18_full_Momentum_Y_RMS_vs_p_trackReco_AAR_500MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01083 = new TH1F("Graph_Graph01083","",100,0,3300);
-   Graph_Graph01083->SetMinimum(13.75915);
-   Graph_Graph01083->SetMaximum(23.64338);
+   Graph_Graph01083->SetMinimum(13.64018);
+   Graph_Graph01083->SetMaximum(23.42532);
    Graph_Graph01083->SetDirectory(0);
    Graph_Graph01083->SetStats(0);
 

@@ -1,10 +1,10 @@
 void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Aug 30 07:30:54 2021) by ROOT version 6.22/08
+//=========  (Sat Sep 11 15:29:01 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-420.75,376.0436,3456.75,1189.208);
+   c->Range(-420.75,-51.18443,3456.75,1266.935);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,11 +20,11 @@ void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_500MeV_AQ()
    2750};
    Double_t Graph0_fy1086[6] = {
    1044.216,
-   1050.649,
-   718.3005,
-   707.5796,
-   514.6034,
-   724.7331};
+   1042.072,
+   501.7383,
+   388.0967,
+   171.5345,
+   385.9525};
    Double_t Graph0_fex1086[6] = {
    250,
    250,
@@ -46,8 +46,8 @@ void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_500MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01086 = new TH1F("Graph_Graph01086","",100,0,3300);
-   Graph_Graph01086->SetMinimum(457.3601);
-   Graph_Graph01086->SetMaximum(1107.892);
+   Graph_Graph01086->SetMinimum(80.62751);
+   Graph_Graph01086->SetMaximum(1135.123);
    Graph_Graph01086->SetDirectory(0);
    Graph_Graph01086->SetStats(0);
 

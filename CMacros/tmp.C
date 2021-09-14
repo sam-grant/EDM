@@ -1,99 +1,19 @@
-void tmp()
-{
-//=========Macro generated from canvas: c/c
-//=========  (Thu Aug 26 12:40:40 2021) by ROOT version 6.22/08
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->SetHighLightColor(2);
-   c->Range(-420.75,1.4375,3456.75,2.0625);
-   c->SetFillColor(0);
-   c->SetBorderMode(0);
-   c->SetBorderSize(2);
-   c->SetFrameBorderMode(0);
-   c->SetFrameBorderMode(0);
-   
-   Double_t delta_A_vs_p_fx1001[6] = {
-   250,
-   750,
-   1250,
-   1750,
-   2250,
-   2750};
-   Double_t delta_A_vs_p_fy1001[6] = {
-   1.748151,
-   1.687508,
-   1.717532,
-   1.68707,
-   1.674983,
-   1.725824};
-   Double_t delta_A_vs_p_fex1001[6] = {
-   250,
-   250,
-   250,
-   250,
-   250,
-   250};
-   Double_t delta_A_vs_p_fey1001[6] = {
-   0.161977,
-   0.05361558,
-   0.0369018,
-   0.03325765,
-   0.03862026,
-   0.06971001};
-   TGraphErrors *gre = new TGraphErrors(6,delta_A_vs_p_fx1001,delta_A_vs_p_fy1001,delta_A_vs_p_fex1001,delta_A_vs_p_fey1001);
-   gre->SetName("delta_A_vs_p");
-   gre->SetTitle("");
-   gre->SetFillStyle(1000);
-   gre->SetMarkerStyle(20);
-   
-   TH1F *Graph_delta_A_vs_p1001 = new TH1F("Graph_delta_A_vs_p1001","",100,0,3300);
-   Graph_delta_A_vs_p1001->SetMinimum(1.5);
-   Graph_delta_A_vs_p1001->SetMaximum(2);
-   Graph_delta_A_vs_p1001->SetDirectory(0);
-   Graph_delta_A_vs_p1001->SetStats(0);
+void tmp() { 
 
-   Int_t ci;      // for color index setting
-   TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#000099");
-   Graph_delta_A_vs_p1001->SetLineColor(ci);
-   Graph_delta_A_vs_p1001->GetXaxis()->SetTitle("p [MeV] in range: p #minus 250 < p < p #plus 250");
-   Graph_delta_A_vs_p1001->GetXaxis()->SetRange(0,93);
-   Graph_delta_A_vs_p1001->GetXaxis()->CenterTitle(true);
-   Graph_delta_A_vs_p1001->GetXaxis()->SetLabelFont(42);
-   Graph_delta_A_vs_p1001->GetXaxis()->SetTitleSize(0.04);
-   Graph_delta_A_vs_p1001->GetXaxis()->SetTitleOffset(1.1);
-   Graph_delta_A_vs_p1001->GetXaxis()->SetTitleFont(42);
-   Graph_delta_A_vs_p1001->GetYaxis()->SetTitle("#delta' [mrad]");
-   Graph_delta_A_vs_p1001->GetYaxis()->CenterTitle(true);
-   Graph_delta_A_vs_p1001->GetYaxis()->SetNdivisions(4000510);
-   Graph_delta_A_vs_p1001->GetYaxis()->SetLabelFont(42);
-   Graph_delta_A_vs_p1001->GetYaxis()->SetTitleSize(0.04);
-   Graph_delta_A_vs_p1001->GetYaxis()->SetTitleOffset(1.1);
-   Graph_delta_A_vs_p1001->GetYaxis()->SetTitleFont(42);
-   Graph_delta_A_vs_p1001->GetZaxis()->SetLabelFont(42);
-   Graph_delta_A_vs_p1001->GetZaxis()->SetTitleOffset(1);
-   Graph_delta_A_vs_p1001->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_delta_A_vs_p1001);
-   
-   
-   TF1 *pol01002 = new TF1("pol0","pol0",-33,3069, TF1::EAddToList::kNo);
-   pol01002->SetFillColor(19);
-   pol01002->SetFillStyle(0);
-   pol01002->SetLineColor(2);
-   pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(1.020006);
-   pol01002->SetNDF(5);
-   pol01002->GetXaxis()->SetLabelFont(42);
-   pol01002->GetXaxis()->SetTitleOffset(1);
-   pol01002->GetXaxis()->SetTitleFont(42);
-   pol01002->GetYaxis()->SetLabelFont(42);
-   pol01002->GetYaxis()->SetTitleFont(42);
-   pol01002->SetParameter(0,1.695593);
-   pol01002->SetParError(0,0.01856736);
-   pol01002->SetParLimits(0,0,0);
-   pol01002->SetParent(gre);
-   gre->GetListOfFunctions()->Add(pol01002);
-   gre->Draw("ap");
-   c->Modified();
-   c->cd();
-   c->SetSelected(c);
+   TString fn = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+   TFile *fin = TFile::Open("../Plots/MC/dMu/Dilution/dilutionCurves.root");
+
+   // Get graph
+   TGraphErrors *gr = (TGraphErrors*)fin->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackReco");
+   TF1 *fit = (TF1*)gr->GetFunction("ParabolaFunc");
+
+   double integral = fit->Integral(750, 2500);
+   double integral_error = fit->IntegralError(750, 2500);
+
+   cout<<integral<<"±"<<integral_error<<endl;
+
+
+
+   return;
+
 }

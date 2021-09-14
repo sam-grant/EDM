@@ -1,10 +1,10 @@
 void S12_full_A_vs_p_trackReco_AAR_500MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Aug 25 17:57:35 2021) by ROOT version 6.22/08
+//=========  (Sat Sep 11 15:27:33 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-375.375,-0.4384402,3378.375,0.5233028);
+   c->Range(-420.75,-0.1636217,3456.75,0.3962442);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void S12_full_A_vs_p_trackReco_AAR_500MeV_BQ()
    2250,
    2750};
    Double_t Graph0_fy1038[6] = {
-   0.04243129,
-   0.2500073,
-   0.07370695,
-   0.1176012,
-   0.09435621,
-   0.08171482};
+   0.1163112,
+   0.1551525,
+   0.130772,
+   0.1490786,
+   0.09705542,
+   0.07186551};
    Double_t Graph0_fex1038[6] = {
    250,
    250,
@@ -33,12 +33,12 @@ void S12_full_A_vs_p_trackReco_AAR_500MeV_BQ()
    250,
    250};
    Double_t Graph0_fey1038[6] = {
-   0.320581,
-   0.05453579,
-   0.03463414,
-   0.03149238,
-   0.03473379,
-   0.04594615};
+   0.186622,
+   0.03182719,
+   0.02027998,
+   0.01849424,
+   0.02044194,
+   0.02723139};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1038,Graph0_fy1038,Graph0_fex1038,Graph0_fey1038);
    gre->SetName("Graph0");
    gre->SetTitle("S12");
@@ -46,8 +46,8 @@ void S12_full_A_vs_p_trackReco_AAR_500MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01038 = new TH1F("Graph_Graph01038","S12",100,0,3300);
-   Graph_Graph01038->SetMinimum(-0.3422659);
-   Graph_Graph01038->SetMaximum(0.4271285);
+   Graph_Graph01038->SetMinimum(-0.1076351);
+   Graph_Graph01038->SetMaximum(0.3402576);
    Graph_Graph01038->SetDirectory(0);
    Graph_Graph01038->SetStats(0);
 
@@ -56,7 +56,7 @@ void S12_full_A_vs_p_trackReco_AAR_500MeV_BQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01038->SetLineColor(ci);
    Graph_Graph01038->GetXaxis()->SetTitle("p [MeV]: in range p #minus 250 < p < p #plus 250 MeV");
-   Graph_Graph01038->GetXaxis()->SetRange(1,91);
+   Graph_Graph01038->GetXaxis()->SetRange(0,93);
    Graph_Graph01038->GetXaxis()->CenterTitle(true);
    Graph_Graph01038->GetXaxis()->SetLabelFont(42);
    Graph_Graph01038->GetXaxis()->SetTitleSize(0.04);

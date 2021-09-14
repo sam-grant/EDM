@@ -1,0 +1,114 @@
+void S12S18_full_c_vs_p_trackReco_AAR_250MeV_AQ()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Mon Sep 13 15:26:45 2021) by ROOT version 6.24/04
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(-251.625,-3.119164,3254.625,0.5606086);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   Double_t Graph0_fx1113[12] = {
+   125,
+   375,
+   625,
+   875,
+   1125,
+   1375,
+   1625,
+   1875,
+   2125,
+   2375,
+   2625,
+   2875};
+   Double_t Graph0_fy1113[12] = {
+   -1.078908,
+   -2.470811,
+   -0.8825875,
+   -0.4210683,
+   -0.2742108,
+   -0.2180447,
+   -0.1846679,
+   -0.1435062,
+   -0.1517402,
+   -0.1475857,
+   -0.1015199,
+   -0.07045613};
+   Double_t Graph0_fex1113[12] = {
+   125,
+   125,
+   125,
+   125,
+   125,
+   125,
+   125,
+   125,
+   125,
+   125,
+   125,
+   125};
+   Double_t Graph0_fey1113[12] = {
+   0.510462,
+   0.03505814,
+   0.01753937,
+   0.01435701,
+   0.0129496,
+   0.01194383,
+   0.01132413,
+   0.01122191,
+   0.01164648,
+   0.01281088,
+   0.01363779,
+   0.01776929};
+   TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1113,Graph0_fy1113,Graph0_fex1113,Graph0_fey1113);
+   gre->SetName("Graph0");
+   gre->SetTitle("S12S18");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_Graph01113 = new TH1F("Graph_Graph01113","S12S18",100,0,3300);
+   Graph_Graph01113->SetMinimum(-2.751187);
+   Graph_Graph01113->SetMaximum(0.1926313);
+   Graph_Graph01113->SetDirectory(0);
+   Graph_Graph01113->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_Graph01113->SetLineColor(ci);
+   Graph_Graph01113->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125 MeV");
+   Graph_Graph01113->GetXaxis()->SetRange(4,88);
+   Graph_Graph01113->GetXaxis()->CenterTitle(true);
+   Graph_Graph01113->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01113->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01113->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01113->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01113->GetYaxis()->SetTitle("c [mrad]");
+   Graph_Graph01113->GetYaxis()->CenterTitle(true);
+   Graph_Graph01113->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01113->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01113->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01113->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01113->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01113->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01113->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01113->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01113);
+   
+   gre->Draw("ap");
+   
+   TPaveText *pt = new TPaveText(0.4253015,0.94,0.5746985,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("S12S18");
+   pt->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}
