@@ -1,3 +1,7 @@
+/*Fit dilution parabolas and draw them all nicely. 
+
+Parabalo needed to be re-fitted in GetTiltAngle in order to deal with the errors properly. */
+
 #include <iostream>
 
 #include "RootInclude.h"
@@ -6,8 +10,7 @@
 
 using namespace std;
 
-
-const double delta_calc = 1.7; // mrad
+const double delta_calc = 1.699245178; // mrad
 string dMu = "5.4e-18";
 
 string GetQual(string qualString) {
@@ -92,49 +95,10 @@ void ParabolaFit(TGraphErrors *graph, string config, bool corr, double xmin, dou
   
    TF1 *fnc = new TF1("ParabolaFunc", ParabolaFunc, xmin, xmax, 3);
 
-/*  if(name == "truthAllDecays") { 
-   fnc->SetParameter(0, -11e-10);
-   fnc->SetParameter(1, 4e-06);
-   fnc->SetParameter(2, -4e-04);
-  }*/
-/*  if(corr) {
-     if(name == "trackReco") {
-      fnc->SetParameter(0, -7.0e-11);
-      fnc->SetParameter(1, 2e-07);
-      fnc->SetParameter(2, -5.0e-05);
-     } else if(name == "truth") { 
-      fnc->SetParameter(0, -8.5e-10);
-      fnc->SetParameter(1, 3.5e-06);
-      fnc->SetParameter(2, -6.0e-04);
-     } else if(name == "truthAllDecays") { 
-      fnc->SetParameter(0, -1.2e-10);
-      fnc->SetParameter(1, 4.5e-06);
-      fnc->SetParameter(2, -6.5e-04);
-     }
-   } else {
-     if(name == "trackReco") {
-      fnc->SetParameter(0, -6e-8);
-      fnc->SetParameter(1, 2.0e-4);
-      fnc->SetParameter(2, 0.05);
-     } else if(name == "trackTruth") { 
-      fnc->SetParameter(0, -5.5e-8);
-      fnc->SetParameter(1, 8.0e-5);
-      fnc->SetParameter(2, 2.5e-1);
-     }else if(name == "truth") { 
-      fnc->SetParameter(0, -5.5e-8);
-      fnc->SetParameter(1, 8.0e-5);
-      fnc->SetParameter(2, 2.5e-1);
-     } else if(name == "truthAllDecays") { 
-      fnc->SetParameter(0, -5.5e-8);
-      fnc->SetParameter(1, 7.0e-5);
-      fnc->SetParameter(2, 3.0e-1);
-     }
-   }*/
-
      if(config == "Tracks") {
-      fnc->SetParameter(0, -6e-8);
-      fnc->SetParameter(1, 2.0e-4);
-      fnc->SetParameter(2, 0.05);
+      fnc->SetParameter(0, -5.5e-8);
+      fnc->SetParameter(1, 1.5e-4);
+      fnc->SetParameter(2, -0.05);
      }  else if(config == "Decays") { 
       fnc->SetParameter(0, -5.5e-8);
       fnc->SetParameter(1, 8.0e-5);
@@ -156,7 +120,8 @@ TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
    for(int i = 0; i<n; i++) { 
 
-      x[i] = gr->GetX()[i]; ex[i] = gr->GetEX()[i];
+      // Remove x-error bars
+      x[i] = gr->GetX()[i]; ex[i] = 0;//gr->GetEX()[i];
       y[i] = gr->GetY()[i] / delta_calc; ey[i] = gr->GetEY()[i] / delta_calc;
 
    }
@@ -202,7 +167,7 @@ void RunAEDM(string qualString, bool corr, bool fit, double ymin, double ymax, T
    cout<<"graph\t"<<grn<<", "<<gr<<endl;
 
    // Convert to diluton
-   gr = ConvertToDilution(gr);
+   gr = ConvertToDilution(gr); 
 
    // Set name
    gr->SetName(config.c_str());

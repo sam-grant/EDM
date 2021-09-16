@@ -145,7 +145,7 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	hist->Draw("COLZ");
 
-	c->SetLogz();
+	//c->SetLogz();
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -155,6 +155,8 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	return;
 }
+
+
 
 void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname) {
 
@@ -312,6 +314,56 @@ void DrawManyTGraphErrorsFits(std::vector<TGraphErrors*> graphs, std::string tit
 		}
 		fit->Draw("same");
 	}
+	l->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawManyTGraphErrorsFits2(std::vector<TGraphErrors*> graphs_, std::vector<std::string> names_, std::string title, std::string fname, double ymin, double ymax, std::string func) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.20);
+
+	graphs_.at(0)->SetTitle(title.c_str());
+	graphs_.at(0)->GetXaxis()->SetTitleSize(.04);
+	graphs_.at(0)->GetYaxis()->SetTitleSize(.04);
+	graphs_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	graphs_.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	graphs_.at(0)->GetXaxis()->CenterTitle(true);
+	graphs_.at(0)->GetYaxis()->CenterTitle(true);
+	graphs_.at(0)->GetYaxis()->SetMaxDigits(4);
+	//graphs.at(0)->SetMarkerStyle(20); //  Full circle
+	graphs_.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+	TLegend *l = new TLegend(0.81,0.15,0.99,0.85);
+	l->SetBorderSize(0);
+
+	gStyle->SetPalette(kRainBow);
+
+	for(int i = 0; i < graphs_.size(); i++) {
+		int colour = kRainBow+i*1.5;
+		
+
+		l->AddEntry(graphs_.at(i), (names_.at(i)).c_str());
+		TF1 *fit = graphs_.at(i)->GetFunction(func.c_str());
+		//fit->SetLineColor(kBlack);
+		fit->SetLineColor(colour);//kRainBow+i*1.5); 
+		
+		graphs_.at(i)->SetMarkerStyle(20);
+		graphs_.at(i)->SetMarkerColor(colour);//kRainBow+i*1.5);
+		graphs_.at(i)->SetLineColor(colour);//kRainBow+i*1.5);
+		if(i==0) graphs_.at(i)->Draw("AP");
+		else graphs_.at(i)->Draw("P SAME");
+		fit->Draw("same");
+	}
+
 	l->Draw("same");
 
 	c->SaveAs((fname+".pdf").c_str());

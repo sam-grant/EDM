@@ -1,7 +1,7 @@
-void tmp2()
+void OneSigmaMahalanobisPoints3D()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Sep 15 19:22:05 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 15:57:04 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -14,8 +14,9 @@ void tmp2()
    TH3D *hist3D__1 = new TH3D("hist3D__1","",27,-8.93e-08,-2.28e-08,27,5.25e-05,0.000272258,27,-0.113345,0.0541603);
    hist3D__1->SetBinContent(6476,1);
    hist3D__1->SetBinContent(6503,1);
+   hist3D__1->SetBinContent(7288,1);
    hist3D__1->SetBinContent(7289,1);
-   hist3D__1->SetBinContent(8129,2);
+   hist3D__1->SetBinContent(8129,1);
    hist3D__1->SetBinContent(8130,1);
    hist3D__1->SetBinContent(8941,1);
    hist3D__1->SetBinContent(9783,2);

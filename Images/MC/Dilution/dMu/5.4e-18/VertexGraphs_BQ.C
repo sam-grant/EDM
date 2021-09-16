@@ -1,10 +1,10 @@
 void VertexGraphs_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 14 11:03:32 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 15:10:07 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-118.7188,-0.128125,3360.969,0.153125);
+   c->Range(-137.5,-0.128125,3387.5,0.153125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,48 +24,48 @@ void VertexGraphs_BQ()
    2625,
    2875};
    Double_t trackTruth_fy1009[11] = {
-   -0.02567572,
-   0.09509227,
-   0.07148026,
-   0.08233936,
-   0.07848344,
-   0.09218393,
-   0.08046866,
-   0.05880107,
-   0.0377722,
-   0.05774846,
-   -0.008504013};
+   -0.02568712,
+   0.09513451,
+   0.07151201,
+   0.08237594,
+   0.07851831,
+   0.09222488,
+   0.0805044,
+   0.05882719,
+   0.03778898,
+   0.05777411,
+   -0.008507791};
    Double_t trackTruth_fex1009[11] = {
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t trackTruth_fey1009[11] = {
-   0.06369066,
-   0.02129351,
-   0.01223112,
-   0.01003911,
-   0.009197576,
-   0.00875924,
-   0.00877848,
-   0.009186698,
-   0.009760662,
-   0.009691082,
-   0.02115107};
+   0.06371896,
+   0.02130296,
+   0.01223655,
+   0.01004357,
+   0.009201662,
+   0.008763131,
+   0.00878238,
+   0.009190779,
+   0.009764998,
+   0.009695387,
+   0.02116047};
    TGraphErrors *gre = new TGraphErrors(11,trackTruth_fx1009,trackTruth_fy1009,trackTruth_fex1009,trackTruth_fey1009);
    gre->SetName("trackTruth");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;d_{EDM}(p)");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_trackTruth1009 = new TH1F("Graph_trackTruth1009","",100,0,3275);
+   TH1F *Graph_trackTruth1009 = new TH1F("Graph_trackTruth1009","",100,125,3125);
    Graph_trackTruth1009->SetMinimum(-0.1);
    Graph_trackTruth1009->SetMaximum(0.125);
    Graph_trackTruth1009->SetDirectory(0);
@@ -76,7 +76,7 @@ void VertexGraphs_BQ()
    ci = TColor::GetColor("#000099");
    Graph_trackTruth1009->SetLineColor(ci);
    Graph_trackTruth1009->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_trackTruth1009->GetXaxis()->SetRange(8,92);
+   Graph_trackTruth1009->GetXaxis()->SetRange(4,97);
    Graph_trackTruth1009->GetXaxis()->CenterTitle(true);
    Graph_trackTruth1009->GetXaxis()->SetLabelFont(42);
    Graph_trackTruth1009->GetXaxis()->SetTitleSize(0.04);
@@ -109,48 +109,48 @@ void VertexGraphs_BQ()
    2625,
    2875};
    Double_t trackReco_fy1010[11] = {
-   -0.01376143,
-   0.09264648,
-   0.07297922,
-   0.08156121,
-   0.08076189,
-   0.09118542,
-   0.07949435,
-   0.06144624,
-   0.03915688,
-   0.05483956,
-   -0.008982683};
+   -0.01376755,
+   0.09268763,
+   0.07301164,
+   0.08159744,
+   0.08079776,
+   0.09122593,
+   0.07952967,
+   0.06147354,
+   0.03917428,
+   0.05486392,
+   -0.008986673};
    Double_t trackReco_fex1010[11] = {
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t trackReco_fey1010[11] = {
-   0.0636869,
-   0.02132924,
-   0.01226297,
-   0.01007448,
-   0.009235815,
-   0.008789589,
-   0.008812048,
-   0.009229503,
-   0.009809752,
-   0.009732171,
-   0.02197126};
+   0.06371519,
+   0.02133871,
+   0.01226842,
+   0.01007895,
+   0.009239917,
+   0.008793494,
+   0.008815962,
+   0.009233603,
+   0.00981411,
+   0.009736495,
+   0.02198102};
    gre = new TGraphErrors(11,trackReco_fx1010,trackReco_fy1010,trackReco_fex1010,trackReco_fey1010);
    gre->SetName("trackReco");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;d_{EDM}(p)");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_trackReco1010 = new TH1F("Graph_trackReco1010","",100,0,3275);
+   TH1F *Graph_trackReco1010 = new TH1F("Graph_trackReco1010","",100,125,3125);
    Graph_trackReco1010->SetMinimum(-0.1);
    Graph_trackReco1010->SetMaximum(0.125);
    Graph_trackReco1010->SetDirectory(0);
@@ -159,7 +159,7 @@ void VertexGraphs_BQ()
    ci = TColor::GetColor("#000099");
    Graph_trackReco1010->SetLineColor(ci);
    Graph_trackReco1010->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_trackReco1010->GetXaxis()->SetRange(8,92);
+   Graph_trackReco1010->GetXaxis()->SetRange(4,97);
    Graph_trackReco1010->GetXaxis()->SetLabelFont(42);
    Graph_trackReco1010->GetXaxis()->SetTitleOffset(1);
    Graph_trackReco1010->GetXaxis()->SetTitleFont(42);

@@ -1,10 +1,10 @@
 void VertexErrorGraphs_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 14 11:03:32 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 15:10:07 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-119.625,-0.00375,3386.625,0.03375);
+   c->Range(-129.9375,-0.00375,3374.438,0.03375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,31 +25,31 @@ void VertexErrorGraphs_AQ()
    2625,
    2875};
    Double_t Graph0_fy1007[12] = {
-   0.6773616,
-   0.02364774,
-   0.01180618,
-   0.009700394,
-   0.00874829,
-   0.008048514,
-   0.007593834,
-   0.007442528,
-   0.007496123,
-   0.007796622,
-   0.008025993,
-   0.009514982};
+   0.6776624,
+   0.02365824,
+   0.01181142,
+   0.009704703,
+   0.008752176,
+   0.008052089,
+   0.007597207,
+   0.007445834,
+   0.007499453,
+   0.007800085,
+   0.008029559,
+   0.009519208};
    Double_t Graph0_fex1007[12] = {
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t Graph0_fey1007[12] = {
    0,
    0,
@@ -69,7 +69,7 @@ void VertexErrorGraphs_AQ()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01007 = new TH1F("Graph_Graph01007","",100,0,3300);
+   TH1F *Graph_Graph01007 = new TH1F("Graph_Graph01007","",100,0,3150);
    Graph_Graph01007->SetMinimum(0);
    Graph_Graph01007->SetMaximum(0.03);
    Graph_Graph01007->SetDirectory(0);
@@ -80,7 +80,7 @@ void VertexErrorGraphs_AQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01007->SetLineColor(ci);
    Graph_Graph01007->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_Graph01007->GetXaxis()->SetRange(8,92);
+   Graph_Graph01007->GetXaxis()->SetRange(8,96);
    Graph_Graph01007->GetXaxis()->CenterTitle(true);
    Graph_Graph01007->GetXaxis()->SetLabelFont(42);
    Graph_Graph01007->GetXaxis()->SetTitleSize(0.04);
@@ -114,31 +114,31 @@ void VertexErrorGraphs_AQ()
    2625,
    2875};
    Double_t Graph1_fy1008[12] = {
-   0.3539373,
-   0.02391831,
-   0.01191528,
-   0.009778094,
-   0.008823658,
-   0.008133694,
-   0.007683219,
-   0.007538423,
-   0.007641947,
-   0.008045241,
-   0.008213424,
-   0.00983529};
+   0.3540945,
+   0.02392893,
+   0.01192057,
+   0.009782437,
+   0.008827577,
+   0.008137307,
+   0.007686632,
+   0.007541771,
+   0.007645342,
+   0.008048815,
+   0.008217072,
+   0.009839659};
    Double_t Graph1_fex1008[12] = {
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t Graph1_fey1008[12] = {
    0,
    0,
@@ -158,7 +158,7 @@ void VertexErrorGraphs_AQ()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph11008 = new TH1F("Graph_Graph11008","Graph",100,0,3300);
+   TH1F *Graph_Graph11008 = new TH1F("Graph_Graph11008","Graph",100,0,3150);
    Graph_Graph11008->SetMinimum(0);
    Graph_Graph11008->SetMaximum(0.03);
    Graph_Graph11008->SetDirectory(0);
@@ -166,7 +166,7 @@ void VertexErrorGraphs_AQ()
 
    ci = TColor::GetColor("#000099");
    Graph_Graph11008->SetLineColor(ci);
-   Graph_Graph11008->GetXaxis()->SetRange(8,92);
+   Graph_Graph11008->GetXaxis()->SetRange(8,96);
    Graph_Graph11008->GetXaxis()->SetLabelFont(42);
    Graph_Graph11008->GetXaxis()->SetTitleOffset(1);
    Graph_Graph11008->GetXaxis()->SetTitleFont(42);

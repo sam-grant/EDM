@@ -13,7 +13,6 @@
 
 // ====================== Constants ====================== 
 
-
 double OMEGA_A = 0.00143934; // kHz from gm2const
 double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
 double M_MU = 105.6583715; // MeV

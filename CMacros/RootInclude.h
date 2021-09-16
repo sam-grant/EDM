@@ -1,6 +1,7 @@
 #include "TFile.h"
 #include "TH1D.h"
 #include "TH2D.h"
+#include "TH3D.h"
 #include "TGraph.h"
 #include "TGraphErrors.h"
 #include "TAxis.h"
@@ -23,4 +24,6 @@
 #include "TVirtualFitter.h"
 #include "TArrow.h"
 #include "TMatrixD.h"
+#include "TVector.h"
+#include "TDecompChol.h"
 // TODO ADD MORE AND REMOVE HEADERS FROM OTHER FILES
