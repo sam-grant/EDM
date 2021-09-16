@@ -1,10 +1,10 @@
-void DeltaPrimeFits()
+void DeltaPrimeFits_trackTruth_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:44:56 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(492.7419,0.51875,2815.323,3.83125);
+   c->Range(492.7419,-0.4375,2815.323,3.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -53,7 +53,7 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1007 = new TH1F("Graph_Graph1007","",100,725,2525);
-   Graph_Graph1007->SetMinimum(0.85);
+   Graph_Graph1007->SetMinimum(0);
    Graph_Graph1007->SetMaximum(3.5);
    Graph_Graph1007->SetDirectory(0);
    Graph_Graph1007->SetStats(0);

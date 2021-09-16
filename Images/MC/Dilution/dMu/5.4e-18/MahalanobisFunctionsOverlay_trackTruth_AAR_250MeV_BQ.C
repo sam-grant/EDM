@@ -1,10 +1,10 @@
-void MahalanobisFunctionsOverlay()
+void MahalanobisFunctionsOverlay_trackTruth_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:44:55 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(492.7419,-0.015,2815.323,0.135);
+   c->Range(492.7419,-0.140867,2815.323,0.1678984);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -67,8 +67,8 @@ void MahalanobisFunctionsOverlay()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_trackTruth1003 = new TH1F("Graph_trackTruth1003","",100,125,3125);
-   Graph_trackTruth1003->SetMinimum(0);
-   Graph_trackTruth1003->SetMaximum(0.12);
+   Graph_trackTruth1003->SetMinimum(-0.1099904);
+   Graph_trackTruth1003->SetMaximum(0.1370218);
    Graph_trackTruth1003->SetDirectory(0);
    Graph_trackTruth1003->SetStats(0);
 
@@ -3640,8 +3640,8 @@ void MahalanobisFunctionsOverlay()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_trackTruth10031005 = new TH1F("Graph_Graph_trackTruth10031005","",100,125,3125);
-   Graph_Graph_trackTruth10031005->SetMinimum(0);
-   Graph_Graph_trackTruth10031005->SetMaximum(0.12);
+   Graph_Graph_trackTruth10031005->SetMinimum(-0.1099904);
+   Graph_Graph_trackTruth10031005->SetMaximum(0.1370218);
    Graph_Graph_trackTruth10031005->SetDirectory(0);
    Graph_Graph_trackTruth10031005->SetStats(0);
 

@@ -1,7 +1,7 @@
-void DeltaPrimeHist()
+void DeltaPrimeHist_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:56:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,16 +10,11 @@ void DeltaPrimeHist()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__4 = new TH1D("h__4","",24,1.464874,1.960854);
-   h__4->SetBinContent(8,1);
-   h__4->SetBinContent(9,6);
-   h__4->SetBinContent(10,2);
-   h__4->SetBinContent(11,3);
-   h__4->SetBinContent(12,4);
-   h__4->SetBinContent(13,2);
-   h__4->SetBinContent(14,4);
-   h__4->SetBinContent(15,3);
-   h__4->SetBinContent(16,1);
+   TH1D *h__4 = new TH1D("h__4","",21,1.486033,1.922994);
+   h__4->SetBinContent(9,2);
+   h__4->SetBinContent(10,9);
+   h__4->SetBinContent(11,8);
+   h__4->SetBinContent(12,7);
    h__4->SetEntries(26);
    h__4->SetStats(0);
    h__4->SetLineWidth(3);
@@ -55,11 +50,11 @@ void DeltaPrimeHist()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("1.698
-#pm0.009
+   pt_LaTex = pt->AddText("1.699
+#pm0.004
 ");
-   pt_LaTex = pt->AddText("0.048
-#pm0.007
+   pt_LaTex = pt->AddText("0.019
+#pm0.003
 ");
    pt->Draw();
    c->Modified();

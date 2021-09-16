@@ -1,10 +1,10 @@
-void DeltaPrimeFits()
+void DeltaPrimeFits_truthAllDecays_AAR_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:43:39 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(492.7419,0.51875,2815.323,3.83125);
+   c->Range(492.7419,-0.4375,2815.323,3.9375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -21,13 +21,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1007[7] = {
-   1.844529,
-   1.718581,
-   1.509673,
-   1.808236,
-   1.792567,
-   1.743933,
-   2.163111};
+   1.681945,
+   1.693173,
+   1.70925,
+   1.716126,
+   1.787168,
+   1.552975,
+   1.901264};
    Double_t _fex1007[7] = {
    0,
    0,
@@ -37,13 +37,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1007[7] = {
-   0.3156206,
-   0.2095355,
-   0.1769205,
-   0.1718171,
-   0.1955545,
-   0.2724608,
-   0.5589666};
+   0.09176957,
+   0.08361646,
+   0.08045037,
+   0.08114005,
+   0.08624536,
+   0.09750355,
+   0.1206279};
    TGraphErrors *gre = new TGraphErrors(7,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta' [mrad]");
@@ -53,7 +53,7 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1007 = new TH1F("Graph_Graph1007","",100,725,2525);
-   Graph_Graph1007->SetMinimum(0.85);
+   Graph_Graph1007->SetMinimum(0);
    Graph_Graph1007->SetMaximum(3.5);
    Graph_Graph1007->SetDirectory(0);
    Graph_Graph1007->SetStats(0);
@@ -86,15 +86,15 @@ void DeltaPrimeFits()
    pol01008->SetFillStyle(0);
    pol01008->SetLineColor(55);
    pol01008->SetLineWidth(2);
-   pol01008->SetChisquare(2.597638);
+   pol01008->SetChisquare(6.042982);
    pol01008->SetNDF(6);
    pol01008->GetXaxis()->SetLabelFont(42);
    pol01008->GetXaxis()->SetTitleOffset(1);
    pol01008->GetXaxis()->SetTitleFont(42);
    pol01008->GetYaxis()->SetLabelFont(42);
    pol01008->GetYaxis()->SetTitleFont(42);
-   pol01008->SetParameter(0,1.727955);
-   pol01008->SetParError(0,0.08407879);
+   pol01008->SetParameter(0,1.712371);
+   pol01008->SetParError(0,0.03377698);
    pol01008->SetParLimits(0,0,0);
    pol01008->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01008);
@@ -105,15 +105,15 @@ void DeltaPrimeFits()
    pol01009->SetFillStyle(0);
    pol01009->SetLineColor(55);
    pol01009->SetLineWidth(2);
-   pol01009->SetChisquare(2.597638);
+   pol01009->SetChisquare(6.042982);
    pol01009->SetNDF(6);
    pol01009->GetXaxis()->SetLabelFont(42);
    pol01009->GetXaxis()->SetTitleOffset(1);
    pol01009->GetXaxis()->SetTitleFont(42);
    pol01009->GetYaxis()->SetLabelFont(42);
    pol01009->GetYaxis()->SetTitleFont(42);
-   pol01009->SetParameter(0,1.727955);
-   pol01009->SetParError(0,0.08407879);
+   pol01009->SetParameter(0,1.712371);
+   pol01009->SetParError(0,0.03377698);
    pol01009->SetParLimits(0,0,0);
    pol01009->Draw("same");
    
@@ -126,13 +126,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1009[7] = {
-   1.790212,
-   1.667516,
-   1.464857,
-   1.755027,
-   1.740888,
-   1.696075,
-   2.114424};
+   1.665909,
+   1.674374,
+   1.688315,
+   1.693942,
+   1.763915,
+   1.534029,
+   1.882803};
    Double_t _fex1009[7] = {
    0,
    0,
@@ -142,13 +142,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1009[7] = {
-   0.3063264,
-   0.2033095,
-   0.1716685,
-   0.1667612,
-   0.1899168,
-   0.2649838,
-   0.5463854};
+   0.09089465,
+   0.08268808,
+   0.07946499,
+   0.0800912,
+   0.0851232,
+   0.09631404,
+   0.1194567};
    gre = new TGraphErrors(7,_fx1009,_fy1009,_fex1009,_fey1009);
    gre->SetName("");
    gre->SetTitle("");
@@ -158,8 +158,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1009 = new TH1F("Graph_Graph1009","",100,725,2525);
-   Graph_Graph1009->SetMinimum(1.156426);
-   Graph_Graph1009->SetMaximum(2.797571);
+   Graph_Graph1009->SetMinimum(1.381261);
+   Graph_Graph1009->SetMaximum(2.058714);
    Graph_Graph1009->SetDirectory(0);
    Graph_Graph1009->SetStats(0);
 
@@ -181,15 +181,15 @@ void DeltaPrimeFits()
    pol01010->SetFillStyle(0);
    pol01010->SetLineColor(56);
    pol01010->SetLineWidth(2);
-   pol01010->SetChisquare(2.644037);
+   pol01010->SetChisquare(6.085615);
    pol01010->SetNDF(6);
    pol01010->GetXaxis()->SetLabelFont(42);
    pol01010->GetXaxis()->SetTitleOffset(1);
    pol01010->GetXaxis()->SetTitleFont(42);
    pol01010->GetYaxis()->SetLabelFont(42);
    pol01010->GetYaxis()->SetTitleFont(42);
-   pol01010->SetParameter(0,1.677616);
-   pol01010->SetParError(0,0.08163387);
+   pol01010->SetParameter(0,1.692278);
+   pol01010->SetParError(0,0.03338092);
    pol01010->SetParLimits(0,0,0);
    pol01010->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01010);
@@ -200,15 +200,15 @@ void DeltaPrimeFits()
    pol01011->SetFillStyle(0);
    pol01011->SetLineColor(56);
    pol01011->SetLineWidth(2);
-   pol01011->SetChisquare(2.644037);
+   pol01011->SetChisquare(6.085615);
    pol01011->SetNDF(6);
    pol01011->GetXaxis()->SetLabelFont(42);
    pol01011->GetXaxis()->SetTitleOffset(1);
    pol01011->GetXaxis()->SetTitleFont(42);
    pol01011->GetYaxis()->SetLabelFont(42);
    pol01011->GetYaxis()->SetTitleFont(42);
-   pol01011->SetParameter(0,1.677616);
-   pol01011->SetParError(0,0.08163387);
+   pol01011->SetParameter(0,1.692278);
+   pol01011->SetParError(0,0.03338092);
    pol01011->SetParLimits(0,0,0);
    pol01011->Draw("same");
    
@@ -221,13 +221,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1011[7] = {
-   1.73475,
-   1.634899,
-   1.441666,
-   1.725245,
-   1.699712,
-   1.625693,
-   1.896735};
+   1.654453,
+   1.663905,
+   1.677378,
+   1.68075,
+   1.745117,
+   1.509346,
+   1.832862};
    Double_t _fex1011[7] = {
    0,
    0,
@@ -237,13 +237,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1011[7] = {
-   0.2968362,
-   0.1993326,
-   0.1689507,
-   0.1639313,
-   0.1854248,
-   0.2539878,
-   0.4901327};
+   0.09026955,
+   0.08217107,
+   0.07895021,
+   0.07946745,
+   0.08421607,
+   0.09476431,
+   0.1162881};
    gre = new TGraphErrors(7,_fx1011,_fy1011,_fex1011,_fey1011);
    gre->SetName("");
    gre->SetTitle("");
@@ -253,8 +253,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1011 = new TH1F("Graph_Graph1011","",100,725,2525);
-   Graph_Graph1011->SetMinimum(1.1613);
-   Graph_Graph1011->SetMaximum(2.498283);
+   Graph_Graph1011->SetMinimum(1.361125);
+   Graph_Graph1011->SetMaximum(2.002607);
    Graph_Graph1011->SetDirectory(0);
    Graph_Graph1011->SetStats(0);
 
@@ -276,15 +276,15 @@ void DeltaPrimeFits()
    pol01012->SetFillStyle(0);
    pol01012->SetLineColor(58);
    pol01012->SetLineWidth(2);
-   pol01012->SetChisquare(2.131889);
+   pol01012->SetChisquare(5.667885);
    pol01012->SetNDF(6);
    pol01012->GetXaxis()->SetLabelFont(42);
    pol01012->GetXaxis()->SetTitleOffset(1);
    pol01012->GetXaxis()->SetTitleFont(42);
    pol01012->GetYaxis()->SetLabelFont(42);
    pol01012->GetYaxis()->SetTitleFont(42);
-   pol01012->SetParameter(0,1.638441);
-   pol01012->SetParError(0,0.07967927);
+   pol01012->SetParameter(0,1.675263);
+   pol01012->SetParError(0,0.03304259);
    pol01012->SetParLimits(0,0,0);
    pol01012->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01012);
@@ -295,15 +295,15 @@ void DeltaPrimeFits()
    pol01013->SetFillStyle(0);
    pol01013->SetLineColor(58);
    pol01013->SetLineWidth(2);
-   pol01013->SetChisquare(2.131889);
+   pol01013->SetChisquare(5.667885);
    pol01013->SetNDF(6);
    pol01013->GetXaxis()->SetLabelFont(42);
    pol01013->GetXaxis()->SetTitleOffset(1);
    pol01013->GetXaxis()->SetTitleFont(42);
    pol01013->GetYaxis()->SetLabelFont(42);
    pol01013->GetYaxis()->SetTitleFont(42);
-   pol01013->SetParameter(0,1.638441);
-   pol01013->SetParError(0,0.07967927);
+   pol01013->SetParameter(0,1.675263);
+   pol01013->SetParError(0,0.03304259);
    pol01013->SetParLimits(0,0,0);
    pol01013->Draw("same");
    
@@ -316,13 +316,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1013[7] = {
-   1.995625,
-   1.786878,
-   1.536163,
-   1.812856,
-   1.774052,
-   1.698654,
-   2.028269};
+   1.71656,
+   1.718282,
+   1.725402,
+   1.723354,
+   1.785044,
+   1.541686,
+   1.872435};
    Double_t _fex1013[7] = {
    0,
    0,
@@ -332,13 +332,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1013[7] = {
-   0.341475,
-   0.2178625,
-   0.180025,
-   0.1722561,
-   0.1935347,
-   0.2653867,
-   0.5241222};
+   0.09365821,
+   0.08485643,
+   0.08121058,
+   0.08148182,
+   0.08614286,
+   0.09679477,
+   0.1187988};
    gre = new TGraphErrors(7,_fx1013,_fy1013,_fex1013,_fey1013);
    gre->SetName("");
    gre->SetTitle("");
@@ -348,8 +348,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1013 = new TH1F("Graph_Graph1013","",100,725,2525);
-   Graph_Graph1013->SetMinimum(1.236513);
-   Graph_Graph1013->SetMaximum(2.672016);
+   Graph_Graph1013->SetMinimum(1.390257);
+   Graph_Graph1013->SetMaximum(2.045868);
    Graph_Graph1013->SetDirectory(0);
    Graph_Graph1013->SetStats(0);
 
@@ -371,15 +371,15 @@ void DeltaPrimeFits()
    pol01014->SetFillStyle(0);
    pol01014->SetLineColor(59);
    pol01014->SetLineWidth(2);
-   pol01014->SetChisquare(2.421632);
+   pol01014->SetChisquare(5.616363);
    pol01014->SetNDF(6);
    pol01014->GetXaxis()->SetLabelFont(42);
    pol01014->GetXaxis()->SetTitleOffset(1);
    pol01014->GetXaxis()->SetTitleFont(42);
    pol01014->GetYaxis()->SetLabelFont(42);
    pol01014->GetYaxis()->SetTitleFont(42);
-   pol01014->SetParameter(0,1.745169);
-   pol01014->SetParError(0,0.08489871);
+   pol01014->SetParameter(0,1.721415);
+   pol01014->SetParError(0,0.03395255);
    pol01014->SetParLimits(0,0,0);
    pol01014->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01014);
@@ -390,15 +390,15 @@ void DeltaPrimeFits()
    pol01015->SetFillStyle(0);
    pol01015->SetLineColor(59);
    pol01015->SetLineWidth(2);
-   pol01015->SetChisquare(2.421632);
+   pol01015->SetChisquare(5.616363);
    pol01015->SetNDF(6);
    pol01015->GetXaxis()->SetLabelFont(42);
    pol01015->GetXaxis()->SetTitleOffset(1);
    pol01015->GetXaxis()->SetTitleFont(42);
    pol01015->GetYaxis()->SetLabelFont(42);
    pol01015->GetYaxis()->SetTitleFont(42);
-   pol01015->SetParameter(0,1.745169);
-   pol01015->SetParError(0,0.08489871);
+   pol01015->SetParameter(0,1.721415);
+   pol01015->SetParError(0,0.03395255);
    pol01015->SetParLimits(0,0,0);
    pol01015->Draw("same");
    
@@ -411,13 +411,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1015[7] = {
-   1.978628,
-   1.737791,
-   1.480637,
-   1.739289,
-   1.698914,
-   1.628927,
-   1.96722};
+   1.707803,
+   1.700984,
+   1.70138,
+   1.694643,
+   1.752725,
+   1.514319,
+   1.845807};
    Double_t _fex1015[7] = {
    0,
    0,
@@ -427,13 +427,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1015[7] = {
-   0.3385665,
-   0.2118776,
-   0.1735177,
-   0.1652658,
-   0.1853378,
-   0.2544929,
-   0.5083466};
+   0.09318042,
+   0.08400218,
+   0.08007994,
+   0.08012431,
+   0.0845832,
+   0.09507652,
+   0.1171094};
    gre = new TGraphErrors(7,_fx1015,_fy1015,_fex1015,_fey1015);
    gre->SetName("");
    gre->SetTitle("");
@@ -443,8 +443,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1015 = new TH1F("Graph_Graph1015","",100,725,2525);
-   Graph_Graph1015->SetMinimum(1.190274);
-   Graph_Graph1015->SetMaximum(2.592411);
+   Graph_Graph1015->SetMinimum(1.364875);
+   Graph_Graph1015->SetMaximum(2.017284);
    Graph_Graph1015->SetDirectory(0);
    Graph_Graph1015->SetStats(0);
 
@@ -466,15 +466,15 @@ void DeltaPrimeFits()
    pol01016->SetFillStyle(0);
    pol01016->SetLineColor(61);
    pol01016->SetLineWidth(2);
-   pol01016->SetChisquare(2.670429);
+   pol01016->SetChisquare(5.759669);
    pol01016->SetNDF(6);
    pol01016->GetXaxis()->SetLabelFont(42);
    pol01016->GetXaxis()->SetTitleOffset(1);
    pol01016->GetXaxis()->SetTitleFont(42);
    pol01016->GetYaxis()->SetLabelFont(42);
    pol01016->GetYaxis()->SetTitleFont(42);
-   pol01016->SetParameter(0,1.682112);
-   pol01016->SetParError(0,0.08185523);
+   pol01016->SetParameter(0,1.697622);
+   pol01016->SetParError(0,0.03348419);
    pol01016->SetParLimits(0,0,0);
    pol01016->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01016);
@@ -485,15 +485,15 @@ void DeltaPrimeFits()
    pol01017->SetFillStyle(0);
    pol01017->SetLineColor(61);
    pol01017->SetLineWidth(2);
-   pol01017->SetChisquare(2.670429);
+   pol01017->SetChisquare(5.759669);
    pol01017->SetNDF(6);
    pol01017->GetXaxis()->SetLabelFont(42);
    pol01017->GetXaxis()->SetTitleOffset(1);
    pol01017->GetXaxis()->SetTitleFont(42);
    pol01017->GetYaxis()->SetLabelFont(42);
    pol01017->GetYaxis()->SetTitleFont(42);
-   pol01017->SetParameter(0,1.682112);
-   pol01017->SetParError(0,0.08185523);
+   pol01017->SetParameter(0,1.697622);
+   pol01017->SetParError(0,0.03348419);
    pol01017->SetParLimits(0,0,0);
    pol01017->Draw("same");
    
@@ -506,13 +506,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1017[7] = {
-   1.841232,
-   1.677536,
-   1.45087,
-   1.71175,
-   1.663876,
-   1.563036,
-   1.74658};
+   1.681631,
+   1.681519,
+   1.6858,
+   1.679868,
+   1.733934,
+   1.489343,
+   1.79178};
    Double_t _fex1017[7] = {
    0,
    0,
@@ -522,13 +522,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1017[7] = {
-   0.3150564,
-   0.2045312,
-   0.1700293,
-   0.1626491,
-   0.1815154,
-   0.2441987,
-   0.4513314};
+   0.09175246,
+   0.08304092,
+   0.0793466,
+   0.07942576,
+   0.08367636,
+   0.09350842,
+   0.1136816};
    gre = new TGraphErrors(7,_fx1017,_fy1017,_fex1017,_fey1017);
    gre->SetName("");
    gre->SetTitle("");
@@ -538,8 +538,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1017 = new TH1F("Graph_Graph1017","",100,725,2525);
-   Graph_Graph1017->SetMinimum(1.189134);
-   Graph_Graph1017->SetMaximum(2.289619);
+   Graph_Graph1017->SetMinimum(1.344872);
+   Graph_Graph1017->SetMaximum(1.956424);
    Graph_Graph1017->SetDirectory(0);
    Graph_Graph1017->SetStats(0);
 
@@ -561,15 +561,15 @@ void DeltaPrimeFits()
    pol01018->SetFillStyle(0);
    pol01018->SetLineColor(62);
    pol01018->SetLineWidth(2);
-   pol01018->SetChisquare(2.040257);
+   pol01018->SetChisquare(5.526796);
    pol01018->SetNDF(6);
    pol01018->GetXaxis()->SetLabelFont(42);
    pol01018->GetXaxis()->SetTitleOffset(1);
    pol01018->GetXaxis()->SetTitleFont(42);
    pol01018->GetYaxis()->SetLabelFont(42);
    pol01018->GetYaxis()->SetTitleFont(42);
-   pol01018->SetParameter(0,1.634015);
-   pol01018->SetParError(0,0.07945545);
+   pol01018->SetParameter(0,1.675481);
+   pol01018->SetParError(0,0.03304599);
    pol01018->SetParLimits(0,0,0);
    pol01018->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01018);
@@ -580,15 +580,15 @@ void DeltaPrimeFits()
    pol01019->SetFillStyle(0);
    pol01019->SetLineColor(62);
    pol01019->SetLineWidth(2);
-   pol01019->SetChisquare(2.040257);
+   pol01019->SetChisquare(5.526796);
    pol01019->SetNDF(6);
    pol01019->GetXaxis()->SetLabelFont(42);
    pol01019->GetXaxis()->SetTitleOffset(1);
    pol01019->GetXaxis()->SetTitleFont(42);
    pol01019->GetYaxis()->SetLabelFont(42);
    pol01019->GetYaxis()->SetTitleFont(42);
-   pol01019->SetParameter(0,1.634015);
-   pol01019->SetParError(0,0.07945545);
+   pol01019->SetParameter(0,1.675481);
+   pol01019->SetParError(0,0.03304599);
    pol01019->SetParLimits(0,0,0);
    pol01019->Draw("same");
    
@@ -601,13 +601,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1019[7] = {
-   2.072282,
-   1.830689,
-   1.557886,
-   1.818358,
-   1.751928,
-   1.629566,
-   1.785627};
+   1.737603,
+   1.735887,
+   1.737987,
+   1.728549,
+   1.779141,
+   1.521487,
+   1.816869};
    Double_t _fex1019[7] = {
    0,
    0,
@@ -617,13 +617,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1019[7] = {
-   0.3545919,
-   0.2232041,
-   0.1825707,
-   0.1727789,
-   0.1911212,
-   0.2545928,
-   0.4614215};
+   0.09480634,
+   0.08572587,
+   0.08180295,
+   0.08172743,
+   0.08585797,
+   0.09552659,
+   0.1152734};
    gre = new TGraphErrors(7,_fx1019,_fy1019,_fex1019,_fey1019);
    gre->SetName("");
    gre->SetTitle("");
@@ -633,8 +633,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1019 = new TH1F("Graph_Graph1019","",100,725,2525);
-   Graph_Graph1019->SetMinimum(1.213939);
-   Graph_Graph1019->SetMaximum(2.537141);
+   Graph_Graph1019->SetMinimum(1.375342);
+   Graph_Graph1019->SetMaximum(1.982761);
    Graph_Graph1019->SetDirectory(0);
    Graph_Graph1019->SetStats(0);
 
@@ -656,15 +656,15 @@ void DeltaPrimeFits()
    pol01020->SetFillStyle(0);
    pol01020->SetLineColor(64);
    pol01020->SetLineWidth(2);
-   pol01020->SetChisquare(2.444187);
+   pol01020->SetChisquare(5.624092);
    pol01020->SetNDF(6);
    pol01020->GetXaxis()->SetLabelFont(42);
    pol01020->GetXaxis()->SetTitleOffset(1);
    pol01020->GetXaxis()->SetTitleFont(42);
    pol01020->GetYaxis()->SetLabelFont(42);
    pol01020->GetYaxis()->SetTitleFont(42);
-   pol01020->SetParameter(0,1.743318);
-   pol01020->SetParError(0,0.08481093);
+   pol01020->SetParameter(0,1.7219);
+   pol01020->SetParError(0,0.03396215);
    pol01020->SetParLimits(0,0,0);
    pol01020->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01020);
@@ -675,15 +675,15 @@ void DeltaPrimeFits()
    pol01021->SetFillStyle(0);
    pol01021->SetLineColor(64);
    pol01021->SetLineWidth(2);
-   pol01021->SetChisquare(2.444187);
+   pol01021->SetChisquare(5.624092);
    pol01021->SetNDF(6);
    pol01021->GetXaxis()->SetLabelFont(42);
    pol01021->GetXaxis()->SetTitleOffset(1);
    pol01021->GetXaxis()->SetTitleFont(42);
    pol01021->GetYaxis()->SetLabelFont(42);
    pol01021->GetYaxis()->SetTitleFont(42);
-   pol01021->SetParameter(0,1.743318);
-   pol01021->SetParError(0,0.08481093);
+   pol01021->SetParameter(0,1.7219);
+   pol01021->SetParError(0,0.03396215);
    pol01021->SetParLimits(0,0,0);
    pol01021->Draw("same");
    
@@ -696,13 +696,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1021[7] = {
-   2.059233,
-   1.798389,
-   1.520789,
-   1.766718,
-   1.694145,
-   1.565226,
-   1.687375};
+   1.733257,
+   1.725807,
+   1.722775,
+   1.708789,
+   1.754346,
+   1.496559,
+   1.782387};
    Double_t _fex1021[7] = {
    0,
    0,
@@ -712,13 +712,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1021[7] = {
-   0.352359,
-   0.219266,
-   0.1782232,
-   0.1678721,
-   0.1848175,
-   0.2445408,
-   0.4360322};
+   0.09456924,
+   0.08522806,
+   0.08108694,
+   0.08079317,
+   0.08466145,
+   0.09396148,
+   0.1130857};
    gre = new TGraphErrors(7,_fx1021,_fy1021,_fex1021,_fey1021);
    gre->SetName("");
    gre->SetTitle("");
@@ -728,8 +728,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1021 = new TH1F("Graph_Graph1021","",100,725,2525);
-   Graph_Graph1021->SetMinimum(1.135317);
-   Graph_Graph1021->SetMaximum(2.527616);
+   Graph_Graph1021->SetMinimum(1.35331);
+   Graph_Graph1021->SetMaximum(1.944761);
    Graph_Graph1021->SetDirectory(0);
    Graph_Graph1021->SetStats(0);
 
@@ -751,15 +751,15 @@ void DeltaPrimeFits()
    pol01022->SetFillStyle(0);
    pol01022->SetLineColor(65);
    pol01022->SetLineWidth(2);
-   pol01022->SetChisquare(2.710759);
+   pol01022->SetChisquare(5.92621);
    pol01022->SetNDF(6);
    pol01022->GetXaxis()->SetLabelFont(42);
    pol01022->GetXaxis()->SetTitleOffset(1);
    pol01022->GetXaxis()->SetTitleFont(42);
    pol01022->GetYaxis()->SetLabelFont(42);
    pol01022->GetYaxis()->SetTitleFont(42);
-   pol01022->SetParameter(0,1.694382);
-   pol01022->SetParError(0,0.08245624);
+   pol01022->SetParameter(0,1.703459);
+   pol01022->SetParError(0,0.03360041);
    pol01022->SetParLimits(0,0,0);
    pol01022->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01022);
@@ -770,15 +770,15 @@ void DeltaPrimeFits()
    pol01023->SetFillStyle(0);
    pol01023->SetLineColor(65);
    pol01023->SetLineWidth(2);
-   pol01023->SetChisquare(2.710759);
+   pol01023->SetChisquare(5.92621);
    pol01023->SetNDF(6);
    pol01023->GetXaxis()->SetLabelFont(42);
    pol01023->GetXaxis()->SetTitleOffset(1);
    pol01023->GetXaxis()->SetTitleFont(42);
    pol01023->GetYaxis()->SetLabelFont(42);
    pol01023->GetYaxis()->SetTitleFont(42);
-   pol01023->SetParameter(0,1.694382);
-   pol01023->SetParError(0,0.08245624);
+   pol01023->SetParameter(0,1.703459);
+   pol01023->SetParError(0,0.03360041);
    pol01023->SetParLimits(0,0,0);
    pol01023->Draw("same");
    
@@ -791,13 +791,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1023[7] = {
-   1.93473,
-   1.736033,
-   1.48557,
-   1.734457,
-   1.663131,
-   1.525864,
-   1.600123};
+   1.708276,
+   1.705137,
+   1.705044,
+   1.692665,
+   1.737462,
+   1.479586,
+   1.754306};
    Double_t _fex1023[7] = {
    0,
    0,
@@ -807,13 +807,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1023[7] = {
-   0.3310552,
-   0.2116633,
-   0.1740959,
-   0.1648066,
-   0.1814342,
-   0.2383912,
-   0.4134856};
+   0.09320627,
+   0.0842073,
+   0.08025241,
+   0.08003078,
+   0.08384665,
+   0.0928958,
+   0.111304};
    gre = new TGraphErrors(7,_fx1023,_fy1023,_fex1023,_fey1023);
    gre->SetName("");
    gre->SetTitle("");
@@ -823,8 +823,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1023 = new TH1F("Graph_Graph1023","",100,725,2525);
-   Graph_Graph1023->SetMinimum(1.078723);
-   Graph_Graph1023->SetMaximum(2.373701);
+   Graph_Graph1023->SetMinimum(1.338798);
+   Graph_Graph1023->SetMaximum(1.913502);
    Graph_Graph1023->SetDirectory(0);
    Graph_Graph1023->SetStats(0);
 
@@ -846,15 +846,15 @@ void DeltaPrimeFits()
    pol01024->SetFillStyle(0);
    pol01024->SetLineColor(67);
    pol01024->SetLineWidth(2);
-   pol01024->SetChisquare(2.350424);
+   pol01024->SetChisquare(5.858948);
    pol01024->SetNDF(6);
    pol01024->GetXaxis()->SetLabelFont(42);
    pol01024->GetXaxis()->SetTitleOffset(1);
    pol01024->GetXaxis()->SetTitleFont(42);
    pol01024->GetYaxis()->SetLabelFont(42);
    pol01024->GetYaxis()->SetTitleFont(42);
-   pol01024->SetParameter(0,1.65081);
-   pol01024->SetParError(0,0.08030155);
+   pol01024->SetParameter(0,1.683987);
+   pol01024->SetParError(0,0.03321589);
    pol01024->SetParLimits(0,0,0);
    pol01024->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01024);
@@ -865,15 +865,15 @@ void DeltaPrimeFits()
    pol01025->SetFillStyle(0);
    pol01025->SetLineColor(67);
    pol01025->SetLineWidth(2);
-   pol01025->SetChisquare(2.350424);
+   pol01025->SetChisquare(5.858948);
    pol01025->SetNDF(6);
    pol01025->GetXaxis()->SetLabelFont(42);
    pol01025->GetXaxis()->SetTitleOffset(1);
    pol01025->GetXaxis()->SetTitleFont(42);
    pol01025->GetYaxis()->SetLabelFont(42);
    pol01025->GetYaxis()->SetTitleFont(42);
-   pol01025->SetParameter(0,1.65081);
-   pol01025->SetParError(0,0.08030155);
+   pol01025->SetParameter(0,1.683987);
+   pol01025->SetParError(0,0.03321589);
    pol01025->SetParLimits(0,0,0);
    pol01025->Draw("same");
    
@@ -886,13 +886,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1025[7] = {
-   1.730366,
-   1.702639,
-   1.53661,
-   1.863924,
-   1.849706,
-   1.770296,
-   2.031569};
+   1.662186,
+   1.689341,
+   1.717686,
+   1.732424,
+   1.806167,
+   1.56324,
+   1.888496};
    Double_t _fex1025[7] = {
    0,
    0,
@@ -902,13 +902,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1025[7] = {
-   0.296086,
-   0.2075918,
-   0.1800773,
-   0.1771085,
-   0.201788,
-   0.2765797,
-   0.5249751};
+   0.09069151,
+   0.0834272,
+   0.08084744,
+   0.08191066,
+   0.08716221,
+   0.09814803,
+   0.1198179};
    gre = new TGraphErrors(7,_fx1025,_fy1025,_fex1025,_fey1025);
    gre->SetName("");
    gre->SetTitle("");
@@ -918,8 +918,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1025 = new TH1F("Graph_Graph1025","",100,725,2525);
-   Graph_Graph1025->SetMinimum(1.236531);
-   Graph_Graph1025->SetMaximum(2.676546);
+   Graph_Graph1025->SetMinimum(1.410769);
+   Graph_Graph1025->SetMaximum(2.062636);
    Graph_Graph1025->SetDirectory(0);
    Graph_Graph1025->SetStats(0);
 
@@ -941,15 +941,15 @@ void DeltaPrimeFits()
    pol01026->SetFillStyle(0);
    pol01026->SetLineColor(68);
    pol01026->SetLineWidth(2);
-   pol01026->SetChisquare(2.409547);
+   pol01026->SetChisquare(6.059907);
    pol01026->SetNDF(6);
    pol01026->GetXaxis()->SetLabelFont(42);
    pol01026->GetXaxis()->SetTitleOffset(1);
    pol01026->GetXaxis()->SetTitleFont(42);
    pol01026->GetYaxis()->SetLabelFont(42);
    pol01026->GetYaxis()->SetTitleFont(42);
-   pol01026->SetParameter(0,1.746133);
-   pol01026->SetParError(0,0.0849444);
+   pol01026->SetParameter(0,1.716411);
+   pol01026->SetParError(0,0.03385677);
    pol01026->SetParLimits(0,0,0);
    pol01026->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01026);
@@ -960,15 +960,15 @@ void DeltaPrimeFits()
    pol01027->SetFillStyle(0);
    pol01027->SetLineColor(68);
    pol01027->SetLineWidth(2);
-   pol01027->SetChisquare(2.409547);
+   pol01027->SetChisquare(6.059907);
    pol01027->SetNDF(6);
    pol01027->GetXaxis()->SetLabelFont(42);
    pol01027->GetXaxis()->SetTitleOffset(1);
    pol01027->GetXaxis()->SetTitleFont(42);
    pol01027->GetYaxis()->SetLabelFont(42);
    pol01027->GetYaxis()->SetTitleFont(42);
-   pol01027->SetParameter(0,1.746133);
-   pol01027->SetParError(0,0.0849444);
+   pol01027->SetParameter(0,1.716411);
+   pol01027->SetParError(0,0.03385677);
    pol01027->SetParLimits(0,0,0);
    pol01027->Draw("same");
    
@@ -981,13 +981,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1027[7] = {
-   1.628571,
-   1.627073,
-   1.481223,
-   1.806442,
-   1.79854,
-   1.723518,
-   1.971614};
+   1.632658,
+   1.661143,
+   1.690789,
+   1.707071,
+   1.781658,
+   1.543889,
+   1.867955};
    Double_t _fex1027[7] = {
    0,
    0,
@@ -997,13 +997,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1027[7] = {
-   0.2786677,
-   0.1983785,
-   0.1735864,
-   0.1716466,
-   0.1962062,
-   0.2692713,
-   0.509482};
+   0.08908043,
+   0.08203469,
+   0.07958146,
+   0.08071194,
+   0.08597947,
+   0.09693307,
+   0.1185146};
    gre = new TGraphErrors(7,_fx1027,_fy1027,_fex1027,_fey1027);
    gre->SetName("");
    gre->SetTitle("");
@@ -1013,8 +1013,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1027 = new TH1F("Graph_Graph1027","",100,725,2525);
-   Graph_Graph1027->SetMinimum(1.190291);
-   Graph_Graph1027->SetMaximum(2.598441);
+   Graph_Graph1027->SetMinimum(1.393004);
+   Graph_Graph1027->SetMaximum(2.040421);
    Graph_Graph1027->SetDirectory(0);
    Graph_Graph1027->SetStats(0);
 
@@ -1036,15 +1036,15 @@ void DeltaPrimeFits()
    pol01028->SetFillStyle(0);
    pol01028->SetLineColor(70);
    pol01028->SetLineWidth(2);
-   pol01028->SetChisquare(2.676302);
+   pol01028->SetChisquare(6.245484);
    pol01028->SetNDF(6);
    pol01028->GetXaxis()->SetLabelFont(42);
    pol01028->GetXaxis()->SetTitleOffset(1);
    pol01028->GetXaxis()->SetTitleFont(42);
    pol01028->GetYaxis()->SetLabelFont(42);
    pol01028->GetYaxis()->SetTitleFont(42);
-   pol01028->SetParameter(0,1.683291);
-   pol01028->SetParError(0,0.08191315);
+   pol01028->SetParameter(0,1.690834);
+   pol01028->SetParError(0,0.03335345);
    pol01028->SetParLimits(0,0,0);
    pol01028->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01028);
@@ -1055,15 +1055,15 @@ void DeltaPrimeFits()
    pol01029->SetFillStyle(0);
    pol01029->SetLineColor(70);
    pol01029->SetLineWidth(2);
-   pol01029->SetChisquare(2.676302);
+   pol01029->SetChisquare(6.245484);
    pol01029->SetNDF(6);
    pol01029->GetXaxis()->SetLabelFont(42);
    pol01029->GetXaxis()->SetTitleOffset(1);
    pol01029->GetXaxis()->SetTitleFont(42);
    pol01029->GetYaxis()->SetLabelFont(42);
    pol01029->GetYaxis()->SetTitleFont(42);
-   pol01029->SetParameter(0,1.683291);
-   pol01029->SetParError(0,0.08191315);
+   pol01029->SetParameter(0,1.690834);
+   pol01029->SetParError(0,0.03335345);
    pol01029->SetParLimits(0,0,0);
    pol01029->Draw("same");
    
@@ -1076,13 +1076,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1029[7] = {
-   1.613083,
-   1.603076,
-   1.451268,
-   1.757209,
-   1.730249,
-   1.623492,
-   1.749027};
+   1.629414,
+   1.653793,
+   1.678434,
+   1.688485,
+   1.753857,
+   1.509449,
+   1.806482};
    Double_t _fex1029[7] = {
    0,
    0,
@@ -1092,13 +1092,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1029[7] = {
-   0.2760175,
-   0.1954527,
-   0.170076,
-   0.1669685,
-   0.1887562,
-   0.2536439,
-   0.4519637};
+   0.08890342,
+   0.0816717,
+   0.0789999,
+   0.07983317,
+   0.08463785,
+   0.09477075,
+   0.1146144};
    gre = new TGraphErrors(7,_fx1029,_fy1029,_fex1029,_fey1029);
    gre->SetName("");
    gre->SetTitle("");
@@ -1108,8 +1108,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1029 = new TH1F("Graph_Graph1029","",100,725,2525);
-   Graph_Graph1029->SetMinimum(1.189212);
-   Graph_Graph1029->SetMaximum(2.292971);
+   Graph_Graph1029->SetMinimum(1.364036);
+   Graph_Graph1029->SetMaximum(1.971739);
    Graph_Graph1029->SetDirectory(0);
    Graph_Graph1029->SetStats(0);
 
@@ -1131,15 +1131,15 @@ void DeltaPrimeFits()
    pol01030->SetFillStyle(0);
    pol01030->SetLineColor(71);
    pol01030->SetLineWidth(2);
-   pol01030->SetChisquare(2.056071);
+   pol01030->SetChisquare(5.581525);
    pol01030->SetNDF(6);
    pol01030->GetXaxis()->SetLabelFont(42);
    pol01030->GetXaxis()->SetTitleOffset(1);
    pol01030->GetXaxis()->SetTitleFont(42);
    pol01030->GetYaxis()->SetLabelFont(42);
    pol01030->GetYaxis()->SetTitleFont(42);
-   pol01030->SetParameter(0,1.634755);
-   pol01030->SetParError(0,0.07949289);
+   pol01030->SetParameter(0,1.670985);
+   pol01030->SetParError(0,0.03295766);
    pol01030->SetParLimits(0,0,0);
    pol01030->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01030);
@@ -1150,15 +1150,15 @@ void DeltaPrimeFits()
    pol01031->SetFillStyle(0);
    pol01031->SetLineColor(71);
    pol01031->SetLineWidth(2);
-   pol01031->SetChisquare(2.056071);
+   pol01031->SetChisquare(5.581525);
    pol01031->SetNDF(6);
    pol01031->GetXaxis()->SetLabelFont(42);
    pol01031->GetXaxis()->SetTitleOffset(1);
    pol01031->GetXaxis()->SetTitleFont(42);
    pol01031->GetYaxis()->SetLabelFont(42);
    pol01031->GetYaxis()->SetTitleFont(42);
-   pol01031->SetParameter(0,1.634755);
-   pol01031->SetParError(0,0.07949289);
+   pol01031->SetParameter(0,1.670985);
+   pol01031->SetParError(0,0.03295766);
    pol01031->SetParLimits(0,0,0);
    pol01031->Draw("same");
    
@@ -1171,13 +1171,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1031[7] = {
-   1.87715,
-   1.792281,
-   1.586536,
-   1.894407,
-   1.849042,
-   1.727287,
-   1.867033};
+   1.702275,
+   1.722913,
+   1.743877,
+   1.749627,
+   1.812301,
+   1.55488,
+   1.853554};
    Double_t _fex1031[7] = {
    0,
    0,
@@ -1187,13 +1187,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1031[7] = {
-   0.3212025,
-   0.2185212,
-   0.1859282,
-   0.180005,
-   0.2017156,
-   0.2698601,
-   0.4824574};
+   0.09287882,
+   0.08508516,
+   0.08208019,
+   0.08272404,
+   0.08745823,
+   0.09762315,
+   0.1176009};
    gre = new TGraphErrors(7,_fx1031,_fy1031,_fex1031,_fey1031);
    gre->SetName("");
    gre->SetTitle("");
@@ -1203,8 +1203,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1031 = new TH1F("Graph_Graph1031","",100,725,2525);
-   Graph_Graph1031->SetMinimum(1.288084);
-   Graph_Graph1031->SetMaximum(2.445982);
+   Graph_Graph1031->SetMinimum(1.405867);
+   Graph_Graph1031->SetMaximum(2.022545);
    Graph_Graph1031->SetDirectory(0);
    Graph_Graph1031->SetStats(0);
 
@@ -1226,15 +1226,15 @@ void DeltaPrimeFits()
    pol01032->SetFillStyle(0);
    pol01032->SetLineColor(73);
    pol01032->SetLineWidth(2);
-   pol01032->SetChisquare(1.767423);
+   pol01032->SetChisquare(5.383213);
    pol01032->SetNDF(6);
    pol01032->GetXaxis()->SetLabelFont(42);
    pol01032->GetXaxis()->SetTitleOffset(1);
    pol01032->GetXaxis()->SetTitleFont(42);
    pol01032->GetYaxis()->SetLabelFont(42);
    pol01032->GetYaxis()->SetTitleFont(42);
-   pol01032->SetParameter(0,1.78361);
-   pol01032->SetParError(0,0.08670166);
+   pol01032->SetParameter(0,1.732397);
+   pol01032->SetParError(0,0.03416761);
    pol01032->SetParLimits(0,0,0);
    pol01032->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01032);
@@ -1245,15 +1245,15 @@ void DeltaPrimeFits()
    pol01033->SetFillStyle(0);
    pol01033->SetLineColor(73);
    pol01033->SetLineWidth(2);
-   pol01033->SetChisquare(1.767423);
+   pol01033->SetChisquare(5.383213);
    pol01033->SetNDF(6);
    pol01033->GetXaxis()->SetLabelFont(42);
    pol01033->GetXaxis()->SetTitleOffset(1);
    pol01033->GetXaxis()->SetTitleFont(42);
    pol01033->GetYaxis()->SetLabelFont(42);
    pol01033->GetYaxis()->SetTitleFont(42);
-   pol01033->SetParameter(0,1.78361);
-   pol01033->SetParError(0,0.08670166);
+   pol01033->SetParameter(0,1.732397);
+   pol01033->SetParError(0,0.03416761);
    pol01033->SetParLimits(0,0,0);
    pol01033->Draw("same");
    
@@ -1266,13 +1266,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1033[7] = {
-   1.688774,
-   1.640596,
-   1.461081,
-   1.742322,
-   1.684619,
-   1.535675,
-   1.543062};
+   1.654092,
+   1.671106,
+   1.687224,
+   1.686929,
+   1.738714,
+   1.480658,
+   1.743673};
    Double_t _fex1033[7] = {
    0,
    0,
@@ -1282,13 +1282,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1033[7] = {
-   0.2889691,
-   0.2000272,
-   0.1712259,
-   0.1655539,
-   0.1837783,
-   0.239924,
-   0.3987406};
+   0.09024987,
+   0.08252667,
+   0.07941364,
+   0.07975959,
+   0.08390705,
+   0.09296311,
+   0.1106294};
    gre = new TGraphErrors(7,_fx1033,_fy1033,_fex1033,_fey1033);
    gre->SetName("");
    gre->SetTitle("");
@@ -1298,8 +1298,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1033 = new TH1F("Graph_Graph1033","",100,725,2525);
-   Graph_Graph1033->SetMinimum(1.060979);
-   Graph_Graph1033->SetMaximum(2.061085);
+   Graph_Graph1033->SetMinimum(1.341034);
+   Graph_Graph1033->SetMaximum(1.900963);
    Graph_Graph1033->SetDirectory(0);
    Graph_Graph1033->SetStats(0);
 
@@ -1321,15 +1321,15 @@ void DeltaPrimeFits()
    pol01034->SetFillStyle(0);
    pol01034->SetLineColor(74);
    pol01034->SetLineWidth(2);
-   pol01034->SetChisquare(1.758226);
+   pol01034->SetChisquare(5.378893);
    pol01034->SetNDF(6);
    pol01034->GetXaxis()->SetLabelFont(42);
    pol01034->GetXaxis()->SetTitleOffset(1);
    pol01034->GetXaxis()->SetTitleFont(42);
    pol01034->GetYaxis()->SetLabelFont(42);
    pol01034->GetYaxis()->SetTitleFont(42);
-   pol01034->SetParameter(0,1.622147);
-   pol01034->SetParError(0,0.07885206);
+   pol01034->SetParameter(0,1.667266);
+   pol01034->SetParError(0,0.03288302);
    pol01034->SetParLimits(0,0,0);
    pol01034->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01034);
@@ -1340,15 +1340,15 @@ void DeltaPrimeFits()
    pol01035->SetFillStyle(0);
    pol01035->SetLineColor(74);
    pol01035->SetLineWidth(2);
-   pol01035->SetChisquare(1.758226);
+   pol01035->SetChisquare(5.378893);
    pol01035->SetNDF(6);
    pol01035->GetXaxis()->SetLabelFont(42);
    pol01035->GetXaxis()->SetTitleOffset(1);
    pol01035->GetXaxis()->SetTitleFont(42);
    pol01035->GetYaxis()->SetLabelFont(42);
    pol01035->GetYaxis()->SetTitleFont(42);
-   pol01035->SetParameter(0,1.622147);
-   pol01035->SetParError(0,0.07885206);
+   pol01035->SetParameter(0,1.667266);
+   pol01035->SetParError(0,0.03288302);
    pol01035->SetParLimits(0,0,0);
    pol01035->Draw("same");
    
@@ -1361,13 +1361,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1035[7] = {
-   1.980445,
-   1.839309,
-   1.59827,
-   1.877116,
-   1.797026,
-   1.628225,
-   1.634188};
+   1.729227,
+   1.741711,
+   1.753368,
+   1.747956,
+   1.796136,
+   1.524347,
+   1.787489};
    Double_t _fex1035[7] = {
    0,
    0,
@@ -1377,13 +1377,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1035[7] = {
-   0.3388774,
-   0.2242551,
-   0.1873034,
-   0.178362,
-   0.196041,
-   0.2543833,
-   0.4222882};
+   0.09434937,
+   0.08601349,
+   0.08252691,
+   0.08264503,
+   0.08667814,
+   0.09570616,
+   0.1134094};
    gre = new TGraphErrors(7,_fx1035,_fy1035,_fex1035,_fey1035);
    gre->SetName("");
    gre->SetTitle("");
@@ -1393,8 +1393,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1035 = new TH1F("Graph_Graph1035","",100,725,2525);
-   Graph_Graph1035->SetMinimum(1.101157);
-   Graph_Graph1035->SetMaximum(2.430064);
+   Graph_Graph1035->SetMinimum(1.381415);
+   Graph_Graph1035->SetMaximum(1.948124);
    Graph_Graph1035->SetDirectory(0);
    Graph_Graph1035->SetStats(0);
 
@@ -1416,15 +1416,15 @@ void DeltaPrimeFits()
    pol01036->SetFillStyle(0);
    pol01036->SetLineColor(76);
    pol01036->SetLineWidth(2);
-   pol01036->SetChisquare(2.113137);
+   pol01036->SetChisquare(5.599392);
    pol01036->SetNDF(6);
    pol01036->GetXaxis()->SetLabelFont(42);
    pol01036->GetXaxis()->SetTitleOffset(1);
    pol01036->GetXaxis()->SetTitleFont(42);
    pol01036->GetYaxis()->SetLabelFont(42);
    pol01036->GetYaxis()->SetTitleFont(42);
-   pol01036->SetParameter(0,1.765822);
-   pol01036->SetParError(0,0.08587209);
+   pol01036->SetParameter(0,1.728114);
+   pol01036->SetParError(0,0.03408457);
    pol01036->SetParLimits(0,0,0);
    pol01036->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01036);
@@ -1435,15 +1435,15 @@ void DeltaPrimeFits()
    pol01037->SetFillStyle(0);
    pol01037->SetLineColor(76);
    pol01037->SetLineWidth(2);
-   pol01037->SetChisquare(2.113137);
+   pol01037->SetChisquare(5.599392);
    pol01037->SetNDF(6);
    pol01037->GetXaxis()->SetLabelFont(42);
    pol01037->GetXaxis()->SetTitleOffset(1);
    pol01037->GetXaxis()->SetTitleFont(42);
    pol01037->GetYaxis()->SetLabelFont(42);
    pol01037->GetYaxis()->SetTitleFont(42);
-   pol01037->SetParameter(0,1.765822);
-   pol01037->SetParError(0,0.08587209);
+   pol01037->SetParameter(0,1.728114);
+   pol01037->SetParError(0,0.03408457);
    pol01037->SetParLimits(0,0,0);
    pol01037->Draw("same");
    
@@ -1456,13 +1456,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1037[7] = {
-   1.957588,
-   1.808702,
-   1.56345,
-   1.824012,
-   1.728848,
-   1.538667,
-   1.478257};
+   1.725588,
+   1.733633,
+   1.740085,
+   1.728474,
+   1.767885,
+   1.490764,
+   1.731118};
    Double_t _fex1037[7] = {
    0,
    0,
@@ -1472,13 +1472,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1037[7] = {
-   0.3349664,
-   0.2205234,
-   0.1832227,
-   0.1733161,
-   0.1886033,
-   0.2403913,
-   0.3819943};
+   0.09415083,
+   0.08561453,
+   0.08190168,
+   0.0817239,
+   0.08531479,
+   0.09359764,
+   0.1098329};
    gre = new TGraphErrors(7,_fx1037,_fy1037,_fex1037,_fey1037);
    gre->SetName("");
    gre->SetTitle("");
@@ -1488,8 +1488,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1037 = new TH1F("Graph_Graph1037","",100,725,2525);
-   Graph_Graph1037->SetMinimum(0.9766332);
-   Graph_Graph1037->SetMaximum(2.412184);
+   Graph_Graph1037->SetMinimum(1.351563);
+   Graph_Graph1037->SetMaximum(1.898803);
    Graph_Graph1037->SetDirectory(0);
    Graph_Graph1037->SetStats(0);
 
@@ -1511,15 +1511,15 @@ void DeltaPrimeFits()
    pol01038->SetFillStyle(0);
    pol01038->SetLineColor(77);
    pol01038->SetLineWidth(2);
-   pol01038->SetChisquare(2.704282);
+   pol01038->SetChisquare(6.262634);
    pol01038->SetNDF(6);
    pol01038->GetXaxis()->SetLabelFont(42);
    pol01038->GetXaxis()->SetTitleOffset(1);
    pol01038->GetXaxis()->SetTitleFont(42);
    pol01038->GetYaxis()->SetLabelFont(42);
    pol01038->GetYaxis()->SetTitleFont(42);
-   pol01038->SetParameter(0,1.707536);
-   pol01038->SetParError(0,0.08309574);
+   pol01038->SetParameter(0,1.7065);
+   pol01038->SetParError(0,0.03366261);
    pol01038->SetParLimits(0,0,0);
    pol01038->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01038);
@@ -1530,15 +1530,15 @@ void DeltaPrimeFits()
    pol01039->SetFillStyle(0);
    pol01039->SetLineColor(77);
    pol01039->SetLineWidth(2);
-   pol01039->SetChisquare(2.704282);
+   pol01039->SetChisquare(6.262634);
    pol01039->SetNDF(6);
    pol01039->GetXaxis()->SetLabelFont(42);
    pol01039->GetXaxis()->SetTitleOffset(1);
    pol01039->GetXaxis()->SetTitleFont(42);
    pol01039->GetYaxis()->SetLabelFont(42);
    pol01039->GetYaxis()->SetTitleFont(42);
-   pol01039->SetParameter(0,1.707536);
-   pol01039->SetParError(0,0.08309574);
+   pol01039->SetParameter(0,1.7065);
+   pol01039->SetParError(0,0.03366261);
    pol01039->SetParLimits(0,0,0);
    pol01039->Draw("same");
    
@@ -1551,13 +1551,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1039[7] = {
-   1.828302,
-   1.723664,
-   1.506148,
-   1.768929,
-   1.684068,
-   1.503206,
-   1.446255};
+   1.693787,
+   1.70395,
+   1.712487,
+   1.703236,
+   1.744398,
+   1.473155,
+   1.713842};
    Double_t _fex1039[7] = {
    0,
    0,
@@ -1567,13 +1567,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1039[7] = {
-   0.312844,
-   0.2101552,
-   0.1765074,
-   0.1680822,
-   0.1837182,
-   0.2348512,
-   0.3737248};
+   0.09241567,
+   0.08414869,
+   0.08060272,
+   0.08053061,
+   0.08418133,
+   0.09249209,
+   0.1087368};
    gre = new TGraphErrors(7,_fx1039,_fy1039,_fex1039,_fey1039);
    gre->SetName("");
    gre->SetTitle("");
@@ -1583,8 +1583,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1039 = new TH1F("Graph_Graph1039","",100,725,2525);
-   Graph_Graph1039->SetMinimum(0.9656687);
-   Graph_Graph1039->SetMaximum(2.248007);
+   Graph_Graph1039->SetMinimum(1.335872);
+   Graph_Graph1039->SetMaximum(1.87337);
    Graph_Graph1039->SetDirectory(0);
    Graph_Graph1039->SetStats(0);
 
@@ -1606,15 +1606,15 @@ void DeltaPrimeFits()
    pol01040->SetFillStyle(0);
    pol01040->SetLineColor(79);
    pol01040->SetLineWidth(2);
-   pol01040->SetChisquare(2.334843);
+   pol01040->SetChisquare(6.030281);
    pol01040->SetNDF(6);
    pol01040->GetXaxis()->SetLabelFont(42);
    pol01040->GetXaxis()->SetTitleOffset(1);
    pol01040->GetXaxis()->SetTitleFont(42);
    pol01040->GetYaxis()->SetLabelFont(42);
    pol01040->GetYaxis()->SetTitleFont(42);
-   pol01040->SetParameter(0,1.649814);
-   pol01040->SetParError(0,0.08025165);
+   pol01040->SetParameter(0,1.681486);
+   pol01040->SetParError(0,0.03316767);
    pol01040->SetParLimits(0,0,0);
    pol01040->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01040);
@@ -1625,15 +1625,15 @@ void DeltaPrimeFits()
    pol01041->SetFillStyle(0);
    pol01041->SetLineColor(79);
    pol01041->SetLineWidth(2);
-   pol01041->SetChisquare(2.334843);
+   pol01041->SetChisquare(6.030281);
    pol01041->SetNDF(6);
    pol01041->GetXaxis()->SetLabelFont(42);
    pol01041->GetXaxis()->SetTitleOffset(1);
    pol01041->GetXaxis()->SetTitleFont(42);
    pol01041->GetYaxis()->SetLabelFont(42);
    pol01041->GetYaxis()->SetTitleFont(42);
-   pol01041->SetParameter(0,1.649814);
-   pol01041->SetParError(0,0.08025165);
+   pol01041->SetParameter(0,1.681486);
+   pol01041->SetParError(0,0.03316767);
    pol01041->SetParLimits(0,0,0);
    pol01041->Draw("same");
    
@@ -1646,13 +1646,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1041[7] = {
-   1.644736,
-   1.690739,
-   1.558636,
-   1.903793,
-   1.875641,
-   1.73987,
-   1.789807};
+   1.648464,
+   1.688176,
+   1.72524,
+   1.7435,
+   1.813663,
+   1.556064,
+   1.841689};
    Double_t _fex1041[7] = {
    0,
    0,
@@ -1662,13 +1662,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1041[7] = {
-   0.2814338,
-   0.2061409,
-   0.1826585,
-   0.1808969,
-   0.2046173,
-   0.271826,
-   0.4625017};
+   0.08994283,
+   0.08336966,
+   0.08120298,
+   0.08243432,
+   0.08752394,
+   0.09769748,
+   0.1168481};
    gre = new TGraphErrors(7,_fx1041,_fy1041,_fex1041,_fey1041);
    gre->SetName("");
    gre->SetTitle("");
@@ -1678,8 +1678,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1041 = new TH1F("Graph_Graph1041","",100,725,2525);
-   Graph_Graph1041->SetMinimum(1.234805);
-   Graph_Graph1041->SetMaximum(2.34481);
+   Graph_Graph1041->SetMinimum(1.408349);
+   Graph_Graph1041->SetMaximum(2.008554);
    Graph_Graph1041->SetDirectory(0);
    Graph_Graph1041->SetStats(0);
 
@@ -1701,15 +1701,15 @@ void DeltaPrimeFits()
    pol01042->SetFillStyle(0);
    pol01042->SetLineColor(80);
    pol01042->SetLineWidth(2);
-   pol01042->SetChisquare(2.425128);
+   pol01042->SetChisquare(5.8782);
    pol01042->SetNDF(6);
    pol01042->GetXaxis()->SetLabelFont(42);
    pol01042->GetXaxis()->SetTitleOffset(1);
    pol01042->GetXaxis()->SetTitleFont(42);
    pol01042->GetYaxis()->SetLabelFont(42);
    pol01042->GetYaxis()->SetTitleFont(42);
-   pol01042->SetParameter(0,1.744887);
-   pol01042->SetParError(0,0.08488533);
+   pol01042->SetParameter(0,1.714051);
+   pol01042->SetParError(0,0.03380902);
    pol01042->SetParLimits(0,0,0);
    pol01042->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01042);
@@ -1720,15 +1720,15 @@ void DeltaPrimeFits()
    pol01043->SetFillStyle(0);
    pol01043->SetLineColor(80);
    pol01043->SetLineWidth(2);
-   pol01043->SetChisquare(2.425128);
+   pol01043->SetChisquare(5.8782);
    pol01043->SetNDF(6);
    pol01043->GetXaxis()->SetLabelFont(42);
    pol01043->GetXaxis()->SetTitleOffset(1);
    pol01043->GetXaxis()->SetTitleFont(42);
    pol01043->GetYaxis()->SetLabelFont(42);
    pol01043->GetYaxis()->SetTitleFont(42);
-   pol01043->SetParameter(0,1.744887);
-   pol01043->SetParError(0,0.08488533);
+   pol01043->SetParameter(0,1.714051);
+   pol01043->SetParError(0,0.03380902);
    pol01043->SetParLimits(0,0,0);
    pol01043->Draw("same");
    
@@ -1741,13 +1741,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1043[7] = {
-   1.564333,
-   1.63551,
-   1.521664,
-   1.866385,
-   1.8377,
-   1.69137,
-   1.691948};
+   1.625852,
+   1.668392,
+   1.707459,
+   1.726717,
+   1.795623,
+   1.537722,
+   1.811723};
    Double_t _fex1043[7] = {
    0,
    0,
@@ -1757,13 +1757,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1043[7] = {
-   0.2676757,
-   0.1994072,
-   0.1783257,
-   0.1773423,
-   0.2004783,
-   0.2642487,
-   0.437214};
+   0.08870908,
+   0.08239268,
+   0.08036608,
+   0.08164079,
+   0.08665339,
+   0.09654589,
+   0.1149469};
    gre = new TGraphErrors(7,_fx1043,_fy1043,_fex1043,_fey1043);
    gre->SetName("");
    gre->SetTitle("");
@@ -1773,8 +1773,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1043 = new TH1F("Graph_Graph1043","",100,725,2525);
-   Graph_Graph1043->SetMinimum(1.167291);
-   Graph_Graph1043->SetMaximum(2.216605);
+   Graph_Graph1043->SetMinimum(1.392627);
+   Graph_Graph1043->SetMaximum(1.975219);
    Graph_Graph1043->SetDirectory(0);
    Graph_Graph1043->SetStats(0);
 
@@ -1796,15 +1796,15 @@ void DeltaPrimeFits()
    pol01044->SetFillStyle(0);
    pol01044->SetLineColor(82);
    pol01044->SetLineWidth(2);
-   pol01044->SetChisquare(2.712785);
+   pol01044->SetChisquare(5.919733);
    pol01044->SetNDF(6);
    pol01044->GetXaxis()->SetLabelFont(42);
    pol01044->GetXaxis()->SetTitleOffset(1);
    pol01044->GetXaxis()->SetTitleFont(42);
    pol01044->GetYaxis()->SetLabelFont(42);
    pol01044->GetYaxis()->SetTitleFont(42);
-   pol01044->SetParameter(0,1.696099);
-   pol01044->SetParError(0,0.08254);
+   pol01044->SetParameter(0,1.694266);
+   pol01044->SetParError(0,0.03341904);
    pol01044->SetParLimits(0,0,0);
    pol01044->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01044);
@@ -1815,15 +1815,15 @@ void DeltaPrimeFits()
    pol01045->SetFillStyle(0);
    pol01045->SetLineColor(82);
    pol01045->SetLineWidth(2);
-   pol01045->SetChisquare(2.712785);
+   pol01045->SetChisquare(5.919733);
    pol01045->SetNDF(6);
    pol01045->GetXaxis()->SetLabelFont(42);
    pol01045->GetXaxis()->SetTitleOffset(1);
    pol01045->GetXaxis()->SetTitleFont(42);
    pol01045->GetYaxis()->SetLabelFont(42);
    pol01045->GetYaxis()->SetTitleFont(42);
-   pol01045->SetParameter(0,1.696099);
-   pol01045->SetParError(0,0.08254);
+   pol01045->SetParameter(0,1.694266);
+   pol01045->SetParError(0,0.03341904);
    pol01045->SetParLimits(0,0,0);
    pol01045->Draw("same");
    
@@ -1836,13 +1836,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1045[7] = {
-   1.556885,
-   1.609682,
-   1.486252,
-   1.812022,
-   1.774223,
-   1.622162,
-   1.603479};
+   1.622047,
+   1.659079,
+   1.692775,
+   1.706998,
+   1.770371,
+   1.512264,
+   1.777434};
    Double_t _fex1045[7] = {
    0,
    0,
@@ -1852,13 +1852,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1045[7] = {
-   0.2664014,
-   0.1962581,
-   0.1741758,
-   0.1721768,
-   0.1935534,
-   0.253436,
-   0.4143528};
+   0.08850146,
+   0.08193272,
+   0.07967489,
+   0.0807085,
+   0.08543476,
+   0.09494749,
+   0.1127714};
    gre = new TGraphErrors(7,_fx1045,_fy1045,_fex1045,_fey1045);
    gre->SetName("");
    gre->SetTitle("");
@@ -1868,8 +1868,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1045 = new TH1F("Graph_Graph1045","",100,725,2525);
-   Graph_Graph1045->SetMinimum(1.106256);
-   Graph_Graph1045->SetMaximum(2.100702);
+   Graph_Graph1045->SetMinimum(1.370027);
+   Graph_Graph1045->SetMaximum(1.937495);
    Graph_Graph1045->SetDirectory(0);
    Graph_Graph1045->SetStats(0);
 
@@ -1891,15 +1891,15 @@ void DeltaPrimeFits()
    pol01046->SetFillStyle(0);
    pol01046->SetLineColor(83);
    pol01046->SetLineWidth(2);
-   pol01046->SetChisquare(2.369656);
+   pol01046->SetChisquare(5.608611);
    pol01046->SetNDF(6);
    pol01046->GetXaxis()->SetLabelFont(42);
    pol01046->GetXaxis()->SetTitleOffset(1);
    pol01046->GetXaxis()->SetTitleFont(42);
    pol01046->GetYaxis()->SetLabelFont(42);
    pol01046->GetYaxis()->SetTitleFont(42);
-   pol01046->SetParameter(0,1.65207);
-   pol01046->SetParError(0,0.0803647);
+   pol01046->SetParameter(0,1.676804);
+   pol01046->SetParError(0,0.0330726);
    pol01046->SetParLimits(0,0,0);
    pol01046->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01046);
@@ -1910,15 +1910,15 @@ void DeltaPrimeFits()
    pol01047->SetFillStyle(0);
    pol01047->SetLineColor(83);
    pol01047->SetLineWidth(2);
-   pol01047->SetChisquare(2.369656);
+   pol01047->SetChisquare(5.608611);
    pol01047->SetNDF(6);
    pol01047->GetXaxis()->SetLabelFont(42);
    pol01047->GetXaxis()->SetTitleOffset(1);
    pol01047->GetXaxis()->SetTitleFont(42);
    pol01047->GetYaxis()->SetLabelFont(42);
    pol01047->GetYaxis()->SetTitleFont(42);
-   pol01047->SetParameter(0,1.65207);
-   pol01047->SetParError(0,0.0803647);
+   pol01047->SetParameter(0,1.676804);
+   pol01047->SetParError(0,0.0330726);
    pol01047->SetParLimits(0,0,0);
    pol01047->Draw("same");
    
@@ -1931,13 +1931,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1047[7] = {
-   1.718942,
-   1.750177,
-   1.598753,
-   1.931923,
-   1.874695,
-   1.693935,
-   1.636329};
+   1.674061,
+   1.711983,
+   1.745402,
+   1.757288,
+   1.817524,
+   1.545416,
+   1.802121};
    Double_t _fex1047[7] = {
    0,
    0,
@@ -1947,13 +1947,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1047[7] = {
-   0.2941312,
-   0.2133878,
-   0.18736,
-   0.1835697,
-   0.2045141,
-   0.2646494,
-   0.4228417};
+   0.09133942,
+   0.08454536,
+   0.08215192,
+   0.08308623,
+   0.08771027,
+   0.09702894,
+   0.1143377};
    gre = new TGraphErrors(7,_fx1047,_fy1047,_fex1047,_fey1047);
    gre->SetName("");
    gre->SetTitle("");
@@ -1963,8 +1963,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1047 = new TH1F("Graph_Graph1047","",100,725,2525);
-   Graph_Graph1047->SetMinimum(1.123287);
-   Graph_Graph1047->SetMaximum(2.205693);
+   Graph_Graph1047->SetMinimum(1.401579);
+   Graph_Graph1047->SetMaximum(1.963265);
    Graph_Graph1047->SetDirectory(0);
    Graph_Graph1047->SetStats(0);
 
@@ -1986,15 +1986,15 @@ void DeltaPrimeFits()
    pol01048->SetFillStyle(0);
    pol01048->SetLineColor(85);
    pol01048->SetLineWidth(2);
-   pol01048->SetChisquare(2.095461);
+   pol01048->SetChisquare(5.538528);
    pol01048->SetNDF(6);
    pol01048->GetXaxis()->SetLabelFont(42);
    pol01048->GetXaxis()->SetTitleOffset(1);
    pol01048->GetXaxis()->SetTitleFont(42);
    pol01048->GetYaxis()->SetLabelFont(42);
    pol01048->GetYaxis()->SetTitleFont(42);
-   pol01048->SetParameter(0,1.766831);
-   pol01048->SetParError(0,0.08591936);
+   pol01048->SetParameter(0,1.72341);
+   pol01048->SetParError(0,0.03399139);
    pol01048->SetParLimits(0,0,0);
    pol01048->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01048);
@@ -2005,15 +2005,15 @@ void DeltaPrimeFits()
    pol01049->SetFillStyle(0);
    pol01049->SetLineColor(85);
    pol01049->SetLineWidth(2);
-   pol01049->SetChisquare(2.095461);
+   pol01049->SetChisquare(5.538528);
    pol01049->SetNDF(6);
    pol01049->GetXaxis()->SetLabelFont(42);
    pol01049->GetXaxis()->SetTitleOffset(1);
    pol01049->GetXaxis()->SetTitleFont(42);
    pol01049->GetYaxis()->SetLabelFont(42);
    pol01049->GetYaxis()->SetTitleFont(42);
-   pol01049->SetParameter(0,1.766831);
-   pol01049->SetParError(0,0.08591936);
+   pol01049->SetParameter(0,1.72341);
+   pol01049->SetParError(0,0.03399139);
    pol01049->SetParLimits(0,0,0);
    pol01049->Draw("same");
    
@@ -2026,13 +2026,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1049[7] = {
-   1.61429,
-   1.689076,
-   1.564104,
-   1.898005,
-   1.832121,
-   1.622795,
-   1.480736};
+   1.648906,
+   1.692267,
+   1.729008,
+   1.741406,
+   1.797325,
+   1.519412,
+   1.750585};
    Double_t _fex1049[7] = {
    0,
    0,
@@ -2042,13 +2042,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1049[7] = {
-   0.2762241,
-   0.2059381,
-   0.1832993,
-   0.1803469,
-   0.1998696,
-   0.253535,
-   0.382635};
+   0.08996691,
+   0.0835717,
+   0.08138033,
+   0.08233532,
+   0.08673553,
+   0.09539634,
+   0.111068};
    gre = new TGraphErrors(7,_fx1049,_fy1049,_fex1049,_fey1049);
    gre->SetName("");
    gre->SetTitle("");
@@ -2058,8 +2058,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1049 = new TH1F("Graph_Graph1049","",100,725,2525);
-   Graph_Graph1049->SetMinimum(1.000076);
-   Graph_Graph1049->SetMaximum(2.176377);
+   Graph_Graph1049->SetMinimum(1.378012);
+   Graph_Graph1049->SetMaximum(1.930065);
    Graph_Graph1049->SetDirectory(0);
    Graph_Graph1049->SetStats(0);
 
@@ -2081,15 +2081,15 @@ void DeltaPrimeFits()
    pol01050->SetFillStyle(0);
    pol01050->SetLineColor(86);
    pol01050->SetLineWidth(2);
-   pol01050->SetChisquare(2.701069);
+   pol01050->SetChisquare(5.76104);
    pol01050->SetNDF(6);
    pol01050->GetXaxis()->SetLabelFont(42);
    pol01050->GetXaxis()->SetTitleOffset(1);
    pol01050->GetXaxis()->SetTitleFont(42);
    pol01050->GetYaxis()->SetLabelFont(42);
    pol01050->GetYaxis()->SetTitleFont(42);
-   pol01050->SetParameter(0,1.708788);
-   pol01050->SetParError(0,0.08315633);
+   pol01050->SetParameter(0,1.700295);
+   pol01050->SetParError(0,0.03353692);
    pol01050->SetParLimits(0,0,0);
    pol01050->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01050);
@@ -2100,15 +2100,15 @@ void DeltaPrimeFits()
    pol01051->SetFillStyle(0);
    pol01051->SetLineColor(86);
    pol01051->SetLineWidth(2);
-   pol01051->SetChisquare(2.701069);
+   pol01051->SetChisquare(5.76104);
    pol01051->SetNDF(6);
    pol01051->GetXaxis()->SetLabelFont(42);
    pol01051->GetXaxis()->SetTitleOffset(1);
    pol01051->GetXaxis()->SetTitleFont(42);
    pol01051->GetYaxis()->SetLabelFont(42);
    pol01051->GetYaxis()->SetTitleFont(42);
-   pol01051->SetParameter(0,1.708788);
-   pol01051->SetParError(0,0.08315633);
+   pol01051->SetParameter(0,1.700295);
+   pol01051->SetParError(0,0.03353692);
    pol01051->SetParLimits(0,0,0);
    pol01051->Draw("same");
    
@@ -2121,13 +2121,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1051[7] = {
-   1.60315,
-   1.645149,
-   1.506577,
-   1.817519,
-   1.752095,
-   1.55904,
-   1.447932};
+   1.640824,
+   1.675486,
+   1.704887,
+   1.712095,
+   1.764564,
+   1.492823,
+   1.727289};
    Double_t _fex1051[7] = {
    0,
    0,
@@ -2137,13 +2137,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1051[7] = {
-   0.2743179,
-   0.2005823,
-   0.1765577,
-   0.1726991,
-   0.1911394,
-   0.2435743,
-   0.3741582};
+   0.08952595,
+   0.082743,
+   0.08024499,
+   0.08094946,
+   0.08515452,
+   0.09372695,
+   0.1095899};
    gre = new TGraphErrors(7,_fx1051,_fy1051,_fex1051,_fey1051);
    gre->SetName("");
    gre->SetTitle("");
@@ -2153,8 +2153,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1051 = new TH1F("Graph_Graph1051","",100,725,2525);
-   Graph_Graph1051->SetMinimum(0.9821297);
-   Graph_Graph1051->SetMaximum(2.081862);
+   Graph_Graph1051->SetMinimum(1.354034);
+   Graph_Graph1051->SetMaximum(1.894781);
    Graph_Graph1051->SetDirectory(0);
    Graph_Graph1051->SetStats(0);
 
@@ -2176,15 +2176,15 @@ void DeltaPrimeFits()
    pol01052->SetFillStyle(0);
    pol01052->SetLineColor(88);
    pol01052->SetLineWidth(2);
-   pol01052->SetChisquare(2.346918);
+   pol01052->SetChisquare(5.601593);
    pol01052->SetNDF(6);
    pol01052->GetXaxis()->SetLabelFont(42);
    pol01052->GetXaxis()->SetTitleOffset(1);
    pol01052->GetXaxis()->SetTitleFont(42);
    pol01052->GetYaxis()->SetLabelFont(42);
    pol01052->GetYaxis()->SetTitleFont(42);
-   pol01052->SetParameter(0,1.650584);
-   pol01052->SetParError(0,0.08029023);
+   pol01052->SetParameter(0,1.677273);
+   pol01052->SetParError(0,0.0330818);
    pol01052->SetParLimits(0,0,0);
    pol01052->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01052);
@@ -2195,15 +2195,15 @@ void DeltaPrimeFits()
    pol01053->SetFillStyle(0);
    pol01053->SetLineColor(88);
    pol01053->SetLineWidth(2);
-   pol01053->SetChisquare(2.346918);
+   pol01053->SetChisquare(5.601593);
    pol01053->SetNDF(6);
    pol01053->GetXaxis()->SetLabelFont(42);
    pol01053->GetXaxis()->SetTitleOffset(1);
    pol01053->GetXaxis()->SetTitleFont(42);
    pol01053->GetYaxis()->SetLabelFont(42);
    pol01053->GetYaxis()->SetTitleFont(42);
-   pol01053->SetParameter(0,1.650584);
-   pol01053->SetParError(0,0.08029023);
+   pol01053->SetParameter(0,1.677273);
+   pol01053->SetParError(0,0.0330818);
    pol01053->SetParLimits(0,0,0);
    pol01053->Draw("same");
    
@@ -2216,13 +2216,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1053[7] = {
-   1.823433,
-   1.799129,
-   1.61008,
-   1.915017,
-   1.831195,
-   1.626017,
-   1.523346};
+   1.701893,
+   1.730635,
+   1.754522,
+   1.756324,
+   1.805396,
+   1.524452,
+   1.76239};
    Double_t _fex1053[7] = {
    0,
    0,
@@ -2232,13 +2232,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1053[7] = {
-   0.3120109,
-   0.2193562,
-   0.1886874,
-   0.1819634,
-   0.1997686,
-   0.2540384,
-   0.3936459};
+   0.09285799,
+   0.08546649,
+   0.0825812,
+   0.08304065,
+   0.08712501,
+   0.09571273,
+   0.1118169};
    gre = new TGraphErrors(7,_fx1053,_fy1053,_fex1053,_fey1053);
    gre->SetName("");
    gre->SetTitle("");
@@ -2248,8 +2248,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1053 = new TH1F("Graph_Graph1053","",100,725,2525);
-   Graph_Graph1053->SetMinimum(1.029126);
-   Graph_Graph1053->SetMaximum(2.236018);
+   Graph_Graph1053->SetMinimum(1.382361);
+   Graph_Graph1053->SetMaximum(1.938899);
    Graph_Graph1053->SetDirectory(0);
    Graph_Graph1053->SetStats(0);
 
@@ -2271,15 +2271,15 @@ void DeltaPrimeFits()
    pol01054->SetFillStyle(0);
    pol01054->SetLineColor(89);
    pol01054->SetLineWidth(2);
-   pol01054->SetChisquare(2.196704);
+   pol01054->SetChisquare(5.687915);
    pol01054->SetNDF(6);
    pol01054->GetXaxis()->SetLabelFont(42);
    pol01054->GetXaxis()->SetTitleOffset(1);
    pol01054->GetXaxis()->SetTitleFont(42);
    pol01054->GetYaxis()->SetLabelFont(42);
    pol01054->GetYaxis()->SetTitleFont(42);
-   pol01054->SetParameter(0,1.760854);
-   pol01054->SetParError(0,0.08563893);
+   pol01054->SetParameter(0,1.723444);
+   pol01054->SetParError(0,0.03399303);
    pol01054->SetParLimits(0,0,0);
    pol01054->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01054);
@@ -2290,15 +2290,15 @@ void DeltaPrimeFits()
    pol01055->SetFillStyle(0);
    pol01055->SetLineColor(89);
    pol01055->SetLineWidth(2);
-   pol01055->SetChisquare(2.196704);
+   pol01055->SetChisquare(5.687915);
    pol01055->SetNDF(6);
    pol01055->GetXaxis()->SetLabelFont(42);
    pol01055->GetXaxis()->SetTitleOffset(1);
    pol01055->GetXaxis()->SetTitleFont(42);
    pol01055->GetYaxis()->SetLabelFont(42);
    pol01055->GetYaxis()->SetTitleFont(42);
-   pol01055->SetParameter(0,1.760854);
-   pol01055->SetParError(0,0.08563893);
+   pol01055->SetParameter(0,1.723444);
+   pol01055->SetParError(0,0.03399303);
    pol01055->SetParLimits(0,0,0);
    pol01055->Draw("same");
    
@@ -2311,13 +2311,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1055[7] = {
-   1.765926,
-   1.761219,
-   1.582107,
-   1.879612,
-   1.785692,
-   1.561219,
-   1.407006};
+   1.689938,
+   1.719453,
+   1.742713,
+   1.742146,
+   1.785709,
+   1.500073,
+   1.718558};
    Double_t _fex1055[7] = {
    0,
    0,
@@ -2327,13 +2327,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1055[7] = {
-   0.3021708,
-   0.214734,
-   0.1854092,
-   0.1785992,
-   0.1948046,
-   0.2439147,
-   0.3635824};
+   0.09220569,
+   0.08491426,
+   0.0820254,
+   0.08237031,
+   0.08617494,
+   0.09418213,
+   0.109036};
    gre = new TGraphErrors(7,_fx1055,_fy1055,_fex1055,_fey1055);
    gre->SetName("");
    gre->SetTitle("");
@@ -2343,8 +2343,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1055 = new TH1F("Graph_Graph1055","",100,725,2525);
-   Graph_Graph1055->SetMinimum(0.9409558);
-   Graph_Graph1055->SetMaximum(2.170565);
+   Graph_Graph1055->SetMinimum(1.359292);
+   Graph_Graph1055->SetMaximum(1.918483);
    Graph_Graph1055->SetDirectory(0);
    Graph_Graph1055->SetStats(0);
 
@@ -2366,15 +2366,15 @@ void DeltaPrimeFits()
    pol01056->SetFillStyle(0);
    pol01056->SetLineColor(91);
    pol01056->SetLineWidth(2);
-   pol01056->SetChisquare(2.68448);
+   pol01056->SetChisquare(6.097327);
    pol01056->SetNDF(6);
    pol01056->GetXaxis()->SetLabelFont(42);
    pol01056->GetXaxis()->SetTitleOffset(1);
    pol01056->GetXaxis()->SetTitleFont(42);
    pol01056->GetYaxis()->SetLabelFont(42);
    pol01056->GetYaxis()->SetTitleFont(42);
-   pol01056->SetParameter(0,1.71363);
-   pol01056->SetParError(0,0.08339035);
+   pol01056->SetParameter(0,1.705248);
+   pol01056->SetParError(0,0.03363682);
    pol01056->SetParLimits(0,0,0);
    pol01056->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01056);
@@ -2385,15 +2385,15 @@ void DeltaPrimeFits()
    pol01057->SetFillStyle(0);
    pol01057->SetLineColor(91);
    pol01057->SetLineWidth(2);
-   pol01057->SetChisquare(2.68448);
+   pol01057->SetChisquare(6.097327);
    pol01057->SetNDF(6);
    pol01057->GetXaxis()->SetLabelFont(42);
    pol01057->GetXaxis()->SetTitleOffset(1);
    pol01057->GetXaxis()->SetTitleFont(42);
    pol01057->GetYaxis()->SetLabelFont(42);
    pol01057->GetYaxis()->SetTitleFont(42);
-   pol01057->SetParameter(0,1.71363);
-   pol01057->SetParError(0,0.08339035);
+   pol01057->SetParameter(0,1.705248);
+   pol01057->SetParError(0,0.03363682);
    pol01057->SetParLimits(0,0,0);
    pol01057->Draw("same");
    
@@ -2406,13 +2406,13 @@ void DeltaPrimeFits()
    2125,
    2375};
    Double_t _fy1057[7] = {
-   1.716078,
-   1.707628,
-   1.532958,
-   1.822187,
-   1.734403,
-   1.522753,
-   1.386243};
+   1.67375,
+   1.700069,
+   1.720955,
+   1.719289,
+   1.762493,
+   1.482389,
+   1.703461};
    Double_t _fex1057[7] = {
    0,
    0,
@@ -2422,13 +2422,13 @@ void DeltaPrimeFits()
    0,
    0};
    Double_t _fey1057[7] = {
-   0.2936411,
-   0.2082,
-   0.1796493,
-   0.1731427,
-   0.1892093,
-   0.237905,
-   0.3582172};
+   0.09132247,
+   0.08395701,
+   0.0810013,
+   0.08128962,
+   0.08505461,
+   0.09307182,
+   0.1080781};
    gre = new TGraphErrors(7,_fx1057,_fy1057,_fex1057,_fey1057);
    gre->SetName("");
    gre->SetTitle("");
@@ -2438,8 +2438,8 @@ void DeltaPrimeFits()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1057 = new TH1F("Graph_Graph1057","",100,725,2525);
-   Graph_Graph1057->SetMinimum(0.9298566);
-   Graph_Graph1057->SetMaximum(2.107888);
+   Graph_Graph1057->SetMinimum(1.343494);
+   Graph_Graph1057->SetMaximum(1.893371);
    Graph_Graph1057->SetDirectory(0);
    Graph_Graph1057->SetStats(0);
 
@@ -2461,15 +2461,15 @@ void DeltaPrimeFits()
    pol01058->SetFillStyle(0);
    pol01058->SetLineColor(92);
    pol01058->SetLineWidth(2);
-   pol01058->SetChisquare(2.534192);
+   pol01058->SetChisquare(6.020525);
    pol01058->SetNDF(6);
    pol01058->GetXaxis()->SetLabelFont(42);
    pol01058->GetXaxis()->SetTitleOffset(1);
    pol01058->GetXaxis()->SetTitleFont(42);
    pol01058->GetYaxis()->SetLabelFont(42);
    pol01058->GetYaxis()->SetTitleFont(42);
-   pol01058->SetParameter(0,1.664874);
-   pol01058->SetParError(0,0.08100331);
+   pol01058->SetParameter(0,1.685399);
+   pol01058->SetParError(0,0.03324479);
    pol01058->SetParLimits(0,0,0);
    pol01058->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01058);
@@ -2480,15 +2480,15 @@ void DeltaPrimeFits()
    pol01059->SetFillStyle(0);
    pol01059->SetLineColor(92);
    pol01059->SetLineWidth(2);
-   pol01059->SetChisquare(2.534192);
+   pol01059->SetChisquare(6.020525);
    pol01059->SetNDF(6);
    pol01059->GetXaxis()->SetLabelFont(42);
    pol01059->GetXaxis()->SetTitleOffset(1);
    pol01059->GetXaxis()->SetTitleFont(42);
    pol01059->GetYaxis()->SetLabelFont(42);
    pol01059->GetYaxis()->SetTitleFont(42);
-   pol01059->SetParameter(0,1.664874);
-   pol01059->SetParError(0,0.08100331);
+   pol01059->SetParameter(0,1.685399);
+   pol01059->SetParError(0,0.03324479);
    pol01059->SetParLimits(0,0,0);
    pol01059->Draw("same");
    

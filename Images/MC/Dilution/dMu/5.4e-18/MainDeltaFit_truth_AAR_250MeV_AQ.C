@@ -1,7 +1,7 @@
-void MainDeltaFit()
+void MainDeltaFit_truth_AAR_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:44:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,0.825,2750,2.575);
@@ -20,13 +20,13 @@ void MainDeltaFit()
    2125,
    2375};
    Double_t _fy1001[7] = {
-   1.777986,
-   1.713087,
-   1.521226,
-   1.815184,
-   1.763005,
-   1.625855,
-   1.689658};
+   1.68646,
+   1.685181,
+   1.741288,
+   1.694174,
+   1.683796,
+   1.688238,
+   1.713148};
    Double_t _fex1001[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void MainDeltaFit()
    0,
    0};
    Double_t _fey1001[7] = {
-   0.3042344,
-   0.2088656,
-   0.1782745,
-   0.1724773,
-   0.1923296,
-   0.2540131,
-   0.4366223};
+   0.06483912,
+   0.05433001,
+   0.0490322,
+   0.04654932,
+   0.0471004,
+   0.05107036,
+   0.06014838};
    TGraphErrors *gre = new TGraphErrors(7,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta' [mrad];#delta' [mrad]");
@@ -84,7 +84,7 @@ void MainDeltaFit()
    pol01002->SetFillStyle(0);
    pol01002->SetLineColor(2);
    pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(1.714227);
+   pol01002->SetChisquare(1.060453);
    pol01002->SetNDF(6);
    pol01002->GetXaxis()->SetLabelFont(42);
    pol01002->GetXaxis()->SetTitleOffset(1);
@@ -92,7 +92,7 @@ void MainDeltaFit()
    pol01002->GetYaxis()->SetLabelFont(42);
    pol01002->GetYaxis()->SetTitleFont(42);
    pol01002->SetParameter(0,1.699245);
-   pol01002->SetParError(0,0.08259549);
+   pol01002->SetParError(0,0.01974621);
    pol01002->SetParLimits(0,0,0);
    pol01002->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01002);
@@ -105,7 +105,7 @@ void MainDeltaFit()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","Sim: reco vertices","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Sim: accepted decays","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -115,7 +115,7 @@ void MainDeltaFit()
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    entry=leg->AddEntry("pol0","#LT#delta'#GT = 1.7
-#pm0.08
+#pm0.02
  mrad","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(2);

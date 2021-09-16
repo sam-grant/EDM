@@ -1,7 +1,7 @@
-void MainDeltaFit()
+void MainDeltaFit_trackTruth_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:44:55 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,0.825,2750,2.575);
@@ -105,7 +105,7 @@ void MainDeltaFit()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","Sim: reco vertices","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Sim: truth vertices","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);

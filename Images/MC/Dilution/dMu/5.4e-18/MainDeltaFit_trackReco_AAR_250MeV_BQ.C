@@ -1,7 +1,7 @@
-void MainDeltaFit()
+void MainDeltaFit_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:32:29 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 16 18:46:03 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,0.825,2750,2.575);
@@ -20,13 +20,13 @@ void MainDeltaFit()
    2125,
    2375};
    Double_t _fy1001[7] = {
-   1.777986,
-   1.713087,
-   1.521226,
-   1.815184,
-   1.763005,
-   1.625855,
-   1.689658};
+   1.782055,
+   1.686815,
+   1.564267,
+   1.795576,
+   1.735129,
+   1.673232,
+   1.665638};
    Double_t _fex1001[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void MainDeltaFit()
    0,
    0};
    Double_t _fey1001[7] = {
-   0.3042344,
-   0.2088656,
-   0.1782745,
-   0.1724773,
-   0.1923296,
-   0.2540131,
-   0.4366223};
+   0.2994453,
+   0.2083561,
+   0.1788873,
+   0.17308,
+   0.1923412,
+   0.251327,
+   0.417283};
    TGraphErrors *gre = new TGraphErrors(7,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta' [mrad];#delta' [mrad]");
@@ -84,7 +84,7 @@ void MainDeltaFit()
    pol01002->SetFillStyle(0);
    pol01002->SetLineColor(2);
    pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(1.714227);
+   pol01002->SetChisquare(1.011143);
    pol01002->SetNDF(6);
    pol01002->GetXaxis()->SetLabelFont(42);
    pol01002->GetXaxis()->SetTitleOffset(1);
@@ -92,7 +92,7 @@ void MainDeltaFit()
    pol01002->GetYaxis()->SetLabelFont(42);
    pol01002->GetYaxis()->SetTitleFont(42);
    pol01002->SetParameter(0,1.699245);
-   pol01002->SetParError(0,0.08259549);
+   pol01002->SetParError(0,0.08236014);
    pol01002->SetParLimits(0,0,0);
    pol01002->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01002);

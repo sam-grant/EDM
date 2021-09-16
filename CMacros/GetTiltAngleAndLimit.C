@@ -10,11 +10,126 @@
 
 using namespace std;
 
+string input = "truthAllDecays_AAR_500MeV_AQ";
+//string input = "truth_AAR_250MeV_AQ";
+//string input = "trackTruth_AAR_250MeV_BQ";
+// string input = "trackReco_AAR_250MeV_BQ";
+
+string limit = "5.4e-18";
+//string limit = "1.8e-18"; // only works for "truthAllDecays_AAR_500MeV_AQ"
+
+
 // Do you want to shift by one unit of chi^2 or one unit of sigma?
 bool chiSqrShift = true;
 
 // Global momentum cuts
 double xmin = 750; double xmax = 2500;
+
+int GetStep(string input) {
+
+  int step = 0;
+
+  string key1 = "200MeV";
+  string key2 = "500MeV";
+  string key3 = "250MeV";
+
+  if(input.find(key1) != std::string::npos) { 
+    step = 200;
+  } else if(input.find(key2) != std::string::npos) { 
+    step = 500;
+  } else if(input.find(key3) != std::string::npos) { 
+    step = 250;
+  } else {
+    cerr<<"Step size is unknown";
+  }
+
+  return step;
+
+}
+
+string GetQual(string input) {
+
+  int step = 0;
+
+  string key1 = "AQ";
+  string key2 = "BQ";
+
+  if(input.find(key1) != std::string::npos) { 
+    return "A";//key1;
+  } else if(input.find(key2) != std::string::npos) { 
+    return "B";//key2;
+  } else { 
+    cerr<<"Quality string unknown";
+    return "ERROR";
+  }
+
+}
+
+string GetConfig(string input) {
+
+  string key1 = "trackReco";
+  string key2 = "trackTruth";
+  string key3 = "truth_";
+  string key4 = "truthAllDecays";
+
+  if(input.find(key1) != std::string::npos) { 
+    return key1;
+  } else if(input.find(key2) != std::string::npos) { 
+    return key2;
+  } else if(input.find(key3) != std::string::npos) { 
+    return "truth";//key4;
+  } else if(input.find(key4) != std::string::npos) { 
+    return key4;
+  } else { 
+    cerr<<"Config string unknown";
+    return "ERROR";
+  }
+
+}
+
+string GetTracksOrDecays(string input) { 
+
+  string key1 = "trackReco";
+  string key2 = "trackTruth";
+  string key3 = "truth_";
+  string key4 = "truthAllDecays_";
+
+  if(input.find(key1) != std::string::npos) { 
+    return "Tracks";
+  } else if(input.find(key2) != std::string::npos) { 
+    return "Tracks";
+  } else if(input.find(key3) != std::string::npos) { 
+    return "Decays";
+  } else if(input.find(key4) != std::string::npos) { 
+    return "Decays";
+  } else { 
+    cerr<<"Config string unknown";
+    return "ERROR";
+  }
+
+}
+
+string GetLabel(string input) { 
+
+  string key1 = "trackReco";
+  string key2 = "trackTruth";
+  string key3 = "truth_";
+  string key4 = "truthAllDecays_";
+
+  if(input.find(key1) != std::string::npos) { 
+    return "reco vertices";
+  } else if(input.find(key2) != std::string::npos) { 
+    return "truth vertices";
+  } else if(input.find(key3) != std::string::npos) { 
+    return "accepted decays";
+  } else if(input.find(key4) != std::string::npos) { 
+    return "all decays";
+  } else { 
+    cerr<<"Config string unknown";
+    return "ERROR";
+  }
+
+}
 
 // Standard quadratic fit
 double ParabolaFunc(double *x, double *par) {
@@ -41,7 +156,7 @@ void DrawMahalanobisFunctions(TGraphErrors* gr, vector<TF1*> funcs_, std::string
 	gr->SetMarkerStyle(20);
 	
 	gr->GetXaxis()->SetRangeUser(xmin,xmax);
-	gr->GetYaxis()->SetRangeUser(ymin,ymax);
+	//gr->GetYaxis()->SetRangeUser(ymin,ymax);
 
 	gr->Draw("AP");
 
@@ -192,7 +307,9 @@ void DrawSingleDeltaPrimeFit(TGraphErrors *delta_prime_gr, string title, string 
 	TString delta_prime = Round(delta_prime_gr->GetFunction("pol0")->GetParameter(0), 3.);
 	TString delta_prime_err = Round(delta_prime_gr->GetFunction("pol0")->GetParError(0), 1.);
 
-	l->AddEntry(delta_prime_gr, "Sim: reco vertices");
+	string label = GetLabel(input);
+
+	l->AddEntry(delta_prime_gr, ("Sim: "+label).c_str());
 	l->AddEntry(delta_prime_gr->GetFunction("pol0"), "#LT#delta'#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
 
 	delta_prime_gr->SetTitle(title.c_str());
@@ -203,7 +320,7 @@ void DrawSingleDeltaPrimeFit(TGraphErrors *delta_prime_gr, string title, string 
 	delta_prime_gr->GetXaxis()->CenterTitle(true);
 	delta_prime_gr->GetYaxis()->CenterTitle(true);
 	delta_prime_gr->GetYaxis()->SetMaxDigits(4);
-	delta_prime_gr->GetYaxis()->SetRangeUser(ymin,ymax);
+	// delta_prime_gr->GetYaxis()->SetRangeUser(ymin,ymax);
 
 	delta_prime_gr->SetMarkerStyle(20);
 
@@ -357,11 +474,11 @@ vector<TF1*> MahalanobisFunctions(double confidenceLimit, TGraphErrors *d_EDM_gr
 		}
 	}
     
-  DrawMahalanobisFunctions(d_EDM_gr, mahalanobisFunctions_, "", "../Images/MC/Dilution/dMu/5.4e-18/MahalanobisFunctionsOverlay", xmin, xmax, 0, 0.12);
+  DrawMahalanobisFunctions(d_EDM_gr, mahalanobisFunctions_, "", "../Images/MC/Dilution/dMu/"+limit+"/MahalanobisFunctionsOverlay_"+input, xmin, xmax, 0, 0.12);
 
-  DrawTH3(ellipse3D, "", "../Images/MC/Dilution/dMu/5.4e-18/MahalanobisEllipse3D");
-  DrawTH3(cube3D, "", "../Images/MC/Dilution/dMu/5.4e-18/MahalanobisCube3D");
-  DrawTH3(sphere3D, "", "../Images/MC/Dilution/dMu/5.4e-18/MahalanobisSphere3D");
+  DrawTH3(ellipse3D, "", "../Images/MC/Dilution/dMu/"+limit+"/MahalanobisEllipse3D_"+input);
+  DrawTH3(cube3D, "", "../Images/MC/Dilution/dMu/"+limit+"/MahalanobisCube3D_"+input);
+  DrawTH3(sphere3D, "", "../Images/MC/Dilution/dMu/"+limit+"/MahalanobisSphere3D_"+input);
 
   GetChiSquare(mahalanobisFunctions_);
 
@@ -370,6 +487,9 @@ vector<TF1*> MahalanobisFunctions(double confidenceLimit, TGraphErrors *d_EDM_gr
 }
 
 TGraphErrors *GetDeltaPrimeGraph(TGraphErrors *gr_A_EDM, TF1 *dilutionFunc) { // , double xmin, double xmax) { 
+
+		cout<<gr_A_EDM<<endl;
+		cout<<dilutionFunc<<endl;		
 
 		TGraphErrors *gr_delta_prime = new TGraphErrors();
 
@@ -455,7 +575,7 @@ void DrawDeltaPrimeHist(TH1D *hist, std::string title, std::string fname) {
 	hist->SetTitle(title.c_str());
 
 	hist->SetStats(0);
-	// gStyle->SetOptStat(2210);
+	//gStyle->SetOptStat(2210);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -464,12 +584,32 @@ void DrawDeltaPrimeHist(TH1D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
-	//hist->SetLineWidth(3);
+	hist->SetLineWidth(3);
 	hist->SetLineColor(1);
+
+	TPaveText *names = new TPaveText(0.57,0.75,0.69,0.89,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("#LT#delta'#GT [mrad]"); // +SciNotation(double(N))); 
+	names->AddText("#sigma_{#delta'} [mrad]"); //+SciNotation(chi2ndf));
+
+	TPaveText *values = new TPaveText(0.72,0.75,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(Round(hist->GetMean(),4)+"#pm"+Round(hist->GetMeanError(),1)); 
+	values->AddText(Round(hist->GetRMS(),2)+"#pm"+Round(hist->GetRMSError(),1)); 
+
+	names->SetTextSize(24);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(24);
 
 	//c->SetRightMargin(0.13);
 
 	hist->Draw("HIST");
+	names->Draw("SAME");
+	values->Draw("SAME");
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -513,19 +653,31 @@ double GetLimit(double delta_prime) {
 
 int main() { 
 
+	cout<<"\n***************************** Processing input configuration *****************************\n"<<endl;
+
+	string config = GetConfig(input);
+	int step = GetStep(input);
+	string qual = GetQual(input);
+	string tracksOrDecays = GetTracksOrDecays(input);
+
+	cout<<"Running "<<input<<" with...\nconfig : "<<config<<"\nstep : "<<step<<"\nqual : "<<qual<<"\ntype : "<<tracksOrDecays<<endl;
+
 	cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
-	TString A_EDM_fileName = "../Plots/MC/dMu/5.4e-18/fits/dMuSim_unblinded_trackReco_AAR_250MeV_BQ.root";
+	TString A_EDM_fileName = "../Plots/MC/dMu/"+limit+"/fits/dMuSim_unblinded_"+config+"_AAR_"+to_string(step)+"MeV_"+qual+"Q.root";
 	TFile *A_EDM_file = TFile::Open(A_EDM_fileName);
 
 	// Get A_EDM vs p graph
-	TString A_EDM_grName = "MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p"; 
+	TString A_EDM_grName = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
+	if(tracksOrDecays=="Tracks") A_EDM_grName += "S0S12S18_A_vs_p"; 
+	else if(tracksOrDecays=="Decays") A_EDM_grName += "A_vs_p"; 
+
 	TGraphErrors *A_EDM_gr= (TGraphErrors*)A_EDM_file->Get(A_EDM_grName);
 
 	// Get dilution curve
 	TString d_EDM_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
 	TFile *d_EDM_file = TFile::Open(d_EDM_fileName);
-	TString d_EDM_grName = "DilutionFits/B/Tracks/250MeV/d_vs_p/trackReco";
+	TString d_EDM_grName = "DilutionFits/"+qual+"/"+tracksOrDecays+"/"+to_string(step)+"MeV/d_vs_p/"+config;
 	TGraphErrors *d_EDM_gr = (TGraphErrors*)d_EDM_file->Get(d_EDM_grName);
 	TF1 *d_EDM_fit = d_EDM_gr->GetFunction("ParabolaFunc");
 
@@ -564,7 +716,7 @@ int main() {
 	cout<<"\n***************************** Getting main delta prime fit *****************************\n"<<endl;
 
 	TGraphErrors *main_delta_prime_gr = GetDeltaPrimeGraph(A_EDM_gr, d_EDM_refit);
-	DrawSingleDeltaPrimeFit(main_delta_prime_gr, ";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta' [mrad];#delta' [mrad]", "../Images/MC/Dilution/dMu/5.4e-18/MainDeltaFit", 1.0, 2.4, 0.11, 0.75, 0.59, 0.89);
+	DrawSingleDeltaPrimeFit(main_delta_prime_gr, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad];#delta' [mrad]", "../Images/MC/Dilution/dMu/"+limit+"/MainDeltaFit_"+input, 1.0, 2.4, 0.11, 0.75, 0.59, 0.89);
 
 	cout<<"\n***************************** Calculating Mahalanobis distances *****************************\n"<<endl;
 
@@ -582,7 +734,7 @@ int main() {
 
 	vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mahalanobisFunctions_, A_EDM_gr);
 
-	DrawAllDeltaFits(deltaPrimeFits_, names_, ";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta' [mrad]", "../Images/MC/Dilution/dMu/5.4e-18/DeltaPrimeFits", 0.85, 3.5);
+	DrawAllDeltaFits(deltaPrimeFits_, names_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeFits_"+input, 0, 3.5);
 	
 	cout<<"\n***************************** Generating histogram of delta primes *****************************"<<endl;
 
@@ -601,8 +753,9 @@ int main() {
 
 	TH1D *h_deltaPrime = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
 
-	DrawDeltaPrimeHist(h_deltaPrime, ";#delta' [mrad];Mahalanobis distances", "../Images/MC/Dilution/dMu/5.4e-18/DeltaPrimeHist");
+	DrawDeltaPrimeHist(h_deltaPrime, ";#delta' [mrad];Mahalanobis distances", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeHist_"+input);
 
+	double delta_prime_mean = h_deltaPrime->GetMean();
 	double delta_prime_rms = h_deltaPrime->GetRMS(); 
 	double delta_prime_rms_err = h_deltaPrime->GetRMSError();
 
@@ -610,11 +763,21 @@ int main() {
 
 	cout<<"\n***************************** Calculating limit *****************************"<<endl;
 
-	double d_mu = GetLimit(main_delta_prime_gr->GetFunction("pol0")->GetParameter(0));
+	double d_mu_1 = GetLimit(main_delta_prime_gr->GetFunction("pol0")->GetParameter(0));
 	double d_mu_err_1 = GetLimit(main_delta_prime_gr->GetFunction("pol0")->GetParError(0));//(0)delta_prime_rms);
+
+	double d_mu_2 = GetLimit(delta_prime_mean);
 	double d_mu_err_2 = GetLimit(delta_prime_rms);//main_delta_prime_gr->GetFunction("pol0")->GetParError(0));
 
-	cout<<"\nd_Mu = "<<d_mu<<"±"<<d_mu_err_1<<"±"<<d_mu_err_2<<" ecm\n"<<endl;
+	cout<<"\n *** Limits ***"<<endl;
+
+	cout<<"dMu = "<<d_mu_1<<"±"<<d_mu_err_2<<endl;
+
+/*	cout<<"dMu as the mean of fits distributed by the Mahalanobis distance = "<<d_mu_1<<" ecm"<<endl;
+	cout<<"dMu from the minimum chi^2 = "<<d_mu_2<<endl;
+
+	cout<<"Uncertainty Limit from fit alone *** d_Mu = "<<d_mu_1<<"±"<<d_mu_err_1<<" ecm\n"<<endl;
+	cout<<"Limit from distribution *** d_Mu = "<<d_mu_2<<"±"<<d_mu_err_2<<" ecm\n"<<endl;*/
 
 	cout<<"\n***************************** Done *****************************"<<endl;
 
