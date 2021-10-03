@@ -606,7 +606,7 @@ void DrawRecoVertexFit(TFile *input, string fname, double ymin, double ymax) {
    values->SetTextAlign(33);
    values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
    values->AddText("(-6#pm2)#times10^{-8}");//SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0)));
-   values->AddText("(1.6#pm0.8)#times10^{-5}");//Round(fit->GetParameter(1),2)+"#pm"+SciNotation(fit->GetParError(1)));
+   values->AddText("(1.6#pm0.6)#times10^{-4}");//Round(fit->GetParameter(1),2)+"#pm"+SciNotation(fit->GetParError(1)));
    values->AddText(Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));
 
    names->SetTextSize(26);
@@ -637,8 +637,12 @@ int main() {
 
    bool fit = true;
    bool corr = false;
+   bool write = false;//false;
 
-   string fname = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+   string fname = "";
+   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+   else if(!write) fname += "../Plots/MC/dMu/Dilution/tmp.root";
+
    TFile *output = new TFile(fname.c_str(), "RECREATE");
 
    RunAEDM("truthAllDecays_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
@@ -655,7 +659,6 @@ int main() {
    RunAEDM("trackReco_AAR_250MeV_BQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackTruth_AAR_250MeV_BQ", corr, fit, 0, 0.15, output); 
 
-   
    cout<<"\n****************** Drawing ******************"<<endl;
 
    DrawAllGraphs(output, "../Images/MC/Dilution/dMu/5.4e-18/AllGraphs", -0.1,0.25);
@@ -668,7 +671,6 @@ int main() {
    DrawAllFits(output, "../Images/MC/Dilution/dMu/5.4e-18/AllFits", 0, 0.225);
 
    DrawRecoVertexFit(output, "../Images/MC/Dilution/dMu/5.4e-18/RecoVertexFit", 0, 0.12);
-
 
    output->Write();
    output->Close();

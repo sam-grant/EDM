@@ -1,7 +1,7 @@
 void DeltaPrimeHist_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:46:04 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 30 16:30:27 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,16 +10,19 @@ void DeltaPrimeHist_trackReco_AAR_250MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__4 = new TH1D("h__4","",24,1.464264,1.960027);
-   h__4->SetBinContent(8,1);
-   h__4->SetBinContent(9,5);
-   h__4->SetBinContent(10,3);
-   h__4->SetBinContent(11,3);
-   h__4->SetBinContent(12,4);
+   TH1D *h__4 = new TH1D("h__4","",29,1.429856,2.013262);
+   h__4->SetBinContent(7,1);
+   h__4->SetBinContent(8,3);
+   h__4->SetBinContent(9,4);
+   h__4->SetBinContent(10,1);
+   h__4->SetBinContent(12,3);
    h__4->SetBinContent(13,2);
-   h__4->SetBinContent(14,4);
-   h__4->SetBinContent(15,3);
+   h__4->SetBinContent(14,2);
+   h__4->SetBinContent(15,1);
    h__4->SetBinContent(16,1);
+   h__4->SetBinContent(18,4);
+   h__4->SetBinContent(20,3);
+   h__4->SetBinContent(22,1);
    h__4->SetEntries(26);
    h__4->SetStats(0);
    h__4->SetLineWidth(3);
@@ -55,11 +58,11 @@ void DeltaPrimeHist_trackReco_AAR_250MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("1.698
-#pm0.009
+   pt_LaTex = pt->AddText("1.695
+#pm0.02
 ");
-   pt_LaTex = pt->AddText("0.048
-#pm0.007
+   pt_LaTex = pt->AddText("0.089
+#pm0.01
 ");
    pt->Draw();
    c->Modified();

@@ -31,17 +31,24 @@ TMath::Prob(r2,nPars) tells you the probablity that the chi^2 drawn from the gam
 
     bool stop = false;
     double oneChiSqrCL = 0; 
+
+    TH1D *h1 = new TH1D("h1","",100,0,4);
+
     while(TMath::Prob(r2,nPars) > CL){
+
       r2 += 0.00001; // why 0.00001?
+    
       
+
       if(r2 >= 1.0 && !stop) {
       	oneChiSqrCL = TMath::Prob(r2,nPars);
       	stop = true;
       }
+
     }
 
-	cout<<"The Mahalanobis distance "<<r2<<" provides the threshold below which "<<(1-CL)*100<<"% of the points reside (CL = "<<CL<<") for a "<<nPars<<" parameter function.\n";
-	cout<<"This is equivilant to a shift in the chi^2 of "<<pow(r2,2)<<endl;	
+	cout<<"The Mahalanobis distance "<<sqrt(r2)<<" provides the threshold below which "<<(1-CL)*100<<"% of the points reside (CL = "<<CL<<") for a "<<nPars<<" parameter function.\n";
+	cout<<"This is equivilant to a shift in the chi^2 of "<<r2<<endl;	
 	cout<<"The equvilant threshold for a 1 unit chi^2 shift is "<<(1-oneChiSqrCL)*100<<"% or a CL of "<<oneChiSqrCL<<endl;
 
 	return;

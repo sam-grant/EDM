@@ -1,10 +1,10 @@
 void MainDeltaFit_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:46:03 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 30 16:30:25 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(500,0.825,2750,2.575);
+   c->Range(500,0.9375,2750,2.5625);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -50,7 +50,7 @@ void MainDeltaFit_trackReco_AAR_250MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,725,2525);
-   Graph_Graph1001->SetMinimum(1);
+   Graph_Graph1001->SetMinimum(1.1);
    Graph_Graph1001->SetMaximum(2.4);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);

@@ -1,7 +1,7 @@
 void AllGraphs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 15:10:07 2021) by ROOT version 6.24/04
+//=========  (Wed Sep 29 12:24:59 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-413.4375,-0.14375,3405.938,0.29375);

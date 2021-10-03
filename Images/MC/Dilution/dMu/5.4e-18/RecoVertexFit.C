@@ -1,7 +1,7 @@
 void RecoVertexFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 15:10:08 2021) by ROOT version 6.24/04
+//=========  (Wed Sep 29 12:25:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,-0.015,2750,0.135);
@@ -411,7 +411,7 @@ void RecoVertexFit()
    pt_LaTex = pt->AddText("0.253
 ");
    pt_LaTex = pt->AddText("(-6#pm2)#times10^{-8}");
-   pt_LaTex = pt->AddText("(1.6#pm0.8)#times10^{-5}");
+   pt_LaTex = pt->AddText("(1.6#pm0.6)#times10^{-4}");
    pt_LaTex = pt->AddText("-0.03
 #pm0.05
 ");

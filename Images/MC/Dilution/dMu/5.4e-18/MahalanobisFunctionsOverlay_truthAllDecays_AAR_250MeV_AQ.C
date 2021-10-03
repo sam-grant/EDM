@@ -1,10 +1,10 @@
 void MahalanobisFunctionsOverlay_truthAllDecays_AAR_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:43:39 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 30 10:32:46 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(492.8226,-0.01959265,2809.597,0.2539716);
+   c->Range(492.8226,-0.015,2809.597,0.135);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -71,8 +71,8 @@ void MahalanobisFunctionsOverlay_truthAllDecays_AAR_250MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_truthAllDecays1003 = new TH1F("Graph_truthAllDecays1003","",100,0,3150);
-   Graph_truthAllDecays1003->SetMinimum(0.007763774);
-   Graph_truthAllDecays1003->SetMaximum(0.2266151);
+   Graph_truthAllDecays1003->SetMinimum(0);
+   Graph_truthAllDecays1003->SetMaximum(0.12);
    Graph_truthAllDecays1003->SetDirectory(0);
    Graph_truthAllDecays1003->SetStats(0);
 
@@ -3648,8 +3648,8 @@ void MahalanobisFunctionsOverlay_truthAllDecays_AAR_250MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_truthAllDecays10031005 = new TH1F("Graph_Graph_truthAllDecays10031005","",100,0,3150);
-   Graph_Graph_truthAllDecays10031005->SetMinimum(0.007763774);
-   Graph_Graph_truthAllDecays10031005->SetMaximum(0.2266151);
+   Graph_Graph_truthAllDecays10031005->SetMinimum(0);
+   Graph_Graph_truthAllDecays10031005->SetMaximum(0.12);
    Graph_Graph_truthAllDecays10031005->SetDirectory(0);
    Graph_Graph_truthAllDecays10031005->SetStats(0);
 

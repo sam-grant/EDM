@@ -1,7 +1,7 @@
 void MahalanobisEllipse3D_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:46:04 2021) by ROOT version 6.24/04
+//=========  (Thu Sep 30 16:30:25 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,27 +12,32 @@ void MahalanobisEllipse3D_trackReco_AAR_250MeV_BQ()
    c->SetFrameBorderMode(0);
    
    TH3D *ellipse3D__1 = new TH3D("ellipse3D__1","",27,-8.93e-08,-2.28e-08,27,5.25e-05,0.000272258,27,-0.113345,0.0541603);
-   ellipse3D__1->SetBinContent(6476,1);
-   ellipse3D__1->SetBinContent(6503,1);
-   ellipse3D__1->SetBinContent(7288,1);
-   ellipse3D__1->SetBinContent(7289,1);
-   ellipse3D__1->SetBinContent(8129,1);
-   ellipse3D__1->SetBinContent(8130,1);
-   ellipse3D__1->SetBinContent(8941,1);
-   ellipse3D__1->SetBinContent(9783,2);
-   ellipse3D__1->SetBinContent(10541,2);
+   ellipse3D__1->SetBinContent(813,1);
+   ellipse3D__1->SetBinContent(2411,1);
+   ellipse3D__1->SetBinContent(3196,1);
+   ellipse3D__1->SetBinContent(4064,1);
+   ellipse3D__1->SetBinContent(4878,1);
+   ellipse3D__1->SetBinContent(4905,1);
+   ellipse3D__1->SetBinContent(6529,1);
+   ellipse3D__1->SetBinContent(7343,1);
+   ellipse3D__1->SetBinContent(8184,1);
+   ellipse3D__1->SetBinContent(8859,1);
+   ellipse3D__1->SetBinContent(8888,1);
+   ellipse3D__1->SetBinContent(10541,1);
    ellipse3D__1->SetBinContent(11353,1);
-   ellipse3D__1->SetBinContent(11382,1);
-   ellipse3D__1->SetBinContent(13006,1);
    ellipse3D__1->SetBinContent(13035,1);
-   ellipse3D__1->SetBinContent(13847,2);
-   ellipse3D__1->SetBinContent(14605,2);
-   ellipse3D__1->SetBinContent(15447,1);
-   ellipse3D__1->SetBinContent(16258,1);
-   ellipse3D__1->SetBinContent(16259,2);
-   ellipse3D__1->SetBinContent(17099,1);
-   ellipse3D__1->SetBinContent(17885,1);
-   ellipse3D__1->SetBinContent(17912,1);
+   ellipse3D__1->SetBinContent(13847,1);
+   ellipse3D__1->SetBinContent(15500,1);
+   ellipse3D__1->SetBinContent(15529,1);
+   ellipse3D__1->SetBinContent(16204,1);
+   ellipse3D__1->SetBinContent(17045,1);
+   ellipse3D__1->SetBinContent(17859,1);
+   ellipse3D__1->SetBinContent(19483,1);
+   ellipse3D__1->SetBinContent(19510,1);
+   ellipse3D__1->SetBinContent(20324,1);
+   ellipse3D__1->SetBinContent(21192,1);
+   ellipse3D__1->SetBinContent(21977,1);
+   ellipse3D__1->SetBinContent(23604,1);
    ellipse3D__1->SetEntries(26);
    ellipse3D__1->SetStats(0);
 

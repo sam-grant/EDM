@@ -5,6 +5,7 @@
 #include "RootInclude.h"
 
 std::string config = "5.4e-18";
+//std::string config = "1.8e-19";
 
 // std::string qual = "trackReco_WORLD_200MeV_AQ";
 // std::string qual = "trackReco_WORLD_500MeV_AQ";
@@ -30,8 +31,15 @@ std::string config = "5.4e-18";
 //std::string qual = "trackTruth_AAR_250MeV_AQ";
 //std::string qual = "trackReco_AAR_250MeV_AQ";
 
+//std::string qual = "trackReco_AAR_250MeV_AQ";
+//std::string qual = "trackTruth_AAR_250MeV_AQ";
+
 //std::string qual = "trackTruth_AAR_250MeV_BQ";
-std::string qual = "trackReco_AAR_250MeV_BQ";
+//std::string qual = "trackReco_AAR_250MeV_BQ";
+
+//std::string qual = "trackReco2_AAR_250MeV_AQ";
+//std::string qual = "trackReco2_AAR_250MeV_BQ";
+std::string qual = "trackReco2_AAR_250MeV_CQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -137,12 +145,15 @@ string GetQualString() {
 
   string key1 = "AQ";
   string key2 = "BQ";
+  string key3 = "CQ";
 
   if(qual.find(key1) != std::string::npos) { 
     return "A";//key1;
   } else if(qual.find(key2) != std::string::npos) { 
     return "B";//key2;
-  } else { 
+  } else if(qual.find(key3) != std::string::npos) { 
+    return "C";//key2;
+  }else { 
     cerr<<"Quality string unknown";
     return "ERROR";
   }
@@ -190,6 +201,8 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, bo
   double scale = 0.;
   if(step == 200) scale = 0.05;
   else if(step == 500) scale = 0.125;
+  else if(step == 250) scale = 0.05;
+
   double offset = (xmax - xmin) * scale;
   xmin = xmin - offset; 
   xmax = xmax + offset;
@@ -247,6 +260,7 @@ double GetPhase(TFile *input) {
 
 }
 
+// This procedure is redundant - not the right place for it
 double GetDilution(double p) { 
 
   // Get dilution fit
@@ -331,7 +345,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
   TGraphErrors* AOverMaxDiff_vs_p_[n_cut_config];
 
   //  ============ Dilution corrected! ============
-  TGraphErrors* delta_A_vs_p_[n_cut_config];
+  //TGraphErrors* delta_A_vs_p_[n_cut_config];
 
   //}
   int step = GetStep();
@@ -366,8 +380,8 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
     vector<double> AOverMaxDiff_[n_cut_config];
     vector<double> e_AOverMaxDiff_[n_cut_config];
 
-    vector<double> delta_A_[n_cut_config];
-    vector<double> e_delta_A_[n_cut_config];
+    //vector<double> delta_A_[n_cut_config];
+    //vector<double> e_delta_A_[n_cut_config];
 
     string stn = stns[i_stn]; // name = names_.at(i_stn);
 
@@ -501,7 +515,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
           AOverMaxDiff_[i_cut_config].push_back(AOverMaxDiff);
           e_AOverMaxDiff_[i_cut_config].push_back(e_AOverMaxDiff);
 
-          if(p>750 && p<2500) {
+/*          if(p>750 && p<2500) {
             double d_EDM = GetDilution(p);
             delta_A_[i_cut_config].push_back( A_[i_cut_config].at(count) / d_EDM );
             e_delta_A_[i_cut_config].push_back( eA_[i_cut_config].at(count) / d_EDM );
@@ -509,7 +523,7 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
               delta_A_[i_cut_config].push_back( 0.);//A_[i_cut_config].at(count) / d_EDM );
               e_delta_A_[i_cut_config].push_back( 0.);//eA_[i_cut_config].at(count) / d_EDM );
 
-          }
+          }*/
 
         }
 
@@ -576,10 +590,10 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output, bool fullFit, bool extr
       // Dilution corrected
 
       // Correction
-      delta_A_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], delta_A_[i_cut_config], ep_[i_cut_config], e_delta_A_[i_cut_config]);
-      DrawScanGraph(delta_A_vs_p_[i_cut_config], ";p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+stn+"_"+fitType+"_delta_A_vs_p_"+qual).c_str(), false);
-      delta_A_vs_p_[i_cut_config]->SetName("delta_A_vs_p");
-      delta_A_vs_p_[i_cut_config]->Write();
+      //delta_A_vs_p_[i_cut_config] = GenerateTGraphErrors(p_[i_cut_config], delta_A_[i_cut_config], ep_[i_cut_config], e_delta_A_[i_cut_config]);
+      //DrawScanGraph(delta_A_vs_p_[i_cut_config], ";p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", ("../Images/MC/dMuSim/"+config+"/Unblinded/MomBinnedAna/"+cuts_configs[i_cut_config]+"/"+stn+"_"+fitType+"_delta_A_vs_p_"+qual).c_str(), false);
+      //delta_A_vs_p_[i_cut_config]->SetName("delta_A_vs_p");
+      //delta_A_vs_p_[i_cut_config]->Write();
 
     }
 

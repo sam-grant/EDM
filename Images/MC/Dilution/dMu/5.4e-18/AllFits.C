@@ -1,7 +1,7 @@
 void AllFits()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 15:10:08 2021) by ROOT version 6.24/04
+//=========  (Wed Sep 29 12:25:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500.0625,-0.028125,2744.438,0.253125);
