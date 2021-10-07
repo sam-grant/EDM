@@ -35,11 +35,11 @@ std::string config = "5.4e-18";
 //std::string qual = "trackTruth_AAR_250MeV_AQ";
 
 //std::string qual = "trackTruth_AAR_250MeV_BQ";
-//std::string qual = "trackReco_AAR_250MeV_BQ";
+std::string qual = "trackReco_AAR_250MeV_BQ";
 
 //std::string qual = "trackReco2_AAR_250MeV_AQ";
 //std::string qual = "trackReco2_AAR_250MeV_BQ";
-std::string qual = "trackReco2_AAR_250MeV_CQ";
+//std::string qual = "trackReco2_AAR_250MeV_CQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -300,7 +300,7 @@ void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
 		// Fit
     	FullEDMFit(gr_thetaY_mod, 0, OMEGA_A * 1e3, phi, 0.15, 0);
     	TF1 *func = gr_thetaY_mod->GetFunction("FullEDMFunc");
-    	DrawFullEDMFit(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/fit_dMu_full_"+qual).c_str(), double(nEntries), -0.75, 0.35, true);//,unblind);
+    	DrawFullEDMFit(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/fit_dMu_full_"+qual).c_str(), double(nEntries), -0.7, 0.2, true);//,unblind);
     	gr_thetaY_mod->SetName("dMuFit");
     	gr_thetaY_mod->Write();
     	std::cout<<"A_EDM:\t"<<gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(3)<<std::endl;

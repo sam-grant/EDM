@@ -22,13 +22,12 @@ string limit = "5.4e-18";
 
 // Do you want to shift by one unit of chi^2 or one unit of sigma?
 bool chiSqrShift = false;//true;//true;
-bool mott = false;
+bool mott = true;
 
 // Global momentum cuts
 double xmin = 750; double xmax = 2500;
 
-int GetStep(string input) {
-
+int GetStep() {
   int step = 0;
 
   string key1 = "200MeV";
@@ -49,7 +48,7 @@ int GetStep(string input) {
 
 }
 
-string GetQual(string input) {
+string GetQual() {
 
   int step = 0;
 
@@ -67,7 +66,7 @@ string GetQual(string input) {
 
 }
 
-string GetConfig(string input) {
+string GetConfig() {
 
   string key1 = "trackReco";
   string key2 = "trackTruth";
@@ -89,7 +88,7 @@ string GetConfig(string input) {
 
 }
 
-string GetTracksOrDecays(string input) { 
+string GetTracksOrDecays() { 
 
   string key1 = "trackReco";
   string key2 = "trackTruth";
@@ -111,7 +110,7 @@ string GetTracksOrDecays(string input) {
 
 }
 
-string GetLabel(string input) { 
+string GetLabel() { 
 
   string key1 = "trackReco";
   string key2 = "trackTruth";
@@ -261,7 +260,7 @@ void DrawMottFunctions(vector<TF1*> funcs_, TGraphErrors* gr, std::string title,
 void DrawAllDeltaFits(vector<TGraphErrors*> graphs_, vector<string> names_, std::string title, std::string fname, double ymin, double ymax) { 
 
 	TCanvas *c = new TCanvas("c","c",800,600);
-	c->SetRightMargin(0.125);
+	if(!mott) c->SetRightMargin(0.125);
 
 	graphs_.at(0)->SetTitle(title.c_str());
 	graphs_.at(0)->GetXaxis()->SetTitleSize(.04);
@@ -287,12 +286,16 @@ void DrawAllDeltaFits(vector<TGraphErrors*> graphs_, vector<string> names_, std:
 
 		TF1 *fit = graphs_.at(i)->GetFunction("pol0");
 		//fit->SetLineColor(colours_.at(i));
-		fit->SetLineColor(kRainBow+i*0.1);
+
 		graphs_.at(i)->SetMarkerStyle(20);
 		// graphs_.at(i)->SetMarkerColor(colours_.at(i));
 		// graphs_.at(i)->SetLineColor(colours_.at(i));
-		graphs_.at(i)->SetMarkerColor(kRainBow+i*0.1);
-		graphs_.at(i)->SetLineColor(kRainBow+i*0.1);
+		double colour = kRainBow+i*0.1;
+		if(mott) colour = i*0.1;
+		graphs_.at(i)->SetMarkerColor(colour); // kRainBow+i*0.1);
+		graphs_.at(i)->SetLineColor(colour); // kRainBow+i*0.1);
+		fit->SetLineColor(colour);
+
 		l->AddEntry(graphs_.at(i), (names_.at(i)).c_str());
 
 		if(i==0) graphs_.at(i)->Draw("AP");
@@ -300,7 +303,7 @@ void DrawAllDeltaFits(vector<TGraphErrors*> graphs_, vector<string> names_, std:
 		fit->Draw("same");
 	}
 
-	l->Draw("same");
+	if(!mott) l->Draw("same");
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -343,8 +346,9 @@ void DrawTH3(TH3D *hist, std::string title, std::string fname) {
 	hist->SetLineColor(kBlack);
 
 	hist->SetFillColor(kBlue);
+	hist->Draw();
 	//hist->Draw("LEGO");//ISO");//SCAT L");
-	hist->Draw("BOX");//ISO");//SCAT L");
+	//hist->Draw("BOX");//ISO");//SCAT L");
 	//hist->Draw("ISO");//ISO");//SCAT L");
 
 	//c->SetLogz();
@@ -372,7 +376,7 @@ void DrawSingleDeltaPrimeFit(TGraphErrors *delta_prime_gr, string title, string 
 	TString delta_prime = Round(delta_prime_gr->GetFunction("pol0")->GetParameter(0), 3.);
 	TString delta_prime_err = Round(delta_prime_gr->GetFunction("pol0")->GetParError(0), 1.);
 
-	string label = GetLabel(input);
+	string label = GetLabel();
 
 	l->AddEntry(delta_prime_gr, ("Sim: "+label).c_str());
 	l->AddEntry(delta_prime_gr->GetFunction("pol0"), "#LT#delta'#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
@@ -581,70 +585,78 @@ vector<TF1*> MottFunctions(int nTrials, TGraphErrors *d_EDM_gr, TF1* fit, TFitRe
  	TMatrixD matrixCorr(nPars,nPars);
  	matrixCorr.Transpose(matrixCorrI);
 
-
  	int nDim = nPars;
 
-
- 		// Holder for cov matrix check
- 		double totalCov[nDim][nDim];
-  	for(int i = 0; i < nDim; i++){
-    	for(int j = 0; j < nDim; j++){
-      	totalCov[i][j] = 0;
-   		}
- 		}
+ 	// Holder for cov matrix check
+ 	double totalCov[nDim][nDim];
+  for(int i = 0; i < nDim; i++){
+    for(int j = 0; j < nDim; j++){
+      totalCov[i][j] = 0;
+   	}
+ 	}
                                                                                                                                            
-	
 	// Set random number pointer with seed
 	TRandom3 *randGen = new TRandom3(12345);
+
+	//TH3D *ellipse3D = new TH3D("ellipse3D", ";a [MeV^{-2}];b [MeV^{-1}];d_{0}", 27, -8.93E-08, -2.28E-08, 27, 5.25E-05, 0.000272258, 27, -0.113345, 0.0541603);
+	TH3D *ellipse3D = new TH3D("ellipse3D", ";a [MeV^{-2}];b [MeV^{-1}];d_{0}", 100, -125E-09, -125E-08, 27, 5.25E-05, 0.000272258, 27, -0.113345, 0.0541603);
+ 	TH3D *sphere3D = new TH3D("sphere3D", ";#sigma_{i};#sigma_{j};#sigma_{k}", 100, -5, 5, 100, -5, 5, 100, -5, 5);
 
 	for(int i_trial = 0; i_trial<nTrials; i_trial++) { 
 
 		TF1* mottFunction = new TF1(Form("%d",i_trial), ParabolaFunc, xmin, xmax, 3);
-//			TF1* mottFunction = new TF1("","x*x*[0]+x*[1]+[2]",750,2500,3);
 
 		// Vector of fit parameters
 		TVectorD fitValue(nPars);
 	
 		// Draw random numbers from a gaussian distribution
 		for (int i = 0; i < nPars; i++) fitValue[i] = randGen->Gaus(0,1);
+
+		sphere3D->Fill(fitValue[0],fitValue[1],fitValue[2]);
 		
 		// Scale according correlation
 		fitValue = matrixCorr*fitValue;
-		
+
 		for (int i = 0; i < nPars; i++) {
 			// Scale according to mean values 
 			fitValue[i] *= parErrors[i];//meanVals[i];//parErrors[i];
 			fitValue[i] += meanVals[i];
 			// Set function
 			mottFunction->SetParameter(i, fitValue[i]);
-			cout<<"Parameter "<<i<<": "<<fitValue[i]<<endl;
+			// cout<<"Parameter "<<i<<": "<<fitValue[i]<<endl;
 		}
 
+		ellipse3D->Fill(fitValue[0],fitValue[1],fitValue[2]);
+			
+		
 		mottFunctions_.push_back(mottFunction);
 
-
-
 		for (int i = 0; i < nDim; i++){
-      for (int j = 0; j < nDim; j++){
-        totalCov[i][j] += (fitValue[i]-meanVals[i])*(fitValue[j]-meanVals[j]);
-      }
-    }
-
-
+    	for (int j = 0; j < nDim; j++){
+      	totalCov[i][j] += (fitValue[i]-meanVals[i])*(fitValue[j]-meanVals[j]);
+    	}
+  	}
 
 	}
 
-  	cout << "totalCov:" << endl;
-  	for (int i = 0; i < nDim; i++){
-    	for (int j = 0; j < nDim; j++){
-      	cout << totalCov[i][j]/nTrials << " ";
-    	}
-    	cout << endl;
-  	}
+	cout<<"Correlation matrix:"<<endl;
+	fitResult->GetCorrelationMatrix().Print();
+
+  cout << "totalCov:" << endl;
+  for (int i = 0; i < nDim; i++){
+    for (int j = 0; j < nDim; j++){
+      cout << totalCov[i][j]/nTrials << " ";
+    }
+    cout << endl;
+  }
 
 	fitResult->GetCovarianceMatrix().Print();
 
-  DrawMottFunctions(mottFunctions_, d_EDM_gr, to_string(nTrials)+" trials;Momentum [MeV];d_{EDM}(p)", "../Images/MC/Dilution/dMu/"+limit+"/MottFunctionsOverlay_"+input, xmin, xmax, 0, 0.12);
+	DrawTH3(ellipse3D, "", "../Images/MC/Dilution/dMu/"+limit+"/MottEllipse3D_"+input);
+	DrawTH3(sphere3D, "", "../Images/MC/Dilution/dMu/"+limit+"/MottSphere3D_"+input);
+
+
+  DrawMottFunctions(mottFunctions_, d_EDM_gr, to_string(nTrials)+" trials;p [MeV]: in range p #minus "+to_string(GetStep()/2)+" < p < p #plus "+to_string(GetStep()/2)+" [MeV];d_{EDM}(p)", "../Images/MC/Dilution/dMu/"+limit+"/MottFunctionsOverlay_"+input, xmin, xmax, 0, 0.12);
 
 	return mottFunctions_;	
 
@@ -820,10 +832,10 @@ int main() {
 
 	cout<<"\n***************************** Processing input configuration *****************************\n"<<endl;
 
-	string config = GetConfig(input);
-	int step = GetStep(input);
-	string qual = GetQual(input);
-	string tracksOrDecays = GetTracksOrDecays(input);
+	string config = GetConfig();
+	int step = GetStep();
+	string qual = GetQual();
+	string tracksOrDecays = GetTracksOrDecays();
 
 	cout<<"Running "<<input<<" with...\nconfig : "<<config<<"\nstep : "<<step<<"\nqual : "<<qual<<"\ntype : "<<tracksOrDecays<<endl;
 
@@ -894,7 +906,9 @@ int main() {
 
 	cout<<"\n***************************** Calculating Mott distances *****************************\n"<<endl;
 
-	vector<TF1*> mottFunctions_ = MottFunctions(1e3, d_EDM_gr, d_EDM_refit, d_EDM_fitResult);
+	int nTrials = 1e3;
+	
+	vector<TF1*> mottFunctions_ = MottFunctions(nTrials, d_EDM_gr, d_EDM_refit, d_EDM_fitResult);
 
 	cout<<"\n*TESTING*TESTING*TESTING*TESTING* Overwriting Mahalanobis distances TESTING*TESTING*TESTING*TESTING*\n"<<endl;
 
@@ -907,7 +921,7 @@ int main() {
 
 	vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mahalanobisFunctions_, A_EDM_gr);
 	
-	DrawAllDeltaFits(deltaPrimeFits_, names_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeFits_"+input, 0, 3.5);
+	DrawAllDeltaFits(deltaPrimeFits_, names_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeFits_"+input, 0, 5);
 	
 	cout<<"\n***************************** Generating histogram of delta primes *****************************"<<endl;
 
@@ -920,13 +934,13 @@ int main() {
 		lastVal = val;
 	}
 
-	h_min = h_min-0.2; h_max = h_max+0.2;
+	h_min = h_min-0.5; h_max = h_max+0.5;
 
 	double binWidth = 0.02;
 
 	TH1D *h_deltaPrime = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
 
-	DrawDeltaPrimeHist(h_deltaPrime, ";#delta' [mrad];Mahalanobis distances", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeHist_"+input);
+	DrawDeltaPrimeHist(h_deltaPrime, ";#delta' [mrad];Trials", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeHist_"+input);
 
 	//cout<<"RMS of delta primes = "<<delta_prime_rms<<"±"<<delta_prime_rms_err<<" mrad"<<endl;
 

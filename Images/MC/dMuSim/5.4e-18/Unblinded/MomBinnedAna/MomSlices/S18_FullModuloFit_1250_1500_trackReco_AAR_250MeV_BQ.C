@@ -1,7 +1,7 @@
 void S18_FullModuloFit_1250_1500_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 28 07:56:11 2021) by ROOT version 6.24/04
+//=========  (Wed Oct  6 16:03:23 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-6.25,4.944727,6.25);
@@ -20541,11 +20541,12 @@ void S18_FullModuloFit_1250_1500_trackReco_AAR_250MeV_BQ()
    FullEDMFunc1069->SetParLimits(4,0,0);
    FullEDMFunc1069->Draw("same");
    
-   pt = new TPaveText(0.2,0.3,0.4,0.4,"brNDC");
+   pt = new TPaveText(0.2,0.75,0.4,0.85,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("30 < t [#mus] < 300");
    pt->Draw();
    
    pt = new TPaveText(0.2594724,0.9341608,0.7405276,0.995,"blNDC");

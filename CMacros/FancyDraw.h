@@ -1072,7 +1072,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, doubl
 
   TLegend *leg = new TLegend(0.15,0.15,.65,0.25);
   leg->SetNColumns(2);
-  leg->AddEntry(graph, "Sim   ");
+  leg->AddEntry(graph, "Data   ");
   leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
 
@@ -1099,7 +1099,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, doubl
   TPaveText *cuts = new TPaveText(0.25,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
   cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30.6 < t [#mus] < 305.6");
+  cuts->AddText("30 < t [#mus] < 300");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1262,7 +1262,8 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1+Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
 
-  TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+  // TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+  TPaveText *names = new TPaveText(0.15,0.62,0.20,0.89,"NDC");
 
   names->SetTextAlign(13);
   names->AddText("N"); 
@@ -1272,7 +1273,9 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   names->AddText("A"); 
   names->AddText("#phi [rad]"); 
 
-  TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+	// TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.20,0.62,0.45,0.89,"NDC");
+
   values->SetTextAlign(33);
   values->AddText(SciNotation(double(N))); 
   values->AddText(Round(chi2ndf, 3));
@@ -1282,10 +1285,11 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
   values->AddText(Round(par4, 4)+"#pm"+Round(err4, 1));
 
-  TPaveText *cuts = new TPaveText(0.20,0.65,0.40,0.75,"NDC");
+  // TPaveText *cuts = new TPaveText(0.20,0.65,0.40,0.75,"NDC");
+  TPaveText *cuts = new TPaveText(0.60,0.75,0.80,0.85,"NDC");
   cuts->SetTextAlign(22);
   cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30.6 < t [#mus] < 305.6");
+  cuts->AddText("30 < t [#mus] < 300");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1521,11 +1525,11 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
 	values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
 
-	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
-	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
+	TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
+//	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-//	cuts->AddText("700 < p [MeV] < 2400");
-	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+	cuts->AddText("750 < p [MeV] < 2500");
+	cuts->AddText("30 < t [#mus] < 300");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(26);
 	names->SetTextFont(44);
@@ -1606,7 +1610,8 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	names->AddText("A_{g-2} [mrad]");
 	//names->AddText("#phi");
 	string amplitude;
-	amplitude = "A_{EDM}^{BLIND} [mrad]";
+	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	else if(unblind) amplitude = "A_{EDM} [mrad]";
 	names->AddText(amplitude.c_str());
 	names->AddText("c [mrad]"); 
 
@@ -1623,8 +1628,8 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
 	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("700 < p [MeV] < 2400");
-	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+	cuts->AddText("750 < p [MeV] < 2500");
+	cuts->AddText("30 < t [#mus] < 300");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(22); // 26
 	names->SetTextFont(44);
@@ -1647,15 +1652,15 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	graph->SetMarkerStyle(20); //  Full circle
 	graph->GetYaxis()->SetRangeUser(ymin,ymax);
 
-  	// Hack together x-axis range
-  	int n_points = graph->GetN();
-  	double xmax = graph->GetPointX(n_points-1);// + 50;
-  	double xmin = graph->GetPointX(0);// - 50; 
-  	double offset = (xmax - xmin) * 0.01;
-  	xmin = xmin - offset; 
-  	xmax = xmax + offset;
+  // Hack together x-axis range
+  int n_points = graph->GetN();
+  double xmax = graph->GetPointX(n_points-1);// + 50;
+  double xmin = graph->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.01;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
 
-  	graph->GetXaxis()->SetRangeUser(xmin, xmax);
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
 /*	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);*/
 	graph->Draw("AP");

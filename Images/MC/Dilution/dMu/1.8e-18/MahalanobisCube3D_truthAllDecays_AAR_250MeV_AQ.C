@@ -1,7 +1,7 @@
 void MahalanobisCube3D_truthAllDecays_AAR_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 28 12:52:42 2021) by ROOT version 6.24/04
+//=========  (Wed Oct  6 11:24:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -67,7 +67,7 @@ void MahalanobisCube3D_truthAllDecays_AAR_250MeV_AQ()
    cube3D__2->GetZaxis()->SetTitleSize(0.04);
    cube3D__2->GetZaxis()->SetTitleOffset(1.65);
    cube3D__2->GetZaxis()->SetTitleFont(42);
-   cube3D__2->Draw("BOX");
+   cube3D__2->Draw("");
    c->Modified();
    c->cd();
    c->SetSelected(c);

@@ -3,7 +3,7 @@
 #include "../Blinding/Blinders.hh"
 #include "RootInclude.h"
 
-// Unique for each dataset
+// Currently just using Run1a for everything...
 #include "BlindingStrings/Run1a.h"
 
 using namespace blinding;
@@ -81,7 +81,7 @@ double EDMFunc( double *x, double *p )  {
   return (-p[0] * cos(p[1]* time + p[2]));
 }
 
-TGraphErrors *BlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 
+TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 
 
     int n = gr_thetaY_mod->GetN();
     

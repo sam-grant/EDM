@@ -1,7 +1,7 @@
 void MahalanobisEllipse3D_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 30 16:30:25 2021) by ROOT version 6.24/04
+//=========  (Wed Oct  6 15:05:32 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -67,7 +67,7 @@ void MahalanobisEllipse3D_trackReco_AAR_250MeV_BQ()
    ellipse3D__1->GetZaxis()->SetTitleSize(0.04);
    ellipse3D__1->GetZaxis()->SetTitleOffset(1.65);
    ellipse3D__1->GetZaxis()->SetTitleFont(42);
-   ellipse3D__1->Draw("BOX");
+   ellipse3D__1->Draw("");
    c->Modified();
    c->cd();
    c->SetSelected(c);

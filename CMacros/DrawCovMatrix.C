@@ -6,6 +6,11 @@ void DrawCovMatrix() {
    1 | -1.035e-12   3.487e-09  -2.714e-06
    2 |  7.893e-10  -2.714e-06    0.002177*/
 
+/*     |      0    |      1    |      2    |
+--------------------------------------------
+   0 |          1     -0.9912      0.9563
+   1 |    -0.9912           1     -0.9853
+   2 |     0.9563     -0.9853           1*/
 
 	TH2D *covHist = new TH2D("covHist", "", 3, 0, 2, 3, 0, 2);
 
@@ -27,11 +32,14 @@ void DrawCovMatrix() {
 	covHist->GetYaxis()->SetBinLabel(2, (labels_.at(1)).c_str());
 	covHist->GetYaxis()->SetBinLabel(1, (labels_.at(2)).c_str());
 
-	covHist->SetBinContent(1,3,3.129e-16); covHist->SetBinContent(2,3,-1.035e-12); covHist->SetBinContent(3,3,7.893e-10);
+/*	covHist->SetBinContent(1,3,3.129e-16); covHist->SetBinContent(2,3,-1.035e-12); covHist->SetBinContent(3,3,7.893e-10);
 	covHist->SetBinContent(1,2,-1.035e-12); covHist->SetBinContent(2,2,3.487e-09); covHist->SetBinContent(3,2,-2.714e-06);
-	covHist->SetBinContent(1,1,7.893e-10); covHist->SetBinContent(2,1,-2.714e-06); covHist->SetBinContent(3,1,0.002177);
+	covHist->SetBinContent(1,1,7.893e-10); covHist->SetBinContent(2,1,-2.714e-06); covHist->SetBinContent(3,1,0.002177);*/
 		
-
+	covHist->SetBinContent(1,3,1.); covHist->SetBinContent(2,3,-0.9912); covHist->SetBinContent(3,3,0.9563);
+	covHist->SetBinContent(1,2,-0.9912); covHist->SetBinContent(2,2,1.); covHist->SetBinContent(3,2,-0.9853);
+	covHist->SetBinContent(1,1,0.9563); covHist->SetBinContent(2,1,-0.9853); covHist->SetBinContent(3,1,1.);
+		
 	//}
 	//for(int i = labels_.size()-1; i>-1; i--) covHist->GetXaxis()->SetBinLabel(i+1, (labels_.at(i)).c_str());
 		//covHist->SetBinLabel(i+1, (labels_.at(i)).c_str());
@@ -45,7 +53,7 @@ void DrawCovMatrix() {
 
 	string title = ""; 
 
-	string fname = "../Images/tmp";
+	string fname = "../Images/MC/Dilution/dMu/5.4e-18/CorrelationMatrix_trackReco_AAR_250MeV_BQ";
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 

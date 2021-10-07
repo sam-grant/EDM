@@ -43,7 +43,7 @@ string GetFrame(string qualString) {
 
 string GetDecays(string qualString) {
 
-  if(qualString.find("truthAllDecays_") != std::string::npos || qualString.find("truth_") != std::string::npos) { 
+  if(qualString.find("truthAllDecays_") != std::string::npos || qualString.find("truth_") != std::string::npos || qualString.find("truth2_") != std::string::npos) { 
     return "Decays";
   } else if(qualString.find("trackTruth_") != std::string::npos || qualString.find("trackReco_") != std::string::npos) { 
     return "Tracks";
@@ -60,7 +60,9 @@ string GetConfig(string qualString) {
     return "truthAllDecays";
   } else if(qualString.find("truth_") != std::string::npos) { 
     return "truth";
-  } else if(qualString.find("trackTruth_") != std::string::npos) { // } || qualString.find("trackReco_") != std::string::npos) { 
+  } else if(qualString.find("truth2_") != std::string::npos) { 
+    return "truth2";
+  }else if(qualString.find("trackTruth_") != std::string::npos) { // } || qualString.find("trackReco_") != std::string::npos) { 
     return "trackTruth";
   } else if(qualString.find("trackReco_") != std::string::npos) { 
     return "trackReco";  
@@ -130,6 +132,83 @@ TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
 }
 
+// See "Parameter correlations while curve fitting" - Micheal L. Johnson
+// Really not to sure about this. Seems to reduce correlations by only a tiny amount.
+// Need to discuss this with Motty 
+TGraphErrors *ReduceCorrelations(TGraphErrors *gr, TF1 *fit) { 
+
+  double betaNumerator = 0; double betaDenominator = 0;
+
+  for (int i = 0; i<gr->GetN(); i++) { 
+
+    double chi = gr->GetY()[i];
+    double sigma2 = pow(gr->GetEY()[i],2);
+
+    betaNumerator += (chi/sigma2);
+    betaDenominator += (1/sigma2);
+
+  }
+
+  double beta = betaNumerator/betaDenominator;
+
+  double kappa1Numerator = 0; double kappa1Denominator = 0; 
+  double kappa2NumeratorA = 0; double kappa2NumeratorB = 0; double kappa2Denominator = 0; 
+
+  for (int i = 0; i<gr->GetN(); i++) { 
+
+    double chi = gr->GetY()[i];
+    double sigma2 = pow(gr->GetEY()[i],2);
+
+    kappa1Numerator += ( (chi-beta)*pow(chi,2) ) / sigma2;
+    kappa1Denominator +=  ( (chi-beta)*chi ) / sigma2;
+
+    kappa2NumeratorA += pow(chi,2)/sigma2;
+    kappa2NumeratorB += chi/sigma2;
+    kappa2Denominator += 1/sigma2;
+
+  }
+
+  double kappa1 = kappa1Numerator/kappa1Denominator;
+  double kappa2 = ( kappa2NumeratorA - kappa1*kappa2NumeratorB ) / kappa2Denominator;
+
+  double gamma1 = ( kappa1 + sqrt( pow(kappa1,2) - 4*kappa2) ) / 2;
+  double gamma2 = ( kappa1 - sqrt( pow(kappa1,2) - 4*kappa2) ) / 2;
+
+  double a = fit->GetParameter(0); 
+  double b = fit->GetParameter(1); 
+  double d0 = fit->GetParameter(2); 
+
+  // Define a new TGraphErrors
+  TGraphErrors *new_gr = new TGraphErrors();
+
+  for (int i = 0; i<gr->GetN(); i++) { 
+
+    double chi = gr->GetY()[i];
+    double sigma = gr->GetEY()[i];  
+
+    double p = (chi-beta);
+    double p2 = (chi-gamma1)*(chi-gamma2);
+
+    double ep = (sigma-beta);
+    double ep2 = (sigma-gamma1)*(sigma-gamma2);
+
+    double x = gr->GetX()[i];
+
+    double y = d0 + b*p + a*p2;
+    // Leave uncertainty unchanged for now 
+    double ey = d0 + b*ep + a*ep2;
+
+    new_gr->SetPointX(i, x);
+    //new_gr->SetPointErrorX(i-1, 0);
+    new_gr->SetPointY(i, y);
+    new_gr->SetPointError(i, 0, 0);
+
+  }
+
+  return new_gr;
+
+}
+
 void RunAEDM(string qualString, bool corr, bool fit, double ymin, double ymax, TFile *output) {
 
    int step = GetStep(qualString);
@@ -181,10 +260,35 @@ void RunAEDM(string qualString, bool corr, bool fit, double ymin, double ymax, T
       //else if(decays == "Tracks") {}
 
       ParabolaFit(gr, decays, corr, xmin, xmax);
+
       TF1 *fnc = gr->GetFunction("ParabolaFunc");
 
       cout<<"chisqr/ndf\t"<<fnc->GetChisquare() / fnc->GetNDF()<<endl;
+
+      cout<<"\n *** Getting fit result pointer *** \n"<<endl;
+      TFitResultPtr frp = gr->Fit(fnc,"SR");
+/*
+      cout<<"\n *** Reducing correlations matrix ***\n"<<endl;
+
+      cout<<"Original correlation matrix:"<<endl;
+      frp->GetCorrelationMatrix().Print();
+
+      TGraphErrors *new_gr = ReduceCorrelations(gr,fnc);
+      DrawTGraphErrors(new_gr, "", "../Images/tmp");
+      cout<<"Got new graph "<<new_gr<<endl;
+
+      ParabolaFit(new_gr, decays, corr, -1e6, 1e6);
+
+      TF1 *new_fnc = new_gr->GetFunction("ParabolaFunc");
+  
+      TFitResultPtr new_frp = new_gr->Fit(new_fnc,"SR");
+
+      cout<<"New correlation matrix:"<<endl;
+      new_frp->GetCorrelationMatrix().Print();*/
+
    }
+
+
 
    //graphs_.push_back(gr);
 
@@ -645,7 +749,7 @@ int main() {
 
    TFile *output = new TFile(fname.c_str(), "RECREATE");
 
-   RunAEDM("truthAllDecays_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
+/*   RunAEDM("truthAllDecays_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("truth_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackReco_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackTruth_AAR_500MeV_AQ", corr, fit, 0, 0.15, output); 
@@ -657,9 +761,11 @@ int main() {
    RunAEDM("trackReco_AAR_250MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackTruth_AAR_250MeV_AQ", corr, fit, 0, 0.15, output); 
    RunAEDM("trackReco_AAR_250MeV_BQ", corr, fit, 0, 0.15, output);
-   RunAEDM("trackTruth_AAR_250MeV_BQ", corr, fit, 0, 0.15, output); 
+   RunAEDM("trackTruth_AAR_250MeV_BQ", corr, fit, 0, 0.15, output); */
 
-   cout<<"\n****************** Drawing ******************"<<endl;
+   RunAEDM("truth2_AAR_250MeV_AQ", corr, fit, 0, 0.15, output);
+
+/*   cout<<"\n****************** Drawing ******************"<<endl;
 
    DrawAllGraphs(output, "../Images/MC/Dilution/dMu/5.4e-18/AllGraphs", -0.1,0.25);
    DrawVertexGraphs(output, "../Images/MC/Dilution/dMu/5.4e-18/VertexGraphs_AQ", "A", 0,0.125);
@@ -670,7 +776,7 @@ int main() {
    // This also deals with the integration (needs a seperate function I think)
    DrawAllFits(output, "../Images/MC/Dilution/dMu/5.4e-18/AllFits", 0, 0.225);
 
-   DrawRecoVertexFit(output, "../Images/MC/Dilution/dMu/5.4e-18/RecoVertexFit", 0, 0.12);
+   DrawRecoVertexFit(output, "../Images/MC/Dilution/dMu/5.4e-18/RecoVertexFit", 0, 0.12);*/
 
    output->Write();
    output->Close();

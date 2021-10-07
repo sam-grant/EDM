@@ -1,130 +1,101 @@
 void tmp()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Sep 29 13:11:47 2021) by ROOT version 6.24/04
+//=========  (Tue Oct  5 12:56:26 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.125,-0.02125,1.125,0.19125);
+   c->Range(-393.75,0.1270818,3543.75,0.1270926);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TH1D *__1 = new TH1D("__1","",1,0,1);
-   __1->SetBinContent(1,0.1365693);
-   __1->SetMinimum(0);
-   __1->SetMaximum(0.17);
-   __1->SetEntries(1);
-   __1->SetStats(0);
-   __1->SetLineWidth(3);
-   __1->GetXaxis()->CenterTitle(true);
-   __1->GetXaxis()->SetLabelFont(42);
-   __1->GetXaxis()->SetTitleSize(0.04);
-   __1->GetXaxis()->SetTitleOffset(1.1);
-   __1->GetXaxis()->SetTitleFont(42);
-   __1->GetYaxis()->CenterTitle(true);
-   __1->GetYaxis()->SetNdivisions(4000510);
-   __1->GetYaxis()->SetLabelFont(42);
-   __1->GetYaxis()->SetTitleSize(0.04);
-   __1->GetYaxis()->SetTitleOffset(1.15);
-   __1->GetYaxis()->SetTitleFont(42);
-   __1->GetZaxis()->SetLabelFont(42);
-   __1->GetZaxis()->SetTitleOffset(1);
-   __1->GetZaxis()->SetTitleFont(42);
-   __1->Draw("HIST");
+   Double_t _fx1001[12] = {
+   125,
+   375,
+   625,
+   875,
+   1125,
+   1375,
+   1625,
+   1875,
+   2125,
+   2375,
+   2625,
+   2875};
+   Double_t _fy1001[12] = {
+   0.12709,
+   0.1270908,
+   0.1270899,
+   0.1270904,
+   0.1270903,
+   0.1270901,
+   0.1270894,
+   0.1270888,
+   0.1270878,
+   0.1270866,
+   0.1270853,
+   0.1270836};
+   Double_t _fex1001[12] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1001[12] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   TGraphErrors *gre = new TGraphErrors(12,_fx1001,_fy1001,_fex1001,_fey1001);
+   gre->SetName("");
+   gre->SetTitle("");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
    
-   TH1D *__2 = new TH1D("__2","",1,0,1);
-   __2->SetBinContent(1,0.1227746);
-   __2->SetEntries(1);
-   __2->SetLineColor(2);
-   __2->SetLineWidth(3);
-   __2->GetXaxis()->SetLabelFont(42);
-   __2->GetXaxis()->SetTitleOffset(1);
-   __2->GetXaxis()->SetTitleFont(42);
-   __2->GetYaxis()->SetLabelFont(42);
-   __2->GetYaxis()->SetTitleFont(42);
-   __2->GetZaxis()->SetLabelFont(42);
-   __2->GetZaxis()->SetTitleOffset(1);
-   __2->GetZaxis()->SetTitleFont(42);
-   __2->Draw("HIST SAME");
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,3150);
+   Graph_Graph1001->SetMinimum(0.1270828);
+   Graph_Graph1001->SetMaximum(0.1270915);
+   Graph_Graph1001->SetDirectory(0);
+   Graph_Graph1001->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_Graph1001->SetLineColor(ci);
+   Graph_Graph1001->GetXaxis()->CenterTitle(true);
+   Graph_Graph1001->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1001->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1001->GetYaxis()->CenterTitle(true);
+   Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1001->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1001->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph1001->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph1001->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1001->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1001->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1001->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1001);
    
-   TH1D *__3 = new TH1D("__3","",1,0,1);
-   __3->SetBinContent(1,0.05640595);
-   __3->SetEntries(1);
-   __3->SetLineColor(8);
-   __3->SetLineWidth(3);
-   __3->GetXaxis()->SetLabelFont(42);
-   __3->GetXaxis()->SetTitleOffset(1);
-   __3->GetXaxis()->SetTitleFont(42);
-   __3->GetYaxis()->SetLabelFont(42);
-   __3->GetYaxis()->SetTitleFont(42);
-   __3->GetZaxis()->SetLabelFont(42);
-   __3->GetZaxis()->SetTitleOffset(1);
-   __3->GetZaxis()->SetTitleFont(42);
-   __3->Draw("HIST SAME");
-   
-   TH1D *__4 = new TH1D("__4","",1,0,1);
-   __4->SetBinContent(1,0.05741887);
-   __4->SetEntries(1);
-   __4->SetLineColor(4);
-   __4->SetLineWidth(3);
-   __4->GetXaxis()->SetLabelFont(42);
-   __4->GetXaxis()->SetTitleOffset(1);
-   __4->GetXaxis()->SetTitleFont(42);
-   __4->GetYaxis()->SetLabelFont(42);
-   __4->GetYaxis()->SetTitleFont(42);
-   __4->GetZaxis()->SetLabelFont(42);
-   __4->GetZaxis()->SetTitleOffset(1);
-   __4->GetZaxis()->SetTitleFont(42);
-   __4->Draw("HIST SAME");
-   
-   TLegend *leg = new TLegend(0.025,0.91,0.975,0.99,NULL,"brNDC");
-   leg->SetBorderSize(0);
-   leg->SetTextFont(44);
-   leg->SetTextSize(22);
-   leg->SetLineColor(1);
-   leg->SetLineStyle(1);
-   leg->SetLineWidth(1);
-   leg->SetFillColor(0);
-   leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","All decays","lpf");
-   entry->SetFillStyle(1001);
-   entry->SetLineColor(1);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(3);
-   entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(44);
-   entry=leg->AddEntry("","Accepted decays","lpf");
-   entry->SetFillStyle(1001);
-   entry->SetLineColor(2);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(3);
-   entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(44);
-   entry=leg->AddEntry("","Truth vertices","lpf");
-   entry->SetFillStyle(1001);
-   entry->SetLineColor(8);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(3);
-   entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(44);
-   entry=leg->AddEntry("","Reco vertices","lpf");
-   entry->SetFillStyle(1001);
-   entry->SetLineColor(4);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(3);
-   entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(1);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(44);
-   leg->Draw();
+   gre->Draw("ap");
    c->Modified();
    c->cd();
    c->SetSelected(c);

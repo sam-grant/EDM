@@ -1,7 +1,7 @@
 void MainDeltaFit_truthAllDecays_AAR_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 28 12:52:42 2021) by ROOT version 6.24/04
+//=========  (Wed Oct  6 11:24:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,0.9375,2750,2.5625);

@@ -1,7 +1,7 @@
 void MottFunctionsOverlay_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 30 16:30:26 2021) by ROOT version 6.24/04
+//=========  (Wed Oct  6 15:05:35 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(531.25,-0.015,2718.75,0.135);
@@ -12,11 +12,11 @@ void MottFunctionsOverlay_trackReco_AAR_250MeV_BQ()
    c->SetFrameBorderMode(0);
    
    TF1 *01008 = new TF1("*0",750,2500,3);
-    //The original function : 1000 trials;Momentum [MeV];d_{EDM}(p) had originally been created by:
-    //TF1 *0 = new TF1("0",1000 trials;Momentum [MeV];d_{EDM}(p),750,2500,3, 1, TF1::EAddToList::kDefault);
+    //The original function : 1000 trials;p [MeV]: in range p #minus 125 < p < p #plus 125 [MeV];d_{EDM}(p) had originally been created by:
+    //TF1 *0 = new TF1("0",1000 trials;p [MeV]: in range p #minus 125 < p < p #plus 125 [MeV];d_{EDM}(p),750,2500,3, 1, TF1::EAddToList::kDefault);
    01008->SetRange(750,2500);
    01008->SetName("0");
-   01008->SetTitle("1000 trials;Momentum [MeV];d_{EDM}(p)");
+   01008->SetTitle("1000 trials;p [MeV]: in range p #minus 125 < p < p #plus 125 [MeV];d_{EDM}(p)");
    01008->SetSavedPoint(0,0.05972505);
    01008->SetSavedPoint(1,0.06076074);
    01008->SetSavedPoint(2,0.06176978);
@@ -124,7 +124,7 @@ void MottFunctionsOverlay_trackReco_AAR_250MeV_BQ()
    01008->SetFillStyle(0);
    01008->SetLineColor(0);
    01008->SetLineWidth(3);
-   01008->GetXaxis()->SetTitle("Momentum [MeV]");
+   01008->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125 [MeV]");
    01008->GetXaxis()->CenterTitle(true);
    01008->GetXaxis()->SetLabelFont(42);
    01008->GetXaxis()->SetTitleSize(0.04);

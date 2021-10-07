@@ -23,8 +23,8 @@ std::string config = "5.4e-18";
 //std::string qual = "truth_AAR_500MeV_AQ";
 //std::string qual = "truth_MRF_500MeV_AQ";
 
-std::string qual = "truthAllDecays_AAR_250MeV_AQ";
-//std::string qual = "truth_AAR_250MeV_AQ";
+//std::string qual = "truthAllDecays_AAR_250MeV_AQ";
+std::string qual = "truth2_AAR_250MeV_AQ";
 
 // double scaleFactor = 1.0;
 //int interval = 500;
@@ -63,11 +63,14 @@ string GetConfig() {
 
   string key1 = "truthAllDecays_";
   string key2 = "truth_";
-
+  string key3 = "truth2_";
+  
   if(qual.find(key1) != std::string::npos) { 
     return "truthAllDecays";
   } else if(qual.find(key2) != std::string::npos) { 
     return "truth";
+  } else if(qual.find(key3) != std::string::npos) { 
+    return "truth2";
   } else { 
     cerr<<"Config is unknown";
     return "";

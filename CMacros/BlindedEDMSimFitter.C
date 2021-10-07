@@ -230,7 +230,7 @@ TGraphErrors *BlindedModuloGraph(TFile *input, TGraphErrors *gr_thetaY_mod) {
   DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMuSim/"+config+"/Blinded/blindEDMFunc_"+qual+"_"+to_string(unblind));
 
   // Inject function into modulo plot
-  return BlindedModulo(gr_thetaY_mod, blindEDMFunc);
+  return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
 
 }
 

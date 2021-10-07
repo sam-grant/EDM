@@ -1,7 +1,7 @@
 void S0S12S18_full_thetaYMaxDiff_vs_p_trackReco_AAR_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Sep 28 07:56:23 2021) by ROOT version 6.24/04
+//=========  (Wed Oct  6 16:03:32 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-118.7188,-15.80544,3360.969,228.0793);
