@@ -1,101 +1,132 @@
 void tmp()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct  5 12:56:26 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 12 00:13:19 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-393.75,0.1270818,3543.75,0.1270926);
+   c->Range(-0.1250001,-56.04375,11.125,504.3938);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1001[12] = {
-   125,
-   375,
-   625,
-   875,
-   1125,
-   1375,
-   1625,
-   1875,
-   2125,
-   2375,
-   2625,
-   2875};
-   Double_t _fy1001[12] = {
-   0.12709,
-   0.1270908,
-   0.1270899,
-   0.1270904,
-   0.1270903,
-   0.1270901,
-   0.1270894,
-   0.1270888,
-   0.1270878,
-   0.1270866,
-   0.1270853,
-   0.1270836};
-   Double_t _fex1001[12] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
-   Double_t _fey1001[12] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
-   TGraphErrors *gre = new TGraphErrors(12,_fx1001,_fy1001,_fex1001,_fey1001);
-   gre->SetName("");
-   gre->SetTitle("");
-   gre->SetFillStyle(1000);
-   gre->SetMarkerStyle(20);
+   TH1D *h__1 = new TH1D("h__1","",100,1,10);
+   h__1->SetBinContent(0,4);
+   h__1->SetBinContent(1,4);
+   h__1->SetBinContent(2,1);
+   h__1->SetBinContent(3,7);
+   h__1->SetBinContent(4,8);
+   h__1->SetBinContent(5,12);
+   h__1->SetBinContent(6,16);
+   h__1->SetBinContent(7,26);
+   h__1->SetBinContent(8,41);
+   h__1->SetBinContent(9,45);
+   h__1->SetBinContent(10,43);
+   h__1->SetBinContent(11,71);
+   h__1->SetBinContent(12,100);
+   h__1->SetBinContent(13,127);
+   h__1->SetBinContent(14,130);
+   h__1->SetBinContent(15,154);
+   h__1->SetBinContent(16,182);
+   h__1->SetBinContent(17,221);
+   h__1->SetBinContent(18,252);
+   h__1->SetBinContent(19,257);
+   h__1->SetBinContent(20,336);
+   h__1->SetBinContent(21,325);
+   h__1->SetBinContent(22,362);
+   h__1->SetBinContent(23,382);
+   h__1->SetBinContent(24,406);
+   h__1->SetBinContent(25,389);
+   h__1->SetBinContent(26,397);
+   h__1->SetBinContent(27,427);
+   h__1->SetBinContent(28,375);
+   h__1->SetBinContent(29,389);
+   h__1->SetBinContent(30,412);
+   h__1->SetBinContent(31,415);
+   h__1->SetBinContent(32,402);
+   h__1->SetBinContent(33,408);
+   h__1->SetBinContent(34,382);
+   h__1->SetBinContent(35,314);
+   h__1->SetBinContent(36,331);
+   h__1->SetBinContent(37,300);
+   h__1->SetBinContent(38,257);
+   h__1->SetBinContent(39,235);
+   h__1->SetBinContent(40,215);
+   h__1->SetBinContent(41,155);
+   h__1->SetBinContent(42,141);
+   h__1->SetBinContent(43,138);
+   h__1->SetBinContent(44,103);
+   h__1->SetBinContent(45,81);
+   h__1->SetBinContent(46,67);
+   h__1->SetBinContent(47,41);
+   h__1->SetBinContent(48,33);
+   h__1->SetBinContent(49,28);
+   h__1->SetBinContent(50,21);
+   h__1->SetBinContent(51,9);
+   h__1->SetBinContent(52,7);
+   h__1->SetBinContent(53,3);
+   h__1->SetBinContent(54,6);
+   h__1->SetBinContent(55,1);
+   h__1->SetBinContent(57,2);
+   h__1->SetBinContent(58,2);
+   h__1->SetBinContent(60,1);
+   h__1->SetBinContent(62,1);
+   h__1->SetEntries(10000);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,3150);
-   Graph_Graph1001->SetMinimum(0.1270828);
-   Graph_Graph1001->SetMaximum(0.1270915);
-   Graph_Graph1001->SetDirectory(0);
-   Graph_Graph1001->SetStats(0);
+   TPaveStats *ptstats = new TPaveStats(0.78,0.575,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *ptstats_LaTex = ptstats->AddText("Entries = 10000  ");
+   ptstats_LaTex = ptstats->AddText("Mean  =  3.494 #pm 0.008007");
+   ptstats_LaTex = ptstats->AddText("Std Dev   = 0.8005 #pm 0.005662");
+   ptstats_LaTex = ptstats->AddText("Underflow =      4");
+   ptstats_LaTex = ptstats->AddText("Overflow  =      0");
+   ptstats->SetOptStat(222210);
+   ptstats->SetOptFit(0);
+   ptstats->Draw();
+   h__1->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(h__1);
+   h__1->SetLineWidth(3);
+   h__1->GetXaxis()->SetTitle("#times d_{0}");
+   h__1->GetXaxis()->CenterTitle(true);
+   h__1->GetXaxis()->SetLabelFont(42);
+   h__1->GetXaxis()->SetTitleSize(0.04);
+   h__1->GetXaxis()->SetTitleOffset(1.1);
+   h__1->GetXaxis()->SetTitleFont(42);
+   h__1->GetYaxis()->SetTitle("Random blinding strings");
+   h__1->GetYaxis()->CenterTitle(true);
+   h__1->GetYaxis()->SetNdivisions(4000510);
+   h__1->GetYaxis()->SetLabelFont(42);
+   h__1->GetYaxis()->SetTitleSize(0.04);
+   h__1->GetYaxis()->SetTitleOffset(1.1);
+   h__1->GetYaxis()->SetTitleFont(42);
+   h__1->GetZaxis()->SetLabelFont(42);
+   h__1->GetZaxis()->SetTitleOffset(1);
+   h__1->GetZaxis()->SetTitleFont(42);
+   h__1->Draw("HIST");
+   TLine *line = new TLine(1,0,1,448.35);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#000099");
-   Graph_Graph1001->SetLineColor(ci);
-   Graph_Graph1001->GetXaxis()->CenterTitle(true);
-   Graph_Graph1001->GetXaxis()->SetLabelFont(42);
-   Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph1001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1001->GetYaxis()->CenterTitle(true);
-   Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph1001->GetYaxis()->SetLabelFont(42);
-   Graph_Graph1001->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph1001->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph1001->GetYaxis()->SetTitleFont(42);
-   Graph_Graph1001->GetZaxis()->SetLabelFont(42);
-   Graph_Graph1001->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph1001->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph1001);
+   ci = TColor::GetColor("#ff0000");
+   line->SetLineColor(ci);
+   line->SetLineStyle(2);
+   line->SetLineWidth(3);
+   line->Draw();
    
-   gre->Draw("ap");
+   TPaveText *pt = new TPaveText(1.5,350,2,450,"br");
+   pt->SetFillColor(0);
+
+   ci = TColor::GetColor("#ff0000");
+   pt->SetTextColor(ci);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("BNL");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

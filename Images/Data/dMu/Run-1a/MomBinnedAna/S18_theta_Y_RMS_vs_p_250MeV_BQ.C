@@ -1,0 +1,110 @@
+void S18_theta_Y_RMS_vs_p_250MeV_BQ()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Tue Oct 12 10:58:15 2021) by ROOT version 6.24/04
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(500,-1.763848,2750,38.02877);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   Double_t Graph0_fx1024[11] = {
+   375,
+   625,
+   875,
+   1125,
+   1375,
+   1625,
+   1875,
+   2125,
+   2375,
+   2625,
+   2875};
+   Double_t Graph0_fy1024[11] = {
+   31.2868,
+   24.44171,
+   19.43151,
+   16.61353,
+   14.50459,
+   12.55861,
+   10.65045,
+   9.005476,
+   7.405496,
+   5.869378,
+   4.916008};
+   Double_t Graph0_fex1024[11] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t Graph0_fey1024[11] = {
+   0.1098709,
+   0.02803634,
+   0.01456689,
+   0.01112919,
+   0.009777241,
+   0.009430021,
+   0.009756557,
+   0.01043194,
+   0.01147498,
+   0.01299044,
+   0.047753};
+   TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1024,Graph0_fy1024,Graph0_fex1024,Graph0_fey1024);
+   gre->SetName("Graph0");
+   gre->SetTitle("S18");
+   gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_Graph01024 = new TH1F("Graph_Graph01024","S18",100,125,3125);
+   Graph_Graph01024->SetMinimum(2.215414);
+   Graph_Graph01024->SetMaximum(34.04951);
+   Graph_Graph01024->SetDirectory(0);
+   Graph_Graph01024->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_Graph01024->SetLineColor(ci);
+   Graph_Graph01024->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125 MeV");
+   Graph_Graph01024->GetXaxis()->SetRange(21,80);
+   Graph_Graph01024->GetXaxis()->CenterTitle(true);
+   Graph_Graph01024->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01024->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01024->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01024->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01024->GetYaxis()->SetTitle("#sigma#theta_{y} [mrad]");
+   Graph_Graph01024->GetYaxis()->CenterTitle(true);
+   Graph_Graph01024->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01024->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01024->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01024->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01024->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01024->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01024->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01024->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01024);
+   
+   gre->Draw("alp");
+   
+   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("S18");
+   pt->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

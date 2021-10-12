@@ -9,7 +9,7 @@
 
 using namespace blinding;
 
-//double R = 3.5; // ppm shift
+//double R = 4.81; // ppm shift
 double boxWidth = 0.25;
 double gausWidth = 0.7;
 
@@ -61,7 +61,7 @@ double blinded_edm_value(std::string tmp, double R) {
 //std::vector<double> GetValues(int nEntries) { 
 TH1D *GetHist(int nEntries, double R) { 
 
-   TH1D *hist = new TH1D("h", "", 100, 1, 10);
+   TH1D *hist = new TH1D("h", "", 100, 0, 10);
 
    for (int i=0; i<nEntries; i++) {
 
@@ -80,8 +80,8 @@ void DrawLimitPlot(TH1D *hist, std::string title, std::string fname) {
 
    hist->SetTitle(title.c_str());
 
-   //hist->SetStats(0);
-   gStyle->SetOptStat(222210);
+   hist->SetStats(0);
+   //gStyle->SetOptStat(222210);
          
    hist->GetXaxis()->SetTitleSize(.04);
    hist->GetYaxis()->SetTitleSize(.04);
@@ -92,6 +92,8 @@ void DrawLimitPlot(TH1D *hist, std::string title, std::string fname) {
    hist->GetYaxis()->SetMaxDigits(4);
    hist->SetLineWidth(3);
    hist->SetLineColor(1);
+
+   hist->GetXaxis()->SetRangeUser(0,10);
 
    //c->SetRightMargin(0.13);
 
@@ -229,20 +231,21 @@ void DrawScan(TGraphErrors *graph, std::string title, std::string fname) {
 
 int main() { 
 
-   double R = 3.5;
+   double R = 4.81;
+
    int nStrings = 1e4;
 
    TH1D *h_xd0 = GetHist(nStrings, R);
 
-   DrawLimitPlot(h_xd0, ";#times d_{0};Random blinding strings", "../Images/tmp"); 
+   DrawLimitPlot(h_xd0, ";Blinding shift [ppm];Random blinding strings", "../Images/Limits"); 
 
-   cout<<h_xd0->GetBinContent(0)<<endl;
+   //cout<<h_xd0->GetBinContent(0)<<endl;
 
-   TGraphErrors *RScan = GetRScan(nStrings);
+   //TGraphErrors *RScan = GetRScan(nStrings);
 
    //RScan->GetXaxis()->SetRangeUser(2,5);
 
-   DrawScan(RScan, ";R [ppm];Limits less than BNL / 10,000 blinding strings [%] ", "../Images/tmp2");
+   //DrawScan(RScan, ";R [ppm];Limits less than BNL / 10,000 blinding strings [%] ", "../Images/RScan");
 
    return 0;
 

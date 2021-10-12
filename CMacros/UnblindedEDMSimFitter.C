@@ -35,11 +35,12 @@ std::string config = "5.4e-18";
 //std::string qual = "trackTruth_AAR_250MeV_AQ";
 
 //std::string qual = "trackTruth_AAR_250MeV_BQ";
-std::string qual = "trackReco_AAR_250MeV_BQ";
+//std::string qual = "trackReco_AAR_250MeV_BQ";
 
-//std::string qual = "trackReco2_AAR_250MeV_AQ";
-//std::string qual = "trackReco2_AAR_250MeV_BQ";
-//std::string qual = "trackReco2_AAR_250MeV_CQ";
+//std::string qual = "trackRecoControl_AAR_250MeV_BQ";
+//std::string qual = "trackRecoControl_AAR_250MeV_CQ";
+
+std::string qual = "trackReco_AAR_250MeV_BQ";
 
 double xmin = 30;//7*G2PERIOD;
 double xmax = 300;//70*G2PERIOD;
@@ -166,12 +167,15 @@ string GetConfigString() {
 
   string key1 = "trackReco";
   string key2 = "trackTruth";
+  string key3 = "trackRecoControl";
 
   if(qual.find(key1) != std::string::npos) { 
     return key1;
   } else if(qual.find(key2) != std::string::npos) { 
     return key2;
-  } else { 
+  } else if(qual.find(key3) != std::string::npos) { 
+    return key3;
+  }else { 
     cerr<<"Config string unknown";
     return "ERROR";
   }
@@ -232,8 +236,6 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, bo
 
 }
 
-
-
 double GetPhase(TFile *input) { 
 
   cout<<"Getting phase"<<endl;
@@ -247,8 +249,8 @@ double GetPhase(TFile *input) {
   FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
   FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
 
-    TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
-    DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(h1_wiggle->GetEntries()), xmin, xmax, 10, 40e3);
+  TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns", "", "../Images/MC/dMuSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(h1_wiggle->GetEntries()), xmin, xmax, 10, 40e3);
 
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
   DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 5e3, 25e3);
@@ -298,7 +300,7 @@ void SimultaneousAnalysis(TFile *input, TFile *output, bool fullFit) {
 	// Bz should be 1700 ppm or 0.17 mrad
 	if(fullFit) {
 		// Fit
-    	FullEDMFit(gr_thetaY_mod, 0, OMEGA_A * 1e3, phi, 0.15, 0);
+    	FullEDMFit(gr_thetaY_mod, 0.17, OMEGA_A * 1e3, phi, 0, 0);
     	TF1 *func = gr_thetaY_mod->GetFunction("FullEDMFunc");
     	DrawFullEDMFit(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Unblinded/fit_dMu_full_"+qual).c_str(), double(nEntries), -0.7, 0.2, true);//,unblind);
     	gr_thetaY_mod->SetName("dMuFit");

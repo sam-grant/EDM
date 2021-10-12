@@ -19,6 +19,8 @@ string GetQual(string qualString) {
     return "A";
   } else if(qualString.find("_BQ") != std::string::npos) { 
     return "B";
+  } else if(qualString.find("_CQ") != std::string::npos) { 
+    return "C";
   } else { 
     cerr<<"Qual is unknown";
     return "";
@@ -43,9 +45,9 @@ string GetFrame(string qualString) {
 
 string GetDecays(string qualString) {
 
-  if(qualString.find("truthAllDecays_") != std::string::npos || qualString.find("truth_") != std::string::npos || qualString.find("truth2_") != std::string::npos) { 
+  if(qualString.find("truthAllDecays_") != std::string::npos || qualString.find("truth_") != std::string::npos || qualString.find("truthControl_") != std::string::npos) { 
     return "Decays";
-  } else if(qualString.find("trackTruth_") != std::string::npos || qualString.find("trackReco_") != std::string::npos) { 
+  } else if(qualString.find("trackTruth_") != std::string::npos || qualString.find("trackReco_") != std::string::npos || qualString.find("trackRecoControl_") != std::string::npos) { 
     return "Tracks";
   } else { 
     cerr<<"Config is unknown";
@@ -66,7 +68,11 @@ string GetConfig(string qualString) {
     return "trackTruth";
   } else if(qualString.find("trackReco_") != std::string::npos) { 
     return "trackReco";  
-  } else { 
+  } else if(qualString.find("trackRecoControl_") != std::string::npos) { // } || qualString.find("trackReco_") != std::string::npos) { 
+    return "trackRecoControl";
+  } else if(qualString.find("truthControl_") != std::string::npos) { 
+    return "truthControl";  
+  }else { 
     cerr<<"Config is unknown";
     return "";
   }
@@ -657,6 +663,108 @@ void DrawAllFits(TFile *input, string fname, double ymin, double ymax) {
 
 }
 
+void DrawAllFitsControl(TFile *input, string fname, double ymin, double ymax) { 
+
+   vector<TGraphErrors*> gr_;
+   gr_.push_back((TGraphErrors*)input->Get("DilutionFits/A/Decays/250MeV/d_vs_p/truthControl"));
+   gr_.push_back((TGraphErrors*)input->Get("DilutionFits/C/Tracks/250MeV/d_vs_p/trackRecoControl"));
+   gr_.push_back((TGraphErrors*)input->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackRecoControl"));
+
+   vector<string> labels_ = {"Accepted decays", "Reco vertices (#geq12 planes hit)", "Reco vertices (quality)"};
+
+   vector<int> colours_ = {1,2,4};
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+    // TLegend *l = new TLegend(0.59, 0.69, 0.89, 0.89); 
+   TLegend *l = new TLegend(0.11, 0.69, 0.59, 0.89); 
+
+   //l->SetNColumns(3);
+   l->SetBorderSize(0);
+   l->SetTextSize(24);
+   l->SetTextFont(44);
+
+   gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   gr_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   gr_.at(0)->GetXaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+   double tot_integral = (2500-750)*1;
+
+   double last_integral = 0;
+
+   for(int i = 0; i<3; i++) {
+
+      // Set marker style & colour
+      gr_.at(i)->SetMarkerStyle(20);
+      gr_.at(i)->SetMarkerColor(colours_.at(i));
+
+      // Set ranges
+      gr_.at(i)->GetXaxis()->SetRangeUser(750, 2500);
+      gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
+      l->AddEntry(gr_.at(i), labels_.at(i).c_str());
+
+      if(i==0) gr_.at(i)->Draw("AP");
+      else gr_.at(i)->Draw("P SAME");
+
+      // Get functions
+      TF1 *fit = (TF1*)gr_.at(i)->GetFunction("ParabolaFunc");
+      fit->SetLineColor(colours_.at(i));
+      fit->SetLineWidth(3);
+      fit->Draw("SAME");
+
+      // Get integral
+   
+      double integral = fit->Integral(750., 2500., 1e4);
+      //double integral_error = fit->IntegralError(750., 2500.);
+      //TFitResultPtr frp = gr_.at(i)->Fit(fit,"S");
+      //double integral_error = fit->IntegralError(750., 2500.,frp->GetParams(), frp->GetCovarianceMatrix().GetMatrixArray());//fit->IntegralError(750., 2500.);//, fitResult->GetParams(), fitResult->GetCovarianceMatrix().GetMatrixArray());
+
+      cout<<"\n*******\nINTEGRAL:\t"<<integral<<endl;//<<"±"<<integral_error<<endl;
+
+
+/*      //cout<<"integral\t"<<integral<<"±"<<integral_error<<endl;
+      cout<<"relative fraction\t"<<integral/tot_integral<<endl;
+      cout<<"difference\t"<<diff_integral/tot_integral<<endl;
+  // estimated integral  and error analytically  
+
+      TVirtualFitter * fitter = TVirtualFitter::GetFitter();
+      assert(fitter != 0);
+      double * covMatrix = fitter->GetCovarianceMatrix();
+
+      
+      
+
+      double * p = fit->GetParameters();
+
+      double ic  = integral;//p[1]* (1-std::cos(p[0]) )/p[0];
+      double c0c = p[1] * (std::cos(p[0]) + p[0]*std::sin(p[0]) -1.)/p[0]/p[0];
+      double c1c = (1-std::cos(p[0]) )/p[0];
+      // estimated error with correlations
+      double sic = std::sqrt( c0c*c0c * covMatrix[0] + c1c*c1c * covMatrix[3]+ 2.* c0c*c1c * covMatrix[1]);
+      if ( std::fabs(sigma_integral-sic) > 1.E-6*sic )
+         std::cout << " ERROR: test failed : different analytical  integral : "<< ic << " +/- " << sic << std::endl;
+      }  
+
+      cout<<ic << " +/- " << sic<<endl;*/
+
+   }
+
+   l->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
 void DrawRecoVertexFit(TFile *input, string fname, double ymin, double ymax) { 
 
    TGraphErrors *gr = (TGraphErrors*)input->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackReco");
@@ -741,7 +849,7 @@ int main() {
 
    bool fit = true;
    bool corr = false;
-   bool write = false;//false;
+   bool write = false;
 
    string fname = "";
    if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
@@ -749,7 +857,13 @@ int main() {
 
    TFile *output = new TFile(fname.c_str(), "RECREATE");
 
-/*   RunAEDM("truthAllDecays_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
+/*   RunAEDM("truthControl_AAR_250MeV_AQ", corr, fit, 0, 0.15, output);
+   RunAEDM("trackRecoControl_AAR_250MeV_BQ", corr, fit, 0, 0.15, output);
+   RunAEDM("trackRecoControl_AAR_250MeV_CQ", corr, fit, 0, 0.15, output);
+
+   DrawAllFitsControl(output, "../Images/MC/Dilution/dMu/5.4e-18/AllFitsControl", -0.05, 0.25);*/
+
+   RunAEDM("truthAllDecays_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("truth_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackReco_AAR_500MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackTruth_AAR_500MeV_AQ", corr, fit, 0, 0.15, output); 
@@ -761,11 +875,11 @@ int main() {
    RunAEDM("trackReco_AAR_250MeV_AQ", corr, fit, 0, 0.15, output);
    RunAEDM("trackTruth_AAR_250MeV_AQ", corr, fit, 0, 0.15, output); 
    RunAEDM("trackReco_AAR_250MeV_BQ", corr, fit, 0, 0.15, output);
-   RunAEDM("trackTruth_AAR_250MeV_BQ", corr, fit, 0, 0.15, output); */
+   RunAEDM("trackTruth_AAR_250MeV_BQ", corr, fit, 0, 0.15, output); 
 
-   RunAEDM("truth2_AAR_250MeV_AQ", corr, fit, 0, 0.15, output);
+   // RunAEDM("truth2_AAR_250MeV_AQ", corr, fit, 0, 0.15, output);
 
-/*   cout<<"\n****************** Drawing ******************"<<endl;
+   cout<<"\n****************** Drawing ******************"<<endl;
 
    DrawAllGraphs(output, "../Images/MC/Dilution/dMu/5.4e-18/AllGraphs", -0.1,0.25);
    DrawVertexGraphs(output, "../Images/MC/Dilution/dMu/5.4e-18/VertexGraphs_AQ", "A", 0,0.125);
@@ -776,7 +890,7 @@ int main() {
    // This also deals with the integration (needs a seperate function I think)
    DrawAllFits(output, "../Images/MC/Dilution/dMu/5.4e-18/AllFits", 0, 0.225);
 
-   DrawRecoVertexFit(output, "../Images/MC/Dilution/dMu/5.4e-18/RecoVertexFit", 0, 0.12);*/
+   DrawRecoVertexFit(output, "../Images/MC/Dilution/dMu/5.4e-18/RecoVertexFit", 0, 0.12);
 
    output->Write();
    output->Close();

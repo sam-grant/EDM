@@ -1,7 +1,7 @@
 void AllFits()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Sep 29 12:25:00 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 12 10:58:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500.0625,-0.028125,2744.438,0.253125);
@@ -219,13 +219,13 @@ void AllFits()
    ParabolaFunc1014->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1014->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1014->SetParameter(0,-1.749462e-08);
-   ParabolaFunc1014->SetParError(0,1.324561e-08);
+   ParabolaFunc1014->SetParError(0,1.324564e-08);
    ParabolaFunc1014->SetParLimits(0,0,0);
    ParabolaFunc1014->SetParameter(1,-1.018843e-05);
-   ParabolaFunc1014->SetParError(1,4.524528e-05);
+   ParabolaFunc1014->SetParError(1,4.524539e-05);
    ParabolaFunc1014->SetParLimits(1,0,0);
    ParabolaFunc1014->SetParameter(2,0.212051);
-   ParabolaFunc1014->SetParError(2,0.03657989);
+   ParabolaFunc1014->SetParError(2,0.03657997);
    ParabolaFunc1014->SetParLimits(2,0,0);
    ParabolaFunc1014->SetParent(gre);
    gre->GetListOfFunctions()->Add(ParabolaFunc1014);
@@ -351,13 +351,13 @@ void AllFits()
    ParabolaFunc1015->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1015->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1015->SetParameter(0,-1.749462e-08);
-   ParabolaFunc1015->SetParError(0,1.324561e-08);
+   ParabolaFunc1015->SetParError(0,1.324564e-08);
    ParabolaFunc1015->SetParLimits(0,0,0);
    ParabolaFunc1015->SetParameter(1,-1.018843e-05);
-   ParabolaFunc1015->SetParError(1,4.524528e-05);
+   ParabolaFunc1015->SetParError(1,4.524539e-05);
    ParabolaFunc1015->SetParLimits(1,0,0);
    ParabolaFunc1015->SetParameter(2,0.212051);
-   ParabolaFunc1015->SetParError(2,0.03657989);
+   ParabolaFunc1015->SetParError(2,0.03657997);
    ParabolaFunc1015->SetParLimits(2,0,0);
    ParabolaFunc1015->Draw("SAME");
    
@@ -563,13 +563,13 @@ void AllFits()
    ParabolaFunc1016->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1016->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1016->SetParameter(0,-2.961385e-08);
-   ParabolaFunc1016->SetParError(0,7.231869e-09);
+   ParabolaFunc1016->SetParError(0,7.231924e-09);
    ParabolaFunc1016->SetParLimits(0,0,0);
    ParabolaFunc1016->SetParameter(1,5.105454e-05);
-   ParabolaFunc1016->SetParError(1,2.491189e-05);
+   ParabolaFunc1016->SetParError(1,2.491209e-05);
    ParabolaFunc1016->SetParLimits(1,0,0);
    ParabolaFunc1016->SetParameter(2,0.1341105);
-   ParabolaFunc1016->SetParError(2,0.0203921);
+   ParabolaFunc1016->SetParError(2,0.02039225);
    ParabolaFunc1016->SetParLimits(2,0,0);
    ParabolaFunc1016->SetParent(gre);
    gre->GetListOfFunctions()->Add(ParabolaFunc1016);
@@ -696,13 +696,13 @@ void AllFits()
    ParabolaFunc1017->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1017->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1017->SetParameter(0,-2.961385e-08);
-   ParabolaFunc1017->SetParError(0,7.231869e-09);
+   ParabolaFunc1017->SetParError(0,7.231924e-09);
    ParabolaFunc1017->SetParLimits(0,0,0);
    ParabolaFunc1017->SetParameter(1,5.105454e-05);
-   ParabolaFunc1017->SetParError(1,2.491189e-05);
+   ParabolaFunc1017->SetParError(1,2.491209e-05);
    ParabolaFunc1017->SetParLimits(1,0,0);
    ParabolaFunc1017->SetParameter(2,0.1341105);
-   ParabolaFunc1017->SetParError(2,0.0203921);
+   ParabolaFunc1017->SetParError(2,0.02039225);
    ParabolaFunc1017->SetParLimits(2,0,0);
    ParabolaFunc1017->Draw("SAME");
    
@@ -904,13 +904,13 @@ void AllFits()
    ParabolaFunc1018->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1018->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1018->SetParameter(0,-5.895133e-08);
-   ParabolaFunc1018->SetParError(0,1.762395e-08);
+   ParabolaFunc1018->SetParError(0,1.762393e-08);
    ParabolaFunc1018->SetParLimits(0,0,0);
    ParabolaFunc1018->SetParameter(1,0.0001713641);
-   ParabolaFunc1018->SetParError(1,5.88432e-05);
+   ParabolaFunc1018->SetParError(1,5.88431e-05);
    ParabolaFunc1018->SetParLimits(1,0,0);
    ParabolaFunc1018->SetParameter(2,-0.03646398);
-   ParabolaFunc1018->SetParError(2,0.04649944);
+   ParabolaFunc1018->SetParError(2,0.04649936);
    ParabolaFunc1018->SetParLimits(2,0,0);
    ParabolaFunc1018->SetParent(gre);
    gre->GetListOfFunctions()->Add(ParabolaFunc1018);
@@ -1037,13 +1037,13 @@ void AllFits()
    ParabolaFunc1019->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1019->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1019->SetParameter(0,-5.895133e-08);
-   ParabolaFunc1019->SetParError(0,1.762395e-08);
+   ParabolaFunc1019->SetParError(0,1.762393e-08);
    ParabolaFunc1019->SetParLimits(0,0,0);
    ParabolaFunc1019->SetParameter(1,0.0001713641);
-   ParabolaFunc1019->SetParError(1,5.88432e-05);
+   ParabolaFunc1019->SetParError(1,5.88431e-05);
    ParabolaFunc1019->SetParLimits(1,0,0);
    ParabolaFunc1019->SetParameter(2,-0.03646398);
-   ParabolaFunc1019->SetParError(2,0.04649944);
+   ParabolaFunc1019->SetParError(2,0.04649936);
    ParabolaFunc1019->SetParLimits(2,0,0);
    ParabolaFunc1019->Draw("SAME");
    
@@ -1180,7 +1180,7 @@ void AllFits()
    ParabolaFunc1020->SetSavedPoint(47,0.08721511);
    ParabolaFunc1020->SetSavedPoint(48,0.086955);
    ParabolaFunc1020->SetSavedPoint(49,0.08666055);
-   ParabolaFunc1020->SetSavedPoint(50,0.08633176);
+   ParabolaFunc1020->SetSavedPoint(50,0.08633175);
    ParabolaFunc1020->SetSavedPoint(51,0.08596862);
    ParabolaFunc1020->SetSavedPoint(52,0.08557114);
    ParabolaFunc1020->SetSavedPoint(53,0.08513931);
@@ -1245,13 +1245,13 @@ void AllFits()
    ParabolaFunc1020->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1020->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1020->SetParameter(0,-5.607106e-08);
-   ParabolaFunc1020->SetParError(0,1.768999e-08);
+   ParabolaFunc1020->SetParError(0,1.768136e-08);
    ParabolaFunc1020->SetParLimits(0,0,0);
    ParabolaFunc1020->SetParameter(1,0.0001624615);
-   ParabolaFunc1020->SetParError(1,5.905219e-05);
+   ParabolaFunc1020->SetParError(1,5.902251e-05);
    ParabolaFunc1020->SetParLimits(1,0,0);
    ParabolaFunc1020->SetParameter(2,-0.02960549);
-   ParabolaFunc1020->SetParError(2,0.04665482);
+   ParabolaFunc1020->SetParError(2,0.04663177);
    ParabolaFunc1020->SetParLimits(2,0,0);
    ParabolaFunc1020->SetParent(gre);
    gre->GetListOfFunctions()->Add(ParabolaFunc1020);
@@ -1313,7 +1313,7 @@ void AllFits()
    ParabolaFunc1021->SetSavedPoint(47,0.08721511);
    ParabolaFunc1021->SetSavedPoint(48,0.086955);
    ParabolaFunc1021->SetSavedPoint(49,0.08666055);
-   ParabolaFunc1021->SetSavedPoint(50,0.08633176);
+   ParabolaFunc1021->SetSavedPoint(50,0.08633175);
    ParabolaFunc1021->SetSavedPoint(51,0.08596862);
    ParabolaFunc1021->SetSavedPoint(52,0.08557114);
    ParabolaFunc1021->SetSavedPoint(53,0.08513931);
@@ -1378,13 +1378,13 @@ void AllFits()
    ParabolaFunc1021->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1021->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1021->SetParameter(0,-5.607106e-08);
-   ParabolaFunc1021->SetParError(0,1.768999e-08);
+   ParabolaFunc1021->SetParError(0,1.768136e-08);
    ParabolaFunc1021->SetParLimits(0,0,0);
    ParabolaFunc1021->SetParameter(1,0.0001624615);
-   ParabolaFunc1021->SetParError(1,5.905219e-05);
+   ParabolaFunc1021->SetParError(1,5.902251e-05);
    ParabolaFunc1021->SetParLimits(1,0,0);
    ParabolaFunc1021->SetParameter(2,-0.02960549);
-   ParabolaFunc1021->SetParError(2,0.04665482);
+   ParabolaFunc1021->SetParError(2,0.04663177);
    ParabolaFunc1021->SetParLimits(2,0,0);
    ParabolaFunc1021->Draw("SAME");
    

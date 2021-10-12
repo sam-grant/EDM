@@ -1,7 +1,7 @@
 void RecoVertexFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Sep 29 12:25:00 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 12 10:58:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,-0.015,2750,0.135);
@@ -151,7 +151,7 @@ void RecoVertexFit()
    ParabolaFunc1022->SetSavedPoint(47,0.08721511);
    ParabolaFunc1022->SetSavedPoint(48,0.086955);
    ParabolaFunc1022->SetSavedPoint(49,0.08666055);
-   ParabolaFunc1022->SetSavedPoint(50,0.08633176);
+   ParabolaFunc1022->SetSavedPoint(50,0.08633175);
    ParabolaFunc1022->SetSavedPoint(51,0.08596862);
    ParabolaFunc1022->SetSavedPoint(52,0.08557114);
    ParabolaFunc1022->SetSavedPoint(53,0.08513931);
@@ -218,13 +218,13 @@ void RecoVertexFit()
    ParabolaFunc1022->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1022->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1022->SetParameter(0,-5.607106e-08);
-   ParabolaFunc1022->SetParError(0,1.768999e-08);
+   ParabolaFunc1022->SetParError(0,1.768136e-08);
    ParabolaFunc1022->SetParLimits(0,0,0);
    ParabolaFunc1022->SetParameter(1,0.0001624615);
-   ParabolaFunc1022->SetParError(1,5.905219e-05);
+   ParabolaFunc1022->SetParError(1,5.902251e-05);
    ParabolaFunc1022->SetParLimits(1,0,0);
    ParabolaFunc1022->SetParameter(2,-0.02960549);
-   ParabolaFunc1022->SetParError(2,0.04665482);
+   ParabolaFunc1022->SetParError(2,0.04663177);
    ParabolaFunc1022->SetParLimits(2,0,0);
    ParabolaFunc1022->SetParent(gre);
    gre->GetListOfFunctions()->Add(ParabolaFunc1022);
@@ -286,7 +286,7 @@ void RecoVertexFit()
    ParabolaFunc1023->SetSavedPoint(47,0.08721511);
    ParabolaFunc1023->SetSavedPoint(48,0.086955);
    ParabolaFunc1023->SetSavedPoint(49,0.08666055);
-   ParabolaFunc1023->SetSavedPoint(50,0.08633176);
+   ParabolaFunc1023->SetSavedPoint(50,0.08633175);
    ParabolaFunc1023->SetSavedPoint(51,0.08596862);
    ParabolaFunc1023->SetSavedPoint(52,0.08557114);
    ParabolaFunc1023->SetSavedPoint(53,0.08513931);
@@ -353,13 +353,13 @@ void RecoVertexFit()
    ParabolaFunc1023->GetYaxis()->SetLabelFont(42);
    ParabolaFunc1023->GetYaxis()->SetTitleFont(42);
    ParabolaFunc1023->SetParameter(0,-5.607106e-08);
-   ParabolaFunc1023->SetParError(0,1.768999e-08);
+   ParabolaFunc1023->SetParError(0,1.768136e-08);
    ParabolaFunc1023->SetParLimits(0,0,0);
    ParabolaFunc1023->SetParameter(1,0.0001624615);
-   ParabolaFunc1023->SetParError(1,5.905219e-05);
+   ParabolaFunc1023->SetParError(1,5.902251e-05);
    ParabolaFunc1023->SetParLimits(1,0,0);
    ParabolaFunc1023->SetParameter(2,-0.02960549);
-   ParabolaFunc1023->SetParError(2,0.04665482);
+   ParabolaFunc1023->SetParError(2,0.04663177);
    ParabolaFunc1023->SetParLimits(2,0,0);
    ParabolaFunc1023->Draw("SAME");
    

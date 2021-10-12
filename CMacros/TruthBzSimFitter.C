@@ -454,7 +454,7 @@ int main() {
   // Fold wiggle for illustration 
   FitFivePar(gr_wiggle, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
   TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
-  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns","../Images/MC/BzSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), xmin, xmax, 0, 100e3);
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns", "", "../Images/MC/BzSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(px_thetaY_mod->GetEntries()), xmin, xmax, 0, 100e3);
   gr_wiggle->SetName("WiggleFit");
   gr_wiggle->Write();
 

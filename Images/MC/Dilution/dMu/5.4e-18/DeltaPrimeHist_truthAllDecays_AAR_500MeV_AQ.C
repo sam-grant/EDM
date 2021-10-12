@@ -1,7 +1,7 @@
 void DeltaPrimeHist_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:56:18 2021) by ROOT version 6.24/04
+//=========  (Mon Oct 11 15:33:30 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,31 +10,39 @@ void DeltaPrimeHist_truthAllDecays_AAR_500MeV_AQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__4 = new TH1D("h__4","",21,1.486033,1.922994);
-   h__4->SetBinContent(9,2);
-   h__4->SetBinContent(10,9);
-   h__4->SetBinContent(11,8);
-   h__4->SetBinContent(12,7);
-   h__4->SetEntries(26);
-   h__4->SetStats(0);
-   h__4->SetLineWidth(3);
-   h__4->GetXaxis()->SetTitle("#delta' [mrad]");
-   h__4->GetXaxis()->CenterTitle(true);
-   h__4->GetXaxis()->SetLabelFont(42);
-   h__4->GetXaxis()->SetTitleSize(0.04);
-   h__4->GetXaxis()->SetTitleOffset(1.1);
-   h__4->GetXaxis()->SetTitleFont(42);
-   h__4->GetYaxis()->SetTitle("Mahalanobis distances");
-   h__4->GetYaxis()->CenterTitle(true);
-   h__4->GetYaxis()->SetNdivisions(4000510);
-   h__4->GetYaxis()->SetLabelFont(42);
-   h__4->GetYaxis()->SetTitleSize(0.04);
-   h__4->GetYaxis()->SetTitleOffset(1.1);
-   h__4->GetYaxis()->SetTitleFont(42);
-   h__4->GetZaxis()->SetLabelFont(42);
-   h__4->GetZaxis()->SetTitleOffset(1);
-   h__4->GetZaxis()->SetTitleFont(42);
-   h__4->Draw("HIST");
+   TH1D *h__6 = new TH1D("h__6","",54,1.148571,2.246638);
+   h__6->SetBinContent(23,5);
+   h__6->SetBinContent(24,17);
+   h__6->SetBinContent(25,80);
+   h__6->SetBinContent(26,165);
+   h__6->SetBinContent(27,237);
+   h__6->SetBinContent(28,246);
+   h__6->SetBinContent(29,150);
+   h__6->SetBinContent(30,70);
+   h__6->SetBinContent(31,25);
+   h__6->SetBinContent(32,2);
+   h__6->SetBinContent(33,2);
+   h__6->SetBinContent(34,1);
+   h__6->SetEntries(1000);
+   h__6->SetStats(0);
+   h__6->SetLineWidth(3);
+   h__6->GetXaxis()->SetTitle("#delta' [mrad]");
+   h__6->GetXaxis()->CenterTitle(true);
+   h__6->GetXaxis()->SetLabelFont(42);
+   h__6->GetXaxis()->SetTitleSize(0.04);
+   h__6->GetXaxis()->SetTitleOffset(1.1);
+   h__6->GetXaxis()->SetTitleFont(42);
+   h__6->GetYaxis()->SetTitle("Trials");
+   h__6->GetYaxis()->CenterTitle(true);
+   h__6->GetYaxis()->SetNdivisions(4000510);
+   h__6->GetYaxis()->SetLabelFont(42);
+   h__6->GetYaxis()->SetTitleSize(0.04);
+   h__6->GetYaxis()->SetTitleOffset(1.1);
+   h__6->GetYaxis()->SetTitleFont(42);
+   h__6->GetZaxis()->SetLabelFont(42);
+   h__6->GetZaxis()->SetTitleOffset(1);
+   h__6->GetZaxis()->SetTitleFont(42);
+   h__6->Draw("HIST");
    
    TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
    pt->SetFillColor(0);
@@ -50,11 +58,11 @@ void DeltaPrimeHist_truthAllDecays_AAR_500MeV_AQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("1.699
-#pm0.004
+   pt_LaTex = pt->AddText("1.697
+#pm0.001
 ");
-   pt_LaTex = pt->AddText("0.019
-#pm0.003
+   pt_LaTex = pt->AddText("0.032
+#pm0.0007
 ");
    pt->Draw();
    c->Modified();

@@ -15,8 +15,11 @@ using namespace std;
 //string input = "truth_AAR_250MeV_AQ";
 //string input = "trackTruth_AAR_250MeV_BQ";
 string input = "trackReco_AAR_250MeV_BQ";
+//string input = "trackReco_AAR_500MeV_BQ";
 
-string limit = "5.4e-18";
+bool dMu = true;
+string limit = "5.4e-18"; //EDM
+//string limit = "1700ppm"; // Bz
 //string limit = "1.8e-18"; // only works for "truthAllDecays"
 
 
@@ -708,13 +711,13 @@ TGraphErrors *GetDeltaPrimeGraph(TGraphErrors *gr_A_EDM, TF1 *dilutionFunc) { //
 }
 
 
-vector<TGraphErrors*> GetDeltaPrimeFits(vector<TF1*> mahalanobisFunctions_, TGraphErrors *gr_A_EDM) { 
+vector<TGraphErrors*> GetDeltaPrimeFits(vector<TF1*> mahalanobisFunctions_, TGraphErrors *gr_A) { 
 
 	vector<TGraphErrors*> deltaPrimeFits_;
 
 	for(TF1 *mf : mahalanobisFunctions_) { 
 
-		TGraphErrors *gr_delta_prime = GetDeltaPrimeGraph(gr_A_EDM, mf); // , xmin, xmax);//new TGraphErrors();
+		TGraphErrors *gr_delta_prime = GetDeltaPrimeGraph(gr_A, mf); // , xmin, xmax);//new TGraphErrors();
 
 		deltaPrimeFits_.push_back(gr_delta_prime);
 
@@ -827,7 +830,6 @@ double GetLimit(double delta_prime) {
 
 }
 
-
 int main() { 
 
 	cout<<"\n***************************** Processing input configuration *****************************\n"<<endl;
@@ -837,19 +839,29 @@ int main() {
 	string qual = GetQual();
 	string tracksOrDecays = GetTracksOrDecays();
 
+	string flavour = "";
+	if(dMu) flavour += "dMu";
+	else flavour += "Bz";
+
 	cout<<"Running "<<input<<" with...\nconfig : "<<config<<"\nstep : "<<step<<"\nqual : "<<qual<<"\ntype : "<<tracksOrDecays<<endl;
 
 	cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
-	TString A_EDM_fileName = "../Plots/MC/dMu/"+limit+"/fits/dMuSim_unblinded_"+config+"_AAR_"+to_string(step)+"MeV_"+qual+"Q.root";
-	TFile *A_EDM_file = TFile::Open(A_EDM_fileName);
+	TString A_fileName = "";
+	if(dMu) A_fileName += "../Plots/MC/dMu/"+limit+"/fits/dMuSim_unblinded_"+config+"_AAR_"+to_string(step)+"MeV_"+qual+"Q.root";
+	else {
+		//A_fileName += "../Plots/MC/BzSim/"+limit+"/fits/BzSim_unblinded_"+config+"_AAR_"+to_string(step)+"MeV_"+qual+"Q.root";
+		A_fileName += "../Plots/Data/dMu/"+limit+"/fits/BzSim_unblinded_"+config+"_AAR_"+to_string(step)+"MeV_"+qual+"Q.root";
+	}
+	TFile *A_file = TFile::Open(A_fileName);
 
 	// Get A_EDM vs p graph
-	TString A_EDM_grName = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
-	if(tracksOrDecays=="Tracks") A_EDM_grName += "S0S12S18_A_vs_p"; 
-	else if(tracksOrDecays=="Decays") A_EDM_grName += "A_vs_p"; 
+	TString A_grName = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
+	if(tracksOrDecays=="Tracks" && dMu) A_grName += "S0S12S18_A_vs_p"; 
+	else if(tracksOrDecays=="Tracks" && !dMu) A_grName += "S0S12S18_Ag2_vs_p";
+	else if(tracksOrDecays=="Decays") A_grName += "A_vs_p"; 
 
-	TGraphErrors *A_EDM_gr= (TGraphErrors*)A_EDM_file->Get(A_EDM_grName);
+	TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
 
 	// Get dilution curve
 	TString d_EDM_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
@@ -863,8 +875,8 @@ int main() {
 	double b = d_EDM_fit->GetParameter(1);	double b_err = d_EDM_fit->GetParError(1);
 	double d0 = d_EDM_fit->GetParameter(2); 	double d0_err = d_EDM_fit->GetParError(2);
 
-	cout<<"\nA_EDM file "<<A_EDM_fileName<<", "<<A_EDM_file<<endl;
-	cout<<"A_EDM graph "<<A_EDM_grName<<", "<<A_EDM_gr<<endl;
+	cout<<"\nA file "<<A_fileName<<", "<<A_file<<endl;
+	cout<<"A graph "<<A_grName<<", "<<A_gr<<endl;
 	cout<<"d_EDM file "<<d_EDM_fileName<<", "<<d_EDM_file<<endl;
 	cout<<"d_EDM graph "<<d_EDM_grName<<", "<<d_EDM_gr<<endl;
 	cout<<"d_EDM function "<<d_EDM_fit<<endl;
@@ -874,7 +886,6 @@ int main() {
 	cout<<"a = "<<a<<"±"<<a_err<<" MeV^-2\n";
 	cout<<"a = "<<b<<"±"<<b_err<<" MeV^-2\n";
 	cout<<"d0 = "<<d0<<"±"<<d0_err<<"\n";
-
 
 	// Re-assert fit
 	TF1 *d_EDM_refit = new TF1("d_EDM_refit", ParabolaFunc, xmin, xmax, 3);
@@ -892,8 +903,8 @@ int main() {
 
 	cout<<"\n***************************** Getting main delta prime fit *****************************\n"<<endl;
 
-	TGraphErrors *main_delta_prime_gr = GetDeltaPrimeGraph(A_EDM_gr, d_EDM_refit);
-	DrawSingleDeltaPrimeFit(main_delta_prime_gr, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad];#delta' [mrad]", "../Images/MC/Dilution/dMu/"+limit+"/MainDeltaFit_"+input, 1.1, 2.4, 0.11, 0.75, 0.59, 0.89);
+	TGraphErrors *main_delta_prime_gr = GetDeltaPrimeGraph(A_gr, d_EDM_refit);
+	DrawSingleDeltaPrimeFit(main_delta_prime_gr, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad];#delta' [mrad]", "../Images/MC/Dilution/"+flavour+"/"+limit+"/MainDeltaFit_"+input, 1.1, 2.4, 0.11, 0.75, 0.59, 0.89);
 
 	cout<<"\n***************************** Calculating Mahalanobis distances *****************************\n"<<endl;
 
@@ -919,9 +930,9 @@ int main() {
 	vector<string> names_; 
 	for(int i = 0; i<mahalanobisFunctions_.size(); i++) names_.push_back(mahalanobisFunctions_.at(i)->GetName());
 
-	vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mahalanobisFunctions_, A_EDM_gr);
+	vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mahalanobisFunctions_, A_gr);
 	
-	DrawAllDeltaFits(deltaPrimeFits_, names_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeFits_"+input, 0, 5);
+	DrawAllDeltaFits(deltaPrimeFits_, names_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta' [mrad]", "../Images/MC/Dilution/"+flavour+"/"+limit+"/DeltaPrimeFits_"+input, 0, 5);
 	
 	cout<<"\n***************************** Generating histogram of delta primes *****************************"<<endl;
 
@@ -940,7 +951,7 @@ int main() {
 
 	TH1D *h_deltaPrime = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
 
-	DrawDeltaPrimeHist(h_deltaPrime, ";#delta' [mrad];Trials", "../Images/MC/Dilution/dMu/"+limit+"/DeltaPrimeHist_"+input);
+	DrawDeltaPrimeHist(h_deltaPrime, ";#delta' [mrad];Trials", "../Images/MC/Dilution/"+flavour+"/"+limit+"/DeltaPrimeHist_"+input);
 
 	//cout<<"RMS of delta primes = "<<delta_prime_rms<<"±"<<delta_prime_rms_err<<" mrad"<<endl;
 
@@ -960,7 +971,6 @@ int main() {
 	cout<<"Uncertainty on delta' from weighted fit = "<<delta_prime_fit_err<<endl;
 	cout<<"Uncertainty on delta' from mahalanobis shifts = "<<delta_prime_rms<<endl;
 
-
 	cout<<"delta' = "<<delta_prime<<"±"<<delta_prime_err_tot<<" mrad"<<endl;
 
 	cout<<"\n *** Limit ***"<<endl;
@@ -975,7 +985,6 @@ int main() {
 	double d_mu_err_tot = sqrt(pow(d_mu_err_1,2)+pow(d_mu_err_2,2));
 
 	cout<<"dMu = "<<d_mu_1<<"±"<<d_mu_err_tot<<" ecm"<<endl;
-
 
 	cout<<"\n*TESTING*TESTING*TESTING*TESTING*TESTING*TESTING*TESTING*TESTING*\n"<<endl;
 

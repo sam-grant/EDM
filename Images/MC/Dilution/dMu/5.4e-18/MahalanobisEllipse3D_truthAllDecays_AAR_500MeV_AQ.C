@@ -1,7 +1,7 @@
 void MahalanobisEllipse3D_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:56:17 2021) by ROOT version 6.24/04
+//=========  (Mon Oct 11 15:33:24 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -12,12 +12,14 @@ void MahalanobisEllipse3D_truthAllDecays_AAR_500MeV_AQ()
    c->SetFrameBorderMode(0);
    
    TH3D *ellipse3D__1 = new TH3D("ellipse3D__1","",27,-8.93e-08,-2.28e-08,27,5.25e-05,0.000272258,27,-0.113345,0.0541603);
-   ellipse3D__1->SetBinContent(23571,8);
-   ellipse3D__1->SetBinContent(23574,8);
-   ellipse3D__1->SetBinContent(23576,1);
-   ellipse3D__1->SetBinContent(23626,5);
-   ellipse3D__1->SetBinContent(23655,3);
-   ellipse3D__1->SetBinContent(23682,1);
+   ellipse3D__1->SetBinContent(23571,7);
+   ellipse3D__1->SetBinContent(23576,9);
+   ellipse3D__1->SetBinContent(23600,1);
+   ellipse3D__1->SetBinContent(23682,2);
+   ellipse3D__1->SetBinContent(23710,3);
+   ellipse3D__1->SetBinContent(23711,2);
+   ellipse3D__1->SetBinContent(23739,1);
+   ellipse3D__1->SetBinContent(23794,1);
    ellipse3D__1->SetEntries(26);
    ellipse3D__1->SetStats(0);
 
@@ -47,7 +49,7 @@ void MahalanobisEllipse3D_truthAllDecays_AAR_500MeV_AQ()
    ellipse3D__1->GetZaxis()->SetTitleSize(0.04);
    ellipse3D__1->GetZaxis()->SetTitleOffset(1.65);
    ellipse3D__1->GetZaxis()->SetTitleFont(42);
-   ellipse3D__1->Draw("BOX");
+   ellipse3D__1->Draw("");
    c->Modified();
    c->cd();
    c->SetSelected(c);

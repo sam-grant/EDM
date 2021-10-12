@@ -1,10 +1,10 @@
 void MainDeltaFit_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Sep 16 18:56:17 2021) by ROOT version 6.24/04
+//=========  (Mon Oct 11 15:33:24 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(375,1.579242,2625,1.819023);
+   c->Range(375,0.9375,2625,2.5625);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -38,8 +38,8 @@ void MainDeltaFit_truthAllDecays_AAR_500MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,600,2400);
-   Graph_Graph1001->SetMinimum(1.60322);
-   Graph_Graph1001->SetMaximum(1.795045);
+   Graph_Graph1001->SetMinimum(1.1);
+   Graph_Graph1001->SetMaximum(2.4);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 

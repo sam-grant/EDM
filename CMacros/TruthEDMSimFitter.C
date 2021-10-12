@@ -24,7 +24,9 @@ std::string config = "5.4e-18";
 //std::string qual = "truth_MRF_500MeV_AQ";
 
 //std::string qual = "truthAllDecays_AAR_250MeV_AQ";
-std::string qual = "truth2_AAR_250MeV_AQ";
+//std::string qual = "truth2_AAR_250MeV_AQ";
+
+std::string qual = "truthControl_AAR_250MeV_AQ";
 
 // double scaleFactor = 1.0;
 //int interval = 500;
@@ -64,6 +66,7 @@ string GetConfig() {
   string key1 = "truthAllDecays_";
   string key2 = "truth_";
   string key3 = "truth2_";
+  string key4 = "truthControl_";
   
   if(qual.find(key1) != std::string::npos) { 
     return "truthAllDecays";
@@ -71,6 +74,8 @@ string GetConfig() {
     return "truth";
   } else if(qual.find(key3) != std::string::npos) { 
     return "truth2";
+  } else if(qual.find(key4) != std::string::npos) { 
+    return "truthControl";
   } else { 
     cerr<<"Config is unknown";
     return "";
@@ -127,7 +132,7 @@ double GetPhase(TFile *input) {
   FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
 
   TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
-  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(h1_wiggle->GetEntries()), xmin, xmax, 10, 10e5);
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns", "", "../Images/MC/dMuSim/"+config+"/Unblinded/fit_wiggle_"+qual, double(h1_wiggle->GetEntries()), xmin, xmax, 10, 10e5);
 
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
   DrawModWiggle(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Unblinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 25e3, 150e3);//100e3, 500e3);

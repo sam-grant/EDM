@@ -1055,7 +1055,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 
 }
 
-void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, double xmin, double xmax, double ymin, double ymax) {
+void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname, double N, double xmin, double xmax, double ymin, double ymax) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1072,7 +1072,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, doubl
 
   TLegend *leg = new TLegend(0.15,0.15,.65,0.25);
   leg->SetNColumns(2);
-  leg->AddEntry(graph, "Data   ");
+  leg->AddEntry(graph, ("Data: "+dataset).c_str());
   leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
 
@@ -1099,7 +1099,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string fname, double N, doubl
   TPaveText *cuts = new TPaveText(0.25,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
   cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30 < t [#mus] < 300");
+  cuts->AddText("30.6 < t [#mus] < 305.6");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1289,7 +1289,7 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   TPaveText *cuts = new TPaveText(0.60,0.75,0.80,0.85,"NDC");
   cuts->SetTextAlign(22);
   cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30 < t [#mus] < 300");
+  cuts->AddText("30.6 < t [#mus] < 305.6");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1362,9 +1362,15 @@ void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std:
 	graphs.at(1)->GetYaxis()->CenterTitle(true);
 	graphs.at(1)->GetYaxis()->SetMaxDigits(4);
 	graphs.at(1)->GetXaxis()->SetRangeUser(xmin,xmax);
+
+	// Get y-range
+	double top = graphs.at(0)->GetY()[0];
+	double bottom = graphs.at(graphs.size()-1)->GetY()[graphs.at(graphs.size()-1)->GetN()-1];
+
+	ymax = top + 0.5e3;
+	ymin = bottom - 0.5e3; 
 	graphs.at(1)->SetMinimum(ymin); 
 	graphs.at(1)->SetMaximum(ymax); 
-
 
 	int nGraphs = graphs.size();
 
@@ -1377,6 +1383,68 @@ void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std:
 	graphs.at(1)->Draw("AP");
 
 	for(int i = 0; i < nGraphs; i++) if(i!=1) graphs.at(i)->Draw("P SAME");
+	for(int i = 0; i < nGraphs; i++) {
+		graphs.at(i)->GetFunction("FiveParFunc")->SetLineWidth(3);
+		graphs.at(i)->GetFunction("FiveParFunc")->Draw("SAME");
+	}
+
+	l->Draw("same");
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	//c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawFoldedWiggleData(std::vector<TGraphErrors*> graphs, std::string title, std::string dataset, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetLogy();
+
+	TLegend *l = new TLegend(0.15,0.71,0.85,0.89);
+	l->SetBorderSize(0);
+	l->SetNColumns(2);//BorderSize(0);
+	l->AddEntry(graphs.at(1), ("Data: "+dataset).c_str());
+	l->AddEntry(graphs.at(1)->GetFunction("FiveParFunc"), "N_{0}e^{-t/#gamma#tau}[1+Acos(#omega_{a}t+#phi)]");
+
+	graphs.at(1)->SetTitle(title.c_str());
+	graphs.at(1)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(1)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(1)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(1)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(1)->GetXaxis()->CenterTitle(true);
+	graphs.at(1)->GetYaxis()->CenterTitle(true);
+	graphs.at(1)->GetYaxis()->SetMaxDigits(4);
+	graphs.at(1)->GetXaxis()->SetRangeUser(xmin,xmax);
+
+	// Get y-range
+/*	double top = graphs.at(0)->GetY()[0];
+	double bottom = graphs.at(graphs.size()-1)->GetY()[graphs.at(graphs.size()-1)->GetN()-1];
+
+	ymax = top + top/2;
+	ymin = bottom - bottom/2;*/
+
+	graphs.at(1)->SetMinimum(ymin); 
+	graphs.at(1)->SetMaximum(ymax); 
+
+	int nGraphs = graphs.size();
+
+	for(int i = 0; i < nGraphs; i++) {
+		//graphs.at(i)->GetXaxis()->SetRangeUser(xmin,xmax);
+		graphs.at(i)->SetMarkerStyle(20);
+	}
+
+	// Can't draw graph zero first because it messes up the x-axis
+	graphs.at(1)->Draw("AP");
+
+	for(int i = 0; i < nGraphs; i++) if(i!=1) graphs.at(i)->Draw("P SAME");
+	for(int i = 0; i < nGraphs; i++) {
+		graphs.at(i)->GetFunction("FiveParFunc")->SetLineWidth(3);
+		graphs.at(i)->GetFunction("FiveParFunc")->Draw("SAME");
+	}
 
 	l->Draw("same");
 	c->SaveAs((fname+".pdf").c_str());
@@ -1499,7 +1567,7 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
 	leg->SetNColumns(2);
 	leg->AddEntry(graph, "Sim   ");
-	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) + A_{EDM} sin(#omega_{a}t+#phi) + c");
+	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c");
 	leg->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
@@ -1529,7 +1597,7 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 //	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
 	cuts->AddText("750 < p [MeV] < 2500");
-	cuts->AddText("30 < t [#mus] < 300");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(26);
 	names->SetTextFont(44);
@@ -1598,7 +1666,7 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
 	leg->SetNColumns(2);
 	leg->AddEntry(graph, ("Data: "+dataset+"   ").c_str());
-	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) - A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) + c");
+	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) #plus c");
 	leg->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
@@ -1629,7 +1697,7 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
 	cuts->AddText("750 < p [MeV] < 2500");
-	cuts->AddText("30 < t [#mus] < 300");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(22); // 26
 	names->SetTextFont(44);

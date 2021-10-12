@@ -406,29 +406,29 @@ int main() {
 	std::cout<<"g-2 phase:\t"<<phi<<std::endl;
 
 	// Shift the phase 90 deg
-    double phi_edm = phi + M_PI/2.; 
-    // Find a zero crossing 
-    double t0 = phi * G2PERIOD / (2*M_PI);
-    double zeroCrossing = 8*G2PERIOD - t0;
+  double phi_edm = phi + M_PI/2.; 
+  // Find a zero crossing 
+  double t0 = phi * G2PERIOD / (2*M_PI);
+  double zeroCrossing = 8*G2PERIOD - t0;
 
 	// ================== get blinded A_EDM ================== 
 
-    double dMu_blind = blinded_edm_value(unblind);  //1.6e-19*30;//
-    double delta_blind = GetDelta(dMu_blind);
-    double omega_a = getBlinded.referenceValue(); 
-    double tan_A_edm = tan(delta_blind) / gmagic;
+  double dMu_blind = blinded_edm_value(unblind);  //1.6e-19*30;//
+  double delta_blind = GetDelta(dMu_blind);
+  double omega_a = getBlinded.referenceValue(); 
+  double tan_A_edm = tan(delta_blind) / gmagic;
 
-    double A_edm = alpha*atan(tan_A_edm) * 1e3; // 0.13 is asymmetry factor
+  double A_edm = alpha*atan(tan_A_edm) * 1e3; // 0.13 is asymmetry factor
 
    // ================== Inject blinded A_EDM into modulo plot ==================
 
-    // Define blinded EDM oscillation
-    TF1* blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
-    blindEDMFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
-    blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
-    blindEDMFunc->SetNpx(50000);
+  // Define blinded EDM oscillation
+  TF1* blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
+  blindEDMFunc->SetParNames("A_{EDM blinded}","#omega_{a BNL}","#phi");//,"offset");
+  blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
+  blindEDMFunc->SetNpx(50000);
 
-    TGraphErrors *gr_thetaY_mod_blind = BlindedModulo(gr_thetaY_mod, blindEDMFunc); 
+  TGraphErrors *gr_thetaY_mod_blind = InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc); 
 
 	// ======= Fit for A_Bz =====
 	// Bz should be 1700 ppm or 0.17 mrad
@@ -454,8 +454,8 @@ int main() {
 	cout<<"\nPerforming momentum binned analysis"<<endl;
 	
 	output->mkdir("MomentumBinnedAnalysis");
-  	output->mkdir("MomentumBinnedAnalysis/ModuloFits");
-  	output->mkdir("MomentumBinnedAnalysis/ParameterScans");
+ 	output->mkdir("MomentumBinnedAnalysis/ModuloFits");
+ 	output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
 	// MomentumBinnedAnalysis(input, output, phi);
 

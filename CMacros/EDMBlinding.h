@@ -2,9 +2,9 @@
 
 #include "../Blinding/Blinders.hh"
 #include "RootInclude.h"
-
-// Currently just using Run1a for everything...
-#include "BlindingStrings/Run1a.h"
+// A bit clunky having to recompile every time..
+#include "BlindingStrings/Run-1a.h"
+//#include "BlindingStrings/Run-1d.h"
 
 using namespace blinding;
 

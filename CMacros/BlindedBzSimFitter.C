@@ -510,7 +510,7 @@ int main() {
     blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
     blindEDMFunc->SetNpx(50000);
 
-    TGraphErrors *gr_thetaY_mod_blind = BlindedModulo(gr_thetaY_mod, blindEDMFunc); 
+    TGraphErrors *gr_thetaY_mod_blind = InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc); 
 
 	// ======= Fit for A_Bz =====
 	// Bz should be 1700 ppm or 0.17 mrad
