@@ -1,0 +1,567 @@
+// Draw dilution curves nicely
+
+#include <iostream>
+
+#include "RootInclude.h"
+#include "FancyDraw.h"
+#include "Utils.h"
+
+using namespace std;
+
+const double delta_calc = 1.699245178; // mrad
+string dMu = "5.4e-18";
+
+const double xmin = 750;
+const double xmax = 2500;
+
+const int nTrials = 1e3;
+
+void DrawAllGraphs(TFile *input, int step, string fname, double ymin, double ymax) { 
+
+    cout<<"---> All graphs"<<endl;
+
+   vector<TGraphErrors*> gr_;
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truthAllDecays").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackTruth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str()));
+
+   vector<string> labels_ = {"All decays", "Accepted decays", "Truth vertices", "Reco vertices"};
+
+   vector<int> colours_ = {1,2,8,4};
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+   TLegend *l = new TLegend(0.59, 0.69, 0.89, 0.89); 
+   l->SetBorderSize(0);
+   l->SetTextSize(24);
+   l->SetTextFont(44);
+
+   gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   gr_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   gr_.at(0)->GetXaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+   for(int i = 0; i<gr_.size(); i++) {
+
+      // Purge fits
+      TF1 *fit = (TF1*)gr_.at(i)->GetListOfFunctions()->At(0); 
+      if(fit) {
+         gr_.at(i)->GetListOfFunctions()->Remove(fit);
+         delete fit;
+      }
+
+      // Set marker style & colour
+      gr_.at(i)->SetMarkerStyle(20);
+      gr_.at(i)->SetMarkerColor(colours_.at(i));
+
+      // Set ranges
+      gr_.at(i)->GetXaxis()->SetRangeUser(-10, 3010);
+      gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
+      l->AddEntry(gr_.at(i), labels_.at(i).c_str());
+
+      if(i==0) gr_.at(i)->Draw("AP");
+      else gr_.at(i)->Draw("P SAME");
+
+   }
+
+   l->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+void DrawVertexGraphs(TFile *input, int step, string fname, string qual, double ymin, double ymax) { 
+
+  cout<<"---> Vertex graphs "<<qual<<endl;
+
+   vector<TGraphErrors*> gr_;
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/"+qual+"/Tracks/"+to_string(step)+"MeV/d_vs_p/trackTruth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/"+qual+"/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str()));
+
+   vector<string> labels_ = {"Truth vertices", "Reco vertices"};
+
+   vector<int> markerStyles_ = {20,24};
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+   TLegend *l = new TLegend(0.25, 0.91, 0.75, 0.99); 
+
+   l->SetNColumns(2);
+   l->SetBorderSize(0);
+   l->SetTextSize(24);
+   l->SetTextFont(44);
+
+   gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   gr_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   gr_.at(0)->GetXaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+   for(int i = 0; i<gr_.size(); i++) {
+
+      // Purge fits
+      TF1 *fit = (TF1*)gr_.at(i)->GetListOfFunctions()->At(0); 
+      if(fit) {
+         gr_.at(i)->GetListOfFunctions()->Remove(fit);
+         delete fit;
+      }
+
+      // Set marker style & colour
+      gr_.at(i)->SetMarkerStyle(markerStyles_.at(i));
+
+      // Set ranges
+      gr_.at(i)->GetXaxis()->SetRangeUser(240, 3010);
+      gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
+      l->AddEntry(gr_.at(i), labels_.at(i).c_str());
+
+      if(i==0) gr_.at(i)->Draw("AP");
+      else gr_.at(i)->Draw("P SAME");
+
+   }
+
+   // Draw lines
+   gPad->Update();
+   TLine *line1 = new TLine(xmin, gPad->GetUymin(), xmin, gPad->GetUymax());
+   TLine *line2 = new TLine(xmax, gPad->GetUymin(), xmax, gPad->GetUymax());
+
+   line1->SetLineWidth(3);
+   line1->SetLineStyle(kDashed);
+   line1->SetLineColor(kRed);
+
+   line2->SetLineWidth(3);
+   line2->SetLineStyle(kDashed);
+   line2->SetLineColor(kRed);
+
+   line1->Draw("SAME");
+   line2->Draw("SAME");
+
+   l->Draw("SAME");
+
+   c->SaveAs((fname+"_"+qual+".pdf").c_str());
+   c->SaveAs((fname+"_"+qual+".png").c_str());
+   c->SaveAs((fname+"_"+qual+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+void DrawVertexErrorGraphs(TFile *input, int step, string fname, string qual, double ymin, double ymax) { 
+
+  cout<<"---> Vertex error graphs "<<qual<<endl;
+
+   vector<TGraphErrors*> gr_;
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/"+qual+"/Tracks/"+to_string(step)+"MeV/d_vs_p/trackTruth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/"+qual+"/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str()));
+
+   // Get errors as TGraph
+   for(auto& gr : gr_) { 
+
+      int n = gr->GetN();
+      double x[n]; double y[n];
+      double ex[n]; double ey[n];
+
+      for(int i=0; i<n; i++) {
+
+         x[i] = gr->GetX()[i];
+         y[i] = gr->GetEY()[i];
+         ex[i] = gr->GetEX()[i];
+         ey[i] = 0.;
+
+      }
+
+      gr = new TGraphErrors(n, x, y, ex, ey);
+
+   }
+
+   vector<string> labels_ = {"Truth vertices", "Reco vertices"};
+
+   vector<int> markerStyles_ = {20,24};
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+   TLegend *l = new TLegend(0.25, 0.91, 0.75, 0.99); 
+   l->SetNColumns(2);
+
+   l->SetBorderSize(0);
+   l->SetTextSize(24);
+   l->SetTextFont(44);
+
+   gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   gr_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   gr_.at(0)->GetXaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+   gr_.at(0)->SetTitle((";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#deltad_{EDM}(p)").c_str());
+
+   for(int i = 0; i<gr_.size(); i++) {
+
+      // Purge fits
+      TF1 *fit = (TF1*)gr_.at(i)->GetListOfFunctions()->At(0); 
+      if(fit) {
+         gr_.at(i)->GetListOfFunctions()->Remove(fit);
+         delete fit;
+      }
+
+      // Set marker style & colour
+      gr_.at(i)->SetMarkerStyle(markerStyles_.at(i));
+
+      // Set ranges
+      gr_.at(i)->GetXaxis()->SetRangeUser(240, 3010);
+      gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
+      l->AddEntry(gr_.at(i), labels_.at(i).c_str());
+
+      if(i==0) gr_.at(i)->Draw("AP");
+      else gr_.at(i)->Draw("P SAME");
+
+   }
+
+   // Draw lines
+   gPad->Update();
+   TLine *line1 = new TLine(750, gPad->GetUymin(), 750, gPad->GetUymax());
+   TLine *line2 = new TLine(2500, gPad->GetUymin(), 2500, gPad->GetUymax());
+
+   line1->SetLineWidth(3);
+   line1->SetLineStyle(kDashed);
+   line1->SetLineColor(kRed);
+
+   line2->SetLineWidth(3);
+   line2->SetLineStyle(kDashed);
+   line2->SetLineColor(kRed);
+
+   line1->Draw("SAME");
+   line2->Draw("SAME");
+
+   l->Draw("SAME");
+
+   c->SaveAs((fname+"_"+qual+".pdf").c_str());
+   c->SaveAs((fname+"_"+qual+".png").c_str());
+   c->SaveAs((fname+"_"+qual+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+void DrawAllFits(TFile *input, int step, string fname, double ymin, double ymax) { 
+
+  cout<<"---> All fits"<<endl;
+
+   vector<TGraphErrors*> gr_;
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truthAllDecays").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackTruth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str()));
+
+   vector<string> labels_ = {"All decays", "Accepted decays", "Truth vertices", "Reco vertices"};
+
+   vector<int> colours_ = {1,2,8,4};
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+   TLegend *l = new TLegend(0.59, 0.69, 0.89, 0.89); 
+   l->SetBorderSize(0);
+   l->SetTextSize(24);
+   l->SetTextFont(44);
+
+   gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   gr_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   gr_.at(0)->GetXaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+   for(int i = 0; i<gr_.size(); i++) {
+
+      // Set marker style & colour
+      gr_.at(i)->SetMarkerStyle(20);
+      gr_.at(i)->SetMarkerColor(colours_.at(i));
+
+      // Set ranges
+      gr_.at(i)->GetXaxis()->SetRangeUser(xmin, xmax);
+      gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
+      l->AddEntry(gr_.at(i), labels_.at(i).c_str());
+
+      if(i==0) gr_.at(i)->Draw("AP");
+      else gr_.at(i)->Draw("P SAME");
+
+      // Get functions
+      TF1 *fit = (TF1*)gr_.at(i)->GetFunction("ParabolaFunc");
+      fit->SetLineColor(colours_.at(i));
+      fit->SetLineWidth(3);
+      fit->Draw("SAME");
+
+   }
+
+   l->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double ymax) { 
+
+  cout<<"---> Reco vertex fit"<<endl;
+
+   TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str());
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+   gr->GetXaxis()->SetTitleSize(.04);
+   gr->GetYaxis()->SetTitleSize(.04);
+   gr->GetXaxis()->SetTitleOffset(1.1);
+   gr->GetYaxis()->SetTitleOffset(1.15);
+   gr->GetXaxis()->CenterTitle(true);
+   gr->GetYaxis()->CenterTitle(true);
+   gr->GetYaxis()->SetMaxDigits(4);
+
+   // Set marker style & colour
+   gr->SetMarkerStyle(20);
+   gr->SetMarkerColor(kBlack);
+
+   // Set ranges
+   gr->GetXaxis()->SetRangeUser(xmin, xmax);
+   gr->GetYaxis()->SetRangeUser(ymin, ymax);
+
+   gr->Draw("AP");
+
+   // Get function
+   TF1 *fit = (TF1*)gr->GetFunction("ParabolaFunc");
+   fit->SetLineColor(kRed);
+   fit->SetLineWidth(3);
+   fit->Draw("SAME");
+
+   // Draw legend
+   TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
+   l->SetBorderSize(0);
+   l->SetNColumns(2);
+   l->AddEntry(gr,"Sim: reco vertices");
+   l->AddEntry(fit, "Fit: ap^{2}+bp+d_{0}");
+   l->Draw("SAME");
+
+   TPaveText *names = new TPaveText(0.15,0.20,0.40,0.45,"NDC");
+
+   names->SetTextAlign(13);
+   names->AddText("#chi^{2}/NDF");
+   names->AddText("a [MeV^{-2}]") ; 
+   names->AddText("b [MeV^{-1}]" );
+   names->AddText("d_{0}");
+
+   TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
+   values->SetTextAlign(33);
+   values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
+   values->AddText("(-6#pm2)#times10^{-8}");//SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0)));
+   values->AddText("(1.6#pm0.6)#times10^{-4}");//Round(fit->GetParameter(1),2)+"#pm"+SciNotation(fit->GetParError(1)));
+   values->AddText(Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));
+
+   cout<<"\n*** Fit results ***"<<endl;
+   cout<<"chi2/ndf = "<<fit->GetChisquare()/fit->GetNDF()<<endl;
+   cout<<"a = "<<fit->GetParameter(0)<<"±"<<fit->GetParError(0)<<endl;
+   cout<<"b = "<<fit->GetParameter(1)<<"±"<<fit->GetParError(1)<<endl;
+   cout<<"d0 = "<<fit->GetParameter(2)<<"±"<<fit->GetParError(2)<<endl;
+   cout<<"*** *** ***\n"<<endl;
+
+   names->SetTextSize(26);
+   names->SetTextFont(44);
+   names->SetFillColor(0);
+   values->SetFillColor(0);
+   values->SetTextFont(44);
+   values->SetTextSize(26);
+
+   names->Draw("SAME");
+   values->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+void DrawAllFitsControl(TFile *input, int step, string fname, double ymin, double ymax) { 
+
+   vector<TGraphErrors*> gr_;
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truthControl").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/CQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoControl").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoControl").c_str()));
+
+   vector<string> labels_ = {"Accepted decays", "Reco vertices (#geq12 planes hit)", "Reco vertices (all quality cuts)"};
+
+   vector<int> colours_ = {1,2,4};
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+   TLegend *l = new TLegend(0.11, 0.69, 0.59, 0.89); 
+
+   //l->SetNColumns(3);
+   l->SetBorderSize(0);
+   l->SetTextSize(24);
+   l->SetTextFont(44);
+
+   gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+   gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   gr_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   gr_.at(0)->GetXaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->CenterTitle(true);
+   gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+   for(int i = 0; i<gr_.size(); i++) {
+
+      // Set marker style & colour
+      gr_.at(i)->SetMarkerStyle(20);
+      gr_.at(i)->SetMarkerColor(colours_.at(i));
+
+      // Set ranges
+      gr_.at(i)->GetXaxis()->SetRangeUser(xmin, xmax);
+      gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
+      l->AddEntry(gr_.at(i), labels_.at(i).c_str());
+
+      if(i==0) gr_.at(i)->Draw("AP");
+      else gr_.at(i)->Draw("P SAME");
+
+      // Get functions
+      TF1 *fit = (TF1*)gr_.at(i)->GetFunction("ParabolaFunc");
+      fit->SetLineColor(colours_.at(i));
+      fit->SetLineWidth(3);
+      fit->Draw("SAME");
+
+   }
+
+   l->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+void DrawMottFunctions(TFile *input, int step, string fname, double ymin, double ymax ) {
+
+  cout<<"---> Mott functions"<<endl;
+
+  // Get graph  
+  TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str());
+
+  // Get functions
+  vector<TF1*> funcs_; 
+  for(int i = 0; i<nTrials; i++) { 
+    TF1 *trialFunc = (TF1*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoTrials/"+to_string(i)).c_str());
+    funcs_.push_back(trialFunc);
+  }
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  string title = ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";d_{EDM}(p)";
+
+  funcs_.at(0)->SetTitle(title.c_str());
+  funcs_.at(0)->GetXaxis()->SetTitleSize(.04);
+  funcs_.at(0)->GetYaxis()->SetTitleSize(.04);
+  funcs_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  funcs_.at(0)->GetYaxis()->SetTitleOffset(1.1);
+  funcs_.at(0)->GetXaxis()->CenterTitle(true);
+  funcs_.at(0)->GetYaxis()->CenterTitle(true);
+  funcs_.at(0)->GetYaxis()->SetMaxDigits(4);
+  
+  funcs_.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  gStyle->SetPalette(kRainBow);
+  vector<float> colours_ = { 55, 56.5, 58, 59.5, 61, 62.5, 64, 65.5, 67, 68.5, 70, 71.5, 73, 74.5, 76, 77.5, 79, 80.5, 82, 83.5, 85, 86.5, 88, 89.5, 91, 92.5};
+
+  for(int i = 0; i<funcs_.size(); i++) {
+    funcs_.at(i)->SetLineWidth(3);
+    funcs_.at(i)->SetLineColor(i*0.1);
+    if(i==0) funcs_.at(i)->Draw();
+    else funcs_.at(i)->Draw("SAME");
+  }
+
+  // Purge converged fit
+  TF1 *mainFit = (TF1*)gr->GetListOfFunctions()->At(0); 
+  gr->GetListOfFunctions()->Remove(mainFit);
+  delete mainFit;
+
+  gr->SetMarkerStyle(20);
+  gr->SetMarkerColor(kBlack);
+  gr->SetFillColor(kBlack);
+  gr->SetLineColor(kBlack);
+  gr->Draw("P SAME");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  // Mott ellipse & sphere
+  TH3D *mottEllipse = (TH3D*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoTrials/ellipse3D").c_str());
+  TH3D *mottSphere= (TH3D*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoTrials/sphere3D").c_str());
+
+  DrawTH3(mottEllipse, "", "../Images/MC/Dilution/dMu/"+dMu+"/MottEllipse"+to_string(nTrials));
+  DrawTH3(mottSphere, "", "../Images/MC/Dilution/dMu/"+dMu+"/MottSphere"+to_string(nTrials));
+
+  delete mottEllipse;
+  delete mottSphere;
+
+  return;
+
+}
+
+int main() { 
+
+   bool fit = true;
+   bool write = false;
+
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+   TFile *inputFile = TFile::Open(inputFileName);
+
+   cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
+
+   cout<<"\n****************** Drawing ******************"<<endl;
+
+   // Graphs
+   DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);
+   DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
+   DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "BQ", 0,0.125);
+   DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "AQ", 0, 0.03);
+   DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "BQ", 0, 0.075);
+
+   // Fits
+   DrawAllFits(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllFits", 0, 0.225); 
+   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", 0, 0.12);
+   DrawAllFitsControl(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllControlFits", 0, 0.225); 
+
+   // Fit trials
+   DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12);
+
+   inputFile->Close();
+
+   return 0; 
+
+}
