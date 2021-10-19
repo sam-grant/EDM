@@ -3,204 +3,257 @@
 #include "FancyDraw.h"
 #include "Utils.h"
 #include "RootInclude.h"
+
 #include "EDMBlinding.h"
 
-std::string config = "5.4e-18";
-std::string qual = "vertCorr_eQ_eQ";
+// ./BlindedEDMFitter.exe | tail -n 6 | tee ../Sheets/Run-1b/SimultaneousFitResults_250MeV_BQ.csv
 
-bool unblind = true;//false;//true;//false; //false; //true;
+double xmin = 7*G2PERIOD;
+double xmax = 70*G2PERIOD;
 
-void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, bool unblind) {
+int GetStep(std::string config) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+  int step = 0;
 
-	TF1 *func = graph->GetFunction("FullEDMFunc");
-	func->SetLineWidth(3);
-	func->SetLineColor(kRed);
-	func->SetNpx(1e4);	
+  std::string key1 = "200MeV";
+  std::string key2 = "500MeV";
+  std::string key3 = "250MeV";
 
-	double chi2ndf = func->GetChisquare() / func->GetNDF();
-	double par0 = func->GetParameter(0);
-	double err0 = func->GetParError(0);
-	double par2 = func->GetParameter(2);
-	double err2 = func->GetParError(2);
-	double par3 = func->GetParameter(3);
-	double err3 = func->GetParError(3);
-	double par4 = func->GetParameter(4);
-	double err4 = func->GetParError(4);
+  if(config.find(key1) != std::string::npos) { 
+    step = 200;
+  } else if(config.find(key2) != std::string::npos) { 
+    step = 500;
+  } else if(config.find(key3) != std::string::npos) { 
+    step = 250;
+  } else {
 
-	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
-	leg->SetNColumns(2);
-	leg->AddEntry(graph, "Sim   ");
-	if(!unblind) leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) + A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) + c");
-	else leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) + A_{EDM} sin(#omega_{a}t+#phi) + c");
-	leg->SetBorderSize(0);
+    step = 250;
+    //cerr<<"Step size is unknown";
+  }
 
-	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
-	TPaveText *names = new TPaveText(0.52,0.595,0.69,0.88,"NDC");
-
-	names->SetTextAlign(13);
-	names->AddText("N") ; 
-	names->AddText("#chi^{2}/ndf");
-	//names->AddText("A_{g-2} [mrad]");
-	//names->AddText("#phi");
-	string amplitude;
-	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
-	else amplitude = "A_{EDM} [mrad]";
-	names->AddText(amplitude.c_str());
-	names->AddText("c [mrad]"); 
-
-	//TPaveText *values = new TPaveText(0.65,0.55,0.89,0.89,"NDC");
-	TPaveText *values = new TPaveText(0.65,0.59,0.89,0.89,"NDC");
-	values->SetTextAlign(33);
-	values->AddText(SciNotation(double(N))); 
-	values->AddText(Round(chi2ndf, 3));
-	//values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
-	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
-	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
-
-	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
-	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
-	cuts->SetTextAlign(22);
-	cuts->AddText("700 < p [MeV] < 2400");
-	cuts->AddText("0 < t [#mus] < 300");
-
-	names->SetTextSize(26);
-	names->SetTextFont(44);
-	names->SetFillColor(0);
-	values->SetFillColor(0);
-	values->SetTextFont(44);
-	values->SetTextSize(26);
-	cuts->SetFillColor(0);
-	cuts->SetTextFont(44);
-	cuts->SetTextSize(26);
-
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.1);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);
-	graph->Draw("AP");
-	values->Draw("same");
-	names->Draw("same");
-	leg->Draw("same");
-	func->Draw("same");
-	cuts->Draw("same");
-
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
-
-	delete c;
-
-	return;
+  return step;
 
 }
 
-void DrawModWiggle_tmp(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+string GetQual(std::string config) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+  int step = 0;
 
-	TF1 *func = graph->GetFunction("FiveParFunc");
-	func->SetLineWidth(3);
-	func->SetLineColor(kRed);
-	func->SetNpx(1e4);	
+  vector<std::string> keys_ = {"AQ", "BQ", "CQ"};
 
-	double chi2ndf = func->GetChisquare() / func->GetNDF();
-	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
-	double par1 = func->GetParameter(1); double err1 = func->GetParError(1);
-	double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
-	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
+  for(auto& key : keys_) { 
 
-	TLegend *leg = new TLegend(0.25,0.15,.75,0.25);
-	leg->SetNColumns(2);
-	leg->AddEntry(graph, "Sim   ");
-	leg->AddEntry(func,"N_{0}e^{-t/#tau}[1+Acos(#omega_{a}t+#phi)]");
-	leg->SetBorderSize(0);
+    if(config.find(key) != std::string::npos) { 
 
-	TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+      return key;
 
-	names->SetTextAlign(13);
-	names->AddText("N"); 
-	names->AddText("#chi^{2}/ndf");
-	names->AddText("N_{0}");
-	names->AddText("#tau [#mus]");
-	names->AddText("A"); 
-	names->AddText("#phi [rad]"); 
+    }
 
-	TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
-	values->SetTextAlign(33);
-	values->AddText(SciNotation(double(N))); 
-	values->AddText(Round(chi2ndf, 3));
-	values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
-	values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
-	values->AddText(Round(par2, 4)+"#pm"+Round(err2, 1));
-	//values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+  }
 
-	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
-	cuts->SetTextAlign(22);
-	cuts->AddText("1800 < p [MeV] < 3100");
-	cuts->AddText("30 < t [#mus] < 300");
-
-	names->SetTextSize(26);
-	names->SetTextFont(44);
-	names->SetFillColor(0);
-	values->SetFillColor(0);
-	values->SetTextFont(44);
-	values->SetTextSize(26);
-	cuts->SetFillColor(0);
-	cuts->SetTextFont(44);
-	cuts->SetTextSize(26);
-
-	graph->SetTitle(title.c_str());
-
-	graph->GetXaxis()->SetRangeUser(0, G2PERIOD);
-	graph->GetYaxis()->SetRangeUser(ymin, ymax);
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.1);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("AP");
-
-	values->Draw("same");
-	names->Draw("same");
-	cuts->Draw("same");
-	leg->Draw("same");
-	func->Draw("same");
-
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
-
-	delete c;
-
-	return;
+  return "ERROR";
 
 }
 
-TGraphErrors *BlindedModuloGraph(TFile *input, TGraphErrors *gr_thetaY_mod) { 
+void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, int step, bool xLabel) {
 
-  // ================== First, fit N(t) for the phase ==================
+  TCanvas *c = new TCanvas("c","c",800,600);
 
-  TH1D *h1_wiggle_mod = (TH1D*)input->Get("Wiggle_Modulo");
+  graph->SetTitle(title.c_str());
+  graph->GetXaxis()->SetTitleSize(.04);
+  graph->GetYaxis()->SetTitleSize(.04);
+  graph->GetXaxis()->SetTitleOffset(1.1);
+  graph->GetYaxis()->SetTitleOffset(1.2);
+  graph->GetXaxis()->CenterTitle(true);
+  graph->GetYaxis()->CenterTitle(true);
+  graph->GetYaxis()->SetMaxDigits(4);
+  graph->SetMarkerStyle(20); //  Full circle
+
+  // Hack together x-axis range
+  int N = graph->GetN();
+  double xmax = graph->GetPointX(N-1);
+  double xmin = graph->GetPointX(0);
+
+  double scale = 0.;
+  if(step == 200) scale = 0.05;
+  else if(step == 500) scale = 0.125;
+  else if(step == 250) scale = 0.05;
+
+  double offset = (xmax - xmin) * scale;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
+
+  graph->GetXaxis()->SetRangeUser(750, 2500);
+  //graph->GetYaxis()->SetRangeUser(-0.06, 0.08);
+
+  if(!xLabel) graph->Draw("ALP");
+  else { 
+    graph->Draw("0AP");
+    gPad->Update();
+    graph->GetXaxis()->LabelsOption("h");
+    graph->GetXaxis()->SetTickLength(0);
+    TF1 *f1=new TF1("f1","x", c->GetUxmin(),c->GetUxmax());
+    TGaxis *labels = new TGaxis(c->GetUxmin(),c->GetUymin(),c->GetUxmax(),c->GetUymin(),"f1",8);
+    labels->SetLabelSize(0);
+    labels->Draw("same");
+
+  }
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
+
+void FoldWiggle(TGraphErrors *gr, const double phi, std::string config, std::string dataset, string dname) { //, std::string title, std::string fname) {
+
+  int step = GetStep(config);
+  std::string qual = GetQual(config);
+
+  // Split TGraph and fit into sections based on t_mod
+  std::vector<TGraphErrors*> gr_;
+  std::vector<TF1*> f_;
+  TF1 *f = gr->GetFunction("FiveParFunc");
+
+  int t_mod = 70;
+  int lo = 0; 
+  int hi = t_mod;
+  double t_max = gr->GetPointX(gr->GetN()-1);
+  int folds = t_max / t_mod;
+
+  int i_point = 0; 
+
+  double fit_start_time = 30.6;
+  double fit_end_time = 305.6;
+
+  for (int i_fold = 0; i_fold < folds; i_fold++) { 
+
+    TGraphErrors *gr_tmp = new TGraphErrors();
+    
+    int n = 0; 
+    int i_point_mod = 0; 
+
+    while(gr->GetPointX(i_point) >= lo && gr->GetPointX(i_point) < hi) {
+
+      double x = gr->GetPointX(i_point_mod); double ex = gr->GetErrorX(i_point_mod);
+      double y = gr->GetPointY(i_point); double ey = gr->GetErrorY(i_point);
+
+      if(y == 0) { 
+        i_point++;
+        i_point_mod++;
+        continue;
+      }
+
+      gr_tmp->SetPoint(n, x, y);
+      gr_tmp->SetPointError(n, ex, ey); 
+
+      n++; i_point++; i_point_mod++;
+
+    }
+
+    double xmin = gr_tmp->GetPointX(0);
+    if(i_fold == 0) xmin = fit_start_time;
+
+    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, gr_tmp->GetPointX(n-1));
+
+    gr_.push_back(gr_tmp);
+
+    lo = lo + t_mod; 
+    hi = hi + t_mod;
+
+  }
+
+  double ymin; double ymax;
+
+  if(dataset == "1700ppm") {
+    ymin = 10; 
+    ymax = 10e4;
+  }
+  if(dataset == "5.4e-18") {
+    ymin = 10; 
+    ymax = 5e4;
+  } else {
+    ymin = 10; 
+    ymax = 5e4;
+  } 
+
+  DrawFoldedWiggleSim(gr_, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../Images/MC/"+dname+"/"+dataset+"/MainPlots/FoldedWiggle_"+to_string(t_mod)+"_"+config, 0, t_mod, ymin, ymax);
+
+  return;
+}
+
+const double GetPhase(TFile *input, TFile *output, std::string config, std::string dataset) { 
+
+  int step = GetStep(config);
+  std::string qual = GetQual(config);
+
+  // Is it ok to combine the two stations like this? 
+  // Seems intuitive to me. 
+  // Might be good for debugging to have both though. 
+  // Someone will definitely ask you for it. 
+
+  double ymin; double ymax;
+
+  string dname = "";
+
+  // Could use some adjustment
+  if(dataset == "1700ppm") {
+    ymin = 5e3;
+    ymax = 25e3;
+    dname = "Bz";
+  } else if(dataset == "5.4e-18") {
+    ymin = 5e3;
+    ymax = 50e3; 
+    dname = "dMu";
+  } else {
+    ymin = 5e3;
+    ymax = 25e3; 
+    dname = "dMu";
+  }
+
+  cout<<"Getting phase"<<endl;
+
+  TH1D *h1_wiggle = (TH1D*)input->Get("MainPlots/S0S12S18_Wiggle");
+  TH1D *h1_wiggle_mod = (TH1D*)input->Get("MainPlots/S0S12S18_Wiggle_Modulo");
+
+  TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
 
-  FitFivePar(gr_wiggle_mod, 1300, 64, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
+  // Phase should be about zero in sim
+  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, xmin, xmax);
+  FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
+
+  TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns", "Sim", "../Images/MC/"+dname+"/"+dataset+"/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), xmin, xmax, 10, 40e4);
+
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 
-  // Get phi
-  double phi_omega = modWiggle->GetParameter(4);
+  DrawModWiggleSim(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns", "../Images/MC/"+dname+"/"+dataset+"/MainPlots/fit_mod_wiggle_"+config, double(h1_wiggle_mod->GetEntries()), ymin, ymax);
+
+  const double phi = modWiggle->GetParameter(4);
+
+  // Fold wiggle
+  FoldWiggle(gr_wiggle, phi, config, dataset, dname);
+ 
+  gr_wiggle->SetName("Wiggle");
+  gr_wiggle->Write();
+  gr_wiggle_mod->SetName("ModuloWiggle");
+  gr_wiggle_mod->Write();
+
+  return modWiggle->GetParameter(4);
+
+}
+
+TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod) { 
+
+  // ================== First, shift phase ==================
+
   // Shift the phase 90 deg
   double phi_edm = phi_omega + M_PI/2.; 
 
@@ -208,12 +261,9 @@ TGraphErrors *BlindedModuloGraph(TFile *input, TGraphErrors *gr_thetaY_mod) {
   double t0 = phi_omega * G2PERIOD / (2*M_PI);
   double zeroCrossing = 8*G2PERIOD - t0;
 
-  delete h1_wiggle_mod; delete gr_wiggle_mod; 
-
   // ================== Second, get blinded A_EDM ================== 
 
-  double dMu_blind = blinded_edm_value(unblind);  
-  std::cout<<"dMu_blind:\t"<<dMu_blind<<std::endl;
+  double dMu_blind = blinded_edm_value(false);  
   double delta_blind = GetDelta(dMu_blind);
   double omega_a = getBlinded.referenceValue(); 
   double tan_A_edm = tan(delta_blind) / gmagic;
@@ -227,124 +277,63 @@ TGraphErrors *BlindedModuloGraph(TFile *input, TGraphErrors *gr_thetaY_mod) {
   blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
   blindEDMFunc->SetNpx(50000);
 
-  DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMuSim/"+config+"/Blinded/blindEDMFunc_"+qual+"_"+to_string(unblind));
+  // Best not to draw this.
+  // DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/MC/dMu/"+config+"/blindEDMFunc_"+qual);
 
   // Inject function into modulo plot
   return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
 
 }
 
-void OverlayGraphs(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
+void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, bool unblind) { 
 
-  TCanvas *c = new TCanvas("c","c",800,600);
+  int step = GetStep(config);
+  std::string qual = GetQual(config);
 
-  TLegend *l = new TLegend(0.55,0.79,0.89,0.89);
-  l->SetNColumns(3);
-  l->SetBorderSize(0);
-
-  graphs.at(0)->SetTitle(title.c_str());
-  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
-  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
-  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
-  graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
-  graphs.at(0)->GetXaxis()->CenterTitle(true);
-  graphs.at(0)->GetYaxis()->CenterTitle(true);
-  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
-  graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
-
-  int nGraphs = graphs.size();
-
-  graphs.at(0)->SetMarkerColor(kBlack);
-  graphs.at(1)->SetMarkerColor(kBlue);
-  graphs.at(2)->SetMarkerColor(kRed);
-
-  for(int i = 0; i < nGraphs; i++) {
-    graphs.at(i)->SetMarkerStyle(20);
-    l->AddEntry(graphs.at(i), (names.at(i)).c_str());
-    if(i==0) graphs.at(i)->Draw("AP");
-    else graphs.at(i)->Draw("P SAME");
+  double Ag2; double Aedm; 
+  string dname = "";
+  if(dataset=="1700ppm") {
+    Ag2 = 1.7;
+    Aedm = 0; 
+    dname = "Bz";
+  } else {
+    Ag2 = 0;
+    Aedm = 1.7; 
+    dname = "dMu";
   }
 
-  l->Draw("same");
-  c->SaveAs((fname+".pdf").c_str());
-  c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
+  std::vector<string> stn_ = {"S0", "S12", "S18", "S12S18", "S0S12S18"};
 
-  delete c;
+  for(auto& stn : stn_) { 
 
-  return;
+    TH2D *h2_thetaY_mod = (TH2D*)input->Get(("MainPlots/"+stn+"_ThetaY_vs_Time_Modulo").c_str());
 
-}
+    int nEntries = h2_thetaY_mod->GetEntries();
+    TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
+    std::cout << "Generated x-profile...\t: " << px_thetaY_mod << std::endl;
 
-double GetPhase(TFile *input) { 
+    // Blinding
+    TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod));
 
-	TH1D *h1_wiggle_mod = (TH1D*)input->Get("Wiggle_Modulo");
-	TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
+    gr_thetaY_mod->GetYaxis()->SetRangeUser(-.425, .425);
 
-	FitFivePar(gr_wiggle_mod, 1300, 64, 0.35, OMEGA_A*1e3, 0, 0, G2PERIOD);
+    FullEDMFit(gr_thetaY_mod, Ag2, OMEGA_A * 1e3, phi, Aedm, 0);
+    TF1 *func = gr_thetaY_mod->GetFunction("FullEDMFunc");
 
-	TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
-	modWiggle->SetParName(0,"N_{0}");
-	modWiggle->SetParName(1,"#tau [#mus]");
-	modWiggle->SetParName(2,"A");
-	//modWiggle->SetParName(3,"#omega_{a} (fixed) [MHz]");
-	modWiggle->SetParName(4,"#phi [rad]");
+    double c = func->GetParameter(4);
 
-	DrawModWiggle_tmp(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns","../Images/MC/dMuSim/"+config+"/Blinded/fit_mod_wiggle_"+qual, double(h1_wiggle_mod->GetEntries()), 15e3, 61e3);
+    double ymin; double ymax;
+    if(dataset=="1700ppm") {
+      ymin = c-0.70; ymax =  c+1; 
+    } else if(dataset=="5.4e-18") {
+      ymin = c-0.55; ymax =  c+0.55; 
+    } else {
+      ymin = c-1; ymax =  c+1;
+    }
 
-	return modWiggle->GetParameter(4);
-
-}
-
-
-void SimultaneousAnalysis(TFile *input, TFile *output) {
-
-  const double phi = GetPhase(input); 
-
-  std::cout<<"Phase is "<<phi<<std::endl;
-
-  TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
-  TH2D *moduloHistS0 = (TH2D*)input->Get("S0_ThetaY_vs_Time_Modulo");
-  TH2D *moduloHistS12 = (TH2D*)input->Get("S12_ThetaY_vs_Time_Modulo");
-  TH2D *moduloHistS18 = (TH2D*)input->Get("S18_ThetaY_vs_Time_Modulo");
-  TH2D *moduloHistS12S18 = (TH2D*)moduloHistS12->Clone("moduloHistS12S18"); 
-  moduloHistS12S18->Add(moduloHistS18);
-
-  TH2D *hists[] = {moduloHist, moduloHistS0, moduloHistS12, moduloHistS18, moduloHistS12S18};
-
-  std::vector<string> names = {"S0S12S18", "S0", "S12", "S18", "S12S18"};
-
-  int counter = 0;
-
-  for(auto &hist: hists) { 
-
-    string name = names.at(counter);
-
-    if(name != "S0S12S18") continue;
-
-    std::cout<<"Got modulo for "<<name<<std::endl;
-
-    int nEntries = hist->GetEntries();
-
-    TH1D *moduloProf = hist->ProfileX();
-    std::cout << "Generated x-profile...\t: " << moduloProf << std::endl;
-
-    TGraphErrors *moduloGraph = BlindedModuloGraph(input, ConvertToTGraphErrors(moduloProf)); // 	;
-    moduloGraph->GetYaxis()->SetRangeUser(-.425, .425);
-
-    // Fit
-    FullEDMFit(moduloGraph, 0, OMEGA_A * 1e3, phi, 0.15, 0);
-
-    std::cout<<"A_EDM:\t"<<moduloGraph->GetFunction("FullEDMFunc")->GetParameter(0)<<std::endl;
-	
-    DrawFullEDMFit(moduloGraph, name+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/"+name+"_ModuloFit_"+qual+"_"+to_string(unblind)).c_str(), double(nEntries),unblind);
-
-    moduloGraph->SetName((name+"_fit").c_str());
-    moduloGraph->Write();
-
-    delete hist;
-
-    counter++;
+    DrawFullEDMFitSim(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax, unblind);
+    gr_thetaY_mod->SetName((stn+"_edmFit").c_str());
+    gr_thetaY_mod->Write();
 
   }
 
@@ -352,15 +341,42 @@ void SimultaneousAnalysis(TFile *input, TFile *output) {
 
 }
 
-void MomentumBinnedAnalysis(TFile *input, TFile *output) { 
+void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, bool unblind) { 
 
-  vector<TGraphErrors*> cGraphs_; vector<TGraphErrors*> AEDMGraphs_;
+  int step = GetStep(config);
+  std::string qual = GetQual(config);
 
-  std::vector<string> names_ = { "S0", "S12", "S18" };
+  vector<string> stns_ = { "S0", "S12", "S18", "S12S18", "S0S12S18"}; 
 
-  for(int i_stn = 0; i_stn < names_.size(); i_stn++) {
+  int n_cuts = PMAX / step;
+  int lo = -1; 
+  int hi = -1;
+  int i_cut_config = -1;
 
-    string name = names_.at(i_stn);
+  double Ag2; double Aedm;
+  string dname = ""; 
+  if(dataset=="1700ppm") {
+    Ag2 = 1.7;
+    Aedm = 0;
+    dname = "Bz"; 
+  } else {
+    Ag2 = 0;
+    Aedm = 1.7; 
+    dname = "dMu";
+  }
+
+  for(int i_stn = 0; i_stn < stns_.size(); i_stn++) {
+
+    TGraphErrors* AEDM_vs_p;
+    TGraphErrors* Ag2_vs_p;
+    TGraphErrors* c_vs_p; 
+    TGraphErrors* thetaY_RMS_vs_p;
+    TGraphErrors* Y_RMS_vs_p;
+    TGraphErrors* pY_RMS_vs_p;
+    TGraphErrors* N_vs_p;
+    TGraphErrors* eAEDM_vs_p;
+    TGraphErrors* thetaYMaxDiff_vs_p;
+    TGraphErrors* AEDMOverMaxDiff_vs_p;
 
     std::vector<double> c_;
     std::vector<double> ec_;
@@ -368,121 +384,298 @@ void MomentumBinnedAnalysis(TFile *input, TFile *output) {
     std::vector<double> ep_;
     std::vector<double> AEDM_;
     std::vector<double> eAEDM_;
+    std::vector<double> Ag2_;
+    std::vector<double> eAg2_;
 
-    int pmin = 0.; 
-    int pmax = 100.;
+    // Extra scans
+    vector<double> thetaY_RMS_;
+    vector<double> e_thetaY_RMS_;
+    vector<double> Y_RMS_;
+    vector<double> e_Y_RMS_;
+    vector<double> pY_RMS_;
+    vector<double> e_pY_RMS_;
+    vector<double> N_;
+    vector<double> zeros_;
+    vector<double> thetaYMaxDiff_;
+    vector<double> e_thetaYMaxDiff_;
+    vector<double> AEDMOverMaxDiff_;
+    vector<double> e_AEDMOverMaxDiff_;
 
-    for(int i_cut = 0; i_cut < 50; i_cut++) {
+    string stn = stns_.at(i_stn);
 
-      std::string momSlice = std::to_string(pmin)+"_"+std::to_string(pmax);
-      int p = (pmax+pmin)/2;
+    // ============ Momentum slices ============
+    i_cut_config = 0; 
 
-      TH2D *moduloHist = (TH2D*)input->Get((name+"_ThetaY_vs_Time_Modulo_"+momSlice).c_str());
+    int count = 0;
 
-      if(moduloHist == 0) {
-        pmin = pmin + 100;
-        pmax = pmax + 100;
-        continue;
-      }
+    for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
 
-      int nEntries = moduloHist->GetEntries();
+      lo = 0 + i_cut*step; 
+      hi = step + i_cut*step;
 
-      TH1D *moduloProf = moduloHist->ProfileX();
+      // Get hist
+      std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
+      int p = (hi+lo)/2;
 
-      TGraphErrors *moduloGraph = ConvertToTGraphErrors(moduloProf);
+      std::string h2_thetaY_mod_name = "MomSlices/"+stn+"_ThetaY_vs_Time_Modulo_"+momSlice;
+      TH2D *h2_thetaY_mod = (TH2D*)input->Get(h2_thetaY_mod_name.c_str());
 
-      SimpleEDMFit(moduloGraph, 0.17, OMEGA_A * 1e3, 0);
+      if(h2_thetaY_mod==0) continue;
 
-      DrawSimpleEDMFit(moduloGraph, name+", "+std::to_string(pmin)+" < p [MeV] < "+std::to_string(pmax)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_ModuloFit_"+momSlice+"_"+qual).c_str(), double(nEntries), 1, 1, true);
+      int nEntries = h2_thetaY_mod->GetEntries();
 
-      output->cd("MomentumBinnedAnalysis/ModuloFits");
-
-      moduloGraph->SetName((name+"_fit_"+std::to_string(pmin)+"_"+std::to_string(pmax)).c_str());
-      moduloGraph->Write();
+      // Avoid out of range errors after skipping an empty bin
+      if(nEntries == 0) continue;
 
       p_.push_back(p);
-      ep_.push_back(pmax - p);
-      c_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(2));
-      ec_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(2));
-      AEDM_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParameter(0));
-      eAEDM_.push_back(moduloGraph->GetFunction("SimpleEDMFunc")->GetParError(0));
+      ep_.push_back(0.);//step/2);
 
-      pmin = pmin + 100;
-      pmax = pmax + 100;
+      // Run fits
+      TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
-      delete moduloProf; delete moduloHist;
+      // Blind
+      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod));
 
-    }
+      output->cd("MomentumBinnedAnalysis/ModuloFits/MomSlices");
 
-    TGraphErrors *c_vs_p = GenerateTGraphErrors(p_, c_, ep_, ec_);
-    TGraphErrors *AEDM_vs_p = GenerateTGraphErrors(p_, AEDM_, ep_, eAEDM_);
+      FullEDMFit(gr_thetaY_mod , Ag2, OMEGA_A * 1e3, phi, Aedm, 0);
+      //DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/MC/dMu/"+config+"/MomBinnedAna/"+stn+"_dMuFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5, 5, true);// , double(nEntries), true);
+      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns").c_str() );
+      gr_thetaY_mod->Draw("AP");
+      gr_thetaY_mod->SetName((stn+"_ModuloFit_"+momSlice).c_str());
+      gr_thetaY_mod->Write();
 
-    c_vs_p->GetXaxis()->SetRangeUser(0,3000);
-    AEDM_vs_p->GetXaxis()->SetRangeUser(0,3000);
+      // Fill diluted tilt and vertical offset
+      c_.push_back(gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4));
+      ec_.push_back(gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParError(4));
+      AEDM_.push_back(gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(3));
+      eAEDM_.push_back(gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParError(3));
+      Ag2_.push_back(gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(0));
+      eAg2_.push_back(gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParError(0));
 
-    DrawTGraphErrors(c_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;c [mrad]", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_c_vs_p_"+qual).c_str());
-    DrawTGraphErrors(AEDM_vs_p, name+";p [MeV]: in range p #minus 50 < p < p #plus 50 MeV;A_{EDM} [mrad]", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/"+name+"_AEDM_vs_p_"+qual).c_str());
+      delete h2_thetaY_mod;
+      delete px_thetaY_mod;
+      delete gr_thetaY_mod;
 
-    cGraphs_.push_back(c_vs_p);
-    AEDMGraphs_.push_back(AEDM_vs_p);
+      //if(extraScans) { 
 
-    output->cd("MomentumBinnedAnalysis/ParameterScans");
-    c_vs_p->SetName((name+"_c_vs_p").c_str());
-    AEDM_vs_p->SetName((name+"_AEDM_vs_p").c_str());
+      std::string thetaYHistName = "MomSlices/"+stn+"_ThetaY_"+momSlice;
+      TH1D *thetaYHist = (TH1D*)input->Get((thetaYHistName).c_str());
+
+      thetaY_RMS_.push_back(thetaYHist->GetRMS());
+      e_thetaY_RMS_.push_back(thetaYHist->GetRMSError()); 
+
+      std::string yHistName = "MomSlices/"+stn+"_Y_"+momSlice;
+      TH1D *yHist = (TH1D*)input->Get((yHistName).c_str());
+
+      Y_RMS_.push_back(yHist->GetRMS());
+      e_Y_RMS_.push_back(yHist->GetRMSError());
+
+      std::string pYHistName = "MomSlices/"+stn+"_MomentumY_"+momSlice;
+      TH1D *pYHist = (TH1D*)input->Get((pYHistName).c_str());
+
+      pY_RMS_.push_back(pYHist->GetRMS());
+      e_pY_RMS_.push_back(pYHist->GetRMSError());
+
+      N_.push_back(yHist->GetEntries());
+      zeros_.push_back(0);
+
+      double thetaYMin = thetaYHist->GetBinCenter(thetaYHist->FindFirstBinAbove(0,1));
+      double thetaYMax = thetaYHist->GetBinCenter(thetaYHist->FindLastBinAbove(0,1));
+
+      double e_thetaYMin = thetaYHist->GetBinWidth(thetaYHist->FindFirstBinAbove(0,1));
+      double e_thetaYMax = thetaYHist->GetBinWidth(thetaYHist->FindLastBinAbove(0,1));
+
+      double thetaYMaxDiff = thetaYMax - thetaYMin; 
+      double e_thetaYMaxDiff = sqrt( pow(e_thetaYMax,2) + pow(e_thetaYMin,2) );
+
+      thetaYMaxDiff_.push_back(thetaYMaxDiff);
+      e_thetaYMaxDiff_.push_back(e_thetaYMaxDiff);
+
+      double AEDMOverMaxDiff = AEDM_.at(count) / thetaYMaxDiff;
+      double e_AEDMOverMaxDiff = AEDMOverMaxDiff * sqrt( pow( (eAEDM_.at(count)/AEDM_.at(count)), 2) + pow( (e_thetaYMaxDiff/thetaYMaxDiff), 2) );
+
+      AEDMOverMaxDiff_.push_back(AEDMOverMaxDiff);
+      e_AEDMOverMaxDiff_.push_back(e_AEDMOverMaxDiff);
+
+      count++;
+
+      //} // extra scans
+
+    } // Mom slices
+
+
+    output->cd("MomentumBinnedAnalysis/ParameterScans/MomSlices");
+
+    //TGraphErrors *c_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
+    //TGraphErrors *A_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_
+    c_vs_p = GenerateTGraphErrors(p_, c_, ep_, ec_);
+    AEDM_vs_p = GenerateTGraphErrors(p_, AEDM_, ep_, eAEDM_);
+    Ag2_vs_p = GenerateTGraphErrors(p_, Ag2_, ep_, eAg2_);
+
+    DrawScanGraph(c_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_c_vs_p_"+config).c_str(), step, false);
+    DrawScanGraph(AEDM_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_AEDM_vs_p_"+config).c_str(), step, false);
+    DrawScanGraph(Ag2_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{g#minus2} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_Ag2_vs_p_"+config).c_str(), step, false);
+  
+    c_vs_p->SetName((stn+"_c_vs_p").c_str());
+    AEDM_vs_p->SetName((stn+"_AEDM_vs_p").c_str());
+    Ag2_vs_p->SetName((stn+"_Ag2_vs_p").c_str());
+
     c_vs_p->Write();
     AEDM_vs_p->Write();
+    Ag2_vs_p->Write();
 
-  }
-  	
-  double c_ymin; double c_ymax;
-  double A_ymin; double A_ymax;
-  if(qual=="eQ" || qual=="vertCorr_eQ") { 
-    c_ymin = -0.6; c_ymax = 0.15;
-    A_ymin = 0.0; A_ymax = 0.35;
-  } else if(qual=="noQ"  || qual=="vertCorr_noQ") { 
-    c_ymin = -2; c_ymax = 2;
-    A_ymin = -2; A_ymax = 2;
-  } else if(qual=="pValQ"  || qual=="vertCorr_pValQ") { 
-    c_ymin = -2.5; c_ymax = 1.25;
-    A_ymin = -2; A_ymax = 2;
-  } else if(qual=="vertCorr_eQ_eQ") { 
-    c_ymin = -0.065; c_ymax = 0.05;
-    A_ymin = -0.05; A_ymax = 0.4;
-  }
 
-  OverlayGraphs(cGraphs_, names_, "", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/c_vs_p_overlay_"+qual).c_str(), c_ymin, c_ymax);
-  OverlayGraphs(AEDMGraphs_, names_, "", ("../Images/MC/dMuSim/"+config+"/Blinded/MomBinnedAna/AEDM_vs_p_overlay_"+qual).c_str(), A_ymin, A_ymax);
+    thetaY_RMS_vs_p = GenerateTGraphErrors(p_, thetaY_RMS_, ep_, e_thetaY_RMS_);
+    DrawScanGraph(thetaY_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma#theta_{y} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_theta_Y_RMS_vs_p_"+config).c_str(), step, false);
+    thetaY_RMS_vs_p->SetName((stn+"_thetaY_RMS_vs_p").c_str());
+    thetaY_RMS_vs_p->Write();
+
+    Y_RMS_vs_p = GenerateTGraphErrors(p_, Y_RMS_, ep_, e_Y_RMS_);
+    DrawScanGraph(Y_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{y} [mm]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_Y_RMS_vs_p_"+config).c_str(), step, false);
+    Y_RMS_vs_p->SetName((stn+"_Y_RMS_vs_p").c_str());
+    Y_RMS_vs_p->Write();
+
+    pY_RMS_vs_p = GenerateTGraphErrors(p_, pY_RMS_, ep_, e_pY_RMS_);
+    DrawScanGraph(pY_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{p_{y}} [MeV]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_Momentum_Y_RMS_vs_p_"+config).c_str(), step, false);
+    pY_RMS_vs_p->SetName((stn+"_pY_RMS_vs_p").c_str());
+    pY_RMS_vs_p->Write();
+
+    N_vs_p = GenerateTGraphErrors(p_, N_, ep_, zeros_);
+    DrawScanGraph(N_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;Positrons", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_N_vs_p_"+config).c_str(), step, false);
+    N_vs_p->SetName((stn+"_N_vs_p").c_str());
+    N_vs_p->Write();
+
+    eAEDM_vs_p = GenerateTGraphErrors(p_, eAEDM_, ep_, zeros_);
+    DrawScanGraph(eAEDM_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#deltaA_{EDM}", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_eAEDM_vs_p_"+config).c_str(), step, false);
+    eAEDM_vs_p->SetName((stn+"_eAEDM_vs_p").c_str());
+    eAEDM_vs_p->Write();
+
+    // Normalise A_EDM by max angular diff
+    thetaYMaxDiff_vs_p = GenerateTGraphErrors(p_, thetaYMaxDiff_, ep_, e_thetaYMaxDiff_);
+    DrawScanGraph(thetaYMaxDiff_vs_p, stn+";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_thetaYMaxDiff_vs_p_"+config).c_str(), step, false);
+    thetaYMaxDiff_vs_p->SetName((stn+"_thetaYMaxDiff_vs_p").c_str());
+    thetaYMaxDiff_vs_p->Write();
+
+    AEDMOverMaxDiff_vs_p = GenerateTGraphErrors(p_, AEDMOverMaxDiff_, ep_, e_AEDMOverMaxDiff_);
+    DrawScanGraph(AEDMOverMaxDiff_vs_p, stn+";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX}", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_AEDMOverMaxDiff_vs_p_"+config).c_str(), step, false);
+    AEDMOverMaxDiff_vs_p->SetName((stn+"_AEDMOverMaxDiff_vs_p").c_str());
+    AEDMOverMaxDiff_vs_p->Write();
+
+
+
+  } // Stn loop
 
   return; 
+
 }
 
-int main() {
+void Run(std::string config, std::string dataset, const bool unblind, bool write) {
 
-  bool write = false;//true;
-  // Read file
-  std::string inputName = "../Plots/MC/dMu/"+config+"/dMuSim_"+qual+".root";
-  TFile *input = TFile::Open(inputName.c_str());
+  int step = GetStep(config);
+  std::string qual = GetQual(config);
 
-  std::string outputName = "../Plots/MC/dMu/"+config+"/dMuSim_blindedFits_"+qual+"_"+std::to_string(unblind)+".root"; 
+  // Sort out file names
+  std::string inputName = "";
+  std::string outputName = "";
+
+
+  if(dataset=="1700ppm") { // Pretty safe since I don't think I'm going to be producing another Bz dataset anytime soon
+    inputName += "../Plots/MC/Bz/"+dataset+"/Plots/edmPlots_"+config+".root";
+    outputName += "../Plots/MC/Bz/"+dataset+"/Fits/";
+  } else {
+    inputName += "../Plots/MC/dMu/"+dataset+"/Plots/edmPlots_"+config+".root";
+    cout<<inputName<<endl;
+    outputName += "../Plots/MC/dMu/"+dataset+"/Fits/";
+  }
+
+  if(unblind) outputName += "edmFits_unblinded_"+config+".root";
+  else outputName += "edmFits_blinded_"+config+".root";
+
   if(!write) outputName = "delete_me.root";
 
-  TFile *output = new TFile(outputName.c_str(), "RECREATE");
+  // Book files 
+  TFile *input = TFile::Open((inputName).c_str());
+  TFile *output = new TFile((outputName).c_str(), "RECREATE");
+
+  cout<<"Reading\t"<<inputName<<" "<<input<<endl;
+
+  output->mkdir("Wiggle");
+  output->cd("Wiggle");
+
+  const double phi = GetPhase(input, output, config, dataset); 
 
   output->mkdir("SimultaneousAnalysis");
   output->cd("SimultaneousAnalysis");
 
-  SimultaneousAnalysis(input, output);
+  SimultaneousAnalysis(phi, input, output, config, dataset, unblind);
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
+  output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSlices");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
+  output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
 
-  //MomentumBinnedAnalysis(input, output);
+  MomentumBinnedAnalysis(phi, input, output, config, dataset, unblind);
+
+  // VertOffset(input, output);
+
+  std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
+
+  std::cout<<"\n******* Results ******* "<<endl;
+
+  std::vector<std::string> stn_ = {"S0", "S12", "S18", "S12S18", "S0S12S18"};
+
+  if(!unblind) cout<<"BLINDED"<<endl;
+  else cout<<"UNBLINDED"<<endl;;
+
+  cout<<",chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]"<<endl;
+  cout<<"Station, value, value, error, value, error, value, error"<<endl;
+
+  for(auto& stn : stn_) { 
+
+    TGraphErrors *gr_result = (TGraphErrors*)output->Get(("SimultaneousAnalysis/"+stn+"_edmFit").c_str());
+    TF1 *f_result = (TF1*)gr_result->GetFunction("FullEDMFunc");
+
+    double chi2ndf = f_result->GetChisquare()/f_result->GetNDF();
+    double A_EDM = f_result->GetParameter(3); double eA_EDM = f_result->GetParError(3);
+    double A_Bz = f_result->GetParameter(0); double eA_Bz = f_result->GetParError(0);
+    double c = f_result->GetParameter(4); double ec = f_result->GetParError(4);
+
+    cout<<stn<<", "<<chi2ndf<<", "<<A_EDM<<", "<<eA_EDM<<", "<<A_Bz<<", "<<eA_Bz<<", "<<c<<", "<<ec<<endl;
+
+  }
 
   input->Close();
   output->Close();
 
-  std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
+  return;
+
+
+}
+
+// Uncomment if taking input from script
+int main() {//int argc, char *argv[]) {
+
+  ////////////////////////////////////////////////////////
+  const bool unblind = false;
+
+  // Ok for sim
+  if(unblind) {
+    cout<<"*** Unblind is set to true ****"<<endl;
+  }
+  ////////////////////////////////////////////////////////
+
+  /*  std::string dataset = "5.4e-18";
+      std::string config = "trackReco_AAR_250MeV_BQ";*/
+  //std::string dataset = "5.4e-18";
+
+  
+  std::string dataset = "1700ppm";
+  std::string config = "trackReco_AAR_250MeV_BQ";
+  bool write = true;
+
+  Run(config, dataset, unblind, write);
 
   return 0;
 
