@@ -11,6 +11,22 @@
 double xmin = 7*G2PERIOD;
 double xmax = 70*G2PERIOD;
 
+bool MRF(std::string config) {
+
+  string key = "MRF";
+  if(config.find(key) != std::string::npos) { 
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+double ScaleFactor(bool mrf) { 
+  if(mrf) return GMAGIC;
+  else return 1.;
+}
+
 int GetStep(std::string config) {
 
   int step = 0;
@@ -52,6 +68,19 @@ string GetQual(std::string config) {
   }
 
   return "ERROR";
+
+}
+
+bool NoStations(std::string config) {
+
+  vector<std::string> keys_ = {"acceptedDecays_", "acceptedDecaysControl_", "allDecays_"};
+
+  for(auto& key : keys_) {
+
+      if(config.find(key) != std::string::npos) return true;
+  }
+
+  return false;
 
 }
 
@@ -188,7 +217,7 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config, std::str
   return;
 }
 
-const double GetPhase(TFile *input, TFile *output, std::string config, std::string dataset) { 
+const double GetPhase(TFile *input, TFile *output, std::string config, std::string dataset, bool noStations) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -219,8 +248,16 @@ const double GetPhase(TFile *input, TFile *output, std::string config, std::stri
 
   cout<<"Getting phase"<<endl;
 
-  TH1D *h1_wiggle = (TH1D*)input->Get("MainPlots/S0S12S18_Wiggle");
-  TH1D *h1_wiggle_mod = (TH1D*)input->Get("MainPlots/S0S12S18_Wiggle_Modulo");
+  TString wiggleName = "MainPlots/S0S12S18_Wiggle";
+  TString wiggleModName = "MainPlots/S0S12S18_Wiggle_Modulo";
+
+  if(noStations) {
+    wiggleName = "MainPlots/Wiggle";
+    wiggleModName = "MainPlots/Wiggle_Modulo";
+  }
+
+  TH1D *h1_wiggle = (TH1D*)input->Get(wiggleName);
+  TH1D *h1_wiggle_mod = (TH1D*)input->Get(wiggleModName);
 
   TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
@@ -285,7 +322,7 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
 
 }
 
-void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, bool unblind) { 
+void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool noStations, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -302,15 +339,15 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     dname = "dMu";
   }
 
-  std::vector<string> stn_ = {"S0", "S12", "S18", "S12S18", "S0S12S18"};
+  std::vector<string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
+  if(noStations) stn_ = {""};
 
   for(auto& stn : stn_) { 
 
-    TH2D *h2_thetaY_mod = (TH2D*)input->Get(("MainPlots/"+stn+"_ThetaY_vs_Time_Modulo").c_str());
+    TH2D *h2_thetaY_mod = (TH2D*)input->Get(("MainPlots/"+stn+"ThetaY_vs_Time_Modulo").c_str());
 
     int nEntries = h2_thetaY_mod->GetEntries();
     TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
-    std::cout << "Generated x-profile...\t: " << px_thetaY_mod << std::endl;
 
     // Blinding
     TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod));
@@ -331,8 +368,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
       ymin = c-1; ymax =  c+1;
     }
 
-    DrawFullEDMFitSim(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax, unblind);
-    gr_thetaY_mod->SetName((stn+"_edmFit").c_str());
+    DrawFullEDMFitSim(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_"+config).c_str(), double(nEntries), ymin*scaleFactor, ymax*scaleFactor, unblind);
+    gr_thetaY_mod->SetName((stn+"edmFit").c_str());
     gr_thetaY_mod->Write();
 
   }
@@ -341,12 +378,15 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
 }
 
-void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, bool unblind) { 
+void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool noStations, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
 
-  vector<string> stns_ = { "S0", "S12", "S18", "S12S18", "S0S12S18"}; 
+  bool mrf = MRF(config);
+
+  vector<string> stn_ = { "S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"}; 
+  if(noStations) stn_ = {""};
 
   int n_cuts = PMAX / step;
   int lo = -1; 
@@ -365,7 +405,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     dname = "dMu";
   }
 
-  for(int i_stn = 0; i_stn < stns_.size(); i_stn++) {
+  for(int i_stn = 0; i_stn < stn_.size(); i_stn++) {
 
     TGraphErrors* AEDM_vs_p;
     TGraphErrors* Ag2_vs_p;
@@ -401,7 +441,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     vector<double> AEDMOverMaxDiff_;
     vector<double> e_AEDMOverMaxDiff_;
 
-    string stn = stns_.at(i_stn);
+    string stn = stn_.at(i_stn);
 
     // ============ Momentum slices ============
     i_cut_config = 0; 
@@ -411,13 +451,15 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
 
       lo = 0 + i_cut*step; 
+      if(mrf) lo = 0 + (i_cut * step * (1 / (2*GMAGIC))); 
       hi = step + i_cut*step;
+      if(mrf) hi = (step * (1 / (2*GMAGIC)))  + (i_cut * step * (1 / (2*GMAGIC)));
 
       // Get hist
       std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
       int p = (hi+lo)/2;
 
-      std::string h2_thetaY_mod_name = "MomSlices/"+stn+"_ThetaY_vs_Time_Modulo_"+momSlice;
+      std::string h2_thetaY_mod_name = "MomSlices/"+stn+"ThetaY_vs_Time_Modulo_"+momSlice;
       TH2D *h2_thetaY_mod = (TH2D*)input->Get(h2_thetaY_mod_name.c_str());
 
       if(h2_thetaY_mod==0) continue;
@@ -439,10 +481,10 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       output->cd("MomentumBinnedAnalysis/ModuloFits/MomSlices");
 
       FullEDMFit(gr_thetaY_mod , Ag2, OMEGA_A * 1e3, phi, Aedm, 0);
-      //DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/MC/dMu/"+config+"/MomBinnedAna/"+stn+"_dMuFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5, 5, true);// , double(nEntries), true);
+      //DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/MC/dMu/"+config+"/MomBinnedAna/"+stn+"_dMuFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5*scaleFactor, 5*scaleFactor, true);// , double(nEntries), true);
       gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
-      gr_thetaY_mod->SetName((stn+"_ModuloFit_"+momSlice).c_str());
+      gr_thetaY_mod->SetName((stn+"ModuloFit_"+momSlice).c_str());
       gr_thetaY_mod->Write();
 
       // Fill diluted tilt and vertical offset
@@ -459,19 +501,19 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       //if(extraScans) { 
 
-      std::string thetaYHistName = "MomSlices/"+stn+"_ThetaY_"+momSlice;
+      std::string thetaYHistName = "MomSlices/"+stn+"ThetaY_"+momSlice;
       TH1D *thetaYHist = (TH1D*)input->Get((thetaYHistName).c_str());
 
       thetaY_RMS_.push_back(thetaYHist->GetRMS());
       e_thetaY_RMS_.push_back(thetaYHist->GetRMSError()); 
 
-      std::string yHistName = "MomSlices/"+stn+"_Y_"+momSlice;
+      std::string yHistName = "MomSlices/"+stn+"Y_"+momSlice;
       TH1D *yHist = (TH1D*)input->Get((yHistName).c_str());
 
       Y_RMS_.push_back(yHist->GetRMS());
       e_Y_RMS_.push_back(yHist->GetRMSError());
 
-      std::string pYHistName = "MomSlices/"+stn+"_MomentumY_"+momSlice;
+      std::string pYHistName = "MomSlices/"+stn+"MomentumY_"+momSlice;
       TH1D *pYHist = (TH1D*)input->Get((pYHistName).c_str());
 
       pY_RMS_.push_back(pYHist->GetRMS());
@@ -513,13 +555,13 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     AEDM_vs_p = GenerateTGraphErrors(p_, AEDM_, ep_, eAEDM_);
     Ag2_vs_p = GenerateTGraphErrors(p_, Ag2_, ep_, eAg2_);
 
-    DrawScanGraph(c_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_c_vs_p_"+config).c_str(), step, false);
-    DrawScanGraph(AEDM_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_AEDM_vs_p_"+config).c_str(), step, false);
-    DrawScanGraph(Ag2_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{g#minus2} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_Ag2_vs_p_"+config).c_str(), step, false);
+    DrawScanGraph(c_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;c [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"c_vs_p_"+config).c_str(), step, false);
+    DrawScanGraph(AEDM_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"AEDM_vs_p_"+config).c_str(), step, false);
+    DrawScanGraph(Ag2_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{g#minus2} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"Ag2_vs_p_"+config).c_str(), step, false);
   
-    c_vs_p->SetName((stn+"_c_vs_p").c_str());
-    AEDM_vs_p->SetName((stn+"_AEDM_vs_p").c_str());
-    Ag2_vs_p->SetName((stn+"_Ag2_vs_p").c_str());
+    c_vs_p->SetName((stn+"c_vs_p").c_str());
+    AEDM_vs_p->SetName((stn+"AEDM_vs_p").c_str());
+    Ag2_vs_p->SetName((stn+"Ag2_vs_p").c_str());
 
     c_vs_p->Write();
     AEDM_vs_p->Write();
@@ -527,39 +569,39 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
 
     thetaY_RMS_vs_p = GenerateTGraphErrors(p_, thetaY_RMS_, ep_, e_thetaY_RMS_);
-    DrawScanGraph(thetaY_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma#theta_{y} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_theta_Y_RMS_vs_p_"+config).c_str(), step, false);
-    thetaY_RMS_vs_p->SetName((stn+"_thetaY_RMS_vs_p").c_str());
+    DrawScanGraph(thetaY_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma#theta_{y} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"theta_Y_RMS_vs_p_"+config).c_str(), step, false);
+    thetaY_RMS_vs_p->SetName((stn+"thetaY_RMS_vs_p").c_str());
     thetaY_RMS_vs_p->Write();
 
     Y_RMS_vs_p = GenerateTGraphErrors(p_, Y_RMS_, ep_, e_Y_RMS_);
-    DrawScanGraph(Y_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{y} [mm]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_Y_RMS_vs_p_"+config).c_str(), step, false);
-    Y_RMS_vs_p->SetName((stn+"_Y_RMS_vs_p").c_str());
+    DrawScanGraph(Y_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{y} [mm]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"Y_RMS_vs_p_"+config).c_str(), step, false);
+    Y_RMS_vs_p->SetName((stn+"Y_RMS_vs_p").c_str());
     Y_RMS_vs_p->Write();
 
     pY_RMS_vs_p = GenerateTGraphErrors(p_, pY_RMS_, ep_, e_pY_RMS_);
-    DrawScanGraph(pY_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{p_{y}} [MeV]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_Momentum_Y_RMS_vs_p_"+config).c_str(), step, false);
-    pY_RMS_vs_p->SetName((stn+"_pY_RMS_vs_p").c_str());
+    DrawScanGraph(pY_RMS_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#sigma_{p_{y}} [MeV]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"Momentum_Y_RMS_vs_p_"+config).c_str(), step, false);
+    pY_RMS_vs_p->SetName((stn+"pY_RMS_vs_p").c_str());
     pY_RMS_vs_p->Write();
 
     N_vs_p = GenerateTGraphErrors(p_, N_, ep_, zeros_);
-    DrawScanGraph(N_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;Positrons", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_N_vs_p_"+config).c_str(), step, false);
-    N_vs_p->SetName((stn+"_N_vs_p").c_str());
+    DrawScanGraph(N_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;Positrons", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"N_vs_p_"+config).c_str(), step, false);
+    N_vs_p->SetName((stn+"N_vs_p").c_str());
     N_vs_p->Write();
 
     eAEDM_vs_p = GenerateTGraphErrors(p_, eAEDM_, ep_, zeros_);
-    DrawScanGraph(eAEDM_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#deltaA_{EDM}", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_eAEDM_vs_p_"+config).c_str(), step, false);
-    eAEDM_vs_p->SetName((stn+"_eAEDM_vs_p").c_str());
+    DrawScanGraph(eAEDM_vs_p, stn+";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;#deltaA_{EDM}", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"eAEDM_vs_p_"+config).c_str(), step, false);
+    eAEDM_vs_p->SetName((stn+"eAEDM_vs_p").c_str());
     eAEDM_vs_p->Write();
 
     // Normalise A_EDM by max angular diff
     thetaYMaxDiff_vs_p = GenerateTGraphErrors(p_, thetaYMaxDiff_, ep_, e_thetaYMaxDiff_);
-    DrawScanGraph(thetaYMaxDiff_vs_p, stn+";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_thetaYMaxDiff_vs_p_"+config).c_str(), step, false);
-    thetaYMaxDiff_vs_p->SetName((stn+"_thetaYMaxDiff_vs_p").c_str());
+    DrawScanGraph(thetaYMaxDiff_vs_p, stn+";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;(#Delta#theta_{y})_{MAX} [mrad]", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"thetaYMaxDiff_vs_p_"+config).c_str(), step, false);
+    thetaYMaxDiff_vs_p->SetName((stn+"thetaYMaxDiff_vs_p").c_str());
     thetaYMaxDiff_vs_p->Write();
 
     AEDMOverMaxDiff_vs_p = GenerateTGraphErrors(p_, AEDMOverMaxDiff_, ep_, e_AEDMOverMaxDiff_);
-    DrawScanGraph(AEDMOverMaxDiff_vs_p, stn+";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX}", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"_AEDMOverMaxDiff_vs_p_"+config).c_str(), step, false);
-    AEDMOverMaxDiff_vs_p->SetName((stn+"_AEDMOverMaxDiff_vs_p").c_str());
+    DrawScanGraph(AEDMOverMaxDiff_vs_p, stn+";e^{+}_{LAB} p [MeV] in range: p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+" MeV;A_{EDM}/(#Delta#theta_{y})_{MAX}", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"AEDMOverMaxDiff_vs_p_"+config).c_str(), step, false);
+    AEDMOverMaxDiff_vs_p->SetName((stn+"AEDMOverMaxDiff_vs_p").c_str());
     AEDMOverMaxDiff_vs_p->Write();
 
 
@@ -571,6 +613,10 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 }
 
 void Run(std::string config, std::string dataset, const bool unblind, bool write) {
+
+  bool mrf = MRF(config);
+  double scaleFactor = ScaleFactor(mrf);
+  bool noStations = NoStations(config);
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -603,12 +649,12 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
   output->mkdir("Wiggle");
   output->cd("Wiggle");
 
-  const double phi = GetPhase(input, output, config, dataset); 
+  const double phi = GetPhase(input, output, config, dataset, noStations); 
 
   output->mkdir("SimultaneousAnalysis");
   output->cd("SimultaneousAnalysis");
 
-  SimultaneousAnalysis(phi, input, output, config, dataset, unblind);
+  SimultaneousAnalysis(phi, input, output, config, dataset, scaleFactor, noStations, unblind);
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
@@ -616,7 +662,7 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
 
-  MomentumBinnedAnalysis(phi, input, output, config, dataset, unblind);
+  MomentumBinnedAnalysis(phi, input, output, config, dataset, scaleFactor, noStations, unblind);
 
   // VertOffset(input, output);
 
@@ -624,7 +670,8 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
 
   std::cout<<"\n******* Results ******* "<<endl;
 
-  std::vector<std::string> stn_ = {"S0", "S12", "S18", "S12S18", "S0S12S18"};
+  std::vector<std::string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
+  if(noStations) stn_ = {""};
 
   if(!unblind) cout<<"BLINDED"<<endl;
   else cout<<"UNBLINDED"<<endl;;
@@ -634,7 +681,7 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
 
   for(auto& stn : stn_) { 
 
-    TGraphErrors *gr_result = (TGraphErrors*)output->Get(("SimultaneousAnalysis/"+stn+"_edmFit").c_str());
+    TGraphErrors *gr_result = (TGraphErrors*)output->Get(("SimultaneousAnalysis/"+stn+"edmFit").c_str());
     TF1 *f_result = (TF1*)gr_result->GetFunction("FullEDMFunc");
 
     double chi2ndf = f_result->GetChisquare()/f_result->GetNDF();
@@ -655,7 +702,7 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
 }
 
 // Uncomment if taking input from script
-int main() {//int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
   ////////////////////////////////////////////////////////
   const bool unblind = false;
@@ -669,10 +716,15 @@ int main() {//int argc, char *argv[]) {
   /*  std::string dataset = "5.4e-18";
       std::string config = "trackReco_AAR_250MeV_BQ";*/
   //std::string dataset = "5.4e-18";
-
   
-  std::string dataset = "1700ppm";
-  std::string config = "trackReco_AAR_250MeV_BQ";
+  //std::string dataset = "1700ppm";
+  // std::string config = "trackReco_AAR_250MeV_BQ";
+  // std::string dataset = "5.4e-18";
+  // std::string config = "truthAllDecays_AAR_250MeV_AQ";
+
+  std::string config= argv[1];
+  std::string dataset = argv[2];
+
   bool write = true;
 
   Run(config, dataset, unblind, write);
