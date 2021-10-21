@@ -55,20 +55,18 @@ string GetFrame(string config) {
 
 string GetTracksOrDecays(string config) {
 
-  if(config.find("truthAllDecays_") != std::string::npos) { //} || config.find("truth_") != std::string::npos) { 
-    return "truthAllDecays";
-  } else if(config.find("truth_") != std::string::npos) { 
-    return "truth";
-  } else if(config.find("truth2_") != std::string::npos) { 
-    return "truth2";
-  }else if(config.find("trackTruth_") != std::string::npos) { // } || config.find("trackReco_") != std::string::npos) { 
+  if(config.find("allDecays_") != std::string::npos) { //} || config.find("truth_") != std::string::npos) { 
+    return "allDecays";
+  } else if(config.find("acceptedDecays_") != std::string::npos) { 
+    return "acceptedDecays";
+  } else if(config.find("trackTruth_") != std::string::npos) { // } || config.find("trackReco_") != std::string::npos) { 
     return "trackTruth";
   } else if(config.find("trackReco_") != std::string::npos) { 
     return "trackReco";  
   } else if(config.find("trackRecoControl_") != std::string::npos) { // } || config.find("trackReco_") != std::string::npos) { 
     return "trackRecoControl";
-  } else if(config.find("truthControl_") != std::string::npos) { 
-    return "truthControl";  
+  } else if(config.find("acceptedDecaysControl_") != std::string::npos) { 
+    return "acceptedDecaysControl";  
   }else { 
     cerr<<"Type is unknown";
     return "";
@@ -78,7 +76,7 @@ string GetTracksOrDecays(string config) {
 
 string GetTracksOrDecaysLabel(string config) {
 
-  if(config.find("truthAllDecays_") != std::string::npos || config.find("truth_") != std::string::npos || config.find("truthControl_") != std::string::npos) { 
+  if(config.find("allDecays_") != std::string::npos || config.find("acceptedDecays_") != std::string::npos || config.find("acceptedDecaysControl_") != std::string::npos) { 
     return "Decays";
   } else if(config.find("trackTruth_") != std::string::npos || config.find("trackReco_") != std::string::npos || config.find("trackRecoControl_") != std::string::npos) { 
     return "Tracks";
@@ -265,13 +263,14 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
   cout<<"\n***************************\nRunning with:\nstep: "<<step<<"\nframe: "<<frame<<"\nfitting for: "<<fitType<<"\n***************************"<<endl;
 
-  TString fn = "../Plots/MC/dMu/5.4e-18/fits/dMuSim_unblinded_"+config+".root";//+name+"_"+frame+"_"+to_string(step)+"MeV_"+qual+"Q.root";//
+  TString fn = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_"+config+".root";//+name+"_"+frame+"_"+to_string(step)+"MeV_"+qual+"Q.root";//
   TFile *f = TFile::Open(fn);
 
   cout<<"***************************\nOpened file "<<fn<<", "<<f<<"\n***************************"<<endl;
 
   string grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
-  if(tracksOrDecays == "Tracks") grn += "S0S12S18_A"+fitType+"_vs_p";
+  //cout<<tracksOrDecays<<endl;
+  if(tracksOrDecaysLabel == "Tracks") grn += "S0S12S18_A"+fitType+"_vs_p";
   else grn += "A"+fitType+"_vs_p";
 
   TGraphErrors *gr = (TGraphErrors*)f->Get(grn.c_str());
@@ -343,14 +342,8 @@ int main() {
   // Alternative fitType is "g2
 
   // Regular samples
-  FitDilution("truthAllDecays_AAR_500MeV_AQ",  "EDM", output, false);
-  FitDilution("truth_AAR_500MeV_AQ", "EDM", output, false);
-  FitDilution("trackReco_AAR_500MeV_AQ", "EDM", output, false);
-  FitDilution("trackTruth_AAR_500MeV_AQ", "EDM", output, false);
-  FitDilution("trackReco_AAR_500MeV_BQ", "EDM", output, false);
-  FitDilution("trackTruth_AAR_500MeV_BQ", "EDM", output, false); 
-  FitDilution("truthAllDecays_AAR_250MeV_AQ", "EDM", output, false);
-  FitDilution("truth_AAR_250MeV_AQ", "EDM", output, false);
+  FitDilution("allDecays_AAR_250MeV_AQ", "EDM", output, false);
+  FitDilution("acceptedDecays_AAR_250MeV_AQ", "EDM", output, false);
   FitDilution("trackReco_AAR_250MeV_AQ", "EDM", output, false);
   FitDilution("trackTruth_AAR_250MeV_AQ", "EDM", output, false);
   FitDilution("trackTruth_AAR_250MeV_BQ", "EDM", output, false);
@@ -359,7 +352,7 @@ int main() {
   FitDilution("trackReco_AAR_250MeV_BQ", "EDM", output, true); 
 
   // Control sample. All reconstructions arise from the same MC sample.
-  FitDilution("truthControl_AAR_250MeV_AQ", "EDM", output, false);	
+  FitDilution("acceptedDecaysControl_AAR_250MeV_AQ", "EDM", output, false);	
   FitDilution("trackRecoControl_AAR_250MeV_BQ", "EDM", output, false);
   FitDilution("trackRecoControl_AAR_250MeV_CQ", "EDM", output, false);
 

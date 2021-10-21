@@ -21,8 +21,8 @@ void DrawAllGraphs(TFile *input, int step, string fname, double ymin, double yma
     cout<<"---> All graphs"<<endl;
 
    vector<TGraphErrors*> gr_;
-   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truthAllDecays").c_str()));
-   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/acceptedDecays").c_str()));
    gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackTruth").c_str()));
    gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str()));
 
@@ -262,8 +262,8 @@ void DrawAllFits(TFile *input, int step, string fname, double ymin, double ymax)
   cout<<"---> All fits"<<endl;
 
    vector<TGraphErrors*> gr_;
-   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truthAllDecays").c_str()));
-   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truth").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/acceptedDecays").c_str()));
    gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackTruth").c_str()));
    gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str()));
 
@@ -370,7 +370,7 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
    TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
    values->SetTextAlign(33);
    values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
-   values->AddText("(-6#pm2)#times10^{-8}");//SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0)));
+   values->AddText("(-5#pm2)#times10^{-8}");//SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0)));
    values->AddText("(1.6#pm0.6)#times10^{-4}");//Round(fit->GetParameter(1),2)+"#pm"+SciNotation(fit->GetParError(1)));
    values->AddText(Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));
 
@@ -404,7 +404,7 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
 void DrawAllFitsControl(TFile *input, int step, string fname, double ymin, double ymax) { 
 
    vector<TGraphErrors*> gr_;
-   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/truthControl").c_str()));
+   gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/acceptedDecaysControl").c_str()));
    gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/CQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoControl").c_str()));
    gr_.push_back((TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoControl").c_str()));
 
