@@ -1,10 +1,10 @@
 void S12_AEDM_vs_p_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 12 10:58:15 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 19 15:52:05 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(500,-0.2779123,2750,0.7653979);
+   c->Range(500,-0.2846179,2750,0.7586922);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12_AEDM_vs_p_250MeV_BQ()
    2625,
    2875};
    Double_t Graph0_fy1012[11] = {
-   0.3618189,
-   0.09107908,
-   0.1134752,
-   0.04042333,
-   0.07598814,
-   0.05493607,
-   0.0237659,
-   0.03151788,
-   0.03867079,
-   0.005881217,
-   -0.01972985};
+   0.3551132,
+   0.08437348,
+   0.1067696,
+   0.03371772,
+   0.06928252,
+   0.04823042,
+   0.01706027,
+   0.02481226,
+   0.03197756,
+   -0.0008329055,
+   -0.02643551};
    Double_t Graph0_fex1012[11] = {
    0,
    0,
@@ -50,7 +50,7 @@ void S12_AEDM_vs_p_250MeV_BQ()
    Double_t Graph0_fey1012[11] = {
    0.229694,
    0.05770024,
-   0.02902098,
+   0.02902099,
    0.02200892,
    0.0190005,
    0.01814633,
@@ -66,8 +66,8 @@ void S12_AEDM_vs_p_250MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01012 = new TH1F("Graph_Graph01012","S12",100,125,3125);
-   Graph_Graph01012->SetMinimum(-0.1735813);
-   Graph_Graph01012->SetMaximum(0.6610669);
+   Graph_Graph01012->SetMinimum(-0.1802869);
+   Graph_Graph01012->SetMaximum(0.6543612);
    Graph_Graph01012->SetDirectory(0);
    Graph_Graph01012->SetStats(0);
 

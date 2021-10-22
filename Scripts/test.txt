@@ -1,0 +1,621 @@
+Running command ./BlindedEDMSimFitter.exe allDecays_WORLD_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ.root 0x7f860c6f93f0
+Getting phase
+Generated x-profile...	: 0x7f8613076c00
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_allDecays_WORLD_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.26613, 0.29302, 0.00572871, 0.00362117, 0.00577065, -0.000966196, 0.00408468
+Running command ./BlindedEDMSimFitter.exe allDecays_AAR_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_AAR_250MeV_AQ.root 0x7ffd5c6924d0
+Getting phase
+Generated x-profile...	: 0x7ffd59ae5000
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_allDecays_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.26613, 0.29302, 0.00572871, 0.00362117, 0.00577065, -0.000966196, 0.00408468
+Running command ./BlindedEDMSimFitter.exe allDecays_MRF_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_MRF_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_MRF_250MeV_AQ.root 0x7ffa13c720b0
+Getting phase
+Generated x-profile...	: 0x7ffa0cb88a00
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_allDecays_MRF_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.20044, -0.598369, 0.187727, 2.59787, 0.187853, -0.129536, 0.132794
+Running command ./BlindedEDMSimFitter.exe acceptedDecays_WORLD_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecays_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecays_WORLD_250MeV_AQ.root 0x7fe07c2a6240
+Getting phase
+Generated x-profile...	: 0x7fe073e5ce00
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_acceptedDecays_WORLD_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.43081, 0.26056, 0.0029934, -0.00618655, 0.00302032, -0.0207339, 0.00213756
+Running command ./BlindedEDMSimFitter.exe acceptedDecays_AAR_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecays_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecays_AAR_250MeV_AQ.root 0x7fa00db5ee30
+Getting phase
+Generated x-profile...	: 0x7fa00e2f2600
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_acceptedDecays_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.43081, 0.26056, 0.0029934, -0.00618655, 0.00302032, -0.0207339, 0.00213756
+Running command ./BlindedEDMSimFitter.exe acceptedDecays_MRF_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecays_MRF_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecays_MRF_250MeV_AQ.root 0x7feb525a13f0
+Getting phase
+Generated x-profile...	: 0x7feb50570800
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_acceptedDecays_MRF_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.28374, 3.00885, 0.117735, -0.155325, 0.117933, -1.32509, 0.0833446
+Running command ./BlindedEDMSimFitter.exe acceptedDecaysControl_WORLD_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecaysControl_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecaysControl_WORLD_250MeV_AQ.root 0x7f9d92c2e630
+Getting phase
+[/usr/lib/system/libsystem_platform.dylib] _sigtramp (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] GetPhase(TFile*, TFile*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+Running command ./BlindedEDMSimFitter.exe acceptedDecaysControl_AAR_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecaysControl_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecaysControl_AAR_250MeV_AQ.root 0x7fb7c77e98c0
+Getting phase
+[/usr/lib/system/libsystem_platform.dylib] _sigtramp (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] GetPhase(TFile*, TFile*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+Running command ./BlindedEDMSimFitter.exe acceptedDecaysControl_MRF_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecaysControl_MRF_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_acceptedDecaysControl_MRF_250MeV_AQ.root 0x7feb63ed0b20
+Getting phase
+[/usr/lib/system/libsystem_platform.dylib] _sigtramp (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] GetPhase(TFile*, TFile*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+Running command ./BlindedEDMSimFitter.exe trackReco_WORLD_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_AQ.root 0x7fed5bb46aa0
+Getting phase
+Generated x-profile...	: 0x7fed5727c200
+Generated x-profile...	: 0x7fed5c0df400
+Generated x-profile...	: 0x7fed5c028600
+Generated x-profile...	: 0x7fed5720b000
+Generated x-profile...	: 0x7fed5c04c200
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackReco_WORLD_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.57988, 0.215244, 0.0105536, -0.00495883, 0.0106082, -0.0335485, 0.00750276
+S12_, 1.28884, 0.198553, 0.0106725, -0.0317934, 0.010712, -0.297865, 0.00758009
+S18_, 1.27103, 0.166545, 0.0107839, -0.0275201, 0.0108207, -0.216722, 0.00765631
+S12S18_, 1.45571, 0.182691, 0.00758582, -0.0296512, 0.00761281, -0.257631, 0.00538678
+S0S12S18_, 1.27047, 0.19368, 0.00615989, -0.0215598, 0.00618518, -0.181623, 0.00437588
+Running command ./BlindedEDMSimFitter.exe trackReco_WORLD_250MeV_BQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_BQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_BQ.root 0x7f9da4b448e0
+Getting phase
+Generated x-profile...	: 0x7f9d9c73a600
+Generated x-profile...	: 0x7f9da5066800
+Generated x-profile...	: 0x7f9d9c638a00
+Generated x-profile...	: 0x7f9da5112200
+Generated x-profile...	: 0x7f9d9c9cd400
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackReco_WORLD_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.35766, 0.179505, 0.0122418, -0.0229947, 0.0123048, -0.147431, 0.00870078
+S12_, 1.38965, 0.16374, 0.0124034, -0.0308202, 0.0124505, -0.40002, 0.00880714
+S18_, 1.2347, 0.134836, 0.0124942, -0.0193379, 0.0125401, -0.302807, 0.00886987
+S12S18_, 1.393, 0.149331, 0.00880266, -0.025056, 0.00883555, -0.351756, 0.0062498
+S0S12S18_, 1.243, 0.159464, 0.00714707, -0.0246267, 0.00717721, -0.282338, 0.00507616
+Running command ./BlindedEDMSimFitter.exe trackReco_AAR_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_AAR_250MeV_AQ.root 0x7fb92d686ab0
+Getting phase
+Generated x-profile...	: 0x7fb933b9b200
+Generated x-profile...	: 0x7fb92c8ef600
+Generated x-profile...	: 0x7fb92c640000
+Generated x-profile...	: 0x7fb92b216c00
+Generated x-profile...	: 0x7fb9339aa400
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackReco_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.57988, 0.215244, 0.0105536, -0.00495883, 0.0106082, -0.0335485, 0.00750276
+S12_, 1.28884, 0.198553, 0.0106725, -0.0317934, 0.010712, -0.297865, 0.00758009
+S18_, 1.27103, 0.166545, 0.0107839, -0.0275201, 0.0108207, -0.216722, 0.00765631
+S12S18_, 1.45571, 0.182691, 0.00758582, -0.0296512, 0.00761281, -0.257631, 0.00538678
+S0S12S18_, 1.27047, 0.19368, 0.00615989, -0.0215598, 0.00618518, -0.181623, 0.00437588
+Running command ./BlindedEDMSimFitter.exe trackReco_AAR_250MeV_BQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_AAR_250MeV_BQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_AAR_250MeV_BQ.root 0x7f8c42330fd0
+Getting phase
+Generated x-profile...	: 0x7f8c3d1a4800
+Generated x-profile...	: 0x7f8c429bc200
+Generated x-profile...	: 0x7f8c39f01c00
+Generated x-profile...	: 0x7f8c3ab83a00
+Generated x-profile...	: 0x7f8c3ad71800
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackReco_AAR_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.35766, 0.179505, 0.0122418, -0.0229947, 0.0123048, -0.147431, 0.00870078
+S12_, 1.38965, 0.16374, 0.0124034, -0.0308202, 0.0124505, -0.40002, 0.00880714
+S18_, 1.2347, 0.134836, 0.0124942, -0.0193379, 0.0125401, -0.302807, 0.00886987
+S12S18_, 1.393, 0.149331, 0.00880266, -0.025056, 0.00883555, -0.351756, 0.0062498
+S0S12S18_, 1.243, 0.159464, 0.00714707, -0.0246267, 0.00717721, -0.282338, 0.00507616
+Running command ./BlindedEDMSimFitter.exe trackRecoControl_WORLD_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_WORLD_250MeV_AQ.root 0x7f99e88b5780
+Getting phase
+Generated x-profile...	: 0x7f99eb41b000
+Generated x-profile...	: 0x7f99e4891a00
+Generated x-profile...	: 0x7f99e48a9c00
+Generated x-profile...	: 0x7f99e4718000
+Generated x-profile...	: 0x7f99eb1d3c00
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackRecoControl_WORLD_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.12259, 0.150981, 0.0266132, -0.0301033, 0.0265273, -0.116674, 0.0187885
+S12_, 1.50336, 0.113683, 0.0264431, -0.0257928, 0.0263128, -0.422538, 0.0186527
+S18_, 1.15845, 0.106321, 0.0264189, -0.0270431, 0.0262789, -0.268484, 0.0186327
+S12S18_, 1.40067, 0.110053, 0.0186913, -0.0266303, 0.0185959, -0.345849, 0.0131836
+S0S12S18_, 1.03136, 0.126004, 0.0153079, -0.02818, 0.0152472, -0.26577, 0.0108035
+Running command ./BlindedEDMSimFitter.exe trackRecoControl_WORLD_250MeV_BQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_WORLD_250MeV_BQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_WORLD_250MeV_BQ.root 0x7fb986e518c0
+Getting phase
+Generated x-profile...	: 0x7fb98d17c400
+Generated x-profile...	: 0x7fb985f1dc00
+Generated x-profile...	: 0x7fb988154600
+Generated x-profile...	: 0x7fb9880b0600
+Generated x-profile...	: 0x7fb98d04be00
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackRecoControl_WORLD_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.12259, 0.150981, 0.0266132, -0.0301033, 0.0265273, -0.116674, 0.0187885
+S12_, 1.50336, 0.113683, 0.0264431, -0.0257928, 0.0263128, -0.422538, 0.0186527
+S18_, 1.15845, 0.106321, 0.0264189, -0.0270431, 0.0262789, -0.268484, 0.0186327
+S12S18_, 1.40067, 0.110053, 0.0186913, -0.0266303, 0.0185959, -0.345849, 0.0131836
+S0S12S18_, 1.03136, 0.126004, 0.0153079, -0.02818, 0.0152472, -0.26577, 0.0108035
+Running command ./BlindedEDMSimFitter.exe trackRecoControl_AAR_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_AAR_250MeV_AQ.root 0x7fd77ef97320
+Getting phase
+Generated x-profile...	: 0x7fd77d2f4000
+Generated x-profile...	: 0x7fd7833f8800
+Generated x-profile...	: 0x7fd7833ea600
+Generated x-profile...	: 0x7fd77c6e3000
+Generated x-profile...	: 0x7fd783389200
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackRecoControl_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.12259, 0.150981, 0.0266132, -0.0301033, 0.0265273, -0.116674, 0.0187885
+S12_, 1.50336, 0.113683, 0.0264431, -0.0257928, 0.0263128, -0.422538, 0.0186527
+S18_, 1.15845, 0.106321, 0.0264189, -0.0270431, 0.0262789, -0.268484, 0.0186327
+S12S18_, 1.40067, 0.110053, 0.0186913, -0.0266303, 0.0185959, -0.345849, 0.0131836
+S0S12S18_, 1.03136, 0.126004, 0.0153079, -0.02818, 0.0152472, -0.26577, 0.0108035
+Running command ./BlindedEDMSimFitter.exe trackRecoControl_AAR_250MeV_BQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_AAR_250MeV_BQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackRecoControl_AAR_250MeV_BQ.root 0x7fb39dfdae30
+Getting phase
+Generated x-profile...	: 0x7fb39be72a00
+Generated x-profile...	: 0x7fb39bec9e00
+Generated x-profile...	: 0x7fb39bd3a400
+Generated x-profile...	: 0x7fb3a2c40200
+Generated x-profile...	: 0x7fb39ab12800
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackRecoControl_AAR_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.12259, 0.150981, 0.0266132, -0.0301033, 0.0265273, -0.116674, 0.0187885
+S12_, 1.50336, 0.113683, 0.0264431, -0.0257928, 0.0263128, -0.422538, 0.0186527
+S18_, 1.15845, 0.106321, 0.0264189, -0.0270431, 0.0262789, -0.268484, 0.0186327
+S12S18_, 1.40067, 0.110053, 0.0186913, -0.0266303, 0.0185959, -0.345849, 0.0131836
+S0S12S18_, 1.03136, 0.126004, 0.0153079, -0.02818, 0.0152472, -0.26577, 0.0108035
+Running command ./BlindedEDMSimFitter.exe trackTruth_WORLD_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_WORLD_250MeV_AQ.root 0x7f971159d9b0
+Getting phase
+Generated x-profile...	: 0x7f970ee4f200
+Generated x-profile...	: 0x7f9717bb6c00
+Generated x-profile...	: 0x7f970ee51c00
+Generated x-profile...	: 0x7f97179f8e00
+Generated x-profile...	: 0x7f9717aefe00
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackTruth_WORLD_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.54534, 0.209469, 0.0104455, -0.000669988, 0.0104991, -0.0591799, 0.00742587
+S12_, 1.35382, 0.19369, 0.0105553, -0.0305183, 0.0105953, -0.30791, 0.0074972
+S18_, 1.2937, 0.164479, 0.0106638, -0.0207883, 0.0107054, -0.222328, 0.00757318
+S12S18_, 1.47867, 0.179182, 0.00750195, -0.0256361, 0.00753075, -0.265481, 0.00532807
+S0S12S18_, 1.20737, 0.189378, 0.00609346, -0.0174332, 0.00611952, -0.19553, 0.00432914
+Running command ./BlindedEDMSimFitter.exe trackTruth_WORLD_250MeV_BQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_WORLD_250MeV_BQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_WORLD_250MeV_BQ.root 0x7ff29f5d6540
+Getting phase
+Generated x-profile...	: 0x7ff29efa0000
+Generated x-profile...	: 0x7ff2a5978000
+Generated x-profile...	: 0x7ff2a598a800
+Generated x-profile...	: 0x7ff2a09d1400
+Generated x-profile...	: 0x7ff29cfcb800
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackTruth_WORLD_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.25262, 0.178396, 0.0121979, -0.0154029, 0.0122528, -0.164645, 0.00866663
+S12_, 1.43165, 0.165518, 0.0123576, -0.0259346, 0.0123968, -0.40889, 0.00877176
+S18_, 1.19422, 0.134195, 0.0124469, -0.0110943, 0.0124881, -0.306076, 0.00883468
+S12S18_, 1.52891, 0.149888, 0.00876979, -0.0184611, 0.00879819, -0.357887, 0.00622484
+S0S12S18_, 1.14631, 0.159505, 0.00712072, -0.0176944, 0.00714684, -0.292214, 0.005056
+Running command ./BlindedEDMSimFitter.exe trackTruth_AAR_250MeV_AQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_AAR_250MeV_AQ.root 0x7fc1826946f0
+Getting phase
+Generated x-profile...	: 0x7fc18076e200
+Generated x-profile...	: 0x7fc181647600
+Generated x-profile...	: 0x7fc181d47c00
+Generated x-profile...	: 0x7fc181e61e00
+Generated x-profile...	: 0x7fc1804d1000
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackTruth_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.54534, 0.209469, 0.0104455, -0.000669988, 0.0104991, -0.0591799, 0.00742587
+S12_, 1.35382, 0.19369, 0.0105553, -0.0305183, 0.0105953, -0.30791, 0.0074972
+S18_, 1.2937, 0.164479, 0.0106638, -0.0207883, 0.0107054, -0.222328, 0.00757318
+S12S18_, 1.47867, 0.179182, 0.00750195, -0.0256361, 0.00753075, -0.265481, 0.00532807
+S0S12S18_, 1.20737, 0.189378, 0.00609346, -0.0174332, 0.00611952, -0.19553, 0.00432914
+Running command ./BlindedEDMSimFitter.exe trackTruth_AAR_250MeV_BQ 5.4e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_AAR_250MeV_BQ.root
+Reading	../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackTruth_AAR_250MeV_BQ.root 0x7fabddca9240
+Getting phase
+Generated x-profile...	: 0x7fabe7322e00
+Generated x-profile...	: 0x7fabe055a600
+Generated x-profile...	: 0x7fabe73a5200
+Generated x-profile...	: 0x7fabe05b8800
+Generated x-profile...	: 0x7fabe02be800
+
+Written plots to root file:
+../Plots/MC/dMu/5.4e-18/Fits/edmFits_blinded_trackTruth_AAR_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.25262, 0.178396, 0.0121979, -0.0154029, 0.0122528, -0.164645, 0.00866663
+S12_, 1.43165, 0.165518, 0.0123576, -0.0259346, 0.0123968, -0.40889, 0.00877176
+S18_, 1.19422, 0.134195, 0.0124469, -0.0110943, 0.0124881, -0.306076, 0.00883468
+S12S18_, 1.52891, 0.149888, 0.00876979, -0.0184611, 0.00879819, -0.357887, 0.00622484
+S0S12S18_, 1.14631, 0.159505, 0.00712072, -0.0176944, 0.00714684, -0.292214, 0.005056
+Running command ./BlindedEDMSimFitter.exe allDecays_WORLD_250MeV_AQ 1.8e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/1.8e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ.root
+Reading	../Plots/MC/dMu/1.8e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ.root 0x7fcc25a3fe50
+Getting phase
+Generated x-profile...	: 0x7fcc208f6800
+
+Written plots to root file:
+../Plots/MC/dMu/1.8e-18/Fits/edmFits_blinded_allDecays_WORLD_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.19823, 0.11904, 0.00407625, -0.00359476, 0.0041007, 0.00129774, 0.00290426
+Running command ./BlindedEDMSimFitter.exe allDecays_AAR_250MeV_AQ 1.8e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/1.8e-18/Plots/edmPlots_allDecays_AAR_250MeV_AQ.root
+Reading	../Plots/MC/dMu/1.8e-18/Plots/edmPlots_allDecays_AAR_250MeV_AQ.root 0x7fe1de1f22b0
+Getting phase
+Generated x-profile...	: 0x7fe1dbe0ac00
+
+Written plots to root file:
+../Plots/MC/dMu/1.8e-18/Fits/edmFits_blinded_allDecays_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.19823, 0.11904, 0.00407625, -0.00359476, 0.0041007, 0.00129774, 0.00290426
+Running command ./BlindedEDMSimFitter.exe allDecays_MRF_250MeV_AQ 1.8e-18
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+../Plots/MC/dMu/1.8e-18/Plots/edmPlots_allDecays_MRF_250MeV_AQ.root
+Reading	../Plots/MC/dMu/1.8e-18/Plots/edmPlots_allDecays_MRF_250MeV_AQ.root 0x7ffd697fe970
+Getting phase
+Generated x-profile...	: 0x7ffd6721f800
+
+Written plots to root file:
+../Plots/MC/dMu/1.8e-18/Fits/edmFits_blinded_allDecays_MRF_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.33082, -0.767809, 0.133283, 0.687744, 0.133757, 0.0645158, 0.0944177
+Running command ./BlindedEDMSimFitter.exe trackReco_AAR_250MeV_AQ 1700ppm
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+Reading	../Plots/MC/Bz/1700ppm/Plots/edmPlots_trackReco_AAR_250MeV_AQ.root 0x7fe2306663e0
+Getting phase
+Generated x-profile...	: 0x7fe22f5d9400
+Generated x-profile...	: 0x7fe22f512800
+Generated x-profile...	: 0x7fe22ff92c00
+Generated x-profile...	: 0x7fe22fe9e400
+Generated x-profile...	: 0x7fe22de00600
+
+Written plots to root file:
+../Plots/MC/Bz/1700ppm/Fits/edmFits_blinded_trackReco_AAR_250MeV_AQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.18702, 0.0441464, 0.018415, 0.176721, 0.0183852, -0.031804, 0.0130315
+S12_, 1.2832, 0.060733, 0.018636, 0.167302, 0.0185749, -0.299561, 0.013176
+S18_, 1.15225, 0.0374683, 0.0188016, 0.157071, 0.0187112, -0.254908, 0.0132805
+S12S18_, 1.4277, 0.0492393, 0.0132364, 0.16238, 0.0131829, -0.277494, 0.00935393
+S0S12S18_, 1.32326, 0.0415265, 0.0105803, 0.16858, 0.0105581, -0.176367, 0.00748839
+Running command ./BlindedEDMSimFitter.exe trackReco_AAR_250MeV_BQ 1700ppm
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+ +                                                                      +
+ +           You have chose to blind your fitting according to          +
+ +                omega_ref * (1 + (R +/- deltaR) *10^{-6})             +
+ +                                                                      +
+ + ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ +
+Reading	../Plots/MC/Bz/1700ppm/Plots/edmPlots_trackReco_AAR_250MeV_BQ.root 0x7ff04fa46870
+Getting phase
+Generated x-profile...	: 0x7ff047cdd800
+Generated x-profile...	: 0x7ff04718f400
+Generated x-profile...	: 0x7ff05038e600
+Generated x-profile...	: 0x7ff047c4c200
+Generated x-profile...	: 0x7ff047fb9c00
+
+Written plots to root file:
+../Plots/MC/Bz/1700ppm/Fits/edmFits_blinded_trackReco_AAR_250MeV_BQ.root
+
+******* Results ******* 
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+S0_, 1.23192, 0.0287938, 0.0209779, 0.173846, 0.0211038, -0.131545, 0.014914
+S12_, 1.33889, 0.0286209, 0.0213339, 0.158762, 0.0214016, -0.39541, 0.0151447
+S18_, 1.07421, 0.0296326, 0.0215137, 0.123612, 0.0215384, -0.344013, 0.015253
+S12S18_, 1.18992, 0.0291996, 0.0151496, 0.1415, 0.0151823, -0.369909, 0.0107477
+S0S12S18_, 1.11768, 0.0290325, 0.0122829, 0.152164, 0.0123253, -0.288817, 0.00872018

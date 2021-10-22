@@ -1,10 +1,10 @@
 void S12_c_vs_p_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct  7 13:26:11 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 19 15:52:23 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-118.7188,-2.898002,3360.969,1.611875);
+   c->Range(500,-1.609916,2750,2.904317);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,50 +24,50 @@ void S12_c_vs_p_250MeV_BQ()
    2625,
    2875};
    Double_t Graph0_fy1011[11] = {
-   -2.065465,
-   0.03420339,
-   0.2408371,
-   0.7930936,
-   0.8534268,
-   0.4867656,
-   0.2959255,
-   0.255219,
-   0.1959928,
-   0.02204738,
-   -0.1088071};
+   2.070751,
+   -0.0329934,
+   -0.2397867,
+   -0.7920024,
+   -0.8507132,
+   -0.4842371,
+   -0.2946472,
+   -0.2529637,
+   -0.1935376,
+   -0.02215836,
+   0.1144832};
    Double_t Graph0_fex1011[11] = {
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125,
-   125};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t Graph0_fey1011[11] = {
-   0.08089126,
-   0.02045731,
-   0.01031995,
-   0.007857922,
-   0.006802111,
-   0.006514204,
-   0.006659717,
-   0.007076583,
-   0.007883382,
-   0.00939567,
-   0.03438435};
+   0.08119434,
+   0.02053219,
+   0.01036052,
+   0.007889733,
+   0.006830394,
+   0.006542978,
+   0.006689945,
+   0.007111287,
+   0.007923047,
+   0.009447317,
+   0.03451333};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1011,Graph0_fy1011,Graph0_fex1011,Graph0_fey1011);
    gre->SetName("Graph0");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01011 = new TH1F("Graph_Graph01011","S12",100,0,3275);
-   Graph_Graph01011->SetMinimum(-2.447014);
-   Graph_Graph01011->SetMaximum(1.160887);
+   TH1F *Graph_Graph01011 = new TH1F("Graph_Graph01011","S12",100,125,3125);
+   Graph_Graph01011->SetMinimum(-1.158492);
+   Graph_Graph01011->SetMaximum(2.452894);
    Graph_Graph01011->SetDirectory(0);
    Graph_Graph01011->SetStats(0);
 
@@ -76,7 +76,7 @@ void S12_c_vs_p_250MeV_BQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01011->SetLineColor(ci);
    Graph_Graph01011->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125 MeV");
-   Graph_Graph01011->GetXaxis()->SetRange(8,92);
+   Graph_Graph01011->GetXaxis()->SetRange(21,80);
    Graph_Graph01011->GetXaxis()->CenterTitle(true);
    Graph_Graph01011->GetXaxis()->SetLabelFont(42);
    Graph_Graph01011->GetXaxis()->SetTitleSize(0.04);
@@ -94,7 +94,7 @@ void S12_c_vs_p_250MeV_BQ()
    Graph_Graph01011->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph01011);
    
-   gre->Draw("ap");
+   gre->Draw("alp");
    
    TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");

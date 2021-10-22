@@ -157,6 +157,46 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 }
 
 
+void DrawTH3(TH3D *hist, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(title.c_str());
+
+	hist->SetStats(0);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetZaxis()->SetTitleSize(.04);
+
+	hist->GetXaxis()->SetTitleOffset(2);
+	hist->GetYaxis()->SetTitleOffset(2);
+	hist->GetZaxis()->SetTitleOffset(1.65);
+
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetZaxis()->CenterTitle(1);
+
+	hist->GetXaxis()->SetMaxDigits(4);
+	hist->GetYaxis()->SetMaxDigits(4);	
+	hist->GetZaxis()->SetMaxDigits(4);
+
+	c->SetLeftMargin(0.13);
+
+	hist->SetMarkerStyle(20);
+	hist->SetLineColor(kBlack);
+
+	hist->SetFillColor(kBlue);
+	hist->Draw();
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
 
 void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname) {
 
@@ -1072,7 +1112,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
 
   TLegend *leg = new TLegend(0.15,0.15,.65,0.25);
   leg->SetNColumns(2);
-  leg->AddEntry(graph, ("Data: "+dataset).c_str());
+  leg->AddEntry(graph, (dataset).c_str());
   leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
 
@@ -1145,7 +1185,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
 }
 
 // TODO: change this to DrawModWiggleSim
-void DrawModWiggle(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1342,7 +1382,7 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
 }
 
 
-void DrawFoldedWiggle(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
+void DrawFoldedWiggleSim(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetLogy();
@@ -1549,7 +1589,7 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 }
 
 // TODO: change to DrawFullEDMFitSim
-void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, double N, double ymin, double ymax, bool unblind) {
+void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, double N, double ymin, double ymax, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1580,6 +1620,7 @@ void DrawFullEDMFit(TGraphErrors *graph, std::string title, std::string fname, d
 	//names->AddText("#phi");
 	string amplitude;
 	amplitude = "A_{EDM} [mrad]";
+	if(unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
 	names->AddText(amplitude.c_str());
 	names->AddText("c [mrad]"); 
 

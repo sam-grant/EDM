@@ -1,0 +1,16 @@
+UNBLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.20044, -0.627114, 0.187727, 2.59786, 0.187853, -0.129533, 0.132794
+UNBLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.33082, -0.796552, 0.133283, 0.687735, 0.133757, 0.0645169, 0.0944177
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.20044, -0.598793, 0.187727, 2.59787, 0.187853, -0.129535, 0.132794
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.33082, -0.768233, 0.133283, 0.687744, 0.133757, 0.0645158, 0.0944177

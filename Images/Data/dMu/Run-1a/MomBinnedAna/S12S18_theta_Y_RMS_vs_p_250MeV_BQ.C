@@ -1,7 +1,7 @@
 void S12S18_theta_Y_RMS_vs_p_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 12 10:58:16 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 19 15:52:07 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,-1.688346,2750,38.18749);

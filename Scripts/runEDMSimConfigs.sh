@@ -2,8 +2,11 @@ dataset_=(5.4e-18 1.8e-18 1.8e-19 1700ppm)
 reco_=(allDecays acceptedDecays acceptedDecaysControl trackReco trackRecoControl trackTruth)
 frame_=(WORLD AAR MRF)
 qual_=(AQ BQ)
+unblind_=("true" "false")
 
 cd ../CMacros
+
+for unblind in ${unblind_}; do 
 
 for dataset in ${dataset_}; do
 
@@ -28,12 +31,15 @@ for dataset in ${dataset_}; do
 					echo "Running command ./BlindedEDMSimFitter.exe $config $dataset"
 
 					if [[ "$reco" == "allDecays" || "$reco" == "acceptedDecays" || "$reco" == "acceptedDecaysControl" ]]; then 
-						./BlindedEDMSimFitter.exe $config $dataset | tail -n 2 | tee ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
+						# ./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 3 | tee ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
+						./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 4 >> ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
 					else 
 						if [[ "$dataset" == "1700ppm" ]]; then
-							./BlindedEDMSimFitter.exe $config $dataset | tail -n 6 | tee ../Sheets/BzSim/SimultaneousFitResults_${config}.csv
+							# ./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 7 | tee ../Sheets/BzSim/SimultaneousFitResults_${config}.csv
+							./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 8 >> ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
 						else 
-							./BlindedEDMSimFitter.exe $config $dataset | tail -n 6 | tee ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
+							# ./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 7 | tee ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
+							./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 8 >> ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
 						fi
 					fi
 
@@ -44,5 +50,6 @@ for dataset in ${dataset_}; do
 		done #frame
 	done #reco
 done # dataset
+done # unblinding
 
 cd ../Scripts

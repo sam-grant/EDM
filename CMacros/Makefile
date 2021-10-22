@@ -6,8 +6,9 @@ ROOTLIBS  = $(shell root-config --libs)
 RANDOMLIB = ../Blinding/rlib/include
 BLINDING = -L./ -lBlinders
 
-# Horrible way of doing this with so many scripts here. Need to fix this but knowledge of makefiles is lacking. 
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe TruthEDMSimFitter.exe Dilution.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe TrackerResolutionPlot.exe GetTiltAngleAndLimit.exe RelativeDilution.exe
+# Horrible way of doing this with so many macros here. Need to fix this but knowledge of makefiles is lacking. 
+# Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe TruthEDMSimFitter.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe TrackerResolutionPlot.exe GetTiltAngle.exe RelativeDilution.exe DilutionCurvePlotter.exe DilutionCurveFitter.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe PlotYvsBr.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe TrackerResolutionPlot.exe GetTiltAngle.exe RelativeDilution.exe DilutionCurvePlotter.exe DilutionCurveFitter.exe
 
 all:$(Target)
 
@@ -22,12 +23,6 @@ PerCaloMeanPos.exe: PerCaloMeanPos.C
 
 SanityPlots.exe: SanityPlots.C
 	${C++} -o $@ SanityPlots.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
-
-UnblindedEDMSimFitter.exe: UnblindedEDMSimFitter.C
-	${C++} -o $@ UnblindedEDMSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
-
-UnblindedBzSimFitter.exe: UnblindedBzSimFitter.C
-	${C++} -o $@ UnblindedBzSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
 ToyRadialFieldScan.exe: ToyRadialFieldScan.C
 	${C++} -o $@ ToyRadialFieldScan.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
@@ -80,26 +75,23 @@ yPos_vs_E.exe: yPos_vs_E.C
 d_Bz.exe: d_Bz.C
 	${C++} -o $@ d_Bz.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
-TruthBzSimFitter.exe: TruthBzSimFitter.C
-	${C++} -o $@ TruthBzSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
-
 PlotYvsBr.exe: PlotYvsBr.C
 	${C++} -o $@ PlotYvsBr.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
-
-TruthEDMSimFitter.exe: TruthEDMSimFitter.C
-	${C++} -o $@ TruthEDMSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
-
-Dilution.exe: Dilution.C
-	${C++} -o $@ Dilution.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
 TrackerResolutionPlot.exe: TrackerResolutionPlot.C 
 	${C++} -o $@ TrackerResolutionPlot.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
-GetTiltAngleAndLimit.exe: GetTiltAngleAndLimit.C
-	${C++} -o $@ GetTiltAngleAndLimit.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+GetTiltAngle.exe: GetTiltAngle.C
+	${C++} -o $@ GetTiltAngle.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 	
 RelativeDilution.exe: RelativeDilution.C
 	${C++} -o $@ RelativeDilution.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
+DilutionCurvePlotter.exe: DilutionCurvePlotter.C
+	${C++} -o $@ DilutionCurvePlotter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
+
+DilutionCurveFitter.exe: DilutionCurveFitter.C
+	${C++} -o $@ DilutionCurveFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
 ############################# BLINDING ###################################
 
@@ -114,13 +106,6 @@ BlindedEDMSimFitter.exe: BlindedEDMSimFitter.C
 
 BlindedEDMFitter.exe: BlindedEDMFitter.C 
 	${C++} -o $@ BlindedEDMFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
-
-BlindedBzSimFitter.exe: BlindedBzSimFitter.C
-	${C++} -o $@ BlindedBzSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
-
-BlindedBzFitter.exe: BlindedBzFitter.C
-	${C++} -o $@ BlindedBzFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
-
 
 clean:
 	rm *exe

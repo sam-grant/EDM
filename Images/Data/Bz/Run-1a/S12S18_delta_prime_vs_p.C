@@ -1,46 +1,54 @@
 void S12S18_delta_prime_vs_p()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 12 12:27:55 2021) by ROOT version 6.24/04
-   TCanvas *c = new TCanvas("c", "c",0,53,800,600);
-   c->Range(875,-1.9375,2375,2.4375);
+//=========  (Thu Oct 14 13:05:45 2021) by ROOT version 6.24/04
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->Range(500,-1.9375,2750,2.4375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t S12S18_delta_prime_vs_p_fx1005[5] = {
+   Double_t S12S18_delta_prime_vs_p_fx1005[7] = {
+   875,
    1125,
    1375,
    1625,
    1875,
-   2125};
-   Double_t S12S18_delta_prime_vs_p_fy1005[5] = {
+   2125,
+   2375};
+   Double_t S12S18_delta_prime_vs_p_fy1005[7] = {
+   0.5131539,
    -0.04031193,
    0.2259705,
    -0.05874592,
    -0.06905607,
-   -0.1947405};
-   Double_t S12S18_delta_prime_vs_p_fex1005[5] = {
+   -0.1947405,
+   -0.6614459};
+   Double_t S12S18_delta_prime_vs_p_fex1005[7] = {
+   0,
+   0,
    0,
    0,
    0,
    0,
    0};
-   Double_t S12S18_delta_prime_vs_p_fey1005[5] = {
+   Double_t S12S18_delta_prime_vs_p_fey1005[7] = {
+   0.294987,
    0.1900584,
    0.1548875,
    0.1512025,
    0.1723154,
-   0.2302301};
-   TGraphErrors *gre = new TGraphErrors(5,S12S18_delta_prime_vs_p_fx1005,S12S18_delta_prime_vs_p_fy1005,S12S18_delta_prime_vs_p_fex1005,S12S18_delta_prime_vs_p_fey1005);
+   0.2302301,
+   0.4017303};
+   TGraphErrors *gre = new TGraphErrors(7,S12S18_delta_prime_vs_p_fx1005,S12S18_delta_prime_vs_p_fy1005,S12S18_delta_prime_vs_p_fex1005,S12S18_delta_prime_vs_p_fey1005);
    gre->SetName("S12S18_delta_prime_vs_p");
    gre->SetTitle("S12S18");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12S18_delta_prime_vs_p1005 = new TH1F("Graph_S12S18_delta_prime_vs_p1005","S12S18",100,1025,2225);
+   TH1F *Graph_S12S18_delta_prime_vs_p1005 = new TH1F("Graph_S12S18_delta_prime_vs_p1005","S12S18",100,725,2525);
    Graph_S12S18_delta_prime_vs_p1005->SetMinimum(-1.5);
    Graph_S12S18_delta_prime_vs_p1005->SetMaximum(2);
    Graph_S12S18_delta_prime_vs_p1005->SetDirectory(0);
@@ -69,20 +77,20 @@ void S12S18_delta_prime_vs_p()
    gre->SetHistogram(Graph_S12S18_delta_prime_vs_p1005);
    
    
-   TF1 *pol01006 = new TF1("pol0","pol0",1000,2250, TF1::EAddToList::kNo);
+   TF1 *pol01006 = new TF1("pol0","pol0",750,2500, TF1::EAddToList::kNo);
    pol01006->SetFillColor(19);
    pol01006->SetFillStyle(0);
    pol01006->SetLineColor(2);
    pol01006->SetLineWidth(2);
-   pol01006->SetChisquare(3.200069);
-   pol01006->SetNDF(4);
+   pol01006->SetChisquare(8.924763);
+   pol01006->SetNDF(6);
    pol01006->GetXaxis()->SetLabelFont(42);
    pol01006->GetXaxis()->SetTitleOffset(1);
    pol01006->GetXaxis()->SetTitleFont(42);
    pol01006->GetYaxis()->SetLabelFont(42);
    pol01006->GetYaxis()->SetTitleFont(42);
-   pol01006->SetParameter(0,-0.001605049);
-   pol01006->SetParError(0,0.07769648);
+   pol01006->SetParameter(0,0.008360211);
+   pol01006->SetParError(0,0.07385346);
    pol01006->SetParLimits(0,0,0);
    pol01006->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01006);
@@ -95,7 +103,7 @@ void S12S18_delta_prime_vs_p()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("S12S18_delta_prime_vs_p","Sim: reco vertices","lpf");
+   TLegendEntry *entry=leg->AddEntry("S12S18_delta_prime_vs_p","Data: Run-1a","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -104,8 +112,8 @@ void S12S18_delta_prime_vs_p()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta'#GT = -0.0016
-#pm0.08
+   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.0084
+#pm0.07
  mrad","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(2);
@@ -117,7 +125,7 @@ void S12S18_delta_prime_vs_p()
    entry->SetTextFont(42);
    leg->Draw();
    
-   TPaveText *pt = new TPaveText(0.4254637,0.94,0.5745363,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4253015,0.94,0.5746985,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);
