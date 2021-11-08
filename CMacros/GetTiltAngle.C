@@ -73,7 +73,7 @@ string GetTracksOrDecays(string config) {
 
 string GetTracksOrDecaysLabel(string config) {
 
-  if(config.find("allDecays_") != std::string::npos || config.find("acceptedDecays_") != std::string::npos || config.find("acceptedDecays_") != std::string::npos) { 
+  if(config.find("allDecays_") != std::string::npos || config.find("acceptedDecays_") != std::string::npos || config.find("acceptedDecaysControl_") != std::string::npos) { 
     return "Decays";
   } else if(config.find("trackTruth_") != std::string::npos || config.find("trackReco_") != std::string::npos || config.find("trackRecoControl_") != std::string::npos) { 
     return "Tracks";
@@ -92,6 +92,8 @@ int GetStep(string config) {
     return 250;
   } else if(config.find("200MeV") != std::string::npos) { 
     return 200;
+  } else if(config.find("125MeV") != std::string::npos) { 
+    return 125;
   } else { 
     cerr<<"Step size is unknown";
     return -1;
@@ -345,13 +347,14 @@ void DrawDeltaPrimeHist(TH1D *hist, std::string title, std::string fname) {
   hist->SetLineWidth(3);
   hist->SetLineColor(1);
 
-  TPaveText *names = new TPaveText(0.57,0.75,0.69,0.89,"NDC");
+  //TPaveText *names = new TPaveText(0.56,0.75,0.65,0.89,"NDC");
+  TPaveText *names = new TPaveText(0.11,0.75,0.20,0.89,"NDC");
 
   names->SetTextAlign(13);
   names->AddText("#LT#delta'#GT [mrad]"); 
   names->AddText("#sigma_{#delta'} [mrad]"); 
 
-  TPaveText *values = new TPaveText(0.72,0.75,0.89,0.89,"NDC");
+  TPaveText *values = new TPaveText(0.30,0.75,0.45,0.89,"NDC");
   values->SetTextAlign(33);
   values->AddText(Round(hist->GetMean(),4)+"#pm"+Round(hist->GetMeanError(),1)); 
   values->AddText(Round(hist->GetRMS(),2)+"#pm"+Round(hist->GetRMSError(),1)); 
@@ -549,7 +552,7 @@ void RunSim(string config, string dataset, string blinding) {
 
 }
 
-void RunData(std::string config, std::string blinding) { 
+void RunData(std::string config, std::string dataset, std::string blinding) { 
 
   cout<<"\n***************************** DATA *****************************\n"<<endl;
 
@@ -557,7 +560,7 @@ void RunData(std::string config, std::string blinding) {
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
-  std::string dataset = GetDataset(config);
+  std::string datasetLabel = GetDataset(config);
 
   cout<<"Running "<<config<<" with... "<<dataset<<endl;
   cout<<"Info:\n"<<step<<", "<<qual<<endl;
@@ -602,16 +605,22 @@ void RunData(std::string config, std::string blinding) {
     outputFile->cd((fitType).c_str()); 
 
     std::string subscript = "";
+    std::string blind = ""; 
 
     if(fitType == "EDM") {
       subscript += fitType;
       results_.push_back(", delta_prime, , dMu [ecm], ,");
       results_.push_back("Station, value, error, value, error");
+      blind += "BLIND";
     } else if(fitType == "g2") {
       subscript += "g#minus2";
       results_.push_back(", delta_prime, , Bz/By [ppm], ,");
       results_.push_back("Station, value, error, value, error");
+      blind += "";
     }
+
+    // Result tree for each fit type
+    TTree *resultTree = new TTree("resultTree", "resultTree");
 
     // Apply correction
     for(auto& stn : stn_) {
@@ -623,7 +632,10 @@ void RunData(std::string config, std::string blinding) {
 
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
-      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p");
+      // DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
+      //DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{BLIND} [mrad] / 125 MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
+
+      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{"+blind+"} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+config);
 
       gr_delta_prime->SetName((stn+"delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
@@ -642,14 +654,16 @@ void RunData(std::string config, std::string blinding) {
         lastVal = val;
       }
 
-      h_min = h_min-0.5; h_max = h_max+0.5;
+      h_min = h_min-0.2; h_max = h_max+0.2;
       double binWidth = 0.02;
+      std::ostringstream oss_binWidth; oss_binWidth << binWidth;
 
       // Fill histogram
       TH1D *h_delta_prime  = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
 
       // Draw and write histogram
-      DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"}^{BLIND} [mrad];Trials", "../Images/Data/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials));
+      // DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"}^{BLIND} [mrad] / "+to_string(step/2)+";Trials", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials));
+      DrawDeltaPrimeHist(h_delta_prime, stn+";#delta'_{"+subscript+"}^{"+blind+"} [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+config);
       h_delta_prime->SetName((stn+"h_delta_prime").c_str());
       h_delta_prime->Write();
 
@@ -660,18 +674,40 @@ void RunData(std::string config, std::string blinding) {
       double error = sqrt(pow(err_delta_prime,2) + pow(h_delta_prime->GetRMS(),2));
 
       if(fitType == "EDM") {
+
         // Deal with converting small double into strings
+        double result2Tree = GetLimit(result); double error2Tree = GetLimit(error);
+
+        // Write into TBranch
+        resultTree->Branch((stn+"dMu").c_str(), &result2Tree);
+        resultTree->Branch((stn+"dMu_err").c_str(), &error2Tree);
+
         std::ostringstream oss_result; oss_result << GetLimit(result);
         std::ostringstream oss_error; oss_error << GetLimit(error);
         std::string dMu = oss_result.str(); std::string err_dMu = oss_error.str();
         results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+dMu+", "+err_dMu);
+
       } else if(fitType == "g2") {
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+to_string(result*1e3)+", "+to_string(error*1e3));//stn_+", "+to_string(result*1e3)+", "+to_string(error*1e3));
+
+        double result2Tree = 1e3*result; double error2Tree = 1e3*error;
+
+        // Write into TBranch
+        resultTree->Branch((stn+"Bz").c_str(), &result2Tree);
+        resultTree->Branch((stn+"Bz_err").c_str(), &error2Tree);
+
+        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+to_string(1e3*result)+", "+to_string(1e3*error));
       }
 
-    }
+      resultTree->Fill();
 
-  }
+
+    } // Station loop
+
+    //resultTree->Fill(); 
+    resultTree->Write(); 
+
+  } 
+
 
   cout<<"\n***************************** Writing output *****************************\n"<<endl;
 
@@ -695,10 +731,29 @@ int main() {
 
   // ../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_AAR_250MeV_BQ.root
   // ../Plots/Data/dMu/Run-1a/Fits/edmFits_blinded_Run-1a_250MeV_BQ.root
+/*  RunSim("allDecays_AAR_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("acceptedDecays_AAR_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("acceptedDecaysControl_AAR_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("trackRecoControl_AAR_250MeV_BQ", "5.4e-18", "unblinded");
+  RunSim("trackRecoControl_AAR_250MeV_CQ", "5.4e-18", "unblinded");
+  RunSim("trackTruth_AAR_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("trackReco_AAR_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("trackTruth_AAR_250MeV_BQ", "5.4e-18", "unblinded");
+	RunSim("trackReco_AAR_250MeV_BQ", "5.4e-18", "unblinded");*/
 
-	//RunSim("trackReco_AAR_250MeV_BQ", "5.4e-18", "unblinded");
+  //RunData("Run-1a_250MeV_BQ", "Run-1", blinded");
+  //RunData("Run-1a_250MeV_BQ_withFR", "Run-1", "blinded");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
+  //RunData("Run-1b_250MeV_BQ", "Run-1", "blinded");
+  //RunData("Run-1c_250MeV_BQ", "Run-1", "blinded");
+  //RunData("Run-1d_250MeV_BQ", "Run-1", "blinded");
 
-  RunData("Run-1a_250MeV_BQ", "blinded");
+
+  // RunSim("trackReco_AAR_125MeV_BQ", "O", "unblinded");
+
+  // RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
+
+  RunData("Run-1a_125MeV_BQ", "O", "unblinded");
 
 	return 0;
 

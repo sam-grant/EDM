@@ -1,7 +1,7 @@
 void fit_mod_wiggle_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 19 15:52:21 2021) by ROOT version 6.24/04
+//=========  (Thu Nov  4 12:08:22 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,16250,4.944727,153750);
@@ -11,7 +11,7 @@ void fit_mod_wiggle_BQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1003[87] = {
+   Double_t _fx1003[87] = {
    0.02508807,
    0.07526421,
    0.1254403,
@@ -99,7 +99,7 @@ void fit_mod_wiggle_BQ()
    4.239884,
    4.29006,
    4.340236};
-   Double_t Graph0_fy1003[87] = {
+   Double_t _fy1003[87] = {
    71872,
    71713,
    69118,
@@ -187,7 +187,7 @@ void fit_mod_wiggle_BQ()
    73143,
    71261,
    68865};
-   Double_t Graph0_fex1003[87] = {
+   Double_t _fex1003[87] = {
    0,
    0,
    0,
@@ -275,7 +275,7 @@ void fit_mod_wiggle_BQ()
    0,
    0,
    0};
-   Double_t Graph0_fey1003[87] = {
+   Double_t _fey1003[87] = {
    268.0895,
    267.7928,
    262.903,
@@ -363,40 +363,40 @@ void fit_mod_wiggle_BQ()
    270.4496,
    266.9476,
    262.4214};
-   TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1003,Graph0_fy1003,Graph0_fex1003,Graph0_fey1003);
-   gre->SetName("Graph0");
+   TGraphErrors *gre = new TGraphErrors(87,_fx1003,_fy1003,_fex1003,_fey1003);
+   gre->SetName("");
    gre->SetTitle(";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01003 = new TH1F("Graph_Graph01003","",100,0,4.771751);
-   Graph_Graph01003->SetMinimum(30000);
-   Graph_Graph01003->SetMaximum(140000);
-   Graph_Graph01003->SetDirectory(0);
-   Graph_Graph01003->SetStats(0);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,0,4.771751);
+   Graph_Graph1003->SetMinimum(30000);
+   Graph_Graph1003->SetMaximum(140000);
+   Graph_Graph1003->SetDirectory(0);
+   Graph_Graph1003->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01003->SetLineColor(ci);
-   Graph_Graph01003->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
-   Graph_Graph01003->GetXaxis()->SetRange(0,92);
-   Graph_Graph01003->GetXaxis()->CenterTitle(true);
-   Graph_Graph01003->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01003->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01003->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01003->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01003->GetYaxis()->SetTitle("Tracks / 149 ns");
-   Graph_Graph01003->GetYaxis()->CenterTitle(true);
-   Graph_Graph01003->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01003->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01003->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01003->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Graph01003->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01003->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01003->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01003->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01003);
+   Graph_Graph1003->SetLineColor(ci);
+   Graph_Graph1003->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
+   Graph_Graph1003->GetXaxis()->SetRange(0,92);
+   Graph_Graph1003->GetXaxis()->CenterTitle(true);
+   Graph_Graph1003->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph1003->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1003->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1003->GetYaxis()->SetTitle("Tracks / 149 ns");
+   Graph_Graph1003->GetYaxis()->CenterTitle(true);
+   Graph_Graph1003->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1003->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph1003->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph1003->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1003->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1003->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1003);
    
    
    TF1 *FiveParFunc1004 = new TF1("*FiveParFunc",0,4.365324,5);
@@ -10487,7 +10487,7 @@ void fit_mod_wiggle_BQ()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("Graph0","Data: Run-1d   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Data: Run-1d   ","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);

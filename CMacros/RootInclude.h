@@ -4,6 +4,7 @@
 #include "TH3D.h"
 #include "TGraph.h"
 #include "TGraphErrors.h"
+#include "TTree.h"
 #include "TAxis.h"
 #include "TCanvas.h"
 #include "TLegend.h"

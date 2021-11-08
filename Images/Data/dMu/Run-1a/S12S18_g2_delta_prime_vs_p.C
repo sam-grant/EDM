@@ -1,10 +1,10 @@
 void S12S18_g2_delta_prime_vs_p()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct 22 00:55:01 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 26 00:47:49 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(500,-1.443558,2750,1.633032);
+   c->Range(500,-1.524388,2750,1.66535);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void S12S18_g2_delta_prime_vs_p()
    2125,
    2375};
    Double_t _fy1011[7] = {
-   0.5135282,
-   -0.04062819,
-   0.2281727,
-   -0.0593341,
-   -0.0695351,
-   -0.194492,
-   -0.6457138};
+   0.5344767,
+   -0.06066451,
+   0.2172634,
+   -0.03252651,
+   -0.08708285,
+   -0.2104383,
+   -0.7152632};
    Double_t _fex1011[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void S12S18_g2_delta_prime_vs_p()
    0,
    0};
    Double_t _fey1011[7] = {
-   0.2952163,
-   0.1914497,
-   0.1564106,
-   0.1526633,
-   0.1734537,
-   0.2298997,
-   0.392148};
+   0.2952362,
+   0.1914566,
+   0.1564039,
+   0.1526794,
+   0.1734423,
+   0.2298673,
+   0.3921206};
    TGraphErrors *gre = new TGraphErrors(7,_fx1011,_fy1011,_fex1011,_fey1011);
    gre->SetName("");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta'_{g#minus2}^{BLIND} [mrad];");
@@ -50,8 +50,8 @@ void S12S18_g2_delta_prime_vs_p()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1011 = new TH1F("Graph_Graph1011","",100,725,2525);
-   Graph_Graph1011->SetMinimum(-1.135899);
-   Graph_Graph1011->SetMaximum(1.325373);
+   Graph_Graph1011->SetMinimum(-1.205414);
+   Graph_Graph1011->SetMaximum(1.346376);
    Graph_Graph1011->SetDirectory(0);
    Graph_Graph1011->SetStats(0);
 
@@ -83,15 +83,15 @@ void S12S18_g2_delta_prime_vs_p()
    pol01012->SetFillStyle(0);
    pol01012->SetLineColor(2);
    pol01012->SetLineWidth(2);
-   pol01012->SetChisquare(8.927348);
+   pol01012->SetChisquare(9.769201);
    pol01012->SetNDF(6);
    pol01012->GetXaxis()->SetLabelFont(42);
    pol01012->GetXaxis()->SetTitleOffset(1);
    pol01012->GetXaxis()->SetTitleFont(42);
    pol01012->GetYaxis()->SetLabelFont(42);
    pol01012->GetYaxis()->SetTitleFont(42);
-   pol01012->SetParameter(0,0.007587099);
-   pol01012->SetParError(0,0.07428819);
+   pol01012->SetParameter(0,0.002393988);
+   pol01012->SetParError(0,0.07428788);
    pol01012->SetParLimits(0,0,0);
    pol01012->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01012);
@@ -113,7 +113,7 @@ void S12S18_g2_delta_prime_vs_p()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.0076
+   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.0024
 #pm0.07
  mrad","lpf");
    entry->SetFillColor(19);

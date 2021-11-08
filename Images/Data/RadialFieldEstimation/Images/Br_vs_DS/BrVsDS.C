@@ -1,17 +1,17 @@
 void BrVsDS()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jul 21 07:15:48 2021) by ROOT version 6.12/04
+//=========  (Thu Nov  4 15:24:32 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1.775,-4.025085,15.975,52.47887);
+   c->Range(-2.05,-13.76012,18.45,54.42588);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1001[13] = {
+   Double_t Graph0_fx1001[15] = {
    1,
    2,
    3,
@@ -24,8 +24,10 @@ void BrVsDS()
    10,
    11,
    12,
-   13};
-   Double_t Graph0_fy1001[13] = {
+   13,
+   14,
+   15};
+   Double_t Graph0_fy1001[15] = {
    22.19565,
    22.72126,
    29.60311,
@@ -38,8 +40,12 @@ void BrVsDS()
    14.7471,
    16.39363,
    10.86647,
-   10.78958};
-   Double_t Graph0_fex1001[13] = {
+   10.78958,
+   -0.4443703,
+   9.63318};
+   Double_t Graph0_fex1001[15] = {
+   0,
+   0,
    0,
    0,
    0,
@@ -53,7 +59,7 @@ void BrVsDS()
    0,
    0,
    0};
-   Double_t Graph0_fey1001[13] = {
+   Double_t Graph0_fey1001[15] = {
    7.297995,
    8.172041,
    8.242971,
@@ -66,16 +72,18 @@ void BrVsDS()
    4.95191,
    4.972777,
    4.966378,
-   5.397335};
-   TGraphErrors *gre = new TGraphErrors(13,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
+   5.397335,
+   1.951419,
+   6.352887};
+   TGraphErrors *gre = new TGraphErrors(15,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
    gre->SetTitle(";Dataset;#LTB_{r}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,14.2);
-   Graph_Graph1001->SetMinimum(1.625311);
-   Graph_Graph1001->SetMaximum(46.82848);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0,16.4);
+   Graph_Graph1001->SetMinimum(-6.941522);
+   Graph_Graph1001->SetMaximum(47.60728);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 
@@ -84,19 +92,21 @@ void BrVsDS()
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
    Graph_Graph1001->GetXaxis()->SetTitle("Dataset");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(8,"1a");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(15,"1b");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(22,"1c");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(29,"1d");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(36,"2b");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(43,"2c");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(50,"2d");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(57,"2e");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(64,"2f");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(71,"2g");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(78,"2h");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(85,"3N");
-   Graph_Graph1001->GetXaxis()->SetBinLabel(92,"3O");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(7,"1a");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(13,"1b");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(19,"1c");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(25,"1d");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(31,"2b");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(37,"2c");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(43,"2d");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(49,"2e");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(55,"2f");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(61,"2g");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(68,"2h");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(74,"3N");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(80,"3O");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(86,"4");
+   Graph_Graph1001->GetXaxis()->SetBinLabel(92,"5");
    Graph_Graph1001->GetXaxis()->SetBit(TAxis::kLabelsHori);
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);

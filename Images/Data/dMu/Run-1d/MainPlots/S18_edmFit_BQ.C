@@ -1,7 +1,7 @@
 void S18_edmFit_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 19 15:52:23 2021) by ROOT version 6.24/04
+//=========  (Thu Nov  4 12:08:24 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-1.039543,4.944727,-0.03954296);
@@ -386,7 +386,7 @@ void S18_edmFit_BQ()
    Graph_Graph01007->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01007->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01007->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01007->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 50 ns");
+   Graph_Graph01007->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 149.2 ns");
    Graph_Graph01007->GetYaxis()->CenterTitle(true);
    Graph_Graph01007->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01007->GetYaxis()->SetLabelFont(42);

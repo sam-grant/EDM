@@ -30,7 +30,7 @@ double GetLimit(double delta_prime) {
 
 void CalculateEDMLimit() { 
 
-	double delta_prime = 1.938716; //0.0068 / 0.1; //0.0475245;//.0875;//1.7; // mrad
+	double delta_prime = 0.037381 / 0.08; //0.0068 / 0.1; //0.0475245;//.0875;//1.7; // mrad
 
 	double dMu = GetLimit(delta_prime); 
 

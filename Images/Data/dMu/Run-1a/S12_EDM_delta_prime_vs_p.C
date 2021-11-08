@@ -1,10 +1,10 @@
 void S12_EDM_delta_prime_vs_p()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct 22 00:54:59 2021) by ROOT version 6.24/04
+//=========  (Tue Oct 26 00:47:47 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(500,-0.4212478,2750,3.026967);
+   c->Range(500,-0.3675085,2750,2.942498);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -20,13 +20,13 @@ void S12_EDM_delta_prime_vs_p()
    2125,
    2375};
    Double_t _fy1001[7] = {
-   1.534869,
-   0.4132216,
-   0.7971615,
-   0.5640609,
-   0.2205015,
-   0.3969024,
-   0.7811012};
+   1.464244,
+   0.4050778,
+   0.7945932,
+   0.5592788,
+   0.2604756,
+   0.4316687,
+   0.7913834};
    Double_t _fex1001[7] = {
    0,
    0,
@@ -36,13 +36,13 @@ void S12_EDM_delta_prime_vs_p()
    0,
    0};
    Double_t _fey1001[7] = {
-   0.4171917,
-   0.2697264,
-   0.2186188,
-   0.2122236,
-   0.2375422,
-   0.3082353,
-   0.5123184};
+   0.4171827,
+   0.2697607,
+   0.2186607,
+   0.2122163,
+   0.2375868,
+   0.3083083,
+   0.5124211};
    TGraphErrors *gre = new TGraphErrors(7,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta'_{EDM}^{BLIND} [mrad];");
@@ -50,8 +50,8 @@ void S12_EDM_delta_prime_vs_p()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,725,2525);
-   Graph_Graph1001->SetMinimum(-0.07642626);
-   Graph_Graph1001->SetMaximum(2.682146);
+   Graph_Graph1001->SetMinimum(-0.0365079);
+   Graph_Graph1001->SetMaximum(2.611497);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 
@@ -83,15 +83,15 @@ void S12_EDM_delta_prime_vs_p()
    pol01002->SetFillStyle(0);
    pol01002->SetLineColor(2);
    pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(9.410401);
+   pol01002->SetChisquare(8.095133);
    pol01002->SetNDF(6);
    pol01002->GetXaxis()->SetLabelFont(42);
    pol01002->GetXaxis()->SetTitleOffset(1);
    pol01002->GetXaxis()->SetTitleFont(42);
    pol01002->GetYaxis()->SetLabelFont(42);
    pol01002->GetYaxis()->SetTitleFont(42);
-   pol01002->SetParameter(0,0.5784314);
-   pol01002->SetParError(0,0.1027741);
+   pol01002->SetParameter(0,0.5830535);
+   pol01002->SetParError(0,0.1027865);
    pol01002->SetParLimits(0,0,0);
    pol01002->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01002);

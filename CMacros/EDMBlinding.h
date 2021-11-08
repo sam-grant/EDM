@@ -78,7 +78,7 @@ double GetDelta(double dMu) {
 
 double EDMFunc( double *x, double *p )  {
   double time = x[0];// + p[3]; // time offset
-  return (-p[0] * cos(p[1]* time + p[2]));
+  return (-p[0] * cos(p[1]* time + p[2])); 
 }
 
 TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 

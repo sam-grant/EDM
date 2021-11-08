@@ -1,7 +1,7 @@
 void S12S18_g2_delta_prime_vs_p()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct 22 00:43:05 2021) by ROOT version 6.24/04
+//=========  (Fri Oct 22 15:45:56 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(500,-2.024968,2750,1.375026);
@@ -11,7 +11,7 @@ void S12S18_g2_delta_prime_vs_p()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1017[7] = {
+   Double_t _fx1129[7] = {
    875,
    1125,
    1375,
@@ -19,7 +19,7 @@ void S12S18_g2_delta_prime_vs_p()
    1875,
    2125,
    2375};
-   Double_t _fy1017[7] = {
+   Double_t _fy1129[7] = {
    -0.6766035,
    -0.2433473,
    0.03093411,
@@ -27,7 +27,7 @@ void S12S18_g2_delta_prime_vs_p()
    -0.1084743,
    0.1911666,
    0.3570295};
-   Double_t _fex1017[7] = {
+   Double_t _fex1129[7] = {
    0,
    0,
    0,
@@ -35,7 +35,7 @@ void S12S18_g2_delta_prime_vs_p()
    0,
    0,
    0};
-   Double_t _fey1017[7] = {
+   Double_t _fey1129[7] = {
    0.3666781,
    0.2565222,
    0.2213031,
@@ -43,58 +43,58 @@ void S12S18_g2_delta_prime_vs_p()
    0.2413444,
    0.3202596,
    0.5423974};
-   TGraphErrors *gre = new TGraphErrors(7,_fx1017,_fy1017,_fex1017,_fey1017);
+   TGraphErrors *gre = new TGraphErrors(7,_fx1129,_fy1129,_fex1129,_fey1129);
    gre->SetName("");
    gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#delta'_{g#minus2} [mrad];");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1017 = new TH1F("Graph_Graph1017","",100,725,2525);
-   Graph_Graph1017->SetMinimum(-1.684968);
-   Graph_Graph1017->SetMaximum(1.035026);
-   Graph_Graph1017->SetDirectory(0);
-   Graph_Graph1017->SetStats(0);
+   TH1F *Graph_Graph1129 = new TH1F("Graph_Graph1129","",100,725,2525);
+   Graph_Graph1129->SetMinimum(-1.684968);
+   Graph_Graph1129->SetMaximum(1.035026);
+   Graph_Graph1129->SetDirectory(0);
+   Graph_Graph1129->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph1017->SetLineColor(ci);
-   Graph_Graph1017->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_Graph1017->GetXaxis()->CenterTitle(true);
-   Graph_Graph1017->GetXaxis()->SetLabelFont(42);
-   Graph_Graph1017->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph1017->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph1017->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1017->GetYaxis()->SetTitle("#delta'_{g#minus2} [mrad]");
-   Graph_Graph1017->GetYaxis()->CenterTitle(true);
-   Graph_Graph1017->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph1017->GetYaxis()->SetLabelFont(42);
-   Graph_Graph1017->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph1017->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Graph1017->GetYaxis()->SetTitleFont(42);
-   Graph_Graph1017->GetZaxis()->SetLabelFont(42);
-   Graph_Graph1017->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph1017->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph1017);
+   Graph_Graph1129->SetLineColor(ci);
+   Graph_Graph1129->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
+   Graph_Graph1129->GetXaxis()->CenterTitle(true);
+   Graph_Graph1129->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1129->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph1129->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1129->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1129->GetYaxis()->SetTitle("#delta'_{g#minus2} [mrad]");
+   Graph_Graph1129->GetYaxis()->CenterTitle(true);
+   Graph_Graph1129->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1129->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1129->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph1129->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph1129->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1129->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1129->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1129->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1129);
    
    
-   TF1 *pol01018 = new TF1("pol0","pol0",750,2500, TF1::EAddToList::kNo);
-   pol01018->SetFillColor(19);
-   pol01018->SetFillStyle(0);
-   pol01018->SetLineColor(2);
-   pol01018->SetLineWidth(2);
-   pol01018->SetChisquare(6.147487);
-   pol01018->SetNDF(6);
-   pol01018->GetXaxis()->SetLabelFont(42);
-   pol01018->GetXaxis()->SetTitleOffset(1);
-   pol01018->GetXaxis()->SetTitleFont(42);
-   pol01018->GetYaxis()->SetLabelFont(42);
-   pol01018->GetYaxis()->SetTitleFont(42);
-   pol01018->SetParameter(0,-0.02625726);
-   pol01018->SetParError(0,0.1026635);
-   pol01018->SetParLimits(0,0,0);
-   pol01018->SetParent(gre);
-   gre->GetListOfFunctions()->Add(pol01018);
+   TF1 *pol01130 = new TF1("pol0","pol0",750,2500, TF1::EAddToList::kNo);
+   pol01130->SetFillColor(19);
+   pol01130->SetFillStyle(0);
+   pol01130->SetLineColor(2);
+   pol01130->SetLineWidth(2);
+   pol01130->SetChisquare(6.147487);
+   pol01130->SetNDF(6);
+   pol01130->GetXaxis()->SetLabelFont(42);
+   pol01130->GetXaxis()->SetTitleOffset(1);
+   pol01130->GetXaxis()->SetTitleFont(42);
+   pol01130->GetYaxis()->SetLabelFont(42);
+   pol01130->GetYaxis()->SetTitleFont(42);
+   pol01130->SetParameter(0,-0.02625726);
+   pol01130->SetParError(0,0.1026635);
+   pol01130->SetParLimits(0,0,0);
+   pol01130->SetParent(gre);
+   gre->GetListOfFunctions()->Add(pol01130);
    gre->Draw("ap");
    
    TLegend *leg = new TLegend(0.11,0.75,0.59,0.89,NULL,"brNDC");

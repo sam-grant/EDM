@@ -51,9 +51,9 @@ double FullEDMFunc(double *x, double *par) {
 }
 
 
-void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4) {
+void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double xmin, double xmax) {
   
-  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, 0, G2PERIOD, 5);
+  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, xmin, xmax, 5);
 
   func->SetParameter(0, par0); // A_g-2
   func->FixParameter(1, par1); // Omega
@@ -138,8 +138,26 @@ void SimpleBzFit(TGraphErrors *graph, double par0, double par1, double par2, dou
 
 // ====================== Plotting ======================
 
+TH1D* ConvertToTH1D(TGraphErrors *graph) {
 
-TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
+  int n = graph->GetN();
+
+  double binWidth = (graph->GetX()[1] - graph->GetX()[0]);
+
+  TH1D *hist = new TH1D(graph->GetName(), "", n, graph->GetX()[0] - binWidth/2,  graph->GetX()[n-1] + binWidth/2);
+
+  for(int i = 0; i < n; i++) {
+
+    hist->SetBinContent(i+1, graph->GetY()[i]);
+    hist->SetBinError(i+1, graph->GetEY()[i+1]);
+
+  }
+
+  return hist;
+
+}
+
+/*TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
   int n = hist->GetNbinsX();
   double x[n]; double ex[n];
@@ -154,7 +172,36 @@ TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
   return new TGraphErrors(n, x, y, ex, ey);
 
+}*/
+
+TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
+
+  TGraphErrors *gr = new TGraphErrors();
+
+  int nBin = hist->GetNbinsX();
+
+  int counter = 0;
+
+  for(int i = 0; i < nBin; i++) {
+
+    double x = hist->GetBinCenter(i+1); 
+    double ex = 0; 
+    double y = hist->GetBinContent(i+1); 
+    double ey = hist->GetBinError(i+1); 
+
+    // avoid zeros
+    if(y==0) continue;
+
+    gr->SetPoint(counter, x, y);
+    gr->SetPointError(counter, ex, ey);
+    counter++;
+
+  }
+
+  return gr;//  new TGraphErrors(n, x, y, ex, ey);
+
 }
+
 
 TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y_, std::vector<double> ex_, std::vector<double> ey_) {
 
@@ -171,6 +218,79 @@ TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y
 
 }
 
+
+
+TH1D* GetResidual(TH1D* data, TF1* fit) { 
+
+  int nbins = data->GetXaxis()->GetNbins();
+  double binWidth = data->GetBinWidth(1);
+  double low = data->GetXaxis()->GetBinLowEdge(1);
+  double high = low + nbins*binWidth;
+  TH1D* residual = new TH1D("", "", nbins, low, high);  
+
+  for (int ibin(1); ibin <= nbins; ibin++){
+    residual->SetBinContent(ibin, 0.0);
+    double time = residual->GetXaxis()->GetBinCenter(ibin);
+    double cont = data->GetBinContent(ibin);
+    double err = data->GetBinError(ibin);
+    double integral = fit->Eval(time);
+    residual->SetBinContent(ibin, integral - cont);
+    residual->SetBinError(ibin, err);
+  }
+
+  return residual;
+
+}
+
+// ====================== Residuals and FFT ======================
+
+TH1D* GetFFT(TH1D* hist) {
+
+  TH1 *hm = 0;
+  TVirtualFFT::SetTransform(0);
+  hm = hist->FFT(hm, "MAG");
+
+  //Rescale x-axis by dividing by the function domain              
+  TAxis *xaxis = hm->GetXaxis();
+
+  int nBins = hist->GetXaxis()->GetNbins();
+  double *ba = new double[nBins+1];
+  xaxis->GetLowEdge(ba);
+  double Scale = 1./(hist->GetXaxis()->GetXmax() - hist->GetXaxis()->GetXmin());
+  ba[nBins] = ba[nBins-1] + xaxis->GetBinWidth(nBins);
+
+  for (int i = 0; i < nBins + 1; i++) {
+       ba[i] *= Scale;
+  }
+ 
+  TH1D* fft = new TH1D("", "", nBins, ba);
+
+  for (int i = 0; i <= nBins; i++) {
+      fft->SetBinContent(i, hm->GetBinContent(i));
+      fft->SetBinError(i, hm->GetBinError(i));
+  }
+
+  fft->SetStats(0);
+  fft->Scale(1.0 / fft->Integral());
+
+  //Calculate Nyquist frequency, which is twice the highest frequeny in the signal or half of the sampling rate.                                                                                            
+  //...the maximum frequency before sampling errors start              
+
+  double binWidth = hist->GetXaxis()->GetBinWidth(0);
+  double sampleRate = 1 / binWidth;
+  double nyquistFreq = 0.5 * sampleRate;
+
+  fft->GetXaxis()->SetRangeUser(0, nyquistFreq);
+
+/*  cout << "binWidth\t" <<binWidth<<" us"<<endl;
+  cout << "sampleRate\t" <<sampleRate<<" MHz"<<endl;
+  cout << "nyquistFreq\t" <<nyquistFreq<<" MHz"<<endl;*/
+
+  delete hm;
+
+  return fft;
+
+}
 
 // ====================== Misc ======================
 

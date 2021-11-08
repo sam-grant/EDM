@@ -79,7 +79,9 @@ void DrawTF1(TF1 *func, std::string title, std::string fname) {
 	delete c;
 
 	return;
+
 }
+
 void DrawTH1Fit(TH1D *hist, TF1 *fit, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -250,8 +252,8 @@ void DrawBarChart(TGraphErrors *graph, std::string title, std::string fname) {
 	return;
 
 }
-// =========================== Custom plotting ===========================
 
+// =========================== Custom plotting ===========================
 
 void DrawTGraphErrorsLine(TGraphErrors *graph, std::string title, std::string fname) {
 
@@ -1596,7 +1598,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	TF1 *func = graph->GetFunction("FullEDMFunc");
 	func->SetLineWidth(3);
 	func->SetLineColor(kRed);
-	func->SetNpx(1e4);	
+	func->SetNpx(1e4); // (max)
 
 	double chi2ndf = func->GetChisquare() / func->GetNDF();
 	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
@@ -1620,7 +1622,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	//names->AddText("#phi");
 	string amplitude;
 	amplitude = "A_{EDM} [mrad]";
-	if(unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
+	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
 	names->AddText(amplitude.c_str());
 	names->AddText("c [mrad]"); 
 
@@ -1661,23 +1663,23 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	graph->SetMarkerStyle(20); //  Full circle
 	graph->GetYaxis()->SetRangeUser(ymin,ymax);
 
-  	// Hack together x-axis range
-  	int n_points = graph->GetN();
-  	double xmax = graph->GetPointX(n_points-1);// + 50;
-  	double xmin = graph->GetPointX(0);// - 50; 
-  	double offset = (xmax - xmin) * 0.01;
-  	xmin = xmin - offset; 
-  	xmax = xmax + offset;
+  // Hack together x-axis range
+  int n_points = graph->GetN();
+  double xmax = graph->GetPointX(n_points-1);// + 50;
+  double xmin = graph->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.01;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
 
-  	graph->GetXaxis()->SetRangeUser(xmin, xmax);
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
 /*	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);*/
 	graph->Draw("AP");
-	values->Draw("same");
-	names->Draw("same");
-	leg->Draw("same");
-	func->Draw("same");
-	cuts->Draw("same");
+	values->Draw("SAME");
+	names->Draw("SAME");
+	leg->Draw("SAME");
+	cuts->Draw("SAME");
+	func->Draw("SAME");
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
