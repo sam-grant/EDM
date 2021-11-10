@@ -1,5 +1,86 @@
 #include "Utils.h"
 
+using namespace std;
+
+// Global momentum cuts
+// string xmin = "750";
+// string xmax = "2500";
+//string xmin = "825"; // 750;
+//string xmax = "2375"; // 2500;
+//string xmin = "900";
+//string xmax = "2250";
+string xmin = "1025";
+string xmax = "2125";
+
+vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
+
+  double xmin = 0; double xmax = 5;
+
+  vector<TF1*> mahalanobisFunctions_; 
+
+  TF1 *fit = (TF1*)graph->GetFunction("pol0");
+
+  TFitResultPtr fitResult = graph->Fit(fit,"SR");
+
+  // Get parameters from converged fit
+  int nPars = 1;
+  TVectorD meanVals(nPars);
+  for(int n = 0; n < nPars; n++){
+    meanVals[n] = fit->GetParameter(n);
+  }
+
+  // Covariance matrix
+  TMatrixD covMatrix = fitResult->GetCovarianceMatrix();
+    
+  // Matrix manipulation
+  TDecompChol decompCholCov(covMatrix);
+  decompCholCov.Decompose();
+  TMatrixD matrixCovI = decompCholCov.GetU();
+  TMatrixD matrixCov(nPars,nPars);
+  matrixCov.Transpose(matrixCovI);
+
+  double CL = .317311; // 1 - 68% (one sigma)
+  double r2 = 0; // r^2 (see https://upload.wikimedia.org/wikipedia/commons/a/a2/Cumulative_function_n_dimensional_Gaussians_12.2013.pdf)
+
+  while(TMath::Prob(r2,nPars) > CL){
+    r2 += 0.00001; // why 0.00001?
+  }
+
+  double r = sqrt(r2); // This is the Mahalanobis distance threshold under which CL % of points fall below
+
+  for(int i = -1; i < 2; i++) {
+    
+    // Skip the minimum chi^2
+    if(i==0) continue;
+
+    TVectorD u(nPars); 
+    u[0] = i;
+
+    // Determine the scale factor required to move 1 sigma
+    double scale = u.Norm2Sqr() > 0 ? r/sqrt(u.Norm2Sqr()) : 1; 
+
+    cout<<"scale "<<scale<<endl;
+
+    for(int par = 0; par < nPars; par++) u[par] *= scale;
+
+    TVectorD z = matrixCov*u + meanVals;
+
+    for(int par = 0; par < nPars; par++) cout << z[par] << ", ";
+    cout << endl;
+
+    // Define shifted function
+    TF1 *trial = new TF1(Form("shift_%d",i), "pol0", xmin, xmax);
+
+    for(int par = 0; par < nPars; par++) trial->SetParameter(par,z[par]);
+    
+    mahalanobisFunctions_.push_back(trial);
+
+  }
+
+  return mahalanobisFunctions_;
+
+}
+
 void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, vector<string> xLabel_) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
@@ -32,10 +113,33 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, vector
 
 void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string fname, vector<string> xLabel_) {
 
+  // Get one sigma band
+  vector<TF1*> mahalanobisFunctions_ = MahalanobisDistances(graph_.at(2));
+
+  TF1 *fit_tmp = graph_.at(2)->GetFunction("pol0");
+  TF1 *minusSigma = mahalanobisFunctions_.at(0);
+  TF1 *plusSigma = mahalanobisFunctions_.at(1);
+
+  // This is absurd but it's the only way to stop it drawing the fit on top of the graphs
+  fit_tmp->SetLineWidth(0);
+
+  TF1 *fit = new TF1("fit", "pol0", 0, 5);
+  fit->SetParameter(0, fit_tmp->GetParameter(0));
+  fit->SetParError(0, fit_tmp->GetParError(0));
+  fit->SetLineWidth(1);
+
+  fit->SetLineStyle(1);
+  minusSigma->SetLineStyle(2);
+  plusSigma->SetLineStyle(2);
+
+  fit->SetLineColor(kGray);
+  minusSigma->SetLineColor(kGray);
+  plusSigma->SetLineColor(kGray);
+
   TCanvas *c = new TCanvas("c","c",800,600);
 
  //TLegend *l = new TLegend(0.59, 0.69, 0.89, 0.89); 
-   TLegend *l = new TLegend(0.31, 0.91, 0.78, 0.99); 
+  TLegend *l = new TLegend(0.30, 0.91, 0.80, 0.99); 
   l->SetNColumns(3);
   l->SetBorderSize(0);
   l->SetTextSize(24);
@@ -81,20 +185,34 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   for(int i(0); i<graph_.at(0)->GetN(); i++) graph_.at(0)->GetXaxis()->SetBinLabel(graph_.at(0)->GetXaxis()->FindBin(i+1), (xLabel_.at(i)).c_str());
 
   graph_.at(0)->GetXaxis()->LabelsOption("h");
+
+  graph_.at(0)->Draw("AP");
+  gPad->Update();
   
-  vector<int> colour_ = {4,2,1};
+  vector<int> colour_ = {2,4,1};
 
   for(int i(0); i<graph_.size(); i++) {
     graph_.at(i)->SetMarkerStyle(20);
     graph_.at(i)->SetMarkerColor(colour_.at(i));
     graph_.at(i)->SetLineColor(colour_.at(i));
-    if(i==0) graph_.at(i)->Draw("AP");
-    graph_.at(i)->Draw("P SAME");
+
+    if(i==0) {
+
+      fit->Draw("same");
+      minusSigma->Draw("same");
+      plusSigma->Draw("same");
+
+      graph_.at(i)->Draw("P SAME");
+
+    }
+
+    else graph_.at(i)->Draw("P SAME");
+
     l->AddEntry(graph_.at(i), label_.at(i).c_str());
+
   }
 
   l->Draw("SAME");
-
 
   c->SaveAs((fname+".pdf").c_str());
   c->SaveAs((fname+".png").c_str());
@@ -134,31 +252,49 @@ double GetLimit(double delta_prime) {
 
 }
 
-void PlotEDMResultsPerDS() { 
+void Run(std::string dataset, int step, std::string blinding, bool correctDilution) { 
+
+  std::string dilCorrStr = "";
+  if(!correctDilution) dilCorrStr += "_noCorr";
 
 	vector<string> DS_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
 	vector<string> stn_ = {"S12", "S18", "S12S18"};
 	vector<string> fitType_ {"g2", "EDM"};
 
-
-	TFile *file_1a = TFile::Open("../Plots/Data/dMu/Run-1a/Fits/edmResults_blinded_Run-1a_250MeV_BQ.root");
-	TFile *file_1b = TFile::Open("../Plots/Data/dMu/Run-1b/Fits/edmResults_blinded_Run-1b_250MeV_BQ.root");
-	TFile *file_1c = TFile::Open("../Plots/Data/dMu/Run-1c/Fits/edmResults_blinded_Run-1c_250MeV_BQ.root");
-	TFile *file_1d = TFile::Open("../Plots/Data/dMu/Run-1d/Fits/edmResults_blinded_Run-1d_250MeV_BQ.root");
+	TFile *file_1a = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1a_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
+	TFile *file_1b = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1b_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
+	TFile *file_1c = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1c_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
+	TFile *file_1d = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1d_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
 
 	vector<TFile*> files_ = {file_1a, file_1b, file_1c, file_1d};
 
   for(auto& fitType : fitType_) {
 
     std::string subscript = "";
-       		std::string title = "";
+    std::string title = "";
 
-    if(fitType == "EDM") {
-      subscript += fitType;
-      title += ";;d_{#mu}^{BLIND} [e#upointcm]";
-    } else if(fitType == "g2") {
-      subscript += "g#minus2";
-      title += ";;B_{z}/B_{y} [ppm]";
+    if(dataset == "Run-1") {
+
+      if(fitType == "EDM") {
+        subscript = fitType;
+        title = ";;d_{#mu}^{BLIND} [e#upointcm]";
+      } else if(fitType == "g2") {
+        subscript = "g#minus2";
+        title = ";;B_{z}/B_{y} [ppm]";
+    }
+
+    } 
+
+    else if(dataset=="O") {
+
+      if(fitType == "EDM") {
+        subscript = "s";
+        title = ";;#Omega_{"+subscript+"} [e#upointcm]";
+      } else if(fitType == "g2") {
+        subscript = "c";
+        title = ";;#Omega_{"+subscript+"} [ppm]";
+      }
+
     }
 
     vector<TGraphErrors*> gr_; 
@@ -184,6 +320,7 @@ void PlotEDMResultsPerDS() {
 
 				A = 1e3*A;
 				eA = 1e3*eA;
+
 			}
 
 			gr->SetPoint(i,i+1,A);
@@ -192,15 +329,31 @@ void PlotEDMResultsPerDS() {
 
 		std::string new_title = stn+title;
 
-		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/Run-1/"+stn+"_A"+fitType+"_vs_DS", DS_);
+    // Fit 
+    if(stn=="S12S18") gr->Fit("pol0");
+
+		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV"+dilCorrStr, DS_);
 
     gr_.push_back(gr);
 
+
 	 }
 
-   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/Run-1/A"+fitType+"_vs_DS", DS_);
+   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV"+dilCorrStr, DS_);
 
   }
 
 	return;
+
+}
+
+void PlotEDMResultsPerDS() { 
+
+  Run("Run-1", 125, "blinded", true);
+  Run("O", 125, "unblinded", true);
+  Run("Run-1", 125, "blinded", false);
+  Run("O", 125, "unblinded", false);
+  
+  return;
+
 }

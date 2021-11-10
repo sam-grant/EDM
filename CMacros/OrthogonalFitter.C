@@ -136,7 +136,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
-  std::string dataset = "O";//GetDataset(config);
+  std::string dataset = GetDataset(config);
 
   std::vector<string> stn_ = {"S12", "S18", "S12S18"};
 
@@ -161,7 +161,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     double ymin =  c-0.35; double ymax =  c+0.45; 
 
     //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
-    DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
+    DrawFullEDMFitDataO(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/O/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax);//,unblind);
 
     gr_thetaY_mod->SetName((stn+"_edmFit").c_str());
     gr_thetaY_mod->Write();
@@ -173,12 +173,11 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 }
 
 
-// TESTING
 void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
-  std::string dataset = "O";//GetDataset(config);
+  std::string dataset = GetDataset(config);
 
   std::vector<string> stn_ = {"S12", "S18", "S12S18"};
 
@@ -189,12 +188,14 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
-    DrawTH1(px_thetaY_vs_t, "px_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad]",  "../tmp/"+stn+"px_thetaY_vs_t");
+    DrawTH1(px_thetaY_vs_t, "px_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad]",  "../Images/Data/dMu/O/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
+    px_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
+    px_thetaY_vs_t->Write();
 
     // FFT hist
     TH1D *FFT_px_thetaY_vs_t = GetFFT(px_thetaY_vs_t);
 
-    DrawTH1(FFT_px_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude", "../tmp/"+stn+"FFT_px_thetaY_vs_t");
+    DrawTH1(FFT_px_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude", "../Images/Data/dMu/O/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
     FFT_px_thetaY_vs_t->Draw("HIST");
     FFT_px_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
     FFT_px_thetaY_vs_t->Write();
@@ -210,32 +211,31 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A * 1e3 / injectionFactor, phi, 0, 0, xmin, xmax);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
-
-    // Get residuals
-
-    // Unfortunatley we have to convert back into a TH1D
-    TH1D *h_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
-    TH1D *h_res_thetaY_vs_t = GetResidual(h_thetaY_vs_t, func);
-    TH1D *FFT_h_res_thetaY_vs_t = GetFFT(h_res_thetaY_vs_t);
-
-    DrawTH1(h_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad]",  "../tmp/"+stn+"h_res_thetaY_vs_t");
-    h_res_thetaY_vs_t->Draw("HIST");
-    h_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
-    h_res_thetaY_vs_t->Write();
-
-    DrawTH1(FFT_h_res_thetaY_vs_t, "FFT_h_res_thetaY_vs_t;Frequency [MHz];FFT magnitude",  "../tmp/"+stn+"FFT_h_res_thetaY_vs_t");
-    FFT_h_res_thetaY_vs_t->Draw("HIST");
-    FFT_h_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
-    FFT_h_res_thetaY_vs_t->Write();
-
     double c = func->GetParameter(4);
     double ymin =  c-1.35; double ymax =  c+1.45; 
 
     //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
-    DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../tmp/"+stn+"_edmFit_noMod_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
+    DrawFullEDMFitDataO(gr_thetaY_vs_t,  stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/O/MainPlots/"+stn+"_edmFit_noMod_"+config).c_str(), double(nEntries), ymin, ymax);//,unblind);
 
     gr_thetaY_vs_t->SetName((stn+"_edmFit_noMod").c_str());
     gr_thetaY_vs_t->Write();
+
+    // Get residuals
+
+    // we have to convert back into a TH1D
+    TH1D *h_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
+    TH1D *h_res_thetaY_vs_t = GetResidual(h_thetaY_vs_t, func);
+    TH1D *FFT_h_res_thetaY_vs_t = GetFFT(h_res_thetaY_vs_t);
+
+    DrawTH1(h_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad]",  "../Images/Data/dMu/O/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
+    h_res_thetaY_vs_t->Draw("HIST");
+    h_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
+    h_res_thetaY_vs_t->Write();
+
+    DrawTH1(FFT_h_res_thetaY_vs_t, "FFT_h_res_thetaY_vs_t;Frequency [MHz];FFT magnitude",  "../Images/Data/dMu/O/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
+    FFT_h_res_thetaY_vs_t->Draw("HIST");
+    FFT_h_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
+    FFT_h_res_thetaY_vs_t->Write();
 
   }
 
@@ -537,7 +537,7 @@ int main(int argc, char *argv[]) {
   ////////////////////////////////////////////////////////
 
   string config = argv[1];
-  config += "_125MeV_BQ";
+  // config += "_125MeV_BQ";
 
   bool write = true;
 

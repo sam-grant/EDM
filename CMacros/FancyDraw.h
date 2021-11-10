@@ -1590,6 +1590,8 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 }
 
+
+
 // TODO: change to DrawFullEDMFitSim
 void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, double N, double ymin, double ymax, bool unblind) {
 
@@ -1723,6 +1725,103 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	string amplitude;
 	if(!unblind) amplitude = "A_{EDM}^{BLIND} [mrad]";
 	else if(unblind) amplitude = "A_{EDM} [mrad]";
+	names->AddText(amplitude.c_str());
+	names->AddText("c [mrad]"); 
+
+	//TPaveText *values = new TPaveText(0.65,0.55,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.65,0.63,0.89,0.89,"NDC");
+	values->SetTextAlign(33);
+	values->AddText(SciNotation(double(N))); 
+	values->AddText(Round(chi2ndf, 3));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
+
+	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
+	cuts->SetTextAlign(22);
+	cuts->AddText("750 < p [MeV] < 2500");
+	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+
+	names->SetTextSize(22); // 26
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(22);
+	cuts->SetFillColor(0);
+	cuts->SetTextFont(44);
+	cuts->SetTextSize(22);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.1);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	graph->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  // Hack together x-axis range
+  int n_points = graph->GetN();
+  double xmax = graph->GetPointX(n_points-1);// + 50;
+  double xmin = graph->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.01;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  graph->GetXaxis()->SetRangeUser(xmin, xmax);
+
+/*	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);*/
+	graph->Draw("AP");
+	values->Draw("same");
+	names->Draw("same");
+	leg->Draw("same");
+	func->Draw("same");
+	cuts->Draw("same");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawFullEDMFitDataO(TGraphErrors *graph, std::string title, std::string dataset, std::string fname, double N, double ymin, double ymax) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	TF1 *func = graph->GetFunction("FullEDMFunc");
+	func->SetLineWidth(3);
+	func->SetLineColor(kRed);
+	func->SetNpx(1e4);	
+
+	double chi2ndf = func->GetChisquare() / func->GetNDF();
+	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+	double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
+	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
+	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
+
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
+	leg->SetNColumns(2);
+	leg->AddEntry(graph, ("Data: "+dataset+"   ").c_str());
+	leg->AddEntry(func,"A_{c} cos(#omega_{a}t/#sqrt{2}) #plus A_{s} sin(#omega_{a}t/#sqrt{2}) #plus c");
+	leg->SetBorderSize(0);
+
+	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
+	TPaveText *names = new TPaveText(0.55,0.635,0.65,0.88,"NDC");
+
+	names->SetTextAlign(13);
+	names->AddText("N") ; 
+	names->AddText("#chi^{2}/ndf");
+	names->AddText("A_{c} [mrad]");
+	string amplitude = "A_{s} [mrad]";
 	names->AddText(amplitude.c_str());
 	names->AddText("c [mrad]"); 
 

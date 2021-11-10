@@ -1,6 +1,6 @@
-******* Results ******* 
-,chi2ndf, A_EDM^{BLIND} [mrad],, A_{g-2} [mrad],, c [mrad]
-Station, value, value, error, value, error, value, error
-S12, 1.07202, 0.0250825, 0.0075017, 0.00283936, 0.00747795, -0.154897, 0.0053032
-S18, 0.9956, 0.0366915, 0.00785796, -0.00419888, 0.00784125, -0.204386, 0.0055569
-S12S18, 0.871753, 0.030664, 0.00542624, -0.000444788, 0.00541171, -0.178623, 0.00383658
+Getting phase
+[/usr/lib/system/libsystem_platform.dylib] _sigtramp (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)

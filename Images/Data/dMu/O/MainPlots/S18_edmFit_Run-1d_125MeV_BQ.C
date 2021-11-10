@@ -1,7 +1,7 @@
 void S18_edmFit_Run-1d_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov  8 10:22:39 2021) by ROOT version 6.24/04
+//=========  (Tue Nov  9 11:23:58 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.7705583,-0.7969791,6.935024,0.2030209);
@@ -10283,8 +10283,8 @@ void S18_edmFit_Run-1d_125MeV_BQ()
    pt->SetTextSize(22);
    pt_LaTex = pt->AddText("N");
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
-   pt_LaTex = pt->AddText("A_{g-2} [mrad]");
-   pt_LaTex = pt->AddText("A_{EDM}^{BLIND} [mrad]");
+   pt_LaTex = pt->AddText("A_{c} [mrad]");
+   pt_LaTex = pt->AddText("A_{s} [mrad]");
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
@@ -10295,7 +10295,7 @@ void S18_edmFit_Run-1d_125MeV_BQ()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","Data: O   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Data: Run-1d   ","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -10304,7 +10304,7 @@ void S18_edmFit_Run-1d_125MeV_BQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("FullEDMFunc","A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) #plus c","lpf");
+   entry=leg->AddEntry("FullEDMFunc","A_{c} cos(#omega_{a}t/#sqrt{2}) #plus A_{s} sin(#omega_{a}t/#sqrt{2}) #plus c","lpf");
    entry->SetFillColor(19);
 
    ci = TColor::GetColor("#ff0000");
