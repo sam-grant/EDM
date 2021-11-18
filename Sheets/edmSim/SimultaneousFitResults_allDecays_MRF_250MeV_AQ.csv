@@ -14,3 +14,47 @@ BLINDED
 ,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
 Station, value, value, error, value, error, value, error
 , 1.33082, -0.768233, 0.133283, 0.687744, 0.133757, 0.0645158, 0.0944177
+UNBLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.20044, -0.627114, 0.187727, 2.59786, 0.187853, -0.129533, 0.132794
+UNBLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.33082, -0.796552, 0.133283, 0.687735, 0.133757, 0.0645169, 0.0944177
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.20044, -0.598369, 0.187727, 2.59787, 0.187853, -0.129536, 0.132794
+BLINDED
+,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
+Station, value, value, error, value, error, value, error
+, 1.33082, -0.767809, 0.133283, 0.687744, 0.133757, 0.0645158, 0.0944177
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] Run(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, bool, bool) (no debug info)
+[/Users/samuelgrant/Documents/gm2/EDM/CMacros/./BlindedEDMSimFitter.exe] main (no debug info)
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)

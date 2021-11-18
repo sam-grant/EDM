@@ -1,6 +1,7 @@
 dataset_=(5.4e-18 1.8e-18 1.8e-19 1700ppm)
 reco_=(allDecays acceptedDecays acceptedDecaysControl trackReco trackRecoControl trackTruth)
-frame_=(WORLD AAR MRF)
+# frame_=(WORLD AAR MRF)
+frame_=(WORLD AAR) # MRF)
 qual_=(AQ BQ)
 unblind_=("true" "false")
 
@@ -28,7 +29,7 @@ for dataset in ${dataset_}; do
 
 				if [[ -f $file ]]; then
 
-					echo "Running command ./BlindedEDMSimFitter.exe $config $dataset"
+					echo "Running command ./BlindedEDMSimFitter.exe $config $dataset $unblind"
 
 					if [[ "$reco" == "allDecays" || "$reco" == "acceptedDecays" || "$reco" == "acceptedDecaysControl" ]]; then 
 						# ./BlindedEDMSimFitter.exe $config $dataset $unblind | tail -n 3 | tee ../Sheets/edmSim/SimultaneousFitResults_${config}.csv
@@ -50,6 +51,7 @@ for dataset in ${dataset_}; do
 		done #frame
 	done #reco
 done # dataset
+
 done # unblinding
 
 cd ../Scripts

@@ -470,7 +470,14 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       // Get hist
       std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
-      int p = (hi+lo)/2;
+
+      std::string pHistName = "MomSlices/"+stn+"_Momentum_"+momSlice;
+      TH1D *pHist = (TH1D*)input->Get((pHistName).c_str());
+
+      //int p = (hi+lo)/2;
+
+      double p = pHist->GetMean(); 
+      double ep = pHist->GetMeanError();
 
       std::string h2_thetaY_mod_name = "MomSlices/"+stn+"_ThetaY_vs_Time_Modulo_"+momSlice;
       TH2D *h2_thetaY_mod = (TH2D*)input->Get(h2_thetaY_mod_name.c_str());
@@ -483,7 +490,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       if(nEntries == 0) continue;
 
       p_.push_back(p);
-      ep_.push_back(0.);//step/2);
+      ep_.push_back(ep);//step/2);
 
       // Run fits
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();

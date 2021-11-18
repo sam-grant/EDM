@@ -1,7 +1,7 @@
 void S0S12S18_edmFit_trackRecoControl_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 21 15:52:07 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 11:36:59 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-0.9532703,4.944727,0.4217298);
@@ -10468,7 +10468,7 @@ void S0S12S18_edmFit_trackRecoControl_AAR_250MeV_BQ_0()
    pt_LaTex = pt->AddText("N");
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("A_{g-2} [mrad]");
-   pt_LaTex = pt->AddText("A_{EDM} [mrad]");
+   pt_LaTex = pt->AddText("A_{EDM}^{BLIND} [mrad]");
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
@@ -10500,6 +10500,14 @@ void S0S12S18_edmFit_trackRecoControl_AAR_250MeV_BQ_0()
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    leg->Draw();
+   
+   pt = new TPaveText(0.2,0.75,0.4,0.85,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt->Draw();
    
    TF1 *FullEDMFunc1015 = new TF1("*FullEDMFunc",0,4.365324,5);
     //The original function : FullEDMFunc had originally been created by:
@@ -20539,15 +20547,7 @@ void S0S12S18_edmFit_trackRecoControl_AAR_250MeV_BQ_0()
    FullEDMFunc1015->SetParameter(4,-0.2657703);
    FullEDMFunc1015->SetParError(4,0.01080348);
    FullEDMFunc1015->SetParLimits(4,0,0);
-   FullEDMFunc1015->Draw("same");
-   
-   pt = new TPaveText(0.2,0.75,0.4,0.85,"brNDC");
-   pt->SetFillColor(0);
-   pt->SetTextFont(44);
-   pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
-   pt->Draw();
+   FullEDMFunc1015->Draw("SAME");
    
    pt = new TPaveText(0.3920101,0.9362587,0.6079899,0.995,"blNDC");
    pt->SetName("title");

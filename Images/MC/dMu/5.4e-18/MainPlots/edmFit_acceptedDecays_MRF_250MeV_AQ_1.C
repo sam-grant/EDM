@@ -1,7 +1,7 @@
 void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 21 14:32:51 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 11:29:12 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-58.9757,4.944727,-18.68348);
@@ -11,7 +11,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1005[87] = {
+   Double_t _fx1005[87] = {
    0.02508807,
    0.07526421,
    0.1254403,
@@ -99,7 +99,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    4.239884,
    4.29006,
    4.340236};
-   Double_t Graph0_fy1005[87] = {
+   Double_t _fy1005[87] = {
    -2.645118,
    -0.673586,
    -1.806166,
@@ -187,7 +187,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    -2.120801,
    0.009788305,
    -0.2015814};
-   Double_t Graph0_fex1005[87] = {
+   Double_t _fex1005[87] = {
    0,
    0,
    0,
@@ -275,7 +275,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    0,
    0,
    0};
-   Double_t Graph0_fey1005[87] = {
+   Double_t _fey1005[87] = {
    0.7776522,
    0.7810512,
    0.7812876,
@@ -363,40 +363,40 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    0.8063488,
    0.8072958,
    0.8057661};
-   TGraphErrors *gre = new TGraphErrors(87,Graph0_fx1005,Graph0_fy1005,Graph0_fex1005,Graph0_fey1005);
-   gre->SetName("Graph0");
+   TGraphErrors *gre = new TGraphErrors(87,_fx1005,_fy1005,_fex1005,_fey1005);
+   gre->SetName("");
    gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01005 = new TH1F("Graph_Graph01005","",100,0,4.771751);
-   Graph_Graph01005->SetMinimum(-54.94648);
-   Graph_Graph01005->SetMaximum(-22.71271);
-   Graph_Graph01005->SetDirectory(0);
-   Graph_Graph01005->SetStats(0);
+   TH1F *Graph_Graph1005 = new TH1F("Graph_Graph1005","",100,0,4.771751);
+   Graph_Graph1005->SetMinimum(-54.94648);
+   Graph_Graph1005->SetMaximum(-22.71271);
+   Graph_Graph1005->SetDirectory(0);
+   Graph_Graph1005->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01005->SetLineColor(ci);
-   Graph_Graph01005->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
-   Graph_Graph01005->GetXaxis()->SetRange(0,92);
-   Graph_Graph01005->GetXaxis()->CenterTitle(true);
-   Graph_Graph01005->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01005->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01005->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01005->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01005->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 50 ns");
-   Graph_Graph01005->GetYaxis()->CenterTitle(true);
-   Graph_Graph01005->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01005->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01005->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01005->GetYaxis()->SetTitleOffset(1.1);
-   Graph_Graph01005->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01005->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01005->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01005->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01005);
+   Graph_Graph1005->SetLineColor(ci);
+   Graph_Graph1005->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
+   Graph_Graph1005->GetXaxis()->SetRange(0,92);
+   Graph_Graph1005->GetXaxis()->CenterTitle(true);
+   Graph_Graph1005->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1005->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph1005->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1005->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1005->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 50 ns");
+   Graph_Graph1005->GetYaxis()->CenterTitle(true);
+   Graph_Graph1005->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1005->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1005->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph1005->GetYaxis()->SetTitleOffset(1.1);
+   Graph_Graph1005->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1005->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1005->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1005->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1005);
    
    
    TF1 *FullEDMFunc1006 = new TF1("*FullEDMFunc",0,4.365324,5);
@@ -10468,7 +10468,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    pt_LaTex = pt->AddText("N");
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("A_{g-2} [mrad]");
-   pt_LaTex = pt->AddText("A_{EDM}^{BLIND} [mrad]");
+   pt_LaTex = pt->AddText("A_{EDM} [mrad]");
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
@@ -10479,7 +10479,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("Graph0","Sim   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Sim   ","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -10500,6 +10500,14 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    leg->Draw();
+   
+   pt = new TPaveText(0.2,0.75,0.4,0.85,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt->Draw();
    
    TF1 *FullEDMFunc1007 = new TF1("*FullEDMFunc",0,4.365324,5);
     //The original function : FullEDMFunc had originally been created by:
@@ -20539,15 +20547,7 @@ void edmFit_acceptedDecays_MRF_250MeV_AQ_1()
    FullEDMFunc1007->SetParameter(4,-1.325087);
    FullEDMFunc1007->SetParError(4,0.08334465);
    FullEDMFunc1007->SetParLimits(4,0,0);
-   FullEDMFunc1007->Draw("same");
-   
-   pt = new TPaveText(0.2,0.75,0.4,0.85,"brNDC");
-   pt->SetFillColor(0);
-   pt->SetTextFont(44);
-   pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
-   pt->Draw();
+   FullEDMFunc1007->Draw("SAME");
    c->Modified();
    c->cd();
    c->SetSelected(c);
