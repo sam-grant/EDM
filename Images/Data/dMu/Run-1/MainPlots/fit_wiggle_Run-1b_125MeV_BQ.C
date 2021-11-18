@@ -1,7 +1,7 @@
 void fit_wiggle_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 09:17:57 2021) by ROOT version 6.24/04
+//=========  (Wed Nov 17 22:15:29 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-3.823283,0.5,339.9709,5.5);

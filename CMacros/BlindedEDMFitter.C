@@ -75,10 +75,6 @@ string GetDataset(std::string config) {
 
 }
 
-/*int step = GetStep();
-  std::string qual = GetQual();
-  std::string dataset = GetDataset();*/
-
 void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, int step, bool xLabel) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
@@ -343,7 +339,6 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
 }
 
-
 // TESTING
 void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config) { 
 
@@ -376,15 +371,12 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     TGraphErrors *gr_thetaY_vs_t;
 
     gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_vs_t));
-    // else gr_thetaY_vs_t = ConvertToTGraphErrors(px_thetaY_vs_t);
-
-    gr_thetaY_vs_t->GetYaxis()->SetRangeUser(-.425, .425);
 
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A * 1e3, phi, 0, 0, xmin, xmax);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
     double c = func->GetParameter(4);
-    double ymin =  c-1.35; double ymax =  c+1.45; 
+    double ymin =  c-4.75; double ymax =  c+5; 
 
     //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
     DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_noMod_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);

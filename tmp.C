@@ -1,141 +1,51 @@
-void tmp() {
+void tmp()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Wed Nov 10 16:45:50 2021) by ROOT version 6.24/04
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetGridx();
+   c->SetGridy();
+   c->SetFrameBorderMode(0);
+   
+   TF1 *1 = new TF1("","",43.2145,49.388, TF1::EAddToList::kDefault);
+   1->SetNpx(10000);
+   1->SetFillColor(19);
+   1->SetFillStyle(0);
 
-/*	double x[15] = {
-   100,
-   300,
-   500,
-   700,
-   900,
-   1100,
-   1300,
-   1500,
-   1700,
-   1900,
-   2100,
-   2300,
-   2500,
-   2700,
-   2900};
-
-  double ex[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
-
-	double y[15] = {
-   -0.06752075,
-   0.02854064,
-   0.1150357,
-   0.2341804,
-   0.2667648,
-   0.2578456,
-   0.2669507,
-   0.2427073,
-   0.2237744,
-   0.2148873,
-   0.1881774,
-   0.1653431,
-   0.1236724,
-   0.1035602,
-   0.04346448};
-
-   double ey[15] = {
-   0.03307286,
-   0.02125911,
-   0.01629939,
-   0.0134056,
-   0.01103841,
-   0.009486095,
-   0.008445031,
-   0.007628902,
-   0.006999139,
-   0.006560071,
-   0.006232725,
-   0.005999949,
-   0.00580281,
-   0.005697103,
-   0.005857476};*/
-
-  double x[15] = {
-   100,
-   300,
-   500,
-   700,
-   900,
-   1100,
-   1300,
-   1500,
-   1700,
-   1900,
-   2100,
-   2300,
-   2500,
-   2700,
-   2900};
-   double y[15] = {
-   0.02004905,
-   0.02019993,
-   0.1308364,
-   0.2415324,
-   0.2637208,
-   0.2518962,
-   0.2463081,
-   0.2451475,
-   0.2288872,
-   0.2245348,
-   0.1828677,
-   0.2008651,
-   0.1549994,
-   0.1297497,
-   0.06521412};
-   double ex[15] = {
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100,
-   100};
-  double ey[15] = {
-   0.03308111,
-   0.02132067,
-   0.01633019,
-   0.01340995,
-   0.01102864,
-   0.009477489,
-   0.008434668,
-   0.007631009,
-   0.007012196,
-   0.006621779,
-   0.00635524,
-   0.006229754,
-   0.006195296,
-   0.006384668,
-   0.007112399};
-   	cout<<"x,ex,y,ey"<<endl;
-
-	for(int i = 0; i<15; i++) cout<<x[i]<<","<<ex[i]<<","<<y[i]<<","<<ey[i]<<endl;
-
-	return;
-
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   1->SetLineColor(ci);
+   1->SetLineWidth(3);
+   1->GetXaxis()->CenterTitle(true);
+   1->GetXaxis()->SetLabelFont(42);
+   1->GetXaxis()->SetTitleSize(0.04);
+   1->GetXaxis()->SetTitleOffset(1.1);
+   1->GetXaxis()->SetTitleFont(42);
+   1->GetYaxis()->CenterTitle(true);
+   1->GetYaxis()->SetNdivisions(4000510);
+   1->GetYaxis()->SetLabelFont(42);
+   1->GetYaxis()->SetTitleSize(0.04);
+   1->GetYaxis()->SetTitleOffset(1.1);
+   1->GetYaxis()->SetTitleFont(42);
+   1->SetParameter(0,0);
+   1->SetParError(0,0);
+   1->SetParLimits(0,0,0);
+   1->SetParameter(1,2.035534);
+   1->SetParError(1,0);
+   1->SetParLimits(1,0,0);
+   1->SetParameter(2,1);
+   1->SetParError(2,0);
+   1->SetParLimits(2,0,0);
+   1->SetParameter(3,0);
+   1->SetParError(3,0);
+   1->SetParLimits(3,0,0);
+   1->Draw("");
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
 }

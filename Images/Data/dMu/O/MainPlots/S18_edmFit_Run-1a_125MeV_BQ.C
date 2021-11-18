@@ -1,7 +1,7 @@
 void S18_edmFit_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 11:23:25 2021) by ROOT version 6.24/04
+//=========  (Fri Nov 12 14:39:55 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.7705583,-0.4827611,6.935024,0.5172389);
@@ -195,7 +195,7 @@ void S18_edmFit_Run-1a_125MeV_BQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph1003->SetLineColor(ci);
-   Graph_Graph1003->GetXaxis()->SetTitle("t_{g#minus2}^{mod} [#mus]");
+   Graph_Graph1003->GetXaxis()->SetTitle("Time modulo #sqrt{2}#upointT_{g#minus2} [#mus]");
    Graph_Graph1003->GetXaxis()->SetRange(1,92);
    Graph_Graph1003->GetXaxis()->CenterTitle(true);
    Graph_Graph1003->GetXaxis()->SetLabelFont(42);

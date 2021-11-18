@@ -189,12 +189,16 @@ TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
     double y = hist->GetBinContent(i+1); 
     double ey = hist->GetBinError(i+1); 
 
-    // avoid zeros
+    // Avoid filling empty bins as "zeros".
+    // x-axis still increments so we won't go out of sync
+
     if(y==0) continue;
 
     gr->SetPoint(counter, x, y);
     gr->SetPointError(counter, ex, ey);
+
     counter++;
+
 
   }
 
@@ -218,7 +222,20 @@ TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y
 
 }
 
+/*TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y_, std::vector<double> ex_, std::vector<double> ey_) {
 
+  TGraphErrors *gr = new TGraphErrors();
+
+  for(int i = 0; i < x_.size(); i++) {
+
+    gr->SetPoint(i, x_.at(i), y_.at(i));
+    gr->SetPointError(i-1, ex_.at(i), ey_.at(i));
+  }
+
+  return gr;  
+
+}
+*/
 
 TH1D* GetResidual(TH1D* data, TF1* fit) { 
 
@@ -294,15 +311,6 @@ TH1D* GetFFT(TH1D* hist) {
 
 // ====================== Misc ======================
 
-
-TString Round(double N, double n) { 
-  std::stringstream roundedValue;
-  roundedValue.precision(n);
-  roundedValue << N << std::endl;
-  return roundedValue.str();
-
-}
-
 TString OneSigFig(double num) { 
   return Form("%5.1g", num);
 }
@@ -312,16 +320,23 @@ TString ThreeSigFig(double num) {
 }
 
 TString SciNotation(double num) { 
-	TString text;
-	text = ThreeSigFig(num);
+  TString text;
+  text = ThreeSigFig(num);
   text.ReplaceAll("e+0","#times10^{");
   text.ReplaceAll("e-0","#times10^{#minus");
   text.ReplaceAll("e+","#times10^{");
   text.ReplaceAll("e-","#times10^{#minus");
-	if(abs(num)>10 || abs(num)<0.1) text.Append("}");
-	return text;
+  if(abs(num)>10 || abs(num)<0.1) text.Append("}");
+  return text;
 }
 
+TString Round(double N, double n) { 
+  std::stringstream roundedValue;
+  roundedValue.precision(n);
+  roundedValue << N << std::endl;
+  return roundedValue.str();
+
+}
 TString FormatNegativeNumber(double num) { 
   TString text;
   text = ThreeSigFig(num);

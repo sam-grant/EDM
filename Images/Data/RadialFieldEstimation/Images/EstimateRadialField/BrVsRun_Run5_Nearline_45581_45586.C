@@ -1,10 +1,10 @@
 void BrVsRun_Run5_Nearline_45581_45586()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov  4 15:26:45 2021) by ROOT version 6.12/04
+//=========  (Thu Nov  4 15:52:12 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(45579.75,-0.121769,45587.25,20.79932);
+   c->Range(45579.75,-2.5,45587.25,22.5);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -47,12 +47,12 @@ void BrVsRun_Run5_Nearline_45581_45586()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#ff0000");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(3004);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,45580.5,45586.5);
-   Graph_Graph1003->SetMinimum(1.97034);
-   Graph_Graph1003->SetMaximum(18.70721);
+   Graph_Graph1003->SetMinimum(0);
+   Graph_Graph1003->SetMaximum(20);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -113,7 +113,7 @@ void BrVsRun_Run5_Nearline_45581_45586()
 
    ci = TColor::GetColor("#0000ff");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(3004);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1004 = new TH1F("Graph_Graph1004","Graph",100,45580.5,45586.5);
@@ -141,7 +141,7 @@ void BrVsRun_Run5_Nearline_45581_45586()
    
    gre->Draw("p3 ");
    
-   TLegend *leg = new TLegend(0.15,0.69,0.45,0.89,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.79,0.65,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
@@ -152,7 +152,7 @@ void BrVsRun_Run5_Nearline_45581_45586()
 
    ci = TColor::GetColor("#0000ff");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(3004);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
@@ -164,7 +164,7 @@ void BrVsRun_Run5_Nearline_45581_45586()
 
    ci = TColor::GetColor("#ff0000");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(3004);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

@@ -1,7 +1,7 @@
 void S12_px_thetaY_vs_t_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 11:23:50 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 11 14:39:25 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

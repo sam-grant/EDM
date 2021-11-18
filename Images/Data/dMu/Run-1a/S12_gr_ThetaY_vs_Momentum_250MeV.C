@@ -1,7 +1,7 @@
 void S12_gr_ThetaY_vs_Momentum_250MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov  4 10:31:15 2021) by ROOT version 6.24/04
+//=========  (Wed Nov 10 16:08:44 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(500.0625,-3.125,2744.438,3.125);
    c->SetFillColor(0);

@@ -1,7 +1,7 @@
 void BrVsAllRuns()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov  4 15:22:24 2021) by ROOT version 6.12/04
+//=========  (Thu Nov  4 15:45:11 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(8504.75,-1915.958,53002.25,1937.185);
@@ -12803,7 +12803,7 @@ void BrVsAllRuns()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#ff0000");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",3195,12954.5,48552.5);
@@ -25625,7 +25625,7 @@ void BrVsAllRuns()
 
    ci = TColor::GetColor("#0000ff");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","Graph",3195,12954.5,48552.5);
@@ -25664,7 +25664,7 @@ void BrVsAllRuns()
 
    ci = TColor::GetColor("#0000ff");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
@@ -25676,7 +25676,7 @@ void BrVsAllRuns()
 
    ci = TColor::GetColor("#ff0000");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

@@ -161,7 +161,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     double ymin =  c-0.35; double ymax =  c+0.45; 
 
     //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
-    DrawFullEDMFitDataO(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/O/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax);//,unblind);
+    DrawFullEDMFitDataO(gr_thetaY_mod,  stn+";Time modulo #sqrt{2}#upointT_{g#minus2} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/O/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax);//,unblind);
 
     gr_thetaY_mod->SetName((stn+"_edmFit").c_str());
     gr_thetaY_mod->Write();
@@ -184,7 +184,6 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
   for(auto& stn : stn_) { 
 
     TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("MainPlots/"+stn+"_ThetaY_vs_Time").c_str());
-    //h2_thetaY_mod->RebinX(10);
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
@@ -200,17 +199,16 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FFT_px_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
     FFT_px_thetaY_vs_t->Write();
 
-    // Blinding
-    TGraphErrors *gr_thetaY_vs_t;
-
-    gr_thetaY_vs_t = ConvertToTGraphErrors(px_thetaY_vs_t);
-    // else gr_thetaY_vs_t = ConvertToTGraphErrors(px_thetaY_vs_t);
+    TGraphErrors *gr_thetaY_vs_t = ConvertToTGraphErrors(px_thetaY_vs_t);
 
     gr_thetaY_vs_t->GetYaxis()->SetRangeUser(-.425, .425);
 
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A * 1e3 / injectionFactor, phi, 0, 0, xmin, xmax);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
+
+    cout<<"func\t"<<func<<endl; 
+
     double c = func->GetParameter(4);
     double ymin =  c-1.35; double ymax =  c+1.45; 
 
@@ -331,7 +329,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       FullEDMFit(gr_thetaY_mod , 0, OMEGA_A * 1e3 / injectionFactor, phi, 0, 0, 0, G2PERIOD*injectionFactor);
       //DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+config+"/MomBinnedAna/"+stn+"_dMuFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5, 5, true);// , double(nEntries), true);
-      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns").c_str() );
+      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";Time modulo [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
       gr_thetaY_mod->SetName((stn+"_ModuloFit_"+momSlice).c_str());
       gr_thetaY_mod->Write();
@@ -491,7 +489,7 @@ void Run(std::string config, bool write) {
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
 
-  MomentumBinnedAnalysis(phi, input, output, config);
+  // MomentumBinnedAnalysis(phi, input, output, config);
   // VertOffset(input, output);
 
   std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;

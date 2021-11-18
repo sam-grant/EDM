@@ -1,7 +1,7 @@
 void S12S18_thetaYMaxDiff_vs_p_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 11:21:53 2021) by ROOT version 6.24/04
+//=========  (Wed Nov 17 22:14:26 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(522,-31.50664,2727,429.9474);
@@ -35,7 +35,7 @@ void S12S18_thetaYMaxDiff_vs_p_Run-1a_125MeV_BQ()
    2812,
    2937};
    Double_t Graph0_fy1045[22] = {
-   154.381,
+   158.6694,
    347.3573,
    298.0411,
    242.2924,
@@ -49,7 +49,7 @@ void S12S18_thetaYMaxDiff_vs_p_Run-1a_125MeV_BQ()
    113.6416,
    150.0926,
    100.7765,
-   87.91141,
+   85.76723,
    81.47887,
    77.1905,
    68.61378,

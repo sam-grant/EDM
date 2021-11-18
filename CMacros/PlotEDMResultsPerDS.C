@@ -3,14 +3,14 @@
 using namespace std;
 
 // Global momentum cuts
-// string xmin = "750";
-// string xmax = "2500";
+string xmin = "750";
+string xmax = "2500";
 //string xmin = "825"; // 750;
 //string xmax = "2375"; // 2500;
 //string xmin = "900";
 //string xmax = "2250";
-string xmin = "1025";
-string xmax = "2125";
+//string xmin = "1025";
+//string xmax = "2125";
 
 vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
 
@@ -124,6 +124,10 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   fit_tmp->SetLineWidth(0);
 
   TF1 *fit = new TF1("fit", "pol0", 0, 5);
+
+  cout<<"fit error "<<fit_tmp->GetParError(0)<<endl;
+  cout<<"one sigma "<<plusSigma->GetParameter(0) - fit_tmp->GetParameter(0)<<endl;
+
   fit->SetParameter(0, fit_tmp->GetParameter(0));
   fit->SetParError(0, fit_tmp->GetParError(0));
   fit->SetLineWidth(1);
@@ -350,9 +354,9 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 void PlotEDMResultsPerDS() { 
 
   Run("Run-1", 125, "blinded", true);
-  Run("O", 125, "unblinded", true);
-  Run("Run-1", 125, "blinded", false);
-  Run("O", 125, "unblinded", false);
+  //Run("O", 125, "unblinded", true);
+  //Run("Run-1", 125, "blinded", false);
+  //Run("O", 125, "unblinded", false);
   
   return;
 

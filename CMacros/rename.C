@@ -1,8 +1,8 @@
 void Run(string dataset) { 
 
-	TFile *fin = TFile::Open(("../Plots/Data/dMu/Run-1a/Plots/verticalOffsetHists_"+dataset+".root").c_str());
+	TFile *fin = TFile::Open(("../Plots/Data/dMu/Run-1/Plots/verticalOffsetHists_"+dataset+".root").c_str());
 
-	TString foutName = "../Plots/Data/dMu/Run-1a/Plots/verticalOffsetHists_"+dataset+"_2.root";
+	TString foutName = "../Plots/Data/dMu/Run-1/Plots/verticalOffsetHists_"+dataset+"_2.root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 	fout->mkdir("VerticalOffsetPlots"); fout->cd("VerticalOffsetPlots"); 
 
@@ -15,15 +15,15 @@ void Run(string dataset) {
 
 		for(auto& stn : stn_) {
 
-		TH2D *h_theta_y_vs_p;
-		if(step=="125") h_theta_y_vs_p = (TH2D*)fin->Get(("VerticalOffsetPlots/"+stn+"_ThetaY_vs_Momentum_"+step+"MeV").c_str());
-		else h_theta_y_vs_p = (TH2D*)fin->Get(("VerticalOffsetPlots/"+stn+"_ThetaY_vs_Momentum_"+step+"Mev").c_str());
+			TH2D *h_theta_y_vs_p;
+			if(step=="125") h_theta_y_vs_p = (TH2D*)fin->Get(("VerticalOffsetPlots/"+stn+"_ThetaY_vs_Momentum_"+step+"MeV").c_str());
+			else h_theta_y_vs_p = (TH2D*)fin->Get(("VerticalOffsetPlots/"+stn+"_ThetaY_vs_Momentum_"+step+"Mev").c_str());
 
-		h_theta_y_vs_p->SetName((stn+"_ThetaY_vs_Momentum").c_str());
+			h_theta_y_vs_p->SetName((stn+"_ThetaY_vs_Momentum").c_str());
 
-		h_theta_y_vs_p->Write();
+			h_theta_y_vs_p->Write();
 
-	}
+		}
 
   }
 
@@ -38,7 +38,9 @@ void Run(string dataset) {
 }
 void rename() { 
 
-	Run("Run-1a");
+	Run("Run-1b");
+	Run("Run-1c");
+	Run("Run-1d");
 
 	return;
 

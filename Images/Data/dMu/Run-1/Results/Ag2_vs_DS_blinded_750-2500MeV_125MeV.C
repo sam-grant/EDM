@@ -1,9 +1,9 @@
 void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 14:12:00 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 09:29:40 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.25,-292.9787,4.75,295.9337);
+   c->Range(0.25,-310.1569,4.75,282.0039);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,20 +16,20 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1005[4] = {
-   -79.38592,
-   -4.681716,
-   19.29086,
-   86.81399};
+   -96.16229,
+   -24.09965,
+   3.330528,
+   57.05487};
    Double_t _fex1005[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1005[4] = {
-   103.1343,
-   87.55669,
-   72.05481,
-   53.11958};
+   103.1857,
+   87.57717,
+   72.07491,
+   53.07418};
    TGraphErrors *gre = new TGraphErrors(4,_fx1005,_fy1005,_fex1005,_fey1005);
    gre->SetName("");
    gre->SetTitle(";;B_{z}/B_{y} [ppm]");
@@ -39,8 +39,8 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10011005 = new TH1F("Graph_Graph_Graph10011005","",100,0.7,4.3);
-   Graph_Graph_Graph10011005->SetMinimum(-234.0874);
-   Graph_Graph_Graph10011005->SetMaximum(237.0425);
+   Graph_Graph_Graph10011005->SetMinimum(-250.9408);
+   Graph_Graph_Graph10011005->SetMaximum(222.7878);
    Graph_Graph_Graph10011005->SetDirectory(0);
    Graph_Graph_Graph10011005->SetStats(0);
 
@@ -84,8 +84,8 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    fit1005->GetXaxis()->SetTitleFont(42);
    fit1005->GetYaxis()->SetLabelFont(42);
    fit1005->GetYaxis()->SetTitleFont(42);
-   fit1005->SetParameter(0,15.6498);
-   fit1005->SetParError(0,26.11965);
+   fit1005->SetParameter(0,-6.970684);
+   fit1005->SetParError(0,26.12571);
    fit1005->SetParLimits(0,0,0);
    fit1005->Draw("same");
    
@@ -102,7 +102,7 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    shift_-11006->GetXaxis()->SetTitleFont(42);
    shift_-11006->GetYaxis()->SetLabelFont(42);
    shift_-11006->GetYaxis()->SetTitleFont(42);
-   shift_-11006->SetParameter(0,-10.46985);
+   shift_-11006->SetParameter(0,-33.09639);
    shift_-11006->SetParError(0,0);
    shift_-11006->SetParLimits(0,0,0);
    shift_-11006->Draw("same");
@@ -120,7 +120,7 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    shift_11007->GetXaxis()->SetTitleFont(42);
    shift_11007->GetYaxis()->SetLabelFont(42);
    shift_11007->GetYaxis()->SetTitleFont(42);
-   shift_11007->SetParameter(0,41.76946);
+   shift_11007->SetParameter(0,19.15502);
    shift_11007->SetParError(0,0);
    shift_11007->SetParLimits(0,0,0);
    shift_11007->Draw("same");
@@ -131,20 +131,20 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1006[4] = {
-   -79.38592,
-   -4.681716,
-   19.29086,
-   86.81399};
+   -96.16229,
+   -24.09965,
+   3.330528,
+   57.05487};
    Double_t _fex1006[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1006[4] = {
-   103.1343,
-   87.55669,
-   72.05481,
-   53.11958};
+   103.1857,
+   87.57717,
+   72.07491,
+   53.07418};
    gre = new TGraphErrors(4,_fx1006,_fy1006,_fex1006,_fey1006);
    gre->SetName("");
    gre->SetTitle(";;B_{z}/B_{y} [ppm]");
@@ -154,8 +154,8 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph_Graph100110051006 = new TH1F("Graph_Graph_Graph_Graph100110051006","",100,0.7,4.3);
-   Graph_Graph_Graph_Graph100110051006->SetMinimum(-234.0874);
-   Graph_Graph_Graph_Graph100110051006->SetMaximum(237.0425);
+   Graph_Graph_Graph_Graph100110051006->SetMinimum(-250.9408);
+   Graph_Graph_Graph_Graph100110051006->SetMaximum(222.7878);
    Graph_Graph_Graph_Graph100110051006->SetDirectory(0);
    Graph_Graph_Graph_Graph100110051006->SetStats(0);
 
@@ -191,20 +191,20 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1007[4] = {
-   76.19803,
-   -93.64037,
-   4.410156,
-   0.878125};
+   61.9632,
+   -111.7843,
+   -14.40006,
+   -26.9818};
    Double_t _fex1007[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1007[4] = {
-   107.2296,
-   91.72631,
-   75.83855,
-   55.79782};
+   107.2164,
+   91.78724,
+   75.87135,
+   55.8233};
    gre = new TGraphErrors(4,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
    gre->SetTitle("S18");
@@ -214,8 +214,8 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10021007 = new TH1F("Graph_Graph_Graph10021007","S18",100,0.7,4.3);
-   Graph_Graph_Graph10021007->SetMinimum(-222.2461);
-   Graph_Graph_Graph10021007->SetMaximum(220.3071);
+   Graph_Graph_Graph10021007->SetMinimum(-240.8467);
+   Graph_Graph_Graph10021007->SetMaximum(206.4547);
    Graph_Graph_Graph10021007->SetDirectory(0);
    Graph_Graph_Graph10021007->SetStats(0);
 
@@ -251,20 +251,20 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1008[4] = {
-   -5.630248,
-   -47.01503,
-   11.54607,
-   46.71052};
+   -21.20968,
+   -65.79149,
+   -5.710509,
+   17.82799};
    Double_t _fex1008[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1008[4] = {
-   74.55868,
-   63.41534,
-   52.40126,
-   38.54615};
+   74.58475,
+   63.47341,
+   52.43974,
+   38.53367};
    gre = new TGraphErrors(4,_fx1008,_fy1008,_fex1008,_fey1008);
    gre->SetName("");
    gre->SetTitle("S12S18");
@@ -272,8 +272,8 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10031008 = new TH1F("Graph_Graph_Graph10031008","S12S18",100,0.7,4.3);
-   Graph_Graph_Graph10031008->SetMinimum(-129.9991);
-   Graph_Graph_Graph10031008->SetMaximum(104.8254);
+   Graph_Graph_Graph10031008->SetMinimum(-147.8276);
+   Graph_Graph_Graph10031008->SetMaximum(74.92432);
    Graph_Graph_Graph10031008->SetDirectory(0);
    Graph_Graph_Graph10031008->SetStats(0);
 
@@ -307,15 +307,15 @@ void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
    pol01009->SetFillStyle(0);
    pol01009->SetLineColor(2);
    pol01009->SetLineWidth(0);
-   pol01009->SetChisquare(1.713387);
+   pol01009->SetChisquare(1.309965);
    pol01009->SetNDF(3);
    pol01009->GetXaxis()->SetLabelFont(42);
    pol01009->GetXaxis()->SetTitleOffset(1);
    pol01009->GetXaxis()->SetTitleFont(42);
    pol01009->GetYaxis()->SetLabelFont(42);
    pol01009->GetYaxis()->SetTitleFont(42);
-   pol01009->SetParameter(0,15.6498);
-   pol01009->SetParError(0,26.11965);
+   pol01009->SetParameter(0,-6.970684);
+   pol01009->SetParError(0,26.12571);
    pol01009->SetParLimits(0,0,0);
    pol01009->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01009);

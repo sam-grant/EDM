@@ -1,10 +1,10 @@
 void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov  8 21:06:03 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 09:29:12 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(405.75,-1.756735,2843.25,1.820577);
+   c->Range(405.75,-1.768321,2843.25,1.812503);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -27,20 +27,20 @@ void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1a_125MeV_BQ()
    2312,
    2437};
    Double_t _fy1011[14] = {
-   0.1092113,
-   0.8031173,
-   -0.0819505,
-   -0.005438794,
-   0.1696509,
-   0.2380296,
-   0.1395687,
-   -0.2805079,
-   -0.3745661,
-   0.2727359,
-   -0.1526269,
-   -0.3249886,
-   -0.8122695,
-   -0.5432169};
+   0.1007928,
+   0.7782447,
+   -0.1000348,
+   -0.003698238,
+   0.1499133,
+   0.2301679,
+   0.1230953,
+   -0.2853845,
+   -0.40741,
+   0.2551586,
+   -0.1777375,
+   -0.3559914,
+   -0.815267,
+   -0.5543836};
    Double_t _fex1011[14] = {
    0,
    0,
@@ -57,20 +57,20 @@ void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1a_125MeV_BQ()
    0,
    0};
    Double_t _fey1011[14] = {
-   0.4922306,
-   0.3620475,
-   0.2937625,
-   0.251179,
-   0.228588,
-   0.2144206,
-   0.2160886,
-   0.2151512,
-   0.2347618,
-   0.2560249,
-   0.2993538,
-   0.354133,
-   0.4603118,
-   0.6846299};
+   0.4922283,
+   0.3620484,
+   0.293763,
+   0.2511766,
+   0.228581,
+   0.2144192,
+   0.2160801,
+   0.2151513,
+   0.2347544,
+   0.256023,
+   0.2993545,
+   0.3541103,
+   0.4602996,
+   0.6846839};
    TGraphErrors *gre = new TGraphErrors(14,_fx1011,_fy1011,_fex1011,_fey1011);
    gre->SetName("");
    gre->SetTitle("S12S18_");
@@ -78,8 +78,8 @@ void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1a_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1011 = new TH1F("Graph_Graph1011","S12S18_",100,649.5,2599.5);
-   Graph_Graph1011->SetMinimum(-1.399004);
-   Graph_Graph1011->SetMaximum(1.462845);
+   Graph_Graph1011->SetMinimum(-1.410238);
+   Graph_Graph1011->SetMaximum(1.454421);
    Graph_Graph1011->SetDirectory(0);
    Graph_Graph1011->SetStats(0);
 
@@ -111,15 +111,15 @@ void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1a_125MeV_BQ()
    pol01012->SetFillStyle(0);
    pol01012->SetLineColor(2);
    pol01012->SetLineWidth(2);
-   pol01012->SetChisquare(17.46857);
+   pol01012->SetChisquare(17.52394);
    pol01012->SetNDF(13);
    pol01012->GetXaxis()->SetLabelFont(42);
    pol01012->GetXaxis()->SetTitleOffset(1);
    pol01012->GetXaxis()->SetTitleFont(42);
    pol01012->GetYaxis()->SetLabelFont(42);
    pol01012->GetYaxis()->SetTitleFont(42);
-   pol01012->SetParameter(0,-0.005630248);
-   pol01012->SetParError(0,0.07402581);
+   pol01012->SetParameter(0,-0.02120968);
+   pol01012->SetParError(0,0.07402466);
    pol01012->SetParLimits(0,0,0);
    pol01012->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01012);
@@ -141,7 +141,7 @@ void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1a_125MeV_BQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta'#GT = -0.0056
+   entry=leg->AddEntry("pol0","#LT#delta'#GT = -0.021
 #pm0.07
  mrad","lpf");
    entry->SetFillColor(19);

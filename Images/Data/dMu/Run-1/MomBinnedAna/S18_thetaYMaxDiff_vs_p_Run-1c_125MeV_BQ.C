@@ -1,10 +1,10 @@
 void S18_thetaYMaxDiff_vs_p_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 09:18:24 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 01:24:54 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(522,-18.29313,2727,388.2163);
+   c->Range(522,-20.49092,2727,388.6988);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -35,10 +35,10 @@ void S18_thetaYMaxDiff_vs_p_Run-1c_125MeV_BQ()
    2812,
    2937};
    Double_t Graph0_fy1035[22] = {
-   162.9577,
+   195.1204,
    315.1946,
    310.9062,
-   265.8784,
+   263.7342,
    265.8784,
    220.8506,
    192.9763,
@@ -56,7 +56,7 @@ void S18_thetaYMaxDiff_vs_p_Run-1c_125MeV_BQ()
    47.17198,
    62.18124,
    45.02779,
-   27.87435};
+   25.73017};
    Double_t Graph0_fex1035[22] = {
    0,
    0,
@@ -110,8 +110,8 @@ void S18_thetaYMaxDiff_vs_p_Run-1c_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01035 = new TH1F("Graph_Graph01035","S18",100,49.5,3199.5);
-   Graph_Graph01035->SetMinimum(22.35782);
-   Graph_Graph01035->SetMaximum(347.5654);
+   Graph_Graph01035->SetMinimum(20.42806);
+   Graph_Graph01035->SetMaximum(347.7798);
    Graph_Graph01035->SetDirectory(0);
    Graph_Graph01035->SetStats(0);
 

@@ -1,0 +1,6 @@
+ , tauA, , tauB, , 
+Dataset, value, error, value, error
+Run-1a, 59.6, 1.4, 6.57, 0.07
+Run-1b, 44.6, 1.1, 6.43, 0.09
+Run-1c, 57.6, 1.0, 6.99, 0.05
+Run-1d, 79.8, 0.6, 7.34, 0.04
