@@ -1,9 +1,9 @@
 void S12S18_AEDM_vs_DS_unblinded_750-2500MeV_125MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 14:12:01 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 12:00:47 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.25,-1.436632e-18,4.75,7.758872e-19);
+   c->Range(0.25,-1.450514e-18,4.75,7.807056e-19);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,20 +16,20 @@ void S12S18_AEDM_vs_DS_unblinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1030[4] = {
-   -6.847954e-19,
-   8.498398e-20,
-   -3.079754e-19,
-   -6.332504e-19};
+   -6.931252e-19,
+   8.578866e-20,
+   -3.085029e-19,
+   -6.33854e-19};
    Double_t _fex1030[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1030[4] = {
-   3.830836e-19,
-   3.2215e-19,
-   2.663573e-19,
-   1.97693e-19};
+   3.855186e-19,
+   3.230471e-19,
+   2.670931e-19,
+   1.988741e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1030,_fy1030,_fex1030,_fey1030);
    gre->SetName("");
    gre->SetTitle("S12S18");
@@ -37,8 +37,8 @@ void S12S18_AEDM_vs_DS_unblinded_750-2500MeV_125MeV()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1030 = new TH1F("Graph_Graph1030","S12S18",100,0.7,4.3);
-   Graph_Graph1030->SetMinimum(-1.21538e-18);
-   Graph_Graph1030->SetMaximum(5.546353e-19);
+   Graph_Graph1030->SetMinimum(-1.227392e-18);
+   Graph_Graph1030->SetMaximum(5.575837e-19);
    Graph_Graph1030->SetDirectory(0);
    Graph_Graph1030->SetStats(0);
 
@@ -74,15 +74,15 @@ void S12S18_AEDM_vs_DS_unblinded_750-2500MeV_125MeV()
    pol01031->SetFillStyle(0);
    pol01031->SetLineColor(2);
    pol01031->SetLineWidth(2);
-   pol01031->SetChisquare(4.263589);
+   pol01031->SetChisquare(4.271313);
    pol01031->SetNDF(3);
    pol01031->GetXaxis()->SetLabelFont(42);
    pol01031->GetXaxis()->SetTitleOffset(1);
    pol01031->GetXaxis()->SetTitleFont(42);
    pol01031->GetYaxis()->SetLabelFont(42);
    pol01031->GetYaxis()->SetTitleFont(42);
-   pol01031->SetParameter(0,-4.345351e-19);
-   pol01031->SetParError(0,1.334735e-19);
+   pol01031->SetParameter(0,-4.350185e-19);
+   pol01031->SetParError(0,1.340958e-19);
    pol01031->SetParLimits(0,0,0);
    pol01031->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01031);

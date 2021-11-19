@@ -466,7 +466,7 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 		float NA2 = N * pow(A,2);
 
 		//if(A < 0) cout<<"A is negative at "<<A<<endl;
-
+		// Same as ratio method
 		float eA = sqrt((1-pow(A,2))/(N_1+N_2));
 
 		if(N==0) continue;

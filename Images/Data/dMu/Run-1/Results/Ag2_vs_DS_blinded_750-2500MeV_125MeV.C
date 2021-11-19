@@ -1,7 +1,7 @@
 void Ag2_vs_DS_blinded_750-2500MeV_125MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 11:47:07 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 12:02:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.25,-310.0396,4.75,283.2457);
    c->SetFillColor(0);

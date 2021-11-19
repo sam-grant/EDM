@@ -1,9 +1,9 @@
 void S12S18_Ag2_vs_DS_unblinded_750-2500MeV_125MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 14:12:01 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 12:00:47 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.25,-166.8675,4.75,388.4951);
+   c->Range(0.25,-166.876,4.75,389.8721);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,20 +16,20 @@ void S12S18_Ag2_vs_DS_unblinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1021[4] = {
-   190.4643,
-   15.61277,
-   67.27696,
-   -4.773594};
+   191.3232,
+   16.07016,
+   67.25271,
+   -4.666828};
    Double_t _fex1021[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1021[4] = {
-   105.4704,
-   89.91985,
-   74.45978,
-   54.33607};
+   105.7575,
+   90.15481,
+   74.76118,
+   54.4698};
    TGraphErrors *gre = new TGraphErrors(4,_fx1021,_fy1021,_fex1021,_fey1021);
    gre->SetName("");
    gre->SetTitle("S12S18");
@@ -37,8 +37,8 @@ void S12S18_Ag2_vs_DS_unblinded_750-2500MeV_125MeV()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1021 = new TH1F("Graph_Graph1021","S12S18",100,0.7,4.3);
-   Graph_Graph1021->SetMinimum(-111.3313);
-   Graph_Graph1021->SetMaximum(332.9589);
+   Graph_Graph1021->SetMinimum(-111.2012);
+   Graph_Graph1021->SetMaximum(334.1973);
    Graph_Graph1021->SetDirectory(0);
    Graph_Graph1021->SetStats(0);
 
@@ -74,15 +74,15 @@ void S12S18_Ag2_vs_DS_unblinded_750-2500MeV_125MeV()
    pol01022->SetFillStyle(0);
    pol01022->SetLineColor(2);
    pol01022->SetLineWidth(2);
-   pol01022->SetChisquare(2.921849);
+   pol01022->SetChisquare(2.922889);
    pol01022->SetNDF(3);
    pol01022->GetXaxis()->SetLabelFont(42);
    pol01022->GetXaxis()->SetTitleOffset(1);
    pol01022->GetXaxis()->SetTitleFont(42);
    pol01022->GetYaxis()->SetLabelFont(42);
    pol01022->GetYaxis()->SetTitleFont(42);
-   pol01022->SetParameter(0,40.3613);
-   pol01022->SetParError(0,36.94476);
+   pol01022->SetParameter(0,40.55814);
+   pol01022->SetParError(0,37.05223);
    pol01022->SetParLimits(0,0,0);
    pol01022->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01022);

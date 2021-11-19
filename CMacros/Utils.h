@@ -68,6 +68,23 @@ void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, doub
 
 }
 
+void FullEDMFit2(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double xmin, double xmax) {
+  
+  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, xmin, xmax, 5);
+
+  func->FixParameter(0, par0); // A_g-2
+  func->FixParameter(1, par1); // Omega
+  func->FixParameter(2, par2); // Phi
+  func->FixParameter(2, par2);
+  func->FixParameter(3, par3); // A_EDM
+  func->FixParameter(4, par4); // c
+
+  graph->Fit(func, "QMR"); // ,"MR");
+
+  return;
+
+}
+
 double FiveParFunc(double *x, double *par) {
   return par[0] * exp(-x[0]/par[1]) * (1  + (par[2] * cos((par[3] * x[0]) + par[4])));
 }

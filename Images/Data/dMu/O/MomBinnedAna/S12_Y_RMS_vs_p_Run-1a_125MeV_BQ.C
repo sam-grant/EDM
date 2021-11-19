@@ -1,10 +1,10 @@
 void S12_Y_RMS_vs_p_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 11:23:33 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 11:58:15 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(522,10.61309,2727,22.08221);
+   c->Range(530.1083,10.61309,2725.349,22.08221);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,28 +12,28 @@ void S12_Y_RMS_vs_p_Run-1a_125MeV_BQ()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx1017[22] = {
-   312,
-   437,
-   562,
-   687,
-   812,
-   937,
-   1062,
-   1187,
-   1312,
-   1437,
-   1562,
-   1687,
-   1812,
-   1937,
-   2062,
-   2187,
-   2312,
-   2437,
-   2562,
-   2687,
-   2812,
-   2937};
+   366.4807,
+   456.7343,
+   570.5426,
+   695.251,
+   815.9612,
+   938.4982,
+   1062.71,
+   1188.361,
+   1312.739,
+   1435.916,
+   1561.843,
+   1685.365,
+   1810.672,
+   1935.19,
+   2060.201,
+   2185.038,
+   2309.334,
+   2433.003,
+   2559.541,
+   2678.772,
+   2781.283,
+   2887.705};
    Double_t Graph0_fy1017[22] = {
    13.83098,
    13.60253,
@@ -58,28 +58,28 @@ void S12_Y_RMS_vs_p_Run-1a_125MeV_BQ()
    13.06862,
    16.75134};
    Double_t Graph0_fex1017[22] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
+   0.384646,
+   0.1721968,
+   0.1145503,
+   0.0772643,
+   0.06172717,
+   0.05561102,
+   0.05263646,
+   0.05089841,
+   0.05132909,
+   0.05157249,
+   0.05534517,
+   0.05804077,
+   0.06517134,
+   0.07120831,
+   0.08126697,
+   0.08967208,
+   0.1030685,
+   0.1231302,
+   0.1477272,
+   0.1694471,
+   0.3433133,
+   1.655531};
    Double_t Graph0_fey1017[22] = {
    0.5609203,
    0.05453153,
@@ -109,7 +109,7 @@ void S12_Y_RMS_vs_p_Run-1a_125MeV_BQ()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01017 = new TH1F("Graph_Graph01017","S12",100,49.5,3199.5);
+   TH1F *Graph_Graph01017 = new TH1F("Graph_Graph01017","S12",100,113.7696,3141.687);
    Graph_Graph01017->SetMinimum(11.76);
    Graph_Graph01017->SetMaximum(20.9353);
    Graph_Graph01017->SetDirectory(0);
@@ -120,7 +120,7 @@ void S12_Y_RMS_vs_p_Run-1a_125MeV_BQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph01017->SetLineColor(ci);
    Graph_Graph01017->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01017->GetXaxis()->SetRange(23,78);
+   Graph_Graph01017->GetXaxis()->SetRange(22,79);
    Graph_Graph01017->GetXaxis()->CenterTitle(true);
    Graph_Graph01017->GetXaxis()->SetLabelFont(42);
    Graph_Graph01017->GetXaxis()->SetTitleSize(0.04);

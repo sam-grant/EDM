@@ -1,7 +1,7 @@
 void S12_g2_delta_prime_hist_1000_750-2500MeV_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 13:49:08 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 12:00:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,11 +10,12 @@ void S12_g2_delta_prime_hist_1000_750-2500MeV_Run-1c_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__16 = new TH1D("h__16","S12_",21,-0.03204036,0.3984775);
-   h__16->SetBinContent(9,47);
-   h__16->SetBinContent(10,471);
-   h__16->SetBinContent(11,427);
-   h__16->SetBinContent(12,54);
+   TH1D *h__16 = new TH1D("h__16","S12_",21,-0.03105213,0.4024922);
+   h__16->SetBinContent(8,1);
+   h__16->SetBinContent(9,85);
+   h__16->SetBinContent(10,510);
+   h__16->SetBinContent(11,355);
+   h__16->SetBinContent(12,48);
    h__16->SetBinContent(13,1);
    h__16->SetEntries(1000);
    h__16->SetStats(0);
@@ -51,10 +52,10 @@ void S12_g2_delta_prime_hist_1000_750-2500MeV_Run-1c_125MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.1727
+   pt_LaTex = pt->AddText("0.1726
 #pm0.0004
 ");
-   pt_LaTex = pt->AddText("0.012
+   pt_LaTex = pt->AddText("0.013
 #pm0.0003
 ");
    pt->Draw();

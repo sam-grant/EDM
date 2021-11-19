@@ -1,10 +1,10 @@
 void S18_g2_delta_prime_vs_p_750-2500MeV_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov  9 13:49:08 2021) by ROOT version 6.24/04
+//=========  (Thu Nov 18 12:00:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(405.75,-2.805249,2843.25,1.958225);
+   c->Range(411.2102,-2.808852,2837.862,1.96074);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,35 +12,35 @@ void S18_g2_delta_prime_vs_p_750-2500MeV_Run-1c_125MeV_BQ()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1033[14] = {
-   812,
-   937,
-   1062,
-   1187,
-   1312,
-   1437,
-   1562,
-   1687,
-   1812,
-   1937,
-   2062,
-   2187,
-   2312,
-   2437};
+   815.6521,
+   938.5283,
+   1062.845,
+   1188.203,
+   1312.631,
+   1435.697,
+   1561.957,
+   1685.048,
+   1810.518,
+   1934.935,
+   2060.25,
+   2184.735,
+   2308.965,
+   2433.42};
    Double_t _fy1033[14] = {
-   -0.4235117,
-   -0.3374998,
-   0.0201693,
-   -0.5284083,
-   -0.1099531,
-   -0.2060782,
-   0.2111894,
-   0.1665426,
-   0.3458123,
-   0.006237934,
-   -0.3794492,
-   -0.08217965,
-   0.2685548,
-   -0.1303572};
+   -0.4240557,
+   -0.3379896,
+   0.02018135,
+   -0.5282764,
+   -0.1099176,
+   -0.2060489,
+   0.2112642,
+   0.1666651,
+   0.3465694,
+   0.006261736,
+   -0.3821489,
+   -0.08309823,
+   0.273248,
+   -0.1343168};
    Double_t _fex1033[14] = {
    0,
    0,
@@ -57,29 +57,29 @@ void S18_g2_delta_prime_vs_p_750-2500MeV_Run-1c_125MeV_BQ()
    0,
    0};
    Double_t _fey1033[14] = {
-   0.6928689,
-   0.5127265,
-   0.4177698,
-   0.3574194,
-   0.3283737,
-   0.3098202,
-   0.3133576,
-   0.3145999,
-   0.3451501,
-   0.3771789,
-   0.4411419,
-   0.5214706,
-   0.6726852,
-   0.993223};
+   0.6937588,
+   0.5134706,
+   0.4180195,
+   0.3573302,
+   0.3282676,
+   0.3097761,
+   0.3134686,
+   0.3148315,
+   0.3459057,
+   0.378618,
+   0.4442805,
+   0.5272994,
+   0.6844409,
+   1.023392};
    TGraphErrors *gre = new TGraphErrors(14,_fx1033,_fy1033,_fex1033,_fey1033);
    gre->SetName("");
    gre->SetTitle("S18_");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1033 = new TH1F("Graph_Graph1033","S18_",100,649.5,2599.5);
-   Graph_Graph1033->SetMinimum(-2.328901);
-   Graph_Graph1033->SetMaximum(1.481878);
+   TH1F *Graph_Graph1033 = new TH1F("Graph_Graph1033","S18_",100,653.8754,2595.196);
+   Graph_Graph1033->SetMinimum(-2.331892);
+   Graph_Graph1033->SetMaximum(1.483781);
    Graph_Graph1033->SetDirectory(0);
    Graph_Graph1033->SetStats(0);
 
@@ -111,15 +111,15 @@ void S18_g2_delta_prime_vs_p_750-2500MeV_Run-1c_125MeV_BQ()
    pol01034->SetFillStyle(0);
    pol01034->SetLineColor(2);
    pol01034->SetLineWidth(2);
-   pol01034->SetChisquare(6.010152);
+   pol01034->SetChisquare(6.009473);
    pol01034->SetNDF(13);
    pol01034->GetXaxis()->SetLabelFont(42);
    pol01034->GetXaxis()->SetTitleOffset(1);
    pol01034->GetXaxis()->SetTitleFont(42);
    pol01034->GetYaxis()->SetLabelFont(42);
    pol01034->GetYaxis()->SetTitleFont(42);
-   pol01034->SetParameter(0,-0.05022485);
-   pol01034->SetParError(0,0.1072809);
+   pol01034->SetParameter(0,-0.05042159);
+   pol01034->SetParError(0,0.1075347);
    pol01034->SetParLimits(0,0,0);
    pol01034->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01034);
