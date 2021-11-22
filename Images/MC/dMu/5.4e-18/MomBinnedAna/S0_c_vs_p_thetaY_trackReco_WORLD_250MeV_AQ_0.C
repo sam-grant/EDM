@@ -1,7 +1,7 @@
 void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:00 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:35 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-336.4822,-2.927484,3337.749,3.097213);
@@ -28,14 +28,14 @@ void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
    1.40241,
    -1.873267,
    -0.4730681,
-   -0.08222214,
+   -0.08222215,
    -0.01805958,
    -0.01498903,
-   -0.02882915,
+   -0.02882916,
    -0.03547015,
-   -0.004836737,
-   0.004873964,
-   0.02746657,
+   -0.004836742,
+   0.00487396,
+   0.02746656,
    0.07832966};
    Double_t Graph0_fex1035[12] = {
    0.731188,
@@ -86,7 +86,7 @@ void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
    Graph_Graph01035->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01035->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01035->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01035->GetYaxis()->SetTitle("c [mrad]");
+   Graph_Graph01035->GetYaxis()->SetTitle("c [mrad] / 250 MeV");
    Graph_Graph01035->GetYaxis()->CenterTitle(true);
    Graph_Graph01035->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01035->GetYaxis()->SetLabelFont(42);

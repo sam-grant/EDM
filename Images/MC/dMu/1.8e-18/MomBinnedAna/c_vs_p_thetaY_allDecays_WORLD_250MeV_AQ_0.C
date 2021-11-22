@@ -1,7 +1,7 @@
 void c_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:03 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:18:49 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-409.8919,-0.1341152,3376.728,0.05489499);
@@ -31,7 +31,7 @@ void c_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    0.01464693,
    0.004118775,
    -0.01427707,
-   0.0004380521,
+   0.000438052,
    0.004316651,
    -0.002994211,
    -0.002288397,
@@ -55,7 +55,7 @@ void c_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    0.01450258,
    0.01070022,
    0.008746364,
-   0.007527231,
+   0.007527232,
    0.006702127,
    0.006122477,
    0.005719696,
@@ -65,7 +65,7 @@ void c_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    0.006172771};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1011,Graph0_fy1011,Graph0_fex1011,Graph0_fey1011);
    gre->SetName("Graph0");
-   gre->SetTitle(";Decay vertex momentum [MeV];c [mrad]");
+   gre->SetTitle(";Decay vertex momentum [MeV];c [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -86,7 +86,7 @@ void c_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    Graph_Graph01011->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01011->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01011->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01011->GetYaxis()->SetTitle("c [mrad]");
+   Graph_Graph01011->GetYaxis()->SetTitle("c [mrad] / 250 MeV");
    Graph_Graph01011->GetYaxis()->CenterTitle(true);
    Graph_Graph01011->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01011->GetYaxis()->SetLabelFont(42);

@@ -1,7 +1,7 @@
 void Ag2_vs_p_thetaY_acceptedDecaysControl_AAR_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:28:19 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:10:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-374.5359,-0.297416,3370.823,0.09328606);
@@ -65,7 +65,7 @@ void Ag2_vs_p_thetaY_acceptedDecaysControl_AAR_250MeV_AQ_1()
    0.005682663};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
-   gre->SetTitle(";Decay vertex momentum [MeV];A_{g#minus2} [mrad]");
+   gre->SetTitle(";Decay vertex momentum [MeV];A_{g#minus2} [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -86,7 +86,7 @@ void Ag2_vs_p_thetaY_acceptedDecaysControl_AAR_250MeV_AQ_1()
    Graph_Graph01013->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01013->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01013->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01013->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01013->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01013->GetYaxis()->CenterTitle(true);
    Graph_Graph01013->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01013->GetYaxis()->SetLabelFont(42);

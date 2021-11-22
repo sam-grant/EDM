@@ -1,7 +1,7 @@
 void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 10:58:53 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 17:30:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -5421,7 +5421,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __7->GetXaxis()->SetTitleSize(0.04);
    __7->GetXaxis()->SetTitleOffset(1.1);
    __7->GetXaxis()->SetTitleFont(42);
-   __7->GetYaxis()->SetTitle("FFT magnitude");
+   __7->GetYaxis()->SetTitle("FFT magnitude / 0.002482 MHz");
    __7->GetYaxis()->CenterTitle(true);
    __7->GetYaxis()->SetNdivisions(4000510);
    __7->GetYaxis()->SetLabelFont(42);

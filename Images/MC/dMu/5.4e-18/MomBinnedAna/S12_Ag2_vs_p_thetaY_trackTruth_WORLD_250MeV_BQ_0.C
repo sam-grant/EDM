@@ -1,10 +1,10 @@
 void S12_Ag2_vs_p_thetaY_trackTruth_WORLD_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:38:10 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:18:03 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(6.88508,-0.2712962,3236.917,0.73621);
+   c->Range(6.88508,-0.2712963,3236.917,0.7362099);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12_Ag2_vs_p_thetaY_trackTruth_WORLD_250MeV_BQ_0()
    2614.174,
    2791.873};
    Double_t Graph0_fy1051[11] = {
-   0.3817782,
-   0.1306455,
-   -0.01114752,
-   -0.03259374,
-   0.01443827,
-   -0.003378513,
-   -0.03415491,
-   0.0262817,
-   0.009642703,
-   0.005623174,
-   -0.02991288};
+   0.3817781,
+   0.1306454,
+   -0.01114765,
+   -0.03259387,
+   0.01443814,
+   -0.003378699,
+   -0.03415504,
+   0.02628158,
+   0.009642575,
+   0.005623048,
+   -0.02991301};
    Double_t Graph0_fex1051[11] = {
    0.1410697,
    0.1188852,
@@ -66,8 +66,8 @@ void S12_Ag2_vs_p_thetaY_trackTruth_WORLD_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01051 = new TH1F("Graph_Graph01051","S12_",100,217.5394,3026.263);
-   Graph_Graph01051->SetMinimum(-0.1705456);
-   Graph_Graph01051->SetMaximum(0.6354594);
+   Graph_Graph01051->SetMinimum(-0.1705457);
+   Graph_Graph01051->SetMaximum(0.6354593);
    Graph_Graph01051->SetDirectory(0);
    Graph_Graph01051->SetStats(0);
 
@@ -82,7 +82,7 @@ void S12_Ag2_vs_p_thetaY_trackTruth_WORLD_250MeV_BQ_0()
    Graph_Graph01051->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01051->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01051->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01051->GetYaxis()->CenterTitle(true);
    Graph_Graph01051->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01051->GetYaxis()->SetLabelFont(42);

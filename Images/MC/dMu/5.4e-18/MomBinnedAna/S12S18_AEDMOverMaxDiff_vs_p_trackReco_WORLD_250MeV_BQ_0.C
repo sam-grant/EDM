@@ -1,10 +1,10 @@
 void S12S18_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:26 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:53 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.894367,-0.001455312,3231.754,0.005342393);
+   c->Range(7.894367,-0.001455597,3231.754,0.005329553);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_0()
    2613.266,
    2787.684};
    Double_t Graph0_fy1090[11] = {
-   -0.0003223607,
-   0.001171643,
-   0.001062053,
-   0.001485766,
-   0.001182122,
-   0.001631454,
-   0.002450395,
-   0.001763507,
-   0.001603092,
-   0.003628146,
-   0.002059273};
+   -0.000324739,
+   0.001168975,
+   0.001058919,
+   0.00148197,
+   0.001178398,
+   0.001627341,
+   0.002444413,
+   0.001757338,
+   0.0015955,
+   0.003617756,
+   0.002044087};
    Double_t Graph0_fex1090[11] = {
    0.09988357,
    0.08417764,
@@ -48,17 +48,17 @@ void S12S18_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_0()
    0.1638907,
    0.205084};
    Double_t Graph0_fey1090[11] = {
-   -0.000745709,
-   0.0002812762,
-   0.0001901212,
-   0.0001920699,
-   0.000172115,
-   0.000184369,
-   0.0002821061,
-   0.000296117,
-   0.0003893017,
-   0.0005812969,
-   0.001780807};
+   -0.0007457093,
+   0.0002812722,
+   0.0001901124,
+   0.0001920482,
+   0.0001720968,
+   0.0001843374,
+   0.0002820108,
+   0.0002960453,
+   0.0003892094,
+   0.0005809381,
+   0.0017806};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1090,Graph0_fy1090,Graph0_fex1090,Graph0_fey1090);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18_");
@@ -66,8 +66,8 @@ void S12S18_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01090 = new TH1F("Graph_Graph01090","S12S18_",100,218.1461,3021.502);
-   Graph_Graph01090->SetMinimum(-0.000775541);
-   Graph_Graph01090->SetMaximum(0.004662623);
+   Graph_Graph01090->SetMinimum(-0.0007770823);
+   Graph_Graph01090->SetMaximum(0.004651038);
    Graph_Graph01090->SetDirectory(0);
    Graph_Graph01090->SetStats(0);
 

@@ -1,7 +1,7 @@
 void c_vs_p_thetaY_acceptedDecays_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:33:54 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-374.5321,-0.9612954,3370.788,0.2033619);
@@ -26,17 +26,17 @@ void c_vs_p_thetaY_acceptedDecays_WORLD_250MeV_AQ_0()
    2850.19};
    Double_t Graph0_fy1011[12] = {
    -0.7321451,
-   -0.2729965,
+   -0.2729966,
    -0.1115659,
-   -0.04530442,
+   -0.04530443,
    -0.02537484,
-   -0.02537947,
+   -0.02537948,
    -0.0154055,
-   -0.003403962,
-   -0.003048144,
-   -0.009418206,
-   0.005244549,
-   -0.001439344};
+   -0.003403968,
+   -0.003048149,
+   -0.009418212,
+   0.005244545,
+   -0.001439347};
    Double_t Graph0_fex1011[12] = {
    0.02559166,
    0.02344866,
@@ -65,13 +65,13 @@ void c_vs_p_thetaY_acceptedDecays_WORLD_250MeV_AQ_0()
    0.004489732};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1011,Graph0_fy1011,Graph0_fex1011,Graph0_fey1011);
    gre->SetName("Graph0");
-   gre->SetTitle(";Decay vertex momentum [MeV];c [mrad]");
+   gre->SetTitle(";Decay vertex momentum [MeV];c [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01011 = new TH1F("Graph_Graph01011","",100,0,3121.1);
    Graph_Graph01011->SetMinimum(-0.8448296);
-   Graph_Graph01011->SetMaximum(0.08689613);
+   Graph_Graph01011->SetMaximum(0.08689612);
    Graph_Graph01011->SetDirectory(0);
    Graph_Graph01011->SetStats(0);
 
@@ -86,7 +86,7 @@ void c_vs_p_thetaY_acceptedDecays_WORLD_250MeV_AQ_0()
    Graph_Graph01011->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01011->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01011->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01011->GetYaxis()->SetTitle("c [mrad]");
+   Graph_Graph01011->GetYaxis()->SetTitle("c [mrad] / 250 MeV");
    Graph_Graph01011->GetYaxis()->CenterTitle(true);
    Graph_Graph01011->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01011->GetYaxis()->SetLabelFont(42);

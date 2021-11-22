@@ -778,15 +778,22 @@ int main() {
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
 */
+
+  RunData("Run-1a_125MeV_BQ_weighted", "Run-1", "blinded", true);
+  RunData("Run-1b_125MeV_BQ_weighted", "Run-1", "blinded", true);
+  RunData("Run-1c_125MeV_BQ_weighted", "Run-1", "blinded", true);
+  RunData("Run-1d_125MeV_BQ_weighted", "Run-1", "blinded", true);
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+
 /*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", false);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", false);
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", false);
   RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", false);*/
 
-  RunData("Run-1a_125MeV_BQ", "O", "unblinded", true);
+/*  RunData("Run-1a_125MeV_BQ", "O", "unblinded", true);
   RunData("Run-1b_125MeV_BQ", "O", "unblinded", true);
   RunData("Run-1c_125MeV_BQ", "O", "unblinded", true);
-  RunData("Run-1d_125MeV_BQ", "O", "unblinded", true);
+  RunData("Run-1d_125MeV_BQ", "O", "unblinded", true);*/
 /*
   RunData("Run-1a_125MeV_BQ", "O", "unblinded", false);
   RunData("Run-1b_125MeV_BQ", "O", "unblinded", false);

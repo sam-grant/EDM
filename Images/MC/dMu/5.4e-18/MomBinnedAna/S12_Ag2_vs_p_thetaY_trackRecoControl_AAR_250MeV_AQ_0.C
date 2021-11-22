@@ -1,10 +1,10 @@
 void S12_Ag2_vs_p_thetaY_trackRecoControl_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:37:05 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:17:14 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(8.209417,-0.7767825,3235.619,1.723496);
+   c->Range(8.209417,-0.7767827,3235.619,1.723496);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12_Ag2_vs_p_thetaY_trackRecoControl_AAR_250MeV_AQ_0()
    2638.074,
    2790.765};
    Double_t Graph0_fy1051[11] = {
-   0.9019461,
-   0.03715841,
-   -0.08312029,
-   -0.03307847,
-   0.05552692,
-   0.06773816,
-   -0.2483037,
-   0.07378184,
-   0.001738342,
-   0.01714064,
-   -0.04630377};
+   0.9019459,
+   0.03715828,
+   -0.08312042,
+   -0.0330786,
+   0.05552679,
+   0.06773799,
+   -0.2483038,
+   0.0737817,
+   0.001738214,
+   0.01714051,
+   -0.0463039};
    Double_t Graph0_fex1051[11] = {
    0.2837759,
    0.2116908,
@@ -66,7 +66,7 @@ void S12_Ag2_vs_p_thetaY_trackRecoControl_AAR_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01051 = new TH1F("Graph_Graph01051","S12_",100,218.6927,3025.136);
-   Graph_Graph01051->SetMinimum(-0.5267547);
+   Graph_Graph01051->SetMinimum(-0.5267548);
    Graph_Graph01051->SetMaximum(1.473468);
    Graph_Graph01051->SetDirectory(0);
    Graph_Graph01051->SetStats(0);
@@ -82,7 +82,7 @@ void S12_Ag2_vs_p_thetaY_trackRecoControl_AAR_250MeV_AQ_0()
    Graph_Graph01051->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01051->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01051->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01051->GetYaxis()->CenterTitle(true);
    Graph_Graph01051->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01051->GetYaxis()->SetLabelFont(42);

@@ -1,7 +1,7 @@
 void px_thetaY_vs_t()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:08 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:18:53 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -5559,7 +5559,7 @@ void px_thetaY_vs_t()
    ThetaY_vs_Time_pfx->GetXaxis()->SetTitleSize(0.04);
    ThetaY_vs_Time_pfx->GetXaxis()->SetTitleOffset(1.1);
    ThetaY_vs_Time_pfx->GetXaxis()->SetTitleFont(42);
-   ThetaY_vs_Time_pfx->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad]");
+   ThetaY_vs_Time_pfx->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 50 ns");
    ThetaY_vs_Time_pfx->GetYaxis()->CenterTitle(true);
    ThetaY_vs_Time_pfx->GetYaxis()->SetNdivisions(4000510);
    ThetaY_vs_Time_pfx->GetYaxis()->SetLabelFont(42);

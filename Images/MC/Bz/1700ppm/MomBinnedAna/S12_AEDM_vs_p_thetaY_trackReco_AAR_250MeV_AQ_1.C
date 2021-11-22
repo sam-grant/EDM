@@ -1,7 +1,7 @@
 void S12_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:33:07 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:14:23 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-336.1504,-2.497151,3334.457,1.958428);
@@ -86,7 +86,7 @@ void S12_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_AQ_1()
    Graph_Graph01050->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01050->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01050->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01050->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01050->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01050->GetYaxis()->CenterTitle(true);
    Graph_Graph01050->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01050->GetYaxis()->SetLabelFont(42);

@@ -1,10 +1,10 @@
 void eAEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:33:39 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:14:49 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-409.8874,-0.005544865,3376.691,0.08735944);
+   c->Range(-409.8874,-0.005544866,3376.691,0.08735944);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,7 +28,7 @@ void eAEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    0.07187539,
    0.02880591,
    0.02123905,
-   0.01737587,
+   0.01737588,
    0.01495669,
    0.01332163,
    0.01212839,

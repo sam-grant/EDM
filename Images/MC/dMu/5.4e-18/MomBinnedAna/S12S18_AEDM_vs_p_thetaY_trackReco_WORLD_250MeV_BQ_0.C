@@ -1,10 +1,10 @@
 void S12S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:25 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:53 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.894367,-0.295195,3231.754,0.3355095);
+   c->Range(7.894367,-0.2956182,3231.754,0.3350863);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    2613.266,
    2787.684};
    Double_t Graph0_fy1078[11] = {
-   -0.05736956,
-   0.1859038,
-   0.1434657,
-   0.1656591,
-   0.1343382,
-   0.1679103,
-   0.1733849,
-   0.1210009,
-   0.0893703,
-   0.1478086,
-   0.05740088};
+   -0.05779282,
+   0.1854806,
+   0.1430424,
+   0.1652358,
+   0.133915,
+   0.167487,
+   0.1729617,
+   0.1205776,
+   0.08894703,
+   0.1473853,
+   0.05697761};
    Double_t Graph0_fex1078[11] = {
    0.09988357,
    0.08417764,
@@ -66,8 +66,8 @@ void S12S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01078 = new TH1F("Graph_Graph01078","S12S18_",100,218.1461,3021.502);
-   Graph_Graph01078->SetMinimum(-0.2321245);
-   Graph_Graph01078->SetMaximum(0.2724391);
+   Graph_Graph01078->SetMinimum(-0.2325478);
+   Graph_Graph01078->SetMaximum(0.2720158);
    Graph_Graph01078->SetDirectory(0);
    Graph_Graph01078->SetStats(0);
 
@@ -82,7 +82,7 @@ void S12S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    Graph_Graph01078->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01078->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01078->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01078->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01078->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01078->GetYaxis()->CenterTitle(true);
    Graph_Graph01078->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01078->GetYaxis()->SetLabelFont(42);

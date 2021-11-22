@@ -12,7 +12,7 @@ string xmax = "2500";
 //string xmin = "1025";
 //string xmax = "2125";
 
-vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
+/*vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
 
   double xmin = 0; double xmax = 5;
 
@@ -79,7 +79,7 @@ vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
 
   return mahalanobisFunctions_;
 
-}
+}*/
 
 void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, vector<string> xLabel_) {
 
@@ -114,37 +114,56 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, vector
 void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string fname, vector<string> xLabel_) {
 
   // Get one sigma band
-  vector<TF1*> mahalanobisFunctions_ = MahalanobisDistances(graph_.at(2));
-
-  TF1 *fit_tmp = graph_.at(2)->GetFunction("pol0");
-  TF1 *minusSigma = mahalanobisFunctions_.at(0);
-  TF1 *plusSigma = mahalanobisFunctions_.at(1);
 
   // This is absurd but it's the only way to stop it drawing the fit on top of the graphs
+  TF1 *fit_tmp = graph_.at(2)->GetFunction("pol0");
   fit_tmp->SetLineWidth(0);
 
   TF1 *fit = new TF1("fit", "pol0", 0, 5);
-
-  cout<<"fit error "<<fit_tmp->GetParError(0)<<endl;
-  cout<<"one sigma "<<plusSigma->GetParameter(0) - fit_tmp->GetParameter(0)<<endl;
-
   fit->SetParameter(0, fit_tmp->GetParameter(0));
   fit->SetParError(0, fit_tmp->GetParError(0));
-  fit->SetLineWidth(1);
 
+  TF1 *minusSigma = new TF1("minusSigma", "pol0", 0, 5);
+  minusSigma->SetParameter(0, fit_tmp->GetParameter(0) - fit_tmp->GetParError(0));
+  TF1 *plusSigma = new TF1("plusSigma", "pol0", 0, 5);
+  plusSigma->SetParameter(0, fit_tmp->GetParameter(0) + fit_tmp->GetParError(0));
+
+  TF1 *minusTwoSigma = new TF1("minusTwoSigma", "pol0", 0, 5);
+  minusTwoSigma->SetParameter(0, fit_tmp->GetParameter(0) - 2 * fit_tmp->GetParError(0));
+  TF1 *plusTwoSigma = new TF1("plusTwoSigma", "pol0", 0, 5);
+  plusTwoSigma->SetParameter(0, fit_tmp->GetParameter(0) + 2 * fit_tmp->GetParError(0));
+
+  TF1 *minusThreeSigma = new TF1("minusThreeSigma", "pol0", 0, 5);
+  minusThreeSigma->SetParameter(0, fit_tmp->GetParameter(0) - 3 * fit_tmp->GetParError(0));
+  TF1 *plusThreeSigma = new TF1("plusThreeSigma", "pol0", 0, 5);
+  plusThreeSigma->SetParameter(0, fit_tmp->GetParameter(0) + 3 * fit_tmp->GetParError(0));
+  // cout<<"fit error "<<fit_tmp->GetParError(0)<<endl;
+  // cout<<"one sigma "<<plusSigma->GetParameter(0) - fit_tmp->GetParameter(0)<<endl;
+
+  fit->SetLineWidth(1);
   fit->SetLineStyle(1);
+
   minusSigma->SetLineStyle(2);
   plusSigma->SetLineStyle(2);
+  minusTwoSigma->SetLineStyle(2);
+  plusTwoSigma->SetLineStyle(2);
+  minusThreeSigma->SetLineStyle(2);
+  plusThreeSigma->SetLineStyle(2);
 
   fit->SetLineColor(kGray);
+
   minusSigma->SetLineColor(kGray);
   plusSigma->SetLineColor(kGray);
+  minusTwoSigma->SetLineColor(kGray);
+  plusTwoSigma->SetLineColor(kGray);
+  minusThreeSigma->SetLineColor(kGray);
+  plusThreeSigma->SetLineColor(kGray);
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
- //TLegend *l = new TLegend(0.59, 0.69, 0.89, 0.89); 
-  TLegend *l = new TLegend(0.30, 0.91, 0.80, 0.99); 
-  l->SetNColumns(3);
+  TLegend *l = new TLegend(0.65, 0.22, 0.85, 0.42); 
+  //TLegend *l = new TLegend(0.30, 0.91, 0.80, 0.99); 
+  //l->SetNColumns(3);
   l->SetBorderSize(0);
   l->SetTextSize(24);
   l->SetTextFont(44);
@@ -205,6 +224,10 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
       fit->Draw("same");
       minusSigma->Draw("same");
       plusSigma->Draw("same");
+      // minusTwoSigma->Draw("same");
+      // plusTwoSigma->Draw("same");
+      // minusThreeSigma->Draw("same");
+      // plusThreeSigma->Draw("same");
 
       graph_.at(i)->Draw("P SAME");
 
@@ -260,6 +283,8 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 
   std::string dilCorrStr = "";
   if(!correctDilution) dilCorrStr += "_noCorr";
+
+  dilCorrStr += "_weighted";
 
 	vector<string> DS_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
 	vector<string> stn_ = {"S12", "S18", "S12S18"};
@@ -354,9 +379,11 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 void PlotEDMResultsPerDS() { 
 
   Run("Run-1", 125, "blinded", true);
+  // Run("Run-1", 125, "blinded", true);
+  // Run("Run-1", 125, "blinded", true);
   //Run("O", 125, "unblinded", true);
   //Run("Run-1", 125, "blinded", false);
-  Run("O", 125, "unblinded", false);
+  //Run("O", 125, "unblinded", false);
   
   return;
 

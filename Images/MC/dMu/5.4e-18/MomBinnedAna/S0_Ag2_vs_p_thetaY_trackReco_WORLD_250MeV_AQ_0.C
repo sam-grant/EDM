@@ -1,10 +1,10 @@
 void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:00 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:35 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-336.4822,-3.919728,3337.749,0.931481);
+   c->Range(-336.4822,-3.919728,3337.749,0.9314808);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,17 +26,17 @@ void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
    2828.661};
    Double_t Graph0_fy1037[12] = {
    -2.132075,
-   0.05223205,
-   -0.1468385,
-   0.02128962,
-   -0.0370035,
-   0.02768336,
-   -0.01169611,
-   -0.01066245,
-   -0.01975926,
-   0.01123957,
-   -0.004999391,
-   -0.007135415};
+   0.05223192,
+   -0.1468386,
+   0.02128949,
+   -0.03700363,
+   0.02768323,
+   -0.01169623,
+   -0.01066258,
+   -0.01975938,
+   0.01123944,
+   -0.004999518,
+   -0.007135541};
    Double_t Graph0_fex1037[12] = {
    0.731188,
    0.06993383,
@@ -58,7 +58,7 @@ void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
    0.02605501,
    0.02398664,
    0.02269057,
-   0.02213762,
+   0.02213761,
    0.02228707,
    0.02341318,
    0.02517608,
@@ -71,7 +71,7 @@ void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
    
    TH1F *Graph_Graph01037 = new TH1F("Graph_Graph01037","S0_",100,0,3094.089);
    Graph_Graph01037->SetMinimum(-3.434607);
-   Graph_Graph01037->SetMaximum(0.44636);
+   Graph_Graph01037->SetMaximum(0.4463599);
    Graph_Graph01037->SetDirectory(0);
    Graph_Graph01037->SetStats(0);
 
@@ -86,7 +86,7 @@ void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_0()
    Graph_Graph01037->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01037->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01037->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01037->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01037->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01037->GetYaxis()->CenterTitle(true);
    Graph_Graph01037->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01037->GetYaxis()->SetLabelFont(42);

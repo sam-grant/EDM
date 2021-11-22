@@ -1,10 +1,10 @@
 void S0_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:45 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:16:08 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-336.4822,-2.947992,3337.749,0.9535881);
+   c->Range(-336.4822,-2.948415,3337.749,0.9531648);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S0_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
    2613.535,
    2828.661};
    Double_t Graph0_fy1036[12] = {
-   -1.325773,
-   0.09527675,
-   0.210036,
-   0.2744898,
-   0.2035739,
-   0.226297,
-   0.2136795,
-   0.1738618,
-   0.1629082,
-   0.1385388,
-   0.07977101,
-   0.06519184};
+   -1.326197,
+   0.0948535,
+   0.2096127,
+   0.2740666,
+   0.2031507,
+   0.2258737,
+   0.2132562,
+   0.1734385,
+   0.1624849,
+   0.1381155,
+   0.07934774,
+   0.06476857};
    Double_t Graph0_fex1036[12] = {
    0.731188,
    0.06993383,
@@ -70,8 +70,8 @@ void S0_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01036 = new TH1F("Graph_Graph01036","S0_",100,0,3094.089);
-   Graph_Graph01036->SetMinimum(-2.557834);
-   Graph_Graph01036->SetMaximum(0.5634301);
+   Graph_Graph01036->SetMinimum(-2.558257);
+   Graph_Graph01036->SetMaximum(0.5630068);
    Graph_Graph01036->SetDirectory(0);
    Graph_Graph01036->SetStats(0);
 
@@ -86,7 +86,7 @@ void S0_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
    Graph_Graph01036->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01036->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01036->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01036->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01036->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01036->GetYaxis()->CenterTitle(true);
    Graph_Graph01036->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01036->GetYaxis()->SetLabelFont(42);

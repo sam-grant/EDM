@@ -1,10 +1,10 @@
 void Ag2_vs_p_thetaY_allDecays_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:33:45 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:14:54 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-409.8874,-0.08846605,3376.692,0.1271365);
+   c->Range(-409.8874,-0.08846617,3376.692,0.1271363);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void Ag2_vs_p_thetaY_allDecays_AAR_250MeV_AQ_0()
    2613.214,
    2850.256};
    Double_t Graph0_fy1013[12] = {
-   0.01933521,
-   -0.01015419,
-   0.002249339,
-   0.002363252,
-   0.006293361,
-   -0.002356886,
-   -0.002680379,
-   0.01710481,
-   0.007278918,
-   0.005596354,
-   -0.03109782,
-   -0.02004048};
+   0.01933509,
+   -0.01015432,
+   0.002249206,
+   0.002363119,
+   0.006293229,
+   -0.002357018,
+   -0.00268051,
+   0.01710468,
+   0.007278788,
+   0.005596224,
+   -0.03109795,
+   -0.02004061};
    Double_t Graph0_fex1013[12] = {
    0.02929449,
    0.0299445,
@@ -51,7 +51,7 @@ void Ag2_vs_p_thetaY_allDecays_AAR_250MeV_AQ_0()
    0.06872581,
    0.0977494};
    Double_t Graph0_fey1013[12] = {
-   0.0718675,
+   0.07186751,
    0.02882379,
    0.02128029,
    0.01740659,
@@ -65,13 +65,13 @@ void Ag2_vs_p_thetaY_allDecays_AAR_250MeV_AQ_0()
    0.01223297};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
-   gre->SetTitle(";Decay vertex momentum [MeV];A_{g#minus2} [mrad]");
+   gre->SetTitle(";Decay vertex momentum [MeV];A_{g#minus2} [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01013 = new TH1F("Graph_Graph01013","",100,0,3122.952);
-   Graph_Graph01013->SetMinimum(-0.06690579);
-   Graph_Graph01013->SetMaximum(0.1055762);
+   Graph_Graph01013->SetMinimum(-0.06690592);
+   Graph_Graph01013->SetMaximum(0.1055761);
    Graph_Graph01013->SetDirectory(0);
    Graph_Graph01013->SetStats(0);
 
@@ -86,7 +86,7 @@ void Ag2_vs_p_thetaY_allDecays_AAR_250MeV_AQ_0()
    Graph_Graph01013->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01013->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01013->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01013->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01013->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01013->GetYaxis()->CenterTitle(true);
    Graph_Graph01013->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01013->GetYaxis()->SetLabelFont(42);

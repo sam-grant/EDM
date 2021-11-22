@@ -1,7 +1,7 @@
 void S12S18_px_thetaY_vs_t_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 10:58:53 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 17:30:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -5553,7 +5553,7 @@ void S12S18_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    S12S18_ThetaY_vs_Time_pfx->GetXaxis()->SetTitleSize(0.04);
    S12S18_ThetaY_vs_Time_pfx->GetXaxis()->SetTitleOffset(1.1);
    S12S18_ThetaY_vs_Time_pfx->GetXaxis()->SetTitleFont(42);
-   S12S18_ThetaY_vs_Time_pfx->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad]");
+   S12S18_ThetaY_vs_Time_pfx->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 50 ns");
    S12S18_ThetaY_vs_Time_pfx->GetYaxis()->CenterTitle(true);
    S12S18_ThetaY_vs_Time_pfx->GetYaxis()->SetNdivisions(4000510);
    S12S18_ThetaY_vs_Time_pfx->GetYaxis()->SetLabelFont(42);

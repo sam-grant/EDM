@@ -1,10 +1,10 @@
 void S12S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:48 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:19:29 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.840778,-0.338513,3232.386,0.6843606);
+   c->Range(7.840778,-0.3385131,3232.386,0.6843604);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    2613.853,
    2788.072};
    Double_t Graph0_fy1079[11] = {
-   0.2858874,
-   0.05781294,
-   0.2049143,
-   0.1051687,
-   0.2000809,
-   0.1573706,
-   0.1382067,
-   0.1340606,
-   0.1812178,
-   0.1281292,
-   -0.07134582};
+   0.2858873,
+   0.0578128,
+   0.2049142,
+   0.1051685,
+   0.2000808,
+   0.1573705,
+   0.1382065,
+   0.1340605,
+   0.1812177,
+   0.1281291,
+   -0.07134594};
    Double_t Graph0_fex1079[11] = {
    0.1712023,
    0.1448381,
@@ -66,8 +66,8 @@ void S12S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01079 = new TH1F("Graph_Graph01079","S12S18_",100,218.1372,3022.09);
-   Graph_Graph01079->SetMinimum(-0.2362256);
-   Graph_Graph01079->SetMaximum(0.5820732);
+   Graph_Graph01079->SetMinimum(-0.2362258);
+   Graph_Graph01079->SetMaximum(0.5820731);
    Graph_Graph01079->SetDirectory(0);
    Graph_Graph01079->SetStats(0);
 
@@ -82,7 +82,7 @@ void S12S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Graph_Graph01079->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01079->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01079->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01079->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01079->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01079->GetYaxis()->CenterTitle(true);
    Graph_Graph01079->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01079->GetYaxis()->SetLabelFont(42);

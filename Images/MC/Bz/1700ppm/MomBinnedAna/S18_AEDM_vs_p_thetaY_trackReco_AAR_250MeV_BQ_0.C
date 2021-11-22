@@ -1,10 +1,10 @@
 void S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:47 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:19:28 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.864962,-0.3504366,3231.605,1.113983);
+   c->Range(7.864962,-0.3508599,3231.605,1.11356);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    2612.864,
    2787.25};
    Double_t Graph0_fy1064[11] = {
-   0.5468715,
-   0.07395048,
-   0.01145665,
-   0.03311931,
-   0.04470171,
-   -0.01491793,
-   0.1068379,
-   -0.04343424,
-   0.08011113,
-   -0.05590274,
-   0.1911181};
+   0.5464483,
+   0.07352722,
+   0.01103339,
+   0.03269606,
+   0.04427845,
+   -0.01534119,
+   0.1064146,
+   -0.04385751,
+   0.07968787,
+   -0.05632602,
+   0.1906948};
    Double_t Graph0_fex1064[11] = {
    0.2439991,
    0.2051239,
@@ -50,7 +50,7 @@ void S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Double_t Graph0_fey1064[11] = {
    0.3230415,
    0.1076413,
-   0.06176886,
+   0.06176885,
    0.05075436,
    0.04696167,
    0.04487934,
@@ -66,8 +66,8 @@ void S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01064 = new TH1F("Graph_Graph01064","S18_",100,218.1089,3021.361);
-   Graph_Graph01064->SetMinimum(-0.2039947);
-   Graph_Graph01064->SetMaximum(0.967541);
+   Graph_Graph01064->SetMinimum(-0.2044179);
+   Graph_Graph01064->SetMaximum(0.9671177);
    Graph_Graph01064->SetDirectory(0);
    Graph_Graph01064->SetStats(0);
 
@@ -82,7 +82,7 @@ void S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Graph_Graph01064->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01064->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01064->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01064->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01064->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01064->GetYaxis()->CenterTitle(true);
    Graph_Graph01064->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01064->GetYaxis()->SetLabelFont(42);

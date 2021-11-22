@@ -1,7 +1,7 @@
 void S12_c_vs_p_A_trackReco_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:27 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:19:10 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-336.1504,-0.0009509542,3334.457,0.00306866);
@@ -86,7 +86,7 @@ void S12_c_vs_p_A_trackReco_AAR_250MeV_AQ_0()
    Graph_Graph01052->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01052->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01052->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01052->GetYaxis()->SetTitle("c");
+   Graph_Graph01052->GetYaxis()->SetTitle("c / 250 MeV");
    Graph_Graph01052->GetYaxis()->CenterTitle(true);
    Graph_Graph01052->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01052->GetYaxis()->SetLabelFont(42);

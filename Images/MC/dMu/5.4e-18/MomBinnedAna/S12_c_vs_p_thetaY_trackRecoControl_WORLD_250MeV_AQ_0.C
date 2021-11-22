@@ -1,7 +1,7 @@
 void S12_c_vs_p_thetaY_trackRecoControl_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:36:27 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:16:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(8.209417,-1.958598,3235.619,6.328797);
@@ -30,11 +30,11 @@ void S12_c_vs_p_thetaY_trackRecoControl_WORLD_250MeV_AQ_0()
    -0.3746619,
    -0.3943314,
    -0.311119,
-   -0.06662653,
-   0.02944341,
+   -0.06662654,
+   0.0294434,
    -0.2415023,
-   -0.01479256,
-   -0.1694848};
+   -0.01479257,
+   -0.1694849};
    Double_t Graph0_fex1049[11] = {
    0.2837759,
    0.2116908,
@@ -67,7 +67,7 @@ void S12_c_vs_p_thetaY_trackRecoControl_WORLD_250MeV_AQ_0()
    
    TH1F *Graph_Graph01049 = new TH1F("Graph_Graph01049","S12_",100,218.6927,3025.136);
    Graph_Graph01049->SetMinimum(-1.129859);
-   Graph_Graph01049->SetMaximum(5.500058);
+   Graph_Graph01049->SetMaximum(5.500057);
    Graph_Graph01049->SetDirectory(0);
    Graph_Graph01049->SetStats(0);
 
@@ -82,7 +82,7 @@ void S12_c_vs_p_thetaY_trackRecoControl_WORLD_250MeV_AQ_0()
    Graph_Graph01049->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01049->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01049->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01049->GetYaxis()->SetTitle("c [mrad]");
+   Graph_Graph01049->GetYaxis()->SetTitle("c [mrad] / 250 MeV");
    Graph_Graph01049->GetYaxis()->CenterTitle(true);
    Graph_Graph01049->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01049->GetYaxis()->SetLabelFont(42);

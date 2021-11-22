@@ -1,10 +1,10 @@
 void S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:36:08 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:16:27 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(8.109012,-0.3183336,3231.77,0.9022913);
+   c->Range(8.109012,-0.3183338,3231.77,0.9022912);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    2612.315,
    2787.635};
    Double_t Graph0_fy1065[11] = {
-   0.5094447,
-   -0.02282934,
-   -0.07864941,
-   -0.005607169,
-   0.0218128,
-   0.04434736,
-   0.0201174,
-   0.01518169,
-   0.008295434,
-   0.08507356,
-   0.05189418};
+   0.5094445,
+   -0.02282947,
+   -0.07864954,
+   -0.005607302,
+   0.02181267,
+   0.04434722,
+   0.02011727,
+   0.01518156,
+   0.008295304,
+   0.08507344,
+   0.05189406};
    Double_t Graph0_fex1065[11] = {
    0.1432143,
    0.1204105,
@@ -66,8 +66,8 @@ void S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01065 = new TH1F("Graph_Graph01065","S18_",100,218.3478,3021.531);
-   Graph_Graph01065->SetMinimum(-0.1962711);
-   Graph_Graph01065->SetMaximum(0.7802288);
+   Graph_Graph01065->SetMinimum(-0.1962713);
+   Graph_Graph01065->SetMaximum(0.7802287);
    Graph_Graph01065->SetDirectory(0);
    Graph_Graph01065->SetStats(0);
 
@@ -82,7 +82,7 @@ void S18_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Graph_Graph01065->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01065->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01065->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01065->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01065->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01065->GetYaxis()->CenterTitle(true);
    Graph_Graph01065->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01065->GetYaxis()->SetLabelFont(42);

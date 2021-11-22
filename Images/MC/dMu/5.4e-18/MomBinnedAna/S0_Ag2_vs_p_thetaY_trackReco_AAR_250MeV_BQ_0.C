@@ -1,10 +1,10 @@
 void S0_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:36:06 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:16:26 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.267965,-0.3649626,3234.092,0.3094044);
+   c->Range(7.267965,-0.3649627,3234.092,0.3094043);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S0_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    2615.312,
    2789.569};
    Double_t Graph0_fy1037[11] = {
-   0.006832632,
-   -0.1890438,
-   -0.00346175,
-   -0.06122657,
-   0.01465788,
-   -0.02031183,
-   0.03934796,
-   -0.0069591,
-   0.0463609,
-   -0.006324931,
-   0.004407212};
+   0.006832497,
+   -0.189044,
+   -0.003461884,
+   -0.0612267,
+   0.01465775,
+   -0.02031196,
+   0.03934783,
+   -0.006959231,
+   0.04636078,
+   -0.00632506,
+   0.004407085};
    Double_t Graph0_fex1037[11] = {
    0.140651,
    0.1190391,
@@ -66,8 +66,8 @@ void S0_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01037 = new TH1F("Graph_Graph01037","S0_",100,217.713,3023.647);
-   Graph_Graph01037->SetMinimum(-0.2975259);
-   Graph_Graph01037->SetMaximum(0.2419677);
+   Graph_Graph01037->SetMinimum(-0.297526);
+   Graph_Graph01037->SetMaximum(0.2419676);
    Graph_Graph01037->SetDirectory(0);
    Graph_Graph01037->SetStats(0);
 
@@ -82,7 +82,7 @@ void S0_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Graph_Graph01037->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01037->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01037->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01037->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01037->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01037->GetYaxis()->CenterTitle(true);
    Graph_Graph01037->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01037->GetYaxis()->SetLabelFont(42);

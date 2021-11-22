@@ -1,10 +1,10 @@
 void S0S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:36:09 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:16:29 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.685561,-0.1758897,3232.676,0.2963933);
+   c->Range(7.685561,-0.1763129,3232.676,0.29597);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S0S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    2614.061,
    2788.497};
    Double_t Graph0_fy1092[11] = {
-   0.01231326,
-   0.1810327,
-   0.1554466,
-   0.1696277,
-   0.1693919,
-   0.1790941,
-   0.1627845,
-   0.1339219,
-   0.09663459,
-   0.1249751,
-   0.01410357};
+   0.01189,
+   0.1806094,
+   0.1550233,
+   0.1692044,
+   0.1689686,
+   0.1786708,
+   0.1623613,
+   0.1334987,
+   0.09621132,
+   0.1245518,
+   0.01368029};
    Double_t Graph0_fex1092[11] = {
    0.08198194,
    0.06912392,
@@ -66,8 +66,8 @@ void S0S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01092 = new TH1F("Graph_Graph01092","S0S12S18_",100,218.0111,3022.351);
-   Graph_Graph01092->SetMinimum(-0.1286614);
-   Graph_Graph01092->SetMaximum(0.249165);
+   Graph_Graph01092->SetMinimum(-0.1290847);
+   Graph_Graph01092->SetMaximum(0.2487417);
    Graph_Graph01092->SetDirectory(0);
    Graph_Graph01092->SetStats(0);
 
@@ -82,7 +82,7 @@ void S0S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Graph_Graph01092->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01092->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01092->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01092->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01092->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01092->GetYaxis()->CenterTitle(true);
    Graph_Graph01092->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01092->GetYaxis()->SetLabelFont(42);

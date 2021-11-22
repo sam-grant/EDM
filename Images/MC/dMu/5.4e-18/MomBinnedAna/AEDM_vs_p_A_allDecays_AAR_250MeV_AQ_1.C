@@ -1,7 +1,7 @@
 void AEDM_vs_p_A_allDecays_AAR_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:27:49 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:09:56 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-409.8874,-1.02189e-06,3376.692,5.791789e-07);
@@ -65,7 +65,7 @@ void AEDM_vs_p_A_allDecays_AAR_250MeV_AQ_1()
    5.336896e-07};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1016,Graph0_fy1016,Graph0_fex1016,Graph0_fey1016);
    gre->SetName("Graph0");
-   gre->SetTitle(";Decay vertex momentum [MeV];A_{EDM}");
+   gre->SetTitle(";Decay vertex momentum [MeV];A_{#gminus2} / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -86,7 +86,7 @@ void AEDM_vs_p_A_allDecays_AAR_250MeV_AQ_1()
    Graph_Graph01016->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01016->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01016->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01016->GetYaxis()->SetTitle("A_{EDM}");
+   Graph_Graph01016->GetYaxis()->SetTitle("A_{#gminus2} / 250 MeV");
    Graph_Graph01016->GetYaxis()->CenterTitle(true);
    Graph_Graph01016->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01016->GetYaxis()->SetLabelFont(42);

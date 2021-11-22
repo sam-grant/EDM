@@ -1,9 +1,9 @@
 void tmp()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 11 11:23:28 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 17:42:58 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.25,-6.130331e-20,4.75,2.625687e-18);
+   c->Range(0.25,-6.233479e-21,4.75,2.709964e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,24 +12,24 @@ void tmp()
    
    Double_t _fx1014[4] = {
    1,
-   2, 
+   2,
    3,
    4};
    Double_t _fy1014[4] = {
-   1.84899e-18,
-   9.821119e-19,
-   1.901777e-18,
-   1.624718e-18};
+   1.925828e-18,
+   1.039008e-18,
+   1.979048e-18,
+   1.672338e-18};
    Double_t _fex1014[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1014[4] = {
-   3.386656e-19,
-   2.84276e-19,
-   2.463781e-19,
-   1.839326e-19};
+   3.416777e-19,
+   2.867497e-19,
+   2.482404e-19,
+   1.857522e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1014,_fy1014,_fex1014,_fey1014);
    gre->SetName("");
    gre->SetTitle(";;d_{#mu}^{BLIND} [e#upointcm]");
@@ -39,8 +39,8 @@ void tmp()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10101014 = new TH1F("Graph_Graph_Graph10101014","",100,0.7,4.3);
-   Graph_Graph_Graph10101014->SetMinimum(2.073957e-19);
-   Graph_Graph_Graph10101014->SetMaximum(2.356988e-18);
+   Graph_Graph_Graph10101014->SetMinimum(2.653863e-19);
+   Graph_Graph_Graph10101014->SetMaximum(2.438344e-18);
    Graph_Graph_Graph10101014->SetDirectory(0);
    Graph_Graph_Graph10101014->SetStats(0);
 
@@ -84,29 +84,46 @@ void tmp()
    fit1014->GetXaxis()->SetTitleFont(42);
    fit1014->GetYaxis()->SetLabelFont(42);
    fit1014->GetYaxis()->SetTitleFont(42);
-   fit1014->SetParameter(0,1.55456e-18);
-   fit1014->SetParError(0,9.338605e-20);
+   fit1014->SetParameter(0,1.614196e-18);
+   fit1014->SetParError(0,9.462367e-20);
    fit1014->SetParLimits(0,0,0);
    fit1014->Draw("same");
-
    
-   TF1 *shift_11016 = new TF1("shift_1","pol0",0,5, TF1::EAddToList::kDefault);
-   shift_11016->SetFillColor(19);
-   shift_11016->SetFillStyle(0);
+   TF1 *minusSigma1015 = new TF1("minusSigma","pol0",0,5, TF1::EAddToList::kDefault);
+   minusSigma1015->SetFillColor(19);
+   minusSigma1015->SetFillStyle(0);
 
    ci = TColor::GetColor("#cccccc");
-   shift_11016->SetLineColor(ci);
-   shift_11016->SetLineWidth(2);
-   shift_11016->SetLineStyle(2);
-   shift_11016->GetXaxis()->SetLabelFont(42);
-   shift_11016->GetXaxis()->SetTitleOffset(1);
-   shift_11016->GetXaxis()->SetTitleFont(42);
-   shift_11016->GetYaxis()->SetLabelFont(42);
-   shift_11016->GetYaxis()->SetTitleFont(42);
-   shift_11016->SetParameter(0,1.647946e-18);
-   shift_11016->SetParError(0,0);
-   shift_11016->SetParLimits(0,0,0);
-   shift_11016->Draw("same");
+   minusSigma1015->SetLineColor(ci);
+   minusSigma1015->SetLineWidth(2);
+   minusSigma1015->SetLineStyle(2);
+   minusSigma1015->GetXaxis()->SetLabelFont(42);
+   minusSigma1015->GetXaxis()->SetTitleOffset(1);
+   minusSigma1015->GetXaxis()->SetTitleFont(42);
+   minusSigma1015->GetYaxis()->SetLabelFont(42);
+   minusSigma1015->GetYaxis()->SetTitleFont(42);
+   minusSigma1015->SetParameter(0,1.519573e-18);
+   minusSigma1015->SetParError(0,0);
+   minusSigma1015->SetParLimits(0,0,0);
+   minusSigma1015->Draw("same");
+   
+   TF1 *plusSigma1016 = new TF1("plusSigma","pol0",0,5, TF1::EAddToList::kDefault);
+   plusSigma1016->SetFillColor(19);
+   plusSigma1016->SetFillStyle(0);
+
+   ci = TColor::GetColor("#cccccc");
+   plusSigma1016->SetLineColor(ci);
+   plusSigma1016->SetLineWidth(2);
+   plusSigma1016->SetLineStyle(2);
+   plusSigma1016->GetXaxis()->SetLabelFont(42);
+   plusSigma1016->GetXaxis()->SetTitleOffset(1);
+   plusSigma1016->GetXaxis()->SetTitleFont(42);
+   plusSigma1016->GetYaxis()->SetLabelFont(42);
+   plusSigma1016->GetYaxis()->SetTitleFont(42);
+   plusSigma1016->SetParameter(0,1.70882e-18);
+   plusSigma1016->SetParError(0,0);
+   plusSigma1016->SetParLimits(0,0,0);
+   plusSigma1016->Draw("same");
    
    Double_t _fx1015[4] = {
    1,
@@ -114,20 +131,20 @@ void tmp()
    3,
    4};
    Double_t _fy1015[4] = {
-   1.84899e-18,
-   9.821119e-19,
-   1.901777e-18,
-   1.624718e-18};
+   1.925828e-18,
+   1.039008e-18,
+   1.979048e-18,
+   1.672338e-18};
    Double_t _fex1015[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1015[4] = {
-   3.386656e-19,
-   2.84276e-19,
-   2.463781e-19,
-   1.839326e-19};
+   3.416777e-19,
+   2.867497e-19,
+   2.482404e-19,
+   1.857522e-19};
    gre = new TGraphErrors(4,_fx1015,_fy1015,_fex1015,_fey1015);
    gre->SetName("");
    gre->SetTitle(";;d_{#mu}^{BLIND} [e#upointcm]");
@@ -137,8 +154,8 @@ void tmp()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph_Graph101010141015 = new TH1F("Graph_Graph_Graph_Graph101010141015","",100,0.7,4.3);
-   Graph_Graph_Graph_Graph101010141015->SetMinimum(2.073957e-19);
-   Graph_Graph_Graph_Graph101010141015->SetMaximum(2.356988e-18);
+   Graph_Graph_Graph_Graph101010141015->SetMinimum(2.653863e-19);
+   Graph_Graph_Graph_Graph101010141015->SetMaximum(2.438344e-18);
    Graph_Graph_Graph_Graph101010141015->SetDirectory(0);
    Graph_Graph_Graph_Graph101010141015->SetStats(0);
 
@@ -174,20 +191,20 @@ void tmp()
    3,
    4};
    Double_t _fy1016[4] = {
-   7.221036e-19,
-   1.331492e-18,
-   1.933991e-18,
-   1.618078e-18};
+   7.822283e-19,
+   1.391056e-18,
+   1.998013e-18,
+   1.669172e-18};
    Double_t _fex1016[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1016[4] = {
-   3.431386e-19,
-   2.99056e-19,
-   2.58096e-19,
-   1.962069e-19};
+   3.445613e-19,
+   3.021601e-19,
+   2.604635e-19,
+   1.97884e-19};
    gre = new TGraphErrors(4,_fx1016,_fy1016,_fex1016,_fey1016);
    gre->SetName("");
    gre->SetTitle("S18");
@@ -197,8 +214,8 @@ void tmp()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10111016 = new TH1F("Graph_Graph_Graph10111016","S18",100,0.7,4.3);
-   Graph_Graph_Graph10111016->SetMinimum(1.976529e-19);
-   Graph_Graph_Graph10111016->SetMaximum(2.373399e-18);
+   Graph_Graph_Graph10111016->SetMinimum(2.55586e-19);
+   Graph_Graph_Graph10111016->SetMaximum(2.440558e-18);
    Graph_Graph_Graph10111016->SetDirectory(0);
    Graph_Graph_Graph10111016->SetStats(0);
 
@@ -234,20 +251,20 @@ void tmp()
    3,
    4};
    Double_t _fy1017[4] = {
-   1.313443e-18,
-   1.148272e-18,
-   1.916449e-18,
-   1.621023e-18};
+   1.382274e-18,
+   1.206426e-18,
+   1.987479e-18,
+   1.670225e-18};
    Double_t _fex1017[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1017[4] = {
-   2.443352e-19,
-   2.100923e-19,
-   1.893292e-19,
-   1.453056e-19};
+   2.469571e-19,
+   2.134452e-19,
+   1.915781e-19,
+   1.47292e-19};
    gre = new TGraphErrors(4,_fx1017,_fy1017,_fex1017,_fey1017);
    gre->SetName("");
    gre->SetTitle("S12S18");
@@ -255,8 +272,8 @@ void tmp()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10121017 = new TH1F("Graph_Graph_Graph10121017","S12S18",100,0.7,4.3);
-   Graph_Graph_Graph10121017->SetMinimum(8.214196e-19);
-   Graph_Graph_Graph10121017->SetMaximum(2.222538e-18);
+   Graph_Graph_Graph10121017->SetMinimum(8.743729e-19);
+   Graph_Graph_Graph10121017->SetMaximum(2.297665e-18);
    Graph_Graph_Graph10121017->SetDirectory(0);
    Graph_Graph_Graph10121017->SetStats(0);
 
@@ -290,21 +307,21 @@ void tmp()
    pol01018->SetFillStyle(0);
    pol01018->SetLineColor(2);
    pol01018->SetLineWidth(0);
-   pol01018->SetChisquare(8.576393);
+   pol01018->SetChisquare(8.472869);
    pol01018->SetNDF(3);
    pol01018->GetXaxis()->SetLabelFont(42);
    pol01018->GetXaxis()->SetTitleOffset(1);
    pol01018->GetXaxis()->SetTitleFont(42);
    pol01018->GetYaxis()->SetLabelFont(42);
    pol01018->GetYaxis()->SetTitleFont(42);
-   pol01018->SetParameter(0,1.55456e-18);
-   pol01018->SetParError(0,9.338605e-20);
+   pol01018->SetParameter(0,1.614196e-18);
+   pol01018->SetParError(0,9.462367e-20);
    pol01018->SetParLimits(0,0,0);
    pol01018->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01018);
    gre->Draw("p ");
    
-   TLegend *leg = new TLegend(0.3,0.91,0.8,0.99,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.6,0.2,0.8,0.4,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetTextFont(44);
    leg->SetTextSize(24);

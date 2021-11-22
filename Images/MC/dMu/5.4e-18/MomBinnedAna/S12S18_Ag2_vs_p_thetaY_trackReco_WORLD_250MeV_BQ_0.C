@@ -1,10 +1,10 @@
 void S12S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:25 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:53 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.894367,-0.2446908,3231.754,0.733742);
+   c->Range(7.894367,-0.2446909,3231.754,0.7337418);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    2613.266,
    2787.684};
    Double_t Graph0_fy1079[11] = {
-   0.4380285,
-   0.04239314,
-   -0.04162034,
-   -0.01759699,
-   0.007525964,
-   0.02323233,
-   -0.002701836,
-   0.01669424,
-   0.01165102,
-   0.0356563,
-   -0.02511242};
+   0.4380283,
+   0.04239302,
+   -0.04162047,
+   -0.01759712,
+   0.007525832,
+   0.02323221,
+   -0.002701962,
+   0.01669411,
+   0.01165089,
+   0.03565617,
+   -0.02511254};
    Double_t Graph0_fex1079[11] = {
    0.09988357,
    0.08417764,
@@ -66,8 +66,8 @@ void S12S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01079 = new TH1F("Graph_Graph01079","S12S18_",100,218.1461,3021.502);
-   Graph_Graph01079->SetMinimum(-0.1468475);
-   Graph_Graph01079->SetMaximum(0.6358987);
+   Graph_Graph01079->SetMinimum(-0.1468476);
+   Graph_Graph01079->SetMaximum(0.6358986);
    Graph_Graph01079->SetDirectory(0);
    Graph_Graph01079->SetStats(0);
 
@@ -82,7 +82,7 @@ void S12S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    Graph_Graph01079->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01079->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01079->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01079->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01079->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01079->GetYaxis()->CenterTitle(true);
    Graph_Graph01079->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01079->GetYaxis()->SetLabelFont(42);

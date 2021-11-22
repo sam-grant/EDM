@@ -1,10 +1,10 @@
 void S18_eAEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:36:08 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:16:28 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(8.109012,-0.01465267,3231.77,0.2308476);
+   c->Range(8.109012,-0.01465267,3231.77,0.2308475);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,8 +26,8 @@ void S18_eAEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Double_t Graph0_fy1073[11] = {
    0.1899308,
    0.06357004,
-   0.03632582,
-   0.02981272,
+   0.03632583,
+   0.02981271,
    0.02748109,
    0.02626403,
    0.026688,

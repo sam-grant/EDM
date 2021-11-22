@@ -1,10 +1,10 @@
 void S12_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:27 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:19:10 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-336.1504,-2.781852,3334.457,1.519755);
+   c->Range(-336.1504,-2.781853,3334.457,1.519754);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S12_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
    2614.713,
    2825.506};
    Double_t Graph0_fy1051[12] = {
-   -0.6310481,
-   0.04984247,
-   0.01011143,
-   0.251194,
-   0.1943603,
-   0.2230741,
-   0.1186411,
-   0.1780276,
-   0.1377572,
-   0.1385999,
-   0.09939299,
-   0.01395304};
+   -0.6310494,
+   0.04984234,
+   0.01011124,
+   0.2511939,
+   0.1943602,
+   0.223074,
+   0.118641,
+   0.1780274,
+   0.137757,
+   0.1385998,
+   0.09939287,
+   0.01395291};
    Double_t Graph0_fex1051[12] = {
    1.268456,
    0.1208124,
@@ -70,8 +70,8 @@ void S12_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01051 = new TH1F("Graph_Graph01051","S12_",100,0,3091.037);
-   Graph_Graph01051->SetMinimum(-2.351691);
-   Graph_Graph01051->SetMaximum(1.089595);
+   Graph_Graph01051->SetMinimum(-2.351692);
+   Graph_Graph01051->SetMaximum(1.089594);
    Graph_Graph01051->SetDirectory(0);
    Graph_Graph01051->SetStats(0);
 
@@ -86,7 +86,7 @@ void S12_Ag2_vs_p_thetaY_trackReco_AAR_250MeV_AQ_0()
    Graph_Graph01051->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01051->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01051->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01051->GetYaxis()->CenterTitle(true);
    Graph_Graph01051->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01051->GetYaxis()->SetLabelFont(42);

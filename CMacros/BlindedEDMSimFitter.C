@@ -484,7 +484,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
-    DrawTH1(px_thetaY_vs_t, "px_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad]",  "../tmp/"+stn+"px_thetaY_vs_t");
+    DrawTH1(px_thetaY_vs_t, "px_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad] / 50 ns",  "../tmp/"+stn+"px_thetaY_vs_t");
 
     // FFT hist
     TH1D *FFT_px_thetaY_vs_t = GetFFT(px_thetaY_vs_t);

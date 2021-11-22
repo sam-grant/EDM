@@ -1,7 +1,7 @@
 void eAEDM_vs_p_thetaY_acceptedDecaysControl_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:34:21 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:15 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-374.5359,-0.005324909,3370.823,0.05427268);
@@ -70,7 +70,7 @@ void eAEDM_vs_p_thetaY_acceptedDecaysControl_WORLD_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01021 = new TH1F("Graph_Graph01021","",100,0,3121.132);
-   Graph_Graph01021->SetMinimum(0.0006348506);
+   Graph_Graph01021->SetMinimum(0.0006348505);
    Graph_Graph01021->SetMaximum(0.04831292);
    Graph_Graph01021->SetDirectory(0);
    Graph_Graph01021->SetStats(0);

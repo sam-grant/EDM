@@ -1,10 +1,10 @@
 void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:34:42 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:25 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.6024336,-2.767956e-07,4.944727,-2.679563e-08);
+   c->Range(-0.6024336,-4.017956e-07,4.944727,9.820438e-08);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -370,8 +370,8 @@ void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1015 = new TH1F("Graph_Graph1015","S18_",100,0,4.771751);
-   Graph_Graph1015->SetMinimum(-2.517956e-07);
-   Graph_Graph1015->SetMaximum(-5.179563e-08);
+   Graph_Graph1015->SetMinimum(-3.517956e-07);
+   Graph_Graph1015->SetMaximum(4.820437e-08);
    Graph_Graph1015->SetDirectory(0);
    Graph_Graph1015->SetStats(0);
 

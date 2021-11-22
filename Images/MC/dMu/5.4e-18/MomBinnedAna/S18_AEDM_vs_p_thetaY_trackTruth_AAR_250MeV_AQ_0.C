@@ -1,10 +1,10 @@
 void S18_AEDM_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:38:32 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:18:22 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-301.4644,-8.400282,3331.568,1.962383);
+   c->Range(-301.4644,-8.400705,3331.568,1.96196);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S18_AEDM_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    2613.952,
    2828.757};
    Double_t Graph0_fy1064[12] = {
-   -5.448834,
-   0.05159747,
-   0.200463,
-   0.1155268,
-   0.2004627,
-   0.1736174,
-   0.1818941,
-   0.1824894,
-   0.164035,
-   0.1336903,
-   0.1852852,
-   0.07954583};
+   -5.449257,
+   0.05117422,
+   0.2000397,
+   0.1151036,
+   0.2000395,
+   0.1731942,
+   0.1814708,
+   0.1820661,
+   0.1636117,
+   0.133267,
+   0.1848619,
+   0.07912255};
    Double_t Graph0_fex1064[12] = {
    1.86628,
    0.06961119,
@@ -70,8 +70,8 @@ void S18_AEDM_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01064 = new TH1F("Graph_Graph01064","S18_",100,0,3091.942);
-   Graph_Graph01064->SetMinimum(-7.364015);
-   Graph_Graph01064->SetMaximum(0.9261169);
+   Graph_Graph01064->SetMinimum(-7.364439);
+   Graph_Graph01064->SetMaximum(0.9256936);
    Graph_Graph01064->SetDirectory(0);
    Graph_Graph01064->SetStats(0);
 
@@ -86,7 +86,7 @@ void S18_AEDM_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    Graph_Graph01064->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01064->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01064->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01064->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01064->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01064->GetYaxis()->CenterTitle(true);
    Graph_Graph01064->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01064->GetYaxis()->SetLabelFont(42);

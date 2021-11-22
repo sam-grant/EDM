@@ -1,7 +1,7 @@
 void S12S18_eAEDM_vs_p_thetaY_trackTruth_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:38:55 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:18:41 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(7.258654,-0.01033931,3236.722,0.1612185);
@@ -34,7 +34,7 @@ void S12S18_eAEDM_vs_p_thetaY_trackTruth_AAR_250MeV_BQ_0()
    0.01950654,
    0.02103986,
    0.02085499,
-   0.04696757};
+   0.04696756};
    Double_t Graph0_fex1087[11] = {
    0.1000258,
    0.08428856,

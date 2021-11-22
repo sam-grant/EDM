@@ -1,10 +1,10 @@
 void AEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:33:38 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:14:48 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-409.8874,-0.005684027,3376.691,0.4613273);
+   c->Range(-409.8874,-0.006107313,3376.691,0.4609041);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void AEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    2613.214,
    2850.255};
    Double_t Graph0_fy1012[12] = {
-   0.303782,
-   0.3546862,
-   0.3453498,
-   0.3472516,
-   0.3305302,
-   0.3117026,
-   0.2860651,
-   0.2622936,
-   0.1974576,
-   0.1889387,
-   0.1221008,
-   0.08237402};
+   0.3033588,
+   0.3542629,
+   0.3449265,
+   0.3468283,
+   0.3301069,
+   0.3112794,
+   0.2856418,
+   0.2618704,
+   0.1970343,
+   0.1885154,
+   0.1216775,
+   0.08195074};
    Double_t Graph0_fex1012[12] = {
    0.02929484,
    0.0299443,
@@ -54,7 +54,7 @@ void AEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    0.07187539,
    0.02880591,
    0.02123905,
-   0.01737587,
+   0.01737588,
    0.01495669,
    0.01332163,
    0.01212839,
@@ -65,13 +65,13 @@ void AEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    0.01022282};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1012,Graph0_fy1012,Graph0_fex1012,Graph0_fey1012);
    gre->SetName("Graph0");
-   gre->SetTitle(";Decay vertex momentum [MeV];A_{EDM} [mrad]");
+   gre->SetTitle(";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01012 = new TH1F("Graph_Graph01012","",100,0,3122.951);
-   Graph_Graph01012->SetMinimum(0.04101711);
-   Graph_Graph01012->SetMaximum(0.4146262);
+   Graph_Graph01012->SetMinimum(0.04059383);
+   Graph_Graph01012->SetMaximum(0.4142029);
    Graph_Graph01012->SetDirectory(0);
    Graph_Graph01012->SetStats(0);
 
@@ -86,7 +86,7 @@ void AEDM_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_0()
    Graph_Graph01012->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01012->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01012->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01012->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01012->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01012->GetYaxis()->CenterTitle(true);
    Graph_Graph01012->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01012->GetYaxis()->SetLabelFont(42);

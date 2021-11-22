@@ -1,10 +1,10 @@
 void S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:35:25 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:15:52 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(8.150025,-0.3149964,3231.71,0.8992465);
+   c->Range(8.150025,-0.3149966,3231.71,0.8992464);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    2612.271,
    2787.59};
    Double_t Graph0_fy1065[11] = {
-   0.5084083,
-   -0.031112,
-   -0.07661863,
-   -0.00781814,
-   0.01838933,
-   0.04202428,
-   0.02030774,
-   0.01650722,
-   0.008354496,
-   0.0837695,
-   0.02013344};
+   0.5084081,
+   -0.03111212,
+   -0.07661876,
+   -0.00781827,
+   0.0183892,
+   0.04202415,
+   0.02030761,
+   0.01650709,
+   0.008354367,
+   0.08376938,
+   0.02013331};
    Double_t Graph0_fex1065[11] = {
    0.1417116,
    0.1193613,
@@ -66,8 +66,8 @@ void S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01065 = new TH1F("Graph_Graph01065","S18_",100,218.3822,3021.478);
-   Graph_Graph01065->SetMinimum(-0.1935721);
-   Graph_Graph01065->SetMaximum(0.7778222);
+   Graph_Graph01065->SetMinimum(-0.1935723);
+   Graph_Graph01065->SetMaximum(0.7778221);
    Graph_Graph01065->SetDirectory(0);
    Graph_Graph01065->SetStats(0);
 
@@ -82,7 +82,7 @@ void S18_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_0()
    Graph_Graph01065->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01065->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01065->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01065->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01065->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01065->GetYaxis()->CenterTitle(true);
    Graph_Graph01065->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01065->GetYaxis()->SetLabelFont(42);

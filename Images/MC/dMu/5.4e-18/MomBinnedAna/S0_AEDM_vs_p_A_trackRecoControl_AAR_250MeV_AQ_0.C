@@ -1,7 +1,7 @@
 void S0_AEDM_vs_p_A_trackRecoControl_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:37:05 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:17:13 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(8.618866,-0.02058135,3236.488,0.005760772);
@@ -82,7 +82,7 @@ void S0_AEDM_vs_p_A_trackRecoControl_AAR_250MeV_AQ_0()
    Graph_Graph01040->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01040->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01040->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01040->GetYaxis()->SetTitle("A_{EDM}");
+   Graph_Graph01040->GetYaxis()->SetTitle("A_{#gminus2} / 250 MeV");
    Graph_Graph01040->GetYaxis()->CenterTitle(true);
    Graph_Graph01040->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01040->GetYaxis()->SetLabelFont(42);

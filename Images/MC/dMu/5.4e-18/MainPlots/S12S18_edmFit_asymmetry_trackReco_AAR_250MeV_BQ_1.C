@@ -1,7 +1,7 @@
 void S12S18_edmFit_asymmetry_trackReco_AAR_250MeV_BQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 18:50:09 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:11:27 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.6024336,-4.720946e-07,4.944727,2.790541e-08);

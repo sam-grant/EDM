@@ -1,10 +1,10 @@
 void S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:39:47 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:19:29 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(7.840778,-0.2987712,3232.386,0.3856774);
+   c->Range(7.840778,-0.2991945,3232.386,0.3852541);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    2613.853,
    2788.072};
    Double_t Graph0_fy1078[11] = {
-   0.04345309,
-   0.06062734,
-   0.005050277,
-   0.07661164,
-   0.05478406,
-   -0.04659072,
-   0.04534238,
-   -0.03328133,
-   0.04957334,
-   -0.05739268,
-   0.04074329};
+   0.04302982,
+   0.06020408,
+   0.00462702,
+   0.07618838,
+   0.0543608,
+   -0.04701398,
+   0.04491913,
+   -0.0337046,
+   0.04915007,
+   -0.05781595,
+   0.04031962};
    Double_t Graph0_fex1078[11] = {
    0.1712023,
    0.1448381,
@@ -66,8 +66,8 @@ void S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01078 = new TH1F("Graph_Graph01078","S12S18_",100,218.1372,3022.09);
-   Graph_Graph01078->SetMinimum(-0.2303264);
-   Graph_Graph01078->SetMaximum(0.3172325);
+   Graph_Graph01078->SetMinimum(-0.2307496);
+   Graph_Graph01078->SetMaximum(0.3168093);
    Graph_Graph01078->SetDirectory(0);
    Graph_Graph01078->SetStats(0);
 
@@ -82,7 +82,7 @@ void S12S18_AEDM_vs_p_thetaY_trackReco_AAR_250MeV_BQ_0()
    Graph_Graph01078->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01078->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01078->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01078->GetYaxis()->SetTitle("A_{EDM} [mrad]");
+   Graph_Graph01078->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph01078->GetYaxis()->CenterTitle(true);
    Graph_Graph01078->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01078->GetYaxis()->SetLabelFont(42);

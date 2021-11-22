@@ -1,10 +1,10 @@
 void S12_Ag2_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:38:31 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:18:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-301.5203,-4.222614,3332.186,20.08578);
+   c->Range(-301.5203,-13.44431,3332.186,2.762516);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S12_Ag2_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    2613.773,
    2829.106};
    Double_t Graph0_fy1051[12] = {
-   16.03437,
-   -0.1016536,
-   0.02649301,
-   -0.02571793,
-   -0.02186503,
-   0.02422471,
-   -0.02673621,
-   -0.03341022,
-   0.02563635,
-   -0.01795548,
-   0.009069373,
-   -0.08273819};
+   -10.74317,
+   -0.1016537,
+   0.02649287,
+   -0.02571806,
+   -0.02186516,
+   0.02422458,
+   -0.02673634,
+   -0.03341034,
+   0.02563622,
+   -0.0179556,
+   0.009069246,
+   -0.08273831};
    Double_t Graph0_fex1051[12] = {
    2.06251,
    0.06941114,
@@ -51,10 +51,10 @@ void S12_Ag2_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    0.186901,
    0.2380528};
    Double_t Graph0_fey1051[12] = {
-   4.697392e-06,
+   4.697391e-06,
    0.06956195,
    0.03488465,
-   0.02860943,
+   0.02860944,
    0.02578737,
    0.02366194,
    0.02237219,
@@ -70,8 +70,8 @@ void S12_Ag2_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01051 = new TH1F("Graph_Graph01051","S12_",100,0,3092.516);
-   Graph_Graph01051->SetMinimum(-1.791775);
-   Graph_Graph01051->SetMaximum(17.65494);
+   Graph_Graph01051->SetMinimum(-11.82363);
+   Graph_Graph01051->SetMaximum(1.141833);
    Graph_Graph01051->SetDirectory(0);
    Graph_Graph01051->SetStats(0);
 
@@ -86,7 +86,7 @@ void S12_Ag2_vs_p_thetaY_trackTruth_AAR_250MeV_AQ_0()
    Graph_Graph01051->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01051->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01051->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad]");
+   Graph_Graph01051->GetYaxis()->SetTitle("A_{g#minus2} [mrad] / 250 MeV");
    Graph_Graph01051->GetYaxis()->CenterTitle(true);
    Graph_Graph01051->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01051->GetYaxis()->SetLabelFont(42);

@@ -1,10 +1,10 @@
 void S12S18_eAEDM_vs_p_thetaY_trackRecoControl_WORLD_250MeV_BQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Nov 19 17:36:48 2021) by ROOT version 6.24/04
+//=========  (Mon Nov 22 14:17:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(8.435734,-0.03531253,3235.201,0.371379);
+   c->Range(8.435734,-0.03531253,3235.201,0.3713791);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -29,7 +29,7 @@ void S12S18_eAEDM_vs_p_thetaY_trackRecoControl_WORLD_250MeV_BQ_0()
    0.04264594,
    0.03278963,
    0.0324694,
-   0.04052121,
+   0.04052122,
    0.08136372,
    0.3035971,
    0.1302572,
