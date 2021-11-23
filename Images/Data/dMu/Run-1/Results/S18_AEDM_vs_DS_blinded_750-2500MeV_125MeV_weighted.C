@@ -1,7 +1,7 @@
 void S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV_weighted()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 17:51:24 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 13:28:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.25,-1.753551e-20,4.75,2.713679e-18);
    c->SetFillColor(0);
@@ -17,7 +17,7 @@ void S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV_weighted()
    4};
    Double_t _fy1011[4] = {
    7.822283e-19,
-   1.391056e-18,
+   1.399126e-18,
    1.998013e-18,
    1.669172e-18};
    Double_t _fex1011[4] = {
@@ -27,7 +27,7 @@ void S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV_weighted()
    0};
    Double_t _fey1011[4] = {
    3.445613e-19,
-   3.021601e-19,
+   3.021043e-19,
    2.604635e-19,
    1.97884e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1011,_fy1011,_fex1011,_fey1011);

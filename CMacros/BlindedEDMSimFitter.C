@@ -655,7 +655,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       if(nEntries == 0) continue;
 
       p_.push_back(p);
-      ep_.push_back(ep);//step/2);
+      ep_.push_back(ep);
 
       // Run fits
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
@@ -782,7 +782,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
     DrawScanGraph(c_vs_p_A, stn+";Decay vertex momentum [MeV];c / "+to_string(step)+" MeV", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"c_vs_p_A_"+config+"_"+to_string(unblind)).c_str(), step, false);
     DrawScanGraph(AEDM_vs_p_A, stn+";Decay vertex momentum [MeV];A_{EDM} / "+to_string(step)+" MeV", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"AEDM_vs_p_A_"+config+"_"+to_string(unblind)).c_str(), step, false);
-    DrawScanGraph(Ag2_vs_p_A, stn+";Decay vertex momentum [MeV];A_{#gminus2} / "+to_string(step)+" MeV", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"AEDM_vs_p_A_"+config+"_"+to_string(unblind)).c_str(), step, false); 
+    DrawScanGraph(Ag2_vs_p_A, stn+";Decay vertex momentum [MeV];A_{g#minus2} / "+to_string(step)+" MeV", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"Ag2_vs_p_A_"+config+"_"+to_string(unblind)).c_str(), step, false); 
     
     c_vs_p_A->SetName((stn+"c_vs_p_A").c_str());
     AEDM_vs_p_A->SetName((stn+"AEDM_vs_p_A").c_str());

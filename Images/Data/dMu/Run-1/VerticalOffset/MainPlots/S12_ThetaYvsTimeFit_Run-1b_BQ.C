@@ -1,7 +1,7 @@
 void S12_ThetaYvsTimeFit_Run-1b_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 10:34:27 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 11:59:06 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-23.6044,-0.732773,344.1851,0.829727);
@@ -11,7 +11,7 @@ void S12_ThetaYvsTimeFit_Run-1b_BQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1016[92] = {
+   Double_t _fx1022[92] = {
    2.182662,
    6.547986,
    10.91331,
@@ -104,7 +104,7 @@ void S12_ThetaYvsTimeFit_Run-1b_BQ()
    390.6965,
    395.0618,
    399.4271};
-   Double_t _fy1016[92] = {
+   Double_t _fy1022[92] = {
    0.7124195,
    0.7196049,
    0.3146935,
@@ -197,7 +197,7 @@ void S12_ThetaYvsTimeFit_Run-1b_BQ()
    0.04941499,
    0.05842862,
    0.2233769};
-   Double_t _fex1016[92] = {
+   Double_t _fex1022[92] = {
    0,
    0,
    0,
@@ -290,7 +290,7 @@ void S12_ThetaYvsTimeFit_Run-1b_BQ()
    0,
    0,
    0};
-   Double_t _fey1016[92] = {
+   Double_t _fey1022[92] = {
    0.03610495,
    0.01925529,
    0.01791616,
@@ -383,179 +383,179 @@ void S12_ThetaYvsTimeFit_Run-1b_BQ()
    0.322169,
    0.3510626,
    0.3400285};
-   TGraphErrors *gre = new TGraphErrors(92,_fx1016,_fy1016,_fex1016,_fey1016);
+   TGraphErrors *gre = new TGraphErrors(92,_fx1022,_fy1022,_fex1022,_fey1022);
    gre->SetName("");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1016 = new TH1F("Graph_Graph1016","S12",100,0,439.1516);
-   Graph_Graph1016->SetMinimum(-0.576523);
-   Graph_Graph1016->SetMaximum(0.673477);
-   Graph_Graph1016->SetDirectory(0);
-   Graph_Graph1016->SetStats(0);
+   TH1F *Graph_Graph1022 = new TH1F("Graph_Graph1022","S12",100,0,439.1516);
+   Graph_Graph1022->SetMinimum(-0.576523);
+   Graph_Graph1022->SetMaximum(0.673477);
+   Graph_Graph1022->SetDirectory(0);
+   Graph_Graph1022->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph1016->SetLineColor(ci);
-   Graph_Graph1016->GetXaxis()->SetTitle("Decay time [#mus]");
-   Graph_Graph1016->GetXaxis()->SetRange(4,70);
-   Graph_Graph1016->GetXaxis()->CenterTitle(true);
-   Graph_Graph1016->GetXaxis()->SetLabelFont(42);
-   Graph_Graph1016->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph1016->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph1016->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1016->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 4.365 #mus");
-   Graph_Graph1016->GetYaxis()->CenterTitle(true);
-   Graph_Graph1016->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph1016->GetYaxis()->SetLabelFont(42);
-   Graph_Graph1016->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph1016->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph1016->GetYaxis()->SetTitleFont(42);
-   Graph_Graph1016->GetZaxis()->SetLabelFont(42);
-   Graph_Graph1016->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph1016->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph1016);
+   Graph_Graph1022->SetLineColor(ci);
+   Graph_Graph1022->GetXaxis()->SetTitle("Decay time [#mus]");
+   Graph_Graph1022->GetXaxis()->SetRange(4,70);
+   Graph_Graph1022->GetXaxis()->CenterTitle(true);
+   Graph_Graph1022->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1022->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph1022->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1022->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1022->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 4.365 #mus");
+   Graph_Graph1022->GetYaxis()->CenterTitle(true);
+   Graph_Graph1022->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1022->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1022->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph1022->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph1022->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1022->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1022->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1022->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1022);
    
    
-   TF1 *DoubleExponentialFunc1017 = new TF1("*DoubleExponentialFunc",13.09597,305.5727,5);
+   TF1 *DoubleExponentialFunc1023 = new TF1("*DoubleExponentialFunc",13.09597,305.5727,5);
     //The original function : DoubleExponentialFunc had originally been created by:
     //TF1 *DoubleExponentialFunc = new TF1("DoubleExponentialFunc",DoubleExponentialFunc,13.09597,305.5727,5, 1, TF1::EAddToList::kNo);
-   DoubleExponentialFunc1017->SetRange(13.09597,305.5727);
-   DoubleExponentialFunc1017->SetName("DoubleExponentialFunc");
-   DoubleExponentialFunc1017->SetTitle("DoubleExponentialFunc");
-   DoubleExponentialFunc1017->SetSavedPoint(0,0.1019483);
-   DoubleExponentialFunc1017->SetSavedPoint(1,-0.0464513);
-   DoubleExponentialFunc1017->SetSavedPoint(2,-0.1353366);
-   DoubleExponentialFunc1017->SetSavedPoint(3,-0.1867932);
-   DoubleExponentialFunc1017->SetSavedPoint(4,-0.2148138);
-   DoubleExponentialFunc1017->SetSavedPoint(5,-0.2282572);
-   DoubleExponentialFunc1017->SetSavedPoint(6,-0.2327263);
-   DoubleExponentialFunc1017->SetSavedPoint(7,-0.2317585);
-   DoubleExponentialFunc1017->SetSavedPoint(8,-0.2275824);
-   DoubleExponentialFunc1017->SetSavedPoint(9,-0.2215965);
-   DoubleExponentialFunc1017->SetSavedPoint(10,-0.2146739);
-   DoubleExponentialFunc1017->SetSavedPoint(11,-0.2073554);
-   DoubleExponentialFunc1017->SetSavedPoint(12,-0.1999714);
-   DoubleExponentialFunc1017->SetSavedPoint(13,-0.1927196);
-   DoubleExponentialFunc1017->SetSavedPoint(14,-0.1857148);
-   DoubleExponentialFunc1017->SetSavedPoint(15,-0.1790191);
-   DoubleExponentialFunc1017->SetSavedPoint(16,-0.1726625);
-   DoubleExponentialFunc1017->SetSavedPoint(17,-0.1666548);
-   DoubleExponentialFunc1017->SetSavedPoint(18,-0.1609939);
-   DoubleExponentialFunc1017->SetSavedPoint(19,-0.1556703);
-   DoubleExponentialFunc1017->SetSavedPoint(20,-0.1506707);
-   DoubleExponentialFunc1017->SetSavedPoint(21,-0.1459796);
-   DoubleExponentialFunc1017->SetSavedPoint(22,-0.1415807);
-   DoubleExponentialFunc1017->SetSavedPoint(23,-0.1374574);
-   DoubleExponentialFunc1017->SetSavedPoint(24,-0.1335936);
-   DoubleExponentialFunc1017->SetSavedPoint(25,-0.1299736);
-   DoubleExponentialFunc1017->SetSavedPoint(26,-0.1265825);
-   DoubleExponentialFunc1017->SetSavedPoint(27,-0.123406);
-   DoubleExponentialFunc1017->SetSavedPoint(28,-0.1204308);
-   DoubleExponentialFunc1017->SetSavedPoint(29,-0.1176442);
-   DoubleExponentialFunc1017->SetSavedPoint(30,-0.1150343);
-   DoubleExponentialFunc1017->SetSavedPoint(31,-0.11259);
-   DoubleExponentialFunc1017->SetSavedPoint(32,-0.1103008);
-   DoubleExponentialFunc1017->SetSavedPoint(33,-0.1081569);
-   DoubleExponentialFunc1017->SetSavedPoint(34,-0.106149);
-   DoubleExponentialFunc1017->SetSavedPoint(35,-0.1042686);
-   DoubleExponentialFunc1017->SetSavedPoint(36,-0.1025075);
-   DoubleExponentialFunc1017->SetSavedPoint(37,-0.1008581);
-   DoubleExponentialFunc1017->SetSavedPoint(38,-0.0993135);
-   DoubleExponentialFunc1017->SetSavedPoint(39,-0.09786691);
-   DoubleExponentialFunc1017->SetSavedPoint(40,-0.09651213);
-   DoubleExponentialFunc1017->SetSavedPoint(41,-0.09524334);
-   DoubleExponentialFunc1017->SetSavedPoint(42,-0.09405509);
-   DoubleExponentialFunc1017->SetSavedPoint(43,-0.09294226);
-   DoubleExponentialFunc1017->SetSavedPoint(44,-0.09190007);
-   DoubleExponentialFunc1017->SetSavedPoint(45,-0.09092403);
-   DoubleExponentialFunc1017->SetSavedPoint(46,-0.09000994);
-   DoubleExponentialFunc1017->SetSavedPoint(47,-0.08915387);
-   DoubleExponentialFunc1017->SetSavedPoint(48,-0.08835214);
-   DoubleExponentialFunc1017->SetSavedPoint(49,-0.0876013);
-   DoubleExponentialFunc1017->SetSavedPoint(50,-0.08689811);
-   DoubleExponentialFunc1017->SetSavedPoint(51,-0.08623956);
-   DoubleExponentialFunc1017->SetSavedPoint(52,-0.08562282);
-   DoubleExponentialFunc1017->SetSavedPoint(53,-0.08504521);
-   DoubleExponentialFunc1017->SetSavedPoint(54,-0.08450428);
-   DoubleExponentialFunc1017->SetSavedPoint(55,-0.08399767);
-   DoubleExponentialFunc1017->SetSavedPoint(56,-0.08352322);
-   DoubleExponentialFunc1017->SetSavedPoint(57,-0.08307889);
-   DoubleExponentialFunc1017->SetSavedPoint(58,-0.08266276);
-   DoubleExponentialFunc1017->SetSavedPoint(59,-0.08227305);
-   DoubleExponentialFunc1017->SetSavedPoint(60,-0.08190807);
-   DoubleExponentialFunc1017->SetSavedPoint(61,-0.08156626);
-   DoubleExponentialFunc1017->SetSavedPoint(62,-0.08124614);
-   DoubleExponentialFunc1017->SetSavedPoint(63,-0.08094634);
-   DoubleExponentialFunc1017->SetSavedPoint(64,-0.08066557);
-   DoubleExponentialFunc1017->SetSavedPoint(65,-0.08040263);
-   DoubleExponentialFunc1017->SetSavedPoint(66,-0.08015637);
-   DoubleExponentialFunc1017->SetSavedPoint(67,-0.07992575);
-   DoubleExponentialFunc1017->SetSavedPoint(68,-0.07970976);
-   DoubleExponentialFunc1017->SetSavedPoint(69,-0.07950748);
-   DoubleExponentialFunc1017->SetSavedPoint(70,-0.07931804);
-   DoubleExponentialFunc1017->SetSavedPoint(71,-0.07914063);
-   DoubleExponentialFunc1017->SetSavedPoint(72,-0.07897448);
-   DoubleExponentialFunc1017->SetSavedPoint(73,-0.07881887);
-   DoubleExponentialFunc1017->SetSavedPoint(74,-0.07867314);
-   DoubleExponentialFunc1017->SetSavedPoint(75,-0.07853666);
-   DoubleExponentialFunc1017->SetSavedPoint(76,-0.07840884);
-   DoubleExponentialFunc1017->SetSavedPoint(77,-0.07828914);
-   DoubleExponentialFunc1017->SetSavedPoint(78,-0.07817704);
-   DoubleExponentialFunc1017->SetSavedPoint(79,-0.07807205);
-   DoubleExponentialFunc1017->SetSavedPoint(80,-0.07797372);
-   DoubleExponentialFunc1017->SetSavedPoint(81,-0.07788164);
-   DoubleExponentialFunc1017->SetSavedPoint(82,-0.0777954);
-   DoubleExponentialFunc1017->SetSavedPoint(83,-0.07771463);
-   DoubleExponentialFunc1017->SetSavedPoint(84,-0.07763899);
-   DoubleExponentialFunc1017->SetSavedPoint(85,-0.07756815);
-   DoubleExponentialFunc1017->SetSavedPoint(86,-0.07750181);
-   DoubleExponentialFunc1017->SetSavedPoint(87,-0.07743968);
-   DoubleExponentialFunc1017->SetSavedPoint(88,-0.07738149);
-   DoubleExponentialFunc1017->SetSavedPoint(89,-0.077327);
-   DoubleExponentialFunc1017->SetSavedPoint(90,-0.07727596);
-   DoubleExponentialFunc1017->SetSavedPoint(91,-0.07722817);
-   DoubleExponentialFunc1017->SetSavedPoint(92,-0.07718341);
-   DoubleExponentialFunc1017->SetSavedPoint(93,-0.07714149);
-   DoubleExponentialFunc1017->SetSavedPoint(94,-0.07710223);
-   DoubleExponentialFunc1017->SetSavedPoint(95,-0.07706546);
-   DoubleExponentialFunc1017->SetSavedPoint(96,-0.07703103);
-   DoubleExponentialFunc1017->SetSavedPoint(97,-0.07699878);
-   DoubleExponentialFunc1017->SetSavedPoint(98,-0.07696858);
-   DoubleExponentialFunc1017->SetSavedPoint(99,-0.07694029);
-   DoubleExponentialFunc1017->SetSavedPoint(100,-0.0769138);
-   DoubleExponentialFunc1017->SetSavedPoint(101,13.09597);
-   DoubleExponentialFunc1017->SetSavedPoint(102,305.5727);
-   DoubleExponentialFunc1017->SetFillColor(19);
-   DoubleExponentialFunc1017->SetFillStyle(0);
-   DoubleExponentialFunc1017->SetLineColor(2);
-   DoubleExponentialFunc1017->SetLineWidth(2);
-   DoubleExponentialFunc1017->SetChisquare(61.10224);
-   DoubleExponentialFunc1017->SetNDF(64);
-   DoubleExponentialFunc1017->GetXaxis()->SetLabelFont(42);
-   DoubleExponentialFunc1017->GetXaxis()->SetTitleOffset(1);
-   DoubleExponentialFunc1017->GetXaxis()->SetTitleFont(42);
-   DoubleExponentialFunc1017->GetYaxis()->SetLabelFont(42);
-   DoubleExponentialFunc1017->GetYaxis()->SetTitleFont(42);
-   DoubleExponentialFunc1017->SetParameter(0,-16.47609);
-   DoubleExponentialFunc1017->SetParError(0,1.372829);
-   DoubleExponentialFunc1017->SetParLimits(0,0,0);
-   DoubleExponentialFunc1017->SetParameter(1,44.6);
-   DoubleExponentialFunc1017->SetParError(1,0);
-   DoubleExponentialFunc1017->SetParLimits(1,44.6,44.6);
-   DoubleExponentialFunc1017->SetParameter(2,22.37126);
-   DoubleExponentialFunc1017->SetParError(2,1.773373);
-   DoubleExponentialFunc1017->SetParLimits(2,0,0);
-   DoubleExponentialFunc1017->SetParameter(3,6.43);
-   DoubleExponentialFunc1017->SetParError(3,0);
-   DoubleExponentialFunc1017->SetParLimits(3,6.43,6.43);
-   DoubleExponentialFunc1017->SetParameter(4,-0.07652297);
-   DoubleExponentialFunc1017->SetParError(4,0.008837749);
-   DoubleExponentialFunc1017->SetParLimits(4,0,0);
-   DoubleExponentialFunc1017->SetParent(gre);
-   gre->GetListOfFunctions()->Add(DoubleExponentialFunc1017);
+   DoubleExponentialFunc1023->SetRange(13.09597,305.5727);
+   DoubleExponentialFunc1023->SetName("DoubleExponentialFunc");
+   DoubleExponentialFunc1023->SetTitle("DoubleExponentialFunc");
+   DoubleExponentialFunc1023->SetSavedPoint(0,0.1019483);
+   DoubleExponentialFunc1023->SetSavedPoint(1,-0.0464513);
+   DoubleExponentialFunc1023->SetSavedPoint(2,-0.1353366);
+   DoubleExponentialFunc1023->SetSavedPoint(3,-0.1867932);
+   DoubleExponentialFunc1023->SetSavedPoint(4,-0.2148138);
+   DoubleExponentialFunc1023->SetSavedPoint(5,-0.2282572);
+   DoubleExponentialFunc1023->SetSavedPoint(6,-0.2327263);
+   DoubleExponentialFunc1023->SetSavedPoint(7,-0.2317585);
+   DoubleExponentialFunc1023->SetSavedPoint(8,-0.2275824);
+   DoubleExponentialFunc1023->SetSavedPoint(9,-0.2215965);
+   DoubleExponentialFunc1023->SetSavedPoint(10,-0.2146739);
+   DoubleExponentialFunc1023->SetSavedPoint(11,-0.2073554);
+   DoubleExponentialFunc1023->SetSavedPoint(12,-0.1999714);
+   DoubleExponentialFunc1023->SetSavedPoint(13,-0.1927196);
+   DoubleExponentialFunc1023->SetSavedPoint(14,-0.1857148);
+   DoubleExponentialFunc1023->SetSavedPoint(15,-0.1790191);
+   DoubleExponentialFunc1023->SetSavedPoint(16,-0.1726625);
+   DoubleExponentialFunc1023->SetSavedPoint(17,-0.1666548);
+   DoubleExponentialFunc1023->SetSavedPoint(18,-0.1609939);
+   DoubleExponentialFunc1023->SetSavedPoint(19,-0.1556703);
+   DoubleExponentialFunc1023->SetSavedPoint(20,-0.1506707);
+   DoubleExponentialFunc1023->SetSavedPoint(21,-0.1459796);
+   DoubleExponentialFunc1023->SetSavedPoint(22,-0.1415807);
+   DoubleExponentialFunc1023->SetSavedPoint(23,-0.1374574);
+   DoubleExponentialFunc1023->SetSavedPoint(24,-0.1335936);
+   DoubleExponentialFunc1023->SetSavedPoint(25,-0.1299736);
+   DoubleExponentialFunc1023->SetSavedPoint(26,-0.1265825);
+   DoubleExponentialFunc1023->SetSavedPoint(27,-0.123406);
+   DoubleExponentialFunc1023->SetSavedPoint(28,-0.1204308);
+   DoubleExponentialFunc1023->SetSavedPoint(29,-0.1176442);
+   DoubleExponentialFunc1023->SetSavedPoint(30,-0.1150343);
+   DoubleExponentialFunc1023->SetSavedPoint(31,-0.11259);
+   DoubleExponentialFunc1023->SetSavedPoint(32,-0.1103008);
+   DoubleExponentialFunc1023->SetSavedPoint(33,-0.1081569);
+   DoubleExponentialFunc1023->SetSavedPoint(34,-0.106149);
+   DoubleExponentialFunc1023->SetSavedPoint(35,-0.1042686);
+   DoubleExponentialFunc1023->SetSavedPoint(36,-0.1025075);
+   DoubleExponentialFunc1023->SetSavedPoint(37,-0.1008581);
+   DoubleExponentialFunc1023->SetSavedPoint(38,-0.0993135);
+   DoubleExponentialFunc1023->SetSavedPoint(39,-0.09786691);
+   DoubleExponentialFunc1023->SetSavedPoint(40,-0.09651213);
+   DoubleExponentialFunc1023->SetSavedPoint(41,-0.09524334);
+   DoubleExponentialFunc1023->SetSavedPoint(42,-0.09405509);
+   DoubleExponentialFunc1023->SetSavedPoint(43,-0.09294226);
+   DoubleExponentialFunc1023->SetSavedPoint(44,-0.09190007);
+   DoubleExponentialFunc1023->SetSavedPoint(45,-0.09092403);
+   DoubleExponentialFunc1023->SetSavedPoint(46,-0.09000994);
+   DoubleExponentialFunc1023->SetSavedPoint(47,-0.08915387);
+   DoubleExponentialFunc1023->SetSavedPoint(48,-0.08835214);
+   DoubleExponentialFunc1023->SetSavedPoint(49,-0.0876013);
+   DoubleExponentialFunc1023->SetSavedPoint(50,-0.08689811);
+   DoubleExponentialFunc1023->SetSavedPoint(51,-0.08623956);
+   DoubleExponentialFunc1023->SetSavedPoint(52,-0.08562282);
+   DoubleExponentialFunc1023->SetSavedPoint(53,-0.08504521);
+   DoubleExponentialFunc1023->SetSavedPoint(54,-0.08450428);
+   DoubleExponentialFunc1023->SetSavedPoint(55,-0.08399767);
+   DoubleExponentialFunc1023->SetSavedPoint(56,-0.08352322);
+   DoubleExponentialFunc1023->SetSavedPoint(57,-0.08307889);
+   DoubleExponentialFunc1023->SetSavedPoint(58,-0.08266276);
+   DoubleExponentialFunc1023->SetSavedPoint(59,-0.08227305);
+   DoubleExponentialFunc1023->SetSavedPoint(60,-0.08190807);
+   DoubleExponentialFunc1023->SetSavedPoint(61,-0.08156626);
+   DoubleExponentialFunc1023->SetSavedPoint(62,-0.08124614);
+   DoubleExponentialFunc1023->SetSavedPoint(63,-0.08094634);
+   DoubleExponentialFunc1023->SetSavedPoint(64,-0.08066557);
+   DoubleExponentialFunc1023->SetSavedPoint(65,-0.08040263);
+   DoubleExponentialFunc1023->SetSavedPoint(66,-0.08015637);
+   DoubleExponentialFunc1023->SetSavedPoint(67,-0.07992575);
+   DoubleExponentialFunc1023->SetSavedPoint(68,-0.07970976);
+   DoubleExponentialFunc1023->SetSavedPoint(69,-0.07950748);
+   DoubleExponentialFunc1023->SetSavedPoint(70,-0.07931804);
+   DoubleExponentialFunc1023->SetSavedPoint(71,-0.07914063);
+   DoubleExponentialFunc1023->SetSavedPoint(72,-0.07897448);
+   DoubleExponentialFunc1023->SetSavedPoint(73,-0.07881887);
+   DoubleExponentialFunc1023->SetSavedPoint(74,-0.07867314);
+   DoubleExponentialFunc1023->SetSavedPoint(75,-0.07853666);
+   DoubleExponentialFunc1023->SetSavedPoint(76,-0.07840884);
+   DoubleExponentialFunc1023->SetSavedPoint(77,-0.07828914);
+   DoubleExponentialFunc1023->SetSavedPoint(78,-0.07817704);
+   DoubleExponentialFunc1023->SetSavedPoint(79,-0.07807205);
+   DoubleExponentialFunc1023->SetSavedPoint(80,-0.07797372);
+   DoubleExponentialFunc1023->SetSavedPoint(81,-0.07788164);
+   DoubleExponentialFunc1023->SetSavedPoint(82,-0.0777954);
+   DoubleExponentialFunc1023->SetSavedPoint(83,-0.07771463);
+   DoubleExponentialFunc1023->SetSavedPoint(84,-0.07763899);
+   DoubleExponentialFunc1023->SetSavedPoint(85,-0.07756815);
+   DoubleExponentialFunc1023->SetSavedPoint(86,-0.07750181);
+   DoubleExponentialFunc1023->SetSavedPoint(87,-0.07743968);
+   DoubleExponentialFunc1023->SetSavedPoint(88,-0.07738149);
+   DoubleExponentialFunc1023->SetSavedPoint(89,-0.077327);
+   DoubleExponentialFunc1023->SetSavedPoint(90,-0.07727596);
+   DoubleExponentialFunc1023->SetSavedPoint(91,-0.07722817);
+   DoubleExponentialFunc1023->SetSavedPoint(92,-0.07718341);
+   DoubleExponentialFunc1023->SetSavedPoint(93,-0.07714149);
+   DoubleExponentialFunc1023->SetSavedPoint(94,-0.07710223);
+   DoubleExponentialFunc1023->SetSavedPoint(95,-0.07706546);
+   DoubleExponentialFunc1023->SetSavedPoint(96,-0.07703103);
+   DoubleExponentialFunc1023->SetSavedPoint(97,-0.07699878);
+   DoubleExponentialFunc1023->SetSavedPoint(98,-0.07696858);
+   DoubleExponentialFunc1023->SetSavedPoint(99,-0.07694029);
+   DoubleExponentialFunc1023->SetSavedPoint(100,-0.0769138);
+   DoubleExponentialFunc1023->SetSavedPoint(101,13.09597);
+   DoubleExponentialFunc1023->SetSavedPoint(102,305.5727);
+   DoubleExponentialFunc1023->SetFillColor(19);
+   DoubleExponentialFunc1023->SetFillStyle(0);
+   DoubleExponentialFunc1023->SetLineColor(2);
+   DoubleExponentialFunc1023->SetLineWidth(2);
+   DoubleExponentialFunc1023->SetChisquare(61.10224);
+   DoubleExponentialFunc1023->SetNDF(64);
+   DoubleExponentialFunc1023->GetXaxis()->SetLabelFont(42);
+   DoubleExponentialFunc1023->GetXaxis()->SetTitleOffset(1);
+   DoubleExponentialFunc1023->GetXaxis()->SetTitleFont(42);
+   DoubleExponentialFunc1023->GetYaxis()->SetLabelFont(42);
+   DoubleExponentialFunc1023->GetYaxis()->SetTitleFont(42);
+   DoubleExponentialFunc1023->SetParameter(0,-16.47609);
+   DoubleExponentialFunc1023->SetParError(0,1.372829);
+   DoubleExponentialFunc1023->SetParLimits(0,0,0);
+   DoubleExponentialFunc1023->SetParameter(1,44.6);
+   DoubleExponentialFunc1023->SetParError(1,0);
+   DoubleExponentialFunc1023->SetParLimits(1,44.6,44.6);
+   DoubleExponentialFunc1023->SetParameter(2,22.37126);
+   DoubleExponentialFunc1023->SetParError(2,1.773373);
+   DoubleExponentialFunc1023->SetParLimits(2,0,0);
+   DoubleExponentialFunc1023->SetParameter(3,6.43);
+   DoubleExponentialFunc1023->SetParError(3,0);
+   DoubleExponentialFunc1023->SetParLimits(3,6.43,6.43);
+   DoubleExponentialFunc1023->SetParameter(4,-0.07652297);
+   DoubleExponentialFunc1023->SetParError(4,0.008837749);
+   DoubleExponentialFunc1023->SetParLimits(4,0,0);
+   DoubleExponentialFunc1023->SetParent(gre);
+   gre->GetListOfFunctions()->Add(DoubleExponentialFunc1023);
    gre->Draw("ap");
    
    TPaveText *pt = new TPaveText(0.15,0.6,0.25,0.89,"brNDC");

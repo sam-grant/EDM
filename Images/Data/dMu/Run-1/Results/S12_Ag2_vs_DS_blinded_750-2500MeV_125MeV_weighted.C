@@ -1,7 +1,7 @@
 void S12_Ag2_vs_DS_blinded_750-2500MeV_125MeV_weighted()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 17:51:24 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 13:27:59 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.25,-271.411,4.75,187.7533);
    c->SetFillColor(0);
@@ -17,7 +17,7 @@ void S12_Ag2_vs_DS_blinded_750-2500MeV_125MeV_weighted()
    4};
    Double_t _fy1001[4] = {
    -91.53256,
-   -23.70941,
+   -24.99904,
    3.523324,
    57.99782};
    Double_t _fex1001[4] = {
@@ -27,7 +27,7 @@ void S12_Ag2_vs_DS_blinded_750-2500MeV_125MeV_weighted()
    0};
    Double_t _fey1001[4] = {
    103.351,
-   87.80319,
+   87.73679,
    72.38685,
    53.22812};
    TGraphErrors *gre = new TGraphErrors(4,_fx1001,_fy1001,_fex1001,_fey1001);

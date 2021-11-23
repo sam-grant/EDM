@@ -719,6 +719,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
         double result2Tree = 1e3*result; double error2Tree = 1e3*error;
 
+        // TODO: This doesn't work properly for individual stations. May need a simplified method.
         // Write into TBranch
         resultTree->Branch((stn+"Bz").c_str(), &result2Tree);
         resultTree->Branch((stn+"Bz_err").c_str(), &error2Tree);

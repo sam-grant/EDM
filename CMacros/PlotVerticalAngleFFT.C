@@ -13,14 +13,14 @@ const int nTrials = 1e3;
 //string limit = "1.8e-18"; // only works for "truthAllDecays"
 
 // Global momentum cuts
-// const double xmin = 750;
-// const double xmax = 2500;
+const double xmin = 750;
+const double xmax = 2500;
 // const double xmin = 825; // 750;
 // const double xmax = 2375; // 2500;
 // const double xmin = 900;
 // const double xmax = 2250;
-const double xmin = 1025;
-const double xmax = 2125;
+// const double xmin = 1025;
+// const double xmax = 2125;
 
 string GetQual(string config) {
 
@@ -166,6 +166,17 @@ void OverlayFFTs(TH1D *h_FFT, TH1D *h_FFT_res, std::string title, std::string fn
   h_FFT->GetYaxis()->SetMaxDigits(4);
   h_FFT->SetLineColor(kBlack);
   h_FFT->SetLineWidth(2);
+
+  // Get maximum 
+  double max = 0; 
+  double max1 = h_FFT->GetMaximum(); 
+  double max2 = h_FFT_res->GetMaximum();
+
+  if(max1 > max2) max = max1; 
+  else max = max2; 
+
+  h_FFT->SetMaximum(max*1.5);
+
   h_FFT->Draw("HIST");
 
   h_FFT_res->SetLineColor(kRed);
@@ -281,7 +292,7 @@ void RunData(std::string config, std::string dataset, std::string blinding) {
 /*    h_FFT->Rebin(2);
     h_FFT_res->Rebin(2);*/  
     
-    OverlayFFTs(h_FFT, h_FFT_res, datasetLabel+";Frequency [MHz];FFT magnitude", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"FFT_overlay_"+config);
+    OverlayFFTs(h_FFT, h_FFT_res, datasetLabel+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"FFT_overlay_"+config);
   }
 
   cout<<"\n***************************** Done *****************************"<<endl;
@@ -294,18 +305,26 @@ void RunData(std::string config, std::string dataset, std::string blinding) {
 
 int main() { 
 
+  RunData("Run-1a_125MeV_BQ_weighted", "Run-1", "blinded");
+ // RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
+  RunData("Run-1b_125MeV_BQ_weighted", "Run-1", "blinded");
+  //RunData("Run-1b_125MeV_BQ", "Run-1", "blinded");
+/*  RunData("Run-1b_125MeV_BQ_weighted", "Run-1", "blinded");
+  RunData("Run-1c_125MeV_BQ_weighted", "Run-1", "blinded");
+  RunData("Run-1d_125MeV_BQ_weighted", "Run-1", "blinded");*/
+
 
 /*  RunSim("trackReco_AAR_250MeV_BQ", "5.4e-18", "unblinded");
-
-  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
+*/
+/*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded");
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded");
   RunData("Run-1d_125MeV_BQ", "Run-1", "blinded");*/
-
+/*
   RunData("Run-1a_125MeV_BQ", "O", "unblinded");
   RunData("Run-1b_125MeV_BQ", "O", "unblinded");
   RunData("Run-1c_125MeV_BQ", "O", "unblinded");
-  RunData("Run-1d_125MeV_BQ", "O", "unblinded");
+  RunData("Run-1d_125MeV_BQ", "O", "unblinded");*/
 
   return 0;
 

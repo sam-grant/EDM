@@ -1,7 +1,7 @@
 void S12S18_eAEDM_vs_p_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 17:30:10 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 11:24:32 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(530.2994,-0.2161412,2723.26,2.108419);
@@ -41,10 +41,10 @@ void S12S18_eAEDM_vs_p_Run-1a_125MeV_BQ()
    0.0465634,
    0.03227921,
    0.02650407,
-   0.02332046,
+   0.02332045,
    0.02101995,
    0.01975889,
-   0.01875527,
+   0.01875526,
    0.01872139,
    0.01812761,
    0.01880053,

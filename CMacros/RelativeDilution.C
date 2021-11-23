@@ -1,23 +1,38 @@
+/*
+
+- Weight integrals by momentum.
+
+  ~ Normalise the momentum dist with the same binning so that it has unit area.
+  ~ Apply these bin values as weighting to the bins in the dilution plot.
+  ~ Then either: average all the bins or refit and integrate.
+
+*/
+
+
 #include <iostream>
 
 #include "RootInclude.h"
 #include "FancyDraw.h"
 #include "Utils.h"
 
-void DrawIntegrals(vector<TH1D*> h_, string title, string fname, double ymin, double ymax) {
+using namespace std;
 
+void DrawIntegrals(std::vector<TH1D*> h_, std::string title, std::string fname, double ymin, double ymax) {
 
-	vector<string> labels_ = {"All decays", "Accepted decays", "Truth vertices", "Reco vertices"};
-	vector<int> colours_ = {1,2,8,4};
+	vector<TString> labels_ = {"Accepted decays", "Reco vertices (#geq 12 planes hit)", "Reco vertices (vertex quality)"};
+
+	vector<int> colours_ = {1,2,8};
+
 	TCanvas *c = new TCanvas("c","c",800,600);
-	// TLegend *l = new TLegend(0.59, 0.69, 0.89, 0.89); 
-	//TLegend *l = new TLegend(0.15, 0.11, 0.89, 0.21); 
-	TLegend *l = new TLegend(0.025, 0.91, 0.975, 0.99); 
-	l->SetNColumns(4);
-	l->SetBorderSize(0);
+
+	//TLegend *l = new TLegend(0.025, 0.91, 0.975, 0.99); 
+	//l->SetNColumns(3);
+	//l->SetBorderSize(0);
 	
-	l->SetTextSize(22);
-	l->SetTextFont(44);
+	//l->SetTextSize(22);
+	//l->SetTextFont(44);
+
+	cout<<h_.at(0)<<endl;
 
 	h_.at(0)->SetStats(0);
 	h_.at(0)->GetXaxis()->SetTitleSize(.04);
@@ -29,18 +44,20 @@ void DrawIntegrals(vector<TH1D*> h_, string title, string fname, double ymin, do
 	h_.at(0)->GetYaxis()->SetMaxDigits(4);	
 	h_.at(0)->GetYaxis()->SetRangeUser(ymin, ymax);
 
-	for(int i = 0; i<h_.size(); i++) {
+	h_.at(0)->Draw("HIST");
+
+/*	for(int i = 0; i<h_.size(); i++) {
 
 		h_.at(i)->SetLineColor(colours_.at(i));
 		h_.at(i)->SetLineWidth(3);
-		l->AddEntry(h_.at(i), labels_.at(i).c_str());
+		//l->AddEntry(h_.at(i), labels_.at(i));
 
 		if(i==0) h_.at(i)->Draw("HIST");
 		else h_.at(i)->Draw("HIST SAME");
 
 	}
-
-   	l->Draw("SAME");
+*/
+   	//l->Draw("SAME");
 
    	c->SaveAs((fname+".pdf").c_str());
    	c->SaveAs((fname+".png").c_str());
@@ -48,70 +65,13 @@ void DrawIntegrals(vector<TH1D*> h_, string title, string fname, double ymin, do
 
    	delete c;
 
-
 	return;
 
 
 } 
 
-
-
-void Run(TFile *input) { 
-
-	vector<TGraphErrors*> gr_;
-	gr_.push_back((TGraphErrors*)input->Get("DilutionFits/A/Decays/250MeV/d_vs_p/truthAllDecays"));
-	gr_.push_back((TGraphErrors*)input->Get("DilutionFits/A/Decays/250MeV/d_vs_p/truth"));
-	gr_.push_back((TGraphErrors*)input->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackTruth"));
-	gr_.push_back((TGraphErrors*)input->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackReco"));
-
-	// Need to convert to TH1 in order to rebin
-	vector<TH1D*> h_;
-
-	cout<<gr_.at(0)<<endl;
-
-	for(auto& gr : gr_) {
-
-		int nBins = gr->GetN();
-
-		TH1D *h = new TH1D("","",1, 0, 1);
-
-		// Actually just the mean
-		double weightedMean = 0;
-
-		for(int i = 0; i<nBins; i++) { 
-
-			weightedMean += gr->GetY()[i];
-
-			// h->SetBinContent(i+1, gr->GetY()[i]);
-			// h->SetBinError(i+1, gr->GetEY()[i]);
-
-		}
-
-		weightedMean = weightedMean/nBins;
-
-		h->SetBinContent(1, weightedMean);
-
-		// Squish into one bin
-		//h->Rebin(nBins);
-
-		// Push into vector
-		h_.push_back(h);
-
-		//delete h;
-
-
-
-	}
-
-	DrawIntegrals(h_, "", "../Images/MC/Dilution/dMu/5.4e-18/RelativeDilution",0,0.17);
-
-
-   return;
-
-}
-
 vector<TH1D*> GetDilutionHists() { 
-
+	
 	vector<TH1D*> dilutionHists_; 
 
 	TString inFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
@@ -119,11 +79,10 @@ vector<TH1D*> GetDilutionHists() {
 
 	cout<<"Open file "<<inFileName<<" "<<inFile<<endl;
 
-	vector<TGraphErrors*> gr_;
-	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/A/Decays/250MeV/d_vs_p/truthAllDecays"));
-	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/A/Decays/250MeV/d_vs_p/truth"));
-	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackTruth"));
-	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/B/Tracks/250MeV/d_vs_p/trackReco"));
+   	vector<TGraphErrors*> gr_;
+   	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/AQ/Decays/250MeV/d_vs_p/acceptedDecaysControl"));
+   	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/CQ/Tracks/250MeV/d_vs_p/trackRecoControl"));
+   	gr_.push_back((TGraphErrors*)inFile->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackRecoControl"));
 
 	// Check for seg faults
 	cout<<"Got dilution graphs: ";
@@ -138,7 +97,7 @@ vector<TH1D*> GetDilutionHists() {
 
 		for(int i = 0; i<nBins; i++) {
 			h->SetBinContent(i+1, gr->GetY()[i]);
-			h->SetBinError(i+1, gr->GetY()[i]);
+			h->SetBinError(i+1, gr->GetEY()[i]);
 		}
 
 		dilutionHists_.push_back(h);
@@ -147,7 +106,10 @@ vector<TH1D*> GetDilutionHists() {
 
 	// Check for seg faults
 	cout<<"Produced dilution hists: ";
-	for(auto& dh : dilutionHists_ ) cout<<dh<<" ";
+	for(auto& dh : dilutionHists_ ) {
+		cout<<dh<<" ";
+		cout<<dh->GetEntries()<<" ";
+	}
 	cout<<endl;
 
 	inFile->Close();
@@ -160,18 +122,21 @@ vector<TH1D*> GetMomentumHists() {
 
 	vector<TH1D*> momentumHists_; 
 
-	vector<TString> inFileNames_ = {"dMuSim_unblinded_truthAllDecays_AAR_250MeV_AQ.root", "dMuSim_unblinded_truth_AAR_250MeV_AQ.root", "dMuSim_unblinded_trackTruth_AAR_250MeV_BQ.root", "dMuSim_unblinded_trackReco_AAR_250MeV_BQ.root"};
+	vector<TString> inFileNames_;
 
-	//vector<TFile*> inFiles_; 
+	inFileNames_.push_back("edmFits_unblinded_acceptedDecaysControl_AAR_250MeV_AQ.root");
+	inFileNames_.push_back("edmFits_unblinded_trackRecoControl_AAR_250MeV_CQ.root");	
+	inFileNames_.push_back("edmFits_unblinded_trackRecoControl_AAR_250MeV_BQ.root"); 
 
 	vector<TGraphErrors*> gr_;
 
 	cout<<"Getting momentum graphs ";
+
 	for(auto& inFileName : inFileNames_) {
 
-		inFileName = "../Plots/MC/dMu/5.4e-18/fits/"+inFileName;
+		inFileName = "../Plots/MC/dMu/5.4e-18/Fits/"+inFileName;
 		TFile *f = TFile::Open(inFileName);
-		//inFiles_.push_back(TFile::Open(inFileName));
+
 		TString grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
 
 		TGraphErrors *gr = (TGraphErrors*)f->Get(grn+"S0S12S18_N_vs_p");
@@ -181,21 +146,26 @@ vector<TH1D*> GetMomentumHists() {
 
 		int nBins = gr->GetN();
 
-		TH1D *h = new TH1D("","",nBins, 750, 2500);
+		TH1D *h = new TH1D("","",nBins, 0, PMAX);
 
 		for(int i = 0; i<nBins; i++) {
 			h->SetBinContent(i+1, gr->GetY()[i]);
 			h->SetBinError(i+1, gr->GetY()[i]);
 		}
 
+		momentumHists_.push_back(h);
+
 		f->Close();
 
 	}
+
 	cout<<endl;
 
 	return momentumHists_;
 
 }
+
+
 int main() { 
 
    	cout<<"\n***************************** Getting dilution histograms *****************************"<<endl;
@@ -206,8 +176,9 @@ int main() {
 
    	vector<TH1D*> momentumHists_ = GetMomentumHists();
 
+   	DrawTH1(dilutionHists_.at(1), "", "../tmp/tmp");
+//   	DrawIntegrals(dilutionHists_, "", "../tmp/RelativeDilution", 0, 10);
 
-   
 
 	return 0;
 

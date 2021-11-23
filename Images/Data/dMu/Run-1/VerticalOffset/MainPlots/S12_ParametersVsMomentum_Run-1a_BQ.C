@@ -1,10 +1,10 @@
 void S12_ParametersVsMomentum_Run-1a_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 10:34:27 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 11:59:05 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(30.74998,-93.75,3218.25,93.75);
+   c->Range(30.74998,-150,3218.25,100);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -99,7 +99,7 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01003 = new TH1F("Graph_Graph01003","S12",100,349.5,2899.5);
-   Graph_Graph01003->SetMinimum(-75);
+   Graph_Graph01003->SetMinimum(-125);
    Graph_Graph01003->SetMaximum(75);
    Graph_Graph01003->SetDirectory(0);
    Graph_Graph01003->SetStats(0);

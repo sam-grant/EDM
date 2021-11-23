@@ -1,7 +1,7 @@
 void S12S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 12:02:18 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 13:26:33 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.25,6.067044e-19,4.75,2.380891e-18);
    c->SetFillColor(0);
@@ -16,7 +16,7 @@ void S12S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
    3,
    4};
    Double_t _fy1012[4] = {
-   1.291716e-18,
+   1.290514e-18,
    1.114685e-18,
    1.895718e-18,
    1.578466e-18};
@@ -26,7 +26,7 @@ void S12S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
    0,
    0};
    Double_t _fey1012[4] = {
-   2.460244e-19,
+   2.458344e-19,
    2.122827e-19,
    1.894756e-19,
    1.449649e-19};
@@ -74,15 +74,15 @@ void S12S18_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
    pol01013->SetFillStyle(0);
    pol01013->SetLineColor(2);
    pol01013->SetLineWidth(2);
-   pol01013->SetChisquare(8.599133);
+   pol01013->SetChisquare(8.609782);
    pol01013->SetNDF(3);
    pol01013->GetXaxis()->SetLabelFont(42);
    pol01013->GetXaxis()->SetTitleOffset(1);
    pol01013->GetXaxis()->SetTitleFont(42);
    pol01013->GetYaxis()->SetLabelFont(42);
    pol01013->GetYaxis()->SetTitleFont(42);
-   pol01013->SetParameter(0,1.52422e-18);
-   pol01013->SetParError(0,9.359629e-20);
+   pol01013->SetParameter(0,1.523994e-18);
+   pol01013->SetParError(0,9.358582e-20);
    pol01013->SetParLimits(0,0,0);
    pol01013->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01013);

@@ -1,7 +1,7 @@
 void S12S18_g2_delta_prime_vs_p_750-2500MeV_Run-1c_125MeV_BQ_weighted()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 17:32:52 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 11:03:22 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(411.5473,-1.004987,2837.436,1.416273);

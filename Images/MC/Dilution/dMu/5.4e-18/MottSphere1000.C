@@ -1,7 +1,7 @@
 void MottSphere1000()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 21 16:06:49 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 13:32:45 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

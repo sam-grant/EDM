@@ -1,10 +1,10 @@
 void AllGraphs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Oct 21 16:06:46 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 23 13:32:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-413.4375,-0.14375,3405.938,0.29375);
+   c->Range(-413.7764,-0.14375,3411.704,0.29375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,18 +12,18 @@ void AllGraphs()
    c->SetFrameBorderMode(0);
    
    Double_t allDecays_fx1001[12] = {
-   125,
-   375,
-   625,
-   875,
-   1125,
-   1375,
-   1625,
-   1875,
-   2125,
-   2375,
-   2625,
-   2875};
+   124.3992,
+   374.0378,
+   623.6659,
+   873.2514,
+   1122.83,
+   1372.241,
+   1621.488,
+   1870.589,
+   2119.347,
+   2367.26,
+   2613.214,
+   2850.255};
    Double_t allDecays_fy1001[12] = {
    0.1619073,
    0.1917905,
@@ -69,7 +69,7 @@ void AllGraphs()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_allDecays1001 = new TH1F("Graph_allDecays1001","",100,0,3150);
+   TH1F *Graph_allDecays1001 = new TH1F("Graph_allDecays1001","",100,0,3122.841);
    Graph_allDecays1001->SetMinimum(-0.1);
    Graph_allDecays1001->SetMaximum(0.25);
    Graph_allDecays1001->SetDirectory(0);
@@ -80,7 +80,7 @@ void AllGraphs()
    ci = TColor::GetColor("#000099");
    Graph_allDecays1001->SetLineColor(ci);
    Graph_allDecays1001->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_allDecays1001->GetXaxis()->SetRange(0,96);
+   Graph_allDecays1001->GetXaxis()->SetRange(0,97);
    Graph_allDecays1001->GetXaxis()->CenterTitle(true);
    Graph_allDecays1001->GetXaxis()->SetLabelFont(42);
    Graph_allDecays1001->GetXaxis()->SetTitleSize(0.04);
@@ -101,18 +101,18 @@ void AllGraphs()
    gre->Draw("ap");
    
    Double_t acceptedDecays_fx1002[12] = {
-   125,
-   375,
-   625,
-   875,
-   1125,
-   1375,
-   1625,
-   1875,
-   2125,
-   2375,
-   2625,
-   2875};
+   141.6721,
+   381.0619,
+   628.3411,
+   876.335,
+   1124.572,
+   1373.653,
+   1622.832,
+   1871.413,
+   2119.63,
+   2367.742,
+   2613.509,
+   2850.19};
    Double_t acceptedDecays_fy1002[12] = {
    0.1439656,
    0.150351,
@@ -159,7 +159,7 @@ void AllGraphs()
    gre->SetMarkerColor(2);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_acceptedDecays1002 = new TH1F("Graph_acceptedDecays1002","",100,0,3150);
+   TH1F *Graph_acceptedDecays1002 = new TH1F("Graph_acceptedDecays1002","",100,0,3121.042);
    Graph_acceptedDecays1002->SetMinimum(-0.1);
    Graph_acceptedDecays1002->SetMaximum(0.25);
    Graph_acceptedDecays1002->SetDirectory(0);
@@ -168,7 +168,7 @@ void AllGraphs()
    ci = TColor::GetColor("#000099");
    Graph_acceptedDecays1002->SetLineColor(ci);
    Graph_acceptedDecays1002->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_acceptedDecays1002->GetXaxis()->SetRange(0,96);
+   Graph_acceptedDecays1002->GetXaxis()->SetRange(0,97);
    Graph_acceptedDecays1002->GetXaxis()->SetLabelFont(42);
    Graph_acceptedDecays1002->GetXaxis()->SetTitleOffset(1);
    Graph_acceptedDecays1002->GetXaxis()->SetTitleFont(42);
@@ -183,17 +183,17 @@ void AllGraphs()
    gre->Draw("p ");
    
    Double_t trackTruth_fx1003[11] = {
-   375,
-   625,
-   875,
-   1125,
-   1375,
-   1625,
-   1875,
-   2125,
-   2375,
-   2625,
-   2875};
+   451.9227,
+   653.3392,
+   880.2735,
+   1123.022,
+   1371.209,
+   1620.262,
+   1867.113,
+   2115.519,
+   2363.039,
+   2613.873,
+   2792.289};
    Double_t trackTruth_fy1003[11] = {
    -0.02351028,
    0.09526525,
@@ -237,7 +237,7 @@ void AllGraphs()
    gre->SetMarkerColor(8);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_trackTruth1003 = new TH1F("Graph_trackTruth1003","",100,125,3125);
+   TH1F *Graph_trackTruth1003 = new TH1F("Graph_trackTruth1003","",100,217.886,3026.326);
    Graph_trackTruth1003->SetMinimum(-0.1);
    Graph_trackTruth1003->SetMaximum(0.25);
    Graph_trackTruth1003->SetDirectory(0);
@@ -246,7 +246,7 @@ void AllGraphs()
    ci = TColor::GetColor("#000099");
    Graph_trackTruth1003->SetLineColor(ci);
    Graph_trackTruth1003->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_trackTruth1003->GetXaxis()->SetRange(0,97);
+   Graph_trackTruth1003->GetXaxis()->SetRange(0,100);
    Graph_trackTruth1003->GetXaxis()->SetLabelFont(42);
    Graph_trackTruth1003->GetXaxis()->SetTitleOffset(1);
    Graph_trackTruth1003->GetXaxis()->SetTitleFont(42);
@@ -261,17 +261,17 @@ void AllGraphs()
    gre->Draw("p ");
    
    Double_t trackReco_fx1004[11] = {
-   375,
-   625,
-   875,
-   1125,
-   1375,
-   1625,
-   1875,
-   2125,
-   2375,
-   2625,
-   2875};
+   451.7878,
+   653.297,
+   880.2628,
+   1123.041,
+   1371.131,
+   1620.23,
+   1867.05,
+   2115.573,
+   2363,
+   2614.02,
+   2788.473};
    Double_t trackReco_fy1004[11] = {
    -0.004967018,
    0.09179145,
@@ -315,7 +315,7 @@ void AllGraphs()
    gre->SetMarkerColor(4);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_trackReco1004 = new TH1F("Graph_trackReco1004","",100,125,3125);
+   TH1F *Graph_trackReco1004 = new TH1F("Graph_trackReco1004","",100,218.1193,3022.141);
    Graph_trackReco1004->SetMinimum(-0.1);
    Graph_trackReco1004->SetMaximum(0.25);
    Graph_trackReco1004->SetDirectory(0);
@@ -324,7 +324,7 @@ void AllGraphs()
    ci = TColor::GetColor("#000099");
    Graph_trackReco1004->SetLineColor(ci);
    Graph_trackReco1004->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
-   Graph_trackReco1004->GetXaxis()->SetRange(0,97);
+   Graph_trackReco1004->GetXaxis()->SetRange(0,100);
    Graph_trackReco1004->GetXaxis()->SetLabelFont(42);
    Graph_trackReco1004->GetXaxis()->SetTitleOffset(1);
    Graph_trackReco1004->GetXaxis()->SetTitleFont(42);

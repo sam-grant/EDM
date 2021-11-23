@@ -388,7 +388,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
   for(auto& stn : stn_) { 
 
     //TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("MainPlots/"+stn+"_ThetaY_vs_Time_Modulo_Long").c_str());
-    TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("MainPlots/"+stn+"_ThetaY_vs_Time").c_str());
+    TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("MainPlots/"+stn+"_ThetaY_vs_Time_50ns").c_str());
     //h2_thetaY_mod->RebinX(10);
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
@@ -536,7 +536,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
       // Blind with dilution weighting
-      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, p);
+      //TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, p);
+      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits/MomSlices");
 
@@ -679,7 +680,8 @@ void Run(std::string config, bool write) {
 
   cout<<"Reading\t"<<inputName<<" "<<input<<endl;
 
-  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+"_weighted.root";//"_"+to_string(step)+"MeV_"+qual+".root";
+  //std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+"_weighted.root";//"_"+to_string(step)+"MeV_"+qual+".root";
+  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+".root";//"_"+to_string(step)+"MeV_"+qual+".root";
   if(!write) outputName = "delete_me.root";
 
   TFile *output = new TFile(outputName.c_str(), "RECREATE");

@@ -118,7 +118,7 @@ void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, s
 
 }
 
-void DrawParameterGraph(vector<double> p_, vector<double> A_, vector<double> eA_, vector<double> B_, vector<double> eB_, vector<double> c_, vector<double> ec_, std::string dataset, std::string title, std::string fname, double ymin, double ymax) { 
+void DrawAllParameters(vector<double> p_, vector<double> A_, vector<double> eA_, vector<double> B_, vector<double> eB_, vector<double> c_, vector<double> ec_, std::string dataset, std::string title, std::string fname, double ymin, double ymax) { 
 
   vector<double> zeros_;
   for(auto& i : p_) zeros_.push_back(0.);
@@ -160,6 +160,58 @@ void DrawParameterGraph(vector<double> p_, vector<double> A_, vector<double> eA_
   leg->AddEntry(gr_A, "A");
   leg->AddEntry(gr_B, "B");
   leg->AddEntry(gr_c, "c");
+
+  leg->Draw("SAME");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
+void DrawSingleParameter(vector<double> x_, vector<double> y_, vector<double> ey_, std::string dataset, std::string title, std::string fname, double ymin, double ymax) { 
+
+  vector<double> zeros_;
+  for(auto& i : x_) zeros_.push_back(0.);
+
+  TGraphErrors *gr = GenerateTGraphErrors(x_, y_, zeros_, ey_);
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  gr->SetTitle(title.c_str());
+  gr->GetXaxis()->SetTitleSize(.04);
+  gr->GetYaxis()->SetTitleSize(.04);
+  gr->GetXaxis()->SetTitleOffset(1.1);
+  gr->GetYaxis()->SetTitleOffset(1.2);
+  gr->GetXaxis()->CenterTitle(true);
+  gr->GetYaxis()->CenterTitle(true);
+  gr->GetYaxis()->SetMaxDigits(4);
+  
+  gr->SetMarkerStyle(20); //  Full circle
+  gr->SetMarkerColor(kBlack); 
+
+  gr->GetYaxis()->SetRangeUser(ymin, ymax);
+
+  gr->Draw("AP");
+
+  gPad->Update();
+
+  TLine *zero = new TLine(gPad->GetUxmin(), 0, gPad->GetUxmax(), 0);
+  //zero->SetLineWidth(3);
+  zero->SetLineColor(kGray);
+  zero->SetLineStyle(2);
+  zero->Draw();
+
+  gr->Draw("P SAME");
+
+  TLegend *leg = new TLegend(0.65, 0.75, 0.85, 0.89);
+  leg->SetBorderSize(0);
+  
+  leg->AddEntry(gr, dataset.c_str());
 
   leg->Draw("SAME");
 
@@ -286,7 +338,8 @@ void Run(std::string dataset, int step, bool write) {
 
     }
 
-    DrawParameterGraph(p_, A_, eA_, B_, eB_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];Parameter value [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ParametersVsMomentum_"+dataset+"_BQ", -75, +75);
+    DrawAllParameters(p_, A_, eA_, B_, eB_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];Parameter value [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ParametersVsMomentum_"+dataset+"_BQ", -125, +75);
+    DrawSingleParameter(p_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_AverageVerticalOffsetVsMomentum_"+dataset+"_BQ", -1.5, +2.5);
 
   }
 
