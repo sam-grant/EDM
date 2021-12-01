@@ -200,45 +200,48 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config, std::str
   int t_mod = 70;
   int lo = 0; 
   int hi = t_mod;
+
   double t_max = gr->GetPointX(gr->GetN()-1);
   int folds = t_max / t_mod;
 
   int i_point = 0; 
 
-  double fit_start_time = 30.6;
-  double fit_end_time = 305.6;
+  double fit_start_time = xmin;
+  double fit_end_time = xmax;
 
   for (int i_fold = 0; i_fold < folds; i_fold++) { 
 
     TGraphErrors *gr_tmp = new TGraphErrors();
     
-    int n = 0; 
     int i_point_mod = 0; 
 
     while(gr->GetPointX(i_point) >= lo && gr->GetPointX(i_point) < hi) {
 
-      double x = gr->GetPointX(i_point_mod); double ex = gr->GetErrorX(i_point_mod);
-      double y = gr->GetPointY(i_point); double ey = gr->GetErrorY(i_point);
+      double x = gr->GetPointX(i_point) - t_mod*i_fold;
+      double ex = gr->GetErrorX(i_point);
+      double y = gr->GetPointY(i_point);
+      double ey = gr->GetErrorY(i_point);
 
       if(y == 0) { 
         i_point++;
-        i_point_mod++;
         continue;
       }
 
-      gr_tmp->SetPoint(n, x, y);
-      gr_tmp->SetPointError(n, ex, ey); 
+      gr_tmp->SetPoint(i_point_mod, x, y);
+      gr_tmp->SetPointError(i_point_mod, ex, ey); 
 
-      n++; i_point++; i_point_mod++;
+      i_point_mod++;
+      i_point++;
 
     }
 
-    double xmin = gr_tmp->GetPointX(0);
-    if(i_fold == 0) xmin = fit_start_time;
+    if(i_fold != 0) fit_start_time = gr_tmp->GetPointX(0); 
 
-    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A*1e3, 0, xmin, gr_tmp->GetPointX(n-1));
+    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A*1e3, phi, fit_start_time, gr_tmp->GetPointX(i_point-1));
 
     gr_.push_back(gr_tmp);
+
+    // DrawTGraphErrors(gr_tmp, "", "../tmp/gr_tmp_"+to_string(i_fold));
 
     lo = lo + t_mod; 
     hi = hi + t_mod;
