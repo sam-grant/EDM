@@ -1,7 +1,7 @@
 void fit_wiggle_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 11:24:17 2021) by ROOT version 6.24/04
+//=========  (Wed Dec  1 15:21:47 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-3.99534,0.5,340.0282,5.5);
@@ -7630,7 +7630,7 @@ void fit_wiggle_Run-1a_125MeV_BQ()
    4.898979};
    TGraphErrors *gre = new TGraphErrors(1903,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
-   gre->SetTitle(";Decay time [#mus];Tracks / 149 ns");
+   gre->SetTitle(";Decay time [#mus];Tracks / 149.2 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -7651,7 +7651,7 @@ void fit_wiggle_Run-1a_125MeV_BQ()
    Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1001->GetYaxis()->SetTitle("Tracks / 149 ns");
+   Graph_Graph1001->GetYaxis()->SetTitle("Tracks / 149.2 ns");
    Graph_Graph1001->GetYaxis()->CenterTitle(true);
    Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1001->GetYaxis()->SetLabelFont(42);

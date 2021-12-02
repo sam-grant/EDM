@@ -1,7 +1,7 @@
 void S12_Ag2_vs_p_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 11:58:15 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 30 19:14:00 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(530.1083,-7.760326,2725.349,7.652067);

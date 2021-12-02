@@ -1,0 +1,17 @@
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584613_26079.00041.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584391_26079.00042.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584799_26079.00043.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584635_26079.00044.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584794_26079.00045.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584577_26079.00046.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584690_26079.00047.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584800_26079.00048.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584807_26079.00049.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584397_26079.00050.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32583690_26079.00051.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584787_26079.00052.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584709_26079.00053.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584665_26079.00056.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584596_26079.00057.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32584818_26079.00058.root
+/pnfs/GM2/daq/run2/offline/gm2_5112C/runs_26000/26079/gm2offline_final_32583816_26079.00059.root

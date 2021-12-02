@@ -1,0 +1,172 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+
+#include "RootInclude.h"
+#include "FancyDraw.h"
+#include "Utils.h"
+
+using namespace std;
+
+vector<string> csvReader(string infile) {
+
+  vector<string> result;
+
+  // Open file
+  std::ifstream myFile(infile);
+
+  // Check that it opened correctly
+  if(!myFile.is_open()) throw std::runtime_error("Could not open file");
+
+  // Helper vars
+  std::string line; int val;
+  // Read data, line by line
+  while(std::getline(myFile, line))
+    {
+      // Create a stringstream of the current line
+      std::stringstream ss(line);
+      while(ss >> val) result.push_back(to_string(val));
+    }
+
+  // Close file
+  myFile.close();
+
+  return result;
+
+}
+
+//TGraphErrors *GetAvgCaloYVsRun(vector<string> runs, string dataset) { //, string inputDir) {
+TGraphErrors *GeCaloYVsRun(vector<string> runs, string dataset, TFile *output) { //, string inputDir) {
+
+  vector<double> y_; vector<double> ey_;
+  vector<double> x_; vector<double> ex_;
+
+  for( int i_run = 0; i_run < runs.size(); i_run++ ) {
+
+    string run = runs.at(i_run);
+
+    string finName = "/pnfs/GM2/persistent/EDM/Data/Br/CaloBeamPos_NewCuts/Run4_Nearline_2021/caloBeamPositionPlots_"+run+".root";
+    TFile *fin = TFile::Open((finName).c_str());
+
+    cout<<"Got input file "<<finName<<" "<<fin<<endl;
+
+    if(fin==0) continue;
+
+    TH1D *hy = (TH1D*)fin->Get("CaloBeamPosition/clusterY");
+
+    double y = hy->GetMean(); double ey = hy->GetMeanError();
+
+    if(hy->GetMean()==0) {
+      fin->Close();
+      cout<<"Warning: run "+run+" has a mean y-position of zero. Skipping."<<endl;
+      continue;
+    }
+
+    y_.push_back(y); ey_.push_back(ey);
+    x_.push_back(std::stod(run)); ex_.push_back(0.);
+
+    fin->Close();
+
+  }
+
+  // Create TGraph
+  TGraphErrors *gr_avg = GenerateTGraphErrors(x_, y_, ex_, ey_);
+
+  gr_avg->Draw("AP*");
+
+  DrawTGraphErrors(gr_avg, ";Run number;#LTy_{Calo}#GT [mm]", "../Images/AvgCaloYvsRun_"+dataset+"_"+runs.at(0)+"_"+runs.at(runs.size()-1));
+  
+  output->cd("CaloAverage");
+  gr_avg->Write();
+
+
+  vector<TGraphErrors*> caloGraphs_;
+  vector<TGraphErrors*> caloGraphs_meanSub_;
+  vector<string> caloNames_;
+
+  for( int i_calo = 1; i_calo < 25; i_calo++ ) {
+
+    cout<<"\nProcessing calo "<<i_calo<<endl;
+
+    vector<double> yCalo_; vector<double> eyCalo_; 
+    vector<double> xCalo_; vector<double> exCalo_;
+
+    for( int i_run = 0; i_run < runs.size(); i_run++ ) {
+
+      string run = runs.at(i_run);
+      string input = "../Plots/Data/RadialFieldEstimation/BeamYPosMonitoring/Input/Run4_Jan/y-pos_"+run+".root";
+      TFile *fin = TFile::Open(input.c_str());
+      TH1D *hy_calo = (TH1D*)fin->Get(("CaloBeamPosition/PerCalo/clusterY_"+to_string(i_calo)).c_str());
+      if(hy_calo->GetMean()==0) {
+        fin->Close();
+        continue;
+      }
+
+      double ymean = hy_calo->GetMean(); 
+      if(ymean < 70 || ymean > 80) continue;
+      //cout<<"ymean\t"<<ymean<<endl;
+
+      yCalo_.push_back(ymean); eyCalo_.push_back(hy_calo->GetMeanError());
+      xCalo_.push_back(std::stod(run)); exCalo_.push_back(0.);
+
+      fin->Close();
+
+    }
+
+    int n_calo = yCalo_.size();
+
+    double x_calo[n_calo]; double ex_calo[n_calo];
+    double y_calo[n_calo]; double ey_calo[n_calo];
+    double y_calo_mean_sub[n_calo];
+
+    // Get calo mean 
+    float average = 0.0f;
+    if ( n_calo != 0) average = accumulate( yCalo_.begin(), yCalo_.end(), 0.0) / n_calo;
+
+    for( int i_run = 0; i_run < n_calo; i_run++ ) {
+
+      x_calo[i_run] = xCalo_.at(i_run); ex_calo[i_run] = exCalo_.at(i_run);
+      y_calo[i_run] = yCalo_.at(i_run); ey_calo[i_run] = eyCalo_.at(i_run);
+      y_calo_mean_sub[i_run] = yCalo_.at(i_run) - average; 
+
+
+    }
+
+    TGraphErrors *gr_calo = new TGraphErrors(n_calo, x_calo, y_calo, ex_calo, ey_calo);
+    TGraphErrors *gr_calo_mean_sub = new TGraphErrors(n_calo, x_calo, y_calo_mean_sub, ex_calo, ey_calo);
+
+    gr_calo->Draw("AP*");
+    output->cd("PerCalo"); 
+    gr_calo->SetName(("gr_"+to_string(i_calo)).c_str());
+    gr_calo->Write();
+
+    gr_calo_mean_sub->Draw("AP*");
+
+    output->cd("PerCaloMeanSubtracted");
+    gr_calo_mean_sub->SetName(("gr_"+to_string(i_calo)).c_str());
+    gr_calo_mean_sub->Write();
+
+    caloGraphs_.push_back(gr_calo);
+    caloGraphs_meanSub_.push_back(gr_calo_mean_sub);
+    caloNames_.push_back("Calo "+to_string(i_calo));
+
+  return;// gr;
+}
+
+
+int main() { 
+  string outputName = "../Plots/ZeroPoint.root";//+dataset+".root";
+  TFile *output = new TFile( outputName.c_str(), "RECREATE");
+  output->mkdir("CaloAverage"); output->mkdir("PerCalo"); output->mkdir("PerCaloMeanSubtracted");
+  string dataset = "Run4_Jan";
+  vector<string> runs = csvReader("../txt/"+dataset+".txt");
+  // TGraphErrors *gr_AvgCaloYvsRun = GetAvgCaloYVsRun(runs, dataset);
+  GetAvgCaloYVsRun(runs, dataset, output);
+
+  return 0;
+
+}
+  
+
+    

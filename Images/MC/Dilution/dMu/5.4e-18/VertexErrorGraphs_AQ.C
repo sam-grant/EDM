@@ -1,7 +1,7 @@
 void VertexErrorGraphs_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 13:32:43 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  2 15:17:07 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-135.2991,-0.00375,3382.477,0.03375);
@@ -25,18 +25,18 @@ void VertexErrorGraphs_AQ()
    2613.583,
    2829.611};
    Double_t Graph0_fy1009[12] = {
-   0.6776693,
-   0.02366909,
-   0.01181676,
-   0.009709212,
-   0.008755766,
-   0.008054999,
-   0.00759934,
-   0.007448148,
-   0.007500743,
-   0.007800729,
-   0.008029997,
-   0.009519484};
+   0.6777398,
+   0.0236693,
+   0.0118169,
+   0.00970933,
+   0.00875586,
+   0.008055087,
+   0.007599435,
+   0.007448266,
+   0.007500867,
+   0.00780087,
+   0.008030246,
+   0.009519822};
    Double_t Graph0_fex1009[12] = {
    0,
    0,
@@ -65,11 +65,11 @@ void VertexErrorGraphs_AQ()
    0};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1009,Graph0_fy1009,Graph0_fex1009,Graph0_fey1009);
    gre->SetName("Graph0");
-   gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;#deltad_{EDM}(p)");
+   gre->SetTitle("Decay vertex momentum [MeV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01009 = new TH1F("Graph_Graph01009","",100,0,3092.55);
+   TH1F *Graph_Graph01009 = new TH1F("Graph_Graph01009","Decay vertex momentum [MeV]",100,0,3092.55);
    Graph_Graph01009->SetMinimum(0);
    Graph_Graph01009->SetMaximum(0.03);
    Graph_Graph01009->SetDirectory(0);
@@ -79,14 +79,13 @@ void VertexErrorGraphs_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01009->SetLineColor(ci);
-   Graph_Graph01009->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
+   Graph_Graph01009->GetXaxis()->SetTitle("#deltad_{EDM} / 250 MeV");
    Graph_Graph01009->GetXaxis()->SetRange(8,98);
    Graph_Graph01009->GetXaxis()->CenterTitle(true);
    Graph_Graph01009->GetXaxis()->SetLabelFont(42);
    Graph_Graph01009->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01009->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01009->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01009->GetYaxis()->SetTitle("#deltad_{EDM}(p)");
    Graph_Graph01009->GetYaxis()->CenterTitle(true);
    Graph_Graph01009->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01009->GetYaxis()->SetLabelFont(42);
@@ -114,18 +113,18 @@ void VertexErrorGraphs_AQ()
    2614.113,
    2827.094};
    Double_t Graph1_fy1010[12] = {
-   0.3540861,
-   0.02393878,
-   0.01192541,
-   0.009786631,
-   0.008830908,
-   0.008139843,
-   0.007688796,
-   0.007543905,
-   0.007646466,
-   0.008049477,
-   0.008217442,
-   0.009839138};
+   0.3540749,
+   0.02393894,
+   0.0119255,
+   0.009786713,
+   0.008830967,
+   0.008139897,
+   0.007688857,
+   0.007543985,
+   0.007646547,
+   0.008049577,
+   0.008217598,
+   0.009839241};
    Double_t Graph1_fex1010[12] = {
    0,
    0,
@@ -178,6 +177,15 @@ void VertexErrorGraphs_AQ()
    gre->SetHistogram(Graph_Graph11010);
    
    gre->Draw("p ");
+   
+   TPaveText *pt = new TPaveText(0.2205276,0.9341608,0.7794724,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("Decay vertex momentum [MeV]");
+   pt->Draw();
    TLine *line = new TLine(750,0,750,0.03);
 
    ci = TColor::GetColor("#ff0000");

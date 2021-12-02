@@ -1,10 +1,10 @@
 void S12_EDM_delta_prime_vs_p_750-2500MeV_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 11:46:27 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  2 14:43:38 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(411.7199,-1.097196,2837.24,3.179356);
+   c->Range(411.7192,-0.9656129,2837.239,2.704499);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,35 +12,35 @@ void S12_EDM_delta_prime_vs_p_750-2500MeV_Run-1b_125MeV_BQ()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1013[14] = {
-   815.9733,
-   938.7135,
-   1062.734,
+   815.9725,
+   938.712,
+   1062.736,
    1188.27,
-   1312.739,
+   1312.737,
    1435.93,
-   1561.976,
-   1685.237,
+   1561.978,
+   1685.239,
    1810.655,
-   1935.236,
-   2060.303,
-   2185.135,
-   2309.226,
-   2432.987};
+   1935.234,
+   2060.302,
+   2185.134,
+   2309.222,
+   2432.985};
    Double_t _fy1013[14] = {
-   1.116006,
-   0.2358987,
-   0.7282337,
-   -0.2924436,
-   0.684789,
-   -0.1615426,
-   0.1899251,
-   0.1603845,
-   0.0864721,
-   0.4991523,
-   0.5936191,
-   0.3369482,
-   1.118873,
-   1.191291};
+   0.9772317,
+   0.2398498,
+   0.7186328,
+   -0.2190944,
+   0.7575488,
+   -0.1254628,
+   0.268659,
+   0.2157704,
+   0.1354076,
+   0.5651641,
+   0.5757084,
+   0.3252769,
+   0.8727693,
+   0.7893478};
    Double_t _fex1013[14] = {
    0,
    0,
@@ -57,29 +57,29 @@ void S12_EDM_delta_prime_vs_p_750-2500MeV_Run-1b_125MeV_BQ()
    0,
    0};
    Double_t _fey1013[14] = {
-   0.5947981,
-   0.4351103,
-   0.3537872,
-   0.3016781,
-   0.2735971,
-   0.254932,
-   0.2570608,
-   0.2547404,
-   0.2766037,
-   0.3000994,
-   0.3477859,
-   0.408823,
-   0.5279024,
-   0.7794603};
+   0.4946385,
+   0.3937641,
+   0.3405082,
+   0.3036058,
+   0.2837595,
+   0.2690946,
+   0.2731319,
+   0.2692936,
+   0.2872283,
+   0.3015187,
+   0.3312829,
+   0.358589,
+   0.4071531,
+   0.4848372};
    TGraphErrors *gre = new TGraphErrors(14,_fx1013,_fy1013,_fex1013,_fey1013);
    gre->SetName("");
-   gre->SetTitle("S12_");
+   gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1013 = new TH1F("Graph_Graph1013","S12_",100,654.272,2594.688);
-   Graph_Graph1013->SetMinimum(-0.6695412);
-   Graph_Graph1013->SetMaximum(2.751701);
+   TH1F *Graph_Graph1013 = new TH1F("Graph_Graph1013","S12",100,654.2712,2594.687);
+   Graph_Graph1013->SetMinimum(-0.5986017);
+   Graph_Graph1013->SetMaximum(2.337488);
    Graph_Graph1013->SetDirectory(0);
    Graph_Graph1013->SetStats(0);
 
@@ -111,15 +111,15 @@ void S12_EDM_delta_prime_vs_p_750-2500MeV_Run-1b_125MeV_BQ()
    pol01014->SetFillStyle(0);
    pol01014->SetLineColor(2);
    pol01014->SetLineWidth(2);
-   pol01014->SetChisquare(18.4346);
+   pol01014->SetChisquare(15.89128);
    pol01014->SetNDF(13);
    pol01014->GetXaxis()->SetLabelFont(42);
    pol01014->GetXaxis()->SetTitleOffset(1);
    pol01014->GetXaxis()->SetTitleFont(42);
    pol01014->GetYaxis()->SetLabelFont(42);
    pol01014->GetYaxis()->SetTitleFont(42);
-   pol01014->SetParameter(0,0.2967354);
-   pol01014->SetParError(0,0.08769433);
+   pol01014->SetParameter(0,0.3579648);
+   pol01014->SetParError(0,0.08647424);
    pol01014->SetParLimits(0,0,0);
    pol01014->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01014);
@@ -141,7 +141,7 @@ void S12_EDM_delta_prime_vs_p_750-2500MeV_Run-1b_125MeV_BQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.3
+   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.36
 #pm0.09
  mrad","lpf");
    entry->SetFillColor(19);
@@ -154,13 +154,13 @@ void S12_EDM_delta_prime_vs_p_750-2500MeV_Run-1b_125MeV_BQ()
    entry->SetTextFont(42);
    leg->Draw();
    
-   TPaveText *pt = new TPaveText(0.4466583,0.9362587,0.5533417,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);
    pt->SetFillStyle(0);
    pt->SetTextFont(42);
-   TText *pt_LaTex = pt->AddText("S12_");
+   TText *pt_LaTex = pt->AddText("S12");
    pt->Draw();
    c->Modified();
    c->cd();

@@ -1,7 +1,7 @@
 void S12_AEDM_vs_DS_blinded_750-2500MeV_125MeV_weighted()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 13:28:00 2021) by ROOT version 6.24/04
+//=========  (Wed Dec  1 14:42:58 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.25,4.06005e-19,4.75,2.639805e-18);
    c->SetFillColor(0);

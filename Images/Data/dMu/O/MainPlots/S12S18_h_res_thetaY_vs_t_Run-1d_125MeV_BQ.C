@@ -1,7 +1,7 @@
 void S12S18_h_res_thetaY_vs_t_Run-1d_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov 18 11:59:57 2021) by ROOT version 6.24/04
+//=========  (Tue Nov 30 18:01:45 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -3700,7 +3700,6 @@ void S12S18_h_res_thetaY_vs_t_Run-1d_125MeV_BQ()
    __8->SetBinError(1842,0.9576349);
    __8->SetBinError(1843,0.9135512);
    __8->SetBinError(1844,3.839826);
-   __8->SetBinError(1845,0.1935332);
    __8->SetEntries(3690);
    __8->GetXaxis()->SetTitle("Decay time [#mus]");
    __8->GetXaxis()->CenterTitle(true);

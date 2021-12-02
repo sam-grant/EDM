@@ -179,7 +179,8 @@ void OverlayFFTs(TH1D *h_FFT, TH1D *h_FFT_res, std::string title, std::string fn
 
   h_FFT->Draw("HIST");
 
-  h_FFT_res->SetLineColor(kRed);
+  h_FFT_res->SetLineColor(kGray);
+  h_FFT_res->SetMarkerColor(kGray);
   h_FFT_res->SetLineWidth(2);
   h_FFT_res->Draw("HIST SAME");
 
@@ -193,6 +194,8 @@ void OverlayFFTs(TH1D *h_FFT, TH1D *h_FFT_res, std::string title, std::string fn
 
   leg->Draw("SAME");
 
+//    c->SetLogy();
+
   c->SaveAs((fname+".C").c_str());
   c->SaveAs((fname+".pdf").c_str());
   c->SaveAs((fname+".png").c_str());
@@ -201,7 +204,104 @@ void OverlayFFTs(TH1D *h_FFT, TH1D *h_FFT_res, std::string title, std::string fn
 
   return;
 
+}
 
+void DrawFFT(TH1D *h_FFT, std::string datasetLabel, std::string title, std::string fname) { 
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  h_FFT->SetTitle(title.c_str());
+
+  h_FFT->SetStats(0);
+      
+  h_FFT->GetXaxis()->SetTitleSize(.04);
+  h_FFT->GetYaxis()->SetTitleSize(.04);
+  h_FFT->GetXaxis()->SetTitleOffset(1.1);
+  h_FFT->GetYaxis()->SetTitleOffset(1.25);
+  h_FFT->GetXaxis()->CenterTitle(1);
+  h_FFT->GetYaxis()->CenterTitle(1);
+  h_FFT->GetYaxis()->SetMaxDigits(4);
+  h_FFT->SetLineColor(kBlack);
+  h_FFT->SetLineWidth(2);
+
+  h_FFT->Draw("HIST");
+
+  TLegend *leg = new TLegend(.65, .79, .89, .89);
+  leg->SetBorderSize(0);
+  leg->SetTextSize(24);
+  leg->SetTextFont(44);
+
+  leg->AddEntry(h_FFT, ("Data: "+datasetLabel).c_str());
+
+  leg->Draw("SAME");
+
+  // f = 1/2*T
+  gPad->Update();
+
+  // This is wrong
+  TLine *g2Line = new TLine(OMEGA_A*1e3/2, gPad->GetUymin(), OMEGA_A*1e3/2, gPad->GetUymax());
+  g2Line->SetLineStyle(2);
+  g2Line->SetLineColor(kRed);
+  // g2Line->Draw("SAME");
+
+//  cout<<OMEGA_A*1e3/2<<endl;
+
+  c->SaveAs((fname+".C").c_str());
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+
+  delete c;
+  return;
+
+}
+
+void DrawFFTZoom(TH1D *h_FFT, std::string datasetLabel, std::string title, std::string fname) { 
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  h_FFT->SetTitle(title.c_str());
+
+  h_FFT->SetStats(0);
+      
+  h_FFT->GetXaxis()->SetTitleSize(.04);
+  h_FFT->GetYaxis()->SetTitleSize(.04);
+  h_FFT->GetXaxis()->SetTitleOffset(1.1);
+  h_FFT->GetYaxis()->SetTitleOffset(1.25);
+  h_FFT->GetXaxis()->CenterTitle(1);
+  h_FFT->GetYaxis()->CenterTitle(1);
+  h_FFT->GetYaxis()->SetMaxDigits(4);
+  h_FFT->SetLineColor(kBlack);
+  h_FFT->SetLineWidth(2);
+
+  h_FFT->GetXaxis()->SetRangeUser(1.5, 2.5);
+
+  h_FFT->Draw("HIST");
+
+  TLegend *leg = new TLegend(.65, .79, .89, .89);
+  leg->SetBorderSize(0);
+  leg->SetTextSize(24);
+  leg->SetTextFont(44);
+
+  leg->AddEntry(h_FFT, ("Data: "+datasetLabel).c_str());
+
+  leg->Draw("SAME");
+
+  // f = 1/2*T
+  gPad->Update();
+
+  // This is wrong
+  TLine *g2Line = new TLine(OMEGA_A*1e3/2, gPad->GetUymin(), OMEGA_A*1e3/2, gPad->GetUymax());
+  g2Line->SetLineStyle(2);
+  g2Line->SetLineColor(kRed);
+  // g2Line->Draw("SAME");
+
+//  cout<<OMEGA_A*1e3/2<<endl;
+
+  c->SaveAs((fname+".C").c_str());
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+
+  delete c;
   return;
 
 }
@@ -235,8 +335,6 @@ void RunSim(string config, string dataset, string blinding) {
   if(tracksOrDecaysLabel=="Decays") stn_ = {""};
 
   for(auto& stn : stn_) {
-
-
 
     TH1D *h_FFT = (TH1D*)file->Get(("SimultaneousAnalysis/"+stn+"FFT_px_thetaY_vs_t").c_str());
     TH1D *h_FFT_res = (TH1D*)file->Get(("SimultaneousAnalysis/"+stn+"FFT_h_res_thetaY_vs_t").c_str());  
@@ -282,17 +380,20 @@ void RunData(std::string config, std::string dataset, std::string blinding) {
 
   cout<<"\n***************************** Getting FFTs correction *****************************\n"<<endl;
 
-  vector<string> stn_ = {"S12_", "S18_", "S12S18_"};
+  vector<string> stn_ = {"S12", "S18", "S12S18"};
 
   for(auto& stn : stn_) {
 
-    TH1D *h_FFT = (TH1D*)file->Get(("SimultaneousAnalysis/"+stn+"FFT_px_thetaY_vs_t").c_str());
-    TH1D *h_FFT_res = (TH1D*)file->Get(("SimultaneousAnalysis/"+stn+"FFT_h_res_thetaY_vs_t").c_str());
+    TH1D *h_FFT = (TH1D*)file->Get(("SimultaneousAnalysis/"+stn+"_FFT_px_thetaY_vs_t").c_str());
+    TH1D *h_FFT_res = (TH1D*)file->Get(("SimultaneousAnalysis/"+stn+"_FFT_h_res_thetaY_vs_t").c_str());
 
-/*    h_FFT->Rebin(2);
-    h_FFT_res->Rebin(2);*/  
-    
-    OverlayFFTs(h_FFT, h_FFT_res, datasetLabel+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"FFT_overlay_"+config);
+    /* h_FFT->Rebin(2);
+    h_FFT_res->Rebin(2); */ 
+
+    DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);
+    DrawFFTZoom(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_zoom_"+config);
+    OverlayFFTs(h_FFT, h_FFT_res, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_overlay_"+config);
+
   }
 
   cout<<"\n***************************** Done *****************************"<<endl;
@@ -305,9 +406,18 @@ void RunData(std::string config, std::string dataset, std::string blinding) {
 
 int main() { 
 
-  RunData("Run-1a_125MeV_BQ_weighted", "Run-1", "blinded");
+  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
+  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded");
+  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded");
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded");
+
+/*  RunData("Run-1c_125MeV_BQ_weighted", "Run-1", "blinded");
+  RunData("Run-1d_125MeV_BQ_weighted", "Run-1", "blinded");*/
+
+
+  /////////
  // RunData("Run-1a_125MeV_BQ", "Run-1", "blinded");
-  RunData("Run-1b_125MeV_BQ_weighted", "Run-1", "blinded");
+
   //RunData("Run-1b_125MeV_BQ", "Run-1", "blinded");
 /*  RunData("Run-1b_125MeV_BQ_weighted", "Run-1", "blinded");
   RunData("Run-1c_125MeV_BQ_weighted", "Run-1", "blinded");

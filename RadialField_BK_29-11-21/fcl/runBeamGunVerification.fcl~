@@ -1,0 +1,100 @@
+// This fhicl runs the beam gun for gm2ringsim
+
+
+#include "geom/ghostFiberHarp.fcl"
+#include "geom/trackerdummyplane.fcl"
+#include "geom/collimator.fcl"
+#include "mdc2.fcl"
+
+source.firstRun    : 1
+source.firstSubRun : 1
+
+services.FileCatalogMetadata.fileType           : "simulated"
+services.FileCatalogMetadata.applicationFamily  : "ringsim"
+services.FileCatalogMetadata.applicationVersion : "v8_03_01"
+
+services.Geometry.strawtracker.whichScallopLocations : [12,18]
+
+services.Geometry.ghostFiberHarp : @local::ghostFiberHarp_geom
+services.Geometry.ghostFiberHarp.ghostFiberHarp_geom.rOffset : -220
+services.GhostFiberHarp : {}
+
+services.Geometry.trackerdummyplane : @local::trackerdummyplane_geom
+services.TrackerDummyPlane : {}
+
+
+// These fhicl parameters are based on N. Froemming docdb 6276
+services.TheBeam.betax  :  32    // meters
+services.TheBeam.alphax :  9.5   // unitless
+services.TheBeam.betay  :  5.26  // meters
+services.TheBeam.alphay :  4.21  // unitless
+services.TheBeam.x0     : -4.7   // millimeters
+services.TheBeam.xp0    :  0.48  // milliradians
+
+
+services.gm2FieldManager.inflectorBy0 : -1.4740  // Tesla
+services.NewInflector.infRotXp        : -2.35    // mrad
+services.MagnetIronAndCryostat.produceArtRecords : false
+
+services.gm2FieldManager.useNewBfields : true
+
+//set collimators to commissioning configuration
+services.Geometry.collimator : @local::collimator_geom
+services.Geometry.collimator.type : [0,1,0,0,0,0,0,1,0] //coll 4/5 and 10/11
+
+services.message.destinations.LogToFile.filename : "gm2ringsim_particle_gun.log"
+outputs.out1.fileName : "gm2ringsim_particle_gun.root"
+outputs.out1.dataTier : "truth"
+
+outputs.out1.FCMDPlugins : [ { plugin_type : Metadata  
+                               fhicl_name  : "gm2ringsim_particle_gun.fcl"  
+                               requestid   : "1"
+                               run_config  : "" 
+                               campaign    : "run1" } ]
+
+
+//--------------------------------------------
+//
+// add the verfication stuff
+//
+//--------------------------------------------
+
+services.TFileService.fileName : "gm2ringsim_beamgun_verification.root"
+
+physics.analyzers.KickerHits.module_type        : KickerHits
+physics.analyzers.InflectorHits.module_type     : InflectorHits
+physics.analyzers.VacuumChamberHits.module_type : VacuumChamberHits
+physics.analyzers.TrolleyRailHits.module_type   : TrolleyRailHits
+physics.analyzers.QuadPlateHits.module_type     : QuadPlateHits
+physics.analyzers.QuadFieldHits.module_type     : QuadFieldHits
+physics.analyzers.CollimatorHits.module_type    : CollimatorHits
+physics.analyzers.StrawTrackerHits.module_type  : StrawTrackerHits
+physics.analyzers.XtalHits.module_type          : XtalHits
+physics.analyzers.IBMSPlaneTruth.module_type    : IBMSTruth
+physics.analyzers.IBMSFiberHits.module_type     : IBMSFiberHits
+physics.analyzers.fiberharpVerification.module_type	: fiberharpVerification
+physics.analyzers.wiggle.module_type            : wiggle
+physics.analyzers.TrackingPlaneHits.module_type : TrackingPlaneHits
+physics.analyzers.PhaseSpace.module_type        : PhaseSpace
+
+physics.verficationPath : [ KickerHits,
+                            InflectorHits,
+                            VacuumChamberHits,
+                            TrolleyRailHits,
+                            QuadPlateHits,
+                            QuadFieldHits,
+                            CollimatorHits,
+                            StrawTrackerHits,
+                            XtalHits,
+			    IBMSPlaneTruth,
+                            IBMSFiberHits,
+			    fiberharpVerification,
+			    wiggle,
+			    TrackingPlaneHits,
+			    PhaseSpace ]
+
+
+physics.simulationPath : [ out1 ]
+physics.end_paths      : [ simulationPath, verficationPath ]
+
+

@@ -1,7 +1,7 @@
 void WeightedFit_truthAllDecays_AAR_500MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Aug 29 16:51:17 2021) by ROOT version 6.22/08
+//=========  (Thu Sep  9 14:17:26 2021) by ROOT version 6.22/08
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-420.75,1.3,3456.75,2.3);
@@ -94,7 +94,7 @@ void WeightedFit_truthAllDecays_AAR_500MeV_AQ()
    gre->GetListOfFunctions()->Add(pol01002);
    gre->Draw("ap");
    
-   TLegend *leg = new TLegend(0.17,0.68,0.64,0.83,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.11,0.75,0.59,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
@@ -110,7 +110,7 @@ void WeightedFit_truthAllDecays_AAR_500MeV_AQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","Fit: #LT#delta'#GT = 1.69
+   entry=leg->AddEntry("pol0","#LT#delta'#GT = 1.69
 #pm0.03
  mrad","lpf");
    entry->SetFillColor(19);

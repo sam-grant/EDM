@@ -1,9 +1,9 @@
 void S12_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 13:26:33 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  2 14:45:36 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.25,2.82897e-19,4.75,2.55296e-18);
+   c->Range(0.15,5.056853e-19,4.65,2.632795e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -11,34 +11,34 @@ void S12_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1010[4] = {
-   1,
-   2,
-   3,
-   4};
+   0.9,
+   1.9,
+   2.9,
+   3.9};
    Double_t _fy1010[4] = {
-   1.834074e-18,
-   9.472453e-19,
-   1.887269e-18,
-   1.580602e-18};
+   1.940846e-18,
+   1.142703e-18,
+   1.94766e-18,
+   1.715502e-18};
    Double_t _fex1010[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1010[4] = {
-   3.405425e-19,
-   2.860044e-19,
-   2.466446e-19,
-   1.839323e-19};
+   3.374305e-19,
+   2.824999e-19,
+   2.443527e-19,
+   1.847773e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1010,_fy1010,_fex1010,_fey1010);
    gre->SetName("");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1010 = new TH1F("Graph_Graph1010","S12",100,0.7,4.3);
-   Graph_Graph1010->SetMinimum(5.099034e-19);
-   Graph_Graph1010->SetMaximum(2.325954e-18);
+   TH1F *Graph_Graph1010 = new TH1F("Graph_Graph1010","S12",100,0.6,4.2);
+   Graph_Graph1010->SetMinimum(7.183962e-19);
+   Graph_Graph1010->SetMaximum(2.420084e-18);
    Graph_Graph1010->SetDirectory(0);
    Graph_Graph1010->SetStats(0);
 
@@ -46,10 +46,10 @@ void S12_AEDM_vs_DS_blinded_750-2500MeV_125MeV()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph1010->SetLineColor(ci);
-   Graph_Graph1010->GetXaxis()->SetBinLabel(9,"Run-1a");
-   Graph_Graph1010->GetXaxis()->SetBinLabel(37,"Run-1b");
-   Graph_Graph1010->GetXaxis()->SetBinLabel(64,"Run-1c");
-   Graph_Graph1010->GetXaxis()->SetBinLabel(92,"Run-1d");
+   Graph_Graph1010->GetXaxis()->SetBinLabel(12,"Run-1a");
+   Graph_Graph1010->GetXaxis()->SetBinLabel(39,"Run-1b");
+   Graph_Graph1010->GetXaxis()->SetBinLabel(67,"Run-1c");
+   Graph_Graph1010->GetXaxis()->SetBinLabel(95,"Run-1d");
    Graph_Graph1010->GetXaxis()->SetBit(TAxis::kLabelsHori);
    Graph_Graph1010->GetXaxis()->CenterTitle(true);
    Graph_Graph1010->GetXaxis()->SetLabelFont(42);

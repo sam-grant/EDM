@@ -118,14 +118,14 @@ void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, s
 
 }
 
-void DrawAllParameters(vector<double> p_, vector<double> A_, vector<double> eA_, vector<double> B_, vector<double> eB_, vector<double> c_, vector<double> ec_, std::string dataset, std::string title, std::string fname, double ymin, double ymax) { 
+void DrawAllParameters(vector<double> p_, vector<double> A_, vector<double> eA_, vector<double> B_, vector<double> eB_, vector<double> c_, vector<double> ec_, std::string dataset, std::string title, std::string fname) { // , double ymin, double ymax) { 
 
   vector<double> zeros_;
   for(auto& i : p_) zeros_.push_back(0.);
 
   TGraphErrors *gr_A = GenerateTGraphErrors(p_, A_, zeros_, eA_);
   TGraphErrors *gr_B = GenerateTGraphErrors(p_, B_, zeros_, eB_);
-  TGraphErrors *gr_c = GenerateTGraphErrors(p_, c_, zeros_, ec_);
+  TGraphErrors *gr_C = GenerateTGraphErrors(p_, c_, zeros_, ec_);
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -140,26 +140,49 @@ void DrawAllParameters(vector<double> p_, vector<double> A_, vector<double> eA_,
   
   gr_A->SetMarkerStyle(20); //  Full circle
   gr_B->SetMarkerStyle(20);
-  gr_c->SetMarkerStyle(20);
+  gr_C->SetMarkerStyle(20);
 
   gr_A->SetMarkerColor(kRed); //  Full circle
   gr_B->SetMarkerColor(kBlue);
-  gr_c->SetMarkerColor(kGreen);
+  gr_C->SetMarkerColor(kGreen);
+
+  double ymin = 1e6;
+  double ymax = -1e6;
+  vector<TGraphErrors*> gr_ = {gr_A, gr_B, gr_C};
+
+  for (auto& gr : gr_) {
+
+    int n = gr->GetN();
+
+    for (int i(0); i<n; i++) { 
+
+      double y = gr->GetY()[i];
+      double ey = gr->GetEY()[i];
+
+      if(y-ey < ymin) ymin = y-ey;
+      if(y+ey > ymax) ymax = y+ey;
+
+    }
+
+  }
+
+  ymax = ymax + abs(ymax*0.25);
+  ymin = ymin - abs(ymin*0.25);
 
   gr_A->GetYaxis()->SetRangeUser(ymin, ymax);
 
   gr_A->Draw("AP");
   gr_B->Draw("P SAME");
-  gr_c->Draw("P SAME");
+  gr_C->Draw("P SAME");
 
-  TLegend *leg = new TLegend(0.65, 0.75, 0.85, 0.89);
+  TLegend *leg = new TLegend(0.625, 0.75, 0.875, 0.89);
   leg->SetBorderSize(0);
   leg->SetNColumns(3);
 
-  leg->SetHeader(dataset.c_str(), "C");
+  leg->SetHeader(("Data: "+dataset).c_str(), "C");
   leg->AddEntry(gr_A, "A");
   leg->AddEntry(gr_B, "B");
-  leg->AddEntry(gr_c, "c");
+  leg->AddEntry(gr_C, "c");
 
   leg->Draw("SAME");
 
@@ -227,7 +250,7 @@ void DrawSingleParameter(vector<double> x_, vector<double> y_, vector<double> ey
 
 void FitDataset(TGraphErrors *gr, std::string dataset, double xmin = 7*G2PERIOD, double xmax = 70*G2PERIOD) {
 
-  // Alow params to float with errors reported by Mott.
+  // Params reported by Mott.
   if(dataset=="Run-1a") DoubleExponentialFit(gr, 59.6, 1.4, 6.57, 0.07, xmin, xmax);
   if(dataset=="Run-1b") DoubleExponentialFit(gr, 44.6, 1.1, 6.43, 0.09, xmin, xmax);
   if(dataset=="Run-1c") DoubleExponentialFit(gr, 79.8, 1.0, 6.99, 0.05, xmin, xmax);
@@ -338,7 +361,7 @@ void Run(std::string dataset, int step, bool write) {
 
     }
 
-    DrawAllParameters(p_, A_, eA_, B_, eB_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];Parameter value [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ParametersVsMomentum_"+dataset+"_BQ", -125, +75);
+    DrawAllParameters(p_, A_, eA_, B_, eB_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];Parameter value [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ParametersVsMomentum_"+dataset+"_BQ");//, -125, +75);
     DrawSingleParameter(p_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_AverageVerticalOffsetVsMomentum_"+dataset+"_BQ", -1.5, +2.5);
 
   }

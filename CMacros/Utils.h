@@ -19,6 +19,7 @@ double M_MU = 105.6583715; // MeV
 double A_MU = 11659208.9e-10; 
 double GMAGIC = std::sqrt( 1.+1./A_MU );
 double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
+double T_c = 149.2 * 1e-3; // cyclotron period [us]
 
 // ====================== Fitting ====================== 
 

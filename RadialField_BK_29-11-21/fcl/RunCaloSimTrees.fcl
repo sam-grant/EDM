@@ -1,0 +1,70 @@
+// Run calo trees for calo position, from beam gun
+
+// Sam Grant - Dec 2020
+
+// ./gridSetupAndSubmitGM2Data.sh --ana --mc --fhiclFile=/gm2/app/users/sgrant/g2Soft/gm2Dev_v9_52_00/srcs/gm2analyses/EDM/fcl/RunCaloTrees.fcl --localArea --noifdh_art --output-dir=/pnfs/GM2/scratch/users/<user>/<dir> --input-filelist=/<path>/<fileList.txt> --njobs=<N> --lifetime=4h
+
+// ./gridSetupAndSubmitGM2Data.sh --ana --mc --fhiclFile=/gm2/app/users/sgrant/g2Soft/gm2Dev_v9_52_00/srcs/gm2analyses/EDM/fcl/RunCaloTrees.fcl --localArea --noifdh_art --output-dir=/pnfs/GM2/scratch/users/sgrant/CaloTrees15921 --input-filelist=/gm2/app/users/sgrant/analysis/EDM/RadialField/15921.txt --njobs=375 --lifetime=1h
+
+
+process_name : ana // data tier
+  
+//-----------------------------------------------
+  
+source : {
+  
+  module_type : RootInput
+  maxEvents   : -1  
+}
+  
+//-----------------------------------------------
+
+services : 
+{
+   message: {
+      debugModules : ["*"]
+      suppressInfo : []
+        
+      destinations: {
+         LogToFile: {
+            append    : false
+            filename  : "gm2calo_ana.log"
+            threshold : "INFO"
+            type      : "file"
+         }
+      }
+   }
+
+   scheduler: {
+      errorOnFailureToPut: false
+   }
+
+   TFileService : {
+      fileName : "gm2calo_ana.root"
+   }
+}
+
+//-----------------------------------------------
+  
+physics : {
+  
+  analyzers : { 
+   
+    caloSimTrees : {
+  
+      module_type : CaloSimTrees
+      caloHitModuleLabel : artg4         //Pre-FillBuilder
+      caloHitInstanceName : calorimeter  //Pre-FillBuilder
+    }
+
+  } // analyzers  
+   
+  // Define paths/streams
+  treePath : [ caloSimTrees ]  
+  
+  //List trigger (producer/filter) and end (analyzer/output) paths
+
+  end_paths     : [ treePath ]
+}
+
+

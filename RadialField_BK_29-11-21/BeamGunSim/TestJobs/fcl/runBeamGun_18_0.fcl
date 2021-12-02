@@ -1,0 +1,103 @@
+// This fhicl runs the beam gun for gm2ringsim
+
+// ./gridSetupAndSubmitGM2Data.sh --mc --truth --fhiclFile=/gm2/app/users/sgrant/analysis/EDM/RadialField/BeamGunSim/TestJobs/runBeamGun_.fcl --beamGun --localArea --output-dir=/pnfs/GM2/scratch/users/sgrant/radialField_ --njobs 5000 --nevents 10000 --lifetime=8h
+
+#include "geom/ghostFiberHarp.fcl"
+#include "geom/trackerdummyplane.fcl"
+#include "geom/collimator.fcl"
+#include "skunkworks-testNewLostMuonCodeFeb2020-mdc2.fcl"
+
+source.firstRun    : 1
+source.firstSubRun : 1
+
+services.FileCatalogMetadata.fileType           : "simulated"
+services.FileCatalogMetadata.applicationFamily  : "ringsim"
+services.FileCatalogMetadata.applicationVersion : "v9_55_00"
+
+services.Geometry.strawtracker.whichScallopLocations : [12,18]
+
+//fiberharp services
+services.Geometry.ghostFiberHarp : @local::ghostFiberHarp_geom
+services.Geometry.ghostFiberHarp.ghostFiberHarp_geom.rOffset : -220
+services.GhostFiberHarp : {}
+
+//tracker services
+services.Geometry.trackerdummyplane : @local::trackerdummyplane_geom
+services.TrackerDummyPlane : {}
+
+//These fhicl Parameters are based on N. Froemming tuning (slack)
+services.TheBeam.betax  : 28.0  // meters
+services.TheBeam.alphax :  8.5  // unitless
+services.TheBeam.etax :  0.0 //meters
+services.TheBeam.etap :  0.0 //unitless
+services.TheBeam.betay : 3.0 //meters
+services.TheBeam.alphay: 2.5 //unitless
+services.TheBeam.etay : 0.0  //meters
+services.TheBeam.etayp : 0.0 //unitless
+services.TheBeam.t0 : 0.0 //ns
+services.TheBeam.x0 : -7.5 //mm
+services.TheBeam.y0 : 0.0 //mm
+services.TheBeam.z0 : 0.0 //mm
+services.TheBeam.xp0 : 1.75 //mrad
+services.TheBeam.yp0 : 0.0 //mrad
+services.TheBeam.dp_p0 : 0 //%
+services.TheBeam.particles : ["mu+"]
+services.TheBeam.twidth : 270 //ns for run 1
+services.TheBeam.tdistr : 9891 //E989 Run 1
+
+//Dipole Field parameters
+services.gm2FieldManager.useNewBfields : true
+services.gm2FieldManager.buildRingBfield : true
+services.gm2FieldManager.useRadialBFieldMap : true // azimuthal variation on
+services.gm2FieldManager.magnitude : 1.0 //multiplicative factor magnitude of azimuthal radial variation
+services.gm2FieldManager.dBr_ppm : 0. //constant offset
+services.gm2FieldManager.useRingMultipoles : false //multipoles 
+services.gm2FieldManager.ringMultipoleFile : "Run1_TrolleyMap4226" //only run 1 is available right now.
+
+//Kicker Field
+services.gm2FieldManager.k989PulseShape : ["Run1LongPulse", "Run1LongPulse", "Run1LongPulse"]
+services.gm2FieldManager.kBy0        : [-250,-250,-250] //kicker B field (Gauss) at center
+services.gm2FieldManager.k989IncludeTail : [true, true, true]
+services.gm2FieldManager.kTpeak : [-605,-605,-605]
+
+//Quad Field
+services.gm2FieldManager.buildQuadEfields : true
+services.gm2FieldManager.qFieldIndex : 0.106  // corresponds to 13.1/18.3 kV 
+// HV 14/16/18/20 kV  corresponds to n= 0.0826/0.0944/0.106/0.118
+
+services.gm2FieldManager.qDoScraping : true  // quad scraping
+services.gm2FieldManager.qScrapeTimeEnd: [7.0,7.0,7.0,7.0]
+services.gm2FieldManager.qScrapeTimeConstant: [4.9,4.55,4.55,4.9] //microseconds
+services.gm2FieldManager.qDTFactor : false //true for bad resistors
+services.gm2FieldManager.qBadResistor: [[0,0],[0,0],[0,0],[0,0]] 
+
+//inflector field
+services.NewInflector.infRotXp        : -2.00    // mrad
+services.gm2FieldManager.inflectorBy0 : -1.4600  // Tesla
+
+
+services.Geometry.collimator : @local::collimator_geom
+//Run 3&4 collimator settings:
+services.Geometry.collimator.type : [0,1,1,0,0,1,0,1,1] //coll 4/5 in, 5/6 in, 8/9 in, 10/11 in, 11/12 in
+//Run 1 collimator settings: 
+//http://dbweb5.fnal.gov:8080/ECL/gm2/E/show?e=26873
+//http://dbweb5.fnal.gov:8080/ECL/gm2/E/show?e=28979
+//http://dbweb5.fnal.gov:8080/ECL/gm2/E/show?e=32324
+//services.Geometry.collimator.type : [0,0,0,0,0,1,0,1,0] //coll 4/5 out, 5/6 out, 8/9 in, 10/11 in, 11/12 out
+//commissioning configuration
+//services.Geometry.collimator.type : [0,0,1,0,0,1,0,1,1] //coll 4/5 out, 5/6 in, 8/9 in, 10/11 in, 11/12 in
+
+
+services.MagnetIronAndCryostat.produceArtRecords : false
+
+services.message.destinations.LogToFile.filename : "gm2ringsim_particle_gun.log"
+outputs.out1.fileName : "gm2ringsim_particle_gun.root"
+outputs.out1.dataTier : "truth"
+
+outputs.out1.FCMDPlugins : [ { plugin_type : Metadata  
+                               fhicl_name  : "gm2ringsim_particle_gun.fcl"  
+                               requestid   : "1"
+                               run_config  : "" 
+                               campaign    : "run1" } ]
+
+

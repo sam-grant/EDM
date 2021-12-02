@@ -1,0 +1,117 @@
+services : {
+
+  TFileService: {
+    fileName: "beamGunTuningPlots.root"
+  }
+
+}
+
+process_name : ana
+
+source : {
+   module_type : RootInput
+   maxEvents :  -1
+}
+
+physics : {
+
+  analyzers : {
+  
+    beamGunTuningPlots : {
+      module_type : BeamGunTuningPlots
+    }
+		     
+  }
+
+  path : [ beamGunTuningPlots ]
+  trigger_paths : []
+  end_paths : [ path ]
+
+}
+
+
+// 
+// #include "messageParams.fcl"
+// #include "geom/strawtracker.fcl"
+// #include "conDBParams.fcl"
+// #include "trackingConfig.fcl"
+// 
+// process_name : plotAgain
+// 
+// source : {
+//   module_type : RootInput
+//   inputCommands : ["keep *",
+//     "drop gm2strawtracker::TrackerAlignmentConstantsArtRecord_*_*_*",
+//     "drop gm2strawtracker::TrackerTimeConstantsArtRecord_*_*_*"]//,
+//     // @sequence::trackingChain.inputDrops]
+//   //fileNames : ["gm2tracker_reco.root"]
+//   maxEvents   : -1
+// }
+// 
+// 
+// services : {
+// 
+//   message : {
+//     debugModules : []
+//     suppressInfo : []
+// 
+//     destinations : {
+//       LogToConsole : {
+//         type       : "cout"
+//         threshold  : "INFO"
+//         categories : @local::message_categories
+//       }
+//       LogToFile : {
+//         type      : "file"
+//         filename  : "beamGunTuningPlots.log"
+// //        filename  : "LowDCAsPlots.log"
+//         append    :  false
+//         threshold : "INFO"
+//         categories : @local::message_categories
+//       }
+//     }
+//   } // end of message services
+// 
+//   DetectorHolder    : {}
+//   ActionHolder      : {}
+//   CoordSystemsStore : {}
+//   Gm2Constants      : {}
+//   RandomNumberGenerator : {}
+// 
+//   Geometry : { strawtracker : @local::strawtracker_geom }
+//   StrawTrackerGeometry : {}
+//   StrawTrackerGeometryConstants : { DatabaseURL : @local::condb_prod_params } // dev db is @local::condb_dev_params
+// 
+//   @table::trackingChain.reducedGeometry
+//   @table::trackingChain.field
+// 
+// 
+//   TrackQuality : {}
+// 
+//   TFileService: {
+//       fileName: "beamGunTuningPlots.root"
+//   }
+// 
+// } // end of services block
+// physics : {
+// 
+//   analyzers : {
+// 
+//     beamGunTuningPlots : {
+//  
+//       module_type : beamGunTuningPlots
+//       dirName : "test"
+// 
+//     }
+// 
+// }
+// 
+// 
+// plot : [ beamGunTuningPlots ]
+// 
+// 
+// trigger_paths : [] // customRetrack] // fpath] 
+// 
+// end_paths     : [plot]
+// 
+// } // end of physics block

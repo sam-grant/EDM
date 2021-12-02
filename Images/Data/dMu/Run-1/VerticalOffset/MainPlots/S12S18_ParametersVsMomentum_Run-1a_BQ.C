@@ -1,10 +1,10 @@
 void S12S18_ParametersVsMomentum_Run-1a_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 11:59:06 2021) by ROOT version 6.24/04
+//=========  (Wed Dec  1 22:33:16 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(30.74998,-150,3218.25,100);
+   c->Range(30.74998,-132.2784,3218.25,118.7035);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -99,8 +99,8 @@ void S12S18_ParametersVsMomentum_Run-1a_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01017 = new TH1F("Graph_Graph01017","S12S18",100,349.5,2899.5);
-   Graph_Graph01017->SetMinimum(-125);
-   Graph_Graph01017->SetMaximum(75);
+   Graph_Graph01017->SetMinimum(-107.1802);
+   Graph_Graph01017->SetMaximum(93.60532);
    Graph_Graph01017->SetDirectory(0);
    Graph_Graph01017->SetStats(0);
 
@@ -336,14 +336,14 @@ void S12S18_ParametersVsMomentum_Run-1a_BQ()
    
    gre->Draw("p ");
    
-   TLegend *leg = new TLegend(0.65,0.75,0.85,0.89,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.625,0.75,0.875,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("NULL","Run-1a","h");
+   TLegendEntry *entry=leg->AddEntry("NULL","Data: Run-1a","h");
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

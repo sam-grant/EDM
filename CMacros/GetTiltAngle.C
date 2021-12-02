@@ -14,7 +14,7 @@ const int nTrials = 1e3;
 
 // Global momentum cuts
 const double xmin = 750;
-const double xmax = 2500;
+const double xmax = 2750;
 // const double xmin = 825; // 750;
 // const double xmax = 2375; // 2500;
 // const double xmin = 900;
@@ -483,7 +483,7 @@ void RunSim(string config, string dataset, string blinding) {
     // Apply correction
     for(auto& stn : stn_) {
 
-      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/MomSlices/"+stn+"A"+fitType+"_vs_p";
+      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"A"+fitType+"_vs_p";
 
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
       TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(A_gr, dilutionFunc);
@@ -607,7 +607,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
 
-  vector<string> stn_ = {"S12_", "S18_", "S12S18_"};
+  vector<string> stn_ = {"S12", "S18", "S12S18"};
   vector<string> fitType_ = {"EDM", "g2"};
 
   vector<string> results_;
@@ -653,7 +653,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
     // Apply correction
     for(auto& stn : stn_) {
 
-      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/MomSlices/"+stn+"A"+fitType+"_vs_p";
+      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_A"+fitType+"_vs_p";
 
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
       TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(A_gr, dilutionFunc);
@@ -663,9 +663,9 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       // DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
       //DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{BLIND} [mrad] / 125 MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
 
-      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{"+blind+"} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr);
+      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{"+blind+"} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_vs_p_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr);
 
-      gr_delta_prime->SetName((stn+"delta_prime_vs_p").c_str());
+      gr_delta_prime->SetName((stn+"_delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
 
       vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mottFunctions_, A_gr);
@@ -691,8 +691,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       // Draw and write histogram
       // DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"}^{BLIND} [mrad] / "+to_string(step/2)+";Trials", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials));
-      if(correctDilution) DrawDeltaPrimeHist(h_delta_prime, stn+";#delta'_{"+subscript+"}^{"+blind+"} [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr);
-      h_delta_prime->SetName((stn+"h_delta_prime").c_str());
+      if(correctDilution) DrawDeltaPrimeHist(h_delta_prime, stn+";#delta'_{"+subscript+"}^{"+blind+"} [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr);
+      h_delta_prime->SetName((stn+"_h_delta_prime").c_str());
       h_delta_prime->Write();
 
       // Fill results
@@ -707,8 +707,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
         double result2Tree = GetLimit(result); double error2Tree = GetLimit(error);
 
         // Write into TBranch
-        resultTree->Branch((stn+"dMu").c_str(), &result2Tree);
-        resultTree->Branch((stn+"dMu_err").c_str(), &error2Tree);
+        resultTree->Branch((stn+"_dMu").c_str(), &result2Tree);
+        resultTree->Branch((stn+"_dMu_err").c_str(), &error2Tree);
 
         std::ostringstream oss_result; oss_result << GetLimit(result);
         std::ostringstream oss_error; oss_error << GetLimit(error);
@@ -721,8 +721,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
         // TODO: This doesn't work properly for individual stations. May need a simplified method.
         // Write into TBranch
-        resultTree->Branch((stn+"Bz").c_str(), &result2Tree);
-        resultTree->Branch((stn+"Bz_err").c_str(), &error2Tree);
+        resultTree->Branch((stn+"_Bz").c_str(), &result2Tree);
+        resultTree->Branch((stn+"_Bz_err").c_str(), &error2Tree);
 
         results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+to_string(1e3*result)+", "+to_string(1e3*error));
       }
@@ -780,10 +780,10 @@ int main() {
   RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
 */
 
-  RunData("Run-1a_125MeV_BQ_weighted", "Run-1", "blinded", true);
-  RunData("Run-1b_125MeV_BQ_weighted", "Run-1", "blinded", true);
-  RunData("Run-1c_125MeV_BQ_weighted", "Run-1", "blinded", true);
-  RunData("Run-1d_125MeV_BQ_weighted", "Run-1", "blinded", true);
+  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
+  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
 
 /*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", false);

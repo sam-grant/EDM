@@ -96,8 +96,6 @@ DilutionCurveFitter.exe: DilutionCurveFitter.C
 OrthogonalSimFitter.exe: OrthogonalSimFitter.C
 	${C++} -o $@ OrthogonalSimFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
-OrthogonalFitter.exe: OrthogonalFitter.C 
-	${C++} -o $@ OrthogonalFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
 
 PlotThetaYvsTime.exe: PlotThetaYvsTime.C 
 	${C++} -o $@ PlotThetaYvsTime.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS)
@@ -121,6 +119,9 @@ BlindedEDMSimFitter.exe: BlindedEDMSimFitter.C
 
 BlindedEDMFitter.exe: BlindedEDMFitter.C 
 	${C++} -o $@ BlindedEDMFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
+
+OrthogonalFitter.exe: OrthogonalFitter.C 
+	${C++} -o $@ OrthogonalFitter.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING}
 
 clean:
 	rm *exe

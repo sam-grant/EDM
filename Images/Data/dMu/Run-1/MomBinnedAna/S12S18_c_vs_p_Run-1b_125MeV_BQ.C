@@ -1,17 +1,17 @@
 void S12S18_c_vs_p_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 11:24:04 2021) by ROOT version 6.24/04
+//=========  (Wed Dec  1 16:15:32 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(496.8897,-10.01678,2728.021,2.647981);
+   c->Range(496.8897,-0.5561596,2728.021,0.5618392);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1037[22] = {
+   Double_t Graph0_fx1039[22] = {
    367.2385,
    456.7075,
    570.1081,
@@ -34,30 +34,30 @@ void S12S18_c_vs_p_Run-1b_125MeV_BQ()
    2678.662,
    2780.904,
    2886.857};
-   Double_t Graph0_fy1037[22] = {
-   -6.827201,
-   -0.002162968,
-   -0.01806612,
-   0.0126788,
-   0.001405158,
-   -0.006984267,
-   -0.005042689,
-   -0.007799129,
-   0.001038392,
-   0.001057375,
-   -0.004322617,
-   -0.002505185,
-   -0.001525579,
-   -0.002375042,
-   -0.00300605,
-   -0.001044845,
-   -0.004558215,
-   0.008750122,
-   -0.008676975,
-   -0.003450506,
-   -0.03216276,
-   0.1630844};
-   Double_t Graph0_fex1037[22] = {
+   Double_t Graph0_fy1039[22] = {
+   9.297462,
+   3.09753,
+   2.39013,
+   -0.1097634,
+   0.160845,
+   0.4176527,
+   -0.3668365,
+   -0.3803254,
+   -0.4962537,
+   -0.4157711,
+   -0.260629,
+   -0.1630286,
+   -0.1055686,
+   -0.05053066,
+   -0.07540339,
+   -0.05405529,
+   -0.02652251,
+   -0.05252758,
+   0.0003906203,
+   0.05331999,
+   -0.04115552,
+   -1.294229};
+   Double_t Graph0_fex1039[22] = {
    0.1830309,
    0.09171714,
    0.06159356,
@@ -80,63 +80,63 @@ void S12S18_c_vs_p_Run-1b_125MeV_BQ()
    0.09624685,
    0.1948998,
    1.250899};
-   Double_t Graph0_fey1037[22] = {
-   1.078782,
-   0.09519861,
-   0.04653461,
-   0.02801109,
-   0.0194297,
-   0.01596399,
-   0.01406001,
-   0.01268016,
-   0.01190802,
-   0.01130162,
-   0.011278,
-   0.01095071,
-   0.011375,
-   0.01152961,
-   0.01213026,
-   0.01239055,
-   0.01307126,
-   0.01428547,
-   0.01540625,
-   0.01700007,
-   0.04355897,
-   0.3741035};
-   TGraphErrors *gre = new TGraphErrors(22,Graph0_fx1037,Graph0_fy1037,Graph0_fex1037,Graph0_fey1037);
+   Double_t Graph0_fey1039[22] = {
+   1.06764,
+   0.09479619,
+   0.04647171,
+   0.02799799,
+   0.01942381,
+   0.01596028,
+   0.01405716,
+   0.0126777,
+   0.01190574,
+   0.01129849,
+   0.01127467,
+   0.01094698,
+   0.01137093,
+   0.01152521,
+   0.01212355,
+   0.01238261,
+   0.01306206,
+   0.01427149,
+   0.01538747,
+   0.01697534,
+   0.04350563,
+   0.2227779};
+   TGraphErrors *gre = new TGraphErrors(22,Graph0_fx1039,Graph0_fy1039,Graph0_fex1039,Graph0_fey1039);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01037 = new TH1F("Graph_Graph01037","S12S18",100,114.9502,3140.213);
-   Graph_Graph01037->SetMinimum(-8.7503);
-   Graph_Graph01037->SetMaximum(1.381505);
-   Graph_Graph01037->SetDirectory(0);
-   Graph_Graph01037->SetStats(0);
+   TH1F *Graph_Graph01039 = new TH1F("Graph_Graph01039","S12S18",100,114.9502,3140.213);
+   Graph_Graph01039->SetMinimum(-0.4443597);
+   Graph_Graph01039->SetMaximum(0.4500393);
+   Graph_Graph01039->SetDirectory(0);
+   Graph_Graph01039->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01037->SetLineColor(ci);
-   Graph_Graph01037->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01037->GetXaxis()->SetRange(21,79);
-   Graph_Graph01037->GetXaxis()->CenterTitle(true);
-   Graph_Graph01037->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01037->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01037->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01037->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01037->GetYaxis()->SetTitle("c [mrad] / 125 MeV");
-   Graph_Graph01037->GetYaxis()->CenterTitle(true);
-   Graph_Graph01037->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01037->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01037->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01037->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01037->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01037->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01037->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01037->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01037);
+   Graph_Graph01039->SetLineColor(ci);
+   Graph_Graph01039->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_Graph01039->GetXaxis()->SetRange(21,79);
+   Graph_Graph01039->GetXaxis()->CenterTitle(true);
+   Graph_Graph01039->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01039->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01039->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01039->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01039->GetYaxis()->SetTitle("c [mrad] / 125 MeV");
+   Graph_Graph01039->GetYaxis()->CenterTitle(true);
+   Graph_Graph01039->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01039->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01039->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01039->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01039->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01039->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01039->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01039->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01039);
    
    gre->Draw("alp");
    

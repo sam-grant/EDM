@@ -1,8 +1,11 @@
-// Fit dilution curves 
 
-/*Fit dilution parabolas and draw them all nicely. 
+/*
 
-  Parabalo needed to be re-fitted in GetTiltAngle in order to deal with the errors properly. */
+  Fit dilution parabolas 
+
+  These are drawn nicely in DilutionCurvePlotter.C
+
+*/
 
 #include <iostream>
 
@@ -16,7 +19,7 @@ const double delta_calc = 1.699245178; // mrad
 string dMu = "5.4e-18";
 
 const double xmin = 750;
-const double xmax = 2500;
+const double xmax = 2750;
 const int nTrials = 1e3;
 
 string GetQual(string config) {
@@ -102,7 +105,7 @@ int GetStep(string config) {
 
 }
 
-double ParabolaFunc(double *x, double *par) {
+/*double ParabolaFunc(double *x, double *par) {
   return par[0] * pow(x[0],2) + par[1] * x[0] + par[2];
 }
 
@@ -125,7 +128,33 @@ void ParabolaFit(TGraphErrors *graph, string config, double xmin, double xmax) {
 
   return;
 
+}*/
+
+double ParabolaFunc(double *x, double *par) {
+  return par[0] * pow(x[0],2) + par[1] * x[0] + par[2];
 }
+
+
+void ParabolaFit(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
+  
+  TF1 *fnc = new TF1("ParabolaFunc", ParabolaFunc, xmin, xmax, 3);
+
+/*  if(config == "Tracks") {
+    fnc->SetParameter(0, -5.5e-8);
+    fnc->SetParameter(1, 1.5e-4);
+    fnc->SetParameter(2, -0.05);
+  }  else if(config == "Decays") { 
+    fnc->SetParameter(0, -5.5e-8);
+    fnc->SetParameter(1, 8.0e-5);
+    fnc->SetParameter(2, 2.5e-1);
+  } */
+
+  graph->Fit(fnc, "R");    
+
+  return;
+
+}
+
 
 TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
@@ -138,11 +167,44 @@ TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
     // Remove x-error bars
     x[i] = gr->GetX()[i]; ex[i] = 0;
-    y[i] = gr->GetY()[i] / delta_calc; ey[i] = gr->GetEY()[i] / delta_calc;
+    y[i] = gr->GetY()[i] / delta_calc;
+    // Is this an overestimate?
+    ey[i] = gr->GetEY()[i] / delta_calc;
 
   }
 
   return new TGraphErrors(n, x, y, ex, ey);
+
+}
+
+// Some people say my fits are too good to be true!
+// (point - fit) / point error 
+tuple<vector<double>, vector<double>, vector<double>, vector<double>> GetPulls(TGraphErrors *gr) {
+
+  vector<double> pulls_; 
+  vector<double> x_; 
+  vector<double> ex_;
+  vector<double> zeros_;  
+
+  TF1 *fit = (TF1*)gr->GetFunction("ParabolaFunc");
+
+  for (int i(0); i<gr->GetN(); i++) { 
+
+    double x = gr->GetX()[i];
+
+    if(x < xmin || x > xmax) continue;
+
+    x_.push_back(x);
+
+    double pull = (gr->GetY()[i] - fit->Eval(x)) / gr->GetEY()[i]; 
+    pulls_.push_back(pull);
+
+    ex_.push_back(gr->GetEX()[i]);
+    zeros_.push_back(0);
+
+  }
+
+  return make_tuple(x_, pulls_, ex_, zeros_);
 
 }
 
@@ -249,6 +311,8 @@ void MottFunctions(TGraphErrors *gr, TF1* fit, TFitResultPtr frp, TFile *output,
 
 }
 
+
+
 void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
   // Config params
@@ -270,14 +334,16 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
   string grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
   //cout<<tracksOrDecays<<endl;
-  if(tracksOrDecaysLabel == "Tracks") grn += "S0S12S18_A"+fitType+"_vs_p";
-  else grn += "A"+fitType+"_vs_p";
+  if(tracksOrDecaysLabel == "Tracks") grn += "S0S12S18_A"+fitType+"_vs_p_thetaY";
+  else grn += "A"+fitType+"_vs_p_thetaY";
 
   TGraphErrors *gr = (TGraphErrors*)f->Get(grn.c_str());
 
   // Backwards compatibility. Annoying but graph names have inconsistent patterns.
   if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
   if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p");
+  if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/AEDM_vs_p");
+  if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_AEDM_vs_p");
 
   cout<<tracksOrDecays<<endl;
 
@@ -302,7 +368,7 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
   f->Close();
 
-  string title = ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";d_{"+fitType+"}(p)";
+  string title = ";Decay vertex momentum [MeV];d_{"+fitType+"} / "+to_string(step)+" MeV";
 
   gr->SetTitle(title.c_str());
 
@@ -310,6 +376,26 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
   output->cd(dname.c_str());
 
   gr->Write();   
+
+  // Look at the fit pull
+  tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr);
+  vector<double> x_ = get<0>(pull_tuple);
+  vector<double> pulls_ = get<1>(pull_tuple);
+  vector<double> ex_ = get<2>(pull_tuple);
+  vector<double> zeros_ = get<3>(pull_tuple);
+
+  TGraphErrors *gr_pull = GenerateTGraphErrors(x_, pulls_, ex_, zeros_);
+  gr_pull->SetName((tracksOrDecays+"_gr_pull").c_str());
+  gr_pull->SetTitle((";Decay vertex momentum [MeV];Pull / "+to_string(step)+" MeV").c_str());
+  gr_pull->Write();
+
+  // This writes two histograms for some reason?
+  TH1D *h_pull = new TH1D((tracksOrDecays+"_h_pull").c_str(), ";Pull [#sigma]; Entries / 0.25 #sigma", 24, -3, +3);
+  for(auto& pull : pulls_) h_pull->Fill(pull);
+
+  // h_pull->Fit("gaus", "Q");
+
+  h_pull->Write();
 
   // nTrials is a global var
   if(getError) {
@@ -327,6 +413,7 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
 }
 
+
 int main() { 
 
   bool fit = true;
@@ -334,7 +421,7 @@ int main() {
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
-  else if(!write) fname += "../Plots/MC/dMu/Dilution/tmp.root";
+  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves_test.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
 

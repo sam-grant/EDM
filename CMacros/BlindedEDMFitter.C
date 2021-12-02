@@ -90,10 +90,14 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, in
   graph->GetYaxis()->SetMaxDigits(4);
   graph->SetMarkerStyle(20); //  Full circle
 
-  // Hack together x-axis range
-  int N = graph->GetN();
-  double xmax = graph->GetPointX(N-1);
-  double xmin = graph->GetPointX(0);
+  // Hack together y-axis range
+  double lo = 1e6; double hi = -1e6;
+  for(int i = 700; i<2550; i = i + 10) {
+    double y = graph->Eval(i);
+    if(y < lo) lo = y;
+    if(y > hi) hi = y;
+
+  }
 
   double scale = 0.;
   if(step == 200) scale = 0.05;
@@ -106,7 +110,7 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, in
   graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
   graph->GetXaxis()->SetRangeUser(750, 2500);
-  //graph->GetYaxis()->SetRangeUser(-0.06, 0.08);
+  graph->GetYaxis()->SetRangeUser(lo*0.9, hi*1.1);
 
   if(!xLabel) graph->Draw("ALP");
   else { 
@@ -245,14 +249,14 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   double ymin; double ymax;
 
   if(dataset == "Run-1a") {
-    ymin = 35e3;
+    ymin = 25e3;
     ymax = 110e3;
   } else if(dataset == "Run-1b") {
     ymin = 40e3;
     ymax = 150e3;
   } else if(dataset == "Run-1c") {
     ymin = 60e3;
-    ymax = 200e3;
+    ymax = 220e3;
   } else if(dataset == "Run-1d") {
     ymin = 100e3;
     ymax = 400e3;
@@ -375,10 +379,12 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     gr_pull->Write();
 
     // This writes two histograms for some reason?
-    TH1D *h_pull = new TH1D((stn+"_edmFit_pull").c_str(), ";Pull [#sigma]; Entries / 0.25 #sigma", 40, -5, +5);
+    TH1D *h_pull = new TH1D((stn+"_edmFit_pull").c_str(), (stn+";Pull [#sigma]; Entries / 0.25 #sigma").c_str(), 40, -5, +5);
     for(auto& pull : get<1>(pull_tuple)) h_pull->Fill(pull);
     //h_pull->Fit("gaus", "Q");
     h_pull->Write();
+
+    DrawTH1(h_pull, stn+";Pull [#sigma]; Entries / 0.25 #sigma", ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_pull_"+config).c_str());
 
     gr_thetaY_mod->SetName((stn+"_edmFit").c_str());
     gr_thetaY_mod->Write();
@@ -720,7 +726,7 @@ void Run(std::string config, bool write) {
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
   //output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
 
-  // MomentumBinnedAnalysis(phi, input, output, config);
+  MomentumBinnedAnalysis(phi, input, output, config);
 
   std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
 
@@ -767,7 +773,7 @@ int main(int argc, char *argv[]) {
 
   string config = argv[1];//"Run-1a_125MeV_BQ";
 
-  bool write = false;
+  bool write = true;
 
   Run(config, write);
 

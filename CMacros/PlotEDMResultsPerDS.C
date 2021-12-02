@@ -4,7 +4,8 @@ using namespace std;
 
 // Global momentum cuts
 string xmin = "750";
-string xmax = "2500";
+//string xmax = "2500";
+string xmax = "2750";
 //string xmin = "825"; // 750;
 //string xmax = "2375"; // 2500;
 //string xmin = "900";
@@ -284,7 +285,7 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
   std::string dilCorrStr = "";
   if(!correctDilution) dilCorrStr += "_noCorr";
 
-  dilCorrStr += "_weighted";
+  //dilCorrStr += "_weighted";
 
 	vector<string> DS_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
 	vector<string> stn_ = {"S12", "S18", "S12S18"};
@@ -352,7 +353,11 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 
 			}
 
-			gr->SetPoint(i,i+1,A);
+      double x = i+1;
+      if(stn=="S12") x = x - 0.1; 
+      if(stn=="S12S18") x = x + 0.1; 
+
+			gr->SetPoint(i,x,A);
 			gr->SetPointError(i,0,eA);
 		}
 
@@ -361,14 +366,14 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV"+dilCorrStr, DS_);
+		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, DS_);
 
     gr_.push_back(gr);
 
 
 	 }
 
-   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV"+dilCorrStr, DS_);
+   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, DS_);
 
   }
 

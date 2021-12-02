@@ -1,7 +1,7 @@
 void VertexGraphs_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 23 13:32:43 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  2 15:17:07 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-135.2991,-0.015625,3382.477,0.140625);
@@ -25,18 +25,18 @@ void VertexGraphs_AQ()
    2613.583,
    2829.611};
    Double_t trackTruth_fy1005[12] = {
-   2.107326,
-   0.05792543,
-   0.09910718,
-   0.09912971,
-   0.09787021,
-   0.1008978,
-   0.09820562,
-   0.09259891,
-   0.07989598,
-   0.05376532,
-   0.06363584,
-   0.03505713};
+   2.106203,
+   0.05795998,
+   0.09915619,
+   0.09915931,
+   0.09789243,
+   0.100879,
+   0.09820909,
+   0.09260111,
+   0.07989332,
+   0.05374595,
+   0.0636122,
+   0.03510456};
    Double_t trackTruth_fex1005[12] = {
    0,
    0,
@@ -51,21 +51,21 @@ void VertexGraphs_AQ()
    0,
    0};
    Double_t trackTruth_fey1005[12] = {
-   0.6776693,
-   0.02366909,
-   0.01181676,
-   0.009709212,
-   0.008755766,
-   0.008054999,
-   0.00759934,
-   0.007448148,
-   0.007500743,
-   0.007800729,
-   0.008029997,
-   0.009519484};
+   0.6777398,
+   0.0236693,
+   0.0118169,
+   0.00970933,
+   0.00875586,
+   0.008055087,
+   0.007599435,
+   0.007448266,
+   0.007500867,
+   0.00780087,
+   0.008030246,
+   0.009519822};
    TGraphErrors *gre = new TGraphErrors(12,trackTruth_fx1005,trackTruth_fy1005,trackTruth_fex1005,trackTruth_fey1005);
    gre->SetName("trackTruth");
-   gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;d_{EDM}(p)");
+   gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -79,14 +79,14 @@ void VertexGraphs_AQ()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_trackTruth1005->SetLineColor(ci);
-   Graph_trackTruth1005->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
+   Graph_trackTruth1005->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
    Graph_trackTruth1005->GetXaxis()->SetRange(8,98);
    Graph_trackTruth1005->GetXaxis()->CenterTitle(true);
    Graph_trackTruth1005->GetXaxis()->SetLabelFont(42);
    Graph_trackTruth1005->GetXaxis()->SetTitleSize(0.04);
    Graph_trackTruth1005->GetXaxis()->SetTitleOffset(1.1);
    Graph_trackTruth1005->GetXaxis()->SetTitleFont(42);
-   Graph_trackTruth1005->GetYaxis()->SetTitle("d_{EDM}(p)");
+   Graph_trackTruth1005->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
    Graph_trackTruth1005->GetYaxis()->CenterTitle(true);
    Graph_trackTruth1005->GetYaxis()->SetNdivisions(4000510);
    Graph_trackTruth1005->GetYaxis()->SetLabelFont(42);
@@ -114,18 +114,18 @@ void VertexGraphs_AQ()
    2614.113,
    2827.094};
    Double_t trackReco_fy1006[12] = {
-   0.0691376,
-   0.05724382,
-   0.09451482,
-   0.1103124,
-   0.09753489,
-   0.1023655,
-   0.09804854,
-   0.09522534,
-   0.0713046,
-   0.05485442,
-   0.05819845,
-   0.03218078};
+   0.06909422,
+   0.05726215,
+   0.09455236,
+   0.1103326,
+   0.09755733,
+   0.1023564,
+   0.09805339,
+   0.09523377,
+   0.07130707,
+   0.0548529,
+   0.05818781,
+   0.03220587};
    Double_t trackReco_fex1006[12] = {
    0,
    0,
@@ -140,21 +140,21 @@ void VertexGraphs_AQ()
    0,
    0};
    Double_t trackReco_fey1006[12] = {
-   0.3540861,
-   0.02393878,
-   0.01192541,
-   0.009786631,
-   0.008830908,
-   0.008139843,
-   0.007688796,
-   0.007543905,
-   0.007646466,
-   0.008049477,
-   0.008217442,
-   0.009839138};
+   0.3540749,
+   0.02393894,
+   0.0119255,
+   0.009786713,
+   0.008830967,
+   0.008139897,
+   0.007688857,
+   0.007543985,
+   0.007646547,
+   0.008049577,
+   0.008217598,
+   0.009839241};
    gre = new TGraphErrors(12,trackReco_fx1006,trackReco_fy1006,trackReco_fex1006,trackReco_fey1006);
    gre->SetName("trackReco");
-   gre->SetTitle(";p [MeV]: in range p #minus 125 < p < p #plus 125;d_{EDM}(p)");
+   gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
@@ -166,12 +166,12 @@ void VertexGraphs_AQ()
 
    ci = TColor::GetColor("#000099");
    Graph_trackReco1006->SetLineColor(ci);
-   Graph_trackReco1006->GetXaxis()->SetTitle("p [MeV]: in range p #minus 125 < p < p #plus 125");
+   Graph_trackReco1006->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
    Graph_trackReco1006->GetXaxis()->SetRange(8,98);
    Graph_trackReco1006->GetXaxis()->SetLabelFont(42);
    Graph_trackReco1006->GetXaxis()->SetTitleOffset(1);
    Graph_trackReco1006->GetXaxis()->SetTitleFont(42);
-   Graph_trackReco1006->GetYaxis()->SetTitle("d_{EDM}(p)");
+   Graph_trackReco1006->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
    Graph_trackReco1006->GetYaxis()->SetLabelFont(42);
    Graph_trackReco1006->GetYaxis()->SetTitleFont(42);
    Graph_trackReco1006->GetZaxis()->SetLabelFont(42);
@@ -187,7 +187,7 @@ void VertexGraphs_AQ()
    line->SetLineStyle(2);
    line->SetLineWidth(3);
    line->Draw();
-   line = new TLine(2500,0,2500,0.125);
+   line = new TLine(2750,0,2750,0.125);
 
    ci = TColor::GetColor("#ff0000");
    line->SetLineColor(ci);

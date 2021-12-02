@@ -1,10 +1,10 @@
 void fit_wiggle_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 17:30:23 2021) by ROOT version 6.24/04
+//=========  (Wed Dec  1 15:14:06 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-3.823283,0.5,339.9709,5.5);
+   c->Range(-3.99534,0.5,340.0282,5.5);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,7 +12,7 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1001[1845] = {
+   Double_t _fx1001[1903] = {
    30.5114,
    30.6606,
    30.8098,
@@ -1857,8 +1857,66 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    305.1886,
    305.3378,
    305.487,
-   305.6362};
-   Double_t _fy1001[1845] = {
+   305.6362,
+   305.7854,
+   305.9346,
+   306.0838,
+   306.233,
+   306.3822,
+   306.5314,
+   306.6806,
+   306.8298,
+   306.979,
+   307.1282,
+   307.2774,
+   307.4266,
+   307.5758,
+   307.725,
+   307.8742,
+   308.0234,
+   308.1726,
+   308.3218,
+   308.471,
+   308.6202,
+   308.7694,
+   308.9186,
+   309.0678,
+   309.217,
+   309.3662,
+   309.5154,
+   309.6646,
+   309.8138,
+   309.963,
+   310.1122,
+   310.2614,
+   310.4106,
+   310.5598,
+   310.709,
+   310.8582,
+   311.0074,
+   311.1566,
+   311.3058,
+   311.455,
+   311.6042,
+   311.7534,
+   311.9026,
+   312.0518,
+   312.201,
+   312.3502,
+   312.4994,
+   312.6486,
+   312.7978,
+   312.947,
+   313.0962,
+   313.2454,
+   313.3946,
+   313.5438,
+   313.693,
+   313.8422,
+   313.9914,
+   314.1406,
+   314.2898};
+   Double_t _fy1001[1903] = {
    1518,
    7771,
    7462,
@@ -3703,8 +3761,124 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    117,
    119,
    93,
-   10};
-   Double_t _fex1001[1845] = {
+   102,
+   76,
+   95,
+   82,
+   82,
+   79,
+   88,
+   85,
+   105,
+   88,
+   87,
+   117,
+   131,
+   114,
+   145,
+   144,
+   152,
+   136,
+   153,
+   186,
+   160,
+   143,
+   152,
+   135,
+   123,
+   118,
+   127,
+   116,
+   115,
+   88,
+   87,
+   89,
+   86,
+   81,
+   58,
+   74,
+   84,
+   83,
+   107,
+   102,
+   113,
+   131,
+   133,
+   147,
+   130,
+   132,
+   149,
+   152,
+   158,
+   117,
+   139,
+   142,
+   160,
+   124,
+   112,
+   121,
+   116,
+   101,
+   55};
+   Double_t _fex1001[1903] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -5550,7 +5724,7 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    0,
    0,
    0};
-   Double_t _fey1001[1845] = {
+   Double_t _fey1001[1903] = {
    38.96152,
    88.15328,
    86.38287,
@@ -7395,14 +7569,72 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    10.81665,
    10.90871,
    9.643651,
-   3.162278};
-   TGraphErrors *gre = new TGraphErrors(1845,_fx1001,_fy1001,_fex1001,_fey1001);
+   10.0995,
+   8.717798,
+   9.746794,
+   9.055385,
+   9.055385,
+   8.888194,
+   9.380832,
+   9.219544,
+   10.24695,
+   9.380832,
+   9.327379,
+   10.81665,
+   11.44552,
+   10.67708,
+   12.04159,
+   12,
+   12.32883,
+   11.6619,
+   12.36932,
+   13.63818,
+   12.64911,
+   11.95826,
+   12.32883,
+   11.61895,
+   11.09054,
+   10.86278,
+   11.26943,
+   10.77033,
+   10.72381,
+   9.380832,
+   9.327379,
+   9.433981,
+   9.273618,
+   9,
+   7.615773,
+   8.602325,
+   9.165151,
+   9.110434,
+   10.34408,
+   10.0995,
+   10.63015,
+   11.44552,
+   11.53256,
+   12.12436,
+   11.40175,
+   11.48913,
+   12.20656,
+   12.32883,
+   12.56981,
+   10.81665,
+   11.78983,
+   11.91638,
+   12.64911,
+   11.13553,
+   10.58301,
+   11,
+   10.77033,
+   10.04988,
+   7.416198};
+   TGraphErrors *gre = new TGraphErrors(1903,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
-   gre->SetTitle(";Decay time [#mus];Tracks / 149 ns");
+   gre->SetTitle(";Decay time [#mus];Tracks / 149.2 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",1845,2.99892,333.1487);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",1903,2.13356,342.6676);
    Graph_Graph1001->SetMinimum(10);
    Graph_Graph1001->SetMaximum(100000);
    Graph_Graph1001->SetDirectory(0);
@@ -7413,13 +7645,13 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
    Graph_Graph1001->GetXaxis()->SetTitle("Decay time [#mus]");
-   Graph_Graph1001->GetXaxis()->SetRange(155,1691);
+   Graph_Graph1001->GetXaxis()->SetRange(159,1696);
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
    Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1001->GetYaxis()->SetTitle("Tracks / 149 ns");
+   Graph_Graph1001->GetYaxis()->SetTitle("Tracks / 149.2 ns");
    Graph_Graph1001->GetYaxis()->CenterTitle(true);
    Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1001->GetYaxis()->SetLabelFont(42);
@@ -17479,7 +17711,7 @@ void fit_wiggle_Run-1c_125MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("3.91#times10^{6}");
+   TText *pt_LaTex = pt->AddText("3.92#times10^{6}");
    pt_LaTex = pt->AddText("2.93
 ");
    pt_LaTex = pt->AddText("62.05

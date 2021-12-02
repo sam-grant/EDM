@@ -1,0 +1,9 @@
+run=1
+list=../txt/MissingRunNumbers/run${run}.txt
+
+for subRun in `cat $list`; do
+
+    cat ../txt/CaloFileLists/*run${run}*.txt | grep $subRun | tee ../txt/MissingFiles/run$
+
+    
+

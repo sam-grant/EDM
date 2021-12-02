@@ -1,0 +1,29 @@
+services: {
+
+  TFileService: {
+    fileName: "GhostTrackingPlanes.root"
+  }
+
+}
+
+process_name: GhostTrackingPlanes
+
+source: {
+   module_type: RootInput
+   maxEvents:  -1
+}
+
+physics: {
+  analyzers: {
+  
+    GhostTrackingPlaneHits: {
+      module_type: GhostRing // TrackingPlaneHits
+    }
+		     
+  }
+
+  path1: [GhostTrackingPlaneHits ]
+  end_paths: [ path1 ]
+}
+
+

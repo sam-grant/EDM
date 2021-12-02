@@ -4,6 +4,8 @@
 #include "Utils.h"
 #include "RootInclude.h"
 
+#include "EDMBlinding.h"
+
 double injectionFactor = sqrt(2);
 
 // can be run with ../Scripts/runBlindedEDMFits_Run1.sh
@@ -132,7 +134,42 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, in
 
 }
 
-void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config) { 
+TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, double momentum = -1) { 
+
+  // ================== First, shift phase ==================
+
+  // Shift the phase 90 deg
+  double phi_edm = phi_omega + M_PI/2.; 
+
+  // Find a zero crossing 
+  double t0 = phi_omega * G2PERIOD * injectionFactor / (2*M_PI);
+  double zeroCrossing = 8 * G2PERIOD * injectionFactor - t0;
+
+  // ================== Second, get blinded A_EDM ================== 
+
+  double dMu_blind = blinded_edm_value(false);  
+  double delta_blind = GetDelta(dMu_blind);
+  double omega_a = getBlinded.referenceValue(); 
+  double tan_A_edm = tan(delta_blind) / gmagic;
+  double A_edm = alpha*atan(tan_A_edm) * 1e3; 
+
+  // ================== Third, inject blinded A_EDM into modulo plot ==================
+
+  // Define blinded EDM oscillation
+  TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
+  blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#sqrt{2}#omega_{a}^{FIXED}","#phi");//,"offset");
+  blindEDMFunc->SetParameters(A_edm,omega_a/injectionFactor,phi_edm);//,xmin);
+  blindEDMFunc->SetNpx(50000);
+
+  // Best not to draw this :)
+  // DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/Data/dMu/"+config+"/blindEDMFunc_"+qual);
+
+  if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, momentum);
+  else return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
+
+}
+
+void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -148,8 +185,10 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
     std::cout << "Generated x-profile...\t: " << px_thetaY_mod << std::endl;
 
-    // Blinding
-    TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+    // Blind
+    TGraphErrors *gr_thetaY_mod;
+    if(unblind) gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+    else gr_thetaY_mod = BlindedModuloGraph(0, input, ConvertToTGraphErrors(px_thetaY_mod), false);
 
     gr_thetaY_mod->GetYaxis()->SetRangeUser(-.425, .425);
 
@@ -173,7 +212,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 }
 
 
-void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config) { 
+void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -187,19 +226,10 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
-    DrawTH1(px_thetaY_vs_t, "px_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad]",  "../Images/Data/dMu/O/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
-    px_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
-    px_thetaY_vs_t->Write();
 
-    // FFT hist
-    TH1D *FFT_px_thetaY_vs_t = GetFFT(px_thetaY_vs_t);
-
-    DrawTH1(FFT_px_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude", "../Images/Data/dMu/O/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
-    FFT_px_thetaY_vs_t->Draw("HIST");
-    FFT_px_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
-    FFT_px_thetaY_vs_t->Write();
-
-    TGraphErrors *gr_thetaY_vs_t = ConvertToTGraphErrors(px_thetaY_vs_t);
+    TGraphErrors *gr_thetaY_vs_t;
+    if(unblind) gr_thetaY_vs_t = ConvertToTGraphErrors(px_thetaY_vs_t);
+    else gr_thetaY_vs_t = BlindedModuloGraph(0, input, ConvertToTGraphErrors(px_thetaY_vs_t), false);
 
     gr_thetaY_vs_t->GetYaxis()->SetRangeUser(-.425, .425);
 
@@ -218,12 +248,22 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     gr_thetaY_vs_t->SetName((stn+"_edmFit_noMod").c_str());
     gr_thetaY_vs_t->Write();
 
-    // Get residuals
-
     // we have to convert back into a TH1D
-    TH1D *h_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
-    TH1D *h_res_thetaY_vs_t = GetResidual(h_thetaY_vs_t, func);
+    px_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
+    TH1D *h_res_thetaY_vs_t = GetResidual(px_thetaY_vs_t, func);
     TH1D *FFT_h_res_thetaY_vs_t = GetFFT(h_res_thetaY_vs_t);
+
+    DrawTH1(px_thetaY_vs_t, "px_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad]",  "../Images/Data/dMu/O/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
+    px_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
+    px_thetaY_vs_t->Write();
+
+    // FFT hist
+    TH1D *FFT_px_thetaY_vs_t = GetFFT(px_thetaY_vs_t);
+
+    DrawTH1(FFT_px_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude", "../Images/Data/dMu/O/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
+    FFT_px_thetaY_vs_t->Draw("HIST");
+    FFT_px_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
+    FFT_px_thetaY_vs_t->Write();
 
     DrawTH1(h_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad]",  "../Images/Data/dMu/O/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
     h_res_thetaY_vs_t->Draw("HIST");
@@ -241,7 +281,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
 }
 
-void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config) { 
+void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -328,7 +368,9 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
       // Blind
-      TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+      TGraphErrors *gr_thetaY_mod;
+      if(unblind) gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+      else gr_thetaY_mod = BlindedModuloGraph(0, input, ConvertToTGraphErrors(px_thetaY_mod), true, p);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits/MomSlices");
 
@@ -460,11 +502,11 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
 }
 
-void Run(std::string config, bool write) {
+void Run(std::string config, bool write, bool unblind) {
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
-  std::string dataset = "O";//GetDataset(config);
+  std::string dataset = "O";
 
   // Read file
   std::string inputName = "../Plots/Data/dMu/"+dataset+"/Plots/edmPlots_"+config+".root";//to_string(step)+"MeV_"+qual+".root";
@@ -472,7 +514,10 @@ void Run(std::string config, bool write) {
 
   cout<<"Reading\t"<<inputName<<" "<<input<<endl;
 
-  std::string outputName = "../Plots/Data/dMu/"+dataset+"/Fits/edmFits_unblinded_"+config+".root";//"_"+to_string(step)+"MeV_"+qual+".root";
+  std::string outputName = "../Plots/Data/dMu/"+dataset+"/Fits/";
+  if(unblind) outputName += "edmFits_unblinded_"+config+".root";
+  else outputName += "edmFits_blinded_"+config+".root";
+
   if(!write) outputName = "delete_me.root";
 
   TFile *output = new TFile(outputName.c_str(), "RECREATE");
@@ -485,8 +530,8 @@ void Run(std::string config, bool write) {
   output->mkdir("SimultaneousAnalysis");
   output->cd("SimultaneousAnalysis");
 
-  SimultaneousAnalysis(phi, input, output, config);
-  SimultaneousAnalysisFFT(phi, input, output, config);
+  SimultaneousAnalysis(phi, input, output, config, unblind);
+  SimultaneousAnalysisFFT(phi, input, output, config, unblind);
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
@@ -494,7 +539,7 @@ void Run(std::string config, bool write) {
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
 
-  MomentumBinnedAnalysis(phi, input, output, config);
+  MomentumBinnedAnalysis(phi, input, output, config, unblind);
   // VertOffset(input, output);
 
   std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
@@ -531,20 +576,21 @@ void Run(std::string config, bool write) {
 // Uncomment if taking input from script
 int main(int argc, char *argv[]) {
 
-  ////////////////////////////////////////////////////////
-  const bool unblind = true;
-
-  if(unblind) {
-    cout<<"*** Unblind is set to true (it should be) ****"<<endl;
-  }
-  ////////////////////////////////////////////////////////
-
   string config = argv[1];
-  // config += "_125MeV_BQ";
+  string unblindStr = argv[2];
+
+  ////////////////////////////////////////////////////////
+
+  bool unblind = false;
+  if(unblindStr == "true") unblind = true;
+  else if(unblindStr == "false") unblind = false;
+  else cerr<<"Please input unblinding bool as 'true' or 'false'";
+
+  ////////////////////////////////////////////////////////
 
   bool write = true;
 
-  Run(config, write);
+  Run(config, write, unblind);
 
   return 0;
 
