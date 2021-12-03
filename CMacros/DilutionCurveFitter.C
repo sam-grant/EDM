@@ -293,15 +293,15 @@ void MottFunctions(TGraphErrors *gr, TF1* fit, TFitResultPtr frp, TFile *output,
   cout<<"Correlation matrix:"<<endl;
   frp->GetCorrelationMatrix().Print();
 
-  cout << "totalCov:" << endl;
+/*  cout << "totalCov:" << endl;
   for (int i = 0; i < nDim; i++){
     for (int j = 0; j < nDim; j++){
       cout << totalCov[i][j]/nTrials << " ";
     }
     cout << endl;
-  }
+  }*/
 
-  frp->GetCovarianceMatrix().Print();
+/*  frp->GetCovarianceMatrix().Print();*/
 
   // For some reason it writes these automatically
   // ellipse3D->Write();
@@ -332,82 +332,77 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
   cout<<"***************************\nOpened file "<<fn<<", "<<f<<"\n***************************"<<endl;
 
-  string grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
-  //cout<<tracksOrDecays<<endl;
-  if(tracksOrDecaysLabel == "Tracks") grn += "S0S12S18_A"+fitType+"_vs_p_thetaY";
-  else grn += "A"+fitType+"_vs_p_thetaY";
+  std::vector<std::string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
+  if(tracksOrDecaysLabel != "Tracks") stn_ = {""};
 
-  TGraphErrors *gr = (TGraphErrors*)f->Get(grn.c_str());
+  for (auto& stn : stn_) { 
+      
+      TString grn = "MomentumBinnedAnalysis/ParameterScans/"+stn+"AEDM_vs_p_thetaY";
 
-  // Backwards compatibility. Annoying but graph names have inconsistent patterns.
-  if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/A_vs_p");
-  if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_A_vs_p");
-  if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/AEDM_vs_p");
-  if(gr==0) gr = (TGraphErrors*)f->Get("MomentumBinnedAnalysis/ParameterScans/MomSlices/S0S12S18_AEDM_vs_p");
+      TGraphErrors *gr = (TGraphErrors*)f->Get(grn);
 
-  cout<<tracksOrDecays<<endl;
+      cout<<"graph\t"<<gr<<", "<<grn<<endl;
 
-  cout<<"graph\t"<<grn<<", "<<gr<<endl;
+      // Convert to diluton
+      gr = ConvertToDilution(gr); 
 
-  // Convert to diluton
-  gr = ConvertToDilution(gr); 
+      // Set name
+      gr->SetName((stn+tracksOrDecays).c_str());
 
-  // Set name
-  gr->SetName(tracksOrDecays.c_str());
+      // Fit
+      ParabolaFit(gr, tracksOrDecays, xmin, xmax);
 
-  // Fit
-  ParabolaFit(gr, tracksOrDecays, xmin, xmax);
+      TF1 *fit = gr->GetFunction("ParabolaFunc");
 
-  TF1 *fit = gr->GetFunction("ParabolaFunc");
+      cout<<"chisqr/ndf\t"<<fit->GetChisquare() / fit->GetNDF()<<endl;
 
-  cout<<"chisqr/ndf\t"<<fit->GetChisquare() / fit->GetNDF()<<endl;
+      cout<<"\n *** Getting fit result pointer *** \n"<<endl;
 
-  cout<<"\n *** Getting fit result pointer *** \n"<<endl;
+      TFitResultPtr frp = gr->Fit(fit, "SR");
 
-  TFitResultPtr frp = gr->Fit(fit, "SR");
+      string title = stn+";Decay vertex momentum [MeV];d_{"+fitType+"} / "+to_string(step)+" MeV";
 
-  f->Close();
+      gr->SetTitle(title.c_str());
 
-  string title = ";Decay vertex momentum [MeV];d_{"+fitType+"} / "+to_string(step)+" MeV";
+      // Write
+      output->cd(dname.c_str());
 
-  gr->SetTitle(title.c_str());
+      gr->Write();   
 
-  // Write
-  output->cd(dname.c_str());
+      // Look at the fit pull
+      tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr);
+      vector<double> x_ = get<0>(pull_tuple);
+      vector<double> pulls_ = get<1>(pull_tuple);
+      vector<double> ex_ = get<2>(pull_tuple);
+      vector<double> zeros_ = get<3>(pull_tuple);
 
-  gr->Write();   
+      TGraphErrors *gr_pull = GenerateTGraphErrors(x_, pulls_, ex_, zeros_);
+      gr_pull->SetName((stn+tracksOrDecays+"_gr_pull").c_str());
+      gr_pull->SetTitle((stn+";Decay vertex momentum [MeV];Pull / "+to_string(step)+" MeV").c_str());
+      gr_pull->Write();
 
-  // Look at the fit pull
-  tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr);
-  vector<double> x_ = get<0>(pull_tuple);
-  vector<double> pulls_ = get<1>(pull_tuple);
-  vector<double> ex_ = get<2>(pull_tuple);
-  vector<double> zeros_ = get<3>(pull_tuple);
+      // This writes two histograms for some reason?
+      TH1D *h_pull = new TH1D((stn+tracksOrDecays+"_h_pull").c_str(), (stn+";Pull [#sigma]; Entries / 0.25 #sigma").c_str(), 24, -3, +3);
+      for(auto& pull : pulls_) h_pull->Fill(pull);
 
-  TGraphErrors *gr_pull = GenerateTGraphErrors(x_, pulls_, ex_, zeros_);
-  gr_pull->SetName((tracksOrDecays+"_gr_pull").c_str());
-  gr_pull->SetTitle((";Decay vertex momentum [MeV];Pull / "+to_string(step)+" MeV").c_str());
-  gr_pull->Write();
+      // h_pull->Fit("gaus", "Q");
 
-  // This writes two histograms for some reason?
-  TH1D *h_pull = new TH1D((tracksOrDecays+"_h_pull").c_str(), ";Pull [#sigma]; Entries / 0.25 #sigma", 24, -3, +3);
-  for(auto& pull : pulls_) h_pull->Fill(pull);
+      h_pull->Write();
 
-  // h_pull->Fit("gaus", "Q");
+      // nTrials is a global var
+      if(getError) {
 
-  h_pull->Write();
+        cout<<"\n *** Sampling full set of distributons *** \n"<<endl;
 
-  // nTrials is a global var
-  if(getError) {
+        output->mkdir((dname+"/"+stn+tracksOrDecays+"Trials").c_str()); output->cd((dname+"/"+stn+tracksOrDecays+"Trials").c_str());
 
-    cout<<"\n *** Sampling full set of distributons *** \n"<<endl;
+        MottFunctions(gr, fit, frp, output, dname); 
 
-    dname += "/"+tracksOrDecays+"Trials";
-    output->mkdir(dname.c_str()); output->cd(dname.c_str());
-
-    MottFunctions(gr, fit, frp, output, dname); 
+      }
 
   }
+
+  f->Close();
 
   return; 
 
@@ -417,7 +412,7 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 int main() { 
 
   bool fit = true;
-  bool write = true;
+  bool write = false;
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
@@ -429,6 +424,21 @@ int main() {
   // Alternative fitType is "g2
 
   // Regular samples
+  FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("trackTruth_WORLD_250MeV_BQ", "EDM", output, true);
+
+  // With full distribution
+  FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
+
+  // Control sample. All reconstructions arise from the same MC sample.
+  FitDilution("acceptedDecaysControl_WORLD_250MeV_AQ", "EDM", output, true); 
+  FitDilution("trackRecoControl_WORLD_250MeV_BQ", "EDM", output, true);
+  FitDilution("trackRecoControl_WORLD_250MeV_CQ", "EDM", output, true);
+
+/*  // Regular samples
   FitDilution("allDecays_AAR_250MeV_AQ", "EDM", output, false);
   FitDilution("acceptedDecays_AAR_250MeV_AQ", "EDM", output, false);
   FitDilution("trackReco_AAR_250MeV_AQ", "EDM", output, false);
@@ -441,7 +451,7 @@ int main() {
   // Control sample. All reconstructions arise from the same MC sample.
   FitDilution("acceptedDecaysControl_AAR_250MeV_AQ", "EDM", output, false);	
   FitDilution("trackRecoControl_AAR_250MeV_BQ", "EDM", output, false);
-  FitDilution("trackRecoControl_AAR_250MeV_CQ", "EDM", output, false);
+  FitDilution("trackRecoControl_AAR_250MeV_CQ", "EDM", output, false);*/
 
 
   output->Write();
