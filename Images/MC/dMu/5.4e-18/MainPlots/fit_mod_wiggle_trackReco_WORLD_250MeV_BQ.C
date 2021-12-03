@@ -1,10 +1,10 @@
 void fit_mod_wiggle_trackReco_WORLD_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 14:15:40 2021) by ROOT version 6.24/04
+//=========  (Fri Dec  3 15:31:34 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.5418271,-625.0004,4.876443,55625);
+   c->Range(-0.5418271,31816.16,4.876443,109436.7);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -138,8 +138,8 @@ void fit_mod_wiggle_trackReco_WORLD_250MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,0,4.711539);
-   Graph_Graph1003->SetMinimum(5000);
-   Graph_Graph1003->SetMaximum(50000);
+   Graph_Graph1003->SetMinimum(39578.22);
+   Graph_Graph1003->SetMaximum(101674.7);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 

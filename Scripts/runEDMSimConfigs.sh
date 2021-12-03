@@ -1,9 +1,11 @@
-dataset_=(5.4e-18 1.8e-18 1.8e-19 1700ppm)
+dataset_=(5.4e-18) #  1.8e-18 1.8e-19 1700ppm)
 reco_=(allDecays acceptedDecays acceptedDecaysControl trackReco trackRecoControl trackTruth)
 # frame_=(WORLD AAR MRF)
-frame_=(WORLD AAR) # MRF)
+frame_=(WORLD) # AAR) # MRF)
 qual_=(AQ BQ)
 unblind_=("true" "false")
+
+rm -f ../Sheets/edmSim/*.csv
 
 cd ../CMacros
 

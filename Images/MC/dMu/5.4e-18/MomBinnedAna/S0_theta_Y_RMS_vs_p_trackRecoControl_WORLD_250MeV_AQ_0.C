@@ -1,73 +1,77 @@
 void S0_theta_Y_RMS_vs_p_trackRecoControl_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 14:16:42 2021) by ROOT version 6.24/04
+//=========  (Fri Dec  3 15:33:09 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(8.618866,-2.381582,3236.488,41.36778);
+   c->Range(486.6296,2.728062,3035.642,44.02026);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1041[11] = {
-   453.3151,
-   656.6728,
-   884.0304,
-   1123.299,
-   1363.41,
-   1601.772,
-   1825.357,
-   2101.201,
-   2414.13,
-   2640.4,
-   2791.653};
-   Double_t Graph0_fy1041[11] = {
-   33.87099,
-   26.48334,
-   21.49985,
-   18.11514,
-   15.42066,
-   13.06488,
-   10.85195,
-   10.58656,
-   8.298461,
-   6.15583,
-   4.957335};
-   Double_t Graph0_fex1041[11] = {
-   0.2793787,
-   0.2094921,
-   0.1416291,
-   0.130435,
-   0.1508062,
-   0.2151004,
-   0.4392332,
-   2.531908,
-   0.9989019,
-   0.5207588,
-   0.4189411};
-   Double_t Graph0_fey1041[11] = {
-   0.2052297,
-   0.05800167,
-   0.0302458,
-   0.02332033,
-   0.02309636,
-   0.02888905,
-   0.05569718,
-   0.2259118,
-   0.09054363,
-   0.03331127,
-   0.04735683};
-   TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1041,Graph0_fy1041,Graph0_fex1041,Graph0_fey1041);
+   Double_t Graph0_fx1041[12] = {
+   194.5206,
+   424.1997,
+   631.229,
+   875.8461,
+   1123.82,
+   1372.921,
+   1621.873,
+   1870.385,
+   2118.91,
+   2366.693,
+   2613.611,
+   2826.325};
+   Double_t Graph0_fy1041[12] = {
+   45.20509,
+   41.62529,
+   33.77335,
+   26.85595,
+   22.29352,
+   18.83637,
+   16.29482,
+   14.3999,
+   12.63073,
+   10.90865,
+   9.287155,
+   8.614827};
+   Double_t Graph0_fex1041[12] = {
+   0.3667712,
+   0.08181266,
+   0.06309451,
+   0.05917214,
+   0.06008437,
+   0.06234331,
+   0.06617305,
+   0.07215698,
+   0.0822069,
+   0.09740665,
+   0.1222321,
+   0.1544674};
+   Double_t Graph0_fey1041[12] = {
+   0.3820254,
+   0.04660016,
+   0.02161491,
+   0.01572928,
+   0.0131523,
+   0.01152808,
+   0.01059003,
+   0.01021922,
+   0.01021839,
+   0.01048713,
+   0.01126938,
+   0.01765637};
+   TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1041,Graph0_fy1041,Graph0_fex1041,Graph0_fey1041);
    gre->SetName("Graph0");
    gre->SetTitle("S0_");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01041 = new TH1F("Graph_Graph01041","S0_",100,219.1321,3025.975);
-   Graph_Graph01041->SetMinimum(1.993354);
-   Graph_Graph01041->SetMaximum(36.99284);
+   TH1F *Graph_Graph01041 = new TH1F("Graph_Graph01041","S0_",100,0,3089.712);
+   Graph_Graph01041->SetMinimum(6.857282);
+   Graph_Graph01041->SetMaximum(39.89104);
    Graph_Graph01041->SetDirectory(0);
    Graph_Graph01041->SetStats(0);
 
@@ -76,7 +80,7 @@ void S0_theta_Y_RMS_vs_p_trackRecoControl_WORLD_250MeV_AQ_0()
    ci = TColor::GetColor("#000099");
    Graph_Graph01041->SetLineColor(ci);
    Graph_Graph01041->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01041->GetXaxis()->SetRange(5,96);
+   Graph_Graph01041->GetXaxis()->SetRange(25,90);
    Graph_Graph01041->GetXaxis()->CenterTitle(true);
    Graph_Graph01041->GetXaxis()->SetLabelFont(42);
    Graph_Graph01041->GetXaxis()->SetTitleSize(0.04);

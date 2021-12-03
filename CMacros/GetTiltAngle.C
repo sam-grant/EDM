@@ -9,18 +9,9 @@ using namespace std;
 // Do not forsee chainging this anytime soon
 const int nTrials = 1e3;
 
-//string limit = "1700ppm"; // Bz
-//string limit = "1.8e-18"; // only works for "truthAllDecays"
-
 // Global momentum cuts
 const double xmin = 750;
 const double xmax = 2750;
-// const double xmin = 825; // 750;
-// const double xmax = 2375; // 2500;
-// const double xmin = 900;
-// const double xmax = 2250;
-// const double xmin = 1025;
-// const double xmax = 2125;
 
 string GetQual(string config) {
 
@@ -452,7 +443,7 @@ void RunSim(string config, string dataset, string blinding) {
   // Get mott functions
   vector<TF1*> mottFunctions_ = GetMottFunctions(dilution_file);
 
-  //cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
+  // cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
 
@@ -483,7 +474,7 @@ void RunSim(string config, string dataset, string blinding) {
     // Apply correction
     for(auto& stn : stn_) {
 
-      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"A"+fitType+"_vs_p";
+      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"A"+fitType+"_vs_p_thetaY";
 
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
       TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(A_gr, dilutionFunc);
@@ -516,13 +507,14 @@ void RunSim(string config, string dataset, string blinding) {
       TH1D *h_delta_prime  = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
 
       // Draw and write histogram
-      DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"} [mrad];Trials", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(xmin)+"-"+to_string(xmax)+"MeV");
+      DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"} [mrad];Trials", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV");
       h_delta_prime->SetName((stn+"h_delta_prime").c_str());
       h_delta_prime->Write();
 
       // Fill results
       double delta_prime = f_delta_prime->GetParameter(0);
       double err_delta_prime = f_delta_prime->GetParError(0);
+
       double result = delta_prime;
       double error = sqrt(pow(err_delta_prime,2) + pow(h_delta_prime->GetRMS(),2));
 
@@ -531,9 +523,9 @@ void RunSim(string config, string dataset, string blinding) {
         std::ostringstream oss_result; oss_result << GetLimit(result);
         std::ostringstream oss_error; oss_error << GetLimit(error);
         std::string dMu = oss_result.str(); std::string err_dMu = oss_error.str();
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+dMu+", "+err_dMu);
+        results_.push_back(stn+", "+to_string(result)+", "+to_string(error)+", "+dMu+", "+err_dMu);
       } else if(fitType == "g2") {
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+to_string(result*1e3)+", "+to_string(error*1e3));//stn_+", "+to_string(result*1e3)+", "+to_string(error*1e3));
+        results_.push_back(stn+", "+to_string(result)+", "+to_string(error)+", "+to_string(result*1e3)+", "+to_string(error*1e3));//stn_+", "+to_string(result*1e3)+", "+to_string(error*1e3));
       }
 
     }
@@ -758,17 +750,18 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
 int main() { 
 
-  // ../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_AAR_250MeV_BQ.root
-  // ../Plots/Data/dMu/Run-1a/Fits/edmFits_blinded_Run-1a_250MeV_BQ.root
-/*  RunSim("allDecays_AAR_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("acceptedDecays_AAR_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("acceptedDecaysControl_AAR_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("trackRecoControl_AAR_250MeV_BQ", "5.4e-18", "unblinded");
-  RunSim("trackRecoControl_AAR_250MeV_CQ", "5.4e-18", "unblinded");
-  RunSim("trackTruth_AAR_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("trackReco_AAR_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("trackTruth_AAR_250MeV_BQ", "5.4e-18", "unblinded");
-	RunSim("trackReco_AAR_250MeV_BQ", "5.4e-18", "unblinded");*/
+
+/*  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("acceptedDecaysControl_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("trackRecoControl_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
+  RunSim("trackRecoControl_WORLD_250MeV_CQ", "5.4e-18", "unblinded");
+  RunSim("trackTruth_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("trackReco_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("trackTruth_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
+	RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");*/
+
+  RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
 
   //RunData("Run-1a_250MeV_BQ", "Run-1", blinded");
   //RunData("Run-1a_250MeV_BQ_withFR", "Run-1", "blinded");
@@ -780,10 +773,12 @@ int main() {
   RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
 */
 
-  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+///////////////////////////////////////////////////////////////
+/*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);*/
+///////////////////////////////////////////////////////////////
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
 
 /*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", false);

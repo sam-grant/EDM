@@ -1,10 +1,10 @@
 void N_vs_p_allDecays_WORLD_250MeV_AQ_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 14:14:49 2021) by ROOT version 6.24/04
+//=========  (Fri Dec  3 15:30:11 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-409.8874,-334906.7,3376.691,7365057);
+   c->Range(495.7686,-360210.9,3033.167,7314505);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,44 +12,44 @@ void N_vs_p_allDecays_WORLD_250MeV_AQ_0()
    c->SetFrameBorderMode(0);
    
    Double_t Graph0_fx1020[12] = {
-   124.3992,
-   374.0378,
-   623.6659,
-   873.2514,
+   124.3988,
+   374.0376,
+   623.6681,
+   873.2521,
    1122.83,
    1372.241,
-   1621.488,
-   1870.589,
+   1621.489,
+   1870.59,
    2119.347,
-   2367.26,
+   2367.262,
    2613.214,
-   2850.255};
+   2850.256};
    Double_t Graph0_fy1020[12] = {
-   6039458,
-   5803666,
-   5496575,
-   5110552,
-   4650931,
-   4124262,
-   3554045,
-   2952272,
-   2326810,
-   1695642,
-   1075923,
-   483433};
+   6039617,
+   5803625,
+   5496589,
+   5110557,
+   4650866,
+   4124309,
+   3554053,
+   2952281,
+   2326860,
+   1695604,
+   1075927,
+   483442};
    Double_t Graph0_fex1020[12] = {
-   0.02929484,
-   0.0299443,
-   0.03076585,
-   0.0318993,
-   0.0334412,
-   0.03552109,
-   0.03823314,
-   0.0419347,
-   0.04715824,
-   0.05508999,
-   0.06872665,
-   0.09775045};
+   0.02929449,
+   0.0299445,
+   0.03076586,
+   0.03189946,
+   0.03344109,
+   0.03552055,
+   0.03823304,
+   0.04193465,
+   0.04715784,
+   0.05508997,
+   0.06872581,
+   0.0977494};
    Double_t Graph0_fey1020[12] = {
    0,
    0,
@@ -69,9 +69,9 @@ void N_vs_p_allDecays_WORLD_250MeV_AQ_0()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01020 = new TH1F("Graph_Graph01020","",100,0,3122.951);
-   Graph_Graph01020->SetMinimum(435089.7);
-   Graph_Graph01020->SetMaximum(6595060);
+   TH1F *Graph_Graph01020 = new TH1F("Graph_Graph01020","",100,0,3122.952);
+   Graph_Graph01020->SetMinimum(407260.8);
+   Graph_Graph01020->SetMaximum(6547034);
    Graph_Graph01020->SetDirectory(0);
    Graph_Graph01020->SetStats(0);
 
@@ -80,7 +80,7 @@ void N_vs_p_allDecays_WORLD_250MeV_AQ_0()
    ci = TColor::GetColor("#000099");
    Graph_Graph01020->SetLineColor(ci);
    Graph_Graph01020->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01020->GetXaxis()->SetRange(0,96);
+   Graph_Graph01020->GetXaxis()->SetRange(25,89);
    Graph_Graph01020->GetXaxis()->CenterTitle(true);
    Graph_Graph01020->GetXaxis()->SetLabelFont(42);
    Graph_Graph01020->GetXaxis()->SetTitleSize(0.04);

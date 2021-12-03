@@ -1,7 +1,7 @@
 void S12_h_pull_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  1 15:21:49 2021) by ROOT version 6.24/04
+//=========  (Fri Dec  3 14:23:35 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,17 +11,17 @@ void S12_h_pull_Run-1a_125MeV_BQ()
    c->SetFrameBorderMode(0);
    
    TH1D *S12_edmFit_pull__1 = new TH1D("S12_edmFit_pull__1","S12",40,-5,5);
-   S12_edmFit_pull__1->SetBinContent(12,1);
    S12_edmFit_pull__1->SetBinContent(13,2);
+   S12_edmFit_pull__1->SetBinContent(14,1);
    S12_edmFit_pull__1->SetBinContent(15,1);
    S12_edmFit_pull__1->SetBinContent(16,1);
-   S12_edmFit_pull__1->SetBinContent(17,2);
-   S12_edmFit_pull__1->SetBinContent(18,2);
+   S12_edmFit_pull__1->SetBinContent(17,3);
+   S12_edmFit_pull__1->SetBinContent(18,1);
    S12_edmFit_pull__1->SetBinContent(19,1);
-   S12_edmFit_pull__1->SetBinContent(20,5);
-   S12_edmFit_pull__1->SetBinContent(21,2);
-   S12_edmFit_pull__1->SetBinContent(22,2);
-   S12_edmFit_pull__1->SetBinContent(23,4);
+   S12_edmFit_pull__1->SetBinContent(20,4);
+   S12_edmFit_pull__1->SetBinContent(21,3);
+   S12_edmFit_pull__1->SetBinContent(22,3);
+   S12_edmFit_pull__1->SetBinContent(23,3);
    S12_edmFit_pull__1->SetBinContent(24,2);
    S12_edmFit_pull__1->SetBinContent(26,1);
    S12_edmFit_pull__1->SetBinContent(27,1);

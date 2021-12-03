@@ -1,7 +1,7 @@
 void S12_h_pull_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  1 16:14:56 2021) by ROOT version 6.24/04
+//=========  (Fri Dec  3 17:54:37 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -14,16 +14,16 @@ void S12_h_pull_Run-1b_125MeV_BQ()
    S12_edmFit_pull__1->SetBinContent(8,1);
    S12_edmFit_pull__1->SetBinContent(13,1);
    S12_edmFit_pull__1->SetBinContent(16,1);
-   S12_edmFit_pull__1->SetBinContent(17,2);
+   S12_edmFit_pull__1->SetBinContent(17,1);
    S12_edmFit_pull__1->SetBinContent(18,2);
-   S12_edmFit_pull__1->SetBinContent(19,1);
+   S12_edmFit_pull__1->SetBinContent(19,4);
    S12_edmFit_pull__1->SetBinContent(20,8);
-   S12_edmFit_pull__1->SetBinContent(21,4);
+   S12_edmFit_pull__1->SetBinContent(21,2);
    S12_edmFit_pull__1->SetBinContent(22,2);
    S12_edmFit_pull__1->SetBinContent(24,1);
-   S12_edmFit_pull__1->SetBinContent(25,2);
-   S12_edmFit_pull__1->SetBinContent(26,3);
-   S12_edmFit_pull__1->SetBinContent(27,1);
+   S12_edmFit_pull__1->SetBinContent(25,1);
+   S12_edmFit_pull__1->SetBinContent(26,4);
+   S12_edmFit_pull__1->SetBinContent(28,1);
    S12_edmFit_pull__1->SetEntries(29);
    S12_edmFit_pull__1->GetXaxis()->SetTitle("Pull [#sigma]");
    S12_edmFit_pull__1->GetXaxis()->CenterTitle(true);

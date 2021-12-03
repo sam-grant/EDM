@@ -9,8 +9,11 @@
 // can be run with ../Scripts/runBlindedEDMFits_Run1.sh
 
 // This should really be "fitStartTime" and "fitEndTime"
-double xmin = 7*G2PERIOD;
-double xmax = 70*G2PERIOD;
+double tmin = 7*G2PERIOD;
+double tmax = 70*G2PERIOD;
+
+double pmin = 750;
+double pmax = 2750;
 
 int GetStep(std::string config) {
 
@@ -92,25 +95,15 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, in
 
   // Hack together y-axis range
   double lo = 1e6; double hi = -1e6;
-  for(int i = 700; i<2550; i = i + 10) {
+  for(int i = pmin-100; i<pmax+100; i = i + 10) {
     double y = graph->Eval(i);
     if(y < lo) lo = y;
     if(y > hi) hi = y;
 
   }
 
-  double scale = 0.;
-  if(step == 200) scale = 0.05;
-  else if(step == 500) scale = 0.125;
-  else if(step == 250) scale = 0.05;
-
-  double offset = (xmax - xmin) * scale;
-  xmin = xmin - offset; 
-  xmax = xmax + offset;
-  graph->GetXaxis()->SetRangeUser(xmin, xmax);
-
-  graph->GetXaxis()->SetRangeUser(750, 2500);
-  graph->GetYaxis()->SetRangeUser(lo*0.9, hi*1.1);
+  graph->GetXaxis()->SetRangeUser(pmin, pmax);
+  graph->GetYaxis()->SetRangeUser(lo*0.8, hi*1.2);
 
   if(!xLabel) graph->Draw("ALP");
   else { 
@@ -156,8 +149,8 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config) { //, st
 
   int i_point = 0; 
 
-  double fit_start_time = xmin;
-  double fit_end_time = xmax;
+  double fit_start_time = tmin;
+  double fit_end_time = tmax;
 
   for (int i_fold = 0; i_fold < folds; i_fold++) { 
 
@@ -238,11 +231,11 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
 
-  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, 2, xmin, xmax);
+  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, 2, tmin, tmax);
   FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 2, 0, G2PERIOD);
 
   TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
-  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), xmin, xmax, 10, 10e4);
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, 10, 10e4);
 
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 
@@ -414,7 +407,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     // Blinding
     TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_vs_t), false);
 
-    FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A * 1e3, phi, 0, 0, xmin, xmax);
+    FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A * 1e3, phi, 0, 0, tmin, tmax);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
     double c = func->GetParameter(4);
@@ -444,7 +437,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FFT_px_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
     FFT_px_thetaY_vs_t->Write();
 
-    DrawTH1(h_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad]",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
+    DrawTH1(h_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
     h_res_thetaY_vs_t->Draw("HIST");
     h_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
     h_res_thetaY_vs_t->Write();
@@ -684,6 +677,11 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     AEDMOverMaxDiff_vs_p->SetName((stn+"_AEDMOverThetaYRMS_vs_p").c_str());
     AEDMOverMaxDiff_vs_p->Write();
 
+/*    AEDMOverMaxDiff_vs_p = GenerateTGraphErrors(p_, AEDMOverThetaYRMS_, ep_, e_AEDMOverThetaYRMS_);
+    DrawScanGraph(AEDMOverMaxDiff_vs_p, stn+";Decay vertex momentum [MeV];A_{EDM}/#sigma#theta_{y} "+to_string(step)+" MeV", ("../Images/Data/dMu/Run-1/MomBinnedAna/"+stn+"_AEDMOverThetaYRMS_vs_p_"+config).c_str(), step, false);
+    AEDMOverMaxDiff_vs_p->SetName((stn+"_AEDMOverThetaYRMS_vs_p").c_str());
+    AEDMOverMaxDiff_vs_p->Write();
+*/
   
   } // Stn loop
 
