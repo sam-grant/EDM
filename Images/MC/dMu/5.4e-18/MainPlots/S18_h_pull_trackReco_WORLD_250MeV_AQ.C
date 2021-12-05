@@ -1,7 +1,7 @@
 void S18_h_pull_trackReco_WORLD_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:45:57 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 18:51:44 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -14,14 +14,14 @@ void S18_h_pull_trackReco_WORLD_250MeV_AQ()
    S18_edmFit_pull__3->SetBinContent(14,3);
    S18_edmFit_pull__3->SetBinContent(15,2);
    S18_edmFit_pull__3->SetBinContent(17,2);
-   S18_edmFit_pull__3->SetBinContent(18,4);
-   S18_edmFit_pull__3->SetBinContent(19,3);
+   S18_edmFit_pull__3->SetBinContent(18,2);
+   S18_edmFit_pull__3->SetBinContent(19,5);
    S18_edmFit_pull__3->SetBinContent(20,2);
    S18_edmFit_pull__3->SetBinContent(21,1);
    S18_edmFit_pull__3->SetBinContent(22,3);
    S18_edmFit_pull__3->SetBinContent(24,2);
-   S18_edmFit_pull__3->SetBinContent(25,3);
-   S18_edmFit_pull__3->SetBinContent(26,1);
+   S18_edmFit_pull__3->SetBinContent(25,2);
+   S18_edmFit_pull__3->SetBinContent(26,2);
    S18_edmFit_pull__3->SetBinContent(27,2);
    S18_edmFit_pull__3->SetBinContent(29,1);
    S18_edmFit_pull__3->SetEntries(29);

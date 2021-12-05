@@ -1,10 +1,10 @@
 void S18_eAEDM_vs_p_thetaY_trackRecoControl_WORLD_250MeV_CQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:16:30 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 20:08:58 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(486.2651,0.007552497,3033.368,0.08977313);
+   c->Range(486.2651,0.007551867,3033.368,0.08977905);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S18_eAEDM_vs_p_thetaY_trackRecoControl_WORLD_250MeV_CQ_1()
    2613.314,
    2823.639};
    Double_t Graph0_fy1075[12] = {
-   1.566735,
-   0.2034905,
-   0.06616999,
-   0.03468264,
-   0.02640881,
-   0.02276327,
-   0.02075306,
-   0.01983772,
-   0.01971678,
-   0.02007386,
-   0.02140145,
-   0.03151481};
+   1.561687,
+   0.2041672,
+   0.06616551,
+   0.03468152,
+   0.02640816,
+   0.02276487,
+   0.02075298,
+   0.01983781,
+   0.01971681,
+   0.02007448,
+   0.02140897,
+   0.03151167};
    Double_t Graph0_fex1075[12] = {
    1.031071,
    0.2060205,
@@ -70,8 +70,8 @@ void S18_eAEDM_vs_p_thetaY_trackRecoControl_WORLD_250MeV_CQ_1()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01075 = new TH1F("Graph_Graph01075","S18_",100,0,3087.398);
-   Graph_Graph01075->SetMinimum(0.01577456);
-   Graph_Graph01075->SetMaximum(0.08155106);
+   Graph_Graph01075->SetMinimum(0.01577459);
+   Graph_Graph01075->SetMaximum(0.08155633);
    Graph_Graph01075->SetDirectory(0);
    Graph_Graph01075->SetStats(0);
 

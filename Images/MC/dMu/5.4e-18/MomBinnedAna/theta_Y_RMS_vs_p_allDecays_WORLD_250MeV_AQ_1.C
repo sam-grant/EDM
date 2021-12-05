@@ -1,7 +1,7 @@
 void theta_Y_RMS_vs_p_allDecays_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:14:28 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 21:35:51 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(495.7686,-0.5635339,3033.167,46.03073);
@@ -25,7 +25,7 @@ void theta_Y_RMS_vs_p_allDecays_WORLD_250MeV_AQ_1()
    2613.214,
    2850.256};
    Double_t Graph0_fy1017[12] = {
-   124.4516,
+   124.4519,
    49.15926,
    35.2629,
    27.80517,
@@ -51,7 +51,7 @@ void theta_Y_RMS_vs_p_allDecays_WORLD_250MeV_AQ_1()
    0.06872581,
    0.0977494};
    Double_t Graph0_fey1017[12] = {
-   0.03601013,
+   0.03601023,
    0.01442915,
    0.01063546,
    0.008697141,

@@ -1,9 +1,9 @@
 void S12_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Dec  2 15:52:16 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:49:43 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.15,4.990555e-19,4.65,2.583101e-18);
+   c->Range(0.15,4.23913e-19,4.65,2.596221e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,20 +16,20 @@ void S12_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    2.9,
    3.9};
    Double_t _fy1010[4] = {
-   1.880774e-18,
-   1.123242e-18,
-   1.994327e-18,
-   1.75238e-18};
+   1.863182e-18,
+   1.073131e-18,
+   1.956853e-18,
+   1.689438e-18};
    Double_t _fex1010[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1010[4] = {
-   3.304752e-19,
-   2.76846e-19,
-   2.41433e-19,
-   1.824701e-19};
+   3.541245e-19,
+   2.871667e-19,
+   2.773166e-19,
+   2.130854e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1010,_fy1010,_fex1010,_fey1010);
    gre->SetName("");
    gre->SetTitle("S12");
@@ -37,8 +37,8 @@ void S12_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1010 = new TH1F("Graph_Graph1010","S12",100,0.6,4.2);
-   Graph_Graph1010->SetMinimum(7.074601e-19);
-   Graph_Graph1010->SetMaximum(2.374696e-18);
+   Graph_Graph1010->SetMinimum(6.411439e-19);
+   Graph_Graph1010->SetMaximum(2.378991e-18);
    Graph_Graph1010->SetDirectory(0);
    Graph_Graph1010->SetStats(0);
 

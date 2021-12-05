@@ -1,10 +1,10 @@
 void S12S18_AEDMOverMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_CQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:16:30 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 20:08:59 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(486.3314,-0.0007526216,3033.782,-0.0003810778);
+   c->Range(486.3314,-0.0007515904,3033.782,-0.0003808329);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void S12S18_AEDMOverMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_CQ_1()
    2613.353,
    2824.104};
    Double_t Graph0_fy1093[12] = {
-   -0.01255698,
-   -0.0004117443,
-   -0.0004364346,
-   -0.0006916163,
-   -0.0007146416,
-   -0.0008964355,
-   -0.0008127967,
-   -0.0008173757,
-   -0.00050474,
-   -0.0005288333,
-   -0.0004973142,
-   -0.0003589621};
+   -0.01250839,
+   -0.0005555838,
+   -0.0004283594,
+   -0.0006917461,
+   -0.0007148266,
+   -0.0008952103,
+   -0.0008129445,
+   -0.0008173125,
+   -0.0005045753,
+   -0.0005298293,
+   -0.0004942876,
+   -0.0003584991};
    Double_t Graph0_fex1093[12] = {
    0.713896,
    0.1447174,
@@ -51,18 +51,18 @@ void S12S18_AEDMOverMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_CQ_1()
    0.09437211,
    0.1178736};
    Double_t Graph0_fey1093[12] = {
-   -0.006193189,
-   -0.0007826125,
-   -0.0002536072,
-   -0.0001332434,
-   -0.000101468,
-   -8.743897e-05,
-   -7.963136e-05,
-   -7.604646e-05,
-   -7.53939e-05,
-   -7.678129e-05,
-   -8.258557e-05,
-   -0.0001205969};
+   -0.006185847,
+   -0.0007851619,
+   -0.0002535905,
+   -0.0001332421,
+   -0.0001014648,
+   -8.744011e-05,
+   -7.963029e-05,
+   -7.604711e-05,
+   -7.539435e-05,
+   -7.677601e-05,
+   -8.226709e-05,
+   -0.000119923};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1093,Graph0_fy1093,Graph0_fex1093,Graph0_fey1093);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18_");
@@ -70,8 +70,8 @@ void S12S18_AEDMOverMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_CQ_1()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01093 = new TH1F("Graph_Graph01093","S12S18_",100,0,3087.819);
-   Graph_Graph01093->SetMinimum(-0.0007154672);
-   Graph_Graph01093->SetMaximum(-0.0004182322);
+   Graph_Graph01093->SetMinimum(-0.0007145146);
+   Graph_Graph01093->SetMaximum(-0.0004179087);
    Graph_Graph01093->SetDirectory(0);
    Graph_Graph01093->SetStats(0);
 

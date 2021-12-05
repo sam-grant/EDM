@@ -1,10 +1,10 @@
 void S12S18_chi2NDF_vs_p_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 17:55:08 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:46:42 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(462.8522,0.1989655,3034.329,2.291354);
+   c->Range(462.8522,0.1989654,3034.329,2.291354);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -44,11 +44,11 @@ void S12S18_chi2NDF_vs_p_Run-1b_125MeV_BQ()
    1.478884,
    1.255801,
    0.9042647,
-   0.8528441,
+   0.8528443,
    1.259959,
    0.8159852,
-   0.5620401,
-   0.8517533,
+   0.5620402,
+   0.8517534,
    0.5094042,
    1.028307,
    1.117524,

@@ -1,10 +1,10 @@
 void Ag2_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Nov 22 14:14:03 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:23:02 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-409.8919,-0.1308781,3376.728,0.05846349);
+   c->Range(495.7742,-0.0172769,3033.201,0.02431446);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -13,65 +13,65 @@ void Ag2_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_1()
    
    Double_t Graph0_fx1013[12] = {
    124.4185,
-   373.9945,
-   623.7008,
-   873.2417,
-   1122.797,
+   373.9942,
+   623.7009,
+   873.2413,
+   1122.796,
    1372.228,
-   1621.535,
+   1621.536,
    1870.683,
-   2119.321,
-   2367.288,
-   2613.167,
-   2850.317};
+   2119.32,
+   2367.287,
+   2613.166,
+   2850.318};
    Double_t Graph0_fy1013[12] = {
-   -0.04829915,
-   -0.02048636,
-   -0.01626557,
-   -0.0126054,
-   -0.003340896,
-   -0.004639675,
-   -0.001060439,
-   -0.004905778,
-   0.006935809,
-   -0.002348157,
-   0.01252049,
-   0.01817261};
+   -0.04648204,
+   -0.0202734,
+   -0.01697185,
+   -0.01151925,
+   -0.00353451,
+   -0.003350932,
+   -0.001032398,
+   -0.004298986,
+   0.00769595,
+   -0.00286559,
+   0.0134531,
+   0.01694817};
    Double_t Graph0_fex1013[12] = {
-   0.0208215,
-   0.02129586,
-   0.02188303,
-   0.02268929,
-   0.02377664,
-   0.02523901,
-   0.02719507,
-   0.02982735,
-   0.03354456,
-   0.03919428,
-   0.04883968,
-   0.06956392};
+   0.02082145,
+   0.02129585,
+   0.02188298,
+   0.02268914,
+   0.02377668,
+   0.02523909,
+   0.02719482,
+   0.02982745,
+   0.03354485,
+   0.0391942,
+   0.04883953,
+   0.06956403};
    Double_t Graph0_fey1013[12] = {
-   0.05102198,
-   0.02048324,
-   0.0151201,
-   0.01236399,
-   0.01064312,
-   0.009477793,
-   0.008661477,
-   0.008088063,
-   0.007728132,
-   0.007598458,
-   0.007772563,
-   0.008733959};
+   0.05101895,
+   0.02048378,
+   0.01511987,
+   0.0123637,
+   0.01064297,
+   0.009477222,
+   0.008661151,
+   0.008087028,
+   0.007726554,
+   0.007595298,
+   0.007767479,
+   0.008719517};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
    gre->SetTitle(";Decay vertex momentum [MeV];A_{g#minus2} [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01013 = new TH1F("Graph_Graph01013","",100,0,3122.986);
-   Graph_Graph01013->SetMinimum(-0.1119439);
-   Graph_Graph01013->SetMaximum(0.03952933);
+   TH1F *Graph_Graph01013 = new TH1F("Graph_Graph01013","",100,0,3122.987);
+   Graph_Graph01013->SetMinimum(-0.01311776);
+   Graph_Graph01013->SetMaximum(0.02015532);
    Graph_Graph01013->SetDirectory(0);
    Graph_Graph01013->SetStats(0);
 
@@ -80,7 +80,7 @@ void Ag2_vs_p_thetaY_allDecays_WORLD_250MeV_AQ_1()
    ci = TColor::GetColor("#000099");
    Graph_Graph01013->SetLineColor(ci);
    Graph_Graph01013->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01013->GetXaxis()->SetRange(0,96);
+   Graph_Graph01013->GetXaxis()->SetRange(25,89);
    Graph_Graph01013->GetXaxis()->CenterTitle(true);
    Graph_Graph01013->GetXaxis()->SetLabelFont(42);
    Graph_Graph01013->GetXaxis()->SetTitleSize(0.04);

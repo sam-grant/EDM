@@ -1,7 +1,7 @@
 void S12S18_g2_delta_prime_hist_1000_750-2750MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:46:56 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:14:46 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,31 +10,33 @@ void S12S18_g2_delta_prime_hist_1000_750-2750MeV()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__9 = new TH1D("h__9","",50,-0.4230391,0.5805149);
-   h__9->SetBinContent(23,44);
-   h__9->SetBinContent(24,494);
-   h__9->SetBinContent(25,425);
-   h__9->SetBinContent(26,37);
-   h__9->SetEntries(1000);
-   h__9->SetStats(0);
-   h__9->SetLineWidth(3);
-   h__9->GetXaxis()->SetTitle("#delta'_{g#minus2} [mrad]");
-   h__9->GetXaxis()->CenterTitle(true);
-   h__9->GetXaxis()->SetLabelFont(42);
-   h__9->GetXaxis()->SetTitleSize(0.04);
-   h__9->GetXaxis()->SetTitleOffset(1.1);
-   h__9->GetXaxis()->SetTitleFont(42);
-   h__9->GetYaxis()->SetTitle("Trials");
-   h__9->GetYaxis()->CenterTitle(true);
-   h__9->GetYaxis()->SetNdivisions(4000510);
-   h__9->GetYaxis()->SetLabelFont(42);
-   h__9->GetYaxis()->SetTitleSize(0.04);
-   h__9->GetYaxis()->SetTitleOffset(1.1);
-   h__9->GetYaxis()->SetTitleFont(42);
-   h__9->GetZaxis()->SetLabelFont(42);
-   h__9->GetZaxis()->SetTitleOffset(1);
-   h__9->GetZaxis()->SetTitleFont(42);
-   h__9->Draw("HIST");
+   TH1D *h__69 = new TH1D("h__69","",51,-0.4248149,0.6020984);
+   h__69->SetBinContent(23,15);
+   h__69->SetBinContent(24,190);
+   h__69->SetBinContent(25,437);
+   h__69->SetBinContent(26,299);
+   h__69->SetBinContent(27,56);
+   h__69->SetBinContent(28,3);
+   h__69->SetEntries(1000);
+   h__69->SetStats(0);
+   h__69->SetLineWidth(3);
+   h__69->GetXaxis()->SetTitle("#delta'_{g#minus2} [mrad]");
+   h__69->GetXaxis()->CenterTitle(true);
+   h__69->GetXaxis()->SetLabelFont(42);
+   h__69->GetXaxis()->SetTitleSize(0.04);
+   h__69->GetXaxis()->SetTitleOffset(1.1);
+   h__69->GetXaxis()->SetTitleFont(42);
+   h__69->GetYaxis()->SetTitle("Trials");
+   h__69->GetYaxis()->CenterTitle(true);
+   h__69->GetYaxis()->SetNdivisions(4000510);
+   h__69->GetYaxis()->SetLabelFont(42);
+   h__69->GetYaxis()->SetTitleSize(0.04);
+   h__69->GetYaxis()->SetTitleOffset(1.1);
+   h__69->GetYaxis()->SetTitleFont(42);
+   h__69->GetZaxis()->SetLabelFont(42);
+   h__69->GetZaxis()->SetTitleOffset(1);
+   h__69->GetZaxis()->SetTitleFont(42);
+   h__69->Draw("HIST");
    
    TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
    pt->SetFillColor(0);
@@ -50,11 +52,11 @@ void S12S18_g2_delta_prime_hist_1000_750-2750MeV()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.05773
-#pm0.0004
+   pt_LaTex = pt->AddText("0.07263
+#pm0.0005
 ");
-   pt_LaTex = pt->AddText("0.012
-#pm0.0003
+   pt_LaTex = pt->AddText("0.017
+#pm0.0004
 ");
    pt->Draw();
    c->Modified();

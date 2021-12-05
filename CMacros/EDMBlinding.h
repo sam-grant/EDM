@@ -105,10 +105,10 @@ TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc
 
 }
 
-TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc, double momentum) { 
+TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc, std::string stn, double momentum) { 
 
   TFile *dilutionFile = TFile::Open("../Plots/MC/dMu/Dilution/dilutionCurves.root");
-  TGraphErrors *d_gr = (TGraphErrors*)dilutionFile->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackReco");
+  TGraphErrors *d_gr = (TGraphErrors*)dilutionFile->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/"+stn+"_trackReco").c_str());
   TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
 
   // Get weighting from dilution function 

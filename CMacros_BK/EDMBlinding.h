@@ -3,14 +3,18 @@
 #include "../Blinding/Blinders.hh"
 #include "RootInclude.h"
 
+//#include "BlindingStrings/O.h"
+#include "BlindingStrings/Run-1.h"
+//#include "BlindingStrings/Sim.h"
+
 using namespace blinding;
 
-double R = 3.5; // ppm shift
+double R = 4.81; // ppm shift
 double boxWidth = 0.25;
 double gausWidth = 0.7;
 
 Blinders::fitType ftype = Blinders::kOmega_a;
-Blinders getBlinded( ftype, "Blinding string", boxWidth, gausWidth );
+Blinders getBlinded( ftype, blindingString, boxWidth, gausWidth );
 
 // CONSTANTS
 double e = 1.6e-19; // J
@@ -42,7 +46,7 @@ double blinded_edm_value(bool unblind) {
     omega_diff = 0.0;
   }
 
-  double dMu_blind = omega_diff * d0; // this is the blinded dMu in e.cm
+  double dMu_blind = omega_diff * d0; // this is the blinded dMu in e.cm?
   
   return dMu_blind;
   
@@ -75,10 +79,10 @@ double GetDelta(double dMu) {
 
 double EDMFunc( double *x, double *p )  {
   double time = x[0];// + p[3]; // time offset
-  return (-p[0] * cos(p[1]* time + p[2]));
+  return (-p[0] * cos(p[1]* time + p[2])); 
 }
 
-TGraphErrors *BlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 
+TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 
 
     int n = gr_thetaY_mod->GetN();
     
@@ -98,5 +102,42 @@ TGraphErrors *BlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) {
     }
 
     return new TGraphErrors(n, x, y, ex, ey);
+
+}
+
+TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc, double momentum) { 
+
+  TFile *dilutionFile = TFile::Open("../Plots/MC/dMu/Dilution/dilutionCurves.root");
+  TGraphErrors *d_gr = (TGraphErrors*)dilutionFile->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackReco");
+  TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+
+  // Get weighting from dilution function 
+  // Adding one ensure that there is nominal blinding outside of the diluton range, and 
+  // it also ensure that the weighted blinding is never less than nominal
+
+  double weighting = 1 + dilutionFunc->Eval(momentum);
+
+  int n = gr_thetaY_mod->GetN();
+    
+  double x[n]; double ex[n];
+  double y[n]; double ey[n];
+
+  for (int i(0); i<n; i++) {
+
+    double time = gr_thetaY_mod->GetPointX(i);
+    double theta_y = gr_thetaY_mod->GetPointY(i);
+    double theta_y_shift = blindEDMFunc->Eval(time) * weighting;
+
+    // cout<<"weighting "<<weighting<<endl;
+
+    x[i] = time; ex[i] = 0;
+    y[i] = theta_y + theta_y_shift;
+    ey[i] = gr_thetaY_mod->GetEY()[i];
+
+  }
+
+  dilutionFile->Close();
+
+  return new TGraphErrors(n, x, y, ex, ey);
 
 }

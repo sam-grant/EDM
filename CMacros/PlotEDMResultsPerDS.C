@@ -4,14 +4,7 @@ using namespace std;
 
 // Global momentum cuts
 string xmin = "750";
-//string xmax = "2500";
 string xmax = "2750";
-//string xmin = "825"; // 750;
-//string xmax = "2375"; // 2500;
-//string xmin = "900";
-//string xmax = "2250";
-//string xmin = "1025";
-//string xmax = "2125";
 
 /*vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
 

@@ -1,10 +1,10 @@
 void S12S18_thetaYMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_BQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 15:28:10 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 19:39:18 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(467.9164,-6.78832,3028.305,244.7361);
+   c->Range(467.9164,-6.841055,3028.305,245.2107);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,9 +24,9 @@ void S12S18_thetaYMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_BQ_1()
    2637.272,
    2790.613};
    Double_t Graph0_fy1092[11] = {
+   181.5412,
+   183.3824,
    180.4365,
-   183.0142,
-   181.173,
    175.6494,
    143.981,
    113.4172,
@@ -67,7 +67,7 @@ void S12S18_thetaYMaxDiff_vs_p_trackRecoControl_WORLD_250MeV_BQ_1()
    
    TH1F *Graph_Graph01092 = new TH1F("Graph_Graph01092","S12S18_",100,218.8923,3024.797);
    Graph_Graph01092->SetMinimum(18.36412);
-   Graph_Graph01092->SetMaximum(219.5837);
+   Graph_Graph01092->SetMaximum(220.0055);
    Graph_Graph01092->SetDirectory(0);
    Graph_Graph01092->SetStats(0);
 

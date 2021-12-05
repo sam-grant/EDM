@@ -1,7 +1,7 @@
 void S12_chi2NDF_vs_p_Run-1d_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 17:55:53 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:47:47 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(462.8422,-0.1165735,3033.559,4.909075);
@@ -47,14 +47,14 @@ void S12_chi2NDF_vs_p_Run-1d_125MeV_BQ()
    1.260327,
    0.8347273,
    0.9554534,
-   0.9173096,
+   0.9173097,
    0.4770884,
-   0.6158978,
+   0.6158979,
    1.217143,
    0.917417,
    1.449509,
    0.8298889,
-   0.6061197,
+   0.6061196,
    0.8809619,
    5.873862};
    Double_t Graph0_fex1020[22] = {

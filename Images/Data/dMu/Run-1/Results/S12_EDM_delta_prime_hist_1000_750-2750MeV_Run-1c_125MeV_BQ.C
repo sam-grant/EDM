@@ -1,7 +1,7 @@
 void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Dec  2 14:47:01 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:48:26 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,18 +10,26 @@ void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1c_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__13 = new TH1D("h__13","S12",24,0.3811608,0.865891);
-   h__13->SetBinContent(9,13);
-   h__13->SetBinContent(10,73);
-   h__13->SetBinContent(11,170);
-   h__13->SetBinContent(12,266);
-   h__13->SetBinContent(13,257);
-   h__13->SetBinContent(14,133);
-   h__13->SetBinContent(15,66);
-   h__13->SetBinContent(16,17);
-   h__13->SetBinContent(17,2);
-   h__13->SetBinContent(18,2);
-   h__13->SetBinContent(19,1);
+   TH1D *h__13 = new TH1D("h__13","S12",26,0.342873,0.8687378);
+   h__13->SetBinContent(7,1);
+   h__13->SetBinContent(8,8);
+   h__13->SetBinContent(9,19);
+   h__13->SetBinContent(10,66);
+   h__13->SetBinContent(11,114);
+   h__13->SetBinContent(12,134);
+   h__13->SetBinContent(13,165);
+   h__13->SetBinContent(14,168);
+   h__13->SetBinContent(15,125);
+   h__13->SetBinContent(16,91);
+   h__13->SetBinContent(17,43);
+   h__13->SetBinContent(18,30);
+   h__13->SetBinContent(19,17);
+   h__13->SetBinContent(20,14);
+   h__13->SetBinContent(21,1);
+   h__13->SetBinContent(23,1);
+   h__13->SetBinContent(24,1);
+   h__13->SetBinContent(25,1);
+   h__13->SetBinContent(26,1);
    h__13->SetEntries(1000);
    h__13->SetStats(0);
    h__13->SetLineWidth(3);
@@ -57,11 +65,11 @@ void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1c_125MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.6225
-#pm0.0009
+   pt_LaTex = pt->AddText("0.6077
+#pm0.002
 ");
-   pt_LaTex = pt->AddText("0.029
-#pm0.0007
+   pt_LaTex = pt->AddText("0.05
+#pm0.001
 ");
    pt->Draw();
    c->Modified();

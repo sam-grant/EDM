@@ -412,7 +412,7 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 int main() { 
 
   bool fit = true;
-  bool write = false;
+  bool write = true;
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";

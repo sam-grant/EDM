@@ -1,7 +1,7 @@
 void S18_thetaYMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 15:26:44 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 19:01:38 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(467.157,-3.094086,3024.982,210.8905);
@@ -28,9 +28,9 @@ void S18_thetaYMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_1()
    157.6058,
    130.3562,
    112.3125,
-   112.6808,
-   98.31949,
-   68.49223,
+   113.049,
+   97.95125,
+   68.86047,
    65.91456,
    55.60391,
    38.66497,

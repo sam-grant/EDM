@@ -105,15 +105,15 @@ void DrawQuadFits(vector<TGraphErrors*> graphs, vector<string> names, string fun
 	TCanvas *c = new TCanvas("c","c",800,600);
 	c->SetRightMargin(0.20);
 
-	graphs.at(0)->SetTitle(title.c_str());
-	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
-	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
-	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
-	graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
-	graphs.at(0)->GetXaxis()->CenterTitle(true);
-	graphs.at(0)->GetYaxis()->CenterTitle(true);
-	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
-	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+	graphs.at(1)->SetTitle(title.c_str());
+	graphs.at(1)->GetXaxis()->SetTitleSize(.04);
+	graphs.at(1)->GetYaxis()->SetTitleSize(.04);
+	graphs.at(1)->GetXaxis()->SetTitleOffset(1.1);
+	graphs.at(1)->GetYaxis()->SetTitleOffset(1.1);
+	graphs.at(1)->GetXaxis()->CenterTitle(true);
+	graphs.at(1)->GetYaxis()->CenterTitle(true);
+	graphs.at(1)->GetYaxis()->SetMaxDigits(4);
+	graphs.at(1)->GetYaxis()->SetRangeUser(ymin,ymax);
 	//graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
 
 	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
@@ -131,30 +131,30 @@ void DrawQuadFits(vector<TGraphErrors*> graphs, vector<string> names, string fun
 	
 	for(int i = 0; i < graphs.size(); i++) {
 		//cout<<"Getting function\t";
-		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
-		//cout<<fit<<endl;
-		//it->SetLineColor(kBlack);
+
 		l->AddEntry(graphs.at(i), (names.at(i)).c_str() );
-		
 		graphs.at(i)->SetMarkerStyle(20);
 
     	if(i+1 != 5) {
-    		fit->SetLineColor(i+1); 
       		graphs.at(i)->SetMarkerColor(i+1); // Stop that yellow colour at all costs
       		graphs.at(i)->SetLineColor(i+1);
     	} else {
-    		fit->SetLineColor(kOrange-3); 
     		graphs.at(i)->SetMarkerColor(kOrange-3);
     		graphs.at(i)->SetLineColor(kOrange-3);
     	}		
 
-		if(i==0) graphs.at(0)->Draw("AP");
-		else {
-			graphs.at(i)->Draw("P SAME");
-		}
+	}
 
+	graphs.at(1)->Draw("AP");
+	for(int i = 0; i < graphs.size(); i++) {
+		if(i!=1) graphs.at(i)->Draw("P SAME");
+		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
+    	if(i+1 != 5) {
+    		fit->SetLineColor(i+1); 
+    	} else {
+    		fit->SetLineColor(kOrange-3); 
+    	}
 		fit->Draw("same");
-
 	}
 
 	l->Draw("same");
@@ -202,8 +202,9 @@ TGraphErrors *Y_vs_Br(TFile *input, double QHV) {
 	double x[n]; double ex[n];
 	double y[n]; double ey[n];
 
-	for(int i_point = 0; i_point<n; i_point++) {
+//	cout<<"Number of field settings\t"<<n<<endl;
 
+	for(int i_point = 0; i_point<n; i_point++) {
 
 		x[i_point] = x_.at(i_point); ex[i_point] = 0.;
 		y[i_point] = y_.at(i_point); ey[i_point] = ey_.at(i_point);
@@ -215,6 +216,8 @@ TGraphErrors *Y_vs_Br(TFile *input, double QHV) {
 }
 
 int main() { 
+
+	bool write = true;
 
 	// Get file for reprocessed scan 2 (current best)
 
@@ -228,13 +231,13 @@ int main() {
 
 	for (int i_quad = 0; i_quad < 4; i_quad++) {
 		TGraphErrors *gr = Y_vs_Br(input, QHVs[i_quad]);
-		TF1 *fit = new TF1("fit", "[0]+[1]*x");
-		gr->Fit(fit);
+		TF1 *fit = new TF1("fit", "[0]+[1]*x", -50, 50);
+		gr->Fit(fit, "RQ");
 		gr_.push_back(gr);
 		names_.push_back(ThreeSigFig(QHVs[i_quad]));
 	}
 
-	DrawQuadFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits", 71, 79);
+	
 
 	// Now plot the gradients against QHV for the graident, this will give you a conversion factor between 
 	int n = gr_.size();
@@ -260,13 +263,15 @@ int main() {
 	TF1 *fit = new TF1("fit", "[0]+[1]*x");
 	mainFit->Fit(fit);
 
-	DrawMainFit(mainFit, ";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
-	
-	mainFit->SetName("mainFit");
+	//DrawQuadFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits_TMP", 70, 79);
 
-	mainFit->Write(); 
-
-	output->Write();
+	if(write) { 
+		DrawQuadFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits", 71, 78);
+		DrawMainFit(mainFit, ";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
+		mainFit->SetName("mainFit");
+		mainFit->Write(); 
+		output->Write();
+	}
 
 	input->Close();	
 	//DrawMainFit(mainFit, ";QHV [kV];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");

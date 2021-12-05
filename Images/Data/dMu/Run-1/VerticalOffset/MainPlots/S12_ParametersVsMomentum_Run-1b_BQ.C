@@ -1,7 +1,7 @@
 void S12_ParametersVsMomentum_Run-1b_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  1 22:33:16 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 17:23:37 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(30.74998,-70.41617,3218.25,100.4884);

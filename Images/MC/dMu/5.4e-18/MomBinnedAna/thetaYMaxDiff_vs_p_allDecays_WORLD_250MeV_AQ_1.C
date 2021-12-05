@@ -1,7 +1,7 @@
 void thetaYMaxDiff_vs_p_allDecays_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:14:28 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 21:35:51 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(495.7686,2.485022,3033.167,203.5982);
@@ -30,7 +30,7 @@ void thetaYMaxDiff_vs_p_allDecays_WORLD_250MeV_AQ_1()
    156.5252,
    122.2183,
    100.7765,
-   85.76723,
+   87.91141,
    75.04632,
    62.18124,
    53.60452,

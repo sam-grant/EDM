@@ -53,6 +53,8 @@ string GetTracksOrDecays(string config) {
     return "allDecays";
   } else if(config.find("acceptedDecays_") != std::string::npos) { 
     return "acceptedDecays";
+  } else if(config.find("acceptedDecaysControl_") != std::string::npos) { 
+    return "acceptedDecaysControl";
   } else if(config.find("trackTruth_") != std::string::npos) { // } || config.find("trackReco_") != std::string::npos) { 
     return "trackTruth";
   } else if(config.find("trackReco_") != std::string::npos) { 
@@ -104,6 +106,8 @@ string GetLabel(string config) {
   string key2 = "trackTruth_";
   string key3 = "acceptedDecays_";
   string key4 = "allDecays_";
+  string key5 = "trackRecoControl_";
+  string key6 = "acceptedDecaysControl_";
 
   if(config.find(key1) != std::string::npos) { 
     return "reco vertices";
@@ -113,6 +117,10 @@ string GetLabel(string config) {
     return "accepted decays";
   } else if(config.find(key4) != std::string::npos) { 
     return "all decays";
+  } else if(config.find(key5) != std::string::npos) { 
+    return "reco vertices";
+  } else if(config.find(key4) != std::string::npos) { 
+    return "accepted decays";
   } else { 
     cerr<<"Config string unknown";
     return "ERROR";
@@ -232,16 +240,17 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
   return;
 }
 
-vector<TF1*> GetMottFunctions(TFile *dilution_file) {
+vector<TF1*> GetMottFunctions(TFile *dilution_file, string stn, int step = 250, string config = "trackReco_WORLD_250MeV_BQ") { // tracksOrDecaysLabel) {
+
+  string tracksOrDecaysLabel = GetTracksOrDecaysLabel(config);
+  string tracksOrDecays = GetTracksOrDecays(config);
+  string qual = GetQual(config);
 
   vector<TF1*> mottFunctions_;
 
   for(int i = 0; i<nTrials; i++) { 
 
-    TF1 *mottFunc = (TF1*)dilution_file->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackRecoTrials/"+to_string(i)).c_str());
-
-    //cout<<mottFunc<<endl;
-
+    TF1 *mottFunc = (TF1*)dilution_file->Get(("DilutionFits/"+qual+"/"+tracksOrDecaysLabel+"/"+to_string(step)+"MeV/d_vs_p/"+stn+tracksOrDecays+"Trials/"+to_string(i)).c_str());
     mottFunctions_.push_back(mottFunc);
 
   }
@@ -425,25 +434,13 @@ void RunSim(string config, string dataset, string blinding) {
 
 	cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
-	TString A_fileName = "../Plots/MC/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";//+to_string(step)+"MeV_BQ.root";
+	TString A_fileName = "../Plots/MC/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";
 	TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
 
 	TFile *A_file = TFile::Open(A_fileName);
 	TFile *dilution_file  = TFile::Open(dilution_fileName);
 
   cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<endl;
-
-  // Get dilution curve
-  //TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/"+qual+"/"+tracksOrDecaysLabel+"/"+to_string(step)+"MeV/d_vs_p/"+tracksOrDecays).c_str());
-  TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackReco");
-  TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
-
-  cout<<"Got main dilution function:\n"<<dilutionFunc<<endl;
-
-  // Get mott functions
-  vector<TF1*> mottFunctions_ = GetMottFunctions(dilution_file);
-
-  // cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
 
@@ -474,6 +471,14 @@ void RunSim(string config, string dataset, string blinding) {
     // Apply correction
     for(auto& stn : stn_) {
 
+      // Get dilution curve
+      TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/"+qual+"/"+tracksOrDecaysLabel+"/"+to_string(step)+"MeV/d_vs_p/"+stn+tracksOrDecays).c_str());
+      // TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackReco");
+      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+
+      // TFile *dilution_file, string stn, int step, string config)
+      vector<TF1*> mottFunctions_ = GetMottFunctions(dilution_file, stn, step, config);
+
       TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"A"+fitType+"_vs_p_thetaY";
 
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
@@ -481,7 +486,7 @@ void RunSim(string config, string dataset, string blinding) {
 
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
-      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecaysLabel, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"} [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p");
+      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecays, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"} [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p");
 
       gr_delta_prime->SetName((stn+"delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
@@ -580,21 +585,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<endl;
 
-  // Get dilution curve
-  TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackReco");
-  TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
-
-  if(!correctDilution) {
-    dilutionFunc = new TF1("", "pol0", xmin, xmax);
-    dilutionFunc->SetParameter(0, 1);
-  }
-
-  cout<<"Got main dilution function:\n"<<dilutionFunc<<endl;
-
-  // Get mott functions
-  vector<TF1*> mottFunctions_; 
-  if(correctDilution) mottFunctions_= GetMottFunctions(dilution_file);
-
   //cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
@@ -645,12 +635,28 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
     // Apply correction
     for(auto& stn : stn_) {
 
-      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_A"+fitType+"_vs_p";
+      // Get dilution curve
+      TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/"+stn+"_trackReco").c_str());
+      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
 
+      if(!correctDilution) {
+        dilutionFunc = new TF1("", "pol0", xmin, xmax);
+        dilutionFunc->SetParameter(0, 1);
+      }
+
+      // Get mott functions
+      vector<TF1*> mottFunctions_; 
+      if(correctDilution) mottFunctions_ = GetMottFunctions(dilution_file, stn+"_");
+
+
+      // Get mott functions
+      TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_A"+fitType+"_vs_p";
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
       TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(A_gr, dilutionFunc);
 
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
+
+
 
       // DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
       //DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{BLIND} [mrad] / 125 MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
@@ -660,8 +666,9 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       gr_delta_prime->SetName((stn+"_delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
 
+      cout<<"a"<<endl;
       vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mottFunctions_, A_gr);
-
+      cout<<"b"<<endl;
       // Slows things down quite substantially 
       // DrawDeltaPrimeFits(deltaPrimeFits_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'{"+subscript+"} [mrad]", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p_"+to_string(nTrials));
 
@@ -679,8 +686,9 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       std::ostringstream oss_binWidth; oss_binWidth << binWidth;
 
       // Fill histogram
+      
       TH1D *h_delta_prime  = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
-
+      cout<<"filled"<<endl;
       // Draw and write histogram
       // DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"}^{BLIND} [mrad] / "+to_string(step/2)+";Trials", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials));
       if(correctDilution) DrawDeltaPrimeHist(h_delta_prime, stn+";#delta'_{"+subscript+"}^{"+blind+"} [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr);
@@ -750,8 +758,13 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
 int main() { 
 
+  // Unblinded sim samples
 
-/*  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+/*  
+  RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
+  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("acceptedDecaysControl_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("trackRecoControl_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
@@ -761,19 +774,14 @@ int main() {
   RunSim("trackTruth_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
 	RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");*/
 
-  RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
-
-  //RunData("Run-1a_250MeV_BQ", "Run-1", blinded");
-  //RunData("Run-1a_250MeV_BQ_withFR", "Run-1", "blinded");
-
-
-/*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+  // Data
+  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
-*/
 
-///////////////////////////////////////////////////////////////
+
+
 /*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);

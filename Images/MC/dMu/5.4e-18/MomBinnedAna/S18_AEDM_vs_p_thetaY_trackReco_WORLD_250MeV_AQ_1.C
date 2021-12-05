@@ -1,10 +1,10 @@
 void S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:46:40 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 18:52:34 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(486.4342,0.04659287,3034.423,0.2436694);
+   c->Range(486.4342,0.04655192,3034.423,0.2436944);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,17 +26,17 @@ void S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_1()
    2825.157};
    Double_t Graph0_fy1066[12] = {
    1.226567,
-   0.07719096,
-   0.1134337,
-   0.1624218,
-   0.1870236,
-   0.1462418,
-   0.1673452,
-   0.1500196,
-   0.1435255,
-   0.1242416,
-   0.1240431,
-   0.0855626};
+   0.06412299,
+   0.1135325,
+   0.1622654,
+   0.1870416,
+   0.146197,
+   0.1671837,
+   0.1501678,
+   0.1433013,
+   0.1242352,
+   0.1242981,
+   0.08553909};
    Double_t Graph0_fex1066[12] = {
    0.3451501,
    0.06002813,
@@ -52,17 +52,17 @@ void S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_1()
    0.1153877};
    Double_t Graph0_fey1066[12] = {
    0.5528273,
-   0.05423926,
-   0.02574935,
-   0.02019945,
-   0.01736509,
-   0.01539212,
-   0.01402798,
-   0.01320777,
-   0.0128556,
-   0.0129449,
-   0.01374217,
-   0.02008647};
+   0.05427652,
+   0.02574946,
+   0.02019958,
+   0.01736537,
+   0.01539206,
+   0.01402772,
+   0.01320768,
+   0.01285529,
+   0.01294485,
+   0.01374254,
+   0.02008631};
    TGraphErrors *gre = new TGraphErrors(12,Graph0_fx1066,Graph0_fy1066,Graph0_fex1066,Graph0_fey1066);
    gre->SetName("Graph0");
    gre->SetTitle("S18_");
@@ -70,8 +70,8 @@ void S18_AEDM_vs_p_thetaY_trackReco_WORLD_250MeV_AQ_1()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01066 = new TH1F("Graph_Graph01066","S18_",100,0,3088.471);
-   Graph_Graph01066->SetMinimum(0.06630053);
-   Graph_Graph01066->SetMaximum(0.2239618);
+   Graph_Graph01066->SetMinimum(0.06626616);
+   Graph_Graph01066->SetMaximum(0.2239801);
    Graph_Graph01066->SetDirectory(0);
    Graph_Graph01066->SetStats(0);
 

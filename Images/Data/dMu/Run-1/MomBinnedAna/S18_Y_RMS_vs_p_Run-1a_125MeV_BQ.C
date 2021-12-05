@@ -1,10 +1,10 @@
 void S18_Y_RMS_vs_p_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 14:24:02 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:46:09 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(496.0523,9.364814,3028.099,15.95688);
+   c->Range(496.0523,8.573099,3028.099,23.08232);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -111,7 +111,7 @@ void S18_Y_RMS_vs_p_Run-1a_125MeV_BQ()
    
    TH1F *Graph_Graph01033 = new TH1F("Graph_Graph01033","S18",100,114.3557,3137.695);
    Graph_Graph01033->SetMinimum(10.02402);
-   Graph_Graph01033->SetMaximum(15.29767);
+   Graph_Graph01033->SetMaximum(21.6314);
    Graph_Graph01033->SetDirectory(0);
    Graph_Graph01033->SetStats(0);
 

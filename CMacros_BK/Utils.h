@@ -15,19 +15,24 @@
 
 double OMEGA_A = 0.00143934; // kHz from gm2const
 double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
+double M_MU = 105.6583715; // MeV
+double A_MU = 11659208.9e-10; 
+double GMAGIC = std::sqrt( 1.+1./A_MU );
+double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
+double T_c = 149.2 * 1e-3; // cyclotron period [us]
 
 // ====================== Fitting ====================== 
 
 // Need to keep these in a header so it's consitent across mulitple macros
 // SimpleEDMFit
-double SimpleSinFunc(double *x, double *par) {
+double SimpleEDMFunc(double *x, double *par) {
   return ( par[0] * TMath::Sin(par[1] * x[0]) ) + par[2];
 }
 
 
-void SimpleSinFit(TGraphErrors *graph, double par1, double par2, double par3) {
+void SimpleEDMFit(TGraphErrors *graph, double par1, double par2, double par3) {
   
-  TF1 *func = new TF1("SimpleSinFunc", SimpleSinFunc, 0, G2PERIOD, 3);
+  TF1 *func = new TF1("SimpleEDMFunc", SimpleEDMFunc, 0, G2PERIOD, 3);
 
   // Put 10% limits on omega_a
   // func->SetParLimits(1, par2-(par2*0.10), par2+(par2*0.10));  // Omega
@@ -36,7 +41,7 @@ void SimpleSinFit(TGraphErrors *graph, double par1, double par2, double par3) {
   func->FixParameter(1, par2);  // Omega
   func->SetParameter(2, par3);
 
-  graph->Fit(func, "MR"); // ,"MR");
+  graph->Fit(func, "QMR"); // ,"MR");
 
   return;
 
@@ -47,24 +52,42 @@ double FullEDMFunc(double *x, double *par) {
 }
 
 
-void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4) {
+void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double xmin, double xmax) {
   
-  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, 0, G2PERIOD, 5);
+  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, xmin, xmax, 5);
 
   func->SetParameter(0, par0); // A_g-2
   func->FixParameter(1, par1); // Omega
-  func->FixParameter(2, par2); // Phi
+  func->SetParameter(2, par2); // Phi
+  func->FixParameter(2, par2);
   func->SetParameter(3, par3); // A_EDM
   func->SetParameter(4, par4); // c
 
-  graph->Fit(func, "MR"); // ,"MR");
+  graph->Fit(func, "QMR"); // ,"MR");
+
+  return;
+
+}
+
+void FullEDMFit2(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double xmin, double xmax) {
+  
+  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, xmin, xmax, 5);
+
+  func->FixParameter(0, par0); // A_g-2
+  func->FixParameter(1, par1); // Omega
+  func->FixParameter(2, par2); // Phi
+  func->FixParameter(2, par2);
+  func->FixParameter(3, par3); // A_EDM
+  func->FixParameter(4, par4); // c
+
+  graph->Fit(func, "QMR"); // ,"MR");
 
   return;
 
 }
 
 double FiveParFunc(double *x, double *par) {
-  return par[0] * exp(-x[0]/par[1]) * (1 - (par[2] * cos((par[3] * x[0]) + par[4])));
+  return par[0] * exp(-x[0]/par[1]) * (1  + (par[2] * cos((par[3] * x[0]) + par[4])));
 }
 
 
@@ -72,35 +95,37 @@ void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, doub
   
   TF1 *func = new TF1("FiveParFunc", FiveParFunc, min, max, 5);
 
-  func->SetParameter(0, par0); // N0
+  //func->SetParameter(0, par0); // N0
   func->SetParameter(1, par1); // tau
+  //func->SetParLimits(1, 55, 70);
   func->SetParameter(2, par2); // A
   func->FixParameter(3, par3); // Omega
-  //func->SetParameter(4, par4);
-    //func->SetParLimits(4, -TMath::Pi(), TMath::Pi());
+  func->SetParameter(4, par4);
+  //func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
 
-    func->SetNpx(1e3);
+  func->SetNpx(1e3);
 
-    graph->Fit(func, "QMR"); // ,"MR");
+  graph->Fit(func, "QMR"); // ,"MR");
 
     //std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
 
-    return;
+  return;
 
 }
 
-double BzFunc(double *x, double *par) {
+double FullBzFunc(double *x, double *par) {
   return  (par[0] * cos((par[1]*x[0]) + par[2])) + (par[3] * sin((par[4]*x[0]) + par[5])) + par[6]; 
 }
 
-void FitBz(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double par5, double par6, double min, double max) {
+void FullBzFit(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double par5, double par6, double min, double max) {
 
-  TF1 *func = new TF1("BzFunc", BzFunc, min, max, 7);
+  TF1 *func = new TF1("FullBzFunc", FullBzFunc, min, max, 7);
 
   // A_Bz
   func->SetParameter(0, par0);
   func->SetParameter(1, par1); func->FixParameter(1, par1);
   func->FixParameter(2, par2); // phi
+  //func->FixParError(2, par2); // phi
   func->SetParameter(3, 0); // A_EDM
   func->FixParameter(4, par4); // omega_a
   func->FixParameter(5, par5); // phi
@@ -111,19 +136,17 @@ void FitBz(TGraphErrors *graph, double par0, double par1, double par2, double pa
   return;
 }
 
-double PureBzFunc(double *x, double *par) {
-  return  (par[0] * cos((par[1]*x[0]) + par[2])) + par[3]; 
+double SimpleBzFunc(double *x, double *par) {
+  return  (par[0] * cos((par[1]*x[0]))) + par[2]; 
 }
 
-void FitPureBz(TGraphErrors *graph, double par0, double par1, double par2, double par3, double min, double max) {
+void SimpleBzFit(TGraphErrors *graph, double par0, double par1, double par2, double min, double max) {
 
-  TF1 *func = new TF1("PureBzFunc", PureBzFunc, min, max, 4);
-
+  TF1 *func = new TF1("SimpleBzFunc", SimpleBzFunc, min, max, 3);
   // A_Bz
   func->SetParameter(0, par0);
   func->SetParameter(1, par1); func->FixParameter(1, par1);
-  func->FixParameter(2, par2); // phi
-  func->SetParameter(3, par3); // C
+  func->SetParameter(2, par2); // C
 
   graph->Fit(func, "QMR"); 
 
@@ -133,8 +156,26 @@ void FitPureBz(TGraphErrors *graph, double par0, double par1, double par2, doubl
 
 // ====================== Plotting ======================
 
+TH1D* ConvertToTH1D(TGraphErrors *graph) {
 
-TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
+  int n = graph->GetN();
+
+  double binWidth = (graph->GetX()[1] - graph->GetX()[0]);
+
+  TH1D *hist = new TH1D(graph->GetName(), "", n, graph->GetX()[0] - binWidth/2,  graph->GetX()[n-1] + binWidth/2);
+
+  for(int i = 0; i < n; i++) {
+
+    hist->SetBinContent(i+1, graph->GetY()[i]);
+    hist->SetBinError(i+1, graph->GetEY()[i+1]);
+
+  }
+
+  return hist;
+
+}
+
+/*TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
   int n = hist->GetNbinsX();
   double x[n]; double ex[n];
@@ -149,7 +190,40 @@ TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
   return new TGraphErrors(n, x, y, ex, ey);
 
+}*/
+
+TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
+
+  TGraphErrors *gr = new TGraphErrors();
+
+  int nBin = hist->GetNbinsX();
+
+  int counter = 0;
+
+  for(int i = 0; i < nBin; i++) {
+
+    double x = hist->GetBinCenter(i+1); 
+    double ex = 0; 
+    double y = hist->GetBinContent(i+1); 
+    double ey = hist->GetBinError(i+1); 
+
+    // Avoid filling empty bins as "zeros".
+    // x-axis still increments so we won't go out of sync
+
+    if(y==0) continue;
+
+    gr->SetPoint(counter, x, y);
+    gr->SetPointError(counter, ex, ey);
+
+    counter++;
+
+
+  }
+
+  return gr;//  new TGraphErrors(n, x, y, ex, ey);
+
 }
+
 
 TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y_, std::vector<double> ex_, std::vector<double> ey_) {
 
@@ -166,17 +240,94 @@ TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y
 
 }
 
+/*TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y_, std::vector<double> ex_, std::vector<double> ey_) {
 
-// ====================== Misc ======================
+  TGraphErrors *gr = new TGraphErrors();
 
+  for(int i = 0; i < x_.size(); i++) {
 
-TString Round(double N, double n) { 
-  std::stringstream roundedValue;
-  roundedValue.precision(n);
-  roundedValue << N << std::endl;
-  return roundedValue.str();
+    gr->SetPoint(i, x_.at(i), y_.at(i));
+    gr->SetPointError(i-1, ex_.at(i), ey_.at(i));
+  }
+
+  return gr;  
 
 }
+*/
+
+TH1D* GetResidual(TH1D* data, TF1* fit) { 
+
+  int nbins = data->GetXaxis()->GetNbins();
+  double binWidth = data->GetBinWidth(1);
+  double low = data->GetXaxis()->GetBinLowEdge(1);
+  double high = low + nbins*binWidth;
+  TH1D* residual = new TH1D("", "", nbins, low, high);  
+
+  for (int ibin(1); ibin <= nbins; ibin++){
+    residual->SetBinContent(ibin, 0.0);
+    double time = residual->GetXaxis()->GetBinCenter(ibin);
+    double cont = data->GetBinContent(ibin);
+    double err = data->GetBinError(ibin);
+    double integral = fit->Eval(time);
+    residual->SetBinContent(ibin, integral - cont);
+    residual->SetBinError(ibin, err);
+  }
+
+  return residual;
+
+}
+
+// ====================== Residuals and FFT ======================
+
+TH1D* GetFFT(TH1D* hist) {
+
+  TH1 *hm = 0;
+  TVirtualFFT::SetTransform(0);
+  hm = hist->FFT(hm, "MAG");
+
+  //Rescale x-axis by dividing by the function domain              
+  TAxis *xaxis = hm->GetXaxis();
+
+  int nBins = hist->GetXaxis()->GetNbins();
+  double *ba = new double[nBins+1];
+  xaxis->GetLowEdge(ba);
+  double Scale = 1./(hist->GetXaxis()->GetXmax() - hist->GetXaxis()->GetXmin());
+  ba[nBins] = ba[nBins-1] + xaxis->GetBinWidth(nBins);
+
+  for (int i = 0; i < nBins + 1; i++) {
+       ba[i] *= Scale;
+  }
+ 
+  TH1D* fft = new TH1D("", "", nBins, ba);
+
+  for (int i = 0; i <= nBins; i++) {
+      fft->SetBinContent(i, hm->GetBinContent(i));
+      fft->SetBinError(i, hm->GetBinError(i));
+  }
+
+  fft->SetStats(0);
+  fft->Scale(1.0 / fft->Integral());
+
+  //Calculate Nyquist frequency, which is twice the highest frequeny in the signal or half of the sampling rate.                                                                                            
+  //...the maximum frequency before sampling errors start              
+
+  double binWidth = hist->GetXaxis()->GetBinWidth(0);
+  double sampleRate = 1 / binWidth;
+  double nyquistFreq = 0.5 * sampleRate;
+
+  fft->GetXaxis()->SetRangeUser(0, nyquistFreq);
+
+/*  cout << "binWidth\t" <<binWidth<<" us"<<endl;
+  cout << "sampleRate\t" <<sampleRate<<" MHz"<<endl;
+  cout << "nyquistFreq\t" <<nyquistFreq<<" MHz"<<endl;*/
+
+  delete hm;
+
+  return fft;
+
+}
+
+// ====================== Misc ======================
 
 TString OneSigFig(double num) { 
   return Form("%5.1g", num);
@@ -187,16 +338,23 @@ TString ThreeSigFig(double num) {
 }
 
 TString SciNotation(double num) { 
-	TString text;
-	text = ThreeSigFig(num);
+  TString text;
+  text = ThreeSigFig(num);
   text.ReplaceAll("e+0","#times10^{");
   text.ReplaceAll("e-0","#times10^{#minus");
   text.ReplaceAll("e+","#times10^{");
   text.ReplaceAll("e-","#times10^{#minus");
-	if(abs(num)>10 || abs(num)<0.1) text.Append("}");
-	return text;
+  if(abs(num)>10 || abs(num)<0.1) text.Append("}");
+  return text;
 }
 
+TString Round(double N, double n) { 
+  std::stringstream roundedValue;
+  roundedValue.precision(n);
+  roundedValue << N << std::endl;
+  return roundedValue.str();
+
+}
 TString FormatNegativeNumber(double num) { 
   TString text;
   text = ThreeSigFig(num);

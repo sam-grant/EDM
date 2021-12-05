@@ -1,0 +1,504 @@
+#include <iostream>
+
+#include "RootInclude.h"
+#include "FancyDraw.h"
+#include "Utils.h"
+
+using namespace std;
+
+const double delta_calc = 1.7; // mrad
+
+string qualString = "B";
+string config = "5.4e-18";
+
+void DrawGraphs(vector<TGraphErrors*> graphs_, vector<string> labels_, std::string title, std::string fname, std::string decays, bool corr, bool fit, double ymin, double ymax) {
+
+	TGraphErrors *gr1 = graphs_.at(0);
+	TGraphErrors *gr2 = graphs_.at(1);
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+   TLegend *l1;
+
+   if(!corr) l1 = new TLegend(0.49, 0.75, 0.89, 0.89); 
+   else if(corr) l1 = new TLegend(0.11, 0.75, 0.51, 0.89); 
+   
+	TLegend *l2;
+   TPaveText *eqnTxt;
+
+   if(decays == "Tracks") {
+
+      l2 = new TLegend(.26, .20, .71, .49);
+      //l2 = new TLegend(.11, .18, .89, .55);
+      eqnTxt = new TPaveText(0.32, 0.53, 0.56, 0.56, "NDC");
+      //l2->SetNColumns(2);
+   } else if(decays == "Decays") {
+      l2 = new TLegend(.11, .18, .55, .55);
+      eqnTxt = new TPaveText(0.16, 0.53, 0.42, 0.58, "NDC");
+   }
+    
+   eqnTxt->AddText("#bf{d_{EDM}(p)=ap^{2}+bp+d_{0}}"); 
+   eqnTxt->SetTextSize(22);
+   eqnTxt->SetTextFont(44);
+   eqnTxt->SetFillColor(0); 
+
+	l1->SetBorderSize(0);
+   l2->SetBorderSize(0);
+
+   // Hack together x-axis range 
+   int N = graphs_.at(0)->GetN();
+   double xmax = graphs_.at(0)->GetPointX(N-1); 
+   double xmin = graphs_.at(0)->GetPointX(0);
+
+   double offset = 10; 
+   xmin = -10;//xmin - offset; 
+   xmax = 3010;// xmax + offset;
+
+   gr1->SetTitle(title.c_str());
+   gr1->GetXaxis()->SetTitleSize(.04);
+   gr1->GetYaxis()->SetTitleSize(.04);
+   gr1->GetXaxis()->SetTitleOffset(1.1);
+   gr1->GetYaxis()->SetTitleOffset(1.15);
+   gr1->GetXaxis()->CenterTitle(true);
+   gr1->GetYaxis()->CenterTitle(true);
+   gr1->GetYaxis()->SetMaxDigits(4);
+   gr1->GetYaxis()->SetRangeUser(ymin,ymax);
+   gr1->GetXaxis()->SetRangeUser(xmin, xmax);
+
+   gr1->SetMarkerStyle(20);
+   gr2->SetMarkerStyle(20);
+
+   gr1->SetMarkerColor(kRed);
+   gr2->SetMarkerColor(kBlue);
+
+   gr1->Draw("AP");
+   gr2->Draw("P SAME");
+
+   TF1 *f1 = gr1->GetFunction("ParabolaFunc");
+   TF1 *f2 = gr2->GetFunction("ParabolaFunc");
+
+   if(fit) { 
+
+      TString p0_1 = Round(f1->GetParameter(0), 3); TString p1_1 = Round(f1->GetParameter(1), 3); TString p2_1 = Round(f1->GetParameter(2), 3);
+      TString p0_2 = Round(f2->GetParameter(0), 3); TString p1_2 = Round(f2->GetParameter(1), 3); TString p2_2 = Round(f2->GetParameter(2), 3);
+
+      TString e0_1 = Round(f1->GetParError(0), 3); TString e1_1 = Round(f1->GetParError(1), 3); TString e2_1 = Round(f1->GetParError(2), 3);
+      TString e0_2 = Round(f2->GetParError(0), 3); TString e1_2 = Round(f2->GetParError(1), 3); TString e2_2 = Round(f2->GetParError(2), 3);
+
+      if(decays=="Decays") { 
+         l2->AddEntry(f1, "#splitline{a = (-3#pm1)#times10^{-8} MeV^{-2}}{#splitline{b = (5#pm3)#times10^{-5} MeV^{-1}}{d_{0} = 0.14#pm0.02}}");
+         l2->AddEntry(f2, "#splitline{a = (-3#pm2)#times10^{-8} MeV^{-2}}{#splitline{b = (4#pm4)#times10^{-5} MeV^{-1}}{d_{0} = 0.17#pm0.03}}");
+/*         l2->AddEntry(f1, "#splitline{#splitline{a = (-3#pm1)#times10^{-8} MeV^{-2}}{b = (5#pm3)#times10^{-5} MeV^{-1}}{d_{0} = 0.14#pm0.02}");
+         l2->AddEntry(f2, "#splitline{#splitline{a = (-3#pm2)#times10^{-8} MeV^{-2}}{b = (4#pm4)#times10^{-5} MeV^{-1}}{d_{0} = 0.17#pm0.03}");*/
+         //l2->AddEntry(f1, "#splitline{#splitline{a}{b}}{c}");//" = (-3#pm1)#times10^{-8} MeV^{-2}}{b = (5#pm3)#times10^{-5} MeV^{-1}}{d_{0} = 0.14#pm0.02}");
+         //l2->AddEntry(f2, "{#splitline{#splitline{a}{b}}{c}}");//"#splitline{#splitline{a = (-3#pm2)#times10^{-8} MeV^{-2}}{b = (4#pm4)#times10^{-5} MeV^{-1}}{d_{0} = 0.17#pm0.03}");
+
+      } else { 
+         if(qualString=="A") {
+            l2->AddEntry(f1, "#splitline{a = (-3#pm1)#times10^{-8} MeV^{-2}}{#splitline{b = (7#pm4)#times10^{-5} MeV^{-1}}{d_{0} = 0.06#pm0.03}}");
+            l2->AddEntry(f2, "#splitline{a = (-2#pm1)#times10^{-8} MeV^{-2}}{#splitline{b = (4#pm4)#times10^{-5} MeV^{-1}}{d_{0} = 0.08#pm0.03}}");  
+         } else if(qualString=="B") {
+            l2->AddEntry(f1, "#splitline{a = (-4#pm2)#times10^{-8} MeV^{-2}}{#splitline{b = (1.0#pm0.8)#times10^{-4} MeV^{-1}}{d_{0} = 0.02#pm0.06}}");
+            l2->AddEntry(f2, "#splitline{a = (-3#pm2)#times10^{-8} MeV^{-2}}{#splitline{b = (9#pm8)#times10^{-5} MeV^{-1}}{d_{0} = 0.03#pm0.06}}");  
+         }
+
+      }
+
+
+   }
+
+
+   l1->AddEntry(gr1, ("#bf{"+labels_.at(0)+"}").c_str()); 
+   l1->AddEntry(gr2, ("#bf{"+labels_.at(1)+"}").c_str()); 
+
+   l1->SetTextSize(24);
+   l1->SetTextFont(44);
+
+   l2->SetTextSize(20);
+   l2->SetTextFont(44);
+
+   //l2->SetHeader("#bf{d_{EDM}(p)=ap^{2}+bp+d_{0}}", "C");
+
+   l1->Draw("same");
+
+   if(fit) {
+      l2->Draw("same");
+      eqnTxt->Draw("same");
+   }
+
+   if(f1 != 0) { 
+
+/*      f1->SetLineColor(kBlack);
+      f2->SetLineColor(kBlack);*/
+
+      f1->SetLineColor(kRed);
+      f2->SetLineColor(kBlue);
+
+/*      f1->SetLineStyle(kSolid);
+      f2->SetLineStyle(kDashed);*/
+
+      f1->SetLineWidth(3);
+      f2->SetLineWidth(3);
+
+      f1->Draw("same");
+      f2->Draw("same");
+
+   }
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+double ParabolaFunc(double *x, double *par) {
+   return par[0] * pow(x[0],2) + par[1] * x[0] + par[2];
+}
+
+
+void ParabolaFit(TGraphErrors *graph, string name, bool corr, double xmin, double xmax) { // double p0, double p1, double p2, 
+  
+   TF1 *fnc = new TF1("ParabolaFunc", ParabolaFunc, xmin, xmax, 3);
+
+/*  if(name == "truthAllDecays") { 
+   fnc->SetParameter(0, -11e-10);
+   fnc->SetParameter(1, 4e-06);
+   fnc->SetParameter(2, -4e-04);
+  }*/
+  if(corr) {
+     if(name == "trackReco") {
+      fnc->SetParameter(0, -7.0e-11);
+      fnc->SetParameter(1, 2e-07);
+      fnc->SetParameter(2, -5.0e-05);
+     } else if(name == "truth") { 
+      fnc->SetParameter(0, -8.5e-10);
+      fnc->SetParameter(1, 3.5e-06);
+      fnc->SetParameter(2, -6.0e-04);
+     } else if(name == "truthAllDecays") { 
+      fnc->SetParameter(0, -1.2e-10);
+      fnc->SetParameter(1, 4.5e-06);
+      fnc->SetParameter(2, -6.5e-04);
+     }
+   } else {
+     if(name == "trackReco") {
+      fnc->SetParameter(0, -6e-8);
+      fnc->SetParameter(1, 2.0e-4);
+      fnc->SetParameter(2, 0.05);
+     } else if(name == "trackTruth") { 
+      fnc->SetParameter(0, -5.5e-8);
+      fnc->SetParameter(1, 8.0e-5);
+      fnc->SetParameter(2, 2.5e-1);
+     }else if(name == "truth") { 
+      fnc->SetParameter(0, -5.5e-8);
+      fnc->SetParameter(1, 8.0e-5);
+      fnc->SetParameter(2, 2.5e-1);
+     } else if(name == "truthAllDecays") { 
+      fnc->SetParameter(0, -5.5e-8);
+      fnc->SetParameter(1, 7.0e-5);
+      fnc->SetParameter(2, 3.0e-1);
+     }
+   }
+
+  graph->Fit(fnc, "R");    
+
+  return;
+
+}
+
+TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
+
+   int n = gr->GetN();
+
+   double x[n]; double ex[n]; 
+   double y[n]; double ey[n];
+
+   for(int i = 0; i<n; i++) { 
+
+      x[i] = gr->GetX()[i]; ex[i] = gr->GetEX()[i];
+      y[i] = gr->GetY()[i] / delta_calc; ey[i] = gr->GetEY()[i] / delta_calc;
+
+   }
+
+   return new TGraphErrors(n, x, y, ex, ey);
+
+}
+
+void RunAEDM(int step, string frame, string decays, bool corr, bool fit, double ymin, double ymax, TFile *output) {
+
+   string dname = "";
+
+   if(corr) dname = "DilutionFits/"+decays+"/"+to_string(step)+"MeV/dOverThetaYDiff_vs_p";
+   else dname = "DilutionFits/"+decays+"/"+to_string(step)+"MeV/d_vs_p";
+
+   output->mkdir(dname.c_str()); 
+
+   string type = "";
+   if(corr) type += "AOverMaxDiff";
+   else type += "A";
+
+   cout<<"\n***************************\nRunning with:\nstep: "<<step<<"\nframe: "<<frame<<"\ntype: "<<type<<"\n***************************"<<endl;
+
+   vector<string> names_;
+   vector<string> labels_;
+
+   if(decays == "Decays") {
+      names_ = {"truth", "truthAllDecays"};
+      labels_ = {"Accepted truth decays", "All truth decays"}; //{"trackReco", "truth", "truthAllDecays"};
+   } else if(decays == "Tracks") {
+      names_  = {"trackReco", "trackTruth"}; // {"trackReco", "trackTruth"}
+      labels_ = {"Tracked reco decays", "Tracked truth decays"}; // {"Track reco", "Track truth"}
+   }
+
+   vector<TGraphErrors*> graphs_; 
+
+   // Seems stupid, but this is smart trust me. 
+   for(string name : names_) {
+
+      string fn = "../Plots/MC/dMu/5.4e-18/fits/dMuSim_unblinded_"+name+"_"+frame+"_"+to_string(step)+"MeV_"+qualString+"Q.root";//
+
+      TFile *f = TFile::Open(fn.c_str()); 
+
+      cout<<"***************************\nOpened file "<<fn<<", "<<f<<"\n***************************"<<endl;
+
+      string grn = "MomentumBinnedAnalysis/ParameterScans/MomSlices/";
+      if(name == "trackReco" || name == "trackTruth") grn += "S0S12S18_"+type+"_vs_p";
+      else grn += type+"_vs_p";
+
+      TGraphErrors *gr = (TGraphErrors*)f->Get(grn.c_str());
+
+      // Convert to diluton
+      gr = ConvertToDilution(gr);
+
+      // Set name
+      gr->SetName(name.c_str());
+
+      // Fit
+      if(fit) { 
+         double xmin; double xmax;
+         if(decays == "Decays") {xmin = 0; xmax = 3000;}
+         else if(decays == "Tracks") {xmin = 750; xmax = 2500;}
+
+         ParabolaFit(gr, name, corr, xmin, xmax);
+         TF1 *fnc = gr->GetFunction("ParabolaFunc");
+
+         cout<<"chisqr/ndf\t"<<fnc->GetChisquare() / fnc->GetNDF()<<endl;
+      }
+
+      graphs_.push_back(gr);
+
+      f->Close();
+
+   }
+
+   string title = ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2);
+
+   if(corr) title += ";d_{EDM}(p) / #Delta_{max}#theta_{y}(p)";
+   else title += ";d_{EDM}(p)";
+
+   string fname = "../Images/MC/Dilution/dMu/"+config; 
+   if(fit) fname += "/ParabolaFits_"+decays+"_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV_"+qualString+"Q";
+   else fname += "/Graphs_"+decays+"_"+type+"_vs_p_"+frame+"_"+to_string(step)+"MeV_"+qualString+"Q";
+
+   DrawGraphs(graphs_, labels_, title, fname, decays, corr, fit, ymin, ymax);
+
+   // Write
+   output->cd(dname.c_str());
+   for(auto& gr : graphs_) gr->Write();      
+
+   return; 
+
+}
+
+int main() { 
+
+   bool fit = true;
+   bool corr = false;
+
+   string fname = "../Plots/MC/dMu/Dilution/dilutionCurves_"+qualString+"Q.root";
+
+   TFile *output = new TFile(fname.c_str(), "RECREATE");
+
+   vector<string> decays = {"Decays", "Tracks"};
+   //vector<string> decays = {"Tracks"};
+
+   vector<double> ymax = {2.25e-1, 1.4e-1};
+
+
+   // for(string& dcy : decays) {
+   for(int i = 0; i<decays.size(); i++) {
+
+      if(qualString=="B" && decays.at(i) == "Decays") continue;
+
+      output->mkdir(("DilutionFits/"+decays.at(i)+"/500MeV").c_str()); 
+      output->cd(("DilutionFits/"+decays.at(i)+"/500MeV").c_str()); 
+
+      double ymin = -0.02;
+
+      if(qualString=="B") { 
+         ymax.at(i) = .135;
+         ymin = -0.05;
+      }
+
+      if(corr) {
+         ymax.at(i) = ymax.at(i)/76.;
+         ymin = ymin/70.;
+      }
+
+      RunAEDM(250, "AAR", decays.at(i), corr, fit, ymin, ymax.at(i), output);
+
+   }
+
+   output->Write();
+   output->Close();
+
+   cout<<"\nWritten fits to "<<fname<<", "<<output<<endl;
+
+   return 0; 
+
+}
+
+
+
+///// OLD STUFF //////
+
+/*
+
+void DrawGraphs(vector<TGraphErrors*> graphs_, vector<string> labels_, std::string title, std::string fname, bool corr, double ymin, double ymax) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  TLegend *l;
+  if(corr) l = new TLegend(0.15, 0.64, 0.40, 0.89);
+  else l = new TLegend(0.65, 0.65, 0.89, 0.89); // new TLegend(0.64, 0.64, 0.89, 0.89);
+
+  l->SetBorderSize(0);
+
+  // Hack together x-axis range 
+  int N = graphs_.at(0)->GetN();
+  double xmax = graphs_.at(0)->GetPointX(N-1); 
+  double xmin = graphs_.at(0)->GetPointX(0);// Cut lowest momentum bin - 50; 
+
+  double offset = 10; 
+  xmin = -10;//xmin - offset; 
+  xmax = 3010;// xmax + offset;
+
+  int i_gr = 0;
+
+   graphs_.at(0)->SetTitle(title.c_str());
+   graphs_.at(0)->GetXaxis()->SetTitleSize(.04);
+   graphs_.at(0)->GetYaxis()->SetTitleSize(.04);
+   graphs_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   graphs_.at(0)->GetYaxis()->SetTitleOffset(1.15);
+   graphs_.at(0)->GetXaxis()->CenterTitle(true);
+   graphs_.at(0)->GetYaxis()->CenterTitle(true);
+   graphs_.at(0)->GetYaxis()->SetMaxDigits(4);
+   graphs_.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+   graphs_.at(0)->GetXaxis()->SetRangeUser(xmin, xmax);
+
+   graphs_.at(0)->SetMarkerStyle(20);
+   graphs_.at(1)->SetMarkerStyle(24);
+
+   graphs_.at(0)->Draw("AP");
+   graphs_.at(1)->Draw("P SAME");
+
+   l->AddEntry(graphs_.at(0), (labels_.at(0)).c_str()); //
+   l->AddEntry(graphs_.at(1), (labels_.at(1)).c_str()); // (labels_.at(i_gr)).c_str.c_str()());
+
+   l->Draw("same");
+
+   if(graphs_.at(0)->GetFunction("ParabolaFunc") != 0) { 
+
+      graphs_.at(0)->GetFunction("ParabolaFunc")->SetLineColor(kRed);
+      graphs_.at(1)->GetFunction("ParabolaFunc")->SetLineColor(kBlue);
+
+      graphs_.at(0)->GetFunction("ParabolaFunc")->Draw("same");
+      graphs_.at(1)->GetFunction("ParabolaFunc")->Draw("same");
+
+   }
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+
+  delete c;
+
+  return;
+
+}
+
+
+
+
+void DrawGraphs(vector<TGraphErrors*> graphs_, vector<string> labels_, std::string title, std::string fname, bool corr, double ymin, double ymax) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  TLegend *l;
+  if(corr) l = new TLegend(0.15, 0.64, 0.40, 0.89);
+  else l =  new TLegend(0.64, 0.64, 0.89, 0.89);
+//  l->SetNColumns(3);
+  l->SetBorderSize(0);
+
+  // NOTES: not using this functionality atm, is it worth it?
+  // Hack together x-axis range 
+  int N = graphs_.at(0)->GetN();
+  double xmax = graphs_.at(0)->GetPointX(N-1); 
+  double xmin = graphs_.at(0)->GetPointX(0);// Cut lowest momentum bin - 50; 
+
+  double offset = (xmax - xmin) * 0.2;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  vector<int> colors_ = {1, 2, 4};
+
+  int i_gr = 0;
+
+  for(auto& gr : graphs_) { 
+
+   gr->SetTitle(title.c_str());
+   gr->GetXaxis()->SetTitleSize(.04);
+   gr->GetYaxis()->SetTitleSize(.04);
+   gr->GetXaxis()->SetTitleOffset(1.1);
+   gr->GetYaxis()->SetTitleOffset(1.1);
+   gr->GetXaxis()->CenterTitle(true);
+   gr->GetYaxis()->CenterTitle(true);
+   gr->GetYaxis()->SetMaxDigits(4);
+   gr->GetYaxis()->SetRangeUser(ymin,ymax);
+
+   gr->GetXaxis()->SetRangeUser(-50, 3050); // xmin, xmax);
+   gr->SetMarkerStyle(20);
+   gr->SetMarkerColor(colors_.at(i_gr));
+
+   if(i_gr==0) gr->Draw("AP");
+   else gr->Draw("P");
+
+   TF1 *fnc = gr->GetFunction("ParabolaFunc");
+
+   if(fnc!=0) {
+         fnc->SetLineColor(colors_.at(i_gr));
+         fnc->Draw("same");
+      }
+
+   l->AddEntry(gr, (labels_.at(i_gr)).c_str());
+
+   i_gr++;
+
+  }
+
+  l->Draw("same");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+
+  delete c;
+
+  return;
+
+}*/

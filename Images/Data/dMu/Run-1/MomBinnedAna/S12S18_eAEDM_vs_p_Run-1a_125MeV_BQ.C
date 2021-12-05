@@ -1,10 +1,10 @@
 void S12S18_eAEDM_vs_p_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 14:24:02 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:46:10 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(496.2707,0.009446994,3029.518,0.06027189);
+   c->Range(496.2707,-0.02694582,3029.518,0.3878072);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -111,7 +111,7 @@ void S12S18_eAEDM_vs_p_Run-1a_125MeV_BQ()
    
    TH1F *Graph_Graph01047 = new TH1F("Graph_Graph01047","S12S18",100,114.3931,3139.166);
    Graph_Graph01047->SetMinimum(0.01452948);
-   Graph_Graph01047->SetMaximum(0.0551894);
+   Graph_Graph01047->SetMaximum(0.3463319);
    Graph_Graph01047->SetDirectory(0);
    Graph_Graph01047->SetStats(0);
 

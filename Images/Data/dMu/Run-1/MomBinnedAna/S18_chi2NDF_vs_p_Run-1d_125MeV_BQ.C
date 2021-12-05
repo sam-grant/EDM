@@ -1,7 +1,7 @@
 void S18_chi2NDF_vs_p_Run-1d_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 17:55:53 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:47:48 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(496.8012,0.1109779,3027.932,4.032379);
@@ -42,18 +42,18 @@ void S18_chi2NDF_vs_p_Run-1d_125MeV_BQ()
    1.281306,
    1.282334,
    1.028718,
-   0.816453,
+   0.8164532,
    1.067132,
    0.7148725,
    1.049417,
-   0.9928669,
+   0.9928672,
    1.18194,
-   0.9498708,
+   0.9498707,
    1.285655,
-   0.8062164,
+   0.8062165,
    0.6236762,
    1.286201,
-   1.124424,
+   1.124423,
    1.024936,
    1.117922,
    4.490936};
@@ -110,7 +110,7 @@ void S18_chi2NDF_vs_p_Run-1d_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01031 = new TH1F("Graph_Graph01031","S18",100,115.2427,3137.489);
-   Graph_Graph01031->SetMinimum(0.503118);
+   Graph_Graph01031->SetMinimum(0.5031181);
    Graph_Graph01031->SetMaximum(3.640239);
    Graph_Graph01031->SetDirectory(0);
    Graph_Graph01031->SetStats(0);

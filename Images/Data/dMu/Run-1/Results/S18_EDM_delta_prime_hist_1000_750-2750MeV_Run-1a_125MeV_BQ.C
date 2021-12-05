@@ -1,7 +1,7 @@
 void S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Dec  2 14:46:57 2021) by ROOT version 6.24/04
+//=========  (Sun Dec  5 23:48:10 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,13 +10,17 @@ void S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__2 = new TH1D("h__2","S18",21,0.03848869,0.462227);
+   TH1D *h__2 = new TH1D("h__2","S18",22,0.01799921,0.4716024);
    h__2->SetBinContent(9,1);
-   h__2->SetBinContent(10,52);
-   h__2->SetBinContent(11,451);
-   h__2->SetBinContent(12,431);
-   h__2->SetBinContent(13,61);
-   h__2->SetBinContent(14,4);
+   h__2->SetBinContent(10,10);
+   h__2->SetBinContent(11,83);
+   h__2->SetBinContent(12,260);
+   h__2->SetBinContent(13,306);
+   h__2->SetBinContent(14,202);
+   h__2->SetBinContent(15,93);
+   h__2->SetBinContent(16,27);
+   h__2->SetBinContent(17,13);
+   h__2->SetBinContent(18,5);
    h__2->SetEntries(1000);
    h__2->SetStats(0);
    h__2->SetLineWidth(3);
@@ -52,11 +56,11 @@ void S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.2607
-#pm0.0004
+   pt_LaTex = pt->AddText("0.2773
+#pm0.0009
 ");
-   pt_LaTex = pt->AddText("0.013
-#pm0.0003
+   pt_LaTex = pt->AddText("0.027
+#pm0.0006
 ");
    pt->Draw();
    c->Modified();

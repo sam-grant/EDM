@@ -271,7 +271,7 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
 
 }
 
-TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, double momentum = -1) { 
+TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S12S18", double momentum = -1) { 
 
   // ================== First, shift phase ==================
 
@@ -301,7 +301,7 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
   // Best not to draw this :)
   // DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/Data/dMu/"+config+"/blindEDMFunc_"+qual);
 
-  if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, momentum);
+  if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, stn, momentum);
   else return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
 
 }
@@ -399,6 +399,8 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
   for(auto& stn : stn_) { 
 
+    cout<<stn<<endl;
+
     TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time_20ns").c_str());
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
@@ -422,30 +424,35 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     // Get residuals
 
     // We have to convert back into a TH1D to preserve blinding
-    px_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
-    TH1D *h_res_thetaY_vs_t = GetResidual(px_thetaY_vs_t, func);
-    TH1D *FFT_h_res_thetaY_vs_t = GetFFT(h_res_thetaY_vs_t);
+    TH1D *h1_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
+    TH1D *FFT_h1_thetaY_vs_t = GetFFT(h1_thetaY_vs_t);
+    TH1D *h1_res_thetaY_vs_t = GetResidual(px_thetaY_vs_t, func);
+    TH1D *FFT_h1_res_thetaY_vs_t = GetFFT(h1_res_thetaY_vs_t);
 
-    DrawTH1(px_thetaY_vs_t, "h_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
-    px_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
-    px_thetaY_vs_t->Write();
+    cout<<"a"<<endl;
+    DrawTH1(h1_thetaY_vs_t, "h_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
+    h1_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
+    h1_thetaY_vs_t->Write();
 
-    TH1D *FFT_px_thetaY_vs_t = GetFFT(px_thetaY_vs_t);
+    cout<<"b"<<endl;
+    DrawTH1(FFT_h1_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
+    FFT_h1_thetaY_vs_t->Draw("HIST");
+    FFT_h1_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
+    FFT_h1_thetaY_vs_t->Write();
 
-    DrawTH1(FFT_px_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_px_thetaY_vs_t->GetBinWidth(1))+" MHz", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
-    FFT_px_thetaY_vs_t->Draw("HIST");
-    FFT_px_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
-    FFT_px_thetaY_vs_t->Write();
+    cout<<"c"<<endl;
+    DrawTH1(h1_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
+    h1_res_thetaY_vs_t->Draw("HIST");
+    h1_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
+    h1_res_thetaY_vs_t->Write();
 
-    DrawTH1(h_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
-    h_res_thetaY_vs_t->Draw("HIST");
-    h_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
-    h_res_thetaY_vs_t->Write();
+    cout<<"d"<<endl;
+    DrawTH1(FFT_h1_res_thetaY_vs_t, "FFT_h_res_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
+    FFT_h1_res_thetaY_vs_t->Draw("HIST");
+    FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
+    FFT_h1_res_thetaY_vs_t->Write();
 
-    DrawTH1(FFT_h_res_thetaY_vs_t, "FFT_h_res_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_px_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
-    FFT_h_res_thetaY_vs_t->Draw("HIST");
-    FFT_h_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
-    FFT_h_res_thetaY_vs_t->Write();
+    cout<<"e"<<endl;
 
   }
 
@@ -454,6 +461,8 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 }
 
 void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config) { 
+
+  cout<<"MomentumBinnedAnalysis"<<endl;
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -545,7 +554,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
       // Blind with dilution weighting
-      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, p);
+      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
       // TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
@@ -720,9 +729,7 @@ void Run(std::string config, bool write) {
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
-  //output->mkdir("MomentumBinnedAnalysis/ModuloFits/MomSlices");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
-  //output->mkdir("MomentumBinnedAnalysis/ParameterScans/MomSlices");
 
   MomentumBinnedAnalysis(phi, input, output, config);
 
