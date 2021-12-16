@@ -223,6 +223,28 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   // Might be good for debugging to have both though. 
   // Someone will definitely ask you for it. 
 
+  double ymin; double ymax;
+  double phi; 
+  
+  // Phi values from Nick's thesis table 5.7
+  if(dataset == "Run-1a") {
+    ymin = 25e3;
+    ymax = 110e3;
+    phi = 2.091;
+  } else if(dataset == "Run-1b") {
+    ymin = 40e3;
+    ymax = 150e3;
+    phi = 2.081;
+  } else if(dataset == "Run-1c") {
+    ymin = 60e3;
+    ymax = 220e3;
+    phi = 2.080;
+  } else if(dataset == "Run-1d") {
+    ymin = 100e3;
+    ymax = 400e3;
+    phi = 2.067;
+  } 
+
   cout<<"Getting phase"<<endl;
 
   TH1D *h1_wiggle = (TH1D*)input->Get("SimultaneousAnalysis/S12S18_Wiggle");
@@ -231,36 +253,17 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
 
-  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, 2, tmin, tmax);
-  FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, 2, 0, G2PERIOD);
+  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, phi, tmin, tmax);
+  FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, phi, 0, G2PERIOD);
 
   TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
   DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, 10, 10e4);
 
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 
-  double ymin; double ymax;
-
-  if(dataset == "Run-1a") {
-    ymin = 25e3;
-    ymax = 110e3;
-  } else if(dataset == "Run-1b") {
-    ymin = 40e3;
-    ymax = 150e3;
-  } else if(dataset == "Run-1c") {
-    ymin = 60e3;
-    ymax = 220e3;
-  } else if(dataset == "Run-1d") {
-    ymin = 100e3;
-    ymax = 400e3;
-  } 
-
   DrawModWiggleData(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_mod_wiggle_"+config, double(h1_wiggle_mod->GetEntries()), ymin, ymax);
-
-  const double phi = modWiggle->GetParameter(4);
-
   // Fold wiggle
-  FoldWiggle(gr_wiggle, phi, config);
+  FoldWiggle(gr_wiggle, modWiggle->GetParameter(4), config);
  
   gr_wiggle->SetName("Wiggle");
   gr_wiggle->Write();
@@ -429,30 +432,24 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     TH1D *h1_res_thetaY_vs_t = GetResidual(px_thetaY_vs_t, func);
     TH1D *FFT_h1_res_thetaY_vs_t = GetFFT(h1_res_thetaY_vs_t);
 
-    cout<<"a"<<endl;
     DrawTH1(h1_thetaY_vs_t, "h_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
     h1_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
     h1_thetaY_vs_t->Write();
 
-    cout<<"b"<<endl;
     DrawTH1(FFT_h1_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
     FFT_h1_thetaY_vs_t->Draw("HIST");
     FFT_h1_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
     FFT_h1_thetaY_vs_t->Write();
 
-    cout<<"c"<<endl;
     DrawTH1(h1_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
     h1_res_thetaY_vs_t->Draw("HIST");
     h1_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
     h1_res_thetaY_vs_t->Write();
 
-    cout<<"d"<<endl;
     DrawTH1(FFT_h1_res_thetaY_vs_t, "FFT_h_res_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
     FFT_h1_res_thetaY_vs_t->Draw("HIST");
     FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
     FFT_h1_res_thetaY_vs_t->Write();
-
-    cout<<"e"<<endl;
 
   }
 
@@ -554,13 +551,18 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
       // Blind with dilution weighting
-      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
+      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn+"_", p);
       // TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 
       FullEDMFit(gr_thetaY_mod , 0, OMEGA_A * 1e3, phi, 0, 0, 0, G2PERIOD);
-      //DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+config+"/MomBinnedAna/"+stn+"_dMuFit_"+momSlice+"_"+qual).c_str(), double(nEntries), -5, 5, true);// , double(nEntries), true);
+
+      double c = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
+      double ymin =  c-0.6; double ymax =  c+0.7; 
+
+      DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MomBinnedAna/Fits/"+stn+"_edmFit_"+momSlice+"_"+dataset+"_"+to_string(step)+"MeV_"+qual).c_str(), double(nEntries), ymin, ymax, false);
+
       gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
       gr_thetaY_mod->SetName((stn+"_ModuloFit_"+momSlice).c_str());

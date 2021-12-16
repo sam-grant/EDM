@@ -1,7 +1,7 @@
 void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 23:46:40 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  9 22:16:20 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -4492,7 +4492,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __13->SetBinContent(4478,0.0001235758);
    __13->SetBinContent(4479,0.0001291747);
    __13->SetBinContent(4480,5.168711e-05);
-   __13->SetBinContent(4481,5.285317e-05);
+   __13->SetBinContent(4481,5.285318e-05);
    __13->SetBinContent(4482,9.128592e-05);
    __13->SetBinContent(4483,5.887405e-05);
    __13->SetBinContent(4484,0.0001009437);
@@ -9284,7 +9284,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __13->SetBinContent(9270,0.0001009437);
    __13->SetBinContent(9271,5.887405e-05);
    __13->SetBinContent(9272,9.128592e-05);
-   __13->SetBinContent(9273,5.285317e-05);
+   __13->SetBinContent(9273,5.285318e-05);
    __13->SetBinContent(9274,5.168711e-05);
    __13->SetBinContent(9275,0.0001291747);
    __13->SetBinContent(9276,0.0001235758);
@@ -13827,7 +13827,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __13->SetBinError(61,4.804202e-06);
    __13->SetBinError(62,7.921856e-06);
    __13->SetBinError(63,8.362503e-06);
-   __13->SetBinError(64,1.210915e-05);
+   __13->SetBinError(64,1.210914e-05);
    __13->SetBinError(65,6.372667e-06);
    __13->SetBinError(66,3.409433e-06);
    __13->SetBinError(67,6.195082e-06);
@@ -16955,7 +16955,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __13->SetBinError(3189,7.991249e-06);
    __13->SetBinError(3190,1.002565e-05);
    __13->SetBinError(3191,6.828351e-06);
-   __13->SetBinError(3192,8.706209e-06);
+   __13->SetBinError(3192,8.70621e-06);
    __13->SetBinError(3193,6.949014e-06);
    __13->SetBinError(3194,8.582745e-06);
    __13->SetBinError(3195,1.13747e-05);
@@ -24325,7 +24325,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __13->SetBinError(10559,1.13747e-05);
    __13->SetBinError(10560,8.582745e-06);
    __13->SetBinError(10561,6.949014e-06);
-   __13->SetBinError(10562,8.706209e-06);
+   __13->SetBinError(10562,8.70621e-06);
    __13->SetBinError(10563,6.828351e-06);
    __13->SetBinError(10564,1.002565e-05);
    __13->SetBinError(10565,7.991249e-06);
@@ -27453,7 +27453,7 @@ void S12S18_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __13->SetBinError(13687,6.195082e-06);
    __13->SetBinError(13688,3.409433e-06);
    __13->SetBinError(13689,6.372667e-06);
-   __13->SetBinError(13690,1.210915e-05);
+   __13->SetBinError(13690,1.210914e-05);
    __13->SetBinError(13691,8.362503e-06);
    __13->SetBinError(13692,7.921856e-06);
    __13->SetBinError(13693,4.804202e-06);

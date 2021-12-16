@@ -8,7 +8,7 @@ double A_MU = 11659208.9e-10;
 double GMAGIC = std::sqrt( 1.+1./A_MU );
 double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
 
-bool boost = true;
+bool boost = false;
 
 using namespace std;
 
@@ -215,6 +215,7 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 	hist->GetXaxis()->SetLimits(0,1);
 
 	string config = "";
+
 	if(edm) {
 		config += "EDM";
 		if(!boost) {
@@ -273,11 +274,11 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 
 	if(edm) {
 		fname += "edm/hFit_A";
-		if(!boost) legEntry += "Fit: #frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}";
+		if(!boost) legEntry += "Fit: #frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}";
 		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}"; 
 	} else { 
 		fname += "g2/hFit_A";
-		if(!boost) legEntry += "Fit: #frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}"; 
+		if(!boost) legEntry += "Fit: #frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}";
 		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}";
 	}
 

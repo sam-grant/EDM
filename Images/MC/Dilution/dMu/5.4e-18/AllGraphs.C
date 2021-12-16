@@ -1,10 +1,10 @@
 void AllGraphs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec  3 18:01:23 2021) by ROOT version 6.24/04
+//=========  (Tue Dec  7 15:41:02 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-413.7765,-0.14375,3411.704,0.29375);
+   c->Range(-97.58882,-0.14375,3376.572,0.29375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,18 +25,18 @@ void AllGraphs()
    2613.214,
    2850.256};
    Double_t allDecays_fy1001[12] = {
-   0.1619321,
-   0.1936034,
-   0.1853727,
-   0.1880927,
-   0.17815,
-   0.1672124,
-   0.1508854,
-   0.1368204,
-   0.09826702,
-   0.0940857,
-   0.05507914,
-   0.03133916};
+   0.15454,
+   0.1922184,
+   0.1839745,
+   0.1879667,
+   0.1790254,
+   0.1663879,
+   0.1507712,
+   0.1366993,
+   0.09842933,
+   0.09438763,
+   0.05544906,
+   0.03108191};
    Double_t allDecays_fex1001[12] = {
    0,
    0,
@@ -51,18 +51,18 @@ void AllGraphs()
    0,
    0};
    Double_t allDecays_fey1001[12] = {
-   0.04230012,
-   0.01695175,
-   0.01249898,
-   0.01022601,
-   0.008802462,
-   0.007839758,
-   0.00713725,
-   0.00662596,
-   0.006244978,
-   0.005983381,
-   0.005849274,
-   0.006016688};
+   0.04230085,
+   0.01695192,
+   0.01249909,
+   0.01022605,
+   0.008802339,
+   0.007839308,
+   0.007137349,
+   0.006625887,
+   0.006244778,
+   0.005982922,
+   0.005849702,
+   0.006016584};
    TGraphErrors *gre = new TGraphErrors(12,allDecays_fx1001,allDecays_fy1001,allDecays_fex1001,allDecays_fey1001);
    gre->SetName("allDecays");
    gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
@@ -80,7 +80,7 @@ void AllGraphs()
    ci = TColor::GetColor("#000099");
    Graph_allDecays1001->SetLineColor(ci);
    Graph_allDecays1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_allDecays1001->GetXaxis()->SetRange(0,97);
+   Graph_allDecays1001->GetXaxis()->SetRange(9,97);
    Graph_allDecays1001->GetXaxis()->CenterTitle(true);
    Graph_allDecays1001->GetXaxis()->SetLabelFont(42);
    Graph_allDecays1001->GetXaxis()->SetTitleSize(0.04);
@@ -101,31 +101,31 @@ void AllGraphs()
    gre->Draw("ap");
    
    Double_t acceptedDecays_fx1002[12] = {
-   141.6721,
-   381.0619,
-   628.3411,
-   876.335,
+   141.6725,
+   381.062,
+   628.3398,
+   876.3344,
    1124.572,
-   1373.653,
+   1373.652,
    1622.832,
    1871.413,
    2119.63,
-   2367.742,
-   2613.509,
+   2367.743,
+   2613.51,
    2850.19};
    Double_t acceptedDecays_fy1002[12] = {
-   0.144158,
-   0.1503446,
-   0.1526525,
-   0.1551435,
-   0.152199,
-   0.1520013,
-   0.1383273,
-   0.1244362,
-   0.1078302,
-   0.08919229,
-   0.06709501,
-   0.03589312};
+   0.1416931,
+   0.1473594,
+   0.1529684,
+   0.1537964,
+   0.15198,
+   0.151312,
+   0.1374953,
+   0.1236673,
+   0.1076501,
+   0.08851961,
+   0.06685792,
+   0.03552221};
    Double_t acceptedDecays_fex1002[12] = {
    0,
    0,
@@ -140,22 +140,23 @@ void AllGraphs()
    0,
    0};
    Double_t acceptedDecays_fey1002[12] = {
-   0.02916739,
-   0.01215787,
-   0.007950807,
-   0.005958927,
-   0.00492771,
-   0.004281258,
-   0.003805373,
-   0.003485618,
-   0.003272661,
-   0.003126542,
-   0.003030634,
-   0.003115993};
+   0.02916896,
+   0.01215811,
+   0.007950912,
+   0.005958971,
+   0.004927699,
+   0.004281234,
+   0.003805178,
+   0.00348558,
+   0.003272689,
+   0.003126732,
+   0.003030668,
+   0.003116237};
    gre = new TGraphErrors(12,acceptedDecays_fx1002,acceptedDecays_fy1002,acceptedDecays_fex1002,acceptedDecays_fey1002);
    gre->SetName("acceptedDecays");
    gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
    gre->SetFillStyle(1000);
+   gre->SetLineColor(2);
    gre->SetMarkerColor(2);
    gre->SetMarkerStyle(20);
    
@@ -168,7 +169,7 @@ void AllGraphs()
    ci = TColor::GetColor("#000099");
    Graph_acceptedDecays1002->SetLineColor(ci);
    Graph_acceptedDecays1002->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_acceptedDecays1002->GetXaxis()->SetRange(0,97);
+   Graph_acceptedDecays1002->GetXaxis()->SetRange(9,97);
    Graph_acceptedDecays1002->GetXaxis()->SetLabelFont(42);
    Graph_acceptedDecays1002->GetXaxis()->SetTitleOffset(1);
    Graph_acceptedDecays1002->GetXaxis()->SetTitleFont(42);
@@ -182,31 +183,31 @@ void AllGraphs()
    
    gre->Draw("p ");
    
-   Double_t trackTruth_fx1003[11] = {
-   451.9227,
-   653.3392,
-   880.2735,
-   1123.022,
+   Double_t S0S12S18_trackTruth_fx1003[11] = {
+   451.9222,
+   653.3407,
+   880.2728,
+   1123.023,
    1371.209,
-   1620.262,
-   1867.113,
-   2115.519,
-   2363.039,
-   2613.873,
-   2792.289};
-   Double_t trackTruth_fy1003[11] = {
-   -0.0227537,
-   0.09516739,
-   0.07243882,
-   0.08259043,
-   0.07774151,
-   0.09151081,
-   0.07942015,
-   0.05897933,
-   0.03823984,
-   0.05772124,
-   -0.007958637};
-   Double_t trackTruth_fex1003[11] = {
+   1620.261,
+   1867.114,
+   2115.52,
+   2363.035,
+   2613.878,
+   2792.287};
+   Double_t S0S12S18_trackTruth_fy1003[11] = {
+   -0.02012772,
+   0.09296195,
+   0.07141234,
+   0.08167335,
+   0.07841186,
+   0.09217439,
+   0.07959187,
+   0.05779957,
+   0.03850457,
+   0.05710346,
+   -0.0105008};
+   Double_t S0S12S18_trackTruth_fex1003[11] = {
    0,
    0,
    0,
@@ -218,73 +219,74 @@ void AllGraphs()
    0,
    0,
    0};
-   Double_t trackTruth_fey1003[11] = {
-   0.06374959,
-   0.02131316,
-   0.01224326,
-   0.01004791,
-   0.009205664,
-   0.008765839,
-   0.008785619,
-   0.009193142,
-   0.009766754,
-   0.009696812,
-   0.02116826};
-   gre = new TGraphErrors(11,trackTruth_fx1003,trackTruth_fy1003,trackTruth_fex1003,trackTruth_fey1003);
-   gre->SetName("trackTruth");
-   gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
+   Double_t S0S12S18_trackTruth_fey1003[11] = {
+   0.06378456,
+   0.02131405,
+   0.01224083,
+   0.01004693,
+   0.009203171,
+   0.008765288,
+   0.008781899,
+   0.009188697,
+   0.009759984,
+   0.00969133,
+   0.02117574};
+   gre = new TGraphErrors(11,S0S12S18_trackTruth_fx1003,S0S12S18_trackTruth_fy1003,S0S12S18_trackTruth_fex1003,S0S12S18_trackTruth_fey1003);
+   gre->SetName("S0S12S18_trackTruth");
+   gre->SetTitle("S0S12S18_");
    gre->SetFillStyle(1000);
+   gre->SetLineColor(8);
    gre->SetMarkerColor(8);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_trackTruth1003 = new TH1F("Graph_trackTruth1003","",100,217.886,3026.326);
-   Graph_trackTruth1003->SetMinimum(-0.1);
-   Graph_trackTruth1003->SetMaximum(0.25);
-   Graph_trackTruth1003->SetDirectory(0);
-   Graph_trackTruth1003->SetStats(0);
+   TH1F *Graph_S0S12S18_trackTruth1003 = new TH1F("Graph_S0S12S18_trackTruth1003","S0S12S18_",100,217.8857,3026.323);
+   Graph_S0S12S18_trackTruth1003->SetMinimum(-0.1);
+   Graph_S0S12S18_trackTruth1003->SetMaximum(0.25);
+   Graph_S0S12S18_trackTruth1003->SetDirectory(0);
+   Graph_S0S12S18_trackTruth1003->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_trackTruth1003->SetLineColor(ci);
-   Graph_trackTruth1003->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_trackTruth1003->GetXaxis()->SetRange(0,100);
-   Graph_trackTruth1003->GetXaxis()->SetLabelFont(42);
-   Graph_trackTruth1003->GetXaxis()->SetTitleOffset(1);
-   Graph_trackTruth1003->GetXaxis()->SetTitleFont(42);
-   Graph_trackTruth1003->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
-   Graph_trackTruth1003->GetYaxis()->SetLabelFont(42);
-   Graph_trackTruth1003->GetYaxis()->SetTitleFont(42);
-   Graph_trackTruth1003->GetZaxis()->SetLabelFont(42);
-   Graph_trackTruth1003->GetZaxis()->SetTitleOffset(1);
-   Graph_trackTruth1003->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_trackTruth1003);
+   Graph_S0S12S18_trackTruth1003->SetLineColor(ci);
+   Graph_S0S12S18_trackTruth1003->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_S0S12S18_trackTruth1003->GetXaxis()->SetRange(2,100);
+   Graph_S0S12S18_trackTruth1003->GetXaxis()->SetLabelFont(42);
+   Graph_S0S12S18_trackTruth1003->GetXaxis()->SetTitleOffset(1);
+   Graph_S0S12S18_trackTruth1003->GetXaxis()->SetTitleFont(42);
+   Graph_S0S12S18_trackTruth1003->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
+   Graph_S0S12S18_trackTruth1003->GetYaxis()->SetLabelFont(42);
+   Graph_S0S12S18_trackTruth1003->GetYaxis()->SetTitleFont(42);
+   Graph_S0S12S18_trackTruth1003->GetZaxis()->SetLabelFont(42);
+   Graph_S0S12S18_trackTruth1003->GetZaxis()->SetTitleOffset(1);
+   Graph_S0S12S18_trackTruth1003->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_S0S12S18_trackTruth1003);
    
    gre->Draw("p ");
    
-   Double_t trackReco_fx1004[11] = {
-   451.788,
-   653.3045,
-   880.2744,
-   1123.049,
-   1371.147,
-   1620.244,
-   1867.075,
-   2115.6,
-   2363.041,
-   2614.061,
-   2788.497};
-   Double_t trackReco_fy1004[11] = {
-   -0.00966821,
-   0.08962262,
-   0.07456527,
-   0.08291077,
-   0.08277196,
-   0.08848156,
-   0.07888338,
-   0.06189772,
-   0.03995412,
-   0.05663225,
-   -0.008615418};
-   Double_t trackReco_fex1004[11] = {
+   Double_t S0S12S18_trackReco_fx1004[11] = {
+   451.7878,
+   653.2973,
+   880.261,
+   1123.043,
+   1371.131,
+   1620.23,
+   1867.05,
+   2115.574,
+   2362.998,
+   2614.023,
+   2788.472};
+   Double_t S0S12S18_trackReco_fy1004[11] = {
+   -0.008641496,
+   0.0904474,
+   0.07294539,
+   0.08128732,
+   0.08112969,
+   0.09043276,
+   0.07881371,
+   0.06044737,
+   0.03843148,
+   0.05430127,
+   -0.003981642};
+   Double_t S0S12S18_trackReco_fex1004[11] = {
    0,
    0,
    0,
@@ -296,45 +298,46 @@ void AllGraphs()
    0,
    0,
    0};
-   Double_t trackReco_fey1004[11] = {
-   0.06443398,
-   0.02156648,
-   0.0124005,
-   0.01018395,
-   0.00933314,
-   0.008881665,
-   0.008899678,
-   0.009315277,
-   0.009894346,
-   0.009813133,
-   0.02214676};
-   gre = new TGraphErrors(11,trackReco_fx1004,trackReco_fy1004,trackReco_fex1004,trackReco_fey1004);
-   gre->SetName("trackReco");
-   gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
+   Double_t S0S12S18_trackReco_fey1004[11] = {
+   0.06378572,
+   0.02135186,
+   0.01227176,
+   0.01008195,
+   0.009240946,
+   0.008796052,
+   0.008815584,
+   0.009231367,
+   0.009808522,
+   0.009731092,
+   0.0220131};
+   gre = new TGraphErrors(11,S0S12S18_trackReco_fx1004,S0S12S18_trackReco_fy1004,S0S12S18_trackReco_fex1004,S0S12S18_trackReco_fey1004);
+   gre->SetName("S0S12S18_trackReco");
+   gre->SetTitle("S0S12S18_");
    gre->SetFillStyle(1000);
+   gre->SetLineColor(4);
    gre->SetMarkerColor(4);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_trackReco1004 = new TH1F("Graph_trackReco1004","",100,218.1171,3022.168);
-   Graph_trackReco1004->SetMinimum(-0.1);
-   Graph_trackReco1004->SetMaximum(0.25);
-   Graph_trackReco1004->SetDirectory(0);
-   Graph_trackReco1004->SetStats(0);
+   TH1F *Graph_S0S12S18_trackReco1004 = new TH1F("Graph_S0S12S18_trackReco1004","S0S12S18_",100,218.1194,3022.14);
+   Graph_S0S12S18_trackReco1004->SetMinimum(-0.1);
+   Graph_S0S12S18_trackReco1004->SetMaximum(0.25);
+   Graph_S0S12S18_trackReco1004->SetDirectory(0);
+   Graph_S0S12S18_trackReco1004->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_trackReco1004->SetLineColor(ci);
-   Graph_trackReco1004->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_trackReco1004->GetXaxis()->SetRange(0,100);
-   Graph_trackReco1004->GetXaxis()->SetLabelFont(42);
-   Graph_trackReco1004->GetXaxis()->SetTitleOffset(1);
-   Graph_trackReco1004->GetXaxis()->SetTitleFont(42);
-   Graph_trackReco1004->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
-   Graph_trackReco1004->GetYaxis()->SetLabelFont(42);
-   Graph_trackReco1004->GetYaxis()->SetTitleFont(42);
-   Graph_trackReco1004->GetZaxis()->SetLabelFont(42);
-   Graph_trackReco1004->GetZaxis()->SetTitleOffset(1);
-   Graph_trackReco1004->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_trackReco1004);
+   Graph_S0S12S18_trackReco1004->SetLineColor(ci);
+   Graph_S0S12S18_trackReco1004->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_S0S12S18_trackReco1004->GetXaxis()->SetRange(2,100);
+   Graph_S0S12S18_trackReco1004->GetXaxis()->SetLabelFont(42);
+   Graph_S0S12S18_trackReco1004->GetXaxis()->SetTitleOffset(1);
+   Graph_S0S12S18_trackReco1004->GetXaxis()->SetTitleFont(42);
+   Graph_S0S12S18_trackReco1004->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
+   Graph_S0S12S18_trackReco1004->GetYaxis()->SetLabelFont(42);
+   Graph_S0S12S18_trackReco1004->GetYaxis()->SetTitleFont(42);
+   Graph_S0S12S18_trackReco1004->GetZaxis()->SetLabelFont(42);
+   Graph_S0S12S18_trackReco1004->GetZaxis()->SetTitleOffset(1);
+   Graph_S0S12S18_trackReco1004->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_S0S12S18_trackReco1004);
    
    gre->Draw("p ");
    
@@ -358,25 +361,25 @@ void AllGraphs()
    entry->SetTextFont(44);
    entry=leg->AddEntry("acceptedDecays","Accepted decays","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(1);
+   entry->SetLineColor(2);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(2);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("trackTruth","Truth vertices","lpf");
+   entry=leg->AddEntry("S0S12S18_trackTruth","Truth vertices","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(1);
+   entry->SetLineColor(8);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(8);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("trackReco","Reco vertices","lpf");
+   entry=leg->AddEntry("S0S12S18_trackReco","Reco vertices","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(1);
+   entry->SetLineColor(4);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(4);

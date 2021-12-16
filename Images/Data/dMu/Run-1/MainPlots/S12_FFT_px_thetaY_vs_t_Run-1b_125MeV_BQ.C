@@ -1,7 +1,7 @@
 void S12_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 23:46:23 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  9 22:16:02 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -6247,7 +6247,7 @@ void S12_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __5->SetBinContent(6233,5.154487e-05);
    __5->SetBinContent(6234,2.627667e-05);
    __5->SetBinContent(6235,6.567598e-05);
-   __5->SetBinContent(6236,0.0001681986);
+   __5->SetBinContent(6236,0.0001681987);
    __5->SetBinContent(6237,1.662376e-05);
    __5->SetBinContent(6238,5.083594e-05);
    __5->SetBinContent(6239,7.693585e-05);
@@ -7529,7 +7529,7 @@ void S12_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __5->SetBinContent(7515,7.693585e-05);
    __5->SetBinContent(7516,5.083594e-05);
    __5->SetBinContent(7517,1.662376e-05);
-   __5->SetBinContent(7518,0.0001681986);
+   __5->SetBinContent(7518,0.0001681987);
    __5->SetBinContent(7519,6.567598e-05);
    __5->SetBinContent(7520,2.627667e-05);
    __5->SetBinContent(7521,5.154487e-05);
@@ -18348,7 +18348,7 @@ void S12_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __5->SetBinError(4582,6.842527e-06);
    __5->SetBinError(4583,6.151241e-06);
    __5->SetBinError(4584,8.12412e-06);
-   __5->SetBinError(4585,8.954971e-06);
+   __5->SetBinError(4585,8.954972e-06);
    __5->SetBinError(4586,9.470777e-06);
    __5->SetBinError(4587,5.6005e-06);
    __5->SetBinError(4588,6.399091e-06);
@@ -22932,7 +22932,7 @@ void S12_FFT_px_thetaY_vs_t_Run-1b_125MeV_BQ()
    __5->SetBinError(9166,6.399091e-06);
    __5->SetBinError(9167,5.6005e-06);
    __5->SetBinError(9168,9.470777e-06);
-   __5->SetBinError(9169,8.954971e-06);
+   __5->SetBinError(9169,8.954972e-06);
    __5->SetBinError(9170,8.12412e-06);
    __5->SetBinError(9171,6.151241e-06);
    __5->SetBinError(9172,6.842527e-06);

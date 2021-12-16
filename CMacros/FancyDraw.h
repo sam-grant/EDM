@@ -782,16 +782,16 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 	
 	TLine *y_0 = new TLine(0,0,1,0);
 	
-	leg->AddEntry(N," N(y)");
-	leg->AddEntry(A," A(y)");
-	leg->AddEntry(NA2," NA^{2}(y)");
+	leg->AddEntry(N," N(#lambda)");
+	leg->AddEntry(A," A(#lambda)");
+	leg->AddEntry(NA2," NA^{2}(#lambda)");
 
 	leg->SetTextSize(26);
 	leg->SetTextFont(44);
 
 	// Add text 
 	TPaveText *N_txt = new TPaveText(0.30,0.80,0.40,0.89,"NDC");
-	N_txt->AddText("N(y)");
+	N_txt->AddText("N(#lambda)");
 
 
 	N->SetTitle(title.c_str());		
@@ -1540,7 +1540,7 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 	TPaveText *cuts = new TPaveText(0.15,0.20,0.45,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("700 < p [MeV] < 2400");
+	cuts->AddText("750 < p [MeV] < 2750");
 	cuts->AddText("30.6 < t [#mus] < 305.6");
 
 	names->SetTextSize(26);
@@ -1641,7 +1641,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 //	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("750 < p [MeV] < 2500");
+	cuts->AddText("750 < p [MeV] < 2750");
 	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(26);
@@ -1741,7 +1741,7 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
 	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("750 < p [MeV] < 2500");
+	cuts->AddText("750 < p [MeV] < 2750");
 	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(22); // 26
@@ -1838,7 +1838,7 @@ void DrawFullEDMFitDataO(TGraphErrors *graph, std::string title, std::string dat
 	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
 	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("750 < p [MeV] < 2500");
+	cuts->AddText("750 < p [MeV] < 2750");
 	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(22); // 26
@@ -1942,7 +1942,7 @@ void DrawFullBzFit(TGraphErrors *graph, string title, string fname, double N, do
 
   TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
-  cuts->AddText("700 < p [MeV] < 2400");
+  cuts->AddText("750 < p [MeV] < 2750");
   cuts->AddText("30.6 < t [#mus] < 305.6");
 
   //leg->SetTextSize(26);

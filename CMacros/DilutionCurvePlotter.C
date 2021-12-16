@@ -56,9 +56,10 @@ void DrawAllGraphs(TFile *input, int step, string fname, double ymin, double yma
       // Set marker style & colour
       gr_.at(i)->SetMarkerStyle(20);
       gr_.at(i)->SetMarkerColor(colours_.at(i));
+      gr_.at(i)->SetLineColor(colours_.at(i));
 
       // Set ranges
-      gr_.at(i)->GetXaxis()->SetRangeUser(-10, 3010);
+      gr_.at(i)->GetXaxis()->SetRangeUser(250, 3010);
       gr_.at(i)->GetYaxis()->SetRangeUser(ymin, ymax);
       l->AddEntry(gr_.at(i), labels_.at(i).c_str());
 
@@ -217,7 +218,7 @@ void DrawVertexErrorGraphs(TFile *input, int step, string fname, string qual, do
       gr_.at(0)->GetYaxis()->CenterTitle(true);
       gr_.at(0)->GetYaxis()->SetMaxDigits(4);
 
-      gr_.at(0)->SetTitle(("Decay vertex momentum [MeV];#deltad_{EDM} / "+to_string(step)+" MeV").c_str());
+      gr_.at(0)->SetTitle((";Decay vertex momentum [MeV];#deltad_{EDM} / "+to_string(step)+" MeV").c_str());
 
       for(int i = 0; i<gr_.size(); i++) {
 
@@ -818,7 +819,7 @@ int main() {
 
    // Graphs
    DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);
-   DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
+/*   DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
    DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "BQ", 0,0.125);
    DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "AQ", 0, 0.03);
    DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "BQ", 0, 0.03);
@@ -826,7 +827,7 @@ int main() {
    // Fits
    DrawAllFits(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllFits", 0, 0.225); 
    DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", 0, 0.12);
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", 0, 0.25);
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", 0, 0.25);*/
 /*   
    
    

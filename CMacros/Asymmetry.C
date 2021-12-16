@@ -4,6 +4,8 @@
 
 // Not really happy with the formatting, but functions are correct
 
+// Final drawing function is in "FancyDraw.h"
+
 
 /////// JUST DOING SOME TESTING HERE /////////
 void DrawAsymmetryPlot2(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string fname) {
@@ -26,16 +28,16 @@ void DrawAsymmetryPlot2(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 	
 	TLine *y_0 = new TLine(0,0,1,0);
 	
-	leg->AddEntry(N," N(y)");
-	leg->AddEntry(A," A(y)");
-	leg->AddEntry(NA2," NA(y)");
+	leg->AddEntry(N," N(#lambda)");
+	leg->AddEntry(A," A(#lambda)");
+	leg->AddEntry(NA2," NA(#lambda)");
 
 	leg->SetTextSize(26);
 	leg->SetTextFont(44);
 
 	// Add text 
 	TPaveText *N_txt = new TPaveText(0.30,0.80,0.40,0.89,"NDC");
-	N_txt->AddText("N(y)");
+	N_txt->AddText("N(#lambda)");
 
 
 	N->SetTitle(title.c_str());		
@@ -112,16 +114,16 @@ void DrawAsymmetryPlot3(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 	
 	TLine *y_0 = new TLine(0,0,1,0);
 	
-	leg->AddEntry(N," N(y)");
-	leg->AddEntry(A," A(y)");
-	leg->AddEntry(NA2," N^{2}A(y)");
+	leg->AddEntry(N," N(#lambda)");
+	leg->AddEntry(A," A(#lambda)");
+	leg->AddEntry(NA2," N^{2}A(#lambda)");
 
 	leg->SetTextSize(26);
 	leg->SetTextFont(44);
 
 	// Add text 
 	TPaveText *N_txt = new TPaveText(0.30,0.80,0.40,0.89,"NDC");
-	N_txt->AddText("N(y)");
+	N_txt->AddText("N(#lambda)");
 
 
 	N->SetTitle(title.c_str());		
@@ -199,16 +201,16 @@ void DrawAsymmetryPlot4(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 	
 	TLine *y_0 = new TLine(0,0,1,0);
 	
-	leg->AddEntry(N," N(y)");
-	leg->AddEntry(A," A(y)");
-	leg->AddEntry(NA2," NA^{2}(y)");
+	leg->AddEntry(N," N(#lambda)");
+	leg->AddEntry(A," A(#lambda)");
+	leg->AddEntry(NA2," NA^{2}(#lambda)");
 
 	//leg->SetTextSize(26);
 	//leg->SetTextFont(44);
 
 	// Add text 
 	TPaveText *N_txt = new TPaveText(0.30,0.80,0.40,0.89,"NDC");
-	N_txt->AddText("N(y)");
+	N_txt->AddText("N(#lambda)");
 
 
 	N->SetTitle(title.c_str());		
@@ -282,7 +284,7 @@ int main() {
 
 	N_1->GetYaxis()->SetRangeUser(-0.4,1.1);
 	N_1->GetXaxis()->SetRangeUser(0,1);
-	DrawAsymmetryPlot(N_1, A_1, NA2_1, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_restFrame");
+	DrawAsymmetryPlot(N_1, A_1, NA2_1, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_restFrame");
 
 	// ==================== Lab frame ====================  
 	TF1 *N_2 = new TF1("N_2","(1/1.65) * 0.33 * (x-1) * (4*x*x-5*x-5)",0,1); // 3.41
@@ -295,7 +297,7 @@ int main() {
 
 	N_2->GetYaxis()->SetRangeUser(-0.4,1.1);
 	//N_2->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_2, A_2, NA2_2, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_labFrame");
+	DrawAsymmetryPlot(N_2, A_2, NA2_2, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_labFrame");
 
 	// ==================== Lab frame with energy cut ====================
 	TF1 *N_3 = new TF1("N_3","(1/0.99) * (0.33) * ((x-1)*(x-1)) * (-(x*x)+x+3)",0,1); // 3.43
@@ -308,7 +310,7 @@ int main() {
 
 	N_3->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_3->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_3, A_3, NA2_3, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_labFrame_eCut");
+	DrawAsymmetryPlot(N_3, A_3, NA2_3, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_labFrame_eCut");
 
 	// ==================== Lab frame EDM ====================
 	// I did some hacky normalisation to make it look like Saskia and Gleb's plots, but I don't understand why 
@@ -322,12 +324,12 @@ int main() {
 
 	N_4->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_4, A_4, NA2_4, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame");
+	DrawAsymmetryPlot(N_4, A_4, NA2_4, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame");
 
 
 	// ==================== Lab frame EDM ====================
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot4(N_4, A_4, NA2_4, ";y=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame_redraw");
+	DrawAsymmetryPlot4(N_4, A_4, NA2_4, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame_redraw");
 
 //
 //	// ==================== Lab frame NA ====================

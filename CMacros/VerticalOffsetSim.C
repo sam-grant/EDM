@@ -89,6 +89,87 @@ int GetStep(string config) {
 
 }
 
+void DrawOffset(vector<TH1D*> hists_, int step, std::string title, std::string fname) { 
+
+  cout<<"---> Drawing offset"<<endl;
+
+  vector<TString> labels_ = {"No misaligment", "With misaligment"};
+
+/*  vector<int> markerStyles_ = {20,24};*/
+
+  TCanvas *c = new TCanvas("c","",800,600);
+  TLegend *l = new TLegend(0.59, 0.75, 0.89, 0.89); 
+  //l->SetNColumns(2);
+  l->SetBorderSize(0);
+  l->SetTextSize(24);
+  l->SetTextFont(44);
+
+  hists_.at(0)->SetBinContent(2, 0);
+  hists_.at(3)->SetBinContent(2, 0);
+
+  TGraphErrors *gr_1 = ConvertToTGraphErrors(hists_.at(0));
+  TGraphErrors *gr_2 = ConvertToTGraphErrors(hists_.at(3));
+
+  // Hack together y-axis range
+  double lo;// = 1e6; double hi = -1e6;
+  double hi;
+
+  for(int i = 500; i<3000; i = i + 250) {
+
+    double y = gr_1->Eval(i);
+    if(y < lo) lo = y;
+    if(y > hi) hi = y;
+
+    cout<<lo<<", "<<hi<<endl;
+
+  }
+
+  for(int i = 500; i<3000; i = i + 250) {
+    double y = gr_2->Eval(i);
+    if(y < lo) lo = y;
+    if(y > hi) hi = y;
+
+    cout<<lo<<", "<<hi<<endl;
+  }
+
+  gr_1->GetYaxis()->SetRangeUser(lo-abs(lo*0.25), hi+abs(hi*0.75));
+
+  gr_1->GetXaxis()->SetTitleSize(.04);
+  gr_1->GetYaxis()->SetTitleSize(.04);
+  gr_1->GetXaxis()->SetTitleOffset(1.1);
+  gr_1->GetYaxis()->SetTitleOffset(1.15);
+  gr_1->GetXaxis()->CenterTitle(true);
+  gr_1->GetYaxis()->CenterTitle(true);
+  gr_1->GetYaxis()->SetMaxDigits(4);
+
+  title += ";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / "+to_string(step)+" MeV";
+  gr_1->SetTitle(title.c_str());
+
+  gr_1->SetMarkerColor(kBlack);
+  gr_1->SetLineColor(kBlack);
+	gr_1->SetMarkerStyle(20);
+  gr_2->SetMarkerColor(kRed);
+	gr_2->SetMarkerStyle(20);
+  gr_2->SetLineColor(kRed);
+
+	gr_1->Draw("APL");
+	gr_2->Draw("PL SAME");
+
+	l->AddEntry(gr_1, labels_.at(0));
+	l->AddEntry(gr_2, labels_.at(1));
+
+ 	l->Draw("SAME");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
 void Run(std::string config, bool write = false) { 
 
 	cout<<"Running "<<config<<endl;
@@ -111,13 +192,13 @@ void Run(std::string config, bool write = false) {
 	int nBins = 3000/step; 
 
 	std::vector<std::string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
-  	if(tracksOrDecaysLabel != "Tracks") stn_ = {""};
+  if(tracksOrDecaysLabel != "Tracks") stn_ = {""};
 
-  	for (auto& stn : stn_) { 
+  vector<TH1D*> thetaY_vs_p_;
 
+  for (auto& stn : stn_) { 
 
   		TH1D *thetaY_vs_p = new TH1D((stn+"ThetaY_vs_p").c_str(), (stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / "+to_string(step)).c_str(), nBins, 0, 3000);
-
 
 	  	// Slice momentum
 	  	int step = 250; 
@@ -151,8 +232,11 @@ void Run(std::string config, bool write = false) {
 	  	}
 
 	  	thetaY_vs_p->Write();
+	  	thetaY_vs_p_.push_back(thetaY_vs_p);
 
 	}
+
+	DrawOffset(thetaY_vs_p_, step, "Sim: reco vertices", "../Images/MC/dMu/5.4e-18/VerticalOffset/verticalOffset_"+config);
 
 	cout<<"Written output file "<<foutName<<", "<<fout<<endl;
 
@@ -166,7 +250,7 @@ void Run(std::string config, bool write = false) {
 
 int main() {
 
-	// Run("trackReco_WORLD_250MeV_BQ");
+	Run("trackReco_WORLD_250MeV_BQ_noCorr");
 	// Run("trackTruth_WORLD_250MeV_BQ");
 	// Run("trackReco_WORLD_250MeV_AQ");
 	// Run("trackTruth_WORLD_250MeV_BQ");

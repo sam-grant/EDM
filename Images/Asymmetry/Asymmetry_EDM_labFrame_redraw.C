@@ -1,7 +1,7 @@
 void Asymmetry_EDM_labFrame_redraw()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jul  5 12:07:20 2021) by ROOT version 6.22/08
+//=========  (Mon Dec  6 08:58:54 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,500,350);
    c->SetHighLightColor(2);
    c->Range(-0.125,-0.25,1.125,1.25);
@@ -11,11 +11,11 @@ void Asymmetry_EDM_labFrame_redraw()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TF1 *N_413 = new TF1("N_4",";y=p/p_{max};Arbitrary units",0,1, TF1::EAddToList::kDefault);
+   TF1 *N_413 = new TF1("N_4",";#lambda=p/p_{max};Arbitrary units",0,1, TF1::EAddToList::kDefault);
    N_413->SetFillColor(19);
    N_413->SetFillStyle(0);
    N_413->SetLineWidth(3);
-   N_413->GetXaxis()->SetTitle("y=p/p_{max}");
+   N_413->GetXaxis()->SetTitle("#lambda=p/p_{max}");
    N_413->GetXaxis()->CenterTitle(true);
    N_413->GetXaxis()->SetLabelFont(42);
    N_413->GetXaxis()->SetTitleSize(0.04);
@@ -37,7 +37,7 @@ void Asymmetry_EDM_labFrame_redraw()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("N_4"," N(y)","lpf");
+   TLegendEntry *entry=leg->AddEntry("N_4"," N(#lambda)","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -46,7 +46,7 @@ void Asymmetry_EDM_labFrame_redraw()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("A_4"," A(y)","lpf");
+   entry=leg->AddEntry("A_4"," A(#lambda)","lpf");
    entry->SetFillColor(19);
 
    Int_t ci;      // for color index setting
@@ -59,7 +59,7 @@ void Asymmetry_EDM_labFrame_redraw()
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("NA2_4"," NA^{2}(y)","lpf");
+   entry=leg->AddEntry("NA2_4"," NA^{2}(#lambda)","lpf");
    entry->SetFillColor(19);
 
    ci = TColor::GetColor("#0000ff");

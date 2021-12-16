@@ -1,10 +1,10 @@
 void S12_thetaYMaxDiff_vs_p_trackReco_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 18:52:34 2021) by ROOT version 6.24/04
+//=========  (Mon Dec  6 08:42:16 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(486.556,128.32,3035.183,230.7431);
+   c->Range(-390.0171,170.5415,3510.154,187.0174);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -70,8 +70,8 @@ void S12_thetaYMaxDiff_vs_p_trackReco_WORLD_250MeV_AQ_1()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01062 = new TH1F("Graph_Graph01062","S12_",100,0,3089.244);
-   Graph_Graph01062->SetMinimum(138.5623);
-   Graph_Graph01062->SetMaximum(220.5008);
+   Graph_Graph01062->SetMinimum(172.1891);
+   Graph_Graph01062->SetMaximum(185.3698);
    Graph_Graph01062->SetDirectory(0);
    Graph_Graph01062->SetStats(0);
 
@@ -80,7 +80,7 @@ void S12_thetaYMaxDiff_vs_p_trackReco_WORLD_250MeV_AQ_1()
    ci = TColor::GetColor("#000099");
    Graph_Graph01062->SetLineColor(ci);
    Graph_Graph01062->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01062->GetXaxis()->SetRange(25,90);
+   Graph_Graph01062->GetXaxis()->SetRange(1,101);
    Graph_Graph01062->GetXaxis()->CenterTitle(true);
    Graph_Graph01062->GetXaxis()->SetLabelFont(42);
    Graph_Graph01062->GetXaxis()->SetTitleSize(0.04);

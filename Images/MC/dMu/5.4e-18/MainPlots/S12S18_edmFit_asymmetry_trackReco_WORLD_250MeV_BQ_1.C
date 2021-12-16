@@ -1,7 +1,7 @@
 void S12S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 19:00:56 2021) by ROOT version 6.24/04
+//=========  (Wed Dec  8 12:35:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-2.59121e-07,4.876443,2.40879e-07);
@@ -10273,7 +10273,7 @@ void S12S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("750 < p [MeV] < 2750");
    pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
    pt->Draw();
    

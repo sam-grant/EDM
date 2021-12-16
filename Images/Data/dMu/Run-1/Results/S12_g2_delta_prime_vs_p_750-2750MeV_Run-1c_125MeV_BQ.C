@@ -1,10 +1,10 @@
 void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 23:48:34 2021) by ROOT version 6.24/04
+//=========  (Tue Dec  7 12:15:55 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(350.3598,-1.264537,3144.417,1.399892);
+   c->Range(350.3598,-1.864984,3144.417,1.885016);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -86,8 +86,8 @@ void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1c_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1031 = new TH1F("Graph_Graph1031","S12",100,629.7655,2865.011);
-   Graph_Graph1031->SetMinimum(-0.9980936);
-   Graph_Graph1031->SetMaximum(1.133449);
+   Graph_Graph1031->SetMinimum(-1.489984);
+   Graph_Graph1031->SetMaximum(1.510016);
    Graph_Graph1031->SetDirectory(0);
    Graph_Graph1031->SetStats(0);
 

@@ -268,11 +268,10 @@ void MottFunctions(TGraphErrors *gr, TF1* fit, TFitResultPtr frp, TFile *output,
 
     for (int i = 0; i < nPars; i++) {
       // Scale according to mean values 
-      fitValue[i] *= parErrors[i];//meanVals[i];//parErrors[i];
+      fitValue[i] *= parErrors[i];
       fitValue[i] += meanVals[i];
       // Set function
       mottFunction->SetParameter(i, fitValue[i]);
-      // cout<<"Parameter "<<i<<": "<<fitValue[i]<<endl;
     }
 
     ellipse3D->Fill(fitValue[0],fitValue[1],fitValue[2]);

@@ -1,28 +1,20 @@
-void test() { 
+{
 
-	TFile *f_c_vs_mom = TFile::Open("../Plots/Data/dMu/Run-1a/Plots/verticalOffset_Run-1a.root");
+	TH1D *h1 = new TH1D("h", "h", 100, -10, 10);
+	TRandom3 *rdn = new TRandom3(); 
 
-	// TGraphErrors *gr_c_vs_mom = (TGraphErrors*)f_c_vs_mom->Get("VerticalOffsetPlots/125MeV/S12_gr_ThetaY_vs_Momentum");
-	TH1D *gr_c_vs_mom = (TH1D*)f_c_vs_mom->Get("VerticalOffsetPlots/125MeV/S12_px_ThetaY_vs_Momentum");
+	for(int i(0); i<100; i++) h1->Fill(rdn->Gaus(0,1));
 
-	for(int i(0); i<3000; i++) {
+   TCanvas *c = new TCanvas("c", "c", 800,800);
+   c->Draw();
+   TPad *p1 = new TPad("p1","p1",0, 0, 1, 1);//0.1,0.2,0.9,1.);
+   p1->Draw();
+   p1->cd();
+   h1->Draw();
 
-		// cout<<gr_c_vs_mom->Eval(i)<<endl;
-
-		int bin = gr_c_vs_mom->FindBin(i);
-
-		double y = gr_c_vs_mom->GetBinContent(bin);//FindBin(i);
-
-		cout<<"bin "<<bin<<", "<<y<<endl;
-
-
-
-
-	}
-
-
-	f_c_vs_mom->Close();
-
-
-
+   c->cd(0);
+   TPad *p2 = new TPad("p2","p2", .69, .69, .89, .89);
+   p2->Draw();
+   p2->cd();
+   h1->Draw();
 }

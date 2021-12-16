@@ -83,6 +83,23 @@ string GetTracksOrDecaysLabel(string config) {
 
 }
 
+string GetTracksOrDecaysLegend(string config) {
+
+
+  if(config.find("allDecays_") != std::string::npos) { //} || config.find("truth_") != std::string::npos) { 
+    return "all decays";
+  } else if(config.find("acceptedDecays_") != std::string::npos ||  config.find("acceptedDecaysControl_") != std::string::npos) { 
+    return "accepted decays";
+  } else if(config.find("trackTruth_") != std::string::npos || config.find("truthControl_") != std::string::npos) { // } || config.find("trackReco_") != std::string::npos) { 
+    return "truth vertices";
+  } else if(config.find("trackReco_") != std::string::npos || config.find("trackRecoControl_") != std::string::npos) { 
+    return "reco vertices";  
+  } else { 
+    cerr<<"Type is unknown";
+    return "";
+  }
+}
+
 int GetStep(string config) { 
 
   if(config.find("500MeV") != std::string::npos) { 
@@ -209,19 +226,19 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
   gr_delta_prime->GetYaxis()->SetMaxDigits(4);
 
   // Set y-range
-  double scale = 2.75;
-  double ymin = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
-  double ymax = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
-
+/*  double scale = 2.75;*/
+  double ymin = gr_delta_prime->GetFunction("pol0")->GetParameter(0) - 1.5;//  = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
+  double ymax = gr_delta_prime->GetFunction("pol0")->GetParameter(0) + 1.5;//  = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
+/*
   for(int i = 1; i<gr_delta_prime->GetN(); i++) {
 
-    double a = gr_delta_prime->GetY()[i] + 1.25*gr_delta_prime->GetEY()[i];
-    double b = gr_delta_prime->GetY()[i] - 1.25*gr_delta_prime->GetEY()[i];
+    double lo = gr_delta_prime->GetY()[i] - gr_delta_prime->GetEY()[i];
+    double hi = gr_delta_prime->GetY()[i] + gr_delta_prime->GetEY()[i];
 
-    if(ymax < a) ymax = a;
-    if(ymin > b) ymin = b;
+    if(ymax < hi) ymax = hi;
+    if(ymin > lo) ymin = lo;
 
-  }
+  }*/
 
   gr_delta_prime->GetYaxis()->SetRangeUser(ymin,ymax);
 
@@ -423,6 +440,7 @@ void RunSim(string config, string dataset, string blinding) {
 	std::string qual = GetQual(config);
 	std::string tracksOrDecays = GetTracksOrDecays(config);
 	std::string tracksOrDecaysLabel = GetTracksOrDecaysLabel(config);
+  std::string tracksOrDecaysLegend = GetTracksOrDecaysLegend(config);
 
 	cout<<"Running "<<config<<" with... "<<dataset<<" ecm"<<endl;
 	cout<<"Info:\n"<<step<<", "<<qual<<", "<<tracksOrDecays<<", "<<tracksOrDecaysLabel<<", "<<blinding<<endl;
@@ -486,7 +504,8 @@ void RunSim(string config, string dataset, string blinding) {
 
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
-      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecays, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"} [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p");
+      //  cout<<"Sim: "+tracksOrDecaysLegend<<endl;
+      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecaysLegend, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"} [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+config);
 
       gr_delta_prime->SetName((stn+"delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
@@ -512,7 +531,7 @@ void RunSim(string config, string dataset, string blinding) {
       TH1D *h_delta_prime  = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
 
       // Draw and write histogram
-      DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"} [mrad];Trials", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV");
+      DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"} [mrad];Trials", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config);
       h_delta_prime->SetName((stn+"h_delta_prime").c_str());
       h_delta_prime->Write();
 
@@ -656,8 +675,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
-
-
       // DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
       //DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{BLIND} [mrad] / 125 MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
 
@@ -759,10 +776,13 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 int main() { 
 
   // Unblinded sim samples
+/*
+  RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
+  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");*/
+  // RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
 
 /*  
-  RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
-  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
+
   RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
@@ -772,8 +792,8 @@ int main() {
   RunSim("trackTruth_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("trackReco_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   RunSim("trackTruth_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
-	RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");*/
-
+	
+*/
   // Data
   RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);

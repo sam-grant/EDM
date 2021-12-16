@@ -237,7 +237,7 @@ int main() {
 
    TH1D *h_xd0 = GetHist(nStrings, R);
 
-   DrawLimitPlot(h_xd0, ";Blinding shift [ppm];Random blinding strings", "../Images/Limits"); 
+   DrawLimitPlot(h_xd0, ";Blind signal [#timesd_{0}];Random blinding strings", "../Images/Blinding/Limits"); 
 
    //cout<<h_xd0->GetBinContent(0)<<endl;
 

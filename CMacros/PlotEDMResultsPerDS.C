@@ -117,6 +117,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   fit->SetParameter(0, fit_tmp->GetParameter(0));
   fit->SetParError(0, fit_tmp->GetParError(0));
 
+
   TF1 *minusSigma = new TF1("minusSigma", "pol0", 0, 5);
   minusSigma->SetParameter(0, fit_tmp->GetParameter(0) - fit_tmp->GetParError(0));
   TF1 *plusSigma = new TF1("plusSigma", "pol0", 0, 5);
@@ -133,6 +134,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   plusThreeSigma->SetParameter(0, fit_tmp->GetParameter(0) + 3 * fit_tmp->GetParError(0));
   // cout<<"fit error "<<fit_tmp->GetParError(0)<<endl;
   // cout<<"one sigma "<<plusSigma->GetParameter(0) - fit_tmp->GetParameter(0)<<endl;
+  cout<<"DMU = "<<fit_tmp->GetParameter(0)<<"±"<<fit_tmp->GetParError(0)<<endl;
 
   fit->SetLineWidth(1);
   fit->SetLineStyle(1);
@@ -155,14 +157,15 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
-  TLegend *l = new TLegend(0.65, 0.22, 0.85, 0.42); 
-  //TLegend *l = new TLegend(0.30, 0.91, 0.80, 0.99); 
+  // S12 ect 
+  // TLegend *l = new TLegend(0.65, 0.22, 0.85, 0.42); 
+  TLegend *l = new TLegend(0.65, 0.15, 0.85, 0.35); 
   //l->SetNColumns(3);
   l->SetBorderSize(0);
   l->SetTextSize(24);
   l->SetTextFont(44);
 
-  vector<string> label_ = {"S12", "S18", "S12 & S18"};
+  vector<string> label_ = {"Station 12", "Station 18", "Combined"};
 
   graph_.at(0)->SetTitle(title.c_str());
   graph_.at(0)->GetXaxis()->SetTitleSize(.04);
@@ -273,10 +276,31 @@ double GetLimit(double delta_prime) {
 
 }
 
-void Run(std::string dataset, int step, std::string blinding, bool correctDilution) { 
+double RemoveRadialField(double angle, std::string dataset) {
+  /*1a & $22\pm7$ \\
+  1b & $23\pm8$ \\
+  1c & $30\pm8$ \\
+  1d & $34\pm9$ \\ 
+  */
+  double Br = 0;
+  
+  if(dataset=="Run-1a") Br = 22 * 1e-3; // mrad 
+  else if(dataset=="Run-1b") Br = 23 * 1e-3; // mrad
+  else if(dataset=="Run-1c") Br = 30 * 1e-3; // mrad 
+  else if(dataset=="Run-1d") Br = 34 * 1e-3; // mrad 
+  else cerr<<"RemoveRadialField: dataset not found";
+  
+  return angle-Br;
+
+}
+
+void Run(std::string dataset, int step, std::string blinding, bool correctDilution, bool removeRadialField) { 
 
   std::string dilCorrStr = "";
   if(!correctDilution) dilCorrStr += "_noCorr";
+
+  std::string radialFieldString = "";
+  if(removeRadialField) radialFieldString += "_noBr";
 
   //dilCorrStr += "_weighted";
 
@@ -336,6 +360,8 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 
 			if(fitType == "EDM") {
 
+        if(removeRadialField) A = RemoveRadialField(A, DS_.at(i));
+
 				A = GetLimit(A);
 				eA = GetLimit(eA);
 
@@ -359,14 +385,14 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, DS_);
+		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+radialFieldString, DS_);
 
     gr_.push_back(gr);
 
 
 	 }
 
-   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, DS_);
+   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+radialFieldString, DS_);
 
   }
 
@@ -376,7 +402,8 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 
 void PlotEDMResultsPerDS() { 
 
-  Run("Run-1", 125, "blinded", true);
+  Run("Run-1", 125, "blinded", true, true);
+  Run("Run-1", 125, "blinded", true, false);
   // Run("Run-1", 125, "blinded", true);
   // Run("Run-1", 125, "blinded", true);
   //Run("O", 125, "unblinded", true);

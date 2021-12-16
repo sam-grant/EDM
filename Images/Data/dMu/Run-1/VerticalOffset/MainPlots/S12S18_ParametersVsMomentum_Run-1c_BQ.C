@@ -1,7 +1,7 @@
 void S12S18_ParametersVsMomentum_Run-1c_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  1 22:33:18 2021) by ROOT version 6.24/04
+//=========  (Tue Dec  7 11:36:01 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(30.74998,-69.90601,3218.25,65.78547);
@@ -91,11 +91,6 @@ void S12S18_ParametersVsMomentum_Run-1c_BQ()
    gre->SetName("Graph0");
    gre->SetTitle("S12S18");
    gre->SetFillStyle(1000);
-
-   Int_t ci;      // for color index setting
-   TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#ff0000");
-   gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01059 = new TH1F("Graph_Graph01059","S12S18",100,349.5,2899.5);
@@ -104,6 +99,8 @@ void S12S18_ParametersVsMomentum_Run-1c_BQ()
    Graph_Graph01059->SetDirectory(0);
    Graph_Graph01059->SetStats(0);
 
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01059->SetLineColor(ci);
    Graph_Graph01059->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
@@ -207,7 +204,10 @@ void S12S18_ParametersVsMomentum_Run-1c_BQ()
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
 
-   ci = TColor::GetColor("#0000ff");
+   ci = TColor::GetColor("#ff0000");
+   gre->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0000");
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
@@ -312,7 +312,10 @@ void S12S18_ParametersVsMomentum_Run-1c_BQ()
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
 
-   ci = TColor::GetColor("#00ff00");
+   ci = TColor::GetColor("#0000ff");
+   gre->SetLineColor(ci);
+
+   ci = TColor::GetColor("#0000ff");
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
@@ -357,30 +360,32 @@ void S12S18_ParametersVsMomentum_Run-1c_BQ()
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(42);
+   entry=leg->AddEntry("Graph1","B","lpf");
+   entry->SetFillStyle(1000);
+
+   ci = TColor::GetColor("#ff0000");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
 
    ci = TColor::GetColor("#ff0000");
    entry->SetMarkerColor(ci);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("Graph1","B","lpf");
+   entry=leg->AddEntry("Graph2","c","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(1);
+
+   ci = TColor::GetColor("#0000ff");
+   entry->SetLineColor(ci);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
 
    ci = TColor::GetColor("#0000ff");
-   entry->SetMarkerColor(ci);
-   entry->SetMarkerStyle(20);
-   entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("Graph2","c","lpf");
-   entry->SetFillStyle(1000);
-   entry->SetLineColor(1);
-   entry->SetLineStyle(1);
-   entry->SetLineWidth(1);
-
-   ci = TColor::GetColor("#00ff00");
    entry->SetMarkerColor(ci);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);

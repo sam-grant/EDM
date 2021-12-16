@@ -1,8 +1,0 @@
-UNBLINDED
-,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
-Station, value, value, error, value, error, value, error
-, 1.09097, 0.256933, 0.00550019, 0.000962095, 0.00555723, -0.00048611, 0.00393596
-BLINDED
-,chi2ndf, A_EDM [mrad],, A_{g-2} [mrad],, c [mrad]
-Station, value, value, error, value, error, value, error
-, 1.0908, 0.285252, 0.00550019, 0.000970859, 0.00555723, -0.00048572, 0.00393596

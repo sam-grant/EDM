@@ -238,13 +238,27 @@ void DrawFFT(TH1D *h_FFT, std::string datasetLabel, std::string title, std::stri
   // f = 1/2*T
   gPad->Update();
 
-  // This is wrong
-  TLine *g2Line = new TLine(OMEGA_A*1e3/2, gPad->GetUymin(), OMEGA_A*1e3/2, gPad->GetUymax());
-  g2Line->SetLineStyle(2);
-  g2Line->SetLineColor(kRed);
-  // g2Line->Draw("SAME");
+  double vwFreq = 0; 
 
-//  cout<<OMEGA_A*1e3/2<<endl;
+  if(datasetLabel == "Run-1a" || datasetLabel == "Run-1d") vwFreq = 2.30;
+  else if(datasetLabel == "Run-1b" || datasetLabel == "Run-1c" ) vwFreq = 2.04;
+  else cerr<<"datasetLabel invalid";
+
+  // This is wrong
+  TLine *vwLine = new TLine(vwFreq, gPad->GetUymin(), vwFreq, gPad->GetUymax());
+  vwLine->SetLineStyle(2);
+  vwLine->SetLineWidth(2);
+  vwLine->SetLineColor(kRed);
+  vwLine->Draw("SAME");
+
+  TPaveText *textVW = new TPaveText(0.20, 0.79, 0.25, 0.89, "NDC"); // 1/QHV
+  textVW->SetTextAlign(13);
+  textVW->SetTextSize(26);
+  textVW->SetTextFont(44);
+  textVW->SetFillColor(0);
+  textVW->SetTextColor(kRed);
+  textVW->AddText("VW"); 
+  textVW->Draw("SAME");
 
   c->SaveAs((fname+".C").c_str());
   c->SaveAs((fname+".pdf").c_str());
@@ -390,8 +404,8 @@ void RunData(std::string config, std::string dataset, std::string blinding) {
     /* h_FFT->Rebin(2);
     h_FFT_res->Rebin(2); */ 
 
-    DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);
-    DrawFFTZoom(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_zoom_"+config);
+    DrawFFT(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_"+config);
+    DrawFFTZoom(h_FFT_res, datasetLabel, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT_res->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_res_zoom_"+config);
     OverlayFFTs(h_FFT, h_FFT_res, stn+";Frequency [MHz];FFT magnitude / "+to_string(h_FFT->GetBinWidth(1))+" MHz", "../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_FFT_overlay_"+config);
 
   }

@@ -1,7 +1,7 @@
 void hFit_A_LAB()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Sep  3 13:12:33 2021) by ROOT version 6.22/08
+//=========  (Thu Dec  9 17:19:52 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -678,7 +678,7 @@ void hFit_A_LAB()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(21);
    entry->SetMarkerSize(1);
-   entry=leg->AddEntry("fitFunc","Fit: #frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}","lpf");
+   entry=leg->AddEntry("fitFunc","Fit: #frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}","lpf");
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

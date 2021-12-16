@@ -1,7 +1,7 @@
 void S0S12S18_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 18:52:32 2021) by ROOT version 6.24/04
+//=========  (Mon Dec  6 08:42:15 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-7.277252,-1.798513,343.3973,2.076487);
@@ -65165,7 +65165,7 @@ void S0S12S18_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_AQ_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("750 < p [MeV] < 2750");
    pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
    pt->Draw();
    

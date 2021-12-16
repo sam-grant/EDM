@@ -11,8 +11,8 @@
 double tmin = 7*G2PERIOD;
 double tmax = 70*G2PERIOD;
 
-double pmin = 750;
-double pmax = 2750;
+double pmin = 0; // 750;
+double pmax = PMAX; // 2750;
 
 bool MRF(std::string config) {
 
@@ -362,7 +362,7 @@ const double GetPhase(TFile *input, TFile *output, std::string config, std::stri
 
 }
 
-TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, double momentum = -1) { 
+TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S0S12S18_", double momentum = -1) { 
 
   // ================== First, shift phase ==================
 
@@ -392,7 +392,7 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
   // Best not to draw this :)
   // DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/Data/dMu/"+config+"/blindEDMFunc_"+qual);
 
-  if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, momentum);
+  if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, stn, momentum);
   else return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
 
 }
@@ -734,7 +734,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       // Blind
       TGraphErrors *gr_thetaY_mod;
-      if(!unblind) gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, p);
+      if(!unblind) gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
       else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
 
       // TODO: figure out blinding for asymmetry 
@@ -746,8 +746,13 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       FullEDMFit(gr_A_mod, 0, OMEGA_A * 1e3, phi, 0.0375e-6, 0, 0, G2PERIOD);
 
       // EDIT
-      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT / 50 ns").c_str() );
+      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
+
+      double c_tmp = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
+      double ymin_tmp = c_tmp-1; double ymax_tmp = c_tmp+1;
+      DrawFullEDMFitSim(gr_thetaY_mod,  std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"edmFit_thetaY_"+momSlice+"_"+config+"_"+to_string(unblind)).c_str(), double(nEntries), ymin_tmp, ymax_tmp, unblind);
+
       gr_thetaY_mod->SetName((stn+"moduloFit_thetaY_"+momSlice).c_str());
       gr_thetaY_mod->Write();
 

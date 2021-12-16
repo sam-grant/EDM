@@ -1,7 +1,7 @@
 void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Dec  5 23:46:56 2021) by ROOT version 6.24/04
+//=========  (Thu Dec  9 22:16:53 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -62,7 +62,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(48,6.701801e-05);
    __7->SetBinContent(49,4.63227e-05);
    __7->SetBinContent(50,7.031195e-05);
-   __7->SetBinContent(51,9.587209e-05);
+   __7->SetBinContent(51,9.58721e-05);
    __7->SetBinContent(52,4.057599e-05);
    __7->SetBinContent(53,2.6162e-05);
    __7->SetBinContent(54,1.61672e-05);
@@ -87,8 +87,8 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(73,2.327965e-05);
    __7->SetBinContent(74,4.82714e-05);
    __7->SetBinContent(75,1.373602e-05);
-   __7->SetBinContent(76,4.892521e-06);
-   __7->SetBinContent(77,6.815265e-05);
+   __7->SetBinContent(76,4.89252e-06);
+   __7->SetBinContent(77,6.815264e-05);
    __7->SetBinContent(78,6.861114e-05);
    __7->SetBinContent(79,8.7356e-05);
    __7->SetBinContent(80,5.114913e-05);
@@ -99,10 +99,10 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(85,3.995128e-05);
    __7->SetBinContent(86,3.607342e-05);
    __7->SetBinContent(87,2.210934e-05);
-   __7->SetBinContent(88,4.028458e-05);
+   __7->SetBinContent(88,4.028457e-05);
    __7->SetBinContent(89,5.326754e-05);
-   __7->SetBinContent(90,2.053017e-05);
-   __7->SetBinContent(91,3.871993e-05);
+   __7->SetBinContent(90,2.053016e-05);
+   __7->SetBinContent(91,3.871992e-05);
    __7->SetBinContent(92,0.0001218397);
    __7->SetBinContent(93,0.0001712197);
    __7->SetBinContent(94,0.0001145511);
@@ -111,16 +111,16 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(97,0.0001003951);
    __7->SetBinContent(98,9.440744e-05);
    __7->SetBinContent(99,7.366572e-05);
-   __7->SetBinContent(100,7.604321e-06);
+   __7->SetBinContent(100,7.604319e-06);
    __7->SetBinContent(101,6.858585e-05);
    __7->SetBinContent(102,0.0001017876);
-   __7->SetBinContent(103,9.397225e-05);
+   __7->SetBinContent(103,9.397224e-05);
    __7->SetBinContent(104,9.576089e-05);
    __7->SetBinContent(105,0.0001134533);
    __7->SetBinContent(106,0.0001008089);
    __7->SetBinContent(107,1.941182e-05);
    __7->SetBinContent(108,3.312528e-05);
-   __7->SetBinContent(109,9.632738e-06);
+   __7->SetBinContent(109,9.632737e-06);
    __7->SetBinContent(110,1.835865e-05);
    __7->SetBinContent(111,6.194519e-05);
    __7->SetBinContent(112,6.240492e-05);
@@ -138,7 +138,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(124,7.505696e-05);
    __7->SetBinContent(125,5.688097e-05);
    __7->SetBinContent(126,3.245119e-05);
-   __7->SetBinContent(127,3.725064e-05);
+   __7->SetBinContent(127,3.725063e-05);
    __7->SetBinContent(128,6.24885e-05);
    __7->SetBinContent(129,4.339875e-05);
    __7->SetBinContent(130,1.96993e-05);
@@ -167,7 +167,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(153,8.025806e-05);
    __7->SetBinContent(154,6.437996e-05);
    __7->SetBinContent(155,3.660619e-05);
-   __7->SetBinContent(156,2.150624e-06);
+   __7->SetBinContent(156,2.150623e-06);
    __7->SetBinContent(157,1.508696e-05);
    __7->SetBinContent(158,2.387007e-05);
    __7->SetBinContent(159,7.794477e-05);
@@ -325,7 +325,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(311,6.170385e-05);
    __7->SetBinContent(312,4.063587e-05);
    __7->SetBinContent(313,4.409822e-05);
-   __7->SetBinContent(314,5.222806e-05);
+   __7->SetBinContent(314,5.222807e-05);
    __7->SetBinContent(315,5.335148e-05);
    __7->SetBinContent(316,4.315123e-05);
    __7->SetBinContent(317,2.424085e-05);
@@ -934,7 +934,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(920,4.783869e-05);
    __7->SetBinContent(921,8.220284e-05);
    __7->SetBinContent(922,7.880608e-05);
-   __7->SetBinContent(923,5.402694e-05);
+   __7->SetBinContent(923,5.402695e-05);
    __7->SetBinContent(924,9.404595e-05);
    __7->SetBinContent(925,9.364094e-05);
    __7->SetBinContent(926,0.000106132);
@@ -1969,7 +1969,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(1955,7.70469e-05);
    __7->SetBinContent(1956,3.190859e-05);
    __7->SetBinContent(1957,4.984376e-05);
-   __7->SetBinContent(1958,8.325539e-06);
+   __7->SetBinContent(1958,8.325538e-06);
    __7->SetBinContent(1959,3.518888e-05);
    __7->SetBinContent(1960,1.033978e-05);
    __7->SetBinContent(1961,4.072269e-05);
@@ -1997,7 +1997,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(1983,9.904211e-05);
    __7->SetBinContent(1984,7.452708e-05);
    __7->SetBinContent(1985,4.491462e-05);
-   __7->SetBinContent(1986,3.055057e-05);
+   __7->SetBinContent(1986,3.055058e-05);
    __7->SetBinContent(1987,4.792626e-05);
    __7->SetBinContent(1988,5.408701e-05);
    __7->SetBinContent(1989,8.420309e-05);
@@ -2519,7 +2519,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(2505,3.068282e-05);
    __7->SetBinContent(2506,1.994036e-05);
    __7->SetBinContent(2507,5.176049e-05);
-   __7->SetBinContent(2508,3.646762e-05);
+   __7->SetBinContent(2508,3.646763e-05);
    __7->SetBinContent(2509,6.596331e-05);
    __7->SetBinContent(2510,5.482859e-05);
    __7->SetBinContent(2511,4.025173e-05);
@@ -2930,7 +2930,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(2916,2.152257e-05);
    __7->SetBinContent(2917,2.562908e-05);
    __7->SetBinContent(2918,2.892408e-05);
-   __7->SetBinContent(2919,3.368698e-05);
+   __7->SetBinContent(2919,3.368699e-05);
    __7->SetBinContent(2920,3.713293e-05);
    __7->SetBinContent(2921,4.151501e-05);
    __7->SetBinContent(2922,8.947072e-05);
@@ -4545,7 +4545,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(4531,0.0001050159);
    __7->SetBinContent(4532,2.931776e-05);
    __7->SetBinContent(4533,5.677315e-05);
-   __7->SetBinContent(4534,5.888789e-05);
+   __7->SetBinContent(4534,5.88879e-05);
    __7->SetBinContent(4535,3.123289e-05);
    __7->SetBinContent(4536,1.924685e-05);
    __7->SetBinContent(4537,1.732027e-05);
@@ -15479,7 +15479,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(15465,1.732027e-05);
    __7->SetBinContent(15466,1.924685e-05);
    __7->SetBinContent(15467,3.123289e-05);
-   __7->SetBinContent(15468,5.888789e-05);
+   __7->SetBinContent(15468,5.88879e-05);
    __7->SetBinContent(15469,5.677315e-05);
    __7->SetBinContent(15470,2.931776e-05);
    __7->SetBinContent(15471,0.0001050159);
@@ -17094,7 +17094,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(17080,8.947072e-05);
    __7->SetBinContent(17081,4.151501e-05);
    __7->SetBinContent(17082,3.713293e-05);
-   __7->SetBinContent(17083,3.368698e-05);
+   __7->SetBinContent(17083,3.368699e-05);
    __7->SetBinContent(17084,2.892408e-05);
    __7->SetBinContent(17085,2.562908e-05);
    __7->SetBinContent(17086,2.152257e-05);
@@ -17505,7 +17505,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(17491,4.025173e-05);
    __7->SetBinContent(17492,5.482859e-05);
    __7->SetBinContent(17493,6.596331e-05);
-   __7->SetBinContent(17494,3.646762e-05);
+   __7->SetBinContent(17494,3.646763e-05);
    __7->SetBinContent(17495,5.176049e-05);
    __7->SetBinContent(17496,1.994036e-05);
    __7->SetBinContent(17497,3.068282e-05);
@@ -18027,7 +18027,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(18013,8.420309e-05);
    __7->SetBinContent(18014,5.408701e-05);
    __7->SetBinContent(18015,4.792626e-05);
-   __7->SetBinContent(18016,3.055057e-05);
+   __7->SetBinContent(18016,3.055058e-05);
    __7->SetBinContent(18017,4.491462e-05);
    __7->SetBinContent(18018,7.452708e-05);
    __7->SetBinContent(18019,9.904211e-05);
@@ -18055,7 +18055,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(18041,4.072269e-05);
    __7->SetBinContent(18042,1.033978e-05);
    __7->SetBinContent(18043,3.518888e-05);
-   __7->SetBinContent(18044,8.325539e-06);
+   __7->SetBinContent(18044,8.325538e-06);
    __7->SetBinContent(18045,4.984376e-05);
    __7->SetBinContent(18046,3.190859e-05);
    __7->SetBinContent(18047,7.70469e-05);
@@ -19090,7 +19090,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19076,0.000106132);
    __7->SetBinContent(19077,9.364094e-05);
    __7->SetBinContent(19078,9.404595e-05);
-   __7->SetBinContent(19079,5.402694e-05);
+   __7->SetBinContent(19079,5.402695e-05);
    __7->SetBinContent(19080,7.880608e-05);
    __7->SetBinContent(19081,8.220284e-05);
    __7->SetBinContent(19082,4.783869e-05);
@@ -19699,7 +19699,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19685,2.424085e-05);
    __7->SetBinContent(19686,4.315123e-05);
    __7->SetBinContent(19687,5.335148e-05);
-   __7->SetBinContent(19688,5.222806e-05);
+   __7->SetBinContent(19688,5.222807e-05);
    __7->SetBinContent(19689,4.409822e-05);
    __7->SetBinContent(19690,4.063587e-05);
    __7->SetBinContent(19691,6.170385e-05);
@@ -19857,7 +19857,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19843,7.794477e-05);
    __7->SetBinContent(19844,2.387007e-05);
    __7->SetBinContent(19845,1.508696e-05);
-   __7->SetBinContent(19846,2.150624e-06);
+   __7->SetBinContent(19846,2.150623e-06);
    __7->SetBinContent(19847,3.660619e-05);
    __7->SetBinContent(19848,6.437996e-05);
    __7->SetBinContent(19849,8.025806e-05);
@@ -19886,7 +19886,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19872,1.96993e-05);
    __7->SetBinContent(19873,4.339875e-05);
    __7->SetBinContent(19874,6.24885e-05);
-   __7->SetBinContent(19875,3.725064e-05);
+   __7->SetBinContent(19875,3.725063e-05);
    __7->SetBinContent(19876,3.245119e-05);
    __7->SetBinContent(19877,5.688097e-05);
    __7->SetBinContent(19878,7.505696e-05);
@@ -19904,16 +19904,16 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19890,6.240492e-05);
    __7->SetBinContent(19891,6.194519e-05);
    __7->SetBinContent(19892,1.835865e-05);
-   __7->SetBinContent(19893,9.632738e-06);
+   __7->SetBinContent(19893,9.632737e-06);
    __7->SetBinContent(19894,3.312528e-05);
    __7->SetBinContent(19895,1.941182e-05);
    __7->SetBinContent(19896,0.0001008089);
    __7->SetBinContent(19897,0.0001134533);
    __7->SetBinContent(19898,9.576089e-05);
-   __7->SetBinContent(19899,9.397225e-05);
+   __7->SetBinContent(19899,9.397224e-05);
    __7->SetBinContent(19900,0.0001017876);
    __7->SetBinContent(19901,6.858585e-05);
-   __7->SetBinContent(19902,7.604321e-06);
+   __7->SetBinContent(19902,7.604319e-06);
    __7->SetBinContent(19903,7.366572e-05);
    __7->SetBinContent(19904,9.440744e-05);
    __7->SetBinContent(19905,0.0001003951);
@@ -19922,10 +19922,10 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19908,0.0001145511);
    __7->SetBinContent(19909,0.0001712197);
    __7->SetBinContent(19910,0.0001218397);
-   __7->SetBinContent(19911,3.871993e-05);
-   __7->SetBinContent(19912,2.053017e-05);
+   __7->SetBinContent(19911,3.871992e-05);
+   __7->SetBinContent(19912,2.053016e-05);
    __7->SetBinContent(19913,5.326754e-05);
-   __7->SetBinContent(19914,4.028458e-05);
+   __7->SetBinContent(19914,4.028457e-05);
    __7->SetBinContent(19915,2.210934e-05);
    __7->SetBinContent(19916,3.607342e-05);
    __7->SetBinContent(19917,3.995128e-05);
@@ -19936,8 +19936,8 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19922,5.114913e-05);
    __7->SetBinContent(19923,8.7356e-05);
    __7->SetBinContent(19924,6.861114e-05);
-   __7->SetBinContent(19925,6.815265e-05);
-   __7->SetBinContent(19926,4.892521e-06);
+   __7->SetBinContent(19925,6.815264e-05);
+   __7->SetBinContent(19926,4.89252e-06);
    __7->SetBinContent(19927,1.373602e-05);
    __7->SetBinContent(19928,4.82714e-05);
    __7->SetBinContent(19929,2.327965e-05);
@@ -19962,7 +19962,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19948,1.61672e-05);
    __7->SetBinContent(19949,2.6162e-05);
    __7->SetBinContent(19950,4.057599e-05);
-   __7->SetBinContent(19951,9.587209e-05);
+   __7->SetBinContent(19951,9.58721e-05);
    __7->SetBinContent(19952,7.031195e-05);
    __7->SetBinContent(19953,4.63227e-05);
    __7->SetBinContent(19954,6.701801e-05);
@@ -20012,7 +20012,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinContent(19998,2.812974e-05);
    __7->SetBinContent(19999,2.259636e-05);
    __7->SetBinContent(20000,3.749716e-05);
-   __7->SetBinError(1,4.339595e-06);
+   __7->SetBinError(1,4.339594e-06);
    __7->SetBinError(2,4.202481e-06);
    __7->SetBinError(3,3.262315e-06);
    __7->SetBinError(4,3.6399e-06);
@@ -20098,15 +20098,15 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(84,2.380572e-06);
    __7->SetBinError(85,4.337824e-06);
    __7->SetBinError(86,4.121927e-06);
-   __7->SetBinError(87,3.226967e-06);
+   __7->SetBinError(87,3.226966e-06);
    __7->SetBinError(88,4.355881e-06);
    __7->SetBinError(89,5.008849e-06);
    __7->SetBinError(90,3.109588e-06);
    __7->SetBinError(91,4.270452e-06);
    __7->SetBinError(92,7.57532e-06);
-   __7->SetBinError(93,8.980148e-06);
+   __7->SetBinError(93,8.980147e-06);
    __7->SetBinError(94,7.345244e-06);
-   __7->SetBinError(95,4.181867e-06);
+   __7->SetBinError(95,4.181868e-06);
    __7->SetBinError(96,5.519673e-06);
    __7->SetBinError(97,6.876427e-06);
    __7->SetBinError(98,6.668217e-06);
@@ -20299,7 +20299,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(285,3.791205e-06);
    __7->SetBinError(286,6.442042e-06);
    __7->SetBinError(287,4.901758e-06);
-   __7->SetBinError(288,4.018076e-06);
+   __7->SetBinError(288,4.018075e-06);
    __7->SetBinError(289,5.88097e-06);
    __7->SetBinError(290,4.004516e-06);
    __7->SetBinError(291,3.331005e-06);
@@ -20530,7 +20530,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(516,5.155846e-06);
    __7->SetBinError(517,3.707748e-06);
    __7->SetBinError(518,3.614409e-06);
-   __7->SetBinError(519,4.849377e-06);
+   __7->SetBinError(519,4.849378e-06);
    __7->SetBinError(520,5.958339e-06);
    __7->SetBinError(521,4.921804e-06);
    __7->SetBinError(522,4.543969e-06);
@@ -24453,7 +24453,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(4439,5.626787e-06);
    __7->SetBinError(4440,5.501499e-06);
    __7->SetBinError(4441,3.859714e-06);
-   __7->SetBinError(4442,4.727593e-06);
+   __7->SetBinError(4442,4.727594e-06);
    __7->SetBinError(4443,2.002671e-06);
    __7->SetBinError(4444,3.675581e-06);
    __7->SetBinError(4445,4.365262e-06);
@@ -26554,7 +26554,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(6540,3.521614e-06);
    __7->SetBinError(6541,3.40298e-06);
    __7->SetBinError(6542,3.712417e-06);
-   __7->SetBinError(6543,1.751711e-06);
+   __7->SetBinError(6543,1.75171e-06);
    __7->SetBinError(6544,1.758488e-06);
    __7->SetBinError(6545,4.17784e-06);
    __7->SetBinError(6546,5.053846e-06);
@@ -27219,7 +27219,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(7205,4.090298e-06);
    __7->SetBinError(7206,2.480522e-06);
    __7->SetBinError(7207,3.973358e-06);
-   __7->SetBinError(7208,2.03089e-06);
+   __7->SetBinError(7208,2.030891e-06);
    __7->SetBinError(7209,4.670629e-06);
    __7->SetBinError(7210,3.402987e-06);
    __7->SetBinError(7211,5.836188e-06);
@@ -27758,7 +27758,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(7744,5.465611e-06);
    __7->SetBinError(7745,2.794541e-06);
    __7->SetBinError(7746,5.578787e-06);
-   __7->SetBinError(7747,5.46621e-06);
+   __7->SetBinError(7747,5.466211e-06);
    __7->SetBinError(7748,6.134311e-06);
    __7->SetBinError(7749,3.35904e-06);
    __7->SetBinError(7750,5.002652e-06);
@@ -32266,7 +32266,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(12252,5.002652e-06);
    __7->SetBinError(12253,3.35904e-06);
    __7->SetBinError(12254,6.134311e-06);
-   __7->SetBinError(12255,5.46621e-06);
+   __7->SetBinError(12255,5.466211e-06);
    __7->SetBinError(12256,5.578787e-06);
    __7->SetBinError(12257,2.794541e-06);
    __7->SetBinError(12258,5.465611e-06);
@@ -32805,7 +32805,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(12791,5.836188e-06);
    __7->SetBinError(12792,3.402987e-06);
    __7->SetBinError(12793,4.670629e-06);
-   __7->SetBinError(12794,2.03089e-06);
+   __7->SetBinError(12794,2.030891e-06);
    __7->SetBinError(12795,3.973358e-06);
    __7->SetBinError(12796,2.480522e-06);
    __7->SetBinError(12797,4.090298e-06);
@@ -33470,7 +33470,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(13456,5.053846e-06);
    __7->SetBinError(13457,4.17784e-06);
    __7->SetBinError(13458,1.758488e-06);
-   __7->SetBinError(13459,1.751711e-06);
+   __7->SetBinError(13459,1.75171e-06);
    __7->SetBinError(13460,3.712417e-06);
    __7->SetBinError(13461,3.40298e-06);
    __7->SetBinError(13462,3.521614e-06);
@@ -35571,7 +35571,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(15557,4.365262e-06);
    __7->SetBinError(15558,3.675581e-06);
    __7->SetBinError(15559,2.002671e-06);
-   __7->SetBinError(15560,4.727593e-06);
+   __7->SetBinError(15560,4.727594e-06);
    __7->SetBinError(15561,3.859714e-06);
    __7->SetBinError(15562,5.501499e-06);
    __7->SetBinError(15563,5.626787e-06);
@@ -39494,7 +39494,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(19480,4.543969e-06);
    __7->SetBinError(19481,4.921804e-06);
    __7->SetBinError(19482,5.958339e-06);
-   __7->SetBinError(19483,4.849377e-06);
+   __7->SetBinError(19483,4.849378e-06);
    __7->SetBinError(19484,3.614409e-06);
    __7->SetBinError(19485,3.707748e-06);
    __7->SetBinError(19486,5.155846e-06);
@@ -39725,7 +39725,7 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(19711,3.331005e-06);
    __7->SetBinError(19712,4.004516e-06);
    __7->SetBinError(19713,5.88097e-06);
-   __7->SetBinError(19714,4.018076e-06);
+   __7->SetBinError(19714,4.018075e-06);
    __7->SetBinError(19715,4.901758e-06);
    __7->SetBinError(19716,6.442042e-06);
    __7->SetBinError(19717,3.791205e-06);
@@ -39918,15 +39918,15 @@ void S12_FFT_h_res_thetaY_vs_t_Run-1c_125MeV_BQ()
    __7->SetBinError(19904,6.668217e-06);
    __7->SetBinError(19905,6.876427e-06);
    __7->SetBinError(19906,5.519673e-06);
-   __7->SetBinError(19907,4.181867e-06);
+   __7->SetBinError(19907,4.181868e-06);
    __7->SetBinError(19908,7.345244e-06);
-   __7->SetBinError(19909,8.980148e-06);
+   __7->SetBinError(19909,8.980147e-06);
    __7->SetBinError(19910,7.57532e-06);
    __7->SetBinError(19911,4.270452e-06);
    __7->SetBinError(19912,3.109588e-06);
    __7->SetBinError(19913,5.008849e-06);
    __7->SetBinError(19914,4.355881e-06);
-   __7->SetBinError(19915,3.226967e-06);
+   __7->SetBinError(19915,3.226966e-06);
    __7->SetBinError(19916,4.121927e-06);
    __7->SetBinError(19917,4.337824e-06);
    __7->SetBinError(19918,2.380572e-06);

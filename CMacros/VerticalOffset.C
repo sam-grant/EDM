@@ -118,6 +118,92 @@ void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, s
 
 }
 
+/*void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, std::string fname, double xmin, double xmax, int pLo, int pHi) {
+
+  TF1 *fit = (TF1*)graph->GetFunction("DoubleExponentialFunc");
+
+  double chi2ndf = fit->GetChisquare() / fit->GetNDF();
+  double par0 = fit->GetParameter(0); double err0 = fit->GetParError(0);
+  double par1 = fit->GetParameter(1); double err1 = fit->GetParError(1);
+  double par2 = fit->GetParameter(2); double err2 = fit->GetParError(2);
+  double par3 = fit->GetParameter(3); double err3 = fit->GetParError(3);
+  double par4 = fit->GetParameter(4); double err4 = fit->GetParError(4);
+
+  // TLegend *leg = new TLegend(0.30,0.15,.89,0.25);
+  // TLegend *leg = new TLegend(0.30,0.15,.89,0.20);
+  TLegend *leg = new TLegend(0.21,0.15,.79,0.20);
+  leg->SetBorderSize(0);
+  leg->SetNColumns(2);
+  leg->AddEntry(graph, ("Data: "+dataset+" ").c_str());
+  leg->AddEntry(fit,"(A/#tau_{A})e^{-t/#tau_{A}}#plus(B/#tau_{B})e^{-t/#tau_{B}}#plusc");
+
+  TPaveText *names = new TPaveText(0.15,0.60,0.25,0.89,"NDC"); 
+  names->SetTextAlign(13);
+  names->AddText("#chi^{2}/ndf"); 
+  names->AddText("A [mrad]"); 
+  names->AddText("#tau_{A} [#mus]"); 
+  names->AddText("B [mrad]"); 
+  names->AddText("#tau_{B} [#mus]"); 
+  names->AddText("c [mrad]"); 
+
+  names->SetTextSize(26);
+  names->SetTextFont(44);
+  names->SetFillColor(0);
+
+  TPaveText *values = new TPaveText(0.35,0.60,0.50,0.89,"NDC");
+  values->SetTextAlign(33);
+  values->AddText(Round(chi2ndf, 3));
+  values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1)); 
+  values->AddText(Round(par1, 3)+"#pm"+Round(err1, 1)); 
+  values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1)); 
+  values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1)); 
+  values->AddText(Round(par4, 3)+"#pm"+Round(err4, 1)); 
+
+  values->SetTextSize(26);
+  values->SetTextFont(44);
+  values->SetFillColor(0);
+
+  TPaveText *cuts = new TPaveText(0.60,0.70,0.80,0.80,"NDC");
+  cuts->SetTextAlign(22);
+  cuts->AddText((to_string(pLo)+" < p [MeV] < "+to_string(pHi)).c_str());
+
+  cuts->SetTextSize(26);
+  cuts->SetTextFont(44);
+  cuts->SetFillColor(0);
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  graph->SetTitle(title.c_str());
+  graph->GetXaxis()->SetTitleSize(.04);
+  graph->GetYaxis()->SetTitleSize(.04);
+  graph->GetXaxis()->SetTitleOffset(1.1);
+  graph->GetYaxis()->SetTitleOffset(1.2);
+  graph->GetXaxis()->CenterTitle(true);
+  graph->GetYaxis()->CenterTitle(true);
+  graph->GetYaxis()->SetMaxDigits(4);
+  graph->SetMarkerStyle(20); //  Full circle
+
+  graph->GetYaxis()->SetRangeUser(par4-.5, par4+.75);
+  graph->GetXaxis()->SetRangeUser(xmin+G2PERIOD/2, xmax);
+  //graph->GetXaxis()->SetRangeUser(0, xmax);
+
+  graph->Draw("AP");
+
+  names->Draw("SAME");
+  values->Draw("SAME");
+  cuts->Draw("SAME");
+  leg->Draw("SAME");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}*/
+
 void DrawAllParameters(vector<double> p_, vector<double> A_, vector<double> eA_, vector<double> B_, vector<double> eB_, vector<double> c_, vector<double> ec_, std::string dataset, std::string title, std::string fname) { // , double ymin, double ymax) { 
 
   vector<double> zeros_;
@@ -142,9 +228,14 @@ void DrawAllParameters(vector<double> p_, vector<double> A_, vector<double> eA_,
   gr_B->SetMarkerStyle(20);
   gr_C->SetMarkerStyle(20);
 
-  gr_A->SetMarkerColor(kRed); //  Full circle
-  gr_B->SetMarkerColor(kBlue);
-  gr_C->SetMarkerColor(kGreen);
+  gr_A->SetMarkerColor(kBlack); 
+  gr_B->SetMarkerColor(kRed);
+  gr_C->SetMarkerColor(kBlue);
+
+  gr_A->SetLineColor(kBlack); 
+  gr_B->SetLineColor(kRed);
+  gr_C->SetLineColor(kBlue);
+
 
   double ymin = 1e6;
   double ymax = -1e6;
