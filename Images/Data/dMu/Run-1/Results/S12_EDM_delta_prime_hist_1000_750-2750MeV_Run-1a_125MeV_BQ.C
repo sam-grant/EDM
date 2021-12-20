@@ -1,7 +1,7 @@
 void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:15:29 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:05:29 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,7 +10,7 @@ void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__1 = new TH1D("h__1","S12",25,0.2801993,0.7963245);
+   TH1D *h__1 = new TH1D("h__1","S12",25,0.2801994,0.7963246);
    h__1->SetBinContent(7,1);
    h__1->SetBinContent(9,1);
    h__1->SetBinContent(10,14);

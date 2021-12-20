@@ -1,10 +1,10 @@
 void Br_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:15 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:39:02 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1669544,7.055581,1.502589e+07,9.000521);
+   c->Range(-1669544,7.05587,1.502589e+07,9.00081);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void Br_vs_N()
    1.151148e+07,
    1.247554e+07};
    Double_t Graph0_fy1209[13] = {
-   8.028051,
-   7.992073,
-   7.998151,
-   8.002408,
-   8.011176,
-   8.011542,
-   7.994669,
-   7.994859,
-   7.994019,
-   7.998415,
-   7.988705,
-   7.99783,
-   8.004235};
+   8.02834,
+   7.99236,
+   7.99806,
+   8.00208,
+   8.01128,
+   8.01172,
+   7.99492,
+   7.99484,
+   7.99378,
+   7.99838,
+   7.98852,
+   7.9979,
+   8.00428};
    Double_t Graph0_fex1209[13] = {
    0,
    0,
@@ -54,28 +54,28 @@ void Br_vs_N()
    0,
    0};
    Double_t Graph0_fey1209[13] = {
-   0.6483133,
-   0.455556,
-   0.3708095,
-   0.3226463,
-   0.2880845,
-   0.2625181,
-   0.242849,
-   0.2271299,
-   0.2139569,
+   0.6483135,
+   0.4555505,
+   0.370816,
+   0.3226465,
+   0.288084,
+   0.2625235,
+   0.242851,
+   0.227126,
+   0.213954,
    0.20292,
-   0.1933874,
-   0.1851432,
-   0.1778738};
+   0.1933895,
+   0.1851355,
+   0.177871};
    TGraphErrors *gre = new TGraphErrors(13,Graph0_fx1209,Graph0_fy1209,Graph0_fex1209,Graph0_fey1209);
    gre->SetName("Graph0");
-   gre->SetTitle(";CTAGs / setting;#LTB_{r}^{Bkg}#GT [ppm]");
+   gre->SetTitle(";CTAGs / setting;#LTB_{r}^{b}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01209 = new TH1F("Graph_Graph01209","",100,0,1.362893e+07);
-   Graph_Graph01209->SetMinimum(7.250075);
-   Graph_Graph01209->SetMaximum(8.806027);
+   Graph_Graph01209->SetMinimum(7.250364);
+   Graph_Graph01209->SetMaximum(8.806316);
    Graph_Graph01209->SetDirectory(0);
    Graph_Graph01209->SetStats(0);
 
@@ -90,7 +90,7 @@ void Br_vs_N()
    Graph_Graph01209->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01209->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01209->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01209->GetYaxis()->SetTitle("#LTB_{r}^{Bkg}#GT [ppm]");
+   Graph_Graph01209->GetYaxis()->SetTitle("#LTB_{r}^{b}#GT [ppm]");
    Graph_Graph01209->GetYaxis()->CenterTitle(true);
    Graph_Graph01209->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01209->GetYaxis()->SetLabelFont(42);
@@ -103,7 +103,7 @@ void Br_vs_N()
    gre->SetHistogram(Graph_Graph01209);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,8.806027,1.335635e+07,8.806027,0,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,8.806316,1.335635e+07,8.806316,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

@@ -411,7 +411,7 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 int main() { 
 
   bool fit = true;
-  bool write = true;
+  bool write = false;
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
@@ -423,7 +423,8 @@ int main() {
   // Alternative fitType is "g2
 
   // Regular samples
-  FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  //FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("allDecays_WORLD_250MeV_AQ_accepted", "EDM", output, true);
   FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);

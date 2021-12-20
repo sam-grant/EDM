@@ -1,7 +1,7 @@
 void S12S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:15:31 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:05:30 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

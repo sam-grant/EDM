@@ -1,7 +1,7 @@
 void S12S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:16:23 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:02:09 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(350.1667,-1.306113,3144.291,2.443887);
@@ -29,8 +29,8 @@ void S12S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
    2559.665,
    2678.604};
    Double_t _fy1041[16] = {
-   0.3814183,
-   0.3979596,
+   0.3814182,
+   0.3979595,
    0.4678617,
    0.3778396,
    0.6503626,
@@ -38,11 +38,11 @@ void S12S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
    0.4219606,
    0.605642,
    0.5701613,
-   0.6623654,
+   0.6623655,
    0.7245792,
    0.6431138,
    0.7251883,
-   0.5542029,
+   0.554203,
    0.6197019,
    0.6922838};
    Double_t _fex1041[16] = {
@@ -65,7 +65,7 @@ void S12S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
    Double_t _fey1041[16] = {
    0.2279424,
    0.1850496,
-   0.1614393,
+   0.1614394,
    0.1452552,
    0.1369412,
    0.1303818,
@@ -119,7 +119,7 @@ void S12S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
    pol01042->SetFillStyle(0);
    pol01042->SetLineColor(2);
    pol01042->SetLineWidth(2);
-   pol01042->SetChisquare(8.101051);
+   pol01042->SetChisquare(8.101052);
    pol01042->SetNDF(15);
    pol01042->GetXaxis()->SetLabelFont(42);
    pol01042->GetXaxis()->SetTitleOffset(1);

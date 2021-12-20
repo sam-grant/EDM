@@ -1,14 +1,14 @@
 void QuadScans_NSUBRUN_225_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:08 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:38:56 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(0.04418367,-3.25,0.08091837,4.25);
+   c->Range(0.04442857,-5.847773,0.07871429,7.582316);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
-   c->SetRightMargin(0.2);
+   c->SetRightMargin(0.15);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
@@ -34,12 +34,13 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    0.009850923};
    TGraphErrors *gre = new TGraphErrors(4,-50.000000 ppm_fx1129,-50.000000 ppm_fy1129,-50.000000 ppm_fex1129,-50.000000 ppm_fey1129);
    gre->SetName("-50.000000 ppm");
-   gre->SetTitle(";1/QHV [kV^{-1}];#LTy#GT [mm]");
+   gre->SetTitle(";1/V [kV^{-1}];#LTy#GT [mm]");
    gre->SetFillStyle(1000);
+   gre->SetMarkerStyle(24);
    
    TH1F *Graph_mI50dO000000sPppm1129 = new TH1F("Graph_mI50dO000000sPppm1129","",100,0.04785714,0.07357143);
-   Graph_mI50dO000000sPppm1129->SetMinimum(-2.5);
-   Graph_mI50dO000000sPppm1129->SetMaximum(3.5);
+   Graph_mI50dO000000sPppm1129->SetMinimum(-4.504764);
+   Graph_mI50dO000000sPppm1129->SetMaximum(6.239307);
    Graph_mI50dO000000sPppm1129->SetDirectory(0);
    Graph_mI50dO000000sPppm1129->SetStats(0);
 
@@ -47,7 +48,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_mI50dO000000sPppm1129->SetLineColor(ci);
-   Graph_mI50dO000000sPppm1129->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_mI50dO000000sPppm1129->GetXaxis()->SetTitle("1/V [kV^{-1}]");
    Graph_mI50dO000000sPppm1129->GetXaxis()->CenterTitle(true);
    Graph_mI50dO000000sPppm1129->GetXaxis()->SetLabelFont(42);
    Graph_mI50dO000000sPppm1129->GetXaxis()->SetTitleSize(0.04);
@@ -66,7 +67,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetHistogram(Graph_-50.000000 ppm1129);
    
    
-   TF1 *quadLineFit1130 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1130 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1130->SetFillColor(19);
    quadLineFit1130->SetFillStyle(0);
    quadLineFit1130->SetLineWidth(2);
@@ -87,7 +88,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->GetListOfFunctions()->Add(quadLineFit1130);
    gre->Draw("ap");
    
-   TF1 *quadLineFit1131 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1131 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1131->SetFillColor(19);
    quadLineFit1131->SetFillStyle(0);
    quadLineFit1131->SetLineWidth(2);
@@ -132,6 +133,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetFillStyle(1000);
    gre->SetLineColor(2);
    gre->SetMarkerColor(2);
+   gre->SetMarkerStyle(24);
    
    TH1F *Graph_mI30dO000000sPppm1131 = new TH1F("Graph_mI30dO000000sPppm1131","Graph",100,0.04785714,0.07357143);
    Graph_mI30dO000000sPppm1131->SetMinimum(-1.964821);
@@ -152,7 +154,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetHistogram(Graph_-30.000000 ppm1131);
    
    
-   TF1 *quadLineFit1132 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1132 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1132->SetFillColor(19);
    quadLineFit1132->SetFillStyle(0);
    quadLineFit1132->SetLineColor(2);
@@ -174,7 +176,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->GetListOfFunctions()->Add(quadLineFit1132);
    gre->Draw("p ");
    
-   TF1 *quadLineFit1133 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1133 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1133->SetFillColor(19);
    quadLineFit1133->SetFillStyle(0);
    quadLineFit1133->SetLineColor(2);
@@ -220,6 +222,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetFillStyle(1000);
    gre->SetLineColor(3);
    gre->SetMarkerColor(3);
+   gre->SetMarkerStyle(24);
    
    TH1F *Graph_mI10dO000000sPppm1133 = new TH1F("Graph_mI10dO000000sPppm1133","Graph",100,0.04785714,0.07357143);
    Graph_mI10dO000000sPppm1133->SetMinimum(-0.1763039);
@@ -240,7 +243,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetHistogram(Graph_-10.000000 ppm1133);
    
    
-   TF1 *quadLineFit1134 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1134 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1134->SetFillColor(19);
    quadLineFit1134->SetFillStyle(0);
    quadLineFit1134->SetLineColor(3);
@@ -262,7 +265,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->GetListOfFunctions()->Add(quadLineFit1134);
    gre->Draw("p ");
    
-   TF1 *quadLineFit1135 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1135 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1135->SetFillColor(19);
    quadLineFit1135->SetFillStyle(0);
    quadLineFit1135->SetLineColor(3);
@@ -308,6 +311,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetFillStyle(1000);
    gre->SetLineColor(4);
    gre->SetMarkerColor(4);
+   gre->SetMarkerStyle(24);
    
    TH1F *Graph_10dO000000sPppm1135 = new TH1F("Graph_10dO000000sPppm1135","Graph",100,0.04785714,0.07357143);
    Graph_10dO000000sPppm1135->SetMinimum(1.02688);
@@ -328,7 +332,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetHistogram(Graph_10.000000 ppm1135);
    
    
-   TF1 *quadLineFit1136 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1136 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1136->SetFillColor(19);
    quadLineFit1136->SetFillStyle(0);
    quadLineFit1136->SetLineColor(4);
@@ -350,7 +354,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->GetListOfFunctions()->Add(quadLineFit1136);
    gre->Draw("p ");
    
-   TF1 *quadLineFit1137 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1137 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1137->SetFillColor(19);
    quadLineFit1137->SetFillStyle(0);
    quadLineFit1137->SetLineColor(4);
@@ -394,8 +398,13 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetName("30.000000 ppm");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
-   gre->SetLineColor(5);
-   gre->SetMarkerColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   gre->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff9900");
+   gre->SetMarkerColor(ci);
+   gre->SetMarkerStyle(24);
    
    TH1F *Graph_30dO000000sPppm1137 = new TH1F("Graph_30dO000000sPppm1137","Graph",100,0.04785714,0.07357143);
    Graph_30dO000000sPppm1137->SetMinimum(2.166084);
@@ -416,10 +425,12 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetHistogram(Graph_30.000000 ppm1137);
    
    
-   TF1 *quadLineFit1138 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1138 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1138->SetFillColor(19);
    quadLineFit1138->SetFillStyle(0);
-   quadLineFit1138->SetLineColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   quadLineFit1138->SetLineColor(ci);
    quadLineFit1138->SetLineWidth(2);
    quadLineFit1138->SetChisquare(1.817162);
    quadLineFit1138->SetNDF(2);
@@ -438,10 +449,12 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->GetListOfFunctions()->Add(quadLineFit1138);
    gre->Draw("p ");
    
-   TF1 *quadLineFit1139 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1139 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1139->SetFillColor(19);
    quadLineFit1139->SetFillStyle(0);
-   quadLineFit1139->SetLineColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   quadLineFit1139->SetLineColor(ci);
    quadLineFit1139->SetLineWidth(2);
    quadLineFit1139->SetChisquare(1.817162);
    quadLineFit1139->SetNDF(2);
@@ -484,6 +497,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetFillStyle(1000);
    gre->SetLineColor(6);
    gre->SetMarkerColor(6);
+   gre->SetMarkerStyle(24);
    
    TH1F *Graph_50dO000000sPppm1139 = new TH1F("Graph_50dO000000sPppm1139","Graph",100,0.04785714,0.07357143);
    Graph_50dO000000sPppm1139->SetMinimum(3.326788);
@@ -504,7 +518,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->SetHistogram(Graph_50.000000 ppm1139);
    
    
-   TF1 *quadLineFit1140 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1140 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1140->SetFillColor(19);
    quadLineFit1140->SetFillStyle(0);
    quadLineFit1140->SetLineColor(6);
@@ -526,7 +540,7 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    gre->GetListOfFunctions()->Add(quadLineFit1140);
    gre->Draw("p ");
    
-   TF1 *quadLineFit1141 = new TF1("quadLineFit","[0]+[1]*x",0.04785714,0.07357143, TF1::EAddToList::kNo);
+   TF1 *quadLineFit1141 = new TF1("quadLineFit","[0]+[1]*x",0.05,0.07142857, TF1::EAddToList::kNo);
    quadLineFit1141->SetFillColor(19);
    quadLineFit1141->SetFillStyle(0);
    quadLineFit1141->SetLineColor(6);
@@ -546,74 +560,77 @@ void QuadScans_NSUBRUN_225_NEXP_0()
    quadLineFit1141->SetParLimits(1,0,0);
    quadLineFit1141->Draw("same");
    
-   TLegend *leg = new TLegend(0.81,0.35,0.99,0.65,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.87,0.3,0.99,0.7,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("NULL","#LTB_{r}^{App}#GT","h");
+   TLegendEntry *entry=leg->AddEntry("NULL","#LTB_{r}^{a}#GT [ppm]","h");
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(21);
    entry->SetMarkerSize(1);
-   entry->SetTextAlign(22);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("50.000000 ppm","   50 ppm","lpf");
+   entry=leg->AddEntry("50.000000 ppm","   50","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(6);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(6);
-   entry->SetMarkerStyle(1);
+   entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("30.000000 ppm","   30 ppm","lpf");
+   entry=leg->AddEntry("30.000000 ppm","   30","lpf");
    entry->SetFillStyle(1000);
-   entry->SetLineColor(5);
+
+   ci = TColor::GetColor("#ff9900");
+   entry->SetLineColor(ci);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
-   entry->SetMarkerColor(5);
-   entry->SetMarkerStyle(1);
+
+   ci = TColor::GetColor("#ff9900");
+   entry->SetMarkerColor(ci);
+   entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("10.000000 ppm","   10 ppm","lpf");
+   entry=leg->AddEntry("10.000000 ppm","   10","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(4);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(4);
-   entry->SetMarkerStyle(1);
+   entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-10.000000 ppm","  #minus10 ppm","lpf");
+   entry=leg->AddEntry("-10.000000 ppm","  #minus10","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(3);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(3);
-   entry->SetMarkerStyle(1);
+   entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-30.000000 ppm","  #minus30 ppm","lpf");
+   entry=leg->AddEntry("-30.000000 ppm","  #minus30","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(2);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(2);
-   entry->SetMarkerStyle(1);
+   entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("-50.000000 ppm","  #minus50 ppm","lpf");
+   entry=leg->AddEntry("-50.000000 ppm","  #minus50","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
    entry->SetMarkerColor(1);
-   entry->SetMarkerStyle(1);
+   entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
    leg->Draw();

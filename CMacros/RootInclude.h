@@ -27,4 +27,5 @@
 #include "TMatrixD.h"
 #include "TVector.h"
 #include "TDecompChol.h"
+#include "TRatioPlot.h"
 // TODO ADD MORE AND REMOVE HEADERS FROM OTHER FILES

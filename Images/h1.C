@@ -1,8 +1,8 @@
 void h1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Dec  9 20:56:28 2021) by ROOT version 6.24/04
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+//=========  (Fri Dec 17 16:14:57 2021) by ROOT version 6.24/04
+   TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
    c->SetBorderMode(0);

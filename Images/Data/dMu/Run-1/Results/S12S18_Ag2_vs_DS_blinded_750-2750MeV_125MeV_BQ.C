@@ -1,7 +1,7 @@
 void S12S18_Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 10 11:08:37 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:10:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.35,-189.7799,4.85,98.83734);
    c->SetFillColor(0);
@@ -17,9 +17,9 @@ void S12S18_Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    4.1};
    Double_t _fy1021[4] = {
    -27.47183,
-   -75.22617,
-   -18.4696,
-   8.274618};
+   -75.22616,
+   -18.4697,
+   8.274645};
    Double_t _fex1021[4] = {
    0,
    0,
@@ -74,14 +74,14 @@ void S12S18_Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    pol01022->SetFillStyle(0);
    pol01022->SetLineColor(2);
    pol01022->SetLineWidth(2);
-   pol01022->SetChisquare(1.171437);
+   pol01022->SetChisquare(1.171438);
    pol01022->SetNDF(3);
    pol01022->GetXaxis()->SetLabelFont(42);
    pol01022->GetXaxis()->SetTitleOffset(1);
    pol01022->GetXaxis()->SetTitleFont(42);
    pol01022->GetYaxis()->SetLabelFont(42);
    pol01022->GetYaxis()->SetTitleFont(42);
-   pol01022->SetParameter(0,-17.09815);
+   pol01022->SetParameter(0,-17.09816);
    pol01022->SetParError(0,27.63581);
    pol01022->SetParLimits(0,0,0);
    pol01022->SetParent(gre);

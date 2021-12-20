@@ -819,7 +819,8 @@ int main() {
 
    // Graphs
    DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);
-/*   DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
+/*   //DrawAllGraphs2(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs2", -0.1,0.25);
+   DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
    DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "BQ", 0,0.125);
    DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "AQ", 0, 0.03);
    DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "BQ", 0, 0.03);

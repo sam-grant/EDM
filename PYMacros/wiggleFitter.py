@@ -102,9 +102,13 @@ def limitCalc(a,err,CL):
     
     return down,up
 
-fitTilt=0
-fitTilterr=0.1e-18
-lim = limitCalc(fitTilt,fitTilterr,0.90)
+# BNL
+# fitTilt=-0.04e-19
+# fitTilterr=1.6e-19
+# FNAL
+fitTilt=0 
+fitTilterr=1.060207e-19
+lim = limitCalc(fitTilt,fitTilterr,0.95)
 print(lim)
     
 # #data here

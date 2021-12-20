@@ -1,7 +1,7 @@
 void CTAG_vs_SUBRUN_15921()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Nov 11 19:07:21 2020) by ROOT version 6.22/02
+//=========  (Sun Dec 19 18:10:30 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -361,7 +361,6 @@ void CTAG_vs_SUBRUN_15921()
    CTAG_vs_SUBRUN__1->SetBinContent(348,1.336249e+07);
    CTAG_vs_SUBRUN__1->SetBinContent(349,1.338444e+07);
    CTAG_vs_SUBRUN__1->SetEntries(349);
-   CTAG_vs_SUBRUN__1->SetLineWidth(3);
    CTAG_vs_SUBRUN__1->GetXaxis()->SetTitle("Sub-runs");
    CTAG_vs_SUBRUN__1->GetXaxis()->CenterTitle(true);
    CTAG_vs_SUBRUN__1->GetXaxis()->SetLabelFont(42);

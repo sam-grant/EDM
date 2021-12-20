@@ -1,7 +1,7 @@
 void S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:16:16 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:02:03 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(350.1746,-1.261575,3143.373,2.488425);
@@ -29,7 +29,7 @@ void S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
    2559.827,
    2677.84};
    Double_t _fy1039[16] = {
-   0.3294264,
+   0.3294263,
    0.4727842,
    0.3824026,
    0.363492,
@@ -37,8 +37,8 @@ void S18_EDM_delta_prime_vs_p_750-2750MeV_Run-1d_125MeV_BQ()
    0.9362572,
    0.183022,
    0.6097842,
-   0.6593637,
-   0.8596894,
+   0.6593638,
+   0.8596895,
    1.162547,
    0.4574195,
    0.8782021,

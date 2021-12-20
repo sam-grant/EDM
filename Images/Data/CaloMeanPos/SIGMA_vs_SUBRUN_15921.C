@@ -1,7 +1,7 @@
 void SIGMA_vs_SUBRUN_15921()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Nov 11 19:07:21 2020) by ROOT version 6.22/02
+//=========  (Sun Dec 19 18:10:30 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -361,7 +361,6 @@ void SIGMA_vs_SUBRUN_15921()
    SIGMA_vs_SUBRUN__2->SetBinContent(348,0.007911157);
    SIGMA_vs_SUBRUN__2->SetBinContent(349,0.007904588);
    SIGMA_vs_SUBRUN__2->SetEntries(349);
-   SIGMA_vs_SUBRUN__2->SetLineWidth(3);
    SIGMA_vs_SUBRUN__2->GetXaxis()->SetTitle("Sub-runs");
    SIGMA_vs_SUBRUN__2->GetXaxis()->CenterTitle(true);
    SIGMA_vs_SUBRUN__2->GetXaxis()->SetLabelFont(42);

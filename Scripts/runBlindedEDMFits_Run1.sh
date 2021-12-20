@@ -7,7 +7,7 @@ for dataset in ${dataset_}; do
 
 	input=${dataset}_${config}
 
-	./BlindedEDMFitter.exe ${input} #| tail -n 6 | tee ../Sheets/${dataset}/SimultaneousFitResults_${config}.csv
+	./BlindedEDMFitter.exe ${input} | tail -n 6 | tee ../Sheets/${dataset}/SimultaneousFitResults_${config}.csv
 	# ./OrthogonalFitter.exe ${input} 
 	
 done

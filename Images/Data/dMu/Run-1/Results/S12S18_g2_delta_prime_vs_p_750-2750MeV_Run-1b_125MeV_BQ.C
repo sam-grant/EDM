@@ -1,7 +1,7 @@
 void S12S18_g2_delta_prime_vs_p_750-2750MeV_Run-1b_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:15:42 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:05:11 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(350.1068,-1.950226,3144.375,1.799774);
@@ -29,22 +29,22 @@ void S12S18_g2_delta_prime_vs_p_750-2750MeV_Run-1b_125MeV_BQ()
    2559.748,
    2678.663};
    Double_t _fy1023[16] = {
-   -0.1336543,
+   -0.1336546,
    0.3412237,
-   -0.1355716,
-   -0.3227886,
-   0.04165369,
-   0.02403067,
+   -0.1355717,
+   -0.3227885,
+   0.04165367,
+   0.02403073,
    0.145113,
-   0.2438975,
-   -0.3682005,
+   0.2438976,
+   -0.3682003,
    -0.3401833,
-   -0.2682125,
-   -0.04480966,
-   -0.007765949,
+   -0.2682127,
+   -0.04480955,
+   -0.007766092,
    -0.6046822,
-   0.2629294,
-   -0.1757111};
+   0.2629295,
+   -0.1757108};
    Double_t _fex1023[16] = {
    0,
    0,
@@ -126,7 +126,7 @@ void S12S18_g2_delta_prime_vs_p_750-2750MeV_Run-1b_125MeV_BQ()
    pol01024->GetXaxis()->SetTitleFont(42);
    pol01024->GetYaxis()->SetLabelFont(42);
    pol01024->GetYaxis()->SetTitleFont(42);
-   pol01024->SetParameter(0,-0.07522617);
+   pol01024->SetParameter(0,-0.07522616);
    pol01024->SetParError(0,0.06618306);
    pol01024->SetParLimits(0,0,0);
    pol01024->SetParent(gre);

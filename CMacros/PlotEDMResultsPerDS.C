@@ -238,6 +238,19 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   l->Draw("SAME");
 
+  // Text box
+  TPaveText *result = new TPaveText(0.15,0.79,0.40,0.89,"NDC");
+  result->SetTextAlign(13);
+  result->SetTextSize(26);
+  result->SetTextFont(44);
+  result->SetFillColor(0);
+
+  std::ostringstream result_str; result_str << fit->GetParameter(0); 
+  std::ostringstream error_str; error_str << fit->GetParError(0);  
+
+  result->AddText("#delta#LTd_{#mu}^{BLIND}#GT = "+SciNotation(fit->GetParError(0))+" e#upointcm");// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  result->Draw("SAME");
+
   c->SaveAs((fname+".pdf").c_str());
   c->SaveAs((fname+".png").c_str());
   c->SaveAs((fname+".C").c_str());
@@ -276,25 +289,35 @@ double GetLimit(double delta_prime) {
 
 }
 
-double RemoveRadialField(double angle, std::string dataset) {
+std::tuple<double, double> RemoveRadialField(double A, double eA, std::string dataset) {
   /*1a & $22\pm7$ \\
   1b & $23\pm8$ \\
   1c & $30\pm8$ \\
   1d & $34\pm9$ \\ 
   */
   double Br = 0;
+  double eBr = 0; 
   
-  if(dataset=="Run-1a") Br = 22 * 1e-3; // mrad 
-  else if(dataset=="Run-1b") Br = 23 * 1e-3; // mrad
-  else if(dataset=="Run-1c") Br = 30 * 1e-3; // mrad 
-  else if(dataset=="Run-1d") Br = 34 * 1e-3; // mrad 
-  else cerr<<"RemoveRadialField: dataset not found";
+  if(dataset=="Run-1a") {
+    Br = 22 * 1e-3; // mrad 
+    eBr = 7 * 1e-3; // mrad
+  } else if(dataset=="Run-1b") {
+    Br = 23 * 1e-3; // mrad
+    eBr = 8 * 1e-3; // mrad
+  } else if(dataset=="Run-1c") {
+    Br = 30 * 1e-3; // mrad 
+    eBr = 8 * 1e-3; // mrad
+  } else if(dataset=="Run-1d") {
+    Br = 34 * 1e-3; // mrad 
+    eBr = 9 * 1e-3; 
+  } else cerr<<"RemoveRadialField: dataset not found";
   
-  return angle-Br;
+  // Do we actually subtract the radial field?
+  return make_tuple(A-Br, sqrt(pow(eA, 2)+pow(eBr,2)));
 
 }
 
-void Run(std::string dataset, int step, std::string blinding, bool correctDilution, bool removeRadialField) { 
+void Run(std::string dataset, int step, std::string blinding, bool correctDilution, bool removeRadialField = true) { 
 
   std::string dilCorrStr = "";
   if(!correctDilution) dilCorrStr += "_noCorr";
@@ -360,7 +383,12 @@ void Run(std::string dataset, int step, std::string blinding, bool correctDiluti
 
 			if(fitType == "EDM") {
 
-        if(removeRadialField) A = RemoveRadialField(A, DS_.at(i));
+        if(removeRadialField) { 
+
+          A = get<0>(RemoveRadialField(A, eA, DS_.at(i)));
+          eA = get<1>(RemoveRadialField(A, eA, DS_.at(i)));
+
+        }
 
 				A = GetLimit(A);
 				eA = GetLimit(eA);

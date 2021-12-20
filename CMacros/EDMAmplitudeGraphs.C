@@ -108,6 +108,7 @@ void DrawControlGraphs(string fname, double ymin, double ymax, bool acceptanceCo
    l->SetTextSize(24);
    l->SetTextFont(44);
 
+   gr_.at(0)->SetTitle("Control sample");
    gr_.at(0)->GetXaxis()->SetTitleSize(.04);
    gr_.at(0)->GetYaxis()->SetTitleSize(.04);
    gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);

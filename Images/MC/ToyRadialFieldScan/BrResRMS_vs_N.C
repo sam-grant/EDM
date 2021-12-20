@@ -1,10 +1,10 @@
 void BrResRMS_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:15 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:39:03 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1669544,0.05073343,1.502589e+07,0.7900305);
+   c->Range(-1669544,0.05102428,1.502589e+07,0.7896895);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void BrResRMS_vs_N()
    1.151148e+07,
    1.247554e+07};
    Double_t Truth_fy1212[13] = {
-   0.6522301,
-   0.4496337,
-   0.367446,
-   0.3105331,
-   0.2910145,
-   0.2703952,
-   0.2461954,
-   0.23332,
-   0.2065397,
-   0.2032225,
-   0.1967144,
-   0.1896753,
-   0.1779282};
+   0.6519995,
+   0.4502068,
+   0.3679536,
+   0.3101471,
+   0.2906558,
+   0.2704667,
+   0.2461516,
+   0.2336668,
+   0.2069826,
+   0.2034521,
+   0.1964132,
+   0.1899648,
+   0.178118};
    Double_t Truth_fex1212[13] = {
    0,
    0,
@@ -54,28 +54,28 @@ void BrResRMS_vs_N()
    0,
    0};
    Double_t Truth_fey1212[13] = {
-   0.01458431,
-   0.01005411,
-   0.008216343,
-   0.006943731,
-   0.006507282,
-   0.00604622,
-   0.005505096,
-   0.005217194,
-   0.004618367,
-   0.004544194,
-   0.004398667,
-   0.004241268,
-   0.003978596};
+   0.01457915,
+   0.01006693,
+   0.008227692,
+   0.006935099,
+   0.00649926,
+   0.00604782,
+   0.005504116,
+   0.005224949,
+   0.004628271,
+   0.004549328,
+   0.004391933,
+   0.004247743,
+   0.00398284};
    TGraphErrors *gre = new TGraphErrors(13,Truth_fx1212,Truth_fy1212,Truth_fex1212,Truth_fey1212);
    gre->SetName("Truth");
-   gre->SetTitle(";CTAGs / setting;RMS of meas #minus true #LTB_{r}^{Bkg}#GT [ppm]");
+   gre->SetTitle(";CTAGs / setting;RMS of meas #minus true #LTB_{r}^{b}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Truth1212 = new TH1F("Graph_Truth1212","",100,0,1.362893e+07);
-   Graph_Truth1212->SetMinimum(0.1246631);
-   Graph_Truth1212->SetMaximum(0.7161008);
+   Graph_Truth1212->SetMinimum(0.1248908);
+   Graph_Truth1212->SetMaximum(0.715823);
    Graph_Truth1212->SetDirectory(0);
    Graph_Truth1212->SetStats(0);
 
@@ -90,7 +90,7 @@ void BrResRMS_vs_N()
    Graph_Truth1212->GetXaxis()->SetTitleSize(0.04);
    Graph_Truth1212->GetXaxis()->SetTitleOffset(1.1);
    Graph_Truth1212->GetXaxis()->SetTitleFont(42);
-   Graph_Truth1212->GetYaxis()->SetTitle("RMS of meas #minus true #LTB_{r}^{Bkg}#GT [ppm]");
+   Graph_Truth1212->GetYaxis()->SetTitle("RMS of meas #minus true #LTB_{r}^{b}#GT [ppm]");
    Graph_Truth1212->GetYaxis()->CenterTitle(true);
    Graph_Truth1212->GetYaxis()->SetNdivisions(4000510);
    Graph_Truth1212->GetYaxis()->SetLabelFont(42);
@@ -103,7 +103,7 @@ void BrResRMS_vs_N()
    gre->SetHistogram(Graph_Truth1212);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,0.7161008,1.335635e+07,0.7161008,0,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,0.715823,1.335635e+07,0.715823,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

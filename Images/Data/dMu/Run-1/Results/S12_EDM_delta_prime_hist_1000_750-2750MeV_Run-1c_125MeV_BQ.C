@@ -1,7 +1,7 @@
 void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1c_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:15:48 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:07:16 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,46 +10,46 @@ void S12_EDM_delta_prime_hist_1000_750-2750MeV_Run-1c_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__13 = new TH1D("h__13","S12",26,0.342873,0.8687378);
-   h__13->SetBinContent(7,1);
-   h__13->SetBinContent(8,8);
-   h__13->SetBinContent(9,19);
-   h__13->SetBinContent(10,66);
-   h__13->SetBinContent(11,114);
-   h__13->SetBinContent(12,134);
-   h__13->SetBinContent(13,165);
-   h__13->SetBinContent(14,168);
-   h__13->SetBinContent(15,125);
-   h__13->SetBinContent(16,91);
-   h__13->SetBinContent(17,43);
-   h__13->SetBinContent(18,30);
-   h__13->SetBinContent(19,17);
-   h__13->SetBinContent(20,14);
-   h__13->SetBinContent(21,1);
-   h__13->SetBinContent(23,1);
-   h__13->SetBinContent(24,1);
-   h__13->SetBinContent(25,1);
-   h__13->SetBinContent(26,1);
-   h__13->SetEntries(1000);
-   h__13->SetStats(0);
-   h__13->SetLineWidth(3);
-   h__13->GetXaxis()->SetTitle("#delta'_{EDM}^{BLIND} [mrad]");
-   h__13->GetXaxis()->CenterTitle(true);
-   h__13->GetXaxis()->SetLabelFont(42);
-   h__13->GetXaxis()->SetTitleSize(0.04);
-   h__13->GetXaxis()->SetTitleOffset(1.1);
-   h__13->GetXaxis()->SetTitleFont(42);
-   h__13->GetYaxis()->SetTitle("Trials  / 0.02 [mrad]");
-   h__13->GetYaxis()->CenterTitle(true);
-   h__13->GetYaxis()->SetNdivisions(4000510);
-   h__13->GetYaxis()->SetLabelFont(42);
-   h__13->GetYaxis()->SetTitleSize(0.04);
-   h__13->GetYaxis()->SetTitleOffset(1.1);
-   h__13->GetYaxis()->SetTitleFont(42);
-   h__13->GetZaxis()->SetLabelFont(42);
-   h__13->GetZaxis()->SetTitleOffset(1);
-   h__13->GetZaxis()->SetTitleFont(42);
-   h__13->Draw("HIST");
+   TH1D *h__1 = new TH1D("h__1","S12",26,0.342873,0.8687378);
+   h__1->SetBinContent(7,1);
+   h__1->SetBinContent(8,8);
+   h__1->SetBinContent(9,19);
+   h__1->SetBinContent(10,66);
+   h__1->SetBinContent(11,114);
+   h__1->SetBinContent(12,134);
+   h__1->SetBinContent(13,165);
+   h__1->SetBinContent(14,168);
+   h__1->SetBinContent(15,125);
+   h__1->SetBinContent(16,91);
+   h__1->SetBinContent(17,43);
+   h__1->SetBinContent(18,30);
+   h__1->SetBinContent(19,17);
+   h__1->SetBinContent(20,14);
+   h__1->SetBinContent(21,1);
+   h__1->SetBinContent(23,1);
+   h__1->SetBinContent(24,1);
+   h__1->SetBinContent(25,1);
+   h__1->SetBinContent(26,1);
+   h__1->SetEntries(1000);
+   h__1->SetStats(0);
+   h__1->SetLineWidth(3);
+   h__1->GetXaxis()->SetTitle("#delta'_{EDM}^{BLIND} [mrad]");
+   h__1->GetXaxis()->CenterTitle(true);
+   h__1->GetXaxis()->SetLabelFont(42);
+   h__1->GetXaxis()->SetTitleSize(0.04);
+   h__1->GetXaxis()->SetTitleOffset(1.1);
+   h__1->GetXaxis()->SetTitleFont(42);
+   h__1->GetYaxis()->SetTitle("Trials  / 0.02 [mrad]");
+   h__1->GetYaxis()->CenterTitle(true);
+   h__1->GetYaxis()->SetNdivisions(4000510);
+   h__1->GetYaxis()->SetLabelFont(42);
+   h__1->GetYaxis()->SetTitleSize(0.04);
+   h__1->GetYaxis()->SetTitleOffset(1.1);
+   h__1->GetYaxis()->SetTitleFont(42);
+   h__1->GetZaxis()->SetLabelFont(42);
+   h__1->GetZaxis()->SetTitleOffset(1);
+   h__1->GetZaxis()->SetTitleFont(42);
+   h__1->Draw("HIST");
    
    TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
    pt->SetFillColor(0);

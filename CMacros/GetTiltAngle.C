@@ -625,7 +625,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       if(fitType == "EDM") {
         subscript += fitType;
         results_.push_back(", delta_prime, , dMu [ecm], ,");
-        results_.push_back("Station, value, error, value, error");
+        results_.push_back("Station, value, fit_error, dil_error, tot_error, value, fit_error, dil_error, tot_error");
         blind += "BLIND";
       } else if(fitType == "g2") {
         subscript += "g#minus2";
@@ -714,34 +714,41 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       // Fill results
       double delta_prime = f_delta_prime->GetParameter(0);
-      double err_delta_prime = f_delta_prime->GetParError(0);
       double result = delta_prime;
-      double error = sqrt(pow(err_delta_prime,2) + pow(h_delta_prime->GetRMS(),2));
+      double err_fit = f_delta_prime->GetParError(0);
+      double err_dil = h_delta_prime->GetRMS();
+      double err_tot = sqrt(pow(err_fit,2) + pow(err_dil,2));
 
       if(fitType == "EDM") {
 
         // Deal with converting small double into strings
-        double result2Tree = GetLimit(result); double error2Tree = GetLimit(error);
+        double result2Tree = GetLimit(result); double error2Tree = GetLimit(err_tot);
 
         // Write into TBranch
         resultTree->Branch((stn+"_dMu").c_str(), &result2Tree);
         resultTree->Branch((stn+"_dMu_err").c_str(), &error2Tree);
 
         std::ostringstream oss_result; oss_result << GetLimit(result);
-        std::ostringstream oss_error; oss_error << GetLimit(error);
-        std::string dMu = oss_result.str(); std::string err_dMu = oss_error.str();
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+dMu+", "+err_dMu);
+        std::ostringstream oss_err_fit; oss_err_fit << GetLimit(err_fit);
+        std::ostringstream oss_err_dil; oss_err_dil << GetLimit(err_dil);
+        std::ostringstream oss_err_tot; oss_err_tot << GetLimit(err_tot);
+        std::string dMu = oss_result.str();
+        std::string err_dMu_fit = oss_err_fit.str();
+        std::string err_dMu_dil = oss_err_dil.str();
+        std::string err_dMu_tot = oss_err_tot.str();
+
+        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_dil)+", "+to_string(err_tot)+", "+dMu+", "+err_dMu_fit+", "+err_dMu_dil+", "+err_dMu_tot);
 
       } else if(fitType == "g2") {
 
-        double result2Tree = 1e3*result; double error2Tree = 1e3*error;
+        double result2Tree = 1e3*result; double error2Tree = 1e3*err_tot;
 
         // TODO: This doesn't work properly for individual stations. May need a simplified method.
         // Write into TBranch
         resultTree->Branch((stn+"_Bz").c_str(), &result2Tree);
         resultTree->Branch((stn+"_Bz_err").c_str(), &error2Tree);
 
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_delta_prime)+", "+to_string(1e3*result)+", "+to_string(1e3*error));
+        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_dil)+", "+to_string(err_tot)+", "+to_string(delta_prime*1e3)+", "+to_string(err_fit*1e3)+", "+to_string(err_dil*1e3)+", "+to_string(err_tot*1e3));
       }
 
       resultTree->Fill();
@@ -795,11 +802,11 @@ int main() {
 	
 */
   // Data
-  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+/*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
-
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);*/
+  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
 
 
 /*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);

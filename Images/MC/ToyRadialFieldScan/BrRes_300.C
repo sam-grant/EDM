@@ -1,7 +1,7 @@
 void BrRes_300()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:14 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:39:01 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,63 +10,40 @@ void BrRes_300()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__36 = new TH1D("__36","Number of sub-runs: 300",1000,-10,10);
-   __36->SetBinContent(467,1);
-   __36->SetBinContent(475,1);
-   __36->SetBinContent(476,2);
-   __36->SetBinContent(477,2);
-   __36->SetBinContent(478,4);
-   __36->SetBinContent(479,2);
-   __36->SetBinContent(480,1);
-   __36->SetBinContent(481,2);
-   __36->SetBinContent(482,11);
-   __36->SetBinContent(483,9);
-   __36->SetBinContent(484,11);
-   __36->SetBinContent(485,13);
-   __36->SetBinContent(486,13);
-   __36->SetBinContent(487,11);
-   __36->SetBinContent(488,20);
-   __36->SetBinContent(489,29);
-   __36->SetBinContent(490,19);
-   __36->SetBinContent(491,26);
-   __36->SetBinContent(492,29);
-   __36->SetBinContent(493,37);
-   __36->SetBinContent(494,35);
-   __36->SetBinContent(495,25);
-   __36->SetBinContent(496,40);
-   __36->SetBinContent(497,44);
-   __36->SetBinContent(498,37);
-   __36->SetBinContent(499,49);
-   __36->SetBinContent(500,35);
-   __36->SetBinContent(501,48);
-   __36->SetBinContent(502,34);
-   __36->SetBinContent(503,35);
-   __36->SetBinContent(504,38);
-   __36->SetBinContent(505,42);
-   __36->SetBinContent(506,34);
-   __36->SetBinContent(507,32);
-   __36->SetBinContent(508,24);
-   __36->SetBinContent(509,30);
-   __36->SetBinContent(510,27);
-   __36->SetBinContent(511,19);
-   __36->SetBinContent(512,25);
-   __36->SetBinContent(513,21);
-   __36->SetBinContent(514,17);
-   __36->SetBinContent(515,10);
-   __36->SetBinContent(516,6);
-   __36->SetBinContent(517,15);
-   __36->SetBinContent(518,8);
-   __36->SetBinContent(519,4);
-   __36->SetBinContent(520,5);
-   __36->SetBinContent(521,5);
-   __36->SetBinContent(522,4);
-   __36->SetBinContent(523,2);
-   __36->SetBinContent(524,1);
-   __36->SetBinContent(525,3);
-   __36->SetBinContent(527,2);
-   __36->SetBinContent(530,1);
+   TH1D *__36 = new TH1D("__36","Number of sub-runs: 300",500,-10,10);
+   __36->SetBinContent(234,1);
+   __36->SetBinContent(238,3);
+   __36->SetBinContent(239,6);
+   __36->SetBinContent(240,3);
+   __36->SetBinContent(241,13);
+   __36->SetBinContent(242,20);
+   __36->SetBinContent(243,26);
+   __36->SetBinContent(244,31);
+   __36->SetBinContent(245,48);
+   __36->SetBinContent(246,55);
+   __36->SetBinContent(247,72);
+   __36->SetBinContent(248,65);
+   __36->SetBinContent(249,81);
+   __36->SetBinContent(250,84);
+   __36->SetBinContent(251,82);
+   __36->SetBinContent(252,73);
+   __36->SetBinContent(253,76);
+   __36->SetBinContent(254,56);
+   __36->SetBinContent(255,57);
+   __36->SetBinContent(256,44);
+   __36->SetBinContent(257,38);
+   __36->SetBinContent(258,16);
+   __36->SetBinContent(259,23);
+   __36->SetBinContent(260,9);
+   __36->SetBinContent(261,9);
+   __36->SetBinContent(262,3);
+   __36->SetBinContent(263,3);
+   __36->SetBinContent(264,2);
+   __36->SetBinContent(265,1);
    __36->SetEntries(1000);
-   __36->GetXaxis()->SetTitle("#LTB_{r}^{Bkg}#GT truth residual [ppm]");
+   __36->SetStats(0);
+   __36->GetXaxis()->SetTitle("#LTB_{r}^{b}#GT truth residual [ppm]");
+   __36->GetXaxis()->SetRange(194,307);
    __36->GetXaxis()->CenterTitle(true);
    __36->GetXaxis()->SetLabelFont(42);
    __36->GetXaxis()->SetTitleSize(0.04);
@@ -83,6 +60,30 @@ void BrRes_300()
    __36->GetZaxis()->SetTitleOffset(1);
    __36->GetZaxis()->SetTitleFont(42);
    __36->Draw("HIST");
+   
+   TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("Trials");
+   pt_LaTex = pt->AddText("Mean [ppm]");
+   pt_LaTex = pt->AddText("RMS [ppm]");
+   pt->Draw();
+   
+   pt = new TPaveText(0,0,0,0,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(33);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("1000");
+   pt_LaTex = pt->AddText("-0.002
+#pm0.006
+");
+   pt_LaTex = pt->AddText("0.19
+#pm0.004
+");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

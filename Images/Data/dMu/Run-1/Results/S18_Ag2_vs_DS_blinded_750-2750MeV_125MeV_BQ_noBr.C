@@ -1,9 +1,9 @@
 void S18_Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ_noBr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 10 11:08:37 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:10:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.25,-300.5722,4.75,257.0508);
+   c->Range(0.25,-300.5722,4.75,257.0507);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,10 +16,10 @@ void S18_Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ_noBr()
    3,
    4};
    Double_t _fy1002[4] = {
-   43.041,
+   43.0409,
    -104.6833,
-   -71.10955,
-   -14.98567};
+   -71.10967,
+   -14.98564};
    Double_t _fex1002[4] = {
    0,
    0,
@@ -38,7 +38,7 @@ void S18_Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ_noBr()
    
    TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","S18",100,0.7,4.3);
    Graph_Graph1002->SetMinimum(-244.8099);
-   Graph_Graph1002->SetMaximum(201.2885);
+   Graph_Graph1002->SetMaximum(201.2884);
    Graph_Graph1002->SetDirectory(0);
    Graph_Graph1002->SetStats(0);
 

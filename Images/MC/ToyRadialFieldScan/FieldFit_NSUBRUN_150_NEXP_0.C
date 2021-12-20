@@ -1,7 +1,7 @@
 void FieldFit_NSUBRUN_150_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:04 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:38:52 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75,-82.07036,75,101.2315);
@@ -41,11 +41,11 @@ void FieldFit_NSUBRUN_150_NEXP_0()
    0.7546787};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1093,Graph0_fy1093,Graph0_fex1093,Graph0_fey1093);
    gre->SetName("Graph0");
-   gre->SetTitle("150 sub-runs");
+   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01093 = new TH1F("Graph_Graph01093","150 sub-runs",100,-60,60);
+   TH1F *Graph_Graph01093 = new TH1F("Graph_Graph01093","",100,-60,60);
    Graph_Graph01093->SetMinimum(-63.74017);
    Graph_Graph01093->SetMaximum(82.9013);
    Graph_Graph01093->SetDirectory(0);
@@ -55,13 +55,13 @@ void FieldFit_NSUBRUN_150_NEXP_0()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01093->SetLineColor(ci);
-   Graph_Graph01093->GetXaxis()->SetTitle("#LTB_{r}^{App}#GT [ppm]");
+   Graph_Graph01093->GetXaxis()->SetTitle("Applied #LTB_{r}#GT [ppm]");
    Graph_Graph01093->GetXaxis()->CenterTitle(true);
    Graph_Graph01093->GetXaxis()->SetLabelFont(42);
    Graph_Graph01093->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01093->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01093->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01093->GetYaxis()->SetTitle("#LTy#GT QHV [mm#upointkV]");
+   Graph_Graph01093->GetYaxis()->SetTitle("#LTy#GT#upointV [mm#upointkV]");
    Graph_Graph01093->GetYaxis()->CenterTitle(true);
    Graph_Graph01093->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01093->GetYaxis()->SetLabelFont(42);
@@ -104,9 +104,15 @@ void FieldFit_NSUBRUN_150_NEXP_0()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText("  0.3");
-   pt_LaTex = pt->AddText("  1.2#pm0.00902");
-   pt_LaTex = pt->AddText(" 9.53#pm0.308");
-   pt_LaTex = pt->AddText(" 7.93#pm0.263");
+   pt_LaTex = pt->AddText("1.2
+#pm0.009
+");
+   pt_LaTex = pt->AddText("9.5
+#pm0.3
+");
+   pt_LaTex = pt->AddText("7.9
+#pm0.3
+");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -117,7 +123,7 @@ void FieldFit_NSUBRUN_150_NEXP_0()
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient");
    pt_LaTex = pt->AddText("Y-intercept [mm#upointkV]");
-   pt_LaTex = pt->AddText("#LTB_{r}^{Bkg}#GT [ppm]");
+   pt_LaTex = pt->AddText("Background #LTB_{r}#GT [ppm]");
    pt->Draw();
    TLine *line = new TLine(-60,0,-7.928161,0);
    line->SetLineStyle(2);
@@ -149,15 +155,6 @@ void FieldFit_NSUBRUN_150_NEXP_0()
    mainFit1095->SetParError(1,0.00901992);
    mainFit1095->SetParLimits(1,0,0);
    mainFit1095->Draw("same");
-   
-   pt = new TPaveText(0.3769347,0.94,0.6230653,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   pt_LaTex = pt->AddText("150 sub-runs");
-   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

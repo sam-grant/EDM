@@ -1,7 +1,7 @@
 void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:15:31 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:05:30 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(350.3282,-1.960941,3144.479,1.789059);
@@ -29,22 +29,22 @@ void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    2559.531,
    2678.787};
    Double_t _fy1007[16] = {
-   -0.07777231,
-   0.3726096,
+   -0.07777182,
+   0.3726101,
    -0.09280012,
-   -0.03679598,
-   0.3585736,
-   0.073423,
-   0.3283006,
+   -0.03679593,
+   0.358574,
+   0.07342319,
+   0.3283008,
    -0.4270204,
-   -0.719143,
-   -0.2109924,
-   -0.004180352,
-   -0.4350204,
-   -0.4885397,
-   -0.6955611,
-   0.7625267,
-   -0.0677547};
+   -0.7191431,
+   -0.2109925,
+   -0.004180262,
+   -0.4350206,
+   -0.4885398,
+   -0.6955609,
+   0.7625262,
+   -0.06775489};
    Double_t _fex1007[16] = {
    0,
    0,
@@ -67,7 +67,7 @@ void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    0.4359305,
    0.38232,
    0.3459764,
-   0.3267037,
+   0.3267036,
    0.3143205,
    0.321522,
    0.319756,
@@ -77,7 +77,7 @@ void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    0.4412794,
    0.5088017,
    0.616863,
-   0.7547262,
+   0.7547261,
    0.9786361};
    TGraphErrors *gre = new TGraphErrors(16,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
@@ -119,14 +119,14 @@ void S12_g2_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    pol01008->SetFillStyle(0);
    pol01008->SetLineColor(2);
    pol01008->SetLineWidth(2);
-   pol01008->SetChisquare(13.08359);
+   pol01008->SetChisquare(13.0836);
    pol01008->SetNDF(15);
    pol01008->GetXaxis()->SetLabelFont(42);
    pol01008->GetXaxis()->SetTitleOffset(1);
    pol01008->GetXaxis()->SetTitleFont(42);
    pol01008->GetYaxis()->SetLabelFont(42);
    pol01008->GetYaxis()->SetTitleFont(42);
-   pol01008->SetParameter(0,-0.08594099);
+   pol01008->SetParameter(0,-0.08594089);
    pol01008->SetParError(0,0.1002923);
    pol01008->SetParLimits(0,0,0);
    pol01008->SetParent(gre);

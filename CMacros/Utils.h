@@ -175,6 +175,8 @@ TH1D* ConvertToTH1D(TGraphErrors *graph) {
 
 }
 
+
+
 /*TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
   int n = hist->GetNbinsX();
@@ -277,6 +279,26 @@ TH1D* GetResidual(TH1D* data, TF1* fit) {
 
 }
 
+std::tuple<double, double> QuadScanYRange(std::vector<TGraphErrors*> gr_) {
+
+  double ymin = 1e6; double ymax = -1e6;
+    
+  // find y-range
+  for(auto& gr : gr_) {
+
+    for(int i(0); i<gr->GetN(); i++) {
+
+      double y = gr->GetY()[i];
+
+      if(y < ymin) ymin = y - abs(y*0.25);
+      else if(y > ymax) ymax = y + abs(y*0.25);
+
+    }
+  }
+
+  return std::make_tuple(ymin, ymax);
+}
+
 // ====================== Residuals and FFT ======================
 
 TH1D* GetFFT(TH1D* hist) {
@@ -355,6 +377,7 @@ TString Round(double N, double n) {
   return roundedValue.str();
 
 }
+
 TString FormatNegativeNumber(double num) { 
   TString text;
   text = ThreeSigFig(num);
@@ -368,6 +391,17 @@ TString FormatNegativeNumber(double num) {
 }
 
 
+ // Doesn't work
+TString FormatPositiveNumber(double num) { 
+  TString text;
+  text = ThreeSigFig(num);
+  if(num<0) {
+    return text;
+  } else {
+    text = "+"+text; 
+  }
+  return text;
+}
 
 
 

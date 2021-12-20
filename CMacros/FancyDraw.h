@@ -527,12 +527,14 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	graph2->SetMarkerStyle(24); // Open circle
 	graph2->Draw("P same");
 
-	TLegend *l = new TLegend(0.70,0.65,0.89,0.85);
+	// TLegend *l = new TLegend(0.70,0.65,0.89,0.85);
+	TLegend *l = new TLegend(0.50,0.75,0.89,0.85);
 	graph1->SetName(name1.c_str());
 	graph2->SetName(name2.c_str());
 	gPad->Update();
 	l->SetBorderSize(0);
-	l->SetTextFont(42);
+	l->SetTextSize(26);
+	l->SetTextFont(44);
 	l->AddEntry(graph1,name1.c_str());
 	l->AddEntry(graph2,name2.c_str());
 	l->Draw("same");
@@ -648,12 +650,12 @@ void DrawLineFit(TGraphErrors *graph, TF1 *func, string title, string fname) {
 	TCanvas *c = new TCanvas("c","c",800,600);
 
 	gStyle->SetStatFormat("6.3g");
-  	graph->Draw();
-  	gPad->Update();
-  	gStyle->SetStatY(0.89);
-  	gStyle->SetStatX(0.69);
-  	gStyle->SetStatBorderSize(0);
-  	gStyle->SetOptFit(111);
+  graph->Draw();
+  gPad->Update();
+  gStyle->SetStatY(0.89);
+  gStyle->SetStatX(0.69);
+  gStyle->SetStatBorderSize(0);
+  gStyle->SetOptFit(111);
 
 	graph->SetTitle(title.c_str());
 	graph->GetXaxis()->SetTitleSize(.04);
@@ -854,9 +856,20 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::string title, std::string fname, double ymin, double ymax, const double *BR_APP) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
-	c->SetRightMargin(0.20);
 
-	graphs.at(0)->SetTitle(title.c_str());
+	// Neat but too small
+	// c->SetRightMargin(0.15);
+	// TLegend *l = new TLegend(0.88,0.35,0.99,0.65);
+	// l->SetBorderSize(0);
+
+	c->SetRightMargin(0.15);
+	TLegend *l = new TLegend(0.87,0.30,0.99,0.70);
+	l->SetBorderSize(0);
+
+	l->SetHeader("#LTB_{r}^{a}#GT [ppm]");
+
+
+	graphs.at(0)->SetTitle(";1/V [kV^{-1}];#LTy#GT [mm]");
 	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
 	graphs.at(0)->GetYaxis()->SetTitleSize(.04);
 	graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
@@ -864,29 +877,27 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 	graphs.at(0)->GetXaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->CenterTitle(true);
 	graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+
 	graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
 	//graphs.at(0)->GetXaxis()->SetRangeUser(0,1);
 
-	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
+	// TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
 
-	l->SetBorderSize(0);
-	l->SetHeader("#LTB_{r}^{App}#GT","C");
 
 	//double field = 
 	// Load legend entries backwards
 	//cout<<"Loading legend entries"<<endl;
 	for( int i = graphs.size()-1; i>-1; i--) {
-		//cout<<BR_APP[i]<<endl;
-		l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i])+" ppm");
+
+		l->AddEntry(graphs.at(i), FormatNegativeNumber(BR_APP[i]));
+		//else l->AddEntry(graphs.at(i), BR_APP[i]);
 	}
 	
 	for(int i = 0; i < graphs.size(); i++) {
 		//cout<<"Getting function\t";
 		TF1 *fit = graphs.at(i)->GetFunction(func.c_str());
-		//cout<<fit<<endl;
-		//it->SetLineColor(kBlack);
 		
-		graphs.at(i)->SetMarkerStyle(20);
+		graphs.at(i)->SetMarkerStyle(24); // open circle
 
     	if(i+1 != 5) {
     		fit->SetLineColor(i+1); 
@@ -1039,17 +1050,20 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	names->AddText("#chi^{2}/ndf"); 
 	names->AddText("Gradient"); 
 	names->AddText("Y-intercept [mm#upointkV]"); 
-	names->AddText("#LTB_{r}^{Bkg}#GT [ppm]"); 
+	// names->AddText("#LTB_{r}^{b}#GT [ppm]"); 
+	names->AddText("Background #LTB_{r}#GT [ppm]"); 
 
 	//TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
 	TPaveText *values = new TPaveText(0.50,0.68,0.60,0.89,"NDC");
 	values->SetTextAlign(33);
 
 	values->AddText(ThreeSigFig(chi2ndf));
-	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
+/*	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
-	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));
-
+	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));*/
+	values->AddText(Round(par1, 3)+"#pm"+Round(err1, 1));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	values->AddText(Round(-xint, 2)+"#pm"+Round(xint_err, 1));
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 
 	names->SetTextSize(26);
@@ -1069,7 +1083,8 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	y_line->SetLineStyle(2);
 	y_line->SetLineWidth(2);
 
-	graph->SetTitle(title.c_str());
+	// graph->SetTitle(";#LTB_{r}^{a}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
+	graph->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
 	graph->GetXaxis()->SetTitleOffset(1.1);

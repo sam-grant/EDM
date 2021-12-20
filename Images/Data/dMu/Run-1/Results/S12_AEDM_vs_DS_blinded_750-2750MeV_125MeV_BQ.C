@@ -1,7 +1,7 @@
 void S12_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 10 11:08:37 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:10:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.15,4.23913e-19,4.65,2.596221e-18);
    c->SetFillColor(0);
@@ -16,7 +16,7 @@ void S12_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    2.9,
    3.9};
    Double_t _fy1028[4] = {
-   1.863182e-18,
+   1.863183e-18,
    1.073131e-18,
    1.956853e-18,
    1.689438e-18};
@@ -37,7 +37,7 @@ void S12_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1028 = new TH1F("Graph_Graph1028","S12",100,0.6,4.2);
-   Graph_Graph1028->SetMinimum(6.411439e-19);
+   Graph_Graph1028->SetMinimum(6.411438e-19);
    Graph_Graph1028->SetMaximum(2.378991e-18);
    Graph_Graph1028->SetDirectory(0);
    Graph_Graph1028->SetStats(0);

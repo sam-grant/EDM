@@ -1,9 +1,9 @@
 void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 10 11:08:37 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:10:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.15,-319.581,4.65,285.1201);
+   c->Range(0.15,-319.581,4.65,285.12);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,10 +16,10 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    2.9,
    3.9};
    Double_t _fy1023[4] = {
-   -85.94099,
-   -41.95388,
-   10.0158,
-   38.04938};
+   -85.94089,
+   -41.95385,
+   10.01571,
+   38.0494};
    Double_t _fex1023[4] = {
    0,
    0,
@@ -40,7 +40,7 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    
    TH1F *Graph_Graph_Graph10191023 = new TH1F("Graph_Graph_Graph10191023","",100,0.6,4.2);
    Graph_Graph_Graph10191023->SetMinimum(-259.1109);
-   Graph_Graph_Graph10191023->SetMaximum(224.65);
+   Graph_Graph_Graph10191023->SetMaximum(224.6499);
    Graph_Graph_Graph10191023->SetDirectory(0);
    Graph_Graph_Graph10191023->SetStats(0);
 
@@ -84,7 +84,7 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    fit1023->GetXaxis()->SetTitleFont(42);
    fit1023->GetYaxis()->SetLabelFont(42);
    fit1023->GetYaxis()->SetTitleFont(42);
-   fit1023->SetParameter(0,-17.09815);
+   fit1023->SetParameter(0,-17.09816);
    fit1023->SetParError(0,27.63581);
    fit1023->SetParLimits(0,0,0);
    fit1023->Draw("same");
@@ -120,7 +120,7 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    plusSigma1025->GetXaxis()->SetTitleFont(42);
    plusSigma1025->GetYaxis()->SetLabelFont(42);
    plusSigma1025->GetYaxis()->SetTitleFont(42);
-   plusSigma1025->SetParameter(0,10.53766);
+   plusSigma1025->SetParameter(0,10.53765);
    plusSigma1025->SetParError(0,0);
    plusSigma1025->SetParLimits(0,0,0);
    plusSigma1025->Draw("same");
@@ -131,10 +131,10 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    2.9,
    3.9};
    Double_t _fy1024[4] = {
-   -85.94099,
-   -41.95388,
-   10.0158,
-   38.04938};
+   -85.94089,
+   -41.95385,
+   10.01571,
+   38.0494};
    Double_t _fex1024[4] = {
    0,
    0,
@@ -155,7 +155,7 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    
    TH1F *Graph_Graph_Graph_Graph101910231024 = new TH1F("Graph_Graph_Graph_Graph101910231024","",100,0.6,4.2);
    Graph_Graph_Graph_Graph101910231024->SetMinimum(-259.1109);
-   Graph_Graph_Graph_Graph101910231024->SetMaximum(224.65);
+   Graph_Graph_Graph_Graph101910231024->SetMaximum(224.6499);
    Graph_Graph_Graph_Graph101910231024->SetDirectory(0);
    Graph_Graph_Graph_Graph101910231024->SetStats(0);
 
@@ -191,10 +191,10 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    3,
    4};
    Double_t _fy1025[4] = {
-   43.041,
+   43.0409,
    -104.6833,
-   -71.10955,
-   -14.98567};
+   -71.10967,
+   -14.98564};
    Double_t _fex1025[4] = {
    0,
    0,
@@ -215,7 +215,7 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    
    TH1F *Graph_Graph_Graph10201025 = new TH1F("Graph_Graph_Graph10201025","S18",100,0.7,4.3);
    Graph_Graph_Graph10201025->SetMinimum(-244.8099);
-   Graph_Graph_Graph10201025->SetMaximum(201.2885);
+   Graph_Graph_Graph10201025->SetMaximum(201.2884);
    Graph_Graph_Graph10201025->SetDirectory(0);
    Graph_Graph_Graph10201025->SetStats(0);
 
@@ -252,9 +252,9 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    4.1};
    Double_t _fy1026[4] = {
    -27.47183,
-   -75.22617,
-   -18.4696,
-   8.274618};
+   -75.22616,
+   -18.4697,
+   8.274645};
    Double_t _fex1026[4] = {
    0,
    0,
@@ -307,14 +307,14 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    pol01027->SetFillStyle(0);
    pol01027->SetLineColor(2);
    pol01027->SetLineWidth(0);
-   pol01027->SetChisquare(1.171437);
+   pol01027->SetChisquare(1.171438);
    pol01027->SetNDF(3);
    pol01027->GetXaxis()->SetLabelFont(42);
    pol01027->GetXaxis()->SetTitleOffset(1);
    pol01027->GetXaxis()->SetTitleFont(42);
    pol01027->GetYaxis()->SetLabelFont(42);
    pol01027->GetYaxis()->SetTitleFont(42);
-   pol01027->SetParameter(0,-17.09815);
+   pol01027->SetParameter(0,-17.09816);
    pol01027->SetParError(0,27.63581);
    pol01027->SetParLimits(0,0,0);
    pol01027->SetParent(gre);
@@ -358,6 +358,14 @@ void Ag2_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
    leg->Draw();
+   
+   TPaveText *pt = new TPaveText(0.15,0.79,0.4,0.89,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("#delta#LTd_{#mu}^{BLIND}#GT =  27.6} e#upointcm");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

@@ -1,7 +1,7 @@
 void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 12:15:29 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:05:29 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(350.3282,-1.291337,3144.479,2.458663);
@@ -30,21 +30,21 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    2678.787};
    Double_t _fy1001[16] = {
    1.28561,
-   1.171547,
+   1.171546,
    0.3584667,
    0.4598366,
-   0.9549347,
+   0.9549345,
    0.7224981,
-   0.7865691,
-   0.4461409,
-   0.2341745,
-   0.3368235,
+   0.7865689,
+   0.4461411,
+   0.2341749,
+   0.3368236,
    0.623009,
-   0.18196,
-   0.3401642,
-   0.9796049,
-   -0.2322533,
-   0.4057722};
+   0.1819602,
+   0.3401645,
+   0.9796052,
+   -0.2322537,
+   0.4057723};
    Double_t _fex1001[16] = {
    0,
    0,
@@ -86,7 +86,7 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","S12",100,629.7432,2865.064);
-   Graph_Graph1001->SetMinimum(-0.9163369);
+   Graph_Graph1001->SetMinimum(-0.9163368);
    Graph_Graph1001->SetMaximum(2.083663);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
@@ -119,15 +119,15 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_125MeV_BQ()
    pol01002->SetFillStyle(0);
    pol01002->SetLineColor(2);
    pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(10.45943);
+   pol01002->SetChisquare(10.45942);
    pol01002->SetNDF(15);
    pol01002->GetXaxis()->SetLabelFont(42);
    pol01002->GetXaxis()->SetTitleOffset(1);
    pol01002->GetXaxis()->SetTitleFont(42);
    pol01002->GetYaxis()->SetLabelFont(42);
    pol01002->GetYaxis()->SetTitleFont(42);
-   pol01002->SetParameter(0,0.5836631);
-   pol01002->SetParError(0,0.09982461);
+   pol01002->SetParameter(0,0.5836632);
+   pol01002->SetParError(0,0.0998246);
    pol01002->SetParLimits(0,0,0);
    pol01002->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01002);

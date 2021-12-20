@@ -1,7 +1,7 @@
 void Br_50()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:00 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:38:48 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -129,7 +129,9 @@ void Br_50()
    __4->SetBinContent(463,1);
    __4->SetBinContent(476,1);
    __4->SetEntries(1000);
+   __4->SetStats(0);
    __4->GetXaxis()->SetTitle("B_{r} [ppm]");
+   __4->GetXaxis()->SetRange(130,670);
    __4->GetXaxis()->CenterTitle(true);
    __4->GetXaxis()->SetLabelFont(42);
    __4->GetXaxis()->SetTitleSize(0.04);
@@ -146,6 +148,30 @@ void Br_50()
    __4->GetZaxis()->SetTitleOffset(1);
    __4->GetZaxis()->SetTitleFont(42);
    __4->Draw("HIST");
+   
+   TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(13);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("Trials");
+   pt_LaTex = pt->AddText("Mean [ppm]");
+   pt_LaTex = pt->AddText("RMS [ppm]");
+   pt->Draw();
+   
+   pt = new TPaveText(0,0,0,0,"brNDC");
+   pt->SetFillColor(0);
+   pt->SetTextAlign(33);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("1000");
+   pt_LaTex = pt->AddText("8
+#pm0.01
+");
+   pt_LaTex = pt->AddText("0.45
+#pm0.01
+");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

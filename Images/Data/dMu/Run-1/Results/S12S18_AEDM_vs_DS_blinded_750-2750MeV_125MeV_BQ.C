@@ -1,9 +1,9 @@
 void S12S18_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 10 11:08:38 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:10:21 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.35,7.544199e-19,4.85,2.718793e-18);
+   c->Range(0.35,7.544198e-19,4.85,2.718793e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -37,7 +37,7 @@ void S12S18_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1030 = new TH1F("Graph_Graph1030","S12S18",100,0.8,4.4);
-   Graph_Graph1030->SetMinimum(9.508572e-19);
+   Graph_Graph1030->SetMinimum(9.508571e-19);
    Graph_Graph1030->SetMaximum(2.522355e-18);
    Graph_Graph1030->SetDirectory(0);
    Graph_Graph1030->SetStats(0);
@@ -74,7 +74,7 @@ void S12S18_AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    pol01031->SetFillStyle(0);
    pol01031->SetLineColor(2);
    pol01031->SetLineWidth(2);
-   pol01031->SetChisquare(9.251068);
+   pol01031->SetChisquare(9.251069);
    pol01031->SetNDF(3);
    pol01031->GetXaxis()->SetLabelFont(42);
    pol01031->GetXaxis()->SetTitleOffset(1);

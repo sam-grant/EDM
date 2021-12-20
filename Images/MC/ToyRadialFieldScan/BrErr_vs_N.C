@@ -1,10 +1,10 @@
 void BrErr_vs_N()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec 16 20:33:15 2020) by ROOT version 6.22/02
+//=========  (Mon Dec 20 14:39:02 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1669544,0.06026387,1.502589e+07,0.7659232);
+   c->Range(-1669544,0.06026037,1.502589e+07,0.7659241);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,19 +26,19 @@ void BrErr_vs_N()
    1.151148e+07,
    1.247554e+07};
    Double_t Fits_fy1210[13] = {
-   0.6483133,
-   0.455556,
-   0.3708095,
-   0.3226463,
-   0.2880845,
-   0.2625181,
-   0.242849,
-   0.2271299,
-   0.2139569,
+   0.6483135,
+   0.4555505,
+   0.370816,
+   0.3226465,
+   0.288084,
+   0.2625235,
+   0.242851,
+   0.227126,
+   0.213954,
    0.20292,
-   0.1933874,
-   0.1851432,
-   0.1778738};
+   0.1933895,
+   0.1851355,
+   0.177871};
    Double_t Fits_fex1210[13] = {
    0,
    0,
@@ -69,13 +69,13 @@ void BrErr_vs_N()
    0};
    TGraphErrors *gre = new TGraphErrors(13,Fits_fx1210,Fits_fy1210,Fits_fex1210,Fits_fey1210);
    gre->SetName("Fits");
-   gre->SetTitle(";CTAGs / setting;#LT#deltaB_{r}^{Bkg}#GT [ppm]");
+   gre->SetTitle(";CTAGs / setting;#LT#deltaB_{r}^{b}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Fits1210 = new TH1F("Graph_Fits1210","",100,0,1.362893e+07);
-   Graph_Fits1210->SetMinimum(0.1308298);
-   Graph_Fits1210->SetMaximum(0.6953573);
+   Graph_Fits1210->SetMinimum(0.1308267);
+   Graph_Fits1210->SetMaximum(0.6953578);
    Graph_Fits1210->SetDirectory(0);
    Graph_Fits1210->SetStats(0);
 
@@ -90,7 +90,7 @@ void BrErr_vs_N()
    Graph_Fits1210->GetXaxis()->SetTitleSize(0.04);
    Graph_Fits1210->GetXaxis()->SetTitleOffset(1.1);
    Graph_Fits1210->GetXaxis()->SetTitleFont(42);
-   Graph_Fits1210->GetYaxis()->SetTitle("#LT#deltaB_{r}^{Bkg}#GT [ppm]");
+   Graph_Fits1210->GetYaxis()->SetTitle("#LT#deltaB_{r}^{b}#GT [ppm]");
    Graph_Fits1210->GetYaxis()->CenterTitle(true);
    Graph_Fits1210->GetYaxis()->SetNdivisions(4000510);
    Graph_Fits1210->GetYaxis()->SetLabelFont(42);
@@ -103,7 +103,7 @@ void BrErr_vs_N()
    gre->SetHistogram(Graph_Fits1210);
    
    gre->Draw("ap");
-   TGaxis *gaxis = new TGaxis(0,0.6953573,1.335635e+07,0.6953573,0,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,0.6953578,1.335635e+07,0.6953578,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);
