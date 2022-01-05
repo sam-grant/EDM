@@ -35,11 +35,11 @@ CTAGS_SIGMAS_SUBRUNS ctags_sigmas_subruns;
 // ==================== MISC FUNCTIONS ====================
 
 
-void DrawHist(TH1D *hist, std::string title, std::string fname) {
+void DrawHist(TH1D *hist, TString title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-	hist->SetTitle(title.c_str());
+	hist->SetTitle(title); // .c_str());
 
 	hist->SetStats(0);
 	hist->GetXaxis()->SetTitleSize(.04);
@@ -55,26 +55,26 @@ void DrawHist(TH1D *hist, std::string title, std::string fname) {
 	// Find x-range
 	// double xmin = hist->GetBinCenter(hist->FindFirstBinAbove(0)) - 0.1*hist->GetBinCenter(hist->FindFirstBinAbove(0));
 	// double xmax = hist->GetBinCenter(hist->FindLastBinAbove(0)) + 0.1*hist->GetBinCenter(hist->FindLastBinAbove(0));
-	double xmin = hist->GetMean() - 12*hist->GetRMS();
-	double xmax = hist->GetMean() + 12*hist->GetRMS();
+	double xmin = hist->GetMean() - 17*hist->GetRMS();
+	double xmax = hist->GetMean() + 17*hist->GetRMS();
 
 	hist->GetXaxis()->SetRangeUser(xmin, xmax);
 
 	// Mean and RMS
-	TPaveText *names = new TPaveText(0.54,0.75,0.76,0.89,"NDC");
+	TPaveText *names = new TPaveText(0.54,0.75,0.73,0.89,"NDC");
 	//TPaveText *names = new TPaveText(0.54,0.74,0.79,0.89,"NDC");
 	names->AddText("Trials");
 	names->AddText("Mean [ppm]");
 	names->AddText("RMS [ppm]");
 
 	names->SetTextAlign(13);
-	names->SetTextSize(26);
+	names->SetTextSize(23);
 	names->SetTextFont(44);
 	names->SetFillColor(0);
 
 	TPaveText *values = new TPaveText(0.79,0.75,0.89,0.89,"NDC");
 	values->AddText(to_string(int(hist->GetEntries())).c_str());
-	values->AddText(Round(hist->GetMean(),1)+"#pm"+Round(hist->GetMeanError(),1));
+	values->AddText(Round(hist->GetMean(),3)+"#pm"+Round(hist->GetMeanError(),1));
 	values->AddText(Round(hist->GetRMS(),3)+"#pm"+Round(hist->GetRMSError(),1));
 
 	// BrErr_100
@@ -85,7 +85,7 @@ void DrawHist(TH1D *hist, std::string title, std::string fname) {
 	values->SetTextAlign(33);
 	values->SetFillColor(0);
 	values->SetTextFont(44);
-	values->SetTextSize(26);
+	values->SetTextSize(23);
 
 	hist->Draw("HIST");
 	names->Draw("SAME");
@@ -140,7 +140,6 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 			n[i_quad] =  0.108/18.3 * QHV[i_quad];
 
-
 			double y_true = R_0/n[i_quad] * Br_tot * 1e-6;
 
 			double y_meas = rndm->Gaus(y_true,sigmaY);
@@ -184,11 +183,11 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 	// This is a cross check
 	TGraphErrors *BrCalc_vs_BrApp = new TGraphErrors(N_FIELD,x_field,y_field_2,ex_field,ey_field_2);
 
-	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
-	TFitResultPtr mainFitRes = QuadGrads_vs_BrApp->Fit(mainFit,"SMQ");
+	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x", QuadGrads_vs_BrApp->GetX()[0], QuadGrads_vs_BrApp->GetX()[QuadGrads_vs_BrApp->GetN()-1]);
+	TFitResultPtr mainFitRes = QuadGrads_vs_BrApp->Fit(mainFit,"SMQR");
 
-	TF1 *checkFit = new TF1("checkFit", "[0]+[1]*x");
-	TFitResultPtr checkFitRes = BrCalc_vs_BrApp->Fit(checkFit,"SMQ");
+	TF1 *checkFit = new TF1("checkFit", "[0]+[1]*x", BrCalc_vs_BrApp->GetX()[0], BrCalc_vs_BrApp->GetX()[BrCalc_vs_BrApp->GetN()-1]);
+	TFitResultPtr checkFitRes = BrCalc_vs_BrApp->Fit(checkFit,"SMQR");
 
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
     double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
@@ -245,8 +244,8 @@ int main() {
 
 		// Book histogram for each sub-run
 		TH1D *hBr = new TH1D("","hBr",1000,0,20);
-		TH1D *hBrErr = new TH1D("","hBrErr",2000,0,1);
-		TH1D *hBrRes = new TH1D("","hBrRes",500,-10,10);
+		TH1D *hBrErr = new TH1D("","hBrErr",240,0.4,1.6);
+		TH1D *hBrRes = new TH1D("","hBrRes",240,-11,11);
 
 
 		for ( int i_exp = 0; i_exp < N_EXP; i_exp++ ) {
@@ -280,9 +279,9 @@ int main() {
 		// DrawTH1(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Fitted #delta#LTB_{r}^{b}#GT [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
 		// DrawTH1(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#LTB_{r}^{b}#GT truth residual [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
 
-		DrawHist(hBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";B_{r} [ppm];Trials","../Images/MC/ToyRadialFieldScan/Br_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
-		DrawHist(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Fitted #delta#LTB_{r}^{b}#GT [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
-		DrawHist(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#LTB_{r}^{b}#GT truth residual [ppm];Trials","../Images/MC/ToyRadialFieldScan/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawHist(hBr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";B_{r} [ppm];Trials / "+to_string(hBr->GetBinWidth(1))+" ppm","../Images/MC/ToyRadialFieldScan/Br_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawHist(hBrErr,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";Fitted #delta#LTB_{r}^{b}#GT [ppm];Trials / "+Round(hBrErr->GetBinWidth(1),1)+" ppm","../Images/MC/ToyRadialFieldScan/BrErr_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
+		DrawHist(hBrRes,"Number of sub-runs: "+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun])+";#LTB_{r}^{b}#GT truth residual [ppm];Trials / "+Round(hBrRes->GetBinWidth(1),1)+" ppm","../Images/MC/ToyRadialFieldScan/BrRes_"+to_string(ctags_sigmas_subruns.SUBRUNS[i_subrun]));
 
 		x[i_subrun] = ctags_sigmas_subruns.CTAGS[i_subrun];
 		zeros[i_subrun] = 0;

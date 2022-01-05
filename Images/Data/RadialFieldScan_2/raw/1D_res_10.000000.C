@@ -1,7 +1,7 @@
 void 1D_res_10.000000()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 21 00:28:03 2021) by ROOT version 6.22/08
+//=========  (Wed Jan  5 15:23:20 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,9 +11,9 @@ void 1D_res_10.000000()
    c->SetFrameBorderMode(0);
    
    TH1D *h_res__3 = new TH1D("h_res__3","",100,-0.05,0.05);
-   h_res__3->SetBinContent(43,1);
-   h_res__3->SetBinContent(56,1);
-   h_res__3->SetBinContent(60,1);
+   h_res__3->SetBinContent(42,1);
+   h_res__3->SetBinContent(57,1);
+   h_res__3->SetBinContent(61,1);
    h_res__3->SetEntries(3);
    h_res__3->GetXaxis()->SetTitle("Fit residual [mm]");
    h_res__3->GetXaxis()->CenterTitle(true);

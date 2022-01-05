@@ -33,19 +33,19 @@ using namespace std;
 //const string stage = "raw"; // "//// // ////
 
 // FIRST SCAN
-//string scan = "1";
-//const int N_QHV = 2;
-//const int N_FIELD = 2;
-//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+string scan = "1";
+const int N_QHV = 2;
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // SECOND SCAN
-string scan = "2";
+/*string scan = "2";
 const int N_QHV = 4;
 const int N_FIELD = 6;
 const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
 const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
-
+*/
 
 // Read csv file of run, QHV, & Br
 vector<vector<string>> csvReader(string infile) {
@@ -324,9 +324,13 @@ void WriteQuadScan(vector<TGraphErrors*> graphs, string ouput) {
 
 }*/
 
-int main(int argc, char *argv[]) {
+int main() { //int argc, char *argv[]) {
 
-  string stage = argv[1]; // "raw/cutsTesting";
+  // Final cuts are: 23 µs - 300 µs and 1000 MeV 2750 MeV
+
+  // string stage = "raw";//argv[1]; // "raw/cutsTesting";
+
+  string stage = "reprocessed"; //argv[1]; // "raw/cutsTesting";
 
   // Output to store basic fits (quad scans and final fit)
   TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/fits.root").c_str(), "RECREATE");
@@ -340,7 +344,6 @@ int main(int argc, char *argv[]) {
 
   // Get runs, QHV, & Br 
   vector<vector<string>> csv = csvReader("../RadialFieldOps_"+scan+"/scan"+scan+".csv");
-
 
 	int counter = 0;
 
@@ -422,9 +425,9 @@ int main(int argc, char *argv[]) {
     //quadScanCTAGs.push_back(QuadScan(ctags, QHV_tmp));
 
     // Fit for quad gradient and store
-    TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x");
-
-		quadScan->Fit(quadLineFit,"M");
+    TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x", quadScan->GetX()[0], quadScan->GetX()[quadScan->GetN()-1]);//, 0.055555556, 0.071428571);//1./18, 1./14);// , 1./14, 1./18, 2);
+    //quadLineFit->GetXaxis()->SetRange(1./18, 1./14);
+		quadScan->Fit(quadLineFit,"QMR");
 
     cout<<"quadLineFit\t"<<quadLineFit<<endl;
 
@@ -446,7 +449,8 @@ int main(int argc, char *argv[]) {
 	}
 
   // Draw quad scans 
-  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadScans", 71.5, 78.5, BR_APP);
+  //
+  DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadScans", 72.5, 78.5, BR_APP);
 
   // Write quad scans to text
 
@@ -467,8 +471,8 @@ int main(int argc, char *argv[]) {
 
 	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
 
-	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x");
-	TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
+	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x", result->GetX()[0], result->GetX()[result->GetN()-1]);
+	TFitResultPtr mainFitRes = result->Fit(mainFit,"SRMQ");
 
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
   double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);

@@ -1,10 +1,10 @@
 void FieldFit_pValCheck5()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 21 00:28:03 2021) by ROOT version 6.22/08
+//=========  (Wed Jan  5 15:23:21 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-50,-40.9399,70,56.91001);
+   c->Range(-50,-43.66606,70,61.14975);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -18,32 +18,32 @@ void FieldFit_pValCheck5()
    -10,
    -30};
    Double_t Graph0_fy1035[5] = {
-   39.1181,
-   20.96023,
-   9.013131,
-   -6.128556,
-   -23.37896};
+   42.39209,
+   23.08834,
+   9.1059,
+   -8.711124,
+   -25.17625};
    Double_t Graph0_fex1035[5] = {
    0,
    0,
    0,
-   6.953124e-310,
-   6.953124e-310};
+   6.953118e-310,
+   6.953118e-310};
    Double_t Graph0_fey1035[5] = {
-   1.483591,
-   1.222034,
-   1.413793,
-   1.245862,
-   1.252617};
+   1.288349,
+   0.9960653,
+   1.151366,
+   1.014695,
+   1.020517};
    TGraphErrors *gre = new TGraphErrors(5,Graph0_fx1035,Graph0_fy1035,Graph0_fex1035,Graph0_fey1035);
    gre->SetName("Graph0");
-   gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]");
+   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01035 = new TH1F("Graph_Graph01035","",100,-38,58);
-   Graph_Graph01035->SetMinimum(-31.15491);
-   Graph_Graph01035->SetMaximum(47.12502);
+   Graph_Graph01035->SetMinimum(-33.18448);
+   Graph_Graph01035->SetMaximum(50.66816);
    Graph_Graph01035->SetDirectory(0);
    Graph_Graph01035->SetStats(0);
 
@@ -51,13 +51,13 @@ void FieldFit_pValCheck5()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01035->SetLineColor(ci);
-   Graph_Graph01035->GetXaxis()->SetTitle("#LTB_{r}^{App}#GT [ppm]");
+   Graph_Graph01035->GetXaxis()->SetTitle("Applied #LTB_{r}#GT [ppm]");
    Graph_Graph01035->GetXaxis()->CenterTitle(true);
    Graph_Graph01035->GetXaxis()->SetLabelFont(42);
    Graph_Graph01035->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01035->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01035->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01035->GetYaxis()->SetTitle("#LTy#GT#upointQHV [mm#upointkV]");
+   Graph_Graph01035->GetYaxis()->SetTitle("#LTy#GT#upointV [mm#upointkV]");
    Graph_Graph01035->GetYaxis()->CenterTitle(true);
    Graph_Graph01035->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01035->GetYaxis()->SetLabelFont(42);
@@ -77,18 +77,18 @@ void FieldFit_pValCheck5()
    ci = TColor::GetColor("#ff0000");
    mainFit1036->SetLineColor(ci);
    mainFit1036->SetLineWidth(2);
-   mainFit1036->SetChisquare(5.310424);
+   mainFit1036->SetChisquare(4.093611);
    mainFit1036->SetNDF(3);
    mainFit1036->GetXaxis()->SetLabelFont(42);
    mainFit1036->GetXaxis()->SetTitleOffset(1);
    mainFit1036->GetXaxis()->SetTitleFont(42);
    mainFit1036->GetYaxis()->SetLabelFont(42);
    mainFit1036->GetYaxis()->SetTitleFont(42);
-   mainFit1036->SetParameter(0,0.2178461);
-   mainFit1036->SetParError(0,0.6083668);
+   mainFit1036->SetParameter(0,-0.3116844);
+   mainFit1036->SetParError(0,0.4971573);
    mainFit1036->SetParLimits(0,0,0);
-   mainFit1036->SetParameter(1,0.7568078);
-   mainFit1036->SetParError(1,0.02105269);
+   mainFit1036->SetParameter(1,0.8297918);
+   mainFit1036->SetParError(1,0.0175438);
    mainFit1036->SetParLimits(1,0,0);
    mainFit1036->SetParent(gre);
    gre->GetListOfFunctions()->Add(mainFit1036);
@@ -99,10 +99,16 @@ void FieldFit_pValCheck5()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText(" 1.77");
-   pt_LaTex = pt->AddText("0.757#pm0.0211");
-   pt_LaTex = pt->AddText("0.218#pm0.608");
-   pt_LaTex = pt->AddText("0.288#pm0.806");
+   TText *pt_LaTex = pt->AddText(" 1.36");
+   pt_LaTex = pt->AddText("0.83
+#pm0.02
+");
+   pt_LaTex = pt->AddText("-0.3
+#pm0.5
+");
+   pt_LaTex = pt->AddText("-0.4
+#pm0.6
+");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -113,13 +119,13 @@ void FieldFit_pValCheck5()
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient");
    pt_LaTex = pt->AddText("Y-intercept [mm#upointkV]");
-   pt_LaTex = pt->AddText("#LTB_{r}^{Bkg}#GT [ppm]");
+   pt_LaTex = pt->AddText("Background #LTB_{r}#GT [ppm]");
    pt->Draw();
-   TLine *line = new TLine(-38,0,-0.2878486,0);
+   TLine *line = new TLine(-38,0,0.3756176,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
-   line = new TLine(-0.2878486,-31.15491,-0.2878486,0);
+   line = new TLine(0.3756176,-33.18448,0.3756176,0);
    line->SetLineStyle(2);
    line->SetLineWidth(2);
    line->Draw();
@@ -131,18 +137,18 @@ void FieldFit_pValCheck5()
    ci = TColor::GetColor("#ff0000");
    mainFit1037->SetLineColor(ci);
    mainFit1037->SetLineWidth(2);
-   mainFit1037->SetChisquare(5.310424);
+   mainFit1037->SetChisquare(4.093611);
    mainFit1037->SetNDF(3);
    mainFit1037->GetXaxis()->SetLabelFont(42);
    mainFit1037->GetXaxis()->SetTitleOffset(1);
    mainFit1037->GetXaxis()->SetTitleFont(42);
    mainFit1037->GetYaxis()->SetLabelFont(42);
    mainFit1037->GetYaxis()->SetTitleFont(42);
-   mainFit1037->SetParameter(0,0.2178461);
-   mainFit1037->SetParError(0,0.6083668);
+   mainFit1037->SetParameter(0,-0.3116844);
+   mainFit1037->SetParError(0,0.4971573);
    mainFit1037->SetParLimits(0,0,0);
-   mainFit1037->SetParameter(1,0.7568078);
-   mainFit1037->SetParError(1,0.02105269);
+   mainFit1037->SetParameter(1,0.8297918);
+   mainFit1037->SetParError(1,0.0175438);
    mainFit1037->SetParLimits(1,0,0);
    mainFit1037->Draw("same");
    c->Modified();

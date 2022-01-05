@@ -1,7 +1,7 @@
 void BrRes_200()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec 20 14:38:56 2021) by ROOT version 6.24/04
+//=========  (Wed Jan  5 17:06:59 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,47 +11,88 @@ void BrRes_200()
    c->SetFrameBorderMode(0);
    
    TH1D *__24 = new TH1D("__24","Number of sub-runs: 200",500,-10,10);
-   __24->SetBinContent(230,1);
-   __24->SetBinContent(231,1);
-   __24->SetBinContent(233,1);
-   __24->SetBinContent(235,3);
-   __24->SetBinContent(236,3);
-   __24->SetBinContent(237,6);
-   __24->SetBinContent(238,9);
-   __24->SetBinContent(239,11);
-   __24->SetBinContent(240,11);
-   __24->SetBinContent(241,26);
-   __24->SetBinContent(242,22);
-   __24->SetBinContent(243,16);
-   __24->SetBinContent(244,39);
-   __24->SetBinContent(245,43);
-   __24->SetBinContent(246,59);
-   __24->SetBinContent(247,50);
-   __24->SetBinContent(248,65);
-   __24->SetBinContent(249,65);
-   __24->SetBinContent(250,83);
-   __24->SetBinContent(251,67);
-   __24->SetBinContent(252,70);
-   __24->SetBinContent(253,61);
-   __24->SetBinContent(254,49);
-   __24->SetBinContent(255,44);
-   __24->SetBinContent(256,50);
-   __24->SetBinContent(257,33);
-   __24->SetBinContent(258,33);
-   __24->SetBinContent(259,24);
-   __24->SetBinContent(260,11);
-   __24->SetBinContent(261,16);
-   __24->SetBinContent(262,9);
-   __24->SetBinContent(263,4);
-   __24->SetBinContent(264,6);
-   __24->SetBinContent(265,4);
-   __24->SetBinContent(266,3);
-   __24->SetBinContent(267,1);
-   __24->SetBinContent(268,1);
+   __24->SetBinContent(202,1);
+   __24->SetBinContent(205,1);
+   __24->SetBinContent(209,1);
+   __24->SetBinContent(215,1);
+   __24->SetBinContent(216,1);
+   __24->SetBinContent(217,3);
+   __24->SetBinContent(219,2);
+   __24->SetBinContent(220,3);
+   __24->SetBinContent(221,4);
+   __24->SetBinContent(222,4);
+   __24->SetBinContent(223,7);
+   __24->SetBinContent(224,3);
+   __24->SetBinContent(225,9);
+   __24->SetBinContent(226,5);
+   __24->SetBinContent(227,10);
+   __24->SetBinContent(228,4);
+   __24->SetBinContent(229,10);
+   __24->SetBinContent(230,11);
+   __24->SetBinContent(231,10);
+   __24->SetBinContent(232,15);
+   __24->SetBinContent(233,18);
+   __24->SetBinContent(234,15);
+   __24->SetBinContent(235,13);
+   __24->SetBinContent(236,10);
+   __24->SetBinContent(237,23);
+   __24->SetBinContent(238,14);
+   __24->SetBinContent(239,19);
+   __24->SetBinContent(240,24);
+   __24->SetBinContent(241,24);
+   __24->SetBinContent(242,29);
+   __24->SetBinContent(243,23);
+   __24->SetBinContent(244,23);
+   __24->SetBinContent(245,22);
+   __24->SetBinContent(246,27);
+   __24->SetBinContent(247,29);
+   __24->SetBinContent(248,28);
+   __24->SetBinContent(249,30);
+   __24->SetBinContent(250,28);
+   __24->SetBinContent(251,30);
+   __24->SetBinContent(252,27);
+   __24->SetBinContent(253,33);
+   __24->SetBinContent(254,21);
+   __24->SetBinContent(255,32);
+   __24->SetBinContent(256,24);
+   __24->SetBinContent(257,26);
+   __24->SetBinContent(258,27);
+   __24->SetBinContent(259,23);
+   __24->SetBinContent(260,16);
+   __24->SetBinContent(261,27);
+   __24->SetBinContent(262,18);
+   __24->SetBinContent(263,16);
+   __24->SetBinContent(264,20);
+   __24->SetBinContent(265,17);
+   __24->SetBinContent(266,25);
+   __24->SetBinContent(267,14);
+   __24->SetBinContent(268,12);
+   __24->SetBinContent(269,4);
+   __24->SetBinContent(270,7);
+   __24->SetBinContent(271,9);
+   __24->SetBinContent(272,8);
+   __24->SetBinContent(273,9);
+   __24->SetBinContent(274,4);
+   __24->SetBinContent(275,5);
+   __24->SetBinContent(276,4);
+   __24->SetBinContent(277,7);
+   __24->SetBinContent(278,7);
+   __24->SetBinContent(279,6);
+   __24->SetBinContent(280,2);
+   __24->SetBinContent(281,1);
+   __24->SetBinContent(282,2);
+   __24->SetBinContent(283,1);
+   __24->SetBinContent(284,2);
+   __24->SetBinContent(285,3);
+   __24->SetBinContent(286,3);
+   __24->SetBinContent(287,1);
+   __24->SetBinContent(289,1);
+   __24->SetBinContent(292,1);
+   __24->SetBinContent(305,1);
    __24->SetEntries(1000);
    __24->SetStats(0);
    __24->GetXaxis()->SetTitle("#LTB_{r}^{b}#GT truth residual [ppm]");
-   __24->GetXaxis()->SetRange(180,320);
+   __24->GetXaxis()->SetRange(81,419);
    __24->GetXaxis()->CenterTitle(true);
    __24->GetXaxis()->SetLabelFont(42);
    __24->GetXaxis()->SetTitleSize(0.04);
@@ -85,11 +126,11 @@ void BrRes_200()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("-0.005
-#pm0.007
+   pt_LaTex = pt->AddText("-0.007
+#pm0.02
 ");
-   pt_LaTex = pt->AddText("0.234
-#pm0.005
+   pt_LaTex = pt->AddText("0.563
+#pm0.01
 ");
    pt->Draw();
    c->Modified();

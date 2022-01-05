@@ -1,7 +1,7 @@
 void BrErr_325()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec 20 14:39:02 2021) by ROOT version 6.24/04
+//=========  (Wed Jan  5 17:07:06 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,23 +11,85 @@ void BrErr_325()
    c->SetFrameBorderMode(0);
    
    TH1D *__38 = new TH1D("__38","Number of sub-runs: 325",2000,0,1);
-   __38->SetBinContent(350,1);
-   __38->SetBinContent(351,10);
-   __38->SetBinContent(352,19);
-   __38->SetBinContent(353,43);
-   __38->SetBinContent(354,108);
-   __38->SetBinContent(355,172);
-   __38->SetBinContent(356,196);
-   __38->SetBinContent(357,188);
-   __38->SetBinContent(358,145);
-   __38->SetBinContent(359,76);
-   __38->SetBinContent(360,27);
-   __38->SetBinContent(361,13);
-   __38->SetBinContent(362,2);
+   __38->SetBinContent(846,1);
+   __38->SetBinContent(850,1);
+   __38->SetBinContent(851,2);
+   __38->SetBinContent(852,1);
+   __38->SetBinContent(853,1);
+   __38->SetBinContent(855,2);
+   __38->SetBinContent(856,3);
+   __38->SetBinContent(858,4);
+   __38->SetBinContent(859,8);
+   __38->SetBinContent(860,8);
+   __38->SetBinContent(861,4);
+   __38->SetBinContent(862,9);
+   __38->SetBinContent(863,5);
+   __38->SetBinContent(864,8);
+   __38->SetBinContent(865,10);
+   __38->SetBinContent(866,5);
+   __38->SetBinContent(867,9);
+   __38->SetBinContent(868,11);
+   __38->SetBinContent(869,15);
+   __38->SetBinContent(870,16);
+   __38->SetBinContent(871,11);
+   __38->SetBinContent(872,20);
+   __38->SetBinContent(873,28);
+   __38->SetBinContent(874,21);
+   __38->SetBinContent(875,22);
+   __38->SetBinContent(876,27);
+   __38->SetBinContent(877,25);
+   __38->SetBinContent(878,28);
+   __38->SetBinContent(879,24);
+   __38->SetBinContent(880,20);
+   __38->SetBinContent(881,30);
+   __38->SetBinContent(882,29);
+   __38->SetBinContent(883,28);
+   __38->SetBinContent(884,29);
+   __38->SetBinContent(885,21);
+   __38->SetBinContent(886,31);
+   __38->SetBinContent(887,21);
+   __38->SetBinContent(888,30);
+   __38->SetBinContent(889,28);
+   __38->SetBinContent(890,23);
+   __38->SetBinContent(891,25);
+   __38->SetBinContent(892,28);
+   __38->SetBinContent(893,25);
+   __38->SetBinContent(894,27);
+   __38->SetBinContent(895,18);
+   __38->SetBinContent(896,18);
+   __38->SetBinContent(897,15);
+   __38->SetBinContent(898,25);
+   __38->SetBinContent(899,17);
+   __38->SetBinContent(900,16);
+   __38->SetBinContent(901,16);
+   __38->SetBinContent(902,16);
+   __38->SetBinContent(903,17);
+   __38->SetBinContent(904,19);
+   __38->SetBinContent(905,19);
+   __38->SetBinContent(906,8);
+   __38->SetBinContent(907,10);
+   __38->SetBinContent(908,10);
+   __38->SetBinContent(909,5);
+   __38->SetBinContent(910,3);
+   __38->SetBinContent(911,7);
+   __38->SetBinContent(912,6);
+   __38->SetBinContent(913,5);
+   __38->SetBinContent(914,3);
+   __38->SetBinContent(915,4);
+   __38->SetBinContent(916,3);
+   __38->SetBinContent(917,3);
+   __38->SetBinContent(918,2);
+   __38->SetBinContent(919,3);
+   __38->SetBinContent(921,2);
+   __38->SetBinContent(924,1);
+   __38->SetBinContent(926,1);
+   __38->SetBinContent(929,1);
+   __38->SetBinContent(931,1);
+   __38->SetBinContent(933,2);
    __38->SetEntries(1000);
    __38->SetStats(0);
    __38->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{b}#GT [ppm]");
-   __38->GetXaxis()->SetRange(333,379);
+   __38->GetXaxis()->SetRange(719,1054);
    __38->GetXaxis()->CenterTitle(true);
    __38->GetXaxis()->SetLabelFont(42);
    __38->GetXaxis()->SetTitleSize(0.04);
@@ -61,11 +123,11 @@ void BrErr_325()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("0.2
-#pm3e-05
+   pt_LaTex = pt->AddText("0.4
+#pm0.0002
 ");
-   pt_LaTex = pt->AddText("0.000975
-#pm2e-05
+   pt_LaTex = pt->AddText("0.00697
+#pm0.0002
 ");
    pt->Draw();
    c->Modified();

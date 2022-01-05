@@ -1,7 +1,7 @@
 void h1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 17 16:14:57 2021) by ROOT version 6.24/04
+//=========  (Mon Dec 20 16:20:01 2021) by ROOT version 6.24/04
    TCanvas *c = new TCanvas("c", "c",1120,480,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -19,28 +19,28 @@ void h1()
    h1__1->SetBinContent(39,5);
    h1__1->SetBinContent(40,9);
    h1__1->SetBinContent(41,12);
-   h1__1->SetBinContent(42,21);
+   h1__1->SetBinContent(42,22);
    h1__1->SetBinContent(43,28);
    h1__1->SetBinContent(44,42);
    h1__1->SetBinContent(45,36);
-   h1__1->SetBinContent(46,56);
-   h1__1->SetBinContent(47,51);
-   h1__1->SetBinContent(48,76);
-   h1__1->SetBinContent(49,88);
+   h1__1->SetBinContent(46,55);
+   h1__1->SetBinContent(47,52);
+   h1__1->SetBinContent(48,77);
+   h1__1->SetBinContent(49,86);
    h1__1->SetBinContent(50,63);
    h1__1->SetBinContent(51,78);
-   h1__1->SetBinContent(52,70);
-   h1__1->SetBinContent(53,73);
-   h1__1->SetBinContent(54,61);
-   h1__1->SetBinContent(55,49);
-   h1__1->SetBinContent(56,40);
-   h1__1->SetBinContent(57,31);
-   h1__1->SetBinContent(58,31);
+   h1__1->SetBinContent(52,69);
+   h1__1->SetBinContent(53,72);
+   h1__1->SetBinContent(54,60);
+   h1__1->SetBinContent(55,50);
+   h1__1->SetBinContent(56,38);
+   h1__1->SetBinContent(57,35);
+   h1__1->SetBinContent(58,28);
    h1__1->SetBinContent(59,20);
-   h1__1->SetBinContent(60,21);
-   h1__1->SetBinContent(61,8);
-   h1__1->SetBinContent(62,7);
-   h1__1->SetBinContent(63,5);
+   h1__1->SetBinContent(60,22);
+   h1__1->SetBinContent(61,10);
+   h1__1->SetBinContent(62,5);
+   h1__1->SetBinContent(63,7);
    h1__1->SetBinContent(64,2);
    h1__1->SetBinContent(65,1);
    h1__1->SetBinContent(66,2);

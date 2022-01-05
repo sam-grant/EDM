@@ -1,7 +1,7 @@
 void QuadFitRes()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 21 00:28:03 2021) by ROOT version 6.22/08
+//=========  (Wed Jan  5 15:23:21 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0.04581371,-0.0625,0.08035061,0.0625);
@@ -18,10 +18,10 @@ void QuadFitRes()
    0.05555556,
    0.05128205};
    Double_t Graph0_fy1014[4] = {
-   0.001812391,
-   -0.002131617,
-   0.0001616535,
-   0.0008467034};
+   0.01558437,
+   -0.01747361,
+   -0.000932794,
+   0.008631825};
    Double_t Graph0_fex1014[4] = {
    0,
    0,
@@ -74,10 +74,10 @@ void QuadFitRes()
    0.05555556,
    0.05128205};
    Double_t Graph1_fy1015[4] = {
-   -0.001250731,
-   0.008110212,
-   -0.004116559,
-   0.002442099};
+   -0.006890276,
+   0.02959618,
+   -0.005301068,
+   -0.002400597};
    Double_t Graph1_fex1015[4] = {
    0,
    0,
@@ -97,8 +97,8 @@ void QuadFitRes()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph11015 = new TH1F("Graph_Graph11015","Graph",100,0.0492674,0.07344323);
-   Graph_Graph11015->SetMinimum(-0.005339236);
-   Graph_Graph11015->SetMaximum(0.009332889);
+   Graph_Graph11015->SetMinimum(-0.01053892);
+   Graph_Graph11015->SetMaximum(0.03324482);
    Graph_Graph11015->SetDirectory(0);
    Graph_Graph11015->SetStats(0);
 
@@ -121,9 +121,9 @@ void QuadFitRes()
    0.0625,
    0.05128205};
    Double_t Graph2_fy1016[3] = {
-   0.009323415,
-   -0.007664989,
-   0.005689275};
+   0.01024866,
+   -0.008419463,
+   0.006253928};
    Double_t Graph2_fex1016[3] = {
    0,
    0,
@@ -141,8 +141,8 @@ void QuadFitRes()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph21016 = new TH1F("Graph_Graph21016","Graph",100,0.0492674,0.07344323);
-   Graph_Graph21016->SetMinimum(-0.00936383);
-   Graph_Graph21016->SetMaximum(0.01102226);
+   Graph_Graph21016->SetMinimum(-0.01028628);
+   Graph_Graph21016->SetMaximum(0.01211547);
    Graph_Graph21016->SetDirectory(0);
    Graph_Graph21016->SetStats(0);
 
@@ -166,10 +166,10 @@ void QuadFitRes()
    0.05555556,
    0.05128205};
    Double_t Graph3_fy1017[4] = {
-   -0.009642146,
-   0.03614772,
-   -0.04142169,
-   0.02213431};
+   -0.004443203,
+   0.01723935,
+   -0.02059562,
+   0.01139032};
    Double_t Graph3_fex1017[4] = {
    0,
    0,
@@ -189,8 +189,8 @@ void QuadFitRes()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph31017 = new TH1F("Graph_Graph31017","Graph",100,0.0492674,0.07344323);
-   Graph_Graph31017->SetMinimum(-0.04917863);
-   Graph_Graph31017->SetMaximum(0.04390466);
+   Graph_Graph31017->SetMinimum(-0.02437911);
+   Graph_Graph31017->SetMaximum(0.02102284);
    Graph_Graph31017->SetDirectory(0);
    Graph_Graph31017->SetStats(0);
 
@@ -214,10 +214,10 @@ void QuadFitRes()
    0.05555556,
    0.05128205};
    Double_t Graph4_fy1018[4] = {
-   0.006281915,
-   -0.01226112,
-   0.001118599,
-   0.00142811};
+   -0.01349017,
+   0.01660674,
+   0.01203585,
+   -0.008910299};
    Double_t Graph4_fex1018[4] = {
    0,
    0,
@@ -241,8 +241,8 @@ void QuadFitRes()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph41018 = new TH1F("Graph_Graph41018","Graph",100,0.0492674,0.07344323);
-   Graph_Graph41018->SetMinimum(-0.01411542);
-   Graph_Graph41018->SetMaximum(0.008136218);
+   Graph_Graph41018->SetMinimum(-0.01649986);
+   Graph_Graph41018->SetMaximum(0.01961643);
    Graph_Graph41018->SetDirectory(0);
    Graph_Graph41018->SetStats(0);
 
@@ -265,9 +265,9 @@ void QuadFitRes()
    0.05555556,
    0.05128205};
    Double_t Graph5_fy1019[3] = {
-   0.003438639,
-   -0.005428613,
-   0.003831274};
+   -0.006344098,
+   0.01001695,
+   -0.007058498};
    Double_t Graph5_fex1019[3] = {
    0,
    0,
@@ -285,8 +285,8 @@ void QuadFitRes()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph51019 = new TH1F("Graph_Graph51019","Graph",100,0.05016026,0.06362179);
-   Graph_Graph51019->SetMinimum(-0.006354602);
-   Graph_Graph51019->SetMaximum(0.004757263);
+   Graph_Graph51019->SetMinimum(-0.008766043);
+   Graph_Graph51019->SetMaximum(0.01172449);
    Graph_Graph51019->SetDirectory(0);
    Graph_Graph51019->SetStats(0);
 

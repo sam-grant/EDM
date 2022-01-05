@@ -1,10 +1,10 @@
 void QuadChiSqrs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 21 00:28:03 2021) by ROOT version 6.22/08
+//=========  (Wed Jan  5 15:23:20 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-0.673163,75,6.142279);
+   c->Range(-75,0.581465,75,2.045569);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,26 +19,26 @@ void QuadChiSqrs()
    -30,
    -50};
    Double_t Graph0_fy1013[6] = {
-   0.009312445,
-   0.09030748,
-   0.5443851,
-   4.965151,
-   0.1890635,
-   0.1610253};
+   1.017263,
+   1.220778,
+   0.9915501,
+   1.801552,
+   1.339974,
+   0.8254824};
    Double_t Graph0_fex1013[6] = {
-   2.194008e-314,
+   2.24937e-314,
    1.482197e-323,
-   2.190401e-314,
-   6.949236e-310,
+   2.247088e-314,
+   6.929144e-310,
    2.964394e-323,
-   2.186694e-314};
+   2.245006e-314};
    Double_t Graph0_fey1013[6] = {
-   2.194008e-314,
+   2.24937e-314,
    1.482197e-323,
-   2.190401e-314,
-   6.949236e-310,
+   2.247088e-314,
+   6.929144e-310,
    2.964394e-323,
-   2.186694e-314};
+   2.245006e-314};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
    gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf");
@@ -46,8 +46,8 @@ void QuadChiSqrs()
    gre->SetFillStyle(1000);
    
    TH1F *Graph_Graph01013 = new TH1F("Graph_Graph01013","",100,-60,60);
-   Graph_Graph01013->SetMinimum(0.0083812);
-   Graph_Graph01013->SetMaximum(5.460735);
+   Graph_Graph01013->SetMinimum(0.7278755);
+   Graph_Graph01013->SetMaximum(1.899159);
    Graph_Graph01013->SetDirectory(0);
    Graph_Graph01013->SetStats(0);
 

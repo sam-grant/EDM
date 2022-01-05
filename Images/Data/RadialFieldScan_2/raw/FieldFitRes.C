@@ -1,10 +1,10 @@
 void FieldFitRes()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 21 00:28:03 2021) by ROOT version 6.22/08
+//=========  (Wed Jan  5 15:23:21 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-75,-2.798699,75,2.1068);
+   c->Range(-75,-2.183186,75,1.810077);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void FieldFitRes()
    -30,
    -50};
    Double_t Graph0_fy1022[6] = {
-   0.9971936,
-   -1.981115,
-   1.251345,
-   1.289217,
-   -0.7816315,
-   -0.5805324};
+   1.141503,
+   -1.517642,
+   1.144533,
+   -0.02787925,
+   0.151612,
+   -0.6339056};
    Double_t Graph0_fex1022[6] = {
    0,
    0,
@@ -41,13 +41,13 @@ void FieldFitRes()
    0};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1022,Graph0_fy1022,Graph0_fex1022,Graph0_fey1022);
    gre->SetName("Graph0");
-   gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];Fit residual [ppm]");
+   gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];Fit residual [mm#upointkV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01022 = new TH1F("Graph_Graph01022","",100,-60,60);
-   Graph_Graph01022->SetMinimum(-2.308149);
-   Graph_Graph01022->SetMaximum(1.61625);
+   Graph_Graph01022->SetMinimum(-1.78386);
+   Graph_Graph01022->SetMaximum(1.410751);
    Graph_Graph01022->SetDirectory(0);
    Graph_Graph01022->SetStats(0);
 
@@ -61,7 +61,7 @@ void FieldFitRes()
    Graph_Graph01022->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01022->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01022->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01022->GetYaxis()->SetTitle("Fit residual [ppm]");
+   Graph_Graph01022->GetYaxis()->SetTitle("Fit residual [mm#upointkV]");
    Graph_Graph01022->GetYaxis()->CenterTitle(true);
    Graph_Graph01022->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01022->GetYaxis()->SetLabelFont(42);

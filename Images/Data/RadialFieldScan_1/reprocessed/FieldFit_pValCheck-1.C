@@ -1,7 +1,7 @@
 void FieldFit_pValCheck-1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Feb 16 21:37:23 2021) by ROOT version 6.22/06
+//=========  (Wed Jan  5 15:30:06 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-26.45885,45,49.43258);
@@ -25,7 +25,7 @@ void FieldFit_pValCheck-1()
    1.044039};
    TGraphErrors *gre = new TGraphErrors(2,Graph0_fx1011,Graph0_fy1011,Graph0_fex1011,Graph0_fey1011);
    gre->SetName("Graph0");
-   gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]");
+   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -39,13 +39,13 @@ void FieldFit_pValCheck-1()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01011->SetLineColor(ci);
-   Graph_Graph01011->GetXaxis()->SetTitle("#LTB_{r}^{App}#GT [ppm]");
+   Graph_Graph01011->GetXaxis()->SetTitle("Applied #LTB_{r}#GT [ppm]");
    Graph_Graph01011->GetXaxis()->CenterTitle(true);
    Graph_Graph01011->GetXaxis()->SetLabelFont(42);
    Graph_Graph01011->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01011->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01011->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01011->GetYaxis()->SetTitle("#LTy#GT#upointQHV [mm#upointkV]");
+   Graph_Graph01011->GetYaxis()->SetTitle("#LTy#GT#upointV [mm#upointkV]");
    Graph_Graph01011->GetYaxis()->CenterTitle(true);
    Graph_Graph01011->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01011->GetYaxis()->SetLabelFont(42);
@@ -88,9 +88,15 @@ void FieldFit_pValCheck-1()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    TText *pt_LaTex = pt->AddText("  inf");
-   pt_LaTex = pt->AddText("0.809#pm0.0243");
-   pt_LaTex = pt->AddText(" 11.5#pm0.729");
-   pt_LaTex = pt->AddText(" 14.2#pm 1.01");
+   pt_LaTex = pt->AddText("0.81
+#pm0.02
+");
+   pt_LaTex = pt->AddText("1e+01
+#pm0.7
+");
+   pt_LaTex = pt->AddText("1e+01
+#pm1
+");
    pt->Draw();
    
    pt = new TPaveText(0.11,0.68,0.33,0.89,"brNDC");
@@ -101,7 +107,7 @@ void FieldFit_pValCheck-1()
    pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient");
    pt_LaTex = pt->AddText("Y-intercept [mm#upointkV]");
-   pt_LaTex = pt->AddText("#LTB_{r}^{Bkg}#GT [ppm]");
+   pt_LaTex = pt->AddText("Background #LTB_{r}#GT [ppm]");
    pt->Draw();
    TLine *line = new TLine(-36,0,-14.21755,0);
    line->SetLineStyle(2);

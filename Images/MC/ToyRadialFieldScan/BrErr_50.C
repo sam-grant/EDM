@@ -1,7 +1,7 @@
 void BrErr_50()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec 20 14:38:48 2021) by ROOT version 6.24/04
+//=========  (Wed Jan  5 17:09:13 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,96 +10,29 @@ void BrErr_50()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__5 = new TH1D("__5","Number of sub-runs: 50",2000,0,1);
-   __5->SetBinContent(877,2);
-   __5->SetBinContent(878,2);
-   __5->SetBinContent(879,2);
-   __5->SetBinContent(881,1);
-   __5->SetBinContent(882,2);
-   __5->SetBinContent(883,5);
-   __5->SetBinContent(884,2);
-   __5->SetBinContent(885,1);
-   __5->SetBinContent(886,3);
-   __5->SetBinContent(887,3);
-   __5->SetBinContent(888,4);
-   __5->SetBinContent(889,6);
-   __5->SetBinContent(890,13);
-   __5->SetBinContent(891,9);
-   __5->SetBinContent(892,14);
-   __5->SetBinContent(893,20);
-   __5->SetBinContent(894,9);
-   __5->SetBinContent(895,12);
-   __5->SetBinContent(896,13);
-   __5->SetBinContent(897,14);
-   __5->SetBinContent(898,14);
-   __5->SetBinContent(899,14);
-   __5->SetBinContent(900,19);
-   __5->SetBinContent(901,24);
-   __5->SetBinContent(902,25);
-   __5->SetBinContent(903,21);
-   __5->SetBinContent(904,35);
-   __5->SetBinContent(905,27);
-   __5->SetBinContent(906,33);
-   __5->SetBinContent(907,26);
-   __5->SetBinContent(908,33);
-   __5->SetBinContent(909,34);
-   __5->SetBinContent(910,31);
-   __5->SetBinContent(911,29);
-   __5->SetBinContent(912,31);
-   __5->SetBinContent(913,30);
-   __5->SetBinContent(914,28);
-   __5->SetBinContent(915,23);
-   __5->SetBinContent(916,32);
-   __5->SetBinContent(917,38);
-   __5->SetBinContent(918,33);
-   __5->SetBinContent(919,15);
-   __5->SetBinContent(920,26);
-   __5->SetBinContent(921,19);
-   __5->SetBinContent(922,20);
-   __5->SetBinContent(923,19);
-   __5->SetBinContent(924,19);
-   __5->SetBinContent(925,23);
-   __5->SetBinContent(926,17);
-   __5->SetBinContent(927,21);
-   __5->SetBinContent(928,15);
-   __5->SetBinContent(929,14);
-   __5->SetBinContent(930,11);
-   __5->SetBinContent(931,8);
-   __5->SetBinContent(932,8);
-   __5->SetBinContent(933,7);
-   __5->SetBinContent(934,6);
-   __5->SetBinContent(935,10);
-   __5->SetBinContent(936,2);
-   __5->SetBinContent(937,2);
-   __5->SetBinContent(938,4);
-   __5->SetBinContent(939,1);
-   __5->SetBinContent(940,8);
-   __5->SetBinContent(941,1);
-   __5->SetBinContent(943,1);
-   __5->SetBinContent(944,1);
-   __5->SetBinContent(945,1);
-   __5->SetBinContent(947,2);
-   __5->SetBinContent(948,2);
-   __5->SetEntries(1000);
-   __5->SetStats(0);
-   __5->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{b}#GT [ppm]");
-   __5->GetXaxis()->SetRange(761,1062);
-   __5->GetXaxis()->CenterTitle(true);
-   __5->GetXaxis()->SetLabelFont(42);
-   __5->GetXaxis()->SetTitleSize(0.04);
-   __5->GetXaxis()->SetTitleOffset(1.1);
-   __5->GetXaxis()->SetTitleFont(42);
-   __5->GetYaxis()->SetTitle("Trials");
-   __5->GetYaxis()->CenterTitle(true);
-   __5->GetYaxis()->SetNdivisions(4000510);
-   __5->GetYaxis()->SetLabelFont(42);
-   __5->GetYaxis()->SetTitleSize(0.04);
-   __5->GetYaxis()->SetTitleOffset(1.1);
-   __5->GetYaxis()->SetTitleFont(42);
-   __5->GetZaxis()->SetLabelFont(42);
-   __5->GetZaxis()->SetTitleOffset(1);
-   __5->GetZaxis()->SetTitleFont(42);
-   __5->Draw("HIST");
+   TH1D *__14 = new TH1D("__14","Number of sub-runs: 50",2000,0,1);
+   __14->SetBinContent(1992,1);
+   __14->SetBinContent(2001,999);
+   __14->SetEntries(1000);
+   __14->SetStats(0);
+   __14->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{b}#GT [ppm]");
+   __14->GetXaxis()->SetRange(1992,1992);
+   __14->GetXaxis()->CenterTitle(true);
+   __14->GetXaxis()->SetLabelFont(42);
+   __14->GetXaxis()->SetTitleSize(0.04);
+   __14->GetXaxis()->SetTitleOffset(1.1);
+   __14->GetXaxis()->SetTitleFont(42);
+   __14->GetYaxis()->SetTitle("Trials");
+   __14->GetYaxis()->CenterTitle(true);
+   __14->GetYaxis()->SetNdivisions(4000510);
+   __14->GetYaxis()->SetLabelFont(42);
+   __14->GetYaxis()->SetTitleSize(0.04);
+   __14->GetYaxis()->SetTitleOffset(1.1);
+   __14->GetYaxis()->SetTitleFont(42);
+   __14->GetZaxis()->SetLabelFont(42);
+   __14->GetZaxis()->SetTitleOffset(1);
+   __14->GetZaxis()->SetTitleFont(42);
+   __14->Draw("HIST");
    
    TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
    pt->SetFillColor(0);
@@ -117,11 +50,11 @@ void BrErr_50()
    pt->SetTextFont(44);
    pt->SetTextSize(26);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("0.5
-#pm0.0002
+   pt_LaTex = pt->AddText("1
+#pm0
 ");
-   pt_LaTex = pt->AddText("0.00629
-#pm0.0001
+   pt_LaTex = pt->AddText("0
+#pm0
 ");
    pt->Draw();
    c->Modified();

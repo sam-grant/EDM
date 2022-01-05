@@ -36,8 +36,8 @@ void CL_test() {
 	// double sigma = 1.6e-19;//1.05057e-19;
 
     // FNAL (prelim)
-    double mu = 0; // -0.04e-19;
-    double sigma = 1.05057e-19;
+    double mu = 0;
+    double sigma = 1.060207e-19;
 
 	for (int i(0); i<1e3; i++) {
 

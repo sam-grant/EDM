@@ -862,12 +862,17 @@ void DrawQuadScanFits(std::vector<TGraphErrors*> graphs, std::string func, std::
 	// TLegend *l = new TLegend(0.88,0.35,0.99,0.65);
 	// l->SetBorderSize(0);
 
-	c->SetRightMargin(0.15);
+	// Primary 
+/*	c->SetRightMargin(0.15);
 	TLegend *l = new TLegend(0.87,0.30,0.99,0.70);
+	l->SetBorderSize(0);*/
+
+	// Preliminary 
+	c->SetRightMargin(0.15);
+	TLegend *l = new TLegend(0.87,0.40,0.99,0.60);
 	l->SetBorderSize(0);
 
 	l->SetHeader("#LTB_{r}^{a}#GT [ppm]");
-
 
 	graphs.at(0)->SetTitle(";1/V [kV^{-1}];#LTy#GT [mm]");
 	graphs.at(0)->GetXaxis()->SetTitleSize(.04);
@@ -1047,23 +1052,22 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	// TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC"); // QHV
 	TPaveText *names = new TPaveText(0.11,0.68,0.33,0.89,"NDC"); // 1/QHV
 	names->SetTextAlign(13);
-	names->AddText("#chi^{2}/ndf"); 
+	//names->AddText("#chi^{2}/ndf"); 
 	names->AddText("Gradient"); 
 	names->AddText("Y-intercept [mm#upointkV]"); 
-	// names->AddText("#LTB_{r}^{b}#GT [ppm]"); 
 	names->AddText("Background #LTB_{r}#GT [ppm]"); 
 
 	//TPaveText *values = new TPaveText(0.69,0.68,0.89,0.89,"NDC");
 	TPaveText *values = new TPaveText(0.50,0.68,0.60,0.89,"NDC");
 	values->SetTextAlign(33);
 
-	values->AddText(ThreeSigFig(chi2ndf));
+	//values->AddText(ThreeSigFig(chi2ndf));
 /*	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
 	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));*/
-	values->AddText(Round(par1, 3)+"#pm"+Round(err1, 1));
-	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
-	values->AddText(Round(-xint, 2)+"#pm"+Round(xint_err, 1));
+	values->AddText(Round(par1, 3)+"#pm"+Round(err1, 3));
+	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 3));
+	values->AddText(Round(-xint, 3)+"#pm"+Round(xint_err, 3));
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 
 	names->SetTextSize(26);
