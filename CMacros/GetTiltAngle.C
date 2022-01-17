@@ -430,6 +430,35 @@ double GetLimit(double delta_prime) {
 
 }
 
+std::tuple<double, double> GetRadialField(std::string dataset) {
+
+  /*1a & $22\pm7$ \\
+  1b & $23\pm8$ \\
+  1c & $30\pm8$ \\
+  1d & $34\pm9$ \\ 
+  */
+  double Br = 0;
+  double eBr = 0; 
+  
+  if(dataset=="Run-1a") {
+    Br = 20.3338 * 1e-3; // mrad 
+    eBr = 6.67124 * 1e-3; // mrad
+  } else if(dataset=="Run-1b") {
+    Br = 21.0042 * 1e-3; // mrad
+    eBr = 7.53705 * 1e-3; // mrad
+  } else if(dataset=="Run-1c") {
+    Br = 27.3757 * 1e-3; // mrad 
+    eBr = 7.5812 * 1e-3; // mrad
+  } else if(dataset=="Run-1d") {
+    Br = 31.4235 * 1e-3; // mrad 
+    eBr = 7.86634 * 1e-3; 
+  } else cerr<<"GetRadialField: dataset not found";
+  
+  // Do we actually subtract the radial field?
+  return make_tuple(Br, eBr);
+
+}
+
 void RunSim(string config, string dataset, string blinding) { 
 
   cout<<"\n***************************** SIM *****************************\n"<<endl;
@@ -589,6 +618,20 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
   cout<<"Running "<<config<<" with... "<<dataset<<endl;
   cout<<"Info:\n"<<step<<", "<<qual<<endl;
 
+  cout<<"\n***************************** Defining output tree *****************************\n"<<endl;
+
+  // This needs to come before you define the output file or it will throw a WriteBuffer error. No idea why. 
+
+  // Result tree
+  TTree *EDMTree = new TTree("EDMTree", "EDMTree");
+  double dMu; double dMu_err; 
+  EDMTree->Branch("dMu", &dMu);//, "dMu/d");
+  EDMTree->Branch("dMu_err", &dMu_err);//, "dMu_err/d");
+  TTree *g2Tree = new TTree("BzTree", "BzTree");
+  double g2; double g2_err; 
+  g2Tree->Branch("g2", &g2);//, "g2/d");
+  g2Tree->Branch("g2_err", &g2_err);//, "g2_err/d");
+
   cout<<"\n***************************** Creating output file *****************************\n"<<endl;
 
   TString outputFileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr+".root";
@@ -613,6 +656,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   vector<string> results_;
 
+
+
   for(auto& fitType : fitType_) {
 
     outputFile->mkdir((fitType).c_str()); 
@@ -625,7 +670,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       if(fitType == "EDM") {
         subscript += fitType;
         results_.push_back(", delta_prime, , dMu [ecm], ,");
-        results_.push_back("Station, value, fit_error, dil_error, tot_error, value, fit_error, dil_error, tot_error");
+        results_.push_back("Station, value, fit_error, dil_error, Br_error, tot_error, value, fit_error, dil_error, Br_error, tot_error");
         blind += "BLIND";
       } else if(fitType == "g2") {
         subscript += "g#minus2";
@@ -647,9 +692,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       }
 
     }
-
-    // Result tree for each fit type
-    TTree *resultTree = new TTree("resultTree", "resultTree");
 
     // Apply correction
     for(auto& stn : stn_) {
@@ -683,9 +725,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       gr_delta_prime->SetName((stn+"_delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
 
-      cout<<"a"<<endl;
       vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mottFunctions_, A_gr);
-      cout<<"b"<<endl;
       // Slows things down quite substantially 
       // DrawDeltaPrimeFits(deltaPrimeFits_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'{"+subscript+"} [mrad]", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p_"+to_string(nTrials));
 
@@ -703,68 +743,73 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       std::ostringstream oss_binWidth; oss_binWidth << binWidth;
 
       // Fill histogram
-      
       TH1D *h_delta_prime  = GetDeltaPrimeHist(deltaPrimeFits_, h_min, h_max, binWidth);
-      cout<<"filled"<<endl;
+
       // Draw and write histogram
       // DrawDeltaPrimeHist(h_delta_prime, ";#delta'_{"+subscript+"}^{BLIND} [mrad] / "+to_string(step/2)+";Trials", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials));
       if(correctDilution) DrawDeltaPrimeHist(h_delta_prime, stn+";#delta'_{"+subscript+"}^{"+blind+"} [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr);
       h_delta_prime->SetName((stn+"_h_delta_prime").c_str());
       h_delta_prime->Write();
 
+      // Radial field in mrad 
+      double Br = get<0>(GetRadialField(datasetLabel));
+      double err_Br = get<1>(GetRadialField(datasetLabel)); 
+
       // Fill results
       double delta_prime = f_delta_prime->GetParameter(0);
-      double result = delta_prime;
+      double result = delta_prime - Br;
       double err_fit = f_delta_prime->GetParError(0);
       double err_dil = h_delta_prime->GetRMS();
-      double err_tot = sqrt(pow(err_fit,2) + pow(err_dil,2));
+      double err_tot = sqrt(pow(err_fit,2) + pow(err_dil,2) + pow(err_Br,2));    
 
       if(fitType == "EDM") {
 
+
+        dMu = GetLimit(result); dMu_err = GetLimit(err_tot);
+        //outputFile->cd();
+        EDMTree->Fill(); 
+
         // Deal with converting small double into strings
-        double result2Tree = GetLimit(result); double error2Tree = GetLimit(err_tot);
-
-        // Write into TBranch
-        resultTree->Branch((stn+"_dMu").c_str(), &result2Tree);
-        resultTree->Branch((stn+"_dMu_err").c_str(), &error2Tree);
-
         std::ostringstream oss_result; oss_result << GetLimit(result);
         std::ostringstream oss_err_fit; oss_err_fit << GetLimit(err_fit);
         std::ostringstream oss_err_dil; oss_err_dil << GetLimit(err_dil);
+        std::ostringstream oss_err_Br; oss_err_Br << GetLimit(err_Br);
         std::ostringstream oss_err_tot; oss_err_tot << GetLimit(err_tot);
-        std::string dMu = oss_result.str();
+        std::string dMu_str = oss_result.str();
         std::string err_dMu_fit = oss_err_fit.str();
         std::string err_dMu_dil = oss_err_dil.str();
+        std::string err_dMu_Br = oss_err_Br.str();
         std::string err_dMu_tot = oss_err_tot.str();
 
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_dil)+", "+to_string(err_tot)+", "+dMu+", "+err_dMu_fit+", "+err_dMu_dil+", "+err_dMu_tot);
+        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_dil)+", "+to_string(err_Br)+", "+to_string(err_tot)+", "+dMu_str+", "+err_dMu_fit+", "+err_dMu_dil+", "+err_dMu_Br+", "+err_dMu_tot);
 
       } else if(fitType == "g2") {
 
-        double result2Tree = 1e3*result; double error2Tree = 1e3*err_tot;
+        g2 = 1e3*result; g2_err = 1e3*err_tot;
 
-        // TODO: This doesn't work properly for individual stations. May need a simplified method.
-        // Write into TBranch
-        resultTree->Branch((stn+"_Bz").c_str(), &result2Tree);
-        resultTree->Branch((stn+"_Bz_err").c_str(), &error2Tree);
+        //outputFile->cd();
+        g2Tree->Fill(); 
 
         results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_dil)+", "+to_string(err_tot)+", "+to_string(delta_prime*1e3)+", "+to_string(err_fit*1e3)+", "+to_string(err_dil*1e3)+", "+to_string(err_tot*1e3));
       }
 
-      resultTree->Fill();
-
+      outputFile->cd((fitType).c_str());
 
     } // Station loop
 
-    //resultTree->Fill(); 
-    resultTree->Write(); 
-
   } 
-
 
   cout<<"\n***************************** Writing output *****************************\n"<<endl;
 
+  outputFile->cd("EDM");
+  EDMTree->Write();
+  outputFile->cd("g2");
+  g2Tree->Write();
+
+  outputFile->Write();
+
   cout<<"Written results to output file "<<outputFileName<<", "<<outputFile<<endl;
+
 
   cout<<"\n***************************** Printing results *****************************\n"<<endl;
 
@@ -802,11 +847,13 @@ int main() {
 	
 */
   // Data
-/*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
   RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);*/
-  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
+
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
+  //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
 
 
 /*  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);

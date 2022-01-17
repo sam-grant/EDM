@@ -20,7 +20,7 @@ string xmax = "2750";
   int nPars = 1;
   TVectorD meanVals(nPars);
   for(int n = 0; n < nPars; n++){
-    meanVals[n] = fit->GetParameter(n);
+  meanVals[n] = fit->GetParameter(n);
   }
 
   // Covariance matrix
@@ -37,43 +37,43 @@ string xmax = "2750";
   double r2 = 0; // r^2 (see https://upload.wikimedia.org/wikipedia/commons/a/a2/Cumulative_function_n_dimensional_Gaussians_12.2013.pdf)
 
   while(TMath::Prob(r2,nPars) > CL){
-    r2 += 0.00001; // why 0.00001?
+  r2 += 0.00001; // why 0.00001?
   }
 
   double r = sqrt(r2); // This is the Mahalanobis distance threshold under which CL % of points fall below
 
   for(int i = -1; i < 2; i++) {
     
-    // Skip the minimum chi^2
-    if(i==0) continue;
+  // Skip the minimum chi^2
+  if(i==0) continue;
 
-    TVectorD u(nPars); 
-    u[0] = i;
+  TVectorD u(nPars); 
+  u[0] = i;
 
-    // Determine the scale factor required to move 1 sigma
-    double scale = u.Norm2Sqr() > 0 ? r/sqrt(u.Norm2Sqr()) : 1; 
+  // Determine the scale factor required to move 1 sigma
+  double scale = u.Norm2Sqr() > 0 ? r/sqrt(u.Norm2Sqr()) : 1; 
 
-    cout<<"scale "<<scale<<endl;
+  cout<<"scale "<<scale<<endl;
 
-    for(int par = 0; par < nPars; par++) u[par] *= scale;
+  for(int par = 0; par < nPars; par++) u[par] *= scale;
 
-    TVectorD z = matrixCov*u + meanVals;
+  TVectorD z = matrixCov*u + meanVals;
 
-    for(int par = 0; par < nPars; par++) cout << z[par] << ", ";
-    cout << endl;
+  for(int par = 0; par < nPars; par++) cout << z[par] << ", ";
+  cout << endl;
 
-    // Define shifted function
-    TF1 *trial = new TF1(Form("shift_%d",i), "pol0", xmin, xmax);
+  // Define shifted function
+  TF1 *trial = new TF1(Form("shift_%d",i), "pol0", xmin, xmax);
 
-    for(int par = 0; par < nPars; par++) trial->SetParameter(par,z[par]);
+  for(int par = 0; par < nPars; par++) trial->SetParameter(par,z[par]);
     
-    mahalanobisFunctions_.push_back(trial);
+  mahalanobisFunctions_.push_back(trial);
 
   }
 
   return mahalanobisFunctions_;
 
-}*/
+  }*/
 
 void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, vector<string> xLabel_) {
 
@@ -167,7 +167,8 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   vector<string> label_ = {"Station 12", "Station 18", "Combined"};
 
-  graph_.at(0)->SetTitle(title.c_str());
+  graph_.at(0)->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");//title.c_str());
+  //graph_.at(0)->SetTextSize(26);//"d_{#mu}^{BLIND} [e#upointcm]");
   graph_.at(0)->GetXaxis()->SetTitleSize(.04);
   graph_.at(0)->GetYaxis()->SetTitleSize(.04);
   graph_.at(0)->GetXaxis()->SetTitleOffset(1.1);
@@ -205,7 +206,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   for(int i(0); i<graph_.at(0)->GetN(); i++) graph_.at(0)->GetXaxis()->SetBinLabel(graph_.at(0)->GetXaxis()->FindBin(i+1), (xLabel_.at(i)).c_str());
 
   graph_.at(0)->GetXaxis()->LabelsOption("h");
-
+  graph_.at(0)->GetXaxis()->SetLabelSize(0.055);//Option("h");
   graph_.at(0)->Draw("AP");
   gPad->Update();
   
@@ -289,154 +290,73 @@ double GetLimit(double delta_prime) {
 
 }
 
-std::tuple<double, double> RemoveRadialField(double A, double eA, std::string dataset) {
-  /*1a & $22\pm7$ \\
-  1b & $23\pm8$ \\
-  1c & $30\pm8$ \\
-  1d & $34\pm9$ \\ 
-  */
-  double Br = 0;
-  double eBr = 0; 
-  
-  if(dataset=="Run-1a") {
-    Br = 22 * 1e-3; // mrad 
-    eBr = 7 * 1e-3; // mrad
-  } else if(dataset=="Run-1b") {
-    Br = 23 * 1e-3; // mrad
-    eBr = 8 * 1e-3; // mrad
-  } else if(dataset=="Run-1c") {
-    Br = 30 * 1e-3; // mrad 
-    eBr = 8 * 1e-3; // mrad
-  } else if(dataset=="Run-1d") {
-    Br = 34 * 1e-3; // mrad 
-    eBr = 9 * 1e-3; 
-  } else cerr<<"RemoveRadialField: dataset not found";
-  
-  // Do we actually subtract the radial field?
-  return make_tuple(A-Br, sqrt(pow(eA, 2)+pow(eBr,2)));
-
-}
-
-void Run(std::string dataset, int step, std::string blinding, bool correctDilution, bool removeRadialField = true) { 
+void Run(std::string dataset, int step, std::string blinding, std::string fitType, bool correctDilution) { 
 
   std::string dilCorrStr = "";
   if(!correctDilution) dilCorrStr += "_noCorr";
 
-  std::string radialFieldString = "";
-  if(removeRadialField) radialFieldString += "_noBr";
+  vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
+  vector<string> stn_ = {"S12", "S18", "S12S18"};
 
-  //dilCorrStr += "_weighted";
+  vector<TGraphErrors*> gr_; 
 
-	vector<string> DS_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
-	vector<string> stn_ = {"S12", "S18", "S12S18"};
-	vector<string> fitType_ {"g2", "EDM"};
+  int i_entry = 0;
+  
+  for(int i_stn(0); i_stn < stn_.size(); i_stn++) { 
 
-	TFile *file_1a = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1a_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
-	TFile *file_1b = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1b_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
-	TFile *file_1c = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1c_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
-	TFile *file_1d = TFile::Open(("../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_Run-1d_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
+    std::string stn = stn_.at(i_stn);
 
-	vector<TFile*> files_ = {file_1a, file_1b, file_1c, file_1d};
+    TGraphErrors *gr = new TGraphErrors();
 
-  for(auto& fitType : fitType_) {
+    for(int i_ds(0); i_ds < ds_.size(); i_ds++) { 
 
-    std::string subscript = "";
-    std::string title = "";
+      std::string ds = ds_.at(i_ds);
 
-    if(dataset == "Run-1") {
+      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
 
-      if(fitType == "EDM") {
-        subscript = fitType;
-        title = ";;d_{#mu}^{BLIND} [e#upointcm]";
-      } else if(fitType == "g2") {
-        subscript = "g#minus2";
-        title = ";;B_{z}/B_{y} [ppm]";
-    }
+      TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
+      
+      double result = 0; double error = 0;
+      
+      resultTree->SetBranchAddress("dMu", &result);
+      resultTree->SetBranchAddress("dMu_err", &error);
 
-    } 
+      resultTree->GetEntry(i_stn);
 
-    else if(dataset=="O") {
+      cout<<stn<<", "<<result<<"±"<<error<<endl;
 
-      if(fitType == "EDM") {
-        subscript = "s";
-        title = ";;#Omega_{"+subscript+"} [e#upointcm]";
-      } else if(fitType == "g2") {
-        subscript = "c";
-        title = ";;#Omega_{"+subscript+"} [ppm]";
-      }
+      file->Close();
 
-    }
-
-    vector<TGraphErrors*> gr_; 
-
-    for(auto& stn : stn_) {
-
-		TGraphErrors *gr = new TGraphErrors();
-
-		for(int i=0; i<DS_.size(); i++) {
-
-			TGraphErrors *gr_delta_prime = (TGraphErrors*)files_.at(i)->Get((fitType+"/"+stn+"_delta_prime_vs_p").c_str());
-			TH1D *h_delta_prime = (TH1D*)files_.at(i)->Get((fitType+"/"+stn+"_h_delta_prime").c_str());
-
-			double A = gr_delta_prime->GetFunction("pol0")->GetParameter(0);
-			double eA = sqrt( pow(gr_delta_prime->GetFunction("pol0")->GetParError(0),2) + pow(h_delta_prime->GetRMS(),2) );
-
-			if(fitType == "EDM") {
-
-        if(removeRadialField) { 
-
-          A = get<0>(RemoveRadialField(A, eA, DS_.at(i)));
-          eA = get<1>(RemoveRadialField(A, eA, DS_.at(i)));
-
-        }
-
-				A = GetLimit(A);
-				eA = GetLimit(eA);
-
-			} else if(fitType == "g2") { 
-
-				A = 1e3*A;
-				eA = 1e3*eA;
-
-			}
-
-      double x = i+1;
+      // Set x values where stations are spaced out
+      double x = i_ds+1;
       if(stn=="S12") x = x - 0.1; 
       if(stn=="S12S18") x = x + 0.1; 
 
-			gr->SetPoint(i,x,A);
-			gr->SetPointError(i,0,eA);
-		}
+      gr->SetPoint(i_ds,x,result);
+      gr->SetPointError(i_ds,0,error);
 
-		std::string new_title = stn+title;
+    }
 
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-		DrawGraph(gr, new_title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+radialFieldString, DS_);
+    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, ds_);
 
     gr_.push_back(gr);
 
-
-	 }
-
-   DrawAllGraphs(gr_, title.c_str(), "../Images/Data/dMu/"+dataset+"/Results/A"+fitType+"_vs_DS_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+radialFieldString, DS_);
-
   }
 
-	return;
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, ds_);
+
+
+  return;
 
 }
 
 void PlotEDMResultsPerDS() { 
 
-  Run("Run-1", 125, "blinded", true, true);
-  Run("Run-1", 125, "blinded", true, false);
-  // Run("Run-1", 125, "blinded", true);
-  // Run("Run-1", 125, "blinded", true);
-  //Run("O", 125, "unblinded", true);
-  //Run("Run-1", 125, "blinded", false);
-  //Run("O", 125, "unblinded", false);
+  Run("Run-1", 125, "blinded", "EDM", true); 
+
   
   return;
 
