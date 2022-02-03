@@ -1,0 +1,220 @@
+
+***************************** DATA *****************************
+
+
+***************************** Processing input configuration *****************************
+
+Running Run-1a_125MeV_BQ with... Run-1
+Info:
+125, BQ
+
+***************************** Defining output tree *****************************
+
+
+***************************** Creating output file *****************************
+
+
+***************************** Getting data *****************************
+
+Got files:
+../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1a_125MeV_BQ.root, 0x7fd919b7f820
+../Plots/MC/dMu/Dilution/dilutionCurves.refit.root, 0x7fd919bbbf80
+
+***************************** Performing dilution correction *****************************
+
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+***************************** Writing output *****************************
+
+Written results to output file ../Plots/Data/dMu/Run-1/Fits/edmResults_blinded_750-2750MeV_Run-1a_125MeV_BQ.refit.root, 0x7fd919b37e00
+
+***************************** Printing results *****************************
+
+, delta_prime, , dMu [ecm], ,
+Station, value, fit_error, dil_error, Br_error, tot_error, value, fit_error, dil_error, Br_error, tot_error
+S12, 0.588679, 0.100137, 0.050874, 0.006671, 0.112517, 1.81428e-18, 3.19659e-19, 1.62401e-19, 2.12961e-20, 3.59178e-19
+S18, 0.283488, 0.118798, 0.084625, 0.006671, 0.146010, 8.40045e-19, 3.7923e-19, 2.70142e-19, 2.12961e-20, 4.66097e-19
+S12S18, 0.450008, 0.077166, 0.032135, 0.006671, 0.083856, 1.37162e-18, 2.46332e-19, 1.02581e-19, 2.12961e-20, 2.67686e-19
+, delta_prime, , Bz/By [ppm], ,
+Station, value, error, value, error
+S12, -0.082575, 0.100634, 0.012184, 0.101588, -82.574636, 100.633577, 12.183666, 101.587715
+S18, 0.046469, 0.120114, 0.071770, 0.140082, 46.468983, 120.114091, 71.770400, 140.081728
+S12S18, -0.024415, 0.077759, 0.008983, 0.078560, -24.414522, 77.758572, 8.983246, 78.559529
+
+***************************** Done *****************************
+
+***************************** DATA *****************************
+
+
+***************************** Processing input configuration *****************************
+
+Running Run-1b_125MeV_BQ with... Run-1
+Info:
+125, BQ
+
+***************************** Defining output tree *****************************
+
+
+***************************** Creating output file *****************************
+
+
+***************************** Getting data *****************************
+
+Got files:
+../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1b_125MeV_BQ.root, 0x7fd91af7e6b0
+../Plots/MC/dMu/Dilution/dilutionCurves.refit.root, 0x7fd91c5948d0
+
+***************************** Performing dilution correction *****************************
+
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+***************************** Writing output *****************************
+
+Written results to output file ../Plots/Data/dMu/Run-1/Fits/edmResults_blinded_750-2750MeV_Run-1b_125MeV_BQ.refit.root, 0x7fd919a51200
+
+***************************** Printing results *****************************
+
+, delta_prime, , dMu [ecm], ,
+Station, value, fit_error, dil_error, Br_error, tot_error, value, fit_error, dil_error, Br_error, tot_error
+S12, 0.339170, 0.085524, 0.029915, 0.007537, 0.090918, 1.01566e-18, 2.73013e-19, 9.54949e-20, 2.40599e-20, 2.90231e-19
+S18, 0.479838, 0.101597, 0.100420, 0.007537, 0.143049, 1.4647e-18, 3.24322e-19, 3.20562e-19, 2.40599e-20, 4.56644e-19
+S12S18, 0.412769, 0.065948, 0.028178, 0.007537, 0.072111, 1.2506e-18, 2.10521e-19, 8.99501e-20, 2.40599e-20, 2.30194e-19
+, delta_prime, , Bz/By [ppm], ,
+Station, value, error, value, error
+S12, -0.041517, 0.085802, 0.010258, 0.086741, -41.517288, 85.802198, 10.257942, 86.741280
+S18, -0.104257, 0.102729, 0.059325, 0.118867, -104.257107, 102.728778, 59.324879, 118.867363
+S12S18, -0.074828, 0.066394, 0.006349, 0.067122, -74.827927, 66.394420, 6.348555, 67.121757
+
+***************************** Done *****************************
+
+***************************** DATA *****************************
+
+
+***************************** Processing input configuration *****************************
+
+Running Run-1c_125MeV_BQ with... Run-1
+Info:
+125, BQ
+
+***************************** Defining output tree *****************************
+
+
+***************************** Creating output file *****************************
+
+
+***************************** Getting data *****************************
+
+Got files:
+../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1c_125MeV_BQ.root, 0x7fd9027b3d90
+../Plots/MC/dMu/Dilution/dilutionCurves.refit.root, 0x7fd90510f240
+
+***************************** Performing dilution correction *****************************
+
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+***************************** Writing output *****************************
+
+Written results to output file ../Plots/Data/dMu/Run-1/Fits/edmResults_blinded_750-2750MeV_Run-1c_125MeV_BQ.refit.root, 0x7fd919d77a80
+
+***************************** Printing results *****************************
+
+, delta_prime, , dMu [ecm], ,
+Station, value, fit_error, dil_error, Br_error, tot_error, value, fit_error, dil_error, Br_error, tot_error
+S12, 0.612214, 0.071392, 0.051575, 0.007581, 0.088399, 1.86693e-18, 2.279e-19, 1.64639e-19, 2.42009e-20, 2.82188e-19
+S18, 0.752497, 0.085709, 0.116412, 0.007581, 0.144760, 2.31475e-18, 2.73603e-19, 3.71614e-19, 2.42009e-20, 4.62105e-19
+S12S18, 0.681424, 0.055322, 0.045317, 0.007581, 0.071914, 2.08787e-18, 1.76599e-19, 1.44661e-19, 2.42009e-20, 2.29564e-19
+, delta_prime, , Bz/By [ppm], ,
+Station, value, error, value, error
+S12, 0.014730, 0.071678, 0.001385, 0.072091, 14.729854, 71.678341, 1.384712, 72.091446
+S18, -0.068271, 0.086606, 0.072497, 0.113198, -68.271284, 86.606077, 72.496827, 113.198397
+S12S18, -0.014991, 0.055700, 0.005042, 0.056439, -14.991043, 55.699992, 5.041517, 56.439176
+
+***************************** Done *****************************
+
+***************************** DATA *****************************
+
+
+***************************** Processing input configuration *****************************
+
+Running Run-1d_125MeV_BQ with... Run-1
+Info:
+125, BQ
+
+***************************** Defining output tree *****************************
+
+
+***************************** Creating output file *****************************
+
+
+***************************** Getting data *****************************
+
+Got files:
+../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1d_125MeV_BQ.root, 0x7fd906290750
+../Plots/MC/dMu/Dilution/dilutionCurves.refit.root, 0x7fd906a49450
+
+***************************** Performing dilution correction *****************************
+
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+Drawing
+
+***************************** Writing output *****************************
+
+Written results to output file ../Plots/Data/dMu/Run-1/Fits/edmResults_blinded_750-2750MeV_Run-1d_125MeV_BQ.refit.root, 0x7fd90628fd80
+
+***************************** Printing results *****************************
+
+, delta_prime, , dMu [ecm], ,
+Station, value, fit_error, dil_error, Br_error, tot_error, value, fit_error, dil_error, Br_error, tot_error
+S12, 0.530287, 0.051131, 0.045519, 0.007866, 0.068907, 1.59248e-18, 1.6322e-19, 1.45306e-19, 2.51111e-20, 2.19966e-19
+S18, 0.611671, 0.062063, 0.106178, 0.007866, 0.123238, 1.85228e-18, 1.9812e-19, 3.38945e-19, 2.51111e-20, 3.93403e-19
+S12S18, 0.568901, 0.039819, 0.038000, 0.007866, 0.055601, 1.71575e-18, 1.27111e-19, 1.21305e-19, 2.51111e-20, 1.7749e-19
+, delta_prime, , Bz/By [ppm], ,
+Station, value, error, value, error
+S12, 0.040255, 0.051336, 0.014056, 0.053803, 40.255367, 51.335703, 14.056239, 53.803453
+S18, -0.012498, 0.062723, 0.050057, 0.080634, -12.497906, 62.722972, 50.057143, 80.633542
+S12S18, 0.010557, 0.040097, 0.007127, 0.041479, 10.557153, 40.097303, 7.127100, 41.478531
+
+***************************** Done *****************************

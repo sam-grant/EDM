@@ -1,7 +1,7 @@
 void S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb  3 10:59:53 2022) by ROOT version 6.24/06
+//=========  (Thu Feb  3 14:53:16 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,17 +10,30 @@ void S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__2 = new TH1D("h__2","S18",23,0.0461914,0.5063554);
-   h__2->SetBinContent(9,1);
-   h__2->SetBinContent(10,5);
-   h__2->SetBinContent(11,50);
-   h__2->SetBinContent(12,235);
-   h__2->SetBinContent(13,328);
-   h__2->SetBinContent(14,242);
-   h__2->SetBinContent(15,106);
-   h__2->SetBinContent(16,23);
-   h__2->SetBinContent(17,9);
-   h__2->SetBinContent(18,1);
+   TH1D *h__2 = new TH1D("h__2","S18",22,0.1130853,0.5595084);
+   h__2->SetBinContent(0,33);
+   h__2->SetBinContent(1,5);
+   h__2->SetBinContent(2,1);
+   h__2->SetBinContent(4,4);
+   h__2->SetBinContent(5,1);
+   h__2->SetBinContent(6,3);
+   h__2->SetBinContent(7,19);
+   h__2->SetBinContent(8,36);
+   h__2->SetBinContent(9,84);
+   h__2->SetBinContent(10,83);
+   h__2->SetBinContent(11,82);
+   h__2->SetBinContent(12,55);
+   h__2->SetBinContent(13,46);
+   h__2->SetBinContent(14,37);
+   h__2->SetBinContent(15,33);
+   h__2->SetBinContent(16,24);
+   h__2->SetBinContent(17,22);
+   h__2->SetBinContent(18,20);
+   h__2->SetBinContent(19,33);
+   h__2->SetBinContent(20,16);
+   h__2->SetBinContent(21,14);
+   h__2->SetBinContent(22,22);
+   h__2->SetBinContent(23,327);
    h__2->SetEntries(1000);
    h__2->SetStats(0);
    h__2->SetLineWidth(3);
@@ -56,11 +69,11 @@ void S18_EDM_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.3005
-#pm0.0008
+   pt_LaTex = pt->AddText("0.3587
+#pm0.003
 ");
-   pt_LaTex = pt->AddText("0.024
-#pm0.0005
+   pt_LaTex = pt->AddText("0.085
+#pm0.002
 ");
    pt->Draw();
    c->Modified();

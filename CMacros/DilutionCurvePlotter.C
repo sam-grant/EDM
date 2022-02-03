@@ -521,7 +521,7 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
       gr->Draw("AP");
 
       // Get function
-      TF1 *fit = (TF1*)gr->GetFunction("ParabolaFunc");
+      TF1 *fit = (TF1*)gr->GetFunction("DilutionFunc");
       fit->SetLineColor(kRed);
       fit->SetLineWidth(3);
       fit->Draw("SAME");
@@ -531,16 +531,17 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
       l->SetBorderSize(0);
       l->SetNColumns(2);
       l->AddEntry(gr,"Sim: reco vertices");
-      l->AddEntry(fit, "Fit: ap^{2}+bp+d_{0}");
+      // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
+      l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
       l->Draw("SAME");
 
       TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
 
       names->SetTextAlign(13);
       names->AddText("#chi^{2}/NDF");
-      names->AddText("a [MeV^{-2}]") ; 
-      names->AddText("b [MeV^{-1}]" );
-      names->AddText("d_{0}");
+      names->AddText("a") ; 
+      names->AddText("b" );
+      //names->AddText("d_{0}");
 
       TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
       // TPaveText *values = new TPaveText(0.30,0.20,0.45,0.45,"NDC");
@@ -550,7 +551,7 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
       if(stn!="S0S12S18") {
          values->AddText(Round(fit->GetParameter(0), 1)+"#pm"+Round(fit->GetParError(0), 1));
          values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
-         values->AddText(Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));
+         //values->AddText(Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));
       } else {
          // a = -2.50505e-08±1.26806e-08
          // b = 6.67005e-05±4.55887e-05
@@ -572,9 +573,19 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
          // b = 7.1938e-05±3.72237e-05
          // d0 = 0.0208691±0.0314398
          // *** *** ***
-         values->AddText("(-2#pm1)#times10^{-8}"); 
-         values->AddText("(7#pm4)#times10^{-5}");
-         values->AddText("0.02#pm0.03");
+         //values->AddText("(-2#pm1)#times10^{-8}"); 
+         //values->AddText("(7#pm4)#times10^{-5}");
+         //values->AddText("0.02#pm0.03");
+         //values->AddText(Round(fit->GetParameter(0), 1)+"#pm"+Round(fit->GetParError(0), 1));
+         //values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
+         // No reweighting
+         // a = 0.0924297±0.00669039
+         // b = -0.000138633±1.29502e-05
+         // Reweighting 
+         // a = 0.079909±0.00547423
+         // b = -0.000127703±1.42269e-05
+         values->AddText("0.080#pm0.005"); 
+         values->AddText("(-1.3#pm0.1)#times10^{-4}");
       }
  
       cout<<"\n*** Fit results ***"<<endl;
@@ -833,7 +844,7 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.refit.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;

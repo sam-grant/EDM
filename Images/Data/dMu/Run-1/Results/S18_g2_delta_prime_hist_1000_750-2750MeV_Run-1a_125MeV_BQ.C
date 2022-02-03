@@ -1,7 +1,7 @@
 void S18_g2_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb  3 10:59:55 2022) by ROOT version 6.24/06
+//=========  (Thu Feb  3 14:53:18 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,12 +10,30 @@ void S18_g2_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__5 = new TH1D("h__5","S18",20,-0.18889,0.2237687);
-   h__5->SetBinContent(10,36);
-   h__5->SetBinContent(11,286);
-   h__5->SetBinContent(12,498);
-   h__5->SetBinContent(13,166);
-   h__5->SetBinContent(14,14);
+   TH1D *h__5 = new TH1D("h__5","S18",21,-0.1384381,0.2925389);
+   h__5->SetBinContent(0,9);
+   h__5->SetBinContent(1,1);
+   h__5->SetBinContent(2,2);
+   h__5->SetBinContent(3,5);
+   h__5->SetBinContent(4,11);
+   h__5->SetBinContent(5,14);
+   h__5->SetBinContent(6,10);
+   h__5->SetBinContent(7,6);
+   h__5->SetBinContent(8,1);
+   h__5->SetBinContent(9,50);
+   h__5->SetBinContent(10,243);
+   h__5->SetBinContent(11,101);
+   h__5->SetBinContent(12,56);
+   h__5->SetBinContent(13,43);
+   h__5->SetBinContent(14,31);
+   h__5->SetBinContent(15,26);
+   h__5->SetBinContent(16,21);
+   h__5->SetBinContent(17,25);
+   h__5->SetBinContent(18,13);
+   h__5->SetBinContent(19,6);
+   h__5->SetBinContent(20,8);
+   h__5->SetBinContent(21,23);
+   h__5->SetBinContent(22,295);
    h__5->SetEntries(1000);
    h__5->SetStats(0);
    h__5->SetLineWidth(3);
@@ -51,11 +69,11 @@ void S18_g2_delta_prime_hist_1000_750-2750MeV_Run-1a_125MeV_BQ()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.04493
-#pm0.0005
+   pt_LaTex = pt->AddText("0.0882
+#pm0.003
 ");
-   pt_LaTex = pt->AddText("0.015
-#pm0.0003
+   pt_LaTex = pt->AddText("0.072
+#pm0.002
 ");
    pt->Draw();
    c->Modified();

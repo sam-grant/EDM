@@ -521,8 +521,8 @@ void RunSim(string config, string dataset, string blinding) {
       // Get dilution curve
       TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/"+qual+"/"+tracksOrDecaysLabel+"/"+to_string(step)+"MeV/d_vs_p/"+stn+tracksOrDecays).c_str());
       // TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/BQ/Tracks/250MeV/d_vs_p/trackReco");
-      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
-
+      // TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("DilutionFunc");
       // TFile *dilution_file, string stn, int step, string config)
       vector<TF1*> mottFunctions_ = GetMottFunctions(dilution_file, stn, step, config);
 
@@ -698,7 +698,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       // Get dilution curve
       TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/"+stn+"_trackReco").c_str());
-      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+      //TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("DilutionFunc");
 
       if(!correctDilution) {
         dilutionFunc = new TF1("", "pol0", xmin, xmax);
@@ -845,10 +846,10 @@ int main() {
 	
 */
   // Data
-  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "reweight");
-  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "reweight");
-  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "reweight");
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "reweight");
+  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
+  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
+  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "0");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "1");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "2");
