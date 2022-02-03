@@ -1,51 +1,47 @@
 void Br_vs_eMin_2750MeV_300us()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 28 17:52:20 2021) by ROOT version 6.22/08
+//=========  (Wed Jan 12 09:33:15 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(12.49999,-3.5,1737.5,1.5);
+   c->Range(310,-3.5,1690,1.5);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1001[6] = {
-   250,
+   Double_t Graph0_fx1001[5] = {
    500,
    750,
    1000,
    1250,
    1500};
-   Double_t Graph0_fy1001[6] = {
-   -1.788617,
+   Double_t Graph0_fy1001[5] = {
    -1.681633,
    -1.653663,
    -1.554914,
    -1.427357,
    -1.796138};
-   Double_t Graph0_fex1001[6] = {
-   0,
+   Double_t Graph0_fex1001[5] = {
    0,
    0,
    0,
    0,
    0};
-   Double_t Graph0_fey1001[6] = {
-   0.3510313,
+   Double_t Graph0_fey1001[5] = {
    0.372197,
    0.4017558,
    0.4390006,
    0.4865331,
    0.5551403};
-   TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
+   TGraphErrors *gre = new TGraphErrors(5,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
    gre->SetTitle(";E_{min} [MeV];#LT B_{r}^{Bkg} #GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,125,1625);
+   TH1F *Graph_Graph01001 = new TH1F("Graph_Graph01001","",100,400,1600);
    Graph_Graph01001->SetMinimum(-3);
    Graph_Graph01001->SetMaximum(1);
    Graph_Graph01001->SetDirectory(0);
@@ -76,35 +72,31 @@ void Br_vs_eMin_2750MeV_300us()
    
    gre->Draw("ap");
    
-   Double_t Graph1_fx1002[6] = {
-   250,
+   Double_t Graph1_fx1002[5] = {
    500,
    750,
    1000,
    1250,
    1500};
-   Double_t Graph1_fy1002[6] = {
-   -1.255342,
+   Double_t Graph1_fy1002[5] = {
    -0.8280593,
    -0.8011904,
    -0.4336973,
    -0.1866176,
    -0.1298122};
-   Double_t Graph1_fex1002[6] = {
-   0,
+   Double_t Graph1_fex1002[5] = {
    0,
    0,
    0,
    0,
    0};
-   Double_t Graph1_fey1002[6] = {
-   0.4246469,
+   Double_t Graph1_fey1002[5] = {
    0.4624749,
    0.5053787,
    0.569631,
    0.6371787,
    0.7390317};
-   gre = new TGraphErrors(6,Graph1_fx1002,Graph1_fy1002,Graph1_fex1002,Graph1_fey1002);
+   gre = new TGraphErrors(5,Graph1_fx1002,Graph1_fy1002,Graph1_fex1002,Graph1_fey1002);
    gre->SetName("Graph1");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
@@ -113,9 +105,9 @@ void Br_vs_eMin_2750MeV_300us()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph11002 = new TH1F("Graph_Graph11002","Graph",100,125,1625);
-   Graph_Graph11002->SetMinimum(-1.90891);
-   Graph_Graph11002->SetMaximum(0.8381404);
+   TH1F *Graph_Graph11002 = new TH1F("Graph_Graph11002","Graph",100,400,1600);
+   Graph_Graph11002->SetMinimum(-1.498148);
+   Graph_Graph11002->SetMaximum(0.8007984);
    Graph_Graph11002->SetDirectory(0);
    Graph_Graph11002->SetStats(0);
 
@@ -133,35 +125,31 @@ void Br_vs_eMin_2750MeV_300us()
    
    gre->Draw("p ");
    
-   Double_t Graph2_fx1003[6] = {
-   250,
+   Double_t Graph2_fx1003[5] = {
    500,
    750,
    1000,
    1250,
    1500};
-   Double_t Graph2_fy1003[6] = {
-   -1.182171,
+   Double_t Graph2_fy1003[5] = {
    -0.7653618,
    -0.7791537,
    -0.3069672,
    -0.05663902,
    -0.04920488};
-   Double_t Graph2_fex1003[6] = {
-   0,
+   Double_t Graph2_fex1003[5] = {
    0,
    0,
    0,
    0,
    0};
-   Double_t Graph2_fey1003[6] = {
-   0.4537059,
+   Double_t Graph2_fey1003[5] = {
    0.4923111,
    0.5398746,
    0.5997085,
    0.6779632,
    0.784082};
-   gre = new TGraphErrors(6,Graph2_fx1003,Graph2_fy1003,Graph2_fex1003,Graph2_fey1003);
+   gre = new TGraphErrors(5,Graph2_fx1003,Graph2_fy1003,Graph2_fex1003,Graph2_fey1003);
    gre->SetName("Graph2");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
@@ -170,9 +158,9 @@ void Br_vs_eMin_2750MeV_300us()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph21003 = new TH1F("Graph_Graph21003","Graph",100,125,1625);
-   Graph_Graph21003->SetMinimum(-1.872952);
-   Graph_Graph21003->SetMaximum(0.9719525);
+   TH1F *Graph_Graph21003 = new TH1F("Graph_Graph21003","Graph",100,400,1600);
+   Graph_Graph21003->SetMinimum(-1.524419);
+   Graph_Graph21003->SetMaximum(0.9402677);
    Graph_Graph21003->SetDirectory(0);
    Graph_Graph21003->SetStats(0);
 

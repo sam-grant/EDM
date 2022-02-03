@@ -1,7 +1,7 @@
 void ChiSqr_vs_eMin_2750MeV_300us()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 28 17:52:20 2021) by ROOT version 6.22/08
+//=========  (Tue Jan 11 15:02:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(12.49999,-0.96875,1737.5,3.71875);

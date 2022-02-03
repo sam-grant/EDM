@@ -156,6 +156,35 @@ void ParabolaFit(TGraphErrors *graph, string config, double xmin, double xmax) {
 }
 
 
+// [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
+double DilutionFunc(double *x, double *par) {
+  return par[0] * pow((par[1]*x[0] - 1 ),2) * (2*(par[1]*x[0]) + 1);
+}
+
+
+void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
+  
+  TF1 *fnc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 2);
+  fnc->SetParameter(0, 1.4e-01);
+  fnc->SetParameter(1, -1.3e-04);
+
+/*  if(config == "Tracks") {
+    fnc->SetParameter(0, -5.5e-8);
+    fnc->SetParameter(1, 1.5e-4);
+    fnc->SetParameter(2, -0.05);
+  }  else if(config == "Decays") { 
+    fnc->SetParameter(0, -5.5e-8);
+    fnc->SetParameter(1, 8.0e-5);
+    fnc->SetParameter(2, 2.5e-1);
+  } */
+
+  graph->Fit(fnc, "R");    
+
+  return;
+
+}
+
+
 TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
   int n = gr->GetN();
@@ -186,7 +215,7 @@ tuple<vector<double>, vector<double>, vector<double>, vector<double>> GetPulls(T
   vector<double> ex_;
   vector<double> zeros_;  
 
-  TF1 *fit = (TF1*)gr->GetFunction("ParabolaFunc");
+  TF1 *fit = (TF1*)gr->GetFunction("DilutionFunc");//ParabolaFunc");
 
   for (int i(0); i<gr->GetN(); i++) { 
 
@@ -310,9 +339,118 @@ void MottFunctions(TGraphErrors *gr, TF1* fit, TFitResultPtr frp, TFile *output,
 
 }
 
+// Draw fit parameters from a gaussian according the correlation martrix
+void MottFunctions2(TGraphErrors *gr, TF1* fit, TFitResultPtr frp, TFile *output, string dname) {
+
+  // Get parameters from converged fit
+  int nPars = 2;
+  TVectorD parErrors(nPars);
+  for(int n = 0; n < nPars; n++){
+    parErrors[n] = fit->GetParError(n);
+  }
+
+  // Get parameters from converged fit
+  //int nPars = 3;
+  TVectorD meanVals(nPars);
+  for(int n = 0; n < nPars; n++){
+    meanVals[n] = fit->GetParameter(n);
+  }
+
+  // Correlation matrix
+  TMatrixD corrMatrix = frp->GetCorrelationMatrix();
+
+  // Matrix manipulation
+  TDecompChol decompCholCorr(corrMatrix);
+  decompCholCorr.Decompose();
+  TMatrixD matrixCorrI = decompCholCorr.GetU();
+  TMatrixD matrixCorr(nPars,nPars);
+  matrixCorr.Transpose(matrixCorrI);
+
+  int nDim = nPars;
+
+  // Holder for cov matrix check
+  double totalCov[nDim][nDim];
+  for(int i = 0; i < nDim; i++){
+    for(int j = 0; j < nDim; j++){
+      totalCov[i][j] = 0;
+    }
+  }
+                                                                                                                                           
+  // Set random number pointer with seed
+  TRandom3 *randGen = new TRandom3(12345);
+
+  //TH3D *ellipse3D = new TH3D("ellipse3D", ";a [MeV^{-2}];b [MeV^{-1}];d_{0}", 100, -125E-09, -125E-08, 27, 5.25E-05, 0.000272258, 27, -0.113345, 0.0541603);
+  //TH3D *sphere3D = new TH3D("sphere3D", ";#sigma_{i};#sigma_{j};#sigma_{k}", 100, -5, 5, 100, -5, 5, 100, -5, 5);
+
+  TGraphErrors *sphere2D = new TGraphErrors();
+  TGraphErrors *ellipse2D = new TGraphErrors();//"ellipse2D", ";a;b");
+
+  for(int i_trial = 0; i_trial<nTrials; i_trial++) { 
+
+    TF1* mottFunction = new TF1(Form("%d",i_trial), DilutionFunc, xmin, xmax, 3);
+
+    // Vector of fit parameters
+    TVectorD fitValue(nPars);
+  
+    // Draw random numbers from a gaussian distribution
+    for (int i = 0; i < nPars; i++) fitValue[i] = randGen->Gaus(0,1);
+
+    //sphere3D->Fill(fitValue[0],fitValue[1],fitValue[2]);
+    sphere2D->SetPoint(i_trial, fitValue[0], fitValue[1]);//fitValue[0],fitValue[1],fitValue[2]);
+    sphere2D->SetPointError(i_trial, 0, 0);
+
+    // Scale according correlation
+    fitValue = matrixCorr*fitValue;
+
+    for (int i = 0; i < nPars; i++) {
+      // Scale according to mean values 
+      fitValue[i] *= parErrors[i];
+      fitValue[i] += meanVals[i];
+      // Set function
+      mottFunction->SetParameter(i, fitValue[i]);
+    }
+
+    ellipse2D->SetPoint(i_trial, fitValue[0], fitValue[1]);//fitValue[0],fitValue[1],fitValue[2]);
+    ellipse2D->SetPointError(i_trial, 0, 0);
 
 
-void FitDilution(string config, string fitType, TFile *output, bool getError) {
+    for (int i = 0; i < nDim; i++){
+      for (int j = 0; j < nDim; j++){
+        totalCov[i][j] += (fitValue[i]-meanVals[i])*(fitValue[j]-meanVals[j]);
+      }
+    }
+
+    mottFunction->Write();
+
+  }
+
+  // Cov matric checks
+  cout<<"Correlation matrix:"<<endl;
+  frp->GetCorrelationMatrix().Print();
+
+/*  cout << "totalCov:" << endl;
+  for (int i = 0; i < nDim; i++){
+    for (int j = 0; j < nDim; j++){
+      cout << totalCov[i][j]/nTrials << " ";
+    }
+    cout << endl;
+  }*/
+
+/*  frp->GetCovarianceMatrix().Print();*/
+
+  // For some reason it writes these automatically
+  // ellipse3D->Write();
+  // sphere3D->Write();
+  sphere2D->SetName("sphere2D");
+  sphere2D->Write();
+  ellipse2D->SetName("ellipse2D");
+  ellipse2D->Write();
+
+  return;
+
+}
+
+void FitDilution(string config, string fitType, TFile *output, bool getError) { //, bool highStats = false) {
 
   // Config params
   int step = GetStep(config);
@@ -345,20 +483,27 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
       // Convert to diluton
       gr = ConvertToDilution(gr); 
 
-      // Set name
+      // output graphs  
+      //string grn2 = stn+tracksOrDecays;
+      //if(highStats) grn2 += "_HS";
       gr->SetName((stn+tracksOrDecays).c_str());
 
       // Fit
-      ParabolaFit(gr, tracksOrDecays, xmin, xmax);
+      // ParabolaFit(gr, tracksOrDecays, xmin, xmax);
+      // TF1 *fit = gr->GetFunction("ParabolaFunc");
+      DilutionFit(gr, tracksOrDecays, xmin, xmax);
 
-      TF1 *fit = gr->GetFunction("ParabolaFunc");
+      TF1 *fit = gr->GetFunction("DilutionFunc");
 
       cout<<"chisqr/ndf\t"<<fit->GetChisquare() / fit->GetNDF()<<endl;
+
+      //continue;
 
       cout<<"\n *** Getting fit result pointer *** \n"<<endl;
 
       TFitResultPtr frp = gr->Fit(fit, "SR");
 
+      cout<<"frp "<<frp<<endl;
       string title = stn+";Decay vertex momentum [MeV];d_{"+fitType+"} / "+to_string(step)+" MeV";
 
       gr->SetTitle(title.c_str());
@@ -393,9 +538,11 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 
         cout<<"\n *** Sampling full set of distributons *** \n"<<endl;
 
-        output->mkdir((dname+"/"+stn+tracksOrDecays+"Trials").c_str()); output->cd((dname+"/"+stn+tracksOrDecays+"Trials").c_str());
+        // dname += "/"+stn+tracksOrDecays+"Trials"; 
+        //if(highStats) dname += "/"+stn+tracksOrDecays+"Trials_HS";
+        output->mkdir((dname+"/"+stn+tracksOrDecays+"Trials").c_str()); output->cd((dname+"/"+stn+tracksOrDecays+"Trials").c_str()); // (dname+"/"+stn+tracksOrDecays+"Trials").c_str());
 
-        MottFunctions(gr, fit, frp, output, dname); 
+        MottFunctions2(gr, fit, frp, output, dname); 
 
       }
 
@@ -408,13 +555,15 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) {
 }
 
 
-int main() { 
+int main() { //int argc, char *argv[]) {
+
+  //std::string tmp = argv[1];
 
   bool fit = true;
-  bool write = false;
+  bool write = true;
 
   string fname = "";
-  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.refit.root";
   else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves_test.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
@@ -422,8 +571,11 @@ int main() {
   // void FitDilution(string config, string fitType, TFile *output, bool getError)
   // Alternative fitType is "g2
 
+  //FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
+  //FitDilution("trackReco_WORLD_250MeV_BQ_HS", "EDM", output, true, true); 
+
   // Regular samples
-  //FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("allDecays_WORLD_250MeV_AQ_accepted", "EDM", output, true);
   FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
@@ -431,7 +583,8 @@ int main() {
   FitDilution("trackTruth_WORLD_250MeV_BQ", "EDM", output, true);
 
   // With full distribution
-  FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
+  //FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
+  FitDilution("trackReco_WORLD_250MeV_BQ.reweight", "EDM", output, true);
 
   // Control sample. All reconstructions arise from the same MC sample.
   FitDilution("acceptedDecaysControl_WORLD_250MeV_AQ", "EDM", output, true); 

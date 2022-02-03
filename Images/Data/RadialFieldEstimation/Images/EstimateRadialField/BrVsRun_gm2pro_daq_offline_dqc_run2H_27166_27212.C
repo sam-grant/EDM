@@ -1,10 +1,10 @@
 void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jul 21 05:29:51 2021) by ROOT version 6.12/04
+//=========  (Fri Jan 14 06:17:45 2022) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(27154.5,7.631462,27223.5,24.94525);
+   c->Range(27154.5,-4,27223.5,6);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -33,26 +33,26 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    27211,
    27212};
    Double_t Graph0_fy1003[20] = {
-   15.34258,
-   15.91034,
-   16.13726,
-   16.17833,
-   16.22737,
-   16.49253,
-   16.46763,
-   16.39937,
-   16.5987,
-   17.20274,
-   16.79289,
-   16.86725,
-   16.63985,
-   16.54731,
-   16.50032,
-   16.45049,
-   15.9381,
-   17.15709,
-   16.41567,
-   16.36357};
+   14.04455,
+   14.5656,
+   14.77384,
+   14.81153,
+   14.85654,
+   15.09988,
+   15.07703,
+   15.01439,
+   15.19732,
+   15.75166,
+   15.37553,
+   15.44377,
+   15.23508,
+   15.15016,
+   15.10703,
+   15.0613,
+   14.59107,
+   15.70977,
+   15.02935,
+   14.98153};
    Double_t Graph0_fex1003[20] = {
    0,
    0,
@@ -75,26 +75,26 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    0,
    0};
    Double_t Graph0_fey1003[20] = {
-   4.825488,
-   4.830443,
-   4.833042,
-   4.833421,
-   4.834071,
-   4.836856,
-   4.836463,
-   4.835731,
-   4.838078,
-   4.856877,
-   4.84007,
-   4.84133,
-   4.838343,
-   4.837271,
-   4.836776,
-   4.836885,
-   4.857213,
-   4.858067,
-   4.835868,
-   4.835377};
+   4.402316,
+   4.405685,
+   4.407577,
+   4.407834,
+   4.408321,
+   4.41028,
+   4.409975,
+   4.409458,
+   4.411156,
+   4.426994,
+   4.412531,
+   4.413511,
+   4.411304,
+   4.410534,
+   4.410188,
+   4.410403,
+   4.430223,
+   4.428201,
+   4.409547,
+   4.409214};
    TGraphErrors *gre = new TGraphErrors(20,Graph0_fx1003,Graph0_fy1003,Graph0_fex1003,Graph0_fey1003);
    gre->SetName("Graph0");
    gre->SetTitle(";Run number;#LTB_{r}#GT [ppm]");
@@ -103,12 +103,12 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#ff0000");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(3004);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,27161.4,27216.6);
-   Graph_Graph1003->SetMinimum(9.362841);
-   Graph_Graph1003->SetMaximum(23.21387);
+   Graph_Graph1003->SetMinimum(-3);
+   Graph_Graph1003->SetMaximum(5);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -157,26 +157,26 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    27211,
    27212};
    Double_t Graph1_fy1004[20] = {
-   15.34258,
-   15.91034,
-   16.13726,
-   16.17833,
-   16.22737,
-   16.49253,
-   16.46763,
-   16.39937,
-   16.5987,
-   17.20274,
-   16.79289,
-   16.86725,
-   16.63985,
-   16.54731,
-   16.50032,
-   16.45049,
-   15.9381,
-   17.15709,
-   16.41567,
-   16.36357};
+   14.04455,
+   14.5656,
+   14.77384,
+   14.81153,
+   14.85654,
+   15.09988,
+   15.07703,
+   15.01439,
+   15.19732,
+   15.75166,
+   15.37553,
+   15.44377,
+   15.23508,
+   15.15016,
+   15.10703,
+   15.0613,
+   14.59107,
+   15.70977,
+   15.02935,
+   14.98153};
    Double_t Graph1_fex1004[20] = {
    0,
    0,
@@ -199,38 +199,38 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    0,
    0};
    Double_t Graph1_fey1004[20] = {
-   0.1445206,
-   0.08213612,
-   0.09023038,
-   0.08661091,
-   0.09362275,
-   0.09217844,
-   0.0845785,
-   0.08388441,
-   0.09802403,
-   0.3717227,
-   0.09685044,
-   0.1200515,
-   0.08911417,
-   0.08284472,
-   0.08273799,
-   0.1153352,
-   0.5265837,
-   0.3937411,
-   0.08169592,
-   0.08537991};
+   0.1326298,
+   0.07537817,
+   0.08280645,
+   0.07948479,
+   0.08591971,
+   0.08459423,
+   0.07761959,
+   0.07698262,
+   0.08995886,
+   0.3411383,
+   0.08888183,
+   0.1101739,
+   0.08178208,
+   0.07602847,
+   0.07593052,
+   0.1058457,
+   0.4832577,
+   0.3613451,
+   0.07497419,
+   0.07835507};
    gre = new TGraphErrors(20,Graph1_fx1004,Graph1_fy1004,Graph1_fex1004,Graph1_fey1004);
    gre->SetName("Graph1");
    gre->SetTitle("Graph");
 
    ci = TColor::GetColor("#0000ff");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(3004);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1004 = new TH1F("Graph_Graph1004","Graph",100,27161.4,27216.6);
-   Graph_Graph1004->SetMinimum(14.96042);
-   Graph_Graph1004->SetMaximum(17.8121);
+   Graph_Graph1004->SetMinimum(13.69383);
+   Graph_Graph1004->SetMaximum(16.31089);
    Graph_Graph1004->SetDirectory(0);
    Graph_Graph1004->SetStats(0);
 
@@ -253,7 +253,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    
    gre->Draw("p3 ");
    
-   TLegend *leg = new TLegend(0.15,0.69,0.45,0.89,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.79,0.65,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
@@ -264,7 +264,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 
    ci = TColor::GetColor("#0000ff");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(3004);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
@@ -276,7 +276,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 
    ci = TColor::GetColor("#ff0000");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(3004);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

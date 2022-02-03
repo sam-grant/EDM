@@ -83,12 +83,79 @@ void DrawChiSqrPlot(std::vector<TGraphErrors*> graphs, std::vector<string> names
 
 }
 
+void DrawChiSqrPlot2(std::vector<TGraphErrors*> graphs, std::vector<string> names, std::string title, std::string fname, double ymin, double ymax ) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  //TLegend *l = new TLegend(0.45,0.79,0.89,0.89);
+  TLegend *l = new TLegend(0.15,0.79,0.59,0.89);
+  l->SetNColumns(3);
+  l->SetBorderSize(0);
+
+  graphs.at(0)->SetTitle(title.c_str());
+  graphs.at(0)->GetXaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetYaxis()->SetTitleSize(.04);
+  graphs.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetYaxis()->SetTitleOffset(1.1);
+  graphs.at(0)->GetXaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->CenterTitle(true);
+  graphs.at(0)->GetYaxis()->SetMaxDigits(4);
+  //graphs.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+  // Hack together x-axis range
+  int N = graphs.at(0)->GetN();
+  double xmax = graphs.at(0)->GetPointX(N-1);// + 50;
+  double xmin = graphs.at(0)->GetPointX(0);// - 50; 
+  double offset = (xmax - xmin) * 0.05;
+  xmin = xmin - offset; 
+  xmax = xmax + offset;
+
+  graphs.at(0)->GetXaxis()->SetRangeUser(450, 1550);
+
+  int nGraphs = graphs.size();
+
+  graphs.at(0)->SetMarkerColor(kBlack);
+  graphs.at(0)->SetMarkerStyle(20);
+  graphs.at(0)->Draw("APL");
+  //graphs.at(1)->SetMarkerColor(kBlue);
+  //graphs.at(2)->SetMarkerColor(kRed);
+/*
+
+  for(int i = 0; i < nGraphs; i++) {
+    graphs.at(i)->SetMarkerStyle(20);
+    l->AddEntry(graphs.at(i), (names.at(i)).c_str());
+    if(i==0) graphs.at(i)->Draw("AP");
+    else graphs.at(i)->Draw("P SAME");
+  }
+
+  l->Draw("same");*/
+
+  // Draw band
+  gPad->Update();
+
+
+  TLine *central = new TLine(gPad->GetUxmin(), 1.0, gPad->GetUxmax(), 1.0); 
+  central->SetLineWidth(1);
+  central->SetLineStyle(2);
+
+  central->Draw("same");//SetLineStyle(2);
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
+}
+
 void Br_vs_eMin(string eMax, string tMax) { 
 
 	cout<<"Plotting Br vs eMin"<<endl;
 
 	//string eMax = "6000";
-	string eMinArr[] = {"250", "500", "750", "1000" , "1250", "1500"};//, "1750", "2000", "2250", "2500", "2750", "3000"};
+	string eMinArr[] = {"500", "750", "1000" , "1250", "1500"};//{"250", "500", "750", "1000" , "1250", "1500"};//, "1750", "2000", "2250", "2500", "2750", "3000"};
 	string tMinArr[] = {"0", "23", "30"}; 
 	//string tMinArr[] = {"24000"}; 
 
@@ -186,8 +253,8 @@ void ChiSqr_vs_eMin(string eMax, string tMax) {
 	cout<<"Plotting Br vs chi sqr"<<endl;
 
 	//string eMax = "6000";
-	string eMinArr[] = {"250", "500", "750", "1000" , "1250", "1500"};
-	string tMinArr[] = {"0", "23", "30"}; 
+	string eMinArr[] = {"500", "750", "1000" , "1250", "1500"};
+	string tMinArr[] = {"23"};//"0", "23", "30"}; 
 	//string tMinArr[] = {"24000"}; 
 
 	int n_eMin = sizeof(eMinArr)/sizeof(eMinArr[0]);
@@ -281,8 +348,9 @@ void ChiSqr_vs_eMin(string eMax, string tMax) {
 
 	//names_.push_back("t > 24 #mus");
 	///DrawTGraphErrors(gr_.at(0), ";t_{min} [#mus];#LT B_{r}^{Bkg} #GT [ppm]", "../Images/Data/RadialFieldScan_2/raw/cutsTesting/Results/Br_vs_eMin_"+eMax);
-	 DrawChiSqrPlot(gr_, names_, ";E_{min} [MeV];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_2/raw/cutsTesting/Results/ChiSqr_vs_eMin_"+eMax+"MeV_"+tMax+"us", -0.5, 3.25);
-
+	//DrawChiSqrPlot(gr_, names_, ";E_{min} [MeV];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_2/raw/cutsTesting/Results/ChiSqr_vs_eMin_"+eMax+"MeV_"+tMax+"us", -0.5, 3.25);
+	DrawChiSqrPlot2(gr_, names_, ";E_{min} [MeV];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_2/raw/cutsTesting/Results/ChiSqr_vs_eMin_"+eMax+"MeV_"+tMax+"us_2", -0.5, 3.25)
+;
 	return;
 
 }
@@ -334,7 +402,7 @@ void Br_vs_eMax() {
 			TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQ");
 
 			double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
-  			double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
+  		double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);
 
  			// x-intercept 
 			double Br = -p0/p1;

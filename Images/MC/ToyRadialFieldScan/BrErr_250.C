@@ -1,7 +1,7 @@
 void BrErr_250()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan  5 17:07:02 2022) by ROOT version 6.24/06
+//=========  (Mon Jan 10 15:42:34 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,119 +10,19 @@ void BrErr_250()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__29 = new TH1D("__29","Number of sub-runs: 250",2000,0,1);
-   __29->SetBinContent(952,1);
-   __29->SetBinContent(959,1);
-   __29->SetBinContent(960,1);
-   __29->SetBinContent(961,2);
-   __29->SetBinContent(962,1);
-   __29->SetBinContent(964,1);
-   __29->SetBinContent(967,2);
-   __29->SetBinContent(969,3);
-   __29->SetBinContent(970,4);
-   __29->SetBinContent(971,4);
-   __29->SetBinContent(972,3);
-   __29->SetBinContent(973,2);
-   __29->SetBinContent(974,3);
-   __29->SetBinContent(975,2);
-   __29->SetBinContent(976,5);
-   __29->SetBinContent(977,4);
-   __29->SetBinContent(978,4);
-   __29->SetBinContent(979,2);
-   __29->SetBinContent(980,6);
-   __29->SetBinContent(981,3);
-   __29->SetBinContent(982,6);
-   __29->SetBinContent(983,4);
-   __29->SetBinContent(984,9);
-   __29->SetBinContent(985,5);
-   __29->SetBinContent(986,9);
-   __29->SetBinContent(987,11);
-   __29->SetBinContent(988,6);
-   __29->SetBinContent(989,10);
-   __29->SetBinContent(990,9);
-   __29->SetBinContent(991,14);
-   __29->SetBinContent(992,18);
-   __29->SetBinContent(993,13);
-   __29->SetBinContent(994,16);
-   __29->SetBinContent(995,12);
-   __29->SetBinContent(996,13);
-   __29->SetBinContent(997,13);
-   __29->SetBinContent(998,15);
-   __29->SetBinContent(999,9);
-   __29->SetBinContent(1000,18);
-   __29->SetBinContent(1001,19);
-   __29->SetBinContent(1002,26);
-   __29->SetBinContent(1003,20);
-   __29->SetBinContent(1004,17);
-   __29->SetBinContent(1005,24);
-   __29->SetBinContent(1006,19);
-   __29->SetBinContent(1007,33);
-   __29->SetBinContent(1008,22);
-   __29->SetBinContent(1009,32);
-   __29->SetBinContent(1010,18);
-   __29->SetBinContent(1011,23);
-   __29->SetBinContent(1012,22);
-   __29->SetBinContent(1013,28);
-   __29->SetBinContent(1014,18);
-   __29->SetBinContent(1015,22);
-   __29->SetBinContent(1016,19);
-   __29->SetBinContent(1017,13);
-   __29->SetBinContent(1018,12);
-   __29->SetBinContent(1019,17);
-   __29->SetBinContent(1020,18);
-   __29->SetBinContent(1021,17);
-   __29->SetBinContent(1022,18);
-   __29->SetBinContent(1023,17);
-   __29->SetBinContent(1024,21);
-   __29->SetBinContent(1025,15);
-   __29->SetBinContent(1026,19);
-   __29->SetBinContent(1027,16);
-   __29->SetBinContent(1028,15);
-   __29->SetBinContent(1029,13);
-   __29->SetBinContent(1030,13);
-   __29->SetBinContent(1031,12);
-   __29->SetBinContent(1032,8);
-   __29->SetBinContent(1033,11);
-   __29->SetBinContent(1034,12);
-   __29->SetBinContent(1035,8);
-   __29->SetBinContent(1036,9);
-   __29->SetBinContent(1037,8);
-   __29->SetBinContent(1038,7);
-   __29->SetBinContent(1039,7);
-   __29->SetBinContent(1040,3);
-   __29->SetBinContent(1041,6);
-   __29->SetBinContent(1042,8);
-   __29->SetBinContent(1043,7);
-   __29->SetBinContent(1044,8);
-   __29->SetBinContent(1045,5);
-   __29->SetBinContent(1046,1);
-   __29->SetBinContent(1047,5);
-   __29->SetBinContent(1049,3);
-   __29->SetBinContent(1050,2);
-   __29->SetBinContent(1051,1);
-   __29->SetBinContent(1052,1);
-   __29->SetBinContent(1053,2);
-   __29->SetBinContent(1054,1);
-   __29->SetBinContent(1055,1);
-   __29->SetBinContent(1056,3);
-   __29->SetBinContent(1057,3);
-   __29->SetBinContent(1060,1);
-   __29->SetBinContent(1064,1);
-   __29->SetBinContent(1065,2);
-   __29->SetBinContent(1067,1);
-   __29->SetBinContent(1070,1);
-   __29->SetBinContent(1075,1);
-   __29->SetBinContent(1083,1);
+   TH1D *__29 = new TH1D("__29","Number of sub-runs: 250",240,0.4,1.6);
+   __29->SetBinContent(0,1000);
    __29->SetEntries(1000);
    __29->SetStats(0);
    __29->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{b}#GT [ppm]");
-   __29->GetXaxis()->SetRange(786,1237);
+   __29->GetXaxis()->SetRange(1,240);
    __29->GetXaxis()->CenterTitle(true);
    __29->GetXaxis()->SetLabelFont(42);
    __29->GetXaxis()->SetTitleSize(0.04);
    __29->GetXaxis()->SetTitleOffset(1.1);
    __29->GetXaxis()->SetTitleFont(42);
-   __29->GetYaxis()->SetTitle("Trials");
+   __29->GetYaxis()->SetTitle("Trials / 0.005
+ ppm");
    __29->GetYaxis()->CenterTitle(true);
    __29->GetYaxis()->SetNdivisions(4000510);
    __29->GetYaxis()->SetLabelFont(42);
@@ -138,7 +38,7 @@ void BrErr_250()
    pt->SetFillColor(0);
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
-   pt->SetTextSize(26);
+   pt->SetTextSize(23);
    TText *pt_LaTex = pt->AddText("Trials");
    pt_LaTex = pt->AddText("Mean [ppm]");
    pt_LaTex = pt->AddText("RMS [ppm]");
@@ -148,13 +48,13 @@ void BrErr_250()
    pt->SetFillColor(0);
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
-   pt->SetTextSize(26);
+   pt->SetTextSize(23);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("0.5
-#pm0.0003
+   pt_LaTex = pt->AddText("0
+#pm0
 ");
-   pt_LaTex = pt->AddText("0.00941
-#pm0.0002
+   pt_LaTex = pt->AddText("0
+#pm0
 ");
    pt->Draw();
    c->Modified();

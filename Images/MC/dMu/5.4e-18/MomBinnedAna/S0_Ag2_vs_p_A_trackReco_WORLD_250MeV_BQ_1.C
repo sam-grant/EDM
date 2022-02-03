@@ -1,7 +1,7 @@
 void S0_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Dec  8 12:36:11 2021) by ROOT version 6.24/04
+//=========  (Wed Jan 19 11:03:09 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-168.1412,-1.062189e-05,3409.454,5.071633e-05);

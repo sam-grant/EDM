@@ -553,9 +553,11 @@ void DrawBrVsRun(TGraphErrors *statErr, TGraphErrors *allErr, std::string title,
 
 int main(int argc, char *argv[]) {
 
+  bool crossCheck = true;
+
   // Get inputs
   // If you're getting a logic error it's because you haven't provided an argument 
-  string dataset = argv[1]; // "gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2"; //  // "gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2";//argv[1];
+  string dataset = argv[1];//"gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2"; //  // "gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2"; //  // "gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2";//argv[1];
   //string dataset = "gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2"; // "gm2pro_daq_full_run1_9d_5040A_GLdocDB17018-v3"; // argv[1]; // "gm2pro_daq_full_run1_60h_5039A_GLdocDB16021-v2";//argv[1];
   string config = "CaloBeamPos";
 
@@ -614,25 +616,42 @@ int main(int argc, char *argv[]) {
   cout<<"QHV for "<<dataset<<" is "<<QHV<<" kV"<<endl;
 
   cout<<"\n**********************************\nGetting conversion params\n**********************************\n"<<endl;
+
   tuple<double, double, double, double, double> conversionParams = GetConversionParams(); 
   double p0 = get<0>(conversionParams); double e0 = get<1>(conversionParams); 
   double p1 = get<2>(conversionParams); double e1 = get<3>(conversionParams); 
   double cov = get<4>(conversionParams);
 
   double k = mm2ppm(QHV, p0, p1);
-  double err_k = mm2ppm_err(QHV, p0,e0,p1,e1,cov);
+  double err_k = mm2ppm_err(QHV, p0, e0, p1, e1, cov);
   cout<<"\nk = "<<k<<"±"<<err_k<<endl;
 
   cout<<"\n**********************************\nGetting total shift in Br\n**********************************\n"<<endl;
-  
+
+  // This is ONLY possible is the reference point has a background field consitent with zero 
   double tot_deltaBr = k * tot_deltaY;
   double err_tot_deltaBr = tot_deltaBr * sqrt( pow((err_k/k),2) + pow((err_tot_deltaY/tot_deltaY), 2) );
 
   cout<<"Total delta Br:\t"<<tot_deltaBr<<"±"<<err_tot_deltaBr<<" ppm"<<endl;
 
+  cout<<"\n**********************************\nGetting total shift in Br (simplified method)\n**********************************\n"<<endl;
+
+  double tot_deltaBr2 = tot_deltaY*QHV;
+  double err_tot_deltaBr2 = tot_deltaBr * err_tot_deltaY/tot_deltaY; // ), 2) );
+
+/*  cout<<"tot_deltaY = "<<tot_deltaY<<endl;
+  cout<<"tot_deltaBr = "<<tot_deltaBr<<"±"<<err_tot_deltaBr<<endl;
+  cout<<"tot_deltaBr2 = "<<tot_deltaBr2<<"±"<<err_tot_deltaBr2<<endl;*/
+
+  if(crossCheck) {
+    cout<<"Running cross check on Br conversion"<<endl;
+    tot_deltaBr = tot_deltaBr2;
+    err_tot_deltaBr = err_tot_deltaBr2;
+  }
 
   // Get background radial field
   cout<<"\n**********************************\nGetting Br background\n**********************************\n"<<endl;
+
   //tuple<double, double> BrB = GetBrBkg();
   double BrBkg = get<0>(GetBrBkg()); double BrBkgErr = get<1>(GetBrBkg());
 
@@ -651,6 +670,9 @@ int main(int argc, char *argv[]) {
   TGraphErrors *gr_AvgBrVsRun_StatErr = GetBrVsRun_StatErr(gr_AvgCaloDeltaY, BrBkg, k);
   TGraphErrors *gr_AvgBrVsRun_AllErr = GetBrVsRun_AllErr(gr_AvgCaloDeltaY, BrBkg, BrBkgErr, k, err_k, err_align, err_ref);
 
+  string BrVsRunName = "../Images/EstimateRadialField/BrVsRun_"+dataset+"_"+runs.at(0)+"_"+runs.at(runs.size()-1); 
+  if(crossCheck) BrVsRunName += "_crossCheck";
+
   DrawBrVsRun(gr_AvgBrVsRun_StatErr, gr_AvgBrVsRun_AllErr, ";Run number;#LTB_{r}#GT [ppm]", "../Images/EstimateRadialField/BrVsRun_"+dataset+"_"+runs.at(0)+"_"+runs.at(runs.size()-1));
 
   // Need to draw bands for correlated and stat errors. 
@@ -665,7 +687,9 @@ int main(int argc, char *argv[]) {
     // Write to ROOT
 
   // Set output
-  string outputName = "../Plots/radialFieldEstimationPlots_"+dataset+"_"+runs.at(0)+"_"+runs.at(runs.size()-1)+".root";
+  string outputName = "../Plots/radialFieldEstimationPlots_"+dataset+"_"+runs.at(0)+"_"+runs.at(runs.size()-1);// 
+  if(crossCheck) outputName += "_crossCheck.root";
+  else outputName += ".root";
   TFile *output = new TFile( outputName.c_str(), "RECREATE");
 
 

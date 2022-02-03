@@ -135,8 +135,16 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 
 		int counter = 0;
 
+		TGraphErrors *quadScan = new TGraphErrors(); // N_QHV,x_quad,y_quad,ex_quad,ey_quad);
+		quadScan->SetName((std::to_string(BR_APP[i_field])+" ppm").c_str());
+
 		// =========== Quad setting loop ==========
 		for ( int i_quad = 0; i_quad < N_QHV; i_quad++ ) {
+
+			if( (QHV[i_quad]==18 && BR_APP[i_field] == 10) || (QHV[i_quad]==14 && BR_APP[i_field] == -50) ) {
+				//counter++;
+				continue;
+			}
 
 			n[i_quad] =  0.108/18.3 * QHV[i_quad];
 
@@ -149,12 +157,15 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 			x_quad[i_quad] = 1/QHV[i_quad];
 			ex_quad[i_quad] = 0;
 
+			quadScan->SetPoint(counter, 1/QHV[i_quad], y_meas);
+			quadScan->SetPointError(counter, 0, sigmaY);
+
 			counter++;
 
 		}
 
-		TGraphErrors *quadScan = new TGraphErrors(N_QHV,x_quad,y_quad,ex_quad,ey_quad);
-		quadScan->SetName((std::to_string(BR_APP[i_field])+" ppm").c_str());
+/*		TGraphErrors *quadScan = new TGraphErrors(N_QHV,x_quad,y_quad,ex_quad,ey_quad);
+		quadScan->SetName((std::to_string(BR_APP[i_field])+" ppm").c_str());*/
 
 		// Fit
 		TF1 *quadLineFit = new TF1("quadLineFit", "[0]+[1]*x", quadScan->GetX()[0], quadScan->GetX()[quadScan->GetN()-1]);

@@ -1,10 +1,10 @@
 void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jul 21 05:29:51 2021) by ROOT version 6.12/04
+//=========  (Thu Jan 13 02:56:16 2022) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(27154.5,7.631462,27223.5,24.94525);
+   c->Range(27154.5,-4,27223.5,6);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -103,12 +103,12 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#ff0000");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(3004);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,27161.4,27216.6);
-   Graph_Graph1003->SetMinimum(9.362841);
-   Graph_Graph1003->SetMaximum(23.21387);
+   Graph_Graph1003->SetMinimum(-3);
+   Graph_Graph1003->SetMaximum(5);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -225,7 +225,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 
    ci = TColor::GetColor("#0000ff");
    gre->SetFillColor(ci);
-   gre->SetFillStyle(3001);
+   gre->SetFillStyle(3004);
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1004 = new TH1F("Graph_Graph1004","Graph",100,27161.4,27216.6);
@@ -253,7 +253,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
    
    gre->Draw("p3 ");
    
-   TLegend *leg = new TLegend(0.15,0.69,0.45,0.89,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.79,0.65,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
@@ -264,7 +264,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 
    ci = TColor::GetColor("#0000ff");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(3004);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);
@@ -276,7 +276,7 @@ void BrVsRun_gm2pro_daq_offline_dqc_run2H_27166_27212()
 
    ci = TColor::GetColor("#ff0000");
    entry->SetFillColor(ci);
-   entry->SetFillStyle(3001);
+   entry->SetFillStyle(3004);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

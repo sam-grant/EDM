@@ -26,8 +26,8 @@ hist = TH2D('field','field', 91, -45, 45, 91, -45, 45)
 # 	for val in j:
 #  		hist.Fill(x,y)
 # 
-# c = TCanvas()
-# hist.Draw()
+c = TCanvas()
+hist.Draw()
 # 
-# c.SaveAs('tmp.png')
+c.SaveAs('tmp.png')
 

@@ -1,7 +1,7 @@
 void FieldFit_pValCheck0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan  5 15:16:46 2022) by ROOT version 6.24/06
+//=========  (Mon Jan 10 12:01:23 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-58.10359,45,58.10359);
@@ -13,14 +13,14 @@ void FieldFit_pValCheck0()
    
    Double_t Graph0_fx1013[5] = {
    -30,
-   6.953125e-310,
+   6.953129e-310,
    6.953257e-310,
    6.953257e-310,
    2.470328e-323};
    Double_t Graph0_fy1013[5] = {
    -13.08869,
    0,
-   2.176286e-314,
+   2.134804e-314,
    6.953257e-310,
    2.470328e-323};
    Double_t Graph0_fex1013[5] = {
@@ -99,11 +99,10 @@ void FieldFit_pValCheck0()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("5.44e-11");
-   pt_LaTex = pt->AddText("0.44
+   TText *pt_LaTex = pt->AddText("0.44
 #pm1
 ");
-   pt_LaTex = pt->AddText("-0.000454
+   pt_LaTex = pt->AddText("-0.00045
 #pm4e+01
 ");
    pt_LaTex = pt->AddText("-0.001
@@ -116,7 +115,6 @@ void FieldFit_pValCheck0()
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient");
    pt_LaTex = pt->AddText("Y-intercept [mm#upointkV]");
    pt_LaTex = pt->AddText("Background #LTB_{r}#GT [ppm]");

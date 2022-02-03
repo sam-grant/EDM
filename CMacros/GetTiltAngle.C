@@ -482,7 +482,7 @@ void RunSim(string config, string dataset, string blinding) {
 	cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
 	TString A_fileName = "../Plots/MC/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";
-	TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+	TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves_HS.root";
 
 	TFile *A_file = TFile::Open(A_fileName);
 	TFile *dilution_file  = TFile::Open(dilution_fileName);
@@ -603,7 +603,7 @@ void RunSim(string config, string dataset, string blinding) {
 
 }
 
-void RunData(std::string config, std::string dataset, std::string blinding, bool correctDilution) { 
+void RunData(std::string config, std::string dataset, std::string blinding, bool correctDilution, TString tmp) { 
 
   cout<<"\n***************************** DATA *****************************\n"<<endl;
 
@@ -634,13 +634,13 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   cout<<"\n***************************** Creating output file *****************************\n"<<endl;
 
-  TString outputFileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr+".root";
+  TString outputFileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+dilCorrStr+"."+tmp+".root";
   TFile *outputFile = new TFile(outputFileName, "RECREATE");
 
   cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
   TString A_fileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";
-  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves."+tmp+".root";
 
   TFile *A_file = TFile::Open(A_fileName);
   TFile *dilution_file  = TFile::Open(dilution_fileName);
@@ -709,7 +709,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       vector<TF1*> mottFunctions_; 
       if(correctDilution) mottFunctions_ = GetMottFunctions(dilution_file, stn+"_");
 
-
       // Get mott functions
       TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_A"+fitType+"_vs_p";
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
@@ -763,7 +762,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       double err_tot = sqrt(pow(err_fit,2) + pow(err_dil,2) + pow(err_Br,2));    
 
       if(fitType == "EDM") {
-
 
         dMu = GetLimit(result); dMu_err = GetLimit(err_tot);
         //outputFile->cd();
@@ -847,11 +845,15 @@ int main() {
 	
 */
   // Data
-  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
-  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true);
-  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true);
-
+  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "reweight");
+  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "reweight");
+  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "reweight");
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "reweight");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "0");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "1");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "2");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "3");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "4");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true);
   //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true);
 

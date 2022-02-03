@@ -1,10 +1,10 @@
 void BrVsRun_Run5_Nearline_46235_46249()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Nov 16 10:51:12 2021) by ROOT version 6.12/04
+//=========  (Fri Jan 14 06:14:42 2022) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(46231.5,-12.5,46252.5,12.5);
+   c->Range(46231.5,-4,46252.5,6);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -59,8 +59,8 @@ void BrVsRun_Run5_Nearline_46235_46249()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,46233.6,46250.4);
-   Graph_Graph1003->SetMinimum(-10);
-   Graph_Graph1003->SetMaximum(10);
+   Graph_Graph1003->SetMinimum(-3);
+   Graph_Graph1003->SetMaximum(5);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 

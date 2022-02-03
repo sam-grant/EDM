@@ -1,7 +1,7 @@
 void hDiff_Run5_Nearline()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Nov  4 14:43:09 2021) by ROOT version 6.12/04
+//=========  (Tue Nov 16 10:42:06 2021) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,15 +11,14 @@ void hDiff_Run5_Nearline()
    c->SetFrameBorderMode(0);
    
    TH1D *hist__1 = new TH1D("hist__1","",20,-1,1);
-   hist__1->SetBinContent(1,1);
-   hist__1->SetBinContent(7,3);
+   hist__1->SetBinContent(6,1);
    hist__1->SetBinContent(8,1);
    hist__1->SetBinContent(9,3);
-   hist__1->SetBinContent(10,2);
-   hist__1->SetBinContent(11,4);
-   hist__1->SetBinContent(12,3);
-   hist__1->SetBinContent(13,5);
-   hist__1->SetBinContent(18,1);
+   hist__1->SetBinContent(10,5);
+   hist__1->SetBinContent(11,8);
+   hist__1->SetBinContent(12,2);
+   hist__1->SetBinContent(13,1);
+   hist__1->SetBinContent(14,2);
    hist__1->SetEntries(23);
    hist__1->SetStats(0);
    hist__1->SetFillColor(1);
@@ -48,11 +47,11 @@ void hDiff_Run5_Nearline()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(20);
-   TText *pt_LaTex = pt->AddText("-0.003
-#pm0.07
+   TText *pt_LaTex = pt->AddText("0.002
+#pm0.04
 ");
-   pt_LaTex = pt->AddText("0.32
-#pm0.05
+   pt_LaTex = pt->AddText("0.17
+#pm0.03
 ");
    pt->Draw();
    

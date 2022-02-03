@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+from ROOT import TFile, TCanvas, TH2D, TH3D
+
 
 # from rootpy.plotting import root2matplotlib as rplt
 # from rootpy.plotting import Hist2D
@@ -49,16 +51,21 @@ xx, yy  = np.meshgrid(np.arange(-45.,46.)/1000., np.arange(-45.,46.)/1000.)
 coil_pos = np.zeros([200,2])
 coil_pos[:100,1] =  d
 coil_pos[100:,1] = -d 
+
 for i in range(100):
     coil_pos[i,0] = (50-i)*0.0025 # 2.5mm
     coil_pos[i+100,0] = (50-i)*0.0025 # 2.5mm
+
 coil_pos[:,0] = coil_pos[:,0] - 0.0025/2.
+
 I = np.zeros([200])
+
 I[:100] = -1. #top
 I[100:] =  1. #bottom
 
 I[:100] = top
 I[100:] = bottom
+
 I_im = I * ((muR-1)/(muR+1)) # add image currents
 
 # the calculation
@@ -77,13 +84,14 @@ for j, s in enumerate(coil_pos):
 
 for n in range(10): # image calculations, n is the order 
     pos_im1, pos_im2  = coil_pos.copy(), coil_pos.copy()
-    print("top: ",  (-1)**n     * (2*(n+1)*a - d))
-    print("     ",  (-1)**(n+1) * (2*(n+1)*a + d))
+
+    # print("top: ",  (-1)**n     * (2*(n+1)*a - d))
+    # print("     ",  (-1)**(n+1) * (2*(n+1)*a + d))
     pos_im1[top,1]    = (-1)**n *     (2*(n+1)*a - d)
     pos_im2[top,1]    = (-1)**(n+1) * (2*(n+1)*a + d)
 
-    print("bottom: ",  -1. * ((-1)**n     * (2*(n+1)*a - d)))
-    print("     ",     -1. * ((-1)**(n+1) * (2*(n+1)*a + d)))
+    # print("bottom: ",  -1. * ((-1)**n     * (2*(n+1)*a - d)))
+    # print("     ",     -1. * ((-1)**(n+1) * (2*(n+1)*a + d)))
     pos_im1[bottom,1]    = -1. * ((-1)**n *     (2*(n+1)*a - d))
     pos_im2[bottom,1]    = -1. * ((-1)**(n+1) * (2*(n+1)*a + d))
 
@@ -92,23 +100,63 @@ for n in range(10): # image calculations, n is the order
         out_ = out_ + B(pos, pos_im2[j],    I_im[j])
 
 field_array = out_[:,0].reshape([91,91])/1.45*1e6
-
-#plt.imshow(out_[:,0].reshape([91,91])/1.45*1e6 - out[:,0].reshape([91,91])/1.45*1e6, extent=[-45.,45.,-45.,45.]) # in ppm
-plt.imshow(field_array, extent=[-45.,45.,-45.,45.]) # in ppm
-cbar = plt.colorbar()
-cbar.ax.set_title("[ppm]")
-plt.xlabel("x (radial) [mm]")
-plt.ylabel("y [mm]")
-plt.title("radial field")
-plt.tight_layout()
-plt.show()
-
 np.savetxt('../txt/SCC/field-map-run4-production-03.txt',out_[:,0])
 
+# plt.imshow(out_[:,0].reshape([91,91])/1.45*1e6 - out[:,0].reshape([91,91])/1.45*1e6, extent=[-45.,45.,-45.,45.]) # in ppm
+# plt.imshow(field_array, extent=[-45.,45.,-45.,45.]) # in ppm
+# cbar = plt.colorbar()
+# cbar.ax.set_title("[ppm]")
+# plt.xlabel("x (radial) [mm]")
+# plt.ylabel("y [mm]")
+# plt.title("radial field")
+# plt.tight_layout()
+# plt.show()
 
+# MY EDITS 
+# Plot the field as a histogram and save it as a ROOT file
 
+# field_array.
 
+# print(field_array)
+field_array = np.rot90(field_array, -1)
+# print("\n")
+# print(field_array, 2)
 
+rows = len(field_array)
+columns = len(field_array[0])
+
+h_FieldMap2D = TH2D("FieldMap2D", ";x [mm];y [mm];Radial field [ppm]", rows, -45, 45, columns, -45, 45)
+# h_FieldMap3D = TH3D("FieldMap3D", ";x [mm];y [mm];Radial field [ppm]", rows, -45, 45, columns, -45, 45, 100, 0, 100);
+
+for i in range(rows):
+     for j in range(columns):
+
+        binCont = field_array[i][j]
+
+        x = rows - i
+        y = columns - j
+        h_FieldMap2D.SetBinContent(i, j, binCont)
+        # h_FieldMap2D.SetBinContent(i, j, binCont)
+
+c1 = TCanvas("c1","c1",800,600);
+# c2 = TCanvas("c2","c2",800,600);
+
+h_FieldMap2D.SetStats(0)
+h_FieldMap2D.GetZaxis().SetRangeUser(55, 75)
+h_FieldMap2D.Draw("SURF3") #COLZ")
+c1.SetRightMargin(.13);
+
+c1.SaveAs("../Images/Data/SCC/FieldMap2D.png")
+c1.SaveAs("../Images/Data/SCC/FieldMap2D.pdf")
+c1.SaveAs("../Images/Data/SCC/FieldMap2D.C")
+
+fout = TFile("../Plots/Data/SCC/FieldMap.root", "RECREATE")
+
+fout.cd()
+h_FieldMap2D.Write()
+
+fout.Close()
+# print(len(field_array))
 
 # top = np.array([-0.00923226, -0.00881767, -0.00841575, -0.00802651, -0.00764994,
 #        -0.00728605, -0.00693483, -0.00659628, -0.0062704 , -0.0059572 ,

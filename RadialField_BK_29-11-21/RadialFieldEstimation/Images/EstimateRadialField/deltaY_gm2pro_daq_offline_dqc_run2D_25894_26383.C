@@ -1,7 +1,7 @@
 void deltaY_gm2pro_daq_offline_dqc_run2D_25894_26383()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jul 21 05:29:33 2021) by ROOT version 6.12/04
+//=========  (Thu Jan 13 02:55:54 2022) by ROOT version 6.12/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(25771.75,0.5301227,26505.25,1.421098);

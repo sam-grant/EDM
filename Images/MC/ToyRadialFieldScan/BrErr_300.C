@@ -1,7 +1,7 @@
 void BrErr_300()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan  5 17:07:05 2022) by ROOT version 6.24/06
+//=========  (Mon Jan 10 15:42:38 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,98 +10,19 @@ void BrErr_300()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__35 = new TH1D("__35","Number of sub-runs: 300",2000,0,1);
-   __35->SetBinContent(879,3);
-   __35->SetBinContent(884,1);
-   __35->SetBinContent(885,1);
-   __35->SetBinContent(886,1);
-   __35->SetBinContent(887,1);
-   __35->SetBinContent(888,3);
-   __35->SetBinContent(889,2);
-   __35->SetBinContent(890,5);
-   __35->SetBinContent(891,2);
-   __35->SetBinContent(892,2);
-   __35->SetBinContent(893,3);
-   __35->SetBinContent(894,4);
-   __35->SetBinContent(895,5);
-   __35->SetBinContent(896,1);
-   __35->SetBinContent(897,2);
-   __35->SetBinContent(898,7);
-   __35->SetBinContent(899,2);
-   __35->SetBinContent(900,8);
-   __35->SetBinContent(901,8);
-   __35->SetBinContent(902,10);
-   __35->SetBinContent(903,10);
-   __35->SetBinContent(904,10);
-   __35->SetBinContent(905,13);
-   __35->SetBinContent(906,10);
-   __35->SetBinContent(907,16);
-   __35->SetBinContent(908,21);
-   __35->SetBinContent(909,18);
-   __35->SetBinContent(910,13);
-   __35->SetBinContent(911,27);
-   __35->SetBinContent(912,26);
-   __35->SetBinContent(913,28);
-   __35->SetBinContent(914,16);
-   __35->SetBinContent(915,24);
-   __35->SetBinContent(916,30);
-   __35->SetBinContent(917,29);
-   __35->SetBinContent(918,24);
-   __35->SetBinContent(919,31);
-   __35->SetBinContent(920,25);
-   __35->SetBinContent(921,35);
-   __35->SetBinContent(922,31);
-   __35->SetBinContent(923,22);
-   __35->SetBinContent(924,30);
-   __35->SetBinContent(925,26);
-   __35->SetBinContent(926,30);
-   __35->SetBinContent(927,18);
-   __35->SetBinContent(928,25);
-   __35->SetBinContent(929,21);
-   __35->SetBinContent(930,36);
-   __35->SetBinContent(931,24);
-   __35->SetBinContent(932,15);
-   __35->SetBinContent(933,16);
-   __35->SetBinContent(934,13);
-   __35->SetBinContent(935,14);
-   __35->SetBinContent(936,20);
-   __35->SetBinContent(937,21);
-   __35->SetBinContent(938,15);
-   __35->SetBinContent(939,14);
-   __35->SetBinContent(940,11);
-   __35->SetBinContent(941,9);
-   __35->SetBinContent(942,10);
-   __35->SetBinContent(943,12);
-   __35->SetBinContent(944,13);
-   __35->SetBinContent(945,6);
-   __35->SetBinContent(946,6);
-   __35->SetBinContent(947,5);
-   __35->SetBinContent(948,11);
-   __35->SetBinContent(949,4);
-   __35->SetBinContent(950,9);
-   __35->SetBinContent(951,3);
-   __35->SetBinContent(952,6);
-   __35->SetBinContent(953,5);
-   __35->SetBinContent(954,2);
-   __35->SetBinContent(955,2);
-   __35->SetBinContent(956,7);
-   __35->SetBinContent(957,4);
-   __35->SetBinContent(958,2);
-   __35->SetBinContent(960,1);
-   __35->SetBinContent(962,1);
-   __35->SetBinContent(963,1);
-   __35->SetBinContent(964,1);
-   __35->SetBinContent(966,1);
+   TH1D *__35 = new TH1D("__35","Number of sub-runs: 300",240,0.4,1.6);
+   __35->SetBinContent(0,1000);
    __35->SetEntries(1000);
    __35->SetStats(0);
    __35->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{b}#GT [ppm]");
-   __35->GetXaxis()->SetRange(748,1098);
+   __35->GetXaxis()->SetRange(1,240);
    __35->GetXaxis()->CenterTitle(true);
    __35->GetXaxis()->SetLabelFont(42);
    __35->GetXaxis()->SetTitleSize(0.04);
    __35->GetXaxis()->SetTitleOffset(1.1);
    __35->GetXaxis()->SetTitleFont(42);
-   __35->GetYaxis()->SetTitle("Trials");
+   __35->GetYaxis()->SetTitle("Trials / 0.005
+ ppm");
    __35->GetYaxis()->CenterTitle(true);
    __35->GetYaxis()->SetNdivisions(4000510);
    __35->GetYaxis()->SetLabelFont(42);
@@ -117,7 +38,7 @@ void BrErr_300()
    pt->SetFillColor(0);
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
-   pt->SetTextSize(26);
+   pt->SetTextSize(23);
    TText *pt_LaTex = pt->AddText("Trials");
    pt_LaTex = pt->AddText("Mean [ppm]");
    pt_LaTex = pt->AddText("RMS [ppm]");
@@ -127,13 +48,13 @@ void BrErr_300()
    pt->SetFillColor(0);
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
-   pt->SetTextSize(26);
+   pt->SetTextSize(23);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("0.5
-#pm0.0002
+   pt_LaTex = pt->AddText("0
+#pm0
 ");
-   pt_LaTex = pt->AddText("0.0073
-#pm0.0002
+   pt_LaTex = pt->AddText("0
+#pm0
 ");
    pt->Draw();
    c->Modified();

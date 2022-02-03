@@ -421,6 +421,10 @@ void Draw_2D_cuts(TH2D *hist, std::string title, std::string fname) {
 	x2->Draw("same");//(2);
 	y2->Draw("same");//(2);
 
+	TBox *bv = new TBox(24, 1000, 300, 2750);
+	bv->SetFillColor(kRed); bv->SetFillStyle(3005);
+	bv->Draw("SAME");
+
 	c->SetLogz();
 	
 	c->SaveAs((fname+".C").c_str());
@@ -432,7 +436,7 @@ void Draw_2D_cuts(TH2D *hist, std::string title, std::string fname) {
 	return;
 }
 
-void Draw_1D(TH1D *hist, std::string title, std::string fname) {
+void Draw_1D(TH1D *hist, double xmin, double xmax, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -448,12 +452,43 @@ void Draw_1D(TH1D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
-	//hist->SetLineWidth(3);
+	hist->SetLineWidth(2);
 	hist->SetLineColor(1);
 
 	//c->SetRightMargin(0.13);
 
 	hist->Draw();
+	gPad->Update();
+
+	TGraphErrors *gr = ConvertToTGraphErrors(hist);
+	gr->SetMarkerStyle(20);
+	gr->GetXaxis()->SetRangeUser(gr->GetX()[0]-hist->GetXaxis()->GetBinWidth(1), gr->GetX()[gr->GetN()-1]+hist->GetXaxis()->GetBinWidth(1));
+	gr->SetTitle(title.c_str());
+	gr->GetXaxis()->SetTitleSize(.04);
+	gr->GetYaxis()->SetTitleSize(.04);
+	gr->GetXaxis()->SetTitleOffset(1.1);
+	gr->GetYaxis()->SetTitleOffset(1.15);
+	gr->GetXaxis()->CenterTitle(1);
+	gr->GetYaxis()->CenterTitle(1);
+	gr->GetYaxis()->SetMaxDigits(4);
+	gr->Draw("AP");
+
+	gPad->Update();
+
+	TLine *loLine = new TLine(xmin, gPad->GetUymin(), xmin, gPad->GetUymax());
+	TLine *hiLine = new TLine(xmax, gPad->GetUymin(), xmax, gPad->GetUymax());
+
+	loLine->SetLineColor(kRed);
+	hiLine->SetLineColor(kRed);
+	loLine->SetLineStyle(2);
+	hiLine->SetLineStyle(2);
+
+	loLine->Draw("SAME");
+	hiLine->Draw("SAME");	
+
+	TBox *bv = new TBox(xmin, gPad->GetUymin(), xmax, gPad->GetUymax());
+	bv->SetFillColor(kRed); bv->SetFillStyle(3005);
+	bv->Draw("SAME");
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -477,18 +512,31 @@ void GeneralPlots() {
 	TH1D *cluTY_px = cluTY->ProfileX();
 	TH1D *cluEY_px = cluEY->ProfileX();
 
-	Draw_2D(cluTE, ";Time [#mus];Cluster energy [MeV]", "../Images/Data/yPos_vs_E/cluTE.34735");
-	Draw_2D_cuts(cluTE, ";Time [#mus];Cluster energy [MeV]", "../Images/Data/yPos_vs_E/cluTE_cuts.34735");
+	// Draw_2D(cluTE, ";Time [#mus] / "+to_string(cluTE->GetYaxis()->GetBinWidth(1))+" MeV;Cluster energy [MeV] / "+to_string(cluTE->GetXaxis()->GetBinWidth(1))+" #mus", "../Images/Data/yPos_vs_E/cluTE.34735");
+	// Draw_2D_cuts(cluTE, ";Time [#mus] / "+to_string(cluTE->GetYaxis()->GetBinWidth(1))+" MeV;Cluster energy [MeV] / "+to_string(cluTE->GetXaxis()->GetBinWidth(1))+" #mus", "../Images/Data/yPos_vs_E/cluTE_cuts.34735");
 
-	Draw_2D(cluTY, ";Time [#mus];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluTY.34735");
-	Draw_2D(cluEY, ";Cluster energy [MeV];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluEY.34735");
+	Draw_2D(cluTE, ";Time [#mus] / 10 MeV;Cluster energy [MeV] / 149.2 ns", "../Images/Data/yPos_vs_E/cluTE.34735");
+	Draw_2D_cuts(cluTE, ";Time [#mus] / 10 MeV;Cluster energy [MeV] / 149.2 ns", "../Images/Data/yPos_vs_E/cluTE_cuts.34735");
+
+	// Draw_2D(cluTY, ";Time [#mus];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluTY.34735");
+	// Draw_2D(cluEY, ";Cluster energy [MeV];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluEY.34735");
 	
-	Draw_1D(cluTE_px, ";Time [#mus];Cluster energy [MeV]", "../Images/Data/yPos_vs_E/cluTE_px.34735");
+	// Draw_1D(cluTE_px, ";Time [#mus];Cluster energy [MeV]", "../Images/Data/yPos_vs_E/cluTE_px.34735");
 
 	cluEY_px->GetYaxis()->SetRangeUser(65, 80);
-	cluTY_px->GetYaxis()->SetRangeUser(55, 95);
-	Draw_1D(cluTY_px, ";Time [#mus];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluTY_px.34735");
-	Draw_1D(cluEY_px, ";Cluster energy [MeV];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluEY_px.34735");
+	//cluTY_px->GetYaxis()->SetRangeUser(55, 95);
+	cluTY_px->GetYaxis()->SetRangeUser(70.5, 77);
+
+	cluEY_px->Rebin(4);
+	cluTY_px->Rebin(29);
+
+	cout<<cluTY_px->GetXaxis()->GetBinWidth(1)<<endl;
+	cout<<cluEY_px->GetXaxis()->GetBinWidth(1)<<endl;
+	cout<<cluTY_px->GetYaxis()->GetBinWidth(1)<<endl;
+	cout<<cluEY_px->GetYaxis()->GetBinWidth(1)<<endl;
+
+	Draw_1D(cluTY_px, 24, 300, ";Time [#mus];#LTy#GT [mm]", "../Images/Data/yPos_vs_E/cluTY_px.34735");
+	Draw_1D(cluEY_px, 1000, 2750, ";Cluster energy [MeV];#LTy#GT [mm]", "../Images/Data/yPos_vs_E/cluEY_px.34735");
 
 	cluEY_px->GetYaxis()->SetRangeUser(73, 76);
 	cluEY_px->GetXaxis()->SetRangeUser(0, 1000);
@@ -496,8 +544,8 @@ void GeneralPlots() {
 	cluTY_px->GetYaxis()->SetRangeUser(67, 80);
 	cluTY_px->GetXaxis()->SetRangeUser(0, 50);
 
-	Draw_1D(cluEY_px, ";Cluster energy [MeV];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluEY_px_zoom.34735");
-	Draw_1D(cluTY_px, ";Time [#mus];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluTY_px_zoom.34735");
+	//Draw_1D(cluEY_px, ";Cluster energy [MeV];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluEY_px_zoom.34735");
+	//Draw_1D(cluTY_px, ";Time [#mus];y_{calo} [mm]", "../Images/Data/yPos_vs_E/cluTY_px_zoom.34735");
 
 	return;
 

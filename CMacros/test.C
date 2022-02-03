@@ -1,20 +1,27 @@
 {
 
-	TH1D *h1 = new TH1D("h", "h", 100, -10, 10);
-	TRandom3 *rdn = new TRandom3(); 
+    TFile *f = TFile::Open("../Plots/Data/dMu/Run-1/Fits/edmResults_blinded_750-2750MeV_Run-1d_125MeV_BQ.root");
 
-	for(int i(0); i<100; i++) h1->Fill(rdn->Gaus(0,1));
+    TTree *t = (TTree*)f->Get("EDM/EDMTree");
 
-   TCanvas *c = new TCanvas("c", "c", 800,800);
-   c->Draw();
-   TPad *p1 = new TPad("p1","p1",0, 0, 1, 1);//0.1,0.2,0.9,1.);
-   p1->Draw();
-   p1->cd();
-   h1->Draw();
+    double result; double error;
 
-   c->cd(0);
-   TPad *p2 = new TPad("p2","p2", .69, .69, .89, .89);
-   p2->Draw();
-   p2->cd();
-   h1->Draw();
+    t->SetBranchAddress("dMu", &result);
+    t->SetBranchAddress("dMu_err", &error);
+
+    t->Scan();
+
+    t->GetEntry(0);
+    cout<<result<<endl;
+    t->GetEntry(1);
+    cout<<result<<endl;
+    t->GetEntry(2);
+    cout<<result<<endl;
+
+    for(int i = 0; i<t->GetEntries(); i++) { 
+
+        t->GetEntry(i);
+        cout<<result<<endl;
+
+    }
 }

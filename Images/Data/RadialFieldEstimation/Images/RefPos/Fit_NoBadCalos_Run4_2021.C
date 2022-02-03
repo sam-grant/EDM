@@ -5958,27 +5958,25 @@ void Fit_NoBadCalos_Run4_2021()
    RefPos1003->SetParLimits(0,0,0);
    RefPos1003->Draw("same");
    
-   TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
+   TPaveText *pt = new TPaveText(0.79,0.79,0.89,0.89,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
-   pt->SetTextSize(20);
-   TText *pt_LaTex = pt->AddText("185
-");
-   pt_LaTex = pt->AddText("74.462
-#pm0.0002
-");
-   pt->Draw();
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("74.4618#pm0.0002");
+   pt->Draw("same");
    
-   pt = new TPaveText(0,0,0,0,"brNDC");
+   pt = new TPaveText(0.50,0.80,0.59,0.89,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
-   pt->SetTextSize(20);
-   pt_LaTex = pt->AddText("#chi^{2}/ndf");
-   pt_LaTex = pt->AddText("#LTy#GT [mm]");
-   pt->Draw();
+   pt->SetTextSize(26);
+   //pt_LaTex = pt->AddText("#chi^{2}/ndf");
+   pt_LaTex = pt->AddText("#LTy#GT_{B_{r}=0} [mm]");
+   pt->Draw("same");
    c->Modified();
    c->cd();
    c->SetSelected(c);
+
+   c->SaveAs("RefPos.pdf");
 }

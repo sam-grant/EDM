@@ -2111,7 +2111,7 @@ void PerCaloYvsRun_Run1_15921_17527()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_y_vs_run_11002 = new TH1F("Graph_y_vs_run_11002","",520,15760.4,17687.6);
-   Graph_y_vs_run_11002->SetMinimum(70);
+   Graph_y_vs_run_11002->SetMinimum(73);
    Graph_y_vs_run_11002->SetMaximum(80);
    Graph_y_vs_run_11002->SetDirectory(0);
    Graph_y_vs_run_11002->SetStats(0);
@@ -2124,7 +2124,7 @@ void PerCaloYvsRun_Run1_15921_17527()
    Graph_y_vs_run_11002->GetXaxis()->SetLabelSize(0.035);
    Graph_y_vs_run_11002->GetXaxis()->SetTitleOffset(1.1);
    Graph_y_vs_run_11002->GetXaxis()->SetTitleFont(42);
-   Graph_y_vs_run_11002->GetYaxis()->SetTitle("#LTy_{Calo}#GT [mm]");
+   Graph_y_vs_run_11002->GetYaxis()->SetTitle("#LTy_{calo}#GT [mm]");
    Graph_y_vs_run_11002->GetYaxis()->CenterTitle(true);
    Graph_y_vs_run_11002->GetYaxis()->SetNdivisions(4000510);
    Graph_y_vs_run_11002->GetYaxis()->SetLabelFont(42);
@@ -51245,4 +51245,6 @@ void PerCaloYvsRun_Run1_15921_17527()
    c->Modified();
    c->cd();
    c->SetSelected(c);
+
+   c->SaveAs("PerCaloYvsRun_Run1_15921_17527.pdf");
 }

@@ -116,6 +116,8 @@ int main() { /// int argc, char *argv[]) {
 
 	bool fromFile = true; 
 
+	vector<TGraphErrors*> gr_;
+
 	if(fromFile) { 
 
 
@@ -150,6 +152,7 @@ int main() { /// int argc, char *argv[]) {
 	for (int i = 0; i < n; i++) gr->GetXaxis()->SetBinLabel(gr->GetXaxis()->FindBin(i+1.), names[i].c_str());
 
 	DrawGraph(gr, ";Dataset;#LTB_{r}#GT [ppm]", "../Images/Br_vs_DS/BrVsDS");
+
 /*	TFile *input = TFile::Open(fname.c_str());
 
 	cout<<"Analysing "<<fname<<endl;

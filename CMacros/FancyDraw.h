@@ -1065,9 +1065,9 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 /*	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
 	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));*/
-	values->AddText(Round(par1, 3)+"#pm"+Round(err1, 3));
-	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 3));
-	values->AddText(Round(-xint, 3)+"#pm"+Round(xint_err, 3));
+	values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	values->AddText(Round(-xint, 2)+"#pm"+Round(xint_err, 1));
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 
 	names->SetTextSize(26);

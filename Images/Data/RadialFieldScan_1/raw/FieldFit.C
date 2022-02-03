@@ -1,7 +1,7 @@
 void FieldFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan  5 15:16:46 2022) by ROOT version 6.24/06
+//=========  (Mon Jan 10 12:01:22 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-28.36674,45,53.94146);
@@ -87,11 +87,10 @@ void FieldFit()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("  inf");
-   pt_LaTex = pt->AddText("0.86
+   TText *pt_LaTex = pt->AddText("0.86
 #pm0.04
 ");
-   pt_LaTex = pt->AddText("12.8
+   pt_LaTex = pt->AddText("13
 #pm1
 ");
    pt_LaTex = pt->AddText("15
@@ -104,7 +103,6 @@ void FieldFit()
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient");
    pt_LaTex = pt->AddText("Y-intercept [mm#upointkV]");
    pt_LaTex = pt->AddText("Background #LTB_{r}#GT [ppm]");

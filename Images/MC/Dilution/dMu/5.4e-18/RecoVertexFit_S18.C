@@ -1,41 +1,41 @@
 void RecoVertexFit_S18()
 {
 //=========Macro generated from canvas: S18/c
-//=========  (Tue Dec  7 01:11:50 2021) by ROOT version 6.24/04
+//=========  (Thu Feb  3 13:23:10 2022) by ROOT version 6.24/06
    TCanvas *S18 = new TCanvas("S18", "c",0,0,800,600);
    S18->SetHighLightColor(2);
-   S18->Range(467.2958,-0.015,3024.641,0.135);
+   S18->Range(467.2406,-0.015,3024.432,0.135);
    S18->SetFillColor(0);
    S18->SetBorderMode(0);
    S18->SetBorderSize(2);
    S18->SetFrameBorderMode(0);
    S18->SetFrameBorderMode(0);
    
-   Double_t S18_trackReco_fx1063[11] = {
-   452.1153,
-   653.259,
-   880.6386,
-   1123.037,
-   1370.835,
-   1619.675,
-   1866.351,
-   2115.144,
-   2363.223,
-   2612.271,
-   2787.59};
-   Double_t S18_trackReco_fy1063[11] = {
-   -0.1983612,
-   0.1007469,
-   0.04247719,
-   0.07099755,
-   0.06238868,
-   0.08473406,
-   0.07700416,
-   0.03842846,
-   0.03498285,
-   0.09140762,
-   0.02762337};
-   Double_t S18_trackReco_fex1063[11] = {
+   Double_t S18_trackReco_fx1011[11] = {
+   452.0609,
+   653.2722,
+   880.5507,
+   1123.017,
+   1370.779,
+   1619.705,
+   1866.411,
+   2115.026,
+   2363.263,
+   2612.185,
+   2787.396};
+   Double_t S18_trackReco_fy1011[11] = {
+   -0.1213893,
+   0.07899585,
+   0.05626916,
+   0.04686812,
+   0.0659471,
+   0.07695589,
+   0.06322005,
+   0.03376479,
+   0.04718762,
+   0.08779949,
+   0.0236957};
+   Double_t S18_trackReco_fex1011[11] = {
    0,
    0,
    0,
@@ -47,321 +47,321 @@ void RecoVertexFit_S18()
    0,
    0,
    0};
-   Double_t S18_trackReco_fey1063[11] = {
-   0.1107707,
-   0.03705102,
-   0.02115334,
-   0.0173629,
-   0.01601287,
-   0.01530312,
-   0.01556238,
-   0.01646739,
-   0.01786378,
-   0.01757159,
-   0.0418298};
-   TGraphErrors *gre = new TGraphErrors(11,S18_trackReco_fx1063,S18_trackReco_fy1063,S18_trackReco_fex1063,S18_trackReco_fey1063);
+   Double_t S18_trackReco_fey1011[11] = {
+   0.08569055,
+   0.02872775,
+   0.01638732,
+   0.01345667,
+   0.01241907,
+   0.01186883,
+   0.01205626,
+   0.01276151,
+   0.01386292,
+   0.0136014,
+   0.03243134};
+   TGraphErrors *gre = new TGraphErrors(11,S18_trackReco_fx1011,S18_trackReco_fy1011,S18_trackReco_fex1011,S18_trackReco_fey1011);
    gre->SetName("S18_trackReco");
    gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S18_trackReco1063 = new TH1F("Graph_S18_trackReco1063","",100,218.5678,3021.138);
-   Graph_S18_trackReco1063->SetMinimum(0);
-   Graph_S18_trackReco1063->SetMaximum(0.12);
-   Graph_S18_trackReco1063->SetDirectory(0);
-   Graph_S18_trackReco1063->SetStats(0);
+   TH1F *Graph_S18_trackReco1011 = new TH1F("Graph_S18_trackReco1011","",100,218.5275,3020.929);
+   Graph_S18_trackReco1011->SetMinimum(0);
+   Graph_S18_trackReco1011->SetMaximum(0.12);
+   Graph_S18_trackReco1011->SetDirectory(0);
+   Graph_S18_trackReco1011->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_S18_trackReco1063->SetLineColor(ci);
-   Graph_S18_trackReco1063->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_S18_trackReco1063->GetXaxis()->SetRange(19,91);
-   Graph_S18_trackReco1063->GetXaxis()->CenterTitle(true);
-   Graph_S18_trackReco1063->GetXaxis()->SetLabelFont(42);
-   Graph_S18_trackReco1063->GetXaxis()->SetTitleSize(0.04);
-   Graph_S18_trackReco1063->GetXaxis()->SetTitleOffset(1.1);
-   Graph_S18_trackReco1063->GetXaxis()->SetTitleFont(42);
-   Graph_S18_trackReco1063->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
-   Graph_S18_trackReco1063->GetYaxis()->CenterTitle(true);
-   Graph_S18_trackReco1063->GetYaxis()->SetNdivisions(4000510);
-   Graph_S18_trackReco1063->GetYaxis()->SetLabelFont(42);
-   Graph_S18_trackReco1063->GetYaxis()->SetTitleSize(0.04);
-   Graph_S18_trackReco1063->GetYaxis()->SetTitleOffset(1.25);
-   Graph_S18_trackReco1063->GetYaxis()->SetTitleFont(42);
-   Graph_S18_trackReco1063->GetZaxis()->SetLabelFont(42);
-   Graph_S18_trackReco1063->GetZaxis()->SetTitleOffset(1);
-   Graph_S18_trackReco1063->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_S18_trackReco1063);
+   Graph_S18_trackReco1011->SetLineColor(ci);
+   Graph_S18_trackReco1011->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_S18_trackReco1011->GetXaxis()->SetRange(19,91);
+   Graph_S18_trackReco1011->GetXaxis()->CenterTitle(true);
+   Graph_S18_trackReco1011->GetXaxis()->SetLabelFont(42);
+   Graph_S18_trackReco1011->GetXaxis()->SetTitleSize(0.04);
+   Graph_S18_trackReco1011->GetXaxis()->SetTitleOffset(1.1);
+   Graph_S18_trackReco1011->GetXaxis()->SetTitleFont(42);
+   Graph_S18_trackReco1011->GetYaxis()->SetTitle("d_{EDM} / 250 MeV");
+   Graph_S18_trackReco1011->GetYaxis()->CenterTitle(true);
+   Graph_S18_trackReco1011->GetYaxis()->SetNdivisions(4000510);
+   Graph_S18_trackReco1011->GetYaxis()->SetLabelFont(42);
+   Graph_S18_trackReco1011->GetYaxis()->SetTitleSize(0.04);
+   Graph_S18_trackReco1011->GetYaxis()->SetTitleOffset(1.25);
+   Graph_S18_trackReco1011->GetYaxis()->SetTitleFont(42);
+   Graph_S18_trackReco1011->GetZaxis()->SetLabelFont(42);
+   Graph_S18_trackReco1011->GetZaxis()->SetTitleOffset(1);
+   Graph_S18_trackReco1011->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_S18_trackReco1011);
    
    
-   TF1 *ParabolaFunc1064 = new TF1("*ParabolaFunc",750,2750,3);
+   TF1 *ParabolaFunc1012 = new TF1("*ParabolaFunc",750,2750,3);
     //The original function : ParabolaFunc had originally been created by:
     //TF1 *ParabolaFunc = new TF1("ParabolaFunc",ParabolaFunc,750,2750,3, 1, TF1::EAddToList::kNo);
-   ParabolaFunc1064->SetRange(750,2750);
-   ParabolaFunc1064->SetName("ParabolaFunc");
-   ParabolaFunc1064->SetTitle("ParabolaFunc");
-   ParabolaFunc1064->SetSavedPoint(0,0.05885653);
-   ParabolaFunc1064->SetSavedPoint(1,0.05911022);
-   ParabolaFunc1064->SetSavedPoint(2,0.05935942);
-   ParabolaFunc1064->SetSavedPoint(3,0.05960414);
-   ParabolaFunc1064->SetSavedPoint(4,0.05984438);
-   ParabolaFunc1064->SetSavedPoint(5,0.06008014);
-   ParabolaFunc1064->SetSavedPoint(6,0.06031142);
-   ParabolaFunc1064->SetSavedPoint(7,0.06053822);
-   ParabolaFunc1064->SetSavedPoint(8,0.06076054);
-   ParabolaFunc1064->SetSavedPoint(9,0.06097838);
-   ParabolaFunc1064->SetSavedPoint(10,0.06119174);
-   ParabolaFunc1064->SetSavedPoint(11,0.06140062);
-   ParabolaFunc1064->SetSavedPoint(12,0.06160501);
-   ParabolaFunc1064->SetSavedPoint(13,0.06180493);
-   ParabolaFunc1064->SetSavedPoint(14,0.06200037);
-   ParabolaFunc1064->SetSavedPoint(15,0.06219133);
-   ParabolaFunc1064->SetSavedPoint(16,0.06237781);
-   ParabolaFunc1064->SetSavedPoint(17,0.06255981);
-   ParabolaFunc1064->SetSavedPoint(18,0.06273733);
-   ParabolaFunc1064->SetSavedPoint(19,0.06291036);
-   ParabolaFunc1064->SetSavedPoint(20,0.06307892);
-   ParabolaFunc1064->SetSavedPoint(21,0.063243);
-   ParabolaFunc1064->SetSavedPoint(22,0.0634026);
-   ParabolaFunc1064->SetSavedPoint(23,0.06355771);
-   ParabolaFunc1064->SetSavedPoint(24,0.06370835);
-   ParabolaFunc1064->SetSavedPoint(25,0.06385451);
-   ParabolaFunc1064->SetSavedPoint(26,0.06399618);
-   ParabolaFunc1064->SetSavedPoint(27,0.06413338);
-   ParabolaFunc1064->SetSavedPoint(28,0.0642661);
-   ParabolaFunc1064->SetSavedPoint(29,0.06439433);
-   ParabolaFunc1064->SetSavedPoint(30,0.06451809);
-   ParabolaFunc1064->SetSavedPoint(31,0.06463736);
-   ParabolaFunc1064->SetSavedPoint(32,0.06475216);
-   ParabolaFunc1064->SetSavedPoint(33,0.06486247);
-   ParabolaFunc1064->SetSavedPoint(34,0.06496831);
-   ParabolaFunc1064->SetSavedPoint(35,0.06506966);
-   ParabolaFunc1064->SetSavedPoint(36,0.06516654);
-   ParabolaFunc1064->SetSavedPoint(37,0.06525893);
-   ParabolaFunc1064->SetSavedPoint(38,0.06534685);
-   ParabolaFunc1064->SetSavedPoint(39,0.06543028);
-   ParabolaFunc1064->SetSavedPoint(40,0.06550924);
-   ParabolaFunc1064->SetSavedPoint(41,0.06558371);
-   ParabolaFunc1064->SetSavedPoint(42,0.0656537);
-   ParabolaFunc1064->SetSavedPoint(43,0.06571922);
-   ParabolaFunc1064->SetSavedPoint(44,0.06578025);
-   ParabolaFunc1064->SetSavedPoint(45,0.0658368);
-   ParabolaFunc1064->SetSavedPoint(46,0.06588888);
-   ParabolaFunc1064->SetSavedPoint(47,0.06593647);
-   ParabolaFunc1064->SetSavedPoint(48,0.06597958);
-   ParabolaFunc1064->SetSavedPoint(49,0.06601821);
-   ParabolaFunc1064->SetSavedPoint(50,0.06605237);
-   ParabolaFunc1064->SetSavedPoint(51,0.06608204);
-   ParabolaFunc1064->SetSavedPoint(52,0.06610723);
-   ParabolaFunc1064->SetSavedPoint(53,0.06612794);
-   ParabolaFunc1064->SetSavedPoint(54,0.06614417);
-   ParabolaFunc1064->SetSavedPoint(55,0.06615592);
-   ParabolaFunc1064->SetSavedPoint(56,0.0661632);
-   ParabolaFunc1064->SetSavedPoint(57,0.06616599);
-   ParabolaFunc1064->SetSavedPoint(58,0.0661643);
-   ParabolaFunc1064->SetSavedPoint(59,0.06615813);
-   ParabolaFunc1064->SetSavedPoint(60,0.06614748);
-   ParabolaFunc1064->SetSavedPoint(61,0.06613235);
-   ParabolaFunc1064->SetSavedPoint(62,0.06611274);
-   ParabolaFunc1064->SetSavedPoint(63,0.06608865);
-   ParabolaFunc1064->SetSavedPoint(64,0.06606008);
-   ParabolaFunc1064->SetSavedPoint(65,0.06602703);
-   ParabolaFunc1064->SetSavedPoint(66,0.0659895);
-   ParabolaFunc1064->SetSavedPoint(67,0.06594749);
-   ParabolaFunc1064->SetSavedPoint(68,0.065901);
-   ParabolaFunc1064->SetSavedPoint(69,0.06585002);
-   ParabolaFunc1064->SetSavedPoint(70,0.06579457);
-   ParabolaFunc1064->SetSavedPoint(71,0.06573464);
-   ParabolaFunc1064->SetSavedPoint(72,0.06567023);
-   ParabolaFunc1064->SetSavedPoint(73,0.06560134);
-   ParabolaFunc1064->SetSavedPoint(74,0.06552797);
-   ParabolaFunc1064->SetSavedPoint(75,0.06545011);
-   ParabolaFunc1064->SetSavedPoint(76,0.06536778);
-   ParabolaFunc1064->SetSavedPoint(77,0.06528097);
-   ParabolaFunc1064->SetSavedPoint(78,0.06518968);
-   ParabolaFunc1064->SetSavedPoint(79,0.0650939);
-   ParabolaFunc1064->SetSavedPoint(80,0.06499365);
-   ParabolaFunc1064->SetSavedPoint(81,0.06488892);
-   ParabolaFunc1064->SetSavedPoint(82,0.0647797);
-   ParabolaFunc1064->SetSavedPoint(83,0.06466601);
-   ParabolaFunc1064->SetSavedPoint(84,0.06454783);
-   ParabolaFunc1064->SetSavedPoint(85,0.06442518);
-   ParabolaFunc1064->SetSavedPoint(86,0.06429805);
-   ParabolaFunc1064->SetSavedPoint(87,0.06416643);
-   ParabolaFunc1064->SetSavedPoint(88,0.06403034);
-   ParabolaFunc1064->SetSavedPoint(89,0.06388976);
-   ParabolaFunc1064->SetSavedPoint(90,0.06374471);
-   ParabolaFunc1064->SetSavedPoint(91,0.06359517);
-   ParabolaFunc1064->SetSavedPoint(92,0.06344116);
-   ParabolaFunc1064->SetSavedPoint(93,0.06328266);
-   ParabolaFunc1064->SetSavedPoint(94,0.06311969);
-   ParabolaFunc1064->SetSavedPoint(95,0.06295223);
-   ParabolaFunc1064->SetSavedPoint(96,0.06278029);
-   ParabolaFunc1064->SetSavedPoint(97,0.06260388);
-   ParabolaFunc1064->SetSavedPoint(98,0.06242298);
-   ParabolaFunc1064->SetSavedPoint(99,0.0622376);
-   ParabolaFunc1064->SetSavedPoint(100,0.06204775);
-   ParabolaFunc1064->SetSavedPoint(101,750);
-   ParabolaFunc1064->SetSavedPoint(102,2750);
-   ParabolaFunc1064->SetFillColor(19);
-   ParabolaFunc1064->SetFillStyle(0);
+   ParabolaFunc1012->SetRange(750,2750);
+   ParabolaFunc1012->SetName("ParabolaFunc");
+   ParabolaFunc1012->SetTitle("ParabolaFunc");
+   ParabolaFunc1012->SetSavedPoint(0,0.06182485);
+   ParabolaFunc1012->SetSavedPoint(1,0.06159291);
+   ParabolaFunc1012->SetSavedPoint(2,0.06136737);
+   ParabolaFunc1012->SetSavedPoint(3,0.06114823);
+   ParabolaFunc1012->SetSavedPoint(4,0.06093549);
+   ParabolaFunc1012->SetSavedPoint(5,0.06072915);
+   ParabolaFunc1012->SetSavedPoint(6,0.06052922);
+   ParabolaFunc1012->SetSavedPoint(7,0.06033568);
+   ParabolaFunc1012->SetSavedPoint(8,0.06014855);
+   ParabolaFunc1012->SetSavedPoint(9,0.05996782);
+   ParabolaFunc1012->SetSavedPoint(10,0.05979349);
+   ParabolaFunc1012->SetSavedPoint(11,0.05962556);
+   ParabolaFunc1012->SetSavedPoint(12,0.05946403);
+   ParabolaFunc1012->SetSavedPoint(13,0.05930891);
+   ParabolaFunc1012->SetSavedPoint(14,0.05916018);
+   ParabolaFunc1012->SetSavedPoint(15,0.05901786);
+   ParabolaFunc1012->SetSavedPoint(16,0.05888194);
+   ParabolaFunc1012->SetSavedPoint(17,0.05875242);
+   ParabolaFunc1012->SetSavedPoint(18,0.0586293);
+   ParabolaFunc1012->SetSavedPoint(19,0.05851258);
+   ParabolaFunc1012->SetSavedPoint(20,0.05840226);
+   ParabolaFunc1012->SetSavedPoint(21,0.05829835);
+   ParabolaFunc1012->SetSavedPoint(22,0.05820083);
+   ParabolaFunc1012->SetSavedPoint(23,0.05810972);
+   ParabolaFunc1012->SetSavedPoint(24,0.05802501);
+   ParabolaFunc1012->SetSavedPoint(25,0.0579467);
+   ParabolaFunc1012->SetSavedPoint(26,0.05787479);
+   ParabolaFunc1012->SetSavedPoint(27,0.05780928);
+   ParabolaFunc1012->SetSavedPoint(28,0.05775018);
+   ParabolaFunc1012->SetSavedPoint(29,0.05769747);
+   ParabolaFunc1012->SetSavedPoint(30,0.05765117);
+   ParabolaFunc1012->SetSavedPoint(31,0.05761127);
+   ParabolaFunc1012->SetSavedPoint(32,0.05757777);
+   ParabolaFunc1012->SetSavedPoint(33,0.05755067);
+   ParabolaFunc1012->SetSavedPoint(34,0.05752997);
+   ParabolaFunc1012->SetSavedPoint(35,0.05751567);
+   ParabolaFunc1012->SetSavedPoint(36,0.05750778);
+   ParabolaFunc1012->SetSavedPoint(37,0.05750629);
+   ParabolaFunc1012->SetSavedPoint(38,0.05751119);
+   ParabolaFunc1012->SetSavedPoint(39,0.0575225);
+   ParabolaFunc1012->SetSavedPoint(40,0.05754021);
+   ParabolaFunc1012->SetSavedPoint(41,0.05756432);
+   ParabolaFunc1012->SetSavedPoint(42,0.05759484);
+   ParabolaFunc1012->SetSavedPoint(43,0.05763175);
+   ParabolaFunc1012->SetSavedPoint(44,0.05767507);
+   ParabolaFunc1012->SetSavedPoint(45,0.05772479);
+   ParabolaFunc1012->SetSavedPoint(46,0.0577809);
+   ParabolaFunc1012->SetSavedPoint(47,0.05784342);
+   ParabolaFunc1012->SetSavedPoint(48,0.05791235);
+   ParabolaFunc1012->SetSavedPoint(49,0.05798767);
+   ParabolaFunc1012->SetSavedPoint(50,0.05806939);
+   ParabolaFunc1012->SetSavedPoint(51,0.05815752);
+   ParabolaFunc1012->SetSavedPoint(52,0.05825204);
+   ParabolaFunc1012->SetSavedPoint(53,0.05835297);
+   ParabolaFunc1012->SetSavedPoint(54,0.0584603);
+   ParabolaFunc1012->SetSavedPoint(55,0.05857403);
+   ParabolaFunc1012->SetSavedPoint(56,0.05869417);
+   ParabolaFunc1012->SetSavedPoint(57,0.0588207);
+   ParabolaFunc1012->SetSavedPoint(58,0.05895363);
+   ParabolaFunc1012->SetSavedPoint(59,0.05909297);
+   ParabolaFunc1012->SetSavedPoint(60,0.05923871);
+   ParabolaFunc1012->SetSavedPoint(61,0.05939085);
+   ParabolaFunc1012->SetSavedPoint(62,0.05954939);
+   ParabolaFunc1012->SetSavedPoint(63,0.05971433);
+   ParabolaFunc1012->SetSavedPoint(64,0.05988567);
+   ParabolaFunc1012->SetSavedPoint(65,0.06006342);
+   ParabolaFunc1012->SetSavedPoint(66,0.06024756);
+   ParabolaFunc1012->SetSavedPoint(67,0.06043811);
+   ParabolaFunc1012->SetSavedPoint(68,0.06063506);
+   ParabolaFunc1012->SetSavedPoint(69,0.06083841);
+   ParabolaFunc1012->SetSavedPoint(70,0.06104816);
+   ParabolaFunc1012->SetSavedPoint(71,0.06126431);
+   ParabolaFunc1012->SetSavedPoint(72,0.06148686);
+   ParabolaFunc1012->SetSavedPoint(73,0.06171582);
+   ParabolaFunc1012->SetSavedPoint(74,0.06195118);
+   ParabolaFunc1012->SetSavedPoint(75,0.06219293);
+   ParabolaFunc1012->SetSavedPoint(76,0.06244109);
+   ParabolaFunc1012->SetSavedPoint(77,0.06269565);
+   ParabolaFunc1012->SetSavedPoint(78,0.06295662);
+   ParabolaFunc1012->SetSavedPoint(79,0.06322398);
+   ParabolaFunc1012->SetSavedPoint(80,0.06349775);
+   ParabolaFunc1012->SetSavedPoint(81,0.06377791);
+   ParabolaFunc1012->SetSavedPoint(82,0.06406448);
+   ParabolaFunc1012->SetSavedPoint(83,0.06435745);
+   ParabolaFunc1012->SetSavedPoint(84,0.06465682);
+   ParabolaFunc1012->SetSavedPoint(85,0.06496259);
+   ParabolaFunc1012->SetSavedPoint(86,0.06527476);
+   ParabolaFunc1012->SetSavedPoint(87,0.06559334);
+   ParabolaFunc1012->SetSavedPoint(88,0.06591831);
+   ParabolaFunc1012->SetSavedPoint(89,0.06624969);
+   ParabolaFunc1012->SetSavedPoint(90,0.06658747);
+   ParabolaFunc1012->SetSavedPoint(91,0.06693165);
+   ParabolaFunc1012->SetSavedPoint(92,0.06728223);
+   ParabolaFunc1012->SetSavedPoint(93,0.06763921);
+   ParabolaFunc1012->SetSavedPoint(94,0.06800259);
+   ParabolaFunc1012->SetSavedPoint(95,0.06837238);
+   ParabolaFunc1012->SetSavedPoint(96,0.06874857);
+   ParabolaFunc1012->SetSavedPoint(97,0.06913115);
+   ParabolaFunc1012->SetSavedPoint(98,0.06952014);
+   ParabolaFunc1012->SetSavedPoint(99,0.06991553);
+   ParabolaFunc1012->SetSavedPoint(100,0.07031733);
+   ParabolaFunc1012->SetSavedPoint(101,750);
+   ParabolaFunc1012->SetSavedPoint(102,2750);
+   ParabolaFunc1012->SetFillColor(19);
+   ParabolaFunc1012->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   ParabolaFunc1064->SetLineColor(ci);
-   ParabolaFunc1064->SetLineWidth(3);
-   ParabolaFunc1064->SetChisquare(11.14017);
-   ParabolaFunc1064->SetNDF(5);
-   ParabolaFunc1064->GetXaxis()->SetLabelFont(42);
-   ParabolaFunc1064->GetXaxis()->SetTitleOffset(1);
-   ParabolaFunc1064->GetXaxis()->SetTitleFont(42);
-   ParabolaFunc1064->GetYaxis()->SetLabelFont(42);
-   ParabolaFunc1064->GetYaxis()->SetTitleFont(42);
-   ParabolaFunc1064->SetParameter(0,-5.600225e-09);
-   ParabolaFunc1064->SetParError(0,2.237147e-08);
-   ParabolaFunc1064->SetParLimits(0,0,0);
-   ParabolaFunc1064->SetParameter(1,2.11964e-05);
-   ParabolaFunc1064->SetParError(1,8.009851e-05);
-   ParabolaFunc1064->SetParLimits(1,0,0);
-   ParabolaFunc1064->SetParameter(2,0.04610936);
-   ParabolaFunc1064->SetParError(2,0.06737915);
-   ParabolaFunc1064->SetParLimits(2,0,0);
-   ParabolaFunc1064->SetParent(gre);
-   gre->GetListOfFunctions()->Add(ParabolaFunc1064);
+   ParabolaFunc1012->SetLineColor(ci);
+   ParabolaFunc1012->SetLineWidth(3);
+   ParabolaFunc1012->SetChisquare(12.11091);
+   ParabolaFunc1012->SetNDF(5);
+   ParabolaFunc1012->GetXaxis()->SetLabelFont(42);
+   ParabolaFunc1012->GetXaxis()->SetTitleOffset(1);
+   ParabolaFunc1012->GetXaxis()->SetTitleFont(42);
+   ParabolaFunc1012->GetYaxis()->SetLabelFont(42);
+   ParabolaFunc1012->GetYaxis()->SetTitleFont(42);
+   ParabolaFunc1012->SetParameter(0,8.001697e-09);
+   ParabolaFunc1012->SetParError(0,1.733063e-08);
+   ParabolaFunc1012->SetParLimits(0,0,0);
+   ParabolaFunc1012->SetParameter(1,-2.37597e-05);
+   ParabolaFunc1012->SetParError(1,6.205071e-05);
+   ParabolaFunc1012->SetParLimits(1,0,0);
+   ParabolaFunc1012->SetParameter(2,0.07514368);
+   ParabolaFunc1012->SetParError(2,0.05219568);
+   ParabolaFunc1012->SetParLimits(2,0,0);
+   ParabolaFunc1012->SetParent(gre);
+   gre->GetListOfFunctions()->Add(ParabolaFunc1012);
    gre->Draw("ap");
    
-   TF1 *ParabolaFunc1065 = new TF1("*ParabolaFunc",750,2750,3);
+   TF1 *ParabolaFunc1013 = new TF1("*ParabolaFunc",750,2750,3);
     //The original function : ParabolaFunc had originally been created by:
     //TF1 *ParabolaFunc = new TF1("ParabolaFunc",ParabolaFunc,750,2750,3, 1, TF1::EAddToList::kNo);
-   ParabolaFunc1065->SetRange(750,2750);
-   ParabolaFunc1065->SetName("ParabolaFunc");
-   ParabolaFunc1065->SetTitle("ParabolaFunc");
-   ParabolaFunc1065->SetSavedPoint(0,0.05885653);
-   ParabolaFunc1065->SetSavedPoint(1,0.05911022);
-   ParabolaFunc1065->SetSavedPoint(2,0.05935942);
-   ParabolaFunc1065->SetSavedPoint(3,0.05960414);
-   ParabolaFunc1065->SetSavedPoint(4,0.05984438);
-   ParabolaFunc1065->SetSavedPoint(5,0.06008014);
-   ParabolaFunc1065->SetSavedPoint(6,0.06031142);
-   ParabolaFunc1065->SetSavedPoint(7,0.06053822);
-   ParabolaFunc1065->SetSavedPoint(8,0.06076054);
-   ParabolaFunc1065->SetSavedPoint(9,0.06097838);
-   ParabolaFunc1065->SetSavedPoint(10,0.06119174);
-   ParabolaFunc1065->SetSavedPoint(11,0.06140062);
-   ParabolaFunc1065->SetSavedPoint(12,0.06160501);
-   ParabolaFunc1065->SetSavedPoint(13,0.06180493);
-   ParabolaFunc1065->SetSavedPoint(14,0.06200037);
-   ParabolaFunc1065->SetSavedPoint(15,0.06219133);
-   ParabolaFunc1065->SetSavedPoint(16,0.06237781);
-   ParabolaFunc1065->SetSavedPoint(17,0.06255981);
-   ParabolaFunc1065->SetSavedPoint(18,0.06273733);
-   ParabolaFunc1065->SetSavedPoint(19,0.06291036);
-   ParabolaFunc1065->SetSavedPoint(20,0.06307892);
-   ParabolaFunc1065->SetSavedPoint(21,0.063243);
-   ParabolaFunc1065->SetSavedPoint(22,0.0634026);
-   ParabolaFunc1065->SetSavedPoint(23,0.06355771);
-   ParabolaFunc1065->SetSavedPoint(24,0.06370835);
-   ParabolaFunc1065->SetSavedPoint(25,0.06385451);
-   ParabolaFunc1065->SetSavedPoint(26,0.06399618);
-   ParabolaFunc1065->SetSavedPoint(27,0.06413338);
-   ParabolaFunc1065->SetSavedPoint(28,0.0642661);
-   ParabolaFunc1065->SetSavedPoint(29,0.06439433);
-   ParabolaFunc1065->SetSavedPoint(30,0.06451809);
-   ParabolaFunc1065->SetSavedPoint(31,0.06463736);
-   ParabolaFunc1065->SetSavedPoint(32,0.06475216);
-   ParabolaFunc1065->SetSavedPoint(33,0.06486247);
-   ParabolaFunc1065->SetSavedPoint(34,0.06496831);
-   ParabolaFunc1065->SetSavedPoint(35,0.06506966);
-   ParabolaFunc1065->SetSavedPoint(36,0.06516654);
-   ParabolaFunc1065->SetSavedPoint(37,0.06525893);
-   ParabolaFunc1065->SetSavedPoint(38,0.06534685);
-   ParabolaFunc1065->SetSavedPoint(39,0.06543028);
-   ParabolaFunc1065->SetSavedPoint(40,0.06550924);
-   ParabolaFunc1065->SetSavedPoint(41,0.06558371);
-   ParabolaFunc1065->SetSavedPoint(42,0.0656537);
-   ParabolaFunc1065->SetSavedPoint(43,0.06571922);
-   ParabolaFunc1065->SetSavedPoint(44,0.06578025);
-   ParabolaFunc1065->SetSavedPoint(45,0.0658368);
-   ParabolaFunc1065->SetSavedPoint(46,0.06588888);
-   ParabolaFunc1065->SetSavedPoint(47,0.06593647);
-   ParabolaFunc1065->SetSavedPoint(48,0.06597958);
-   ParabolaFunc1065->SetSavedPoint(49,0.06601821);
-   ParabolaFunc1065->SetSavedPoint(50,0.06605237);
-   ParabolaFunc1065->SetSavedPoint(51,0.06608204);
-   ParabolaFunc1065->SetSavedPoint(52,0.06610723);
-   ParabolaFunc1065->SetSavedPoint(53,0.06612794);
-   ParabolaFunc1065->SetSavedPoint(54,0.06614417);
-   ParabolaFunc1065->SetSavedPoint(55,0.06615592);
-   ParabolaFunc1065->SetSavedPoint(56,0.0661632);
-   ParabolaFunc1065->SetSavedPoint(57,0.06616599);
-   ParabolaFunc1065->SetSavedPoint(58,0.0661643);
-   ParabolaFunc1065->SetSavedPoint(59,0.06615813);
-   ParabolaFunc1065->SetSavedPoint(60,0.06614748);
-   ParabolaFunc1065->SetSavedPoint(61,0.06613235);
-   ParabolaFunc1065->SetSavedPoint(62,0.06611274);
-   ParabolaFunc1065->SetSavedPoint(63,0.06608865);
-   ParabolaFunc1065->SetSavedPoint(64,0.06606008);
-   ParabolaFunc1065->SetSavedPoint(65,0.06602703);
-   ParabolaFunc1065->SetSavedPoint(66,0.0659895);
-   ParabolaFunc1065->SetSavedPoint(67,0.06594749);
-   ParabolaFunc1065->SetSavedPoint(68,0.065901);
-   ParabolaFunc1065->SetSavedPoint(69,0.06585002);
-   ParabolaFunc1065->SetSavedPoint(70,0.06579457);
-   ParabolaFunc1065->SetSavedPoint(71,0.06573464);
-   ParabolaFunc1065->SetSavedPoint(72,0.06567023);
-   ParabolaFunc1065->SetSavedPoint(73,0.06560134);
-   ParabolaFunc1065->SetSavedPoint(74,0.06552797);
-   ParabolaFunc1065->SetSavedPoint(75,0.06545011);
-   ParabolaFunc1065->SetSavedPoint(76,0.06536778);
-   ParabolaFunc1065->SetSavedPoint(77,0.06528097);
-   ParabolaFunc1065->SetSavedPoint(78,0.06518968);
-   ParabolaFunc1065->SetSavedPoint(79,0.0650939);
-   ParabolaFunc1065->SetSavedPoint(80,0.06499365);
-   ParabolaFunc1065->SetSavedPoint(81,0.06488892);
-   ParabolaFunc1065->SetSavedPoint(82,0.0647797);
-   ParabolaFunc1065->SetSavedPoint(83,0.06466601);
-   ParabolaFunc1065->SetSavedPoint(84,0.06454783);
-   ParabolaFunc1065->SetSavedPoint(85,0.06442518);
-   ParabolaFunc1065->SetSavedPoint(86,0.06429805);
-   ParabolaFunc1065->SetSavedPoint(87,0.06416643);
-   ParabolaFunc1065->SetSavedPoint(88,0.06403034);
-   ParabolaFunc1065->SetSavedPoint(89,0.06388976);
-   ParabolaFunc1065->SetSavedPoint(90,0.06374471);
-   ParabolaFunc1065->SetSavedPoint(91,0.06359517);
-   ParabolaFunc1065->SetSavedPoint(92,0.06344116);
-   ParabolaFunc1065->SetSavedPoint(93,0.06328266);
-   ParabolaFunc1065->SetSavedPoint(94,0.06311969);
-   ParabolaFunc1065->SetSavedPoint(95,0.06295223);
-   ParabolaFunc1065->SetSavedPoint(96,0.06278029);
-   ParabolaFunc1065->SetSavedPoint(97,0.06260388);
-   ParabolaFunc1065->SetSavedPoint(98,0.06242298);
-   ParabolaFunc1065->SetSavedPoint(99,0.0622376);
-   ParabolaFunc1065->SetSavedPoint(100,0.06204775);
-   ParabolaFunc1065->SetSavedPoint(101,750);
-   ParabolaFunc1065->SetSavedPoint(102,2750);
-   ParabolaFunc1065->SetFillColor(19);
-   ParabolaFunc1065->SetFillStyle(0);
+   ParabolaFunc1013->SetRange(750,2750);
+   ParabolaFunc1013->SetName("ParabolaFunc");
+   ParabolaFunc1013->SetTitle("ParabolaFunc");
+   ParabolaFunc1013->SetSavedPoint(0,0.06182485);
+   ParabolaFunc1013->SetSavedPoint(1,0.06159291);
+   ParabolaFunc1013->SetSavedPoint(2,0.06136737);
+   ParabolaFunc1013->SetSavedPoint(3,0.06114823);
+   ParabolaFunc1013->SetSavedPoint(4,0.06093549);
+   ParabolaFunc1013->SetSavedPoint(5,0.06072915);
+   ParabolaFunc1013->SetSavedPoint(6,0.06052922);
+   ParabolaFunc1013->SetSavedPoint(7,0.06033568);
+   ParabolaFunc1013->SetSavedPoint(8,0.06014855);
+   ParabolaFunc1013->SetSavedPoint(9,0.05996782);
+   ParabolaFunc1013->SetSavedPoint(10,0.05979349);
+   ParabolaFunc1013->SetSavedPoint(11,0.05962556);
+   ParabolaFunc1013->SetSavedPoint(12,0.05946403);
+   ParabolaFunc1013->SetSavedPoint(13,0.05930891);
+   ParabolaFunc1013->SetSavedPoint(14,0.05916018);
+   ParabolaFunc1013->SetSavedPoint(15,0.05901786);
+   ParabolaFunc1013->SetSavedPoint(16,0.05888194);
+   ParabolaFunc1013->SetSavedPoint(17,0.05875242);
+   ParabolaFunc1013->SetSavedPoint(18,0.0586293);
+   ParabolaFunc1013->SetSavedPoint(19,0.05851258);
+   ParabolaFunc1013->SetSavedPoint(20,0.05840226);
+   ParabolaFunc1013->SetSavedPoint(21,0.05829835);
+   ParabolaFunc1013->SetSavedPoint(22,0.05820083);
+   ParabolaFunc1013->SetSavedPoint(23,0.05810972);
+   ParabolaFunc1013->SetSavedPoint(24,0.05802501);
+   ParabolaFunc1013->SetSavedPoint(25,0.0579467);
+   ParabolaFunc1013->SetSavedPoint(26,0.05787479);
+   ParabolaFunc1013->SetSavedPoint(27,0.05780928);
+   ParabolaFunc1013->SetSavedPoint(28,0.05775018);
+   ParabolaFunc1013->SetSavedPoint(29,0.05769747);
+   ParabolaFunc1013->SetSavedPoint(30,0.05765117);
+   ParabolaFunc1013->SetSavedPoint(31,0.05761127);
+   ParabolaFunc1013->SetSavedPoint(32,0.05757777);
+   ParabolaFunc1013->SetSavedPoint(33,0.05755067);
+   ParabolaFunc1013->SetSavedPoint(34,0.05752997);
+   ParabolaFunc1013->SetSavedPoint(35,0.05751567);
+   ParabolaFunc1013->SetSavedPoint(36,0.05750778);
+   ParabolaFunc1013->SetSavedPoint(37,0.05750629);
+   ParabolaFunc1013->SetSavedPoint(38,0.05751119);
+   ParabolaFunc1013->SetSavedPoint(39,0.0575225);
+   ParabolaFunc1013->SetSavedPoint(40,0.05754021);
+   ParabolaFunc1013->SetSavedPoint(41,0.05756432);
+   ParabolaFunc1013->SetSavedPoint(42,0.05759484);
+   ParabolaFunc1013->SetSavedPoint(43,0.05763175);
+   ParabolaFunc1013->SetSavedPoint(44,0.05767507);
+   ParabolaFunc1013->SetSavedPoint(45,0.05772479);
+   ParabolaFunc1013->SetSavedPoint(46,0.0577809);
+   ParabolaFunc1013->SetSavedPoint(47,0.05784342);
+   ParabolaFunc1013->SetSavedPoint(48,0.05791235);
+   ParabolaFunc1013->SetSavedPoint(49,0.05798767);
+   ParabolaFunc1013->SetSavedPoint(50,0.05806939);
+   ParabolaFunc1013->SetSavedPoint(51,0.05815752);
+   ParabolaFunc1013->SetSavedPoint(52,0.05825204);
+   ParabolaFunc1013->SetSavedPoint(53,0.05835297);
+   ParabolaFunc1013->SetSavedPoint(54,0.0584603);
+   ParabolaFunc1013->SetSavedPoint(55,0.05857403);
+   ParabolaFunc1013->SetSavedPoint(56,0.05869417);
+   ParabolaFunc1013->SetSavedPoint(57,0.0588207);
+   ParabolaFunc1013->SetSavedPoint(58,0.05895363);
+   ParabolaFunc1013->SetSavedPoint(59,0.05909297);
+   ParabolaFunc1013->SetSavedPoint(60,0.05923871);
+   ParabolaFunc1013->SetSavedPoint(61,0.05939085);
+   ParabolaFunc1013->SetSavedPoint(62,0.05954939);
+   ParabolaFunc1013->SetSavedPoint(63,0.05971433);
+   ParabolaFunc1013->SetSavedPoint(64,0.05988567);
+   ParabolaFunc1013->SetSavedPoint(65,0.06006342);
+   ParabolaFunc1013->SetSavedPoint(66,0.06024756);
+   ParabolaFunc1013->SetSavedPoint(67,0.06043811);
+   ParabolaFunc1013->SetSavedPoint(68,0.06063506);
+   ParabolaFunc1013->SetSavedPoint(69,0.06083841);
+   ParabolaFunc1013->SetSavedPoint(70,0.06104816);
+   ParabolaFunc1013->SetSavedPoint(71,0.06126431);
+   ParabolaFunc1013->SetSavedPoint(72,0.06148686);
+   ParabolaFunc1013->SetSavedPoint(73,0.06171582);
+   ParabolaFunc1013->SetSavedPoint(74,0.06195118);
+   ParabolaFunc1013->SetSavedPoint(75,0.06219293);
+   ParabolaFunc1013->SetSavedPoint(76,0.06244109);
+   ParabolaFunc1013->SetSavedPoint(77,0.06269565);
+   ParabolaFunc1013->SetSavedPoint(78,0.06295662);
+   ParabolaFunc1013->SetSavedPoint(79,0.06322398);
+   ParabolaFunc1013->SetSavedPoint(80,0.06349775);
+   ParabolaFunc1013->SetSavedPoint(81,0.06377791);
+   ParabolaFunc1013->SetSavedPoint(82,0.06406448);
+   ParabolaFunc1013->SetSavedPoint(83,0.06435745);
+   ParabolaFunc1013->SetSavedPoint(84,0.06465682);
+   ParabolaFunc1013->SetSavedPoint(85,0.06496259);
+   ParabolaFunc1013->SetSavedPoint(86,0.06527476);
+   ParabolaFunc1013->SetSavedPoint(87,0.06559334);
+   ParabolaFunc1013->SetSavedPoint(88,0.06591831);
+   ParabolaFunc1013->SetSavedPoint(89,0.06624969);
+   ParabolaFunc1013->SetSavedPoint(90,0.06658747);
+   ParabolaFunc1013->SetSavedPoint(91,0.06693165);
+   ParabolaFunc1013->SetSavedPoint(92,0.06728223);
+   ParabolaFunc1013->SetSavedPoint(93,0.06763921);
+   ParabolaFunc1013->SetSavedPoint(94,0.06800259);
+   ParabolaFunc1013->SetSavedPoint(95,0.06837238);
+   ParabolaFunc1013->SetSavedPoint(96,0.06874857);
+   ParabolaFunc1013->SetSavedPoint(97,0.06913115);
+   ParabolaFunc1013->SetSavedPoint(98,0.06952014);
+   ParabolaFunc1013->SetSavedPoint(99,0.06991553);
+   ParabolaFunc1013->SetSavedPoint(100,0.07031733);
+   ParabolaFunc1013->SetSavedPoint(101,750);
+   ParabolaFunc1013->SetSavedPoint(102,2750);
+   ParabolaFunc1013->SetFillColor(19);
+   ParabolaFunc1013->SetFillStyle(0);
 
    ci = TColor::GetColor("#ff0000");
-   ParabolaFunc1065->SetLineColor(ci);
-   ParabolaFunc1065->SetLineWidth(3);
-   ParabolaFunc1065->SetChisquare(11.14017);
-   ParabolaFunc1065->SetNDF(5);
-   ParabolaFunc1065->GetXaxis()->SetLabelFont(42);
-   ParabolaFunc1065->GetXaxis()->SetTitleOffset(1);
-   ParabolaFunc1065->GetXaxis()->SetTitleFont(42);
-   ParabolaFunc1065->GetYaxis()->SetLabelFont(42);
-   ParabolaFunc1065->GetYaxis()->SetTitleFont(42);
-   ParabolaFunc1065->SetParameter(0,-5.600225e-09);
-   ParabolaFunc1065->SetParError(0,2.237147e-08);
-   ParabolaFunc1065->SetParLimits(0,0,0);
-   ParabolaFunc1065->SetParameter(1,2.11964e-05);
-   ParabolaFunc1065->SetParError(1,8.009851e-05);
-   ParabolaFunc1065->SetParLimits(1,0,0);
-   ParabolaFunc1065->SetParameter(2,0.04610936);
-   ParabolaFunc1065->SetParError(2,0.06737915);
-   ParabolaFunc1065->SetParLimits(2,0,0);
-   ParabolaFunc1065->Draw("SAME");
+   ParabolaFunc1013->SetLineColor(ci);
+   ParabolaFunc1013->SetLineWidth(3);
+   ParabolaFunc1013->SetChisquare(12.11091);
+   ParabolaFunc1013->SetNDF(5);
+   ParabolaFunc1013->GetXaxis()->SetLabelFont(42);
+   ParabolaFunc1013->GetXaxis()->SetTitleOffset(1);
+   ParabolaFunc1013->GetXaxis()->SetTitleFont(42);
+   ParabolaFunc1013->GetYaxis()->SetLabelFont(42);
+   ParabolaFunc1013->GetYaxis()->SetTitleFont(42);
+   ParabolaFunc1013->SetParameter(0,8.001697e-09);
+   ParabolaFunc1013->SetParError(0,1.733063e-08);
+   ParabolaFunc1013->SetParLimits(0,0,0);
+   ParabolaFunc1013->SetParameter(1,-2.37597e-05);
+   ParabolaFunc1013->SetParError(1,6.205071e-05);
+   ParabolaFunc1013->SetParLimits(1,0,0);
+   ParabolaFunc1013->SetParameter(2,0.07514368);
+   ParabolaFunc1013->SetParError(2,0.05219568);
+   ParabolaFunc1013->SetParLimits(2,0,0);
+   ParabolaFunc1013->Draw("SAME");
    
    TLegend *leg = new TLegend(0.125,0.79,0.875,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
@@ -408,16 +408,16 @@ void RecoVertexFit_S18()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("2.23
+   pt_LaTex = pt->AddText("2.42
 ");
-   pt_LaTex = pt->AddText("-6e-09
+   pt_LaTex = pt->AddText("8e-09
 #pm2e-08
 ");
-   pt_LaTex = pt->AddText("2e-05
-#pm8e-05
+   pt_LaTex = pt->AddText("-2e-05
+#pm6e-05
 ");
-   pt_LaTex = pt->AddText("0.05
-#pm0.07
+   pt_LaTex = pt->AddText("0.08
+#pm0.05
 ");
    pt->Draw();
    S18->Modified();

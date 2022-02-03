@@ -555,9 +555,26 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
          // a = -2.50505e-08±1.26806e-08
          // b = 6.67005e-05±4.55887e-05
          // d0 = 0.0381782±0.0385284
-         values->AddText("(-3#pm1)#times10^{-8}"); //+Round(fit->GetParError(0), 1));
-         values->AddText("(7#pm5)#times10^{-5}");//Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
-         values->AddText("0.04#pm0.04");//Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));
+         //values->AddText("(-3#pm1)#times10^{-8}"); 
+         //values->AddText("(7#pm5)#times10^{-5}");
+         //values->AddText("0.04#pm0.04");
+         // Higher stats sample 
+         // *** Fit results ***
+         // chi2/ndf = 1.81291
+         // a = -2.74672e-08±1.12949e-08
+         // b = 8.05708e-05±4.05808e-05
+         // d0 = 0.0209841±0.0342749
+         // *** *** ***
+         // Higher stats reweighted
+         // *** Fit results ***
+         // chi2/ndf = 1.80531
+         // a = -2.46176e-08±1.03605e-08
+         // b = 7.1938e-05±3.72237e-05
+         // d0 = 0.0208691±0.0314398
+         // *** *** ***
+         values->AddText("(-2#pm1)#times10^{-8}"); 
+         values->AddText("(7#pm4)#times10^{-5}");
+         values->AddText("0.02#pm0.03");
       }
  
       cout<<"\n*** Fit results ***"<<endl;
@@ -735,71 +752,77 @@ void DrawAllFitsControl(TFile *input, int step, string fname, double ymin, doubl
 
 }
 
-void DrawMottFunctions(TFile *input, int step, string fname, double ymin, double ymax ) {
+void DrawMottFunctions(TFile *input, int step, string fname, double ymin, double ymax) {
 
-  cout<<"---> Mott functions"<<endl;
+   cout<<"---> Mott functions"<<endl;
 
-  // Get graph  
-  TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackReco").c_str());
+   vector<string> stn_ = {"S0", "S12", "S18", "S12S18", "S0S12S18"};
 
-  // Get functions
-  vector<TF1*> funcs_; 
-  for(int i = 0; i<nTrials; i++) { 
-    TF1 *trialFunc = (TF1*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoTrials/"+to_string(i)).c_str());
-    funcs_.push_back(trialFunc);
-  }
+   for(auto& stn : stn_) {
 
-  TCanvas *c = new TCanvas("c","c",800,600);
+      // Get graph  
+      TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/"+stn+"_trackReco").c_str());
 
-  string title = ";Decay vertex momentum [MeV];d_{EDM} / "+to_string(step)+" MeV";
+      // Get functions
+      vector<TF1*> funcs_; 
+      for(int i = 0; i<nTrials; i++) { 
+        TF1 *trialFunc = (TF1*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/"+stn+"_trackRecoTrials/"+to_string(i)).c_str());
+        funcs_.push_back(trialFunc);
+      }
 
-  funcs_.at(0)->SetTitle(title.c_str());
-  funcs_.at(0)->GetXaxis()->SetTitleSize(.04);
-  funcs_.at(0)->GetYaxis()->SetTitleSize(.04);
-  funcs_.at(0)->GetXaxis()->SetTitleOffset(1.1);
-  funcs_.at(0)->GetYaxis()->SetTitleOffset(1.1);
-  funcs_.at(0)->GetXaxis()->CenterTitle(true);
-  funcs_.at(0)->GetYaxis()->CenterTitle(true);
-  funcs_.at(0)->GetYaxis()->SetMaxDigits(4);
+      TCanvas *c = new TCanvas("c","c",800,600);
+
+      string title = stn+";Decay vertex momentum [MeV];d_{EDM} / "+to_string(step)+" MeV";
+
+      funcs_.at(0)->SetTitle(title.c_str());
+      funcs_.at(0)->GetXaxis()->SetTitleSize(.04);
+      funcs_.at(0)->GetYaxis()->SetTitleSize(.04);
+      funcs_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+      funcs_.at(0)->GetYaxis()->SetTitleOffset(1.1);
+      funcs_.at(0)->GetXaxis()->CenterTitle(true);
+      funcs_.at(0)->GetYaxis()->CenterTitle(true);
+      funcs_.at(0)->GetYaxis()->SetMaxDigits(4);
   
-  funcs_.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+      funcs_.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
 
-  gStyle->SetPalette(kRainBow);
-  vector<float> colours_ = { 55, 56.5, 58, 59.5, 61, 62.5, 64, 65.5, 67, 68.5, 70, 71.5, 73, 74.5, 76, 77.5, 79, 80.5, 82, 83.5, 85, 86.5, 88, 89.5, 91, 92.5};
+      gStyle->SetPalette(kRainBow);
+      vector<float> colours_ = { 55, 56.5, 58, 59.5, 61, 62.5, 64, 65.5, 67, 68.5, 70, 71.5, 73, 74.5, 76, 77.5, 79, 80.5, 82, 83.5, 85, 86.5, 88, 89.5, 91, 92.5};
 
-  for(int i = 0; i<funcs_.size(); i++) {
-    funcs_.at(i)->SetLineWidth(3);
-    funcs_.at(i)->SetLineColor(i*0.1);
-    if(i==0) funcs_.at(i)->Draw();
-    else funcs_.at(i)->Draw("SAME");
-  }
+      for(int i = 0; i<funcs_.size(); i++) {
+         funcs_.at(i)->SetLineWidth(3);
+         funcs_.at(i)->SetLineColor(i*0.1);
+         if(i==0) funcs_.at(i)->Draw();
+         else funcs_.at(i)->Draw("SAME");
+      }
 
-  // Purge converged fit
-  TF1 *mainFit = (TF1*)gr->GetListOfFunctions()->At(0); 
-  gr->GetListOfFunctions()->Remove(mainFit);
-  delete mainFit;
+      // Purge converged fit
+      TF1 *mainFit = (TF1*)gr->GetListOfFunctions()->At(0); 
+      gr->GetListOfFunctions()->Remove(mainFit);
+      delete mainFit;
 
-  gr->SetMarkerStyle(20);
-  gr->SetMarkerColor(kBlack);
-  gr->SetFillColor(kBlack);
-  gr->SetLineColor(kBlack);
-  gr->Draw("P SAME");
+      gr->SetMarkerStyle(20);
+      gr->SetMarkerColor(kBlack);
+      gr->SetFillColor(kBlack);
+      gr->SetLineColor(kBlack);
+      gr->Draw("P SAME");
 
-  c->SaveAs((fname+".pdf").c_str());
-  c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
+      c->SaveAs((fname+"_"+stn+".pdf").c_str());
+      c->SaveAs((fname+"_"+stn+".png").c_str());
+      c->SaveAs((fname+"_"+stn+".C").c_str());
 
-  delete c;
+      delete c;
 
-  // Mott ellipse & sphere
-  TH3D *mottEllipse = (TH3D*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoTrials/ellipse3D").c_str());
-  TH3D *mottSphere= (TH3D*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/trackRecoTrials/sphere3D").c_str());
+      // Mott ellipse & sphere
+      TH3D *mottEllipse = (TH3D*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/"+stn+"_trackRecoTrials/ellipse3D").c_str());
+      TH3D *mottSphere= (TH3D*)input->Get(("DilutionFits/BQ/Tracks/"+to_string(step)+"MeV/d_vs_p/"+stn+"_trackRecoTrials/sphere3D").c_str());
 
-  DrawTH3(mottEllipse, "", "../Images/MC/Dilution/dMu/"+dMu+"/MottEllipse"+to_string(nTrials));
-  DrawTH3(mottSphere, "", "../Images/MC/Dilution/dMu/"+dMu+"/MottSphere"+to_string(nTrials));
+      DrawTH3(mottEllipse, "", "../Images/MC/Dilution/dMu/"+dMu+"/"+stn+"_MottEllipse"+to_string(nTrials));
+      DrawTH3(mottSphere, "", "../Images/MC/Dilution/dMu/"+dMu+"/"+stn+"_MottSphere"+to_string(nTrials));
 
-  delete mottEllipse;
-  delete mottSphere;
+      delete mottEllipse;
+      delete mottSphere;
+
+   }
 
   return;
 
@@ -810,16 +833,19 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
 
    cout<<"\n****************** Drawing ******************"<<endl;
 
-   // Graphs
+   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", 0, 0.12);
+   //DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12);
+
+/*   // Graphs
    DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);
-/*   //DrawAllGraphs2(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs2", -0.1,0.25);
+   //DrawAllGraphs2(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs2", -0.1,0.25);
    DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
    DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "BQ", 0,0.125);
    DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "AQ", 0, 0.03);
@@ -828,7 +854,9 @@ int main() {
    // Fits
    DrawAllFits(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllFits", 0, 0.225); 
    DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", 0, 0.12);
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", 0, 0.25);*/
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", 0, 0.25);
+
+*/
 /*   
    
    

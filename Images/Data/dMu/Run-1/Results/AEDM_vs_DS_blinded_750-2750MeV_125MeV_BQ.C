@@ -1,36 +1,36 @@
 void AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec 20 16:10:21 2021) by ROOT version 6.24/04
+//=========  (Mon Jan 17 18:29:14 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.15,-1.193226e-20,4.65,3.231914e-18);
+   c->Range(0.15,-0.125,4.65,1.125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1032[4] = {
+   Double_t _fx1005[4] = {
    0.9,
    1.9,
    2.9,
    3.9};
-   Double_t _fy1032[4] = {
-   1.863183e-18,
-   1.073131e-18,
-   1.956853e-18,
-   1.689438e-18};
-   Double_t _fex1032[4] = {
+   Double_t _fy1005[4] = {
    0,
    0,
    0,
    0};
-   Double_t _fey1032[4] = {
-   3.541245e-19,
-   2.871667e-19,
-   2.773166e-19,
-   2.130854e-19};
-   TGraphErrors *gre = new TGraphErrors(4,_fx1032,_fy1032,_fex1032,_fey1032);
+   Double_t _fex1005[4] = {
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1005[4] = {
+   0,
+   0,
+   0,
+   0};
+   TGraphErrors *gre = new TGraphErrors(4,_fx1005,_fy1005,_fex1005,_fey1005);
    gre->SetName("");
    gre->SetTitle(";;d_{#mu}^{BLIND} [e#upointcm]");
    gre->SetFillStyle(1000);
@@ -38,114 +38,114 @@ void AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    gre->SetMarkerColor(2);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_Graph10281032 = new TH1F("Graph_Graph_Graph10281032","",100,0.6,4.2);
-   Graph_Graph_Graph10281032->SetMinimum(3.124524e-19);
-   Graph_Graph_Graph10281032->SetMaximum(2.90753e-18);
-   Graph_Graph_Graph10281032->SetDirectory(0);
-   Graph_Graph_Graph10281032->SetStats(0);
+   TH1F *Graph_Graph_Graph10011005 = new TH1F("Graph_Graph_Graph10011005","",100,0.6,4.2);
+   Graph_Graph_Graph10011005->SetMinimum(0);
+   Graph_Graph_Graph10011005->SetMaximum(0);
+   Graph_Graph_Graph10011005->SetDirectory(0);
+   Graph_Graph_Graph10011005->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph_Graph10281032->SetLineColor(ci);
-   Graph_Graph_Graph10281032->GetXaxis()->SetBinLabel(12,"Run-1a");
-   Graph_Graph_Graph10281032->GetXaxis()->SetBinLabel(39,"Run-1b");
-   Graph_Graph_Graph10281032->GetXaxis()->SetBinLabel(67,"Run-1c");
-   Graph_Graph_Graph10281032->GetXaxis()->SetBinLabel(95,"Run-1d");
-   Graph_Graph_Graph10281032->GetXaxis()->SetBit(TAxis::kLabelsHori);
-   Graph_Graph_Graph10281032->GetXaxis()->CenterTitle(true);
-   Graph_Graph_Graph10281032->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10281032->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph10281032->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph_Graph10281032->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_Graph10281032->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
-   Graph_Graph_Graph10281032->GetYaxis()->CenterTitle(true);
-   Graph_Graph_Graph10281032->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_Graph10281032->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10281032->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph10281032->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph_Graph10281032->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_Graph10281032->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10281032->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_Graph10281032->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph_Graph10281032);
+   Graph_Graph_Graph10011005->SetLineColor(ci);
+   Graph_Graph_Graph10011005->GetXaxis()->SetBinLabel(12,"Run-1a");
+   Graph_Graph_Graph10011005->GetXaxis()->SetBinLabel(39,"Run-1b");
+   Graph_Graph_Graph10011005->GetXaxis()->SetBinLabel(67,"Run-1c");
+   Graph_Graph_Graph10011005->GetXaxis()->SetBinLabel(95,"Run-1d");
+   Graph_Graph_Graph10011005->GetXaxis()->SetBit(TAxis::kLabelsHori);
+   Graph_Graph_Graph10011005->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph10011005->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10011005->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph10011005->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph10011005->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph10011005->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
+   Graph_Graph_Graph10011005->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph10011005->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph10011005->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10011005->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph10011005->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph_Graph10011005->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph10011005->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10011005->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph10011005->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph10011005);
    
    gre->Draw("ap");
    
-   TF1 *fit1032 = new TF1("fit","pol0",0,5, TF1::EAddToList::kDefault);
-   fit1032->SetFillColor(19);
-   fit1032->SetFillStyle(0);
+   TF1 *fit1005 = new TF1("fit","pol0",0,5, TF1::EAddToList::kDefault);
+   fit1005->SetFillColor(19);
+   fit1005->SetFillStyle(0);
 
    ci = TColor::GetColor("#cccccc");
-   fit1032->SetLineColor(ci);
-   fit1032->SetLineWidth(1);
-   fit1032->GetXaxis()->SetLabelFont(42);
-   fit1032->GetXaxis()->SetTitleOffset(1);
-   fit1032->GetXaxis()->SetTitleFont(42);
-   fit1032->GetYaxis()->SetLabelFont(42);
-   fit1032->GetYaxis()->SetTitleFont(42);
-   fit1032->SetParameter(0,1.723348e-18);
-   fit1032->SetParError(0,1.050568e-19);
-   fit1032->SetParLimits(0,0,0);
-   fit1032->Draw("same");
+   fit1005->SetLineColor(ci);
+   fit1005->SetLineWidth(1);
+   fit1005->GetXaxis()->SetLabelFont(42);
+   fit1005->GetXaxis()->SetTitleOffset(1);
+   fit1005->GetXaxis()->SetTitleFont(42);
+   fit1005->GetYaxis()->SetLabelFont(42);
+   fit1005->GetYaxis()->SetTitleFont(42);
+   fit1005->SetParameter(0,0);
+   fit1005->SetParError(0,0.5);
+   fit1005->SetParLimits(0,0,0);
+   fit1005->Draw("same");
    
-   TF1 *minusSigma1033 = new TF1("minusSigma","pol0",0,5, TF1::EAddToList::kDefault);
-   minusSigma1033->SetFillColor(19);
-   minusSigma1033->SetFillStyle(0);
+   TF1 *minusSigma1006 = new TF1("minusSigma","pol0",0,5, TF1::EAddToList::kDefault);
+   minusSigma1006->SetFillColor(19);
+   minusSigma1006->SetFillStyle(0);
 
    ci = TColor::GetColor("#cccccc");
-   minusSigma1033->SetLineColor(ci);
-   minusSigma1033->SetLineWidth(2);
-   minusSigma1033->SetLineStyle(2);
-   minusSigma1033->GetXaxis()->SetLabelFont(42);
-   minusSigma1033->GetXaxis()->SetTitleOffset(1);
-   minusSigma1033->GetXaxis()->SetTitleFont(42);
-   minusSigma1033->GetYaxis()->SetLabelFont(42);
-   minusSigma1033->GetYaxis()->SetTitleFont(42);
-   minusSigma1033->SetParameter(0,1.618291e-18);
-   minusSigma1033->SetParError(0,0);
-   minusSigma1033->SetParLimits(0,0,0);
-   minusSigma1033->Draw("same");
+   minusSigma1006->SetLineColor(ci);
+   minusSigma1006->SetLineWidth(2);
+   minusSigma1006->SetLineStyle(2);
+   minusSigma1006->GetXaxis()->SetLabelFont(42);
+   minusSigma1006->GetXaxis()->SetTitleOffset(1);
+   minusSigma1006->GetXaxis()->SetTitleFont(42);
+   minusSigma1006->GetYaxis()->SetLabelFont(42);
+   minusSigma1006->GetYaxis()->SetTitleFont(42);
+   minusSigma1006->SetParameter(0,-0.5);
+   minusSigma1006->SetParError(0,0);
+   minusSigma1006->SetParLimits(0,0,0);
+   minusSigma1006->Draw("same");
    
-   TF1 *plusSigma1034 = new TF1("plusSigma","pol0",0,5, TF1::EAddToList::kDefault);
-   plusSigma1034->SetFillColor(19);
-   plusSigma1034->SetFillStyle(0);
+   TF1 *plusSigma1007 = new TF1("plusSigma","pol0",0,5, TF1::EAddToList::kDefault);
+   plusSigma1007->SetFillColor(19);
+   plusSigma1007->SetFillStyle(0);
 
    ci = TColor::GetColor("#cccccc");
-   plusSigma1034->SetLineColor(ci);
-   plusSigma1034->SetLineWidth(2);
-   plusSigma1034->SetLineStyle(2);
-   plusSigma1034->GetXaxis()->SetLabelFont(42);
-   plusSigma1034->GetXaxis()->SetTitleOffset(1);
-   plusSigma1034->GetXaxis()->SetTitleFont(42);
-   plusSigma1034->GetYaxis()->SetLabelFont(42);
-   plusSigma1034->GetYaxis()->SetTitleFont(42);
-   plusSigma1034->SetParameter(0,1.828405e-18);
-   plusSigma1034->SetParError(0,0);
-   plusSigma1034->SetParLimits(0,0,0);
-   plusSigma1034->Draw("same");
+   plusSigma1007->SetLineColor(ci);
+   plusSigma1007->SetLineWidth(2);
+   plusSigma1007->SetLineStyle(2);
+   plusSigma1007->GetXaxis()->SetLabelFont(42);
+   plusSigma1007->GetXaxis()->SetTitleOffset(1);
+   plusSigma1007->GetXaxis()->SetTitleFont(42);
+   plusSigma1007->GetYaxis()->SetLabelFont(42);
+   plusSigma1007->GetYaxis()->SetTitleFont(42);
+   plusSigma1007->SetParameter(0,0.5);
+   plusSigma1007->SetParError(0,0);
+   plusSigma1007->SetParLimits(0,0,0);
+   plusSigma1007->Draw("same");
    
-   Double_t _fx1033[4] = {
+   Double_t _fx1006[4] = {
    0.9,
    1.9,
    2.9,
    3.9};
-   Double_t _fy1033[4] = {
-   1.863183e-18,
-   1.073131e-18,
-   1.956853e-18,
-   1.689438e-18};
-   Double_t _fex1033[4] = {
+   Double_t _fy1006[4] = {
    0,
    0,
    0,
    0};
-   Double_t _fey1033[4] = {
-   3.541245e-19,
-   2.871667e-19,
-   2.773166e-19,
-   2.130854e-19};
-   gre = new TGraphErrors(4,_fx1033,_fy1033,_fex1033,_fey1033);
+   Double_t _fex1006[4] = {
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1006[4] = {
+   0,
+   0,
+   0,
+   0};
+   gre = new TGraphErrors(4,_fx1006,_fy1006,_fex1006,_fey1006);
    gre->SetName("");
    gre->SetTitle(";;d_{#mu}^{BLIND} [e#upointcm]");
    gre->SetFillStyle(1000);
@@ -153,59 +153,59 @@ void AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    gre->SetMarkerColor(2);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_Graph_Graph102810321033 = new TH1F("Graph_Graph_Graph_Graph102810321033","",100,0.6,4.2);
-   Graph_Graph_Graph_Graph102810321033->SetMinimum(3.124524e-19);
-   Graph_Graph_Graph_Graph102810321033->SetMaximum(2.90753e-18);
-   Graph_Graph_Graph_Graph102810321033->SetDirectory(0);
-   Graph_Graph_Graph_Graph102810321033->SetStats(0);
+   TH1F *Graph_Graph_Graph_Graph100110051006 = new TH1F("Graph_Graph_Graph_Graph100110051006","",100,0.6,4.2);
+   Graph_Graph_Graph_Graph100110051006->SetMinimum(0);
+   Graph_Graph_Graph_Graph100110051006->SetMaximum(0);
+   Graph_Graph_Graph_Graph100110051006->SetDirectory(0);
+   Graph_Graph_Graph_Graph100110051006->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph_Graph_Graph102810321033->SetLineColor(ci);
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetBinLabel(12,"Run-1a");
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetBinLabel(39,"Run-1b");
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetBinLabel(67,"Run-1c");
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetBinLabel(95,"Run-1d");
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetBit(TAxis::kLabelsHori);
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->CenterTitle(true);
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph_Graph_Graph102810321033->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->CenterTitle(true);
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph_Graph_Graph102810321033->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_Graph_Graph102810321033->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_Graph_Graph102810321033->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_Graph_Graph102810321033->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph_Graph_Graph102810321033);
+   Graph_Graph_Graph_Graph100110051006->SetLineColor(ci);
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetBinLabel(12,"Run-1a");
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetBinLabel(39,"Run-1b");
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetBinLabel(67,"Run-1c");
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetBinLabel(95,"Run-1d");
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetBit(TAxis::kLabelsHori);
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph_Graph100110051006->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph_Graph_Graph100110051006->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph100110051006->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph100110051006->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph_Graph100110051006->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph_Graph100110051006);
    
    gre->Draw("p ");
    
-   Double_t _fx1034[4] = {
+   Double_t _fx1007[4] = {
    1,
    2,
    3,
    4};
-   Double_t _fy1034[4] = {
-   8.947545e-19,
-   1.518409e-18,
-   2.394474e-18,
-   1.958189e-18};
-   Double_t _fex1034[4] = {
+   Double_t _fy1007[4] = {
    0,
    0,
    0,
    0};
-   Double_t _fey1034[4] = {
-   3.882014e-19,
-   3.537328e-19,
-   3.42037e-19,
-   2.643741e-19};
-   gre = new TGraphErrors(4,_fx1034,_fy1034,_fex1034,_fey1034);
+   Double_t _fex1007[4] = {
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1007[4] = {
+   0,
+   0,
+   0,
+   0};
+   gre = new TGraphErrors(4,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
    gre->SetTitle("S18");
    gre->SetFillStyle(1000);
@@ -213,112 +213,110 @@ void AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    gre->SetMarkerColor(4);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_Graph10291034 = new TH1F("Graph_Graph_Graph10291034","S18",100,0.7,4.3);
-   Graph_Graph_Graph10291034->SetMinimum(2.835573e-19);
-   Graph_Graph_Graph10291034->SetMaximum(2.959507e-18);
-   Graph_Graph_Graph10291034->SetDirectory(0);
-   Graph_Graph_Graph10291034->SetStats(0);
+   TH1F *Graph_Graph_Graph10021007 = new TH1F("Graph_Graph_Graph10021007","S18",100,0.7,4.3);
+   Graph_Graph_Graph10021007->SetMinimum(0);
+   Graph_Graph_Graph10021007->SetMaximum(1.1);
+   Graph_Graph_Graph10021007->SetDirectory(0);
+   Graph_Graph_Graph10021007->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph_Graph10291034->SetLineColor(ci);
-   Graph_Graph_Graph10291034->GetXaxis()->SetBinLabel(9,"Run-1a");
-   Graph_Graph_Graph10291034->GetXaxis()->SetBinLabel(37,"Run-1b");
-   Graph_Graph_Graph10291034->GetXaxis()->SetBinLabel(64,"Run-1c");
-   Graph_Graph_Graph10291034->GetXaxis()->SetBinLabel(92,"Run-1d");
-   Graph_Graph_Graph10291034->GetXaxis()->SetBit(TAxis::kLabelsHori);
-   Graph_Graph_Graph10291034->GetXaxis()->CenterTitle(true);
-   Graph_Graph_Graph10291034->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10291034->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph10291034->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph_Graph10291034->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_Graph10291034->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
-   Graph_Graph_Graph10291034->GetYaxis()->CenterTitle(true);
-   Graph_Graph_Graph10291034->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_Graph10291034->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10291034->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph10291034->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph_Graph10291034->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_Graph10291034->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10291034->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_Graph10291034->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph_Graph10291034);
+   Graph_Graph_Graph10021007->SetLineColor(ci);
+   Graph_Graph_Graph10021007->GetXaxis()->SetBinLabel(9,"Run-1a");
+   Graph_Graph_Graph10021007->GetXaxis()->SetBinLabel(37,"Run-1b");
+   Graph_Graph_Graph10021007->GetXaxis()->SetBinLabel(64,"Run-1c");
+   Graph_Graph_Graph10021007->GetXaxis()->SetBinLabel(92,"Run-1d");
+   Graph_Graph_Graph10021007->GetXaxis()->SetBit(TAxis::kLabelsHori);
+   Graph_Graph_Graph10021007->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph10021007->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10021007->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph10021007->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph10021007->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph10021007->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
+   Graph_Graph_Graph10021007->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph10021007->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph10021007->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10021007->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph10021007->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph_Graph10021007->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph10021007->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10021007->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph10021007->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph10021007);
    
    gre->Draw("p ");
    
-   Double_t _fx1035[4] = {
+   Double_t _fx1008[4] = {
    1.1,
    2.1,
    3.1,
    4.1};
-   Double_t _fy1035[4] = {
-   1.423868e-18,
-   1.306609e-18,
-   2.172295e-18,
-   1.816013e-18};
-   Double_t _fex1035[4] = {
+   Double_t _fy1008[4] = {
    0,
    0,
    0,
    0};
-   Double_t _fey1035[4] = {
-   2.61451e-19,
-   2.247933e-19,
-   2.191019e-19,
-   1.681791e-19};
-   gre = new TGraphErrors(4,_fx1035,_fy1035,_fex1035,_fey1035);
+   Double_t _fex1008[4] = {
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1008[4] = {
+   0,
+   0,
+   0,
+   0};
+   gre = new TGraphErrors(4,_fx1008,_fy1008,_fex1008,_fey1008);
    gre->SetName("");
    gre->SetTitle("S12S18");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph_Graph10301035 = new TH1F("Graph_Graph_Graph10301035","S12S18",100,0.8,4.4);
-   Graph_Graph_Graph10301035->SetMinimum(9.508571e-19);
-   Graph_Graph_Graph10301035->SetMaximum(2.522355e-18);
-   Graph_Graph_Graph10301035->SetDirectory(0);
-   Graph_Graph_Graph10301035->SetStats(0);
+   TH1F *Graph_Graph_Graph10031008 = new TH1F("Graph_Graph_Graph10031008","S12S18",100,0.8,4.4);
+   Graph_Graph_Graph10031008->SetMinimum(0);
+   Graph_Graph_Graph10031008->SetMaximum(1.1);
+   Graph_Graph_Graph10031008->SetDirectory(0);
+   Graph_Graph_Graph10031008->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph_Graph10301035->SetLineColor(ci);
-   Graph_Graph_Graph10301035->GetXaxis()->SetBinLabel(6,"Run-1a");
-   Graph_Graph_Graph10301035->GetXaxis()->SetBinLabel(34,"Run-1b");
-   Graph_Graph_Graph10301035->GetXaxis()->SetBinLabel(62,"Run-1c");
-   Graph_Graph_Graph10301035->GetXaxis()->SetBinLabel(89,"Run-1d");
-   Graph_Graph_Graph10301035->GetXaxis()->SetBit(TAxis::kLabelsHori);
-   Graph_Graph_Graph10301035->GetXaxis()->CenterTitle(true);
-   Graph_Graph_Graph10301035->GetXaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10301035->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph10301035->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph_Graph10301035->GetXaxis()->SetTitleFont(42);
-   Graph_Graph_Graph10301035->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
-   Graph_Graph_Graph10301035->GetYaxis()->CenterTitle(true);
-   Graph_Graph_Graph10301035->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph_Graph10301035->GetYaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10301035->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph_Graph10301035->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph_Graph10301035->GetYaxis()->SetTitleFont(42);
-   Graph_Graph_Graph10301035->GetZaxis()->SetLabelFont(42);
-   Graph_Graph_Graph10301035->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph_Graph10301035->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph_Graph10301035);
+   Graph_Graph_Graph10031008->SetLineColor(ci);
+   Graph_Graph_Graph10031008->GetXaxis()->SetBinLabel(6,"Run-1a");
+   Graph_Graph_Graph10031008->GetXaxis()->SetBinLabel(34,"Run-1b");
+   Graph_Graph_Graph10031008->GetXaxis()->SetBinLabel(62,"Run-1c");
+   Graph_Graph_Graph10031008->GetXaxis()->SetBinLabel(89,"Run-1d");
+   Graph_Graph_Graph10031008->GetXaxis()->SetBit(TAxis::kLabelsHori);
+   Graph_Graph_Graph10031008->GetXaxis()->CenterTitle(true);
+   Graph_Graph_Graph10031008->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10031008->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph10031008->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph_Graph10031008->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph10031008->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
+   Graph_Graph_Graph10031008->GetYaxis()->CenterTitle(true);
+   Graph_Graph_Graph10031008->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph_Graph10031008->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10031008->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph_Graph10031008->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph_Graph10031008->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph10031008->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph10031008->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph_Graph10031008->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_Graph10031008);
    
    
-   TF1 *pol01036 = new TF1("pol0","pol0",0.8,4.4, TF1::EAddToList::kNo);
-   pol01036->SetFillColor(19);
-   pol01036->SetFillStyle(0);
-   pol01036->SetLineColor(2);
-   pol01036->SetLineWidth(0);
-   pol01036->SetChisquare(9.251069);
-   pol01036->SetNDF(3);
-   pol01036->GetXaxis()->SetLabelFont(42);
-   pol01036->GetXaxis()->SetTitleOffset(1);
-   pol01036->GetXaxis()->SetTitleFont(42);
-   pol01036->GetYaxis()->SetLabelFont(42);
-   pol01036->GetYaxis()->SetTitleFont(42);
-   pol01036->SetParameter(0,1.723348e-18);
-   pol01036->SetParError(0,1.050568e-19);
-   pol01036->SetParLimits(0,0,0);
-   pol01036->SetParent(gre);
-   gre->GetListOfFunctions()->Add(pol01036);
+   TF1 *pol01009 = new TF1("pol0","pol0",0.8,4.4, TF1::EAddToList::kNo);
+   pol01009->SetFillColor(19);
+   pol01009->SetFillStyle(0);
+   pol01009->SetLineColor(2);
+   pol01009->SetLineWidth(0);
+   pol01009->GetXaxis()->SetLabelFont(42);
+   pol01009->GetXaxis()->SetTitleOffset(1);
+   pol01009->GetXaxis()->SetTitleFont(42);
+   pol01009->GetYaxis()->SetLabelFont(42);
+   pol01009->GetYaxis()->SetTitleFont(42);
+   pol01009->SetParameter(0,0);
+   pol01009->SetParError(0,0.5);
+   pol01009->SetParLimits(0,0,0);
+   pol01009->SetParent(gre);
+   gre->GetListOfFunctions()->Add(pol01009);
    gre->Draw("p ");
    
    TLegend *leg = new TLegend(0.65,0.15,0.85,0.35,NULL,"brNDC");
@@ -364,7 +362,7 @@ void AEDM_vs_DS_blinded_750-2750MeV_125MeV_BQ()
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("#delta#LTd_{#mu}^{BLIND}#GT = 1.05#times10^{#minus19} e#upointcm");
+   TText *pt_LaTex = pt->AddText("#delta#LTd_{#mu}^{BLIND}#GT =   0.5 e#upointcm");
    pt->Draw();
    c->Modified();
    c->cd();

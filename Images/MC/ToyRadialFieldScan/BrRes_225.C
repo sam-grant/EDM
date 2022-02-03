@@ -1,7 +1,7 @@
 void BrRes_225()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jan  5 17:07:01 2022) by ROOT version 6.24/06
+//=========  (Mon Jan 10 15:42:32 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -10,92 +10,38 @@ void BrRes_225()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *__27 = new TH1D("__27","Number of sub-runs: 225",500,-10,10);
-   __27->SetBinContent(208,1);
-   __27->SetBinContent(212,1);
-   __27->SetBinContent(213,1);
-   __27->SetBinContent(215,2);
-   __27->SetBinContent(216,2);
-   __27->SetBinContent(217,1);
-   __27->SetBinContent(218,2);
-   __27->SetBinContent(219,3);
-   __27->SetBinContent(221,6);
-   __27->SetBinContent(222,2);
-   __27->SetBinContent(223,6);
-   __27->SetBinContent(224,5);
-   __27->SetBinContent(225,4);
-   __27->SetBinContent(226,5);
-   __27->SetBinContent(227,7);
-   __27->SetBinContent(228,11);
-   __27->SetBinContent(229,9);
-   __27->SetBinContent(230,14);
-   __27->SetBinContent(231,11);
-   __27->SetBinContent(232,14);
-   __27->SetBinContent(233,15);
-   __27->SetBinContent(234,15);
-   __27->SetBinContent(235,21);
-   __27->SetBinContent(236,13);
-   __27->SetBinContent(237,18);
-   __27->SetBinContent(238,18);
-   __27->SetBinContent(239,21);
-   __27->SetBinContent(240,25);
-   __27->SetBinContent(241,32);
-   __27->SetBinContent(242,13);
-   __27->SetBinContent(243,22);
-   __27->SetBinContent(244,26);
-   __27->SetBinContent(245,16);
-   __27->SetBinContent(246,24);
-   __27->SetBinContent(247,31);
-   __27->SetBinContent(248,28);
-   __27->SetBinContent(249,35);
-   __27->SetBinContent(250,34);
-   __27->SetBinContent(251,39);
-   __27->SetBinContent(252,28);
-   __27->SetBinContent(253,25);
-   __27->SetBinContent(254,26);
-   __27->SetBinContent(255,25);
-   __27->SetBinContent(256,33);
-   __27->SetBinContent(257,24);
-   __27->SetBinContent(258,35);
-   __27->SetBinContent(259,21);
-   __27->SetBinContent(260,16);
-   __27->SetBinContent(261,16);
-   __27->SetBinContent(262,9);
-   __27->SetBinContent(263,13);
-   __27->SetBinContent(264,15);
-   __27->SetBinContent(265,15);
-   __27->SetBinContent(266,17);
-   __27->SetBinContent(267,11);
-   __27->SetBinContent(268,15);
-   __27->SetBinContent(269,14);
-   __27->SetBinContent(270,12);
-   __27->SetBinContent(271,15);
-   __27->SetBinContent(272,9);
-   __27->SetBinContent(273,8);
-   __27->SetBinContent(274,7);
-   __27->SetBinContent(275,3);
-   __27->SetBinContent(276,6);
-   __27->SetBinContent(277,5);
-   __27->SetBinContent(278,5);
-   __27->SetBinContent(279,3);
-   __27->SetBinContent(280,2);
-   __27->SetBinContent(281,2);
-   __27->SetBinContent(282,3);
-   __27->SetBinContent(284,2);
-   __27->SetBinContent(287,2);
-   __27->SetBinContent(289,2);
-   __27->SetBinContent(290,2);
-   __27->SetBinContent(299,1);
+   TH1D *__27 = new TH1D("__27","Number of sub-runs: 225",240,-11,11);
+   __27->SetBinContent(110,1);
+   __27->SetBinContent(111,2);
+   __27->SetBinContent(112,1);
+   __27->SetBinContent(113,4);
+   __27->SetBinContent(114,9);
+   __27->SetBinContent(115,25);
+   __27->SetBinContent(116,50);
+   __27->SetBinContent(117,56);
+   __27->SetBinContent(118,96);
+   __27->SetBinContent(119,123);
+   __27->SetBinContent(120,140);
+   __27->SetBinContent(121,133);
+   __27->SetBinContent(122,104);
+   __27->SetBinContent(123,94);
+   __27->SetBinContent(124,78);
+   __27->SetBinContent(125,37);
+   __27->SetBinContent(126,22);
+   __27->SetBinContent(127,19);
+   __27->SetBinContent(128,4);
+   __27->SetBinContent(129,2);
    __27->SetEntries(1000);
    __27->SetStats(0);
    __27->GetXaxis()->SetTitle("#LTB_{r}^{b}#GT truth residual [ppm]");
-   __27->GetXaxis()->SetRange(83,417);
+   __27->GetXaxis()->SetRange(71,171);
    __27->GetXaxis()->CenterTitle(true);
    __27->GetXaxis()->SetLabelFont(42);
    __27->GetXaxis()->SetTitleSize(0.04);
    __27->GetXaxis()->SetTitleOffset(1.1);
    __27->GetXaxis()->SetTitleFont(42);
-   __27->GetYaxis()->SetTitle("Trials");
+   __27->GetYaxis()->SetTitle("Trials / 0.09
+ ppm");
    __27->GetYaxis()->CenterTitle(true);
    __27->GetYaxis()->SetNdivisions(4000510);
    __27->GetYaxis()->SetLabelFont(42);
@@ -111,7 +57,7 @@ void BrRes_225()
    pt->SetFillColor(0);
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
-   pt->SetTextSize(26);
+   pt->SetTextSize(23);
    TText *pt_LaTex = pt->AddText("Trials");
    pt_LaTex = pt->AddText("Mean [ppm]");
    pt_LaTex = pt->AddText("RMS [ppm]");
@@ -121,13 +67,13 @@ void BrRes_225()
    pt->SetFillColor(0);
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
-   pt->SetTextSize(26);
+   pt->SetTextSize(23);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("-0.02
-#pm0.02
+   pt_LaTex = pt->AddText("0.000825
+#pm0.009
 ");
-   pt_LaTex = pt->AddText("0.557
-#pm0.01
+   pt_LaTex = pt->AddText("0.271
+#pm0.006
 ");
    pt->Draw();
    c->Modified();

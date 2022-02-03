@@ -1,7 +1,7 @@
 void cluTE_px.34735()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 28 18:09:43 2021) by ROOT version 6.22/08
+//=========  (Tue Jan 11 12:43:16 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11986,6 +11986,7 @@ void cluTE_px.34735()
    clusterTE_pfx->SetBinError(4001,187425.7);
    clusterTE_pfx->SetEntries(1.288991e+08);
    clusterTE_pfx->SetStats(0);
+   clusterTE_pfx->SetLineWidth(2);
    clusterTE_pfx->GetXaxis()->SetTitle("Time [#mus]");
    clusterTE_pfx->GetXaxis()->CenterTitle(true);
    clusterTE_pfx->GetXaxis()->SetLabelFont(42);

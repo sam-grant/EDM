@@ -330,7 +330,7 @@ int main() { //int argc, char *argv[]) {
 
   // string stage = "raw";//argv[1]; // "raw/cutsTesting";
 
-  string stage = "reprocessed"; //argv[1]; // "raw/cutsTesting";
+  string stage = "raw";//"reprocessed"; //argv[1]; // "raw/cutsTesting";
 
   // Output to store basic fits (quad scans and final fit)
   TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/fits.root").c_str(), "RECREATE");
