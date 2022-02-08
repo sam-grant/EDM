@@ -1017,8 +1017,8 @@ int main(int argc, char *argv[]) {
   std::string dataset = argv[2];
   std::string unblindStr = argv[3];
   
-/*  std::string config = "trackReco_AAR_250MeV_BQ";
-  //  std::string config = "trackReco_AAR_125MeV_BQ";
+/*  std::string config = "trackReco_WORLD_250MeV_BQ";
+  //  std::string config = "trackReco_WORLD_125MeV_BQ";
   std::string dataset = "5.4e-18"; 
   std::string unblindStr = "true";*/
 
