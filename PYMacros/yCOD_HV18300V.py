@@ -98,7 +98,9 @@ for i in range(n):
 gr = TGraph(n,x,y)
 #gr.GetXaxis().SetRangeUser(0,360)
 gr.GetXaxis().SetRangeUser(0,360) #2*np.pi)
-DrawTGraph(gr, ';#theta [rad];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/y_vs_theta')
+DrawTGraph(gr, ';Ring azimuth [rad];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/y_vs_theta')
+
+return
 
 gr.SetName('y_vs_theta')
 

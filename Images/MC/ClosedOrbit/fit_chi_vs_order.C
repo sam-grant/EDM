@@ -1,8 +1,8 @@
 void fit_chi_vs_order()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Feb  1 16:55:26 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+//=========  (Sat Feb 12 01:36:13 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,53,800,600);
    gStyle->SetOptFit(1);
    c->SetHighLightColor(2);
    c->Range(-1.2375,-0.004060094,11.1375,0.03655368);

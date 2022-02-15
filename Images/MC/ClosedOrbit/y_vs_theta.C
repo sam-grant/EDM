@@ -1,8 +1,8 @@
 void y_vs_theta()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Feb  1 16:55:16 2021) by ROOT version 6.22/06
-   TCanvas *c = new TCanvas("c", "c",0,45,800,600);
+//=========  (Sat Feb 12 01:36:05 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,53,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8639313,-0.419288,7.775382,0.388894);
    c->SetFillColor(0);
@@ -749,7 +749,7 @@ void y_vs_theta()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01->SetLineColor(ci);
-   Graph_Graph01->GetXaxis()->SetTitle("#theta [rad]");
+   Graph_Graph01->GetXaxis()->SetTitle("Ring azimuth [rad]");
    Graph_Graph01->GetXaxis()->SetRange(1,361);
    Graph_Graph01->GetXaxis()->CenterTitle(true);
    Graph_Graph01->GetXaxis()->SetLabelFont(42);
@@ -761,15 +761,19 @@ void y_vs_theta()
    Graph_Graph01->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01->GetYaxis()->SetLabelFont(42);
    Graph_Graph01->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01->GetYaxis()->SetTitleOffset(1.25);
+   Graph_Graph01->GetYaxis()->SetTitleOffset(1.2);
    Graph_Graph01->GetYaxis()->SetTitleFont(42);
    Graph_Graph01->GetZaxis()->SetLabelFont(42);
    Graph_Graph01->GetZaxis()->SetTitleOffset(1);
    Graph_Graph01->GetZaxis()->SetTitleFont(42);
    graph->SetHistogram(Graph_Graph01);
+
+   Graph_Graph01->GetXaxis()->SetRangeUser(-10, (2*3.14159265359));
    
    graph->Draw("ap");
    c->Modified();
    c->cd();
    c->SetSelected(c);
+
+   c->SaveAs("ClosedOrbitSim.pdf");
 }
