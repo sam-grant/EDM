@@ -1,10 +1,10 @@
 void S18_trackReco_gr_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb  3 14:38:46 2022) by ROOT version 6.24/06
+//=========  (Tue Feb 22 00:54:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(447.6422,-3.110139,3045.093,3.042058);
+   c->Range(447.6717,-2.884934,3045.011,2.410491);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,23 +12,23 @@ void S18_trackReco_gr_pull()
    c->SetFrameBorderMode(0);
    
    Double_t S18_trackReco_gr_pull_fx1009[8] = {
-   880.5507,
-   1123.017,
-   1370.779,
-   1619.705,
-   1866.411,
-   2115.026,
-   2363.263,
-   2612.185};
+   880.5616,
+   1123.015,
+   1370.8,
+   1619.721,
+   1866.492,
+   2115.018,
+   2363.349,
+   2612.121};
    Double_t S18_trackReco_gr_pull_fy1009[8] = {
-   -0.2502236,
-   -1.003333,
-   0.4491039,
-   1.397462,
-   0.2364246,
-   -2.084773,
-   -0.9508841,
-   2.016692};
+   0.08689971,
+   -0.660787,
+   1.35252,
+   0.6997728,
+   -0.01099966,
+   -2.002363,
+   -0.9356082,
+   1.52792};
    Double_t S18_trackReco_gr_pull_fex1009[8] = {
    0,
    0,
@@ -53,9 +53,9 @@ void S18_trackReco_gr_pull()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S18_trackReco_gr_pull1009 = new TH1F("Graph_S18_trackReco_gr_pull1009","",100,707.3873,2785.348);
-   Graph_S18_trackReco_gr_pull1009->SetMinimum(-2.494919);
-   Graph_S18_trackReco_gr_pull1009->SetMaximum(2.426838);
+   TH1F *Graph_S18_trackReco_gr_pull1009 = new TH1F("Graph_S18_trackReco_gr_pull1009","",100,707.4056,2785.277);
+   Graph_S18_trackReco_gr_pull1009->SetMinimum(-2.355392);
+   Graph_S18_trackReco_gr_pull1009->SetMaximum(1.880948);
    Graph_S18_trackReco_gr_pull1009->SetDirectory(0);
    Graph_S18_trackReco_gr_pull1009->SetStats(0);
 
@@ -81,7 +81,7 @@ void S18_trackReco_gr_pull()
    Graph_S18_trackReco_gr_pull1009->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_S18_trackReco_gr_pull1009);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    c->Modified();
    c->cd();
    c->SetSelected(c);

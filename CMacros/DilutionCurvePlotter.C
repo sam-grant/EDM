@@ -540,7 +540,7 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
       names->SetTextAlign(13);
       names->AddText("#chi^{2}/NDF");
       names->AddText("a") ; 
-      names->AddText("b" );
+      names->AddText("b [MeV^{-1}]" );
       //names->AddText("d_{0}");
 
       TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
@@ -584,8 +584,14 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
          // Reweighting 
          // a = 0.079909±0.00547423
          // b = -0.000127703±1.42269e-05
-         values->AddText("0.080#pm0.005"); 
-         values->AddText("(-1.3#pm0.1)#times10^{-4}");
+         // First acceptance correction
+         // a = 0.126598±0.00786631
+         // b = -0.000147831±8.341e-06
+         // First acceptance correction with reweighting
+         // a = 0.120696±0.00700639
+         // b = -0.000152548±7.37826e-06
+         values->AddText("0.121#pm0.007"); 
+         values->AddText("(-1.52#pm0.07)#times10^{-4}");
       }
  
       cout<<"\n*** Fit results ***"<<endl;
@@ -844,14 +850,14 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.refit.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.refit.acceptanceCorrected.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
 
    cout<<"\n****************** Drawing ******************"<<endl;
 
-   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", 0, 0.12);
+   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.16); // 0, 0.12
    //DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12);
 
 /*   // Graphs

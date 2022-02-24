@@ -213,7 +213,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetYaxis()->CenterTitle(true);
 	graph->GetYaxis()->SetMaxDigits(4);
 	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("APL");
+	graph->Draw("AP");
 	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());

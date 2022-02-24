@@ -1,10 +1,10 @@
 void S12S18_trackReco_gr_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Feb  3 14:38:47 2022) by ROOT version 6.24/06
+//=========  (Tue Feb 22 00:54:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(447.2544,-3.17251,3046.382,2.466755);
+   c->Range(447.2945,-2.485114,3046.352,2.401535);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,23 +12,23 @@ void S12S18_trackReco_gr_pull()
    c->SetFrameBorderMode(0);
    
    Double_t S12S18_trackReco_gr_pull_fx1013[8] = {
-   880.4423,
-   1123.086,
-   1370.96,
-   1619.999,
-   1866.598,
-   2114.954,
-   2362.913,
-   2613.194};
+   880.4707,
+   1123.079,
+   1370.969,
+   1620.017,
+   1866.66,
+   2115.009,
+   2362.994,
+   2613.175};
    Double_t S12S18_trackReco_gr_pull_fy1013[8] = {
-   -0.6928691,
-   -0.6905015,
-   -0.2212597,
-   1.526878,
-   1.302322,
-   -0.4573645,
-   -2.232632,
-   0.9799507};
+   -1.368344,
+   -0.1188035,
+   -0.007114627,
+   1.587094,
+   0.8684846,
+   -0.9214534,
+   -1.670672,
+   1.006764};
    Double_t S12S18_trackReco_gr_pull_fex1013[8] = {
    0,
    0,
@@ -53,9 +53,9 @@ void S12S18_trackReco_gr_pull()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12S18_trackReco_gr_pull1013 = new TH1F("Graph_S12S18_trackReco_gr_pull1013","",100,707.1672,2786.469);
-   Graph_S12S18_trackReco_gr_pull1013->SetMinimum(-2.608583);
-   Graph_S12S18_trackReco_gr_pull1013->SetMaximum(1.902829);
+   TH1F *Graph_S12S18_trackReco_gr_pull1013 = new TH1F("Graph_S12S18_trackReco_gr_pull1013","",100,707.2003,2786.446);
+   Graph_S12S18_trackReco_gr_pull1013->SetMinimum(-1.996449);
+   Graph_S12S18_trackReco_gr_pull1013->SetMaximum(1.91287);
    Graph_S12S18_trackReco_gr_pull1013->SetDirectory(0);
    Graph_S12S18_trackReco_gr_pull1013->SetStats(0);
 
@@ -81,7 +81,7 @@ void S12S18_trackReco_gr_pull()
    Graph_S12S18_trackReco_gr_pull1013->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_S12S18_trackReco_gr_pull1013);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    c->Modified();
    c->cd();
    c->SetSelected(c);

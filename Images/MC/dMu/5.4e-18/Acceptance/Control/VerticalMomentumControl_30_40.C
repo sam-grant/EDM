@@ -1,7 +1,7 @@
 void VerticalMomentumControl_30_40()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Dec 17 10:11:54 2021) by ROOT version 6.24/04
+//=========  (Sat Feb 19 20:55:35 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
