@@ -290,7 +290,7 @@ double GetLimit(double delta_prime) {
 
 }
 
-void Run(std::string dataset, int step, std::string blinding, std::string fitType, bool correctDilution) { 
+void Run(std::string dataset, int step, std::string blinding, std::string fitType, bool correctDilution, string test = "") { 
 
   std::string dilCorrStr = "";
   if(!correctDilution) dilCorrStr += "_noCorr";
@@ -312,7 +312,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_BQ"+dilCorrStr+".root").c_str());
+      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_BQ"+dilCorrStr+test+".root").c_str());
 
       TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
       
@@ -340,13 +340,13 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, ds_);
+    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+test, ds_);
 
     gr_.push_back(gr);
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr, ds_);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+test, ds_);
 
 
   return;
@@ -355,7 +355,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
 void PlotEDMResultsPerDS() { 
 
-  Run("Run-1", 125, "blinded", "EDM", true); 
+  Run("Run-1", 125, "blinded", "EDM", true, ".acceptanceReweighting"); 
 
   
   return;

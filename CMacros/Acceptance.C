@@ -384,14 +384,14 @@ void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY
 	return;
 }
 
-void Run(int rebin = 1) {	
+void Run(string config, int rebin = 1) {	
 
-	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.root";
+	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots."+config+".root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.root";
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots."+config+".root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 
 	// TODO add array for all stations
@@ -419,12 +419,12 @@ void Run(int rebin = 1) {
  	//DrawTH2(h2_thetaY_vs_Y_tracks, ";Decay y-position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/2DRatios/Simultaneous/h2_thetaY_vs_Y_tracks");
  
  	// Set rebinning here
-	TH2D *acceptanceWeightingMap = AcceptanceWeightingMap(h2_thetaY_vs_Y_decays, h2_thetaY_vs_Y_tracks, rebin, "2DRatios/Simultaneous"); 
+	TH2D *acceptanceWeightingMap = AcceptanceWeightingMap(h2_thetaY_vs_Y_decays, h2_thetaY_vs_Y_tracks, rebin, config+"/2DRatios/Simultaneous"); 
 	
 	cout<<"----> Created weight map " << acceptanceWeightingMap << " for all momentum"<<endl;
 	
-	DrawAcceptanceWeightingMap(acceptanceWeightingMap, "", "../Images/MC/Acceptance/2DRatios/Simultaneous/InverseAcceptanceMap", "COLZ TEXT");
-	DrawAcceptanceWeightingMap(acceptanceWeightingMap, "", "../Images/MC/Acceptance/2DRatios/Simultaneous/InverseAcceptanceSurface", "SURF2");
+	DrawAcceptanceWeightingMap(acceptanceWeightingMap, "", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/InverseAcceptanceMap", "COLZ TEXT");
+	DrawAcceptanceWeightingMap(acceptanceWeightingMap, "", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/InverseAcceptanceSurface", "SURF2");
 
 	acceptanceWeightingMap->Write();
 
@@ -452,12 +452,12 @@ void Run(int rebin = 1) {
 
 		string title = to_string(lo)+" < p [Mev] < "+to_string(hi);
 
-		TH2D *acceptanceWeightingMap = AcceptanceWeightingMap(h2_thetaY_vs_Y_decays_slice, h2_thetaY_vs_Y_tracks_slice, rebin, "2DRatios/MomentumBinned", stepStr, title); 
+		TH2D *acceptanceWeightingMap = AcceptanceWeightingMap(h2_thetaY_vs_Y_decays_slice, h2_thetaY_vs_Y_tracks_slice, rebin, config+"/2DRatios/MomentumBinned", stepStr, title); 
 
 		cout<<"----> Creating weight map  " << acceptanceWeightingMap << " for momentum bin: "<<lo<<" < p [MeV] < "<<hi<<endl;
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMap, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/2DRatios/MomentumBinned/InverseAcceptanceMap_"+stepStr, "COLZ TEXT");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMap, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/2DRatios/MomentumBinned/InverseAcceptanceSurface_"+stepStr, "SURF2");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMap, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/InverseAcceptanceMap_"+stepStr, "COLZ TEXT");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMap, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/InverseAcceptanceSurface_"+stepStr, "SURF2");
 
 		acceptanceWeightingMap->Write();
 
@@ -496,7 +496,7 @@ void Run(int rebin = 1) {
     	TH1D *h1_thetaY_decays_slice = (TH1D*)fin->Get(("AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
     	TH1D *h1_thetaY_tracks_slice = (TH1D*)fin->Get(("Tracks/VertPosBins/S12S18_ThetaY_"+stepStr).c_str());
 
- 		Ratios(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, "1DRatios/VertPosBinned", "_"+stepStr);
+ 		Ratios(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, config+"/1DRatios/VertPosBinned", "_"+stepStr);
  	}
 
 	fin->Close();
@@ -510,7 +510,8 @@ void Run(int rebin = 1) {
 
 int main() { 
 
-	Run(4);
+	Run("truth", 4);
+	//Run("reco", 4);
 
 	return 0;
 }

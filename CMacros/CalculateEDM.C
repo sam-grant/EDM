@@ -35,10 +35,10 @@ double GetEDM(double delta_prime) {
 
 void CalculateEDM() { 
 
-	double delta_prime = -0.01210 * 1e-3;//3.2*1e-3;//-0.44351*1e-3; // mrad
+	double delta_prime = 0.0805;//3.2*1e-3;//-0.44351*1e-3; // mrad
 	double dMu = GetEDM(delta_prime); 
 
-	cout<<"EDM for a tilt boosted tilt angle of "<<delta_prime<<" mrad is "<<dMu<<" ecm"<<endl;
+	cout<<"EDM for a boosted tilt angle of "<<delta_prime<<" mrad is "<<dMu<<" ecm"<<endl;
 
 	return;
 

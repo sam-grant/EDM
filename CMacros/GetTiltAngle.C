@@ -165,7 +165,7 @@ string GetDataset(std::string config) {
 
 }
 
-TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc) {  
+TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc, TH1D *weightingHist = 0) {  
 
     TGraphErrors *gr_delta_prime = new TGraphErrors();
 
@@ -180,6 +180,13 @@ TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc) {
       if(x < xmin || x > xmax) continue;
 
       double d_EDM = dilutionFunc->Eval(x);
+
+      // Acceptance weighting
+      double weighting = 1.0; 
+      if(weightingHist!=0) weighting = weightingHist->GetBinContent(weightingHist->FindBin(x));
+
+      d_EDM = d_EDM * weighting;
+
       double delta_prime = y/d_EDM;
 
       double delta_prime_err = ey/d_EDM;
@@ -189,7 +196,7 @@ TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc) {
 
       count++;
 
-    }
+    } 
 
     TF1 *fit = new TF1("pol0", "pol0", xmin,xmax);
     
@@ -226,10 +233,11 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
   gr_delta_prime->GetYaxis()->SetMaxDigits(4);
 
   // Set y-range
-/*  double scale = 2.75;*/
+  /*  double scale = 2.75;*/
   double ymin = gr_delta_prime->GetFunction("pol0")->GetParameter(0) - 1.5;//  = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
   double ymax = gr_delta_prime->GetFunction("pol0")->GetParameter(0) + 1.5;//  = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
-/*
+  
+  /*
   for(int i = 1; i<gr_delta_prime->GetN(); i++) {
 
     double lo = gr_delta_prime->GetY()[i] - gr_delta_prime->GetEY()[i];
@@ -263,6 +271,11 @@ vector<TF1*> GetMottFunctions(TFile *dilution_file, string stn, int step = 250, 
   string tracksOrDecays = GetTracksOrDecays(config);
   string qual = GetQual(config);
 
+  // EDIT: override params
+  tracksOrDecaysLabel = "Decays";
+  tracksOrDecays = "allDecays";
+  qual = "AQ";
+
   vector<TF1*> mottFunctions_;
 
   for(int i = 0; i<nTrials; i++) { 
@@ -276,17 +289,18 @@ vector<TF1*> GetMottFunctions(TFile *dilution_file, string stn, int step = 250, 
 
 }
 
-vector<TGraphErrors*> GetDeltaPrimeFits(vector<TF1*> mottFunctions_, TGraphErrors *gr_A) { 
+vector<TGraphErrors*> GetDeltaPrimeFits(vector<TF1*> mottFunctions_, TGraphErrors *gr_A, TH1D *weighting = 0) { 
+
+  cout<<"Getting delta prime fits"<<endl;
 
   vector<TGraphErrors*> deltaPrimeFits_;
 
   for(auto& mottFunc : mottFunctions_) {
 
-    TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(gr_A, mottFunc); // , xmin, xmax);//new TGraphErrors();
-
+    TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(gr_A, mottFunc, weighting); // , xmin, xmax);//new TGraphErrors();
     deltaPrimeFits_.push_back(gr_delta_prime);
 
-  }
+  } 
 
   return deltaPrimeFits_;
 
@@ -640,23 +654,28 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
   cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
   TString A_fileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";
-  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves."+tmp+".root";
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";//+tmp+".root";
 
   TFile *A_file = TFile::Open(A_fileName);
   TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<endl;
+
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
+  TFile *acceptance_file = TFile::Open(acceptance_fileName);
+
+  TH1D *acceptanceHist = (TH1D*)acceptance_file->Get("hists/h1_ratio"); 
+
+  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<", "<<acceptance_fileName<<", "<<acceptance_file<<endl;
 
   //cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
 
+  // EDIT: changed to all decays fit
   vector<string> stn_ = {"S12", "S18", "S12S18"};
   vector<string> fitType_ = {"EDM", "g2"};
 
   vector<string> results_;
-
-
 
   for(auto& fitType : fitType_) {
 
@@ -694,26 +713,29 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
     }
 
     // Apply correction
+    // Get dilution curve
+    // EDIT: change to using the all decays fit
+    // TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/"+stn+"_trackReco").c_str());
+    TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/AQ/Decays/250MeV/d_vs_p/allDecays");//.c_str());
+    //TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+    TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("DilutionFunc");
+
+    if(!correctDilution) {
+      dilutionFunc = new TF1("", "pol0", xmin, xmax);
+      dilutionFunc->SetParameter(0, 1);
+    }
+
+    // Get mott functions
+    vector<TF1*> mottFunctions_; 
+    if(correctDilution) mottFunctions_ = GetMottFunctions(dilution_file, "");// stn+"_");
+
+
     for(auto& stn : stn_) {
-
-      // Get dilution curve
-      TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/"+stn+"_trackReco").c_str());
-      //TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
-      TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("DilutionFunc");
-
-      if(!correctDilution) {
-        dilutionFunc = new TF1("", "pol0", xmin, xmax);
-        dilutionFunc->SetParameter(0, 1);
-      }
-
-      // Get mott functions
-      vector<TF1*> mottFunctions_; 
-      if(correctDilution) mottFunctions_ = GetMottFunctions(dilution_file, stn+"_");
 
       // Get mott functions
       TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_A"+fitType+"_vs_p";
       TGraphErrors *A_gr = (TGraphErrors*)A_file->Get(A_grName);
-      TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(A_gr, dilutionFunc);
+      TGraphErrors *gr_delta_prime = GetDeltaPrimeFit(A_gr, dilutionFunc, acceptanceHist);
 
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
@@ -725,7 +747,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       gr_delta_prime->SetName((stn+"_delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
 
-      vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mottFunctions_, A_gr);
+      vector<TGraphErrors*> deltaPrimeFits_ = GetDeltaPrimeFits(mottFunctions_, A_gr, acceptanceHist);
+
       // Slows things down quite substantially 
       // DrawDeltaPrimeFits(deltaPrimeFits_, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'{"+subscript+"} [mrad]", "../Images/MC/dMu/"+dataset+"/"+stn+fitType+"_delta_prime_vs_p_"+to_string(nTrials));
 
@@ -846,10 +869,14 @@ int main() {
 	
 */
   // Data
-  RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
-  RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
-  RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "refit");//.reweight");
+  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  // RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
+  //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
+    RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
+
+  //RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "");//.reweight");
+  //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "");//.reweight");
+  //RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "");//.reweight");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "0");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "1");
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "2");

@@ -563,8 +563,8 @@ int main() { //int argc, char *argv[]) {
   bool write = true;
 
   string fname = "";
-  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.refit.acceptanceCorrected.root";
-  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves_test.root";
+  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
 
@@ -576,15 +576,14 @@ int main() { //int argc, char *argv[]) {
 
   // Regular samples
   FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
-  FitDilution("allDecays_WORLD_250MeV_AQ_accepted", "EDM", output, true); // Not sure what this is...
   FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_BQ", "EDM", output, true);
 
   // With full distribution
-  //FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
-  FitDilution("trackReco_WORLD_250MeV_BQ_acceptanceCorrected", "EDM", output, true);
+  FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
+  //FitDilution("trackReco_WORLD_250MeV_BQ_acceptanceCorrected", "EDM", output, true);
 
   // Control sample. All reconstructions arise from the same MC sample.
   FitDilution("acceptedDecaysControl_WORLD_250MeV_AQ", "EDM", output, true); 

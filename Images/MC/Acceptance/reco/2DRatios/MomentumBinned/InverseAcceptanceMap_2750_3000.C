@@ -1,0 +1,138 @@
+void InverseAcceptanceMap_2750_3000()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Mar 17 21:53:56 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptStat(0);
+   c->SetHighLightColor(2);
+   c->Range(-75.58442,-131.25,80.25974,131.25);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetRightMargin(0.13);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   TH2D *WeightMap_2750_3000 = new TH2D("WeightMap_2750_3000","2750 < p [MeV] < 3000",12,-60,60,315,-1575,1575);
+   WeightMap_2750_3000->SetBinContent(2203,0.2763002);
+   WeightMap_2750_3000->SetBinContent(2204,0.8710575);
+   WeightMap_2750_3000->SetBinContent(2205,1.437673);
+   WeightMap_2750_3000->SetBinContent(2206,1.533323);
+   WeightMap_2750_3000->SetBinContent(2207,1.792042);
+   WeightMap_2750_3000->SetBinContent(2208,2.35682);
+   WeightMap_2750_3000->SetBinContent(2209,2.576298);
+   WeightMap_2750_3000->SetBinContent(2214,0.3633629);
+   WeightMap_2750_3000->SetBinContent(2215,0.4479048);
+   WeightMap_2750_3000->SetBinContent(2216,1.109148);
+   WeightMap_2750_3000->SetBinContent(2217,1.084534);
+   WeightMap_2750_3000->SetBinContent(2218,0.885675);
+   WeightMap_2750_3000->SetBinContent(2219,1);
+   WeightMap_2750_3000->SetBinContent(2220,1.126651);
+   WeightMap_2750_3000->SetBinContent(2221,1.037952);
+   WeightMap_2750_3000->SetBinContent(2222,0.7479911);
+   WeightMap_2750_3000->SetBinContent(2223,0.7584774);
+   WeightMap_2750_3000->SetBinContent(2228,1.260184);
+   WeightMap_2750_3000->SetBinContent(2229,2.738682);
+   WeightMap_2750_3000->SetBinContent(2230,1.746347);
+   WeightMap_2750_3000->SetBinContent(2231,1.113649);
+   WeightMap_2750_3000->SetBinContent(2232,1.060785);
+   WeightMap_2750_3000->SetBinContent(2233,0.9802567);
+   WeightMap_2750_3000->SetBinContent(2234,0.2487664);
+   WeightMap_2750_3000->SetBinError(2203,0.0873868);
+   WeightMap_2750_3000->SetBinError(2204,0.1284906);
+   WeightMap_2750_3000->SetBinError(2205,0.16504);
+   WeightMap_2750_3000->SetBinError(2206,0.205068);
+   WeightMap_2750_3000->SetBinError(2207,0.3274961);
+   WeightMap_2750_3000->SetBinError(2208,0.6306854);
+   WeightMap_2750_3000->SetBinError(2209,1.824243);
+   WeightMap_2750_3000->SetBinError(2214,0.363434);
+   WeightMap_2750_3000->SetBinError(2215,0.1493376);
+   WeightMap_2750_3000->SetBinError(2216,0.1387263);
+   WeightMap_2750_3000->SetBinError(2217,0.09445167);
+   WeightMap_2750_3000->SetBinError(2218,0.07027208);
+   WeightMap_2750_3000->SetBinError(2219,0.07457572);
+   WeightMap_2750_3000->SetBinError(2220,0.0963147);
+   WeightMap_2750_3000->SetBinError(2221,0.1352053);
+   WeightMap_2750_3000->SetBinError(2222,0.1932082);
+   WeightMap_2750_3000->SetBinError(2223,0.5365435);
+   WeightMap_2750_3000->SetBinError(2228,1.261039);
+   WeightMap_2750_3000->SetBinError(2229,0.6856792);
+   WeightMap_2750_3000->SetBinError(2230,0.3245933);
+   WeightMap_2750_3000->SetBinError(2231,0.1761889);
+   WeightMap_2750_3000->SetBinError(2232,0.1418343);
+   WeightMap_2750_3000->SetBinError(2233,0.1360089);
+   WeightMap_2750_3000->SetBinError(2234,0.08293324);
+   WeightMap_2750_3000->SetEntries(121.4291);
+   WeightMap_2750_3000->SetStats(0);
+   WeightMap_2750_3000->SetContour(20);
+   WeightMap_2750_3000->SetContourLevel(0,0);
+   WeightMap_2750_3000->SetContourLevel(1,0.1369341);
+   WeightMap_2750_3000->SetContourLevel(2,0.2738682);
+   WeightMap_2750_3000->SetContourLevel(3,0.4108023);
+   WeightMap_2750_3000->SetContourLevel(4,0.5477364);
+   WeightMap_2750_3000->SetContourLevel(5,0.6846705);
+   WeightMap_2750_3000->SetContourLevel(6,0.8216046);
+   WeightMap_2750_3000->SetContourLevel(7,0.9585387);
+   WeightMap_2750_3000->SetContourLevel(8,1.095473);
+   WeightMap_2750_3000->SetContourLevel(9,1.232407);
+   WeightMap_2750_3000->SetContourLevel(10,1.369341);
+   WeightMap_2750_3000->SetContourLevel(11,1.506275);
+   WeightMap_2750_3000->SetContourLevel(12,1.643209);
+   WeightMap_2750_3000->SetContourLevel(13,1.780143);
+   WeightMap_2750_3000->SetContourLevel(14,1.917077);
+   WeightMap_2750_3000->SetContourLevel(15,2.054012);
+   WeightMap_2750_3000->SetContourLevel(16,2.190946);
+   WeightMap_2750_3000->SetContourLevel(17,2.32788);
+   WeightMap_2750_3000->SetContourLevel(18,2.464814);
+   WeightMap_2750_3000->SetContourLevel(19,2.601748);
+   
+   TPaletteAxis *palette = new TPaletteAxis(60.77922,-105,67.79221,105,WeightMap_2750_3000);
+   palette->SetLabelColor(1);
+   palette->SetLabelFont(42);
+   palette->SetLabelOffset(0.005);
+   palette->SetLabelSize(0.035);
+   palette->SetTitleOffset(1);
+   palette->SetTitleSize(0.035);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#700002");
+   palette->SetFillColor(ci);
+   palette->SetFillStyle(1001);
+   WeightMap_2750_3000->GetListOfFunctions()->Add(palette,"br");
+
+   ci = TColor::GetColor("#000099");
+   WeightMap_2750_3000->SetLineColor(ci);
+   WeightMap_2750_3000->GetXaxis()->SetTitle("y [mm]");
+   WeightMap_2750_3000->GetXaxis()->SetRange(1,12);
+   WeightMap_2750_3000->GetXaxis()->CenterTitle(true);
+   WeightMap_2750_3000->GetXaxis()->SetLabelFont(42);
+   WeightMap_2750_3000->GetXaxis()->SetTitleSize(0.04);
+   WeightMap_2750_3000->GetXaxis()->SetTitleOffset(1.1);
+   WeightMap_2750_3000->GetXaxis()->SetTitleFont(42);
+   WeightMap_2750_3000->GetYaxis()->SetTitle("#theta_{y} [mrad]");
+   WeightMap_2750_3000->GetYaxis()->SetRange(148,168);
+   WeightMap_2750_3000->GetYaxis()->CenterTitle(true);
+   WeightMap_2750_3000->GetYaxis()->SetNdivisions(4000510);
+   WeightMap_2750_3000->GetYaxis()->SetLabelFont(42);
+   WeightMap_2750_3000->GetYaxis()->SetTitleSize(0.04);
+   WeightMap_2750_3000->GetYaxis()->SetTitleOffset(1.1);
+   WeightMap_2750_3000->GetYaxis()->SetTitleFont(42);
+   WeightMap_2750_3000->GetZaxis()->CenterTitle(true);
+   WeightMap_2750_3000->GetZaxis()->SetLabelFont(42);
+   WeightMap_2750_3000->GetZaxis()->SetTitleOffset(1);
+   WeightMap_2750_3000->GetZaxis()->SetTitleFont(42);
+   WeightMap_2750_3000->Draw("COLZ TEXT");
+   
+   TPaveText *pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("2750 < p [MeV] < 3000");
+   pt->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

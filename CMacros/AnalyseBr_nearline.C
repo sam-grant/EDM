@@ -33,19 +33,19 @@ using namespace std;
 //const string stage = "raw"; // "//// // ////
 
 // FIRST SCAN
-string scan = "1";
-const int N_QHV = 2;
-const int N_FIELD = 2;
-const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+//string scan = "1";
+//const int N_QHV = 2;
+//const int N_FIELD = 2;
+//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // SECOND SCAN
-/*string scan = "2";
+string scan = "2";
 const int N_QHV = 4;
 const int N_FIELD = 6;
 const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
 const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
-*/
+
 
 // Read csv file of run, QHV, & Br
 vector<vector<string>> csvReader(string infile) {
@@ -333,7 +333,7 @@ int main() { //int argc, char *argv[]) {
   string stage = "raw";//"reprocessed"; //argv[1]; // "raw/cutsTesting";
 
   // Output to store basic fits (quad scans and final fit)
-  TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/fits.root").c_str(), "RECREATE");
+  TFile *output = new TFile(("../Plots/Data/RadialFieldScan_"+scan+"/"+stage+"/fits_test.root").c_str(), "RECREATE");
   output->cd(); output->mkdir("quadFits"); output->mkdir("mainFit");
 
   // FIRST SCAN
@@ -411,6 +411,8 @@ int main() { //int argc, char *argv[]) {
 			yPos.push_back(make_tuple(get<0>(data_tuple), get<1>(data_tuple)));
 
       ctags.push_back(make_tuple(double(get<2>(data_tuple)), 0.));
+
+      cout<<"N = "<<get<2>(data_tuple)<<endl;
 
 			counter++;
 

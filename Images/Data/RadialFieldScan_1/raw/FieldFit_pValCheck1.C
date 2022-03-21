@@ -1,7 +1,7 @@
 void FieldFit_pValCheck1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 10 12:01:23 2022) by ROOT version 6.24/06
+//=========  (Mon Mar 14 14:20:10 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-58.47552,45,59.96321);
@@ -13,15 +13,15 @@ void FieldFit_pValCheck1()
    
    Double_t Graph0_fx1015[5] = {
    30,
-   6.953129e-310,
-   6.953257e-310,
-   6.953257e-310,
+   6.953121e-310,
+   6.95325e-310,
+   6.95325e-310,
    2.470328e-323};
    Double_t Graph0_fy1015[5] = {
    38.73573,
    0,
-   2.134804e-314,
-   6.953257e-310,
+   2.215299e-314,
+   6.95325e-310,
    2.470328e-323};
    Double_t Graph0_fex1015[5] = {
    0,
@@ -32,8 +32,8 @@ void FieldFit_pValCheck1()
    Double_t Graph0_fey1015[5] = {
    1.487694,
    38.73573,
-   6.953257e-310,
-   6.953257e-310,
+   6.95325e-310,
+   6.95325e-310,
    2.470328e-323};
    TGraphErrors *gre = new TGraphErrors(5,Graph0_fx1015,Graph0_fy1015,Graph0_fex1015,Graph0_fey1015);
    gre->SetName("Graph0");
