@@ -183,13 +183,19 @@ TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc, TH1D *weig
 
       // Acceptance weighting
       double weighting = 1.0; 
-      if(weightingHist!=0) weighting = weightingHist->GetBinContent(weightingHist->FindBin(x));
+      double weighting_err = 0.0;
+      if(weightingHist!=0) {
+        weighting = weightingHist->GetBinContent(weightingHist->FindBin(x));
+        weighting_err = weightingHist->GetBinError(weightingHist->FindBin(x));
+      }
 
       d_EDM = d_EDM * weighting;
 
       double delta_prime = y/d_EDM;
 
       double delta_prime_err = ey/d_EDM;
+
+      //double delta_prime_err = delta_prime * sqrt( pow(ey/y,2) + pow(weighting_err/weighting,2) );
 
       gr_delta_prime->SetPoint(count, x, delta_prime);
       gr_delta_prime->SetPointError(count, 0., delta_prime_err);
@@ -234,8 +240,8 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
 
   // Set y-range
   /*  double scale = 2.75;*/
-  double ymin = gr_delta_prime->GetFunction("pol0")->GetParameter(0) - 1.5;//  = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
-  double ymax = gr_delta_prime->GetFunction("pol0")->GetParameter(0) + 1.5;//  = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
+  double ymin = gr_delta_prime->GetFunction("pol0")->GetParameter(0) - 0.75;//  = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
+  double ymax = gr_delta_prime->GetFunction("pol0")->GetParameter(0) + 0.75;//  = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
   
   /*
   for(int i = 1; i<gr_delta_prime->GetN(); i++) {
@@ -871,8 +877,10 @@ int main() {
   // Data
   //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
   // RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
+
   //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
-    RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
+  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "");
+ //RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
 
   //RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "");//.reweight");
   //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "");//.reweight");

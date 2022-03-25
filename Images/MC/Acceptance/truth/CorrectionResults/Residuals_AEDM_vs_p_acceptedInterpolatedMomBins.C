@@ -1,7 +1,7 @@
 void Residuals_AEDM_vs_p_acceptedInterpolatedMomBins()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Mar 21 21:29:14 2022) by ROOT version 6.24/06
+//=========  (Fri Mar 25 03:15:30 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -10,21 +10,20 @@ void Residuals_AEDM_vs_p_acceptedInterpolatedMomBins()
    c->SetFrameBorderMode(0);
    
    TH1D *h_res__1 = new TH1D("h_res__1","Momentum binned acceptance weighting with interpolation",25,-0.15,0.15);
-   h_res__1->SetBinContent(11,2);
-   h_res__1->SetBinContent(12,1);
-   h_res__1->SetBinContent(13,1);
-   h_res__1->SetBinContent(14,2);
+   h_res__1->SetBinContent(11,1);
+   h_res__1->SetBinContent(12,3);
+   h_res__1->SetBinContent(13,2);
+   h_res__1->SetBinContent(14,1);
    h_res__1->SetBinContent(15,1);
-   h_res__1->SetBinContent(20,1);
    h_res__1->SetEntries(8);
    h_res__1->SetStats(0);
-   h_res__1->GetXaxis()->SetTitle("Residuals [mrad]");
+   h_res__1->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
    h_res__1->GetXaxis()->CenterTitle(true);
    h_res__1->GetXaxis()->SetLabelFont(42);
    h_res__1->GetXaxis()->SetTitleSize(0.04);
    h_res__1->GetXaxis()->SetTitleOffset(1.1);
    h_res__1->GetXaxis()->SetTitleFont(42);
-   h_res__1->GetYaxis()->SetTitle("Entries");
+   h_res__1->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    h_res__1->GetYaxis()->CenterTitle(true);
    h_res__1->GetYaxis()->SetNdivisions(4000510);
    h_res__1->GetYaxis()->SetLabelFont(42);
@@ -41,8 +40,8 @@ void Residuals_AEDM_vs_p_acceptedInterpolatedMomBins()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("0.03
-#pm0.008
+   TText *pt_LaTex = pt->AddText("0.01
+#pm0.003
 ");
    pt->Draw();
    

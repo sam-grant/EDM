@@ -339,6 +339,8 @@ tuple<vector<double>, vector<double>, vector<double>, vector<double>> GetPulls(T
 
 void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config) { 
 
+  bool weightedBlinding = false;
+
   int step = GetStep(config);
   std::string qual = GetQual(config);
   std::string dataset = GetDataset(config);
@@ -353,7 +355,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
     // Blinding
-    TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
+    TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding);
 
     gr_thetaY_mod->GetYaxis()->SetRangeUser(-.425, .425);
 
@@ -365,7 +367,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     double ymin =  c-0.35; double ymax =  c+0.45; 
 
     //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
-    DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
+    DrawFullEDMFitData(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
 
     tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr_thetaY_mod);
 
@@ -461,6 +463,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
   cout<<"MomentumBinnedAnalysis"<<endl;
 
+  bool weightedBlinding = false;
+
   int step = GetStep(config);
   std::string qual = GetQual(config);
   std::string dataset = GetDataset(config);
@@ -551,7 +555,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
       // Blind with dilution weighting
-      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn+"_", p);
+      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
       // TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");

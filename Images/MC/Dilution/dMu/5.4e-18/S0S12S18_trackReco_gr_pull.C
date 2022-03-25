@@ -1,10 +1,10 @@
 void S0S12S18_trackReco_gr_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Feb 22 00:54:07 2022) by ROOT version 6.24/06
+//=========  (Tue Mar 22 09:46:12 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(446.9935,-2.934803,3047.092,2.959128);
+   c->Range(446.9782,-2.651534,3047.066,3.064608);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,23 +12,23 @@ void S0S12S18_trackReco_gr_pull()
    c->SetFrameBorderMode(0);
    
    Double_t S0S12S18_trackReco_gr_pull_fx1017[8] = {
-   880.3432,
-   1123.073,
-   1371.072,
-   1620.188,
-   1866.987,
-   2115.41,
-   2363.046,
-   2613.742};
+   880.3261,
+   1123.092,
+   1371.063,
+   1620.182,
+   1866.969,
+   2115.425,
+   2363.004,
+   2613.718};
    Double_t S0S12S18_trackReco_gr_pull_fy1017[8] = {
-   -1.952481,
-   -0.6055064,
-   0.9115096,
-   1.976806,
-   0.1660022,
-   -0.534898,
-   -1.658554,
-   0.8810557};
+   -1.386207,
+   -1.460467,
+   0.627433,
+   2.111917,
+   0.8826466,
+   -0.02860068,
+   -1.698844,
+   0.241555};
    Double_t S0S12S18_trackReco_gr_pull_fex1017[8] = {
    0,
    0,
@@ -53,9 +53,9 @@ void S0S12S18_trackReco_gr_pull()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S0S12S18_trackReco_gr_pull1017 = new TH1F("Graph_S0S12S18_trackReco_gr_pull1017","",100,707.0033,2787.082);
-   Graph_S0S12S18_trackReco_gr_pull1017->SetMinimum(-2.34541);
-   Graph_S0S12S18_trackReco_gr_pull1017->SetMaximum(2.369735);
+   TH1F *Graph_S0S12S18_trackReco_gr_pull1017 = new TH1F("Graph_S0S12S18_trackReco_gr_pull1017","",100,706.9869,2787.057);
+   Graph_S0S12S18_trackReco_gr_pull1017->SetMinimum(-2.07992);
+   Graph_S0S12S18_trackReco_gr_pull1017->SetMaximum(2.492993);
    Graph_S0S12S18_trackReco_gr_pull1017->SetDirectory(0);
    Graph_S0S12S18_trackReco_gr_pull1017->SetStats(0);
 

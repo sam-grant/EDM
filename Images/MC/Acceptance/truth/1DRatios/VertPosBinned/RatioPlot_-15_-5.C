@@ -1,7 +1,7 @@
 void RatioPlot_-15_-5()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Mar 21 16:13:31 2022) by ROOT version 6.24/06
+//=========  (Thu Mar 24 09:44:26 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);

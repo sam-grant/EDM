@@ -376,109 +376,6 @@ void DrawErrorBars(TGraphErrors *gr, std::string title, std::string fname) {
 
 }
 
-void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double ymax) { 
-
-  cout<<"---> All decays fit"<<endl;
-
-
-   TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays").c_str());
-      
-   TH1D *h_pull = (TH1D*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays_h_pull").c_str());
-   TGraphErrors *gr_pull = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays_gr_pull").c_str());
-
-   DrawTH1(h_pull, "", "../Images/MC/Dilution/dMu/5.4e-18/trackReco_h_pull");
-   DrawTGraphErrors(gr_pull, ";Decay vertex momentum [MeV];Pull [#sigma] / 250 MeV", "../Images/MC/Dilution/dMu/5.4e-18/allDecays_gr_pull");
-   DrawErrorBars(gr, ";Decay vertex momentum [MeV];#deltad_{EDM} / 250 MeV", "../Images/MC/Dilution/dMu/5.4e-18/allDecaysErrors");
-
-   TCanvas *c = new TCanvas("c","c",800,600);
-
-   gr->GetXaxis()->SetTitleSize(.04);
-   gr->GetYaxis()->SetTitleSize(.04);
-   gr->GetXaxis()->SetTitleOffset(1.1);
-   gr->GetYaxis()->SetTitleOffset(1.25);
-   gr->GetXaxis()->CenterTitle(true);
-   gr->GetYaxis()->CenterTitle(true);
-   gr->GetYaxis()->SetMaxDigits(4);
-
-   // Set marker style & colour
-   gr->SetMarkerStyle(20);
-   gr->SetMarkerColor(kBlack);
-
-   // EDIT
-   // Set ranges
-   gr->GetXaxis()->SetRangeUser(xmin, xmax);
-   gr->GetYaxis()->SetRangeUser(ymin, ymax);
-
-   TString title = ";Decay vertex momentum [MeV];d_{EDM} / "+to_string(step)+" MeV";
-   gr->SetTitle(title);
-
-   gr->Draw("AP");
-
-   // Get function
-   TF1 *fit = (TF1*)gr->GetFunction("ParabolaFunc");
-   fit->SetLineColor(kRed);
-   fit->SetLineWidth(3);
-   fit->Draw("SAME");
-
-   // Draw legend
-   TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
-   l->SetBorderSize(0);
-   l->SetNColumns(2);
-   l->AddEntry(gr,"Sim: all decays");
-   l->AddEntry(fit, "Fit: ap^{2}+bp+d_{0}");
-   l->Draw("SAME");
-
-   TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
-
-   names->SetTextAlign(13);
-   names->AddText("#chi^{2}/NDF");
-   names->AddText("a [MeV^{-2}]") ; 
-   names->AddText("b [MeV^{-1}]" );
-   names->AddText("d_{0}");
-
-   TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
-   // TPaveText *values = new TPaveText(0.30,0.20,0.45,0.45,"NDC");
-
-   values->SetTextAlign(33);
-   values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
-/*   values->AddText(Round(fit->GetParameter(0), 1)+"#pm"+Round(fit->GetParError(0), 1));
-   values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
-   values->AddText(Round(fit->GetParameter(2), 1)+"#pm"+Round(fit->GetParError(2), 1));*/
-/*   chi2/ndf = 1.29312
-   a = -2.43776e-08±9.26672e-09
-   b = 9.8916e-06±3.41443e-05
-   d0 = 0.198543±0.0296692*/
-   values->AddText("(-2.4#pm0.9)#times10^{-8}");
-   values->AddText("(1.0#pm3.0)#times10^{-5}");
-   values->AddText("0.20#pm0.03");
-
-   cout<<"\n*** Fit results ***"<<endl;
-   cout<<"chi2/ndf = "<<fit->GetChisquare()/fit->GetNDF()<<endl;
-   cout<<"a = "<<fit->GetParameter(0)<<"±"<<fit->GetParError(0)<<endl;
-   cout<<"b = "<<fit->GetParameter(1)<<"±"<<fit->GetParError(1)<<endl;
-   cout<<"d0 = "<<fit->GetParameter(2)<<"±"<<fit->GetParError(2)<<endl;
-   cout<<"*** *** ***\n"<<endl;
-
-   names->SetTextSize(26);
-   names->SetTextFont(44);
-   names->SetFillColor(0);
-   values->SetFillColor(0);
-   values->SetTextFont(44);
-   values->SetTextSize(26);
-
-   names->Draw("SAME");
-   values->Draw("SAME");
-
-   c->SaveAs((fname+".pdf").c_str());
-   c->SaveAs((fname+".png").c_str());
-   c->SaveAs((fname+".C").c_str());
-
-   delete c;
-
-   return;
-
-}
-
 void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double ymax) { 
 
   cout<<"---> Reco vertex fit"<<endl;
@@ -590,15 +487,22 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
          // First acceptance correction with reweighting
          // a = 0.120696±0.00700639
          // b = -0.000152548±7.37826e-06
-         values->AddText("0.121#pm0.007"); 
-         values->AddText("(-1.52#pm0.07)#times10^{-4}");
+
+         // More stats
+         // *** Fit results ***
+         // chi2/ndf = 2.10545
+         // a = 0.0824647±0.00494
+         // b = -0.000125922±1.27708e-05
+         // *** *** ***
+
+         values->AddText("0.082#pm0.005"); 
+         values->AddText("(-1.3#pm0.1)#times10^{-4}");
       }
  
       cout<<"\n*** Fit results ***"<<endl;
       cout<<"chi2/ndf = "<<fit->GetChisquare()/fit->GetNDF()<<endl;
       cout<<"a = "<<fit->GetParameter(0)<<"±"<<fit->GetParError(0)<<endl;
       cout<<"b = "<<fit->GetParameter(1)<<"±"<<fit->GetParError(1)<<endl;
-      cout<<"d0 = "<<fit->GetParameter(2)<<"±"<<fit->GetParError(2)<<endl;
       cout<<"*** *** ***\n"<<endl;
 
       names->SetTextSize(26);
@@ -622,6 +526,105 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
    return;
 
 }
+
+void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double ymax) { 
+
+  cout<<"\n---> All decays fit"<<endl;
+
+   TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays").c_str());
+      
+   TH1D *h_pull = (TH1D*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays_h_pull").c_str());
+   TGraphErrors *gr_pull = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays_gr_pull").c_str());
+
+   DrawTH1(h_pull, "", "../Images/MC/Dilution/dMu/5.4e-18/allDecays_h_pull");
+   DrawTGraphErrors(gr_pull, ";Decay positron momentum [MeV];Pull [#sigma] / 250 MeV", "../Images/MC/Dilution/dMu/5.4e-18/allDecays_gr_pull");
+   DrawErrorBars(gr, ";Decay positron momentum [MeV];#deltad_{EDM} / 250 MeV", "../Images/MC/Dilution/dMu/5.4e-18/allDecaysErrors");
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+   gr->GetXaxis()->SetTitleSize(.04);
+   gr->GetYaxis()->SetTitleSize(.04);
+   gr->GetXaxis()->SetTitleOffset(1.1);
+   gr->GetYaxis()->SetTitleOffset(1.25);
+   gr->GetXaxis()->CenterTitle(true);
+   gr->GetYaxis()->CenterTitle(true);
+   gr->GetYaxis()->SetMaxDigits(4);
+
+   // Set marker style & colour
+   gr->SetMarkerStyle(20);
+   gr->SetMarkerColor(kBlack);
+
+   // EDIT
+   // Set ranges
+   gr->GetXaxis()->SetRangeUser(xmin, xmax);
+   gr->GetYaxis()->SetRangeUser(ymin, ymax);
+
+   TString title = ";Decay positron momentum [MeV];d_{EDM} / "+to_string(step)+" MeV";
+   gr->SetTitle(title);
+
+   gr->Draw("AP");
+
+   // Get function
+   TF1 *fit = (TF1*)gr->GetFunction("DilutionFunc");
+   fit->SetLineColor(kRed);
+   fit->SetLineWidth(3);
+   fit->Draw("SAME");
+
+   // Draw legend
+   TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
+   l->SetBorderSize(0);
+   l->SetNColumns(2);
+   l->AddEntry(gr,"Sim: all decays");
+   // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
+   l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+   l->Draw("SAME");
+
+   TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
+
+   names->SetTextAlign(13);
+   names->AddText("#chi^{2}/NDF");
+   names->AddText("a") ; 
+   names->AddText("b [MeV^{-1}]" );
+      //names->AddText("d_{0}");
+
+   TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
+   // TPaveText *values = new TPaveText(0.30,0.20,0.45,0.45,"NDC");
+
+   values->SetTextAlign(33);
+   values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
+
+   //values->AddText(Round(fit->GetParameter(0), 1)+"#pm"+Round(fit->GetParError(0), 1));
+   //values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
+
+   values->AddText("0.177#pm0.004"); 
+   values->AddText("(-1.57#pm0.03)#times10^{-4}");
+
+   cout<<"\n*** Fit results ***"<<endl;
+   cout<<"chi2/ndf = "<<fit->GetChisquare()/fit->GetNDF()<<endl;
+   cout<<"a = "<<fit->GetParameter(0)<<"±"<<fit->GetParError(0)<<endl;
+   cout<<"b = "<<fit->GetParameter(1)<<"±"<<fit->GetParError(1)<<endl;
+   cout<<"*** *** ***\n"<<endl;
+
+   names->SetTextSize(26);
+   names->SetTextFont(44);
+   names->SetFillColor(0);
+   values->SetFillColor(0);
+   values->SetTextFont(44);
+   values->SetTextSize(26);
+
+   names->Draw("SAME");
+   values->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
 
 void DrawRecoVertexFitFullRange(TFile *input, int step, string fname, double ymin, double ymax) { 
 
@@ -850,14 +853,15 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.refit.acceptanceCorrected.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";//refit.acceptanceCorrected.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
 
    cout<<"\n****************** Drawing ******************"<<endl;
 
-   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.16); // 0, 0.12
+   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", -0.02, 0.25); 
    //DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12);
 
 /*   // Graphs

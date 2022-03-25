@@ -194,6 +194,10 @@ TH2D *AcceptanceWeightingMap(TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_t
 	h2_thetaY_vs_Y_tracks_clone->RebinX(rebin);
 	h2_thetaY_vs_Y_tracks_clone->RebinY(rebin);
 
+	// Create structure to store sum of squares of weights.
+	if (h2_thetaY_vs_Y_decays_clone->GetSumw2N() == 0) h2_thetaY_vs_Y_decays_clone->Sumw2(kTRUE);
+ 	if (h2_thetaY_vs_Y_tracks_clone->GetSumw2N() == 0) h2_thetaY_vs_Y_tracks_clone->Sumw2(kTRUE);
+
 	cout<<"finised rebin"<<endl;
 	// Normalise
 	h2_thetaY_vs_Y_decays_clone->Scale(1./(h2_thetaY_vs_Y_decays_clone->GetBinContent(h2_thetaY_vs_Y_decays_clone->GetMaximumBin())));
@@ -391,7 +395,7 @@ void Run(string config, int rebin = 1) {
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots."+config+".root";
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots."+config+".test.root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 
 	// TODO add array for all stations

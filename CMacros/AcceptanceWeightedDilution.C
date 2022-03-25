@@ -45,7 +45,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr2, TGraphErrors *gr3, std::s
 	double xmin = gr1->GetX()[0];
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
-
+	gr1->GetYaxis()->SetRangeUser(0.05, 0.32);
 	gr1->Draw("APL");
 
 	gr2->SetMarkerStyle(24); // open circle
@@ -186,10 +186,35 @@ void Run(string config, string title) {
 	TGraphErrors *gr2 = (TGraphErrors*)f2->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
 	TGraphErrors *gr3 = (TGraphErrors*)f3->Get("MomentumBinnedAnalysis/ParameterScans/S0S12S18_AEDM_vs_p_thetaY");
 
-	//DrawOverlay(gr1, gr2, "All decays", "../Images/MC/Acceptance/truth/CorrectionResults/AllDecays_AEDM_vs_p_overlay"+config);
-	DrawOverlay(gr1, gr2, gr3, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay"+config);
+	TGraphErrors *gr1_reset = new TGraphErrors();
+	TGraphErrors *gr2_reset = new TGraphErrors();
+	TGraphErrors *gr3_reset = new TGraphErrors();
 
-	TH1D *h_res = GetResiduals(gr2, gr3);
+	int counter = 0;
+
+	for(int i = 0; i<gr1->GetN(); i++) { 
+
+		double x = gr1->GetX()[i];
+
+		if(x < 700 || x > 2750) continue;
+
+		gr1_reset->SetPoint(counter, gr1->GetX()[i], gr1->GetY()[i]);
+		gr2_reset->SetPoint(counter, gr2->GetX()[i], gr2->GetY()[i]);
+		gr3_reset->SetPoint(counter, gr3->GetX()[i-1], gr3->GetY()[i-1]);
+
+		gr1_reset->SetPointError(counter, 0, gr1->GetEY()[i]);
+		gr2_reset->SetPointError(counter, 0, gr2->GetEY()[i]);
+		gr3_reset->SetPointError(counter, 0, gr3->GetEY()[i-1]);
+
+		counter++;
+
+	}
+
+
+	//DrawOverlay(gr1, gr2, "All decays", "../Images/MC/Acceptance/truth/CorrectionResults/AllDecays_AEDM_vs_p_overlay"+config);
+	DrawOverlay(gr1_reset, gr2_reset, gr3_reset, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay"+config);
+
+	TH1D *h_res = GetResiduals(gr2_reset, gr3_reset);
 
 	int underflow_bin = 0;
 	int overflow_bin = h_res->GetNbinsX()+1;
@@ -228,13 +253,15 @@ void Run(string config, string title) {
 
 	DrawTGraphErrors(gr_ratio, ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/AcceptanceWeightingVsMomentum"+config);
 
-
 	// Easier to use a histogram during the actual correction
 	int nBins = gr_ratio->GetN()+1;
 	TH1D *h1_ratio = new TH1D("h1_ratio", ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", gr_ratio->GetN(), 0, 3000);
 
-	for(int i(0); i<gr_ratio->GetN(); i++) h1_ratio->SetBinContent(i+1, gr_ratio->GetY()[i]);
-
+	for(int i(0); i<gr_ratio->GetN(); i++) {
+		h1_ratio->SetBinContent(i+1, gr_ratio->GetY()[i]);
+		h1_ratio->SetBinError(i+1, gr_ratio->GetEY()[i]);
+	}
+	
 	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
 	TFile *fout = new TFile("../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root", "RECREATE");
 	
@@ -263,7 +290,7 @@ void AcceptanceWeightedDilution() {
 	
 	//Run("truth", "_accepted2", "Simple acceptance weighting");
 	//Run("truth", "_acceptedMomBins", "Momentum binned acceptance weighting");
-	Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation");
+	Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation;Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation");	
 
 	return; 

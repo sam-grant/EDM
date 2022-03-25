@@ -1,10 +1,10 @@
 void verticalOffset_trackReco_WORLD_250MeV_BQ_noCorr()
 {
 //=========Macro generated from canvas: c/
-//=========  (Tue Dec  7 11:01:48 2021) by ROOT version 6.24/04
+//=========  (Thu Mar 24 10:36:13 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(62.49997,-0.6871493,3437.5,0.35103);
+   c->Range(62.49997,-0.6562478,3437.5,0.07291643);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -63,7 +63,7 @@ void verticalOffset_trackReco_WORLD_250MeV_BQ_noCorr()
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","Sim: reco vertices",100,400,3100);
    Graph_Graph1001->SetMinimum(-0.5833314);
-   Graph_Graph1001->SetMaximum(0.2472121);
+   Graph_Graph1001->SetMaximum(1.216797e-309);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 

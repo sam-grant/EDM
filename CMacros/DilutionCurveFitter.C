@@ -155,10 +155,9 @@ void ParabolaFit(TGraphErrors *graph, string config, double xmin, double xmax) {
 
 }
 
-
 // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
 double DilutionFunc(double *x, double *par) {
-  return par[0] * pow((par[1]*x[0] - 1 ),2) * (2*(par[1]*x[0]) + 1);
+  return par[0] * pow(((par[1]*x[0]) - 1), 2) * (2*(par[1]*x[0]) + 1);
 }
 
 
@@ -563,7 +562,7 @@ int main() { //int argc, char *argv[]) {
   bool write = true;
 
   string fname = "";
-  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";
   else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
@@ -575,7 +574,7 @@ int main() { //int argc, char *argv[]) {
   //FitDilution("trackReco_WORLD_250MeV_BQ_HS", "EDM", output, true, true); 
 
   // Regular samples
-  FitDilution("allDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  FitDilution("allDecays_WORLD_250MeV_AQ_eTimeCut_noCorr", "EDM", output, true);
   FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);

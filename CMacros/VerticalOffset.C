@@ -98,7 +98,7 @@ void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, s
   graph->SetMarkerStyle(20); //  Full circle
 
   graph->GetYaxis()->SetRangeUser(par4-.5, par4+.75);
-  graph->GetXaxis()->SetRangeUser(xmin+G2PERIOD/2, xmax);
+  graph->GetXaxis()->SetRangeUser(xmin+G2PERIOD/2, 300);
   //graph->GetXaxis()->SetRangeUser(0, xmax);
 
   graph->Draw("AP");
@@ -362,9 +362,9 @@ void Run(std::string dataset, int step, bool write) {
 
   cout<<"Created output file"<<endl;
 
-  // Gives the nicest chi2
-  double xmin = 3*G2PERIOD; // gr->GetX()[10];
-  double xmax = 70*G2PERIOD; // 300; //gr->GetX()[gr->GetN()-1];
+  // Ignore the first point, I don't trust
+  double xmin = 2*G2PERIOD; // gr->GetX()[10];
+  double xmax = 150*G2PERIOD; // 300; //gr->GetX()[gr->GetN()-1];
 
   // TString finName = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+dataset+"_125MeV_BQ.root";
   TString finName = "../Plots/Data/dMu/Run-1/Plots/verticalOffsetHists_"+dataset+"_"+to_string(step)+"MeV_BQ.root";
@@ -400,7 +400,9 @@ void Run(std::string dataset, int step, bool write) {
 
     TGraphErrors *gr = ConvertToTGraphErrors(px);
     FitDataset(gr, dataset, xmin, xmax);
-    DrawFitGraph(gr, dataset, stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ThetaYvsTimeFit_"+dataset+"_BQ", xmin, xmax, 750, 2500);
+    DrawFitGraph(gr, dataset, stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ThetaYvsTimeFit_"+dataset+"_BQ", xmin, xmax, 750, 2750);
+
+    // To be honest, everything below this point if kind of useless. 
 
     // Get residual
     TF1 *fit = (TF1*)gr->GetFunction("DoubleExponentialFunc");
@@ -467,10 +469,10 @@ void Run(std::string dataset, int step, bool write) {
 
 int main() { 
 
-  Run("Run-1a", 125, false);
-  Run("Run-1b", 125, false);
-	Run("Run-1c", 125, false);
-	Run("Run-1d", 125, false);
+  Run("Run-1a", 125, true);
+  Run("Run-1b", 125, true);
+	Run("Run-1c", 125, true);
+	Run("Run-1d", 125, true);
 
   return 0;
 

@@ -114,7 +114,7 @@ void DrawOffset(vector<TH1D*> hists_, int step, std::string title, std::string f
   double lo;// = 1e6; double hi = -1e6;
   double hi;
 
-  for(int i = 500; i<3000; i = i + 250) {
+  for(int i = 750; i<2750; i = i + 250) {
 
     double y = gr_1->Eval(i);
     if(y < lo) lo = y;
@@ -124,7 +124,7 @@ void DrawOffset(vector<TH1D*> hists_, int step, std::string title, std::string f
 
   }
 
-  for(int i = 500; i<3000; i = i + 250) {
+  for(int i = 750; i<2750; i = i + 250) {
     double y = gr_2->Eval(i);
     if(y < lo) lo = y;
     if(y > hi) hi = y;
@@ -201,7 +201,7 @@ void Run(std::string config, bool write = false) {
   		TH1D *thetaY_vs_p = new TH1D((stn+"ThetaY_vs_p").c_str(), (stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / "+to_string(step)).c_str(), nBins, 0, 3000);
 
 	  	// Slice momentum
-	  	int step = 250; 
+	  	int step = 250; // redef?
 	  	int nSlices = PMAX/step;
 
 		// Loop thro' momentum bins
@@ -226,8 +226,6 @@ void Run(std::string config, bool write = false) {
 
 	      thetaY_vs_p->SetBinContent(i_slice+1, thetaY);
 	      thetaY_vs_p->SetBinError(i_slice+1, err_thetaY);
-
-
 
 	  	}
 

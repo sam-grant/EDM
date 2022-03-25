@@ -12,7 +12,7 @@ double tmin = 7*G2PERIOD;
 double tmax = 70*G2PERIOD;
 
 double pmin = 0; // 750;
-double pmax = PMAX; // 2750;
+double pmax = 3000; // 2750;
 
 bool MRF(std::string config) {
 
@@ -115,7 +115,7 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, in
   }
 
   graph->GetXaxis()->SetRangeUser(pmin, pmax);
-  graph->GetYaxis()->SetRangeUser(lo*0.8, hi*1.2);
+  //graph->GetYaxis()->SetRangeUser(lo*2, hi*2);
 
   if(!xLabel) graph->Draw("ALP");
   else { 

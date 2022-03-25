@@ -1,19 +1,16 @@
 void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Mar 21 21:29:14 2022) by ROOT version 6.24/06
+//=========  (Fri Mar 25 03:15:30 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(-370.8786,-0.08001138,3337.907,0.4274637);
+   c->Range(516.2594,0.01625,2970.127,0.35375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t AEDM_vs_p_thetaY_fx1001[12] = {
-   124.2539,
-   373.7923,
-   623.4572,
+   Double_t _fx1001[8] = {
    873.0274,
    1122.67,
    1372.178,
@@ -21,12 +18,8 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    1870.756,
    2119.553,
    2367.462,
-   2613.359,
-   2850.479};
-   Double_t AEDM_vs_p_thetaY_fy1001[12] = {
-   0.2964107,
-   0.3141074,
-   0.3069784,
+   2613.359};
+   Double_t _fy1001[8] = {
    0.2732134,
    0.2822038,
    0.2512716,
@@ -34,25 +27,17 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    0.2079808,
    0.1675254,
    0.1579271,
-   0.1028512,
-   0.04835136};
-   Double_t AEDM_vs_p_thetaY_fex1001[12] = {
-   0.02299459,
-   0.02360158,
-   0.02437509,
-   0.02543063,
-   0.02676917,
-   0.02849841,
-   0.03070777,
-   0.03358955,
-   0.03763698,
-   0.04372902,
-   0.05423158,
-   0.07692297};
-   Double_t AEDM_vs_p_thetaY_fey1001[12] = {
-   0.05640746,
-   0.02257019,
-   0.0165984,
+   0.1028512};
+   Double_t _fex1001[8] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1001[8] = {
    0.01352441,
    0.01160639,
    0.01029872,
@@ -60,49 +45,45 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    0.008706632,
    0.008227386,
    0.007911081,
-   0.007759439,
-   0.008008876};
-   TGraphErrors *gre = new TGraphErrors(12,AEDM_vs_p_thetaY_fx1001,AEDM_vs_p_thetaY_fy1001,AEDM_vs_p_thetaY_fex1001,AEDM_vs_p_thetaY_fey1001);
-   gre->SetName("AEDM_vs_p_thetaY");
+   0.007759439};
+   TGraphErrors *gre = new TGraphErrors(8,_fx1001,_fy1001,_fex1001,_fey1001);
+   gre->SetName("");
    gre->SetTitle("Momentum binned acceptance weighting with interpolation");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_AEDM_vs_p_thetaY1001 = new TH1F("Graph_AEDM_vs_p_thetaY1001","Momentum binned acceptance weighting with interpolation",100,0,3123.188);
-   Graph_AEDM_vs_p_thetaY1001->SetMinimum(-0.02926387);
-   Graph_AEDM_vs_p_thetaY1001->SetMaximum(0.3767162);
-   Graph_AEDM_vs_p_thetaY1001->SetDirectory(0);
-   Graph_AEDM_vs_p_thetaY1001->SetStats(0);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","Momentum binned acceptance weighting with interpolation",100,698.9943,2787.392);
+   Graph_Graph1001->SetMinimum(0.05);
+   Graph_Graph1001->SetMaximum(0.32);
+   Graph_Graph1001->SetDirectory(0);
+   Graph_Graph1001->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_AEDM_vs_p_thetaY1001->SetLineColor(ci);
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->SetRange(1,95);
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->CenterTitle(true);
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->SetLabelFont(42);
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->SetTitleSize(0.04);
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->SetTitleOffset(1.1);
-   Graph_AEDM_vs_p_thetaY1001->GetXaxis()->SetTitleFont(42);
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->CenterTitle(true);
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->SetNdivisions(4000510);
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->SetLabelFont(42);
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->SetTitleSize(0.04);
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->SetTitleOffset(1.2);
-   Graph_AEDM_vs_p_thetaY1001->GetYaxis()->SetTitleFont(42);
-   Graph_AEDM_vs_p_thetaY1001->GetZaxis()->SetLabelFont(42);
-   Graph_AEDM_vs_p_thetaY1001->GetZaxis()->SetTitleOffset(1);
-   Graph_AEDM_vs_p_thetaY1001->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_AEDM_vs_p_thetaY1001);
+   Graph_Graph1001->SetLineColor(ci);
+   Graph_Graph1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_Graph1001->GetXaxis()->SetRange(4,97);
+   Graph_Graph1001->GetXaxis()->CenterTitle(true);
+   Graph_Graph1001->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph1001->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1001->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
+   Graph_Graph1001->GetYaxis()->CenterTitle(true);
+   Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph1001->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1001->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph1001->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph1001->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1001->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1001->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1001->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1001);
    
    gre->Draw("apl");
    
-   Double_t AEDM_vs_p_thetaY_fx1002[12] = {
-   124.3911,
-   374.0145,
-   623.706,
+   Double_t _fx1002[8] = {
    873.2453,
    1122.825,
    1372.234,
@@ -110,12 +91,8 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    1870.625,
    2119.352,
    2367.231,
-   2613.18,
-   2850.349};
-   Double_t AEDM_vs_p_thetaY_fy1002[12] = {
-   0.292553,
-   0.1686717,
-   0.05747598,
+   2613.18};
+   Double_t _fy1002[8] = {
    0.09313998,
    0.1225126,
    0.1212402,
@@ -123,25 +100,17 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    0.1203932,
    0.09765207,
    0.1029559,
-   0.07941586,
-   0.04335982};
-   Double_t AEDM_vs_p_thetaY_fex1002[12] = {
-   0.022956,
-   0.02346665,
-   0.02411141,
-   0.02499881,
-   0.02620537,
-   0.02782515,
-   0.02997202,
-   0.03285355,
-   0.03696012,
-   0.0431715,
-   0.05382126,
-   0.07665942};
-   Double_t AEDM_vs_p_thetaY_fey1002[12] = {
-   0.05630415,
-   0.01839155,
-   0.008109653,
+   0.07941586};
+   Double_t _fex1002[8] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1002[8] = {
    0.007763898,
    0.007113975,
    0.006664941,
@@ -149,94 +118,72 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    0.005956282,
    0.005707733,
    0.005656056,
-   0.006270572,
-   0.007434294};
-   gre = new TGraphErrors(12,AEDM_vs_p_thetaY_fx1002,AEDM_vs_p_thetaY_fy1002,AEDM_vs_p_thetaY_fex1002,AEDM_vs_p_thetaY_fey1002);
-   gre->SetName("AEDM_vs_p_thetaY");
-   gre->SetTitle(";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+   0.006270572};
+   gre = new TGraphErrors(8,_fx1002,_fy1002,_fex1002,_fey1002);
+   gre->SetName("");
+   gre->SetTitle("");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_AEDM_vs_p_thetaY1002 = new TH1F("Graph_AEDM_vs_p_thetaY1002","",100,0,3123.031);
-   Graph_AEDM_vs_p_thetaY1002->SetMinimum(-0.01026958);
-   Graph_AEDM_vs_p_thetaY1002->SetMaximum(0.4846945);
-   Graph_AEDM_vs_p_thetaY1002->SetDirectory(0);
-   Graph_AEDM_vs_p_thetaY1002->SetStats(0);
+   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,699.2519,2787.173);
+   Graph_Graph1002->SetMinimum(0.0673621);
+   Graph_Graph1002->SetMaximum(0.1367604);
+   Graph_Graph1002->SetDirectory(0);
+   Graph_Graph1002->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_AEDM_vs_p_thetaY1002->SetLineColor(ci);
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->SetRange(1,101);
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->CenterTitle(true);
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->SetLabelFont(42);
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->SetTitleSize(0.04);
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->SetTitleOffset(1.1);
-   Graph_AEDM_vs_p_thetaY1002->GetXaxis()->SetTitleFont(42);
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->CenterTitle(true);
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->SetNdivisions(4000510);
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->SetLabelFont(42);
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->SetTitleSize(0.04);
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->SetTitleOffset(1.2);
-   Graph_AEDM_vs_p_thetaY1002->GetYaxis()->SetTitleFont(42);
-   Graph_AEDM_vs_p_thetaY1002->GetZaxis()->SetLabelFont(42);
-   Graph_AEDM_vs_p_thetaY1002->GetZaxis()->SetTitleOffset(1);
-   Graph_AEDM_vs_p_thetaY1002->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_AEDM_vs_p_thetaY1002);
+   Graph_Graph1002->SetLineColor(ci);
+   Graph_Graph1002->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1002->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph1002->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1002->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1002->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1002->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1002->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1002->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1002);
    
    gre->Draw("pl ");
    
-   Double_t S0S12S18_AEDM_vs_p_thetaY_fx1003[11] = {
-   451.8765,
-   653.3173,
-   880.3261,
-   1123.092,
-   1371.063,
-   1620.182,
-   1866.969,
-   2115.425,
-   2363.004,
-   2613.718,
-   2788.119};
-   Double_t S0S12S18_AEDM_vs_p_thetaY_fy1003[11] = {
-   0.01297942,
-   0.1156022,
-   0.1133606,
-   0.1125647,
-   0.1333892,
-   0.1434306,
-   0.1229871,
-   0.1046694,
-   0.07444635,
-   0.08756457,
-   0.001149568};
-   Double_t S0S12S18_AEDM_vs_p_thetaY_fex1003[11] = {
-   0.06505698,
-   0.05491734,
-   0.03977274,
-   0.03885247,
-   0.04148684,
-   0.04589044,
-   0.05356283,
-   0.06665541,
-   0.08634886,
-   0.1056343,
-   0.128527};
-   Double_t S0S12S18_AEDM_vs_p_thetaY_fey1003[11] = {
-   0.0796819,
-   0.02664107,
-   0.01530765,
-   0.01257311,
-   0.01152949,
-   0.01097593,
-   0.01102901,
-   0.01159891,
-   0.01240721,
-   0.01227726,
-   0.02803425};
-   gre = new TGraphErrors(11,S0S12S18_AEDM_vs_p_thetaY_fx1003,S0S12S18_AEDM_vs_p_thetaY_fy1003,S0S12S18_AEDM_vs_p_thetaY_fex1003,S0S12S18_AEDM_vs_p_thetaY_fey1003);
-   gre->SetName("S0S12S18_AEDM_vs_p_thetaY");
-   gre->SetTitle("S0S12S18_");
+   Double_t _fx1003[8] = {
+   880.3161,
+   1123.098,
+   1371.082,
+   1620.146,
+   1866.982,
+   2115.387,
+   2362.989,
+   2613.709};
+   Double_t _fy1003[8] = {
+   0.1120566,
+   0.1158022,
+   0.1336541,
+   0.1401083,
+   0.1186838,
+   0.1018699,
+   0.08289289,
+   0.09175335};
+   Double_t _fex1003[8] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t _fey1003[8] = {
+   0.01457051,
+   0.01196695,
+   0.01097351,
+   0.01044679,
+   0.01050365,
+   0.01105419,
+   0.0118284,
+   0.01170378};
+   gre = new TGraphErrors(8,_fx1003,_fy1003,_fex1003,_fey1003);
+   gre->SetName("");
+   gre->SetTitle("");
    gre->SetFillStyle(1000);
 
    ci = TColor::GetColor("#ff0000");
@@ -246,32 +193,23 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_S0S12S18_AEDM_vs_p_thetaY1003 = new TH1F("Graph_S0S12S18_AEDM_vs_p_thetaY1003","S0S12S18_",100,218.1678,3021.891);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->SetMinimum(-0.2145366);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->SetMaximum(0.172108);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->SetDirectory(0);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->SetStats(0);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,706.9768,2787.049);
+   Graph_Graph1003->SetMinimum(0.06311544);
+   Graph_Graph1003->SetMaximum(0.1585041);
+   Graph_Graph1003->SetDirectory(0);
+   Graph_Graph1003->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->SetLineColor(ci);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->SetRange(0,101);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->CenterTitle(true);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->SetLabelFont(42);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->SetTitleSize(0.04);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->SetTitleOffset(1.1);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetXaxis()->SetTitleFont(42);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->CenterTitle(true);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->SetNdivisions(4000510);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->SetLabelFont(42);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->SetTitleSize(0.04);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->SetTitleOffset(1.2);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetYaxis()->SetTitleFont(42);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetZaxis()->SetLabelFont(42);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetZaxis()->SetTitleOffset(1);
-   Graph_S0S12S18_AEDM_vs_p_thetaY1003->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_S0S12S18_AEDM_vs_p_thetaY1003);
+   Graph_Graph1003->SetLineColor(ci);
+   Graph_Graph1003->GetXaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph1003->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1003->GetYaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetYaxis()->SetTitleFont(42);
+   Graph_Graph1003->GetZaxis()->SetLabelFont(42);
+   Graph_Graph1003->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph1003->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph1003);
    
    gre->Draw("pl ");
    
@@ -284,7 +222,7 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("AEDM_vs_p_thetaY","All decays (unweighted)","lpf");
+   TLegendEntry *entry=leg->AddEntry("","All decays (unweighted)","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -293,7 +231,7 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("AEDM_vs_p_thetaY","All decays (weighted)","lpf");
+   entry=leg->AddEntry("","All decays (weighted)","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -302,7 +240,7 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("S0S12S18_AEDM_vs_p_thetaY","Reco vertices","lpf");
+   entry=leg->AddEntry("","Reco vertices","lpf");
    entry->SetFillStyle(1000);
 
    ci = TColor::GetColor("#ff0000");
@@ -335,7 +273,7 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   entry=leg->AddEntry("AEDM_vs_p_thetaY","All decays (unweighted)","lpf");
+   entry=leg->AddEntry("","All decays (unweighted)","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -344,7 +282,7 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("AEDM_vs_p_thetaY","All decays (weighted)","lpf");
+   entry=leg->AddEntry("","All decays (weighted)","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -353,7 +291,7 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay_acceptedInterpolatedMomBins()
    entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("S0S12S18_AEDM_vs_p_thetaY","Reco vertices","lpf");
+   entry=leg->AddEntry("","Reco vertices","lpf");
    entry->SetFillStyle(1000);
 
    ci = TColor::GetColor("#ff0000");

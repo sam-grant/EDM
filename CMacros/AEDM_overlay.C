@@ -159,11 +159,35 @@ void Run(string config, string title) {
 	TGraphErrors *gr2 = (TGraphErrors*)f2->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
 	TGraphErrors *gr3 = (TGraphErrors*)f3->Get("MomentumBinnedAnalysis/ParameterScans/S0S12S18_AEDM_vs_p_thetaY");
 
+	TGraphErrors *gr1_reset = new TGraphErrors();
+	TGraphErrors *gr2_reset = new TGraphErrors();
+	TGraphErrors *gr3_reset = new TGraphErrors();
+	
+	int counter = 0;
+
+	for(int i(0); i<gr1->GetN(); i++) { 
+
+		double x = gr1->GetX()[i];
+
+		if(x < 750 || x > 2750) continue;
+
+		gr1_reset->SetPoint(count, gr1_reset->GetX()[i], gr1_reset->GetY()[i]);
+		gr2_reset->SetPoint(count, gr2_reset->GetX()[i], gr2_reset->GetY()[i]);
+		gr3_reset->SetPoint(count, gr3_reset->GetX()[i], gr3_reset->GetY()[i]);
+
+		gr1_reset->SetPointError(count, 0, gr1_reset->GetEY()[i]);
+		gr2_reset->SetPointError(count, 0, gr2_reset->GetEY()[i]);
+		gr3_reset->SetPointError(count, 0, gr3_reset->GetEY()[i]);
+
+		counter++;
+
+	}
+
+	
 	//DrawOverlay(gr1, gr2, "All decays", "../Images/MC/Acceptance/truth/CorrectionResults/AllDecays_AEDM_vs_p_overlay"+config);
-	DrawOverlay(gr1, gr2, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay"+config, gr3);
+	DrawOverlay(gr1_reset, gr2_reset, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay"+config, gr3);
 
-	TH1D *h_res = GetResiduals(gr2, gr3);
-
+	TH1D *h_res = GetResiduals(gr2_reset, gr3_reset);
 
 	int underflow_bin = 0;
 	int overflow_bin = h_res->GetNbinsX()+1;
