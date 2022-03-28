@@ -439,7 +439,7 @@ void Run(std::string dataset, int step, bool write) {
 
       grSlice->SetName((stn+"_ThetaY_vs_Time_Fit_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str());
       grSlice->Write();
-      //DrawFitGraph(gr, dataset, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MomBinnedAna/"+stn+"_ThetaYvsTimeFit_"+dataset+"_"+std::to_string(lo)+"_"+std::to_string(hi)+"_BQ", xmin, xmax, lo, hi);
+      DrawFitGraph(gr, dataset, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MomBinnedAna/"+stn+"_ThetaYvsTimeFit_"+dataset+"_"+std::to_string(lo)+"_"+std::to_string(hi)+"_BQ", xmin, xmax, lo, hi);
 
       TF1 *fit = grSlice->GetFunction("DoubleExponentialFunc");
 

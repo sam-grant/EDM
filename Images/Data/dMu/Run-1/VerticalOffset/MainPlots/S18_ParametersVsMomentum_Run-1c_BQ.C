@@ -1,7 +1,7 @@
 void S18_ParametersVsMomentum_Run-1c_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Mar 25 00:57:51 2022) by ROOT version 6.24/06
+//=========  (Sun Mar 27 15:09:54 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(30.74998,-85.01655,3218.25,86.89649);
@@ -11,7 +11,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Graph0_fx1052[18] = {
+   Double_t Graph0_fx1452[18] = {
    562,
    687,
    812,
@@ -30,7 +30,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    2437,
    2562,
    2687};
-   Double_t Graph0_fy1052[18] = {
+   Double_t Graph0_fy1452[18] = {
    -35.4441,
    -33.63477,
    -14.37277,
@@ -49,7 +49,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    -8.051473,
    -17.88305,
    -21.31507};
-   Double_t Graph0_fex1052[18] = {
+   Double_t Graph0_fex1452[18] = {
    0,
    0,
    0,
@@ -68,7 +68,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    0,
    0,
    0};
-   Double_t Graph0_fey1052[18] = {
+   Double_t Graph0_fey1452[18] = {
    18.8161,
    11.58047,
    8.12441,
@@ -87,43 +87,43 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    6.040928,
    6.306205,
    6.930581};
-   TGraphErrors *gre = new TGraphErrors(18,Graph0_fx1052,Graph0_fy1052,Graph0_fex1052,Graph0_fey1052);
+   TGraphErrors *gre = new TGraphErrors(18,Graph0_fx1452,Graph0_fy1452,Graph0_fex1452,Graph0_fey1452);
    gre->SetName("Graph0");
    gre->SetTitle("S18");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph01052 = new TH1F("Graph_Graph01052","S18",100,349.5,2899.5);
-   Graph_Graph01052->SetMinimum(-67.82524);
-   Graph_Graph01052->SetMaximum(69.70519);
-   Graph_Graph01052->SetDirectory(0);
-   Graph_Graph01052->SetStats(0);
+   TH1F *Graph_Graph01452 = new TH1F("Graph_Graph01452","S18",100,349.5,2899.5);
+   Graph_Graph01452->SetMinimum(-67.82524);
+   Graph_Graph01452->SetMaximum(69.70519);
+   Graph_Graph01452->SetDirectory(0);
+   Graph_Graph01452->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_Graph01052->SetLineColor(ci);
-   Graph_Graph01052->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph01052->GetXaxis()->CenterTitle(true);
-   Graph_Graph01052->GetXaxis()->SetLabelFont(42);
-   Graph_Graph01052->GetXaxis()->SetTitleSize(0.04);
-   Graph_Graph01052->GetXaxis()->SetTitleOffset(1.1);
-   Graph_Graph01052->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01052->GetYaxis()->SetTitle("Parameter value [mrad]");
-   Graph_Graph01052->GetYaxis()->CenterTitle(true);
-   Graph_Graph01052->GetYaxis()->SetNdivisions(4000510);
-   Graph_Graph01052->GetYaxis()->SetLabelFont(42);
-   Graph_Graph01052->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph01052->GetYaxis()->SetTitleOffset(1.2);
-   Graph_Graph01052->GetYaxis()->SetTitleFont(42);
-   Graph_Graph01052->GetZaxis()->SetLabelFont(42);
-   Graph_Graph01052->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph01052->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph01052);
+   Graph_Graph01452->SetLineColor(ci);
+   Graph_Graph01452->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_Graph01452->GetXaxis()->CenterTitle(true);
+   Graph_Graph01452->GetXaxis()->SetLabelFont(42);
+   Graph_Graph01452->GetXaxis()->SetTitleSize(0.04);
+   Graph_Graph01452->GetXaxis()->SetTitleOffset(1.1);
+   Graph_Graph01452->GetXaxis()->SetTitleFont(42);
+   Graph_Graph01452->GetYaxis()->SetTitle("Parameter value [mrad]");
+   Graph_Graph01452->GetYaxis()->CenterTitle(true);
+   Graph_Graph01452->GetYaxis()->SetNdivisions(4000510);
+   Graph_Graph01452->GetYaxis()->SetLabelFont(42);
+   Graph_Graph01452->GetYaxis()->SetTitleSize(0.04);
+   Graph_Graph01452->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph01452->GetYaxis()->SetTitleFont(42);
+   Graph_Graph01452->GetZaxis()->SetLabelFont(42);
+   Graph_Graph01452->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph01452->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph01452);
    
    gre->Draw("ap");
    
-   Double_t Graph1_fx1053[18] = {
+   Double_t Graph1_fx1453[18] = {
    562,
    687,
    812,
@@ -142,7 +142,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    2437,
    2562,
    2687};
-   Double_t Graph1_fy1053[18] = {
+   Double_t Graph1_fy1453[18] = {
    48.37238,
    45.52322,
    33.49901,
@@ -161,7 +161,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    3.358658,
    6.222211,
    4.063387};
-   Double_t Graph1_fex1053[18] = {
+   Double_t Graph1_fex1453[18] = {
    0,
    0,
    0,
@@ -180,7 +180,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    0,
    0,
    0};
-   Double_t Graph1_fey1053[18] = {
+   Double_t Graph1_fey1453[18] = {
    7.391767,
    4.540034,
    3.151389,
@@ -199,7 +199,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    2.281136,
    2.37845,
    2.639598};
-   gre = new TGraphErrors(18,Graph1_fx1053,Graph1_fy1053,Graph1_fex1053,Graph1_fey1053);
+   gre = new TGraphErrors(18,Graph1_fx1453,Graph1_fy1453,Graph1_fex1453,Graph1_fey1453);
    gre->SetName("Graph1");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
@@ -211,27 +211,27 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph11053 = new TH1F("Graph_Graph11053","Graph",100,349.5,2899.5);
-   Graph_Graph11053->SetMinimum(0.9697703);
-   Graph_Graph11053->SetMaximum(61.23281);
-   Graph_Graph11053->SetDirectory(0);
-   Graph_Graph11053->SetStats(0);
+   TH1F *Graph_Graph11453 = new TH1F("Graph_Graph11453","Graph",100,349.5,2899.5);
+   Graph_Graph11453->SetMinimum(0.9697703);
+   Graph_Graph11453->SetMaximum(61.23281);
+   Graph_Graph11453->SetDirectory(0);
+   Graph_Graph11453->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph11053->SetLineColor(ci);
-   Graph_Graph11053->GetXaxis()->SetLabelFont(42);
-   Graph_Graph11053->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph11053->GetXaxis()->SetTitleFont(42);
-   Graph_Graph11053->GetYaxis()->SetLabelFont(42);
-   Graph_Graph11053->GetYaxis()->SetTitleFont(42);
-   Graph_Graph11053->GetZaxis()->SetLabelFont(42);
-   Graph_Graph11053->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph11053->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph11053);
+   Graph_Graph11453->SetLineColor(ci);
+   Graph_Graph11453->GetXaxis()->SetLabelFont(42);
+   Graph_Graph11453->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph11453->GetXaxis()->SetTitleFont(42);
+   Graph_Graph11453->GetYaxis()->SetLabelFont(42);
+   Graph_Graph11453->GetYaxis()->SetTitleFont(42);
+   Graph_Graph11453->GetZaxis()->SetLabelFont(42);
+   Graph_Graph11453->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph11453->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph11453);
    
    gre->Draw("p ");
    
-   Double_t Graph2_fx1054[18] = {
+   Double_t Graph2_fx1454[18] = {
    562,
    687,
    812,
@@ -250,7 +250,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    2437,
    2562,
    2687};
-   Double_t Graph2_fy1054[18] = {
+   Double_t Graph2_fy1454[18] = {
    2.234826,
    -0.2753746,
    -0.1273094,
@@ -269,7 +269,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    -0.1017624,
    -0.01738151,
    0.02615776};
-   Double_t Graph2_fex1054[18] = {
+   Double_t Graph2_fex1454[18] = {
    0,
    0,
    0,
@@ -288,7 +288,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    0,
    0,
    0};
-   Double_t Graph2_fey1054[18] = {
+   Double_t Graph2_fey1454[18] = {
    0.1085263,
    0.06701028,
    0.0471516,
@@ -307,7 +307,7 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    0.03571007,
    0.03709342,
    0.04065522};
-   gre = new TGraphErrors(18,Graph2_fx1054,Graph2_fy1054,Graph2_fex1054,Graph2_fey1054);
+   gre = new TGraphErrors(18,Graph2_fx1454,Graph2_fy1454,Graph2_fex1454,Graph2_fey1454);
    gre->SetName("Graph2");
    gre->SetTitle("Graph");
    gre->SetFillStyle(1000);
@@ -319,23 +319,23 @@ void S18_ParametersVsMomentum_Run-1c_BQ()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph21054 = new TH1F("Graph_Graph21054","Graph",100,349.5,2899.5);
-   Graph_Graph21054->SetMinimum(-0.9336617);
-   Graph_Graph21054->SetMaximum(2.641262);
-   Graph_Graph21054->SetDirectory(0);
-   Graph_Graph21054->SetStats(0);
+   TH1F *Graph_Graph21454 = new TH1F("Graph_Graph21454","Graph",100,349.5,2899.5);
+   Graph_Graph21454->SetMinimum(-0.9336617);
+   Graph_Graph21454->SetMaximum(2.641262);
+   Graph_Graph21454->SetDirectory(0);
+   Graph_Graph21454->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph21054->SetLineColor(ci);
-   Graph_Graph21054->GetXaxis()->SetLabelFont(42);
-   Graph_Graph21054->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph21054->GetXaxis()->SetTitleFont(42);
-   Graph_Graph21054->GetYaxis()->SetLabelFont(42);
-   Graph_Graph21054->GetYaxis()->SetTitleFont(42);
-   Graph_Graph21054->GetZaxis()->SetLabelFont(42);
-   Graph_Graph21054->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph21054->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Graph21054);
+   Graph_Graph21454->SetLineColor(ci);
+   Graph_Graph21454->GetXaxis()->SetLabelFont(42);
+   Graph_Graph21454->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph21454->GetXaxis()->SetTitleFont(42);
+   Graph_Graph21454->GetYaxis()->SetLabelFont(42);
+   Graph_Graph21454->GetYaxis()->SetTitleFont(42);
+   Graph_Graph21454->GetZaxis()->SetLabelFont(42);
+   Graph_Graph21454->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph21454->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph21454);
    
    gre->Draw("p ");
    

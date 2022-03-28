@@ -1,7 +1,7 @@
 void Residuals_AEDM_vs_p_acceptedInterpolatedMomBins()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Mar 25 03:15:30 2022) by ROOT version 6.24/06
+//=========  (Sun Mar 27 15:01:02 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -10,11 +10,10 @@ void Residuals_AEDM_vs_p_acceptedInterpolatedMomBins()
    c->SetFrameBorderMode(0);
    
    TH1D *h_res__1 = new TH1D("h_res__1","Momentum binned acceptance weighting with interpolation",25,-0.15,0.15);
-   h_res__1->SetBinContent(11,1);
-   h_res__1->SetBinContent(12,3);
-   h_res__1->SetBinContent(13,2);
+   h_res__1->SetBinContent(11,4);
+   h_res__1->SetBinContent(12,2);
+   h_res__1->SetBinContent(13,1);
    h_res__1->SetBinContent(14,1);
-   h_res__1->SetBinContent(15,1);
    h_res__1->SetEntries(8);
    h_res__1->SetStats(0);
    h_res__1->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");

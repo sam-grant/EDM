@@ -1,7 +1,7 @@
 void AcceptanceWeightingVsMomentum_acceptedInterpolatedMomBins()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Mar 25 03:15:30 2022) by ROOT version 6.24/06
+//=========  (Sun Mar 27 15:01:02 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(-390.3877,-0.04755698,3513.489,1.261583);
    c->SetFillColor(0);

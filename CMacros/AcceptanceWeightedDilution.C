@@ -45,7 +45,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr2, TGraphErrors *gr3, std::s
 	double xmin = gr1->GetX()[0];
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
-	gr1->GetYaxis()->SetRangeUser(0.05, 0.32);
+	gr1->GetYaxis()->SetRangeUser(0.05, 0.35);
 	gr1->Draw("APL");
 
 	gr2->SetMarkerStyle(24); // open circle
@@ -116,10 +116,10 @@ void DrawResiduals(TH1D *hist, string title, string fname) {
 
 	hist->Draw("HIST");
 
-  	TString rms = Round(hist->GetRMS(), 1);
+  	TString rms = Round(hist->GetRMS(), 2);
   	TString rms_err = Round(hist->GetRMSError(), 1);
 
-  	TPaveText *names = new TPaveText(0.625,0.80,0.70,0.89,"NDC");
+  	TPaveText *names = new TPaveText(0.575,0.80,0.675,0.89,"NDC");
   	names->SetTextAlign(13);
   	//names->AddText("#LT#Deltay#GT [mm]");
   	names->AddText("#sigma [mrad]");
@@ -152,7 +152,7 @@ TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) {
 
 	// Take the uncertainty as the uncertainty on gr3
 
-	TH1D *h_res = new TH1D("h_res", ";Residuals [mrad];Entries", 25, -0.15, 0.15);
+	TH1D *h_res = new TH1D("h_res", ";Residuals [mrad];Entries", 20, -0.05, 0.05);
 
 	for(int i(0); i<gr1->GetN(); i++) {
 
@@ -178,9 +178,27 @@ TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) {
 
 void Run(string config, string title) {
 
-	TFile *f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ.root");
-	TFile *f2 = TFile::Open(("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ"+config+".root").c_str());
-	TFile *f3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ.root");
+	TFile *f1;
+	TFile *f2;
+	TFile *f3;
+
+	if(config=="0") { // Neither sample has any vertical offset correction
+		f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root");
+		f2 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accCorr.root");
+		f3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root");
+	} else if(config=="1") { // Reco vertices has a vertical offset correction 
+		f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root");
+		f2 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accCorr.root");
+		f3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ.root");
+	} else if(config=="2") { // All decays has a vertical offset correction 
+		f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ.root");
+		f2 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_accCorr.root");//.c_str());
+		f3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root");
+	} else if(config=="3") { // Both samples have a vertical offset correction 
+		f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ.root");
+		f2 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_accCorr.root");//.c_str());
+		f3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ.root");
+	}
 
 	TGraphErrors *gr1 = (TGraphErrors*)f1->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
 	TGraphErrors *gr2 = (TGraphErrors*)f2->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
@@ -210,9 +228,9 @@ void Run(string config, string title) {
 
 	}
 
+	
+	DrawOverlay(gr1_reset, gr2_reset, gr3_reset, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay."+config);
 
-	//DrawOverlay(gr1, gr2, "All decays", "../Images/MC/Acceptance/truth/CorrectionResults/AllDecays_AEDM_vs_p_overlay"+config);
-	DrawOverlay(gr1_reset, gr2_reset, gr3_reset, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay"+config);
 
 	TH1D *h_res = GetResiduals(gr2_reset, gr3_reset);
 
@@ -231,7 +249,7 @@ void Run(string config, string title) {
 	}
 
 
-	DrawResiduals(h_res, title+"", "../Images/MC/Acceptance/truth/CorrectionResults/Residuals_AEDM_vs_p"+config);
+	DrawResiduals(h_res, title+"", "../Images/MC/Acceptance/truth/CorrectionResults/Residuals_AEDM_vs_p."+config);
 
 	// Make ratio of gr2/gr1
 	TGraphErrors *gr_ratio = new TGraphErrors();
@@ -251,7 +269,7 @@ void Run(string config, string title) {
 
 	}
 
-	DrawTGraphErrors(gr_ratio, ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/AcceptanceWeightingVsMomentum"+config);
+	DrawTGraphErrors(gr_ratio, ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/AcceptanceWeightingVsMomentum."+config);
 
 	// Easier to use a histogram during the actual correction
 	int nBins = gr_ratio->GetN()+1;
@@ -262,8 +280,8 @@ void Run(string config, string title) {
 		h1_ratio->SetBinError(i+1, gr_ratio->GetEY()[i]);
 	}
 	
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
-	TFile *fout = new TFile("../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root", "RECREATE");
+	string foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV."+config+".root";
+	TFile *fout = new TFile(foutName.c_str(), "RECREATE");
 	
 	fout->mkdir("graphs"); fout->cd("graphs");
 
@@ -290,8 +308,15 @@ void AcceptanceWeightedDilution() {
 	
 	//Run("truth", "_accepted2", "Simple acceptance weighting");
 	//Run("truth", "_acceptedMomBins", "Momentum binned acceptance weighting");
-	Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation;Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+	//Run("1", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation");	
+
+	Run("0", "No vertical offset corrections");
+	Run("1", "Vertical offset correction on 'reco vertices'");
+	Run("2", "Vertical offset correction on 'all decays'");
+	Run("3", "Vertical offset corrections on both samples");
+
+
 
 	return; 
 
