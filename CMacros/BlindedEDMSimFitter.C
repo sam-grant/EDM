@@ -84,12 +84,24 @@ bool NoStations(std::string config) {
   for(auto& key : keys_) {
 
       if(config.find(key) != std::string::npos) return true;
+
   }
 
   return false;
 
 }
 
+
+
+bool TwoStations(std::string config) {
+
+  string key = "dataAccCorr";
+
+  if(config.find(key) != std::string::npos) return true;
+  else return false;
+
+
+}
 void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, int step, bool xLabel) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
@@ -265,10 +277,12 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config, std::str
   return;
 }
 
-const double GetPhase(TFile *input, TFile *output, std::string config, std::string dataset, bool noStations) { 
+const double GetPhase(TFile *input, TFile *output, std::string config, std::string dataset) { //, bool noStations) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
+  bool noStations = NoStations(config);
+  bool twoStations = TwoStations(config);
 
   // Is it ok to combine the two stations like this? 
   // Seems intuitive to me. 
@@ -300,12 +314,24 @@ const double GetPhase(TFile *input, TFile *output, std::string config, std::stri
   TString wiggleModName = "SimultaneousAnalysis/S0S12S18_Wiggle_Modulo";
 
   if(noStations) {
+
     wiggleName = "SimultaneousAnalysis/Wiggle";
     wiggleModName = "SimultaneousAnalysis/Wiggle_Modulo";
+
+  } 
+
+  if(twoStations) { 
+
+    wiggleName = "SimultaneousAnalysis/S12S18_Wiggle";
+    wiggleModName = "SimultaneousAnalysis/S12S18_Wiggle_Modulo";
+
   }
 
   TH1D *h1_wiggle = (TH1D*)input->Get(wiggleName);
   TH1D *h1_wiggle_mod = (TH1D*)input->Get(wiggleModName);
+
+  cout<<wiggleName<<endl;
+  cout<<h1_wiggle<<endl;
 
   TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
@@ -424,7 +450,7 @@ tuple<vector<double>, vector<double>, vector<double>, vector<double>> GetPulls(T
 
 }
 
-void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool noStations, bool unblind) { 
+void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -442,7 +468,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
   }
 
   std::vector<string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
-  if(noStations) stn_ = {""};
+  if(NoStations(config)) stn_ = {""};
+  if(TwoStations(config)) stn_ = {"S12_", "S18_", "S12S18_"};
 
   for(auto& stn : stn_) { 
 
@@ -512,6 +539,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     gr_pull->SetTitle(";t_{g#minus2}^{mod} [#mus];Pull / 149.2 #mus");//.c_str());
     gr_pull->Write();
 
+    cout<<gr_pull<<endl;
     // This writes two histograms for some reason?
     TH1D *h_pull = new TH1D((stn+"edmFit_pull").c_str(), (stn+";Pull [#sigma]; Entries / 0.25 #sigma").c_str(), 40, -5, +5);
     for(auto& pull : get<1>(pull_tuple)) h_pull->Fill(pull);
@@ -527,8 +555,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
 }
 
-// TESTING
-void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool noStations, bool unblind) { 
+void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -546,7 +573,8 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
   }
 
   std::vector<string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
-  if(noStations) stn_ = {""};
+  if(NoStations(config)) stn_ = {""};
+  if(TwoStations(config)) stn_ = {"S12_", "S18_", "S12S18_"};
 
   for(auto& stn : stn_) { 
 
@@ -607,7 +635,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
 }
 
-void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool noStations, bool unblind) { 
+void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::string config, std::string dataset, double scaleFactor, bool unblind) { 
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -615,7 +643,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
   bool mrf = MRF(config);
 
   vector<string> stn_ = { "S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"}; 
-  if(noStations) stn_ = {""};
+  if(NoStations(config)) stn_ = {""};
+  if(TwoStations(config)) stn_ = {"S12_", "S18_", "S12S18_"};
 
   int n_cuts = PMAX / step;
   int lo = -1; 
@@ -962,26 +991,27 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
   output->mkdir("Wiggle");
   output->cd("Wiggle");
 
-  const double phi = GetPhase(input, output, config, dataset, noStations); 
+  const double phi = GetPhase(input, output, config, dataset);//, noStations); 
 
   output->mkdir("SimultaneousAnalysis");
   output->cd("SimultaneousAnalysis");
 
-  SimultaneousAnalysis(phi, input, output, config, dataset, scaleFactor, noStations, unblind);
-  SimultaneousAnalysisFFT(phi, input, output, config, dataset, scaleFactor, noStations, unblind);
+  SimultaneousAnalysis(phi, input, output, config, dataset, scaleFactor, unblind);
+  SimultaneousAnalysisFFT(phi, input, output, config, dataset, scaleFactor, unblind);
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
-  MomentumBinnedAnalysis(phi, input, output, config, dataset, scaleFactor, noStations, unblind);
+  MomentumBinnedAnalysis(phi, input, output, config, dataset, scaleFactor, unblind);
 
   std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;
 
   std::cout<<"\n******* Results ******* "<<endl;
 
   std::vector<std::string> stn_ = {"S0_", "S12_", "S18_", "S12S18_", "S0S12S18_"};
-  if(noStations) stn_ = {""};
+  if(NoStations(config)) stn_ = {""};
+  if(TwoStations(config)) stn_ = {"S12_", "S18_", "S12S18_"};
 
   if(!unblind) cout<<"BLINDED"<<endl;
   else cout<<"UNBLINDED"<<endl;;

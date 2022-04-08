@@ -10,7 +10,7 @@ using namespace std;
 const int nTrials = 1e3;
 
 // Global momentum cuts
-const double xmin = 750;
+const double xmin = 750;//50;
 const double xmax = 2750;
 
 string GetQual(string config) {
@@ -238,10 +238,27 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
   gr_delta_prime->GetYaxis()->CenterTitle(true);
   gr_delta_prime->GetYaxis()->SetMaxDigits(4);
 
+
   // Set y-range
+
+  double ymin = 1e6;
+  double ymax = -1e6;
+
+  for(int i(0); i<gr_delta_prime->GetN(); i++) {
+
+    double y = gr_delta_prime->GetY()[i];
+    double ey = gr_delta_prime->GetEY()[i];
+
+    if(ymin > y-ey) ymin = y-ey;
+    if(ymax < y+ey) ymax = y+ey;
+
+
+  }
+
+
   /*  double scale = 2.75;*/
-  double ymin = gr_delta_prime->GetFunction("pol0")->GetParameter(0) - 0.75;//  = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
-  double ymax = gr_delta_prime->GetFunction("pol0")->GetParameter(0) + 0.75;//  = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
+  //double ymin = gr_delta_prime->GetFunction("pol0")->GetParameter(0) - 0.75;//  = gr_delta_prime->GetY()[0] - scale*gr_delta_prime->GetEY()[0];
+  //double ymax = gr_delta_prime->GetFunction("pol0")->GetParameter(0) + 0.75;//  = gr_delta_prime->GetY()[0] + scale*gr_delta_prime->GetEY()[0];
   
   /*
   for(int i = 1; i<gr_delta_prime->GetN(); i++) {
@@ -254,7 +271,7 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
 
   }*/
 
-  gr_delta_prime->GetYaxis()->SetRangeUser(ymin,ymax);
+  gr_delta_prime->GetYaxis()->SetRangeUser(ymin-0.75,ymax+.75);
 
   gr_delta_prime->SetMarkerStyle(20);
 
@@ -666,7 +683,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
   TFile *dilution_file  = TFile::Open(dilution_fileName);
 
 
-  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
+  //TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_dataAccCorr_"+dataset+".root";
   TFile *acceptance_file = TFile::Open(acceptance_fileName);
 
   TH1D *acceptanceHist = (TH1D*)acceptance_file->Get("hists/h1_ratio"); 
@@ -875,11 +893,21 @@ int main() {
 	
 */
   // Data
-  //RunData("Run-1a_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1a_250MeV_BQ_noVertCorr", "Run-1", "blinded", true, "acceptanceReweighting.noVertCorr");//.reweight");
+  //RunData("Run-1a_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1b_250MeV_BQ_noVertCorr", "Run-1", "blinded", true, "acceptanceReweighting.noVertCorr");//.reweight");
+  //RunData("Run-1c_250MeV_BQ_noVertCorr", "Run-1", "blinded", true, "acceptanceReweighting.noVertCorr");//.reweight");
+  //RunData("Run-1d_250MeV_BQ_noVertCorr", "Run-1", "blinded", true, "acceptanceReweighting.noVertCorr");//.reweight");
   // RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
 
   //RunData("Run-1c_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
-  RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "");
+  //RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "");
  //RunData("Run-1d_125MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");
 
   //RunData("Run-1b_125MeV_BQ", "Run-1", "blinded", true, "");//.reweight");

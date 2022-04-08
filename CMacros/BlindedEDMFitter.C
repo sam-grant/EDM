@@ -19,10 +19,6 @@ int GetStep(std::string config) {
 
   int step = 0;
 
-  std::string key1 = "200MeV";
-  std::string key2 = "500MeV";
-  std::string key3 = "250MeV";
-
   if(config.find("200MeV") != std::string::npos) { 
     step = 200;
   } else if(config.find("125MeV") != std::string::npos) { 

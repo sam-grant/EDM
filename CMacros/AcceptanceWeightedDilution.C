@@ -1,5 +1,34 @@
 #include "Utils.h"
 
+double xmin = 750;
+double xmax = 2750;
+
+// Reset graph range (can't use SetRangeUser because sometimes I like to plot with "L" option)
+TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
+
+	TGraphErrors *grOut = new TGraphErrors();
+	int count = 0;
+	
+	for(int i(0); i<grIn->GetN(); i++) { 
+
+		double x = grIn->GetX()[i];
+		double y = grIn->GetY()[i];
+		double ey = grIn->GetEY()[i];   
+
+    	if(x<xmin || x>xmax) continue;
+
+    	grOut->SetPoint(count, x, y);
+    	grOut->SetPointError(count, 0., ey);  
+
+    	count++;
+
+	}
+
+
+	return grOut;
+
+}
+
 void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -45,7 +74,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr2, TGraphErrors *gr3, std::s
 	double xmin = gr1->GetX()[0];
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
-	gr1->GetYaxis()->SetRangeUser(0.05, 0.35);
+	gr1->GetYaxis()->SetRangeUser(0.00, 0.35);
 	gr1->Draw("APL");
 
 	gr2->SetMarkerStyle(24); // open circle
@@ -148,6 +177,7 @@ void DrawResiduals(TH1D *hist, string title, string fname) {
 	return;
 }
 
+
 TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) { 
 
 	// Take the uncertainty as the uncertainty on gr3
@@ -176,7 +206,7 @@ TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) {
 
 }
 
-void Run(string config, string title) {
+void RunSimDerivedCorrections(string config, string title) {
 
 	TFile *f1;
 	TFile *f2;
@@ -204,33 +234,11 @@ void Run(string config, string title) {
 	TGraphErrors *gr2 = (TGraphErrors*)f2->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
 	TGraphErrors *gr3 = (TGraphErrors*)f3->Get("MomentumBinnedAnalysis/ParameterScans/S0S12S18_AEDM_vs_p_thetaY");
 
-	TGraphErrors *gr1_reset = new TGraphErrors();
-	TGraphErrors *gr2_reset = new TGraphErrors();
-	TGraphErrors *gr3_reset = new TGraphErrors();
+	TGraphErrors *gr1_reset = ResetGraph(gr1, xmin, xmax);
+	TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
+	TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
 
-	int counter = 0;
-
-	for(int i = 0; i<gr1->GetN(); i++) { 
-
-		double x = gr1->GetX()[i];
-
-		if(x < 700 || x > 2750) continue;
-
-		gr1_reset->SetPoint(counter, gr1->GetX()[i], gr1->GetY()[i]);
-		gr2_reset->SetPoint(counter, gr2->GetX()[i], gr2->GetY()[i]);
-		gr3_reset->SetPoint(counter, gr3->GetX()[i-1], gr3->GetY()[i-1]);
-
-		gr1_reset->SetPointError(counter, 0, gr1->GetEY()[i]);
-		gr2_reset->SetPointError(counter, 0, gr2->GetEY()[i]);
-		gr3_reset->SetPointError(counter, 0, gr3->GetEY()[i-1]);
-
-		counter++;
-
-	}
-
-	
 	DrawOverlay(gr1_reset, gr2_reset, gr3_reset, title, "../Images/MC/Acceptance/truth/CorrectionResults/AllDecaysAndTrackReco_AEDM_vs_p_overlay."+config);
-
 
 	TH1D *h_res = GetResiduals(gr2_reset, gr3_reset);
 
@@ -242,7 +250,6 @@ void Run(string config, string title) {
 	if(underflow_content != 0) {
 		cout<<"Residual histogram has "<<underflow_content<<" underflows"<<endl;
 	}
-
 
 	if(overflow_content != 0) {
 		cout<<"Residual histogram has "<<overflow_content<<" overflows"<<endl;
@@ -304,6 +311,164 @@ void Run(string config, string title) {
 
 }
 
+void RunDataDerivedCorrections(string dataset, string title) {
+
+	TFile *fin1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root");
+	TFile *fin2 = TFile::Open(("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_dataAccCorr_"+dataset+".root").c_str());
+	TFile *fin3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root");
+
+	string foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_dataAccCorr_"+dataset+".root";
+	TFile *fout = new TFile(foutName.c_str(), "RECREATE");
+	fout->mkdir("graphs"); fout->mkdir("hists");
+
+	vector<string> stn_ = {"S12", "S18", "S12S18"};
+
+	for(auto& stn : stn_) {
+
+		TGraphErrors *gr1 = (TGraphErrors*)fin1->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
+		TGraphErrors *gr2 = (TGraphErrors*)fin2->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
+		TGraphErrors *gr3 = (TGraphErrors*)fin3->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
+
+		TGraphErrors *gr1_reset = ResetGraph(gr1, xmin, xmax);
+		TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
+		TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
+
+		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, dataset+": "+stn, "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AllDecaysAndTrackReco_AEDM_vs_p_overlay_dataAccCorr_"+dataset);
+
+		TH1D *h_res = GetResiduals(gr2_reset, gr3_reset);
+
+		int underflow_bin = 0;
+		int overflow_bin = h_res->GetNbinsX()+1;
+		int underflow_content = h_res->GetBinContent(underflow_bin);
+		int overflow_content = h_res->GetBinContent(overflow_bin);
+
+		if(underflow_content != 0) cout<<"Residual histogram has "<<underflow_content<<" underflows"<<endl;
+		if(overflow_content != 0) cout<<"Residual histogram has "<<overflow_content<<" overflows"<<endl;
+
+		DrawResiduals(h_res, title, "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_Residuals_AEDM_vs_p_dataAccCorr_"+dataset);
+
+		// Make ratio of gr2/gr1
+		TGraphErrors *gr_ratio = new TGraphErrors();
+
+		for (int i(0); i<gr1->GetN(); i++) {
+
+			double x = gr1->GetX()[i];
+			double y = gr2->GetY()[i]/gr1->GetY()[i];
+
+			// Correlated errors again :/ 
+			double ey = gr1->GetEY()[i];
+
+			gr_ratio->SetPoint(i, x, y);
+			gr_ratio->SetPointError(i, 0, ey);
+
+		}
+
+		DrawTGraphErrors(gr_ratio, dataset+": "+stn+";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceWeightingVsMomentum_"+dataset);
+
+		// Easier to use a histogram during the actual correction
+		int nBins = gr_ratio->GetN()+1;
+		TH1D *h1_ratio = new TH1D((stn+"_h1_ratio").c_str(), (stn+";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV").c_str(), gr_ratio->GetN(), 0, 3000);
+
+		for(int i(0); i<gr_ratio->GetN(); i++) {
+			h1_ratio->SetBinContent(i+1, gr_ratio->GetY()[i]);
+			h1_ratio->SetBinError(i+1, gr_ratio->GetEY()[i]);
+		}
+
+
+		fout->cd("graphs");
+		gr_ratio->SetName((stn+"_acceptanceWeightingVsMomentum").c_str());
+		gr_ratio->Write();
+
+		fout->cd("hists");
+		h1_ratio->Write();
+
+
+	}
+
+	fin1->Close();
+	fin2->Close();
+	fin3->Close();
+
+	fout->Close();
+
+	cout<<"Written plots to "<<foutName<<", "<<fout<<endl;
+
+	return;
+
+}
+
+void DrawDataDerivedAcceptanceWeightings() { 
+
+	vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
+	vector<string> stn_ = {"S12", "S18", "S12S18"};
+	vector<int> colours_ = {4, 807, 413, 614};
+	
+	for(auto& stn : stn_) {
+
+		vector<TGraphErrors*> gr_;
+
+
+
+		for(auto& ds : ds_) {
+
+			TFile *fin = TFile::Open(("../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_dataAccCorr_"+ds+".root").c_str());
+
+			TGraphErrors *gr = (TGraphErrors*)fin->Get(("graphs/"+stn+"_acceptanceWeightingVsMomentum").c_str());
+			gr_.push_back(gr);
+
+			fin->Close();
+
+		}
+		
+		//	gr_.at(0)->SetTitle(title.c_str())
+
+		TCanvas *c = new TCanvas("c","c",800,600);
+		//TLegend *l = new TLegend(0.11,0.60,0.49,0.89);
+		TLegend *l = new TLegend(0.11,0.75,0.49,0.89);
+		l->SetNColumns(2);
+		gr_.at(0)->SetTitle(stn.c_str());
+		gr_.at(0)->GetXaxis()->SetTitleSize(.04);
+		gr_.at(0)->GetYaxis()->SetTitleSize(.04);
+		gr_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+		gr_.at(0)->GetYaxis()->SetTitleOffset(1.2);
+		gr_.at(0)->GetXaxis()->CenterTitle(true);
+		gr_.at(0)->GetYaxis()->CenterTitle(true);
+		gr_.at(0)->GetYaxis()->SetMaxDigits(4);
+		gr_.at(0)->SetMarkerStyle(20); //  Full circle
+
+		gr_.at(0)->SetMarkerColor(colours_.at(0));
+		gr_.at(0)->SetLineColor(colours_.at(0));
+		gr_.at(1)->SetMarkerColor(colours_.at(1));
+		gr_.at(1)->SetLineColor(colours_.at(1));
+		gr_.at(2)->SetMarkerColor(colours_.at(2));
+		gr_.at(2)->SetLineColor(colours_.at(2));
+		gr_.at(3)->SetMarkerColor(colours_.at(3));
+		gr_.at(3)->SetLineColor(colours_.at(3));
+
+		gr_.at(0)->Draw("APL");
+		gr_.at(1)->Draw("PL SAME");
+		gr_.at(2)->Draw("PL SAME");
+		gr_.at(3)->Draw("PL SAME");
+
+		l->AddEntry(gr_.at(0), "Run-1a");
+		l->AddEntry(gr_.at(1), "Run-1b");
+		l->AddEntry(gr_.at(2), "Run-1c");
+		l->AddEntry(gr_.at(3), "Run-1d");
+
+		l->SetBorderSize(0);
+		l->Draw("SAME");
+
+
+		c->SaveAs(("../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceWeightingVsMomentumRun1Overlay.png").c_str());
+		c->SaveAs(("../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceWeightingVsMomentumRun1Overlay.pdf").c_str());
+		c->SaveAs(("../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceWeightingVsMomentumRun1Overlay.C").c_str());
+
+	}
+
+	return;
+
+}
+
 void AcceptanceWeightedDilution() { 
 	
 	//Run("truth", "_accepted2", "Simple acceptance weighting");
@@ -311,12 +476,18 @@ void AcceptanceWeightedDilution() {
 	//Run("1", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation");	
 
-	Run("0", "No vertical offset corrections");
-	Run("1", "Vertical offset correction on 'reco vertices'");
-	Run("2", "Vertical offset correction on 'all decays'");
-	Run("3", "Vertical offset corrections on both samples");
+	//RunSimDerivedCorrections("0", "No vertical offset corrections;Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+	//Run("1", "Vertical offset correction on 'reco vertices'");
+	//Run("2", "Vertical offset correction on 'all decays'");
+	//Run("3", "Vertical offset corrections on both samples");
+	// 
 
+	//RunDataDerivedCorrections("Run-1a", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+	//RunDataDerivedCorrections("Run-1b", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+	//RunDataDerivedCorrections("Run-1c", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+	//RunDataDerivedCorrections("Run-1d", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 
+	DrawDataDerivedAcceptanceWeightings();
 
 	return; 
 

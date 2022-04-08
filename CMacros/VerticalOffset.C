@@ -469,10 +469,10 @@ void Run(std::string dataset, int step, bool write) {
 
 int main() { 
 
-  Run("Run-1a", 125, true);
-  Run("Run-1b", 125, true);
-	Run("Run-1c", 125, true);
-	Run("Run-1d", 125, true);
+  Run("Run-1a", 250, true);
+  Run("Run-1b", 250, true);
+	Run("Run-1c", 250, true);
+	Run("Run-1d", 250, true);
 
   return 0;
 

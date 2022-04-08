@@ -1,7 +1,7 @@
 void AllDecaysAndTrackReco_AEDM_vs_p_overlay.1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Mar 27 18:40:51 2022) by ROOT version 6.24/06
+//=========  (Tue Mar 29 09:03:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(516.5561,0.0125,2969.914,0.3875);
    c->SetFillColor(0);
@@ -144,23 +144,23 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.1()
    gre->Draw("pl ");
    
    Double_t _fx1007[8] = {
-   880.3161,
-   1123.098,
-   1371.082,
-   1620.146,
-   1866.982,
-   2115.387,
-   2362.989,
-   2613.709};
+   880.3222,
+   1123.094,
+   1371.099,
+   1620.134,
+   1866.992,
+   2115.379,
+   2362.982,
+   2613.714};
    Double_t _fy1007[8] = {
-   0.111992,
-   0.1159064,
-   0.1336686,
-   0.1402262,
-   0.1186804,
-   0.1020209,
-   0.08287657,
-   0.09163047};
+   0.1229759,
+   0.126584,
+   0.1455523,
+   0.147148,
+   0.1298473,
+   0.106336,
+   0.0883199,
+   0.09219963};
    Double_t _fex1007[8] = {
    0,
    0,
@@ -171,14 +171,14 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.1()
    0,
    0};
    Double_t _fey1007[8] = {
-   0.01457022,
-   0.01196676,
-   0.01097323,
-   0.01044663,
-   0.01050342,
-   0.0110541,
-   0.01182828,
-   0.011704};
+   0.01567376,
+   0.01287439,
+   0.01180581,
+   0.01124116,
+   0.0113012,
+   0.01189679,
+   0.0127275,
+   0.01259867};
    gre = new TGraphErrors(8,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
    gre->SetTitle("");
@@ -191,9 +191,9 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.1()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1007 = new TH1F("Graph_Graph1007","",100,706.9768,2787.049);
-   Graph_Graph1007->SetMinimum(0.06308583);
-   Graph_Graph1007->SetMaximum(0.1586353);
+   TH1F *Graph_Graph1007 = new TH1F("Graph_Graph1007","",100,706.983,2787.053);
+   Graph_Graph1007->SetMinimum(0.06731272);
+   Graph_Graph1007->SetMaximum(0.1666689);
    Graph_Graph1007->SetDirectory(0);
    Graph_Graph1007->SetStats(0);
 

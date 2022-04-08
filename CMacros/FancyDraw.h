@@ -1052,7 +1052,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	// TPaveText *names = new TPaveText(0.30,0.69,0.62,0.88,"NDC"); // QHV
 	TPaveText *names = new TPaveText(0.11,0.68,0.33,0.89,"NDC"); // 1/QHV
 	names->SetTextAlign(13);
-	//names->AddText("#chi^{2}/ndf"); 
+	names->AddText("#chi^{2}/ndf"); 
 	names->AddText("Gradient"); 
 	names->AddText("Y-intercept [mm#upointkV]"); 
 	names->AddText("Background #LTB_{r}#GT [ppm]"); 
@@ -1061,7 +1061,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	TPaveText *values = new TPaveText(0.50,0.68,0.60,0.89,"NDC");
 	values->SetTextAlign(33);
 
-	//values->AddText(ThreeSigFig(chi2ndf));
+	values->AddText(ThreeSigFig(chi2ndf));
 /*	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
 	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));*/

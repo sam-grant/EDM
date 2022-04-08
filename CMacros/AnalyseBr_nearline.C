@@ -474,7 +474,7 @@ int main() { //int argc, char *argv[]) {
 	TGraphErrors *result = new TGraphErrors(N_FIELD, x, y, ex, ey);
 
 	TF1 *mainFit = new TF1("mainFit", "[0]+[1]*x", result->GetX()[0], result->GetX()[result->GetN()-1]);
-	TFitResultPtr mainFitRes = result->Fit(mainFit,"SRMQ");
+	TFitResultPtr mainFitRes = result->Fit(mainFit,"SMQR");
 
 	double p0 = mainFit->GetParameter(0); double p0_err = mainFit->GetParError(0);
   double p1 = mainFit->GetParameter(1); double p1_err = mainFit->GetParError(1);

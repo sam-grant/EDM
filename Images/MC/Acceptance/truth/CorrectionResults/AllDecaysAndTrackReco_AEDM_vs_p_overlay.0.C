@@ -1,7 +1,7 @@
 void AllDecaysAndTrackReco_AEDM_vs_p_overlay.0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Mar 27 18:40:51 2022) by ROOT version 6.24/06
+//=========  (Fri Apr  8 14:18:29 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(516.5561,0.0125,2969.914,0.3875);
    c->SetFillColor(0);
@@ -62,12 +62,14 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.0()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
+   Graph_Graph1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
    Graph_Graph1001->GetXaxis()->SetRange(4,97);
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
    Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1001->GetXaxis()->SetTitleFont(42);
+   Graph_Graph1001->GetYaxis()->SetTitle("A_{EDM} [mrad] / 250 MeV");
    Graph_Graph1001->GetYaxis()->CenterTitle(true);
    Graph_Graph1001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1001->GetYaxis()->SetLabelFont(42);
@@ -144,23 +146,23 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.0()
    gre->Draw("pl ");
    
    Double_t _fx1003[8] = {
-   880.3185,
-   1123.1,
-   1371.081,
-   1620.147,
-   1866.984,
-   2115.387,
-   2362.985,
-   2613.712};
+   880.3222,
+   1123.094,
+   1371.099,
+   1620.134,
+   1866.992,
+   2115.379,
+   2362.982,
+   2613.714};
    Double_t _fy1003[8] = {
-   0.1207267,
-   0.1236116,
-   0.1459029,
-   0.153218,
-   0.1306842,
-   0.1101771,
-   0.08857877,
-   0.0986986};
+   0.1231175,
+   0.1264084,
+   0.1454169,
+   0.1471205,
+   0.1301358,
+   0.1061744,
+   0.08828242,
+   0.09214606};
    Double_t _fex1003[8] = {
    0,
    0,
@@ -171,14 +173,14 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.0()
    0,
    0};
    Double_t _fey1003[8] = {
-   0.01588368,
-   0.01304821,
-   0.01196437,
-   0.01139082,
-   0.01145031,
-   0.0120521,
-   0.01289717,
-   0.012764};
+   0.01567405,
+   0.01287458,
+   0.01180608,
+   0.01124128,
+   0.01130134,
+   0.01189682,
+   0.01272762,
+   0.01259916};
    gre = new TGraphErrors(8,_fx1003,_fy1003,_fex1003,_fey1003);
    gre->SetName("");
    gre->SetTitle("");
@@ -191,9 +193,9 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.0()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,706.9791,2787.051);
-   Graph_Graph1003->SetMinimum(0.06678887);
-   Graph_Graph1003->SetMaximum(0.1735016);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,706.983,2787.053);
+   Graph_Graph1003->SetMinimum(0.0672741);
+   Graph_Graph1003->SetMaximum(0.1666425);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 

@@ -1,7 +1,7 @@
 void Residuals_AEDM_vs_p.3()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Mar 27 18:40:51 2022) by ROOT version 6.24/06
+//=========  (Tue Mar 29 09:03:08 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -10,11 +10,11 @@ void Residuals_AEDM_vs_p.3()
    c->SetFrameBorderMode(0);
    
    TH1D *h_res__4 = new TH1D("h_res__4","Vertical offset corrections on both samples",20,-0.05,0.05);
-   h_res__4->SetBinContent(7,3);
-   h_res__4->SetBinContent(8,2);
-   h_res__4->SetBinContent(12,1);
+   h_res__4->SetBinContent(6,4);
+   h_res__4->SetBinContent(7,1);
+   h_res__4->SetBinContent(9,1);
+   h_res__4->SetBinContent(11,1);
    h_res__4->SetBinContent(13,1);
-   h_res__4->SetBinContent(14,1);
    h_res__4->SetEntries(8);
    h_res__4->SetStats(0);
    h_res__4->GetXaxis()->SetTitle("Residuals [mrad]");
@@ -40,7 +40,7 @@ void Residuals_AEDM_vs_p.3()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("0.013
+   TText *pt_LaTex = pt->AddText("0.012
 #pm0.003
 ");
    pt->Draw();

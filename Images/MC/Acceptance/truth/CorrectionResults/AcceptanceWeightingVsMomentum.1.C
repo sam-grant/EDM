@@ -1,7 +1,7 @@
 void AcceptanceWeightingVsMomentum.1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Mar 27 18:40:51 2022) by ROOT version 6.24/06
+//=========  (Tue Mar 29 09:03:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(-390.357,-0.08211064,3513.213,1.302068);
    c->SetFillColor(0);

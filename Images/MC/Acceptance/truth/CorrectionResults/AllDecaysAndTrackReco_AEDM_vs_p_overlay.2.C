@@ -1,7 +1,7 @@
 void AllDecaysAndTrackReco_AEDM_vs_p_overlay.2()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Mar 27 18:40:51 2022) by ROOT version 6.24/06
+//=========  (Tue Mar 29 09:03:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(516.5561,0.0125,2969.914,0.3875);
    c->SetFillColor(0);
@@ -144,23 +144,23 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.2()
    gre->Draw("pl ");
    
    Double_t _fx1011[8] = {
-   880.3185,
-   1123.1,
-   1371.081,
-   1620.147,
-   1866.984,
-   2115.387,
-   2362.985,
-   2613.712};
+   880.3222,
+   1123.094,
+   1371.099,
+   1620.134,
+   1866.992,
+   2115.379,
+   2362.982,
+   2613.714};
    Double_t _fy1011[8] = {
-   0.1207267,
-   0.1236116,
-   0.1459029,
-   0.153218,
-   0.1306842,
-   0.1101771,
-   0.08857877,
-   0.0986986};
+   0.1231175,
+   0.1264084,
+   0.1454169,
+   0.1471205,
+   0.1301358,
+   0.1061744,
+   0.08828242,
+   0.09214606};
    Double_t _fex1011[8] = {
    0,
    0,
@@ -171,14 +171,14 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.2()
    0,
    0};
    Double_t _fey1011[8] = {
-   0.01588368,
-   0.01304821,
-   0.01196437,
-   0.01139082,
-   0.01145031,
-   0.0120521,
-   0.01289717,
-   0.012764};
+   0.01567405,
+   0.01287458,
+   0.01180608,
+   0.01124128,
+   0.01130134,
+   0.01189682,
+   0.01272762,
+   0.01259916};
    gre = new TGraphErrors(8,_fx1011,_fy1011,_fex1011,_fey1011);
    gre->SetName("");
    gre->SetTitle("");
@@ -191,9 +191,9 @@ void AllDecaysAndTrackReco_AEDM_vs_p_overlay.2()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1011 = new TH1F("Graph_Graph1011","",100,706.9791,2787.051);
-   Graph_Graph1011->SetMinimum(0.06678887);
-   Graph_Graph1011->SetMaximum(0.1735016);
+   TH1F *Graph_Graph1011 = new TH1F("Graph_Graph1011","",100,706.983,2787.053);
+   Graph_Graph1011->SetMinimum(0.0672741);
+   Graph_Graph1011->SetMaximum(0.1666425);
    Graph_Graph1011->SetDirectory(0);
    Graph_Graph1011->SetStats(0);
 
