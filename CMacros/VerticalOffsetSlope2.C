@@ -218,8 +218,6 @@ void VerticalOffsetSlope2(string dataConfig = "_timeVertCorr") {
 
 	vector<string> stn_ = {"S12", "S18"};
 
-	
-
 	for(auto& stn : stn_) { 
 
 		// 0 and 1 refer to the mm offsets 
@@ -410,7 +408,7 @@ void VerticalOffsetSlope2(string dataConfig = "_timeVertCorr") {
 
 }
 
-Station, Dataset, Vertical offset [mm], Error [mm]
+/*Station, Dataset, Vertical offset [mm], Error [mm]
 
 S12, Run-1a, 12.6889, 32.2976
 S12, Run-1b, 11.9061, 30.3107
@@ -420,4 +418,4 @@ S12, Run-1d, 36.8448, 93.4857
 S18, Run-1a, 14.9119, 37.9249
 S18, Run-1b, 9.1374, 23.316
 S18, Run-1c, 19.0542, 48.4035
-S18, Run-1d, 33.9083, 86.0426
+S18, Run-1d, 33.9083, 86.0426*/

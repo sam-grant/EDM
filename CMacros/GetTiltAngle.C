@@ -684,10 +684,10 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
 
   //TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
-  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_dataAccCorr_"+dataset+".root";
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_dataAccCorr_"+datasetLabel+".root";
   TFile *acceptance_file = TFile::Open(acceptance_fileName);
 
-  TH1D *acceptanceHist = (TH1D*)acceptance_file->Get("hists/h1_ratio"); 
+
 
   cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<", "<<acceptance_fileName<<", "<<acceptance_file<<endl;
 
@@ -755,6 +755,9 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
 
     for(auto& stn : stn_) {
+
+      TH1D *acceptanceHist = (TH1D*)acceptance_file->Get(("hists/"+stn+"_h1_ratio").c_str()); 
+
 
       // Get mott functions
       TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_A"+fitType+"_vs_p";
@@ -893,11 +896,15 @@ int main() {
 	
 */
   // Data
+  RunData("Run-1a_250MeV_BQ", "Run-1", "blinded", true, "dataDrivenAcceptance");//.reweight");
+  RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", true, "dataDrivenAcceptance");
+  RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", true, "dataDrivenAcceptance");
+  RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", true, "dataDrivenAcceptance");
   //RunData("Run-1a_250MeV_BQ_noVertCorr", "Run-1", "blinded", true, "acceptanceReweighting.noVertCorr");//.reweight");
   //RunData("Run-1a_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
   //RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
   //RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
-  RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
+  //RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
   //RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
   //RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");
   //RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", true, "acceptanceReweighting");//.reweight");

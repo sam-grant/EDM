@@ -413,7 +413,6 @@ void RunSlopes(TFile *fout, string recoOrTruth) {
 	dummy->SetTitle(";Vertical beam position [mm];#LT#theta_{y}#GT/p [mrad/MeV]");
 	dummy->Draw("AP");
 
-
   	l->SetBorderSize(0);
   	l->SetTextSize(24);
   	l->SetTextFont(44);
@@ -491,8 +490,6 @@ void RunSlopes(TFile *fout, string recoOrTruth) {
 	fit0->Draw("SAME");
 	fit12->Draw("SAME");
 	fit18->Draw("SAME");
-
-
 
  	*/
 

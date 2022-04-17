@@ -355,7 +355,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
 void PlotEDMResultsPerDS() { 
 
-  Run("Run-1", 125, "blinded", "EDM", true, ".acceptanceReweighting"); 
+  Run("Run-1", 250, "blinded", "EDM", true, ".dataDrivenAcceptance"); 
 
   
   return;

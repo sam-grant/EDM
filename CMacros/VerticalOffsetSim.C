@@ -243,8 +243,8 @@ void Run(std::string config, bool write = false) {
   string title = GetTracksOrDecaysTitle(config);
 
 	TString finName = "../Plots/MC/dMu/5.4e-18/Plots/edmPlots_"+config+".root";
-	TString foutName = "../Plots/MC/dMu/5.4e-18/Plots/verticalOffsetHists_"+config+".root";
-	if(!write) foutName = "../Plots/MC/dMu/5.4e-18/Plots/verticalOffsetHists_"+config+".root";
+	TString foutName = "../Plots/MC/dMu/5.4e-18/Plots/verticalOffsetVsMomentum_"+config+".root";
+	if(!write) foutName = "delete_me.root";//../Plots/MC/dMu/5.4e-18/Plots/verticalOffsetHists_"+config+".root";
 
 	TFile *fin = TFile::Open(finName);
 	cout<<"Got input file "<<finName<<", "<<fin<<endl;

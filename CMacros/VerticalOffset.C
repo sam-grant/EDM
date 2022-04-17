@@ -354,7 +354,7 @@ void FitDataset(TGraphErrors *gr, std::string dataset, double xmin = 7*G2PERIOD,
 void Run(std::string dataset, int step, bool write) {
 
   // Set output file
-  TString foutName = "../Plots/Data/dMu/Run-1/Fits/verticalOffsetFits_"+dataset+"_"+to_string(step)+"MeV_BQ.root";
+  TString foutName = "../Plots/Data/dMu/Run-1/Fits/verticalOffsetVsTimeFits_"+dataset+"_"+to_string(step)+"MeV_BQ.root";
   if(!write) foutName = "delete_me.root";
 
   TFile *fout = new TFile(foutName, "RECREATE");
@@ -367,7 +367,7 @@ void Run(std::string dataset, int step, bool write) {
   double xmax = 150*G2PERIOD; // 300; //gr->GetX()[gr->GetN()-1];
 
   // TString finName = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+dataset+"_125MeV_BQ.root";
-  TString finName = "../Plots/Data/dMu/Run-1/Plots/verticalOffsetHists_"+dataset+"_"+to_string(step)+"MeV_BQ.root";
+  TString finName = "../Plots/Data/dMu/Run-1/Plots/verticalOffsetVsTime_"+dataset+"_"+to_string(step)+"MeV_BQ.root";
   TFile *fin = TFile::Open(finName);
 
   cout<<"Reading input file "<<finName<<", "<<fin<<endl;

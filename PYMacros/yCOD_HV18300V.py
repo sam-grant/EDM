@@ -92,15 +92,17 @@ x, y = array('f'), array('f')
 for i in range(n):
     if(theta[i]=='<y>[m]' or theta[i]=='Angle[deg]'): continue
     # if(i==0): continue
-    x.append(float(theta[i]*(np.pi/180)))
+    x.append(float(theta[i])) #*(np.pi/180)))
     y.append(float(yPos[i])*1e3)
 
 gr = TGraph(n,x,y)
 #gr.GetXaxis().SetRangeUser(0,360)
 gr.GetXaxis().SetRangeUser(0,360) #2*np.pi)
-DrawTGraph(gr, ';Ring azimuth [rad];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/y_vs_theta')
+DrawTGraph(gr, ';Ring azimuth [deg];#LTy#GT [mm]', '../Images/MC/ClosedOrbit/y_vs_theta')
 
-return
+print(gr.Eval(180), print(gr.Eval(270)))
+
+exit(0)
 
 gr.SetName('y_vs_theta')
 
