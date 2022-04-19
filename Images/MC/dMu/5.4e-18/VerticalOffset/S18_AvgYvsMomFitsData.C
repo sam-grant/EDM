@@ -1,7 +1,7 @@
 void S18_AvgYvsMomFitsData()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Apr 17 23:21:51 2022) by ROOT version 6.24/06
+//=========  (Mon Apr 18 11:40:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(757.2364,-0.25,2977.453,2.25);
    c->SetFillColor(0);

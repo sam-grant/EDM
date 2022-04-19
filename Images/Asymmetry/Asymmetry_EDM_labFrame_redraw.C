@@ -1,7 +1,7 @@
 void Asymmetry_EDM_labFrame_redraw()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec  6 08:58:54 2021) by ROOT version 6.24/04
+//=========  (Mon Apr 18 21:05:36 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,500,350);
    c->SetHighLightColor(2);
    c->Range(-0.125,-0.25,1.125,1.25);
@@ -11,17 +11,17 @@ void Asymmetry_EDM_labFrame_redraw()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TF1 *N_413 = new TF1("N_4",";#lambda=p/p_{max};Arbitrary units",0,1, TF1::EAddToList::kDefault);
+   TF1 *N_413 = new TF1("N_4",";#lambda=E_{max}/E;Normalised units",0,1, TF1::EAddToList::kDefault);
    N_413->SetFillColor(19);
    N_413->SetFillStyle(0);
    N_413->SetLineWidth(3);
-   N_413->GetXaxis()->SetTitle("#lambda=p/p_{max}");
+   N_413->GetXaxis()->SetTitle("#lambda=E_{max}/E");
    N_413->GetXaxis()->CenterTitle(true);
    N_413->GetXaxis()->SetLabelFont(42);
    N_413->GetXaxis()->SetTitleSize(0.04);
    N_413->GetXaxis()->SetTitleOffset(1.1);
    N_413->GetXaxis()->SetTitleFont(42);
-   N_413->GetYaxis()->SetTitle("Arbitrary units");
+   N_413->GetYaxis()->SetTitle("Normalised units");
    N_413->GetYaxis()->CenterTitle(true);
    N_413->GetYaxis()->SetNdivisions(4000510);
    N_413->GetYaxis()->SetLabelFont(42);
@@ -112,7 +112,7 @@ void Asymmetry_EDM_labFrame_redraw()
    gaxis->SetTitleSize(0.04);
    gaxis->SetTitleColor(632);
    gaxis->SetTitleFont(42);
-   gaxis->SetTitle("Track momentum [MeV]");
+   gaxis->SetTitle("Laboratory frame e^{+} energy [MeV]");
 
    ci = TColor::GetColor("#ff0000");
    gaxis->SetLabelColor(ci);

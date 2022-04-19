@@ -1,4 +1,7 @@
+#include <iostream>
 #include "Utils.h"
+
+using namespace std;
 
 double xmin = 750;
 double xmax = 2750;
@@ -469,14 +472,100 @@ void DrawDataDerivedAcceptanceWeightings() {
 
 }
 
-void AcceptanceWeightedDilution() { 
+void Run(bool write) {
+
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
+	if(!write) foutName = "delete_me.root";
+
+	TFile *fout = new TFile(foutName, "RECREATE");
+	fout->mkdir("graphs"); fout->mkdir("hists");
+
+	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root";
+	TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root";
+
+	TFile *f1 = TFile::Open(f1Name);
+	TFile *f2 = TFile::Open(f2Name);
+
+	cout<<"---> Got base files "<<f1Name<<", "<<f1<<", "<<f2Name<<", "<<f2<<endl;
+
+	vector<string> stn_ = {"S12", "S18", "S12S18"};
+
+	for(auto& stn : stn_) {
+
+		TString f3Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accCorr"+stn+".root";
+		TFile *f3 = TFile::Open(f3Name);
+
+		cout<<"---> Got corrected file for "<<stn<<", "<<f3Name<<", "<<f3<<endl;
+
+		TGraphErrors *gr1 = (TGraphErrors*)f1->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY"); 
+		TGraphErrors *gr2 = (TGraphErrors*)f2->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
+		TGraphErrors *gr3 = (TGraphErrors*)f3->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
+
+		// For presentation only
+		TGraphErrors *gr1_reset = ResetGraph(gr1, xmin, xmax);
+		TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
+		TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
+
+		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptedCorrected_AEDM_vs_p_overlay");
+
+		// Make ratio of gr2/gr1
+		TGraphErrors *gr_ratio = new TGraphErrors();
+
+		for (int i(0); i<gr1->GetN(); i++) {
+
+			double x = gr1->GetX()[i];
+			double y = gr2->GetY()[i]/gr1->GetY()[i];
+			double ey = gr1->GetEY()[i];
+
+			gr_ratio->SetPoint(i, x, y);
+			gr_ratio->SetPointError(i, 0, ey);
+
+		}
+
+		DrawTGraphErrors(gr_ratio, stn+";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceWeightingVsMomentum");
+
+		fout->cd("graphs");
+		gr_ratio->SetName((stn+"_ratio").c_str());
+		gr_ratio->Write();
+
+		// Easier to use a histogram during the actual correction
+		int nBins = gr_ratio->GetN()+1;
+		TH1D *h1_ratio = new TH1D((stn+"_ratio").c_str(), ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", gr_ratio->GetN(), 0, 3000);
+
+		for(int i(0); i<gr_ratio->GetN(); i++) {
+			h1_ratio->SetBinContent(i+1, gr_ratio->GetY()[i]);
+			h1_ratio->SetBinError(i+1, gr_ratio->GetEY()[i]);
+		}
+
+		fout->cd("hists");
+		h1_ratio->Write();
+
+		f3->Close();
+
+	}
+
+	f1->Close();
+	f2->Close();
+
+	fout->Close();
+
+	cout<<"---> Written plots to "<<foutName<<", "<<fout<<endl;
+
+	return;
+
+}
+
+int main() { 
+
+	bool write = true;
+	Run(write);
 	
 	//Run("truth", "_accepted2", "Simple acceptance weighting");
 	//Run("truth", "_acceptedMomBins", "Momentum binned acceptance weighting");
 	//Run("1", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//Run("_acceptedInterpolatedMomBins", "Momentum binned acceptance weighting with interpolation");	
 
-	//RunSimDerivedCorrections("0", "No vertical offset corrections;Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
+	// RunSimDerivedCorrections("0", "No vertical offset corrections;Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//Run("1", "Vertical offset correction on 'reco vertices'");
 	//Run("2", "Vertical offset correction on 'all decays'");
 	//Run("3", "Vertical offset corrections on both samples");
@@ -487,8 +576,8 @@ void AcceptanceWeightedDilution() {
 	//RunDataDerivedCorrections("Run-1c", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//RunDataDerivedCorrections("Run-1d", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 
-	DrawDataDerivedAcceptanceWeightings();
+	//DrawDataDerivedAcceptanceWeightings();
 
-	return; 
+	return 0; 
 
 }

@@ -829,7 +829,7 @@ void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string 
 
 	// Second axis
 	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),0,pmax,510,"-");
-	axis->SetTitle("Track momentum [MeV]");
+	axis->SetTitle("Laboratory frame e^{+} energy [MeV]");
 	axis->SetTitleOffset(1.1);
 	axis->CenterTitle(true);
 	axis->SetTextFont(42);

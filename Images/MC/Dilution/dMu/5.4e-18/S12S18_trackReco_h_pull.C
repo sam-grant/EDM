@@ -1,7 +1,7 @@
 void S12S18_trackReco_h_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 22 09:46:12 2022) by ROOT version 6.24/06
+//=========  (Wed Apr 20 00:05:56 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,13 +11,11 @@ void S12S18_trackReco_h_pull()
    c->SetFrameBorderMode(0);
    
    TH1D *S12S18_trackReco_h_pull__4 = new TH1D("S12S18_trackReco_h_pull__4","",24,-3,3);
-   S12S18_trackReco_h_pull__4->SetBinContent(6,1);
-   S12S18_trackReco_h_pull__4->SetBinContent(9,2);
+   S12S18_trackReco_h_pull__4->SetBinContent(8,2);
+   S12S18_trackReco_h_pull__4->SetBinContent(9,1);
    S12S18_trackReco_h_pull__4->SetBinContent(10,1);
-   S12S18_trackReco_h_pull__4->SetBinContent(12,1);
-   S12S18_trackReco_h_pull__4->SetBinContent(14,1);
-   S12S18_trackReco_h_pull__4->SetBinContent(18,1);
-   S12S18_trackReco_h_pull__4->SetBinContent(19,1);
+   S12S18_trackReco_h_pull__4->SetBinContent(14,2);
+   S12S18_trackReco_h_pull__4->SetBinContent(17,2);
    S12S18_trackReco_h_pull__4->SetEntries(8);
    S12S18_trackReco_h_pull__4->GetXaxis()->SetTitle("Pull [#sigma]");
    S12S18_trackReco_h_pull__4->GetXaxis()->CenterTitle(true);

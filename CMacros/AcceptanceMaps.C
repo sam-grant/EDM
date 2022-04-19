@@ -335,8 +335,6 @@ void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY
 
  	cout<<fit->GetChisquare()/fit->GetNDF()<<endl;
 
- 	if(slice == "") DrawAcceptanceFit(rg, ";#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/"+config+"/"+stn+"_RatioGraph"+slice);
-
 	return;
 }
 

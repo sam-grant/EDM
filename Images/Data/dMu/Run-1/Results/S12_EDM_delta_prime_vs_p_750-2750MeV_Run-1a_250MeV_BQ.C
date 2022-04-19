@@ -1,10 +1,10 @@
 void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Apr  8 20:43:14 2022) by ROOT version 6.24/06
+//=========  (Wed Apr 20 00:14:49 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(453.5042,-2.106018,3038.389,5.550983);
+   c->Range(453.5042,-1.917121,3038.389,2.754385);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -21,14 +21,14 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_250MeV_BQ()
    2359.992,
    2607.574};
    Double_t _fy1001[8] = {
-   3.144367,
-   0.8327595,
-   1.43807,
-   0.9539308,
-   0.3556443,
-   0.7496503,
-   0.6898616,
-   -0.01789934};
+   1.197842,
+   0.5132897,
+   0.8148686,
+   0.5715528,
+   0.2614705,
+   0.5163716,
+   0.688817,
+   -0.02122417};
    Double_t _fex1001[8] = {
    0,
    0,
@@ -39,14 +39,14 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_250MeV_BQ()
    0,
    0};
    Double_t _fey1001[8] = {
-   0.8909159,
-   0.4917627,
-   0.3872529,
-   0.3395403,
-   0.3459173,
-   0.4860545,
-   0.4762437,
-   0.5724185};
+   0.339393,
+   0.3031088,
+   0.2194331,
+   0.2034374,
+   0.2543192,
+   0.3348024,
+   0.4755226,
+   0.6787461};
    TGraphErrors *gre = new TGraphErrors(8,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle("S12");
@@ -54,8 +54,8 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_250MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","S12",100,711.9927,2779.9);
-   Graph_Graph1001->SetMinimum(-1.340318);
-   Graph_Graph1001->SetMaximum(4.785283);
+   Graph_Graph1001->SetMinimum(-1.44997);
+   Graph_Graph1001->SetMaximum(2.287234);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 
@@ -87,15 +87,15 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_250MeV_BQ()
    pol01002->SetFillStyle(0);
    pol01002->SetLineColor(2);
    pol01002->SetLineWidth(2);
-   pol01002->SetChisquare(13.52824);
+   pol01002->SetChisquare(6.857611);
    pol01002->SetNDF(7);
    pol01002->GetXaxis()->SetLabelFont(42);
    pol01002->GetXaxis()->SetTitleOffset(1);
    pol01002->GetXaxis()->SetTitleFont(42);
    pol01002->GetYaxis()->SetLabelFont(42);
    pol01002->GetYaxis()->SetTitleFont(42);
-   pol01002->SetParameter(0,0.843411);
-   pol01002->SetParError(0,0.156579);
+   pol01002->SetParameter(0,0.6113713);
+   pol01002->SetParError(0,0.1023441);
    pol01002->SetParLimits(0,0,0);
    pol01002->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01002);
@@ -117,8 +117,8 @@ void S12_EDM_delta_prime_vs_p_750-2750MeV_Run-1a_250MeV_BQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.84
-#pm0.2
+   entry=leg->AddEntry("pol0","#LT#delta'#GT = 0.611
+#pm0.1
  mrad","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(2);

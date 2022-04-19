@@ -772,7 +772,7 @@ void DrawAllFitsControl(TFile *input, int step, string fname, double ymin, doubl
 
 }
 
-void DrawMottFunctions(TFile *input, int step, string fname, double ymin, double ymax) {
+void DrawMottFunctionsOLD(TFile *input, int step, string fname, double ymin, double ymax) {
 
    cout<<"---> Mott functions"<<endl;
 
@@ -848,6 +848,88 @@ void DrawMottFunctions(TFile *input, int step, string fname, double ymin, double
 
 }
 
+void DrawMottFunctions(TFile *input, int step, string fname, double ymin, double ymax) {
+
+   cout<<"---> Mott functions"<<endl;
+
+   // Get graph  
+   TGraphErrors *gr = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecays").c_str());
+
+   // Get functions
+   vector<TF1*> funcs_; 
+   for(int i = 0; i<nTrials; i++) { 
+      TF1 *trialFunc = (TF1*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecaysTrials/"+to_string(i)).c_str());
+      funcs_.push_back(trialFunc);
+   }
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+   string title = ";Decay vertex momentum [MeV];d_{EDM} / "+to_string(step)+" MeV";
+
+   funcs_.at(0)->SetTitle(title.c_str());
+   funcs_.at(0)->GetXaxis()->SetTitleSize(.04);
+   funcs_.at(0)->GetYaxis()->SetTitleSize(.04);
+   funcs_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+   funcs_.at(0)->GetYaxis()->SetTitleOffset(1.1);
+   funcs_.at(0)->GetXaxis()->CenterTitle(true);
+   funcs_.at(0)->GetYaxis()->CenterTitle(true);
+   funcs_.at(0)->GetYaxis()->SetMaxDigits(4);
+  
+   funcs_.at(0)->GetYaxis()->SetRangeUser(ymin,ymax);
+
+   gStyle->SetPalette(kRainBow);
+   vector<float> colours_ = { 55, 56.5, 58, 59.5, 61, 62.5, 64, 65.5, 67, 68.5, 70, 71.5, 73, 74.5, 76, 77.5, 79, 80.5, 82, 83.5, 85, 86.5, 88, 89.5, 91, 92.5};
+
+   for(int i = 0; i<funcs_.size(); i++) {
+      funcs_.at(i)->SetLineWidth(3);
+      funcs_.at(i)->SetLineColor(i*0.1);
+      if(i==0) funcs_.at(i)->Draw();
+      else funcs_.at(i)->Draw("SAME");
+   }
+
+   // Purge converged fit
+   TF1 *mainFit = (TF1*)gr->GetListOfFunctions()->At(0); 
+   gr->GetListOfFunctions()->Remove(mainFit);
+
+   delete mainFit;
+
+   gr->SetMarkerStyle(20);
+   gr->SetMarkerColor(kBlack);
+   gr->SetFillColor(kBlack);
+   gr->SetLineColor(kBlack);
+   gr->Draw("P SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   TGraphErrors *mottSphere = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecaysTrials/sphere2D").c_str());
+   TGraphErrors *mottEllipse = (TGraphErrors*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecaysTrials/ellipse2D").c_str());
+
+   DrawTGraphErrors(mottSphere, ";#sigma_{i};#sigma_{j}", "../Images/MC/Dilution/dMu/"+dMu+"/MottSphere"+to_string(nTrials));
+   DrawTGraphErrors(mottEllipse, ";i;j", "../Images/MC/Dilution/dMu/"+dMu+"/MottEllipse"+to_string(nTrials));
+
+   // Mott ellipse & sphere
+   //TH3D *mottSphere= (TH3D*)
+   //TH2D *mottSphere= (TH2D*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecaysTrials/sphere2D").c_str());
+   //TH3D *mottEllipse = (TH3D*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecaysTrials/ellipse2D").c_str());
+   //TH2D *mottEllipse = (TH2D*)input->Get(("DilutionFits/AQ/Decays/"+to_string(step)+"MeV/d_vs_p/allDecaysTrials/ellipse2D").c_str());
+
+   //cout<<mottEllipse<<endl;
+   //cout<<mottSphere<<endl;
+
+   //DrawTH2Test(mottEllipse, "", "../Images/MC/Dilution/dMu/"+dMu+"/MottEllipse"+to_string(nTrials));
+   //DrawTH2(mottSphere, "", "../Images/MC/Dilution/dMu/"+dMu+"/MottSphere"+to_string(nTrials));
+
+   //delete mottEllipse;
+   //delete mottSphere;
+
+   return;
+
+}
+
 int main() { 
 
    bool fit = true;
@@ -862,7 +944,7 @@ int main() {
 
    DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
    DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", -0.02, 0.25); 
-   //DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12);
+   DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
 
 /*   // Graphs
    DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);

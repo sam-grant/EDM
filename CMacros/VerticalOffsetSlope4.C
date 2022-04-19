@@ -688,7 +688,23 @@ void RunShiftedSlopes(TFile *fout) {
 	TF1* fit_data_S12 = (TF1*)gr_data_S12->GetFunction("fit");
 	TF1* fit_data_S18 = (TF1*)gr_data_S18->GetFunction("fit");
 
-	double x_shift = fit_data_S12->GetParameter(0)/fit_data_S12->GetParameter(1) - fit_data_S18->GetParameter(0)/fit_data_S18->GetParameter(1);
+	TFitResultPtr frp_data_S12 = gr_data_S12->Fit(fit_data_S12 ,"SMQR");
+	TFitResultPtr frp_data_S18 = gr_data_S18->Fit(fit_data_S18 ,"SMQR");
+
+	double p0_12 = fit_data_S12->GetParameter(0); double e0_12 = fit_data_S12->GetParError(0);
+	double p1_12 = fit_data_S12->GetParameter(1); double e1_12 = fit_data_S12->GetParError(1);
+
+	double p0_18 = fit_data_S18->GetParameter(0); double e0_18 = fit_data_S18->GetParError(0);
+	double p1_18 = fit_data_S18->GetParameter(1); double e1_18 = fit_data_S18->GetParError(1);
+
+	double x_shift = p0_12/p1_12 - p0_18/p1_18; // fit_data_S12->GetParameter(0)/fit_data_S12->GetParameter(1) - fit_data_S18->GetParameter(0)/fit_data_S18->GetParameter(1);
+
+	double err_data_S12 = p0_12/p1_12 * sqrt(pow(e0_12/p0_12,2) + pow(e1_12/p1_12,2) - 2*frp_data_S12->GetCovarianceMatrix()(0,1)/(p0_12*p1_12));
+	double err_data_S18 = p0_18/p1_18 * sqrt(pow(e0_18/p0_18,2) + pow(e1_18/p1_18,2) - 2*frp_data_S18->GetCovarianceMatrix()(0,1)/(p0_18*p1_18));
+
+	double x_shift_err = sqrt(pow(err_data_S12, 2) + pow(err_data_S18, 2));
+
+	cout<<"\n---> shift in beam-Y position = "<<x_shift<<"±"<<x_shift_err<<" mm"<<endl;
 
 	for(int i(0); i<gr_data_S12->GetN(); i++) { 
 

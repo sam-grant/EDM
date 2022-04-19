@@ -178,18 +178,18 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   graph_.at(0)->GetYaxis()->SetMaxDigits(4);
 
   // Find y-range
-  double ymax = graph_.at(0)->GetY()[0] + 1.5*graph_.at(0)->GetEY()[0];
-  double ymin = graph_.at(0)->GetY()[0] - 1.5*graph_.at(0)->GetEY()[0];  
+  double ymax = graph_.at(0)->GetY()[0] + 2.5*graph_.at(0)->GetEY()[0];
+  double ymin = graph_.at(0)->GetY()[0] - 2.5*graph_.at(0)->GetEY()[0];  
 
   for(int i(0); i<graph_.size(); i++) {
 
-    double ymin1 = graph_.at(i)->GetY()[0] - 1.5*graph_.at(i)->GetEY()[0]; 
-    double ymax1 = graph_.at(i)->GetY()[0] + 1.5*graph_.at(i)->GetEY()[0]; 
+    double ymin1 = graph_.at(i)->GetY()[0] - 2.5*graph_.at(i)->GetEY()[0]; 
+    double ymax1 = graph_.at(i)->GetY()[0] + 2.5*graph_.at(i)->GetEY()[0]; 
 
     for(int j(1); j<graph_.at(0)->GetN(); j++) { 
 
-      double ymax2 = graph_.at(i)->GetY()[j] + 1.5*graph_.at(i)->GetEY()[j];
-      double ymin2 = graph_.at(i)->GetY()[j] - 1.5*graph_.at(i)->GetEY()[j]; 
+      double ymax2 = graph_.at(i)->GetY()[j] + 2.5*graph_.at(i)->GetEY()[j];
+      double ymin2 = graph_.at(i)->GetY()[j] - 2.5*graph_.at(i)->GetEY()[j]; 
 
       if(ymin2 < ymin1) ymin1 = ymin2;
       if(ymax2 > ymax1) ymax1 = ymax2;
@@ -290,10 +290,9 @@ double GetLimit(double delta_prime) {
 
 }
 
-void Run(std::string dataset, int step, std::string blinding, std::string fitType, bool correctDilution, string test = "") { 
+void Run(std::string dataset, int step, std::string blinding, std::string fitType, string correctionString) { //, string test = "") { 
 
-  std::string dilCorrStr = "";
-  if(!correctDilution) dilCorrStr += "_noCorr";
+  if(correctionString != "") correctionString = "_"+correctionString;
 
   vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
   vector<string> stn_ = {"S12", "S18", "S12S18"};
@@ -312,7 +311,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_BQ"+dilCorrStr+test+".root").c_str());
+      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_BQ"+correctionString+".root").c_str());
 
       TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
       
@@ -340,13 +339,13 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+test, ds_);
+    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+correctionString, ds_);
 
     gr_.push_back(gr);
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+dilCorrStr+test, ds_);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+correctionString, ds_);
 
 
   return;
@@ -355,7 +354,10 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
 void PlotEDMResultsPerDS() { 
 
-  Run("Run-1", 250, "blinded", "EDM", true, ".dataDrivenAcceptance"); 
+  Run("Run-1", 250, "blinded", "EDM", "");
+  Run("Run-1", 250, "blinded", "EDM", "noDilCorr");
+  Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
+  Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 
 
   
   return;

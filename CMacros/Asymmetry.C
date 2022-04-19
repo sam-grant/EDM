@@ -1,12 +1,94 @@
 
-#include "FancyDraw.h"
-#include "TF1.h"
+//#include "FancyDraw.h"
+#include "RootInclude.h"
 
 // Not really happy with the formatting, but functions are correct
 
 // Final drawing function is in "FancyDraw.h"
 
 
+void DrawAsymmetryPlot(TF1 *N, TF1 *A, TF1 *NA2, double pmax, std::string title, std::string axtitle, std::string fname) {
+
+	std::cout<<"pmax\t:"<< pmax <<std::endl;
+	std::cout<<"Low cut\t:"<< 0.3 * pmax <<std::endl;
+	std::cout<<"High cut\t:"<< 0.75 * pmax <<std::endl;
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+	c->SetRightMargin(0.20);
+	// TLegend *leg = new TLegend(0.25,0.69,0.45,0.89);
+	// TODO: Make legend not look like a pile of shit
+	TLegend *leg = new TLegend(0.81,0.35,0.99,0.65);// 0.15,0.65,0.35,0.85);
+	leg->SetBorderSize(0);
+	
+	TLine *y_0 = new TLine(0,0,1,0);
+	
+	leg->AddEntry(N," N(#lambda)");
+	leg->AddEntry(A," A(#lambda)");
+	leg->AddEntry(NA2," NA^{2}(#lambda)");
+
+	leg->SetTextSize(26);
+	leg->SetTextFont(44);
+
+	// Add text 
+	TPaveText *N_txt = new TPaveText(0.30,0.80,0.40,0.89,"NDC");
+	N_txt->AddText("N(#lambda)");
+
+
+	N->SetTitle(title.c_str());		
+	N->GetXaxis()->SetTitleSize(.04);
+	N->GetYaxis()->SetTitleSize(.04);
+	N->GetXaxis()->SetTitleOffset(1.1);
+	N->GetYaxis()->SetTitleOffset(1.1);
+	N->GetXaxis()->CenterTitle(1);
+	N->GetYaxis()->CenterTitle(1);
+	N->GetYaxis()->SetMaxDigits(4);
+
+	N->SetLineColor(kBlack);
+	A->SetLineColor(kRed);
+	NA2->SetLineColor(kBlue);
+
+	N->SetLineWidth(3);
+	A->SetLineWidth(3);
+	NA2->SetLineWidth(3);
+	y_0->SetLineWidth(3);
+
+	y_0->SetLineStyle(2);
+
+	//c->SetRightMargin(0.13);
+
+	N->Draw();
+	leg->Draw("same");
+	A->Draw("same");
+	NA2->Draw("same");
+	y_0->Draw("same");
+	//N_txt->Draw("same");
+
+	gPad->Update();
+
+	// Second axis
+	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),0,pmax,510,"-");
+	axis->SetTitle(axtitle.c_str()); // "Laboratory frame e^{+} energy [MeV]"
+	axis->SetTitleOffset(1.1);
+	axis->CenterTitle(true);
+	axis->SetTextFont(42);
+	axis->SetLabelFont(42);
+	axis->SetTextColor(kRed);
+	axis->SetLabelColor(kRed);
+	axis->SetLineColor(kRed);
+
+	axis->Draw("same");
+	
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
+
+/*
 /////// JUST DOING SOME TESTING HERE /////////
 void DrawAsymmetryPlot2(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string fname) {
 
@@ -73,7 +155,7 @@ void DrawAsymmetryPlot2(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 
 	// Second axis
 	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),0,pmax,510,"-");
-	axis->SetTitle("Track momentum [MeV]");
+	axis->SetTitle("Laboratory frame e^{+} energy [MeV]");
 	axis->SetTitleOffset(1.1);
 	axis->CenterTitle(true);
 	axis->SetTextFont(42);
@@ -159,7 +241,7 @@ void DrawAsymmetryPlot3(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 
 	// Second axis
 	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),0,pmax,510,"-");
-	axis->SetTitle("Track momentum [MeV]");
+	axis->SetTitle("Laboratory frame e^{+} energy [MeV]");
 	axis->SetTitleOffset(1.1);
 	axis->CenterTitle(true);
 	axis->SetTextFont(42);
@@ -246,7 +328,7 @@ void DrawAsymmetryPlot4(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 
 	// Second axis
 	TGaxis *axis = new TGaxis(gPad->GetUxmin(),gPad->GetUymax(),gPad->GetUxmax(),gPad->GetUymax(),0,pmax,510,"-");
-	axis->SetTitle("Track momentum [MeV]");
+	axis->SetTitle("Laboratory frame e^{+} energy [MeV]");
 	axis->SetTitleOffset(1.1);
 	axis->CenterTitle(true);
 	axis->SetTextFont(42);
@@ -265,7 +347,7 @@ void DrawAsymmetryPlot4(TF1 *N, TF1 *A, TF1 *NA2, std::string title, std::string
 	delete c;
 
 	return;
-}
+}*/
 ////////////////////////////
 int main() { 
 
@@ -278,13 +360,19 @@ int main() {
 	TF1 *A_1 = new TF1("A_1","(2*x-1) / (3-2*x)",0,1); // 3.39
 	TF1 *NA2_1 = new TF1("NA2_1","N_1 * A_1 * A_1",0,1); 
 
+	double mMu = 105.6583715; // MeV
+	double aMu = 11659208.9e-10; 
+	double gmagic = std::sqrt( 1.+1./aMu );
+	double pmax_lab = 1.01 * mMu * gmagic;
+	double pmax_rest = mMu/2;
+
 	std::cout<<"\nN_1 max:\t"<<N_1->GetMaximum()<<"\n"<<std::endl;
 	std::cout<<"A_1 max:\t"<<A_1->GetMaximum()<<"\n"<<std::endl;
 	std::cout<<"NA2_1 max:\t"<<NA2_1->GetMaximum()<<"\n"<<std::endl;
 
 	N_1->GetYaxis()->SetRangeUser(-0.4,1.1);
 	N_1->GetXaxis()->SetRangeUser(0,1);
-	DrawAsymmetryPlot(N_1, A_1, NA2_1, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_restFrame");
+	DrawAsymmetryPlot(N_1, A_1, NA2_1, pmax_rest, ";Fractional e^{+} energy (#lambda);Normalised units" , "Rest frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_restFrame");
 
 	// ==================== Lab frame ====================  
 	TF1 *N_2 = new TF1("N_2","(1/1.65) * 0.33 * (x-1) * (4*x*x-5*x-5)",0,1); // 3.41
@@ -297,7 +385,7 @@ int main() {
 
 	N_2->GetYaxis()->SetRangeUser(-0.4,1.1);
 	//N_2->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_2, A_2, NA2_2, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_labFrame");
+	DrawAsymmetryPlot(N_2, A_2, NA2_2, pmax_lab, ";Fractional e^{+} energy (#lambda);Normalised units" , "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_labFrame");
 
 	// ==================== Lab frame with energy cut ====================
 	TF1 *N_3 = new TF1("N_3","(1/0.99) * (0.33) * ((x-1)*(x-1)) * (-(x*x)+x+3)",0,1); // 3.43
@@ -310,7 +398,7 @@ int main() {
 
 	N_3->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_3->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_3, A_3, NA2_3, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_wa_labFrame_eCut");
+	DrawAsymmetryPlot(N_3, A_3, NA2_3, pmax_lab, ";Fractional e^{+} energy (#lambda);Normalised units", "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_labFrame_eCut");
 
 	// ==================== Lab frame EDM ====================
 	// I did some hacky normalisation to make it look like Saskia and Gleb's plots, but I don't understand why 
@@ -324,12 +412,12 @@ int main() {
 
 	N_4->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_4, A_4, NA2_4, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame");
+	DrawAsymmetryPlot(N_4, A_4, NA2_4, pmax_lab, ";Fractional e^{+} energy (#lambda);Normalised units" , "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_EDM_labFrame");
 
 
 	// ==================== Lab frame EDM ====================
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot4(N_4, A_4, NA2_4, ";#lambda=p/p_{max};Arbitrary units" ,"../Images/Asymmetry/Asymmetry_EDM_labFrame_redraw");
+	//DrawAsymmetryPlot4(N_4, A_4, NA2_4, pmax_lab, ";#lambda=E_{max}/E;Normalised units", "e^{+} laboratory frame energy [MeV]", "../Images/Asymmetry/Asymmetry_EDM_labFrame_redraw");
 
 //
 //	// ==================== Lab frame NA ====================

@@ -562,7 +562,7 @@ int main() { //int argc, char *argv[]) {
   bool write = true;
 
   string fname = "";
-  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";
+  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
   else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");

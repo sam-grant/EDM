@@ -1,10 +1,10 @@
 void RecoVertexFit_S12S18()
 {
 //=========Macro generated from canvas: S12S18/c
-//=========  (Tue Mar 22 09:46:12 2022) by ROOT version 6.24/06
+//=========  (Wed Apr 20 00:05:56 2022) by ROOT version 6.24/06
    TCanvas *S12S18 = new TCanvas("S12S18", "c",0,0,800,600);
    S12S18->SetHighLightColor(2);
-   S12S18->Range(467.1197,-0.03875,3024.623,0.14875);
+   S12S18->Range(467.0784,-0.03875,3024.686,0.14875);
    S12S18->SetFillColor(0);
    S12S18->SetBorderMode(0);
    S12S18->SetBorderSize(2);
@@ -12,29 +12,29 @@ void RecoVertexFit_S12S18()
    S12S18->SetFrameBorderMode(0);
    
    Double_t S12S18_trackReco_fx1015[11] = {
-   451.9382,
-   653.3303,
-   880.435,
-   1123.103,
-   1370.968,
-   1620.027,
-   1866.672,
-   2115.073,
-   2362.944,
-   2613.205,
-   2787.558};
+   451.8963,
+   653.3497,
+   880.4168,
+   1123.105,
+   1371.026,
+   1619.994,
+   1866.738,
+   2115.059,
+   2362.927,
+   2613.265,
+   2787.611};
    Double_t S12S18_trackReco_fy1015[11] = {
-   -0.01234076,
-   0.06589668,
-   0.0641917,
-   0.06402773,
-   0.07049242,
-   0.08078533,
-   0.07626638,
-   0.05895869,
-   0.04515202,
-   0.0595785,
-   0.01358762};
+   0.02636902,
+   0.07270088,
+   0.06917913,
+   0.07305442,
+   0.07840088,
+   0.08250544,
+   0.07932669,
+   0.06060894,
+   0.0542997,
+   0.0610263,
+   0.02851068};
    Double_t S12S18_trackReco_fex1015[11] = {
    0,
    0,
@@ -48,24 +48,24 @@ void RecoVertexFit_S12S18()
    0,
    0};
    Double_t S12S18_trackReco_fey1015[11] = {
-   0.05288724,
-   0.01769138,
-   0.01014396,
-   0.008331621,
-   0.007649837,
-   0.00728629,
-   0.007362272,
-   0.00779578,
-   0.008424826,
-   0.008325287,
-   0.01944704};
+   0.05337944,
+   0.01787138,
+   0.01024343,
+   0.008414166,
+   0.007723566,
+   0.007357385,
+   0.007433909,
+   0.007874323,
+   0.008501101,
+   0.008404824,
+   0.01967341};
    TGraphErrors *gre = new TGraphErrors(11,S12S18_trackReco_fx1015,S12S18_trackReco_fy1015,S12S18_trackReco_fex1015,S12S18_trackReco_fey1015);
    gre->SetName("S12S18_trackReco");
    gre->SetTitle(";Decay vertex momentum [MeV];d_{EDM} / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12S18_trackReco1015 = new TH1F("Graph_S12S18_trackReco1015","",100,218.3762,3021.12);
+   TH1F *Graph_S12S18_trackReco1015 = new TH1F("Graph_S12S18_trackReco1015","",100,218.3248,3021.183);
    Graph_S12S18_trackReco1015->SetMinimum(-0.02);
    Graph_S12S18_trackReco1015->SetMaximum(0.13);
    Graph_S12S18_trackReco1015->SetDirectory(0);
@@ -101,107 +101,107 @@ void RecoVertexFit_S12S18()
    DilutionFunc1016->SetRange(750,2750);
    DilutionFunc1016->SetName("DilutionFunc");
    DilutionFunc1016->SetTitle("DilutionFunc");
-   DilutionFunc1016->SetSavedPoint(0,0.07427228);
-   DilutionFunc1016->SetSavedPoint(1,0.07419022);
-   DilutionFunc1016->SetSavedPoint(2,0.07410584);
-   DilutionFunc1016->SetSavedPoint(3,0.07401913);
-   DilutionFunc1016->SetSavedPoint(4,0.07393008);
-   DilutionFunc1016->SetSavedPoint(5,0.07383868);
-   DilutionFunc1016->SetSavedPoint(6,0.07374493);
-   DilutionFunc1016->SetSavedPoint(7,0.07364881);
-   DilutionFunc1016->SetSavedPoint(8,0.07355032);
-   DilutionFunc1016->SetSavedPoint(9,0.07344944);
-   DilutionFunc1016->SetSavedPoint(10,0.07334618);
-   DilutionFunc1016->SetSavedPoint(11,0.07324051);
-   DilutionFunc1016->SetSavedPoint(12,0.07313244);
-   DilutionFunc1016->SetSavedPoint(13,0.07302196);
-   DilutionFunc1016->SetSavedPoint(14,0.07290905);
-   DilutionFunc1016->SetSavedPoint(15,0.07279371);
-   DilutionFunc1016->SetSavedPoint(16,0.07267593);
-   DilutionFunc1016->SetSavedPoint(17,0.0725557);
-   DilutionFunc1016->SetSavedPoint(18,0.07243301);
-   DilutionFunc1016->SetSavedPoint(19,0.07230785);
-   DilutionFunc1016->SetSavedPoint(20,0.07218023);
-   DilutionFunc1016->SetSavedPoint(21,0.07205012);
-   DilutionFunc1016->SetSavedPoint(22,0.07191752);
-   DilutionFunc1016->SetSavedPoint(23,0.07178242);
-   DilutionFunc1016->SetSavedPoint(24,0.07164481);
-   DilutionFunc1016->SetSavedPoint(25,0.07150469);
-   DilutionFunc1016->SetSavedPoint(26,0.07136204);
-   DilutionFunc1016->SetSavedPoint(27,0.07121686);
-   DilutionFunc1016->SetSavedPoint(28,0.07106914);
-   DilutionFunc1016->SetSavedPoint(29,0.07091887);
-   DilutionFunc1016->SetSavedPoint(30,0.07076604);
-   DilutionFunc1016->SetSavedPoint(31,0.07061064);
-   DilutionFunc1016->SetSavedPoint(32,0.07045267);
-   DilutionFunc1016->SetSavedPoint(33,0.07029212);
-   DilutionFunc1016->SetSavedPoint(34,0.07012898);
-   DilutionFunc1016->SetSavedPoint(35,0.06996323);
-   DilutionFunc1016->SetSavedPoint(36,0.06979488);
-   DilutionFunc1016->SetSavedPoint(37,0.06962391);
-   DilutionFunc1016->SetSavedPoint(38,0.06945032);
-   DilutionFunc1016->SetSavedPoint(39,0.06927409);
-   DilutionFunc1016->SetSavedPoint(40,0.06909522);
-   DilutionFunc1016->SetSavedPoint(41,0.0689137);
-   DilutionFunc1016->SetSavedPoint(42,0.06872952);
-   DilutionFunc1016->SetSavedPoint(43,0.06854268);
-   DilutionFunc1016->SetSavedPoint(44,0.06835316);
-   DilutionFunc1016->SetSavedPoint(45,0.06816096);
-   DilutionFunc1016->SetSavedPoint(46,0.06796606);
-   DilutionFunc1016->SetSavedPoint(47,0.06776846);
-   DilutionFunc1016->SetSavedPoint(48,0.06756816);
-   DilutionFunc1016->SetSavedPoint(49,0.06736513);
-   DilutionFunc1016->SetSavedPoint(50,0.06715939);
-   DilutionFunc1016->SetSavedPoint(51,0.0669509);
-   DilutionFunc1016->SetSavedPoint(52,0.06673968);
-   DilutionFunc1016->SetSavedPoint(53,0.0665257);
-   DilutionFunc1016->SetSavedPoint(54,0.06630897);
-   DilutionFunc1016->SetSavedPoint(55,0.06608946);
-   DilutionFunc1016->SetSavedPoint(56,0.06586718);
-   DilutionFunc1016->SetSavedPoint(57,0.06564212);
-   DilutionFunc1016->SetSavedPoint(58,0.06541426);
-   DilutionFunc1016->SetSavedPoint(59,0.06518361);
-   DilutionFunc1016->SetSavedPoint(60,0.06495014);
-   DilutionFunc1016->SetSavedPoint(61,0.06471385);
-   DilutionFunc1016->SetSavedPoint(62,0.06447474);
-   DilutionFunc1016->SetSavedPoint(63,0.06423279);
-   DilutionFunc1016->SetSavedPoint(64,0.063988);
-   DilutionFunc1016->SetSavedPoint(65,0.06374036);
-   DilutionFunc1016->SetSavedPoint(66,0.06348986);
-   DilutionFunc1016->SetSavedPoint(67,0.06323649);
-   DilutionFunc1016->SetSavedPoint(68,0.06298025);
-   DilutionFunc1016->SetSavedPoint(69,0.06272112);
-   DilutionFunc1016->SetSavedPoint(70,0.06245909);
-   DilutionFunc1016->SetSavedPoint(71,0.06219416);
-   DilutionFunc1016->SetSavedPoint(72,0.06192633);
-   DilutionFunc1016->SetSavedPoint(73,0.06165557);
-   DilutionFunc1016->SetSavedPoint(74,0.06138189);
-   DilutionFunc1016->SetSavedPoint(75,0.06110527);
-   DilutionFunc1016->SetSavedPoint(76,0.06082571);
-   DilutionFunc1016->SetSavedPoint(77,0.06054319);
-   DilutionFunc1016->SetSavedPoint(78,0.06025772);
-   DilutionFunc1016->SetSavedPoint(79,0.05996927);
-   DilutionFunc1016->SetSavedPoint(80,0.05967785);
-   DilutionFunc1016->SetSavedPoint(81,0.05938344);
-   DilutionFunc1016->SetSavedPoint(82,0.05908604);
-   DilutionFunc1016->SetSavedPoint(83,0.05878564);
-   DilutionFunc1016->SetSavedPoint(84,0.05848222);
-   DilutionFunc1016->SetSavedPoint(85,0.05817579);
-   DilutionFunc1016->SetSavedPoint(86,0.05786633);
-   DilutionFunc1016->SetSavedPoint(87,0.05755383);
-   DilutionFunc1016->SetSavedPoint(88,0.05723829);
-   DilutionFunc1016->SetSavedPoint(89,0.05691969);
-   DilutionFunc1016->SetSavedPoint(90,0.05659803);
-   DilutionFunc1016->SetSavedPoint(91,0.05627331);
-   DilutionFunc1016->SetSavedPoint(92,0.0559455);
-   DilutionFunc1016->SetSavedPoint(93,0.05561461);
-   DilutionFunc1016->SetSavedPoint(94,0.05528062);
-   DilutionFunc1016->SetSavedPoint(95,0.05494353);
-   DilutionFunc1016->SetSavedPoint(96,0.05460333);
-   DilutionFunc1016->SetSavedPoint(97,0.05426001);
-   DilutionFunc1016->SetSavedPoint(98,0.05391356);
-   DilutionFunc1016->SetSavedPoint(99,0.05356397);
-   DilutionFunc1016->SetSavedPoint(100,0.05321124);
+   DilutionFunc1016->SetSavedPoint(0,0.08056975);
+   DilutionFunc1016->SetSavedPoint(1,0.08047213);
+   DilutionFunc1016->SetSavedPoint(2,0.08037173);
+   DilutionFunc1016->SetSavedPoint(3,0.08026855);
+   DilutionFunc1016->SetSavedPoint(4,0.08016258);
+   DilutionFunc1016->SetSavedPoint(5,0.0800538);
+   DilutionFunc1016->SetSavedPoint(6,0.07994221);
+   DilutionFunc1016->SetSavedPoint(7,0.0798278);
+   DilutionFunc1016->SetSavedPoint(8,0.07971055);
+   DilutionFunc1016->SetSavedPoint(9,0.07959046);
+   DilutionFunc1016->SetSavedPoint(10,0.07946752);
+   DilutionFunc1016->SetSavedPoint(11,0.07934171);
+   DilutionFunc1016->SetSavedPoint(12,0.07921302);
+   DilutionFunc1016->SetSavedPoint(13,0.07908145);
+   DilutionFunc1016->SetSavedPoint(14,0.07894698);
+   DilutionFunc1016->SetSavedPoint(15,0.0788096);
+   DilutionFunc1016->SetSavedPoint(16,0.07866931);
+   DilutionFunc1016->SetSavedPoint(17,0.07852609);
+   DilutionFunc1016->SetSavedPoint(18,0.07837993);
+   DilutionFunc1016->SetSavedPoint(19,0.07823082);
+   DilutionFunc1016->SetSavedPoint(20,0.07807875);
+   DilutionFunc1016->SetSavedPoint(21,0.07792372);
+   DilutionFunc1016->SetSavedPoint(22,0.0777657);
+   DilutionFunc1016->SetSavedPoint(23,0.0776047);
+   DilutionFunc1016->SetSavedPoint(24,0.07744069);
+   DilutionFunc1016->SetSavedPoint(25,0.07727368);
+   DilutionFunc1016->SetSavedPoint(26,0.07710364);
+   DilutionFunc1016->SetSavedPoint(27,0.07693057);
+   DilutionFunc1016->SetSavedPoint(28,0.07675446);
+   DilutionFunc1016->SetSavedPoint(29,0.0765753);
+   DilutionFunc1016->SetSavedPoint(30,0.07639307);
+   DilutionFunc1016->SetSavedPoint(31,0.07620777);
+   DilutionFunc1016->SetSavedPoint(32,0.07601939);
+   DilutionFunc1016->SetSavedPoint(33,0.07582791);
+   DilutionFunc1016->SetSavedPoint(34,0.07563333);
+   DilutionFunc1016->SetSavedPoint(35,0.07543563);
+   DilutionFunc1016->SetSavedPoint(36,0.07523481);
+   DilutionFunc1016->SetSavedPoint(37,0.07503086);
+   DilutionFunc1016->SetSavedPoint(38,0.07482375);
+   DilutionFunc1016->SetSavedPoint(39,0.07461349);
+   DilutionFunc1016->SetSavedPoint(40,0.07440007);
+   DilutionFunc1016->SetSavedPoint(41,0.07418347);
+   DilutionFunc1016->SetSavedPoint(42,0.07396368);
+   DilutionFunc1016->SetSavedPoint(43,0.07374069);
+   DilutionFunc1016->SetSavedPoint(44,0.07351449);
+   DilutionFunc1016->SetSavedPoint(45,0.07328508);
+   DilutionFunc1016->SetSavedPoint(46,0.07305243);
+   DilutionFunc1016->SetSavedPoint(47,0.07281655);
+   DilutionFunc1016->SetSavedPoint(48,0.07257742);
+   DilutionFunc1016->SetSavedPoint(49,0.07233502);
+   DilutionFunc1016->SetSavedPoint(50,0.07208936);
+   DilutionFunc1016->SetSavedPoint(51,0.07184041);
+   DilutionFunc1016->SetSavedPoint(52,0.07158818);
+   DilutionFunc1016->SetSavedPoint(53,0.07133264);
+   DilutionFunc1016->SetSavedPoint(54,0.07107379);
+   DilutionFunc1016->SetSavedPoint(55,0.07081162);
+   DilutionFunc1016->SetSavedPoint(56,0.07054611);
+   DilutionFunc1016->SetSavedPoint(57,0.07027726);
+   DilutionFunc1016->SetSavedPoint(58,0.07000506);
+   DilutionFunc1016->SetSavedPoint(59,0.06972949);
+   DilutionFunc1016->SetSavedPoint(60,0.06945055);
+   DilutionFunc1016->SetSavedPoint(61,0.06916822);
+   DilutionFunc1016->SetSavedPoint(62,0.0688825);
+   DilutionFunc1016->SetSavedPoint(63,0.06859337);
+   DilutionFunc1016->SetSavedPoint(64,0.06830083);
+   DilutionFunc1016->SetSavedPoint(65,0.06800486);
+   DilutionFunc1016->SetSavedPoint(66,0.06770545);
+   DilutionFunc1016->SetSavedPoint(67,0.06740259);
+   DilutionFunc1016->SetSavedPoint(68,0.06709628);
+   DilutionFunc1016->SetSavedPoint(69,0.0667865);
+   DilutionFunc1016->SetSavedPoint(70,0.06647324);
+   DilutionFunc1016->SetSavedPoint(71,0.06615649);
+   DilutionFunc1016->SetSavedPoint(72,0.06583625);
+   DilutionFunc1016->SetSavedPoint(73,0.06551249);
+   DilutionFunc1016->SetSavedPoint(74,0.06518521);
+   DilutionFunc1016->SetSavedPoint(75,0.06485441);
+   DilutionFunc1016->SetSavedPoint(76,0.06452006);
+   DilutionFunc1016->SetSavedPoint(77,0.06418216);
+   DilutionFunc1016->SetSavedPoint(78,0.0638407);
+   DilutionFunc1016->SetSavedPoint(79,0.06349566);
+   DilutionFunc1016->SetSavedPoint(80,0.06314705);
+   DilutionFunc1016->SetSavedPoint(81,0.06279484);
+   DilutionFunc1016->SetSavedPoint(82,0.06243903);
+   DilutionFunc1016->SetSavedPoint(83,0.0620796);
+   DilutionFunc1016->SetSavedPoint(84,0.06171655);
+   DilutionFunc1016->SetSavedPoint(85,0.06134987);
+   DilutionFunc1016->SetSavedPoint(86,0.06097954);
+   DilutionFunc1016->SetSavedPoint(87,0.06060556);
+   DilutionFunc1016->SetSavedPoint(88,0.06022791);
+   DilutionFunc1016->SetSavedPoint(89,0.05984658);
+   DilutionFunc1016->SetSavedPoint(90,0.05946157);
+   DilutionFunc1016->SetSavedPoint(91,0.05907286);
+   DilutionFunc1016->SetSavedPoint(92,0.05868045);
+   DilutionFunc1016->SetSavedPoint(93,0.05828432);
+   DilutionFunc1016->SetSavedPoint(94,0.05788446);
+   DilutionFunc1016->SetSavedPoint(95,0.05748086);
+   DilutionFunc1016->SetSavedPoint(96,0.05707351);
+   DilutionFunc1016->SetSavedPoint(97,0.0566624);
+   DilutionFunc1016->SetSavedPoint(98,0.05624753);
+   DilutionFunc1016->SetSavedPoint(99,0.05582887);
+   DilutionFunc1016->SetSavedPoint(100,0.05540642);
    DilutionFunc1016->SetSavedPoint(101,750);
    DilutionFunc1016->SetSavedPoint(102,2750);
    DilutionFunc1016->SetFillColor(19);
@@ -210,18 +210,18 @@ void RecoVertexFit_S12S18()
    ci = TColor::GetColor("#ff0000");
    DilutionFunc1016->SetLineColor(ci);
    DilutionFunc1016->SetLineWidth(3);
-   DilutionFunc1016->SetChisquare(10.10967);
+   DilutionFunc1016->SetChisquare(6.198762);
    DilutionFunc1016->SetNDF(6);
    DilutionFunc1016->GetXaxis()->SetLabelFont(42);
    DilutionFunc1016->GetXaxis()->SetTitleOffset(1);
    DilutionFunc1016->GetXaxis()->SetTitleFont(42);
    DilutionFunc1016->GetYaxis()->SetLabelFont(42);
    DilutionFunc1016->GetYaxis()->SetTitleFont(42);
-   DilutionFunc1016->SetParameter(0,0.07575223);
-   DilutionFunc1016->SetParError(0,0.005625511);
+   DilutionFunc1016->SetParameter(0,0.08232864);
+   DilutionFunc1016->SetParError(0,0.00566841);
    DilutionFunc1016->SetParLimits(0,0,0);
-   DilutionFunc1016->SetParameter(1,-0.000104883);
-   DilutionFunc1016->SetParError(1,2.137562e-05);
+   DilutionFunc1016->SetParameter(1,-0.0001095573);
+   DilutionFunc1016->SetParError(1,1.854845e-05);
    DilutionFunc1016->SetParLimits(1,0,0);
    DilutionFunc1016->SetParent(gre);
    gre->GetListOfFunctions()->Add(DilutionFunc1016);
@@ -233,107 +233,107 @@ void RecoVertexFit_S12S18()
    DilutionFunc1017->SetRange(750,2750);
    DilutionFunc1017->SetName("DilutionFunc");
    DilutionFunc1017->SetTitle("DilutionFunc");
-   DilutionFunc1017->SetSavedPoint(0,0.07427228);
-   DilutionFunc1017->SetSavedPoint(1,0.07419022);
-   DilutionFunc1017->SetSavedPoint(2,0.07410584);
-   DilutionFunc1017->SetSavedPoint(3,0.07401913);
-   DilutionFunc1017->SetSavedPoint(4,0.07393008);
-   DilutionFunc1017->SetSavedPoint(5,0.07383868);
-   DilutionFunc1017->SetSavedPoint(6,0.07374493);
-   DilutionFunc1017->SetSavedPoint(7,0.07364881);
-   DilutionFunc1017->SetSavedPoint(8,0.07355032);
-   DilutionFunc1017->SetSavedPoint(9,0.07344944);
-   DilutionFunc1017->SetSavedPoint(10,0.07334618);
-   DilutionFunc1017->SetSavedPoint(11,0.07324051);
-   DilutionFunc1017->SetSavedPoint(12,0.07313244);
-   DilutionFunc1017->SetSavedPoint(13,0.07302196);
-   DilutionFunc1017->SetSavedPoint(14,0.07290905);
-   DilutionFunc1017->SetSavedPoint(15,0.07279371);
-   DilutionFunc1017->SetSavedPoint(16,0.07267593);
-   DilutionFunc1017->SetSavedPoint(17,0.0725557);
-   DilutionFunc1017->SetSavedPoint(18,0.07243301);
-   DilutionFunc1017->SetSavedPoint(19,0.07230785);
-   DilutionFunc1017->SetSavedPoint(20,0.07218023);
-   DilutionFunc1017->SetSavedPoint(21,0.07205012);
-   DilutionFunc1017->SetSavedPoint(22,0.07191752);
-   DilutionFunc1017->SetSavedPoint(23,0.07178242);
-   DilutionFunc1017->SetSavedPoint(24,0.07164481);
-   DilutionFunc1017->SetSavedPoint(25,0.07150469);
-   DilutionFunc1017->SetSavedPoint(26,0.07136204);
-   DilutionFunc1017->SetSavedPoint(27,0.07121686);
-   DilutionFunc1017->SetSavedPoint(28,0.07106914);
-   DilutionFunc1017->SetSavedPoint(29,0.07091887);
-   DilutionFunc1017->SetSavedPoint(30,0.07076604);
-   DilutionFunc1017->SetSavedPoint(31,0.07061064);
-   DilutionFunc1017->SetSavedPoint(32,0.07045267);
-   DilutionFunc1017->SetSavedPoint(33,0.07029212);
-   DilutionFunc1017->SetSavedPoint(34,0.07012898);
-   DilutionFunc1017->SetSavedPoint(35,0.06996323);
-   DilutionFunc1017->SetSavedPoint(36,0.06979488);
-   DilutionFunc1017->SetSavedPoint(37,0.06962391);
-   DilutionFunc1017->SetSavedPoint(38,0.06945032);
-   DilutionFunc1017->SetSavedPoint(39,0.06927409);
-   DilutionFunc1017->SetSavedPoint(40,0.06909522);
-   DilutionFunc1017->SetSavedPoint(41,0.0689137);
-   DilutionFunc1017->SetSavedPoint(42,0.06872952);
-   DilutionFunc1017->SetSavedPoint(43,0.06854268);
-   DilutionFunc1017->SetSavedPoint(44,0.06835316);
-   DilutionFunc1017->SetSavedPoint(45,0.06816096);
-   DilutionFunc1017->SetSavedPoint(46,0.06796606);
-   DilutionFunc1017->SetSavedPoint(47,0.06776846);
-   DilutionFunc1017->SetSavedPoint(48,0.06756816);
-   DilutionFunc1017->SetSavedPoint(49,0.06736513);
-   DilutionFunc1017->SetSavedPoint(50,0.06715939);
-   DilutionFunc1017->SetSavedPoint(51,0.0669509);
-   DilutionFunc1017->SetSavedPoint(52,0.06673968);
-   DilutionFunc1017->SetSavedPoint(53,0.0665257);
-   DilutionFunc1017->SetSavedPoint(54,0.06630897);
-   DilutionFunc1017->SetSavedPoint(55,0.06608946);
-   DilutionFunc1017->SetSavedPoint(56,0.06586718);
-   DilutionFunc1017->SetSavedPoint(57,0.06564212);
-   DilutionFunc1017->SetSavedPoint(58,0.06541426);
-   DilutionFunc1017->SetSavedPoint(59,0.06518361);
-   DilutionFunc1017->SetSavedPoint(60,0.06495014);
-   DilutionFunc1017->SetSavedPoint(61,0.06471385);
-   DilutionFunc1017->SetSavedPoint(62,0.06447474);
-   DilutionFunc1017->SetSavedPoint(63,0.06423279);
-   DilutionFunc1017->SetSavedPoint(64,0.063988);
-   DilutionFunc1017->SetSavedPoint(65,0.06374036);
-   DilutionFunc1017->SetSavedPoint(66,0.06348986);
-   DilutionFunc1017->SetSavedPoint(67,0.06323649);
-   DilutionFunc1017->SetSavedPoint(68,0.06298025);
-   DilutionFunc1017->SetSavedPoint(69,0.06272112);
-   DilutionFunc1017->SetSavedPoint(70,0.06245909);
-   DilutionFunc1017->SetSavedPoint(71,0.06219416);
-   DilutionFunc1017->SetSavedPoint(72,0.06192633);
-   DilutionFunc1017->SetSavedPoint(73,0.06165557);
-   DilutionFunc1017->SetSavedPoint(74,0.06138189);
-   DilutionFunc1017->SetSavedPoint(75,0.06110527);
-   DilutionFunc1017->SetSavedPoint(76,0.06082571);
-   DilutionFunc1017->SetSavedPoint(77,0.06054319);
-   DilutionFunc1017->SetSavedPoint(78,0.06025772);
-   DilutionFunc1017->SetSavedPoint(79,0.05996927);
-   DilutionFunc1017->SetSavedPoint(80,0.05967785);
-   DilutionFunc1017->SetSavedPoint(81,0.05938344);
-   DilutionFunc1017->SetSavedPoint(82,0.05908604);
-   DilutionFunc1017->SetSavedPoint(83,0.05878564);
-   DilutionFunc1017->SetSavedPoint(84,0.05848222);
-   DilutionFunc1017->SetSavedPoint(85,0.05817579);
-   DilutionFunc1017->SetSavedPoint(86,0.05786633);
-   DilutionFunc1017->SetSavedPoint(87,0.05755383);
-   DilutionFunc1017->SetSavedPoint(88,0.05723829);
-   DilutionFunc1017->SetSavedPoint(89,0.05691969);
-   DilutionFunc1017->SetSavedPoint(90,0.05659803);
-   DilutionFunc1017->SetSavedPoint(91,0.05627331);
-   DilutionFunc1017->SetSavedPoint(92,0.0559455);
-   DilutionFunc1017->SetSavedPoint(93,0.05561461);
-   DilutionFunc1017->SetSavedPoint(94,0.05528062);
-   DilutionFunc1017->SetSavedPoint(95,0.05494353);
-   DilutionFunc1017->SetSavedPoint(96,0.05460333);
-   DilutionFunc1017->SetSavedPoint(97,0.05426001);
-   DilutionFunc1017->SetSavedPoint(98,0.05391356);
-   DilutionFunc1017->SetSavedPoint(99,0.05356397);
-   DilutionFunc1017->SetSavedPoint(100,0.05321124);
+   DilutionFunc1017->SetSavedPoint(0,0.08056975);
+   DilutionFunc1017->SetSavedPoint(1,0.08047213);
+   DilutionFunc1017->SetSavedPoint(2,0.08037173);
+   DilutionFunc1017->SetSavedPoint(3,0.08026855);
+   DilutionFunc1017->SetSavedPoint(4,0.08016258);
+   DilutionFunc1017->SetSavedPoint(5,0.0800538);
+   DilutionFunc1017->SetSavedPoint(6,0.07994221);
+   DilutionFunc1017->SetSavedPoint(7,0.0798278);
+   DilutionFunc1017->SetSavedPoint(8,0.07971055);
+   DilutionFunc1017->SetSavedPoint(9,0.07959046);
+   DilutionFunc1017->SetSavedPoint(10,0.07946752);
+   DilutionFunc1017->SetSavedPoint(11,0.07934171);
+   DilutionFunc1017->SetSavedPoint(12,0.07921302);
+   DilutionFunc1017->SetSavedPoint(13,0.07908145);
+   DilutionFunc1017->SetSavedPoint(14,0.07894698);
+   DilutionFunc1017->SetSavedPoint(15,0.0788096);
+   DilutionFunc1017->SetSavedPoint(16,0.07866931);
+   DilutionFunc1017->SetSavedPoint(17,0.07852609);
+   DilutionFunc1017->SetSavedPoint(18,0.07837993);
+   DilutionFunc1017->SetSavedPoint(19,0.07823082);
+   DilutionFunc1017->SetSavedPoint(20,0.07807875);
+   DilutionFunc1017->SetSavedPoint(21,0.07792372);
+   DilutionFunc1017->SetSavedPoint(22,0.0777657);
+   DilutionFunc1017->SetSavedPoint(23,0.0776047);
+   DilutionFunc1017->SetSavedPoint(24,0.07744069);
+   DilutionFunc1017->SetSavedPoint(25,0.07727368);
+   DilutionFunc1017->SetSavedPoint(26,0.07710364);
+   DilutionFunc1017->SetSavedPoint(27,0.07693057);
+   DilutionFunc1017->SetSavedPoint(28,0.07675446);
+   DilutionFunc1017->SetSavedPoint(29,0.0765753);
+   DilutionFunc1017->SetSavedPoint(30,0.07639307);
+   DilutionFunc1017->SetSavedPoint(31,0.07620777);
+   DilutionFunc1017->SetSavedPoint(32,0.07601939);
+   DilutionFunc1017->SetSavedPoint(33,0.07582791);
+   DilutionFunc1017->SetSavedPoint(34,0.07563333);
+   DilutionFunc1017->SetSavedPoint(35,0.07543563);
+   DilutionFunc1017->SetSavedPoint(36,0.07523481);
+   DilutionFunc1017->SetSavedPoint(37,0.07503086);
+   DilutionFunc1017->SetSavedPoint(38,0.07482375);
+   DilutionFunc1017->SetSavedPoint(39,0.07461349);
+   DilutionFunc1017->SetSavedPoint(40,0.07440007);
+   DilutionFunc1017->SetSavedPoint(41,0.07418347);
+   DilutionFunc1017->SetSavedPoint(42,0.07396368);
+   DilutionFunc1017->SetSavedPoint(43,0.07374069);
+   DilutionFunc1017->SetSavedPoint(44,0.07351449);
+   DilutionFunc1017->SetSavedPoint(45,0.07328508);
+   DilutionFunc1017->SetSavedPoint(46,0.07305243);
+   DilutionFunc1017->SetSavedPoint(47,0.07281655);
+   DilutionFunc1017->SetSavedPoint(48,0.07257742);
+   DilutionFunc1017->SetSavedPoint(49,0.07233502);
+   DilutionFunc1017->SetSavedPoint(50,0.07208936);
+   DilutionFunc1017->SetSavedPoint(51,0.07184041);
+   DilutionFunc1017->SetSavedPoint(52,0.07158818);
+   DilutionFunc1017->SetSavedPoint(53,0.07133264);
+   DilutionFunc1017->SetSavedPoint(54,0.07107379);
+   DilutionFunc1017->SetSavedPoint(55,0.07081162);
+   DilutionFunc1017->SetSavedPoint(56,0.07054611);
+   DilutionFunc1017->SetSavedPoint(57,0.07027726);
+   DilutionFunc1017->SetSavedPoint(58,0.07000506);
+   DilutionFunc1017->SetSavedPoint(59,0.06972949);
+   DilutionFunc1017->SetSavedPoint(60,0.06945055);
+   DilutionFunc1017->SetSavedPoint(61,0.06916822);
+   DilutionFunc1017->SetSavedPoint(62,0.0688825);
+   DilutionFunc1017->SetSavedPoint(63,0.06859337);
+   DilutionFunc1017->SetSavedPoint(64,0.06830083);
+   DilutionFunc1017->SetSavedPoint(65,0.06800486);
+   DilutionFunc1017->SetSavedPoint(66,0.06770545);
+   DilutionFunc1017->SetSavedPoint(67,0.06740259);
+   DilutionFunc1017->SetSavedPoint(68,0.06709628);
+   DilutionFunc1017->SetSavedPoint(69,0.0667865);
+   DilutionFunc1017->SetSavedPoint(70,0.06647324);
+   DilutionFunc1017->SetSavedPoint(71,0.06615649);
+   DilutionFunc1017->SetSavedPoint(72,0.06583625);
+   DilutionFunc1017->SetSavedPoint(73,0.06551249);
+   DilutionFunc1017->SetSavedPoint(74,0.06518521);
+   DilutionFunc1017->SetSavedPoint(75,0.06485441);
+   DilutionFunc1017->SetSavedPoint(76,0.06452006);
+   DilutionFunc1017->SetSavedPoint(77,0.06418216);
+   DilutionFunc1017->SetSavedPoint(78,0.0638407);
+   DilutionFunc1017->SetSavedPoint(79,0.06349566);
+   DilutionFunc1017->SetSavedPoint(80,0.06314705);
+   DilutionFunc1017->SetSavedPoint(81,0.06279484);
+   DilutionFunc1017->SetSavedPoint(82,0.06243903);
+   DilutionFunc1017->SetSavedPoint(83,0.0620796);
+   DilutionFunc1017->SetSavedPoint(84,0.06171655);
+   DilutionFunc1017->SetSavedPoint(85,0.06134987);
+   DilutionFunc1017->SetSavedPoint(86,0.06097954);
+   DilutionFunc1017->SetSavedPoint(87,0.06060556);
+   DilutionFunc1017->SetSavedPoint(88,0.06022791);
+   DilutionFunc1017->SetSavedPoint(89,0.05984658);
+   DilutionFunc1017->SetSavedPoint(90,0.05946157);
+   DilutionFunc1017->SetSavedPoint(91,0.05907286);
+   DilutionFunc1017->SetSavedPoint(92,0.05868045);
+   DilutionFunc1017->SetSavedPoint(93,0.05828432);
+   DilutionFunc1017->SetSavedPoint(94,0.05788446);
+   DilutionFunc1017->SetSavedPoint(95,0.05748086);
+   DilutionFunc1017->SetSavedPoint(96,0.05707351);
+   DilutionFunc1017->SetSavedPoint(97,0.0566624);
+   DilutionFunc1017->SetSavedPoint(98,0.05624753);
+   DilutionFunc1017->SetSavedPoint(99,0.05582887);
+   DilutionFunc1017->SetSavedPoint(100,0.05540642);
    DilutionFunc1017->SetSavedPoint(101,750);
    DilutionFunc1017->SetSavedPoint(102,2750);
    DilutionFunc1017->SetFillColor(19);
@@ -342,18 +342,18 @@ void RecoVertexFit_S12S18()
    ci = TColor::GetColor("#ff0000");
    DilutionFunc1017->SetLineColor(ci);
    DilutionFunc1017->SetLineWidth(3);
-   DilutionFunc1017->SetChisquare(10.10967);
+   DilutionFunc1017->SetChisquare(6.198762);
    DilutionFunc1017->SetNDF(6);
    DilutionFunc1017->GetXaxis()->SetLabelFont(42);
    DilutionFunc1017->GetXaxis()->SetTitleOffset(1);
    DilutionFunc1017->GetXaxis()->SetTitleFont(42);
    DilutionFunc1017->GetYaxis()->SetLabelFont(42);
    DilutionFunc1017->GetYaxis()->SetTitleFont(42);
-   DilutionFunc1017->SetParameter(0,0.07575223);
-   DilutionFunc1017->SetParError(0,0.005625511);
+   DilutionFunc1017->SetParameter(0,0.08232864);
+   DilutionFunc1017->SetParError(0,0.00566841);
    DilutionFunc1017->SetParLimits(0,0,0);
-   DilutionFunc1017->SetParameter(1,-0.000104883);
-   DilutionFunc1017->SetParError(1,2.137562e-05);
+   DilutionFunc1017->SetParameter(1,-0.0001095573);
+   DilutionFunc1017->SetParError(1,1.854845e-05);
    DilutionFunc1017->SetParLimits(1,0,0);
    DilutionFunc1017->Draw("SAME");
    
@@ -401,7 +401,7 @@ void RecoVertexFit_S12S18()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("1.68
+   pt_LaTex = pt->AddText("1.03
 ");
    pt_LaTex = pt->AddText("0.08
 #pm0.006

@@ -1,10 +1,10 @@
 void S12_trackRecoErrors()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 22 09:46:12 2022) by ROOT version 6.24/06
+//=========  (Wed Apr 20 00:05:55 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-132.135,-0.00580365,3371.681,0.0905441);
+   c->Range(-132.2217,-0.005848955,3371.796,0.09139039);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,29 +12,29 @@ void S12_trackRecoErrors()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1006[11] = {
-   451.8343,
-   653.3487,
-   880.3346,
-   1123.176,
-   1371.112,
-   1620.329,
-   1866.848,
-   2115.055,
-   2362.648,
-   2614.356,
-   2787.711};
+   451.7813,
+   653.3899,
+   880.2814,
+   1123.172,
+   1371.155,
+   1620.23,
+   1866.957,
+   2115.041,
+   2362.635,
+   2614.361,
+   2787.793};
    Double_t _fy1006[11] = {
-   0.07448614,
-   0.02500426,
-   0.01438454,
-   0.01182759,
-   0.01079981,
-   0.01025431,
-   0.01031118,
-   0.01091718,
-   0.01175811,
-   0.01168737,
-   0.02673634};
+   0.07518383,
+   0.02527098,
+   0.014521,
+   0.01194085,
+   0.01090847,
+   0.0103576,
+   0.01041588,
+   0.01102604,
+   0.01186605,
+   0.01180639,
+   0.02708239};
    Double_t _fex1006[11] = {
    0,
    0,
@@ -65,9 +65,9 @@ void S12_trackRecoErrors()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","",100,218.2466,3021.299);
-   Graph_Graph1006->SetMinimum(0.003831126);
-   Graph_Graph1006->SetMaximum(0.08090933);
+   TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","",100,218.1801,3021.394);
+   Graph_Graph1006->SetMinimum(0.00387498);
+   Graph_Graph1006->SetMaximum(0.08166646);
    Graph_Graph1006->SetDirectory(0);
    Graph_Graph1006->SetStats(0);
 

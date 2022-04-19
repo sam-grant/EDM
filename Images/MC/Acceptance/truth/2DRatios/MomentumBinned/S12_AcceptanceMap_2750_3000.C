@@ -1,0 +1,138 @@
+void S12_AcceptanceMap_2750_3000()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Tue Apr 19 20:20:54 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptStat(0);
+   c->SetHighLightColor(2);
+   c->Range(-75.58442,-131.25,80.25974,131.25);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetRightMargin(0.13);
+   c->SetFrameBorderMode(0);
+   c->SetFrameBorderMode(0);
+   
+   TH2D *S12_WeightMap_2750_3000 = new TH2D("S12_WeightMap_2750_3000","2750 < p [MeV] < 3000",12,-60,60,315,-1575,1575);
+   S12_WeightMap_2750_3000->SetBinContent(2202,0.09853125);
+   S12_WeightMap_2750_3000->SetBinContent(2203,0.1842001);
+   S12_WeightMap_2750_3000->SetBinContent(2204,1.073042);
+   S12_WeightMap_2750_3000->SetBinContent(2205,0.9458374);
+   S12_WeightMap_2750_3000->SetBinContent(2206,1.277769);
+   S12_WeightMap_2750_3000->SetBinContent(2207,1.194695);
+   S12_WeightMap_2750_3000->SetBinContent(2208,2.525165);
+   S12_WeightMap_2750_3000->SetBinContent(2214,1.21121);
+   S12_WeightMap_2750_3000->SetBinContent(2215,0.497672);
+   S12_WeightMap_2750_3000->SetBinContent(2216,0.9820582);
+   S12_WeightMap_2750_3000->SetBinContent(2217,0.9585529);
+   S12_WeightMap_2750_3000->SetBinContent(2218,0.8726777);
+   S12_WeightMap_2750_3000->SetBinContent(2219,1);
+   S12_WeightMap_2750_3000->SetBinContent(2220,1.110204);
+   S12_WeightMap_2750_3000->SetBinContent(2221,1.143506);
+   S12_WeightMap_2750_3000->SetBinContent(2222,0.8311012);
+   S12_WeightMap_2750_3000->SetBinContent(2228,6.30092);
+   S12_WeightMap_2750_3000->SetBinContent(2229,1.711676);
+   S12_WeightMap_2750_3000->SetBinContent(2230,1.104013);
+   S12_WeightMap_2750_3000->SetBinContent(2231,1.670474);
+   S12_WeightMap_2750_3000->SetBinContent(2232,1.199698);
+   S12_WeightMap_2750_3000->SetBinContent(2233,0.8482991);
+   S12_WeightMap_2750_3000->SetBinContent(2234,0.3685428);
+   S12_WeightMap_2750_3000->SetBinContent(2235,0.09881429);
+   S12_WeightMap_2750_3000->SetBinError(2202,0.09853439);
+   S12_WeightMap_2750_3000->SetBinError(2203,0.09210555);
+   S12_WeightMap_2750_3000->SetBinError(2204,0.1840889);
+   S12_WeightMap_2750_3000->SetBinError(2205,0.1727382);
+   S12_WeightMap_2750_3000->SetBinError(2206,0.2415753);
+   S12_WeightMap_2750_3000->SetBinError(2207,0.3450117);
+   S12_WeightMap_2750_3000->SetBinError(2208,0.8424078);
+   S12_WeightMap_2750_3000->SetBinError(2214,0.8567896);
+   S12_WeightMap_2750_3000->SetBinError(2215,0.2032064);
+   S12_WeightMap_2750_3000->SetBinError(2216,0.168475);
+   S12_WeightMap_2750_3000->SetBinError(2217,0.1146044);
+   S12_WeightMap_2750_3000->SetBinError(2218,0.0900352);
+   S12_WeightMap_2750_3000->SetBinError(2219,0.09625612);
+   S12_WeightMap_2750_3000->SetBinError(2220,0.1234002);
+   S12_WeightMap_2750_3000->SetBinError(2221,0.1831751);
+   S12_WeightMap_2750_3000->SetBinError(2222,0.2628878);
+   S12_WeightMap_2750_3000->SetBinError(2228,3.645234);
+   S12_WeightMap_2750_3000->SetBinError(2229,0.6991752);
+   S12_WeightMap_2750_3000->SetBinError(2230,0.332991);
+   S12_WeightMap_2750_3000->SetBinError(2231,0.2785625);
+   S12_WeightMap_2750_3000->SetBinError(2232,0.1946921);
+   S12_WeightMap_2750_3000->SetBinError(2233,0.1633);
+   S12_WeightMap_2750_3000->SetBinError(2234,0.1303151);
+   S12_WeightMap_2750_3000->SetBinError(2235,0.09881745);
+   S12_WeightMap_2750_3000->SetEntries(53.39669);
+   S12_WeightMap_2750_3000->SetStats(0);
+   S12_WeightMap_2750_3000->SetContour(20);
+   S12_WeightMap_2750_3000->SetContourLevel(0,0);
+   S12_WeightMap_2750_3000->SetContourLevel(1,0.315046);
+   S12_WeightMap_2750_3000->SetContourLevel(2,0.630092);
+   S12_WeightMap_2750_3000->SetContourLevel(3,0.9451379);
+   S12_WeightMap_2750_3000->SetContourLevel(4,1.260184);
+   S12_WeightMap_2750_3000->SetContourLevel(5,1.57523);
+   S12_WeightMap_2750_3000->SetContourLevel(6,1.890276);
+   S12_WeightMap_2750_3000->SetContourLevel(7,2.205322);
+   S12_WeightMap_2750_3000->SetContourLevel(8,2.520368);
+   S12_WeightMap_2750_3000->SetContourLevel(9,2.835414);
+   S12_WeightMap_2750_3000->SetContourLevel(10,3.15046);
+   S12_WeightMap_2750_3000->SetContourLevel(11,3.465506);
+   S12_WeightMap_2750_3000->SetContourLevel(12,3.780552);
+   S12_WeightMap_2750_3000->SetContourLevel(13,4.095598);
+   S12_WeightMap_2750_3000->SetContourLevel(14,4.410644);
+   S12_WeightMap_2750_3000->SetContourLevel(15,4.72569);
+   S12_WeightMap_2750_3000->SetContourLevel(16,5.040736);
+   S12_WeightMap_2750_3000->SetContourLevel(17,5.355782);
+   S12_WeightMap_2750_3000->SetContourLevel(18,5.670828);
+   S12_WeightMap_2750_3000->SetContourLevel(19,5.985874);
+   
+   TPaletteAxis *palette = new TPaletteAxis(60.77922,-105,67.79221,105,S12_WeightMap_2750_3000);
+   palette->SetLabelColor(1);
+   palette->SetLabelFont(42);
+   palette->SetLabelOffset(0.005);
+   palette->SetLabelSize(0.035);
+   palette->SetTitleOffset(1);
+   palette->SetTitleSize(0.035);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#f9f90e");
+   palette->SetFillColor(ci);
+   palette->SetFillStyle(1001);
+   S12_WeightMap_2750_3000->GetListOfFunctions()->Add(palette,"br");
+
+   ci = TColor::GetColor("#000099");
+   S12_WeightMap_2750_3000->SetLineColor(ci);
+   S12_WeightMap_2750_3000->GetXaxis()->SetTitle("Decay y-position [mm]");
+   S12_WeightMap_2750_3000->GetXaxis()->SetRange(1,12);
+   S12_WeightMap_2750_3000->GetXaxis()->CenterTitle(true);
+   S12_WeightMap_2750_3000->GetXaxis()->SetLabelFont(42);
+   S12_WeightMap_2750_3000->GetXaxis()->SetTitleSize(0.04);
+   S12_WeightMap_2750_3000->GetXaxis()->SetTitleOffset(1.1);
+   S12_WeightMap_2750_3000->GetXaxis()->SetTitleFont(42);
+   S12_WeightMap_2750_3000->GetYaxis()->SetTitle(" #theta_{y} [mrad]");
+   S12_WeightMap_2750_3000->GetYaxis()->SetRange(148,168);
+   S12_WeightMap_2750_3000->GetYaxis()->CenterTitle(true);
+   S12_WeightMap_2750_3000->GetYaxis()->SetNdivisions(4000510);
+   S12_WeightMap_2750_3000->GetYaxis()->SetLabelFont(42);
+   S12_WeightMap_2750_3000->GetYaxis()->SetTitleSize(0.04);
+   S12_WeightMap_2750_3000->GetYaxis()->SetTitleOffset(1.1);
+   S12_WeightMap_2750_3000->GetYaxis()->SetTitleFont(42);
+   S12_WeightMap_2750_3000->GetZaxis()->CenterTitle(true);
+   S12_WeightMap_2750_3000->GetZaxis()->SetLabelFont(42);
+   S12_WeightMap_2750_3000->GetZaxis()->SetTitleOffset(1);
+   S12_WeightMap_2750_3000->GetZaxis()->SetTitleFont(42);
+   S12_WeightMap_2750_3000->Draw("COLZ TEXT");
+   
+   TPaveText *pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("2750 < p [MeV] < 3000");
+   pt->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

@@ -1,7 +1,7 @@
 void SlopeVsShiftedBeamPosition()
 {
 //=========Macro generated from canvas: c/
-//=========  (Sun Apr 17 23:21:51 2022) by ROOT version 6.24/06
+//=========  (Mon Apr 18 11:40:08 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(-0.6,3.124999e-05,1.8,0.00071875);
    c->SetFillColor(0);
@@ -53,9 +53,9 @@ void SlopeVsShiftedBeamPosition()
    graph->Draw("ap");
    
    Double_t _fx1053[4] = {
-   0.597923,
-   0.5248117,
-   0.891698,
+   0.5979227,
+   0.5248113,
+   0.8916976,
    1.393382};
    Double_t _fy1053[4] = {
    0.0003470762,
@@ -78,7 +78,7 @@ void SlopeVsShiftedBeamPosition()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1053 = new TH1F("Graph_Graph1053","",100,0.4329209,1.483463);
+   TH1F *Graph_Graph1053 = new TH1F("Graph_Graph1053","",100,0.4329206,1.483463);
    Graph_Graph1053->SetMinimum(0.0003033121);
    Graph_Graph1053->SetMaximum(0.0005991936);
    Graph_Graph1053->SetDirectory(0);
@@ -103,7 +103,7 @@ void SlopeVsShiftedBeamPosition()
    gre->SetHistogram(Graph_Graph1053);
    
    
-   TF1 *new_fit1054 = new TF1("new_fit","[0]+[1]*x",0.5248117,1.393382, TF1::EAddToList::kNo);
+   TF1 *new_fit1054 = new TF1("new_fit","[0]+[1]*x",0.5248113,1.393382, TF1::EAddToList::kNo);
    new_fit1054->SetFillColor(19);
    new_fit1054->SetFillStyle(0);
    new_fit1054->SetLineColor(2);
@@ -115,11 +115,11 @@ void SlopeVsShiftedBeamPosition()
    new_fit1054->GetXaxis()->SetTitleFont(42);
    new_fit1054->GetYaxis()->SetLabelFont(42);
    new_fit1054->GetYaxis()->SetTitleFont(42);
-   new_fit1054->SetParameter(0,0.0001991813);
-   new_fit1054->SetParError(0,1.227633e-05);
+   new_fit1054->SetParameter(0,0.0001991814);
+   new_fit1054->SetParError(0,1.227628e-05);
    new_fit1054->SetParLimits(0,0,0);
    new_fit1054->SetParameter(1,0.0002666164);
-   new_fit1054->SetParError(1,1.126398e-05);
+   new_fit1054->SetParError(1,1.126394e-05);
    new_fit1054->SetParLimits(1,0,0);
    new_fit1054->SetParent(gre);
    gre->GetListOfFunctions()->Add(new_fit1054);
@@ -190,11 +190,11 @@ void SlopeVsShiftedBeamPosition()
    fit1056->GetXaxis()->SetTitleFont(42);
    fit1056->GetYaxis()->SetLabelFont(42);
    fit1056->GetYaxis()->SetTitleFont(42);
-   fit1056->SetParameter(0,0.0001936008);
-   fit1056->SetParError(0,1.276511e-05);
+   fit1056->SetParameter(0,0.0001936007);
+   fit1056->SetParError(0,1.27648e-05);
    fit1056->SetParLimits(0,0,0);
    fit1056->SetParameter(1,0.0002591517);
-   fit1056->SetParError(1,1.231882e-05);
+   fit1056->SetParError(1,1.231857e-05);
    fit1056->SetParLimits(1,0,0);
    fit1056->SetParent(gre);
    gre->GetListOfFunctions()->Add(fit1056);
@@ -274,7 +274,7 @@ void SlopeVsShiftedBeamPosition()
    
    gre->Draw("p ");
    
-   TF1 *new_fit1057 = new TF1("new_fit","[0]+[1]*x",0.5248117,1.393382, TF1::EAddToList::kDefault);
+   TF1 *new_fit1057 = new TF1("new_fit","[0]+[1]*x",0.5248113,1.393382, TF1::EAddToList::kDefault);
    new_fit1057->SetFillColor(19);
    new_fit1057->SetFillStyle(0);
    new_fit1057->SetLineWidth(2);
@@ -285,11 +285,11 @@ void SlopeVsShiftedBeamPosition()
    new_fit1057->GetXaxis()->SetTitleFont(42);
    new_fit1057->GetYaxis()->SetLabelFont(42);
    new_fit1057->GetYaxis()->SetTitleFont(42);
-   new_fit1057->SetParameter(0,0.0001991813);
-   new_fit1057->SetParError(0,1.227633e-05);
+   new_fit1057->SetParameter(0,0.0001991814);
+   new_fit1057->SetParError(0,1.227628e-05);
    new_fit1057->SetParLimits(0,0,0);
    new_fit1057->SetParameter(1,0.0002666164);
-   new_fit1057->SetParError(1,1.126398e-05);
+   new_fit1057->SetParError(1,1.126394e-05);
    new_fit1057->SetParLimits(1,0,0);
    new_fit1057->Draw("SAME");
    
@@ -307,15 +307,15 @@ void SlopeVsShiftedBeamPosition()
    fit1058->GetXaxis()->SetTitleFont(42);
    fit1058->GetYaxis()->SetLabelFont(42);
    fit1058->GetYaxis()->SetTitleFont(42);
-   fit1058->SetParameter(0,0.0001936008);
-   fit1058->SetParError(0,1.276511e-05);
+   fit1058->SetParameter(0,0.0001936007);
+   fit1058->SetParError(0,1.27648e-05);
    fit1058->SetParLimits(0,0,0);
    fit1058->SetParameter(1,0.0002591517);
-   fit1058->SetParError(1,1.231882e-05);
+   fit1058->SetParError(1,1.231857e-05);
    fit1058->SetParLimits(1,0,0);
    fit1058->Draw("SAME");
    
-   TF1 *fit_extrap_S121059 = new TF1("fit_extrap_S12","[0]+[1]*x",-0.08374266,0.5248117, TF1::EAddToList::kDefault);
+   TF1 *fit_extrap_S121059 = new TF1("fit_extrap_S12","[0]+[1]*x",-0.08374266,0.5248113, TF1::EAddToList::kDefault);
    fit_extrap_S121059->SetFillColor(19);
    fit_extrap_S121059->SetFillStyle(0);
    fit_extrap_S121059->SetLineWidth(2);
@@ -325,7 +325,7 @@ void SlopeVsShiftedBeamPosition()
    fit_extrap_S121059->GetXaxis()->SetTitleFont(42);
    fit_extrap_S121059->GetYaxis()->SetLabelFont(42);
    fit_extrap_S121059->GetYaxis()->SetTitleFont(42);
-   fit_extrap_S121059->SetParameter(0,0.0001991813);
+   fit_extrap_S121059->SetParameter(0,0.0001991814);
    fit_extrap_S121059->SetParError(0,0);
    fit_extrap_S121059->SetParLimits(0,0,0);
    fit_extrap_S121059->SetParameter(1,0.0002666164);
@@ -346,7 +346,7 @@ void SlopeVsShiftedBeamPosition()
    fit_extrap_S181060->GetXaxis()->SetTitleFont(42);
    fit_extrap_S181060->GetYaxis()->SetLabelFont(42);
    fit_extrap_S181060->GetYaxis()->SetTitleFont(42);
-   fit_extrap_S181060->SetParameter(0,0.0001936008);
+   fit_extrap_S181060->SetParameter(0,0.0001936007);
    fit_extrap_S181060->SetParError(0,0);
    fit_extrap_S181060->SetParLimits(0,0,0);
    fit_extrap_S181060->SetParameter(1,0.0002591517);

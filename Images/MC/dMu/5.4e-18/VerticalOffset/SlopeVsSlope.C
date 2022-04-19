@@ -1,7 +1,7 @@
 void SlopeVsSlope()
 {
 //=========Macro generated from canvas: c/
-//=========  (Sun Apr 17 23:21:51 2022) by ROOT version 6.24/06
+//=========  (Mon Apr 18 11:40:08 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(3.575e-05,-0.00029875,0.00066825,8.875e-05);
    c->SetFillColor(0);
@@ -18,7 +18,7 @@ void SlopeVsSlope()
    0};
    TGraph *graph = new TGraph(2,_fx3,_fy3);
    graph->SetName("");
-   graph->SetTitle(";#LT#theta_{y}#GT/p [mrad/MeV];#LTy#GT/p [mrad/MeV];");
+   graph->SetTitle(";#LT#theta_{y}#GT/p [mm/MeV];#LTy#GT/p [mrad/MeV];");
    graph->SetFillStyle(1000);
    graph->SetMarkerSize(0);
    
@@ -32,7 +32,7 @@ void SlopeVsSlope()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph3->SetLineColor(ci);
-   Graph_Graph3->GetXaxis()->SetTitle("#LT#theta_{y}#GT/p [mrad/MeV]");
+   Graph_Graph3->GetXaxis()->SetTitle("#LT#theta_{y}#GT/p [mm/MeV]");
    Graph_Graph3->GetXaxis()->SetRange(10,55);
    Graph_Graph3->GetXaxis()->CenterTitle(true);
    Graph_Graph3->GetXaxis()->SetLabelFont(42);

@@ -1,7 +1,7 @@
 void Asymmetry_wa_restFrame()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec  6 08:58:54 2021) by ROOT version 6.24/04
+//=========  (Mon Apr 18 21:22:57 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.1428571,-0.5875,1.285714,1.2875);
@@ -12,18 +12,18 @@ void Asymmetry_wa_restFrame()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TF1 *N_11 = new TF1("N_1",";#lambda=p/p_{max};Arbitrary units",0,1, TF1::EAddToList::kDefault);
+   TF1 *N_11 = new TF1("N_1",";Fractional e^{+} energy (#lambda);Normalised units",0,1, TF1::EAddToList::kDefault);
    N_11->SetFillColor(19);
    N_11->SetFillStyle(0);
    N_11->SetLineWidth(3);
-   N_11->GetXaxis()->SetTitle("#lambda=p/p_{max}");
+   N_11->GetXaxis()->SetTitle("Fractional e^{+} energy (#lambda)");
    N_11->GetXaxis()->SetRange(1,100);
    N_11->GetXaxis()->CenterTitle(true);
    N_11->GetXaxis()->SetLabelFont(42);
    N_11->GetXaxis()->SetTitleSize(0.04);
    N_11->GetXaxis()->SetTitleOffset(1.1);
    N_11->GetXaxis()->SetTitleFont(42);
-   N_11->GetYaxis()->SetTitle("Arbitrary units");
+   N_11->GetYaxis()->SetTitle("Normalised units");
    N_11->GetYaxis()->CenterTitle(true);
    N_11->GetYaxis()->SetNdivisions(4000510);
    N_11->GetYaxis()->SetLabelFont(42);
@@ -107,7 +107,7 @@ void Asymmetry_wa_restFrame()
    line->SetLineStyle(2);
    line->SetLineWidth(3);
    line->Draw();
-   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,3127.114,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,52.82919,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);
@@ -116,7 +116,7 @@ void Asymmetry_wa_restFrame()
    gaxis->SetTitleSize(0.04);
    gaxis->SetTitleColor(632);
    gaxis->SetTitleFont(42);
-   gaxis->SetTitle("Track momentum [MeV]");
+   gaxis->SetTitle("Rest frame e^{+} energy [MeV]");
 
    ci = TColor::GetColor("#ff0000");
    gaxis->SetLabelColor(ci);

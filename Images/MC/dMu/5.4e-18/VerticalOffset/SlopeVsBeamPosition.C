@@ -1,7 +1,7 @@
 void SlopeVsBeamPosition()
 {
 //=========Macro generated from canvas: c/
-//=========  (Sun Apr 17 23:21:51 2022) by ROOT version 6.24/06
+//=========  (Mon Apr 18 11:40:08 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(-0.6,3.124999e-05,1.8,0.00071875);
    c->SetFillColor(0);
