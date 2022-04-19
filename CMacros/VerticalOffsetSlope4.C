@@ -850,7 +850,7 @@ void RunSlopeVsSlope(TFile *fout) {
 	dummy->GetXaxis()->CenterTitle(true);
 	dummy->GetYaxis()->CenterTitle(true);
 	dummy->GetYaxis()->SetMaxDigits(4);
-	dummy->SetTitle(";#LT#theta_{y}#GT/p [mrad/MeV];#LTy#GT/p [mrad/MeV];");
+	dummy->SetTitle(";#LT#theta_{y}#GT/p [mm/MeV];#LTy#GT/p [mrad/MeV];");
 	dummy->Draw("AP");
 
   	l->SetBorderSize(0);
