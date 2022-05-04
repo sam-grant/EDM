@@ -139,11 +139,15 @@ void DrawFancyRatioPlot(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string stn, 
 	TPad *p2 = new TPad("p2", "p2", .69, .69, .99, .99);
 	p2->Draw();
 	p2->cd();
-	gStyle->SetPalette(kRainBow);
+	gStyle->SetPalette(kLightTemperature);
 
 	h2->GetXaxis()->CenterTitle(1);
 	h2->GetYaxis()->CenterTitle(1);
-
+	h2->SetTitle(";Y [mm];#theta_{y} [mrad]");
+	h2->GetYaxis()->SetTitleSize(0.06); 
+	h2->GetXaxis()->SetTitleSize(0.06); 
+	h2->GetXaxis()->SetTitleOffset(0.75);
+	h2->GetYaxis()->SetTitleOffset(0.75);
 	//h2->SetTitle(";y [mm];#theta_{y} [mm]");
 
 	h2->Draw("COL");
@@ -303,8 +307,142 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 	fout->mkdir(("AcceptanceWeightings/"+momSlice).c_str());
 	fout->cd(("AcceptanceWeightings/"+momSlice).c_str());
 
-/*	fout->mkdir("AcceptanceWeighting/AllMom");
-	fout->mkdir("AcceptanceWeighting/MomBins");*/
+
+	vector<string> stn_ = {"S12", "S18", "S12S18"};//, "S12", "S18"};
+
+	// Get basic decay histograms 
+	TH1D *h1_Y_decays = (TH1D*)fin->Get((momSlice+"/AllDecays/Main/Y").c_str());
+	TH2D *h2_thetaY_vs_Y_decays = (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_Y").c_str());
+
+	cout<<"----> Got base decay histograms"<<endl;
+
+	for(auto& stn : stn_) { 
+
+		cout<<"----> Running "<<stn<<endl;
+
+		// Calculate the acceptance weights in 5 mm slices of vertical position 
+
+		TH1D *h1_Y_tracks = (TH1D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_Y").c_str());
+		TH1D *h1_Y_ratio = Ratio(h1_Y_tracks, h1_Y_decays);
+
+		//h1_Y_ratio->Write((stn+"_y_ratio").c_str());
+
+		cout<<"---> Made y-position ratio: "<<h1_Y_ratio<<endl;
+
+		// Normalise to max RATIO
+		int maxRatioBinY = h1_Y_ratio->GetMaximumBin(); //FindMaximumBin(h1_Y_ratio);//->GetMaximumBin();
+
+		h1_Y_ratio->Scale(1./h1_Y_ratio->GetBinContent(maxRatioBinY)); 
+		h1_Y_decays->Scale(1./h1_Y_decays->GetBinContent(maxRatioBinY)); 
+		h1_Y_tracks->Scale(1./h1_Y_tracks->GetBinContent(maxRatioBinY)); 
+
+		// Draw ratio plot 
+		DrawBasicRatioPlot(h1_Y_decays, h1_Y_tracks, stn, "Vertical decay position, y [mm]", "../Images/MC/Acceptance/1DRatios/VerticalPosition/"+stn+"_VerticalDecayPositionRatio_"+momSlice); //h1_thetaY_tracks, fname, slice, stn);
+
+		// Draw overall ratio
+		TH2D *h2_thetaY_vs_Y_decays= (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_Y").c_str());
+		h2_thetaY_vs_Y_decays->GetXaxis()->SetRangeUser(-45, 45);
+		h2_thetaY_vs_Y_decays->GetYaxis()->SetRangeUser(-45, 45);
+
+	    // Get theta_y histograms
+	    TH1D *h1_thetaY_decays = (TH1D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY").c_str());
+	    TH1D *h1_thetaY_tracks = (TH1D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_ThetaY").c_str());
+
+	   	// Get ratio
+	   	TH1D *h1_thetaY_ratio = Ratio(h1_thetaY_tracks, h1_thetaY_decays);
+	   	h1_thetaY_ratio->Write((stn+"_thetaY_ratio").c_str());
+
+	   	// Normalise to max RATIO 
+		int maxRatioBinThetaY = h1_thetaY_ratio->GetMaximumBin();
+
+		h1_thetaY_ratio->Scale(1./h1_thetaY_ratio->GetBinContent(maxRatioBinThetaY)); 
+		h1_thetaY_decays->Scale(1./h1_thetaY_decays->GetBinContent(maxRatioBinThetaY)); 
+		h1_thetaY_tracks->Scale(1./h1_thetaY_tracks->GetBinContent(maxRatioBinThetaY)); 
+
+		int max_thetaY_vs_Y = h2_thetaY_vs_Y_decays->GetMaximum();
+
+		//h2_thetaY_vs_Y_decays->Scale(1./max_thetaY_vs_Y);// h2_thetaY_vs_Y_decays->GetMaximum());
+
+		DrawFancyRatioPlot(h2_thetaY_vs_Y_decays, h1_thetaY_decays, h1_thetaY_tracks, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio");
+
+		// In these same slices of y, we need weightings per 5 mrad vertical angle
+	  	int y_step = 5; 
+	  	int y_slices = 18; // verticalPosWeights_.size(); // 18 
+
+	  	vector<vector<double>> verticalAngleWeights_;
+
+	  	for ( int i(0); i < y_slices; i++ ) { 
+
+	    	int lo = -45 + i*y_step; 
+	    	int hi = y_step + lo;
+
+	    	std::string stepStr = to_string(lo)+"_"+to_string(hi);
+
+	    	// Illustration histogram
+			TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
+			h2_thetaY_vs_Y_decays_slice->GetXaxis()->SetRangeUser(-45, 45);
+			h2_thetaY_vs_Y_decays_slice->GetYaxis()->SetRangeUser(-45, 45);
+			h2_thetaY_vs_Y_decays_slice->GetZaxis()->SetRangeUser(h2_thetaY_vs_Y_decays->GetMinimum(), h2_thetaY_vs_Y_decays->GetMaximum());
+			//h2_thetaY_vs_Y_decays_slice->Scale(1./h2_thetaY_vs_Y_decays->Integral());//max_thetaY_vs_Y);
+
+	    	// Get theta_y histograms
+	    	TH1D *h1_thetaY_decays_slice = (TH1D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
+	    	TH1D *h1_thetaY_tracks_slice = (TH1D*)fin->Get((momSlice+"/Tracks/VertPosBins/"+stn+"_ThetaY_"+stepStr).c_str());
+
+	    	// Get ratio
+	    	TH1D *h1_thetaY_ratio_slice = Ratio(h1_thetaY_tracks_slice, h1_thetaY_decays_slice);
+
+	    	h1_thetaY_ratio_slice->Write((stn+"_thetaY_ratio_"+stepStr).c_str());
+
+			cout<<"---> Made vertical angle ratio: "<<h1_thetaY_ratio<<endl;
+
+			// Normalise to max RATIO 
+			int maxRatioBinThetaY = h1_thetaY_ratio_slice->GetMaximumBin();
+
+			h1_thetaY_ratio_slice->Scale(1./h1_thetaY_ratio_slice->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_decays_slice->Scale(1./h1_thetaY_decays_slice->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_tracks_slice->Scale(1./h1_thetaY_tracks_slice->GetBinContent(maxRatioBinThetaY)); 
+
+			DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
+
+		} // vertical position slice loop
+
+ 	} // stn loop
+
+	fin->Close();
+
+	return;
+
+}
+
+void AcceptanceMaps2() { 
+
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.truth.momBinned.root";
+	TFile *fout = new TFile(foutName, "RECREATE");
+	fout->mkdir("AcceptanceWeightings"); 
+
+	// All momentum
+	Run(fout);//
+
+	fout->Close();
+
+	cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
+
+    return;
+}
+
+/*
+void Run(TFile *fout, string momSlice = "0_3127_MeV") {	
+
+
+	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.momBinned.root";
+	TFile *fin = TFile::Open(finName);
+
+	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
+
+	fout->mkdir(("AcceptanceWeightings/"+momSlice).c_str());
+	fout->cd(("AcceptanceWeightings/"+momSlice).c_str());
+
 
 	vector<string> stn_ = {"S12", "S18", "S12S18"};//, "S12", "S18"};
 
@@ -350,12 +488,12 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 		//cout<<endl;
 
 		// In these same slices of y, we need weightings per 5 mrad vertical angle
-	  int y_step = 5; 
-	  int y_slices = verticalPosWeights_.size(); // 18 
+	  	int y_step = 5; 
+	  	int y_slices = verticalPosWeights_.size(); // 18 
 
-	  vector<vector<double>> verticalAngleWeights_;
+	  	vector<vector<double>> verticalAngleWeights_;
 
-	  for ( int i(0); i < y_slices; i++ ) { 
+	  	for ( int i(0); i < y_slices; i++ ) { 
 
 	    	int lo = -45 + i*y_step; 
 	    	int hi = y_step + lo;
@@ -363,9 +501,9 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 	    	std::string stepStr = to_string(lo)+"_"+to_string(hi);
 
 	    	// Illustration histogram
-				TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
-				h2_thetaY_vs_Y_decays_slice->GetXaxis()->SetRangeUser(-45, 45);
-				h2_thetaY_vs_Y_decays_slice->GetYaxis()->SetRangeUser(-45, 45);
+			TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
+			h2_thetaY_vs_Y_decays_slice->GetXaxis()->SetRangeUser(-45, 45);
+			h2_thetaY_vs_Y_decays_slice->GetYaxis()->SetRangeUser(-45, 45);
 
 	    	// Get theta_y histograms
 	    	TH1D *h1_thetaY_decays = (TH1D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
@@ -376,29 +514,29 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 
 	    	h1_thetaY_ratio->Write((stn+"_thetaY_ratio_"+stepStr).c_str());
 
-				cout<<"---> Made vertical angle ratio: "<<h1_thetaY_ratio<<endl;
+			cout<<"---> Made vertical angle ratio: "<<h1_thetaY_ratio<<endl;
 
-				// Normalise to max RATIO 
-				int maxRatioBinThetaY = h1_thetaY_ratio->GetMaximumBin();// FindMaximumBin(h1_thetaY_ratio); // h1_thetaY_ratio->GetMaximumBin();////->GetMaximumBin();
+			// Normalise to max RATIO 
+			int maxRatioBinThetaY = h1_thetaY_ratio->GetMaximumBin();// FindMaximumBin(h1_thetaY_ratio); // h1_thetaY_ratio->GetMaximumBin();////->GetMaximumBin();
 
-				h1_thetaY_ratio->Scale(1./h1_thetaY_ratio->GetBinContent(maxRatioBinThetaY)); 
-				h1_thetaY_decays->Scale(1./h1_thetaY_decays->GetBinContent(maxRatioBinThetaY)); 
-				h1_thetaY_tracks->Scale(1./h1_thetaY_tracks->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_ratio->Scale(1./h1_thetaY_ratio->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_decays->Scale(1./h1_thetaY_decays->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_tracks->Scale(1./h1_thetaY_tracks->GetBinContent(maxRatioBinThetaY)); 
 
-				vector<double> verticalAngleWeightsSlice_;
+			vector<double> verticalAngleWeightsSlice_;
 
-				//cout<<"\n---> Vertical angle weights\ntheta_y [mrad], weight"<<endl;
-				for(int i(0); i<h1_thetaY_ratio->GetNbinsX(); i++) {
-					double weight = h1_thetaY_ratio->GetBinContent(i+1);
-					if(weight==0) continue;
-					//cout<<h1_thetaY_ratio->GetBinCenter(i+1)<<", "<<h1_thetaY_ratio->GetBinContent(i+1)<<endl;
-					verticalAngleWeightsSlice_.push_back(h1_thetaY_ratio->GetBinContent(i+1));
-				}
+			//cout<<"\n---> Vertical angle weights\ntheta_y [mrad], weight"<<endl;
+			for(int i(0); i<h1_thetaY_ratio->GetNbinsX(); i++) {
+				double weight = h1_thetaY_ratio->GetBinContent(i+1);
+				if(weight==0) continue;
+				//cout<<h1_thetaY_ratio->GetBinCenter(i+1)<<", "<<h1_thetaY_ratio->GetBinContent(i+1)<<endl;
+				verticalAngleWeightsSlice_.push_back(h1_thetaY_ratio->GetBinContent(i+1));
+			}
 
-				// Draw ratio plot 
+			// Draw ratio plot 
 
-				// Axis title doesn't work but that's fine
-				DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays, h1_thetaY_tracks, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
+			// Axis title doesn't work but that's fine
+			DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays, h1_thetaY_tracks, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
 			
 
 				verticalAngleWeights_.push_back(verticalAngleWeightsSlice_);
@@ -485,51 +623,4 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 
 	return;
 
-}
-
-void AcceptanceMaps2() { 
-
-		TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.truth.momBinned.root";
-		TFile *fout = new TFile(foutName, "RECREATE");
-		fout->mkdir("AcceptanceWeightings"); 
-
-		// All momentum
-		Run(fout);//
-
-		// Analysis range
-		Run(fout, "750_2500_MeV");
-
-/*		, "1750_2000_MeV");//2500_2750_MeV");//,"2500_2750_MeV");//,"2000_2250_MeV");//, "1750_2000_MeV");//, "250_500_MeV");
-
-		fout->Close();
-
-		cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
-
-    return;*/
-
-
-		// Momentum bins
-		int p_step = 250; 
-  	int p_slices = PMAX/p_step;
-
- 		for ( int i(1); i < p_slices-1; i++ ) { 
-
-    	int pLo = i*p_step; 
-    	int pHi = p_step + i*p_step;
-
-    	cout<<"-----> Running momentum slice "<<pLo<<" < p [MeV] < "<<pHi<<endl;
-
-    	string momStr = to_string(pLo)+"_"+to_string(pHi)+"_MeV";    
-
-    	cout<<momStr<<endl;
-
-	   	Run(fout, momStr);
-
-    }
-
-		fout->Close();
-
-		cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
-
-    return;
-}
+}*/

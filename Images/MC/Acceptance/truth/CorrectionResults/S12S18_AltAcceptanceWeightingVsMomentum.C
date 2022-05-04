@@ -1,7 +1,7 @@
 void S12S18_AltAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 16:40:18 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:19:34 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(811.7217,0.4573298,2678.365,0.8325158);
@@ -61,7 +61,7 @@ void S12S18_AltAcceptanceWeightingVsMomentum()
    Graph_Graph1015->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1015->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1015->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1015->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   Graph_Graph1015->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    Graph_Graph1015->GetYaxis()->CenterTitle(true);
    Graph_Graph1015->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1015->GetYaxis()->SetLabelFont(42);

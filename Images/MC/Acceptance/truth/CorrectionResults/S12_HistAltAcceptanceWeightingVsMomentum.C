@@ -1,7 +1,7 @@
 void S12_HistAltAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 16:40:17 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:19:32 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -32,7 +32,7 @@ void S12_HistAltAcceptanceWeightingVsMomentum()
    S12_ratio_alt__2->GetXaxis()->SetTitleSize(0.04);
    S12_ratio_alt__2->GetXaxis()->SetTitleOffset(1.1);
    S12_ratio_alt__2->GetXaxis()->SetTitleFont(42);
-   S12_ratio_alt__2->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   S12_ratio_alt__2->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    S12_ratio_alt__2->GetYaxis()->CenterTitle(true);
    S12_ratio_alt__2->GetYaxis()->SetNdivisions(4000510);
    S12_ratio_alt__2->GetYaxis()->SetLabelFont(42);

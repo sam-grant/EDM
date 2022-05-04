@@ -1,7 +1,7 @@
 void S12_AcceptanceSurfacePhi_1500_1750()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May  2 22:57:58 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 17:55:08 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);

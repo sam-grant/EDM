@@ -1,7 +1,7 @@
 void S12_AcceptanceMapR_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May  2 22:57:49 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 17:54:58 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75.58442,-125,80.25974,125);
@@ -1031,7 +1031,7 @@ void S12_AcceptanceMapR_0_3127_MeV()
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#700002");
+   ci = TColor::GetColor("#b74322");
    palette->SetFillColor(ci);
    palette->SetFillStyle(1001);
    S12_WeightMapR->GetListOfFunctions()->Add(palette,"br");
@@ -1058,7 +1058,7 @@ void S12_AcceptanceMapR_0_3127_MeV()
    S12_WeightMapR->GetZaxis()->SetLabelFont(42);
    S12_WeightMapR->GetZaxis()->SetTitleOffset(1);
    S12_WeightMapR->GetZaxis()->SetTitleFont(42);
-   S12_WeightMapR->Draw("COLZ");
+   S12_WeightMapR->Draw("COLZ TEXT");
    
    TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");

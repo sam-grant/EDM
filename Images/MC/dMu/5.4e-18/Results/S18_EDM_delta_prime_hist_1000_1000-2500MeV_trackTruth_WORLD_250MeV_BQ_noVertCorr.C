@@ -1,7 +1,7 @@
 void S18_EDM_delta_prime_hist_1000_1000-2500MeV_trackTruth_WORLD_250MeV_BQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:22:08 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:30:05 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -53,7 +53,7 @@ void S18_EDM_delta_prime_hist_1000_1000-2500MeV_trackTruth_WORLD_250MeV_BQ_noVer
    h__2->GetXaxis()->SetTitleSize(0.04);
    h__2->GetXaxis()->SetTitleOffset(1.1);
    h__2->GetXaxis()->SetTitleFont(42);
-   h__2->GetYaxis()->SetTitle("Trials");
+   h__2->GetYaxis()->SetTitle("Trials / 0.02");
    h__2->GetYaxis()->CenterTitle(true);
    h__2->GetYaxis()->SetNdivisions(4000510);
    h__2->GetYaxis()->SetLabelFont(42);

@@ -1,7 +1,7 @@
 void S12_profileX_thetaY_vs_Y_tracks_750_2500_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May  3 11:31:22 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 18:00:32 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(-75,-23.68238,75,24.31681);
    c->SetFillColor(0);

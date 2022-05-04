@@ -1,9 +1,9 @@
 void S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:22:07 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:30:05 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(812.9191,0.02083325,2673.475,3.151149);
+   c->Range(812.9191,0.7020833,2673.475,2.519899);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -45,8 +45,8 @@ void S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,998.9747,2487.42);
-   Graph_Graph1003->SetMinimum(0.3338648);
-   Graph_Graph1003->SetMaximum(2.838117);
+   Graph_Graph1003->SetMinimum(0.8838648);
+   Graph_Graph1003->SetMaximum(2.338117);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 

@@ -573,7 +573,7 @@ void GausTrials(TFile *fout, TH1D *h_ratio, int nTrials, string stn) {
 
 	}
 
-	DrawGausTrials(trialHists_, "", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
+	DrawGausTrials(trialHists_, stn, "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
 
 	return;
 }
@@ -661,8 +661,8 @@ void Run(bool write, string misalign) {
 
 		}
 
-		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_MainAcceptanceWeightingVsMomentum"+misalign);
-		DrawTGraphErrors(gr_ratio_alt, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AltAcceptanceWeightingVsMomentum"+misalign);
+		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_MainAcceptanceWeightingVsMomentum"+misalign);
+		DrawTGraphErrors(gr_ratio_alt, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AltAcceptanceWeightingVsMomentum"+misalign);
 
 		fout->cd("graphs");
 		gr_ratio_main->SetName((stn+"_ratio_main").c_str());
@@ -672,8 +672,8 @@ void Run(bool write, string misalign) {
 		gr_ratio_alt->Write();
 
 		// Easier to use a histogram during the actual correction
-		TH1D *h1_ratio_main = new TH1D((stn+"_ratio_main").c_str(), ";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", gr_ratio_main->GetN(), xmin, xmax);
-		TH1D *h1_ratio_alt = new TH1D((stn+"_ratio_alt").c_str(), ";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", gr_ratio_alt->GetN(), xmin, xmax);
+		TH1D *h1_ratio_main = new TH1D((stn+"_ratio_main").c_str(), (stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV").c_str(), gr_ratio_main->GetN(), xmin, xmax);
+		TH1D *h1_ratio_alt = new TH1D((stn+"_ratio_alt").c_str(), (stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV").c_str(), gr_ratio_alt->GetN(), xmin, xmax);
 
 		for(int i(0); i<gr_ratio_main->GetN(); i++) {
 			h1_ratio_main->SetBinContent(i+1, gr_ratio_main->GetY()[i]);
@@ -685,8 +685,8 @@ void Run(bool write, string misalign) {
 			h1_ratio_alt->SetBinError(i+1, gr_ratio_alt->GetEY()[i]);
 		}
 
-		DrawTH1(h1_ratio_main, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistMainAcceptanceWeightingVsMomentum"+misalign);
-		DrawTH1(h1_ratio_alt, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAltAcceptanceWeightingVsMomentum"+misalign);
+		DrawTH1(h1_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistMainAcceptanceWeightingVsMomentum"+misalign);
+		DrawTH1(h1_ratio_alt, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAltAcceptanceWeightingVsMomentum"+misalign);
 
 		fout->cd("hists");
 		h1_ratio_main->Write();

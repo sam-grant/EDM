@@ -1,9 +1,9 @@
 void EDM_delta_prime_vs_p_allDecays_WORLD_250MeV_AQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:21:47 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:26:34 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(811.7217,0.3539419,2678.365,2.823845);
+   c->Range(811.7217,1.035192,2678.365,2.192595);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -45,8 +45,8 @@ void EDM_delta_prime_vs_p_allDecays_WORLD_250MeV_AQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,998.3861,2491.701);
-   Graph_Graph1001->SetMinimum(0.6009323);
-   Graph_Graph1001->SetMaximum(2.576855);
+   Graph_Graph1001->SetMinimum(1.150932);
+   Graph_Graph1001->SetMaximum(2.076855);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 
@@ -108,7 +108,7 @@ void EDM_delta_prime_vs_p_allDecays_WORLD_250MeV_AQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta#GT = 1.7
+   entry=leg->AddEntry("pol0","#LT#delta#GT = 1.67
 #pm0.04
  mrad","lpf");
    entry->SetFillColor(19);

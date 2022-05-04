@@ -1,7 +1,7 @@
 void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 16:40:17 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:19:33 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(812.5,-0.125,2687.5,1.125);
@@ -11,7 +11,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TH1D *h_ratio_trial_0__3 = new TH1D("h_ratio_trial_0__3","",6,1000,2500);
+   TH1D *h_ratio_trial_0__3 = new TH1D("h_ratio_trial_0__3","S12",6,1000,2500);
    h_ratio_trial_0__3->SetBinContent(1,0.509384);
    h_ratio_trial_0__3->SetBinContent(2,0.486446);
    h_ratio_trial_0__3->SetBinContent(3,0.4949081);
@@ -31,7 +31,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_0__3->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_0__3->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_0__3->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_0__3->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_0__3->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_0__3->GetYaxis()->CenterTitle(true);
    h_ratio_trial_0__3->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_0__3->GetYaxis()->SetLabelFont(42);
@@ -61,7 +61,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_1__4->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_1__4->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_1__4->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_1__4->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_1__4->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_1__4->GetYaxis()->CenterTitle(true);
    h_ratio_trial_1__4->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_1__4->GetYaxis()->SetLabelFont(42);
@@ -91,7 +91,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_2__5->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_2__5->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_2__5->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_2__5->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_2__5->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_2__5->GetYaxis()->CenterTitle(true);
    h_ratio_trial_2__5->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_2__5->GetYaxis()->SetLabelFont(42);
@@ -121,7 +121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_3__6->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_3__6->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_3__6->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_3__6->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_3__6->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_3__6->GetYaxis()->CenterTitle(true);
    h_ratio_trial_3__6->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_3__6->GetYaxis()->SetLabelFont(42);
@@ -151,7 +151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_4__7->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_4__7->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_4__7->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_4__7->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_4__7->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_4__7->GetYaxis()->CenterTitle(true);
    h_ratio_trial_4__7->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_4__7->GetYaxis()->SetLabelFont(42);
@@ -181,7 +181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_5__8->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_5__8->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_5__8->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_5__8->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_5__8->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_5__8->GetYaxis()->CenterTitle(true);
    h_ratio_trial_5__8->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_5__8->GetYaxis()->SetLabelFont(42);
@@ -211,7 +211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_6__9->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_6__9->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_6__9->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_6__9->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_6__9->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_6__9->GetYaxis()->CenterTitle(true);
    h_ratio_trial_6__9->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_6__9->GetYaxis()->SetLabelFont(42);
@@ -241,7 +241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_7__10->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_7__10->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_7__10->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_7__10->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_7__10->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_7__10->GetYaxis()->CenterTitle(true);
    h_ratio_trial_7__10->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_7__10->GetYaxis()->SetLabelFont(42);
@@ -271,7 +271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_8__11->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_8__11->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_8__11->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_8__11->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_8__11->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_8__11->GetYaxis()->CenterTitle(true);
    h_ratio_trial_8__11->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_8__11->GetYaxis()->SetLabelFont(42);
@@ -301,7 +301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_9__12->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_9__12->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_9__12->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_9__12->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_9__12->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_9__12->GetYaxis()->CenterTitle(true);
    h_ratio_trial_9__12->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_9__12->GetYaxis()->SetLabelFont(42);
@@ -329,7 +329,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_10__13->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_10__13->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_10__13->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_10__13->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_10__13->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_10__13->GetYaxis()->CenterTitle(true);
    h_ratio_trial_10__13->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_10__13->GetYaxis()->SetLabelFont(42);
@@ -357,7 +357,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_11__14->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_11__14->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_11__14->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_11__14->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_11__14->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_11__14->GetYaxis()->CenterTitle(true);
    h_ratio_trial_11__14->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_11__14->GetYaxis()->SetLabelFont(42);
@@ -385,7 +385,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_12__15->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_12__15->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_12__15->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_12__15->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_12__15->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_12__15->GetYaxis()->CenterTitle(true);
    h_ratio_trial_12__15->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_12__15->GetYaxis()->SetLabelFont(42);
@@ -413,7 +413,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_13__16->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_13__16->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_13__16->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_13__16->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_13__16->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_13__16->GetYaxis()->CenterTitle(true);
    h_ratio_trial_13__16->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_13__16->GetYaxis()->SetLabelFont(42);
@@ -441,7 +441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_14__17->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_14__17->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_14__17->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_14__17->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_14__17->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_14__17->GetYaxis()->CenterTitle(true);
    h_ratio_trial_14__17->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_14__17->GetYaxis()->SetLabelFont(42);
@@ -469,7 +469,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_15__18->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_15__18->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_15__18->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_15__18->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_15__18->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_15__18->GetYaxis()->CenterTitle(true);
    h_ratio_trial_15__18->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_15__18->GetYaxis()->SetLabelFont(42);
@@ -497,7 +497,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_16__19->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_16__19->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_16__19->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_16__19->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_16__19->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_16__19->GetYaxis()->CenterTitle(true);
    h_ratio_trial_16__19->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_16__19->GetYaxis()->SetLabelFont(42);
@@ -525,7 +525,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_17__20->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_17__20->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_17__20->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_17__20->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_17__20->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_17__20->GetYaxis()->CenterTitle(true);
    h_ratio_trial_17__20->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_17__20->GetYaxis()->SetLabelFont(42);
@@ -553,7 +553,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_18__21->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_18__21->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_18__21->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_18__21->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_18__21->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_18__21->GetYaxis()->CenterTitle(true);
    h_ratio_trial_18__21->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_18__21->GetYaxis()->SetLabelFont(42);
@@ -581,7 +581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_19__22->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_19__22->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_19__22->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_19__22->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_19__22->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_19__22->GetYaxis()->CenterTitle(true);
    h_ratio_trial_19__22->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_19__22->GetYaxis()->SetLabelFont(42);
@@ -611,7 +611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_20__23->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_20__23->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_20__23->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_20__23->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_20__23->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_20__23->GetYaxis()->CenterTitle(true);
    h_ratio_trial_20__23->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_20__23->GetYaxis()->SetLabelFont(42);
@@ -641,7 +641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_21__24->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_21__24->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_21__24->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_21__24->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_21__24->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_21__24->GetYaxis()->CenterTitle(true);
    h_ratio_trial_21__24->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_21__24->GetYaxis()->SetLabelFont(42);
@@ -671,7 +671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_22__25->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_22__25->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_22__25->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_22__25->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_22__25->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_22__25->GetYaxis()->CenterTitle(true);
    h_ratio_trial_22__25->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_22__25->GetYaxis()->SetLabelFont(42);
@@ -701,7 +701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_23__26->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_23__26->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_23__26->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_23__26->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_23__26->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_23__26->GetYaxis()->CenterTitle(true);
    h_ratio_trial_23__26->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_23__26->GetYaxis()->SetLabelFont(42);
@@ -731,7 +731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_24__27->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_24__27->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_24__27->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_24__27->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_24__27->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_24__27->GetYaxis()->CenterTitle(true);
    h_ratio_trial_24__27->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_24__27->GetYaxis()->SetLabelFont(42);
@@ -761,7 +761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_25__28->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_25__28->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_25__28->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_25__28->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_25__28->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_25__28->GetYaxis()->CenterTitle(true);
    h_ratio_trial_25__28->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_25__28->GetYaxis()->SetLabelFont(42);
@@ -791,7 +791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_26__29->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_26__29->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_26__29->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_26__29->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_26__29->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_26__29->GetYaxis()->CenterTitle(true);
    h_ratio_trial_26__29->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_26__29->GetYaxis()->SetLabelFont(42);
@@ -821,7 +821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_27__30->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_27__30->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_27__30->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_27__30->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_27__30->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_27__30->GetYaxis()->CenterTitle(true);
    h_ratio_trial_27__30->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_27__30->GetYaxis()->SetLabelFont(42);
@@ -851,7 +851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_28__31->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_28__31->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_28__31->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_28__31->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_28__31->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_28__31->GetYaxis()->CenterTitle(true);
    h_ratio_trial_28__31->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_28__31->GetYaxis()->SetLabelFont(42);
@@ -881,7 +881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_29__32->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_29__32->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_29__32->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_29__32->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_29__32->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_29__32->GetYaxis()->CenterTitle(true);
    h_ratio_trial_29__32->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_29__32->GetYaxis()->SetLabelFont(42);
@@ -911,7 +911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_30__33->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_30__33->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_30__33->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_30__33->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_30__33->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_30__33->GetYaxis()->CenterTitle(true);
    h_ratio_trial_30__33->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_30__33->GetYaxis()->SetLabelFont(42);
@@ -941,7 +941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_31__34->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_31__34->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_31__34->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_31__34->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_31__34->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_31__34->GetYaxis()->CenterTitle(true);
    h_ratio_trial_31__34->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_31__34->GetYaxis()->SetLabelFont(42);
@@ -971,7 +971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_32__35->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_32__35->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_32__35->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_32__35->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_32__35->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_32__35->GetYaxis()->CenterTitle(true);
    h_ratio_trial_32__35->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_32__35->GetYaxis()->SetLabelFont(42);
@@ -1001,7 +1001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_33__36->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_33__36->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_33__36->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_33__36->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_33__36->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_33__36->GetYaxis()->CenterTitle(true);
    h_ratio_trial_33__36->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_33__36->GetYaxis()->SetLabelFont(42);
@@ -1031,7 +1031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_34__37->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_34__37->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_34__37->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_34__37->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_34__37->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_34__37->GetYaxis()->CenterTitle(true);
    h_ratio_trial_34__37->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_34__37->GetYaxis()->SetLabelFont(42);
@@ -1061,7 +1061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_35__38->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_35__38->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_35__38->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_35__38->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_35__38->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_35__38->GetYaxis()->CenterTitle(true);
    h_ratio_trial_35__38->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_35__38->GetYaxis()->SetLabelFont(42);
@@ -1091,7 +1091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_36__39->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_36__39->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_36__39->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_36__39->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_36__39->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_36__39->GetYaxis()->CenterTitle(true);
    h_ratio_trial_36__39->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_36__39->GetYaxis()->SetLabelFont(42);
@@ -1121,7 +1121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_37__40->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_37__40->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_37__40->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_37__40->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_37__40->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_37__40->GetYaxis()->CenterTitle(true);
    h_ratio_trial_37__40->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_37__40->GetYaxis()->SetLabelFont(42);
@@ -1151,7 +1151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_38__41->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_38__41->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_38__41->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_38__41->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_38__41->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_38__41->GetYaxis()->CenterTitle(true);
    h_ratio_trial_38__41->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_38__41->GetYaxis()->SetLabelFont(42);
@@ -1181,7 +1181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_39__42->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_39__42->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_39__42->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_39__42->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_39__42->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_39__42->GetYaxis()->CenterTitle(true);
    h_ratio_trial_39__42->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_39__42->GetYaxis()->SetLabelFont(42);
@@ -1211,7 +1211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_40__43->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_40__43->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_40__43->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_40__43->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_40__43->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_40__43->GetYaxis()->CenterTitle(true);
    h_ratio_trial_40__43->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_40__43->GetYaxis()->SetLabelFont(42);
@@ -1241,7 +1241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_41__44->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_41__44->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_41__44->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_41__44->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_41__44->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_41__44->GetYaxis()->CenterTitle(true);
    h_ratio_trial_41__44->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_41__44->GetYaxis()->SetLabelFont(42);
@@ -1271,7 +1271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_42__45->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_42__45->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_42__45->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_42__45->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_42__45->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_42__45->GetYaxis()->CenterTitle(true);
    h_ratio_trial_42__45->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_42__45->GetYaxis()->SetLabelFont(42);
@@ -1301,7 +1301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_43__46->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_43__46->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_43__46->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_43__46->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_43__46->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_43__46->GetYaxis()->CenterTitle(true);
    h_ratio_trial_43__46->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_43__46->GetYaxis()->SetLabelFont(42);
@@ -1331,7 +1331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_44__47->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_44__47->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_44__47->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_44__47->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_44__47->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_44__47->GetYaxis()->CenterTitle(true);
    h_ratio_trial_44__47->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_44__47->GetYaxis()->SetLabelFont(42);
@@ -1361,7 +1361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_45__48->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_45__48->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_45__48->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_45__48->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_45__48->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_45__48->GetYaxis()->CenterTitle(true);
    h_ratio_trial_45__48->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_45__48->GetYaxis()->SetLabelFont(42);
@@ -1391,7 +1391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_46__49->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_46__49->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_46__49->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_46__49->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_46__49->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_46__49->GetYaxis()->CenterTitle(true);
    h_ratio_trial_46__49->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_46__49->GetYaxis()->SetLabelFont(42);
@@ -1421,7 +1421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_47__50->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_47__50->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_47__50->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_47__50->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_47__50->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_47__50->GetYaxis()->CenterTitle(true);
    h_ratio_trial_47__50->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_47__50->GetYaxis()->SetLabelFont(42);
@@ -1451,7 +1451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_48__51->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_48__51->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_48__51->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_48__51->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_48__51->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_48__51->GetYaxis()->CenterTitle(true);
    h_ratio_trial_48__51->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_48__51->GetYaxis()->SetLabelFont(42);
@@ -1481,7 +1481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_49__52->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_49__52->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_49__52->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_49__52->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_49__52->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_49__52->GetYaxis()->CenterTitle(true);
    h_ratio_trial_49__52->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_49__52->GetYaxis()->SetLabelFont(42);
@@ -1511,7 +1511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_50__53->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_50__53->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_50__53->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_50__53->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_50__53->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_50__53->GetYaxis()->CenterTitle(true);
    h_ratio_trial_50__53->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_50__53->GetYaxis()->SetLabelFont(42);
@@ -1541,7 +1541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_51__54->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_51__54->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_51__54->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_51__54->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_51__54->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_51__54->GetYaxis()->CenterTitle(true);
    h_ratio_trial_51__54->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_51__54->GetYaxis()->SetLabelFont(42);
@@ -1571,7 +1571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_52__55->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_52__55->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_52__55->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_52__55->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_52__55->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_52__55->GetYaxis()->CenterTitle(true);
    h_ratio_trial_52__55->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_52__55->GetYaxis()->SetLabelFont(42);
@@ -1601,7 +1601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_53__56->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_53__56->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_53__56->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_53__56->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_53__56->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_53__56->GetYaxis()->CenterTitle(true);
    h_ratio_trial_53__56->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_53__56->GetYaxis()->SetLabelFont(42);
@@ -1631,7 +1631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_54__57->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_54__57->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_54__57->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_54__57->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_54__57->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_54__57->GetYaxis()->CenterTitle(true);
    h_ratio_trial_54__57->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_54__57->GetYaxis()->SetLabelFont(42);
@@ -1661,7 +1661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_55__58->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_55__58->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_55__58->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_55__58->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_55__58->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_55__58->GetYaxis()->CenterTitle(true);
    h_ratio_trial_55__58->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_55__58->GetYaxis()->SetLabelFont(42);
@@ -1691,7 +1691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_56__59->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_56__59->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_56__59->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_56__59->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_56__59->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_56__59->GetYaxis()->CenterTitle(true);
    h_ratio_trial_56__59->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_56__59->GetYaxis()->SetLabelFont(42);
@@ -1721,7 +1721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_57__60->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_57__60->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_57__60->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_57__60->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_57__60->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_57__60->GetYaxis()->CenterTitle(true);
    h_ratio_trial_57__60->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_57__60->GetYaxis()->SetLabelFont(42);
@@ -1751,7 +1751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_58__61->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_58__61->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_58__61->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_58__61->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_58__61->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_58__61->GetYaxis()->CenterTitle(true);
    h_ratio_trial_58__61->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_58__61->GetYaxis()->SetLabelFont(42);
@@ -1781,7 +1781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_59__62->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_59__62->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_59__62->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_59__62->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_59__62->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_59__62->GetYaxis()->CenterTitle(true);
    h_ratio_trial_59__62->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_59__62->GetYaxis()->SetLabelFont(42);
@@ -1811,7 +1811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_60__63->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_60__63->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_60__63->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_60__63->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_60__63->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_60__63->GetYaxis()->CenterTitle(true);
    h_ratio_trial_60__63->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_60__63->GetYaxis()->SetLabelFont(42);
@@ -1841,7 +1841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_61__64->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_61__64->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_61__64->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_61__64->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_61__64->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_61__64->GetYaxis()->CenterTitle(true);
    h_ratio_trial_61__64->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_61__64->GetYaxis()->SetLabelFont(42);
@@ -1871,7 +1871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_62__65->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_62__65->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_62__65->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_62__65->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_62__65->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_62__65->GetYaxis()->CenterTitle(true);
    h_ratio_trial_62__65->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_62__65->GetYaxis()->SetLabelFont(42);
@@ -1901,7 +1901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_63__66->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_63__66->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_63__66->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_63__66->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_63__66->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_63__66->GetYaxis()->CenterTitle(true);
    h_ratio_trial_63__66->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_63__66->GetYaxis()->SetLabelFont(42);
@@ -1931,7 +1931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_64__67->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_64__67->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_64__67->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_64__67->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_64__67->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_64__67->GetYaxis()->CenterTitle(true);
    h_ratio_trial_64__67->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_64__67->GetYaxis()->SetLabelFont(42);
@@ -1961,7 +1961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_65__68->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_65__68->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_65__68->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_65__68->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_65__68->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_65__68->GetYaxis()->CenterTitle(true);
    h_ratio_trial_65__68->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_65__68->GetYaxis()->SetLabelFont(42);
@@ -1991,7 +1991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_66__69->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_66__69->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_66__69->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_66__69->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_66__69->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_66__69->GetYaxis()->CenterTitle(true);
    h_ratio_trial_66__69->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_66__69->GetYaxis()->SetLabelFont(42);
@@ -2021,7 +2021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_67__70->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_67__70->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_67__70->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_67__70->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_67__70->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_67__70->GetYaxis()->CenterTitle(true);
    h_ratio_trial_67__70->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_67__70->GetYaxis()->SetLabelFont(42);
@@ -2051,7 +2051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_68__71->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_68__71->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_68__71->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_68__71->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_68__71->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_68__71->GetYaxis()->CenterTitle(true);
    h_ratio_trial_68__71->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_68__71->GetYaxis()->SetLabelFont(42);
@@ -2081,7 +2081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_69__72->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_69__72->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_69__72->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_69__72->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_69__72->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_69__72->GetYaxis()->CenterTitle(true);
    h_ratio_trial_69__72->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_69__72->GetYaxis()->SetLabelFont(42);
@@ -2111,7 +2111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_70__73->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_70__73->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_70__73->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_70__73->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_70__73->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_70__73->GetYaxis()->CenterTitle(true);
    h_ratio_trial_70__73->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_70__73->GetYaxis()->SetLabelFont(42);
@@ -2141,7 +2141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_71__74->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_71__74->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_71__74->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_71__74->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_71__74->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_71__74->GetYaxis()->CenterTitle(true);
    h_ratio_trial_71__74->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_71__74->GetYaxis()->SetLabelFont(42);
@@ -2171,7 +2171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_72__75->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_72__75->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_72__75->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_72__75->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_72__75->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_72__75->GetYaxis()->CenterTitle(true);
    h_ratio_trial_72__75->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_72__75->GetYaxis()->SetLabelFont(42);
@@ -2201,7 +2201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_73__76->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_73__76->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_73__76->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_73__76->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_73__76->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_73__76->GetYaxis()->CenterTitle(true);
    h_ratio_trial_73__76->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_73__76->GetYaxis()->SetLabelFont(42);
@@ -2231,7 +2231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_74__77->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_74__77->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_74__77->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_74__77->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_74__77->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_74__77->GetYaxis()->CenterTitle(true);
    h_ratio_trial_74__77->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_74__77->GetYaxis()->SetLabelFont(42);
@@ -2261,7 +2261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_75__78->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_75__78->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_75__78->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_75__78->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_75__78->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_75__78->GetYaxis()->CenterTitle(true);
    h_ratio_trial_75__78->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_75__78->GetYaxis()->SetLabelFont(42);
@@ -2291,7 +2291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_76__79->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_76__79->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_76__79->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_76__79->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_76__79->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_76__79->GetYaxis()->CenterTitle(true);
    h_ratio_trial_76__79->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_76__79->GetYaxis()->SetLabelFont(42);
@@ -2321,7 +2321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_77__80->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_77__80->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_77__80->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_77__80->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_77__80->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_77__80->GetYaxis()->CenterTitle(true);
    h_ratio_trial_77__80->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_77__80->GetYaxis()->SetLabelFont(42);
@@ -2351,7 +2351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_78__81->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_78__81->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_78__81->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_78__81->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_78__81->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_78__81->GetYaxis()->CenterTitle(true);
    h_ratio_trial_78__81->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_78__81->GetYaxis()->SetLabelFont(42);
@@ -2381,7 +2381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_79__82->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_79__82->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_79__82->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_79__82->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_79__82->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_79__82->GetYaxis()->CenterTitle(true);
    h_ratio_trial_79__82->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_79__82->GetYaxis()->SetLabelFont(42);
@@ -2411,7 +2411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_80__83->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_80__83->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_80__83->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_80__83->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_80__83->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_80__83->GetYaxis()->CenterTitle(true);
    h_ratio_trial_80__83->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_80__83->GetYaxis()->SetLabelFont(42);
@@ -2441,7 +2441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_81__84->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_81__84->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_81__84->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_81__84->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_81__84->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_81__84->GetYaxis()->CenterTitle(true);
    h_ratio_trial_81__84->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_81__84->GetYaxis()->SetLabelFont(42);
@@ -2471,7 +2471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_82__85->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_82__85->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_82__85->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_82__85->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_82__85->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_82__85->GetYaxis()->CenterTitle(true);
    h_ratio_trial_82__85->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_82__85->GetYaxis()->SetLabelFont(42);
@@ -2501,7 +2501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_83__86->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_83__86->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_83__86->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_83__86->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_83__86->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_83__86->GetYaxis()->CenterTitle(true);
    h_ratio_trial_83__86->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_83__86->GetYaxis()->SetLabelFont(42);
@@ -2531,7 +2531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_84__87->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_84__87->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_84__87->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_84__87->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_84__87->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_84__87->GetYaxis()->CenterTitle(true);
    h_ratio_trial_84__87->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_84__87->GetYaxis()->SetLabelFont(42);
@@ -2561,7 +2561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_85__88->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_85__88->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_85__88->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_85__88->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_85__88->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_85__88->GetYaxis()->CenterTitle(true);
    h_ratio_trial_85__88->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_85__88->GetYaxis()->SetLabelFont(42);
@@ -2591,7 +2591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_86__89->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_86__89->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_86__89->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_86__89->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_86__89->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_86__89->GetYaxis()->CenterTitle(true);
    h_ratio_trial_86__89->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_86__89->GetYaxis()->SetLabelFont(42);
@@ -2621,7 +2621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_87__90->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_87__90->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_87__90->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_87__90->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_87__90->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_87__90->GetYaxis()->CenterTitle(true);
    h_ratio_trial_87__90->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_87__90->GetYaxis()->SetLabelFont(42);
@@ -2651,7 +2651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_88__91->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_88__91->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_88__91->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_88__91->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_88__91->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_88__91->GetYaxis()->CenterTitle(true);
    h_ratio_trial_88__91->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_88__91->GetYaxis()->SetLabelFont(42);
@@ -2681,7 +2681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_89__92->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_89__92->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_89__92->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_89__92->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_89__92->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_89__92->GetYaxis()->CenterTitle(true);
    h_ratio_trial_89__92->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_89__92->GetYaxis()->SetLabelFont(42);
@@ -2711,7 +2711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_90__93->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_90__93->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_90__93->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_90__93->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_90__93->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_90__93->GetYaxis()->CenterTitle(true);
    h_ratio_trial_90__93->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_90__93->GetYaxis()->SetLabelFont(42);
@@ -2741,7 +2741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_91__94->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_91__94->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_91__94->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_91__94->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_91__94->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_91__94->GetYaxis()->CenterTitle(true);
    h_ratio_trial_91__94->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_91__94->GetYaxis()->SetLabelFont(42);
@@ -2771,7 +2771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_92__95->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_92__95->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_92__95->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_92__95->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_92__95->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_92__95->GetYaxis()->CenterTitle(true);
    h_ratio_trial_92__95->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_92__95->GetYaxis()->SetLabelFont(42);
@@ -2801,7 +2801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_93__96->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_93__96->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_93__96->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_93__96->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_93__96->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_93__96->GetYaxis()->CenterTitle(true);
    h_ratio_trial_93__96->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_93__96->GetYaxis()->SetLabelFont(42);
@@ -2831,7 +2831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_94__97->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_94__97->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_94__97->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_94__97->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_94__97->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_94__97->GetYaxis()->CenterTitle(true);
    h_ratio_trial_94__97->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_94__97->GetYaxis()->SetLabelFont(42);
@@ -2861,7 +2861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_95__98->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_95__98->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_95__98->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_95__98->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_95__98->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_95__98->GetYaxis()->CenterTitle(true);
    h_ratio_trial_95__98->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_95__98->GetYaxis()->SetLabelFont(42);
@@ -2891,7 +2891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_96__99->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_96__99->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_96__99->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_96__99->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_96__99->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_96__99->GetYaxis()->CenterTitle(true);
    h_ratio_trial_96__99->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_96__99->GetYaxis()->SetLabelFont(42);
@@ -2921,7 +2921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_97__100->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_97__100->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_97__100->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_97__100->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_97__100->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_97__100->GetYaxis()->CenterTitle(true);
    h_ratio_trial_97__100->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_97__100->GetYaxis()->SetLabelFont(42);
@@ -2951,7 +2951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_98__101->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_98__101->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_98__101->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_98__101->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_98__101->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_98__101->GetYaxis()->CenterTitle(true);
    h_ratio_trial_98__101->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_98__101->GetYaxis()->SetLabelFont(42);
@@ -2981,7 +2981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_99__102->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_99__102->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_99__102->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_99__102->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_99__102->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_99__102->GetYaxis()->CenterTitle(true);
    h_ratio_trial_99__102->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_99__102->GetYaxis()->SetLabelFont(42);
@@ -3011,7 +3011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_100__103->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_100__103->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_100__103->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_100__103->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_100__103->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_100__103->GetYaxis()->CenterTitle(true);
    h_ratio_trial_100__103->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_100__103->GetYaxis()->SetLabelFont(42);
@@ -3041,7 +3041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_101__104->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_101__104->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_101__104->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_101__104->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_101__104->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_101__104->GetYaxis()->CenterTitle(true);
    h_ratio_trial_101__104->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_101__104->GetYaxis()->SetLabelFont(42);
@@ -3071,7 +3071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_102__105->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_102__105->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_102__105->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_102__105->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_102__105->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_102__105->GetYaxis()->CenterTitle(true);
    h_ratio_trial_102__105->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_102__105->GetYaxis()->SetLabelFont(42);
@@ -3101,7 +3101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_103__106->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_103__106->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_103__106->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_103__106->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_103__106->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_103__106->GetYaxis()->CenterTitle(true);
    h_ratio_trial_103__106->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_103__106->GetYaxis()->SetLabelFont(42);
@@ -3131,7 +3131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_104__107->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_104__107->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_104__107->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_104__107->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_104__107->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_104__107->GetYaxis()->CenterTitle(true);
    h_ratio_trial_104__107->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_104__107->GetYaxis()->SetLabelFont(42);
@@ -3161,7 +3161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_105__108->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_105__108->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_105__108->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_105__108->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_105__108->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_105__108->GetYaxis()->CenterTitle(true);
    h_ratio_trial_105__108->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_105__108->GetYaxis()->SetLabelFont(42);
@@ -3191,7 +3191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_106__109->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_106__109->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_106__109->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_106__109->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_106__109->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_106__109->GetYaxis()->CenterTitle(true);
    h_ratio_trial_106__109->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_106__109->GetYaxis()->SetLabelFont(42);
@@ -3221,7 +3221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_107__110->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_107__110->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_107__110->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_107__110->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_107__110->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_107__110->GetYaxis()->CenterTitle(true);
    h_ratio_trial_107__110->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_107__110->GetYaxis()->SetLabelFont(42);
@@ -3251,7 +3251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_108__111->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_108__111->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_108__111->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_108__111->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_108__111->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_108__111->GetYaxis()->CenterTitle(true);
    h_ratio_trial_108__111->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_108__111->GetYaxis()->SetLabelFont(42);
@@ -3281,7 +3281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_109__112->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_109__112->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_109__112->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_109__112->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_109__112->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_109__112->GetYaxis()->CenterTitle(true);
    h_ratio_trial_109__112->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_109__112->GetYaxis()->SetLabelFont(42);
@@ -3311,7 +3311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_110__113->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_110__113->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_110__113->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_110__113->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_110__113->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_110__113->GetYaxis()->CenterTitle(true);
    h_ratio_trial_110__113->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_110__113->GetYaxis()->SetLabelFont(42);
@@ -3341,7 +3341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_111__114->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_111__114->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_111__114->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_111__114->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_111__114->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_111__114->GetYaxis()->CenterTitle(true);
    h_ratio_trial_111__114->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_111__114->GetYaxis()->SetLabelFont(42);
@@ -3371,7 +3371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_112__115->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_112__115->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_112__115->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_112__115->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_112__115->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_112__115->GetYaxis()->CenterTitle(true);
    h_ratio_trial_112__115->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_112__115->GetYaxis()->SetLabelFont(42);
@@ -3401,7 +3401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_113__116->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_113__116->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_113__116->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_113__116->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_113__116->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_113__116->GetYaxis()->CenterTitle(true);
    h_ratio_trial_113__116->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_113__116->GetYaxis()->SetLabelFont(42);
@@ -3431,7 +3431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_114__117->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_114__117->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_114__117->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_114__117->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_114__117->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_114__117->GetYaxis()->CenterTitle(true);
    h_ratio_trial_114__117->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_114__117->GetYaxis()->SetLabelFont(42);
@@ -3461,7 +3461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_115__118->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_115__118->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_115__118->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_115__118->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_115__118->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_115__118->GetYaxis()->CenterTitle(true);
    h_ratio_trial_115__118->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_115__118->GetYaxis()->SetLabelFont(42);
@@ -3491,7 +3491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_116__119->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_116__119->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_116__119->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_116__119->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_116__119->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_116__119->GetYaxis()->CenterTitle(true);
    h_ratio_trial_116__119->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_116__119->GetYaxis()->SetLabelFont(42);
@@ -3521,7 +3521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_117__120->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_117__120->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_117__120->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_117__120->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_117__120->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_117__120->GetYaxis()->CenterTitle(true);
    h_ratio_trial_117__120->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_117__120->GetYaxis()->SetLabelFont(42);
@@ -3551,7 +3551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_118__121->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_118__121->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_118__121->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_118__121->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_118__121->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_118__121->GetYaxis()->CenterTitle(true);
    h_ratio_trial_118__121->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_118__121->GetYaxis()->SetLabelFont(42);
@@ -3581,7 +3581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_119__122->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_119__122->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_119__122->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_119__122->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_119__122->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_119__122->GetYaxis()->CenterTitle(true);
    h_ratio_trial_119__122->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_119__122->GetYaxis()->SetLabelFont(42);
@@ -3611,7 +3611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_120__123->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_120__123->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_120__123->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_120__123->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_120__123->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_120__123->GetYaxis()->CenterTitle(true);
    h_ratio_trial_120__123->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_120__123->GetYaxis()->SetLabelFont(42);
@@ -3641,7 +3641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_121__124->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_121__124->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_121__124->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_121__124->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_121__124->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_121__124->GetYaxis()->CenterTitle(true);
    h_ratio_trial_121__124->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_121__124->GetYaxis()->SetLabelFont(42);
@@ -3671,7 +3671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_122__125->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_122__125->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_122__125->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_122__125->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_122__125->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_122__125->GetYaxis()->CenterTitle(true);
    h_ratio_trial_122__125->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_122__125->GetYaxis()->SetLabelFont(42);
@@ -3701,7 +3701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_123__126->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_123__126->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_123__126->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_123__126->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_123__126->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_123__126->GetYaxis()->CenterTitle(true);
    h_ratio_trial_123__126->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_123__126->GetYaxis()->SetLabelFont(42);
@@ -3731,7 +3731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_124__127->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_124__127->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_124__127->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_124__127->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_124__127->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_124__127->GetYaxis()->CenterTitle(true);
    h_ratio_trial_124__127->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_124__127->GetYaxis()->SetLabelFont(42);
@@ -3761,7 +3761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_125__128->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_125__128->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_125__128->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_125__128->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_125__128->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_125__128->GetYaxis()->CenterTitle(true);
    h_ratio_trial_125__128->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_125__128->GetYaxis()->SetLabelFont(42);
@@ -3791,7 +3791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_126__129->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_126__129->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_126__129->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_126__129->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_126__129->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_126__129->GetYaxis()->CenterTitle(true);
    h_ratio_trial_126__129->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_126__129->GetYaxis()->SetLabelFont(42);
@@ -3821,7 +3821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_127__130->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_127__130->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_127__130->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_127__130->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_127__130->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_127__130->GetYaxis()->CenterTitle(true);
    h_ratio_trial_127__130->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_127__130->GetYaxis()->SetLabelFont(42);
@@ -3851,7 +3851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_128__131->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_128__131->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_128__131->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_128__131->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_128__131->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_128__131->GetYaxis()->CenterTitle(true);
    h_ratio_trial_128__131->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_128__131->GetYaxis()->SetLabelFont(42);
@@ -3881,7 +3881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_129__132->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_129__132->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_129__132->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_129__132->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_129__132->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_129__132->GetYaxis()->CenterTitle(true);
    h_ratio_trial_129__132->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_129__132->GetYaxis()->SetLabelFont(42);
@@ -3911,7 +3911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_130__133->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_130__133->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_130__133->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_130__133->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_130__133->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_130__133->GetYaxis()->CenterTitle(true);
    h_ratio_trial_130__133->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_130__133->GetYaxis()->SetLabelFont(42);
@@ -3941,7 +3941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_131__134->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_131__134->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_131__134->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_131__134->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_131__134->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_131__134->GetYaxis()->CenterTitle(true);
    h_ratio_trial_131__134->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_131__134->GetYaxis()->SetLabelFont(42);
@@ -3971,7 +3971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_132__135->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_132__135->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_132__135->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_132__135->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_132__135->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_132__135->GetYaxis()->CenterTitle(true);
    h_ratio_trial_132__135->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_132__135->GetYaxis()->SetLabelFont(42);
@@ -4001,7 +4001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_133__136->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_133__136->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_133__136->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_133__136->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_133__136->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_133__136->GetYaxis()->CenterTitle(true);
    h_ratio_trial_133__136->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_133__136->GetYaxis()->SetLabelFont(42);
@@ -4031,7 +4031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_134__137->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_134__137->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_134__137->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_134__137->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_134__137->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_134__137->GetYaxis()->CenterTitle(true);
    h_ratio_trial_134__137->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_134__137->GetYaxis()->SetLabelFont(42);
@@ -4061,7 +4061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_135__138->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_135__138->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_135__138->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_135__138->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_135__138->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_135__138->GetYaxis()->CenterTitle(true);
    h_ratio_trial_135__138->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_135__138->GetYaxis()->SetLabelFont(42);
@@ -4091,7 +4091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_136__139->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_136__139->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_136__139->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_136__139->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_136__139->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_136__139->GetYaxis()->CenterTitle(true);
    h_ratio_trial_136__139->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_136__139->GetYaxis()->SetLabelFont(42);
@@ -4121,7 +4121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_137__140->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_137__140->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_137__140->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_137__140->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_137__140->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_137__140->GetYaxis()->CenterTitle(true);
    h_ratio_trial_137__140->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_137__140->GetYaxis()->SetLabelFont(42);
@@ -4151,7 +4151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_138__141->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_138__141->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_138__141->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_138__141->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_138__141->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_138__141->GetYaxis()->CenterTitle(true);
    h_ratio_trial_138__141->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_138__141->GetYaxis()->SetLabelFont(42);
@@ -4181,7 +4181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_139__142->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_139__142->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_139__142->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_139__142->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_139__142->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_139__142->GetYaxis()->CenterTitle(true);
    h_ratio_trial_139__142->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_139__142->GetYaxis()->SetLabelFont(42);
@@ -4211,7 +4211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_140__143->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_140__143->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_140__143->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_140__143->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_140__143->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_140__143->GetYaxis()->CenterTitle(true);
    h_ratio_trial_140__143->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_140__143->GetYaxis()->SetLabelFont(42);
@@ -4241,7 +4241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_141__144->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_141__144->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_141__144->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_141__144->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_141__144->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_141__144->GetYaxis()->CenterTitle(true);
    h_ratio_trial_141__144->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_141__144->GetYaxis()->SetLabelFont(42);
@@ -4271,7 +4271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_142__145->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_142__145->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_142__145->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_142__145->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_142__145->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_142__145->GetYaxis()->CenterTitle(true);
    h_ratio_trial_142__145->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_142__145->GetYaxis()->SetLabelFont(42);
@@ -4301,7 +4301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_143__146->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_143__146->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_143__146->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_143__146->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_143__146->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_143__146->GetYaxis()->CenterTitle(true);
    h_ratio_trial_143__146->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_143__146->GetYaxis()->SetLabelFont(42);
@@ -4331,7 +4331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_144__147->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_144__147->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_144__147->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_144__147->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_144__147->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_144__147->GetYaxis()->CenterTitle(true);
    h_ratio_trial_144__147->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_144__147->GetYaxis()->SetLabelFont(42);
@@ -4361,7 +4361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_145__148->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_145__148->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_145__148->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_145__148->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_145__148->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_145__148->GetYaxis()->CenterTitle(true);
    h_ratio_trial_145__148->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_145__148->GetYaxis()->SetLabelFont(42);
@@ -4391,7 +4391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_146__149->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_146__149->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_146__149->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_146__149->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_146__149->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_146__149->GetYaxis()->CenterTitle(true);
    h_ratio_trial_146__149->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_146__149->GetYaxis()->SetLabelFont(42);
@@ -4421,7 +4421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_147__150->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_147__150->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_147__150->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_147__150->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_147__150->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_147__150->GetYaxis()->CenterTitle(true);
    h_ratio_trial_147__150->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_147__150->GetYaxis()->SetLabelFont(42);
@@ -4451,7 +4451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_148__151->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_148__151->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_148__151->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_148__151->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_148__151->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_148__151->GetYaxis()->CenterTitle(true);
    h_ratio_trial_148__151->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_148__151->GetYaxis()->SetLabelFont(42);
@@ -4481,7 +4481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_149__152->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_149__152->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_149__152->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_149__152->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_149__152->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_149__152->GetYaxis()->CenterTitle(true);
    h_ratio_trial_149__152->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_149__152->GetYaxis()->SetLabelFont(42);
@@ -4511,7 +4511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_150__153->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_150__153->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_150__153->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_150__153->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_150__153->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_150__153->GetYaxis()->CenterTitle(true);
    h_ratio_trial_150__153->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_150__153->GetYaxis()->SetLabelFont(42);
@@ -4541,7 +4541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_151__154->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_151__154->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_151__154->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_151__154->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_151__154->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_151__154->GetYaxis()->CenterTitle(true);
    h_ratio_trial_151__154->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_151__154->GetYaxis()->SetLabelFont(42);
@@ -4571,7 +4571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_152__155->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_152__155->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_152__155->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_152__155->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_152__155->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_152__155->GetYaxis()->CenterTitle(true);
    h_ratio_trial_152__155->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_152__155->GetYaxis()->SetLabelFont(42);
@@ -4601,7 +4601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_153__156->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_153__156->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_153__156->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_153__156->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_153__156->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_153__156->GetYaxis()->CenterTitle(true);
    h_ratio_trial_153__156->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_153__156->GetYaxis()->SetLabelFont(42);
@@ -4631,7 +4631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_154__157->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_154__157->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_154__157->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_154__157->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_154__157->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_154__157->GetYaxis()->CenterTitle(true);
    h_ratio_trial_154__157->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_154__157->GetYaxis()->SetLabelFont(42);
@@ -4661,7 +4661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_155__158->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_155__158->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_155__158->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_155__158->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_155__158->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_155__158->GetYaxis()->CenterTitle(true);
    h_ratio_trial_155__158->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_155__158->GetYaxis()->SetLabelFont(42);
@@ -4691,7 +4691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_156__159->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_156__159->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_156__159->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_156__159->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_156__159->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_156__159->GetYaxis()->CenterTitle(true);
    h_ratio_trial_156__159->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_156__159->GetYaxis()->SetLabelFont(42);
@@ -4721,7 +4721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_157__160->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_157__160->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_157__160->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_157__160->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_157__160->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_157__160->GetYaxis()->CenterTitle(true);
    h_ratio_trial_157__160->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_157__160->GetYaxis()->SetLabelFont(42);
@@ -4751,7 +4751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_158__161->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_158__161->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_158__161->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_158__161->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_158__161->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_158__161->GetYaxis()->CenterTitle(true);
    h_ratio_trial_158__161->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_158__161->GetYaxis()->SetLabelFont(42);
@@ -4781,7 +4781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_159__162->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_159__162->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_159__162->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_159__162->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_159__162->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_159__162->GetYaxis()->CenterTitle(true);
    h_ratio_trial_159__162->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_159__162->GetYaxis()->SetLabelFont(42);
@@ -4811,7 +4811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_160__163->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_160__163->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_160__163->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_160__163->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_160__163->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_160__163->GetYaxis()->CenterTitle(true);
    h_ratio_trial_160__163->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_160__163->GetYaxis()->SetLabelFont(42);
@@ -4841,7 +4841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_161__164->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_161__164->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_161__164->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_161__164->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_161__164->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_161__164->GetYaxis()->CenterTitle(true);
    h_ratio_trial_161__164->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_161__164->GetYaxis()->SetLabelFont(42);
@@ -4871,7 +4871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_162__165->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_162__165->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_162__165->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_162__165->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_162__165->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_162__165->GetYaxis()->CenterTitle(true);
    h_ratio_trial_162__165->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_162__165->GetYaxis()->SetLabelFont(42);
@@ -4901,7 +4901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_163__166->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_163__166->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_163__166->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_163__166->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_163__166->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_163__166->GetYaxis()->CenterTitle(true);
    h_ratio_trial_163__166->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_163__166->GetYaxis()->SetLabelFont(42);
@@ -4931,7 +4931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_164__167->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_164__167->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_164__167->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_164__167->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_164__167->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_164__167->GetYaxis()->CenterTitle(true);
    h_ratio_trial_164__167->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_164__167->GetYaxis()->SetLabelFont(42);
@@ -4961,7 +4961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_165__168->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_165__168->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_165__168->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_165__168->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_165__168->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_165__168->GetYaxis()->CenterTitle(true);
    h_ratio_trial_165__168->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_165__168->GetYaxis()->SetLabelFont(42);
@@ -4991,7 +4991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_166__169->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_166__169->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_166__169->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_166__169->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_166__169->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_166__169->GetYaxis()->CenterTitle(true);
    h_ratio_trial_166__169->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_166__169->GetYaxis()->SetLabelFont(42);
@@ -5021,7 +5021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_167__170->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_167__170->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_167__170->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_167__170->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_167__170->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_167__170->GetYaxis()->CenterTitle(true);
    h_ratio_trial_167__170->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_167__170->GetYaxis()->SetLabelFont(42);
@@ -5051,7 +5051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_168__171->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_168__171->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_168__171->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_168__171->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_168__171->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_168__171->GetYaxis()->CenterTitle(true);
    h_ratio_trial_168__171->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_168__171->GetYaxis()->SetLabelFont(42);
@@ -5081,7 +5081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_169__172->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_169__172->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_169__172->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_169__172->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_169__172->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_169__172->GetYaxis()->CenterTitle(true);
    h_ratio_trial_169__172->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_169__172->GetYaxis()->SetLabelFont(42);
@@ -5111,7 +5111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_170__173->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_170__173->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_170__173->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_170__173->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_170__173->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_170__173->GetYaxis()->CenterTitle(true);
    h_ratio_trial_170__173->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_170__173->GetYaxis()->SetLabelFont(42);
@@ -5141,7 +5141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_171__174->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_171__174->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_171__174->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_171__174->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_171__174->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_171__174->GetYaxis()->CenterTitle(true);
    h_ratio_trial_171__174->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_171__174->GetYaxis()->SetLabelFont(42);
@@ -5171,7 +5171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_172__175->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_172__175->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_172__175->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_172__175->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_172__175->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_172__175->GetYaxis()->CenterTitle(true);
    h_ratio_trial_172__175->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_172__175->GetYaxis()->SetLabelFont(42);
@@ -5201,7 +5201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_173__176->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_173__176->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_173__176->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_173__176->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_173__176->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_173__176->GetYaxis()->CenterTitle(true);
    h_ratio_trial_173__176->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_173__176->GetYaxis()->SetLabelFont(42);
@@ -5231,7 +5231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_174__177->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_174__177->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_174__177->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_174__177->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_174__177->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_174__177->GetYaxis()->CenterTitle(true);
    h_ratio_trial_174__177->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_174__177->GetYaxis()->SetLabelFont(42);
@@ -5261,7 +5261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_175__178->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_175__178->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_175__178->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_175__178->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_175__178->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_175__178->GetYaxis()->CenterTitle(true);
    h_ratio_trial_175__178->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_175__178->GetYaxis()->SetLabelFont(42);
@@ -5291,7 +5291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_176__179->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_176__179->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_176__179->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_176__179->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_176__179->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_176__179->GetYaxis()->CenterTitle(true);
    h_ratio_trial_176__179->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_176__179->GetYaxis()->SetLabelFont(42);
@@ -5321,7 +5321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_177__180->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_177__180->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_177__180->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_177__180->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_177__180->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_177__180->GetYaxis()->CenterTitle(true);
    h_ratio_trial_177__180->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_177__180->GetYaxis()->SetLabelFont(42);
@@ -5351,7 +5351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_178__181->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_178__181->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_178__181->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_178__181->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_178__181->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_178__181->GetYaxis()->CenterTitle(true);
    h_ratio_trial_178__181->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_178__181->GetYaxis()->SetLabelFont(42);
@@ -5381,7 +5381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_179__182->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_179__182->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_179__182->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_179__182->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_179__182->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_179__182->GetYaxis()->CenterTitle(true);
    h_ratio_trial_179__182->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_179__182->GetYaxis()->SetLabelFont(42);
@@ -5411,7 +5411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_180__183->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_180__183->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_180__183->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_180__183->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_180__183->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_180__183->GetYaxis()->CenterTitle(true);
    h_ratio_trial_180__183->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_180__183->GetYaxis()->SetLabelFont(42);
@@ -5441,7 +5441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_181__184->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_181__184->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_181__184->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_181__184->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_181__184->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_181__184->GetYaxis()->CenterTitle(true);
    h_ratio_trial_181__184->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_181__184->GetYaxis()->SetLabelFont(42);
@@ -5471,7 +5471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_182__185->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_182__185->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_182__185->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_182__185->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_182__185->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_182__185->GetYaxis()->CenterTitle(true);
    h_ratio_trial_182__185->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_182__185->GetYaxis()->SetLabelFont(42);
@@ -5501,7 +5501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_183__186->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_183__186->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_183__186->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_183__186->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_183__186->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_183__186->GetYaxis()->CenterTitle(true);
    h_ratio_trial_183__186->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_183__186->GetYaxis()->SetLabelFont(42);
@@ -5531,7 +5531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_184__187->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_184__187->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_184__187->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_184__187->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_184__187->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_184__187->GetYaxis()->CenterTitle(true);
    h_ratio_trial_184__187->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_184__187->GetYaxis()->SetLabelFont(42);
@@ -5561,7 +5561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_185__188->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_185__188->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_185__188->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_185__188->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_185__188->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_185__188->GetYaxis()->CenterTitle(true);
    h_ratio_trial_185__188->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_185__188->GetYaxis()->SetLabelFont(42);
@@ -5591,7 +5591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_186__189->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_186__189->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_186__189->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_186__189->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_186__189->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_186__189->GetYaxis()->CenterTitle(true);
    h_ratio_trial_186__189->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_186__189->GetYaxis()->SetLabelFont(42);
@@ -5621,7 +5621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_187__190->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_187__190->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_187__190->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_187__190->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_187__190->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_187__190->GetYaxis()->CenterTitle(true);
    h_ratio_trial_187__190->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_187__190->GetYaxis()->SetLabelFont(42);
@@ -5651,7 +5651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_188__191->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_188__191->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_188__191->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_188__191->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_188__191->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_188__191->GetYaxis()->CenterTitle(true);
    h_ratio_trial_188__191->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_188__191->GetYaxis()->SetLabelFont(42);
@@ -5681,7 +5681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_189__192->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_189__192->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_189__192->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_189__192->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_189__192->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_189__192->GetYaxis()->CenterTitle(true);
    h_ratio_trial_189__192->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_189__192->GetYaxis()->SetLabelFont(42);
@@ -5711,7 +5711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_190__193->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_190__193->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_190__193->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_190__193->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_190__193->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_190__193->GetYaxis()->CenterTitle(true);
    h_ratio_trial_190__193->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_190__193->GetYaxis()->SetLabelFont(42);
@@ -5741,7 +5741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_191__194->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_191__194->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_191__194->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_191__194->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_191__194->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_191__194->GetYaxis()->CenterTitle(true);
    h_ratio_trial_191__194->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_191__194->GetYaxis()->SetLabelFont(42);
@@ -5771,7 +5771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_192__195->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_192__195->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_192__195->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_192__195->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_192__195->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_192__195->GetYaxis()->CenterTitle(true);
    h_ratio_trial_192__195->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_192__195->GetYaxis()->SetLabelFont(42);
@@ -5801,7 +5801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_193__196->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_193__196->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_193__196->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_193__196->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_193__196->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_193__196->GetYaxis()->CenterTitle(true);
    h_ratio_trial_193__196->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_193__196->GetYaxis()->SetLabelFont(42);
@@ -5831,7 +5831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_194__197->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_194__197->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_194__197->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_194__197->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_194__197->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_194__197->GetYaxis()->CenterTitle(true);
    h_ratio_trial_194__197->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_194__197->GetYaxis()->SetLabelFont(42);
@@ -5861,7 +5861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_195__198->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_195__198->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_195__198->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_195__198->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_195__198->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_195__198->GetYaxis()->CenterTitle(true);
    h_ratio_trial_195__198->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_195__198->GetYaxis()->SetLabelFont(42);
@@ -5891,7 +5891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_196__199->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_196__199->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_196__199->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_196__199->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_196__199->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_196__199->GetYaxis()->CenterTitle(true);
    h_ratio_trial_196__199->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_196__199->GetYaxis()->SetLabelFont(42);
@@ -5921,7 +5921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_197__200->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_197__200->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_197__200->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_197__200->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_197__200->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_197__200->GetYaxis()->CenterTitle(true);
    h_ratio_trial_197__200->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_197__200->GetYaxis()->SetLabelFont(42);
@@ -5951,7 +5951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_198__201->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_198__201->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_198__201->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_198__201->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_198__201->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_198__201->GetYaxis()->CenterTitle(true);
    h_ratio_trial_198__201->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_198__201->GetYaxis()->SetLabelFont(42);
@@ -5981,7 +5981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_199__202->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_199__202->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_199__202->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_199__202->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_199__202->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_199__202->GetYaxis()->CenterTitle(true);
    h_ratio_trial_199__202->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_199__202->GetYaxis()->SetLabelFont(42);
@@ -6011,7 +6011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_200__203->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_200__203->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_200__203->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_200__203->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_200__203->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_200__203->GetYaxis()->CenterTitle(true);
    h_ratio_trial_200__203->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_200__203->GetYaxis()->SetLabelFont(42);
@@ -6041,7 +6041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_201__204->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_201__204->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_201__204->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_201__204->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_201__204->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_201__204->GetYaxis()->CenterTitle(true);
    h_ratio_trial_201__204->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_201__204->GetYaxis()->SetLabelFont(42);
@@ -6071,7 +6071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_202__205->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_202__205->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_202__205->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_202__205->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_202__205->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_202__205->GetYaxis()->CenterTitle(true);
    h_ratio_trial_202__205->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_202__205->GetYaxis()->SetLabelFont(42);
@@ -6101,7 +6101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_203__206->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_203__206->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_203__206->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_203__206->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_203__206->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_203__206->GetYaxis()->CenterTitle(true);
    h_ratio_trial_203__206->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_203__206->GetYaxis()->SetLabelFont(42);
@@ -6131,7 +6131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_204__207->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_204__207->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_204__207->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_204__207->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_204__207->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_204__207->GetYaxis()->CenterTitle(true);
    h_ratio_trial_204__207->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_204__207->GetYaxis()->SetLabelFont(42);
@@ -6161,7 +6161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_205__208->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_205__208->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_205__208->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_205__208->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_205__208->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_205__208->GetYaxis()->CenterTitle(true);
    h_ratio_trial_205__208->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_205__208->GetYaxis()->SetLabelFont(42);
@@ -6191,7 +6191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_206__209->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_206__209->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_206__209->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_206__209->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_206__209->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_206__209->GetYaxis()->CenterTitle(true);
    h_ratio_trial_206__209->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_206__209->GetYaxis()->SetLabelFont(42);
@@ -6221,7 +6221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_207__210->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_207__210->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_207__210->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_207__210->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_207__210->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_207__210->GetYaxis()->CenterTitle(true);
    h_ratio_trial_207__210->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_207__210->GetYaxis()->SetLabelFont(42);
@@ -6251,7 +6251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_208__211->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_208__211->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_208__211->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_208__211->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_208__211->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_208__211->GetYaxis()->CenterTitle(true);
    h_ratio_trial_208__211->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_208__211->GetYaxis()->SetLabelFont(42);
@@ -6281,7 +6281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_209__212->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_209__212->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_209__212->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_209__212->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_209__212->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_209__212->GetYaxis()->CenterTitle(true);
    h_ratio_trial_209__212->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_209__212->GetYaxis()->SetLabelFont(42);
@@ -6311,7 +6311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_210__213->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_210__213->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_210__213->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_210__213->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_210__213->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_210__213->GetYaxis()->CenterTitle(true);
    h_ratio_trial_210__213->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_210__213->GetYaxis()->SetLabelFont(42);
@@ -6341,7 +6341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_211__214->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_211__214->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_211__214->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_211__214->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_211__214->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_211__214->GetYaxis()->CenterTitle(true);
    h_ratio_trial_211__214->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_211__214->GetYaxis()->SetLabelFont(42);
@@ -6371,7 +6371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_212__215->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_212__215->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_212__215->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_212__215->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_212__215->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_212__215->GetYaxis()->CenterTitle(true);
    h_ratio_trial_212__215->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_212__215->GetYaxis()->SetLabelFont(42);
@@ -6401,7 +6401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_213__216->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_213__216->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_213__216->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_213__216->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_213__216->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_213__216->GetYaxis()->CenterTitle(true);
    h_ratio_trial_213__216->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_213__216->GetYaxis()->SetLabelFont(42);
@@ -6431,7 +6431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_214__217->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_214__217->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_214__217->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_214__217->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_214__217->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_214__217->GetYaxis()->CenterTitle(true);
    h_ratio_trial_214__217->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_214__217->GetYaxis()->SetLabelFont(42);
@@ -6461,7 +6461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_215__218->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_215__218->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_215__218->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_215__218->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_215__218->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_215__218->GetYaxis()->CenterTitle(true);
    h_ratio_trial_215__218->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_215__218->GetYaxis()->SetLabelFont(42);
@@ -6491,7 +6491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_216__219->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_216__219->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_216__219->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_216__219->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_216__219->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_216__219->GetYaxis()->CenterTitle(true);
    h_ratio_trial_216__219->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_216__219->GetYaxis()->SetLabelFont(42);
@@ -6521,7 +6521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_217__220->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_217__220->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_217__220->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_217__220->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_217__220->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_217__220->GetYaxis()->CenterTitle(true);
    h_ratio_trial_217__220->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_217__220->GetYaxis()->SetLabelFont(42);
@@ -6551,7 +6551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_218__221->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_218__221->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_218__221->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_218__221->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_218__221->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_218__221->GetYaxis()->CenterTitle(true);
    h_ratio_trial_218__221->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_218__221->GetYaxis()->SetLabelFont(42);
@@ -6581,7 +6581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_219__222->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_219__222->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_219__222->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_219__222->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_219__222->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_219__222->GetYaxis()->CenterTitle(true);
    h_ratio_trial_219__222->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_219__222->GetYaxis()->SetLabelFont(42);
@@ -6611,7 +6611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_220__223->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_220__223->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_220__223->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_220__223->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_220__223->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_220__223->GetYaxis()->CenterTitle(true);
    h_ratio_trial_220__223->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_220__223->GetYaxis()->SetLabelFont(42);
@@ -6641,7 +6641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_221__224->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_221__224->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_221__224->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_221__224->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_221__224->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_221__224->GetYaxis()->CenterTitle(true);
    h_ratio_trial_221__224->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_221__224->GetYaxis()->SetLabelFont(42);
@@ -6671,7 +6671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_222__225->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_222__225->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_222__225->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_222__225->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_222__225->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_222__225->GetYaxis()->CenterTitle(true);
    h_ratio_trial_222__225->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_222__225->GetYaxis()->SetLabelFont(42);
@@ -6701,7 +6701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_223__226->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_223__226->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_223__226->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_223__226->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_223__226->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_223__226->GetYaxis()->CenterTitle(true);
    h_ratio_trial_223__226->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_223__226->GetYaxis()->SetLabelFont(42);
@@ -6731,7 +6731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_224__227->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_224__227->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_224__227->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_224__227->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_224__227->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_224__227->GetYaxis()->CenterTitle(true);
    h_ratio_trial_224__227->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_224__227->GetYaxis()->SetLabelFont(42);
@@ -6761,7 +6761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_225__228->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_225__228->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_225__228->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_225__228->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_225__228->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_225__228->GetYaxis()->CenterTitle(true);
    h_ratio_trial_225__228->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_225__228->GetYaxis()->SetLabelFont(42);
@@ -6791,7 +6791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_226__229->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_226__229->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_226__229->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_226__229->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_226__229->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_226__229->GetYaxis()->CenterTitle(true);
    h_ratio_trial_226__229->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_226__229->GetYaxis()->SetLabelFont(42);
@@ -6821,7 +6821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_227__230->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_227__230->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_227__230->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_227__230->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_227__230->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_227__230->GetYaxis()->CenterTitle(true);
    h_ratio_trial_227__230->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_227__230->GetYaxis()->SetLabelFont(42);
@@ -6851,7 +6851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_228__231->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_228__231->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_228__231->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_228__231->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_228__231->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_228__231->GetYaxis()->CenterTitle(true);
    h_ratio_trial_228__231->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_228__231->GetYaxis()->SetLabelFont(42);
@@ -6881,7 +6881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_229__232->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_229__232->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_229__232->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_229__232->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_229__232->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_229__232->GetYaxis()->CenterTitle(true);
    h_ratio_trial_229__232->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_229__232->GetYaxis()->SetLabelFont(42);
@@ -6911,7 +6911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_230__233->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_230__233->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_230__233->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_230__233->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_230__233->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_230__233->GetYaxis()->CenterTitle(true);
    h_ratio_trial_230__233->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_230__233->GetYaxis()->SetLabelFont(42);
@@ -6941,7 +6941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_231__234->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_231__234->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_231__234->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_231__234->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_231__234->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_231__234->GetYaxis()->CenterTitle(true);
    h_ratio_trial_231__234->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_231__234->GetYaxis()->SetLabelFont(42);
@@ -6971,7 +6971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_232__235->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_232__235->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_232__235->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_232__235->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_232__235->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_232__235->GetYaxis()->CenterTitle(true);
    h_ratio_trial_232__235->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_232__235->GetYaxis()->SetLabelFont(42);
@@ -7001,7 +7001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_233__236->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_233__236->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_233__236->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_233__236->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_233__236->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_233__236->GetYaxis()->CenterTitle(true);
    h_ratio_trial_233__236->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_233__236->GetYaxis()->SetLabelFont(42);
@@ -7031,7 +7031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_234__237->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_234__237->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_234__237->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_234__237->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_234__237->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_234__237->GetYaxis()->CenterTitle(true);
    h_ratio_trial_234__237->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_234__237->GetYaxis()->SetLabelFont(42);
@@ -7061,7 +7061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_235__238->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_235__238->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_235__238->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_235__238->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_235__238->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_235__238->GetYaxis()->CenterTitle(true);
    h_ratio_trial_235__238->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_235__238->GetYaxis()->SetLabelFont(42);
@@ -7091,7 +7091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_236__239->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_236__239->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_236__239->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_236__239->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_236__239->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_236__239->GetYaxis()->CenterTitle(true);
    h_ratio_trial_236__239->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_236__239->GetYaxis()->SetLabelFont(42);
@@ -7121,7 +7121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_237__240->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_237__240->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_237__240->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_237__240->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_237__240->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_237__240->GetYaxis()->CenterTitle(true);
    h_ratio_trial_237__240->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_237__240->GetYaxis()->SetLabelFont(42);
@@ -7151,7 +7151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_238__241->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_238__241->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_238__241->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_238__241->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_238__241->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_238__241->GetYaxis()->CenterTitle(true);
    h_ratio_trial_238__241->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_238__241->GetYaxis()->SetLabelFont(42);
@@ -7181,7 +7181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_239__242->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_239__242->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_239__242->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_239__242->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_239__242->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_239__242->GetYaxis()->CenterTitle(true);
    h_ratio_trial_239__242->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_239__242->GetYaxis()->SetLabelFont(42);
@@ -7211,7 +7211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_240__243->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_240__243->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_240__243->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_240__243->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_240__243->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_240__243->GetYaxis()->CenterTitle(true);
    h_ratio_trial_240__243->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_240__243->GetYaxis()->SetLabelFont(42);
@@ -7241,7 +7241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_241__244->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_241__244->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_241__244->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_241__244->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_241__244->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_241__244->GetYaxis()->CenterTitle(true);
    h_ratio_trial_241__244->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_241__244->GetYaxis()->SetLabelFont(42);
@@ -7271,7 +7271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_242__245->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_242__245->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_242__245->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_242__245->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_242__245->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_242__245->GetYaxis()->CenterTitle(true);
    h_ratio_trial_242__245->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_242__245->GetYaxis()->SetLabelFont(42);
@@ -7301,7 +7301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_243__246->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_243__246->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_243__246->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_243__246->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_243__246->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_243__246->GetYaxis()->CenterTitle(true);
    h_ratio_trial_243__246->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_243__246->GetYaxis()->SetLabelFont(42);
@@ -7331,7 +7331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_244__247->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_244__247->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_244__247->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_244__247->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_244__247->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_244__247->GetYaxis()->CenterTitle(true);
    h_ratio_trial_244__247->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_244__247->GetYaxis()->SetLabelFont(42);
@@ -7361,7 +7361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_245__248->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_245__248->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_245__248->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_245__248->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_245__248->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_245__248->GetYaxis()->CenterTitle(true);
    h_ratio_trial_245__248->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_245__248->GetYaxis()->SetLabelFont(42);
@@ -7391,7 +7391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_246__249->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_246__249->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_246__249->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_246__249->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_246__249->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_246__249->GetYaxis()->CenterTitle(true);
    h_ratio_trial_246__249->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_246__249->GetYaxis()->SetLabelFont(42);
@@ -7421,7 +7421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_247__250->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_247__250->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_247__250->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_247__250->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_247__250->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_247__250->GetYaxis()->CenterTitle(true);
    h_ratio_trial_247__250->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_247__250->GetYaxis()->SetLabelFont(42);
@@ -7451,7 +7451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_248__251->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_248__251->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_248__251->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_248__251->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_248__251->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_248__251->GetYaxis()->CenterTitle(true);
    h_ratio_trial_248__251->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_248__251->GetYaxis()->SetLabelFont(42);
@@ -7481,7 +7481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_249__252->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_249__252->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_249__252->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_249__252->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_249__252->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_249__252->GetYaxis()->CenterTitle(true);
    h_ratio_trial_249__252->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_249__252->GetYaxis()->SetLabelFont(42);
@@ -7511,7 +7511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_250__253->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_250__253->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_250__253->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_250__253->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_250__253->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_250__253->GetYaxis()->CenterTitle(true);
    h_ratio_trial_250__253->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_250__253->GetYaxis()->SetLabelFont(42);
@@ -7541,7 +7541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_251__254->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_251__254->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_251__254->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_251__254->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_251__254->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_251__254->GetYaxis()->CenterTitle(true);
    h_ratio_trial_251__254->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_251__254->GetYaxis()->SetLabelFont(42);
@@ -7571,7 +7571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_252__255->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_252__255->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_252__255->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_252__255->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_252__255->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_252__255->GetYaxis()->CenterTitle(true);
    h_ratio_trial_252__255->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_252__255->GetYaxis()->SetLabelFont(42);
@@ -7601,7 +7601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_253__256->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_253__256->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_253__256->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_253__256->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_253__256->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_253__256->GetYaxis()->CenterTitle(true);
    h_ratio_trial_253__256->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_253__256->GetYaxis()->SetLabelFont(42);
@@ -7631,7 +7631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_254__257->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_254__257->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_254__257->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_254__257->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_254__257->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_254__257->GetYaxis()->CenterTitle(true);
    h_ratio_trial_254__257->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_254__257->GetYaxis()->SetLabelFont(42);
@@ -7661,7 +7661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_255__258->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_255__258->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_255__258->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_255__258->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_255__258->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_255__258->GetYaxis()->CenterTitle(true);
    h_ratio_trial_255__258->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_255__258->GetYaxis()->SetLabelFont(42);
@@ -7691,7 +7691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_256__259->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_256__259->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_256__259->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_256__259->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_256__259->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_256__259->GetYaxis()->CenterTitle(true);
    h_ratio_trial_256__259->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_256__259->GetYaxis()->SetLabelFont(42);
@@ -7721,7 +7721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_257__260->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_257__260->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_257__260->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_257__260->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_257__260->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_257__260->GetYaxis()->CenterTitle(true);
    h_ratio_trial_257__260->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_257__260->GetYaxis()->SetLabelFont(42);
@@ -7751,7 +7751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_258__261->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_258__261->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_258__261->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_258__261->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_258__261->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_258__261->GetYaxis()->CenterTitle(true);
    h_ratio_trial_258__261->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_258__261->GetYaxis()->SetLabelFont(42);
@@ -7781,7 +7781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_259__262->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_259__262->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_259__262->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_259__262->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_259__262->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_259__262->GetYaxis()->CenterTitle(true);
    h_ratio_trial_259__262->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_259__262->GetYaxis()->SetLabelFont(42);
@@ -7811,7 +7811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_260__263->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_260__263->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_260__263->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_260__263->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_260__263->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_260__263->GetYaxis()->CenterTitle(true);
    h_ratio_trial_260__263->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_260__263->GetYaxis()->SetLabelFont(42);
@@ -7841,7 +7841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_261__264->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_261__264->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_261__264->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_261__264->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_261__264->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_261__264->GetYaxis()->CenterTitle(true);
    h_ratio_trial_261__264->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_261__264->GetYaxis()->SetLabelFont(42);
@@ -7871,7 +7871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_262__265->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_262__265->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_262__265->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_262__265->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_262__265->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_262__265->GetYaxis()->CenterTitle(true);
    h_ratio_trial_262__265->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_262__265->GetYaxis()->SetLabelFont(42);
@@ -7901,7 +7901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_263__266->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_263__266->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_263__266->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_263__266->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_263__266->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_263__266->GetYaxis()->CenterTitle(true);
    h_ratio_trial_263__266->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_263__266->GetYaxis()->SetLabelFont(42);
@@ -7931,7 +7931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_264__267->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_264__267->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_264__267->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_264__267->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_264__267->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_264__267->GetYaxis()->CenterTitle(true);
    h_ratio_trial_264__267->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_264__267->GetYaxis()->SetLabelFont(42);
@@ -7961,7 +7961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_265__268->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_265__268->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_265__268->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_265__268->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_265__268->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_265__268->GetYaxis()->CenterTitle(true);
    h_ratio_trial_265__268->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_265__268->GetYaxis()->SetLabelFont(42);
@@ -7991,7 +7991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_266__269->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_266__269->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_266__269->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_266__269->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_266__269->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_266__269->GetYaxis()->CenterTitle(true);
    h_ratio_trial_266__269->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_266__269->GetYaxis()->SetLabelFont(42);
@@ -8021,7 +8021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_267__270->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_267__270->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_267__270->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_267__270->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_267__270->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_267__270->GetYaxis()->CenterTitle(true);
    h_ratio_trial_267__270->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_267__270->GetYaxis()->SetLabelFont(42);
@@ -8051,7 +8051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_268__271->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_268__271->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_268__271->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_268__271->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_268__271->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_268__271->GetYaxis()->CenterTitle(true);
    h_ratio_trial_268__271->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_268__271->GetYaxis()->SetLabelFont(42);
@@ -8081,7 +8081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_269__272->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_269__272->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_269__272->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_269__272->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_269__272->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_269__272->GetYaxis()->CenterTitle(true);
    h_ratio_trial_269__272->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_269__272->GetYaxis()->SetLabelFont(42);
@@ -8111,7 +8111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_270__273->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_270__273->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_270__273->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_270__273->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_270__273->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_270__273->GetYaxis()->CenterTitle(true);
    h_ratio_trial_270__273->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_270__273->GetYaxis()->SetLabelFont(42);
@@ -8141,7 +8141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_271__274->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_271__274->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_271__274->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_271__274->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_271__274->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_271__274->GetYaxis()->CenterTitle(true);
    h_ratio_trial_271__274->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_271__274->GetYaxis()->SetLabelFont(42);
@@ -8171,7 +8171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_272__275->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_272__275->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_272__275->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_272__275->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_272__275->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_272__275->GetYaxis()->CenterTitle(true);
    h_ratio_trial_272__275->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_272__275->GetYaxis()->SetLabelFont(42);
@@ -8201,7 +8201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_273__276->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_273__276->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_273__276->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_273__276->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_273__276->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_273__276->GetYaxis()->CenterTitle(true);
    h_ratio_trial_273__276->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_273__276->GetYaxis()->SetLabelFont(42);
@@ -8231,7 +8231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_274__277->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_274__277->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_274__277->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_274__277->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_274__277->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_274__277->GetYaxis()->CenterTitle(true);
    h_ratio_trial_274__277->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_274__277->GetYaxis()->SetLabelFont(42);
@@ -8261,7 +8261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_275__278->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_275__278->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_275__278->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_275__278->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_275__278->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_275__278->GetYaxis()->CenterTitle(true);
    h_ratio_trial_275__278->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_275__278->GetYaxis()->SetLabelFont(42);
@@ -8291,7 +8291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_276__279->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_276__279->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_276__279->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_276__279->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_276__279->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_276__279->GetYaxis()->CenterTitle(true);
    h_ratio_trial_276__279->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_276__279->GetYaxis()->SetLabelFont(42);
@@ -8321,7 +8321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_277__280->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_277__280->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_277__280->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_277__280->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_277__280->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_277__280->GetYaxis()->CenterTitle(true);
    h_ratio_trial_277__280->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_277__280->GetYaxis()->SetLabelFont(42);
@@ -8351,7 +8351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_278__281->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_278__281->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_278__281->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_278__281->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_278__281->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_278__281->GetYaxis()->CenterTitle(true);
    h_ratio_trial_278__281->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_278__281->GetYaxis()->SetLabelFont(42);
@@ -8381,7 +8381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_279__282->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_279__282->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_279__282->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_279__282->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_279__282->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_279__282->GetYaxis()->CenterTitle(true);
    h_ratio_trial_279__282->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_279__282->GetYaxis()->SetLabelFont(42);
@@ -8411,7 +8411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_280__283->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_280__283->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_280__283->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_280__283->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_280__283->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_280__283->GetYaxis()->CenterTitle(true);
    h_ratio_trial_280__283->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_280__283->GetYaxis()->SetLabelFont(42);
@@ -8441,7 +8441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_281__284->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_281__284->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_281__284->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_281__284->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_281__284->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_281__284->GetYaxis()->CenterTitle(true);
    h_ratio_trial_281__284->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_281__284->GetYaxis()->SetLabelFont(42);
@@ -8471,7 +8471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_282__285->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_282__285->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_282__285->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_282__285->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_282__285->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_282__285->GetYaxis()->CenterTitle(true);
    h_ratio_trial_282__285->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_282__285->GetYaxis()->SetLabelFont(42);
@@ -8501,7 +8501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_283__286->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_283__286->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_283__286->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_283__286->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_283__286->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_283__286->GetYaxis()->CenterTitle(true);
    h_ratio_trial_283__286->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_283__286->GetYaxis()->SetLabelFont(42);
@@ -8531,7 +8531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_284__287->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_284__287->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_284__287->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_284__287->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_284__287->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_284__287->GetYaxis()->CenterTitle(true);
    h_ratio_trial_284__287->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_284__287->GetYaxis()->SetLabelFont(42);
@@ -8561,7 +8561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_285__288->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_285__288->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_285__288->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_285__288->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_285__288->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_285__288->GetYaxis()->CenterTitle(true);
    h_ratio_trial_285__288->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_285__288->GetYaxis()->SetLabelFont(42);
@@ -8591,7 +8591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_286__289->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_286__289->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_286__289->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_286__289->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_286__289->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_286__289->GetYaxis()->CenterTitle(true);
    h_ratio_trial_286__289->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_286__289->GetYaxis()->SetLabelFont(42);
@@ -8621,7 +8621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_287__290->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_287__290->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_287__290->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_287__290->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_287__290->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_287__290->GetYaxis()->CenterTitle(true);
    h_ratio_trial_287__290->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_287__290->GetYaxis()->SetLabelFont(42);
@@ -8651,7 +8651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_288__291->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_288__291->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_288__291->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_288__291->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_288__291->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_288__291->GetYaxis()->CenterTitle(true);
    h_ratio_trial_288__291->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_288__291->GetYaxis()->SetLabelFont(42);
@@ -8681,7 +8681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_289__292->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_289__292->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_289__292->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_289__292->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_289__292->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_289__292->GetYaxis()->CenterTitle(true);
    h_ratio_trial_289__292->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_289__292->GetYaxis()->SetLabelFont(42);
@@ -8711,7 +8711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_290__293->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_290__293->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_290__293->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_290__293->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_290__293->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_290__293->GetYaxis()->CenterTitle(true);
    h_ratio_trial_290__293->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_290__293->GetYaxis()->SetLabelFont(42);
@@ -8741,7 +8741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_291__294->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_291__294->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_291__294->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_291__294->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_291__294->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_291__294->GetYaxis()->CenterTitle(true);
    h_ratio_trial_291__294->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_291__294->GetYaxis()->SetLabelFont(42);
@@ -8771,7 +8771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_292__295->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_292__295->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_292__295->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_292__295->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_292__295->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_292__295->GetYaxis()->CenterTitle(true);
    h_ratio_trial_292__295->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_292__295->GetYaxis()->SetLabelFont(42);
@@ -8801,7 +8801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_293__296->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_293__296->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_293__296->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_293__296->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_293__296->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_293__296->GetYaxis()->CenterTitle(true);
    h_ratio_trial_293__296->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_293__296->GetYaxis()->SetLabelFont(42);
@@ -8831,7 +8831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_294__297->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_294__297->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_294__297->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_294__297->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_294__297->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_294__297->GetYaxis()->CenterTitle(true);
    h_ratio_trial_294__297->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_294__297->GetYaxis()->SetLabelFont(42);
@@ -8861,7 +8861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_295__298->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_295__298->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_295__298->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_295__298->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_295__298->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_295__298->GetYaxis()->CenterTitle(true);
    h_ratio_trial_295__298->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_295__298->GetYaxis()->SetLabelFont(42);
@@ -8891,7 +8891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_296__299->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_296__299->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_296__299->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_296__299->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_296__299->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_296__299->GetYaxis()->CenterTitle(true);
    h_ratio_trial_296__299->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_296__299->GetYaxis()->SetLabelFont(42);
@@ -8921,7 +8921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_297__300->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_297__300->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_297__300->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_297__300->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_297__300->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_297__300->GetYaxis()->CenterTitle(true);
    h_ratio_trial_297__300->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_297__300->GetYaxis()->SetLabelFont(42);
@@ -8951,7 +8951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_298__301->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_298__301->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_298__301->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_298__301->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_298__301->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_298__301->GetYaxis()->CenterTitle(true);
    h_ratio_trial_298__301->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_298__301->GetYaxis()->SetLabelFont(42);
@@ -8981,7 +8981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_299__302->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_299__302->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_299__302->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_299__302->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_299__302->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_299__302->GetYaxis()->CenterTitle(true);
    h_ratio_trial_299__302->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_299__302->GetYaxis()->SetLabelFont(42);
@@ -9011,7 +9011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_300__303->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_300__303->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_300__303->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_300__303->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_300__303->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_300__303->GetYaxis()->CenterTitle(true);
    h_ratio_trial_300__303->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_300__303->GetYaxis()->SetLabelFont(42);
@@ -9041,7 +9041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_301__304->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_301__304->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_301__304->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_301__304->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_301__304->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_301__304->GetYaxis()->CenterTitle(true);
    h_ratio_trial_301__304->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_301__304->GetYaxis()->SetLabelFont(42);
@@ -9071,7 +9071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_302__305->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_302__305->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_302__305->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_302__305->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_302__305->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_302__305->GetYaxis()->CenterTitle(true);
    h_ratio_trial_302__305->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_302__305->GetYaxis()->SetLabelFont(42);
@@ -9101,7 +9101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_303__306->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_303__306->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_303__306->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_303__306->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_303__306->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_303__306->GetYaxis()->CenterTitle(true);
    h_ratio_trial_303__306->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_303__306->GetYaxis()->SetLabelFont(42);
@@ -9131,7 +9131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_304__307->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_304__307->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_304__307->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_304__307->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_304__307->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_304__307->GetYaxis()->CenterTitle(true);
    h_ratio_trial_304__307->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_304__307->GetYaxis()->SetLabelFont(42);
@@ -9161,7 +9161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_305__308->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_305__308->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_305__308->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_305__308->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_305__308->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_305__308->GetYaxis()->CenterTitle(true);
    h_ratio_trial_305__308->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_305__308->GetYaxis()->SetLabelFont(42);
@@ -9191,7 +9191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_306__309->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_306__309->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_306__309->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_306__309->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_306__309->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_306__309->GetYaxis()->CenterTitle(true);
    h_ratio_trial_306__309->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_306__309->GetYaxis()->SetLabelFont(42);
@@ -9221,7 +9221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_307__310->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_307__310->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_307__310->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_307__310->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_307__310->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_307__310->GetYaxis()->CenterTitle(true);
    h_ratio_trial_307__310->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_307__310->GetYaxis()->SetLabelFont(42);
@@ -9251,7 +9251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_308__311->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_308__311->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_308__311->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_308__311->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_308__311->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_308__311->GetYaxis()->CenterTitle(true);
    h_ratio_trial_308__311->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_308__311->GetYaxis()->SetLabelFont(42);
@@ -9281,7 +9281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_309__312->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_309__312->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_309__312->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_309__312->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_309__312->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_309__312->GetYaxis()->CenterTitle(true);
    h_ratio_trial_309__312->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_309__312->GetYaxis()->SetLabelFont(42);
@@ -9311,7 +9311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_310__313->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_310__313->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_310__313->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_310__313->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_310__313->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_310__313->GetYaxis()->CenterTitle(true);
    h_ratio_trial_310__313->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_310__313->GetYaxis()->SetLabelFont(42);
@@ -9341,7 +9341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_311__314->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_311__314->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_311__314->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_311__314->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_311__314->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_311__314->GetYaxis()->CenterTitle(true);
    h_ratio_trial_311__314->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_311__314->GetYaxis()->SetLabelFont(42);
@@ -9371,7 +9371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_312__315->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_312__315->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_312__315->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_312__315->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_312__315->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_312__315->GetYaxis()->CenterTitle(true);
    h_ratio_trial_312__315->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_312__315->GetYaxis()->SetLabelFont(42);
@@ -9401,7 +9401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_313__316->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_313__316->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_313__316->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_313__316->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_313__316->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_313__316->GetYaxis()->CenterTitle(true);
    h_ratio_trial_313__316->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_313__316->GetYaxis()->SetLabelFont(42);
@@ -9431,7 +9431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_314__317->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_314__317->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_314__317->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_314__317->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_314__317->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_314__317->GetYaxis()->CenterTitle(true);
    h_ratio_trial_314__317->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_314__317->GetYaxis()->SetLabelFont(42);
@@ -9461,7 +9461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_315__318->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_315__318->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_315__318->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_315__318->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_315__318->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_315__318->GetYaxis()->CenterTitle(true);
    h_ratio_trial_315__318->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_315__318->GetYaxis()->SetLabelFont(42);
@@ -9491,7 +9491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_316__319->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_316__319->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_316__319->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_316__319->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_316__319->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_316__319->GetYaxis()->CenterTitle(true);
    h_ratio_trial_316__319->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_316__319->GetYaxis()->SetLabelFont(42);
@@ -9521,7 +9521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_317__320->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_317__320->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_317__320->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_317__320->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_317__320->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_317__320->GetYaxis()->CenterTitle(true);
    h_ratio_trial_317__320->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_317__320->GetYaxis()->SetLabelFont(42);
@@ -9551,7 +9551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_318__321->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_318__321->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_318__321->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_318__321->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_318__321->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_318__321->GetYaxis()->CenterTitle(true);
    h_ratio_trial_318__321->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_318__321->GetYaxis()->SetLabelFont(42);
@@ -9581,7 +9581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_319__322->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_319__322->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_319__322->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_319__322->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_319__322->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_319__322->GetYaxis()->CenterTitle(true);
    h_ratio_trial_319__322->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_319__322->GetYaxis()->SetLabelFont(42);
@@ -9611,7 +9611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_320__323->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_320__323->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_320__323->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_320__323->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_320__323->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_320__323->GetYaxis()->CenterTitle(true);
    h_ratio_trial_320__323->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_320__323->GetYaxis()->SetLabelFont(42);
@@ -9641,7 +9641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_321__324->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_321__324->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_321__324->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_321__324->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_321__324->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_321__324->GetYaxis()->CenterTitle(true);
    h_ratio_trial_321__324->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_321__324->GetYaxis()->SetLabelFont(42);
@@ -9671,7 +9671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_322__325->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_322__325->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_322__325->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_322__325->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_322__325->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_322__325->GetYaxis()->CenterTitle(true);
    h_ratio_trial_322__325->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_322__325->GetYaxis()->SetLabelFont(42);
@@ -9701,7 +9701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_323__326->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_323__326->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_323__326->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_323__326->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_323__326->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_323__326->GetYaxis()->CenterTitle(true);
    h_ratio_trial_323__326->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_323__326->GetYaxis()->SetLabelFont(42);
@@ -9731,7 +9731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_324__327->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_324__327->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_324__327->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_324__327->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_324__327->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_324__327->GetYaxis()->CenterTitle(true);
    h_ratio_trial_324__327->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_324__327->GetYaxis()->SetLabelFont(42);
@@ -9761,7 +9761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_325__328->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_325__328->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_325__328->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_325__328->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_325__328->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_325__328->GetYaxis()->CenterTitle(true);
    h_ratio_trial_325__328->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_325__328->GetYaxis()->SetLabelFont(42);
@@ -9791,7 +9791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_326__329->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_326__329->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_326__329->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_326__329->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_326__329->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_326__329->GetYaxis()->CenterTitle(true);
    h_ratio_trial_326__329->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_326__329->GetYaxis()->SetLabelFont(42);
@@ -9821,7 +9821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_327__330->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_327__330->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_327__330->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_327__330->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_327__330->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_327__330->GetYaxis()->CenterTitle(true);
    h_ratio_trial_327__330->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_327__330->GetYaxis()->SetLabelFont(42);
@@ -9851,7 +9851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_328__331->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_328__331->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_328__331->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_328__331->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_328__331->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_328__331->GetYaxis()->CenterTitle(true);
    h_ratio_trial_328__331->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_328__331->GetYaxis()->SetLabelFont(42);
@@ -9881,7 +9881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_329__332->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_329__332->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_329__332->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_329__332->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_329__332->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_329__332->GetYaxis()->CenterTitle(true);
    h_ratio_trial_329__332->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_329__332->GetYaxis()->SetLabelFont(42);
@@ -9911,7 +9911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_330__333->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_330__333->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_330__333->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_330__333->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_330__333->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_330__333->GetYaxis()->CenterTitle(true);
    h_ratio_trial_330__333->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_330__333->GetYaxis()->SetLabelFont(42);
@@ -9941,7 +9941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_331__334->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_331__334->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_331__334->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_331__334->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_331__334->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_331__334->GetYaxis()->CenterTitle(true);
    h_ratio_trial_331__334->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_331__334->GetYaxis()->SetLabelFont(42);
@@ -9971,7 +9971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_332__335->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_332__335->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_332__335->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_332__335->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_332__335->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_332__335->GetYaxis()->CenterTitle(true);
    h_ratio_trial_332__335->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_332__335->GetYaxis()->SetLabelFont(42);
@@ -10001,7 +10001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_333__336->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_333__336->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_333__336->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_333__336->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_333__336->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_333__336->GetYaxis()->CenterTitle(true);
    h_ratio_trial_333__336->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_333__336->GetYaxis()->SetLabelFont(42);
@@ -10031,7 +10031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_334__337->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_334__337->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_334__337->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_334__337->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_334__337->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_334__337->GetYaxis()->CenterTitle(true);
    h_ratio_trial_334__337->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_334__337->GetYaxis()->SetLabelFont(42);
@@ -10061,7 +10061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_335__338->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_335__338->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_335__338->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_335__338->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_335__338->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_335__338->GetYaxis()->CenterTitle(true);
    h_ratio_trial_335__338->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_335__338->GetYaxis()->SetLabelFont(42);
@@ -10091,7 +10091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_336__339->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_336__339->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_336__339->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_336__339->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_336__339->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_336__339->GetYaxis()->CenterTitle(true);
    h_ratio_trial_336__339->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_336__339->GetYaxis()->SetLabelFont(42);
@@ -10121,7 +10121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_337__340->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_337__340->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_337__340->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_337__340->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_337__340->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_337__340->GetYaxis()->CenterTitle(true);
    h_ratio_trial_337__340->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_337__340->GetYaxis()->SetLabelFont(42);
@@ -10151,7 +10151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_338__341->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_338__341->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_338__341->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_338__341->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_338__341->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_338__341->GetYaxis()->CenterTitle(true);
    h_ratio_trial_338__341->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_338__341->GetYaxis()->SetLabelFont(42);
@@ -10181,7 +10181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_339__342->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_339__342->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_339__342->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_339__342->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_339__342->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_339__342->GetYaxis()->CenterTitle(true);
    h_ratio_trial_339__342->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_339__342->GetYaxis()->SetLabelFont(42);
@@ -10211,7 +10211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_340__343->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_340__343->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_340__343->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_340__343->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_340__343->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_340__343->GetYaxis()->CenterTitle(true);
    h_ratio_trial_340__343->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_340__343->GetYaxis()->SetLabelFont(42);
@@ -10241,7 +10241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_341__344->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_341__344->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_341__344->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_341__344->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_341__344->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_341__344->GetYaxis()->CenterTitle(true);
    h_ratio_trial_341__344->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_341__344->GetYaxis()->SetLabelFont(42);
@@ -10271,7 +10271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_342__345->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_342__345->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_342__345->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_342__345->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_342__345->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_342__345->GetYaxis()->CenterTitle(true);
    h_ratio_trial_342__345->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_342__345->GetYaxis()->SetLabelFont(42);
@@ -10301,7 +10301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_343__346->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_343__346->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_343__346->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_343__346->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_343__346->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_343__346->GetYaxis()->CenterTitle(true);
    h_ratio_trial_343__346->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_343__346->GetYaxis()->SetLabelFont(42);
@@ -10331,7 +10331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_344__347->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_344__347->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_344__347->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_344__347->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_344__347->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_344__347->GetYaxis()->CenterTitle(true);
    h_ratio_trial_344__347->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_344__347->GetYaxis()->SetLabelFont(42);
@@ -10361,7 +10361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_345__348->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_345__348->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_345__348->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_345__348->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_345__348->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_345__348->GetYaxis()->CenterTitle(true);
    h_ratio_trial_345__348->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_345__348->GetYaxis()->SetLabelFont(42);
@@ -10391,7 +10391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_346__349->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_346__349->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_346__349->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_346__349->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_346__349->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_346__349->GetYaxis()->CenterTitle(true);
    h_ratio_trial_346__349->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_346__349->GetYaxis()->SetLabelFont(42);
@@ -10421,7 +10421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_347__350->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_347__350->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_347__350->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_347__350->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_347__350->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_347__350->GetYaxis()->CenterTitle(true);
    h_ratio_trial_347__350->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_347__350->GetYaxis()->SetLabelFont(42);
@@ -10451,7 +10451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_348__351->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_348__351->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_348__351->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_348__351->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_348__351->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_348__351->GetYaxis()->CenterTitle(true);
    h_ratio_trial_348__351->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_348__351->GetYaxis()->SetLabelFont(42);
@@ -10481,7 +10481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_349__352->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_349__352->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_349__352->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_349__352->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_349__352->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_349__352->GetYaxis()->CenterTitle(true);
    h_ratio_trial_349__352->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_349__352->GetYaxis()->SetLabelFont(42);
@@ -10511,7 +10511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_350__353->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_350__353->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_350__353->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_350__353->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_350__353->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_350__353->GetYaxis()->CenterTitle(true);
    h_ratio_trial_350__353->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_350__353->GetYaxis()->SetLabelFont(42);
@@ -10541,7 +10541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_351__354->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_351__354->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_351__354->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_351__354->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_351__354->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_351__354->GetYaxis()->CenterTitle(true);
    h_ratio_trial_351__354->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_351__354->GetYaxis()->SetLabelFont(42);
@@ -10571,7 +10571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_352__355->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_352__355->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_352__355->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_352__355->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_352__355->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_352__355->GetYaxis()->CenterTitle(true);
    h_ratio_trial_352__355->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_352__355->GetYaxis()->SetLabelFont(42);
@@ -10601,7 +10601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_353__356->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_353__356->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_353__356->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_353__356->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_353__356->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_353__356->GetYaxis()->CenterTitle(true);
    h_ratio_trial_353__356->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_353__356->GetYaxis()->SetLabelFont(42);
@@ -10631,7 +10631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_354__357->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_354__357->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_354__357->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_354__357->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_354__357->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_354__357->GetYaxis()->CenterTitle(true);
    h_ratio_trial_354__357->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_354__357->GetYaxis()->SetLabelFont(42);
@@ -10661,7 +10661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_355__358->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_355__358->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_355__358->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_355__358->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_355__358->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_355__358->GetYaxis()->CenterTitle(true);
    h_ratio_trial_355__358->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_355__358->GetYaxis()->SetLabelFont(42);
@@ -10691,7 +10691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_356__359->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_356__359->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_356__359->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_356__359->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_356__359->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_356__359->GetYaxis()->CenterTitle(true);
    h_ratio_trial_356__359->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_356__359->GetYaxis()->SetLabelFont(42);
@@ -10721,7 +10721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_357__360->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_357__360->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_357__360->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_357__360->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_357__360->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_357__360->GetYaxis()->CenterTitle(true);
    h_ratio_trial_357__360->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_357__360->GetYaxis()->SetLabelFont(42);
@@ -10751,7 +10751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_358__361->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_358__361->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_358__361->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_358__361->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_358__361->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_358__361->GetYaxis()->CenterTitle(true);
    h_ratio_trial_358__361->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_358__361->GetYaxis()->SetLabelFont(42);
@@ -10781,7 +10781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_359__362->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_359__362->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_359__362->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_359__362->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_359__362->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_359__362->GetYaxis()->CenterTitle(true);
    h_ratio_trial_359__362->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_359__362->GetYaxis()->SetLabelFont(42);
@@ -10811,7 +10811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_360__363->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_360__363->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_360__363->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_360__363->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_360__363->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_360__363->GetYaxis()->CenterTitle(true);
    h_ratio_trial_360__363->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_360__363->GetYaxis()->SetLabelFont(42);
@@ -10841,7 +10841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_361__364->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_361__364->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_361__364->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_361__364->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_361__364->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_361__364->GetYaxis()->CenterTitle(true);
    h_ratio_trial_361__364->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_361__364->GetYaxis()->SetLabelFont(42);
@@ -10871,7 +10871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_362__365->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_362__365->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_362__365->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_362__365->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_362__365->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_362__365->GetYaxis()->CenterTitle(true);
    h_ratio_trial_362__365->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_362__365->GetYaxis()->SetLabelFont(42);
@@ -10901,7 +10901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_363__366->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_363__366->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_363__366->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_363__366->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_363__366->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_363__366->GetYaxis()->CenterTitle(true);
    h_ratio_trial_363__366->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_363__366->GetYaxis()->SetLabelFont(42);
@@ -10931,7 +10931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_364__367->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_364__367->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_364__367->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_364__367->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_364__367->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_364__367->GetYaxis()->CenterTitle(true);
    h_ratio_trial_364__367->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_364__367->GetYaxis()->SetLabelFont(42);
@@ -10961,7 +10961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_365__368->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_365__368->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_365__368->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_365__368->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_365__368->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_365__368->GetYaxis()->CenterTitle(true);
    h_ratio_trial_365__368->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_365__368->GetYaxis()->SetLabelFont(42);
@@ -10991,7 +10991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_366__369->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_366__369->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_366__369->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_366__369->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_366__369->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_366__369->GetYaxis()->CenterTitle(true);
    h_ratio_trial_366__369->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_366__369->GetYaxis()->SetLabelFont(42);
@@ -11021,7 +11021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_367__370->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_367__370->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_367__370->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_367__370->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_367__370->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_367__370->GetYaxis()->CenterTitle(true);
    h_ratio_trial_367__370->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_367__370->GetYaxis()->SetLabelFont(42);
@@ -11051,7 +11051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_368__371->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_368__371->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_368__371->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_368__371->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_368__371->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_368__371->GetYaxis()->CenterTitle(true);
    h_ratio_trial_368__371->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_368__371->GetYaxis()->SetLabelFont(42);
@@ -11081,7 +11081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_369__372->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_369__372->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_369__372->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_369__372->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_369__372->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_369__372->GetYaxis()->CenterTitle(true);
    h_ratio_trial_369__372->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_369__372->GetYaxis()->SetLabelFont(42);
@@ -11111,7 +11111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_370__373->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_370__373->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_370__373->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_370__373->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_370__373->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_370__373->GetYaxis()->CenterTitle(true);
    h_ratio_trial_370__373->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_370__373->GetYaxis()->SetLabelFont(42);
@@ -11141,7 +11141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_371__374->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_371__374->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_371__374->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_371__374->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_371__374->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_371__374->GetYaxis()->CenterTitle(true);
    h_ratio_trial_371__374->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_371__374->GetYaxis()->SetLabelFont(42);
@@ -11171,7 +11171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_372__375->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_372__375->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_372__375->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_372__375->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_372__375->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_372__375->GetYaxis()->CenterTitle(true);
    h_ratio_trial_372__375->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_372__375->GetYaxis()->SetLabelFont(42);
@@ -11201,7 +11201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_373__376->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_373__376->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_373__376->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_373__376->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_373__376->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_373__376->GetYaxis()->CenterTitle(true);
    h_ratio_trial_373__376->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_373__376->GetYaxis()->SetLabelFont(42);
@@ -11231,7 +11231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_374__377->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_374__377->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_374__377->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_374__377->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_374__377->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_374__377->GetYaxis()->CenterTitle(true);
    h_ratio_trial_374__377->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_374__377->GetYaxis()->SetLabelFont(42);
@@ -11261,7 +11261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_375__378->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_375__378->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_375__378->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_375__378->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_375__378->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_375__378->GetYaxis()->CenterTitle(true);
    h_ratio_trial_375__378->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_375__378->GetYaxis()->SetLabelFont(42);
@@ -11291,7 +11291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_376__379->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_376__379->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_376__379->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_376__379->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_376__379->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_376__379->GetYaxis()->CenterTitle(true);
    h_ratio_trial_376__379->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_376__379->GetYaxis()->SetLabelFont(42);
@@ -11321,7 +11321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_377__380->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_377__380->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_377__380->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_377__380->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_377__380->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_377__380->GetYaxis()->CenterTitle(true);
    h_ratio_trial_377__380->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_377__380->GetYaxis()->SetLabelFont(42);
@@ -11351,7 +11351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_378__381->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_378__381->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_378__381->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_378__381->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_378__381->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_378__381->GetYaxis()->CenterTitle(true);
    h_ratio_trial_378__381->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_378__381->GetYaxis()->SetLabelFont(42);
@@ -11381,7 +11381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_379__382->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_379__382->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_379__382->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_379__382->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_379__382->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_379__382->GetYaxis()->CenterTitle(true);
    h_ratio_trial_379__382->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_379__382->GetYaxis()->SetLabelFont(42);
@@ -11411,7 +11411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_380__383->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_380__383->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_380__383->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_380__383->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_380__383->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_380__383->GetYaxis()->CenterTitle(true);
    h_ratio_trial_380__383->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_380__383->GetYaxis()->SetLabelFont(42);
@@ -11441,7 +11441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_381__384->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_381__384->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_381__384->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_381__384->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_381__384->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_381__384->GetYaxis()->CenterTitle(true);
    h_ratio_trial_381__384->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_381__384->GetYaxis()->SetLabelFont(42);
@@ -11471,7 +11471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_382__385->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_382__385->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_382__385->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_382__385->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_382__385->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_382__385->GetYaxis()->CenterTitle(true);
    h_ratio_trial_382__385->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_382__385->GetYaxis()->SetLabelFont(42);
@@ -11501,7 +11501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_383__386->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_383__386->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_383__386->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_383__386->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_383__386->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_383__386->GetYaxis()->CenterTitle(true);
    h_ratio_trial_383__386->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_383__386->GetYaxis()->SetLabelFont(42);
@@ -11531,7 +11531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_384__387->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_384__387->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_384__387->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_384__387->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_384__387->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_384__387->GetYaxis()->CenterTitle(true);
    h_ratio_trial_384__387->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_384__387->GetYaxis()->SetLabelFont(42);
@@ -11561,7 +11561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_385__388->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_385__388->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_385__388->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_385__388->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_385__388->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_385__388->GetYaxis()->CenterTitle(true);
    h_ratio_trial_385__388->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_385__388->GetYaxis()->SetLabelFont(42);
@@ -11591,7 +11591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_386__389->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_386__389->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_386__389->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_386__389->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_386__389->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_386__389->GetYaxis()->CenterTitle(true);
    h_ratio_trial_386__389->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_386__389->GetYaxis()->SetLabelFont(42);
@@ -11621,7 +11621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_387__390->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_387__390->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_387__390->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_387__390->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_387__390->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_387__390->GetYaxis()->CenterTitle(true);
    h_ratio_trial_387__390->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_387__390->GetYaxis()->SetLabelFont(42);
@@ -11651,7 +11651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_388__391->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_388__391->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_388__391->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_388__391->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_388__391->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_388__391->GetYaxis()->CenterTitle(true);
    h_ratio_trial_388__391->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_388__391->GetYaxis()->SetLabelFont(42);
@@ -11681,7 +11681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_389__392->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_389__392->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_389__392->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_389__392->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_389__392->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_389__392->GetYaxis()->CenterTitle(true);
    h_ratio_trial_389__392->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_389__392->GetYaxis()->SetLabelFont(42);
@@ -11711,7 +11711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_390__393->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_390__393->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_390__393->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_390__393->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_390__393->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_390__393->GetYaxis()->CenterTitle(true);
    h_ratio_trial_390__393->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_390__393->GetYaxis()->SetLabelFont(42);
@@ -11741,7 +11741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_391__394->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_391__394->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_391__394->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_391__394->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_391__394->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_391__394->GetYaxis()->CenterTitle(true);
    h_ratio_trial_391__394->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_391__394->GetYaxis()->SetLabelFont(42);
@@ -11771,7 +11771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_392__395->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_392__395->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_392__395->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_392__395->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_392__395->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_392__395->GetYaxis()->CenterTitle(true);
    h_ratio_trial_392__395->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_392__395->GetYaxis()->SetLabelFont(42);
@@ -11801,7 +11801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_393__396->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_393__396->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_393__396->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_393__396->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_393__396->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_393__396->GetYaxis()->CenterTitle(true);
    h_ratio_trial_393__396->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_393__396->GetYaxis()->SetLabelFont(42);
@@ -11831,7 +11831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_394__397->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_394__397->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_394__397->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_394__397->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_394__397->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_394__397->GetYaxis()->CenterTitle(true);
    h_ratio_trial_394__397->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_394__397->GetYaxis()->SetLabelFont(42);
@@ -11861,7 +11861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_395__398->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_395__398->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_395__398->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_395__398->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_395__398->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_395__398->GetYaxis()->CenterTitle(true);
    h_ratio_trial_395__398->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_395__398->GetYaxis()->SetLabelFont(42);
@@ -11891,7 +11891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_396__399->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_396__399->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_396__399->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_396__399->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_396__399->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_396__399->GetYaxis()->CenterTitle(true);
    h_ratio_trial_396__399->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_396__399->GetYaxis()->SetLabelFont(42);
@@ -11921,7 +11921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_397__400->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_397__400->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_397__400->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_397__400->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_397__400->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_397__400->GetYaxis()->CenterTitle(true);
    h_ratio_trial_397__400->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_397__400->GetYaxis()->SetLabelFont(42);
@@ -11951,7 +11951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_398__401->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_398__401->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_398__401->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_398__401->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_398__401->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_398__401->GetYaxis()->CenterTitle(true);
    h_ratio_trial_398__401->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_398__401->GetYaxis()->SetLabelFont(42);
@@ -11981,7 +11981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_399__402->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_399__402->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_399__402->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_399__402->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_399__402->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_399__402->GetYaxis()->CenterTitle(true);
    h_ratio_trial_399__402->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_399__402->GetYaxis()->SetLabelFont(42);
@@ -12011,7 +12011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_400__403->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_400__403->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_400__403->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_400__403->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_400__403->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_400__403->GetYaxis()->CenterTitle(true);
    h_ratio_trial_400__403->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_400__403->GetYaxis()->SetLabelFont(42);
@@ -12041,7 +12041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_401__404->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_401__404->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_401__404->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_401__404->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_401__404->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_401__404->GetYaxis()->CenterTitle(true);
    h_ratio_trial_401__404->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_401__404->GetYaxis()->SetLabelFont(42);
@@ -12071,7 +12071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_402__405->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_402__405->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_402__405->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_402__405->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_402__405->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_402__405->GetYaxis()->CenterTitle(true);
    h_ratio_trial_402__405->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_402__405->GetYaxis()->SetLabelFont(42);
@@ -12101,7 +12101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_403__406->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_403__406->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_403__406->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_403__406->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_403__406->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_403__406->GetYaxis()->CenterTitle(true);
    h_ratio_trial_403__406->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_403__406->GetYaxis()->SetLabelFont(42);
@@ -12131,7 +12131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_404__407->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_404__407->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_404__407->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_404__407->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_404__407->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_404__407->GetYaxis()->CenterTitle(true);
    h_ratio_trial_404__407->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_404__407->GetYaxis()->SetLabelFont(42);
@@ -12161,7 +12161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_405__408->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_405__408->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_405__408->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_405__408->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_405__408->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_405__408->GetYaxis()->CenterTitle(true);
    h_ratio_trial_405__408->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_405__408->GetYaxis()->SetLabelFont(42);
@@ -12191,7 +12191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_406__409->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_406__409->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_406__409->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_406__409->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_406__409->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_406__409->GetYaxis()->CenterTitle(true);
    h_ratio_trial_406__409->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_406__409->GetYaxis()->SetLabelFont(42);
@@ -12221,7 +12221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_407__410->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_407__410->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_407__410->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_407__410->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_407__410->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_407__410->GetYaxis()->CenterTitle(true);
    h_ratio_trial_407__410->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_407__410->GetYaxis()->SetLabelFont(42);
@@ -12251,7 +12251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_408__411->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_408__411->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_408__411->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_408__411->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_408__411->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_408__411->GetYaxis()->CenterTitle(true);
    h_ratio_trial_408__411->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_408__411->GetYaxis()->SetLabelFont(42);
@@ -12281,7 +12281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_409__412->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_409__412->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_409__412->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_409__412->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_409__412->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_409__412->GetYaxis()->CenterTitle(true);
    h_ratio_trial_409__412->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_409__412->GetYaxis()->SetLabelFont(42);
@@ -12311,7 +12311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_410__413->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_410__413->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_410__413->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_410__413->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_410__413->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_410__413->GetYaxis()->CenterTitle(true);
    h_ratio_trial_410__413->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_410__413->GetYaxis()->SetLabelFont(42);
@@ -12341,7 +12341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_411__414->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_411__414->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_411__414->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_411__414->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_411__414->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_411__414->GetYaxis()->CenterTitle(true);
    h_ratio_trial_411__414->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_411__414->GetYaxis()->SetLabelFont(42);
@@ -12371,7 +12371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_412__415->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_412__415->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_412__415->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_412__415->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_412__415->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_412__415->GetYaxis()->CenterTitle(true);
    h_ratio_trial_412__415->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_412__415->GetYaxis()->SetLabelFont(42);
@@ -12401,7 +12401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_413__416->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_413__416->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_413__416->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_413__416->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_413__416->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_413__416->GetYaxis()->CenterTitle(true);
    h_ratio_trial_413__416->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_413__416->GetYaxis()->SetLabelFont(42);
@@ -12431,7 +12431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_414__417->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_414__417->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_414__417->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_414__417->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_414__417->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_414__417->GetYaxis()->CenterTitle(true);
    h_ratio_trial_414__417->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_414__417->GetYaxis()->SetLabelFont(42);
@@ -12461,7 +12461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_415__418->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_415__418->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_415__418->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_415__418->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_415__418->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_415__418->GetYaxis()->CenterTitle(true);
    h_ratio_trial_415__418->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_415__418->GetYaxis()->SetLabelFont(42);
@@ -12491,7 +12491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_416__419->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_416__419->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_416__419->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_416__419->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_416__419->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_416__419->GetYaxis()->CenterTitle(true);
    h_ratio_trial_416__419->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_416__419->GetYaxis()->SetLabelFont(42);
@@ -12521,7 +12521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_417__420->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_417__420->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_417__420->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_417__420->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_417__420->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_417__420->GetYaxis()->CenterTitle(true);
    h_ratio_trial_417__420->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_417__420->GetYaxis()->SetLabelFont(42);
@@ -12551,7 +12551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_418__421->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_418__421->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_418__421->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_418__421->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_418__421->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_418__421->GetYaxis()->CenterTitle(true);
    h_ratio_trial_418__421->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_418__421->GetYaxis()->SetLabelFont(42);
@@ -12581,7 +12581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_419__422->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_419__422->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_419__422->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_419__422->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_419__422->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_419__422->GetYaxis()->CenterTitle(true);
    h_ratio_trial_419__422->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_419__422->GetYaxis()->SetLabelFont(42);
@@ -12611,7 +12611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_420__423->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_420__423->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_420__423->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_420__423->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_420__423->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_420__423->GetYaxis()->CenterTitle(true);
    h_ratio_trial_420__423->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_420__423->GetYaxis()->SetLabelFont(42);
@@ -12641,7 +12641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_421__424->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_421__424->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_421__424->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_421__424->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_421__424->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_421__424->GetYaxis()->CenterTitle(true);
    h_ratio_trial_421__424->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_421__424->GetYaxis()->SetLabelFont(42);
@@ -12671,7 +12671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_422__425->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_422__425->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_422__425->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_422__425->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_422__425->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_422__425->GetYaxis()->CenterTitle(true);
    h_ratio_trial_422__425->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_422__425->GetYaxis()->SetLabelFont(42);
@@ -12701,7 +12701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_423__426->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_423__426->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_423__426->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_423__426->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_423__426->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_423__426->GetYaxis()->CenterTitle(true);
    h_ratio_trial_423__426->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_423__426->GetYaxis()->SetLabelFont(42);
@@ -12731,7 +12731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_424__427->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_424__427->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_424__427->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_424__427->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_424__427->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_424__427->GetYaxis()->CenterTitle(true);
    h_ratio_trial_424__427->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_424__427->GetYaxis()->SetLabelFont(42);
@@ -12761,7 +12761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_425__428->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_425__428->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_425__428->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_425__428->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_425__428->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_425__428->GetYaxis()->CenterTitle(true);
    h_ratio_trial_425__428->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_425__428->GetYaxis()->SetLabelFont(42);
@@ -12791,7 +12791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_426__429->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_426__429->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_426__429->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_426__429->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_426__429->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_426__429->GetYaxis()->CenterTitle(true);
    h_ratio_trial_426__429->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_426__429->GetYaxis()->SetLabelFont(42);
@@ -12821,7 +12821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_427__430->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_427__430->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_427__430->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_427__430->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_427__430->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_427__430->GetYaxis()->CenterTitle(true);
    h_ratio_trial_427__430->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_427__430->GetYaxis()->SetLabelFont(42);
@@ -12851,7 +12851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_428__431->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_428__431->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_428__431->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_428__431->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_428__431->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_428__431->GetYaxis()->CenterTitle(true);
    h_ratio_trial_428__431->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_428__431->GetYaxis()->SetLabelFont(42);
@@ -12881,7 +12881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_429__432->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_429__432->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_429__432->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_429__432->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_429__432->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_429__432->GetYaxis()->CenterTitle(true);
    h_ratio_trial_429__432->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_429__432->GetYaxis()->SetLabelFont(42);
@@ -12911,7 +12911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_430__433->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_430__433->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_430__433->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_430__433->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_430__433->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_430__433->GetYaxis()->CenterTitle(true);
    h_ratio_trial_430__433->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_430__433->GetYaxis()->SetLabelFont(42);
@@ -12941,7 +12941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_431__434->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_431__434->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_431__434->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_431__434->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_431__434->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_431__434->GetYaxis()->CenterTitle(true);
    h_ratio_trial_431__434->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_431__434->GetYaxis()->SetLabelFont(42);
@@ -12971,7 +12971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_432__435->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_432__435->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_432__435->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_432__435->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_432__435->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_432__435->GetYaxis()->CenterTitle(true);
    h_ratio_trial_432__435->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_432__435->GetYaxis()->SetLabelFont(42);
@@ -13001,7 +13001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_433__436->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_433__436->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_433__436->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_433__436->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_433__436->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_433__436->GetYaxis()->CenterTitle(true);
    h_ratio_trial_433__436->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_433__436->GetYaxis()->SetLabelFont(42);
@@ -13031,7 +13031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_434__437->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_434__437->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_434__437->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_434__437->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_434__437->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_434__437->GetYaxis()->CenterTitle(true);
    h_ratio_trial_434__437->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_434__437->GetYaxis()->SetLabelFont(42);
@@ -13061,7 +13061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_435__438->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_435__438->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_435__438->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_435__438->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_435__438->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_435__438->GetYaxis()->CenterTitle(true);
    h_ratio_trial_435__438->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_435__438->GetYaxis()->SetLabelFont(42);
@@ -13091,7 +13091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_436__439->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_436__439->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_436__439->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_436__439->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_436__439->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_436__439->GetYaxis()->CenterTitle(true);
    h_ratio_trial_436__439->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_436__439->GetYaxis()->SetLabelFont(42);
@@ -13121,7 +13121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_437__440->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_437__440->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_437__440->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_437__440->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_437__440->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_437__440->GetYaxis()->CenterTitle(true);
    h_ratio_trial_437__440->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_437__440->GetYaxis()->SetLabelFont(42);
@@ -13151,7 +13151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_438__441->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_438__441->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_438__441->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_438__441->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_438__441->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_438__441->GetYaxis()->CenterTitle(true);
    h_ratio_trial_438__441->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_438__441->GetYaxis()->SetLabelFont(42);
@@ -13181,7 +13181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_439__442->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_439__442->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_439__442->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_439__442->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_439__442->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_439__442->GetYaxis()->CenterTitle(true);
    h_ratio_trial_439__442->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_439__442->GetYaxis()->SetLabelFont(42);
@@ -13211,7 +13211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_440__443->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_440__443->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_440__443->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_440__443->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_440__443->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_440__443->GetYaxis()->CenterTitle(true);
    h_ratio_trial_440__443->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_440__443->GetYaxis()->SetLabelFont(42);
@@ -13241,7 +13241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_441__444->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_441__444->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_441__444->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_441__444->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_441__444->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_441__444->GetYaxis()->CenterTitle(true);
    h_ratio_trial_441__444->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_441__444->GetYaxis()->SetLabelFont(42);
@@ -13271,7 +13271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_442__445->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_442__445->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_442__445->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_442__445->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_442__445->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_442__445->GetYaxis()->CenterTitle(true);
    h_ratio_trial_442__445->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_442__445->GetYaxis()->SetLabelFont(42);
@@ -13301,7 +13301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_443__446->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_443__446->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_443__446->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_443__446->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_443__446->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_443__446->GetYaxis()->CenterTitle(true);
    h_ratio_trial_443__446->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_443__446->GetYaxis()->SetLabelFont(42);
@@ -13331,7 +13331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_444__447->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_444__447->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_444__447->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_444__447->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_444__447->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_444__447->GetYaxis()->CenterTitle(true);
    h_ratio_trial_444__447->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_444__447->GetYaxis()->SetLabelFont(42);
@@ -13361,7 +13361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_445__448->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_445__448->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_445__448->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_445__448->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_445__448->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_445__448->GetYaxis()->CenterTitle(true);
    h_ratio_trial_445__448->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_445__448->GetYaxis()->SetLabelFont(42);
@@ -13391,7 +13391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_446__449->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_446__449->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_446__449->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_446__449->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_446__449->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_446__449->GetYaxis()->CenterTitle(true);
    h_ratio_trial_446__449->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_446__449->GetYaxis()->SetLabelFont(42);
@@ -13421,7 +13421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_447__450->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_447__450->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_447__450->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_447__450->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_447__450->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_447__450->GetYaxis()->CenterTitle(true);
    h_ratio_trial_447__450->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_447__450->GetYaxis()->SetLabelFont(42);
@@ -13451,7 +13451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_448__451->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_448__451->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_448__451->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_448__451->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_448__451->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_448__451->GetYaxis()->CenterTitle(true);
    h_ratio_trial_448__451->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_448__451->GetYaxis()->SetLabelFont(42);
@@ -13481,7 +13481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_449__452->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_449__452->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_449__452->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_449__452->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_449__452->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_449__452->GetYaxis()->CenterTitle(true);
    h_ratio_trial_449__452->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_449__452->GetYaxis()->SetLabelFont(42);
@@ -13511,7 +13511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_450__453->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_450__453->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_450__453->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_450__453->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_450__453->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_450__453->GetYaxis()->CenterTitle(true);
    h_ratio_trial_450__453->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_450__453->GetYaxis()->SetLabelFont(42);
@@ -13541,7 +13541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_451__454->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_451__454->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_451__454->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_451__454->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_451__454->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_451__454->GetYaxis()->CenterTitle(true);
    h_ratio_trial_451__454->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_451__454->GetYaxis()->SetLabelFont(42);
@@ -13571,7 +13571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_452__455->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_452__455->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_452__455->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_452__455->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_452__455->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_452__455->GetYaxis()->CenterTitle(true);
    h_ratio_trial_452__455->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_452__455->GetYaxis()->SetLabelFont(42);
@@ -13601,7 +13601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_453__456->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_453__456->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_453__456->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_453__456->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_453__456->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_453__456->GetYaxis()->CenterTitle(true);
    h_ratio_trial_453__456->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_453__456->GetYaxis()->SetLabelFont(42);
@@ -13631,7 +13631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_454__457->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_454__457->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_454__457->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_454__457->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_454__457->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_454__457->GetYaxis()->CenterTitle(true);
    h_ratio_trial_454__457->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_454__457->GetYaxis()->SetLabelFont(42);
@@ -13661,7 +13661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_455__458->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_455__458->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_455__458->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_455__458->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_455__458->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_455__458->GetYaxis()->CenterTitle(true);
    h_ratio_trial_455__458->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_455__458->GetYaxis()->SetLabelFont(42);
@@ -13691,7 +13691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_456__459->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_456__459->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_456__459->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_456__459->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_456__459->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_456__459->GetYaxis()->CenterTitle(true);
    h_ratio_trial_456__459->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_456__459->GetYaxis()->SetLabelFont(42);
@@ -13721,7 +13721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_457__460->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_457__460->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_457__460->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_457__460->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_457__460->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_457__460->GetYaxis()->CenterTitle(true);
    h_ratio_trial_457__460->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_457__460->GetYaxis()->SetLabelFont(42);
@@ -13751,7 +13751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_458__461->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_458__461->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_458__461->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_458__461->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_458__461->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_458__461->GetYaxis()->CenterTitle(true);
    h_ratio_trial_458__461->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_458__461->GetYaxis()->SetLabelFont(42);
@@ -13781,7 +13781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_459__462->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_459__462->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_459__462->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_459__462->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_459__462->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_459__462->GetYaxis()->CenterTitle(true);
    h_ratio_trial_459__462->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_459__462->GetYaxis()->SetLabelFont(42);
@@ -13811,7 +13811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_460__463->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_460__463->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_460__463->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_460__463->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_460__463->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_460__463->GetYaxis()->CenterTitle(true);
    h_ratio_trial_460__463->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_460__463->GetYaxis()->SetLabelFont(42);
@@ -13841,7 +13841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_461__464->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_461__464->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_461__464->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_461__464->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_461__464->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_461__464->GetYaxis()->CenterTitle(true);
    h_ratio_trial_461__464->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_461__464->GetYaxis()->SetLabelFont(42);
@@ -13871,7 +13871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_462__465->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_462__465->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_462__465->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_462__465->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_462__465->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_462__465->GetYaxis()->CenterTitle(true);
    h_ratio_trial_462__465->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_462__465->GetYaxis()->SetLabelFont(42);
@@ -13901,7 +13901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_463__466->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_463__466->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_463__466->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_463__466->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_463__466->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_463__466->GetYaxis()->CenterTitle(true);
    h_ratio_trial_463__466->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_463__466->GetYaxis()->SetLabelFont(42);
@@ -13931,7 +13931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_464__467->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_464__467->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_464__467->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_464__467->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_464__467->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_464__467->GetYaxis()->CenterTitle(true);
    h_ratio_trial_464__467->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_464__467->GetYaxis()->SetLabelFont(42);
@@ -13961,7 +13961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_465__468->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_465__468->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_465__468->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_465__468->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_465__468->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_465__468->GetYaxis()->CenterTitle(true);
    h_ratio_trial_465__468->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_465__468->GetYaxis()->SetLabelFont(42);
@@ -13991,7 +13991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_466__469->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_466__469->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_466__469->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_466__469->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_466__469->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_466__469->GetYaxis()->CenterTitle(true);
    h_ratio_trial_466__469->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_466__469->GetYaxis()->SetLabelFont(42);
@@ -14021,7 +14021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_467__470->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_467__470->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_467__470->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_467__470->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_467__470->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_467__470->GetYaxis()->CenterTitle(true);
    h_ratio_trial_467__470->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_467__470->GetYaxis()->SetLabelFont(42);
@@ -14051,7 +14051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_468__471->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_468__471->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_468__471->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_468__471->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_468__471->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_468__471->GetYaxis()->CenterTitle(true);
    h_ratio_trial_468__471->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_468__471->GetYaxis()->SetLabelFont(42);
@@ -14081,7 +14081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_469__472->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_469__472->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_469__472->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_469__472->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_469__472->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_469__472->GetYaxis()->CenterTitle(true);
    h_ratio_trial_469__472->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_469__472->GetYaxis()->SetLabelFont(42);
@@ -14111,7 +14111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_470__473->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_470__473->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_470__473->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_470__473->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_470__473->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_470__473->GetYaxis()->CenterTitle(true);
    h_ratio_trial_470__473->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_470__473->GetYaxis()->SetLabelFont(42);
@@ -14141,7 +14141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_471__474->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_471__474->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_471__474->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_471__474->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_471__474->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_471__474->GetYaxis()->CenterTitle(true);
    h_ratio_trial_471__474->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_471__474->GetYaxis()->SetLabelFont(42);
@@ -14171,7 +14171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_472__475->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_472__475->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_472__475->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_472__475->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_472__475->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_472__475->GetYaxis()->CenterTitle(true);
    h_ratio_trial_472__475->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_472__475->GetYaxis()->SetLabelFont(42);
@@ -14201,7 +14201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_473__476->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_473__476->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_473__476->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_473__476->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_473__476->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_473__476->GetYaxis()->CenterTitle(true);
    h_ratio_trial_473__476->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_473__476->GetYaxis()->SetLabelFont(42);
@@ -14231,7 +14231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_474__477->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_474__477->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_474__477->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_474__477->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_474__477->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_474__477->GetYaxis()->CenterTitle(true);
    h_ratio_trial_474__477->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_474__477->GetYaxis()->SetLabelFont(42);
@@ -14261,7 +14261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_475__478->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_475__478->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_475__478->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_475__478->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_475__478->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_475__478->GetYaxis()->CenterTitle(true);
    h_ratio_trial_475__478->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_475__478->GetYaxis()->SetLabelFont(42);
@@ -14291,7 +14291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_476__479->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_476__479->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_476__479->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_476__479->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_476__479->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_476__479->GetYaxis()->CenterTitle(true);
    h_ratio_trial_476__479->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_476__479->GetYaxis()->SetLabelFont(42);
@@ -14321,7 +14321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_477__480->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_477__480->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_477__480->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_477__480->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_477__480->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_477__480->GetYaxis()->CenterTitle(true);
    h_ratio_trial_477__480->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_477__480->GetYaxis()->SetLabelFont(42);
@@ -14351,7 +14351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_478__481->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_478__481->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_478__481->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_478__481->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_478__481->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_478__481->GetYaxis()->CenterTitle(true);
    h_ratio_trial_478__481->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_478__481->GetYaxis()->SetLabelFont(42);
@@ -14381,7 +14381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_479__482->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_479__482->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_479__482->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_479__482->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_479__482->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_479__482->GetYaxis()->CenterTitle(true);
    h_ratio_trial_479__482->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_479__482->GetYaxis()->SetLabelFont(42);
@@ -14411,7 +14411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_480__483->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_480__483->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_480__483->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_480__483->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_480__483->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_480__483->GetYaxis()->CenterTitle(true);
    h_ratio_trial_480__483->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_480__483->GetYaxis()->SetLabelFont(42);
@@ -14441,7 +14441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_481__484->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_481__484->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_481__484->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_481__484->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_481__484->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_481__484->GetYaxis()->CenterTitle(true);
    h_ratio_trial_481__484->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_481__484->GetYaxis()->SetLabelFont(42);
@@ -14471,7 +14471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_482__485->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_482__485->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_482__485->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_482__485->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_482__485->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_482__485->GetYaxis()->CenterTitle(true);
    h_ratio_trial_482__485->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_482__485->GetYaxis()->SetLabelFont(42);
@@ -14501,7 +14501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_483__486->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_483__486->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_483__486->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_483__486->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_483__486->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_483__486->GetYaxis()->CenterTitle(true);
    h_ratio_trial_483__486->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_483__486->GetYaxis()->SetLabelFont(42);
@@ -14531,7 +14531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_484__487->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_484__487->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_484__487->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_484__487->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_484__487->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_484__487->GetYaxis()->CenterTitle(true);
    h_ratio_trial_484__487->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_484__487->GetYaxis()->SetLabelFont(42);
@@ -14561,7 +14561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_485__488->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_485__488->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_485__488->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_485__488->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_485__488->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_485__488->GetYaxis()->CenterTitle(true);
    h_ratio_trial_485__488->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_485__488->GetYaxis()->SetLabelFont(42);
@@ -14591,7 +14591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_486__489->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_486__489->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_486__489->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_486__489->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_486__489->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_486__489->GetYaxis()->CenterTitle(true);
    h_ratio_trial_486__489->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_486__489->GetYaxis()->SetLabelFont(42);
@@ -14621,7 +14621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_487__490->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_487__490->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_487__490->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_487__490->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_487__490->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_487__490->GetYaxis()->CenterTitle(true);
    h_ratio_trial_487__490->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_487__490->GetYaxis()->SetLabelFont(42);
@@ -14651,7 +14651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_488__491->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_488__491->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_488__491->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_488__491->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_488__491->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_488__491->GetYaxis()->CenterTitle(true);
    h_ratio_trial_488__491->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_488__491->GetYaxis()->SetLabelFont(42);
@@ -14681,7 +14681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_489__492->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_489__492->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_489__492->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_489__492->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_489__492->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_489__492->GetYaxis()->CenterTitle(true);
    h_ratio_trial_489__492->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_489__492->GetYaxis()->SetLabelFont(42);
@@ -14711,7 +14711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_490__493->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_490__493->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_490__493->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_490__493->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_490__493->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_490__493->GetYaxis()->CenterTitle(true);
    h_ratio_trial_490__493->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_490__493->GetYaxis()->SetLabelFont(42);
@@ -14741,7 +14741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_491__494->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_491__494->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_491__494->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_491__494->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_491__494->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_491__494->GetYaxis()->CenterTitle(true);
    h_ratio_trial_491__494->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_491__494->GetYaxis()->SetLabelFont(42);
@@ -14771,7 +14771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_492__495->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_492__495->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_492__495->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_492__495->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_492__495->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_492__495->GetYaxis()->CenterTitle(true);
    h_ratio_trial_492__495->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_492__495->GetYaxis()->SetLabelFont(42);
@@ -14801,7 +14801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_493__496->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_493__496->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_493__496->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_493__496->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_493__496->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_493__496->GetYaxis()->CenterTitle(true);
    h_ratio_trial_493__496->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_493__496->GetYaxis()->SetLabelFont(42);
@@ -14831,7 +14831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_494__497->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_494__497->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_494__497->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_494__497->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_494__497->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_494__497->GetYaxis()->CenterTitle(true);
    h_ratio_trial_494__497->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_494__497->GetYaxis()->SetLabelFont(42);
@@ -14861,7 +14861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_495__498->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_495__498->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_495__498->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_495__498->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_495__498->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_495__498->GetYaxis()->CenterTitle(true);
    h_ratio_trial_495__498->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_495__498->GetYaxis()->SetLabelFont(42);
@@ -14891,7 +14891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_496__499->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_496__499->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_496__499->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_496__499->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_496__499->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_496__499->GetYaxis()->CenterTitle(true);
    h_ratio_trial_496__499->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_496__499->GetYaxis()->SetLabelFont(42);
@@ -14921,7 +14921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_497__500->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_497__500->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_497__500->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_497__500->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_497__500->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_497__500->GetYaxis()->CenterTitle(true);
    h_ratio_trial_497__500->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_497__500->GetYaxis()->SetLabelFont(42);
@@ -14951,7 +14951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_498__501->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_498__501->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_498__501->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_498__501->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_498__501->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_498__501->GetYaxis()->CenterTitle(true);
    h_ratio_trial_498__501->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_498__501->GetYaxis()->SetLabelFont(42);
@@ -14981,7 +14981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_499__502->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_499__502->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_499__502->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_499__502->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_499__502->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_499__502->GetYaxis()->CenterTitle(true);
    h_ratio_trial_499__502->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_499__502->GetYaxis()->SetLabelFont(42);
@@ -15011,7 +15011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_500__503->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_500__503->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_500__503->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_500__503->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_500__503->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_500__503->GetYaxis()->CenterTitle(true);
    h_ratio_trial_500__503->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_500__503->GetYaxis()->SetLabelFont(42);
@@ -15041,7 +15041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_501__504->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_501__504->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_501__504->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_501__504->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_501__504->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_501__504->GetYaxis()->CenterTitle(true);
    h_ratio_trial_501__504->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_501__504->GetYaxis()->SetLabelFont(42);
@@ -15071,7 +15071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_502__505->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_502__505->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_502__505->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_502__505->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_502__505->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_502__505->GetYaxis()->CenterTitle(true);
    h_ratio_trial_502__505->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_502__505->GetYaxis()->SetLabelFont(42);
@@ -15101,7 +15101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_503__506->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_503__506->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_503__506->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_503__506->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_503__506->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_503__506->GetYaxis()->CenterTitle(true);
    h_ratio_trial_503__506->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_503__506->GetYaxis()->SetLabelFont(42);
@@ -15131,7 +15131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_504__507->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_504__507->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_504__507->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_504__507->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_504__507->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_504__507->GetYaxis()->CenterTitle(true);
    h_ratio_trial_504__507->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_504__507->GetYaxis()->SetLabelFont(42);
@@ -15161,7 +15161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_505__508->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_505__508->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_505__508->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_505__508->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_505__508->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_505__508->GetYaxis()->CenterTitle(true);
    h_ratio_trial_505__508->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_505__508->GetYaxis()->SetLabelFont(42);
@@ -15191,7 +15191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_506__509->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_506__509->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_506__509->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_506__509->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_506__509->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_506__509->GetYaxis()->CenterTitle(true);
    h_ratio_trial_506__509->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_506__509->GetYaxis()->SetLabelFont(42);
@@ -15221,7 +15221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_507__510->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_507__510->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_507__510->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_507__510->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_507__510->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_507__510->GetYaxis()->CenterTitle(true);
    h_ratio_trial_507__510->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_507__510->GetYaxis()->SetLabelFont(42);
@@ -15251,7 +15251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_508__511->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_508__511->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_508__511->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_508__511->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_508__511->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_508__511->GetYaxis()->CenterTitle(true);
    h_ratio_trial_508__511->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_508__511->GetYaxis()->SetLabelFont(42);
@@ -15281,7 +15281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_509__512->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_509__512->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_509__512->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_509__512->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_509__512->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_509__512->GetYaxis()->CenterTitle(true);
    h_ratio_trial_509__512->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_509__512->GetYaxis()->SetLabelFont(42);
@@ -15311,7 +15311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_510__513->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_510__513->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_510__513->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_510__513->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_510__513->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_510__513->GetYaxis()->CenterTitle(true);
    h_ratio_trial_510__513->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_510__513->GetYaxis()->SetLabelFont(42);
@@ -15341,7 +15341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_511__514->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_511__514->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_511__514->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_511__514->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_511__514->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_511__514->GetYaxis()->CenterTitle(true);
    h_ratio_trial_511__514->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_511__514->GetYaxis()->SetLabelFont(42);
@@ -15371,7 +15371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_512__515->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_512__515->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_512__515->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_512__515->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_512__515->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_512__515->GetYaxis()->CenterTitle(true);
    h_ratio_trial_512__515->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_512__515->GetYaxis()->SetLabelFont(42);
@@ -15401,7 +15401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_513__516->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_513__516->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_513__516->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_513__516->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_513__516->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_513__516->GetYaxis()->CenterTitle(true);
    h_ratio_trial_513__516->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_513__516->GetYaxis()->SetLabelFont(42);
@@ -15431,7 +15431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_514__517->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_514__517->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_514__517->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_514__517->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_514__517->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_514__517->GetYaxis()->CenterTitle(true);
    h_ratio_trial_514__517->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_514__517->GetYaxis()->SetLabelFont(42);
@@ -15461,7 +15461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_515__518->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_515__518->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_515__518->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_515__518->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_515__518->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_515__518->GetYaxis()->CenterTitle(true);
    h_ratio_trial_515__518->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_515__518->GetYaxis()->SetLabelFont(42);
@@ -15491,7 +15491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_516__519->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_516__519->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_516__519->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_516__519->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_516__519->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_516__519->GetYaxis()->CenterTitle(true);
    h_ratio_trial_516__519->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_516__519->GetYaxis()->SetLabelFont(42);
@@ -15521,7 +15521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_517__520->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_517__520->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_517__520->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_517__520->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_517__520->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_517__520->GetYaxis()->CenterTitle(true);
    h_ratio_trial_517__520->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_517__520->GetYaxis()->SetLabelFont(42);
@@ -15551,7 +15551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_518__521->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_518__521->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_518__521->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_518__521->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_518__521->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_518__521->GetYaxis()->CenterTitle(true);
    h_ratio_trial_518__521->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_518__521->GetYaxis()->SetLabelFont(42);
@@ -15581,7 +15581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_519__522->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_519__522->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_519__522->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_519__522->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_519__522->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_519__522->GetYaxis()->CenterTitle(true);
    h_ratio_trial_519__522->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_519__522->GetYaxis()->SetLabelFont(42);
@@ -15611,7 +15611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_520__523->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_520__523->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_520__523->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_520__523->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_520__523->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_520__523->GetYaxis()->CenterTitle(true);
    h_ratio_trial_520__523->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_520__523->GetYaxis()->SetLabelFont(42);
@@ -15641,7 +15641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_521__524->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_521__524->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_521__524->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_521__524->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_521__524->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_521__524->GetYaxis()->CenterTitle(true);
    h_ratio_trial_521__524->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_521__524->GetYaxis()->SetLabelFont(42);
@@ -15671,7 +15671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_522__525->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_522__525->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_522__525->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_522__525->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_522__525->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_522__525->GetYaxis()->CenterTitle(true);
    h_ratio_trial_522__525->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_522__525->GetYaxis()->SetLabelFont(42);
@@ -15701,7 +15701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_523__526->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_523__526->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_523__526->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_523__526->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_523__526->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_523__526->GetYaxis()->CenterTitle(true);
    h_ratio_trial_523__526->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_523__526->GetYaxis()->SetLabelFont(42);
@@ -15731,7 +15731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_524__527->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_524__527->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_524__527->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_524__527->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_524__527->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_524__527->GetYaxis()->CenterTitle(true);
    h_ratio_trial_524__527->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_524__527->GetYaxis()->SetLabelFont(42);
@@ -15761,7 +15761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_525__528->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_525__528->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_525__528->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_525__528->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_525__528->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_525__528->GetYaxis()->CenterTitle(true);
    h_ratio_trial_525__528->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_525__528->GetYaxis()->SetLabelFont(42);
@@ -15791,7 +15791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_526__529->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_526__529->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_526__529->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_526__529->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_526__529->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_526__529->GetYaxis()->CenterTitle(true);
    h_ratio_trial_526__529->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_526__529->GetYaxis()->SetLabelFont(42);
@@ -15821,7 +15821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_527__530->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_527__530->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_527__530->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_527__530->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_527__530->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_527__530->GetYaxis()->CenterTitle(true);
    h_ratio_trial_527__530->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_527__530->GetYaxis()->SetLabelFont(42);
@@ -15851,7 +15851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_528__531->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_528__531->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_528__531->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_528__531->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_528__531->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_528__531->GetYaxis()->CenterTitle(true);
    h_ratio_trial_528__531->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_528__531->GetYaxis()->SetLabelFont(42);
@@ -15881,7 +15881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_529__532->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_529__532->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_529__532->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_529__532->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_529__532->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_529__532->GetYaxis()->CenterTitle(true);
    h_ratio_trial_529__532->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_529__532->GetYaxis()->SetLabelFont(42);
@@ -15911,7 +15911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_530__533->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_530__533->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_530__533->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_530__533->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_530__533->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_530__533->GetYaxis()->CenterTitle(true);
    h_ratio_trial_530__533->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_530__533->GetYaxis()->SetLabelFont(42);
@@ -15941,7 +15941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_531__534->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_531__534->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_531__534->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_531__534->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_531__534->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_531__534->GetYaxis()->CenterTitle(true);
    h_ratio_trial_531__534->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_531__534->GetYaxis()->SetLabelFont(42);
@@ -15971,7 +15971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_532__535->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_532__535->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_532__535->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_532__535->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_532__535->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_532__535->GetYaxis()->CenterTitle(true);
    h_ratio_trial_532__535->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_532__535->GetYaxis()->SetLabelFont(42);
@@ -16001,7 +16001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_533__536->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_533__536->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_533__536->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_533__536->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_533__536->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_533__536->GetYaxis()->CenterTitle(true);
    h_ratio_trial_533__536->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_533__536->GetYaxis()->SetLabelFont(42);
@@ -16031,7 +16031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_534__537->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_534__537->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_534__537->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_534__537->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_534__537->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_534__537->GetYaxis()->CenterTitle(true);
    h_ratio_trial_534__537->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_534__537->GetYaxis()->SetLabelFont(42);
@@ -16061,7 +16061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_535__538->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_535__538->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_535__538->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_535__538->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_535__538->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_535__538->GetYaxis()->CenterTitle(true);
    h_ratio_trial_535__538->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_535__538->GetYaxis()->SetLabelFont(42);
@@ -16091,7 +16091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_536__539->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_536__539->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_536__539->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_536__539->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_536__539->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_536__539->GetYaxis()->CenterTitle(true);
    h_ratio_trial_536__539->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_536__539->GetYaxis()->SetLabelFont(42);
@@ -16121,7 +16121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_537__540->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_537__540->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_537__540->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_537__540->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_537__540->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_537__540->GetYaxis()->CenterTitle(true);
    h_ratio_trial_537__540->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_537__540->GetYaxis()->SetLabelFont(42);
@@ -16151,7 +16151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_538__541->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_538__541->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_538__541->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_538__541->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_538__541->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_538__541->GetYaxis()->CenterTitle(true);
    h_ratio_trial_538__541->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_538__541->GetYaxis()->SetLabelFont(42);
@@ -16181,7 +16181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_539__542->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_539__542->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_539__542->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_539__542->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_539__542->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_539__542->GetYaxis()->CenterTitle(true);
    h_ratio_trial_539__542->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_539__542->GetYaxis()->SetLabelFont(42);
@@ -16211,7 +16211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_540__543->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_540__543->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_540__543->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_540__543->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_540__543->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_540__543->GetYaxis()->CenterTitle(true);
    h_ratio_trial_540__543->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_540__543->GetYaxis()->SetLabelFont(42);
@@ -16241,7 +16241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_541__544->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_541__544->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_541__544->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_541__544->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_541__544->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_541__544->GetYaxis()->CenterTitle(true);
    h_ratio_trial_541__544->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_541__544->GetYaxis()->SetLabelFont(42);
@@ -16271,7 +16271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_542__545->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_542__545->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_542__545->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_542__545->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_542__545->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_542__545->GetYaxis()->CenterTitle(true);
    h_ratio_trial_542__545->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_542__545->GetYaxis()->SetLabelFont(42);
@@ -16301,7 +16301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_543__546->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_543__546->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_543__546->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_543__546->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_543__546->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_543__546->GetYaxis()->CenterTitle(true);
    h_ratio_trial_543__546->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_543__546->GetYaxis()->SetLabelFont(42);
@@ -16331,7 +16331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_544__547->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_544__547->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_544__547->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_544__547->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_544__547->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_544__547->GetYaxis()->CenterTitle(true);
    h_ratio_trial_544__547->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_544__547->GetYaxis()->SetLabelFont(42);
@@ -16361,7 +16361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_545__548->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_545__548->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_545__548->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_545__548->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_545__548->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_545__548->GetYaxis()->CenterTitle(true);
    h_ratio_trial_545__548->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_545__548->GetYaxis()->SetLabelFont(42);
@@ -16391,7 +16391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_546__549->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_546__549->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_546__549->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_546__549->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_546__549->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_546__549->GetYaxis()->CenterTitle(true);
    h_ratio_trial_546__549->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_546__549->GetYaxis()->SetLabelFont(42);
@@ -16421,7 +16421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_547__550->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_547__550->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_547__550->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_547__550->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_547__550->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_547__550->GetYaxis()->CenterTitle(true);
    h_ratio_trial_547__550->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_547__550->GetYaxis()->SetLabelFont(42);
@@ -16451,7 +16451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_548__551->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_548__551->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_548__551->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_548__551->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_548__551->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_548__551->GetYaxis()->CenterTitle(true);
    h_ratio_trial_548__551->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_548__551->GetYaxis()->SetLabelFont(42);
@@ -16481,7 +16481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_549__552->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_549__552->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_549__552->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_549__552->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_549__552->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_549__552->GetYaxis()->CenterTitle(true);
    h_ratio_trial_549__552->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_549__552->GetYaxis()->SetLabelFont(42);
@@ -16511,7 +16511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_550__553->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_550__553->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_550__553->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_550__553->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_550__553->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_550__553->GetYaxis()->CenterTitle(true);
    h_ratio_trial_550__553->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_550__553->GetYaxis()->SetLabelFont(42);
@@ -16541,7 +16541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_551__554->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_551__554->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_551__554->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_551__554->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_551__554->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_551__554->GetYaxis()->CenterTitle(true);
    h_ratio_trial_551__554->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_551__554->GetYaxis()->SetLabelFont(42);
@@ -16571,7 +16571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_552__555->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_552__555->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_552__555->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_552__555->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_552__555->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_552__555->GetYaxis()->CenterTitle(true);
    h_ratio_trial_552__555->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_552__555->GetYaxis()->SetLabelFont(42);
@@ -16601,7 +16601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_553__556->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_553__556->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_553__556->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_553__556->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_553__556->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_553__556->GetYaxis()->CenterTitle(true);
    h_ratio_trial_553__556->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_553__556->GetYaxis()->SetLabelFont(42);
@@ -16631,7 +16631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_554__557->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_554__557->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_554__557->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_554__557->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_554__557->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_554__557->GetYaxis()->CenterTitle(true);
    h_ratio_trial_554__557->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_554__557->GetYaxis()->SetLabelFont(42);
@@ -16661,7 +16661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_555__558->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_555__558->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_555__558->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_555__558->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_555__558->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_555__558->GetYaxis()->CenterTitle(true);
    h_ratio_trial_555__558->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_555__558->GetYaxis()->SetLabelFont(42);
@@ -16691,7 +16691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_556__559->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_556__559->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_556__559->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_556__559->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_556__559->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_556__559->GetYaxis()->CenterTitle(true);
    h_ratio_trial_556__559->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_556__559->GetYaxis()->SetLabelFont(42);
@@ -16721,7 +16721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_557__560->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_557__560->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_557__560->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_557__560->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_557__560->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_557__560->GetYaxis()->CenterTitle(true);
    h_ratio_trial_557__560->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_557__560->GetYaxis()->SetLabelFont(42);
@@ -16751,7 +16751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_558__561->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_558__561->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_558__561->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_558__561->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_558__561->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_558__561->GetYaxis()->CenterTitle(true);
    h_ratio_trial_558__561->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_558__561->GetYaxis()->SetLabelFont(42);
@@ -16781,7 +16781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_559__562->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_559__562->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_559__562->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_559__562->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_559__562->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_559__562->GetYaxis()->CenterTitle(true);
    h_ratio_trial_559__562->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_559__562->GetYaxis()->SetLabelFont(42);
@@ -16811,7 +16811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_560__563->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_560__563->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_560__563->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_560__563->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_560__563->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_560__563->GetYaxis()->CenterTitle(true);
    h_ratio_trial_560__563->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_560__563->GetYaxis()->SetLabelFont(42);
@@ -16841,7 +16841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_561__564->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_561__564->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_561__564->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_561__564->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_561__564->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_561__564->GetYaxis()->CenterTitle(true);
    h_ratio_trial_561__564->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_561__564->GetYaxis()->SetLabelFont(42);
@@ -16871,7 +16871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_562__565->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_562__565->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_562__565->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_562__565->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_562__565->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_562__565->GetYaxis()->CenterTitle(true);
    h_ratio_trial_562__565->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_562__565->GetYaxis()->SetLabelFont(42);
@@ -16901,7 +16901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_563__566->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_563__566->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_563__566->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_563__566->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_563__566->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_563__566->GetYaxis()->CenterTitle(true);
    h_ratio_trial_563__566->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_563__566->GetYaxis()->SetLabelFont(42);
@@ -16931,7 +16931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_564__567->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_564__567->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_564__567->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_564__567->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_564__567->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_564__567->GetYaxis()->CenterTitle(true);
    h_ratio_trial_564__567->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_564__567->GetYaxis()->SetLabelFont(42);
@@ -16961,7 +16961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_565__568->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_565__568->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_565__568->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_565__568->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_565__568->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_565__568->GetYaxis()->CenterTitle(true);
    h_ratio_trial_565__568->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_565__568->GetYaxis()->SetLabelFont(42);
@@ -16991,7 +16991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_566__569->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_566__569->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_566__569->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_566__569->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_566__569->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_566__569->GetYaxis()->CenterTitle(true);
    h_ratio_trial_566__569->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_566__569->GetYaxis()->SetLabelFont(42);
@@ -17021,7 +17021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_567__570->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_567__570->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_567__570->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_567__570->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_567__570->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_567__570->GetYaxis()->CenterTitle(true);
    h_ratio_trial_567__570->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_567__570->GetYaxis()->SetLabelFont(42);
@@ -17051,7 +17051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_568__571->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_568__571->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_568__571->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_568__571->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_568__571->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_568__571->GetYaxis()->CenterTitle(true);
    h_ratio_trial_568__571->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_568__571->GetYaxis()->SetLabelFont(42);
@@ -17081,7 +17081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_569__572->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_569__572->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_569__572->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_569__572->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_569__572->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_569__572->GetYaxis()->CenterTitle(true);
    h_ratio_trial_569__572->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_569__572->GetYaxis()->SetLabelFont(42);
@@ -17111,7 +17111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_570__573->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_570__573->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_570__573->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_570__573->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_570__573->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_570__573->GetYaxis()->CenterTitle(true);
    h_ratio_trial_570__573->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_570__573->GetYaxis()->SetLabelFont(42);
@@ -17141,7 +17141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_571__574->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_571__574->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_571__574->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_571__574->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_571__574->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_571__574->GetYaxis()->CenterTitle(true);
    h_ratio_trial_571__574->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_571__574->GetYaxis()->SetLabelFont(42);
@@ -17171,7 +17171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_572__575->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_572__575->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_572__575->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_572__575->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_572__575->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_572__575->GetYaxis()->CenterTitle(true);
    h_ratio_trial_572__575->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_572__575->GetYaxis()->SetLabelFont(42);
@@ -17201,7 +17201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_573__576->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_573__576->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_573__576->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_573__576->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_573__576->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_573__576->GetYaxis()->CenterTitle(true);
    h_ratio_trial_573__576->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_573__576->GetYaxis()->SetLabelFont(42);
@@ -17231,7 +17231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_574__577->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_574__577->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_574__577->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_574__577->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_574__577->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_574__577->GetYaxis()->CenterTitle(true);
    h_ratio_trial_574__577->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_574__577->GetYaxis()->SetLabelFont(42);
@@ -17261,7 +17261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_575__578->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_575__578->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_575__578->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_575__578->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_575__578->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_575__578->GetYaxis()->CenterTitle(true);
    h_ratio_trial_575__578->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_575__578->GetYaxis()->SetLabelFont(42);
@@ -17291,7 +17291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_576__579->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_576__579->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_576__579->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_576__579->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_576__579->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_576__579->GetYaxis()->CenterTitle(true);
    h_ratio_trial_576__579->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_576__579->GetYaxis()->SetLabelFont(42);
@@ -17321,7 +17321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_577__580->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_577__580->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_577__580->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_577__580->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_577__580->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_577__580->GetYaxis()->CenterTitle(true);
    h_ratio_trial_577__580->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_577__580->GetYaxis()->SetLabelFont(42);
@@ -17351,7 +17351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_578__581->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_578__581->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_578__581->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_578__581->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_578__581->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_578__581->GetYaxis()->CenterTitle(true);
    h_ratio_trial_578__581->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_578__581->GetYaxis()->SetLabelFont(42);
@@ -17381,7 +17381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_579__582->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_579__582->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_579__582->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_579__582->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_579__582->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_579__582->GetYaxis()->CenterTitle(true);
    h_ratio_trial_579__582->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_579__582->GetYaxis()->SetLabelFont(42);
@@ -17411,7 +17411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_580__583->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_580__583->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_580__583->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_580__583->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_580__583->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_580__583->GetYaxis()->CenterTitle(true);
    h_ratio_trial_580__583->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_580__583->GetYaxis()->SetLabelFont(42);
@@ -17441,7 +17441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_581__584->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_581__584->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_581__584->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_581__584->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_581__584->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_581__584->GetYaxis()->CenterTitle(true);
    h_ratio_trial_581__584->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_581__584->GetYaxis()->SetLabelFont(42);
@@ -17471,7 +17471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_582__585->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_582__585->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_582__585->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_582__585->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_582__585->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_582__585->GetYaxis()->CenterTitle(true);
    h_ratio_trial_582__585->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_582__585->GetYaxis()->SetLabelFont(42);
@@ -17501,7 +17501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_583__586->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_583__586->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_583__586->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_583__586->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_583__586->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_583__586->GetYaxis()->CenterTitle(true);
    h_ratio_trial_583__586->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_583__586->GetYaxis()->SetLabelFont(42);
@@ -17531,7 +17531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_584__587->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_584__587->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_584__587->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_584__587->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_584__587->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_584__587->GetYaxis()->CenterTitle(true);
    h_ratio_trial_584__587->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_584__587->GetYaxis()->SetLabelFont(42);
@@ -17561,7 +17561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_585__588->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_585__588->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_585__588->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_585__588->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_585__588->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_585__588->GetYaxis()->CenterTitle(true);
    h_ratio_trial_585__588->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_585__588->GetYaxis()->SetLabelFont(42);
@@ -17591,7 +17591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_586__589->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_586__589->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_586__589->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_586__589->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_586__589->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_586__589->GetYaxis()->CenterTitle(true);
    h_ratio_trial_586__589->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_586__589->GetYaxis()->SetLabelFont(42);
@@ -17621,7 +17621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_587__590->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_587__590->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_587__590->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_587__590->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_587__590->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_587__590->GetYaxis()->CenterTitle(true);
    h_ratio_trial_587__590->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_587__590->GetYaxis()->SetLabelFont(42);
@@ -17651,7 +17651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_588__591->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_588__591->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_588__591->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_588__591->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_588__591->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_588__591->GetYaxis()->CenterTitle(true);
    h_ratio_trial_588__591->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_588__591->GetYaxis()->SetLabelFont(42);
@@ -17681,7 +17681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_589__592->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_589__592->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_589__592->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_589__592->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_589__592->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_589__592->GetYaxis()->CenterTitle(true);
    h_ratio_trial_589__592->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_589__592->GetYaxis()->SetLabelFont(42);
@@ -17711,7 +17711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_590__593->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_590__593->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_590__593->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_590__593->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_590__593->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_590__593->GetYaxis()->CenterTitle(true);
    h_ratio_trial_590__593->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_590__593->GetYaxis()->SetLabelFont(42);
@@ -17741,7 +17741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_591__594->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_591__594->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_591__594->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_591__594->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_591__594->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_591__594->GetYaxis()->CenterTitle(true);
    h_ratio_trial_591__594->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_591__594->GetYaxis()->SetLabelFont(42);
@@ -17771,7 +17771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_592__595->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_592__595->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_592__595->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_592__595->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_592__595->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_592__595->GetYaxis()->CenterTitle(true);
    h_ratio_trial_592__595->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_592__595->GetYaxis()->SetLabelFont(42);
@@ -17801,7 +17801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_593__596->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_593__596->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_593__596->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_593__596->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_593__596->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_593__596->GetYaxis()->CenterTitle(true);
    h_ratio_trial_593__596->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_593__596->GetYaxis()->SetLabelFont(42);
@@ -17831,7 +17831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_594__597->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_594__597->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_594__597->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_594__597->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_594__597->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_594__597->GetYaxis()->CenterTitle(true);
    h_ratio_trial_594__597->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_594__597->GetYaxis()->SetLabelFont(42);
@@ -17861,7 +17861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_595__598->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_595__598->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_595__598->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_595__598->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_595__598->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_595__598->GetYaxis()->CenterTitle(true);
    h_ratio_trial_595__598->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_595__598->GetYaxis()->SetLabelFont(42);
@@ -17891,7 +17891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_596__599->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_596__599->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_596__599->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_596__599->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_596__599->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_596__599->GetYaxis()->CenterTitle(true);
    h_ratio_trial_596__599->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_596__599->GetYaxis()->SetLabelFont(42);
@@ -17921,7 +17921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_597__600->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_597__600->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_597__600->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_597__600->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_597__600->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_597__600->GetYaxis()->CenterTitle(true);
    h_ratio_trial_597__600->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_597__600->GetYaxis()->SetLabelFont(42);
@@ -17951,7 +17951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_598__601->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_598__601->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_598__601->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_598__601->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_598__601->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_598__601->GetYaxis()->CenterTitle(true);
    h_ratio_trial_598__601->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_598__601->GetYaxis()->SetLabelFont(42);
@@ -17981,7 +17981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_599__602->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_599__602->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_599__602->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_599__602->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_599__602->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_599__602->GetYaxis()->CenterTitle(true);
    h_ratio_trial_599__602->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_599__602->GetYaxis()->SetLabelFont(42);
@@ -18011,7 +18011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_600__603->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_600__603->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_600__603->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_600__603->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_600__603->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_600__603->GetYaxis()->CenterTitle(true);
    h_ratio_trial_600__603->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_600__603->GetYaxis()->SetLabelFont(42);
@@ -18041,7 +18041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_601__604->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_601__604->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_601__604->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_601__604->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_601__604->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_601__604->GetYaxis()->CenterTitle(true);
    h_ratio_trial_601__604->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_601__604->GetYaxis()->SetLabelFont(42);
@@ -18071,7 +18071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_602__605->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_602__605->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_602__605->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_602__605->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_602__605->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_602__605->GetYaxis()->CenterTitle(true);
    h_ratio_trial_602__605->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_602__605->GetYaxis()->SetLabelFont(42);
@@ -18101,7 +18101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_603__606->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_603__606->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_603__606->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_603__606->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_603__606->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_603__606->GetYaxis()->CenterTitle(true);
    h_ratio_trial_603__606->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_603__606->GetYaxis()->SetLabelFont(42);
@@ -18131,7 +18131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_604__607->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_604__607->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_604__607->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_604__607->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_604__607->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_604__607->GetYaxis()->CenterTitle(true);
    h_ratio_trial_604__607->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_604__607->GetYaxis()->SetLabelFont(42);
@@ -18161,7 +18161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_605__608->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_605__608->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_605__608->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_605__608->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_605__608->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_605__608->GetYaxis()->CenterTitle(true);
    h_ratio_trial_605__608->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_605__608->GetYaxis()->SetLabelFont(42);
@@ -18191,7 +18191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_606__609->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_606__609->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_606__609->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_606__609->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_606__609->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_606__609->GetYaxis()->CenterTitle(true);
    h_ratio_trial_606__609->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_606__609->GetYaxis()->SetLabelFont(42);
@@ -18221,7 +18221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_607__610->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_607__610->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_607__610->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_607__610->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_607__610->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_607__610->GetYaxis()->CenterTitle(true);
    h_ratio_trial_607__610->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_607__610->GetYaxis()->SetLabelFont(42);
@@ -18251,7 +18251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_608__611->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_608__611->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_608__611->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_608__611->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_608__611->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_608__611->GetYaxis()->CenterTitle(true);
    h_ratio_trial_608__611->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_608__611->GetYaxis()->SetLabelFont(42);
@@ -18281,7 +18281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_609__612->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_609__612->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_609__612->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_609__612->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_609__612->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_609__612->GetYaxis()->CenterTitle(true);
    h_ratio_trial_609__612->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_609__612->GetYaxis()->SetLabelFont(42);
@@ -18311,7 +18311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_610__613->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_610__613->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_610__613->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_610__613->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_610__613->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_610__613->GetYaxis()->CenterTitle(true);
    h_ratio_trial_610__613->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_610__613->GetYaxis()->SetLabelFont(42);
@@ -18341,7 +18341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_611__614->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_611__614->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_611__614->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_611__614->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_611__614->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_611__614->GetYaxis()->CenterTitle(true);
    h_ratio_trial_611__614->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_611__614->GetYaxis()->SetLabelFont(42);
@@ -18371,7 +18371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_612__615->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_612__615->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_612__615->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_612__615->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_612__615->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_612__615->GetYaxis()->CenterTitle(true);
    h_ratio_trial_612__615->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_612__615->GetYaxis()->SetLabelFont(42);
@@ -18401,7 +18401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_613__616->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_613__616->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_613__616->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_613__616->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_613__616->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_613__616->GetYaxis()->CenterTitle(true);
    h_ratio_trial_613__616->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_613__616->GetYaxis()->SetLabelFont(42);
@@ -18431,7 +18431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_614__617->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_614__617->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_614__617->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_614__617->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_614__617->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_614__617->GetYaxis()->CenterTitle(true);
    h_ratio_trial_614__617->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_614__617->GetYaxis()->SetLabelFont(42);
@@ -18461,7 +18461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_615__618->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_615__618->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_615__618->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_615__618->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_615__618->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_615__618->GetYaxis()->CenterTitle(true);
    h_ratio_trial_615__618->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_615__618->GetYaxis()->SetLabelFont(42);
@@ -18491,7 +18491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_616__619->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_616__619->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_616__619->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_616__619->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_616__619->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_616__619->GetYaxis()->CenterTitle(true);
    h_ratio_trial_616__619->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_616__619->GetYaxis()->SetLabelFont(42);
@@ -18521,7 +18521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_617__620->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_617__620->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_617__620->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_617__620->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_617__620->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_617__620->GetYaxis()->CenterTitle(true);
    h_ratio_trial_617__620->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_617__620->GetYaxis()->SetLabelFont(42);
@@ -18551,7 +18551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_618__621->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_618__621->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_618__621->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_618__621->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_618__621->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_618__621->GetYaxis()->CenterTitle(true);
    h_ratio_trial_618__621->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_618__621->GetYaxis()->SetLabelFont(42);
@@ -18581,7 +18581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_619__622->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_619__622->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_619__622->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_619__622->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_619__622->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_619__622->GetYaxis()->CenterTitle(true);
    h_ratio_trial_619__622->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_619__622->GetYaxis()->SetLabelFont(42);
@@ -18611,7 +18611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_620__623->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_620__623->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_620__623->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_620__623->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_620__623->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_620__623->GetYaxis()->CenterTitle(true);
    h_ratio_trial_620__623->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_620__623->GetYaxis()->SetLabelFont(42);
@@ -18641,7 +18641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_621__624->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_621__624->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_621__624->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_621__624->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_621__624->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_621__624->GetYaxis()->CenterTitle(true);
    h_ratio_trial_621__624->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_621__624->GetYaxis()->SetLabelFont(42);
@@ -18671,7 +18671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_622__625->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_622__625->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_622__625->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_622__625->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_622__625->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_622__625->GetYaxis()->CenterTitle(true);
    h_ratio_trial_622__625->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_622__625->GetYaxis()->SetLabelFont(42);
@@ -18701,7 +18701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_623__626->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_623__626->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_623__626->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_623__626->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_623__626->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_623__626->GetYaxis()->CenterTitle(true);
    h_ratio_trial_623__626->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_623__626->GetYaxis()->SetLabelFont(42);
@@ -18731,7 +18731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_624__627->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_624__627->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_624__627->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_624__627->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_624__627->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_624__627->GetYaxis()->CenterTitle(true);
    h_ratio_trial_624__627->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_624__627->GetYaxis()->SetLabelFont(42);
@@ -18761,7 +18761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_625__628->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_625__628->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_625__628->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_625__628->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_625__628->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_625__628->GetYaxis()->CenterTitle(true);
    h_ratio_trial_625__628->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_625__628->GetYaxis()->SetLabelFont(42);
@@ -18791,7 +18791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_626__629->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_626__629->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_626__629->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_626__629->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_626__629->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_626__629->GetYaxis()->CenterTitle(true);
    h_ratio_trial_626__629->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_626__629->GetYaxis()->SetLabelFont(42);
@@ -18821,7 +18821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_627__630->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_627__630->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_627__630->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_627__630->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_627__630->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_627__630->GetYaxis()->CenterTitle(true);
    h_ratio_trial_627__630->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_627__630->GetYaxis()->SetLabelFont(42);
@@ -18851,7 +18851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_628__631->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_628__631->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_628__631->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_628__631->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_628__631->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_628__631->GetYaxis()->CenterTitle(true);
    h_ratio_trial_628__631->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_628__631->GetYaxis()->SetLabelFont(42);
@@ -18881,7 +18881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_629__632->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_629__632->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_629__632->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_629__632->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_629__632->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_629__632->GetYaxis()->CenterTitle(true);
    h_ratio_trial_629__632->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_629__632->GetYaxis()->SetLabelFont(42);
@@ -18911,7 +18911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_630__633->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_630__633->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_630__633->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_630__633->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_630__633->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_630__633->GetYaxis()->CenterTitle(true);
    h_ratio_trial_630__633->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_630__633->GetYaxis()->SetLabelFont(42);
@@ -18941,7 +18941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_631__634->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_631__634->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_631__634->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_631__634->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_631__634->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_631__634->GetYaxis()->CenterTitle(true);
    h_ratio_trial_631__634->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_631__634->GetYaxis()->SetLabelFont(42);
@@ -18971,7 +18971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_632__635->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_632__635->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_632__635->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_632__635->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_632__635->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_632__635->GetYaxis()->CenterTitle(true);
    h_ratio_trial_632__635->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_632__635->GetYaxis()->SetLabelFont(42);
@@ -19001,7 +19001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_633__636->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_633__636->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_633__636->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_633__636->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_633__636->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_633__636->GetYaxis()->CenterTitle(true);
    h_ratio_trial_633__636->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_633__636->GetYaxis()->SetLabelFont(42);
@@ -19031,7 +19031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_634__637->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_634__637->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_634__637->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_634__637->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_634__637->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_634__637->GetYaxis()->CenterTitle(true);
    h_ratio_trial_634__637->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_634__637->GetYaxis()->SetLabelFont(42);
@@ -19061,7 +19061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_635__638->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_635__638->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_635__638->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_635__638->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_635__638->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_635__638->GetYaxis()->CenterTitle(true);
    h_ratio_trial_635__638->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_635__638->GetYaxis()->SetLabelFont(42);
@@ -19091,7 +19091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_636__639->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_636__639->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_636__639->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_636__639->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_636__639->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_636__639->GetYaxis()->CenterTitle(true);
    h_ratio_trial_636__639->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_636__639->GetYaxis()->SetLabelFont(42);
@@ -19121,7 +19121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_637__640->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_637__640->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_637__640->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_637__640->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_637__640->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_637__640->GetYaxis()->CenterTitle(true);
    h_ratio_trial_637__640->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_637__640->GetYaxis()->SetLabelFont(42);
@@ -19151,7 +19151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_638__641->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_638__641->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_638__641->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_638__641->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_638__641->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_638__641->GetYaxis()->CenterTitle(true);
    h_ratio_trial_638__641->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_638__641->GetYaxis()->SetLabelFont(42);
@@ -19181,7 +19181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_639__642->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_639__642->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_639__642->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_639__642->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_639__642->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_639__642->GetYaxis()->CenterTitle(true);
    h_ratio_trial_639__642->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_639__642->GetYaxis()->SetLabelFont(42);
@@ -19211,7 +19211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_640__643->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_640__643->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_640__643->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_640__643->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_640__643->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_640__643->GetYaxis()->CenterTitle(true);
    h_ratio_trial_640__643->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_640__643->GetYaxis()->SetLabelFont(42);
@@ -19241,7 +19241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_641__644->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_641__644->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_641__644->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_641__644->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_641__644->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_641__644->GetYaxis()->CenterTitle(true);
    h_ratio_trial_641__644->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_641__644->GetYaxis()->SetLabelFont(42);
@@ -19271,7 +19271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_642__645->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_642__645->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_642__645->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_642__645->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_642__645->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_642__645->GetYaxis()->CenterTitle(true);
    h_ratio_trial_642__645->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_642__645->GetYaxis()->SetLabelFont(42);
@@ -19301,7 +19301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_643__646->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_643__646->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_643__646->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_643__646->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_643__646->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_643__646->GetYaxis()->CenterTitle(true);
    h_ratio_trial_643__646->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_643__646->GetYaxis()->SetLabelFont(42);
@@ -19331,7 +19331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_644__647->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_644__647->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_644__647->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_644__647->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_644__647->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_644__647->GetYaxis()->CenterTitle(true);
    h_ratio_trial_644__647->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_644__647->GetYaxis()->SetLabelFont(42);
@@ -19361,7 +19361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_645__648->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_645__648->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_645__648->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_645__648->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_645__648->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_645__648->GetYaxis()->CenterTitle(true);
    h_ratio_trial_645__648->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_645__648->GetYaxis()->SetLabelFont(42);
@@ -19391,7 +19391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_646__649->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_646__649->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_646__649->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_646__649->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_646__649->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_646__649->GetYaxis()->CenterTitle(true);
    h_ratio_trial_646__649->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_646__649->GetYaxis()->SetLabelFont(42);
@@ -19421,7 +19421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_647__650->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_647__650->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_647__650->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_647__650->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_647__650->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_647__650->GetYaxis()->CenterTitle(true);
    h_ratio_trial_647__650->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_647__650->GetYaxis()->SetLabelFont(42);
@@ -19451,7 +19451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_648__651->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_648__651->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_648__651->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_648__651->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_648__651->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_648__651->GetYaxis()->CenterTitle(true);
    h_ratio_trial_648__651->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_648__651->GetYaxis()->SetLabelFont(42);
@@ -19481,7 +19481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_649__652->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_649__652->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_649__652->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_649__652->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_649__652->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_649__652->GetYaxis()->CenterTitle(true);
    h_ratio_trial_649__652->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_649__652->GetYaxis()->SetLabelFont(42);
@@ -19511,7 +19511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_650__653->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_650__653->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_650__653->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_650__653->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_650__653->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_650__653->GetYaxis()->CenterTitle(true);
    h_ratio_trial_650__653->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_650__653->GetYaxis()->SetLabelFont(42);
@@ -19541,7 +19541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_651__654->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_651__654->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_651__654->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_651__654->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_651__654->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_651__654->GetYaxis()->CenterTitle(true);
    h_ratio_trial_651__654->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_651__654->GetYaxis()->SetLabelFont(42);
@@ -19571,7 +19571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_652__655->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_652__655->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_652__655->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_652__655->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_652__655->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_652__655->GetYaxis()->CenterTitle(true);
    h_ratio_trial_652__655->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_652__655->GetYaxis()->SetLabelFont(42);
@@ -19601,7 +19601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_653__656->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_653__656->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_653__656->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_653__656->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_653__656->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_653__656->GetYaxis()->CenterTitle(true);
    h_ratio_trial_653__656->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_653__656->GetYaxis()->SetLabelFont(42);
@@ -19631,7 +19631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_654__657->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_654__657->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_654__657->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_654__657->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_654__657->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_654__657->GetYaxis()->CenterTitle(true);
    h_ratio_trial_654__657->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_654__657->GetYaxis()->SetLabelFont(42);
@@ -19661,7 +19661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_655__658->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_655__658->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_655__658->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_655__658->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_655__658->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_655__658->GetYaxis()->CenterTitle(true);
    h_ratio_trial_655__658->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_655__658->GetYaxis()->SetLabelFont(42);
@@ -19691,7 +19691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_656__659->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_656__659->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_656__659->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_656__659->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_656__659->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_656__659->GetYaxis()->CenterTitle(true);
    h_ratio_trial_656__659->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_656__659->GetYaxis()->SetLabelFont(42);
@@ -19721,7 +19721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_657__660->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_657__660->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_657__660->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_657__660->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_657__660->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_657__660->GetYaxis()->CenterTitle(true);
    h_ratio_trial_657__660->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_657__660->GetYaxis()->SetLabelFont(42);
@@ -19751,7 +19751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_658__661->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_658__661->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_658__661->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_658__661->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_658__661->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_658__661->GetYaxis()->CenterTitle(true);
    h_ratio_trial_658__661->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_658__661->GetYaxis()->SetLabelFont(42);
@@ -19781,7 +19781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_659__662->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_659__662->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_659__662->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_659__662->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_659__662->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_659__662->GetYaxis()->CenterTitle(true);
    h_ratio_trial_659__662->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_659__662->GetYaxis()->SetLabelFont(42);
@@ -19811,7 +19811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_660__663->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_660__663->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_660__663->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_660__663->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_660__663->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_660__663->GetYaxis()->CenterTitle(true);
    h_ratio_trial_660__663->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_660__663->GetYaxis()->SetLabelFont(42);
@@ -19841,7 +19841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_661__664->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_661__664->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_661__664->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_661__664->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_661__664->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_661__664->GetYaxis()->CenterTitle(true);
    h_ratio_trial_661__664->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_661__664->GetYaxis()->SetLabelFont(42);
@@ -19871,7 +19871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_662__665->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_662__665->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_662__665->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_662__665->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_662__665->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_662__665->GetYaxis()->CenterTitle(true);
    h_ratio_trial_662__665->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_662__665->GetYaxis()->SetLabelFont(42);
@@ -19901,7 +19901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_663__666->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_663__666->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_663__666->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_663__666->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_663__666->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_663__666->GetYaxis()->CenterTitle(true);
    h_ratio_trial_663__666->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_663__666->GetYaxis()->SetLabelFont(42);
@@ -19931,7 +19931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_664__667->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_664__667->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_664__667->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_664__667->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_664__667->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_664__667->GetYaxis()->CenterTitle(true);
    h_ratio_trial_664__667->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_664__667->GetYaxis()->SetLabelFont(42);
@@ -19961,7 +19961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_665__668->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_665__668->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_665__668->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_665__668->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_665__668->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_665__668->GetYaxis()->CenterTitle(true);
    h_ratio_trial_665__668->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_665__668->GetYaxis()->SetLabelFont(42);
@@ -19991,7 +19991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_666__669->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_666__669->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_666__669->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_666__669->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_666__669->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_666__669->GetYaxis()->CenterTitle(true);
    h_ratio_trial_666__669->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_666__669->GetYaxis()->SetLabelFont(42);
@@ -20021,7 +20021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_667__670->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_667__670->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_667__670->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_667__670->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_667__670->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_667__670->GetYaxis()->CenterTitle(true);
    h_ratio_trial_667__670->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_667__670->GetYaxis()->SetLabelFont(42);
@@ -20051,7 +20051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_668__671->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_668__671->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_668__671->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_668__671->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_668__671->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_668__671->GetYaxis()->CenterTitle(true);
    h_ratio_trial_668__671->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_668__671->GetYaxis()->SetLabelFont(42);
@@ -20081,7 +20081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_669__672->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_669__672->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_669__672->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_669__672->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_669__672->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_669__672->GetYaxis()->CenterTitle(true);
    h_ratio_trial_669__672->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_669__672->GetYaxis()->SetLabelFont(42);
@@ -20111,7 +20111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_670__673->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_670__673->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_670__673->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_670__673->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_670__673->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_670__673->GetYaxis()->CenterTitle(true);
    h_ratio_trial_670__673->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_670__673->GetYaxis()->SetLabelFont(42);
@@ -20141,7 +20141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_671__674->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_671__674->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_671__674->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_671__674->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_671__674->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_671__674->GetYaxis()->CenterTitle(true);
    h_ratio_trial_671__674->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_671__674->GetYaxis()->SetLabelFont(42);
@@ -20171,7 +20171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_672__675->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_672__675->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_672__675->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_672__675->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_672__675->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_672__675->GetYaxis()->CenterTitle(true);
    h_ratio_trial_672__675->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_672__675->GetYaxis()->SetLabelFont(42);
@@ -20201,7 +20201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_673__676->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_673__676->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_673__676->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_673__676->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_673__676->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_673__676->GetYaxis()->CenterTitle(true);
    h_ratio_trial_673__676->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_673__676->GetYaxis()->SetLabelFont(42);
@@ -20231,7 +20231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_674__677->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_674__677->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_674__677->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_674__677->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_674__677->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_674__677->GetYaxis()->CenterTitle(true);
    h_ratio_trial_674__677->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_674__677->GetYaxis()->SetLabelFont(42);
@@ -20261,7 +20261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_675__678->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_675__678->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_675__678->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_675__678->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_675__678->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_675__678->GetYaxis()->CenterTitle(true);
    h_ratio_trial_675__678->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_675__678->GetYaxis()->SetLabelFont(42);
@@ -20291,7 +20291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_676__679->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_676__679->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_676__679->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_676__679->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_676__679->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_676__679->GetYaxis()->CenterTitle(true);
    h_ratio_trial_676__679->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_676__679->GetYaxis()->SetLabelFont(42);
@@ -20321,7 +20321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_677__680->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_677__680->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_677__680->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_677__680->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_677__680->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_677__680->GetYaxis()->CenterTitle(true);
    h_ratio_trial_677__680->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_677__680->GetYaxis()->SetLabelFont(42);
@@ -20351,7 +20351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_678__681->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_678__681->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_678__681->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_678__681->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_678__681->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_678__681->GetYaxis()->CenterTitle(true);
    h_ratio_trial_678__681->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_678__681->GetYaxis()->SetLabelFont(42);
@@ -20381,7 +20381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_679__682->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_679__682->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_679__682->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_679__682->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_679__682->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_679__682->GetYaxis()->CenterTitle(true);
    h_ratio_trial_679__682->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_679__682->GetYaxis()->SetLabelFont(42);
@@ -20411,7 +20411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_680__683->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_680__683->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_680__683->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_680__683->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_680__683->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_680__683->GetYaxis()->CenterTitle(true);
    h_ratio_trial_680__683->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_680__683->GetYaxis()->SetLabelFont(42);
@@ -20441,7 +20441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_681__684->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_681__684->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_681__684->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_681__684->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_681__684->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_681__684->GetYaxis()->CenterTitle(true);
    h_ratio_trial_681__684->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_681__684->GetYaxis()->SetLabelFont(42);
@@ -20471,7 +20471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_682__685->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_682__685->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_682__685->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_682__685->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_682__685->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_682__685->GetYaxis()->CenterTitle(true);
    h_ratio_trial_682__685->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_682__685->GetYaxis()->SetLabelFont(42);
@@ -20501,7 +20501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_683__686->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_683__686->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_683__686->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_683__686->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_683__686->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_683__686->GetYaxis()->CenterTitle(true);
    h_ratio_trial_683__686->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_683__686->GetYaxis()->SetLabelFont(42);
@@ -20531,7 +20531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_684__687->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_684__687->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_684__687->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_684__687->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_684__687->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_684__687->GetYaxis()->CenterTitle(true);
    h_ratio_trial_684__687->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_684__687->GetYaxis()->SetLabelFont(42);
@@ -20561,7 +20561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_685__688->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_685__688->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_685__688->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_685__688->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_685__688->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_685__688->GetYaxis()->CenterTitle(true);
    h_ratio_trial_685__688->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_685__688->GetYaxis()->SetLabelFont(42);
@@ -20591,7 +20591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_686__689->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_686__689->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_686__689->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_686__689->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_686__689->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_686__689->GetYaxis()->CenterTitle(true);
    h_ratio_trial_686__689->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_686__689->GetYaxis()->SetLabelFont(42);
@@ -20621,7 +20621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_687__690->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_687__690->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_687__690->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_687__690->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_687__690->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_687__690->GetYaxis()->CenterTitle(true);
    h_ratio_trial_687__690->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_687__690->GetYaxis()->SetLabelFont(42);
@@ -20651,7 +20651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_688__691->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_688__691->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_688__691->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_688__691->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_688__691->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_688__691->GetYaxis()->CenterTitle(true);
    h_ratio_trial_688__691->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_688__691->GetYaxis()->SetLabelFont(42);
@@ -20681,7 +20681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_689__692->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_689__692->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_689__692->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_689__692->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_689__692->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_689__692->GetYaxis()->CenterTitle(true);
    h_ratio_trial_689__692->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_689__692->GetYaxis()->SetLabelFont(42);
@@ -20711,7 +20711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_690__693->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_690__693->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_690__693->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_690__693->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_690__693->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_690__693->GetYaxis()->CenterTitle(true);
    h_ratio_trial_690__693->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_690__693->GetYaxis()->SetLabelFont(42);
@@ -20741,7 +20741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_691__694->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_691__694->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_691__694->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_691__694->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_691__694->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_691__694->GetYaxis()->CenterTitle(true);
    h_ratio_trial_691__694->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_691__694->GetYaxis()->SetLabelFont(42);
@@ -20771,7 +20771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_692__695->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_692__695->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_692__695->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_692__695->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_692__695->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_692__695->GetYaxis()->CenterTitle(true);
    h_ratio_trial_692__695->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_692__695->GetYaxis()->SetLabelFont(42);
@@ -20801,7 +20801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_693__696->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_693__696->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_693__696->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_693__696->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_693__696->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_693__696->GetYaxis()->CenterTitle(true);
    h_ratio_trial_693__696->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_693__696->GetYaxis()->SetLabelFont(42);
@@ -20831,7 +20831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_694__697->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_694__697->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_694__697->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_694__697->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_694__697->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_694__697->GetYaxis()->CenterTitle(true);
    h_ratio_trial_694__697->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_694__697->GetYaxis()->SetLabelFont(42);
@@ -20861,7 +20861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_695__698->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_695__698->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_695__698->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_695__698->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_695__698->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_695__698->GetYaxis()->CenterTitle(true);
    h_ratio_trial_695__698->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_695__698->GetYaxis()->SetLabelFont(42);
@@ -20891,7 +20891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_696__699->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_696__699->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_696__699->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_696__699->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_696__699->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_696__699->GetYaxis()->CenterTitle(true);
    h_ratio_trial_696__699->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_696__699->GetYaxis()->SetLabelFont(42);
@@ -20921,7 +20921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_697__700->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_697__700->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_697__700->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_697__700->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_697__700->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_697__700->GetYaxis()->CenterTitle(true);
    h_ratio_trial_697__700->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_697__700->GetYaxis()->SetLabelFont(42);
@@ -20951,7 +20951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_698__701->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_698__701->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_698__701->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_698__701->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_698__701->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_698__701->GetYaxis()->CenterTitle(true);
    h_ratio_trial_698__701->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_698__701->GetYaxis()->SetLabelFont(42);
@@ -20981,7 +20981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_699__702->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_699__702->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_699__702->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_699__702->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_699__702->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_699__702->GetYaxis()->CenterTitle(true);
    h_ratio_trial_699__702->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_699__702->GetYaxis()->SetLabelFont(42);
@@ -21011,7 +21011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_700__703->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_700__703->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_700__703->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_700__703->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_700__703->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_700__703->GetYaxis()->CenterTitle(true);
    h_ratio_trial_700__703->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_700__703->GetYaxis()->SetLabelFont(42);
@@ -21041,7 +21041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_701__704->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_701__704->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_701__704->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_701__704->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_701__704->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_701__704->GetYaxis()->CenterTitle(true);
    h_ratio_trial_701__704->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_701__704->GetYaxis()->SetLabelFont(42);
@@ -21071,7 +21071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_702__705->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_702__705->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_702__705->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_702__705->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_702__705->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_702__705->GetYaxis()->CenterTitle(true);
    h_ratio_trial_702__705->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_702__705->GetYaxis()->SetLabelFont(42);
@@ -21101,7 +21101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_703__706->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_703__706->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_703__706->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_703__706->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_703__706->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_703__706->GetYaxis()->CenterTitle(true);
    h_ratio_trial_703__706->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_703__706->GetYaxis()->SetLabelFont(42);
@@ -21131,7 +21131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_704__707->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_704__707->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_704__707->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_704__707->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_704__707->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_704__707->GetYaxis()->CenterTitle(true);
    h_ratio_trial_704__707->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_704__707->GetYaxis()->SetLabelFont(42);
@@ -21161,7 +21161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_705__708->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_705__708->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_705__708->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_705__708->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_705__708->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_705__708->GetYaxis()->CenterTitle(true);
    h_ratio_trial_705__708->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_705__708->GetYaxis()->SetLabelFont(42);
@@ -21191,7 +21191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_706__709->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_706__709->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_706__709->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_706__709->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_706__709->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_706__709->GetYaxis()->CenterTitle(true);
    h_ratio_trial_706__709->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_706__709->GetYaxis()->SetLabelFont(42);
@@ -21221,7 +21221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_707__710->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_707__710->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_707__710->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_707__710->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_707__710->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_707__710->GetYaxis()->CenterTitle(true);
    h_ratio_trial_707__710->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_707__710->GetYaxis()->SetLabelFont(42);
@@ -21251,7 +21251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_708__711->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_708__711->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_708__711->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_708__711->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_708__711->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_708__711->GetYaxis()->CenterTitle(true);
    h_ratio_trial_708__711->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_708__711->GetYaxis()->SetLabelFont(42);
@@ -21281,7 +21281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_709__712->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_709__712->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_709__712->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_709__712->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_709__712->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_709__712->GetYaxis()->CenterTitle(true);
    h_ratio_trial_709__712->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_709__712->GetYaxis()->SetLabelFont(42);
@@ -21311,7 +21311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_710__713->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_710__713->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_710__713->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_710__713->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_710__713->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_710__713->GetYaxis()->CenterTitle(true);
    h_ratio_trial_710__713->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_710__713->GetYaxis()->SetLabelFont(42);
@@ -21341,7 +21341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_711__714->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_711__714->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_711__714->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_711__714->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_711__714->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_711__714->GetYaxis()->CenterTitle(true);
    h_ratio_trial_711__714->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_711__714->GetYaxis()->SetLabelFont(42);
@@ -21371,7 +21371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_712__715->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_712__715->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_712__715->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_712__715->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_712__715->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_712__715->GetYaxis()->CenterTitle(true);
    h_ratio_trial_712__715->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_712__715->GetYaxis()->SetLabelFont(42);
@@ -21401,7 +21401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_713__716->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_713__716->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_713__716->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_713__716->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_713__716->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_713__716->GetYaxis()->CenterTitle(true);
    h_ratio_trial_713__716->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_713__716->GetYaxis()->SetLabelFont(42);
@@ -21431,7 +21431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_714__717->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_714__717->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_714__717->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_714__717->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_714__717->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_714__717->GetYaxis()->CenterTitle(true);
    h_ratio_trial_714__717->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_714__717->GetYaxis()->SetLabelFont(42);
@@ -21461,7 +21461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_715__718->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_715__718->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_715__718->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_715__718->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_715__718->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_715__718->GetYaxis()->CenterTitle(true);
    h_ratio_trial_715__718->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_715__718->GetYaxis()->SetLabelFont(42);
@@ -21491,7 +21491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_716__719->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_716__719->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_716__719->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_716__719->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_716__719->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_716__719->GetYaxis()->CenterTitle(true);
    h_ratio_trial_716__719->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_716__719->GetYaxis()->SetLabelFont(42);
@@ -21521,7 +21521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_717__720->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_717__720->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_717__720->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_717__720->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_717__720->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_717__720->GetYaxis()->CenterTitle(true);
    h_ratio_trial_717__720->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_717__720->GetYaxis()->SetLabelFont(42);
@@ -21551,7 +21551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_718__721->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_718__721->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_718__721->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_718__721->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_718__721->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_718__721->GetYaxis()->CenterTitle(true);
    h_ratio_trial_718__721->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_718__721->GetYaxis()->SetLabelFont(42);
@@ -21581,7 +21581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_719__722->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_719__722->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_719__722->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_719__722->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_719__722->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_719__722->GetYaxis()->CenterTitle(true);
    h_ratio_trial_719__722->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_719__722->GetYaxis()->SetLabelFont(42);
@@ -21611,7 +21611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_720__723->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_720__723->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_720__723->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_720__723->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_720__723->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_720__723->GetYaxis()->CenterTitle(true);
    h_ratio_trial_720__723->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_720__723->GetYaxis()->SetLabelFont(42);
@@ -21641,7 +21641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_721__724->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_721__724->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_721__724->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_721__724->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_721__724->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_721__724->GetYaxis()->CenterTitle(true);
    h_ratio_trial_721__724->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_721__724->GetYaxis()->SetLabelFont(42);
@@ -21671,7 +21671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_722__725->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_722__725->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_722__725->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_722__725->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_722__725->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_722__725->GetYaxis()->CenterTitle(true);
    h_ratio_trial_722__725->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_722__725->GetYaxis()->SetLabelFont(42);
@@ -21701,7 +21701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_723__726->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_723__726->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_723__726->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_723__726->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_723__726->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_723__726->GetYaxis()->CenterTitle(true);
    h_ratio_trial_723__726->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_723__726->GetYaxis()->SetLabelFont(42);
@@ -21731,7 +21731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_724__727->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_724__727->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_724__727->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_724__727->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_724__727->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_724__727->GetYaxis()->CenterTitle(true);
    h_ratio_trial_724__727->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_724__727->GetYaxis()->SetLabelFont(42);
@@ -21761,7 +21761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_725__728->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_725__728->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_725__728->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_725__728->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_725__728->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_725__728->GetYaxis()->CenterTitle(true);
    h_ratio_trial_725__728->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_725__728->GetYaxis()->SetLabelFont(42);
@@ -21791,7 +21791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_726__729->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_726__729->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_726__729->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_726__729->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_726__729->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_726__729->GetYaxis()->CenterTitle(true);
    h_ratio_trial_726__729->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_726__729->GetYaxis()->SetLabelFont(42);
@@ -21821,7 +21821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_727__730->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_727__730->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_727__730->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_727__730->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_727__730->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_727__730->GetYaxis()->CenterTitle(true);
    h_ratio_trial_727__730->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_727__730->GetYaxis()->SetLabelFont(42);
@@ -21851,7 +21851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_728__731->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_728__731->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_728__731->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_728__731->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_728__731->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_728__731->GetYaxis()->CenterTitle(true);
    h_ratio_trial_728__731->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_728__731->GetYaxis()->SetLabelFont(42);
@@ -21881,7 +21881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_729__732->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_729__732->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_729__732->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_729__732->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_729__732->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_729__732->GetYaxis()->CenterTitle(true);
    h_ratio_trial_729__732->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_729__732->GetYaxis()->SetLabelFont(42);
@@ -21911,7 +21911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_730__733->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_730__733->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_730__733->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_730__733->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_730__733->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_730__733->GetYaxis()->CenterTitle(true);
    h_ratio_trial_730__733->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_730__733->GetYaxis()->SetLabelFont(42);
@@ -21941,7 +21941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_731__734->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_731__734->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_731__734->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_731__734->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_731__734->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_731__734->GetYaxis()->CenterTitle(true);
    h_ratio_trial_731__734->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_731__734->GetYaxis()->SetLabelFont(42);
@@ -21971,7 +21971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_732__735->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_732__735->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_732__735->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_732__735->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_732__735->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_732__735->GetYaxis()->CenterTitle(true);
    h_ratio_trial_732__735->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_732__735->GetYaxis()->SetLabelFont(42);
@@ -22001,7 +22001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_733__736->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_733__736->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_733__736->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_733__736->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_733__736->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_733__736->GetYaxis()->CenterTitle(true);
    h_ratio_trial_733__736->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_733__736->GetYaxis()->SetLabelFont(42);
@@ -22031,7 +22031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_734__737->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_734__737->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_734__737->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_734__737->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_734__737->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_734__737->GetYaxis()->CenterTitle(true);
    h_ratio_trial_734__737->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_734__737->GetYaxis()->SetLabelFont(42);
@@ -22061,7 +22061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_735__738->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_735__738->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_735__738->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_735__738->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_735__738->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_735__738->GetYaxis()->CenterTitle(true);
    h_ratio_trial_735__738->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_735__738->GetYaxis()->SetLabelFont(42);
@@ -22091,7 +22091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_736__739->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_736__739->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_736__739->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_736__739->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_736__739->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_736__739->GetYaxis()->CenterTitle(true);
    h_ratio_trial_736__739->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_736__739->GetYaxis()->SetLabelFont(42);
@@ -22121,7 +22121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_737__740->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_737__740->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_737__740->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_737__740->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_737__740->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_737__740->GetYaxis()->CenterTitle(true);
    h_ratio_trial_737__740->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_737__740->GetYaxis()->SetLabelFont(42);
@@ -22151,7 +22151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_738__741->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_738__741->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_738__741->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_738__741->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_738__741->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_738__741->GetYaxis()->CenterTitle(true);
    h_ratio_trial_738__741->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_738__741->GetYaxis()->SetLabelFont(42);
@@ -22181,7 +22181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_739__742->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_739__742->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_739__742->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_739__742->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_739__742->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_739__742->GetYaxis()->CenterTitle(true);
    h_ratio_trial_739__742->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_739__742->GetYaxis()->SetLabelFont(42);
@@ -22211,7 +22211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_740__743->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_740__743->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_740__743->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_740__743->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_740__743->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_740__743->GetYaxis()->CenterTitle(true);
    h_ratio_trial_740__743->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_740__743->GetYaxis()->SetLabelFont(42);
@@ -22241,7 +22241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_741__744->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_741__744->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_741__744->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_741__744->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_741__744->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_741__744->GetYaxis()->CenterTitle(true);
    h_ratio_trial_741__744->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_741__744->GetYaxis()->SetLabelFont(42);
@@ -22271,7 +22271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_742__745->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_742__745->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_742__745->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_742__745->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_742__745->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_742__745->GetYaxis()->CenterTitle(true);
    h_ratio_trial_742__745->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_742__745->GetYaxis()->SetLabelFont(42);
@@ -22301,7 +22301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_743__746->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_743__746->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_743__746->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_743__746->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_743__746->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_743__746->GetYaxis()->CenterTitle(true);
    h_ratio_trial_743__746->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_743__746->GetYaxis()->SetLabelFont(42);
@@ -22331,7 +22331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_744__747->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_744__747->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_744__747->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_744__747->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_744__747->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_744__747->GetYaxis()->CenterTitle(true);
    h_ratio_trial_744__747->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_744__747->GetYaxis()->SetLabelFont(42);
@@ -22361,7 +22361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_745__748->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_745__748->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_745__748->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_745__748->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_745__748->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_745__748->GetYaxis()->CenterTitle(true);
    h_ratio_trial_745__748->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_745__748->GetYaxis()->SetLabelFont(42);
@@ -22391,7 +22391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_746__749->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_746__749->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_746__749->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_746__749->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_746__749->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_746__749->GetYaxis()->CenterTitle(true);
    h_ratio_trial_746__749->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_746__749->GetYaxis()->SetLabelFont(42);
@@ -22421,7 +22421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_747__750->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_747__750->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_747__750->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_747__750->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_747__750->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_747__750->GetYaxis()->CenterTitle(true);
    h_ratio_trial_747__750->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_747__750->GetYaxis()->SetLabelFont(42);
@@ -22451,7 +22451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_748__751->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_748__751->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_748__751->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_748__751->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_748__751->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_748__751->GetYaxis()->CenterTitle(true);
    h_ratio_trial_748__751->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_748__751->GetYaxis()->SetLabelFont(42);
@@ -22481,7 +22481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_749__752->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_749__752->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_749__752->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_749__752->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_749__752->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_749__752->GetYaxis()->CenterTitle(true);
    h_ratio_trial_749__752->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_749__752->GetYaxis()->SetLabelFont(42);
@@ -22511,7 +22511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_750__753->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_750__753->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_750__753->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_750__753->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_750__753->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_750__753->GetYaxis()->CenterTitle(true);
    h_ratio_trial_750__753->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_750__753->GetYaxis()->SetLabelFont(42);
@@ -22541,7 +22541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_751__754->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_751__754->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_751__754->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_751__754->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_751__754->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_751__754->GetYaxis()->CenterTitle(true);
    h_ratio_trial_751__754->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_751__754->GetYaxis()->SetLabelFont(42);
@@ -22571,7 +22571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_752__755->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_752__755->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_752__755->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_752__755->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_752__755->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_752__755->GetYaxis()->CenterTitle(true);
    h_ratio_trial_752__755->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_752__755->GetYaxis()->SetLabelFont(42);
@@ -22601,7 +22601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_753__756->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_753__756->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_753__756->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_753__756->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_753__756->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_753__756->GetYaxis()->CenterTitle(true);
    h_ratio_trial_753__756->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_753__756->GetYaxis()->SetLabelFont(42);
@@ -22631,7 +22631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_754__757->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_754__757->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_754__757->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_754__757->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_754__757->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_754__757->GetYaxis()->CenterTitle(true);
    h_ratio_trial_754__757->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_754__757->GetYaxis()->SetLabelFont(42);
@@ -22661,7 +22661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_755__758->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_755__758->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_755__758->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_755__758->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_755__758->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_755__758->GetYaxis()->CenterTitle(true);
    h_ratio_trial_755__758->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_755__758->GetYaxis()->SetLabelFont(42);
@@ -22691,7 +22691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_756__759->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_756__759->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_756__759->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_756__759->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_756__759->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_756__759->GetYaxis()->CenterTitle(true);
    h_ratio_trial_756__759->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_756__759->GetYaxis()->SetLabelFont(42);
@@ -22721,7 +22721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_757__760->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_757__760->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_757__760->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_757__760->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_757__760->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_757__760->GetYaxis()->CenterTitle(true);
    h_ratio_trial_757__760->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_757__760->GetYaxis()->SetLabelFont(42);
@@ -22751,7 +22751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_758__761->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_758__761->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_758__761->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_758__761->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_758__761->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_758__761->GetYaxis()->CenterTitle(true);
    h_ratio_trial_758__761->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_758__761->GetYaxis()->SetLabelFont(42);
@@ -22781,7 +22781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_759__762->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_759__762->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_759__762->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_759__762->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_759__762->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_759__762->GetYaxis()->CenterTitle(true);
    h_ratio_trial_759__762->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_759__762->GetYaxis()->SetLabelFont(42);
@@ -22811,7 +22811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_760__763->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_760__763->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_760__763->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_760__763->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_760__763->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_760__763->GetYaxis()->CenterTitle(true);
    h_ratio_trial_760__763->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_760__763->GetYaxis()->SetLabelFont(42);
@@ -22841,7 +22841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_761__764->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_761__764->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_761__764->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_761__764->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_761__764->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_761__764->GetYaxis()->CenterTitle(true);
    h_ratio_trial_761__764->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_761__764->GetYaxis()->SetLabelFont(42);
@@ -22871,7 +22871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_762__765->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_762__765->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_762__765->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_762__765->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_762__765->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_762__765->GetYaxis()->CenterTitle(true);
    h_ratio_trial_762__765->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_762__765->GetYaxis()->SetLabelFont(42);
@@ -22901,7 +22901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_763__766->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_763__766->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_763__766->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_763__766->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_763__766->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_763__766->GetYaxis()->CenterTitle(true);
    h_ratio_trial_763__766->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_763__766->GetYaxis()->SetLabelFont(42);
@@ -22931,7 +22931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_764__767->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_764__767->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_764__767->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_764__767->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_764__767->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_764__767->GetYaxis()->CenterTitle(true);
    h_ratio_trial_764__767->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_764__767->GetYaxis()->SetLabelFont(42);
@@ -22961,7 +22961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_765__768->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_765__768->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_765__768->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_765__768->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_765__768->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_765__768->GetYaxis()->CenterTitle(true);
    h_ratio_trial_765__768->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_765__768->GetYaxis()->SetLabelFont(42);
@@ -22991,7 +22991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_766__769->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_766__769->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_766__769->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_766__769->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_766__769->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_766__769->GetYaxis()->CenterTitle(true);
    h_ratio_trial_766__769->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_766__769->GetYaxis()->SetLabelFont(42);
@@ -23021,7 +23021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_767__770->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_767__770->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_767__770->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_767__770->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_767__770->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_767__770->GetYaxis()->CenterTitle(true);
    h_ratio_trial_767__770->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_767__770->GetYaxis()->SetLabelFont(42);
@@ -23051,7 +23051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_768__771->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_768__771->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_768__771->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_768__771->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_768__771->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_768__771->GetYaxis()->CenterTitle(true);
    h_ratio_trial_768__771->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_768__771->GetYaxis()->SetLabelFont(42);
@@ -23081,7 +23081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_769__772->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_769__772->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_769__772->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_769__772->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_769__772->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_769__772->GetYaxis()->CenterTitle(true);
    h_ratio_trial_769__772->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_769__772->GetYaxis()->SetLabelFont(42);
@@ -23111,7 +23111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_770__773->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_770__773->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_770__773->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_770__773->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_770__773->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_770__773->GetYaxis()->CenterTitle(true);
    h_ratio_trial_770__773->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_770__773->GetYaxis()->SetLabelFont(42);
@@ -23141,7 +23141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_771__774->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_771__774->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_771__774->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_771__774->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_771__774->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_771__774->GetYaxis()->CenterTitle(true);
    h_ratio_trial_771__774->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_771__774->GetYaxis()->SetLabelFont(42);
@@ -23171,7 +23171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_772__775->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_772__775->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_772__775->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_772__775->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_772__775->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_772__775->GetYaxis()->CenterTitle(true);
    h_ratio_trial_772__775->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_772__775->GetYaxis()->SetLabelFont(42);
@@ -23201,7 +23201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_773__776->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_773__776->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_773__776->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_773__776->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_773__776->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_773__776->GetYaxis()->CenterTitle(true);
    h_ratio_trial_773__776->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_773__776->GetYaxis()->SetLabelFont(42);
@@ -23231,7 +23231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_774__777->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_774__777->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_774__777->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_774__777->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_774__777->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_774__777->GetYaxis()->CenterTitle(true);
    h_ratio_trial_774__777->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_774__777->GetYaxis()->SetLabelFont(42);
@@ -23261,7 +23261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_775__778->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_775__778->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_775__778->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_775__778->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_775__778->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_775__778->GetYaxis()->CenterTitle(true);
    h_ratio_trial_775__778->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_775__778->GetYaxis()->SetLabelFont(42);
@@ -23291,7 +23291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_776__779->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_776__779->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_776__779->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_776__779->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_776__779->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_776__779->GetYaxis()->CenterTitle(true);
    h_ratio_trial_776__779->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_776__779->GetYaxis()->SetLabelFont(42);
@@ -23321,7 +23321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_777__780->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_777__780->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_777__780->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_777__780->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_777__780->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_777__780->GetYaxis()->CenterTitle(true);
    h_ratio_trial_777__780->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_777__780->GetYaxis()->SetLabelFont(42);
@@ -23351,7 +23351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_778__781->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_778__781->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_778__781->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_778__781->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_778__781->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_778__781->GetYaxis()->CenterTitle(true);
    h_ratio_trial_778__781->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_778__781->GetYaxis()->SetLabelFont(42);
@@ -23381,7 +23381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_779__782->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_779__782->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_779__782->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_779__782->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_779__782->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_779__782->GetYaxis()->CenterTitle(true);
    h_ratio_trial_779__782->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_779__782->GetYaxis()->SetLabelFont(42);
@@ -23411,7 +23411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_780__783->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_780__783->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_780__783->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_780__783->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_780__783->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_780__783->GetYaxis()->CenterTitle(true);
    h_ratio_trial_780__783->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_780__783->GetYaxis()->SetLabelFont(42);
@@ -23441,7 +23441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_781__784->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_781__784->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_781__784->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_781__784->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_781__784->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_781__784->GetYaxis()->CenterTitle(true);
    h_ratio_trial_781__784->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_781__784->GetYaxis()->SetLabelFont(42);
@@ -23471,7 +23471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_782__785->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_782__785->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_782__785->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_782__785->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_782__785->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_782__785->GetYaxis()->CenterTitle(true);
    h_ratio_trial_782__785->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_782__785->GetYaxis()->SetLabelFont(42);
@@ -23501,7 +23501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_783__786->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_783__786->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_783__786->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_783__786->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_783__786->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_783__786->GetYaxis()->CenterTitle(true);
    h_ratio_trial_783__786->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_783__786->GetYaxis()->SetLabelFont(42);
@@ -23531,7 +23531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_784__787->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_784__787->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_784__787->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_784__787->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_784__787->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_784__787->GetYaxis()->CenterTitle(true);
    h_ratio_trial_784__787->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_784__787->GetYaxis()->SetLabelFont(42);
@@ -23561,7 +23561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_785__788->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_785__788->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_785__788->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_785__788->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_785__788->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_785__788->GetYaxis()->CenterTitle(true);
    h_ratio_trial_785__788->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_785__788->GetYaxis()->SetLabelFont(42);
@@ -23591,7 +23591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_786__789->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_786__789->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_786__789->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_786__789->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_786__789->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_786__789->GetYaxis()->CenterTitle(true);
    h_ratio_trial_786__789->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_786__789->GetYaxis()->SetLabelFont(42);
@@ -23621,7 +23621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_787__790->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_787__790->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_787__790->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_787__790->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_787__790->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_787__790->GetYaxis()->CenterTitle(true);
    h_ratio_trial_787__790->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_787__790->GetYaxis()->SetLabelFont(42);
@@ -23651,7 +23651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_788__791->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_788__791->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_788__791->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_788__791->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_788__791->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_788__791->GetYaxis()->CenterTitle(true);
    h_ratio_trial_788__791->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_788__791->GetYaxis()->SetLabelFont(42);
@@ -23681,7 +23681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_789__792->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_789__792->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_789__792->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_789__792->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_789__792->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_789__792->GetYaxis()->CenterTitle(true);
    h_ratio_trial_789__792->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_789__792->GetYaxis()->SetLabelFont(42);
@@ -23711,7 +23711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_790__793->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_790__793->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_790__793->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_790__793->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_790__793->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_790__793->GetYaxis()->CenterTitle(true);
    h_ratio_trial_790__793->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_790__793->GetYaxis()->SetLabelFont(42);
@@ -23741,7 +23741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_791__794->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_791__794->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_791__794->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_791__794->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_791__794->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_791__794->GetYaxis()->CenterTitle(true);
    h_ratio_trial_791__794->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_791__794->GetYaxis()->SetLabelFont(42);
@@ -23771,7 +23771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_792__795->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_792__795->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_792__795->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_792__795->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_792__795->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_792__795->GetYaxis()->CenterTitle(true);
    h_ratio_trial_792__795->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_792__795->GetYaxis()->SetLabelFont(42);
@@ -23801,7 +23801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_793__796->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_793__796->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_793__796->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_793__796->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_793__796->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_793__796->GetYaxis()->CenterTitle(true);
    h_ratio_trial_793__796->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_793__796->GetYaxis()->SetLabelFont(42);
@@ -23831,7 +23831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_794__797->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_794__797->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_794__797->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_794__797->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_794__797->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_794__797->GetYaxis()->CenterTitle(true);
    h_ratio_trial_794__797->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_794__797->GetYaxis()->SetLabelFont(42);
@@ -23861,7 +23861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_795__798->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_795__798->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_795__798->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_795__798->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_795__798->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_795__798->GetYaxis()->CenterTitle(true);
    h_ratio_trial_795__798->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_795__798->GetYaxis()->SetLabelFont(42);
@@ -23891,7 +23891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_796__799->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_796__799->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_796__799->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_796__799->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_796__799->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_796__799->GetYaxis()->CenterTitle(true);
    h_ratio_trial_796__799->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_796__799->GetYaxis()->SetLabelFont(42);
@@ -23921,7 +23921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_797__800->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_797__800->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_797__800->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_797__800->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_797__800->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_797__800->GetYaxis()->CenterTitle(true);
    h_ratio_trial_797__800->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_797__800->GetYaxis()->SetLabelFont(42);
@@ -23951,7 +23951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_798__801->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_798__801->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_798__801->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_798__801->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_798__801->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_798__801->GetYaxis()->CenterTitle(true);
    h_ratio_trial_798__801->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_798__801->GetYaxis()->SetLabelFont(42);
@@ -23981,7 +23981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_799__802->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_799__802->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_799__802->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_799__802->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_799__802->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_799__802->GetYaxis()->CenterTitle(true);
    h_ratio_trial_799__802->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_799__802->GetYaxis()->SetLabelFont(42);
@@ -24011,7 +24011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_800__803->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_800__803->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_800__803->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_800__803->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_800__803->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_800__803->GetYaxis()->CenterTitle(true);
    h_ratio_trial_800__803->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_800__803->GetYaxis()->SetLabelFont(42);
@@ -24041,7 +24041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_801__804->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_801__804->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_801__804->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_801__804->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_801__804->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_801__804->GetYaxis()->CenterTitle(true);
    h_ratio_trial_801__804->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_801__804->GetYaxis()->SetLabelFont(42);
@@ -24071,7 +24071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_802__805->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_802__805->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_802__805->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_802__805->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_802__805->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_802__805->GetYaxis()->CenterTitle(true);
    h_ratio_trial_802__805->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_802__805->GetYaxis()->SetLabelFont(42);
@@ -24101,7 +24101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_803__806->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_803__806->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_803__806->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_803__806->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_803__806->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_803__806->GetYaxis()->CenterTitle(true);
    h_ratio_trial_803__806->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_803__806->GetYaxis()->SetLabelFont(42);
@@ -24131,7 +24131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_804__807->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_804__807->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_804__807->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_804__807->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_804__807->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_804__807->GetYaxis()->CenterTitle(true);
    h_ratio_trial_804__807->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_804__807->GetYaxis()->SetLabelFont(42);
@@ -24161,7 +24161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_805__808->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_805__808->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_805__808->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_805__808->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_805__808->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_805__808->GetYaxis()->CenterTitle(true);
    h_ratio_trial_805__808->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_805__808->GetYaxis()->SetLabelFont(42);
@@ -24191,7 +24191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_806__809->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_806__809->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_806__809->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_806__809->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_806__809->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_806__809->GetYaxis()->CenterTitle(true);
    h_ratio_trial_806__809->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_806__809->GetYaxis()->SetLabelFont(42);
@@ -24221,7 +24221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_807__810->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_807__810->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_807__810->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_807__810->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_807__810->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_807__810->GetYaxis()->CenterTitle(true);
    h_ratio_trial_807__810->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_807__810->GetYaxis()->SetLabelFont(42);
@@ -24251,7 +24251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_808__811->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_808__811->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_808__811->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_808__811->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_808__811->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_808__811->GetYaxis()->CenterTitle(true);
    h_ratio_trial_808__811->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_808__811->GetYaxis()->SetLabelFont(42);
@@ -24281,7 +24281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_809__812->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_809__812->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_809__812->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_809__812->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_809__812->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_809__812->GetYaxis()->CenterTitle(true);
    h_ratio_trial_809__812->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_809__812->GetYaxis()->SetLabelFont(42);
@@ -24311,7 +24311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_810__813->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_810__813->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_810__813->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_810__813->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_810__813->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_810__813->GetYaxis()->CenterTitle(true);
    h_ratio_trial_810__813->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_810__813->GetYaxis()->SetLabelFont(42);
@@ -24341,7 +24341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_811__814->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_811__814->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_811__814->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_811__814->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_811__814->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_811__814->GetYaxis()->CenterTitle(true);
    h_ratio_trial_811__814->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_811__814->GetYaxis()->SetLabelFont(42);
@@ -24371,7 +24371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_812__815->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_812__815->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_812__815->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_812__815->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_812__815->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_812__815->GetYaxis()->CenterTitle(true);
    h_ratio_trial_812__815->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_812__815->GetYaxis()->SetLabelFont(42);
@@ -24401,7 +24401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_813__816->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_813__816->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_813__816->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_813__816->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_813__816->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_813__816->GetYaxis()->CenterTitle(true);
    h_ratio_trial_813__816->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_813__816->GetYaxis()->SetLabelFont(42);
@@ -24431,7 +24431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_814__817->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_814__817->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_814__817->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_814__817->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_814__817->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_814__817->GetYaxis()->CenterTitle(true);
    h_ratio_trial_814__817->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_814__817->GetYaxis()->SetLabelFont(42);
@@ -24461,7 +24461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_815__818->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_815__818->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_815__818->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_815__818->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_815__818->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_815__818->GetYaxis()->CenterTitle(true);
    h_ratio_trial_815__818->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_815__818->GetYaxis()->SetLabelFont(42);
@@ -24491,7 +24491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_816__819->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_816__819->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_816__819->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_816__819->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_816__819->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_816__819->GetYaxis()->CenterTitle(true);
    h_ratio_trial_816__819->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_816__819->GetYaxis()->SetLabelFont(42);
@@ -24521,7 +24521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_817__820->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_817__820->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_817__820->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_817__820->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_817__820->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_817__820->GetYaxis()->CenterTitle(true);
    h_ratio_trial_817__820->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_817__820->GetYaxis()->SetLabelFont(42);
@@ -24551,7 +24551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_818__821->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_818__821->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_818__821->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_818__821->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_818__821->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_818__821->GetYaxis()->CenterTitle(true);
    h_ratio_trial_818__821->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_818__821->GetYaxis()->SetLabelFont(42);
@@ -24581,7 +24581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_819__822->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_819__822->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_819__822->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_819__822->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_819__822->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_819__822->GetYaxis()->CenterTitle(true);
    h_ratio_trial_819__822->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_819__822->GetYaxis()->SetLabelFont(42);
@@ -24611,7 +24611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_820__823->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_820__823->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_820__823->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_820__823->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_820__823->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_820__823->GetYaxis()->CenterTitle(true);
    h_ratio_trial_820__823->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_820__823->GetYaxis()->SetLabelFont(42);
@@ -24641,7 +24641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_821__824->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_821__824->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_821__824->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_821__824->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_821__824->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_821__824->GetYaxis()->CenterTitle(true);
    h_ratio_trial_821__824->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_821__824->GetYaxis()->SetLabelFont(42);
@@ -24671,7 +24671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_822__825->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_822__825->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_822__825->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_822__825->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_822__825->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_822__825->GetYaxis()->CenterTitle(true);
    h_ratio_trial_822__825->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_822__825->GetYaxis()->SetLabelFont(42);
@@ -24701,7 +24701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_823__826->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_823__826->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_823__826->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_823__826->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_823__826->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_823__826->GetYaxis()->CenterTitle(true);
    h_ratio_trial_823__826->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_823__826->GetYaxis()->SetLabelFont(42);
@@ -24731,7 +24731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_824__827->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_824__827->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_824__827->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_824__827->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_824__827->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_824__827->GetYaxis()->CenterTitle(true);
    h_ratio_trial_824__827->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_824__827->GetYaxis()->SetLabelFont(42);
@@ -24761,7 +24761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_825__828->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_825__828->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_825__828->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_825__828->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_825__828->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_825__828->GetYaxis()->CenterTitle(true);
    h_ratio_trial_825__828->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_825__828->GetYaxis()->SetLabelFont(42);
@@ -24791,7 +24791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_826__829->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_826__829->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_826__829->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_826__829->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_826__829->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_826__829->GetYaxis()->CenterTitle(true);
    h_ratio_trial_826__829->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_826__829->GetYaxis()->SetLabelFont(42);
@@ -24821,7 +24821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_827__830->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_827__830->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_827__830->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_827__830->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_827__830->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_827__830->GetYaxis()->CenterTitle(true);
    h_ratio_trial_827__830->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_827__830->GetYaxis()->SetLabelFont(42);
@@ -24851,7 +24851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_828__831->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_828__831->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_828__831->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_828__831->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_828__831->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_828__831->GetYaxis()->CenterTitle(true);
    h_ratio_trial_828__831->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_828__831->GetYaxis()->SetLabelFont(42);
@@ -24881,7 +24881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_829__832->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_829__832->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_829__832->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_829__832->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_829__832->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_829__832->GetYaxis()->CenterTitle(true);
    h_ratio_trial_829__832->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_829__832->GetYaxis()->SetLabelFont(42);
@@ -24911,7 +24911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_830__833->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_830__833->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_830__833->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_830__833->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_830__833->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_830__833->GetYaxis()->CenterTitle(true);
    h_ratio_trial_830__833->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_830__833->GetYaxis()->SetLabelFont(42);
@@ -24941,7 +24941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_831__834->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_831__834->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_831__834->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_831__834->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_831__834->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_831__834->GetYaxis()->CenterTitle(true);
    h_ratio_trial_831__834->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_831__834->GetYaxis()->SetLabelFont(42);
@@ -24971,7 +24971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_832__835->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_832__835->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_832__835->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_832__835->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_832__835->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_832__835->GetYaxis()->CenterTitle(true);
    h_ratio_trial_832__835->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_832__835->GetYaxis()->SetLabelFont(42);
@@ -25001,7 +25001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_833__836->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_833__836->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_833__836->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_833__836->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_833__836->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_833__836->GetYaxis()->CenterTitle(true);
    h_ratio_trial_833__836->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_833__836->GetYaxis()->SetLabelFont(42);
@@ -25031,7 +25031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_834__837->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_834__837->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_834__837->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_834__837->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_834__837->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_834__837->GetYaxis()->CenterTitle(true);
    h_ratio_trial_834__837->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_834__837->GetYaxis()->SetLabelFont(42);
@@ -25061,7 +25061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_835__838->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_835__838->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_835__838->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_835__838->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_835__838->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_835__838->GetYaxis()->CenterTitle(true);
    h_ratio_trial_835__838->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_835__838->GetYaxis()->SetLabelFont(42);
@@ -25091,7 +25091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_836__839->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_836__839->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_836__839->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_836__839->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_836__839->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_836__839->GetYaxis()->CenterTitle(true);
    h_ratio_trial_836__839->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_836__839->GetYaxis()->SetLabelFont(42);
@@ -25121,7 +25121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_837__840->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_837__840->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_837__840->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_837__840->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_837__840->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_837__840->GetYaxis()->CenterTitle(true);
    h_ratio_trial_837__840->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_837__840->GetYaxis()->SetLabelFont(42);
@@ -25151,7 +25151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_838__841->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_838__841->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_838__841->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_838__841->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_838__841->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_838__841->GetYaxis()->CenterTitle(true);
    h_ratio_trial_838__841->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_838__841->GetYaxis()->SetLabelFont(42);
@@ -25181,7 +25181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_839__842->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_839__842->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_839__842->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_839__842->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_839__842->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_839__842->GetYaxis()->CenterTitle(true);
    h_ratio_trial_839__842->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_839__842->GetYaxis()->SetLabelFont(42);
@@ -25211,7 +25211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_840__843->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_840__843->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_840__843->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_840__843->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_840__843->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_840__843->GetYaxis()->CenterTitle(true);
    h_ratio_trial_840__843->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_840__843->GetYaxis()->SetLabelFont(42);
@@ -25241,7 +25241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_841__844->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_841__844->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_841__844->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_841__844->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_841__844->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_841__844->GetYaxis()->CenterTitle(true);
    h_ratio_trial_841__844->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_841__844->GetYaxis()->SetLabelFont(42);
@@ -25271,7 +25271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_842__845->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_842__845->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_842__845->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_842__845->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_842__845->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_842__845->GetYaxis()->CenterTitle(true);
    h_ratio_trial_842__845->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_842__845->GetYaxis()->SetLabelFont(42);
@@ -25301,7 +25301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_843__846->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_843__846->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_843__846->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_843__846->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_843__846->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_843__846->GetYaxis()->CenterTitle(true);
    h_ratio_trial_843__846->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_843__846->GetYaxis()->SetLabelFont(42);
@@ -25331,7 +25331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_844__847->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_844__847->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_844__847->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_844__847->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_844__847->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_844__847->GetYaxis()->CenterTitle(true);
    h_ratio_trial_844__847->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_844__847->GetYaxis()->SetLabelFont(42);
@@ -25361,7 +25361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_845__848->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_845__848->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_845__848->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_845__848->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_845__848->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_845__848->GetYaxis()->CenterTitle(true);
    h_ratio_trial_845__848->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_845__848->GetYaxis()->SetLabelFont(42);
@@ -25391,7 +25391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_846__849->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_846__849->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_846__849->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_846__849->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_846__849->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_846__849->GetYaxis()->CenterTitle(true);
    h_ratio_trial_846__849->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_846__849->GetYaxis()->SetLabelFont(42);
@@ -25421,7 +25421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_847__850->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_847__850->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_847__850->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_847__850->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_847__850->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_847__850->GetYaxis()->CenterTitle(true);
    h_ratio_trial_847__850->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_847__850->GetYaxis()->SetLabelFont(42);
@@ -25451,7 +25451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_848__851->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_848__851->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_848__851->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_848__851->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_848__851->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_848__851->GetYaxis()->CenterTitle(true);
    h_ratio_trial_848__851->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_848__851->GetYaxis()->SetLabelFont(42);
@@ -25481,7 +25481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_849__852->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_849__852->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_849__852->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_849__852->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_849__852->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_849__852->GetYaxis()->CenterTitle(true);
    h_ratio_trial_849__852->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_849__852->GetYaxis()->SetLabelFont(42);
@@ -25511,7 +25511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_850__853->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_850__853->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_850__853->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_850__853->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_850__853->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_850__853->GetYaxis()->CenterTitle(true);
    h_ratio_trial_850__853->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_850__853->GetYaxis()->SetLabelFont(42);
@@ -25541,7 +25541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_851__854->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_851__854->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_851__854->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_851__854->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_851__854->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_851__854->GetYaxis()->CenterTitle(true);
    h_ratio_trial_851__854->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_851__854->GetYaxis()->SetLabelFont(42);
@@ -25571,7 +25571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_852__855->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_852__855->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_852__855->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_852__855->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_852__855->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_852__855->GetYaxis()->CenterTitle(true);
    h_ratio_trial_852__855->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_852__855->GetYaxis()->SetLabelFont(42);
@@ -25601,7 +25601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_853__856->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_853__856->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_853__856->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_853__856->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_853__856->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_853__856->GetYaxis()->CenterTitle(true);
    h_ratio_trial_853__856->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_853__856->GetYaxis()->SetLabelFont(42);
@@ -25631,7 +25631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_854__857->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_854__857->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_854__857->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_854__857->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_854__857->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_854__857->GetYaxis()->CenterTitle(true);
    h_ratio_trial_854__857->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_854__857->GetYaxis()->SetLabelFont(42);
@@ -25661,7 +25661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_855__858->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_855__858->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_855__858->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_855__858->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_855__858->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_855__858->GetYaxis()->CenterTitle(true);
    h_ratio_trial_855__858->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_855__858->GetYaxis()->SetLabelFont(42);
@@ -25691,7 +25691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_856__859->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_856__859->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_856__859->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_856__859->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_856__859->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_856__859->GetYaxis()->CenterTitle(true);
    h_ratio_trial_856__859->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_856__859->GetYaxis()->SetLabelFont(42);
@@ -25721,7 +25721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_857__860->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_857__860->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_857__860->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_857__860->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_857__860->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_857__860->GetYaxis()->CenterTitle(true);
    h_ratio_trial_857__860->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_857__860->GetYaxis()->SetLabelFont(42);
@@ -25751,7 +25751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_858__861->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_858__861->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_858__861->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_858__861->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_858__861->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_858__861->GetYaxis()->CenterTitle(true);
    h_ratio_trial_858__861->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_858__861->GetYaxis()->SetLabelFont(42);
@@ -25781,7 +25781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_859__862->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_859__862->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_859__862->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_859__862->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_859__862->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_859__862->GetYaxis()->CenterTitle(true);
    h_ratio_trial_859__862->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_859__862->GetYaxis()->SetLabelFont(42);
@@ -25811,7 +25811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_860__863->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_860__863->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_860__863->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_860__863->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_860__863->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_860__863->GetYaxis()->CenterTitle(true);
    h_ratio_trial_860__863->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_860__863->GetYaxis()->SetLabelFont(42);
@@ -25841,7 +25841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_861__864->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_861__864->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_861__864->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_861__864->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_861__864->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_861__864->GetYaxis()->CenterTitle(true);
    h_ratio_trial_861__864->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_861__864->GetYaxis()->SetLabelFont(42);
@@ -25871,7 +25871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_862__865->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_862__865->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_862__865->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_862__865->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_862__865->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_862__865->GetYaxis()->CenterTitle(true);
    h_ratio_trial_862__865->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_862__865->GetYaxis()->SetLabelFont(42);
@@ -25901,7 +25901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_863__866->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_863__866->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_863__866->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_863__866->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_863__866->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_863__866->GetYaxis()->CenterTitle(true);
    h_ratio_trial_863__866->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_863__866->GetYaxis()->SetLabelFont(42);
@@ -25931,7 +25931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_864__867->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_864__867->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_864__867->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_864__867->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_864__867->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_864__867->GetYaxis()->CenterTitle(true);
    h_ratio_trial_864__867->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_864__867->GetYaxis()->SetLabelFont(42);
@@ -25961,7 +25961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_865__868->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_865__868->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_865__868->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_865__868->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_865__868->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_865__868->GetYaxis()->CenterTitle(true);
    h_ratio_trial_865__868->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_865__868->GetYaxis()->SetLabelFont(42);
@@ -25991,7 +25991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_866__869->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_866__869->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_866__869->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_866__869->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_866__869->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_866__869->GetYaxis()->CenterTitle(true);
    h_ratio_trial_866__869->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_866__869->GetYaxis()->SetLabelFont(42);
@@ -26021,7 +26021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_867__870->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_867__870->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_867__870->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_867__870->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_867__870->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_867__870->GetYaxis()->CenterTitle(true);
    h_ratio_trial_867__870->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_867__870->GetYaxis()->SetLabelFont(42);
@@ -26051,7 +26051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_868__871->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_868__871->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_868__871->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_868__871->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_868__871->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_868__871->GetYaxis()->CenterTitle(true);
    h_ratio_trial_868__871->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_868__871->GetYaxis()->SetLabelFont(42);
@@ -26081,7 +26081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_869__872->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_869__872->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_869__872->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_869__872->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_869__872->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_869__872->GetYaxis()->CenterTitle(true);
    h_ratio_trial_869__872->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_869__872->GetYaxis()->SetLabelFont(42);
@@ -26111,7 +26111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_870__873->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_870__873->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_870__873->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_870__873->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_870__873->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_870__873->GetYaxis()->CenterTitle(true);
    h_ratio_trial_870__873->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_870__873->GetYaxis()->SetLabelFont(42);
@@ -26141,7 +26141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_871__874->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_871__874->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_871__874->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_871__874->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_871__874->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_871__874->GetYaxis()->CenterTitle(true);
    h_ratio_trial_871__874->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_871__874->GetYaxis()->SetLabelFont(42);
@@ -26171,7 +26171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_872__875->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_872__875->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_872__875->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_872__875->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_872__875->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_872__875->GetYaxis()->CenterTitle(true);
    h_ratio_trial_872__875->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_872__875->GetYaxis()->SetLabelFont(42);
@@ -26201,7 +26201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_873__876->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_873__876->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_873__876->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_873__876->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_873__876->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_873__876->GetYaxis()->CenterTitle(true);
    h_ratio_trial_873__876->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_873__876->GetYaxis()->SetLabelFont(42);
@@ -26231,7 +26231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_874__877->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_874__877->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_874__877->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_874__877->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_874__877->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_874__877->GetYaxis()->CenterTitle(true);
    h_ratio_trial_874__877->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_874__877->GetYaxis()->SetLabelFont(42);
@@ -26261,7 +26261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_875__878->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_875__878->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_875__878->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_875__878->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_875__878->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_875__878->GetYaxis()->CenterTitle(true);
    h_ratio_trial_875__878->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_875__878->GetYaxis()->SetLabelFont(42);
@@ -26291,7 +26291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_876__879->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_876__879->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_876__879->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_876__879->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_876__879->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_876__879->GetYaxis()->CenterTitle(true);
    h_ratio_trial_876__879->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_876__879->GetYaxis()->SetLabelFont(42);
@@ -26321,7 +26321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_877__880->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_877__880->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_877__880->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_877__880->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_877__880->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_877__880->GetYaxis()->CenterTitle(true);
    h_ratio_trial_877__880->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_877__880->GetYaxis()->SetLabelFont(42);
@@ -26351,7 +26351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_878__881->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_878__881->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_878__881->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_878__881->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_878__881->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_878__881->GetYaxis()->CenterTitle(true);
    h_ratio_trial_878__881->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_878__881->GetYaxis()->SetLabelFont(42);
@@ -26381,7 +26381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_879__882->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_879__882->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_879__882->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_879__882->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_879__882->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_879__882->GetYaxis()->CenterTitle(true);
    h_ratio_trial_879__882->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_879__882->GetYaxis()->SetLabelFont(42);
@@ -26411,7 +26411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_880__883->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_880__883->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_880__883->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_880__883->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_880__883->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_880__883->GetYaxis()->CenterTitle(true);
    h_ratio_trial_880__883->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_880__883->GetYaxis()->SetLabelFont(42);
@@ -26441,7 +26441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_881__884->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_881__884->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_881__884->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_881__884->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_881__884->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_881__884->GetYaxis()->CenterTitle(true);
    h_ratio_trial_881__884->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_881__884->GetYaxis()->SetLabelFont(42);
@@ -26471,7 +26471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_882__885->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_882__885->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_882__885->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_882__885->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_882__885->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_882__885->GetYaxis()->CenterTitle(true);
    h_ratio_trial_882__885->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_882__885->GetYaxis()->SetLabelFont(42);
@@ -26501,7 +26501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_883__886->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_883__886->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_883__886->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_883__886->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_883__886->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_883__886->GetYaxis()->CenterTitle(true);
    h_ratio_trial_883__886->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_883__886->GetYaxis()->SetLabelFont(42);
@@ -26531,7 +26531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_884__887->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_884__887->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_884__887->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_884__887->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_884__887->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_884__887->GetYaxis()->CenterTitle(true);
    h_ratio_trial_884__887->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_884__887->GetYaxis()->SetLabelFont(42);
@@ -26561,7 +26561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_885__888->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_885__888->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_885__888->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_885__888->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_885__888->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_885__888->GetYaxis()->CenterTitle(true);
    h_ratio_trial_885__888->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_885__888->GetYaxis()->SetLabelFont(42);
@@ -26591,7 +26591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_886__889->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_886__889->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_886__889->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_886__889->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_886__889->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_886__889->GetYaxis()->CenterTitle(true);
    h_ratio_trial_886__889->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_886__889->GetYaxis()->SetLabelFont(42);
@@ -26621,7 +26621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_887__890->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_887__890->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_887__890->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_887__890->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_887__890->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_887__890->GetYaxis()->CenterTitle(true);
    h_ratio_trial_887__890->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_887__890->GetYaxis()->SetLabelFont(42);
@@ -26651,7 +26651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_888__891->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_888__891->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_888__891->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_888__891->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_888__891->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_888__891->GetYaxis()->CenterTitle(true);
    h_ratio_trial_888__891->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_888__891->GetYaxis()->SetLabelFont(42);
@@ -26681,7 +26681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_889__892->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_889__892->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_889__892->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_889__892->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_889__892->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_889__892->GetYaxis()->CenterTitle(true);
    h_ratio_trial_889__892->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_889__892->GetYaxis()->SetLabelFont(42);
@@ -26711,7 +26711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_890__893->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_890__893->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_890__893->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_890__893->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_890__893->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_890__893->GetYaxis()->CenterTitle(true);
    h_ratio_trial_890__893->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_890__893->GetYaxis()->SetLabelFont(42);
@@ -26741,7 +26741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_891__894->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_891__894->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_891__894->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_891__894->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_891__894->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_891__894->GetYaxis()->CenterTitle(true);
    h_ratio_trial_891__894->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_891__894->GetYaxis()->SetLabelFont(42);
@@ -26771,7 +26771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_892__895->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_892__895->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_892__895->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_892__895->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_892__895->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_892__895->GetYaxis()->CenterTitle(true);
    h_ratio_trial_892__895->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_892__895->GetYaxis()->SetLabelFont(42);
@@ -26801,7 +26801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_893__896->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_893__896->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_893__896->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_893__896->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_893__896->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_893__896->GetYaxis()->CenterTitle(true);
    h_ratio_trial_893__896->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_893__896->GetYaxis()->SetLabelFont(42);
@@ -26831,7 +26831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_894__897->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_894__897->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_894__897->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_894__897->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_894__897->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_894__897->GetYaxis()->CenterTitle(true);
    h_ratio_trial_894__897->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_894__897->GetYaxis()->SetLabelFont(42);
@@ -26861,7 +26861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_895__898->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_895__898->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_895__898->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_895__898->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_895__898->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_895__898->GetYaxis()->CenterTitle(true);
    h_ratio_trial_895__898->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_895__898->GetYaxis()->SetLabelFont(42);
@@ -26891,7 +26891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_896__899->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_896__899->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_896__899->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_896__899->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_896__899->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_896__899->GetYaxis()->CenterTitle(true);
    h_ratio_trial_896__899->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_896__899->GetYaxis()->SetLabelFont(42);
@@ -26921,7 +26921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_897__900->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_897__900->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_897__900->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_897__900->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_897__900->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_897__900->GetYaxis()->CenterTitle(true);
    h_ratio_trial_897__900->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_897__900->GetYaxis()->SetLabelFont(42);
@@ -26951,7 +26951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_898__901->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_898__901->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_898__901->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_898__901->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_898__901->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_898__901->GetYaxis()->CenterTitle(true);
    h_ratio_trial_898__901->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_898__901->GetYaxis()->SetLabelFont(42);
@@ -26981,7 +26981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_899__902->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_899__902->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_899__902->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_899__902->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_899__902->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_899__902->GetYaxis()->CenterTitle(true);
    h_ratio_trial_899__902->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_899__902->GetYaxis()->SetLabelFont(42);
@@ -27011,7 +27011,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_900__903->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_900__903->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_900__903->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_900__903->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_900__903->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_900__903->GetYaxis()->CenterTitle(true);
    h_ratio_trial_900__903->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_900__903->GetYaxis()->SetLabelFont(42);
@@ -27041,7 +27041,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_901__904->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_901__904->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_901__904->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_901__904->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_901__904->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_901__904->GetYaxis()->CenterTitle(true);
    h_ratio_trial_901__904->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_901__904->GetYaxis()->SetLabelFont(42);
@@ -27071,7 +27071,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_902__905->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_902__905->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_902__905->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_902__905->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_902__905->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_902__905->GetYaxis()->CenterTitle(true);
    h_ratio_trial_902__905->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_902__905->GetYaxis()->SetLabelFont(42);
@@ -27101,7 +27101,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_903__906->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_903__906->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_903__906->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_903__906->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_903__906->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_903__906->GetYaxis()->CenterTitle(true);
    h_ratio_trial_903__906->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_903__906->GetYaxis()->SetLabelFont(42);
@@ -27131,7 +27131,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_904__907->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_904__907->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_904__907->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_904__907->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_904__907->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_904__907->GetYaxis()->CenterTitle(true);
    h_ratio_trial_904__907->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_904__907->GetYaxis()->SetLabelFont(42);
@@ -27161,7 +27161,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_905__908->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_905__908->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_905__908->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_905__908->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_905__908->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_905__908->GetYaxis()->CenterTitle(true);
    h_ratio_trial_905__908->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_905__908->GetYaxis()->SetLabelFont(42);
@@ -27191,7 +27191,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_906__909->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_906__909->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_906__909->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_906__909->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_906__909->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_906__909->GetYaxis()->CenterTitle(true);
    h_ratio_trial_906__909->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_906__909->GetYaxis()->SetLabelFont(42);
@@ -27221,7 +27221,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_907__910->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_907__910->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_907__910->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_907__910->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_907__910->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_907__910->GetYaxis()->CenterTitle(true);
    h_ratio_trial_907__910->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_907__910->GetYaxis()->SetLabelFont(42);
@@ -27251,7 +27251,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_908__911->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_908__911->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_908__911->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_908__911->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_908__911->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_908__911->GetYaxis()->CenterTitle(true);
    h_ratio_trial_908__911->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_908__911->GetYaxis()->SetLabelFont(42);
@@ -27281,7 +27281,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_909__912->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_909__912->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_909__912->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_909__912->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_909__912->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_909__912->GetYaxis()->CenterTitle(true);
    h_ratio_trial_909__912->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_909__912->GetYaxis()->SetLabelFont(42);
@@ -27311,7 +27311,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_910__913->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_910__913->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_910__913->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_910__913->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_910__913->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_910__913->GetYaxis()->CenterTitle(true);
    h_ratio_trial_910__913->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_910__913->GetYaxis()->SetLabelFont(42);
@@ -27341,7 +27341,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_911__914->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_911__914->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_911__914->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_911__914->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_911__914->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_911__914->GetYaxis()->CenterTitle(true);
    h_ratio_trial_911__914->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_911__914->GetYaxis()->SetLabelFont(42);
@@ -27371,7 +27371,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_912__915->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_912__915->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_912__915->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_912__915->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_912__915->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_912__915->GetYaxis()->CenterTitle(true);
    h_ratio_trial_912__915->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_912__915->GetYaxis()->SetLabelFont(42);
@@ -27401,7 +27401,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_913__916->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_913__916->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_913__916->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_913__916->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_913__916->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_913__916->GetYaxis()->CenterTitle(true);
    h_ratio_trial_913__916->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_913__916->GetYaxis()->SetLabelFont(42);
@@ -27431,7 +27431,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_914__917->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_914__917->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_914__917->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_914__917->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_914__917->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_914__917->GetYaxis()->CenterTitle(true);
    h_ratio_trial_914__917->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_914__917->GetYaxis()->SetLabelFont(42);
@@ -27461,7 +27461,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_915__918->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_915__918->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_915__918->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_915__918->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_915__918->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_915__918->GetYaxis()->CenterTitle(true);
    h_ratio_trial_915__918->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_915__918->GetYaxis()->SetLabelFont(42);
@@ -27491,7 +27491,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_916__919->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_916__919->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_916__919->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_916__919->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_916__919->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_916__919->GetYaxis()->CenterTitle(true);
    h_ratio_trial_916__919->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_916__919->GetYaxis()->SetLabelFont(42);
@@ -27521,7 +27521,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_917__920->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_917__920->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_917__920->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_917__920->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_917__920->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_917__920->GetYaxis()->CenterTitle(true);
    h_ratio_trial_917__920->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_917__920->GetYaxis()->SetLabelFont(42);
@@ -27551,7 +27551,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_918__921->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_918__921->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_918__921->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_918__921->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_918__921->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_918__921->GetYaxis()->CenterTitle(true);
    h_ratio_trial_918__921->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_918__921->GetYaxis()->SetLabelFont(42);
@@ -27581,7 +27581,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_919__922->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_919__922->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_919__922->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_919__922->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_919__922->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_919__922->GetYaxis()->CenterTitle(true);
    h_ratio_trial_919__922->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_919__922->GetYaxis()->SetLabelFont(42);
@@ -27611,7 +27611,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_920__923->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_920__923->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_920__923->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_920__923->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_920__923->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_920__923->GetYaxis()->CenterTitle(true);
    h_ratio_trial_920__923->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_920__923->GetYaxis()->SetLabelFont(42);
@@ -27641,7 +27641,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_921__924->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_921__924->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_921__924->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_921__924->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_921__924->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_921__924->GetYaxis()->CenterTitle(true);
    h_ratio_trial_921__924->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_921__924->GetYaxis()->SetLabelFont(42);
@@ -27671,7 +27671,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_922__925->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_922__925->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_922__925->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_922__925->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_922__925->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_922__925->GetYaxis()->CenterTitle(true);
    h_ratio_trial_922__925->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_922__925->GetYaxis()->SetLabelFont(42);
@@ -27701,7 +27701,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_923__926->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_923__926->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_923__926->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_923__926->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_923__926->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_923__926->GetYaxis()->CenterTitle(true);
    h_ratio_trial_923__926->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_923__926->GetYaxis()->SetLabelFont(42);
@@ -27731,7 +27731,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_924__927->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_924__927->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_924__927->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_924__927->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_924__927->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_924__927->GetYaxis()->CenterTitle(true);
    h_ratio_trial_924__927->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_924__927->GetYaxis()->SetLabelFont(42);
@@ -27761,7 +27761,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_925__928->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_925__928->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_925__928->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_925__928->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_925__928->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_925__928->GetYaxis()->CenterTitle(true);
    h_ratio_trial_925__928->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_925__928->GetYaxis()->SetLabelFont(42);
@@ -27791,7 +27791,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_926__929->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_926__929->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_926__929->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_926__929->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_926__929->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_926__929->GetYaxis()->CenterTitle(true);
    h_ratio_trial_926__929->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_926__929->GetYaxis()->SetLabelFont(42);
@@ -27821,7 +27821,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_927__930->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_927__930->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_927__930->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_927__930->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_927__930->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_927__930->GetYaxis()->CenterTitle(true);
    h_ratio_trial_927__930->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_927__930->GetYaxis()->SetLabelFont(42);
@@ -27851,7 +27851,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_928__931->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_928__931->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_928__931->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_928__931->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_928__931->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_928__931->GetYaxis()->CenterTitle(true);
    h_ratio_trial_928__931->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_928__931->GetYaxis()->SetLabelFont(42);
@@ -27881,7 +27881,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_929__932->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_929__932->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_929__932->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_929__932->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_929__932->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_929__932->GetYaxis()->CenterTitle(true);
    h_ratio_trial_929__932->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_929__932->GetYaxis()->SetLabelFont(42);
@@ -27911,7 +27911,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_930__933->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_930__933->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_930__933->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_930__933->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_930__933->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_930__933->GetYaxis()->CenterTitle(true);
    h_ratio_trial_930__933->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_930__933->GetYaxis()->SetLabelFont(42);
@@ -27941,7 +27941,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_931__934->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_931__934->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_931__934->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_931__934->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_931__934->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_931__934->GetYaxis()->CenterTitle(true);
    h_ratio_trial_931__934->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_931__934->GetYaxis()->SetLabelFont(42);
@@ -27971,7 +27971,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_932__935->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_932__935->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_932__935->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_932__935->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_932__935->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_932__935->GetYaxis()->CenterTitle(true);
    h_ratio_trial_932__935->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_932__935->GetYaxis()->SetLabelFont(42);
@@ -28001,7 +28001,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_933__936->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_933__936->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_933__936->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_933__936->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_933__936->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_933__936->GetYaxis()->CenterTitle(true);
    h_ratio_trial_933__936->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_933__936->GetYaxis()->SetLabelFont(42);
@@ -28031,7 +28031,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_934__937->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_934__937->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_934__937->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_934__937->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_934__937->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_934__937->GetYaxis()->CenterTitle(true);
    h_ratio_trial_934__937->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_934__937->GetYaxis()->SetLabelFont(42);
@@ -28061,7 +28061,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_935__938->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_935__938->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_935__938->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_935__938->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_935__938->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_935__938->GetYaxis()->CenterTitle(true);
    h_ratio_trial_935__938->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_935__938->GetYaxis()->SetLabelFont(42);
@@ -28091,7 +28091,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_936__939->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_936__939->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_936__939->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_936__939->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_936__939->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_936__939->GetYaxis()->CenterTitle(true);
    h_ratio_trial_936__939->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_936__939->GetYaxis()->SetLabelFont(42);
@@ -28121,7 +28121,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_937__940->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_937__940->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_937__940->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_937__940->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_937__940->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_937__940->GetYaxis()->CenterTitle(true);
    h_ratio_trial_937__940->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_937__940->GetYaxis()->SetLabelFont(42);
@@ -28151,7 +28151,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_938__941->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_938__941->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_938__941->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_938__941->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_938__941->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_938__941->GetYaxis()->CenterTitle(true);
    h_ratio_trial_938__941->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_938__941->GetYaxis()->SetLabelFont(42);
@@ -28181,7 +28181,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_939__942->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_939__942->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_939__942->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_939__942->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_939__942->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_939__942->GetYaxis()->CenterTitle(true);
    h_ratio_trial_939__942->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_939__942->GetYaxis()->SetLabelFont(42);
@@ -28211,7 +28211,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_940__943->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_940__943->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_940__943->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_940__943->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_940__943->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_940__943->GetYaxis()->CenterTitle(true);
    h_ratio_trial_940__943->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_940__943->GetYaxis()->SetLabelFont(42);
@@ -28241,7 +28241,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_941__944->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_941__944->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_941__944->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_941__944->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_941__944->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_941__944->GetYaxis()->CenterTitle(true);
    h_ratio_trial_941__944->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_941__944->GetYaxis()->SetLabelFont(42);
@@ -28271,7 +28271,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_942__945->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_942__945->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_942__945->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_942__945->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_942__945->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_942__945->GetYaxis()->CenterTitle(true);
    h_ratio_trial_942__945->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_942__945->GetYaxis()->SetLabelFont(42);
@@ -28301,7 +28301,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_943__946->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_943__946->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_943__946->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_943__946->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_943__946->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_943__946->GetYaxis()->CenterTitle(true);
    h_ratio_trial_943__946->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_943__946->GetYaxis()->SetLabelFont(42);
@@ -28331,7 +28331,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_944__947->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_944__947->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_944__947->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_944__947->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_944__947->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_944__947->GetYaxis()->CenterTitle(true);
    h_ratio_trial_944__947->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_944__947->GetYaxis()->SetLabelFont(42);
@@ -28361,7 +28361,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_945__948->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_945__948->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_945__948->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_945__948->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_945__948->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_945__948->GetYaxis()->CenterTitle(true);
    h_ratio_trial_945__948->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_945__948->GetYaxis()->SetLabelFont(42);
@@ -28391,7 +28391,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_946__949->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_946__949->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_946__949->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_946__949->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_946__949->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_946__949->GetYaxis()->CenterTitle(true);
    h_ratio_trial_946__949->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_946__949->GetYaxis()->SetLabelFont(42);
@@ -28421,7 +28421,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_947__950->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_947__950->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_947__950->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_947__950->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_947__950->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_947__950->GetYaxis()->CenterTitle(true);
    h_ratio_trial_947__950->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_947__950->GetYaxis()->SetLabelFont(42);
@@ -28451,7 +28451,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_948__951->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_948__951->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_948__951->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_948__951->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_948__951->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_948__951->GetYaxis()->CenterTitle(true);
    h_ratio_trial_948__951->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_948__951->GetYaxis()->SetLabelFont(42);
@@ -28481,7 +28481,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_949__952->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_949__952->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_949__952->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_949__952->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_949__952->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_949__952->GetYaxis()->CenterTitle(true);
    h_ratio_trial_949__952->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_949__952->GetYaxis()->SetLabelFont(42);
@@ -28511,7 +28511,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_950__953->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_950__953->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_950__953->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_950__953->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_950__953->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_950__953->GetYaxis()->CenterTitle(true);
    h_ratio_trial_950__953->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_950__953->GetYaxis()->SetLabelFont(42);
@@ -28541,7 +28541,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_951__954->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_951__954->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_951__954->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_951__954->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_951__954->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_951__954->GetYaxis()->CenterTitle(true);
    h_ratio_trial_951__954->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_951__954->GetYaxis()->SetLabelFont(42);
@@ -28571,7 +28571,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_952__955->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_952__955->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_952__955->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_952__955->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_952__955->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_952__955->GetYaxis()->CenterTitle(true);
    h_ratio_trial_952__955->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_952__955->GetYaxis()->SetLabelFont(42);
@@ -28601,7 +28601,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_953__956->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_953__956->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_953__956->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_953__956->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_953__956->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_953__956->GetYaxis()->CenterTitle(true);
    h_ratio_trial_953__956->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_953__956->GetYaxis()->SetLabelFont(42);
@@ -28631,7 +28631,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_954__957->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_954__957->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_954__957->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_954__957->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_954__957->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_954__957->GetYaxis()->CenterTitle(true);
    h_ratio_trial_954__957->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_954__957->GetYaxis()->SetLabelFont(42);
@@ -28661,7 +28661,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_955__958->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_955__958->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_955__958->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_955__958->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_955__958->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_955__958->GetYaxis()->CenterTitle(true);
    h_ratio_trial_955__958->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_955__958->GetYaxis()->SetLabelFont(42);
@@ -28691,7 +28691,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_956__959->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_956__959->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_956__959->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_956__959->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_956__959->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_956__959->GetYaxis()->CenterTitle(true);
    h_ratio_trial_956__959->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_956__959->GetYaxis()->SetLabelFont(42);
@@ -28721,7 +28721,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_957__960->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_957__960->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_957__960->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_957__960->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_957__960->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_957__960->GetYaxis()->CenterTitle(true);
    h_ratio_trial_957__960->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_957__960->GetYaxis()->SetLabelFont(42);
@@ -28751,7 +28751,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_958__961->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_958__961->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_958__961->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_958__961->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_958__961->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_958__961->GetYaxis()->CenterTitle(true);
    h_ratio_trial_958__961->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_958__961->GetYaxis()->SetLabelFont(42);
@@ -28781,7 +28781,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_959__962->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_959__962->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_959__962->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_959__962->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_959__962->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_959__962->GetYaxis()->CenterTitle(true);
    h_ratio_trial_959__962->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_959__962->GetYaxis()->SetLabelFont(42);
@@ -28811,7 +28811,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_960__963->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_960__963->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_960__963->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_960__963->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_960__963->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_960__963->GetYaxis()->CenterTitle(true);
    h_ratio_trial_960__963->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_960__963->GetYaxis()->SetLabelFont(42);
@@ -28841,7 +28841,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_961__964->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_961__964->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_961__964->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_961__964->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_961__964->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_961__964->GetYaxis()->CenterTitle(true);
    h_ratio_trial_961__964->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_961__964->GetYaxis()->SetLabelFont(42);
@@ -28871,7 +28871,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_962__965->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_962__965->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_962__965->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_962__965->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_962__965->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_962__965->GetYaxis()->CenterTitle(true);
    h_ratio_trial_962__965->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_962__965->GetYaxis()->SetLabelFont(42);
@@ -28901,7 +28901,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_963__966->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_963__966->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_963__966->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_963__966->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_963__966->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_963__966->GetYaxis()->CenterTitle(true);
    h_ratio_trial_963__966->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_963__966->GetYaxis()->SetLabelFont(42);
@@ -28931,7 +28931,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_964__967->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_964__967->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_964__967->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_964__967->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_964__967->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_964__967->GetYaxis()->CenterTitle(true);
    h_ratio_trial_964__967->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_964__967->GetYaxis()->SetLabelFont(42);
@@ -28961,7 +28961,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_965__968->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_965__968->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_965__968->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_965__968->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_965__968->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_965__968->GetYaxis()->CenterTitle(true);
    h_ratio_trial_965__968->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_965__968->GetYaxis()->SetLabelFont(42);
@@ -28991,7 +28991,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_966__969->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_966__969->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_966__969->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_966__969->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_966__969->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_966__969->GetYaxis()->CenterTitle(true);
    h_ratio_trial_966__969->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_966__969->GetYaxis()->SetLabelFont(42);
@@ -29021,7 +29021,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_967__970->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_967__970->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_967__970->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_967__970->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_967__970->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_967__970->GetYaxis()->CenterTitle(true);
    h_ratio_trial_967__970->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_967__970->GetYaxis()->SetLabelFont(42);
@@ -29051,7 +29051,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_968__971->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_968__971->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_968__971->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_968__971->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_968__971->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_968__971->GetYaxis()->CenterTitle(true);
    h_ratio_trial_968__971->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_968__971->GetYaxis()->SetLabelFont(42);
@@ -29081,7 +29081,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_969__972->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_969__972->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_969__972->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_969__972->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_969__972->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_969__972->GetYaxis()->CenterTitle(true);
    h_ratio_trial_969__972->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_969__972->GetYaxis()->SetLabelFont(42);
@@ -29111,7 +29111,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_970__973->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_970__973->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_970__973->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_970__973->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_970__973->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_970__973->GetYaxis()->CenterTitle(true);
    h_ratio_trial_970__973->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_970__973->GetYaxis()->SetLabelFont(42);
@@ -29141,7 +29141,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_971__974->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_971__974->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_971__974->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_971__974->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_971__974->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_971__974->GetYaxis()->CenterTitle(true);
    h_ratio_trial_971__974->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_971__974->GetYaxis()->SetLabelFont(42);
@@ -29171,7 +29171,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_972__975->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_972__975->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_972__975->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_972__975->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_972__975->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_972__975->GetYaxis()->CenterTitle(true);
    h_ratio_trial_972__975->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_972__975->GetYaxis()->SetLabelFont(42);
@@ -29201,7 +29201,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_973__976->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_973__976->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_973__976->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_973__976->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_973__976->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_973__976->GetYaxis()->CenterTitle(true);
    h_ratio_trial_973__976->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_973__976->GetYaxis()->SetLabelFont(42);
@@ -29231,7 +29231,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_974__977->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_974__977->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_974__977->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_974__977->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_974__977->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_974__977->GetYaxis()->CenterTitle(true);
    h_ratio_trial_974__977->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_974__977->GetYaxis()->SetLabelFont(42);
@@ -29261,7 +29261,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_975__978->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_975__978->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_975__978->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_975__978->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_975__978->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_975__978->GetYaxis()->CenterTitle(true);
    h_ratio_trial_975__978->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_975__978->GetYaxis()->SetLabelFont(42);
@@ -29291,7 +29291,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_976__979->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_976__979->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_976__979->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_976__979->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_976__979->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_976__979->GetYaxis()->CenterTitle(true);
    h_ratio_trial_976__979->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_976__979->GetYaxis()->SetLabelFont(42);
@@ -29321,7 +29321,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_977__980->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_977__980->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_977__980->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_977__980->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_977__980->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_977__980->GetYaxis()->CenterTitle(true);
    h_ratio_trial_977__980->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_977__980->GetYaxis()->SetLabelFont(42);
@@ -29351,7 +29351,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_978__981->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_978__981->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_978__981->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_978__981->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_978__981->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_978__981->GetYaxis()->CenterTitle(true);
    h_ratio_trial_978__981->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_978__981->GetYaxis()->SetLabelFont(42);
@@ -29381,7 +29381,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_979__982->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_979__982->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_979__982->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_979__982->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_979__982->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_979__982->GetYaxis()->CenterTitle(true);
    h_ratio_trial_979__982->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_979__982->GetYaxis()->SetLabelFont(42);
@@ -29411,7 +29411,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_980__983->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_980__983->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_980__983->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_980__983->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_980__983->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_980__983->GetYaxis()->CenterTitle(true);
    h_ratio_trial_980__983->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_980__983->GetYaxis()->SetLabelFont(42);
@@ -29441,7 +29441,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_981__984->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_981__984->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_981__984->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_981__984->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_981__984->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_981__984->GetYaxis()->CenterTitle(true);
    h_ratio_trial_981__984->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_981__984->GetYaxis()->SetLabelFont(42);
@@ -29471,7 +29471,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_982__985->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_982__985->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_982__985->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_982__985->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_982__985->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_982__985->GetYaxis()->CenterTitle(true);
    h_ratio_trial_982__985->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_982__985->GetYaxis()->SetLabelFont(42);
@@ -29501,7 +29501,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_983__986->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_983__986->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_983__986->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_983__986->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_983__986->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_983__986->GetYaxis()->CenterTitle(true);
    h_ratio_trial_983__986->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_983__986->GetYaxis()->SetLabelFont(42);
@@ -29531,7 +29531,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_984__987->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_984__987->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_984__987->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_984__987->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_984__987->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_984__987->GetYaxis()->CenterTitle(true);
    h_ratio_trial_984__987->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_984__987->GetYaxis()->SetLabelFont(42);
@@ -29561,7 +29561,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_985__988->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_985__988->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_985__988->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_985__988->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_985__988->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_985__988->GetYaxis()->CenterTitle(true);
    h_ratio_trial_985__988->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_985__988->GetYaxis()->SetLabelFont(42);
@@ -29591,7 +29591,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_986__989->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_986__989->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_986__989->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_986__989->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_986__989->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_986__989->GetYaxis()->CenterTitle(true);
    h_ratio_trial_986__989->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_986__989->GetYaxis()->SetLabelFont(42);
@@ -29621,7 +29621,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_987__990->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_987__990->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_987__990->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_987__990->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_987__990->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_987__990->GetYaxis()->CenterTitle(true);
    h_ratio_trial_987__990->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_987__990->GetYaxis()->SetLabelFont(42);
@@ -29651,7 +29651,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_988__991->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_988__991->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_988__991->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_988__991->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_988__991->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_988__991->GetYaxis()->CenterTitle(true);
    h_ratio_trial_988__991->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_988__991->GetYaxis()->SetLabelFont(42);
@@ -29681,7 +29681,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_989__992->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_989__992->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_989__992->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_989__992->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_989__992->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_989__992->GetYaxis()->CenterTitle(true);
    h_ratio_trial_989__992->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_989__992->GetYaxis()->SetLabelFont(42);
@@ -29711,7 +29711,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_990__993->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_990__993->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_990__993->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_990__993->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_990__993->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_990__993->GetYaxis()->CenterTitle(true);
    h_ratio_trial_990__993->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_990__993->GetYaxis()->SetLabelFont(42);
@@ -29741,7 +29741,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_991__994->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_991__994->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_991__994->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_991__994->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_991__994->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_991__994->GetYaxis()->CenterTitle(true);
    h_ratio_trial_991__994->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_991__994->GetYaxis()->SetLabelFont(42);
@@ -29771,7 +29771,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_992__995->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_992__995->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_992__995->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_992__995->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_992__995->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_992__995->GetYaxis()->CenterTitle(true);
    h_ratio_trial_992__995->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_992__995->GetYaxis()->SetLabelFont(42);
@@ -29801,7 +29801,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_993__996->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_993__996->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_993__996->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_993__996->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_993__996->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_993__996->GetYaxis()->CenterTitle(true);
    h_ratio_trial_993__996->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_993__996->GetYaxis()->SetLabelFont(42);
@@ -29831,7 +29831,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_994__997->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_994__997->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_994__997->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_994__997->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_994__997->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_994__997->GetYaxis()->CenterTitle(true);
    h_ratio_trial_994__997->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_994__997->GetYaxis()->SetLabelFont(42);
@@ -29861,7 +29861,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_995__998->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_995__998->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_995__998->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_995__998->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_995__998->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_995__998->GetYaxis()->CenterTitle(true);
    h_ratio_trial_995__998->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_995__998->GetYaxis()->SetLabelFont(42);
@@ -29891,7 +29891,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_996__999->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_996__999->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_996__999->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_996__999->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_996__999->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_996__999->GetYaxis()->CenterTitle(true);
    h_ratio_trial_996__999->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_996__999->GetYaxis()->SetLabelFont(42);
@@ -29921,7 +29921,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_997__1000->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_997__1000->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_997__1000->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_997__1000->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_997__1000->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_997__1000->GetYaxis()->CenterTitle(true);
    h_ratio_trial_997__1000->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_997__1000->GetYaxis()->SetLabelFont(42);
@@ -29951,7 +29951,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_998__1001->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_998__1001->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_998__1001->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_998__1001->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_998__1001->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_998__1001->GetYaxis()->CenterTitle(true);
    h_ratio_trial_998__1001->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_998__1001->GetYaxis()->SetLabelFont(42);
@@ -29981,7 +29981,7 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_999__1002->GetXaxis()->SetTitleSize(0.04);
    h_ratio_trial_999__1002->GetXaxis()->SetTitleOffset(1.1);
    h_ratio_trial_999__1002->GetXaxis()->SetTitleFont(42);
-   h_ratio_trial_999__1002->GetYaxis()->SetTitle("Vertical angle acceptance fraction / 250 MeV");
+   h_ratio_trial_999__1002->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
    h_ratio_trial_999__1002->GetYaxis()->CenterTitle(true);
    h_ratio_trial_999__1002->GetYaxis()->SetNdivisions(4000510);
    h_ratio_trial_999__1002->GetYaxis()->SetLabelFont(42);
@@ -29992,6 +29992,15 @@ void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
    h_ratio_trial_999__1002->GetZaxis()->SetTitleOffset(1);
    h_ratio_trial_999__1002->GetZaxis()->SetTitleFont(42);
    h_ratio_trial_999__1002->Draw("E SAME");
+   
+   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("S12");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

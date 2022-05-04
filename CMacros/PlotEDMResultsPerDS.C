@@ -3,7 +3,7 @@
 using namespace std;
 
 // Global momentum cuts
-string xmin = "750";
+string xmin = "1000";
 string xmax = "2500";
 
 /*vector<TF1*> MahalanobisDistances(TGraphErrors *graph) {
@@ -167,7 +167,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   vector<string> label_ = {"Station 12", "Station 18", "Combined"};
 
-  graph_.at(0)->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");//title.c_str());
+  graph_.at(0)->GetYaxis()->SetTitle("d_{#mu} (BLIND) [e#upointcm]");//title.c_str());
   //graph_.at(0)->SetTextSize(26);//"d_{#mu}^{BLIND} [e#upointcm]");
   graph_.at(0)->GetXaxis()->SetTitleSize(.04);
   graph_.at(0)->GetYaxis()->SetTitleSize(.04);
@@ -249,7 +249,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   std::ostringstream result_str; result_str << fit->GetParameter(0); 
   std::ostringstream error_str; error_str << fit->GetParError(0);  
 
-  result->AddText("#delta#LTd_{#mu}^{BLIND}#GT = "+SciNotation(fit->GetParError(0))+" e#upointcm");// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  result->AddText("#delta#LTd_{#mu}#GT = "+SciNotation(fit->GetParError(0))+" e#upointcm");// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
   result->Draw("SAME");
 
   c->SaveAs((fname+".pdf").c_str());
@@ -355,9 +355,9 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 void PlotEDMResultsPerDS() { 
 
   Run("Run-1", 250, "blinded", "EDM", "");
-  Run("Run-1", 250, "blinded", "EDM", "noDilCorr");
-  Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
-  Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 
+  //Run("Run-1", 250, "blinded", "EDM", "noDilCorr");
+  //Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
+  //Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 
 
   
   return;

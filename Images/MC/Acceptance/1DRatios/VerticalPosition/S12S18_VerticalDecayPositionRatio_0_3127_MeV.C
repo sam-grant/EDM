@@ -1,7 +1,7 @@
 void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Apr 28 14:35:31 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 18:57:18 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(0,0,1,1);
@@ -22,129 +22,129 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    upper_pad->SetFrameBorderMode(0);
    upper_pad->SetFrameBorderMode(0);
    
-   TH1D *S12S18_Y__115 = new TH1D("S12S18_Y__115","",24,-60,60);
-   S12S18_Y__115->SetBinContent(4,0.01788041);
-   S12S18_Y__115->SetBinContent(5,0.05373108);
-   S12S18_Y__115->SetBinContent(6,0.1073948);
-   S12S18_Y__115->SetBinContent(7,0.1974931);
-   S12S18_Y__115->SetBinContent(8,0.333236);
-   S12S18_Y__115->SetBinContent(9,0.5128937);
-   S12S18_Y__115->SetBinContent(10,0.7221349);
-   S12S18_Y__115->SetBinContent(11,0.893032);
-   S12S18_Y__115->SetBinContent(12,0.9917337);
-   S12S18_Y__115->SetBinContent(13,1);
-   S12S18_Y__115->SetBinContent(14,0.8860461);
-   S12S18_Y__115->SetBinContent(15,0.707871);
-   S12S18_Y__115->SetBinContent(16,0.512714);
-   S12S18_Y__115->SetBinContent(17,0.3274855);
-   S12S18_Y__115->SetBinContent(18,0.190013);
-   S12S18_Y__115->SetBinContent(19,0.1079563);
-   S12S18_Y__115->SetBinContent(20,0.05069859);
-   S12S18_Y__115->SetBinContent(21,0.01657756);
-   S12S18_Y__115->SetBinError(4,0.0006337543);
-   S12S18_Y__115->SetBinError(5,0.001098614);
-   S12S18_Y__115->SetBinError(6,0.001553187);
-   S12S18_Y__115->SetBinError(7,0.002106242);
-   S12S18_Y__115->SetBinError(8,0.00273595);
-   S12S18_Y__115->SetBinError(9,0.003394266);
-   S12S18_Y__115->SetBinError(10,0.004027554);
-   S12S18_Y__115->SetBinError(11,0.004478842);
-   S12S18_Y__115->SetBinError(12,0.004719866);
-   S12S18_Y__115->SetBinError(13,0.004739496);
-   S12S18_Y__115->SetBinError(14,0.004461289);
-   S12S18_Y__115->SetBinError(15,0.003987578);
-   S12S18_Y__115->SetBinError(16,0.003393671);
-   S12S18_Y__115->SetBinError(17,0.002712241);
-   S12S18_Y__115->SetBinError(18,0.002065969);
-   S12S18_Y__115->SetBinError(19,0.001557242);
-   S12S18_Y__115->SetBinError(20,0.001067161);
-   S12S18_Y__115->SetBinError(21,0.0006102286);
-   S12S18_Y__115->SetEntries(339623);
+   TH1D *S12S18_Y__119 = new TH1D("S12S18_Y__119","",24,-60,60);
+   S12S18_Y__119->SetBinContent(4,0.01788041);
+   S12S18_Y__119->SetBinContent(5,0.05373108);
+   S12S18_Y__119->SetBinContent(6,0.1073948);
+   S12S18_Y__119->SetBinContent(7,0.1974931);
+   S12S18_Y__119->SetBinContent(8,0.333236);
+   S12S18_Y__119->SetBinContent(9,0.5128937);
+   S12S18_Y__119->SetBinContent(10,0.7221349);
+   S12S18_Y__119->SetBinContent(11,0.893032);
+   S12S18_Y__119->SetBinContent(12,0.9917337);
+   S12S18_Y__119->SetBinContent(13,1);
+   S12S18_Y__119->SetBinContent(14,0.8860461);
+   S12S18_Y__119->SetBinContent(15,0.707871);
+   S12S18_Y__119->SetBinContent(16,0.512714);
+   S12S18_Y__119->SetBinContent(17,0.3274855);
+   S12S18_Y__119->SetBinContent(18,0.190013);
+   S12S18_Y__119->SetBinContent(19,0.1079563);
+   S12S18_Y__119->SetBinContent(20,0.05069859);
+   S12S18_Y__119->SetBinContent(21,0.01657756);
+   S12S18_Y__119->SetBinError(4,0.0006337543);
+   S12S18_Y__119->SetBinError(5,0.001098614);
+   S12S18_Y__119->SetBinError(6,0.001553187);
+   S12S18_Y__119->SetBinError(7,0.002106242);
+   S12S18_Y__119->SetBinError(8,0.00273595);
+   S12S18_Y__119->SetBinError(9,0.003394266);
+   S12S18_Y__119->SetBinError(10,0.004027554);
+   S12S18_Y__119->SetBinError(11,0.004478842);
+   S12S18_Y__119->SetBinError(12,0.004719866);
+   S12S18_Y__119->SetBinError(13,0.004739496);
+   S12S18_Y__119->SetBinError(14,0.004461289);
+   S12S18_Y__119->SetBinError(15,0.003987578);
+   S12S18_Y__119->SetBinError(16,0.003393671);
+   S12S18_Y__119->SetBinError(17,0.002712241);
+   S12S18_Y__119->SetBinError(18,0.002065969);
+   S12S18_Y__119->SetBinError(19,0.001557242);
+   S12S18_Y__119->SetBinError(20,0.001067161);
+   S12S18_Y__119->SetBinError(21,0.0006102286);
+   S12S18_Y__119->SetEntries(339623);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#0000ff");
-   S12S18_Y__115->SetLineColor(ci);
-   S12S18_Y__115->SetLineWidth(2);
+   S12S18_Y__119->SetLineColor(ci);
+   S12S18_Y__119->SetLineWidth(2);
 
    ci = TColor::GetColor("#0000ff");
-   S12S18_Y__115->SetMarkerColor(ci);
-   S12S18_Y__115->GetXaxis()->SetTitle("Decay y-position [mm]");
-   S12S18_Y__115->GetXaxis()->SetRange(0,25);
-   S12S18_Y__115->GetXaxis()->SetLabelFont(42);
-   S12S18_Y__115->GetXaxis()->SetTitleOffset(1);
-   S12S18_Y__115->GetXaxis()->SetTitleFont(42);
-   S12S18_Y__115->GetYaxis()->SetTitle("Normalised entries");
-   S12S18_Y__115->GetYaxis()->CenterTitle(true);
-   S12S18_Y__115->GetYaxis()->SetLabelFont(42);
-   S12S18_Y__115->GetYaxis()->SetTitleFont(42);
-   S12S18_Y__115->GetZaxis()->SetLabelFont(42);
-   S12S18_Y__115->GetZaxis()->SetTitleOffset(1);
-   S12S18_Y__115->GetZaxis()->SetTitleFont(42);
-   S12S18_Y__115->Draw("AE");
+   S12S18_Y__119->SetMarkerColor(ci);
+   S12S18_Y__119->GetXaxis()->SetTitle("Decay y-position [mm]");
+   S12S18_Y__119->GetXaxis()->SetRange(0,25);
+   S12S18_Y__119->GetXaxis()->SetLabelFont(42);
+   S12S18_Y__119->GetXaxis()->SetTitleOffset(1);
+   S12S18_Y__119->GetXaxis()->SetTitleFont(42);
+   S12S18_Y__119->GetYaxis()->SetTitle("Normalised entries");
+   S12S18_Y__119->GetYaxis()->CenterTitle(true);
+   S12S18_Y__119->GetYaxis()->SetLabelFont(42);
+   S12S18_Y__119->GetYaxis()->SetTitleFont(42);
+   S12S18_Y__119->GetZaxis()->SetLabelFont(42);
+   S12S18_Y__119->GetZaxis()->SetTitleOffset(1);
+   S12S18_Y__119->GetZaxis()->SetTitleFont(42);
+   S12S18_Y__119->Draw("AE");
    
-   TH1D *Y__116 = new TH1D("Y__116","",24,-60,60);
-   Y__116->SetBinContent(4,0.02844669);
-   Y__116->SetBinContent(5,0.07447262);
-   Y__116->SetBinContent(6,0.1391633);
-   Y__116->SetBinContent(7,0.2350921);
-   Y__116->SetBinContent(8,0.3728205);
-   Y__116->SetBinContent(9,0.5518235);
-   Y__116->SetBinContent(10,0.7460147);
-   Y__116->SetBinContent(11,0.9091942);
-   Y__116->SetBinContent(12,1.000423);
-   Y__116->SetBinContent(13,1);
-   Y__116->SetBinContent(14,0.908756);
-   Y__116->SetBinContent(15,0.7454056);
-   Y__116->SetBinContent(16,0.5512242);
-   Y__116->SetBinContent(17,0.3723458);
-   Y__116->SetBinContent(18,0.2348226);
-   Y__116->SetBinContent(19,0.1388689);
-   Y__116->SetBinContent(20,0.07432488);
-   Y__116->SetBinContent(21,0.02838741);
-   Y__116->SetBinError(4,6.087684e-05);
-   Y__116->SetBinError(5,9.849962e-05);
-   Y__116->SetBinError(6,0.0001346476);
-   Y__116->SetBinError(7,0.0001750069);
-   Y__116->SetBinError(8,0.0002203871);
-   Y__116->SetBinError(9,0.0002681244);
-   Y__116->SetBinError(10,0.0003117525);
-   Y__116->SetBinError(11,0.0003441633);
-   Y__116->SetBinError(12,0.0003610174);
-   Y__116->SetBinError(13,0.000360941);
-   Y__116->SetBinError(14,0.0003440804);
-   Y__116->SetBinError(15,0.0003116252);
-   Y__116->SetBinError(16,0.0002679788);
-   Y__116->SetBinError(17,0.0002202467);
-   Y__116->SetBinError(18,0.0001749066);
-   Y__116->SetBinError(19,0.0001345051);
-   Y__116->SetBinError(20,9.840187e-05);
-   Y__116->SetBinError(21,6.081338e-05);
-   Y__116->SetEntries(6.226346e+07);
+   TH1D *Y__120 = new TH1D("Y__120","",24,-60,60);
+   Y__120->SetBinContent(4,0.02844669);
+   Y__120->SetBinContent(5,0.07447262);
+   Y__120->SetBinContent(6,0.1391633);
+   Y__120->SetBinContent(7,0.2350921);
+   Y__120->SetBinContent(8,0.3728205);
+   Y__120->SetBinContent(9,0.5518235);
+   Y__120->SetBinContent(10,0.7460147);
+   Y__120->SetBinContent(11,0.9091942);
+   Y__120->SetBinContent(12,1.000423);
+   Y__120->SetBinContent(13,1);
+   Y__120->SetBinContent(14,0.908756);
+   Y__120->SetBinContent(15,0.7454056);
+   Y__120->SetBinContent(16,0.5512242);
+   Y__120->SetBinContent(17,0.3723458);
+   Y__120->SetBinContent(18,0.2348226);
+   Y__120->SetBinContent(19,0.1388689);
+   Y__120->SetBinContent(20,0.07432488);
+   Y__120->SetBinContent(21,0.02838741);
+   Y__120->SetBinError(4,6.087684e-05);
+   Y__120->SetBinError(5,9.849962e-05);
+   Y__120->SetBinError(6,0.0001346476);
+   Y__120->SetBinError(7,0.0001750069);
+   Y__120->SetBinError(8,0.0002203871);
+   Y__120->SetBinError(9,0.0002681244);
+   Y__120->SetBinError(10,0.0003117525);
+   Y__120->SetBinError(11,0.0003441633);
+   Y__120->SetBinError(12,0.0003610174);
+   Y__120->SetBinError(13,0.000360941);
+   Y__120->SetBinError(14,0.0003440804);
+   Y__120->SetBinError(15,0.0003116252);
+   Y__120->SetBinError(16,0.0002679788);
+   Y__120->SetBinError(17,0.0002202467);
+   Y__120->SetBinError(18,0.0001749066);
+   Y__120->SetBinError(19,0.0001345051);
+   Y__120->SetBinError(20,9.840187e-05);
+   Y__120->SetBinError(21,6.081338e-05);
+   Y__120->SetEntries(6.226346e+07);
 
    ci = TColor::GetColor("#ff0000");
-   Y__116->SetLineColor(ci);
-   Y__116->SetLineWidth(2);
+   Y__120->SetLineColor(ci);
+   Y__120->SetLineWidth(2);
 
    ci = TColor::GetColor("#ff0000");
-   Y__116->SetMarkerColor(ci);
-   Y__116->GetXaxis()->SetTitle("Decay y-position [mm]");
-   Y__116->GetXaxis()->CenterTitle(true);
-   Y__116->GetXaxis()->SetLabelFont(42);
-   Y__116->GetXaxis()->SetTitleSize(0.04);
-   Y__116->GetXaxis()->SetTitleOffset(1.1);
-   Y__116->GetXaxis()->SetTitleFont(42);
-   Y__116->GetYaxis()->SetTitle("Decays");
-   Y__116->GetYaxis()->CenterTitle(true);
-   Y__116->GetYaxis()->SetNdivisions(4000510);
-   Y__116->GetYaxis()->SetLabelFont(42);
-   Y__116->GetYaxis()->SetTitleSize(0.04);
-   Y__116->GetYaxis()->SetTitleOffset(1.1);
-   Y__116->GetYaxis()->SetTitleFont(42);
-   Y__116->GetZaxis()->SetLabelFont(42);
-   Y__116->GetZaxis()->SetTitleOffset(1);
-   Y__116->GetZaxis()->SetTitleFont(42);
-   Y__116->Draw("AEsame");
+   Y__120->SetMarkerColor(ci);
+   Y__120->GetXaxis()->SetTitle("Decay y-position [mm]");
+   Y__120->GetXaxis()->CenterTitle(true);
+   Y__120->GetXaxis()->SetLabelFont(42);
+   Y__120->GetXaxis()->SetTitleSize(0.04);
+   Y__120->GetXaxis()->SetTitleOffset(1.1);
+   Y__120->GetXaxis()->SetTitleFont(42);
+   Y__120->GetYaxis()->SetTitle("Decays");
+   Y__120->GetYaxis()->CenterTitle(true);
+   Y__120->GetYaxis()->SetNdivisions(4000510);
+   Y__120->GetYaxis()->SetLabelFont(42);
+   Y__120->GetYaxis()->SetTitleSize(0.04);
+   Y__120->GetYaxis()->SetTitleOffset(1.1);
+   Y__120->GetYaxis()->SetTitleFont(42);
+   Y__120->GetZaxis()->SetLabelFont(42);
+   Y__120->GetZaxis()->SetTitleOffset(1);
+   Y__120->GetZaxis()->SetTitleFont(42);
+   Y__120->Draw("AEsame");
    upper_pad->Modified();
    c->cd();
   
@@ -161,7 +161,7 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    lower_pad->SetFrameBorderMode(0);
    lower_pad->SetFrameBorderMode(0);
    
-   Double_t _fx3039[18] = {
+   Double_t _fx3041[18] = {
    -42.5,
    -37.5,
    -32.5,
@@ -180,7 +180,7 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    32.5,
    37.5,
    42.5};
-   Double_t _fy3039[18] = {
+   Double_t _fy3041[18] = {
    0.6285586,
    0.7214876,
    0.7717176,
@@ -199,7 +199,7 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    0.7773977,
    0.6821214,
    0.583976};
-   Double_t _felx3039[18] = {
+   Double_t _felx3041[18] = {
    2.5,
    2.5,
    2.5,
@@ -218,7 +218,7 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    2.5,
    2.5,
    2.5};
-   Double_t _fely3039[18] = {
+   Double_t _fely3041[18] = {
    0.02231451,
    0.0147817,
    0.01118545,
@@ -237,7 +237,7 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    0.01123862,
    0.01438536,
    0.0215279};
-   Double_t _fehx3039[18] = {
+   Double_t _fehx3041[18] = {
    2.5,
    2.5,
    2.5,
@@ -256,7 +256,7 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    2.5,
    2.5,
    2.5};
-   Double_t _fehy3039[18] = {
+   Double_t _fehy3041[18] = {
    0.02312122,
    0.01508772,
    0.01134877,
@@ -275,32 +275,32 @@ void S12S18_VerticalDecayPositionRatio_0_3127_MeV()
    0.01140229,
    0.01469201,
    0.02233663};
-   TGraphAsymmErrors *grae = new TGraphAsymmErrors(18,_fx3039,_fy3039,_felx3039,_fehx3039,_fely3039,_fehy3039);
+   TGraphAsymmErrors *grae = new TGraphAsymmErrors(18,_fx3041,_fy3041,_felx3041,_fehx3041,_fely3041,_fehy3041);
    grae->SetName("");
    grae->SetTitle("");
    grae->SetFillStyle(1000);
    
-   TH1F *Graph_Graph3039 = new TH1F("Graph_Graph3039","",100,-65,65);
-   Graph_Graph3039->SetMinimum(0);
-   Graph_Graph3039->SetMaximum(1.25);
-   Graph_Graph3039->SetDirectory(0);
-   Graph_Graph3039->SetStats(0);
+   TH1F *Graph_Graph3041 = new TH1F("Graph_Graph3041","",100,-65,65);
+   Graph_Graph3041->SetMinimum(0);
+   Graph_Graph3041->SetMaximum(1.25);
+   Graph_Graph3041->SetDirectory(0);
+   Graph_Graph3041->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_Graph3039->SetLineColor(ci);
-   Graph_Graph3039->GetXaxis()->SetRange(1,100);
-   Graph_Graph3039->GetXaxis()->CenterTitle(true);
-   Graph_Graph3039->GetXaxis()->SetLabelFont(42);
-   Graph_Graph3039->GetXaxis()->SetTitleOffset(1);
-   Graph_Graph3039->GetXaxis()->SetTitleFont(42);
-   Graph_Graph3039->GetYaxis()->SetTitle("Ratio");
-   Graph_Graph3039->GetYaxis()->CenterTitle(true);
-   Graph_Graph3039->GetYaxis()->SetLabelFont(42);
-   Graph_Graph3039->GetYaxis()->SetTitleFont(42);
-   Graph_Graph3039->GetZaxis()->SetLabelFont(42);
-   Graph_Graph3039->GetZaxis()->SetTitleOffset(1);
-   Graph_Graph3039->GetZaxis()->SetTitleFont(42);
-   grae->SetHistogram(Graph_Graph3039);
+   Graph_Graph3041->SetLineColor(ci);
+   Graph_Graph3041->GetXaxis()->SetRange(1,100);
+   Graph_Graph3041->GetXaxis()->CenterTitle(true);
+   Graph_Graph3041->GetXaxis()->SetLabelFont(42);
+   Graph_Graph3041->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph3041->GetXaxis()->SetTitleFont(42);
+   Graph_Graph3041->GetYaxis()->SetTitle("Ratio");
+   Graph_Graph3041->GetYaxis()->CenterTitle(true);
+   Graph_Graph3041->GetYaxis()->SetLabelFont(42);
+   Graph_Graph3041->GetYaxis()->SetTitleFont(42);
+   Graph_Graph3041->GetZaxis()->SetLabelFont(42);
+   Graph_Graph3041->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph3041->GetZaxis()->SetTitleFont(42);
+   grae->SetHistogram(Graph_Graph3041);
    
    grae->Draw("iaap");
    TLine *line = new TLine(-65,0.7,65,0.7);

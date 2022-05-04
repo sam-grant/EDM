@@ -1,9 +1,9 @@
 void S18_EDM_delta_prime_vs_p_1000-2500MeV_Run-1d_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:33:52 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 19:41:05 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(819.2502,-0.9350163,2667.186,1.619589);
+   c->Range(819.2502,-0.2537663,2667.186,0.9883393);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -45,8 +45,8 @@ void S18_EDM_delta_prime_vs_p_1000-2500MeV_Run-1d_250MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1021 = new TH1F("Graph_Graph1021","S18",100,1004.044,2482.392);
-   Graph_Graph1021->SetMinimum(-0.6795557);
-   Graph_Graph1021->SetMaximum(1.364129);
+   Graph_Graph1021->SetMinimum(-0.1295557);
+   Graph_Graph1021->SetMaximum(0.8641287);
    Graph_Graph1021->SetDirectory(0);
    Graph_Graph1021->SetStats(0);
 

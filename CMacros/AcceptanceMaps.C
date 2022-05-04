@@ -57,7 +57,7 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 
 	map->GetZaxis()->SetTitle("Inverse acceptance weighting");
 
-	gStyle->SetPalette(kRainBow);
+	gStyle->SetPalette(kLightTemperature);
 	c->SetRightMargin(0.13);
 
 	if(drawOption == "SURF2") {
@@ -335,7 +335,7 @@ void Run(string config, string momSlice, int rebin = 1) {
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
 	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots."+config+".root";
-	//foutName = "test.root";
+	foutName = "test.root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 
 	fout->mkdir("AcceptanceWeighting");
@@ -375,13 +375,13 @@ void Run(string config, string momSlice, int rebin = 1) {
 		
 		cout<<"----> Created weight maps " << acceptanceWeightingMapY << ", " << acceptanceWeightingMapR << ", " << acceptanceWeightingMapPhi << " for all momentum"<<endl;
 		
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";Vertical decay postion [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";Vertical decay postion [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ TEXT");
 		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";Vertical decay postion [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";Radial decay position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapR_"+momSlice, "COLZ");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";Radial decay position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapR_"+momSlice, "COLZ TEXT");
 		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";Radial decay position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceR_"+momSlice, "SURF2");
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";Azimuthal decay angle [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapPhi_"+momSlice, "COLZ");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";Azimuthal decay angle [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapPhi_"+momSlice, "COLZ TEXT");
 		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";Azimuthal decay angle [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfacePhi_"+momSlice, "SURF2");
 
 		acceptanceWeightingMapY->Write();
@@ -395,8 +395,8 @@ void Run(string config, string momSlice, int rebin = 1) {
 
 	cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
 
-	return;
-*/
+	return;*/
+
 		// ------------------------------------------------------------------------ // 
 
 	 	// Get acceptance weighting in momentum bins

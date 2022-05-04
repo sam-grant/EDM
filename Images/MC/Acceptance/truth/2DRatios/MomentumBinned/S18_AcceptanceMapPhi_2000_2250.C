@@ -1,7 +1,7 @@
 void S18_AcceptanceMapPhi_2000_2250()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May  2 22:58:14 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 17:55:34 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8793196,-125,7.411221,125);
@@ -169,7 +169,7 @@ void S18_AcceptanceMapPhi_2000_2250()
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#700002");
+   ci = TColor::GetColor("#b74322");
    palette->SetFillColor(ci);
    palette->SetFillStyle(1001);
    S18_WeightMapPhi_2000_2250->GetListOfFunctions()->Add(palette,"br");

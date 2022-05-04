@@ -275,7 +275,8 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
 
   }*/
 
-  gr_delta_prime->GetYaxis()->SetRangeUser(ymin-0.75,ymax+.75);
+  gr_delta_prime->GetYaxis()->SetRangeUser(ymin-0.2,ymax+.25);
+  //gr_delta_prime->GetYaxis()->SetRangeUser(ymin-0.02,ymax+.025);
 
   gr_delta_prime->SetMarkerStyle(20);
 

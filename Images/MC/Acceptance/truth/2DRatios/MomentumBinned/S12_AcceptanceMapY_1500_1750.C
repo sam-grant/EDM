@@ -1,7 +1,7 @@
 void S12_AcceptanceMapY_1500_1750()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May  2 22:57:58 2022) by ROOT version 6.24/06
+//=========  (Wed May  4 17:55:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75.58442,-125,80.25974,125);
@@ -411,7 +411,7 @@ void S12_AcceptanceMapY_1500_1750()
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#700002");
+   ci = TColor::GetColor("#b74322");
    palette->SetFillColor(ci);
    palette->SetFillStyle(1001);
    S12_WeightMapY_1500_1750->GetListOfFunctions()->Add(palette,"br");

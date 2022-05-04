@@ -571,7 +571,7 @@ void RunSim(string config, string dataset, string blinding) {
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
       //  cout<<"Sim: "+tracksOrDecaysLegend<<endl;
-      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecaysLegend, ";Decay vertex momentum [MeV];#delta [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+config);
+      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecaysLegend, ";Decay vertex momentum [MeV];EDM lab frame tilt angle, #delta [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+config);
 
       gr_delta_prime->SetName((stn+"delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
