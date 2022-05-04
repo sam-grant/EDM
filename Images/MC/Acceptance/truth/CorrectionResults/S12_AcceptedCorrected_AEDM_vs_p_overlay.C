@@ -1,36 +1,33 @@
 void S12_AcceptedCorrected_AEDM_vs_p_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 19 22:20:52 2022) by ROOT version 6.24/06
+//=========  (Tue Apr 26 12:47:39 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(516.5561,-0.04375,2969.914,0.39375);
+   c->Range(544.5682,-0.04375,2695.94,0.39375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1001[8] = {
+   Double_t _fx1001[7] = {
    873.25,
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
-   2367.258,
-   2613.22};
-   Double_t _fy1001[8] = {
+   2367.258};
+   Double_t _fy1001[7] = {
    0.318886,
    0.3053675,
    0.2809278,
    0.2539968,
    0.2316457,
    0.1671082,
-   0.1612269,
-   0.09530915};
-   Double_t _fex1001[8] = {
-   0,
+   0.1612269};
+   Double_t _fex1001[7] = {
    0,
    0,
    0,
@@ -38,22 +35,21 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    0,
    0,
    0};
-   Double_t _fey1001[8] = {
+   Double_t _fey1001[7] = {
    0.01725572,
    0.01485289,
    0.01322649,
    0.01204238,
    0.01118043,
    0.01053627,
-   0.01009493,
-   0.009871124};
-   TGraphErrors *gre = new TGraphErrors(8,_fx1001,_fy1001,_fex1001,_fey1001);
+   0.01009493};
+   TGraphErrors *gre = new TGraphErrors(7,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","S12",100,699.253,2787.217);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","S12",100,723.8492,2516.659);
    Graph_Graph1001->SetMinimum(0);
    Graph_Graph1001->SetMaximum(0.35);
    Graph_Graph1001->SetDirectory(0);
@@ -64,7 +60,7 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
    Graph_Graph1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph1001->GetXaxis()->SetRange(4,97);
+   Graph_Graph1001->GetXaxis()->SetRange(3,98);
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
    Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
@@ -84,26 +80,23 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    
    gre->Draw("apl");
    
-   Double_t _fx1002[8] = {
-   880.2814,
-   1123.172,
-   1371.155,
-   1620.23,
-   1866.957,
-   2115.041,
-   2362.635,
-   2614.361};
-   Double_t _fy1002[8] = {
-   0.1055045,
-   0.144956,
-   0.1240867,
-   0.1461097,
-   0.1496318,
-   0.1256292,
-   0.08608835,
-   0.0814938};
-   Double_t _fex1002[8] = {
-   0,
+   Double_t _fx1002[7] = {
+   873.25,
+   1122.829,
+   1372.245,
+   1621.478,
+   1870.594,
+   2119.355,
+   2367.258};
+   Double_t _fy1002[7] = {
+   0.09975419,
+   0.1279293,
+   0.1222339,
+   0.1241488,
+   0.1255241,
+   0.08211508,
+   0.09882477};
+   Double_t _fex1002[7] = {
    0,
    0,
    0,
@@ -111,24 +104,23 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    0,
    0,
    0};
-   Double_t _fey1002[8] = {
-   0.0246748,
-   0.02029052,
-   0.01853614,
-   0.01760011,
-   0.01769914,
-   0.01873548,
-   0.02016337,
-   0.02006182};
-   gre = new TGraphErrors(8,_fx1002,_fy1002,_fex1002,_fey1002);
+   Double_t _fey1002[7] = {
+   0.009688909,
+   0.008946565,
+   0.00839675,
+   0.007912951,
+   0.007598481,
+   0.007223025,
+   0.007165391};
+   gre = new TGraphErrors(7,_fx1002,_fy1002,_fex1002,_fey1002);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,706.8735,2787.769);
-   Graph_Graph1002->SetMinimum(0.05084208);
-   Graph_Graph1002->SetMaximum(0.1779208);
+   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,723.8492,2516.659);
+   Graph_Graph1002->SetMinimum(0.06869368);
+   Graph_Graph1002->SetMaximum(0.1430742);
    Graph_Graph1002->SetDirectory(0);
    Graph_Graph1002->SetStats(0);
 
@@ -146,26 +138,23 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    
    gre->Draw("pl ");
    
-   Double_t _fx1003[8] = {
-   873.25,
-   1122.829,
-   1372.245,
-   1621.478,
-   1870.594,
-   2119.355,
-   2367.258,
-   2613.22};
-   Double_t _fy1003[8] = {
-   0.09975419,
-   0.1279293,
-   0.1222339,
-   0.1241488,
-   0.1255241,
-   0.08211508,
-   0.09882477,
-   0.0738997};
-   Double_t _fex1003[8] = {
-   0,
+   Double_t _fx1003[7] = {
+   880.2869,
+   1123.157,
+   1371.168,
+   1620.209,
+   1866.98,
+   2114.946,
+   2362.647};
+   Double_t _fy1003[7] = {
+   0.1116244,
+   0.1404079,
+   0.1260699,
+   0.1495787,
+   0.1490699,
+   0.1231835,
+   0.08041457};
+   Double_t _fex1003[7] = {
    0,
    0,
    0,
@@ -173,16 +162,15 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    0,
    0,
    0};
-   Double_t _fey1003[8] = {
-   0.009688909,
-   0.008946565,
-   0.00839675,
-   0.007912951,
-   0.007598481,
-   0.007223025,
-   0.007165391,
-   0.008001474};
-   gre = new TGraphErrors(8,_fx1003,_fy1003,_fex1003,_fey1003);
+   Double_t _fey1003[7] = {
+   0.02460655,
+   0.02023076,
+   0.01845655,
+   0.01754713,
+   0.01763438,
+   0.01864525,
+   0.02007888};
+   gre = new TGraphErrors(7,_fx1003,_fy1003,_fex1003,_fey1003);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -194,9 +182,9 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,699.253,2787.217);
-   Graph_Graph1003->SetMinimum(0.05880046);
-   Graph_Graph1003->SetMaximum(0.1439736);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,732.0509,2510.883);
+   Graph_Graph1003->SetMinimum(0.04965667);
+   Graph_Graph1003->SetMaximum(0.1778048);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -241,7 +229,7 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("","Reco vertices","lpf");
+   entry=leg->AddEntry("","Truth vertices","lpf");
    entry->SetFillStyle(1000);
 
    ci = TColor::GetColor("#ff0000");
@@ -292,7 +280,7 @@ void S12_AcceptedCorrected_AEDM_vs_p_overlay()
    entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("","Reco vertices","lpf");
+   entry=leg->AddEntry("","Truth vertices","lpf");
    entry->SetFillStyle(1000);
 
    ci = TColor::GetColor("#ff0000");

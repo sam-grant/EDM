@@ -43,25 +43,28 @@ void DrawMaximumVerticalAngleFit(TH2D *h2, TF1 *f1, TF1 *f2, std::string eqn, st
 
 void MaximumVerticalAngleFit() {
 
-	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlotsFull.root";
+	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.root";
 	TFile *fin = TFile::Open(finName);
 
 	TH2D *h2_thetaY_vs_Y = (TH2D*)fin->Get("AllDecays/Main/ThetaY_vs_p_Fine");
-	TF1 *f1 = new TF1("f1", "[0] * atan( (1/x) * sqrt( ([1]*x/[2]) - (x/[2])**2 ) )", 0, 3111);
+	TF1 *f1 = new TF1("f1", "[0] * asin( (1/x) * sqrt( ([1]*x/[2]) - (x/[2])**2 ) )", 0, 3111);
+	//TF1 *f1 = new TF1("f1", "[0] * TMath::ASin( (0.5*[1]) / x ) ", 0, 3111);
+	//f1->SetParameter(0, 1e3);
+	//f1->SetParameter(1, 105.6583755);
+	//f1->SetParameter(2, 29.3);
 	f1->SetParameter(0, 1e3);
 	f1->SetParameter(1, 105.6583755);
 	f1->SetParameter(2, 29.3);
-
 	TF1 *f2 = new TF1("f2", "-f1", 0, 3111);
 
 	cout<<f2->Eval(1e-12)<<endl;
 
-	return;
+	//return;
 
-	std::string eqn = "tan^{-1}#frac{#sqrt{m_{#mu}p/#gamma#minusp^{2}/#gamma^{2}}}{p}";
-	DrawMaximumVerticalAngleFit(h2_thetaY_vs_Y, f1, f2, eqn, ";Positron momentum [MeV];#theta_{y} [mrad]", "../Images/MC/Acceptance/MaximumVerticalAngleFits/2DFit");
+	std::string eqn = "sin^{-1}#frac{#sqrt{m_{#mu}p/#gamma#minusp^{2}/#gamma^{2}}}{p}";
+	DrawMaximumVerticalAngleFit(h2_thetaY_vs_Y, f1, f2, eqn, ";e^{+} momentum [MeV];#theta_{y} [mrad]", "../Images/MC/MaxVerticalAngle/2DFit_TEST");
 
-	DrawTH2(h2_thetaY_vs_Y, "", "../Images/MC/Acceptance/MaximumVerticalAngleFits/NoFit");
+	DrawTH2(h2_thetaY_vs_Y, "", "../Images/MC/MaxVerticalAngle/NoFit_TEST");
 	fin->Close();
 
 	return; 

@@ -1,0 +1,705 @@
+void S12_VerticalDecayAngleRatio_-40_-35()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Apr 28 14:35:35 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   gStyle->SetOptStat(0);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+  
+// ------------>Primitives in pad: p1
+   TPad *p1 = new TPad("p1", "p1",0,0,1,1);
+   p1->Draw();
+   p1->cd();
+   p1->Range(0,0,1,1);
+   p1->SetFillColor(0);
+   p1->SetBorderMode(0);
+   p1->SetBorderSize(2);
+   p1->SetFrameBorderMode(0);
+  
+// ------------>Primitives in pad: upper_pad
+   TPad *upper_pad = new TPad("upper_pad", "",0.0025,0.3,0.9975,0.9975);
+   upper_pad->Draw();
+   upper_pad->cd();
+   upper_pad->Range(-125,-0.07514921,125,1.427835);
+   upper_pad->SetFillColor(0);
+   upper_pad->SetBorderMode(0);
+   upper_pad->SetBorderSize(2);
+   upper_pad->SetBottomMargin(0.05);
+   upper_pad->SetFrameBorderMode(0);
+   upper_pad->SetFrameBorderMode(0);
+   
+   TH1D *S12_ThetaY_mI40_mI35__186 = new TH1D("S12_ThetaY_mI40_mI35__186","",630,-1575,1575);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(316,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(317,0.75);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(319,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(320,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(321,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(322,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(325,0.5);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(328,1);
+   S12_ThetaY_mI40_mI35__186->SetBinContent(330,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinError(316,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinError(317,0.4330127);
+   S12_ThetaY_mI40_mI35__186->SetBinError(319,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinError(320,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinError(321,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinError(322,0.25);
+   S12_ThetaY_mI40_mI35__186->SetBinError(325,0.3535534);
+   S12_ThetaY_mI40_mI35__186->SetBinError(328,0.5);
+   S12_ThetaY_mI40_mI35__186->SetBinError(330,0.25);
+   S12_ThetaY_mI40_mI35__186->SetMinimum(0);
+   S12_ThetaY_mI40_mI35__186->SetMaximum(1.277537);
+   S12_ThetaY_mI40_mI35__186->SetEntries(15);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#0000ff");
+   S12_ThetaY_mI40_mI35__186->SetLineColor(ci);
+   S12_ThetaY_mI40_mI35__186->SetLineWidth(2);
+
+   ci = TColor::GetColor("#0000ff");
+   S12_ThetaY_mI40_mI35__186->SetMarkerColor(ci);
+   S12_ThetaY_mI40_mI35__186->GetXaxis()->SetTitle("#theta_{y} [mrad]");
+   S12_ThetaY_mI40_mI35__186->GetXaxis()->SetRange(296,335);
+   S12_ThetaY_mI40_mI35__186->GetXaxis()->SetLabelFont(42);
+   S12_ThetaY_mI40_mI35__186->GetXaxis()->SetTitleOffset(1);
+   S12_ThetaY_mI40_mI35__186->GetXaxis()->SetTitleFont(42);
+   S12_ThetaY_mI40_mI35__186->GetYaxis()->SetTitle("Normalised entries");
+   S12_ThetaY_mI40_mI35__186->GetYaxis()->CenterTitle(true);
+   S12_ThetaY_mI40_mI35__186->GetYaxis()->SetLabelFont(42);
+   S12_ThetaY_mI40_mI35__186->GetYaxis()->SetTitleFont(42);
+   S12_ThetaY_mI40_mI35__186->GetZaxis()->SetLabelFont(42);
+   S12_ThetaY_mI40_mI35__186->GetZaxis()->SetTitleOffset(1);
+   S12_ThetaY_mI40_mI35__186->GetZaxis()->SetTitleFont(42);
+   S12_ThetaY_mI40_mI35__186->Draw("AE");
+   
+   TH1D *ThetaY_mI40_mI35__187 = new TH1D("ThetaY_mI40_mI35__187","",630,-1575,1575);
+   ThetaY_mI40_mI35__187->SetBinContent(293,0.005663049);
+   ThetaY_mI40_mI35__187->SetBinContent(294,0.0363379);
+   ThetaY_mI40_mI35__187->SetBinContent(295,0.08069844);
+   ThetaY_mI40_mI35__187->SetBinContent(296,0.160925);
+   ThetaY_mI40_mI35__187->SetBinContent(297,0.2302973);
+   ThetaY_mI40_mI35__187->SetBinContent(298,0.3459179);
+   ThetaY_mI40_mI35__187->SetBinContent(299,0.5087305);
+   ThetaY_mI40_mI35__187->SetBinContent(300,0.6772062);
+   ThetaY_mI40_mI35__187->SetBinContent(301,0.8343558);
+   ThetaY_mI40_mI35__187->SetBinContent(302,0.9155262);
+   ThetaY_mI40_mI35__187->SetBinContent(303,1.016045);
+   ThetaY_mI40_mI35__187->SetBinContent(304,1.090609);
+   ThetaY_mI40_mI35__187->SetBinContent(305,1.160453);
+   ThetaY_mI40_mI35__187->SetBinContent(306,1.084946);
+   ThetaY_mI40_mI35__187->SetBinContent(307,1.134025);
+   ThetaY_mI40_mI35__187->SetBinContent(308,1.136857);
+   ThetaY_mI40_mI35__187->SetBinContent(309,1.145352);
+   ThetaY_mI40_mI35__187->SetBinContent(310,1.08589);
+   ThetaY_mI40_mI35__187->SetBinContent(311,1.161397);
+   ThetaY_mI40_mI35__187->SetBinContent(312,1.051439);
+   ThetaY_mI40_mI35__187->SetBinContent(313,1.108542);
+   ThetaY_mI40_mI35__187->SetBinContent(314,1.088249);
+   ThetaY_mI40_mI35__187->SetBinContent(315,1.104294);
+   ThetaY_mI40_mI35__187->SetBinContent(316,1.082586);
+   ThetaY_mI40_mI35__187->SetBinContent(317,1.079755);
+   ThetaY_mI40_mI35__187->SetBinContent(318,1.062294);
+   ThetaY_mI40_mI35__187->SetBinContent(319,1.123643);
+   ThetaY_mI40_mI35__187->SetBinContent(320,1.104766);
+   ThetaY_mI40_mI35__187->SetBinContent(321,1.100991);
+   ThetaY_mI40_mI35__187->SetBinContent(322,1.135913);
+   ThetaY_mI40_mI35__187->SetBinContent(323,1.133082);
+   ThetaY_mI40_mI35__187->SetBinContent(324,1.146767);
+   ThetaY_mI40_mI35__187->SetBinContent(325,1.092968);
+   ThetaY_mI40_mI35__187->SetBinContent(326,1.059462);
+   ThetaY_mI40_mI35__187->SetBinContent(327,1.074092);
+   ThetaY_mI40_mI35__187->SetBinContent(328,1);
+   ThetaY_mI40_mI35__187->SetBinContent(329,0.9122227);
+   ThetaY_mI40_mI35__187->SetBinContent(330,0.8357716);
+   ThetaY_mI40_mI35__187->SetBinContent(331,0.7031619);
+   ThetaY_mI40_mI35__187->SetBinContent(332,0.512034);
+   ThetaY_mI40_mI35__187->SetBinContent(333,0.3426144);
+   ThetaY_mI40_mI35__187->SetBinContent(334,0.237848);
+   ThetaY_mI40_mI35__187->SetBinContent(335,0.1623407);
+   ThetaY_mI40_mI35__187->SetBinContent(336,0.07314771);
+   ThetaY_mI40_mI35__187->SetBinContent(337,0.03350637);
+   ThetaY_mI40_mI35__187->SetBinContent(338,0.007550731);
+   ThetaY_mI40_mI35__187->SetBinError(293,0.001634781);
+   ThetaY_mI40_mI35__187->SetBinError(294,0.004141087);
+   ThetaY_mI40_mI35__187->SetBinError(295,0.006171164);
+   ThetaY_mI40_mI35__187->SetBinError(296,0.008714575);
+   ThetaY_mI40_mI35__187->SetBinError(297,0.01042507);
+   ThetaY_mI40_mI35__187->SetBinError(298,0.01277677);
+   ThetaY_mI40_mI35__187->SetBinError(299,0.01549453);
+   ThetaY_mI40_mI35__187->SetBinError(300,0.01787701);
+   ThetaY_mI40_mI35__187->SetBinError(301,0.01984313);
+   ThetaY_mI40_mI35__187->SetBinError(302,0.02078595);
+   ThetaY_mI40_mI35__187->SetBinError(303,0.02189732);
+   ThetaY_mI40_mI35__187->SetBinError(304,0.02268658);
+   ThetaY_mI40_mI35__187->SetBinError(305,0.02340175);
+   ThetaY_mI40_mI35__187->SetBinError(306,0.0226276);
+   ThetaY_mI40_mI35__187->SetBinError(307,0.02313374);
+   ThetaY_mI40_mI35__187->SetBinError(308,0.02316261);
+   ThetaY_mI40_mI35__187->SetBinError(309,0.02324898);
+   ThetaY_mI40_mI35__187->SetBinError(310,0.02263744);
+   ThetaY_mI40_mI35__187->SetBinError(311,0.02341126);
+   ThetaY_mI40_mI35__187->SetBinError(312,0.02227546);
+   ThetaY_mI40_mI35__187->SetBinError(313,0.02287234);
+   ThetaY_mI40_mI35__187->SetBinError(314,0.02266202);
+   ThetaY_mI40_mI35__187->SetBinError(315,0.02282848);
+   ThetaY_mI40_mI35__187->SetBinError(316,0.02260298);
+   ThetaY_mI40_mI35__187->SetBinError(317,0.0225734);
+   ThetaY_mI40_mI35__187->SetBinError(318,0.02239014);
+   ThetaY_mI40_mI35__187->SetBinError(319,0.0230276);
+   ThetaY_mI40_mI35__187->SetBinError(320,0.02283336);
+   ThetaY_mI40_mI35__187->SetBinError(321,0.02279431);
+   ThetaY_mI40_mI35__187->SetBinError(322,0.02315299);
+   ThetaY_mI40_mI35__187->SetBinError(323,0.02312412);
+   ThetaY_mI40_mI35__187->SetBinError(324,0.02326335);
+   ThetaY_mI40_mI35__187->SetBinError(325,0.02271111);
+   ThetaY_mI40_mI35__187->SetBinError(326,0.02236028);
+   ThetaY_mI40_mI35__187->SetBinError(327,0.02251413);
+   ThetaY_mI40_mI35__187->SetBinError(328,0.02172374);
+   ThetaY_mI40_mI35__187->SetBinError(329,0.02074842);
+   ThetaY_mI40_mI35__187->SetBinError(330,0.01985996);
+   ThetaY_mI40_mI35__187->SetBinError(331,0.01821638);
+   ThetaY_mI40_mI35__187->SetBinError(332,0.01554476);
+   ThetaY_mI40_mI35__187->SetBinError(333,0.01271561);
+   ThetaY_mI40_mI35__187->SetBinError(334,0.01059459);
+   ThetaY_mI40_mI35__187->SetBinError(335,0.008752825);
+   ThetaY_mI40_mI35__187->SetBinError(336,0.005875366);
+   ThetaY_mI40_mI35__187->SetBinError(337,0.003976475);
+   ThetaY_mI40_mI35__187->SetBinError(338,0.001887683);
+   ThetaY_mI40_mI35__187->SetEntries(76666);
+
+   ci = TColor::GetColor("#ff0000");
+   ThetaY_mI40_mI35__187->SetLineColor(ci);
+   ThetaY_mI40_mI35__187->SetLineWidth(2);
+
+   ci = TColor::GetColor("#ff0000");
+   ThetaY_mI40_mI35__187->SetMarkerColor(ci);
+   ThetaY_mI40_mI35__187->GetXaxis()->SetTitle("#theta_{y} [mrad]");
+   ThetaY_mI40_mI35__187->GetXaxis()->CenterTitle(true);
+   ThetaY_mI40_mI35__187->GetXaxis()->SetLabelFont(42);
+   ThetaY_mI40_mI35__187->GetXaxis()->SetTitleSize(0.04);
+   ThetaY_mI40_mI35__187->GetXaxis()->SetTitleOffset(1.1);
+   ThetaY_mI40_mI35__187->GetXaxis()->SetTitleFont(42);
+   ThetaY_mI40_mI35__187->GetYaxis()->SetTitle("Tracks");
+   ThetaY_mI40_mI35__187->GetYaxis()->CenterTitle(true);
+   ThetaY_mI40_mI35__187->GetYaxis()->SetNdivisions(4000510);
+   ThetaY_mI40_mI35__187->GetYaxis()->SetLabelFont(42);
+   ThetaY_mI40_mI35__187->GetYaxis()->SetTitleSize(0.04);
+   ThetaY_mI40_mI35__187->GetYaxis()->SetTitleOffset(1.1);
+   ThetaY_mI40_mI35__187->GetYaxis()->SetTitleFont(42);
+   ThetaY_mI40_mI35__187->GetZaxis()->SetLabelFont(42);
+   ThetaY_mI40_mI35__187->GetZaxis()->SetTitleOffset(1);
+   ThetaY_mI40_mI35__187->GetZaxis()->SetTitleFont(42);
+   ThetaY_mI40_mI35__187->Draw("AEsame");
+   upper_pad->Modified();
+   p1->cd();
+  
+// ------------>Primitives in pad: lower_pad
+   TPad *lower_pad = new TPad("lower_pad", "",0.0025,0.0025,0.9975,0.3);
+   lower_pad->Draw();
+   lower_pad->cd();
+   lower_pad->Range(-125,-0.6923077,125,1.615385);
+   lower_pad->SetFillColor(0);
+   lower_pad->SetBorderMode(0);
+   lower_pad->SetBorderSize(2);
+   lower_pad->SetTopMargin(0.05);
+   lower_pad->SetBottomMargin(0.3);
+   lower_pad->SetFrameBorderMode(0);
+   lower_pad->SetFrameBorderMode(0);
+   
+   Double_t _fx3063[46] = {
+   -112.5,
+   -107.5,
+   -102.5,
+   -97.5,
+   -92.5,
+   -87.5,
+   -82.5,
+   -77.5,
+   -72.5,
+   -67.5,
+   -62.5,
+   -57.5,
+   -52.5,
+   -47.5,
+   -42.5,
+   -37.5,
+   -32.5,
+   -27.5,
+   -22.5,
+   -17.5,
+   -12.5,
+   -7.5,
+   -2.5,
+   2.5,
+   7.5,
+   12.5,
+   17.5,
+   22.5,
+   27.5,
+   32.5,
+   37.5,
+   42.5,
+   47.5,
+   52.5,
+   57.5,
+   62.5,
+   67.5,
+   72.5,
+   77.5,
+   82.5,
+   87.5,
+   92.5,
+   97.5,
+   102.5,
+   107.5,
+   112.5};
+   Double_t _fy3063[46] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0.2309285,
+   0.6946023,
+   0,
+   0.2224906,
+   0.2262922,
+   0.2270682,
+   0.2200872,
+   0,
+   0,
+   0.4574698,
+   0,
+   0,
+   1,
+   0,
+   0.2991248,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t _felx3063[46] = {
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5};
+   Double_t _fely3063[46] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0.1910506,
+   0.3782088,
+   0,
+   0.1840692,
+   0.1872146,
+   0.1878566,
+   0.1820808,
+   0,
+   0,
+   0.2955632,
+   0,
+   0,
+   0.4789431,
+   0,
+   0.2474765,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   Double_t _fehx3063[46] = {
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5,
+   2.5};
+   Double_t _fehy3063[46] = {
+   87.8393,
+   12.81862,
+   5.734211,
+   2.867797,
+   2.002302,
+   1.332206,
+   0.9054865,
+   0.6800746,
+   0.551917,
+   0.5029609,
+   0.4531808,
+   0.4221851,
+   0.3967655,
+   0.4243897,
+   0.4060154,
+   0.4050037,
+   0.4019989,
+   0.4240206,
+   0.396443,
+   0.4379193,
+   0.4153527,
+   0.4231009,
+   0.4169508,
+   0.5314082,
+   0.6765335,
+   0.433443,
+   0.5119775,
+   0.5207317,
+   0.5225186,
+   0.5064434,
+   0.4063537,
+   0.4015024,
+   0.6039748,
+   0.4346019,
+   0.42868,
+   0.7920248,
+   0.5047831,
+   0.6884864,
+   0.6549557,
+   0.8996397,
+   1.345067,
+   1.93862,
+   2.84272,
+   6.329653,
+   13.916,
+   64.6004};
+   TGraphAsymmErrors *grae = new TGraphAsymmErrors(46,_fx3063,_fy3063,_felx3063,_fehx3063,_fely3063,_fehy3063);
+   grae->SetName("");
+   grae->SetTitle("");
+   grae->SetFillStyle(1000);
+   
+   TH1F *Graph_Graph3063 = new TH1F("Graph_Graph3063","",100,-100,100);
+   Graph_Graph3063->SetMinimum(0);
+   Graph_Graph3063->SetMaximum(1.5);
+   Graph_Graph3063->SetDirectory(0);
+   Graph_Graph3063->SetStats(0);
+
+   ci = TColor::GetColor("#000099");
+   Graph_Graph3063->SetLineColor(ci);
+   Graph_Graph3063->GetXaxis()->SetRange(1,100);
+   Graph_Graph3063->GetXaxis()->CenterTitle(true);
+   Graph_Graph3063->GetXaxis()->SetLabelFont(42);
+   Graph_Graph3063->GetXaxis()->SetTitleOffset(1);
+   Graph_Graph3063->GetXaxis()->SetTitleFont(42);
+   Graph_Graph3063->GetYaxis()->SetTitle("Ratio");
+   Graph_Graph3063->GetYaxis()->CenterTitle(true);
+   Graph_Graph3063->GetYaxis()->SetLabelFont(42);
+   Graph_Graph3063->GetYaxis()->SetTitleFont(42);
+   Graph_Graph3063->GetZaxis()->SetLabelFont(42);
+   Graph_Graph3063->GetZaxis()->SetTitleOffset(1);
+   Graph_Graph3063->GetZaxis()->SetTitleFont(42);
+   grae->SetHistogram(Graph_Graph3063);
+   
+   grae->Draw("iaap");
+   TLine *line = new TLine(-100,0.7,100,0.7);
+   line->SetLineStyle(2);
+   line->Draw();
+   line = new TLine(-100,1,100,1);
+   line->SetLineStyle(2);
+   line->Draw();
+   line = new TLine(-100,1.3,100,1.3);
+   line->SetLineStyle(2);
+   line->Draw();
+   lower_pad->Modified();
+   p1->cd();
+  
+// ------------>Primitives in pad: top_pad
+   TPad *top_pad = new TPad("top_pad", "",0.0025,0.0025,0.9975,0.9975);
+   top_pad->Draw();
+   top_pad->cd();
+   top_pad->Range(0,0,1,1);
+   top_pad->SetFillColor(0);
+   top_pad->SetFillStyle(4000);
+   top_pad->SetBorderMode(0);
+   top_pad->SetBorderSize(2);
+   top_pad->SetFrameBorderMode(0);
+   TGaxis *gaxis = new TGaxis(0.1,0.335,0.9,0.335,-100,100,510,"+U");
+   gaxis->SetLabelOffset(0.005);
+   gaxis->SetLabelSize(0);
+   gaxis->SetTickSize(0.03);
+   gaxis->SetGridLength(0);
+   gaxis->SetTitleOffset(1);
+   gaxis->SetTitleSize(0.035);
+   gaxis->SetTitleColor(1);
+   gaxis->SetTitleFont(42);
+   gaxis->SetLabelFont(42);
+   gaxis->Draw();
+   gaxis = new TGaxis(0.1,0.335,0.1,0.93,0,1.277537,510,"S");
+   gaxis->SetLabelOffset(0.005);
+   gaxis->SetLabelSize(0.035);
+   gaxis->SetTickSize(0.03);
+   gaxis->SetGridLength(0);
+   gaxis->SetTitleOffset(0);
+   gaxis->SetTitleSize(0.035);
+   gaxis->SetTitleColor(1);
+   gaxis->SetTitleFont(42);
+   gaxis->SetTitle("Normalised entries");
+   gaxis->SetLabelFont(42);
+   gaxis->Draw();
+   gaxis = new TGaxis(0.1,0.09000001,0.9,0.09000001,-100,100,510,"+S");
+   gaxis->SetLabelOffset(0.005);
+   gaxis->SetLabelSize(0.035);
+   gaxis->SetTickSize(0.03);
+   gaxis->SetGridLength(0);
+   gaxis->SetTitleOffset(1);
+   gaxis->SetTitleSize(0.035);
+   gaxis->SetTitleColor(1);
+   gaxis->SetTitleFont(42);
+   gaxis->SetTitle("#theta_{y} [mrad]");
+   gaxis->SetLabelFont(42);
+   gaxis->Draw();
+   gaxis = new TGaxis(0.1,0.09000001,0.1,0.285,0,1.5,510,"-S");
+   gaxis->SetLabelOffset(0.005);
+   gaxis->SetLabelSize(0.035);
+   gaxis->SetTickSize(0.09153846);
+   gaxis->SetGridLength(0);
+   gaxis->SetTitleOffset(0);
+   gaxis->SetTitleSize(0.035);
+   gaxis->SetTitleColor(1);
+   gaxis->SetTitleFont(42);
+   gaxis->SetTitle("Ratio");
+   gaxis->SetLabelFont(42);
+   gaxis->Draw();
+   top_pad->Modified();
+   p1->cd();
+//Primitive: TRatioPlot/A ratio of histograms. You must implement TRatioPlot::SavePrimitive
+   p1->Modified();
+   c->cd();
+  
+// ------------>Primitives in pad: p2
+   TPad *p2 = new TPad("p2", "p2",0.69,0.69,0.99,0.99);
+   p2->Draw();
+   p2->cd();
+   p2->Range(0,0,1,1);
+   p2->SetFillColor(0);
+   p2->SetBorderMode(0);
+   p2->SetBorderSize(2);
+   p2->SetFrameBorderMode(0);
+   
+   TH2D *ThetaY_vs_Y_mI40_mI35__188 = new TH2D("ThetaY_vs_Y_mI40_mI35__188","",24,-60,60,630,-1575,1575);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7623,12);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7649,77);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7675,171);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7701,341);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7727,488);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7753,733);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7779,1078);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7805,1435);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7831,1768);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7857,1940);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7883,2153);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7909,2311);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7935,2459);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7961,2299);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(7987,2403);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8013,2409);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8039,2427);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8065,2301);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8091,2461);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8117,2228);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8143,2349);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8169,2306);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8195,2340);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8221,2294);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8247,2288);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8273,2251);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8299,2381);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8325,2341);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8351,2333);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8377,2407);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8403,2401);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8429,2430);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8455,2316);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8481,2245);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8507,2276);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8533,2119);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8559,1933);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8585,1771);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8611,1490);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8637,1085);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8663,726);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8689,504);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8715,344);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8741,155);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8767,71);
+   ThetaY_vs_Y_mI40_mI35__188->SetBinContent(8793,16);
+   ThetaY_vs_Y_mI40_mI35__188->SetEntries(76666);
+
+   ci = TColor::GetColor("#000099");
+   ThetaY_vs_Y_mI40_mI35__188->SetLineColor(ci);
+   ThetaY_vs_Y_mI40_mI35__188->GetXaxis()->SetTitle("Decay y-position [mm]");
+   ThetaY_vs_Y_mI40_mI35__188->GetXaxis()->SetRange(4,21);
+   ThetaY_vs_Y_mI40_mI35__188->GetXaxis()->CenterTitle(true);
+   ThetaY_vs_Y_mI40_mI35__188->GetXaxis()->SetLabelFont(42);
+   ThetaY_vs_Y_mI40_mI35__188->GetXaxis()->SetTitleOffset(1);
+   ThetaY_vs_Y_mI40_mI35__188->GetXaxis()->SetTitleFont(42);
+   ThetaY_vs_Y_mI40_mI35__188->GetYaxis()->SetTitle(" #theta_{y} [mrad]");
+   ThetaY_vs_Y_mI40_mI35__188->GetYaxis()->SetRange(307,324);
+   ThetaY_vs_Y_mI40_mI35__188->GetYaxis()->CenterTitle(true);
+   ThetaY_vs_Y_mI40_mI35__188->GetYaxis()->SetLabelFont(42);
+   ThetaY_vs_Y_mI40_mI35__188->GetYaxis()->SetTitleFont(42);
+   ThetaY_vs_Y_mI40_mI35__188->GetZaxis()->SetLabelFont(42);
+   ThetaY_vs_Y_mI40_mI35__188->GetZaxis()->SetTitleOffset(1);
+   ThetaY_vs_Y_mI40_mI35__188->GetZaxis()->SetTitleFont(42);
+   ThetaY_vs_Y_mI40_mI35__188->Draw("COL");
+   p2->Modified();
+   c->cd();
+   
+   TLegend *leg = new TLegend(0,0,0,0,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(44);
+   leg->SetTextSize(24);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("ThetaY_-40_-35","All decays","lpf");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("S12_ThetaY_-40_-35","Reco vertices","lpf");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   leg->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

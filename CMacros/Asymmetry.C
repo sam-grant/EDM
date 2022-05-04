@@ -372,7 +372,7 @@ int main() {
 
 	N_1->GetYaxis()->SetRangeUser(-0.4,1.1);
 	N_1->GetXaxis()->SetRangeUser(0,1);
-	DrawAsymmetryPlot(N_1, A_1, NA2_1, pmax_rest, ";Fractional e^{+} energy (#lambda);Normalised units" , "Rest frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_restFrame");
+	DrawAsymmetryPlot(N_1, A_1, NA2_1, pmax_rest, ";#lambda=E/E_{max};Normalised units" , "Rest frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_restFrame");
 
 	// ==================== Lab frame ====================  
 	TF1 *N_2 = new TF1("N_2","(1/1.65) * 0.33 * (x-1) * (4*x*x-5*x-5)",0,1); // 3.41
@@ -385,7 +385,7 @@ int main() {
 
 	N_2->GetYaxis()->SetRangeUser(-0.4,1.1);
 	//N_2->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_2, A_2, NA2_2, pmax_lab, ";Fractional e^{+} energy (#lambda);Normalised units" , "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_labFrame");
+	DrawAsymmetryPlot(N_2, A_2, NA2_2, pmax_lab, ";#lambda=E/E_{max};Normalised units" , "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_labFrame");
 
 	// ==================== Lab frame with energy cut ====================
 	TF1 *N_3 = new TF1("N_3","(1/0.99) * (0.33) * ((x-1)*(x-1)) * (-(x*x)+x+3)",0,1); // 3.43
@@ -398,7 +398,7 @@ int main() {
 
 	N_3->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_3->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_3, A_3, NA2_3, pmax_lab, ";Fractional e^{+} energy (#lambda);Normalised units", "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_labFrame_eCut");
+	DrawAsymmetryPlot(N_3, A_3, NA2_3, pmax_lab, ";#lambda=E/E_{max};Normalised units", "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_wa_labFrame_eCut");
 
 	// ==================== Lab frame EDM ====================
 	// I did some hacky normalisation to make it look like Saskia and Gleb's plots, but I don't understand why 
@@ -412,8 +412,8 @@ int main() {
 
 	N_4->GetYaxis()->SetRangeUser(-0.1,1.1);
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);
-	DrawAsymmetryPlot(N_4, A_4, NA2_4, pmax_lab, ";Fractional e^{+} energy (#lambda);Normalised units" , "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_EDM_labFrame");
-
+	DrawAsymmetryPlot(N_4, A_4, NA2_4, pmax_lab, ";#lambda=E/E_{max};Normalised units" , "Laboratory frame e^{+} energy [MeV]", "../Images/Asymmetry/Asymmetry_EDM_labFrame");
+//Fractional e^{+} energy (#lambda)
 
 	// ==================== Lab frame EDM ====================
 	//N_4->GetXaxis()->SetRangeUser(-0.01,1.01);

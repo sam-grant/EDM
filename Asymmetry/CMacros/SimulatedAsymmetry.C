@@ -6,7 +6,7 @@ double M_POS = 0.51099895; // MeV
 double M_MU = 105.6583715; // MeV
 double A_MU = 11659208.9e-10; 
 double GMAGIC = std::sqrt( 1.+1./A_MU );
-double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
+double PMAX = M_MU * GMAGIC; // 3127.1144
 
 bool boost = false;
 
@@ -146,10 +146,11 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
 
 	TLegend *l;
 	if(topLegend) l = new TLegend(0.39,0.79,0.69,0.85);
-	else if(!topLegend) l = new TLegend(0.39,0.19,0.69,0.25);
+	else if(!topLegend) l = new TLegend(0.39,0.19,0.69,0.24);
 
-	l->SetNColumns(3);
-	l->SetTextFont(42);
+	l = new TLegend(0.725,0.70,0.89,0.89);
+	//l->SetNColumns(3);
+	//l->SetTextFont(42);
 	l->SetBorderSize(0);
 
 	hists_.at(0)->SetTitle(title.c_str());
@@ -180,8 +181,8 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
 	double y_min = FindYMin(hists_);
 	double y_max = FindYMax(hists_);
 
-	y_max = y_max + y_max*0.05;
-	y_min = y_min + y_min*0.05;
+	y_max = y_max + abs(y_max)*0.1;
+	y_min = y_min - abs(y_min)*0.1;
 
 	hists_.at(0)->GetYaxis()->SetRangeUser(y_min,y_max);
 
@@ -189,12 +190,18 @@ void DrawManyHists(std::vector<TH1F*> hists_, std::vector<string> names, std::st
   	hists_.at(1)->SetLineColor(kRed);
   	hists_.at(2)->SetLineColor(kBlue);
 
+   hists_.at(0)->SetMarkerColor(kBlack);
+  	hists_.at(1)->SetMarkerColor(kRed);
+  	hists_.at(2)->SetMarkerColor(kBlue);
+
 	for(int i = 0; i < n; i++) {
+
+		hists_.at(i)->SetLineWidth(3);
 
     	l->AddEntry(hists_.at(i), (names.at(i)).c_str());
 
-      if(i==0) hists_.at(i)->Draw("HIST");
-      else hists_.at(i)->Draw("HIST SAME");
+      if(i==0) hists_.at(i)->Draw("E");
+      else hists_.at(i)->Draw("E SAME");
   	}
 
 	l->Draw("same");
@@ -265,9 +272,9 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 	fitFunc->SetLineWidth(3);
 	fitFunc->Draw("same");
 
-	TLegend *leg = new TLegend(.15, .69, .59, .89);
+	TLegend *leg = new TLegend(.15, .69, .49, .89);
 	leg->SetBorderSize(0);
-	leg->AddEntry(hist, ("Decay asymmetry, "+config).c_str());
+	leg->AddEntry(hist, "Decay asymmetry, A(#lambda)");//, "+config).c_str());
 
 	string legEntry = "";
 	string fname = "../Images/";
@@ -334,13 +341,16 @@ void DrawDeltaThetaHist(TH1F *h1, string boostLabel) {
   	h2->SetLineColor(kRed);
   	h1->SetFillColor(kBlue);
   	h2->SetFillColor(kRed);
+   h1->SetMarkerColor(kBlue);
+  	h2->SetMarkerColor(kRed);
+
 
   	h1->GetXaxis()->SetRangeUser(-0.01, 0.01);//h1->GetBinCenter(h1->FindFirstBinAbove(0)));
   	// h1->SetMaximum(5.0e6);
   	// h2->GetXaxis()->SetRangeUser(h2->GetBinCenter(h2->FindLastBinAbove(0)), 0);
 
-   h1->Draw("HIST");
-   h2->Draw("HIST ][ SAME");
+   h1->Draw("E");
+   h2->Draw("E ][ SAME");
    //h2->Draw("HIST");// SAME");
 
 	TLegend *l = new TLegend(0.69,0.69,0.89,0.89);
@@ -350,7 +360,7 @@ void DrawDeltaThetaHist(TH1F *h1, string boostLabel) {
 	l->SetBorderSize(0);
 
    l->AddEntry(h1,"Aligned");
-   l->AddEntry(h2,"Anti-aligned");
+   l->AddEntry(h2,"Antialigned");
 
    //l->SetNColumns(2);
 
@@ -373,7 +383,7 @@ void RunG2Asym(TFile *fin, string boostLabel) {
 	cout<<"...Got forward/backward hists "<<h_N_f<<", "<<h_N_b<<endl;
 
 	// Draw them
-	DrawHemisphereHists(h_N_f, h_N_b, "cos(#alpha)", ";Track momentum [MeV];Entries", ("../Images/g2/ForwardsBackwards_"+boostLabel).c_str());
+	DrawHemisphereHists(h_N_f, h_N_b, "cos(#alpha)", ";e^{+} momentum [MeV];Entries", ("../Images/g2/ForwardsBackwards_"+boostLabel).c_str());
 
 	// Get boost factor (momentum scaling)
 	double boostFactor = GetBoostFactor(boost);
@@ -416,8 +426,8 @@ void RunG2Asym(TFile *fin, string boostLabel) {
 	vector<TH1F*> hists_ = {h_N, h_A, h_NA2};
 	vector<string> labels_ = {"N", "A", "NA^{2}"};
 
-	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Events", "../Images/g2/DiffDecayAsymHists_"+boostLabel,  false, false, false, true);
-	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Normalised events", "../Images/g2/NormDiffDecayAsymHists_"+boostLabel, false, true, true, true);
+	DrawManyHists(hists_, labels_, ";e^{+} momentum [MeV]; Events", "../Images/g2/DiffDecayAsymHists_"+boostLabel,  false, false, false, true);
+	DrawManyHists(hists_, labels_, ";e^{+} momentum [MeV]; Normalised events", "../Images/g2/NormDiffDecayAsymHists_"+boostLabel, false, true, true, true);
 
 	//h_A->Scale(1./h_A->GetMaximum());
 	FitAsym(h_A, false, boostLabel);
@@ -444,13 +454,17 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 	double boostFactor = GetBoostFactor(boost);
 
 	// Book histograms and adjust bins to cut off negative A
-	TH1F *h_A = new TH1F("h_A",";Track momentum [MeV];Entries",300,0,3000);
-	TH1F *h_N = new TH1F("h_N",";Track momentum [MeV];Entries",300,0,3000);
-	TH1F *h_NA2 = new TH1F("h_NA2",";Track momentum [MeV];Entries",300,0,3000); 
+	// TH1F *h_A = new TH1F("h_A",";Track momentum [MeV];Entries",300,0,3000);
+	// TH1F *h_N = new TH1F("h_N",";Track momentum [MeV];Entries",300,0,3000);
+	// TH1F *h_NA2 = new TH1F("h_NA2",";Track momentum [MeV];Entries",300,0,3000); 
+
+	TH1F *h_A = new TH1F("h_A",";Track momentum [MeV];Entries",int(PMAX/10),0,int(PMAX*boostFactor));//300,0,PMAX);
+	TH1F *h_N = new TH1F("h_N",";Track momentum [MeV];Entries",int(PMAX/10),0,int(PMAX*boostFactor));//300,0,PMAX);
+	TH1F *h_NA2 = new TH1F("h_NA2",";Track momentum [MeV];Entries",int(PMAX/10),0,int(PMAX*boostFactor));//300,0,PMAX); 
 
 	vector<TH1F*> hists_ = {h_N, h_A, h_NA2};
 
-	vector<string> labels_ = {"N", "A", "NA^{2}"};
+	vector<string> labels_ = {"N(#lambda)", "A(#lambda)", "NA^{2}(#lambda)"};
 
 	vector<double> A_; vector<double> p_; vector<double> zeros_;
 
@@ -497,8 +511,8 @@ void RunEDMAsym(TFile *fin, string boostLabel) {
 	bool topLegend = false;
 	if(boost) topLegend = true;
 
-	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Events", "../Images/edm/DiffDecayAsymHists_"+boostLabel, true, false, false, topLegend);
-	DrawManyHists(hists_, labels_, boostLabel+";Track momentum [MeV]; Normalised events", "../Images/edm/NormDiffDecayAsymHists_"+boostLabel, true, true, true, topLegend);
+	DrawManyHists(hists_, labels_, ";#lambda = p/p_{max}; Events", "../Images/edm/DiffDecayAsymHists_"+boostLabel, true, false, false, topLegend);
+	DrawManyHists(hists_, labels_, ";#lambda = p/p_{max}; Normalised events", "../Images/edm/NormDiffDecayAsymHists_"+boostLabel, true, true, true, topLegend);
 
 
 	// Perform fit
@@ -517,8 +531,8 @@ int main() {
 
 	string boostLabel = "";
 
-	if(boost) boostLabel += "MRF";
-	else if(!boost) boostLabel += "LAB";
+	if(boost) boostLabel += "MRF_TEST";
+	else if(!boost) boostLabel += "LAB_TEST";
 
 	string fname = "../Plots/decayNTuplePlots_Full_"+boostLabel+".root";
 	TFile *fin = TFile::Open(fname.c_str()); 

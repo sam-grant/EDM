@@ -1,7 +1,7 @@
 void S18_EDM_vs_DS_blinded_750_2750MeV_250MeV_BQ_noAccCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 20 00:23:55 2022) by ROOT version 6.24/06
+//=========  (Fri Apr 29 14:17:00 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0.25,-1.173551e-19,4.75,1.273069e-18);
    c->SetFillColor(0);

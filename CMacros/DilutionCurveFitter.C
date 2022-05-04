@@ -19,7 +19,7 @@ const double delta_calc = 1.699245178; // mrad
 string dMu = "5.4e-18";
 
 const double xmin = 750;
-const double xmax = 2750;
+const double xmax = 2500;
 const int nTrials = 1e3;
 
 string GetQual(string config) {
@@ -156,14 +156,14 @@ void ParabolaFit(TGraphErrors *graph, string config, double xmin, double xmax) {
 }
 
 // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
-double DilutionFunc(double *x, double *par) {
+double DilutionFuncOLD(double *x, double *par) {
   return par[0] * pow(((par[1]*x[0]) - 1), 2) * (2*(par[1]*x[0]) + 1);
 }
 
 
-void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
+void DilutionFitOLD(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
   
-  TF1 *fnc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 2);
+  TF1 *fnc = new TF1("DilutionFuncOLD", DilutionFuncOLD, xmin, xmax, 2);
   fnc->SetParameter(0, 1.4e-01);
   fnc->SetParameter(1, -1.3e-04);
 
@@ -183,6 +183,33 @@ void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) {
 
 }
 
+double DilutionFunc(double *x, double *par) {
+  x[0] = x[0]/PMAX;
+  return  par[0] * ( (x[0]-1)*(2*x[0]+1) ) / ( 4*x[0]*x[0] - 5*x[0] -5 ) ; 
+}
+
+
+void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
+  
+  TF1 *fnc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 1);
+  fnc->FixParameter(0, 1); 
+  //fnc->SetParameter(1, -1.3e-04);
+
+/*  if(config == "Tracks") {
+    fnc->SetParameter(0, -5.5e-8);
+    fnc->SetParameter(1, 1.5e-4);
+    fnc->SetParameter(2, -0.05);
+  }  else if(config == "Decays") { 
+    fnc->SetParameter(0, -5.5e-8);
+    fnc->SetParameter(1, 8.0e-5);
+    fnc->SetParameter(2, 2.5e-1);
+  } */
+
+  graph->Fit(fnc, "R");    
+
+  return;
+
+}
 
 TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
@@ -559,7 +586,7 @@ int main() { //int argc, char *argv[]) {
   //std::string tmp = argv[1];
 
   bool fit = true;
-  bool write = true;
+  bool write = false;
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
@@ -574,7 +601,7 @@ int main() { //int argc, char *argv[]) {
   //FitDilution("trackReco_WORLD_250MeV_BQ_HS", "EDM", output, true, true); 
 
   // Regular samples
-  FitDilution("allDecays_WORLD_250MeV_AQ_eTimeCut_noCorr", "EDM", output, true);
+  FitDilution("allDecays_WORLD_250MeV_AQ_eTimeCut_noCorr", "EDM", output, true); // this is what we're going with. 
   FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);

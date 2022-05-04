@@ -1,7 +1,7 @@
 void S12S18_h_pull_trackTruth_WORLD_250MeV_BQ_noVertCorr_0mm()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr  6 12:51:34 2022) by ROOT version 6.24/06
+//=========  (Tue Apr 26 12:12:24 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

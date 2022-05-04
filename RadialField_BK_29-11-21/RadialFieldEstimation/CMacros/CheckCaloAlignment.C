@@ -279,7 +279,6 @@ TGraphErrors *CompRelativePositions(string dataset) {
 
 	for(int i_run = 0; i_run < n; i_run++) { 
 
-
 		int count_calo = 0;
 
 		// Take pairs of calos, ending at 23-24
@@ -308,7 +307,7 @@ TGraphErrors *CompRelativePositions(string dataset) {
 	} 
 
 	// Set results 
-	for(int i_calo = 0; i_calo < n_calo; i_calo++) {
+	for(int i_calo = 0; i_calo < n_calo-1; i_calo++) {
 		y_[i_calo] = y_[i_calo] / count_run;
 		//cout<<sqrt(ey_[i_calo])<<endl;
 		ey_[i_calo] = sqrt(ey_[i_calo]) / count_run;

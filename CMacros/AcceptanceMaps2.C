@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "RootInclude.h"
-//#include "FancyDraw.h"
+#include "FancyDraw.h"
 #include "Utils.h"
 
 using namespace std;
@@ -226,26 +226,91 @@ TH1D *Ratio(TH1D *h1_tracks, TH1D *h1_decays) {
 
 }
 
+int FindMaximumBin(TH1D *h1_ratio) { 
 
-void Run() {	
+	int maxBin = -1;
+	//int nBins = h1_ratio->GetNbinsX();
 
-	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.root";
+	int firstBin = h1_ratio->FindFirstBinAbove(0);
+	int lastBin = h1_ratio->FindLastBinAbove(0);
+
+	double avgBinContent = 0;
+
+	// Loop thro once, 
+	// Try to avoid the tails
+	// Need a smarter way to avoid the dodgy bins.
+
+	double y_max = 0;
+
+	// Find average bin contents
+
+	int n_bins = 0;
+	for(int i = firstBin; i<lastBin; i++) {
+		double y_bin = h1_ratio->GetBinContent(i);
+		avgBinContent = y_bin + avgBinContent; 
+		n_bins++;
+	}
+
+	avgBinContent = avgBinContent / n_bins;
+
+	// Find nominal maximum bin 
+
+	maxBin = h1_ratio->GetMaximumBin();
+	double maxBinContent = h1_ratio->GetMaximum();
+
+
+	if(abs(maxBinContent - avgBinContent) > 2*avgBinContent) { 
+
+
+		// Then the max bin is twice as large as the average bin and is therefore likely to be an edge case 
+
+		// So find the next largest bin
+		int n_bins = 0;
+		for(int i = firstBin; i<lastBin; i++) {
+			double y_bin = h1_ratio->GetBinContent(i);
+			avgBinContent = y_bin + avgBinContent; 
+			n_bins++;
+		}
+
+
+
+	} /*else return maxBin;
+
+
+ 
+
+		if(y_bin > integral/3) continue;
+	
+		if(y_bin>y_max) {
+			y_max = y_bin;
+			maxBin = i;
+		}
+
+	}*/
+
+	return maxBin;//maxBin;
+
+}
+
+void Run(TFile *fout, string momSlice = "0_3127_MeV") {	
+
+
+	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.momBinned.root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
-	TString foutName = "delete_me.root";//../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots."+config+".test.root";
-	TFile *fout = new TFile(foutName, "RECREATE");
+	fout->mkdir(("AcceptanceWeightings/"+momSlice).c_str());
+	fout->cd(("AcceptanceWeightings/"+momSlice).c_str());
 
-	fout->mkdir("AcceptanceWeighting");
-	fout->mkdir("AcceptanceWeighting/AllMom");
-	fout->mkdir("AcceptanceWeighting/MomBins");
+/*	fout->mkdir("AcceptanceWeighting/AllMom");
+	fout->mkdir("AcceptanceWeighting/MomBins");*/
 
-	vector<string> stn_ = {"S12"};//"S12S18", "S12", "S18"};
+	vector<string> stn_ = {"S12", "S18", "S12S18"};//, "S12", "S18"};
 
 	// Get basic decay histograms 
-	TH1D *h1_Y_decays = (TH1D*)fin->Get("AllDecays/Main/Y");
-	TH2D *h2_thetaY_vs_Y_decays = (TH2D*)fin->Get("AllDecays/Main/ThetaY_vs_Y");
+	TH1D *h1_Y_decays = (TH1D*)fin->Get((momSlice+"/AllDecays/Main/Y").c_str());
+	TH2D *h2_thetaY_vs_Y_decays = (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_Y").c_str());
 
 	cout<<"----> Got base decay histograms"<<endl;
 
@@ -253,23 +318,24 @@ void Run() {
 
 		cout<<"----> Running "<<stn<<endl;
 
-
 		// Calculate the acceptance weights in 5 mm slices of vertical position 
 
-		TH1D *h1_Y_tracks = (TH1D*)fin->Get(("Tracks/Main/"+stn+"_Y").c_str());
+		TH1D *h1_Y_tracks = (TH1D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_Y").c_str());
 		TH1D *h1_Y_ratio = Ratio(h1_Y_tracks, h1_Y_decays);
+
+		//h1_Y_ratio->Write((stn+"_y_ratio").c_str());
 
 		cout<<"---> Made y-position ratio: "<<h1_Y_ratio<<endl;
 
 		// Normalise to max RATIO
-		int maxRatioBinY = h1_Y_ratio->GetMaximumBin();
+		int maxRatioBinY = h1_Y_ratio->GetMaximumBin(); //FindMaximumBin(h1_Y_ratio);//->GetMaximumBin();
 
 		h1_Y_ratio->Scale(1./h1_Y_ratio->GetBinContent(maxRatioBinY)); 
 		h1_Y_decays->Scale(1./h1_Y_decays->GetBinContent(maxRatioBinY)); 
 		h1_Y_tracks->Scale(1./h1_Y_tracks->GetBinContent(maxRatioBinY)); 
 
 		// Draw ratio plot 
-		DrawBasicRatioPlot(h1_Y_decays, h1_Y_tracks, stn, "Vertical decay position, y [mm]", "../Images/MC/Acceptance/1DRatios/VerticalPosition/"+stn+"_VerticalDecayPositionRatio"); //h1_thetaY_tracks, fname, slice, stn);
+		DrawBasicRatioPlot(h1_Y_decays, h1_Y_tracks, stn, "Vertical decay position, y [mm]", "../Images/MC/Acceptance/1DRatios/VerticalPosition/"+stn+"_VerticalDecayPositionRatio_"+momSlice); //h1_thetaY_tracks, fname, slice, stn);
 
 		// Store vertical weightings in vector 
 		vector<double> verticalPosWeights_;
@@ -297,23 +363,23 @@ void Run() {
 	    	std::string stepStr = to_string(lo)+"_"+to_string(hi);
 
 	    	// Illustration histogram
-				TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get(("AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
-				cout<<stepStr<<endl;
-				cout<<h2_thetaY_vs_Y_decays_slice<<endl;
+				TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
 				h2_thetaY_vs_Y_decays_slice->GetXaxis()->SetRangeUser(-45, 45);
 				h2_thetaY_vs_Y_decays_slice->GetYaxis()->SetRangeUser(-45, 45);
 
 	    	// Get theta_y histograms
-	    	TH1D *h1_thetaY_decays = (TH1D*)fin->Get(("AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
-	    	TH1D *h1_thetaY_tracks = (TH1D*)fin->Get(("Tracks/VertPosBins/S12S18_ThetaY_"+stepStr).c_str());
+	    	TH1D *h1_thetaY_decays = (TH1D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
+	    	TH1D *h1_thetaY_tracks = (TH1D*)fin->Get((momSlice+"/Tracks/VertPosBins/"+stn+"_ThetaY_"+stepStr).c_str());
 
 	    	// Get ratio
 	    	TH1D *h1_thetaY_ratio = Ratio(h1_thetaY_tracks, h1_thetaY_decays);
 
+	    	h1_thetaY_ratio->Write((stn+"_thetaY_ratio_"+stepStr).c_str());
+
 				cout<<"---> Made vertical angle ratio: "<<h1_thetaY_ratio<<endl;
 
-				// Normalise to max RATIO
-				int maxRatioBinThetaY = h1_thetaY_ratio->GetMaximumBin();
+				// Normalise to max RATIO 
+				int maxRatioBinThetaY = h1_thetaY_ratio->GetMaximumBin();// FindMaximumBin(h1_thetaY_ratio); // h1_thetaY_ratio->GetMaximumBin();////->GetMaximumBin();
 
 				h1_thetaY_ratio->Scale(1./h1_thetaY_ratio->GetBinContent(maxRatioBinThetaY)); 
 				h1_thetaY_decays->Scale(1./h1_thetaY_decays->GetBinContent(maxRatioBinThetaY)); 
@@ -328,21 +394,25 @@ void Run() {
 					//cout<<h1_thetaY_ratio->GetBinCenter(i+1)<<", "<<h1_thetaY_ratio->GetBinContent(i+1)<<endl;
 					verticalAngleWeightsSlice_.push_back(h1_thetaY_ratio->GetBinContent(i+1));
 				}
-				//cout<<endl;
 
 				// Draw ratio plot 
 
 				// Axis title doesn't work but that's fine
-				DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays, h1_thetaY_tracks, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
+				DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays, h1_thetaY_tracks, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
 			
+
 				verticalAngleWeights_.push_back(verticalAngleWeightsSlice_);
 
 		} // vertical position slice loop
 
+
+		// This is the tricky part, C++ is not designed for this 
+		// We need to fill a histogram based on these weights.
+
 		cout<<"\n----> Finished getting weights, constructing map"<<endl;
 
 		// Start with tracks theta_y / y 
-		TH2D *h2_thetaY_vs_Y_tracks = (TH2D*)fin->Get(("Tracks/Main/"+stn+"_ThetaY_vs_Y").c_str());
+		TH2D *h2_thetaY_vs_Y_tracks = (TH2D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_ThetaY_vs_Y").c_str());
 
 		TH2D *h2_map = (TH2D*)h2_thetaY_vs_Y_tracks->Clone("h2_map");
 
@@ -369,12 +439,12 @@ void Run() {
 
 			double verticalPosWeight = verticalPosWeights_.at(i_weight);
 
-			cout<<"\n"<<i_weight<<", "<<verticalPosWeight<<endl;	
+			//cout<<"\n"<<i_weight<<", "<<verticalPosWeight<<endl;	
 
 			// The index of the vertical angle weight vector
 			int j_weight = 0; 
 
-			// now loop through j and get the weights, for an i coord where know that there are non-zero bins
+			// now loop through j and get the weights, for an i coord where we know that there are non-zero bins
 
 			for(int j(0); j<h2_thetaY_vs_Y_tracks->GetNbinsY(); j++) { 
 
@@ -386,9 +456,12 @@ void Run() {
 				vector<double> verticalAngleWeightsSlice_ = verticalAngleWeights_.at(i_weight);
 				double verticalAngleWeight = verticalAngleWeightsSlice_.at(j_weight);
 
-				cout<<j_weight<<", "<<verticalAngleWeight<<endl;	
+				// Catch bad weightings
+				//if(verticalAngleWeight<1e-1) verticalAngleWeight = verticalAngleWeightsSlice_.at(j_weight+1);
 
-				h2_map->SetBinContent(i_map+1, j+1, verticalPosWeight*verticalAngleWeight);
+				//cout<<j_weight<<", "<<verticalAngleWeight<<endl;	
+
+				h2_map->SetBinContent(i_map+1, j+1, verticalAngleWeight); // Just scale by vertical angle weight
 
 				j_weight++;
 
@@ -398,119 +471,17 @@ void Run() {
 			i_map++;
 
 		}
+
+		DrawAcceptanceWeightingMap(h2_map, stn, "../Images/MC/Acceptance/Maps/"+stn+"_AcceptanceMap_"+momSlice, "COLZ TEXT");
+		DrawAcceptanceWeightingMap(h2_map, stn, "../Images/MC/Acceptance/Maps/"+stn+"_AcceptanceSurface_"+momSlice, "SURF2");
+
 		
-
-			//double binCont = h2_thetaY_vs_Y_tracks->GetBinContent(i_binAboveZero+1,j_binAboveZero+1);
-
-			//if(h2_thetaY_vs_Y_tracks->GetBinContent(i_binAboveZero+1,j_binAboveZero+1) == 0) continue;
-
-
-
-
-/*
-			
-
-			cout<<i_verticalPos<<", "<<verticalPosWeight<<endl;	
-
-			cout<<"Vertical angle weights\n"<<endl;
-
-			h2_thetaY_vs_Y_decays->GetXaxis()->GetBinLowEdge(h2_thetaY_vs_Y_decays->FindFirstBinAbove(0));
-
-			
-
-				double x = h2_thetaY_vs_Y_tracks->GetXaxis()->GetBinCenter(i+1);
-				double y = h2_thetaY_vs_Y_tracks->GetYaxis()->GetBinCenter(j+1);
-				double binCont = h2_thetaY_vs_Y_tracks->GetBinContent(i+1,j+1);
-
-				if(binCont==0) continue;
-
-				vector<double> verticalAngleWeightsSlice_ = verticalAngleWeights_.at(i_verticalPos);
-				double verticalAngleWeight = verticalAngleWeightsSlice_.at(j_verticalAngle);
-
-				cout<<j_verticalAngle<<", "<<verticalAngleWeight<<endl;	
-
-				//cout<<x<<", "<<y<<", "<<binCont<<endl;
-
-				h2_map->SetBinContent(i+1, j+1, verticalPosWeight);//binCont*verticalPosWeight*verticalAngleWeight);
-
-				y_contents_sum = binCont + y_contents_sum;
-				j_verticalAngle++;
-
-			}
-
-			if(y_contents_sum!=0) continue;
-
-			i_verticalPos++; // only if bin content is not zero.
-
-		}*/
-
-
-/*		int i_binAboveZero = 0;
-
-		for(int i(0); i<h2_thetaY_vs_Y_tracks->GetNbinsX(); i++) { 
-		
-			int j_binAboveZero = 0;
-
-			//double binCont = h2_thetaY_vs_Y_tracks->GetBinContent(i_binAboveZero+1,j_binAboveZero+1);
-
-			//if(h2_thetaY_vs_Y_tracks->GetBinContent(i_binAboveZero+1,j_binAboveZero+1) == 0) continue;
-
-
-
-
-
-			double verticalPosWeight = verticalPosWeights_.at(i_verticalPos);
-
-			cout<<i_verticalPos<<", "<<verticalPosWeight<<endl;	
-
-			cout<<"Vertical angle weights\n"<<endl;
-
-			h2_thetaY_vs_Y_decays->GetXaxis()->GetBinLowEdge(h2_thetaY_vs_Y_decays->FindFirstBinAbove(0));
-
-			for(int j(0); j<h2_thetaY_vs_Y_tracks->GetNbinsY(); j++) { 
-
-				double x = h2_thetaY_vs_Y_tracks->GetXaxis()->GetBinCenter(i+1);
-				double y = h2_thetaY_vs_Y_tracks->GetYaxis()->GetBinCenter(j+1);
-				double binCont = h2_thetaY_vs_Y_tracks->GetBinContent(i+1,j+1);
-
-				if(binCont==0) continue;
-
-				vector<double> verticalAngleWeightsSlice_ = verticalAngleWeights_.at(i_verticalPos);
-				double verticalAngleWeight = verticalAngleWeightsSlice_.at(j_verticalAngle);
-
-				cout<<j_verticalAngle<<", "<<verticalAngleWeight<<endl;	
-
-				//cout<<x<<", "<<y<<", "<<binCont<<endl;
-
-				h2_map->SetBinContent(i+1, j+1, verticalPosWeight);//binCont*verticalPosWeight*verticalAngleWeight);
-
-				y_contents_sum = binCont + y_contents_sum;
-				j_verticalAngle++;
-
-			}
-
-			if(y_contents_sum!=0) continue;
-
-			i_verticalPos++; // only if bin content is not zero.
-
-		}
-*/
-
-		DrawAcceptanceWeightingMap(h2_map, "", "../Images/MC/Acceptance/Maps/2DMap", "COLZ TEXT");
-		DrawAcceptanceWeightingMap(h2_map, "", "../Images/MC/Acceptance/Maps/Surface", "SURF2");
-
-
-
-
-		// Now for the hard part. Would be nice if we could use pandas for this.
+		h2_map->Write((stn+"_AcceptanceMap").c_str());
 
 
  	} // stn loop
 
 	fin->Close();
-	fout->Close();
-
-	cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
 
 	return;
 
@@ -518,7 +489,47 @@ void Run() {
 
 void AcceptanceMaps2() { 
 
-    Run();
+		TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.truth.momBinned.root";
+		TFile *fout = new TFile(foutName, "RECREATE");
+		fout->mkdir("AcceptanceWeightings"); 
+
+		// All momentum
+		Run(fout);//
+
+		// Analysis range
+		Run(fout, "750_2500_MeV");
+
+/*		, "1750_2000_MeV");//2500_2750_MeV");//,"2500_2750_MeV");//,"2000_2250_MeV");//, "1750_2000_MeV");//, "250_500_MeV");
+
+		fout->Close();
+
+		cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
+
+    return;*/
+
+
+		// Momentum bins
+		int p_step = 250; 
+  	int p_slices = PMAX/p_step;
+
+ 		for ( int i(1); i < p_slices-1; i++ ) { 
+
+    	int pLo = i*p_step; 
+    	int pHi = p_step + i*p_step;
+
+    	cout<<"-----> Running momentum slice "<<pLo<<" < p [MeV] < "<<pHi<<endl;
+
+    	string momStr = to_string(pLo)+"_"+to_string(pHi)+"_MeV";    
+
+    	cout<<momStr<<endl;
+
+	   	Run(fout, momStr);
+
+    }
+
+		fout->Close();
+
+		cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
 
     return;
 }

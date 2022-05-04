@@ -1,7 +1,7 @@
 void Asymmetry_wa_restFrame()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Apr 18 21:22:57 2022) by ROOT version 6.24/06
+//=========  (Thu Apr 21 20:44:27 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.1428571,-0.5875,1.285714,1.2875);
@@ -12,11 +12,11 @@ void Asymmetry_wa_restFrame()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TF1 *N_11 = new TF1("N_1",";Fractional e^{+} energy (#lambda);Normalised units",0,1, TF1::EAddToList::kDefault);
+   TF1 *N_11 = new TF1("N_1",";#lambda=E/E_{max};Normalised units",0,1, TF1::EAddToList::kDefault);
    N_11->SetFillColor(19);
    N_11->SetFillStyle(0);
    N_11->SetLineWidth(3);
-   N_11->GetXaxis()->SetTitle("Fractional e^{+} energy (#lambda)");
+   N_11->GetXaxis()->SetTitle("#lambda=E/E_{max}");
    N_11->GetXaxis()->SetRange(1,100);
    N_11->GetXaxis()->CenterTitle(true);
    N_11->GetXaxis()->SetLabelFont(42);

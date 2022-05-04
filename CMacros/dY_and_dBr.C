@@ -222,7 +222,7 @@ int main() {
 	// Get file for reprocessed scan 2 (current best)
 
 	TFile *input = TFile::Open("../Plots/Data/RadialFieldScan_2/raw/fits.root");
-	TFile *output = new TFile("../Plots/Data/RadialFieldEstimation/ConversionFactor/fits.root", "RECREATE");
+	TFile *output = new TFile("../Plots/Data/RadialFieldEstimation/ConversionFactor/fits_TEST.root", "RECREATE");
 
 	double QHVs[4] = {14.0, 16.0, 18.0, 19.5};
 

@@ -390,6 +390,7 @@ const double GetPhase(TFile *input, TFile *output, std::string config, std::stri
 
 TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S0S12S18_", double momentum = -1) { 
 
+  cout<<"\nHELLO there"<<endl;
   // ================== First, shift phase ==================
 
   // Shift the phase 90 deg
@@ -409,17 +410,39 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
 
   // ================== Third, inject blinded A_EDM into modulo plot ==================
 
+  cout<<"\nTHIRD"<<endl; 
+
   // Define blinded EDM oscillation
   TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
+
+  cout<<"\nblindEDMFunc = "<<blindEDMFunc<<endl;
+
   blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#omega_{a}^{FIXED}","#phi");//,"offset");
+
+  cout<<"HELLO"<<endl;
+
   blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
+
+  cout<<"HELLO 2"<<endl;
+
   blindEDMFunc->SetNpx(50000);
+
+  cout<<"HELLO 3"<<endl;
+
+  
+  cout<<"gr_thetaY_mod = "<<gr_thetaY_mod<<endl;
 
   // Best not to draw this :)
   // DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/Data/dMu/"+config+"/blindEDMFunc_"+qual);
 
-  if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, stn, momentum);
-  else return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
+  if(weighted) {
+    cout<<"\nInjectBlindedModulo weighted"<<endl;
+    return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, stn, momentum);
+  }
+  else {
+    cout<<"\nInjectBlindedModulo"<<endl;
+    return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
+  }
 
 }
 
@@ -748,8 +771,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       int nEntries = h2_thetaY_mod->GetEntries();
 
-      // Avoid out of range errors after skipping an empty bin
-      if(nEntries == 0) continue;
+      // Skipping empty bins (reweighted plots have entries but they're all zeros.)
+      if(nEntries == 0 || h2_thetaY_mod->GetRMS() == 0) continue;
 
       p_.push_back(p);
       ep_.push_back(ep);
@@ -763,17 +786,24 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       // Blind
       TGraphErrors *gr_thetaY_mod;
-      if(!unblind) gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
-      else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+
+      cout<<"\n Doing blinding"<<endl;
+      if(!unblind) {
+        // This is the issue
+        gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false, stn, p);
+        cout<<"\nhello"<<endl;
+      } else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
+      cout<<"\n Done"<<endl;
 
       // TODO: figure out blinding for asymmetry 
       TGraphErrors *gr_A_mod = ConvertToTGraphErrors(h1_A_mod);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 
+      cout<<"EDM fits"<<endl;
       FullEDMFit(gr_thetaY_mod , Ag2, OMEGA_A * 1e3, phi, Aedm, 0, 0, G2PERIOD);
       FullEDMFit(gr_A_mod, 0, OMEGA_A * 1e3, phi, 0.0375e-6, 0, 0, G2PERIOD);
-
+      cout<<"Done EDM fits"<<endl;
       // EDIT
       gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");

@@ -1,0 +1,122 @@
+void hFit_A_LAB_TEST()
+{
+//=========Macro generated from canvas: c/c
+//=========  (Thu Apr 21 20:25:17 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
+   c->Range(0,0,1,1);
+   c->SetFillColor(0);
+   c->SetBorderMode(0);
+   c->SetBorderSize(2);
+   c->SetFrameBorderMode(0);
+   
+   TH1F *h_A__20 = new TH1F("h_A__20","",20,0,1);
+   h_A__20->SetBinContent(1,0.06272318);
+   h_A__20->SetBinContent(2,0.09455187);
+   h_A__20->SetBinContent(3,0.1798707);
+   h_A__20->SetBinContent(4,0.2003957);
+   h_A__20->SetBinContent(5,0.2095445);
+   h_A__20->SetBinContent(6,0.2897654);
+   h_A__20->SetBinContent(7,0.2990675);
+   h_A__20->SetBinContent(8,0.3529044);
+   h_A__20->SetBinContent(9,0.4008265);
+   h_A__20->SetBinContent(10,0.4579515);
+   h_A__20->SetBinContent(11,0.441742);
+   h_A__20->SetBinContent(12,0.4732952);
+   h_A__20->SetBinContent(13,0.4848221);
+   h_A__20->SetBinContent(14,0.5003738);
+   h_A__20->SetBinContent(15,0.4459487);
+   h_A__20->SetBinContent(16,0.533982);
+   h_A__20->SetBinContent(17,0.5088938);
+   h_A__20->SetBinContent(18,0.4073871);
+   h_A__20->SetBinContent(19,0.3248524);
+   h_A__20->SetBinContent(20,0.2921355);
+   h_A__20->SetBinContent(21,-0.4245185);
+   h_A__20->SetBinError(1,0.02344157);
+   h_A__20->SetBinError(2,0.02369726);
+   h_A__20->SetBinError(3,0.02399093);
+   h_A__20->SetBinError(4,0.02435911);
+   h_A__20->SetBinError(5,0.02481372);
+   h_A__20->SetBinError(6,0.02535996);
+   h_A__20->SetBinError(7,0.02602401);
+   h_A__20->SetBinError(8,0.02680809);
+   h_A__20->SetBinError(9,0.02773912);
+   h_A__20->SetBinError(10,0.02885353);
+   h_A__20->SetBinError(11,0.03017019);
+   h_A__20->SetBinError(12,0.03176928);
+   h_A__20->SetBinError(13,0.03366814);
+   h_A__20->SetBinError(14,0.03602909);
+   h_A__20->SetBinError(15,0.03900556);
+   h_A__20->SetBinError(16,0.04289659);
+   h_A__20->SetBinError(17,0.04822401);
+   h_A__20->SetBinError(18,0.05603618);
+   h_A__20->SetBinError(19,0.06909191);
+   h_A__20->SetBinError(20,0.09893471);
+   h_A__20->SetBinError(21,0.3124967);
+   h_A__20->SetMinimum(0);
+   h_A__20->SetMaximum(0.7);
+   h_A__20->SetEntries(310);
+   h_A__20->SetStats(0);
+   h_A__20->SetLineWidth(3);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   h_A__20->SetMarkerColor(ci);
+   h_A__20->GetXaxis()->SetTitle("#lambda = p/p_{max}");
+   h_A__20->GetXaxis()->SetRange(1,309);
+   h_A__20->GetXaxis()->CenterTitle(true);
+   h_A__20->GetXaxis()->SetLabelFont(42);
+   h_A__20->GetXaxis()->SetTitleSize(0.04);
+   h_A__20->GetXaxis()->SetTitleOffset(1.1);
+   h_A__20->GetXaxis()->SetTitleFont(42);
+   h_A__20->GetYaxis()->SetTitle(" Normalised events");
+   h_A__20->GetYaxis()->CenterTitle(true);
+   h_A__20->GetYaxis()->SetNdivisions(4000510);
+   h_A__20->GetYaxis()->SetLabelFont(42);
+   h_A__20->GetYaxis()->SetTitleSize(0.04);
+   h_A__20->GetYaxis()->SetTitleOffset(1.1);
+   h_A__20->GetYaxis()->SetTitleFont(42);
+   h_A__20->GetZaxis()->SetLabelFont(42);
+   h_A__20->GetZaxis()->SetTitleOffset(1);
+   h_A__20->GetZaxis()->SetTitleFont(42);
+   h_A__20->Draw("E");
+   
+   TF1 *fitFunc2 = new TF1("fitFunc","0.5 * (1/0.266991) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x)",0,1, TF1::EAddToList::kDefault);
+   fitFunc2->SetFillColor(19);
+   fitFunc2->SetFillStyle(0);
+   fitFunc2->SetLineColor(2);
+   fitFunc2->SetLineWidth(3);
+   fitFunc2->GetXaxis()->SetLabelFont(42);
+   fitFunc2->GetXaxis()->SetTitleOffset(1);
+   fitFunc2->GetXaxis()->SetTitleFont(42);
+   fitFunc2->GetYaxis()->SetLabelFont(42);
+   fitFunc2->GetYaxis()->SetTitleFont(42);
+   fitFunc2->Draw("same");
+   
+   TLegend *leg = new TLegend(0,0,0,0,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("h_A","Decay asymmetry, A(#lambda)","lpf");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("fitFunc","Fit: #frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}","lpf");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   leg->Draw();
+   c->Modified();
+   c->cd();
+   c->SetSelected(c);
+}

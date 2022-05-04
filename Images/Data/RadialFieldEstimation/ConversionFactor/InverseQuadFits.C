@@ -1,7 +1,7 @@
 void InverseQuadFits()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 24 19:15:13 2021) by ROOT version 6.22/08
+//=========  (Mon Apr 25 17:56:50 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-77.14286,70.125,94.28572,78.875);

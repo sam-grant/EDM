@@ -1,7 +1,7 @@
 void FieldMap2D()
 {
 //=========Macro generated from canvas: c1/c1
-//=========  (Thu Jan 20 17:51:36 2022) by ROOT version 6.24/06
+//=========  (Sat Apr 30 22:19:58 2022) by ROOT version 6.24/06
    TCanvas *c1 = new TCanvas("c1", "c1",0,53,800,600);
    c1->SetHighLightColor(2);
    c1->Range(-0.9935258,-1.117922,1.054981,1.117922);

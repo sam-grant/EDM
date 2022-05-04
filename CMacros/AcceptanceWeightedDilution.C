@@ -3,8 +3,8 @@
 
 using namespace std;
 
-double xmin = 750;
-double xmax = 2750;
+double xmin = 1000;
+double xmax = 2500;
 
 // Reset graph range (can't use SetRangeUser because sometimes I like to plot with "L" option)
 TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
@@ -59,7 +59,40 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 }
 
 
-void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr2, TGraphErrors *gr3, std::string title, std::string fname) {
+void DrawTH1(TH1D *hist, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(title.c_str());
+
+	hist->SetStats(0);
+	//gStyle->SetOptStat(2210);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+	hist->SetLineWidth(3);
+	hist->SetLineColor(1);
+
+	//c->SetRightMargin(0.13);
+
+	hist->Draw("E");
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
+
+// Apologies foe confusing numbering		
+void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -101,7 +134,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr2, TGraphErrors *gr3, std::s
 	} else { 
 		l->AddEntry(gr1, "All decays (unweighted)");
 		l->AddEntry(gr2, "All decays (weighted)");
-		l->AddEntry(gr3, "Reco vertices");
+		l->AddEntry(gr3, "Truth vertices");
 		l->Draw("SAME");
 		gPad->Update();
 		l->SetX1NDC(.49);
@@ -208,7 +241,7 @@ TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) {
 	return h_res; 
 
 }
-
+/*
 void RunSimDerivedCorrections(string config, string title) {
 
 	TFile *f1;
@@ -271,8 +304,8 @@ void RunSimDerivedCorrections(string config, string title) {
 
 		double y = gr2->GetY()[i]/gr1->GetY()[i];
 
-		// Correlated errors again :/ 
-		double ey = gr1->GetEY()[i];
+		// from different samples so the error should be uncorrelated 
+		double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i],2) + pow(gr2->GetEY()[i]/gr2->GetY()[i],2) );
 
 		gr_ratio->SetPoint(i, x, y);
 		gr_ratio->SetPointError(i, 0, ey);
@@ -470,18 +503,93 @@ void DrawDataDerivedAcceptanceWeightings() {
 
 	return;
 
+}*/
+
+
+void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) { 
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  hists_.at(0)->SetTitle(title.c_str());
+  hists_.at(0)->GetXaxis()->SetTitleSize(.04);
+  hists_.at(0)->GetYaxis()->SetTitleSize(.04);
+  hists_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  hists_.at(0)->GetYaxis()->SetTitleOffset(1.1);
+  hists_.at(0)->GetXaxis()->CenterTitle(true);
+  hists_.at(0)->GetYaxis()->CenterTitle(true);
+  hists_.at(0)->GetYaxis()->SetMaxDigits(4);
+  hists_.at(0)->GetYaxis()->SetRangeUser(0,1);//Draw("E");
+
+  for(int i = 0; i < hists_.size(); i++) {
+
+    double colour = colour = i*0.1;
+    hists_.at(i)->SetMarkerColor(colour);
+    hists_.at(i)->SetLineColor(colour);
+
+    if(i==0) hists_.at(i)->Draw("E");
+    else hists_.at(i)->Draw("E SAME");
+  }
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());
+
+  delete c;
+
+  return;
+
 }
 
-void Run(bool write) {
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
+void GausTrials(TFile *fout, TH1D *h_ratio, int nTrials, string stn) { 
+
+   	// Set random number pointer with seed
+ 	TRandom3 *randGen = new TRandom3(12345);
+
+ 	vector<TH1D*> trialHists_;
+
+ 	for(int i_trial(0); i_trial<nTrials; i_trial++) {
+
+
+ 		TH1D *h_ratio_trial = (TH1D*)h_ratio->Clone(Form("h_ratio_trial_%d",i_trial));
+
+		// Loop thro' bins
+		for(int i_bin(0); i_bin<h_ratio->GetNbinsX(); i_bin++) { 
+
+			double centralVal = h_ratio->GetBinContent(i_bin+1);
+			double errorBar = h_ratio->GetBinError(i_bin+1);
+
+			// Draw from gaussian
+			// Width is one sigma (error bar)
+			h_ratio_trial->SetBinContent(i_bin+1, randGen->Gaus(centralVal, errorBar));
+			h_ratio_trial->SetBinError(i_bin+1, 0);//randGen->Gaus(centralVal,2*errorBar));
+
+		}
+
+
+		h_ratio_trial->Write();
+
+		trialHists_.push_back(h_ratio_trial);
+
+	}
+
+	DrawGausTrials(trialHists_, "", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
+
+	return;
+}
+
+
+// Ignore other "Run" functions
+void Run(bool write, string misalign) {
+
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV"+misalign+".root";
 	if(!write) foutName = "delete_me.root";
 
 	TFile *fout = new TFile(foutName, "RECREATE");
-	fout->mkdir("graphs"); fout->mkdir("hists");
+	fout->mkdir("graphs"); fout->mkdir("hists"); fout->mkdir("trials");
 
 	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root";
-	TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root";
+	TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr.root";
 
 	TFile *f1 = TFile::Open(f1Name);
 	TFile *f2 = TFile::Open(f2Name);
@@ -492,7 +600,7 @@ void Run(bool write) {
 
 	for(auto& stn : stn_) {
 
-		TString f3Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accCorr"+stn+".root";
+		TString f3Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+misalign+".root";
 		TFile *f3 = TFile::Open(f3Name);
 
 		cout<<"---> Got corrected file for "<<stn<<", "<<f3Name<<", "<<f3<<endl;
@@ -506,41 +614,92 @@ void Run(bool write) {
 		TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
 		TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
 
-		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptedCorrected_AEDM_vs_p_overlay");
+		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_overlay"+misalign);
 
 		// Make ratio of gr2/gr1
-		TGraphErrors *gr_ratio = new TGraphErrors();
+		
+		//TGraphErrors *gr_ratio_plus = new TGraphErrors();
+		//TGraphErrors *gr_ratio_minus = new TGraphErrors();
 
-		for (int i(0); i<gr1->GetN(); i++) {
+		int counter = 0;
 
-			double x = gr1->GetX()[i];
-			double y = gr2->GetY()[i]/gr1->GetY()[i];
-			double ey = gr1->GetEY()[i];
+		// Two ratios
 
-			gr_ratio->SetPoint(i, x, y);
-			gr_ratio->SetPointError(i, 0, ey);
+		// Weighting directly from the truth vertices 
+		// Ratio between gr1 and gr2
+		TGraphErrors *gr_ratio_main = new TGraphErrors();
+
+		// Weighting from pure acceptance of theta_y vs y 
+		// Ratio between gr1 and gr3 
+		TGraphErrors *gr_ratio_alt = new TGraphErrors();
+
+		for (int i(0); i<gr1_reset->GetN(); i++) {
+
+			double x1 = gr1_reset->GetX()[i]; // decays
+			double x2 = gr2_reset->GetX()[i]; // truth vertices
+			double x3 = gr3_reset->GetX()[i]; // weighted decays
+
+			if(x1 < xmin || x1 > xmax) continue;
+
+			// Main
+			double y1 = gr2_reset->GetY()[i]/gr1_reset->GetY()[i];
+			double ey1 = y1 * sqrt( pow(gr1_reset->GetEY()[i]/gr1_reset->GetY()[i],2) + pow(gr2_reset->GetEY()[i]/gr2_reset->GetY()[i],2) );
+
+			gr_ratio_main->SetPoint(counter, x2, y1);
+			gr_ratio_main->SetPointError(counter, 0, ey1);
+
+			// Alt
+			// This is the way to get an accurate result 
+			// A conservative approximation, gr3 is a subset of gr1 so will have the larger stat uncertainty. 
+			double y2 = gr3_reset->GetY()[i]/gr1_reset->GetY()[i];
+			double ey2 = y1 * gr3_reset->GetEY()[i]/gr3_reset->GetY()[i]; 
+
+			gr_ratio_alt->SetPoint(counter, x1, y2);
+			gr_ratio_alt->SetPointError(counter, 0, ey2);
+
+			counter++;
 
 		}
 
-		DrawTGraphErrors(gr_ratio, stn+";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceWeightingVsMomentum");
+		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_MainAcceptanceWeightingVsMomentum"+misalign);
+		DrawTGraphErrors(gr_ratio_alt, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AltAcceptanceWeightingVsMomentum"+misalign);
 
 		fout->cd("graphs");
-		gr_ratio->SetName((stn+"_ratio").c_str());
-		gr_ratio->Write();
+		gr_ratio_main->SetName((stn+"_ratio_main").c_str());
+		gr_ratio_main->Write();
+
+		gr_ratio_alt->SetName((stn+"_ratio_alt").c_str());
+		gr_ratio_alt->Write();
 
 		// Easier to use a histogram during the actual correction
-		int nBins = gr_ratio->GetN()+1;
-		TH1D *h1_ratio = new TH1D((stn+"_ratio").c_str(), ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", gr_ratio->GetN(), 0, 3000);
+		TH1D *h1_ratio_main = new TH1D((stn+"_ratio_main").c_str(), ";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", gr_ratio_main->GetN(), xmin, xmax);
+		TH1D *h1_ratio_alt = new TH1D((stn+"_ratio_alt").c_str(), ";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", gr_ratio_alt->GetN(), xmin, xmax);
 
-		for(int i(0); i<gr_ratio->GetN(); i++) {
-			h1_ratio->SetBinContent(i+1, gr_ratio->GetY()[i]);
-			h1_ratio->SetBinError(i+1, gr_ratio->GetEY()[i]);
+		for(int i(0); i<gr_ratio_main->GetN(); i++) {
+			h1_ratio_main->SetBinContent(i+1, gr_ratio_main->GetY()[i]);
+			h1_ratio_main->SetBinError(i+1, gr_ratio_main->GetEY()[i]);
 		}
 
-		fout->cd("hists");
-		h1_ratio->Write();
+		for(int i(0); i<gr_ratio_alt->GetN(); i++) {
+			h1_ratio_alt->SetBinContent(i+1, gr_ratio_alt->GetY()[i]);
+			h1_ratio_alt->SetBinError(i+1, gr_ratio_alt->GetEY()[i]);
+		}
 
+		DrawTH1(h1_ratio_main, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistMainAcceptanceWeightingVsMomentum"+misalign);
+		DrawTH1(h1_ratio_alt, stn+";Decay vertex momentum [MeV];Vertical angle acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAltAcceptanceWeightingVsMomentum"+misalign);
+
+		fout->cd("hists");
+		h1_ratio_main->Write();
+		h1_ratio_alt->Write();
 		f3->Close();
+
+		// Draw acceptance weightings from gaussian distribution for uncertainty estimate
+
+		
+		fout->mkdir(("trials/"+stn).c_str());
+		fout->cd(("trials/"+stn).c_str());
+
+		GausTrials(fout, h1_ratio_main, 1e3, stn);
 
 	}
 
@@ -555,11 +714,16 @@ void Run(bool write) {
 
 }
 
+
 int main() { 
 
 	bool write = true;
-	Run(write);
+	string misalign = "";
 	
+	Run(write, misalign);
+
+	//RunAlignmentShift();
+
 	//Run("truth", "_accepted2", "Simple acceptance weighting");
 	//Run("truth", "_acceptedMomBins", "Momentum binned acceptance weighting");
 	//Run("1", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
@@ -569,7 +733,6 @@ int main() {
 	//Run("1", "Vertical offset correction on 'reco vertices'");
 	//Run("2", "Vertical offset correction on 'all decays'");
 	//Run("3", "Vertical offset corrections on both samples");
-	// 
 
 	//RunDataDerivedCorrections("Run-1a", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");
 	//RunDataDerivedCorrections("Run-1b", ";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV");

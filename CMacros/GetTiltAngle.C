@@ -11,7 +11,7 @@ const int nTrials = 1e3;
 
 // Global momentum cuts
 const double xmin = 750;//750;//50;
-const double xmax = 2750;
+const double xmax = 2500;
 
 string GetQual(string config) {
 
@@ -499,6 +499,8 @@ void RunSim(string config, string dataset, string blinding) {
 
   cout<<"\n***************************** SIM *****************************\n"<<endl;
 
+ // TF1 *dilutionFunc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 1);
+
 	cout<<"\n***************************** Processing input configuration *****************************\n"<<endl;
 
 	int step = GetStep(config);
@@ -518,12 +520,12 @@ void RunSim(string config, string dataset, string blinding) {
 	cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
 	TString A_fileName = "../Plots/MC/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";
-	TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";
+	TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.root";
 
 	TFile *A_file = TFile::Open(A_fileName);
 	TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<endl;
+  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<endl;
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
 
@@ -569,7 +571,7 @@ void RunSim(string config, string dataset, string blinding) {
       TF1 *f_delta_prime = (TF1*)gr_delta_prime->GetFunction("pol0");
 
       //  cout<<"Sim: "+tracksOrDecaysLegend<<endl;
-      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecaysLegend, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"} [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+config);
+      DrawDeltaPrimeFit(gr_delta_prime, "Sim: "+tracksOrDecaysLegend, ";Decay vertex momentum [MeV];#delta [mrad] / "+to_string(step)+" MeV;", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p_"+config);
 
       gr_delta_prime->SetName((stn+"delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
@@ -642,6 +644,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   cout<<"\n***************************** DATA *****************************\n"<<endl;
 
+ // TF1 *dilutionFunc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 1);
+
   cout<<"\n***************************** Processing input configuration *****************************\n"<<endl;
 
   int step = GetStep(config);
@@ -677,17 +681,15 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
   cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
   TString A_fileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmFits_"+blinding+"_"+config+".root";
-  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";//+tmp+".root";
-
   TFile *A_file = TFile::Open(A_fileName);
-  TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-
-  //TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root";
-  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root"; // _dataAccCorr_"+datasetLabel+".root";
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root"; 
   TFile *acceptance_file = TFile::Open(acceptance_fileName);
 
-  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<dilution_fileName<<", "<<dilution_file<<", "<<acceptance_fileName<<", "<<acceptance_file<<endl;
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.root";
+  TFile *dilution_file  = TFile::Open(dilution_fileName);
+
+  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<", "<<acceptance_fileName<<", "<<acceptance_file<<endl;
 
   //cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
 
@@ -767,7 +769,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       // DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
       //DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{BLIND} [mrad] / 125 MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
 
-      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{"+blind+"} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_vs_p_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr);
+      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];EDM laboratory frame tilt angle, #delta'_{"+blind+"} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_vs_p_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr);
 
       gr_delta_prime->SetName((stn+"_delta_prime_vs_p").c_str());
       gr_delta_prime->Write();

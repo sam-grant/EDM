@@ -143,12 +143,35 @@ c1 = TCanvas("c1","c1",800,600);
 
 h_FieldMap2D.SetStats(0)
 h_FieldMap2D.GetZaxis().SetRangeUser(55, 75)
-h_FieldMap2D.Draw("SURF3") #COLZ")
+h_FieldMap2D.GetXaxis().CenterTitle(1)
+h_FieldMap2D.GetYaxis().CenterTitle(1)
+h_FieldMap2D.GetZaxis().CenterTitle(1)
+h_FieldMap2D.Draw("COLZ") #SURF3") #COLZ")
 c1.SetRightMargin(.13);
 
-c1.SaveAs("../Images/Data/SCC/FieldMap2D.png")
-c1.SaveAs("../Images/Data/SCC/FieldMap2D.pdf")
-c1.SaveAs("../Images/Data/SCC/FieldMap2D.C")
+c1.SaveAs("../Images/Data/SCC/FieldMap.png")
+c1.SaveAs("../Images/Data/SCC/FieldMap.pdf")
+c1.SaveAs("../Images/Data/SCC/FieldMap.C")
+
+# c1.SaveAs("../Images/Data/SCC/FieldMap2D.png")
+# c1.SaveAs("../Images/Data/SCC/FieldMap2D.pdf")
+# c1.SaveAs("../Images/Data/SCC/FieldMap2D.C")
+
+
+
+h_FieldMapX = h_FieldMap2D.ProjectionX("", h_FieldMap2D.-(h_FieldMap2D.GetXaxis().GetBinWidth(1)/2), 0+(h_FieldMap2D.GetXaxis().GetBinWidth(1)/2))
+h_FieldMapY = h_FieldMap2D.ProjectionY("", 0-h_FieldMap2D.GetYaxis().GetBinWidth(1)/2, (0+h_FieldMap2D.GetYaxis().GetBinWidth(1)/2))
+
+c2 = TCanvas("c2","c2",800,600);
+
+h_FieldMapX.SetStats(0)
+h_FieldMapX.GetXaxis().SetRangeUser(-45, 45)
+h_FieldMapX.Draw("HIST")
+h_FieldMapY.Draw("SAME")
+
+c2.SaveAs("../Images/Data/SCC/FieldMapXY.png")
+c2.SaveAs("../Images/Data/SCC/FieldMapXY.pdf")
+c2.SaveAs("../Images/Data/SCC/FieldMapXY.C")
 
 fout = TFile("../Plots/Data/SCC/FieldMap.root", "RECREATE")
 

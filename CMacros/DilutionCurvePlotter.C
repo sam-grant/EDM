@@ -12,7 +12,7 @@ const double delta_calc = 1.699245178; // mrad
 string dMu = "5.4e-18";
 
 const double xmin = 750;
-const double xmax = 2750;
+const double xmax = 2500;
 
 const int nTrials = 1e3;
 
@@ -571,20 +571,25 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    fit->Draw("SAME");
 
    // Draw legend
-   TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
+   //TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
+   //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
+   //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
+   TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
    l->SetBorderSize(0);
-   l->SetNColumns(2);
+   l->SetNColumns(1);
    l->AddEntry(gr,"Sim: all decays");
    // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
-   l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+   //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+   //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+   l->AddEntry(fit, "Fit: #frac{(p#minus1)(2p#plus1)}{(4p^{2}#minus5p#minus5)}");//p^{2}+bp+d_{0}");
    l->Draw("SAME");
 
    TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
 
    names->SetTextAlign(13);
    names->AddText("#chi^{2}/NDF");
-   names->AddText("a") ; 
-   names->AddText("b [MeV^{-1}]" );
+   //names->AddText("a") ; 
+   //names->AddText("b [MeV^{-1}]" );
       //names->AddText("d_{0}");
 
    TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
@@ -596,8 +601,8 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    //values->AddText(Round(fit->GetParameter(0), 1)+"#pm"+Round(fit->GetParError(0), 1));
    //values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
 
-   values->AddText("0.177#pm0.004"); 
-   values->AddText("(-1.57#pm0.03)#times10^{-4}");
+   //values->AddText("0.177#pm0.004"); 
+   //values->AddText("(-1.57#pm0.03)#times10^{-4}");
 
    cout<<"\n*** Fit results ***"<<endl;
    cout<<"chi2/ndf = "<<fit->GetChisquare()/fit->GetNDF()<<endl;
@@ -612,8 +617,8 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    values->SetTextFont(44);
    values->SetTextSize(26);
 
-   names->Draw("SAME");
-   values->Draw("SAME");
+   //names->Draw("SAME");
+   //values->Draw("SAME");
 
    c->SaveAs((fname+".pdf").c_str());
    c->SaveAs((fname+".png").c_str());
@@ -935,16 +940,16 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.root";//refit.acceptanceCorrected.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";//refit.acceptanceCorrected.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
 
    cout<<"\n****************** Drawing ******************"<<endl;
 
-   DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", -0.02, 0.25); 
-   DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
+  // DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitTest", -0.02, 0.25); 
+  // DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
 
 /*   // Graphs
    DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);
