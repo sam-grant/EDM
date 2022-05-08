@@ -97,10 +97,6 @@ TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc
       double theta_y = gr_thetaY_mod->GetPointY(i);
       double theta_y_shift = blindEDMFunc->Eval(time);
 
-      cout<<"time\t"<<time<<endl;
-      cout<<"theta_y\t"<<theta_y<<endl;
-      cout<<"theta_y_shift\t"<<theta_y_shift<<endl;
-
       x[i] = time; ex[i] = 0;
       y[i] = theta_y + theta_y_shift;
       ey[i] = gr_thetaY_mod->GetErrorY(i);

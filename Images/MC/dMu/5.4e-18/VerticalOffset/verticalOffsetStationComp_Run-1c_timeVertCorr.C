@@ -1,58 +1,50 @@
 void verticalOffsetStationComp_Run-1c_timeVertCorr()
 {
 //=========Macro generated from canvas: c/
-//=========  (Wed Apr  6 15:51:50 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 12:44:46 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
-   c->Range(453.5532,-1.25,3038.337,1.25);
+   c->Range(819.4799,-1.25,2667.729,1.25);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1015[8] = {
-   884.3505,
+   Double_t _fx1015[6] = {
    1127.522,
    1373.594,
    1620.299,
    1867.139,
    2116.241,
-   2359.688,
-   2607.54};
-   Double_t _fy1015[8] = {
-   0.2184978,
+   2359.688};
+   Double_t _fy1015[6] = {
    -0.4028806,
    -0.5342711,
    -0.2022927,
    -0.03165616,
    -0.02058869,
-   0.03476062,
-   0.1470785};
-   Double_t _fex1015[8] = {
-   0,
-   0,
+   0.03476062};
+   Double_t _fex1015[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1015[8] = {
-   0.01418345,
+   Double_t _fey1015[6] = {
    0.01074611,
    0.009308063,
    0.008917926,
    0.009086981,
    0.009666378,
-   0.01076934,
-   0.0129109};
-   TGraphErrors *gre = new TGraphErrors(8,_fx1015,_fy1015,_fex1015,_fey1015);
+   0.01076934};
+   TGraphErrors *gre = new TGraphErrors(6,_fx1015,_fy1015,_fex1015,_fey1015);
    gre->SetName("");
    gre->SetTitle("Run-1c");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1015 = new TH1F("Graph_Graph1015","Run-1c",100,712.0316,2779.858);
+   TH1F *Graph_Graph1015 = new TH1F("Graph_Graph1015","Run-1c",100,1004.305,2482.904);
    Graph_Graph1015->SetMinimum(-1);
    Graph_Graph1015->SetMaximum(1);
    Graph_Graph1015->SetDirectory(0);
@@ -82,43 +74,35 @@ void verticalOffsetStationComp_Run-1c_timeVertCorr()
    
    gre->Draw("apl");
    
-   Double_t _fx1016[8] = {
-   883.6089,
+   Double_t _fx1016[6] = {
    1127.304,
    1372.916,
    1619.588,
    1866.593,
    2115.809,
-   2359.485,
-   2606.429};
-   Double_t _fy1016[8] = {
-   0.07400714,
+   2359.485};
+   Double_t _fy1016[6] = {
    -0.515818,
    -0.4586708,
    -0.2290593,
    -0.09722382,
    -0.05849442,
-   -0.005661826,
-   0.02117755};
-   Double_t _fex1016[8] = {
-   0,
-   0,
+   -0.005661826};
+   Double_t _fex1016[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1016[8] = {
-   0.01439275,
+   Double_t _fey1016[6] = {
    0.01099636,
    0.00968276,
    0.009383729,
    0.009791495,
    0.01057808,
-   0.01190168,
-   0.01416838};
-   gre = new TGraphErrors(8,_fx1016,_fy1016,_fex1016,_fey1016);
+   0.01190168};
+   gre = new TGraphErrors(6,_fx1016,_fy1016,_fex1016,_fey1016);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -130,9 +114,9 @@ void verticalOffsetStationComp_Run-1c_timeVertCorr()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1016 = new TH1F("Graph_Graph1016","",100,711.3269,2778.711);
-   Graph_Graph1016->SetMinimum(-0.5883357);
-   Graph_Graph1016->SetMaximum(0.1499213);
+   TH1F *Graph_Graph1016 = new TH1F("Graph_Graph1016","",100,1004.085,2482.703);
+   Graph_Graph1016->SetMinimum(-0.5801197);
+   Graph_Graph1016->SetMaximum(0.05954527);
    Graph_Graph1016->SetDirectory(0);
    Graph_Graph1016->SetStats(0);
 

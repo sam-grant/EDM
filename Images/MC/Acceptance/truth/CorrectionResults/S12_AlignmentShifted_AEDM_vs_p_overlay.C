@@ -1,54 +1,50 @@
 void S12_AlignmentShifted_AEDM_vs_p_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 26 13:21:09 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 20:33:51 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(544.5682,-0.04375,2695.94,0.39375);
+   c->Range(830.3881,-0.04375,2659.699,0.39375);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1001[7] = {
-   873.25,
+   Double_t _fx1001[6] = {
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
    2367.258};
-   Double_t _fy1001[7] = {
-   0.318886,
+   Double_t _fy1001[6] = {
    0.3053675,
    0.2809278,
    0.2539968,
    0.2316457,
    0.1671082,
    0.1612269};
-   Double_t _fex1001[7] = {
-   0,
+   Double_t _fex1001[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1001[7] = {
-   0.01725572,
+   Double_t _fey1001[6] = {
    0.01485289,
    0.01322649,
    0.01204238,
    0.01118043,
    0.01053627,
    0.01009493};
-   TGraphErrors *gre = new TGraphErrors(7,_fx1001,_fy1001,_fex1001,_fey1001);
+   TGraphErrors *gre = new TGraphErrors(6,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","S12",100,723.8492,2516.659);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","S12",100,998.3861,2491.701);
    Graph_Graph1001->SetMinimum(0);
    Graph_Graph1001->SetMaximum(0.35);
    Graph_Graph1001->SetDirectory(0);
@@ -59,7 +55,7 @@ void S12_AlignmentShifted_AEDM_vs_p_overlay()
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
    Graph_Graph1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
-   Graph_Graph1001->GetXaxis()->SetRange(3,98);
+   Graph_Graph1001->GetXaxis()->SetRange(2,99);
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
    Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
@@ -79,39 +75,35 @@ void S12_AlignmentShifted_AEDM_vs_p_overlay()
    
    gre->Draw("apl");
    
-   Double_t _fx1002[7] = {
-   880.0831,
+   Double_t _fx1002[6] = {
    1123.158,
    1371.055,
    1620.208,
    1867.024,
    2114.681,
    2362.403};
-   Double_t _fy1002[7] = {
-   0.1246683,
+   Double_t _fy1002[6] = {
    0.07980611,
    0.1335306,
    0.1285138,
    0.1548559,
    0.04796727,
    0.08658855};
-   Double_t _fex1002[7] = {
-   0,
+   Double_t _fex1002[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1002[7] = {
-   0.04956545,
+   Double_t _fey1002[6] = {
    0.04060898,
    0.03735013,
    0.03551903,
    0.03553447,
    0.03770465,
    0.04058649};
-   gre = new TGraphErrors(7,_fx1002,_fy1002,_fex1002,_fey1002);
+   gre = new TGraphErrors(6,_fx1002,_fy1002,_fex1002,_fey1002);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -123,7 +115,7 @@ void S12_AlignmentShifted_AEDM_vs_p_overlay()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,731.851,2510.635);
+   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,999.2338,2486.328);
    Graph_Graph1002->SetMinimum(0.009236359);
    Graph_Graph1002->SetMaximum(0.2084031);
    Graph_Graph1002->SetDirectory(0);
@@ -143,39 +135,35 @@ void S12_AlignmentShifted_AEDM_vs_p_overlay()
    
    gre->Draw("pl ");
    
-   Double_t _fx1003[7] = {
-   880.0622,
+   Double_t _fx1003[6] = {
    1123.093,
    1371.258,
    1620.035,
    1867.297,
    2114.967,
    2362.535};
-   Double_t _fy1003[7] = {
-   0.1346278,
+   Double_t _fy1003[6] = {
    0.1280408,
    0.1528912,
    0.1091871,
    0.1703899,
    0.07237759,
    0.104207};
-   Double_t _fex1003[7] = {
-   0,
+   Double_t _fex1003[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1003[7] = {
-   0.03736133,
+   Double_t _fey1003[6] = {
    0.03062241,
    0.02811637,
    0.02670164,
    0.02671693,
    0.02822018,
    0.03036213};
-   gre = new TGraphErrors(7,_fx1003,_fy1003,_fex1003,_fey1003);
+   gre = new TGraphErrors(6,_fx1003,_fy1003,_fex1003,_fey1003);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -187,7 +175,7 @@ void S12_AlignmentShifted_AEDM_vs_p_overlay()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,731.8149,2510.782);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,999.149,2486.479);
    Graph_Graph1003->SetMinimum(0.02886247);
    Graph_Graph1003->SetMaximum(0.2124018);
    Graph_Graph1003->SetDirectory(0);

@@ -1,7 +1,7 @@
 void S12S18_ThetaYvsTimeFit_Run-1b_1750_2000_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 29 09:35:56 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 12:35:15 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-26.91222,-0.7657612,337.8979,0.7967388);
@@ -836,6 +836,8 @@ void S12S18_ThetaYvsTimeFit_Run-1b_1750_2000_BQ()
    
    TLegend *leg = new TLegend(0.21,0.15,0.79,0.2,NULL,"brNDC");
    leg->SetBorderSize(0);
+   leg->SetTextFont(44);
+   leg->SetTextSize(26);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
@@ -849,7 +851,7 @@ void S12S18_ThetaYvsTimeFit_Run-1b_1750_2000_BQ()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
+   entry->SetTextFont(44);
    entry=leg->AddEntry("DoubleExponentialFunc","(A/#tau_{A})e^{-t/#tau_{A}}#plus(B/#tau_{B})e^{-t/#tau_{B}}#plusc","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(2);
@@ -858,7 +860,7 @@ void S12S18_ThetaYvsTimeFit_Run-1b_1750_2000_BQ()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
+   entry->SetTextFont(44);
    leg->Draw();
    
    pt = new TPaveText(0.226809,0.9341608,0.773191,0.995,"blNDC");

@@ -1,4 +1,101 @@
-#include "Utils.h"
+double pmin = 1000;
+double pmax = 2500;
+
+TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
+
+	TGraphErrors *grOut = new TGraphErrors();
+	int count = 0;
+	
+	for(int i(0); i<grIn->GetN(); i++) { 
+
+		double x = grIn->GetX()[i];
+		double y = grIn->GetY()[i];
+		double ey = grIn->GetEY()[i];   
+
+    	if(x<xmin || x>xmax) continue;
+
+    	grOut->SetPoint(count, x, y);
+    	grOut->SetPointError(count, 0., ey);  
+
+    	count++;
+
+	}
+
+
+	return grOut;
+
+}
+
+void DrawGraph(TGraphErrors *graph, std::string ds, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	graph->SetTitle(title.c_str());
+	graph->GetXaxis()->SetTitleSize(.04);
+	graph->GetYaxis()->SetTitleSize(.04);
+	graph->GetXaxis()->SetTitleOffset(1.1);
+	graph->GetYaxis()->SetTitleOffset(1.25);
+	graph->GetXaxis()->CenterTitle(true);
+	graph->GetYaxis()->CenterTitle(true);
+	graph->GetYaxis()->SetMaxDigits(4);
+	graph->SetMarkerStyle(20); //  Full circle
+	//graph->SetMaximum(0.07);//-0.01, 0.07);//(20); 
+	graph->Draw("APL");
+
+	TLegend *l = new TLegend(.70, .80, .89, .89);
+	l->SetBorderSize(0);
+/*	l->SetTextSize(24);
+	l->SetTextFont(44);*/
+	l->SetTextAlign(12); 
+
+	l->AddEntry(graph, ds.c_str());
+
+	l->Draw("SAME");
+	//c->SetGridx();
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void AEDM_overlay() { 
+
+	vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
+
+	for(auto &ds : ds_) {
+
+		TString finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+ds+"_250MeV_1000_2500_MeV_BQ.root";
+		TFile *fin = TFile::Open(finName);
+
+		cout<<"----> Opened "<<finName<<", "<<fin<<endl;
+
+		TGraphErrors *gr = ResetGraph( (TGraphErrors*)fin->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_AEDM_vs_p"), pmin, pmax);
+
+		cout<<"----> Graph "<<gr<<endl;
+
+
+		DrawGraph(gr, ds, ";Decay vertex momentum [MeV];A_{EDM} (BLIND) [mrad]", "../Images/Data/dMu/Run-1/MainPlots/S12S18_AEDM_vs_p_overlay_"+ds+"_"+to_string(int(pmin))+"_"+to_string(int(pmax)));
+
+		fin->Close();
+
+	}
+
+	return;
+
+}
+
+
+
+
+
+
+
+/*#include "Utils.h"
 
 void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr2, std::string title, std::string fname, TGraphErrors *gr3 = 0) {
 
@@ -222,4 +319,4 @@ void AcceptanceWeightedDilution() {
 
 	return; 
 
-}
+}*/

@@ -33,18 +33,18 @@ using namespace std;
 //const string stage = "raw"; // "//// // ////
 
 // FIRST SCAN
-//string scan = "1";
-//const int N_QHV = 2;
-//const int N_FIELD = 2;
-//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+string scan = "1";
+const int N_QHV = 2;
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // SECOND SCAN
-string scan = "2";
-const int N_QHV = 4;
-const int N_FIELD = 6;
-const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
+//string scan = "2";
+//const int N_QHV = 4;
+//const int N_FIELD = 6;
+//const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {50, 30, 10, -10, -30, -50}; // Applied radial field, ppm
 
 
 // Read csv file of run, QHV, & Br
@@ -228,7 +228,7 @@ double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_poin
     double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 
     // Sanity check
-    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFit_pValCheck"+to_string(i_point));
+    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{a}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFit_pValCheck"+to_string(i_point));
 
     pVal = mainFit->GetProb();
 
@@ -273,7 +273,7 @@ double pValuePointCheck(double *x, double *y, double *ex, double *ey, int i_poin
     double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 
     // Sanity check
-    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{App}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFit_pValCheck"+to_string(i_point));
+    DrawRadialFieldLineFit(result, BrErr, "mainFit", ";#LTB_{r}^{a}#GT [ppm];#LTy#GT#upointQHV [mm#upointkV]","../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/FieldFit_pValCheck"+to_string(i_point));
 
     pVal = mainFit->GetProb();
 
@@ -460,7 +460,7 @@ int main() { //int argc, char *argv[]) {
 
   // ++++++++++++++++ Some checks on the quad scans ++++++++++++++++ 
   // Pass quad scans to chi square drawer
-  DrawQuadScanChiSqr(quadScans, "quadLineFit", ";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadChiSqrs", BR_APP); 
+  DrawQuadScanChiSqr(quadScans, "quadLineFit", ";#LTB_{r}^{a}#GT [ppm];#chi^{2}/ndf", "../Images/Data/RadialFieldScan_"+scan+"/"+stage+"/QuadChiSqrs", BR_APP); 
 
   // Get fit residual, this is crazy... TODO: make this more in line with the ctag one
   vector<TGraphErrors*> quadScanResiduals = GetQuadScanRes(quadScans, "quadLineFit", stage);//, "Residual", "../Images/Data/RadialFieldScan_"+scan+"/QuadFitRes");

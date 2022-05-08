@@ -158,9 +158,9 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   TCanvas *c = new TCanvas("c","c",800,600);
 
   // S12 ect 
-  // TLegend *l = new TLegend(0.65, 0.22, 0.85, 0.42); 
-  TLegend *l = new TLegend(0.65, 0.15, 0.85, 0.35); 
-  //l->SetNColumns(3);
+  TLegend *l = new TLegend(0.66, 0.18, 0.85, 0.38); 
+  //TLegend *l = new TLegend(0.69, 0.11, 0.89, 0.31); 
+  //l->SetTextAlign(31);
   l->SetBorderSize(0);
   l->SetTextSize(24);
   l->SetTextFont(44);

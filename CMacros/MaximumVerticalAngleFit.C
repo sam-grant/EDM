@@ -14,12 +14,21 @@ void DrawMaximumVerticalAngleFit(TH2D *h2, TF1 *f1, TF1 *f2, std::string eqn, st
 	h2->GetXaxis()->CenterTitle(1);
 	h2->GetYaxis()->CenterTitle(1);
 	h2->GetYaxis()->SetMaxDigits(4);
-	h2->GetYaxis()->SetRangeUser(-1000, 1000);
+	h2->GetYaxis()->SetRangeUser(-400, 400); //1000);
 
-	gStyle->SetPalette(kBird);
+	h2->GetXaxis()->SetRangeUser(100, 3200);//127);
+
+	gStyle->SetPalette(kThermometer);//LightTemperature);//ake);//DarkBodyRadiator);//Bird);
 	c->SetRightMargin(0.13);
 
 	h2->Draw("COLZ");
+
+	f1->SetLineWidth(3);
+	f2->SetLineWidth(3);
+
+	f1->SetLineColor(kRed);
+	f2->SetLineColor(kRed);  
+
 	f1->Draw("SAME");
 	f2->Draw("SAME");
 
@@ -46,7 +55,8 @@ void MaximumVerticalAngleFit() {
 	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.root";
 	TFile *fin = TFile::Open(finName);
 
-	TH2D *h2_thetaY_vs_Y = (TH2D*)fin->Get("AllDecays/Main/ThetaY_vs_p_Fine");
+	TH2D *h2_thetaY_vs_p = (TH2D*)fin->Get("0_3127_MeV/AllDecays/Main/ThetaY_vs_p");
+
 	TF1 *f1 = new TF1("f1", "[0] * asin( (1/x) * sqrt( ([1]*x/[2]) - (x/[2])**2 ) )", 0, 3111);
 	//TF1 *f1 = new TF1("f1", "[0] * TMath::ASin( (0.5*[1]) / x ) ", 0, 3111);
 	//f1->SetParameter(0, 1e3);
@@ -62,9 +72,11 @@ void MaximumVerticalAngleFit() {
 	//return;
 
 	std::string eqn = "sin^{-1}#frac{#sqrt{m_{#mu}p/#gamma#minusp^{2}/#gamma^{2}}}{p}";
-	DrawMaximumVerticalAngleFit(h2_thetaY_vs_Y, f1, f2, eqn, ";e^{+} momentum [MeV];#theta_{y} [mrad]", "../Images/MC/MaxVerticalAngle/2DFit_TEST");
 
-	DrawTH2(h2_thetaY_vs_Y, "", "../Images/MC/MaxVerticalAngle/NoFit_TEST");
+	h2_thetaY_vs_p->GetXaxis()->SetRangeUser(0+h2_thetaY_vs_p->GetBinWidth(1), 3127);
+	DrawMaximumVerticalAngleFit(h2_thetaY_vs_p, f1, f2, eqn, ";Laboratory frame e^{+} momentum [MeV];#theta_{y} [mrad]", "../Images/MC/MaxVerticalAngle/2DFit");
+
+	DrawTH2(h2_thetaY_vs_p, "", "../Images/MC/MaxVerticalAngle/NoFit");
 	fin->Close();
 
 	return; 

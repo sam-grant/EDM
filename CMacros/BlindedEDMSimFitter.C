@@ -805,12 +805,12 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       FullEDMFit(gr_A_mod, 0, OMEGA_A * 1e3, phi, 0.0375e-6, 0, 0, G2PERIOD);
       cout<<"Done EDM fits"<<endl;
       // EDIT
-      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT / 149.2 ns").c_str() );
+      gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
 
       double c_tmp = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
       double ymin_tmp = c_tmp-1; double ymax_tmp = c_tmp+1;
-      DrawFullEDMFitSim(gr_thetaY_mod,  std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"edmFit_thetaY_"+momSlice+"_"+config+"_"+to_string(unblind)).c_str(), double(nEntries), ymin_tmp, ymax_tmp, unblind);
+      DrawFullEDMFitSim(gr_thetaY_mod,  std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"edmFit_thetaY_"+momSlice+"_"+config+"_"+to_string(unblind)).c_str(), double(nEntries), ymin_tmp, ymax_tmp, unblind);
 
       gr_thetaY_mod->SetName((stn+"moduloFit_thetaY_"+momSlice).c_str());
       gr_thetaY_mod->Write();

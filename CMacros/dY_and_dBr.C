@@ -119,7 +119,7 @@ void DrawQuadFits(vector<TGraphErrors*> graphs, vector<string> names, string fun
 	TLegend *l = new TLegend(0.81,0.35,0.99,0.65);
 
 	l->SetBorderSize(0);
-	l->SetHeader("QHV [kV]","C");
+	l->SetHeader("V [kV]","C");
 
 	//double field = 
 	// Load legend entries backwards
@@ -158,6 +158,13 @@ void DrawQuadFits(vector<TGraphErrors*> graphs, vector<string> names, string fun
 	}
 
 	l->Draw("same");
+
+	// Draw line at zero
+/*	gPad->Update();
+	TLine *zero_line = new TLine(0,gPad->GetUymin(),0,gPad->GetUymax());
+	zero_line->SetLineStyle(2);
+	zero_line->SetLineWidth(1);
+	zero_line->Draw("same");*/
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -222,7 +229,7 @@ int main() {
 	// Get file for reprocessed scan 2 (current best)
 
 	TFile *input = TFile::Open("../Plots/Data/RadialFieldScan_2/raw/fits.root");
-	TFile *output = new TFile("../Plots/Data/RadialFieldEstimation/ConversionFactor/fits_TEST.root", "RECREATE");
+	TFile *output = new TFile("../Plots/Data/RadialFieldEstimation/ConversionFactor/mm2ppm.root", "RECREATE");
 
 	double QHVs[4] = {14.0, 16.0, 18.0, 19.5};
 
@@ -266,8 +273,8 @@ int main() {
 	//DrawQuadFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits_TMP", 70, 79);
 
 	if(write) { 
-		DrawQuadFits(gr_, names_, "fit", ";#LTB_{r}^{App}#GT;#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits", 71, 78);
-		DrawMainFit(mainFit, ";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
+		DrawQuadFits(gr_, names_, "fit", ";Applied #LTB_{r}#GT [ppm];#LTy#GT [mm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/InverseQuadFits", 71, 78);
+		DrawMainFit(mainFit, ";1/V [kV^{-1}];#Delta#LTy#GT/#Delta#LTB_{r}^{a}#GT [mm/ppm]", "../Images/Data/RadialFieldEstimation/ConversionFactor/mainFit");
 		mainFit->SetName("mainFit");
 		mainFit->Write(); 
 		output->Write();

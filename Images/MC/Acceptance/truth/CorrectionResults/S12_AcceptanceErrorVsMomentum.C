@@ -1,56 +1,52 @@
 void S12_AcceptanceErrorVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 26 13:21:09 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 20:33:51 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(499.748,0.03863282,2740.76,0.1737854);
+   c->Range(811.7217,-0.1123529,2678.365,0.148988);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1004[7] = {
-   873.25,
+   Double_t _fx1004[6] = {
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
    2367.258};
-   Double_t _fy1004[7] = {
-   0.15126,
+   Double_t _fy1004[6] = {
    0.06340091,
-   0.06879605,
+   -0.06879605,
    0.06115826,
    0.1053778,
    0.1054312,
    0.08722801};
-   Double_t _fex1004[7] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
-   Double_t _fey1004[7] = {
-   0,
+   Double_t _fex1004[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   TGraphErrors *gre = new TGraphErrors(7,_fx1004,_fy1004,_fex1004,_fey1004);
+   Double_t _fey1004[6] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   TGraphErrors *gre = new TGraphErrors(6,_fx1004,_fy1004,_fex1004,_fey1004);
    gre->SetName("");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1004 = new TH1F("Graph_Graph1004","S12",100,723.8492,2516.659);
-   Graph_Graph1004->SetMinimum(0.05214808);
-   Graph_Graph1004->SetMaximum(0.1602702);
+   TH1F *Graph_Graph1004 = new TH1F("Graph_Graph1004","S12",100,998.3861,2491.701);
+   Graph_Graph1004->SetMinimum(-0.08621877);
+   Graph_Graph1004->SetMaximum(0.1228539);
    Graph_Graph1004->SetDirectory(0);
    Graph_Graph1004->SetStats(0);
 
@@ -64,7 +60,7 @@ void S12_AcceptanceErrorVsMomentum()
    Graph_Graph1004->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1004->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1004->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1004->GetYaxis()->SetTitle("Acceptance fractional uncertainty / 250 MeV");
+   Graph_Graph1004->GetYaxis()->SetTitle("Acceptance fraction per mm misalignment / 250 MeV");
    Graph_Graph1004->GetYaxis()->CenterTitle(true);
    Graph_Graph1004->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1004->GetYaxis()->SetLabelFont(42);

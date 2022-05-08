@@ -1,7 +1,7 @@
 void FieldFit_pValCheck-1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Mar 14 14:20:10 2022) by ROOT version 6.24/06
+//=========  (Thu May  5 12:42:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-45,-28.36674,45,53.94146);
@@ -25,7 +25,7 @@ void FieldFit_pValCheck-1()
    1.560014};
    TGraphErrors *gre = new TGraphErrors(2,Graph0_fx1011,Graph0_fy1011,Graph0_fex1011,Graph0_fey1011);
    gre->SetName("Graph0");
-   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
+   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#Delta#LTy#GT#upoint#DeltaV [mm#upointkV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -45,7 +45,7 @@ void FieldFit_pValCheck-1()
    Graph_Graph01011->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01011->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01011->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01011->GetYaxis()->SetTitle("#LTy#GT#upointV [mm#upointkV]");
+   Graph_Graph01011->GetYaxis()->SetTitle("#Delta#LTy#GT#upoint#DeltaV [mm#upointkV]");
    Graph_Graph01011->GetYaxis()->CenterTitle(true);
    Graph_Graph01011->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01011->GetYaxis()->SetLabelFont(42);

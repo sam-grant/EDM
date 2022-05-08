@@ -574,14 +574,17 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    //TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
    //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
    //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
-   TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
+   //TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
+   TLegend *l = new TLegend(0.59,0.69,0.89,0.89);
    l->SetBorderSize(0);
    l->SetNColumns(1);
    l->AddEntry(gr,"Sim: all decays");
    // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
-   l->AddEntry(fit, "Fit: #frac{(p#minus1)(2p#plus1)}{(4p^{2}#minus5p#minus5)}");//p^{2}+bp+d_{0}");
+   l->AddEntry(fit, "Fit: #frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}");//p^{2}+bp+d_{0}");
+   l->SetTextSize(26);
+   l->SetTextFont(44);
    l->Draw("SAME");
 
    TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
@@ -940,7 +943,7 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";//refit.acceptanceCorrected.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.root";//refit.acceptanceCorrected.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
@@ -948,7 +951,7 @@ int main() {
    cout<<"\n****************** Drawing ******************"<<endl;
 
   // DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitTest", -0.02, 0.25); 
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitTest", 0.06, 0.22); 
   // DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
 
 /*   // Graphs

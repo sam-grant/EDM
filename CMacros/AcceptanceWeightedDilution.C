@@ -75,12 +75,13 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
-	hist->SetLineWidth(3);
+	hist->SetLineWidth(1);
 	hist->SetLineColor(1);
+	hist->SetMarkerStyle(20);
 
 	//c->SetRightMargin(0.13);
 
-	hist->Draw("E");
+	hist->Draw("PL");
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -91,7 +92,6 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	return;
 }
 
-// Apologies foe confusing numbering		
 void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -158,6 +158,67 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 
 }
 
+void DrawOverlay2(TGraphErrors *gr1, TGraphErrors *gr3, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gr1->SetTitle(title.c_str());
+	gr1->GetXaxis()->SetTitleSize(.04);
+	gr1->GetYaxis()->SetTitleSize(.04);
+	gr1->GetXaxis()->SetTitleOffset(1.1);
+	gr1->GetYaxis()->SetTitleOffset(1.2);
+	gr1->GetXaxis()->CenterTitle(true);
+	gr1->GetYaxis()->CenterTitle(true);
+	gr1->GetYaxis()->SetMaxDigits(4);
+	gr1->SetMarkerStyle(20); //  Full circle
+
+	// range
+	double xmin = gr1->GetX()[0];
+	double xmax = gr1->GetX()[gr1->GetN()-1];
+	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
+	gr1->GetYaxis()->SetRangeUser(0.05, 0.35);
+	gr1->Draw("APL");
+
+	if(gr3!=0) {
+		gr3->SetMarkerStyle(20);
+		gr3->SetMarkerColor(kRed);
+		gr3->SetLineColor(kRed);
+		gr3->Draw("PL SAME");
+	}
+
+	TLegend *l = new TLegend(.65, .79, .89, .89);
+	l->SetBorderSize(0);
+	l->SetTextSize(24);
+	l->SetTextFont(44);
+
+	if(gr3==0) {
+		l->AddEntry(gr1, "Unweighted");
+		//l->AddEntry(gr2, "Weighted");
+	} else { 
+		l->AddEntry(gr1, "All decays");
+		l->AddEntry(gr3, "Truth vertices");
+		l->Draw("SAME");
+/*		gPad->Update();
+		l->SetX1NDC(.49);
+		l->SetX2NDC(.89);
+		l->SetY1NDC(.75);
+		l->SetY2NDC(.89);*/
+		//c->Update();
+	}
+
+	l->Draw("SAME");
+
+	//c->SetGridx();
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
 void DrawResiduals(TH1D *hist, string title, string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -525,9 +586,10 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
     double colour = colour = i*0.1;
     hists_.at(i)->SetMarkerColor(colour);
     hists_.at(i)->SetLineColor(colour);
+    hists_.at(i)->SetMarkerStyle(20);
 
-    if(i==0) hists_.at(i)->Draw("E");
-    else hists_.at(i)->Draw("E SAME");
+    if(i==0) hists_.at(i)->Draw("P");
+    else hists_.at(i)->Draw("P SAME");
   }
 
   c->SaveAs((fname+".pdf").c_str());
@@ -596,7 +658,7 @@ void Run(bool write, string misalign) {
 
 	cout<<"---> Got base files "<<f1Name<<", "<<f1<<", "<<f2Name<<", "<<f2<<endl;
 
-	vector<string> stn_ = {"S12", "S18", "S12S18"};
+	vector<string> stn_ = {"S12S18"};//S12", "S18", "S12S18"};
 
 	for(auto& stn : stn_) {
 
@@ -609,12 +671,13 @@ void Run(bool write, string misalign) {
 		TGraphErrors *gr2 = (TGraphErrors*)f2->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
 		TGraphErrors *gr3 = (TGraphErrors*)f3->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
 
-		// For presentation only
 		TGraphErrors *gr1_reset = ResetGraph(gr1, xmin, xmax);
 		TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
 		TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
 
 		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_overlay"+misalign);
+		
+		DrawOverlay2(gr1_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_partial_overlay"+misalign);
 
 		// Make ratio of gr2/gr1
 		
@@ -717,7 +780,7 @@ void Run(bool write, string misalign) {
 
 int main() { 
 
-	bool write = true;
+	bool write = false;
 	string misalign = "";
 	
 	Run(write, misalign);

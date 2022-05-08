@@ -1,5 +1,5 @@
 // Globals
-double xmin = 750; double xmax = 2750;
+double xmin = 1000; double xmax = 2500;
 
 TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
 
@@ -31,7 +31,7 @@ void DrawOverlay(TGraphErrors *gr0, TGraphErrors *gr1, TGraphErrors *gr2, TGraph
   	cout<<"---> Drawing offset"<<endl;
 
   	TCanvas *c = new TCanvas("c","",800,600);
-  	TLegend *l = new TLegend(0.15, 0.65, 0.89, 0.89); 
+  	TLegend *l = new TLegend(0.15, 0.55, 0.89, 0.89); 
   	l->SetBorderSize(0);
   	l->SetTextSize(24);
   	l->SetTextFont(44);
@@ -148,7 +148,7 @@ void DrawSimOverlay(TGraphErrors *gr0, TGraphErrors *gr1, TGraphErrors *gr2, str
 
 	l->AddEntry(gr0, "Sim: all decays");
 	l->AddEntry(gr1, "Sim: all decays (acceptance weighted)");
-	l->AddEntry(gr2, "Sim: reco vertices");
+	l->AddEntry(gr2, "Sim: truth vertices");
 
  	l->Draw("SAME");
 
@@ -229,7 +229,7 @@ void Run(string simConfig, string dataConfig) {
 
 	TFile *f0 = TFile::Open(("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ"+simConfig+".root").c_str());
 	TFile *f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accCorr.root");//.c_str());
-	TFile *f2 = TFile::Open(("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ"+simConfig+".root").c_str());
+	TFile *f2 = TFile::Open(("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ"+simConfig+".root").c_str());
 	TFile *f3 = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1a_250MeV_BQ"+dataConfig+".root").c_str());
 	TFile *f4 = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1b_250MeV_BQ"+dataConfig+".root").c_str());
 	TFile *f5 = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_Run-1c_250MeV_BQ"+dataConfig+".root").c_str());

@@ -1,7 +1,7 @@
 void allDecays_h_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 26 10:39:36 2022) by ROOT version 6.24/06
+//=========  (Sat May  7 21:53:57 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

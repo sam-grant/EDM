@@ -215,7 +215,7 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 	double BrErr_check = fabs(Br_check) * sqrt(pow(p0_err_check/p0_check,2) + pow(p1_err_check/p1_check,2) - 2*checkFitRes->GetCovarianceMatrix()(0,1)/(p0_check*p1_check));
 
 	// Only draw the plots once 
-	if(i_experiment==0) { 
+	if(i_experiment==500) { 
 
 		tuple<double, double> quadScanYRange = QuadScanYRange(quadScans);
 		DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment), get<0>(quadScanYRange), get<1>(quadScanYRange), BR_APP);

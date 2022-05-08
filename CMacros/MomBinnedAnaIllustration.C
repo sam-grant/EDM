@@ -1,5 +1,8 @@
 #include "Utils.h"
 
+double pLo = 1000;
+double pHi = 2500;
+
 void DrawHist(TH1D *hist, std::string title, std::string fname, bool MomBinnedAna) { 
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -29,26 +32,25 @@ void DrawHist(TH1D *hist, std::string title, std::string fname, bool MomBinnedAn
 
 	    for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
 
-	      lo = 0 + i_cut*step; 
-	      hi = step + i_cut*step;
-		  TLine *loLine = new TLine(lo, gPad->GetUymin(), lo, gPad->GetUymax());
-		  TLine *hiLine = new TLine(hi, gPad->GetUymin(), hi, gPad->GetUymax());
-		  loLine->SetLineColor(kRed);
-		  hiLine->SetLineColor(kRed);
-		  loLine->SetLineStyle(2);
-		  hiLine->SetLineStyle(2);
+	      lo = (pLo-step) + i_cut*step; 
+	      //hi = lo + i_cut*step;
 
-		  if(i_cut!=0) { 
-			  loLine->Draw("SAME");
-			  hiLine->Draw("SAME");	  
-		  }
+	      if(lo > pHi) break;
+
+		  TLine *line = new TLine(lo, gPad->GetUymin(), lo, gPad->GetUymax());
+
+		  //TLine *hiLine = new TLine(hi, gPad->GetUymin(), hi, gPad->GetUymax());
+		  line->SetLineColor(kRed);
+		  line->SetLineStyle(2);
+
+		  if(i_cut!=0) line->Draw("SAME");
 
 		}
 
 	} else { 
 
-		TLine *loLine = new TLine(750, gPad->GetUymin(), 750, gPad->GetUymax());
-		TLine *hiLine = new TLine(2750, gPad->GetUymin(), 2750, gPad->GetUymax());
+		TLine *loLine = new TLine(pLo, gPad->GetUymin(), pLo, gPad->GetUymax());
+		TLine *hiLine = new TLine(pHi, gPad->GetUymin(), pHi, gPad->GetUymax());
 
 		loLine->SetLineColor(kRed);
 		hiLine->SetLineColor(kRed);
@@ -58,7 +60,7 @@ void DrawHist(TH1D *hist, std::string title, std::string fname, bool MomBinnedAn
 		loLine->Draw("SAME");
 		hiLine->Draw("SAME");	
 
-		TBox *bv = new TBox(750, gPad->GetUymin(), 2750, gPad->GetUymax());
+		TBox *bv = new TBox(pLo, gPad->GetUymin(), pHi, gPad->GetUymax());
 		bv->SetFillColor(kRed); bv->SetFillStyle(3005);
 		bv->Draw("SAME");
 	}
@@ -81,8 +83,8 @@ void Run() {
 
 	hist->Rebin(8);
 
-	DrawHist(hist, "250 MeV intervals;Decay vertex momentum [MeV];Vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_momBinned", true);
-	DrawHist(hist, "750-2750 MeV range;Decay vertex momentum [MeV];Vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_simulataneous", false);
+	DrawHist(hist, ";Decay vertex momentum [MeV];Vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_momBinned", true);
+	DrawHist(hist, ";Decay vertex momentum [MeV];Vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_simulataneous", false);
 
 	fin->Close();
 

@@ -1,7 +1,7 @@
 void momentumDist_Run-1a_momBinned()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 15:24:17 2021) by ROOT version 6.24/04
+//=========  (Sat May  7 12:05:45 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(-390.0143,-10124.89,3510.128,91123.99);
@@ -11,7 +11,7 @@ void momentumDist_Run-1a_momBinned()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TH1D *S12S18_Momentum__1 = new TH1D("S12S18_Momentum__1","250 MeV intervals",390,0,3120.114);
+   TH1D *S12S18_Momentum__1 = new TH1D("S12S18_Momentum__1","",390,0,3120.114);
    S12S18_Momentum__1->SetBinContent(43,1);
    S12S18_Momentum__1->SetBinContent(44,24);
    S12S18_Momentum__1->SetBinContent(45,102);
@@ -353,16 +353,7 @@ void momentumDist_Run-1a_momBinned()
    S12S18_Momentum__1->GetZaxis()->SetTitleOffset(1);
    S12S18_Momentum__1->GetZaxis()->SetTitleFont(42);
    S12S18_Momentum__1->Draw("HIST");
-   
-   TPaveText *pt = new TPaveText(0.3373618,0.94,0.6626382,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   TText *pt_LaTex = pt->AddText("250 MeV intervals");
-   pt->Draw();
-   TLine *line = new TLine(250,0,250,80999.1);
+   TLine *line = new TLine(1000,0,1000,80999.1);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
@@ -370,55 +361,7 @@ void momentumDist_Run-1a_momBinned()
    line->SetLineColor(ci);
    line->SetLineStyle(2);
    line->Draw();
-   line = new TLine(500,0,500,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(500,0,500,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(750,0,750,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(750,0,750,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(1000,0,1000,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(1000,0,1000,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
    line = new TLine(1250,0,1250,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(1250,0,1250,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(1500,0,1500,80999.1);
 
    ci = TColor::GetColor("#ff0000");
    line->SetLineColor(ci);
@@ -436,18 +379,6 @@ void momentumDist_Run-1a_momBinned()
    line->SetLineColor(ci);
    line->SetLineStyle(2);
    line->Draw();
-   line = new TLine(1750,0,1750,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(2000,0,2000,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
    line = new TLine(2000,0,2000,80999.1);
 
    ci = TColor::GetColor("#ff0000");
@@ -460,37 +391,7 @@ void momentumDist_Run-1a_momBinned()
    line->SetLineColor(ci);
    line->SetLineStyle(2);
    line->Draw();
-   line = new TLine(2250,0,2250,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
    line = new TLine(2500,0,2500,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(2500,0,2500,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(2750,0,2750,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(2750,0,2750,80999.1);
-
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->Draw();
-   line = new TLine(3000,0,3000,80999.1);
 
    ci = TColor::GetColor("#ff0000");
    line->SetLineColor(ci);

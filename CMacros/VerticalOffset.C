@@ -45,11 +45,14 @@ void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, s
 
   // TLegend *leg = new TLegend(0.30,0.15,.89,0.25);
   // TLegend *leg = new TLegend(0.30,0.15,.89,0.20);
-  TLegend *leg = new TLegend(0.21,0.15,.79,0.20);
+  TLegend *leg = new TLegend(0.15,0.15,.86,0.20);
   leg->SetBorderSize(0);
   leg->SetNColumns(2);
   leg->AddEntry(graph, ("Data: "+dataset+" ").c_str());
   leg->AddEntry(fit,"(A/#tau_{A})e^{-t/#tau_{A}}#plus(B/#tau_{B})e^{-t/#tau_{B}}#plusc");
+
+  leg->SetTextSize(26);
+  leg->SetTextFont(44);
 
   TPaveText *names = new TPaveText(0.15,0.60,0.25,0.89,"NDC"); 
   names->SetTextAlign(13);
@@ -354,7 +357,7 @@ void FitDataset(TGraphErrors *gr, std::string dataset, double xmin = 7*G2PERIOD,
 void Run(std::string dataset, int step, bool write) {
 
   // Set output file
-  TString foutName = "../Plots/Data/dMu/Run-1/Fits/verticalOffsetVsTimeFits_"+dataset+"_"+to_string(step)+"MeV_BQ.root";
+  TString foutName = "../Plots/Data/dMu/Run-1/Fits/verticalOffsetVsTimeFits_"+dataset+"_"+to_string(step)+"MeV_1000_2500_MeV_BQ.root";
   if(!write) foutName = "delete_me.root";
 
   TFile *fout = new TFile(foutName, "RECREATE");
@@ -400,7 +403,7 @@ void Run(std::string dataset, int step, bool write) {
 
     TGraphErrors *gr = ConvertToTGraphErrors(px);
     FitDataset(gr, dataset, xmin, xmax);
-    DrawFitGraph(gr, dataset, stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ThetaYvsTimeFit_"+dataset+"_BQ", xmin, xmax, 750, 2750);
+    DrawFitGraph(gr, dataset, stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ThetaYvsTimeFit_"+dataset+"_BQ", xmin, xmax, 1000, 2500);
 
     // To be honest, everything below this point if kind of useless. 
 
@@ -424,9 +427,9 @@ void Run(std::string dataset, int step, bool write) {
     vector<double> p_; 
     vector<double> A_; vector<double> B_; vector<double> c_;
     vector<double> eA_; vector<double> eB_; vector<double> ec_;
-
+    
     // Momentum slices
-    for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
+/*    for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
 
       int lo = 0 + i_slice*step; 
       int hi = step + i_slice*step;
@@ -456,7 +459,7 @@ void Run(std::string dataset, int step, bool write) {
 
     DrawAllParameters(p_, A_, eA_, B_, eB_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];Parameter value [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ParametersVsMomentum_"+dataset+"_BQ");//, -125, +75);
     DrawSingleParameter(p_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_AverageVerticalOffsetVsMomentum_"+dataset+"_BQ", -1.5, +2.5);
-
+*/
   }
 
   fin->Close();
@@ -469,10 +472,10 @@ void Run(std::string dataset, int step, bool write) {
 
 int main() { 
 
-  Run("Run-1a", 250, true);
-  Run("Run-1b", 250, true);
-	Run("Run-1c", 250, true);
-	Run("Run-1d", 250, true);
+  Run("Run-1a", 250, false);
+  Run("Run-1b", 250, false);
+	Run("Run-1c", 250, false);
+	Run("Run-1d", 250, false);
 
   return 0;
 

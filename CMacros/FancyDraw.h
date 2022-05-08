@@ -87,8 +87,8 @@ void DrawTH1Fit(TH1D *hist, TF1 *fit, std::string title, std::string fname) {
 	TCanvas *c = new TCanvas("c","c",800,600);
 
 	gStyle->SetStatFormat("6.3g");
-  	hist->Draw();
-  	gPad->Update();
+  hist->Draw();
+  gPad->Update();
 
 	hist->SetTitle(title.c_str());
 
@@ -96,7 +96,7 @@ void DrawTH1Fit(TH1D *hist, TF1 *fit, std::string title, std::string fname) {
 	statBox->SetBorderSize(0);
 
 	gStyle->SetOptStat(0);
-  	gStyle->SetOptFit(111);
+  gStyle->SetOptFit(111);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -1065,8 +1065,8 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 /*	values->AddText(FormatNegativeNumber(par1)+"#pm"+ThreeSigFig(err1));
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
 	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));*/
-	values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
-	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par1, 3)+"#pm"+Round(err1, 1));
+	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
 	values->AddText(Round(-xint, 2)+"#pm"+Round(xint_err, 1));
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 
@@ -1088,7 +1088,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	y_line->SetLineWidth(2);
 
 	// graph->SetTitle(";#LTB_{r}^{a}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
-	graph->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
+	graph->SetTitle(";Applied #LTB_{r}#GT [ppm];#Delta#LTy#GT#upoint#DeltaV [mm#upointkV]");
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
 	graph->GetXaxis()->SetTitleOffset(1.1);
@@ -1342,15 +1342,15 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   values->AddText(Round(chi2ndf, 3));
   //values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
   values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
-  values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+  values->AddText(Round(par2, 4)+"#pm"+Round(err2, 1));
   //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
   values->AddText(Round(par4, 4)+"#pm"+Round(err4, 1));
 
   // TPaveText *cuts = new TPaveText(0.20,0.65,0.40,0.75,"NDC");
   TPaveText *cuts = new TPaveText(0.60,0.75,0.80,0.85,"NDC");
   cuts->SetTextAlign(22);
-  cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30.6 < t [#mus] < 305.6");
+  cuts->AddText("p [MeV] > 1700");
+  cuts->AddText("t [#mus] > 30.6");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1627,9 +1627,9 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
 	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
 
-	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
-	leg->SetNColumns(2);
-	leg->AddEntry(graph, "Sim   ");
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
+	leg->SetNColumns(1);
+	leg->AddEntry(graph, "Sim: all decays");
 	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c");
 	leg->SetBorderSize(0);
 
@@ -1652,16 +1652,16 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(Round(chi2ndf, 3));
-	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
 	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
+	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
 
 	TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 //	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("750 < p [MeV] < 2750");
-	cuts->AddText("30.6 < t [#mus] < 305.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+	cuts->AddText("1000 < p [MeV] < 2500");
+	cuts->AddText("t [#mus] > 30.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(26);
 	names->SetTextFont(44);
@@ -1727,15 +1727,24 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
 	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
 
-	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
+	leg->SetNColumns(1);
+	leg->AddEntry(graph, ("Data: "+dataset).c_str());
+	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c");
+	leg->SetBorderSize(0);
+
+	leg->SetTextSize(22); // 26
+	leg->SetTextFont(44);
+
+/*	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
 	leg->SetNColumns(2);
 	leg->AddEntry(graph, ("Data: "+dataset+"   ").c_str());
 	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) #plus c");
-	leg->SetBorderSize(0);
+	leg->SetBorderSize(0);*/
 
 	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
-	TPaveText *names = new TPaveText(0.55,0.635,0.65,0.88,"NDC");
-
+	//TPaveText *names = new TPaveText(0.55,0.635,0.65,0.88,"NDC");
+	TPaveText *names = new TPaveText(0.50,0.595,0.67,0.88,"NDC");
 	names->SetTextAlign(13);
 	names->AddText("N") ; 
 	names->AddText("#chi^{2}/ndf");
@@ -1748,19 +1757,22 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	names->AddText("c [mrad]"); 
 
 	//TPaveText *values = new TPaveText(0.65,0.55,0.89,0.89,"NDC");
-	TPaveText *values = new TPaveText(0.65,0.63,0.89,0.89,"NDC");
+	//TPaveText *values = new TPaveText(0.65,0.63,0.89,0.89,"NDC");
+	TPaveText *values = new TPaveText(0.65,0.59,0.89,0.89,"NDC");
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(Round(chi2ndf, 3));
-	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
 	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
+	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
 
-	TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+	//TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
+	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
+	TPaveText *cuts = new TPaveText(0.20,0.65,0.40,0.75,"NDC");
 	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("750 < p [MeV] < 2750");
+	cuts->AddText("1000 < p [MeV] < 2500");
 	cuts->AddText("t [#mus] > 30.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(22); // 26

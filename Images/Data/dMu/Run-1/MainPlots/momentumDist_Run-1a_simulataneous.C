@@ -1,7 +1,7 @@
 void momentumDist_Run-1a_simulataneous()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Dec  7 15:24:17 2021) by ROOT version 6.24/04
+//=========  (Sat May  7 12:05:45 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(-390.0143,-10124.89,3510.128,91123.99);
@@ -11,7 +11,7 @@ void momentumDist_Run-1a_simulataneous()
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   TH1D *S12S18_Momentum__2 = new TH1D("S12S18_Momentum__2","750-2750 MeV range",390,0,3120.114);
+   TH1D *S12S18_Momentum__2 = new TH1D("S12S18_Momentum__2","",390,0,3120.114);
    S12S18_Momentum__2->SetBinContent(43,1);
    S12S18_Momentum__2->SetBinContent(44,24);
    S12S18_Momentum__2->SetBinContent(45,102);
@@ -353,16 +353,7 @@ void momentumDist_Run-1a_simulataneous()
    S12S18_Momentum__2->GetZaxis()->SetTitleOffset(1);
    S12S18_Momentum__2->GetZaxis()->SetTitleFont(42);
    S12S18_Momentum__2->Draw("HIST");
-   
-   TPaveText *pt = new TPaveText(0.316005,0.9341608,0.683995,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   TText *pt_LaTex = pt->AddText("750-2750 MeV range");
-   pt->Draw();
-   TLine *line = new TLine(750,0,750,80999.1);
+   TLine *line = new TLine(1000,0,1000,80999.1);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
@@ -370,13 +361,13 @@ void momentumDist_Run-1a_simulataneous()
    line->SetLineColor(ci);
    line->SetLineStyle(2);
    line->Draw();
-   line = new TLine(2750,0,2750,80999.1);
+   line = new TLine(2500,0,2500,80999.1);
 
    ci = TColor::GetColor("#ff0000");
    line->SetLineColor(ci);
    line->SetLineStyle(2);
    line->Draw();
-   TBox *box = new TBox(750,0,2750,80999.1);
+   TBox *box = new TBox(1000,0,2500,80999.1);
 
    ci = TColor::GetColor("#ff0000");
    box->SetFillColor(ci);

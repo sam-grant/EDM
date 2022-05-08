@@ -363,7 +363,7 @@ int main() {
 	double mMu = 105.6583715; // MeV
 	double aMu = 11659208.9e-10; 
 	double gmagic = std::sqrt( 1.+1./aMu );
-	double pmax_lab = 1.01 * mMu * gmagic;
+	double pmax_lab =  mMu * gmagic;
 	double pmax_rest = mMu/2;
 
 	std::cout<<"\nN_1 max:\t"<<N_1->GetMaximum()<<"\n"<<std::endl;

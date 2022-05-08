@@ -1,7 +1,7 @@
 void QuadScans()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr  6 21:15:59 2022) by ROOT version 6.24/06
+//=========  (Thu May  5 12:39:13 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0.04604396,71.75,0.07827839,79.25);

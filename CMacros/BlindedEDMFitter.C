@@ -12,8 +12,8 @@
 double tmin = 7*G2PERIOD;
 double tmax = 70*G2PERIOD;
 
-double pmin = 750;
-double pmax = 2750;
+double pmin = 1000;
+double pmax = 2500;
 
 int GetStep(std::string config) {
 
@@ -253,11 +253,11 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, phi, 0, G2PERIOD);
 
   TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
-  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, 10, 10e4);
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Vertices / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, 10, 10e4);
 
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 
-  DrawModWiggleData(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Tracks / 149 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_mod_wiggle_"+config, double(h1_wiggle_mod->GetEntries()), ymin, ymax);
+  DrawModWiggleData(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Vertices / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_mod_wiggle_"+config, double(h1_wiggle_mod->GetEntries()), ymin, ymax);
   // Fold wiggle
   FoldWiggle(gr_wiggle, modWiggle->GetParameter(4), config);
  
@@ -402,7 +402,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
     cout<<stn<<endl;
 
-    TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time_20ns").c_str());
+    TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time").c_str());
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();

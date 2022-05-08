@@ -1,7 +1,7 @@
 /*#include "FancyDraw.h"*/
 #include "Utils.h"
 
-double xmin = 750;
+double xmin = 1000;
 double xmax = 2500;
 
 // Reset graph range (can't use SetRangeUser because sometimes I like to plot with "L" option)
@@ -69,16 +69,17 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
 	hist->GetXaxis()->SetTitleOffset(1.1);
-	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.2);
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
-	hist->SetLineWidth(3);
+	hist->SetLineWidth(1);
 	hist->SetLineColor(1);
 
+	hist->SetMarkerStyle(20);
 	//c->SetRightMargin(0.13);
 
-	hist->Draw("HIST");
+	hist->Draw("PL");
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -89,8 +90,50 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	return;
 }
 
+void DrawTH1Overlay(vector<TH1D *> hist_, std::string title, std::string fname) {
 
+	TCanvas *c = new TCanvas("c","c",800,600);
 
+	hist_.at(0)->SetTitle(title.c_str());
+	hist_.at(0)->SetStats(0);
+	hist_.at(0)->GetXaxis()->SetTitleSize(.04);
+	hist_.at(0)->GetYaxis()->SetTitleSize(.04);
+	hist_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	hist_.at(0)->GetYaxis()->SetTitleOffset(1.3);
+	hist_.at(0)->GetXaxis()->CenterTitle(1);
+	hist_.at(0)->GetYaxis()->CenterTitle(1);
+	hist_.at(0)->GetYaxis()->SetMaxDigits(4);
+	hist_.at(0)->SetLineWidth(1);
+	hist_.at(0)->SetLineColor(1);
+	hist_.at(0)->SetMarkerStyle(20);
+
+	hist_.at(1)->SetLineColor(kRed);
+	hist_.at(1)->SetMarkerColor(kRed);
+	hist_.at(1)->SetMarkerStyle(20);
+
+	hist_.at(0)->GetYaxis()->SetRangeUser(-0.25, 0.2);
+
+	hist_.at(0)->Draw("PL");
+	hist_.at(1)->Draw("PL SAME");
+	
+	TLegend *leg = new TLegend(0.15,0.79,0.50,0.89);
+	leg->SetNColumns(1);
+	leg->AddEntry(hist_.at(0), "#plus1 mm");
+	leg->AddEntry(hist_.at(1), "#minus1 mm");
+	leg->SetBorderSize(0);
+	leg->SetTextSize(22); // 26
+	leg->SetTextFont(44);
+
+	leg->Draw("SAME");
+
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+}
 void OverlayGraphs(TGraphErrors *gr1, TGraphErrors *gr2, std::string title, std::string fname, std::string stn) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -361,10 +404,11 @@ void Run2(bool write) {
 
 	cout<<"---> Got base files "<<f1Name<<", "<<f1<<", "<<f2Name<<", "<<f2<<", "<<f3Name<<", "<<f3<<endl;
 
-	vector<string> stn_ = {"S12", "S18", "S12S18"};
+	vector<string> stn_ = {"S12", "S18"};
+
+	vector<TH1D*> h1_ratio_;
 
 	for(auto& stn : stn_) {
-
 		
 		TGraphErrors *gr2 = (TGraphErrors*)f2->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
 		TGraphErrors *gr3 = (TGraphErrors*)f3->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
@@ -388,20 +432,16 @@ void Run2(bool write) {
 			if(x < xmin || x > xmax) continue;
 
 			double y = gr2->GetY()[i]/gr1->GetY()[i];
-			double ey = y * gr1->GetEY()[i]/gr1->GetY()[i]; // sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) );
-
-			//cout<<gr2->GetY()[i]<<", "<<gr1->GetY()[i]<<endl;
-			//cout<<i<<", "<<x<<", "<<y<<endl;
+			double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) );
 
 			gr_ratio_1->SetPoint(counter, x, y);
 			gr_ratio_1->SetPointError(counter, 0, ey);
 
-			//gr_ratio_plus->SetPoint(counter, )
 
 			counter++;
 		}
 
-		// Make ratio of gr3/gr1
+		// Make ratio of gr3/gr1 (gr3 = ±1 mm)
 		TGraphErrors *gr_ratio_2 = new TGraphErrors();
 
 		counter = 0;
@@ -413,10 +453,8 @@ void Run2(bool write) {
 			if(x < xmin || x > xmax) continue;
 
 			double y = gr3->GetY()[i]/gr1->GetY()[i];
-			double ey = y * gr1->GetEY()[i]/gr1->GetY()[i]; // sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) );
+			double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr3->GetEY()[i]/gr3->GetY()[i], 2) );
 
-			//cout<<gr2->GetY()[i]<<", "<<gr1->GetY()[i]<<endl;
-			//cout<<i<<", "<<x<<", "<<y<<endl;
 
 			gr_ratio_2->SetPoint(counter, x, y);
 			gr_ratio_2->SetPointError(counter, 0, ey);
@@ -430,7 +468,8 @@ void Run2(bool write) {
 
 		for (int i(0); i<gr_ratio_1->GetN(); i++) {
 
-			double y = abs(gr_ratio_1->GetY()[i] - gr_ratio_2->GetY()[i]);
+			// Difference from nominal
+			double y = gr_ratio_1->GetY()[i] - gr_ratio_2->GetY()[i];
 			double x = gr_ratio_1->GetX()[i]; 
 
 			gr_ratio_diff->SetPoint(i, x, y);
@@ -441,7 +480,7 @@ void Run2(bool write) {
 		//TGraphErrors *gr_ratio_plus = new TGraphErrors();
 		//TGraphErrors *gr_ratio_minus = new TGraphErrors();
 
-		DrawTGraphErrors(gr_ratio_diff, stn+";Decay vertex momentum [MeV];Acceptance fractional uncertainty / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceErrorVsMomentum");
+		DrawTGraphErrors(gr_ratio_diff, stn+";Decay vertex momentum [MeV];Acceptance fraction per mm misalignment / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceErrorVsMomentum");
 
 		fout->cd("graphs");
 		gr_ratio_diff->SetName((stn+"_diff").c_str());
@@ -450,23 +489,48 @@ void Run2(bool write) {
 		// Easier to use a histogram during the actual correction
 		int nBins = gr_ratio_diff->GetN()+1;
 
-		TH1D *h1_ratio = new TH1D((stn+"_diff").c_str(), ";Decay vertex momentum [MeV];Acceptance fractional uncertainty / 250 MeV", gr_ratio_diff->GetN(), xmin, xmax);
+		TH1D *h1_ratio = new TH1D((stn+"_diff").c_str(), ";Decay vertex momentum [MeV];Acceptance fraction per mm misalignment / 250 MeV", gr_ratio_diff->GetN(), xmin, xmax);
 
 		for(int i(0); i<gr_ratio_diff->GetN(); i++) {
 			h1_ratio->SetBinContent(i+1, gr_ratio_diff->GetY()[i]);
 			h1_ratio->SetBinError(i+1, gr_ratio_diff->GetEY()[i]);
 		}
 
-		DrawTH1(h1_ratio, stn+";Decay vertex momentum [MeV];Acceptance fractional uncertainty / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAcceptanceErrorVsMomentum");
+		DrawTH1(h1_ratio, stn+";Decay vertex momentum [MeV];Acceptance fraction per mm misalignment / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAcceptanceErrorVsMomentum");
 
 		//TH1D *h1_ratio_minus = new TH1D((stn+"_ratio_minus").c_str(), ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", gr_ratio->GetN(), xmin, xmax);
 
 		fout->cd("hists");
 		h1_ratio->Write();
 
+		h1_ratio_.push_back(h1_ratio);
+
 
 	}
 
+	DrawTH1Overlay(h1_ratio_, ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/Overlay_HistAcceptanceErrorVsMomentum");
+
+
+	// Get delta / mm 
+
+	TH1D *h_delta = (TH1D*)h1_ratio_.at(0)->Clone("h_delta");
+
+	for(int i(0); i<h_delta->GetXaxis()->GetNbins(); i++) { 
+
+		double y1 = h1_ratio_.at(0)->GetBinContent(i+1);
+		double y2 = h1_ratio_.at(1)->GetBinContent(i+1);
+
+		double delta = abs(y1-y2)/2;
+
+		h_delta->SetBinContent(i+1,delta);
+
+	}
+
+	h_delta->GetYaxis()->SetRangeUser(0, 0.17);
+	DrawTH1(h_delta, ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/DeltaAcceptancePerMMVsMomentum");
+
+	h_delta->Write();
+	
 	f1->Close();
 	f2->Close();
 	f3->Close();

@@ -1,7 +1,7 @@
 void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 29 11:19:33 2022) by ROOT version 6.24/06
+//=========  (Sun May  8 18:11:50 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-0.7480292,4.876443,0.8769709);
@@ -10209,7 +10209,7 @@ void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
    gre->GetListOfFunctions()->Add(FullEDMFunc1067);
    gre->Draw("ap");
    
-   TPaveText *pt = new TPaveText(0.65,0.63,0.89,0.89,"brNDC");
+   TPaveText *pt = new TPaveText(0.65,0.59,0.89,0.89,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
@@ -10217,18 +10217,18 @@ void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
    TText *pt_LaTex = pt->AddText("2.11#times10^{5}");
    pt_LaTex = pt->AddText("1.04
 ");
-   pt_LaTex = pt->AddText("-0.033
+   pt_LaTex = pt->AddText("-0.03
 #pm0.02
 ");
    pt_LaTex = pt->AddText("0.0055
 #pm0.02
 ");
-   pt_LaTex = pt->AddText("0.014
+   pt_LaTex = pt->AddText("0.01
 #pm0.02
 ");
    pt->Draw();
    
-   pt = new TPaveText(0.55,0.635,0.65,0.88,"brNDC");
+   pt = new TPaveText(0.5,0.595,0.67,0.88,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
@@ -10240,14 +10240,16 @@ void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
-   TLegend *leg = new TLegend(0.15,0.15,0.85,0.25,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.15,0.85,0.3,NULL,"brNDC");
    leg->SetBorderSize(0);
+   leg->SetTextFont(44);
+   leg->SetTextSize(22);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("Graph0","Data: Run-1a   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("Graph0","Data: Run-1a","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -10255,8 +10257,8 @@ void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("FullEDMFunc","A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) #plus c","lpf");
+   entry->SetTextFont(44);
+   entry=leg->AddEntry("FullEDMFunc","A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c","lpf");
    entry->SetFillColor(19);
 
    ci = TColor::GetColor("#ff0000");
@@ -10266,7 +10268,7 @@ void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
+   entry->SetTextFont(44);
    leg->Draw();
    
    TF1 *FullEDMFunc1068 = new TF1("*FullEDMFunc",0,4.365324,5);
@@ -20309,11 +20311,11 @@ void S18_edmFit_2250_2500_Run-1a_250MeV_BQ()
    FullEDMFunc1068->SetParLimits(4,0,0);
    FullEDMFunc1068->Draw("same");
    
-   pt = new TPaveText(0.2,0.7,0.4,0.8,"brNDC");
+   pt = new TPaveText(0.2,0.65,0.4,0.75,"brNDC");
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(22);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2750");
+   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
    pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    

@@ -226,7 +226,6 @@ void DrawRatioPlot1D(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string config, 
 
 	h2->SetTitle(";y [mm];#theta_{y} [mm]");
 	//h2->GetXaxis()->SetRangeUser(-60, 60);
-	
 
 	h2->Draw("COL");
 

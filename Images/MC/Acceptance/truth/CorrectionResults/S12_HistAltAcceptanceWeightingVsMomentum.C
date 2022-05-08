@@ -1,7 +1,7 @@
 void S12_HistAltAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 19:19:32 2022) by ROOT version 6.24/06
+//=========  (Sat May  7 22:35:45 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -25,7 +25,7 @@ void S12_HistAltAcceptanceWeightingVsMomentum()
    S12_ratio_alt__2->SetBinError(6,0.03964008);
    S12_ratio_alt__2->SetEntries(6);
    S12_ratio_alt__2->SetStats(0);
-   S12_ratio_alt__2->SetLineWidth(3);
+   S12_ratio_alt__2->SetMarkerStyle(20);
    S12_ratio_alt__2->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
    S12_ratio_alt__2->GetXaxis()->CenterTitle(true);
    S12_ratio_alt__2->GetXaxis()->SetLabelFont(42);
@@ -42,7 +42,7 @@ void S12_HistAltAcceptanceWeightingVsMomentum()
    S12_ratio_alt__2->GetZaxis()->SetLabelFont(42);
    S12_ratio_alt__2->GetZaxis()->SetTitleOffset(1);
    S12_ratio_alt__2->GetZaxis()->SetTitleFont(42);
-   S12_ratio_alt__2->Draw("E");
+   S12_ratio_alt__2->Draw("PL");
    c->Modified();
    c->cd();
    c->SetSelected(c);

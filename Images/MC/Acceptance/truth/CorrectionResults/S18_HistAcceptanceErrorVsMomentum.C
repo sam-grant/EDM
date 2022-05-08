@@ -1,7 +1,7 @@
 void S18_HistAcceptanceErrorVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 26 13:21:09 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 20:33:51 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -9,34 +9,33 @@ void S18_HistAcceptanceErrorVsMomentum()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *S18_diff__2 = new TH1D("S18_diff__2","S18",7,750,2500);
-   S18_diff__2->SetBinContent(1,0.1539203);
-   S18_diff__2->SetBinContent(2,0.01326017);
-   S18_diff__2->SetBinContent(3,0.04770306);
-   S18_diff__2->SetBinContent(4,0.0201782);
-   S18_diff__2->SetBinContent(5,0.06208599);
-   S18_diff__2->SetBinContent(6,0.06593913);
-   S18_diff__2->SetBinContent(7,0.2102483);
-   S18_diff__2->SetEntries(7);
+   TH1D *S18_diff__2 = new TH1D("S18_diff__2","S18",6,1000,2500);
+   S18_diff__2->SetBinContent(1,-0.01326017);
+   S18_diff__2->SetBinContent(2,0.04770306);
+   S18_diff__2->SetBinContent(3,-0.0201782);
+   S18_diff__2->SetBinContent(4,-0.06208599);
+   S18_diff__2->SetBinContent(5,0.06593913);
+   S18_diff__2->SetBinContent(6,-0.2102483);
+   S18_diff__2->SetEntries(6);
    S18_diff__2->SetStats(0);
-   S18_diff__2->SetLineWidth(3);
+   S18_diff__2->SetMarkerStyle(20);
    S18_diff__2->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
    S18_diff__2->GetXaxis()->CenterTitle(true);
    S18_diff__2->GetXaxis()->SetLabelFont(42);
    S18_diff__2->GetXaxis()->SetTitleSize(0.04);
    S18_diff__2->GetXaxis()->SetTitleOffset(1.1);
    S18_diff__2->GetXaxis()->SetTitleFont(42);
-   S18_diff__2->GetYaxis()->SetTitle("Acceptance fractional uncertainty / 250 MeV");
+   S18_diff__2->GetYaxis()->SetTitle("Acceptance fraction per mm misalignment / 250 MeV");
    S18_diff__2->GetYaxis()->CenterTitle(true);
    S18_diff__2->GetYaxis()->SetNdivisions(4000510);
    S18_diff__2->GetYaxis()->SetLabelFont(42);
    S18_diff__2->GetYaxis()->SetTitleSize(0.04);
-   S18_diff__2->GetYaxis()->SetTitleOffset(1.1);
+   S18_diff__2->GetYaxis()->SetTitleOffset(1.2);
    S18_diff__2->GetYaxis()->SetTitleFont(42);
    S18_diff__2->GetZaxis()->SetLabelFont(42);
    S18_diff__2->GetZaxis()->SetTitleOffset(1);
    S18_diff__2->GetZaxis()->SetTitleFont(42);
-   S18_diff__2->Draw("HIST");
+   S18_diff__2->Draw("PL");
    c->Modified();
    c->cd();
    c->SetSelected(c);

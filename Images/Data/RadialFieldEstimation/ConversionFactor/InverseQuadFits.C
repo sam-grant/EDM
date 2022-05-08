@@ -1,7 +1,7 @@
 void InverseQuadFits()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Apr 25 17:56:50 2022) by ROOT version 6.24/06
+//=========  (Thu May  5 14:12:42 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-77.14286,70.125,94.28572,78.875);
@@ -42,7 +42,7 @@ void InverseQuadFits()
    0.01841166};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
-   gre->SetTitle(";#LTB_{r}^{App}#GT;#LTy#GT [mm]");
+   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT [mm]");
    gre->SetFillStyle(1000);
    gre->SetLineColor(2);
    gre->SetMarkerColor(2);
@@ -58,7 +58,7 @@ void InverseQuadFits()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("#LTB_{r}^{App}#GT");
+   Graph_Graph01001->GetXaxis()->SetTitle("Applied #LTB_{r}#GT [ppm]");
    Graph_Graph01001->GetXaxis()->CenterTitle(true);
    Graph_Graph01001->GetXaxis()->SetLabelFont(42);
    Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);
@@ -405,7 +405,7 @@ void InverseQuadFits()
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("NULL","QHV [kV]","h");
+   TLegendEntry *entry=leg->AddEntry("NULL","V [kV]","h");
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
    entry->SetLineWidth(1);

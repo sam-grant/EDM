@@ -1,7 +1,7 @@
 void mainFit()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Apr 25 17:56:50 2022) by ROOT version 6.24/06
+//=========  (Thu May  5 14:12:43 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);
@@ -34,7 +34,7 @@ void mainFit()
    0.00018177};
    TGraphErrors *gre = new TGraphErrors(4,Graph0_fx1009,Graph0_fy1009,Graph0_fex1009,Graph0_fey1009);
    gre->SetName("Graph0");
-   gre->SetTitle(";1/QHV [kV^{-1}];#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]");
+   gre->SetTitle(";1/V [kV^{-1}];#Delta#LTy#GT/#Delta#LTB_{r}^{a}#GT [mm/ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -48,13 +48,13 @@ void mainFit()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01009->SetLineColor(ci);
-   Graph_Graph01009->GetXaxis()->SetTitle("1/QHV [kV^{-1}]");
+   Graph_Graph01009->GetXaxis()->SetTitle("1/V [kV^{-1}]");
    Graph_Graph01009->GetXaxis()->CenterTitle(true);
    Graph_Graph01009->GetXaxis()->SetLabelFont(42);
    Graph_Graph01009->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01009->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01009->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01009->GetYaxis()->SetTitle("#LTy#GT/#LTB_{r}^{App}#GT [mm/ppm]");
+   Graph_Graph01009->GetYaxis()->SetTitle("#Delta#LTy#GT/#Delta#LTB_{r}^{a}#GT [mm/ppm]");
    Graph_Graph01009->GetYaxis()->CenterTitle(true);
    Graph_Graph01009->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01009->GetYaxis()->SetLabelFont(42);

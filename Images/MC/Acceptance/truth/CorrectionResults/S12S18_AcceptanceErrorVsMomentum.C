@@ -1,56 +1,52 @@
 void S12S18_AcceptanceErrorVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 26 13:21:10 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 14:27:22 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(499.748,-0.00963261,2740.76,0.1864153);
+   c->Range(811.7217,-0.005156713,2678.365,0.09226477);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1012[7] = {
-   873.25,
+   Double_t _fx1012[6] = {
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
    2367.258};
-   Double_t _fy1012[7] = {
-   0.1526532,
+   Double_t _fy1012[6] = {
    0.02481251,
    0.0110802,
    0.02113442,
    0.02616322,
    0.07602786,
    0.04948536};
-   Double_t _fex1012[7] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
-   Double_t _fey1012[7] = {
-   0,
+   Double_t _fex1012[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   TGraphErrors *gre = new TGraphErrors(7,_fx1012,_fy1012,_fex1012,_fey1012);
+   Double_t _fey1012[6] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   TGraphErrors *gre = new TGraphErrors(6,_fx1012,_fy1012,_fex1012,_fey1012);
    gre->SetName("");
    gre->SetTitle("S12S18");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1012 = new TH1F("Graph_Graph1012","S12S18",100,723.8492,2516.659);
-   Graph_Graph1012->SetMinimum(0.009972181);
-   Graph_Graph1012->SetMaximum(0.1668105);
+   TH1F *Graph_Graph1012 = new TH1F("Graph_Graph1012","S12S18",100,998.3861,2491.701);
+   Graph_Graph1012->SetMinimum(0.004585436);
+   Graph_Graph1012->SetMaximum(0.08252262);
    Graph_Graph1012->SetDirectory(0);
    Graph_Graph1012->SetStats(0);
 

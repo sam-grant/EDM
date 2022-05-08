@@ -1,7 +1,7 @@
 void FieldFitCheck_NSUBRUN_325_NEXP_0()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jan 10 15:42:38 2022) by ROOT version 6.24/06
+//=========  (Thu May  5 12:49:05 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75,-42.90507,75,79.45641);
@@ -41,7 +41,7 @@ void FieldFitCheck_NSUBRUN_325_NEXP_0()
    0.4769094};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1207,Graph0_fy1207,Graph0_fex1207,Graph0_fey1207);
    gre->SetName("Graph0");
-   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#LTy#GT#upointV [mm#upointkV]");
+   gre->SetTitle(";Applied #LTB_{r}#GT [ppm];#Delta#LTy#GT#upoint#DeltaV [mm#upointkV]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -61,7 +61,7 @@ void FieldFitCheck_NSUBRUN_325_NEXP_0()
    Graph_Graph01207->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01207->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01207->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01207->GetYaxis()->SetTitle("#LTy#GT#upointV [mm#upointkV]");
+   Graph_Graph01207->GetYaxis()->SetTitle("#Delta#LTy#GT#upoint#DeltaV [mm#upointkV]");
    Graph_Graph01207->GetYaxis()->CenterTitle(true);
    Graph_Graph01207->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01207->GetYaxis()->SetLabelFont(42);
@@ -103,10 +103,11 @@ void FieldFitCheck_NSUBRUN_325_NEXP_0()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("1
+   TText *pt_LaTex = pt->AddText(" 1.12");
+   pt_LaTex = pt->AddText("1
 #pm0.008
 ");
-   pt_LaTex = pt->AddText("8.1
+   pt_LaTex = pt->AddText("8.08
 #pm0.2
 ");
    pt_LaTex = pt->AddText("8
@@ -119,6 +120,7 @@ void FieldFitCheck_NSUBRUN_325_NEXP_0()
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
+   pt_LaTex = pt->AddText("#chi^{2}/ndf");
    pt_LaTex = pt->AddText("Gradient");
    pt_LaTex = pt->AddText("Y-intercept [mm#upointkV]");
    pt_LaTex = pt->AddText("Background #LTB_{r}#GT [ppm]");

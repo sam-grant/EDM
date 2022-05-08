@@ -1,7 +1,7 @@
 void S18_EDM_delta_prime_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 19:31:07 2022) by ROOT version 6.24/06
+//=========  (Sun May  8 14:57:56 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(812.9889,0.7326511,2673.284,2.56454);
    c->SetFillColor(0);
@@ -108,7 +108,7 @@ void S18_EDM_delta_prime_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta#GT = 1.68
+   entry=leg->AddEntry("pol0","#LT#delta#GT = 1.7
 #pm0.1
  mrad","lpf");
    entry->SetFillColor(19);

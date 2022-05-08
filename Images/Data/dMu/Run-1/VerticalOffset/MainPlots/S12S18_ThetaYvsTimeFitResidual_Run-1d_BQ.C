@@ -1,7 +1,7 @@
 void S12S18_ThetaYvsTimeFitResidual_Run-1d_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Mar 29 09:36:04 2022) by ROOT version 6.24/06
+//=========  (Fri May  6 12:37:44 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

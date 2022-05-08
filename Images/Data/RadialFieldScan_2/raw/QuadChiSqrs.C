@@ -1,7 +1,7 @@
 void QuadChiSqrs()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr  6 21:15:59 2022) by ROOT version 6.24/06
+//=========  (Thu May  5 12:39:13 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75,0.581465,75,2.045569);
@@ -26,22 +26,22 @@ void QuadChiSqrs()
    1.339974,
    0.8254824};
    Double_t Graph0_fex1013[6] = {
-   2.215347e-314,
+   2.206986e-314,
    1.482197e-323,
-   2.213479e-314,
-   6.929677e-310,
+   2.206627e-314,
+   6.926041e-310,
    2.964394e-323,
-   2.21133e-314};
+   2.20261e-314};
    Double_t Graph0_fey1013[6] = {
-   2.215347e-314,
+   2.206986e-314,
    1.482197e-323,
-   2.213479e-314,
-   6.929677e-310,
+   2.206627e-314,
+   6.926041e-310,
    2.964394e-323,
-   2.21133e-314};
+   2.20261e-314};
    TGraphErrors *gre = new TGraphErrors(6,Graph0_fx1013,Graph0_fy1013,Graph0_fex1013,Graph0_fey1013);
    gre->SetName("Graph0");
-   gre->SetTitle(";#LTB_{r}^{App}#GT [ppm];#chi^{2}/ndf");
+   gre->SetTitle(";#LTB_{r}^{a}#GT [ppm];#chi^{2}/ndf");
    gre->SetFillColor(1);
    gre->SetFillStyle(1000);
    
@@ -55,7 +55,7 @@ void QuadChiSqrs()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01013->SetLineColor(ci);
-   Graph_Graph01013->GetXaxis()->SetTitle("#LTB_{r}^{App}#GT [ppm]");
+   Graph_Graph01013->GetXaxis()->SetTitle("#LTB_{r}^{a}#GT [ppm]");
    Graph_Graph01013->GetXaxis()->CenterTitle(true);
    Graph_Graph01013->GetXaxis()->SetNdivisions(6);
    Graph_Graph01013->GetXaxis()->SetLabelFont(42);

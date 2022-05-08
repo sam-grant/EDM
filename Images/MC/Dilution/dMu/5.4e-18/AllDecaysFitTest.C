@@ -1,10 +1,10 @@
 void AllDecaysFitTest()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Apr 26 10:39:36 2022) by ROOT version 6.24/06
+//=========  (Sat May  7 21:53:58 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(526.9819,-0.05375,2752.017,0.28375);
+   c->Range(526.9819,0.04,2752.017,0.24);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -70,8 +70,8 @@ void AllDecaysFitTest()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_allDecays1003 = new TH1F("Graph_allDecays1003","",100,0,3122.856);
-   Graph_allDecays1003->SetMinimum(-0.02);
-   Graph_allDecays1003->SetMaximum(0.25);
+   Graph_allDecays1003->SetMinimum(0.06);
+   Graph_allDecays1003->SetMaximum(0.22);
    Graph_allDecays1003->SetDirectory(0);
    Graph_allDecays1003->SetStats(0);
 
@@ -355,8 +355,10 @@ void AllDecaysFitTest()
    DilutionFunc1005->SetParLimits(0,1,1);
    DilutionFunc1005->Draw("SAME");
    
-   TLegend *leg = new TLegend(0.15,0.15,0.5,0.5,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.59,0.69,0.89,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
+   leg->SetTextFont(44);
+   leg->SetTextSize(26);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
@@ -370,8 +372,8 @@ void AllDecaysFitTest()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
-   entry=leg->AddEntry("DilutionFunc","Fit: #frac{(p#minus1)(2p#plus1)}{(4p^{2}#minus5p#minus5)}","lpf");
+   entry->SetTextFont(44);
+   entry=leg->AddEntry("DilutionFunc","Fit: #frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}","lpf");
    entry->SetFillColor(19);
 
    ci = TColor::GetColor("#ff0000");
@@ -381,7 +383,7 @@ void AllDecaysFitTest()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
+   entry->SetTextFont(44);
    leg->Draw();
    c->Modified();
    c->cd();
