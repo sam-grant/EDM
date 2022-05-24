@@ -30,7 +30,8 @@ double gmagic = std::sqrt( 1.+1./aMu );
 double beta   = std::sqrt( 1.-1./(gmagic*gmagic) );
 double d0 = 1.9e-19; // BNL edm limit in e.cm
 double ppm = 1e-6;
-double alpha = 0.10; //0.13; // asymmetry factor
+double alpha = 0.10; //0.13; // dilution factor, uhhhhh
+
 
 double blinded_edm_value(bool unblind) {
 
@@ -74,7 +75,7 @@ double GetDelta(double dMu) {
   std::cout<<"dMu_check:\t"<<dMu_tmp<<std::endl;*/
   double tan_delta = (eta * beta) / (2 * aMu);
   double delta = atan(tan_delta);
-  return delta;
+  return delta; // radians
 }
 
 double EDMFunc( double *x, double *p )  {
@@ -84,8 +85,6 @@ double EDMFunc( double *x, double *p )  {
 
 TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 
 
-    cout<<"HELLO"<<endl;
-
     int n = gr_thetaY_mod->GetN();
     
     double x[n]; double ex[n];
@@ -93,9 +92,10 @@ TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc
 
     for (int i(0); i<n; i++) {
 
+      double scaleFactor = 0.1;
       double time = gr_thetaY_mod->GetPointX(i);
       double theta_y = gr_thetaY_mod->GetPointY(i);
-      double theta_y_shift = blindEDMFunc->Eval(time);
+      double theta_y_shift = blindEDMFunc->Eval(time) * scaleFactor; // apply flat 10% dilution
 
       x[i] = time; ex[i] = 0;
       y[i] = theta_y + theta_y_shift;
@@ -109,16 +109,14 @@ TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc
 
 TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc, std::string stn, double momentum) { 
 
-  // TODO --- need to change this!!!
-  TFile *dilutionFile = TFile::Open("../Plots/MC/dMu/Dilution/dilutionCurves.root");
-  TGraphErrors *d_gr = (TGraphErrors*)dilutionFile->Get(("DilutionFits/BQ/Tracks/250MeV/d_vs_p/"+stn+"trackReco").c_str());
-  TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("ParabolaFunc");
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.fullRange.root";
+  TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-  // Get weighting from dilution function 
-  // Adding one ensure that there is nominal blinding outside of the diluton range, and 
-  // it also ensure that the weighted blinding is never less than nominal
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root"; // _dataAccCorr_"+datasetLabel+".root";
+  TFile *acceptance_file = TFile::Open(acceptance_fileName);
 
-  double weighting = 1 + dilutionFunc->Eval(momentum);
+  TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/AQ/Decays/250MeV/d_vs_p/allDecays");
+  TF1 *dilutionFunc = (TF1*)d_gr->GetFunction("DilutionFunc");
 
   int n = gr_thetaY_mod->GetN();
     
@@ -129,17 +127,31 @@ TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 
 
     double time = gr_thetaY_mod->GetPointX(i);
     double theta_y = gr_thetaY_mod->GetPointY(i);
-    double theta_y_shift = blindEDMFunc->Eval(time) * weighting;
+    double theta_y_shift = blindEDMFunc->Eval(time);// * weighting;
 
-    // cout<<"weighting "<<weighting<<endl;
+    // reweight 
+    double d_EDM = dilutionFunc->Eval(momentum);
+
+    TString acceptanceHistName = "hists/"+stn+"ratio_main";
+    TH1D *acceptanceHist = (TH1D*)acceptance_file->Get(acceptanceHistName);
+
+    double accWeight = 1.0;
+
+    if(acceptanceHist!=0) accWeight = acceptanceHist->GetBinContent(acceptanceHist->FindBin(momentum));
+
+    if(isnan(accWeight)) cerr<<"Error: acceptance weighting is nan"<<endl;
+
+    double scaleFactor = d_EDM * accWeight;
+    if(scaleFactor==0) scaleFactor = 0.1;
 
     x[i] = time; ex[i] = 0;
-    y[i] = theta_y + theta_y_shift;
+    y[i] = theta_y + (theta_y_shift*scaleFactor);
     ey[i] = gr_thetaY_mod->GetEY()[i];
 
   }
 
-  dilutionFile->Close();
+  dilution_file->Close();
+  acceptance_file->Close();
 
   return new TGraphErrors(n, x, y, ex, ey);
 

@@ -19,13 +19,13 @@ int GetStep(std::string config) {
 
   int step = 0;
 
-  if(config.find("200MeV") != std::string::npos) { 
+  if(config.find("_200MeV") != std::string::npos) { 
     step = 200;
-  } else if(config.find("125MeV") != std::string::npos) { 
+  } else if(config.find("_125MeV") != std::string::npos) { 
     step = 125;
-  } else if(config.find("500MeV") != std::string::npos) { 
+  } else if(config.find("_500MeV") != std::string::npos) { 
     step = 500;
-  } else if(config.find("250MeV") != std::string::npos) { 
+  } else if(config.find("_250MeV") != std::string::npos) { 
     step = 250;
   } else {
     cerr<<"Step size is unknown";
@@ -224,20 +224,20 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   
   // Phi values from Nick's thesis table 5.7
   if(dataset == "Run-1a") {
-    ymin = 25e3;
-    ymax = 110e3;
+    ymin = 65e3;//25e3;
+    ymax = 155e3;//110e3;
     phi = 2.091;
   } else if(dataset == "Run-1b") {
-    ymin = 40e3;
-    ymax = 150e3;
+    ymin = 90e3;//40e3;
+    ymax = 215e3;//150e3;
     phi = 2.081;
   } else if(dataset == "Run-1c") {
-    ymin = 60e3;
-    ymax = 220e3;
+    ymin = 130e3;//60e3;
+    ymax = 310e3;//220e3;
     phi = 2.080;
   } else if(dataset == "Run-1d") {
-    ymin = 100e3;
-    ymax = 400e3;
+    ymin = 240e3;//100e3;
+    ymax = 600e3;//400e3;
     phi = 2.067;
   } 
 
@@ -258,8 +258,9 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 
   DrawModWiggleData(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Vertices / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_mod_wiggle_"+config, double(h1_wiggle_mod->GetEntries()), ymin, ymax);
+
   // Fold wiggle
-  FoldWiggle(gr_wiggle, modWiggle->GetParameter(4), config);
+  // FoldWiggle(gr_wiggle, modWiggle->GetParameter(4), config);
  
   gr_wiggle->SetName("Wiggle");
   gr_wiggle->Write();
@@ -281,20 +282,29 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
   double t0 = phi_omega * G2PERIOD / (2*M_PI);
   double zeroCrossing = 8*G2PERIOD - t0;
 
-  // ================== Second, get blinded A_EDM ================== 
+  // ================== Second, get blinded tilt angle ================== 
 
   double dMu_blind = blinded_edm_value(false);  
   double delta_blind = GetDelta(dMu_blind);
+  double delta_prime_blind = atan( tan(delta_blind) / gmagic) * 1e3; // mrad
   double omega_a = getBlinded.referenceValue(); 
-  double tan_A_edm = tan(delta_blind) / gmagic;
-  double A_edm = alpha*atan(tan_A_edm) * 1e3; 
 
+  // ================== Third, get blinded A_EDM with correct weighting (I do this in header at the moment)  ================== 
+
+ /* cout<<dMu_blind<<endl;
+  cout<<"delta_prime_blind = "<<delta_prime_blind <<endl; */
+
+
+  //double tan_A_edm = tan(delta_blind) / gmagic;
+  //double A_edm = alpha*atan(tan_A_edm); // alpha is an unfortunate hangover from when we didn't understand dilution. It's a factor of 0.1.
+
+  // 
   // ================== Third, inject blinded A_EDM into modulo plot ==================
 
   // Define blinded EDM oscillation
   TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
   blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#omega_{a}^{FIXED}","#phi");//,"offset");
-  blindEDMFunc->SetParameters(A_edm,omega_a,phi_edm);//,xmin);
+  blindEDMFunc->SetParameters(delta_prime_blind,omega_a,phi_edm);//,xmin);
   blindEDMFunc->SetNpx(50000);
 
   // Best not to draw this :)
@@ -444,7 +454,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     h1_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
     h1_res_thetaY_vs_t->Write();
 
-    DrawTH1(FFT_h1_res_thetaY_vs_t, "FFT_h_res_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
+    DrawTH1(FFT_h1_res_thetaY_vs_t, dataset+";Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
     FFT_h1_res_thetaY_vs_t->Draw("HIST");
     FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
     FFT_h1_res_thetaY_vs_t->Write();
@@ -459,13 +469,15 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
   cout<<"MomentumBinnedAnalysis"<<endl;
 
-  bool weightedBlinding = false;
+  bool weightedBlinding = true;
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
   std::string dataset = GetDataset(config);
 
   vector<string> stns_ = { "S12", "S18", "S12S18"}; 
+
+  step = 250;
 
   int n_cuts = PMAX / step;
   int lo = -1; 
@@ -526,9 +538,12 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       // Get hist
       std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
 
+      cout<<momSlice<<endl;
+
       std::string pHistName = "MomentumBinnedAnalysis/"+stn+"_Momentum_"+momSlice;
       TH1D *pHist = (TH1D*)input->Get((pHistName).c_str());
 
+      cout<<pHist<<endl;
       //int p = (hi+lo)/2;
 
       double p = pHist->GetMean(); 
@@ -538,6 +553,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH2D *h2_thetaY_mod = (TH2D*)input->Get(h2_thetaY_mod_name.c_str());
 
       if(h2_thetaY_mod==0) continue;
+
+      //cout<<h2_thetaY_mod<<endl;
 
       int nEntries = h2_thetaY_mod->GetEntries();
 
@@ -552,11 +569,15 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       // Blind with dilution weighting
       TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
+
+      //cout<<"blinded"<<endl;
       // TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 
       FullEDMFit(gr_thetaY_mod , 0, OMEGA_A * 1e3, phi, 0, 0, 0, G2PERIOD);
+
+      //cout<<"fitted"<<endl;
 
       double c = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
       double ymin =  c-0.6; double ymax =  c+0.7; 

@@ -69,7 +69,7 @@ void AEDM_overlay() {
 
 	for(auto &ds : ds_) {
 
-		TString finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+ds+"_250MeV_1000_2500_MeV_BQ.root";
+		TString finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+ds+"_250MeV_1000_2500MeV_randomised_BQ.root";
 		TFile *fin = TFile::Open(finName);
 
 		cout<<"----> Opened "<<finName<<", "<<fin<<endl;

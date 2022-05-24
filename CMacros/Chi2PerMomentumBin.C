@@ -129,10 +129,12 @@ void Run(std::string config) {
 
 void Chi2PerMomentumBin() { 
 
-	Run("Run-1a_250MeV_1000_2500_MeV_BQ");
-	Run("Run-1b_250MeV_1000_2500_MeV_BQ");
-	Run("Run-1c_250MeV_1000_2500_MeV_BQ");
-	Run("Run-1d_250MeV_1000_2500_MeV_BQ");
+	Run("Run-1a_250MeV_1000_2500MeV_randomised_BQ");
+	Run("Run-1b_250MeV_1000_2500MeV_randomised_BQ");
+  Run("Run-1c_250MeV_1000_2500MeV_randomised_BQ");
+  Run("Run-1d_250MeV_1000_2500MeV_randomised_BQ");
+	//Run("Run-1c_250MeV_1000_2500_MeV_BQ");
+	//Run("Run-1d_250MeV_1000_2500_MeV_BQ");
 
 	return;
 

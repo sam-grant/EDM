@@ -1,10 +1,10 @@
 void fit_mod_wiggle_Run-1b_250MeV_1000_2500_MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May  8 18:08:31 2022) by ROOT version 6.24/06
+//=========  (Fri May 13 12:27:34 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-0.5418271,26250,4.876443,163750);
+   c->Range(-0.5418271,74375,4.876443,230625);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -138,8 +138,8 @@ void fit_mod_wiggle_Run-1b_250MeV_1000_2500_MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,0,4.711539);
-   Graph_Graph1003->SetMinimum(40000);
-   Graph_Graph1003->SetMaximum(150000);
+   Graph_Graph1003->SetMinimum(90000);
+   Graph_Graph1003->SetMaximum(215000);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 

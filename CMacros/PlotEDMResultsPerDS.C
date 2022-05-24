@@ -290,7 +290,7 @@ double GetLimit(double delta_prime) {
 
 }
 
-void Run(std::string dataset, int step, std::string blinding, std::string fitType, string correctionString) { //, string test = "") { 
+void Run(std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "") { //, string test = "") { 
 
   if(correctionString != "") correctionString = "_"+correctionString;
 
@@ -311,7 +311,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_BQ"+correctionString+".root").c_str());
+      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root").c_str());
 
       TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
       
@@ -339,13 +339,13 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+correctionString, ds_);
+    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_);
 
     gr_.push_back(gr);
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_BQ"+correctionString, ds_);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_);
 
 
   return;
@@ -354,7 +354,8 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
 void PlotEDMResultsPerDS() { 
 
-  Run("Run-1", 250, "blinded", "EDM", "");
+  //Run("Run-1", 250, "blinded", "EDM", "", "");//"randomised_");
+  Run("Run-1", 250, "blinded", "EDM", "", "randomised_");
   //Run("Run-1", 250, "blinded", "EDM", "noDilCorr");
   //Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
   //Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 

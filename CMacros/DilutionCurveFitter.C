@@ -18,8 +18,8 @@ using namespace std;
 const double delta_calc = 1.699245178; // mrad
 string dMu = "5.4e-18";
 
-const double xmin = 750;
-const double xmax = 2500;
+const double xmin = 0; //750;
+const double xmax = PMAX;//2500;
 const int nTrials = 1e3;
 
 string GetQual(string config) {

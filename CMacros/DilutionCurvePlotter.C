@@ -11,8 +11,8 @@ using namespace std;
 const double delta_calc = 1.699245178; // mrad
 string dMu = "5.4e-18";
 
-const double xmin = 750;
-const double xmax = 2500;
+const double xmin = 0;//750;
+const double xmax = PMAX;//2500;
 
 const int nTrials = 1e3;
 
@@ -568,6 +568,10 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    TF1 *fit = (TF1*)gr->GetFunction("DilutionFunc");
    fit->SetLineColor(kRed);
    fit->SetLineWidth(3);
+
+   gr->Fit(fit);
+
+
    fit->Draw("SAME");
 
    // Draw legend
@@ -943,7 +947,7 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.root";//refit.acceptanceCorrected.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";//refit.acceptanceCorrected.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
@@ -951,7 +955,7 @@ int main() {
    cout<<"\n****************** Drawing ******************"<<endl;
 
   // DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitTest", 0.06, 0.22); 
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitTest", 0, .22);//0.06, 0.22); 
   // DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
 
 /*   // Graphs

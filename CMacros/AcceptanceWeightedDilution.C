@@ -45,7 +45,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetYaxis()->CenterTitle(true);
 	graph->GetYaxis()->SetMaxDigits(4);
 	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("APL");
+	graph->Draw("AP");
 	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());
@@ -81,7 +81,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 
 	//c->SetRightMargin(0.13);
 
-	hist->Draw("PL");
+	hist->Draw("P");
 	
 	c->SaveAs((fname+".C").c_str());
 	c->SaveAs((fname+".pdf").c_str());
@@ -111,16 +111,16 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
 	gr1->GetYaxis()->SetRangeUser(0.00, 0.35);
-	gr1->Draw("APL");
+	gr1->Draw("AP");
 
 	gr2->SetMarkerStyle(24); // open circle
-	gr2->Draw("PL SAME");
+	gr2->Draw("P SAME");
 
 	if(gr3!=0) {
 		gr3->SetMarkerStyle(24);
 		gr3->SetMarkerColor(kRed);
 		gr3->SetLineColor(kRed);
-		gr3->Draw("PL SAME");
+		gr3->Draw("P SAME");
 	}
 
 	TLegend *l = new TLegend(.69, .79, .89, .89);
@@ -177,13 +177,13 @@ void DrawOverlay2(TGraphErrors *gr1, TGraphErrors *gr3, std::string title, std::
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
 	gr1->GetYaxis()->SetRangeUser(0.05, 0.35);
-	gr1->Draw("APL");
+	gr1->Draw("AP");
 
 	if(gr3!=0) {
 		gr3->SetMarkerStyle(20);
 		gr3->SetMarkerColor(kRed);
 		gr3->SetLineColor(kRed);
-		gr3->Draw("PL SAME");
+		gr3->Draw("P SAME");
 	}
 
 	TLegend *l = new TLegend(.65, .79, .89, .89);

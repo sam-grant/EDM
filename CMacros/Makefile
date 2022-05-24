@@ -8,7 +8,7 @@ BLINDING = -L./ -lBlinders
 
 # Horrible way of doing this with so many macros here. Need to fix this but knowledge of makefiles is lacking. 
 # Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe UnblindedEDMSimFitter.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe UnblindedBzSimFitter.exe BlindedBzSimFitter.exe TruthBzSimFitter.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe BlindedBzFitter.exe PlotYvsBr.exe TruthEDMSimFitter.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe TrackerResolutionPlot.exe GetTiltAngle.exe RelativeDilution.exe DilutionCurvePlotter.exe DilutionCurveFitter.exe
-Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe PlotYvsBr.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe TrackerResolutionPlot.exe GetTiltAngle.exe RelativeDilution.exe DilutionCurvePlotter.exe DilutionCurveFitter.exe PlotVerticalAngleFFT.exe OrthogonalSimFitter.exe OrthogonalFitter.exe PlotThetaYvsTime.exe VerticalOffset.exe VerticalOffsetSim.exe EDMAmplitudeGraphs.exe AcceptanceMaps.exe AcceptanceMapsWithMisalignment.exe AcceptanceWeightedDilution.exe
+Target = Asymmetry.exe AllCaloMeanPos.exe PerCaloMeanPos.exe SanityPlots.exe ToyRadialFieldScan.exe testBlinding.exe BlindedEDMSimFitter.exe HigherOrderFunc.exe BeamGunTuningPlotter.exe ToyHO.exe AnalyseBr_nearline.exe AnalyseBr_beamGun.exe AnalyseVCOD_nearline.exe ReadNearlineTrees.exe CaloMisalignment18kV.exe BeamYPos.exe PlotBeamYPosVsRun.exe dY_and_dBr.exe EstimateRadialField.exe PlotBeamYPosVsRun_Run4_Jan.exe BrCutsScanPlots.exe yPos_vs_E.exe d_Bz.exe PlotYvsBr.exe EDMBlindingIllustration.exe BlindedEDMFitter.exe TrackerResolutionPlot.exe GetTiltAngle.exe RelativeDilution.exe DilutionCurvePlotter.exe DilutionCurveFitter.exe PlotVerticalAngleFFT.exe OrthogonalSimFitter.exe OrthogonalFitter.exe PlotThetaYvsTime.exe VerticalOffset.exe VerticalOffsetSim.exe EDMAmplitudeGraphs.exe AcceptanceMaps.exe AcceptanceMapsWithMisalignment.exe AcceptanceWeightedDilution.exe UnblindSim.exe
 
 all:$(Target)
 
@@ -125,6 +125,9 @@ AcceptanceMapsWithMisalignment.exe: AcceptanceMapsWithMisalignment.C
 
 testBlinding.exe: testBlinding.C
 	${C++} -o $@ testBlinding.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 
+
+UnblindSim.exe: UnblindSim.C
+	${C++} -o $@ UnblindSim.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 
 
 EDMBlindingIllustration.exe: EDMBlindingIllustration.C
 	${C++} -o $@ EDMBlindingIllustration.C $(Objects) $(ROOTFLAGS) $(ROOTLIBS) -I ${RANDOMLIB} ${BLINDING} 

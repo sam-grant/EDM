@@ -38,7 +38,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
 	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.2);
+	graph->GetYaxis()->SetTitleOffset(1.25);
 	graph->GetXaxis()->CenterTitle(true);
 	graph->GetYaxis()->CenterTitle(true);
 	graph->GetYaxis()->SetMaxDigits(4);
@@ -90,7 +90,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname) {
 	return;
 }
 
-void DrawTH1Overlay(vector<TH1D *> hist_, std::string title, std::string fname) {
+/*void DrawTH1Overlay(vector<TH1D *> hist_, std::string title, std::string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -133,7 +133,53 @@ void DrawTH1Overlay(vector<TH1D *> hist_, std::string title, std::string fname) 
 	delete c;
 
 	return;
+}*/
+
+void DrawTH1Overlay(TH1D *h1, TH1D *h2, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	h1->SetTitle(title.c_str());
+	h1->SetStats(0);
+	h1->GetXaxis()->SetTitleSize(.04);
+	h1->GetYaxis()->SetTitleSize(.04);
+	h1->GetXaxis()->SetTitleOffset(1.1);
+	h1->GetYaxis()->SetTitleOffset(1.3);
+	h1->GetXaxis()->CenterTitle(1);
+	h1->GetYaxis()->CenterTitle(1);
+	h1->GetYaxis()->SetMaxDigits(4);
+	h1->SetLineWidth(1);
+	h1->SetLineColor(1);
+	h1->SetMarkerStyle(20);
+
+	h2->SetLineColor(kRed);
+	h2->SetMarkerColor(kRed);
+	h2->SetMarkerStyle(20);
+
+	h1->GetYaxis()->SetRangeUser(0, 1);
+
+	h1->Draw("P");
+	h2->Draw("P SAME");
+	
+	TLegend *leg = new TLegend(0.15,0.79,0.50,0.89);
+	leg->SetNColumns(1);
+	leg->AddEntry(h1, "#plus1 mm");
+	leg->AddEntry(h2, "#minus1 mm");
+	leg->SetBorderSize(0);
+	leg->SetTextSize(22); // 26
+	leg->SetTextFont(44);
+
+	leg->Draw("SAME");
+
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
 }
+
 void OverlayGraphs(TGraphErrors *gr1, TGraphErrors *gr2, std::string title, std::string fname, std::string stn) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -195,6 +241,72 @@ void OverlayGraphs(TGraphErrors *gr1, TGraphErrors *gr2, std::string title, std:
 
 }
 
+// Bad name, but it's just an overlay of the AEDM acceptance ratios with +1 mm and -1 mm shift
+
+void OverlayUpDownGraphs(TGraphErrors *gr1, TGraphErrors *gr2, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	// Get range
+	double ymin = 1e6; double ymax = -1e6;
+
+	vector<TGraphErrors*> gr_ = {gr1, gr2};
+
+	for(auto& gr : gr_) { 
+
+		for(int i(0); i<gr->GetN(); i++) {
+
+			double y = gr->GetY()[i];
+			double ey = gr->GetEY()[i];
+
+			if((y+ey) > ymax) ymax = y+ey;
+
+			if((y-ey) < ymin) ymin = y-ey;
+
+		}
+
+	}
+
+	gr1->GetYaxis()->SetRangeUser(-.15, .25);//ymin-0.25, ymax+0.25);
+	gr1->GetXaxis()->SetRangeUser(gr1->GetX()[0]-100, gr1->GetX()[gr1->GetN()]+100);
+	gr1->SetTitle(title.c_str());
+	gr1->GetXaxis()->SetTitleSize(.04);
+	gr1->GetYaxis()->SetTitleSize(.04);
+	gr1->GetXaxis()->SetTitleOffset(1.1);
+	gr1->GetYaxis()->SetTitleOffset(1.2);
+	gr1->GetXaxis()->CenterTitle(true);
+	gr1->GetYaxis()->CenterTitle(true);
+	gr1->GetYaxis()->SetMaxDigits(4);
+	gr1->SetMarkerStyle(20); //  Full circle
+	gr1->SetMarkerColor(kRed); 
+	gr1->SetLineColor(kRed); 
+	gr1->Draw("APL");
+
+	gr2->SetMarkerStyle(20); // Open circle
+	gr2->SetMarkerColor(kBlue); 
+	gr2->SetLineColor(kBlue); 
+	gr2->Draw("PL SAME");
+	//c->SetGridx();
+
+	TLegend *leg = new TLegend(0.59, 0.79, 0.89, 0.89);
+	leg->SetBorderSize(0);
+	leg->SetNColumns(2);
+
+	leg->AddEntry(gr1, "#plus1 mm");
+	leg->AddEntry(gr2, "#minus1 mm");
+
+	leg->Draw("SAME");
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
 void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, std::string stn) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -240,7 +352,7 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, std::s
 
 }
 
-void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::string title, std::string fname, string stn) {
+void DrawMainOverlay(TGraphErrors *gr1, TGraphErrors *gr2, TGraphErrors *gr3, std::string title, std::string fname, string stn) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -258,19 +370,19 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 	double xmin = gr1->GetX()[0];
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 	gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
-	gr1->GetYaxis()->SetRangeUser(0.00, 0.35);
-	gr1->Draw("APL");
+	gr1->GetYaxis()->SetRangeUser(-0.05, 0.35);
+	gr1->Draw("AP");
 
 	gr2->SetMarkerStyle(20); // open circle
 	gr2->SetMarkerColor(kRed);
 	gr2->SetLineColor(kRed);
-	gr2->Draw("PL SAME");
+	gr2->Draw("P SAME");
 
 	if(gr3!=0) {
-		gr3->SetMarkerStyle(24);
-		gr3->SetMarkerColor(kRed);
-		gr3->SetLineColor(kRed);
-		gr3->Draw("PL SAME");
+		gr3->SetMarkerStyle(20);
+		gr3->SetMarkerColor(kBlue);
+		gr3->SetLineColor(kBlue);
+		gr3->Draw("P SAME");
 	}
 
 	TLegend *l = new TLegend(.69, .79, .89, .89);
@@ -282,7 +394,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 		l->AddEntry(gr1, "Unweighted");
 		l->AddEntry(gr2, "Weighted");
 	} else { 
-		l->AddEntry(gr1, "All decays (unweighted)");
+		l->AddEntry(gr1, "All decays");
 		l->AddEntry(gr2, "Truth vertices (nominal)");
 		if(stn=="S12") l->AddEntry(gr3, "Truth vertices (#plus1 mm)");
 		if(stn=="S18") l->AddEntry(gr3, "Truth vertices (#minus1 mm)");
@@ -296,6 +408,70 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 	}
 
 	l->Draw("SAME");
+
+	//c->SetGridx();
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void DrawSecondaryOverlay(TGraphErrors *gr1, TGraphErrors *gr2, string stn, std::string title, std::string fname) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gr1->SetTitle(title.c_str());
+	gr1->GetXaxis()->SetTitleSize(.04);
+	gr1->GetYaxis()->SetTitleSize(.04);
+	gr1->GetXaxis()->SetTitleOffset(1.1);
+	gr1->GetYaxis()->SetTitleOffset(1.2);
+	gr1->GetXaxis()->CenterTitle(true);
+	gr1->GetYaxis()->CenterTitle(true);
+	gr1->GetYaxis()->SetMaxDigits(4);
+	gr1->SetMarkerStyle(20); //  Full circle
+
+	// range
+	double xmin = gr1->GetX()[0];
+	double xmax = gr1->GetX()[gr1->GetN()-1];
+
+	//gr1->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
+	gr1->GetYaxis()->SetRangeUser(-0.05, 1);
+	gr1->SetMarkerColor(kRed);
+	gr1->SetLineColor(kRed);
+	gr1->Draw("AP");
+
+
+	for(int i(0); i<gr2->GetN(); i++) gr2->SetPoint(i, gr2->GetX()[i]+25, gr2->GetY()[i]);
+
+	gr2->SetMarkerStyle(20); // open circle
+	gr2->SetMarkerColor(kBlue);
+	gr2->SetLineColor(kBlue);
+	gr2->Draw("P SAME");
+
+	TLegend *l = new TLegend(0.11,0.79,0.50,0.89);
+	l->SetBorderSize(0);
+	l->SetTextSize(24);
+	l->SetTextFont(44);
+
+	l->AddEntry(gr1, "Truth vertices (nominal)");
+	if(stn=="S12") l->AddEntry(gr2, "Truth vertices (#plus1 mm)");
+	if(stn=="S18") l->AddEntry(gr2, "Truth vertices (#minus1 mm)");
+	
+	l->Draw("SAME");
+	gPad->Update();
+/*		l->SetX1NDC(.49);
+		l->SetX2NDC(.89);
+		l->SetY1NDC(.75);
+		l->SetY2NDC(.89);*/
+		//c->Update();
+	//}
+
+/*	l->Draw("SAME");*/
 
 	//c->SetGridx();
 
@@ -414,11 +590,11 @@ void Run2(bool write) {
 		TGraphErrors *gr3 = (TGraphErrors*)f3->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
 
 		// For presentation only
-		TGraphErrors *gr1_reset = ResetGraph(gr1, xmin, xmax);
-		TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
-		TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
+		gr1 = ResetGraph(gr1, xmin, xmax);
+		gr2 = ResetGraph(gr2, xmin, xmax);
+		gr3 = ResetGraph(gr3, xmin, xmax);
 
-		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AlignmentShifted_AEDM_vs_p_overlay", stn);
+		DrawMainOverlay(gr1, gr2, gr3, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AlignmentShifted_AEDM_vs_p_overlay", stn);
 
 		// Make ratio of gr2/gr1 (gr2 = nominal)
 		TGraphErrors *gr_ratio_1 = new TGraphErrors();
@@ -454,7 +630,6 @@ void Run2(bool write) {
 
 			double y = gr3->GetY()[i]/gr1->GetY()[i];
 			double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr3->GetEY()[i]/gr3->GetY()[i], 2) );
-
 
 			gr_ratio_2->SetPoint(counter, x, y);
 			gr_ratio_2->SetPointError(counter, 0, ey);
@@ -508,7 +683,7 @@ void Run2(bool write) {
 
 	}
 
-	DrawTH1Overlay(h1_ratio_, ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/Overlay_HistAcceptanceErrorVsMomentum");
+	//DrawTH1Overlay(h1_ratio_, ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/Overlay_HistAcceptanceErrorVsMomentum");
 
 
 	// Get delta / mm 
@@ -520,7 +695,7 @@ void Run2(bool write) {
 		double y1 = h1_ratio_.at(0)->GetBinContent(i+1);
 		double y2 = h1_ratio_.at(1)->GetBinContent(i+1);
 
-		double delta = abs(y1-y2)/2;
+		double delta = (y1+y2)/2;
 
 		h_delta->SetBinContent(i+1,delta);
 
@@ -543,11 +718,194 @@ void Run2(bool write) {
 
 }
 
+// Ignore other "Run" functions
+void Run3(bool write) {
+
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingErrorVsMomentum_250MeV.root";
+	if(!write) foutName = "delete_me.root";
+
+	TFile *fout = new TFile(foutName, "RECREATE");
+	fout->mkdir("graphs"); fout->mkdir("hists");
+
+	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root";
+	TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_0mm.root"; // "../Plots/MC/dMu/Alignment/0mm/Fits/edmFits_unblinded_trackTruth_WORLD_"+step+"_noVertCorr_BQ.root";
+	TString f3Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_1mm.root";
+	
+	TFile *f1 = TFile::Open(f1Name);
+	TFile *f2 = TFile::Open(f2Name);
+	TFile *f3 = TFile::Open(f3Name);
+
+	TGraphErrors *gr1 = (TGraphErrors*)f1->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY"); 
+
+	cout<<"---> Got base files "<<f1Name<<", "<<f1<<", "<<f2Name<<", "<<f2<<", "<<f3Name<<", "<<f3<<endl;
+
+	vector<string> stn_ = {"S12", "S18"};
+
+	vector<TH1D*> h1_ratio_diff_;
+	vector<TGraphErrors*> gr_ratio_diff_;
+
+	for(auto& stn : stn_) {
+		
+		TGraphErrors *gr2 = (TGraphErrors*)f2->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
+		TGraphErrors *gr3 = (TGraphErrors*)f3->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
+
+		gr1 = ResetGraph(gr1, xmin, xmax);
+		gr2 = ResetGraph(gr2, xmin, xmax);
+		gr3 = ResetGraph(gr3, xmin, xmax);
+
+		DrawMainOverlay(gr1, gr2, gr3, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AlignmentShifted_AEDM_vs_p_overlay", stn);
+
+		// Make ratio of gr2/gr1 (gr2 = nominal)
+		TGraphErrors *gr_ratio_1 = new TGraphErrors();
+
+		int counter = 0;
+
+		for (int i(0); i<gr1->GetN(); i++) {
+
+			double x = gr1->GetX()[i];
+
+			if(x < xmin || x > xmax) continue;
+
+			double y = gr2->GetY()[i]/gr1->GetY()[i];
+			double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) );
+
+			gr_ratio_1->SetPoint(counter, x, y);
+			gr_ratio_1->SetPointError(counter, 0, ey);
+
+
+			counter++;
+		}
+
+		// Make ratio of gr3/gr1 (gr3 = ±1 mm)
+		TGraphErrors *gr_ratio_2 = new TGraphErrors();
+
+		counter = 0;
+
+		for (int i(0); i<gr1->GetN(); i++) {
+
+			double x = gr1->GetX()[i];
+
+			// Not really necessary 
+			if(x < xmin || x > xmax) continue;
+
+			double y = gr3->GetY()[i]/gr1->GetY()[i];
+			double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr3->GetEY()[i]/gr3->GetY()[i], 2) );
+
+			gr_ratio_2->SetPoint(counter, x, y);
+			gr_ratio_2->SetPointError(counter, 0, ey);
+
+			counter++;
+
+		}
+
+		fout->cd("graphs");
+		gr_ratio_1->SetName((stn+"_gr_ratio_nominal").c_str());
+		gr_ratio_1->Write();
+
+		gr_ratio_2->SetName((stn+"_gr_ratio_shift").c_str());
+		gr_ratio_2->Write();
+
+		DrawSecondaryOverlay(gr_ratio_1, gr_ratio_2, stn, stn+";Decay vertex momentum (nominal) [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_OverlayAEDMAcceptanceFraction");
+	
+		TH1D *h1_ratio_1 = new TH1D((stn+"_h_ratio_nominal").c_str(), ";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", gr_ratio_1->GetN(), xmin, xmax);
+		TH1D *h1_ratio_2 = new TH1D((stn+"_h_ratio_shift").c_str(), ";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", gr_ratio_2->GetN(), xmin, xmax);
+
+		for(int i(0); i<gr_ratio_1->GetN(); i++) {
+			h1_ratio_1->SetBinContent(i+1, gr_ratio_1->GetY()[i]);
+			h1_ratio_1->SetBinError(i+1, gr_ratio_1->GetEY()[i]);
+		}
+
+		for(int i(0); i<gr_ratio_2->GetN(); i++) {
+			h1_ratio_2->SetBinContent(i+1, gr_ratio_2->GetY()[i]);
+			h1_ratio_2->SetBinError(i+1, gr_ratio_2->GetEY()[i]);
+		}
+
+		fout->cd("hists");
+		h1_ratio_1->Write();
+		h1_ratio_2->Write();
+
+		// Get difference 
+		TGraphErrors *gr_ratio_diff = new TGraphErrors();
+
+		for (int i(0); i<gr_ratio_1->GetN(); i++) {
+
+			// Difference from nominal
+			double y = gr_ratio_1->GetY()[i] - gr_ratio_2->GetY()[i];
+			double x = gr_ratio_1->GetX()[i]; 
+
+			gr_ratio_diff->SetPoint(i, x, y);
+			gr_ratio_diff->SetPointError(i, 0, 0);
+
+		}
+
+		DrawTGraphErrors(gr_ratio_diff, stn+";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AEDMAcceptanceFractionDiff");
+
+		fout->cd("graphs");
+		gr_ratio_diff->SetName((stn+"_diff").c_str());
+		gr_ratio_diff->Write();
+
+		// What's the average?
+		TH1D *h1_ratio_diff = new TH1D((stn+"_diff").c_str(), ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", gr_ratio_diff->GetN(), xmin, xmax);
+
+		for(int i(0); i<gr_ratio_diff->GetN(); i++) {
+			h1_ratio_diff->SetBinContent(i+1, gr_ratio_diff->GetY()[i]);
+			h1_ratio_diff->SetBinError(i+1, gr_ratio_diff->GetEY()[i]);
+		}
+
+		DrawTH1(h1_ratio_diff, stn+";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAEDMAcceptanceFractionDiff");
+
+		//TH1D *h1_ratio_minus = new TH1D((stn+"_ratio_minus").c_str(), ";Decay vertex momentum [MeV];Acceptance weighting / 250 MeV", gr_ratio->GetN(), xmin, xmax);
+		fout->cd("hists");
+		h1_ratio_diff->Write();
+
+		h1_ratio_diff_.push_back(h1_ratio_diff);
+		gr_ratio_diff_.push_back(gr_ratio_diff);
+
+	}
+
+	OverlayUpDownGraphs(gr_ratio_diff_.at(0), gr_ratio_diff_.at(1), ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/AEDMAcceptanceUncOverlay");
+
+	// DrawTH1Overlay(h1_ratio_, ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/Overlay_HistAcceptanceErrorVsMomentum");
+
+	// Get delta / mm 
+
+	TH1D *h_delta = (TH1D*)h1_ratio_diff_.at(0)->Clone("h_delta");
+
+	for(int i(0); i<h_delta->GetXaxis()->GetNbins(); i++) { 
+
+		// what's the average absolute offset from nominal ±1 mm? 
+		double y1 = abs(h1_ratio_diff_.at(0)->GetBinContent(i+1));
+		double y2 = abs(h1_ratio_diff_.at(1)->GetBinContent(i+1));
+
+		double delta = (y1+y2)/2;
+
+		h_delta->SetBinContent(i+1,delta);
+
+	}
+
+	h_delta->GetYaxis()->SetRangeUser(0, 0.17);
+
+	DrawTH1(h_delta, ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/DeltaAEDMAcceptancePerMMVsMomentum");
+
+	h_delta->Write();
+	
+	f1->Close();
+	f2->Close();
+	f3->Close();
+
+	fout->Close();
+
+	cout<<"---> Written plots to "<<foutName<<", "<<fout<<endl;
+
+	return;
+
+}
+
 void AlignmentComparison() {
 
 	//Run("250MeV");
 
-	Run2(true);
+	Run3(true);
 	//Run("500MeV");
 	
 	return;

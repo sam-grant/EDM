@@ -1,9 +1,9 @@
 void S12S18_AEDM_vs_p_overlay_Run-1a_1000_2500()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May  8 19:12:39 2022) by ROOT version 6.24/06
+//=========  (Thu May 12 14:34:55 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(819.4061,-0.01854518,2667.941,0.0665288);
+   c->Range(819.4016,-0.01778835,2667.941,0.06803877);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -11,19 +11,19 @@ void S12S18_AEDM_vs_p_overlay_Run-1a_1000_2500()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1001[6] = {
-   1127.495,
-   1373.325,
-   1619.956,
-   1866.969,
+   1127.491,
+   1373.326,
+   1619.953,
+   1866.968,
    2116.15,
-   2359.852};
+   2359.851};
    Double_t _fy1001[6] = {
-   0.03679641,
-   0.03445067,
-   0.03321665,
-   0.008931421,
-   0.0367161,
-   0.01900352};
+   0.03818216,
+   0.03228709,
+   0.03630985,
+   0.009812337,
+   0.03806523,
+   0.01517008};
    Double_t _fex1001[6] = {
    0,
    0,
@@ -32,21 +32,21 @@ void S12S18_AEDM_vs_p_overlay_Run-1a_1000_2500()
    0,
    0};
    Double_t _fey1001[6] = {
-   0.01555339,
-   0.01354758,
-   0.01299525,
-   0.01329761,
-   0.01406545,
-   0.0153948};
+   0.01555209,
+   0.01354853,
+   0.01299506,
+   0.01329617,
+   0.01406928,
+   0.01539881};
    TGraphErrors *gre = new TGraphErrors(6,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle(";Decay vertex momentum [MeV];A_{EDM} (BLIND) [mrad]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,1004.26,2483.088);
-   Graph_Graph1001->SetMinimum(-0.01003778);
-   Graph_Graph1001->SetMaximum(0.0580214);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,1004.256,2483.087);
+   Graph_Graph1001->SetMinimum(-0.00920564);
+   Graph_Graph1001->SetMaximum(0.05945605);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 

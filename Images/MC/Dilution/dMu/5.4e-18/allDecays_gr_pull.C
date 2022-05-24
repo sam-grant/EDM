@@ -1,33 +1,48 @@
 void allDecays_gr_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 21:53:58 2022) by ROOT version 6.24/06
+//=========  (Wed May 11 19:08:13 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(499.748,-3.657018,2740.76,1.327882);
+   c->Range(-390.357,-3.657018,3513.213,1.327882);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t allDecays_gr_pull_fx1001[7] = {
+   Double_t allDecays_gr_pull_fx1001[12] = {
+   124.3987,
+   374.0359,
+   623.6717,
    873.25,
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
-   2367.258};
-   Double_t allDecays_gr_pull_fy1001[7] = {
+   2367.258,
+   2613.22,
+   2850.269};
+   Double_t allDecays_gr_pull_fy1001[12] = {
+   -0.9502276,
+   -0.261016,
+   -0.414114,
    0.2996927,
    0.4970655,
    0.1666063,
    -0.1436061,
    0.270894,
    -2.826201,
-   0.1339038};
-   Double_t allDecays_gr_pull_fex1001[7] = {
+   0.1339038,
+   -2.18017,
+   -1.347159};
+   Double_t allDecays_gr_pull_fex1001[12] = {
+   0,
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -35,7 +50,12 @@ void allDecays_gr_pull()
    0,
    0,
    0};
-   Double_t allDecays_gr_pull_fey1001[7] = {
+   Double_t allDecays_gr_pull_fey1001[12] = {
+   0,
+   0,
+   0,
+   0,
+   0,
    0,
    0,
    0,
@@ -43,13 +63,13 @@ void allDecays_gr_pull()
    0,
    0,
    0};
-   TGraphErrors *gre = new TGraphErrors(7,allDecays_gr_pull_fx1001,allDecays_gr_pull_fy1001,allDecays_gr_pull_fex1001,allDecays_gr_pull_fey1001);
+   TGraphErrors *gre = new TGraphErrors(12,allDecays_gr_pull_fx1001,allDecays_gr_pull_fy1001,allDecays_gr_pull_fex1001,allDecays_gr_pull_fey1001);
    gre->SetName("allDecays_gr_pull");
    gre->SetTitle(";Decay positron momentum [MeV];Pull [#sigma] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_allDecays_gr_pull1001 = new TH1F("Graph_allDecays_gr_pull1001","",100,723.8492,2516.659);
+   TH1F *Graph_allDecays_gr_pull1001 = new TH1F("Graph_allDecays_gr_pull1001","",100,0,3122.856);
    Graph_allDecays_gr_pull1001->SetMinimum(-3.158528);
    Graph_allDecays_gr_pull1001->SetMaximum(0.8293921);
    Graph_allDecays_gr_pull1001->SetDirectory(0);

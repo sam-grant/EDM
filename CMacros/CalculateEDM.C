@@ -73,7 +73,7 @@ double GetTilt(double dMu) {
 
 void CalculateEDM() { 
 
-	double tilt = GetTilt(5.4e-18);
+	double tilt = GetTilt(9.13787e-19);
 
 	cout<<tilt<<endl;
 

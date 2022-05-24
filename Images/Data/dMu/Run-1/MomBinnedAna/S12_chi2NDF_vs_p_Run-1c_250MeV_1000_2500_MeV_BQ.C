@@ -1,7 +1,7 @@
 void S12_chi2NDF_vs_p_Run-1c_250MeV_1000_2500_MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May  8 18:10:05 2022) by ROOT version 6.24/06
+//=========  (Fri May 13 12:29:26 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(785.0101,0.3929863,2703.416,2.094843);

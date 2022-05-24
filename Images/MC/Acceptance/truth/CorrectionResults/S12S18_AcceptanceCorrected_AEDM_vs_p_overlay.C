@@ -1,7 +1,7 @@
 void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 22:38:27 2022) by ROOT version 6.24/06
+//=========  (Wed May 11 12:38:04 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(830.3881,-0.04375,2659.699,0.39375);
@@ -74,7 +74,7 @@ void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
    Graph_Graph1001->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1001);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    
    Double_t _fx1002[6] = {
    1122.829,
@@ -128,7 +128,7 @@ void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
    Graph_Graph1002->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1002);
    
-   gre->Draw("pl ");
+   gre->Draw("p ");
    
    Double_t _fx1003[6] = {
    1123.084,
@@ -188,7 +188,7 @@ void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
    Graph_Graph1003->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1003);
    
-   gre->Draw("pl ");
+   gre->Draw("p ");
    
    TLegend *leg = new TLegend(0.49,0.75,0.89,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);

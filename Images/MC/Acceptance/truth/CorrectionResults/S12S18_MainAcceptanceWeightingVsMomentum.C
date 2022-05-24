@@ -1,7 +1,7 @@
 void S12S18_MainAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 22:38:27 2022) by ROOT version 6.24/06
+//=========  (Wed May 11 12:38:04 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(813.104,0.2578454,2672.985,0.7777301);
@@ -73,7 +73,7 @@ void S12S18_MainAcceptanceWeightingVsMomentum()
    Graph_Graph1006->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1006);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    
    TPaveText *pt = new TPaveText(0.4253015,0.94,0.5746985,0.995,"blNDC");
    pt->SetName("title");

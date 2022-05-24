@@ -16,9 +16,14 @@ void GaussianCL() {
 	//double sigma = 0.9e-19;//1.05057e-19;
 
     // FNAL (prelim)
-    double mu = 0;
-    double sigma = 1.12958e-19;
+    //double mu = 0;
+    //double sigma = 1.07117e-19;
 
+ 	//double mu = 2.47117e-19;
+	//double sigma = 2.50084e-19;
+
+double mu = -1.56777e-19;
+double sigma = 2.57213e-19;
     // ACME electron 2018
     //mu = 4.3e-30;
     //sigma = sqrt(pow(3.1e-30,2)+pow(2.6e-30,2));// * 1e-30;// // ± 3.1stat ± 2.6syst) × 10−30

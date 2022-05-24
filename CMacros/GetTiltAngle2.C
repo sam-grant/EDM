@@ -195,6 +195,8 @@ TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc, TH1D *weig
 
       d_EDM = d_EDM*weighting; 
 
+      cout<<"d_EDM = "<<d_EDM<<endl;
+
       double delta_prime = y/d_EDM;
 
       double delta_prime_err = ey/d_EDM;
@@ -333,17 +335,17 @@ std::tuple<double, double> GetRadialField(std::string dataset) {
   double eBr = 0; 
   
   if(dataset=="Run-1a") {
-    Br = 22.1956 * 1e-3; // mrad 
-    eBr = 7.29799 * 1e-3; // mrad
+    Br = 22.1956 * 1e-3; // ppm -> mrad 
+    eBr = 7.29799 * 1e-3; // ppm -> mrad 
   } else if(dataset=="Run-1b") {
-    Br = 22.7213 * 1e-3; // mrad
-    eBr = 8.17204 * 1e-3; // mrad
+    Br = 22.7213 * 1e-3; // ppm -> mrad 
+    eBr = 8.17204 * 1e-3; // ppm -> mrad 
   } else if(dataset=="Run-1c") {
-    Br = 29.6031 * 1e-3; // mrad 
-    eBr = 8.24297 * 1e-3; // mrad
+    Br = 29.6031 * 1e-3; // ppm -> mrad 
+    eBr = 8.24297 * 1e-3; // ppm -> mrad 
   } else if(dataset=="Run-1d") {
-    Br = 34.2797 * 1e-3; // mrad 
-    eBr = 9.14532 * 1e-3; 
+    Br = 34.2797 * 1e-3; // ppm -> mrad  
+    eBr = 9.14532 * 1e-3; // ppm -> mrad 
   } else cerr<<"GetRadialField: dataset not found";
   
   // Do we actually subtract the radial field?
@@ -473,6 +475,12 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
 	TString outputFileName = "../Plots/MC/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+config+".root";
 	TFile *outputFile = new TFile(outputFileName, "RECREATE");
 
+  // Result tree
+  TTree *EDMTree = new TTree("EDMTree", "EDMTree");
+  double dMu; double dMu_err; 
+  EDMTree->Branch("dMu", &dMu);//, "dMu/d");
+  EDMTree->Branch("dMu_err", &dMu_err);//, "dMu_err/d");
+
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
 
   // Get dilution curve
@@ -516,7 +524,7 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
         cout<<"!!! WARNING: correctAcceptance is TRUE and no acceptance histogram has been found !!!"<<endl;
       }
 
-      cout<<"\nacceptanceHist = "<<acceptanceHistName<<", "<<acceptanceHist<<endl;
+      // cout<<"\nacceptanceHist = "<<acceptanceHistName<<", "<<acceptanceHist<<endl;
 
       TString A_grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"A"+fitType+"_vs_p_thetaY";
 
@@ -578,7 +586,96 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
 
       // ------------------ Calculate misalignment error. ------------------ 
 
-      TH1D *h_delta_1mm = (TH1D*)misalignment_file->Get("hists/h_delta");
+      TH1D *h_delta_up = (TH1D*)misalignment_file->Get("hists/S12_diff");
+      TH1D *h_delta_down = (TH1D*)misalignment_file->Get("hists/S18_diff");
+
+      double maxVerticalMisalignment = 0.6; 
+
+      // Produce new acceptance histogram based on the maximum difference
+      // Shift the acceptance fraction / bin by some amount
+      TH1D *acceptanceHist_up = (TH1D*)acceptanceHist->Clone("acceptanceHist_up");
+      TH1D *acceptanceHist_down = (TH1D*)acceptanceHist->Clone("acceptanceHist_down");
+
+      // Up 
+      for(int i(0); i<acceptanceHist_up->GetNbinsX(); i++) { 
+
+        double nominal = acceptanceHist->GetBinContent(i+1);
+        double up = h_delta_up->GetBinContent(i+1);
+        
+        // Scale according to max misalignment
+        up = maxVerticalMisalignment * up; 
+
+        // Fill
+        acceptanceHist_up->SetBinContent(i+1, nominal+up); // up is signed, if it's negative we still add
+
+      }
+
+      // Down
+      for(int i(0); i<acceptanceHist_down->GetNbinsX(); i++) { 
+
+        double nominal = acceptanceHist->GetBinContent(i+1);
+        double down = h_delta_down->GetBinContent(i+1);
+        
+        // Scale according to max misalignment
+        down = maxVerticalMisalignment * down; 
+
+        // Fill
+        acceptanceHist_down->SetBinContent(i+1, nominal+down); // down is signed, if it's negative we still add
+
+      }
+
+      TGraphErrors *gr_delta_prime_up = GetDeltaPrimeFit(A_gr, dilutionFunc, acceptanceHist_up);
+      TGraphErrors *gr_delta_prime_down = GetDeltaPrimeFit(A_gr, dilutionFunc, acceptanceHist_down);
+
+      TF1 *f_delta_prime_up = (TF1*)gr_delta_prime_up->GetFunction("pol0");
+      TF1 *f_delta_prime_down = (TF1*)gr_delta_prime_down->GetFunction("pol0");
+
+      double delta_prime_up = abs(f_delta_prime_up->GetParameter(0));
+      double delta_prime_down = abs(f_delta_prime_down->GetParameter(0));
+
+/*      cout<<"\nDELTA (NOMINAL) = "<<delta_prime<<" mrad"<<endl;
+      cout<<"DELTA (UP) = "<<delta_prime_up<<" mrad"<<endl;
+      cout<<"DELTA (DOWN) = "<<delta_prime_down<<" mrad"<<endl;*/
+
+      double up_shift = delta_prime - delta_prime_up;
+      double down_shift = delta_prime - delta_prime_down;
+
+/*      cout<<"UP SHIFT = "<<up_shift<<" mrad"<<endl;
+      cout<<"DOWN SHIFT = "<<down_shift<<" mrad"<<endl;*/
+
+     // double up_var = abs(up_shift) / sqrt( pow(f_delta_prime_up->GetParError(0), 2) + pow(f_delta_prime_up->GetParError(0), 2))
+
+      // What is the average variation in delta?
+
+      // Treat each shift as an error bar. What's the combined error?
+
+      // Mean shift
+      double err_align = ( up_shift + down_shift ) / 2;
+     // double err_align = sqrt(pow(up_shift,2) + pow(down_shift,2)) / 2;
+/*      double err_align = abs(up_shift-down_shift) / 
+      // what's the average variance?
+      
+      double sigma = sqrt(var_tot / n);
+
+    for(int i(0); i<n; i++) {
+
+      double y1 = gr1->GetY()[i]; // truth
+      double y2 = gr2->GetY()[i]; // weighted
+      double ey1 = gr1->GetEY()[i]; // truth
+      double ey2 = gr2->GetEY()[i]; // weighted
+
+      double sigma = abs(y1-y2) / sqrt( pow(ey1, 2) + pow(ey2, 2) );
+
+      var_tot += pow(sigma,2);
+
+    }*/
+
+     
+
+
+      
+
+/*      TH1D *h_delta_1mm = (TH1D*)misalignment_file->Get("hists/h_delta");
 
       double maxVerticalMisalignment = 0.6; // plus/minus
 
@@ -609,12 +706,15 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
 
       double err_align; 
       if(plus > minus) err_align = plus; 
-      else err_align = minus;
+      else err_align = minus;*/
 
       double result = delta_prime;
       double err_tot = sqrt(pow(err_fit,2)+pow(err_acc,2)+pow(err_align,2));
 
       if(fitType == "EDM") {
+
+        dMu = GetLimit(result); dMu_err = GetLimit(err_tot);
+        EDMTree->Fill(); 
 
         // Deal with converting small double into strings
         std::ostringstream oss_result; oss_result << GetLimit(result);
@@ -623,13 +723,13 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
         std::ostringstream oss_align_error; oss_align_error << GetLimit(err_align);
         std::ostringstream oss_tot_error; oss_tot_error << GetLimit(err_tot);
 
-        std::string dMu = oss_result.str(); 
+        std::string dMu_str = oss_result.str(); 
         std::string err_dMu_fit = oss_fit_error.str();
         std::string err_dMu_acc = oss_acc_error.str();
         std::string err_dMu_align = oss_align_error.str();
         std::string err_dMu_tot = oss_tot_error.str();
 
-        results_.push_back(stn+", "+to_string(result)+", "+to_string(err_fit)+", "+to_string(err_acc)+", "+to_string(err_align)+", "+to_string(err_tot)+", "+dMu+", "+err_dMu_fit+", "+err_dMu_acc+", "+err_dMu_align+", "+err_dMu_tot);//oss_acc_error+", "+oss_acc_error);
+        results_.push_back(stn+", "+to_string(result)+", "+to_string(err_fit)+", "+to_string(err_acc)+", "+to_string(err_align)+", "+to_string(err_tot)+", "+dMu_str+", "+err_dMu_fit+", "+err_dMu_acc+", "+err_dMu_align+", "+err_dMu_tot);//oss_acc_error+", "+oss_acc_error);
 
 
       } else if(fitType == "g2") {
@@ -641,6 +741,9 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
   }
 
 	cout<<"\n***************************** Writing output *****************************\n"<<endl;
+
+  outputFile->cd("EDM");
+  EDMTree->Write();
 
 	cout<<"Written results to output file "<<outputFileName<<", "<<outputFile<<endl;
 
@@ -832,7 +935,73 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       // ------------------ Calculate misalignment error. ------------------ 
 
-      TH1D *h_delta_1mm = (TH1D*)misalignment_file->Get("hists/h_delta");
+      TH1D *h_delta_up = (TH1D*)misalignment_file->Get("hists/S12_diff");
+      TH1D *h_delta_down = (TH1D*)misalignment_file->Get("hists/S18_diff");
+
+      double maxVerticalMisalignment = 0.6; 
+
+      // Produce new acceptance histogram based on the maximum difference
+      // Shift the acceptance fraction / bin by some amount
+      TH1D *acceptanceHist_up = (TH1D*)acceptanceHist->Clone("acceptanceHist_up");
+      TH1D *acceptanceHist_down = (TH1D*)acceptanceHist->Clone("acceptanceHist_down");
+
+      // Up 
+      for(int i(0); i<acceptanceHist_up->GetNbinsX(); i++) { 
+
+        double nominal = acceptanceHist->GetBinContent(i+1);
+        double up = h_delta_up->GetBinContent(i+1);
+        
+        // Scale according to max misalignment
+        up = maxVerticalMisalignment * up; 
+
+        // Fill
+        acceptanceHist_up->SetBinContent(i+1, nominal+up); // up is signed, if it's negative we still add
+
+      }
+
+      // Down
+      for(int i(0); i<acceptanceHist_down->GetNbinsX(); i++) { 
+
+        double nominal = acceptanceHist->GetBinContent(i+1);
+        double down = h_delta_down->GetBinContent(i+1);
+        
+        // Scale according to max misalignment
+        down = maxVerticalMisalignment * down; 
+
+        // Fill
+        acceptanceHist_down->SetBinContent(i+1, nominal+down); // down is signed, if it's negative we still add
+
+      }
+
+      TGraphErrors *gr_delta_prime_up = GetDeltaPrimeFit(A_gr, dilutionFunc, acceptanceHist_up);
+      TGraphErrors *gr_delta_prime_down = GetDeltaPrimeFit(A_gr, dilutionFunc, acceptanceHist_down);
+
+      TF1 *f_delta_prime_up = (TF1*)gr_delta_prime_up->GetFunction("pol0");
+      TF1 *f_delta_prime_down = (TF1*)gr_delta_prime_down->GetFunction("pol0");
+
+      double delta_prime_up = abs(f_delta_prime_up->GetParameter(0));
+      double delta_prime_down = abs(f_delta_prime_down->GetParameter(0));
+
+/*      cout<<"\nDELTA (NOMINAL) = "<<delta_prime<<" mrad"<<endl;
+      cout<<"DELTA (UP) = "<<delta_prime_up<<" mrad"<<endl;
+      cout<<"DELTA (DOWN) = "<<delta_prime_down<<" mrad"<<endl;*/
+
+      double up_shift = delta_prime - delta_prime_up;
+      double down_shift = delta_prime - delta_prime_down;
+
+/*      cout<<"UP SHIFT = "<<up_shift<<" mrad"<<endl;
+      cout<<"DOWN SHIFT = "<<down_shift<<" mrad"<<endl;*/
+
+     // double up_var = abs(up_shift) / sqrt( pow(f_delta_prime_up->GetParError(0), 2) + pow(f_delta_prime_up->GetParError(0), 2))
+
+      // What is the average variation in delta?
+
+      // Treat each shift as an error bar. What's the combined error?
+
+      // Mean shift
+      double err_align = ( up_shift + down_shift ) / 2;
+
+/*      TH1D *h_delta_1mm = (TH1D*)misalignment_file->Get("hists/h_delta");
 
       double maxVerticalMisalignment = 0.6; // plus/minus
 
@@ -859,12 +1028,12 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       TF1 *f_delta_prime_minus = (TF1*)gr_delta_prime_minus->GetFunction("pol0");
 
       double plus = abs(delta_prime - f_delta_prime_plus->GetParameter(0));
-      double minus = abs(delta_prime - f_delta_prime_minus->GetParameter(0));
+      double minus = abs(delta_prime - f_delta_prime_minus->GetParameter(0));*/
 
-      double err_align; 
+/*      double err_align; 
       if(plus > minus) err_align = plus; 
       else err_align = minus;
-
+*/
       if(!correctAcceptance) err_align = 0;
 
       // ------------------ Fudge results together, god i hate this . ------------------ 
@@ -954,13 +1123,35 @@ void GetTiltAngle2() {
   //RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   //RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
   //RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
-  RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
+  //RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
+  //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded", true);
+  //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "blinded", true);
+
+  //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+ // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+ // RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
 
-  //RunData("Run-1a_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+
+
+  //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
 /*
   RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");

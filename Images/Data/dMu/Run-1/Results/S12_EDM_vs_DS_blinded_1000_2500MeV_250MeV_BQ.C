@@ -1,9 +1,9 @@
 void S12_EDM_vs_DS_blinded_1000_2500MeV_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May  8 19:50:03 2022) by ROOT version 6.24/06
+//=========  (Fri May 13 12:30:46 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.15,2.675226e-19,4.65,2.337037e-18);
+   c->Range(0.15,2.672823e-19,4.65,2.337317e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -26,10 +26,10 @@ void S12_EDM_vs_DS_blinded_1000_2500MeV_250MeV_BQ()
    0,
    0};
    Double_t _fey1001[4] = {
-   3.473634e-19,
-   2.834652e-19,
-   2.687332e-19,
-   2.072404e-19};
+   3.450918e-19,
+   2.836188e-19,
+   2.689265e-19,
+   2.032131e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle("");
@@ -37,8 +37,8 @@ void S12_EDM_vs_DS_blinded_1000_2500MeV_250MeV_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,0.6,4.2);
-   Graph_Graph1001->SetMinimum(4.74474e-19);
-   Graph_Graph1001->SetMaximum(2.130086e-18);
+   Graph_Graph1001->SetMinimum(4.742858e-19);
+   Graph_Graph1001->SetMaximum(2.130314e-18);
    Graph_Graph1001->SetDirectory(0);
    Graph_Graph1001->SetStats(0);
 

@@ -1,7 +1,7 @@
 void S12S18_TrialsOverlay_AcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 22:38:31 2022) by ROOT version 6.24/06
+//=========  (Wed May 11 12:38:07 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(812.5,-0.125,2687.5,1.125);

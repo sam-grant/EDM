@@ -1,7 +1,7 @@
 void S12_HistAcceptanceErrorVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May  6 20:33:51 2022) by ROOT version 6.24/06
+//=========  (Wed May 11 13:03:55 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -10,12 +10,12 @@ void S12_HistAcceptanceErrorVsMomentum()
    c->SetFrameBorderMode(0);
    
    TH1D *S12_diff__1 = new TH1D("S12_diff__1","S12",6,1000,2500);
-   S12_diff__1->SetBinContent(1,0.06340091);
-   S12_diff__1->SetBinContent(2,-0.06879605);
-   S12_diff__1->SetBinContent(3,0.06115826);
-   S12_diff__1->SetBinContent(4,0.1053778);
-   S12_diff__1->SetBinContent(5,0.1054312);
-   S12_diff__1->SetBinContent(6,0.08722801);
+   S12_diff__1->SetBinContent(1,0.1579562);
+   S12_diff__1->SetBinContent(2,0.06891655);
+   S12_diff__1->SetBinContent(3,-0.07609042);
+   S12_diff__1->SetBinContent(4,0.06705933);
+   S12_diff__1->SetBinContent(5,0.146075);
+   S12_diff__1->SetBinContent(6,0.1092771);
    S12_diff__1->SetEntries(6);
    S12_diff__1->SetStats(0);
    S12_diff__1->SetMarkerStyle(20);
