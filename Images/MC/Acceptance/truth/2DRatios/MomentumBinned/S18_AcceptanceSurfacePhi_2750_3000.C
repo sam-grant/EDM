@@ -1,8 +1,8 @@
 void S18_AcceptanceSurfacePhi_2750_3000()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:55:38 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+//=========  (Tue May 31 18:51:11 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);
    TView *view117 = TView::CreateView(1);
@@ -135,14 +135,14 @@ void S18_AcceptanceSurfacePhi_2750_3000()
    S18_WeightMapPhi_2750_3000__117->GetYaxis()->SetTitleSize(0.04);
    S18_WeightMapPhi_2750_3000__117->GetYaxis()->SetTitleOffset(1.6);
    S18_WeightMapPhi_2750_3000__117->GetYaxis()->SetTitleFont(42);
-   S18_WeightMapPhi_2750_3000__117->GetZaxis()->SetTitle("Inverse acceptance weighting");
+   S18_WeightMapPhi_2750_3000__117->GetZaxis()->SetTitle("Acceptance weighting");
    S18_WeightMapPhi_2750_3000__117->GetZaxis()->CenterTitle(true);
    S18_WeightMapPhi_2750_3000__117->GetZaxis()->SetLabelFont(42);
    S18_WeightMapPhi_2750_3000__117->GetZaxis()->SetTitleOffset(1);
    S18_WeightMapPhi_2750_3000__117->GetZaxis()->SetTitleFont(42);
    S18_WeightMapPhi_2750_3000__117->Draw("SURF2");
    
-   TPaveText *pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.2960777,0.9356143,0.7039223,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

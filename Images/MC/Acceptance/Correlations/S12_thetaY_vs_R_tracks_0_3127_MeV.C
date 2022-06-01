@@ -1,8 +1,8 @@
 void S12_thetaY_vs_R_tracks_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 18:17:40 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+//=========  (Tue May 31 19:04:52 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
    c->Range(-75.58442,-125,80.25974,125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
@@ -1025,7 +1025,7 @@ void S12_thetaY_vs_R_tracks_0_3127_MeV()
    palette->SetLabelFont(42);
    palette->SetLabelOffset(0.005);
    palette->SetLabelSize(0.035);
-   palette->SetTitleOffset(1);
+   palette->SetTitleOffset(1.1);
    palette->SetTitleSize(0.035);
 
    Int_t ci;      // for color index setting
@@ -1051,8 +1051,10 @@ void S12_thetaY_vs_R_tracks_0_3127_MeV()
    S12_ThetaY_vs_R->GetYaxis()->SetTitleSize(0.04);
    S12_ThetaY_vs_R->GetYaxis()->SetTitleOffset(1.1);
    S12_ThetaY_vs_R->GetYaxis()->SetTitleFont(42);
+   S12_ThetaY_vs_R->GetZaxis()->SetTitle("Normalised units");
+   S12_ThetaY_vs_R->GetZaxis()->CenterTitle(true);
    S12_ThetaY_vs_R->GetZaxis()->SetLabelFont(42);
-   S12_ThetaY_vs_R->GetZaxis()->SetTitleOffset(1);
+   S12_ThetaY_vs_R->GetZaxis()->SetTitleOffset(1.1);
    S12_ThetaY_vs_R->GetZaxis()->SetTitleFont(42);
    S12_ThetaY_vs_R->Draw("COLZ");
    c->Modified();

@@ -1,7 +1,7 @@
 void S12S18_HistAltAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 12:38:04 2022) by ROOT version 6.24/06
+//=========  (Wed May 25 17:23:27 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,18 +11,18 @@ void S12S18_HistAltAcceptanceWeightingVsMomentum()
    c->SetFrameBorderMode(0);
    
    TH1D *S12S18_ratio_alt__2 = new TH1D("S12S18_ratio_alt__2","S12S18",6,1000,2500);
-   S12S18_ratio_alt__2->SetBinContent(1,0.5522859);
-   S12S18_ratio_alt__2->SetBinContent(2,0.5550667);
-   S12S18_ratio_alt__2->SetBinContent(3,0.6035574);
-   S12S18_ratio_alt__2->SetBinContent(4,0.6257032);
-   S12S18_ratio_alt__2->SetBinContent(5,0.5866217);
-   S12S18_ratio_alt__2->SetBinContent(6,0.7226908);
-   S12S18_ratio_alt__2->SetBinError(1,0.0309951);
-   S12S18_ratio_alt__2->SetBinError(2,0.03520584);
-   S12S18_ratio_alt__2->SetBinError(3,0.03932188);
-   S12S18_ratio_alt__2->SetBinError(4,0.04208302);
-   S12S18_ratio_alt__2->SetBinError(5,0.05937941);
-   S12S18_ratio_alt__2->SetBinError(6,0.04729398);
+   S12S18_ratio_alt__2->SetBinContent(1,0.5522917);
+   S12S18_ratio_alt__2->SetBinContent(2,0.5550669);
+   S12S18_ratio_alt__2->SetBinContent(3,0.6035487);
+   S12S18_ratio_alt__2->SetBinContent(4,0.6257361);
+   S12S18_ratio_alt__2->SetBinContent(5,0.5866392);
+   S12S18_ratio_alt__2->SetBinContent(6,0.7227005);
+   S12S18_ratio_alt__2->SetBinError(1,0.03099543);
+   S12S18_ratio_alt__2->SetBinError(2,0.03520585);
+   S12S18_ratio_alt__2->SetBinError(3,0.03932131);
+   S12S18_ratio_alt__2->SetBinError(4,0.04208523);
+   S12S18_ratio_alt__2->SetBinError(5,0.05938118);
+   S12S18_ratio_alt__2->SetBinError(6,0.04729461);
    S12S18_ratio_alt__2->SetEntries(6);
    S12S18_ratio_alt__2->SetStats(0);
    S12S18_ratio_alt__2->SetMarkerStyle(20);

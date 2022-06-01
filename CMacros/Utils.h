@@ -12,9 +12,9 @@
 
 
 // ====================== Constants ====================== 
-
-double OMEGA_A = 0.00143934; // kHz from gm2const
-double G2PERIOD = (2 * TMath::Pi() / OMEGA_A) * 1e-3; // us
+//1.43948 ??
+double OMEGA_A = 0.00143934*1e3;//1.439311; // rad/us 0.00143934; // kHz from gm2const, it's an angular frequency though...
+double G2PERIOD = (2 * TMath::Pi() / OMEGA_A);//s * 1e-3; // us
 double M_MU = 105.6583715; // MeV
 double A_MU = 11659208.9e-10; 
 double GMAGIC = std::sqrt( 1.+1./A_MU );
@@ -101,7 +101,9 @@ void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, doub
   func->SetParameter(2, par2); // A
   func->FixParameter(3, par3); // Omega
   func->SetParameter(4, par4);
-  //func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
+  
+  // Only for sim
+  // func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
 
   func->SetNpx(1e3);
 

@@ -254,7 +254,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   c->SaveAs((fname+".pdf").c_str());
   c->SaveAs((fname+".png").c_str());
-  c->SaveAs((fname+".C").c_str());
+  c->SaveAs((fname+".C").c_str());  
 
   delete c;
 

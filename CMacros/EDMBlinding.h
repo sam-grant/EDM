@@ -4,8 +4,8 @@
 #include "RootInclude.h"
 
 //#include "BlindingStrings/O.h"
-#include "BlindingStrings/Run-1.h"
-//#include "BlindingStrings/Sim.h"
+//#include "BlindingStrings/Run-1.h"
+#include "BlindingStrings/Sim.h"
 
 using namespace blinding;
 
@@ -139,7 +139,7 @@ TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 
 
     if(acceptanceHist!=0) accWeight = acceptanceHist->GetBinContent(acceptanceHist->FindBin(momentum));
 
-    if(isnan(accWeight)) cerr<<"Error: acceptance weighting is nan"<<endl;
+    if(isnan(accWeight)) std::cerr<<"Error: acceptance weighting is nan";
 
     double scaleFactor = d_EDM * accWeight;
     if(scaleFactor==0) scaleFactor = 0.1;

@@ -5,7 +5,7 @@ void wiggle() {
 	wiggle->SetParameter(0, 1300);
 	wiggle->SetParameter(1, 64);
 	wiggle->SetParameter(2, 0.3);
-	wiggle->SetParameter(3,0.00143934*1e3);
+	wiggle->SetParameter(3,0.00143934*1e3); // rad / us?
 	wiggle->SetParameter(4, 2);
 
 	TCanvas *c = new TCanvas("c","c",800,600);

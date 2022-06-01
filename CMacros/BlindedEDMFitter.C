@@ -176,7 +176,7 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config) { //, st
 
     if(i_fold != 0) fit_start_time = gr_tmp->GetPointX(0); 
 
-    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A*1e3, phi, fit_start_time, gr_tmp->GetPointX(i_point-1));
+    FitFivePar(gr_tmp, 1300, 64, 0.35, OMEGA_A, phi, fit_start_time, gr_tmp->GetPointX(i_point-1));
 
     gr_.push_back(gr_tmp);
 
@@ -249,8 +249,8 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   TGraphErrors *gr_wiggle = ConvertToTGraphErrors(h1_wiggle);
   TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
 
-  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A*1e3, phi, tmin, tmax);
-  FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A*1e3, phi, 0, G2PERIOD);
+  FitFivePar(gr_wiggle, 1300, 64.4, 0.35, OMEGA_A, phi, tmin, tmax);
+  FitFivePar(gr_wiggle_mod, 1300, 64.4, 0.35, OMEGA_A, phi, 0, G2PERIOD);
 
   TF1 *wiggle = gr_wiggle->GetFunction("FiveParFunc");
   DrawWiggle(gr_wiggle, ";Decay time [#mus];Vertices / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, 10, 10e4);
@@ -366,7 +366,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     gr_thetaY_mod->GetYaxis()->SetRangeUser(-.425, .425);
 
     // Fit
-    FullEDMFit(gr_thetaY_mod, 0, OMEGA_A * 1e3, phi, 0, 0, 0, G2PERIOD);
+    FullEDMFit(gr_thetaY_mod, 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
     TF1 *func = gr_thetaY_mod->GetFunction("FullEDMFunc");
 
     double c = func->GetParameter(4);
@@ -420,7 +420,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     // Blinding
     TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_vs_t), false);
 
-    FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A * 1e3, phi, 0, 0, tmin, tmax);
+    FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, tmin, tmax);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
     double c = func->GetParameter(4);
@@ -575,7 +575,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 
-      FullEDMFit(gr_thetaY_mod , 0, OMEGA_A * 1e3, phi, 0, 0, 0, G2PERIOD);
+      FullEDMFit(gr_thetaY_mod , 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
 
       //cout<<"fitted"<<endl;
 

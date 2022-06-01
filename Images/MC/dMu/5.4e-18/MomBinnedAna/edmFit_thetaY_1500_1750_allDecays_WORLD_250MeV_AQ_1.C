@@ -1,7 +1,7 @@
 void edmFit_thetaY_1500_1750_allDecays_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May  3 22:09:13 2022) by ROOT version 6.24/06
+//=========  (Wed May 25 14:44:12 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-1.251091,4.876443,1.248909);
@@ -154,7 +154,7 @@ void edmFit_thetaY_1500_1750_allDecays_WORLD_250MeV_AQ_1()
    Graph_Graph1023->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1023->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1023->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1023->GetYaxis()->SetTitle("#LT#theta_{y}#GT / 149.2 ns");
+   Graph_Graph1023->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 149.2 ns");
    Graph_Graph1023->GetYaxis()->CenterTitle(true);
    Graph_Graph1023->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1023->GetYaxis()->SetLabelFont(42);
@@ -10217,13 +10217,13 @@ void edmFit_thetaY_1500_1750_allDecays_WORLD_250MeV_AQ_1()
    TText *pt_LaTex = pt->AddText("3.6#times10^{6}");
    pt_LaTex = pt->AddText("0.838
 ");
-   pt_LaTex = pt->AddText("-0.0048
+   pt_LaTex = pt->AddText("-0.005
 #pm0.01
 ");
    pt_LaTex = pt->AddText("0.254
 #pm0.01
 ");
-   pt_LaTex = pt->AddText("-0.0011
+   pt_LaTex = pt->AddText("-0.001
 #pm0.009
 ");
    pt->Draw();
@@ -10240,14 +10240,14 @@ void edmFit_thetaY_1500_1750_allDecays_WORLD_250MeV_AQ_1()
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
-   TLegend *leg = new TLegend(0.15,0.15,0.85,0.25,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.15,0.85,0.3,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","Sim   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Sim: all decays","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -10273,8 +10273,8 @@ void edmFit_thetaY_1500_1750_allDecays_WORLD_250MeV_AQ_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2750");
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    
    TF1 *FullEDMFunc1025 = new TF1("*FullEDMFunc",0,4.365324,5);

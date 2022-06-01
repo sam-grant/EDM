@@ -1,7 +1,7 @@
 void S18_edmFit_250_500_Run-1c_250MeV_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 20:11:38 2022) by ROOT version 6.24/06
+//=========  (Sun May 29 20:29:56 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-0.7658959,4.876443,0.8591041);

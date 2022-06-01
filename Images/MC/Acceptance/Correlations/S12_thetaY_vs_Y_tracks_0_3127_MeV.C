@@ -1,8 +1,8 @@
 void S12_thetaY_vs_Y_tracks_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 18:17:40 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+//=========  (Tue May 31 19:04:52 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
    c->Range(-75.58442,-125,80.25974,125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
@@ -757,7 +757,7 @@ void S12_thetaY_vs_Y_tracks_0_3127_MeV()
    palette->SetLabelFont(42);
    palette->SetLabelOffset(0.005);
    palette->SetLabelSize(0.035);
-   palette->SetTitleOffset(1);
+   palette->SetTitleOffset(1.1);
    palette->SetTitleSize(0.035);
 
    Int_t ci;      // for color index setting
@@ -769,13 +769,13 @@ void S12_thetaY_vs_Y_tracks_0_3127_MeV()
 
    ci = TColor::GetColor("#000099");
    S12_ThetaY_vs_Y->SetLineColor(ci);
-   S12_ThetaY_vs_Y->GetXaxis()->SetTitle("Decay y-position [mm]");
+   S12_ThetaY_vs_Y->GetXaxis()->SetTitle("Decay vertical position [mm]");
    S12_ThetaY_vs_Y->GetXaxis()->CenterTitle(true);
    S12_ThetaY_vs_Y->GetXaxis()->SetLabelFont(42);
    S12_ThetaY_vs_Y->GetXaxis()->SetTitleSize(0.04);
    S12_ThetaY_vs_Y->GetXaxis()->SetTitleOffset(1.1);
    S12_ThetaY_vs_Y->GetXaxis()->SetTitleFont(42);
-   S12_ThetaY_vs_Y->GetYaxis()->SetTitle(" #theta_{y} [mrad]");
+   S12_ThetaY_vs_Y->GetYaxis()->SetTitle("#theta_{y} [mrad]");
    S12_ThetaY_vs_Y->GetYaxis()->SetRange(296,335);
    S12_ThetaY_vs_Y->GetYaxis()->CenterTitle(true);
    S12_ThetaY_vs_Y->GetYaxis()->SetNdivisions(4000510);
@@ -783,8 +783,10 @@ void S12_thetaY_vs_Y_tracks_0_3127_MeV()
    S12_ThetaY_vs_Y->GetYaxis()->SetTitleSize(0.04);
    S12_ThetaY_vs_Y->GetYaxis()->SetTitleOffset(1.1);
    S12_ThetaY_vs_Y->GetYaxis()->SetTitleFont(42);
+   S12_ThetaY_vs_Y->GetZaxis()->SetTitle("Normalised units");
+   S12_ThetaY_vs_Y->GetZaxis()->CenterTitle(true);
    S12_ThetaY_vs_Y->GetZaxis()->SetLabelFont(42);
-   S12_ThetaY_vs_Y->GetZaxis()->SetTitleOffset(1);
+   S12_ThetaY_vs_Y->GetZaxis()->SetTitleOffset(1.1);
    S12_ThetaY_vs_Y->GetZaxis()->SetTitleFont(42);
    S12_ThetaY_vs_Y->Draw("COLZ");
    c->Modified();

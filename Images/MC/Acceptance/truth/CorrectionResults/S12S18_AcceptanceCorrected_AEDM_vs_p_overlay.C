@@ -1,7 +1,7 @@
 void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 12:38:04 2022) by ROOT version 6.24/06
+//=========  (Wed May 25 17:23:26 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(830.3881,-0.04375,2659.699,0.39375);
@@ -19,12 +19,12 @@ void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
    2119.355,
    2367.258};
    Double_t _fy1001[6] = {
-   0.3053675,
-   0.2809278,
-   0.2539968,
-   0.2316457,
-   0.1671082,
-   0.1612269};
+   0.3053643,
+   0.2809277,
+   0.2540005,
+   0.2316335,
+   0.1671032,
+   0.1612248};
    Double_t _fex1001[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void S12S18_AcceptanceCorrected_AEDM_vs_p_overlay()
    0,
    0};
    Double_t _fey1001[6] = {
-   0.01485289,
-   0.01322649,
-   0.01204238,
-   0.01118043,
-   0.01053627,
-   0.01009493};
+   0.01485295,
+   0.01322656,
+   0.01204244,
+   0.01118049,
+   0.01053632,
+   0.010095};
    TGraphErrors *gre = new TGraphErrors(6,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle("S12S18");

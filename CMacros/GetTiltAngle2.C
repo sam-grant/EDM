@@ -195,7 +195,7 @@ TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc, TH1D *weig
 
       d_EDM = d_EDM*weighting; 
 
-      cout<<"d_EDM = "<<d_EDM<<endl;
+/*      cout<<"d_EDM = "<<d_EDM<<endl;*/
 
       double delta_prime = y/d_EDM;
 
@@ -1123,7 +1123,8 @@ void GetTiltAngle2() {
   //RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   //RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
   //RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
-  //RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
+  RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "blinded", true);
+  RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
   //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded", true);
   //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "blinded", true);
 
@@ -1140,7 +1141,7 @@ void GetTiltAngle2() {
   //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
 

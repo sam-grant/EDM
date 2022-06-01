@@ -1136,6 +1136,8 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
   leg->AddEntry(graph, (dataset).c_str());
   leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
+  leg->SetTextSize(26);
+  leg->SetTextFont(44);
 
   TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
 
@@ -1159,8 +1161,8 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
 
   TPaveText *cuts = new TPaveText(0.25,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
-  cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30.6 < t [#mus] < 305.6");
+  cuts->AddText("p [MeV] > 1700");
+  cuts->AddText("t [#mus] > 30.6 <  < 305.6");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1206,7 +1208,7 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
 }
 
 // TODO: change this to DrawModWiggleSim
-void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, double N, double ymin, double ymax) {
+void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string reco, double N, double ymin, double ymax) {
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1221,11 +1223,15 @@ void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, double N,
   double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
   double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
 
-  TLegend *leg = new TLegend(0.15,0.15,.85,0.25);
-  leg->SetNColumns(2);
-  leg->AddEntry(graph, "Sim   ");
-  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]");
+  //TLegend *leg = new TLegend(0.15,0.15,.85,0.25);
+  //TLegend *leg = new TLegend(0.35,0.15,.65,0.25);
+  TLegend *leg = new TLegend(0.275,0.15,0.70,0.30);
+  leg->SetNColumns(1);
+  leg->AddEntry(graph, ("Sim: "+reco).c_str());
+  leg->AddEntry(func,"N_{0}e^{-t/#gamma#tau}[1+Acos(#omega_{a}t+#phi)]");
   leg->SetBorderSize(0);
+  leg->SetTextSize(26);
+  leg->SetTextFont(44);
 
   TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
 
@@ -1243,14 +1249,14 @@ void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, double N,
   values->AddText(Round(chi2ndf, 3));
   //values->AddText(SciNotation(par0)+"#pm"+Round(err0,2));
   values->AddText(Round(par1, 2)+"#pm"+Round(err1, 1));
-  values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
+  values->AddText(Round(par2, 4)+"#pm"+Round(err2, 1));
   //values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
   values->AddText(Round(par4, 3)+"#pm"+Round(err4, 1));
 
   TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
-  cuts->AddText("1900 < p [MeV] < 3100");
-  cuts->AddText("30.6 < t [#mus] < 305.6");
+  cuts->AddText("p [MeV] > 1700");
+  cuts->AddText("t [#mus] > 30.6");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1409,6 +1415,7 @@ void DrawFoldedWiggleSim(std::vector<TGraphErrors*> graphs, std::string title, s
 	c->SetLogy();
 
 	TLegend *l = new TLegend(0.15,0.71,0.85,0.89);
+
 	l->SetBorderSize(0);
 	l->SetNColumns(2);//BorderSize(0);
 	l->AddEntry(graphs.at(1), "Sim   ");
@@ -1612,7 +1619,7 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 
 // TODO: change to DrawFullEDMFitSim
-void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, double N, double ymin, double ymax, bool unblind) {
+void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, std::string recoLabel, double N, double ymin, double ymax, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1629,7 +1636,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 
 	TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
 	leg->SetNColumns(1);
-	leg->AddEntry(graph, "Sim: all decays");
+	leg->AddEntry(graph, ("Sim: "+recoLabel).c_str());
 	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c");
 	leg->SetBorderSize(0);
 
@@ -1655,7 +1662,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
 	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+	values->AddText(Round(par4, 3)+"#pm"+Round(err4, 1));
 
 	TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 //	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");

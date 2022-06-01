@@ -14,7 +14,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetYaxis()->CenterTitle(true);
 	graph->GetYaxis()->SetMaxDigits(4);
 	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("APL");
+	graph->Draw("AP");
 	//c->SetGridx();
 
 	c->SaveAs((fname+".pdf").c_str());
@@ -29,7 +29,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+	TCanvas *c = new TCanvas("c","c",1600,1200);
 
 	hist->SetTitle(title.c_str());
 
@@ -42,8 +42,12 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
-
+	
 	hist->GetYaxis()->SetRangeUser(-100,100);
+
+	hist->GetZaxis()->CenterTitle(1);
+	hist->GetZaxis()->SetTitleOffset(1.1);
+	hist->GetZaxis()->SetTitle("Normalised units");
 
 	gStyle->SetPalette(kRainBow);//LightTemperature);
 	c->SetRightMargin(0.13);
@@ -127,9 +131,9 @@ void CorrelationsThetaYAcceptance() {
 
 	h2_thetaY_vs_Phi_tracks->GetXaxis()->SetRangeUser(2.2,3.3);
 
-	DrawTH2(h2_thetaY_vs_Y_tracks, "", "../Images/MC/Acceptance/Correlations/S12_thetaY_vs_Y_tracks_"+momSlice);
-	DrawTH2(h2_thetaY_vs_R_tracks, "", "../Images/MC/Acceptance/Correlations/S12_thetaY_vs_R_tracks_"+momSlice);
-	DrawTH2(h2_thetaY_vs_Phi_tracks, "", "../Images/MC/Acceptance/Correlations/S12_thetaY_vs_Phi_tracks_"+momSlice);
+	DrawTH2(h2_thetaY_vs_Y_tracks, ";Decay vertical position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/Correlations/S12_thetaY_vs_Y_tracks_"+momSlice);
+	DrawTH2(h2_thetaY_vs_R_tracks, ";Decay radial position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/Correlations/S12_thetaY_vs_R_tracks_"+momSlice);
+	DrawTH2(h2_thetaY_vs_Phi_tracks, ";Decay azimuthal angle [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/Correlations/S12_thetaY_vs_Phi_tracks_"+momSlice);
 
 	// Profile
 	TH1D *h1_thetaY_vs_Y_tracks = h2_thetaY_vs_Y_tracks->ProfileX();

@@ -43,7 +43,7 @@ int GetStep(string config) {
 
 void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString drawOption) { //";Decay y-position [mm];#theta_{y} [mrad];Ratio", "../Images/MC/Acceptance/BaseHistograms/h2_thetaY_vs_Y_ratio");
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+	TCanvas *c = new TCanvas("c","c",1600,1200);
 
 	map->SetTitle(title.c_str());
 	map->SetStats(0);
@@ -55,7 +55,7 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 	map->GetYaxis()->CenterTitle(1);
 	map->GetYaxis()->SetMaxDigits(4);
 
-	map->GetZaxis()->SetTitle("Inverse acceptance weighting");
+	map->GetZaxis()->SetTitle("Acceptance weighting");
 
 	gStyle->SetPalette(kLightTemperature);
 	c->SetRightMargin(0.13);

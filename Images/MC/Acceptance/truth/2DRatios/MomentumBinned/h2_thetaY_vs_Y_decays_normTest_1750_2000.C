@@ -1,7 +1,7 @@
 void h2_thetaY_vs_Y_decays_normTest_1750_2000()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:55:30 2022) by ROOT version 6.24/06
+//=========  (Tue May 31 18:51:04 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8793196,-125,7.411221,125);

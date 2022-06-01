@@ -1,7 +1,7 @@
 void momentumDist_Run-1a_simulataneous()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 12:05:45 2022) by ROOT version 6.24/06
+//=========  (Sat May 28 20:18:34 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(-390.0143,-10124.89,3510.128,91123.99);
@@ -342,7 +342,7 @@ void momentumDist_Run-1a_simulataneous()
    S12S18_Momentum__2->GetXaxis()->SetTitleSize(0.04);
    S12S18_Momentum__2->GetXaxis()->SetTitleOffset(1.1);
    S12S18_Momentum__2->GetXaxis()->SetTitleFont(42);
-   S12S18_Momentum__2->GetYaxis()->SetTitle("Vertices / 8 MeV");
+   S12S18_Momentum__2->GetYaxis()->SetTitle("Decay vertices / 8 MeV");
    S12S18_Momentum__2->GetYaxis()->CenterTitle(true);
    S12S18_Momentum__2->GetYaxis()->SetNdivisions(4000510);
    S12S18_Momentum__2->GetYaxis()->SetLabelFont(42);

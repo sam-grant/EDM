@@ -1,10 +1,10 @@
 void S12S18_MainAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 12:38:04 2022) by ROOT version 6.24/06
+//=========  (Wed May 25 17:23:26 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(813.104,0.2578454,2672.985,0.7777301);
+   c->Range(813.104,0.2578444,2672.985,0.7777558);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void S12S18_MainAcceptanceWeightingVsMomentum()
    2114.997,
    2363.005};
    Double_t _fy1006[6] = {
-   0.394966,
-   0.4600627,
-   0.5536347,
-   0.6001469,
-   0.6027818,
-   0.5891708};
+   0.3949701,
+   0.4600629,
+   0.5536267,
+   0.6001784,
+   0.6027998,
+   0.5891787};
    Double_t _fex1006[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void S12S18_MainAcceptanceWeightingVsMomentum()
    0,
    0};
    Double_t _fey1006[6] = {
-   0.05047315,
-   0.05132248,
-   0.0556446,
-   0.06156342,
-   0.08830089,
-   0.09651334};
+   0.05047379,
+   0.05132255,
+   0.05564367,
+   0.06156743,
+   0.08830411,
+   0.0965149};
    TGraphErrors *gre = new TGraphErrors(6,_fx1006,_fy1006,_fex1006,_fey1006);
    gre->SetName("");
    gre->SetTitle("S12S18");
@@ -46,8 +46,8 @@ void S12S18_MainAcceptanceWeightingVsMomentum()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","S12S18",100,999.0921,2486.997);
-   Graph_Graph1006->SetMinimum(0.3098338);
-   Graph_Graph1006->SetMaximum(0.7257416);
+   Graph_Graph1006->SetMinimum(0.3098356);
+   Graph_Graph1006->SetMaximum(0.7257646);
    Graph_Graph1006->SetDirectory(0);
    Graph_Graph1006->SetStats(0);
 

@@ -77,14 +77,17 @@ void DrawHist(TH1D *hist, std::string title, std::string fname, bool MomBinnedAn
 
 void Run() { 
 
-	TFile *fin = TFile::Open("../Plots/Data/dMu/Run-1/Plots/momentumDist_Run-1a.root");
+	TFile *fin = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/RecoMomentum.root");//../Plots/Data/dMu/Run-1/Plots/momentumDist_Run-1a.root");
 
 	TH1D *hist = (TH1D*)fin->Get("Momentum/S12S18_Momentum");
 
-	hist->Rebin(8);
+	hist->Rebin(10);
 
-	DrawHist(hist, ";Decay vertex momentum [MeV];Vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_momBinned", true);
-	DrawHist(hist, ";Decay vertex momentum [MeV];Vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_simulataneous", false);
+	// DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_momBinned", true);
+	// DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_simulataneous", false);
+	
+	DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / 10 MeV", "../Images/MC/dMu/5.4e-18/MomentumDist/RecoMomentum_MomentumBinned", true);
+	DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / 10 MeV", "../Images/MC/dMu/5.4e-18/MomentumDist/RecoMomentum_Simultaneous", false);
 
 	fin->Close();
 

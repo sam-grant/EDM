@@ -1,7 +1,7 @@
 void fit_wiggle_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 20:06:02 2022) by ROOT version 6.24/06
+//=========  (Sun May 29 20:30:15 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-3.900161,0.5,340.063,5.5);
@@ -20113,12 +20113,14 @@ void fit_wiggle_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("1900 < p [MeV] < 3100");
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt_LaTex = pt->AddText("p [MeV] > 1700");
+   pt_LaTex = pt->AddText("t [#mus] > 30.6 <  < 305.6");
    pt->Draw();
    
    TLegend *leg = new TLegend(0.15,0.15,0.65,0.25,NULL,"brNDC");
    leg->SetBorderSize(0);
+   leg->SetTextFont(44);
+   leg->SetTextSize(26);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
@@ -20132,7 +20134,7 @@ void fit_wiggle_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
+   entry->SetTextFont(44);
    entry=leg->AddEntry("FiveParFunc","N_{0}e^{-t/#gamma#tau}[1-Acos(#omega_{a}t+#phi)]","lpf");
    entry->SetFillColor(19);
 
@@ -20143,7 +20145,7 @@ void fit_wiggle_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    entry->SetMarkerColor(1);
    entry->SetMarkerStyle(1);
    entry->SetMarkerSize(1);
-   entry->SetTextFont(42);
+   entry->SetTextFont(44);
    leg->Draw();
    
    TF1 *FiveParFunc1003 = new TF1("*FiveParFunc",30.55727,305.5727,5);

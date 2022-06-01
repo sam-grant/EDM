@@ -1,7 +1,7 @@
 void edmFit_asymmetry_allDecays_WORLD_250MeV_AQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May  3 22:08:52 2022) by ROOT version 6.24/06
+//=========  (Wed May 25 14:43:41 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-2.501617e-07,4.876443,2.498383e-07);
@@ -10217,13 +10217,13 @@ void edmFit_asymmetry_allDecays_WORLD_250MeV_AQ_1()
    TText *pt_LaTex = pt->AddText("2.58#times10^{7}");
    pt_LaTex = pt->AddText("1.67
 ");
-   pt_LaTex = pt->AddText("4.3e-11
+   pt_LaTex = pt->AddText("4e-11
 #pm3e-10
 ");
    pt_LaTex = pt->AddText("1.23e-08
 #pm3e-10
 ");
-   pt_LaTex = pt->AddText("-1.6e-10
+   pt_LaTex = pt->AddText("-2e-10
 #pm2e-10
 ");
    pt->Draw();
@@ -10240,14 +10240,14 @@ void edmFit_asymmetry_allDecays_WORLD_250MeV_AQ_1()
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
-   TLegend *leg = new TLegend(0.15,0.15,0.85,0.25,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.15,0.85,0.3,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","Sim   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Sim: all decays","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -10273,8 +10273,8 @@ void edmFit_asymmetry_allDecays_WORLD_250MeV_AQ_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2750");
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    
    TF1 *FullEDMFunc1009 = new TF1("*FullEDMFunc",0,4.365324,5);

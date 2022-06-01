@@ -1,8 +1,8 @@
 void S12S18_AcceptanceMapY_750_1000()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:54:25 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+//=========  (Tue May 31 18:49:13 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
    c->SetHighLightColor(2);
    c->Range(-75.58442,-125,80.25974,125);
    c->SetFillColor(0);
@@ -667,14 +667,14 @@ void S12S18_AcceptanceMapY_750_1000()
    S12S18_WeightMapY_750_1000->GetYaxis()->SetTitleSize(0.04);
    S12S18_WeightMapY_750_1000->GetYaxis()->SetTitleOffset(1.1);
    S12S18_WeightMapY_750_1000->GetYaxis()->SetTitleFont(42);
-   S12S18_WeightMapY_750_1000->GetZaxis()->SetTitle("Inverse acceptance weighting");
+   S12S18_WeightMapY_750_1000->GetZaxis()->SetTitle("Acceptance weighting");
    S12S18_WeightMapY_750_1000->GetZaxis()->CenterTitle(true);
    S12S18_WeightMapY_750_1000->GetZaxis()->SetLabelFont(42);
    S12S18_WeightMapY_750_1000->GetZaxis()->SetTitleOffset(1);
    S12S18_WeightMapY_750_1000->GetZaxis()->SetTitleFont(42);
    S12S18_WeightMapY_750_1000->Draw("COLZ");
    
-   TPaveText *pt = new TPaveText(0.3122362,0.9341608,0.6877638,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.3067293,0.9356143,0.6932707,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

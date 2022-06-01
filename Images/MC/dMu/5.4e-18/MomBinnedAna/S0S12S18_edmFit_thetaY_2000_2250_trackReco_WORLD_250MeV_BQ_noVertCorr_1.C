@@ -1,7 +1,7 @@
 void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Mar 28 20:51:34 2022) by ROOT version 6.24/06
+//=========  (Mon May 30 19:56:46 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-1.37469,4.876443,1.12531);
@@ -154,7 +154,7 @@ void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    Graph_Graph1197->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1197->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1197->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1197->GetYaxis()->SetTitle("#LT#theta_{y}#GT / 149.2 ns");
+   Graph_Graph1197->GetYaxis()->SetTitle("#LT#theta_{y}#GT [mrad] / 149.2 ns");
    Graph_Graph1197->GetYaxis()->CenterTitle(true);
    Graph_Graph1197->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1197->GetYaxis()->SetLabelFont(42);
@@ -10190,17 +10190,17 @@ void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1198->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1198->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1198->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1198->SetParameter(0,0.004433419);
-   FullEDMFunc1198->SetParError(0,0.01215568);
+   FullEDMFunc1198->SetParameter(0,0.005098476);
+   FullEDMFunc1198->SetParError(0,0.01215494);
    FullEDMFunc1198->SetParLimits(0,0,0);
    FullEDMFunc1198->SetParameter(1,1.43934);
    FullEDMFunc1198->SetParError(1,0);
    FullEDMFunc1198->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1198->SetParameter(2,6.43053);
+   FullEDMFunc1198->SetParameter(2,0.1410804);
    FullEDMFunc1198->SetParError(2,0);
-   FullEDMFunc1198->SetParLimits(2,6.43053,6.43053);
-   FullEDMFunc1198->SetParameter(3,0.1061744);
-   FullEDMFunc1198->SetParError(3,0.01189682);
+   FullEDMFunc1198->SetParLimits(2,0.1410804,0.1410804);
+   FullEDMFunc1198->SetParameter(3,0.1061446);
+   FullEDMFunc1198->SetParError(3,0.01189758);
    FullEDMFunc1198->SetParLimits(3,0,0);
    FullEDMFunc1198->SetParameter(4,-0.1246899);
    FullEDMFunc1198->SetParError(4,0.008598615);
@@ -10217,13 +10217,13 @@ void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    TText *pt_LaTex = pt->AddText("1.31#times10^{6}");
    pt_LaTex = pt->AddText("1.36
 ");
-   pt_LaTex = pt->AddText("0.0044
+   pt_LaTex = pt->AddText("0.005
 #pm0.01
 ");
    pt_LaTex = pt->AddText("0.106
 #pm0.01
 ");
-   pt_LaTex = pt->AddText("-0.12
+   pt_LaTex = pt->AddText("-0.125
 #pm0.009
 ");
    pt->Draw();
@@ -10240,14 +10240,14 @@ void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("c [mrad]");
    pt->Draw();
    
-   TLegend *leg = new TLegend(0.15,0.15,0.85,0.25,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.15,0.15,0.85,0.3,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetLineColor(1);
    leg->SetLineStyle(1);
    leg->SetLineWidth(1);
    leg->SetFillColor(0);
    leg->SetFillStyle(1001);
-   TLegendEntry *entry=leg->AddEntry("","Sim   ","lpf");
+   TLegendEntry *entry=leg->AddEntry("","Sim: reco vertices","lpf");
    entry->SetFillStyle(1000);
    entry->SetLineColor(1);
    entry->SetLineStyle(1);
@@ -10273,8 +10273,8 @@ void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("750 < p [MeV] < 2750");
-   pt_LaTex = pt->AddText("30.6 < t [#mus] < 305.6");
+   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    
    TF1 *FullEDMFunc1199 = new TF1("*FullEDMFunc",0,4.365324,5);
@@ -20300,17 +20300,17 @@ void S0S12S18_edmFit_thetaY_2000_2250_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1199->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1199->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1199->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1199->SetParameter(0,0.004433419);
-   FullEDMFunc1199->SetParError(0,0.01215568);
+   FullEDMFunc1199->SetParameter(0,0.005098476);
+   FullEDMFunc1199->SetParError(0,0.01215494);
    FullEDMFunc1199->SetParLimits(0,0,0);
    FullEDMFunc1199->SetParameter(1,1.43934);
    FullEDMFunc1199->SetParError(1,0);
    FullEDMFunc1199->SetParLimits(1,1.43934,1.43934);
-   FullEDMFunc1199->SetParameter(2,6.43053);
+   FullEDMFunc1199->SetParameter(2,0.1410804);
    FullEDMFunc1199->SetParError(2,0);
-   FullEDMFunc1199->SetParLimits(2,6.43053,6.43053);
-   FullEDMFunc1199->SetParameter(3,0.1061744);
-   FullEDMFunc1199->SetParError(3,0.01189682);
+   FullEDMFunc1199->SetParLimits(2,0.1410804,0.1410804);
+   FullEDMFunc1199->SetParameter(3,0.1061446);
+   FullEDMFunc1199->SetParError(3,0.01189758);
    FullEDMFunc1199->SetParLimits(3,0,0);
    FullEDMFunc1199->SetParameter(4,-0.1246899);
    FullEDMFunc1199->SetParError(4,0.008598615);

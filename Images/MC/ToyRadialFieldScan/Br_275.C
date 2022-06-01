@@ -1,7 +1,7 @@
 void Br_275()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu May  5 13:00:40 2022) by ROOT version 6.24/06
+//=========  (Tue May 31 19:16:42 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

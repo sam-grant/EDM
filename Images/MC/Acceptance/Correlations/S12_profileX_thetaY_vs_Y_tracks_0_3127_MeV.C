@@ -1,7 +1,7 @@
 void S12_profileX_thetaY_vs_Y_tracks_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 18:17:40 2022) by ROOT version 6.24/06
+//=========  (Tue May 31 19:04:52 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(-75,-25.44845,75,26.18358);
    c->SetFillColor(0);
@@ -72,7 +72,7 @@ void S12_profileX_thetaY_vs_Y_tracks_0_3127_MeV()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    S12_ThetaY_vs_Y_pfx->SetLineColor(ci);
-   S12_ThetaY_vs_Y_pfx->GetXaxis()->SetTitle("Decay y-position [mm]");
+   S12_ThetaY_vs_Y_pfx->GetXaxis()->SetTitle("Decay vertical position [mm]");
    S12_ThetaY_vs_Y_pfx->GetXaxis()->CenterTitle(true);
    S12_ThetaY_vs_Y_pfx->GetXaxis()->SetLabelFont(42);
    S12_ThetaY_vs_Y_pfx->GetXaxis()->SetTitleSize(0.04);

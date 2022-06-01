@@ -19,10 +19,10 @@ void UnblindSim() {
   	cout<<"This is simulation! I use a different blinding string!"<<endl;
   	cout<<endl;
 
-	TString finNameBlinded = "../Plots/MC/dMu/5.4e-18/Fits/edmResults_blinded_trackReco_WORLD_250MeV_BQ.root";
+	TString finNameBlinded = "../Plots/MC/dMu/5.4e-18/Fits/edmResults_blinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root";
 	TFile *finBlinded = TFile::Open(finNameBlinded);
 
-	TString finNameUnblinded = "../Plots/MC/dMu/5.4e-18/Fits/edmResults_unblinded_trackReco_WORLD_250MeV_BQ.root";
+	TString finNameUnblinded = "../Plots/MC/dMu/5.4e-18/Fits/edmResults_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root";
 	TFile *finUnblinded = TFile::Open(finNameUnblinded);
 
   	std::vector<std::string> stn_ = {"S12", "S18", "S12S18"};
@@ -46,6 +46,7 @@ void UnblindSim() {
 
     	//std::cout<<stn_.at(i_stn)<<": "<<result<<" ± "<<error<<std::endl;	
     	cout<<stn_.at(i_stn)<<endl;
+    	std::cout<<"Blinded result = "<<blinded_result<<" ± "<<blinded_error<<std::endl;	
     	std::cout<<"Blinding subtracted = "<<blinded_result-dMu_blind<<" ± "<<blinded_error<<std::endl;	
     	std::cout<<"No blinding = "<<unblinded_result<<" ± "<<unblinded_error<<std::endl;	
     	cout<<"Offset = "<<(blinded_result-dMu_blind)-unblinded_result<<endl;

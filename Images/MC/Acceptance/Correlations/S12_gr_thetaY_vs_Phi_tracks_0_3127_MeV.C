@@ -1,7 +1,7 @@
 void S12_gr_thetaY_vs_Phi_tracks_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 18:17:40 2022) by ROOT version 6.24/06
+//=========  (Tue May 31 19:04:53 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(2.048318,-4.7158,3.480885,8.579);
    c->SetFillColor(0);
@@ -120,7 +120,7 @@ void S12_gr_thetaY_vs_Phi_tracks_0_3127_MeV()
    Graph_Graph1003->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1003);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    c->Modified();
    c->cd();
    c->SetSelected(c);

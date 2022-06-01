@@ -1,7 +1,7 @@
 void h_pull_allDecays_WORLD_250MeV_AQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Apr 27 17:21:34 2022) by ROOT version 6.24/06
+//=========  (Sun May 29 17:07:57 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,21 +11,19 @@ void h_pull_allDecays_WORLD_250MeV_AQ_noVertCorr()
    c->SetFrameBorderMode(0);
    
    TH1D *edmFit_pull__1 = new TH1D("edmFit_pull__1","",40,-5,5);
-   edmFit_pull__1->SetBinContent(11,1);
-   edmFit_pull__1->SetBinContent(12,1);
-   edmFit_pull__1->SetBinContent(15,1);
-   edmFit_pull__1->SetBinContent(16,2);
+   edmFit_pull__1->SetBinContent(9,1);
+   edmFit_pull__1->SetBinContent(14,1);
+   edmFit_pull__1->SetBinContent(16,1);
    edmFit_pull__1->SetBinContent(17,1);
    edmFit_pull__1->SetBinContent(18,2);
-   edmFit_pull__1->SetBinContent(19,2);
-   edmFit_pull__1->SetBinContent(20,3);
-   edmFit_pull__1->SetBinContent(21,3);
+   edmFit_pull__1->SetBinContent(19,4);
+   edmFit_pull__1->SetBinContent(20,5);
+   edmFit_pull__1->SetBinContent(21,4);
    edmFit_pull__1->SetBinContent(22,4);
-   edmFit_pull__1->SetBinContent(23,2);
-   edmFit_pull__1->SetBinContent(24,2);
-   edmFit_pull__1->SetBinContent(25,2);
-   edmFit_pull__1->SetBinContent(26,1);
-   edmFit_pull__1->SetBinContent(27,2);
+   edmFit_pull__1->SetBinContent(23,1);
+   edmFit_pull__1->SetBinContent(24,1);
+   edmFit_pull__1->SetBinContent(26,3);
+   edmFit_pull__1->SetBinContent(29,1);
    edmFit_pull__1->SetEntries(29);
    edmFit_pull__1->GetXaxis()->SetTitle("Pull [#sigma]");
    edmFit_pull__1->GetXaxis()->CenterTitle(true);

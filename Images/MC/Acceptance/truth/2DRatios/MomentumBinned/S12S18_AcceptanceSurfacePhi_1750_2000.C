@@ -1,8 +1,8 @@
 void S12S18_AcceptanceSurfacePhi_1750_2000()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May  4 17:54:41 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+//=========  (Tue May 31 18:49:40 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
    c->SetHighLightColor(2);
    c->Range(nan,nan,nan,nan);
    TView *view27 = TView::CreateView(1);
@@ -160584,7 +160584,7 @@ void S12S18_AcceptanceSurfacePhi_1750_2000()
    S12S18_WeightMapPhi_1750_2000__27->GetYaxis()->SetTitleSize(0.04);
    S12S18_WeightMapPhi_1750_2000__27->GetYaxis()->SetTitleOffset(1.6);
    S12S18_WeightMapPhi_1750_2000__27->GetYaxis()->SetTitleFont(42);
-   S12S18_WeightMapPhi_1750_2000__27->GetZaxis()->SetTitle("Inverse acceptance weighting");
+   S12S18_WeightMapPhi_1750_2000__27->GetZaxis()->SetTitle("Acceptance weighting");
    S12S18_WeightMapPhi_1750_2000__27->GetZaxis()->CenterTitle(true);
    S12S18_WeightMapPhi_1750_2000__27->GetZaxis()->SetLabelFont(42);
    S12S18_WeightMapPhi_1750_2000__27->GetZaxis()->SetTitleOffset(1);
