@@ -1,9 +1,9 @@
 void S12_AEDMAcceptanceFractionDiff()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 18:45:19 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(811.7217,-0.1346021,2678.365,0.2164678);
+   c->Range(811.7217,-0.1346011,2678.365,0.2164696);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -18,12 +18,12 @@ void S12_AEDMAcceptanceFractionDiff()
    2119.355,
    2367.258};
    Double_t _fy1006[6] = {
-   0.1579562,
-   0.06891655,
-   -0.07609042,
-   0.06705933,
-   0.146075,
-   0.1092771};
+   0.1579578,
+   0.06891659,
+   -0.07608932,
+   0.06706285,
+   0.1460793,
+   0.1092785};
    Double_t _fex1006[6] = {
    0,
    0,
@@ -45,8 +45,8 @@ void S12_AEDMAcceptanceFractionDiff()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","S12",100,998.3861,2491.701);
-   Graph_Graph1006->SetMinimum(-0.09949508);
-   Graph_Graph1006->SetMaximum(0.1813608);
+   Graph_Graph1006->SetMinimum(-0.09949403);
+   Graph_Graph1006->SetMaximum(0.1813625);
    Graph_Graph1006->SetDirectory(0);
    Graph_Graph1006->SetStats(0);
 

@@ -46,7 +46,7 @@ void DrawOverlay(TGraphErrors *gr0, TGraphErrors *gr1, TGraphErrors *gr2, TGraph
   	gr0->GetYaxis()->CenterTitle(true);
   	gr0->GetYaxis()->SetMaxDigits(4);
 
-  	gr0->SetTitle(";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
+  	gr0->SetTitle(";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
 
   	gr0->SetMarkerColor(kBlack);
   	gr0->SetLineColor(kBlack);
@@ -58,7 +58,7 @@ void DrawOverlay(TGraphErrors *gr0, TGraphErrors *gr1, TGraphErrors *gr2, TGraph
 
   	gr2->SetMarkerColor(kRed);
   	gr2->SetLineColor(kRed);
-	gr2->SetMarkerStyle(24); 
+	gr2->SetMarkerStyle(20); 
  
   	gr3->SetMarkerColor(kBlue);
   	gr3->SetLineColor(kBlue);
@@ -86,7 +86,7 @@ void DrawOverlay(TGraphErrors *gr0, TGraphErrors *gr1, TGraphErrors *gr2, TGraph
 
 	l->AddEntry(gr0, "Sim: all decays");
 	l->AddEntry(gr1, "Sim: all decays (acceptance weighted)");
-	l->AddEntry(gr2, "Sim: reco vertices");
+	l->AddEntry(gr2, "Sim: truth vertices");
 	l->AddEntry(gr3, "Data: Run-1a");
 	l->AddEntry(gr4, "Data: Run-1b");
 	l->AddEntry(gr5, "Data: Run-1c");
@@ -124,7 +124,7 @@ void DrawSimOverlay(TGraphErrors *gr0, TGraphErrors *gr1, TGraphErrors *gr2, str
   	gr0->GetYaxis()->CenterTitle(true);
   	gr0->GetYaxis()->SetMaxDigits(4);
 
-  	gr0->SetTitle(";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
+  	gr0->SetTitle(";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
 
   	gr0->SetMarkerColor(kBlack);
   	gr0->SetLineColor(kBlack);
@@ -193,7 +193,7 @@ void DrawStationOverlay(TFile *f, string dataset, string fname, double ymin, dou
   	gr12->GetYaxis()->CenterTitle(true);
   	gr12->GetYaxis()->SetMaxDigits(4);
 
-  	gr12->SetTitle((dataset+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV").c_str());
+  	gr12->SetTitle((dataset+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV").c_str());
 
   	gr12->SetMarkerColor(kBlack);
   	gr12->SetLineColor(kBlack);
@@ -278,7 +278,7 @@ void Run(string simConfig, string dataConfig) {
 
 void VerticalOffsetIllustration() { 
 
-	//Run("_noVertCorr", "_noVertCorr");
+	Run("_noVertCorr", "_noVertCorr");
 	//Run("", "");
 	Run("_noVertCorr", "_timeVertCorr");
 	

@@ -1,7 +1,7 @@
 void S18_HistAEDMAcceptanceFractionDiff()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 18:45:19 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -10,12 +10,12 @@ void S18_HistAEDMAcceptanceFractionDiff()
    c->SetFrameBorderMode(0);
    
    TH1D *S18_diff__2 = new TH1D("S18_diff__2","S18",6,1000,2500);
-   S18_diff__2->SetBinContent(1,0.1607342);
-   S18_diff__2->SetBinContent(2,-0.01441376);
-   S18_diff__2->SetBinContent(3,0.05276096);
-   S18_diff__2->SetBinContent(4,-0.02212517);
-   S18_diff__2->SetBinContent(5,-0.08606372);
-   S18_diff__2->SetBinContent(6,0.06834446);
+   S18_diff__2->SetBinContent(1,0.1607359);
+   S18_diff__2->SetBinContent(2,-0.01441377);
+   S18_diff__2->SetBinContent(3,0.0527602);
+   S18_diff__2->SetBinContent(4,-0.02212633);
+   S18_diff__2->SetBinContent(5,-0.08606629);
+   S18_diff__2->SetBinContent(6,0.06834537);
    S18_diff__2->SetEntries(6);
    S18_diff__2->SetStats(0);
    S18_diff__2->SetMarkerStyle(20);

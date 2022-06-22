@@ -1,9 +1,9 @@
 void S18_chi2NDF_vs_p_fit_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 20:23:15 2022) by ROOT version 6.24/06
+//=========  (Wed Jun  8 15:37:19 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(819.1514,-0.2386365,2667.292,2.147728);
+   c->Range(819.1514,-0.2386366,2667.292,2.147729);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -18,12 +18,12 @@ void S18_chi2NDF_vs_p_fit_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    2116.166,
    2359.269};
    Double_t _fy1009[6] = {
-   1.153563,
-   0.8460504,
-   1.162112,
-   0.5900132,
-   0.7529795,
-   0.9498316};
+   1.153567,
+   0.8460491,
+   1.162114,
+   0.5900162,
+   0.7529814,
+   0.949828};
    Double_t _fex1009[6] = {
    0,
    0,
@@ -46,7 +46,7 @@ void S18_chi2NDF_vs_p_fit_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    
    TH1F *Graph_Graph1009 = new TH1F("Graph_Graph1009","",100,1003.966,2482.478);
    Graph_Graph1009->SetMinimum(0);
-   Graph_Graph1009->SetMaximum(1.909092);
+   Graph_Graph1009->SetMaximum(1.909093);
    Graph_Graph1009->SetDirectory(0);
    Graph_Graph1009->SetStats(0);
 
@@ -78,15 +78,15 @@ void S18_chi2NDF_vs_p_fit_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    pol01010->SetFillStyle(0);
    pol01010->SetLineColor(2);
    pol01010->SetLineWidth(2);
-   pol01010->SetChisquare(0.2556016);
+   pol01010->SetChisquare(0.2556022);
    pol01010->SetNDF(5);
    pol01010->GetXaxis()->SetLabelFont(42);
    pol01010->GetXaxis()->SetTitleOffset(1);
    pol01010->GetXaxis()->SetTitleFont(42);
    pol01010->GetYaxis()->SetLabelFont(42);
    pol01010->GetYaxis()->SetTitleFont(42);
-   pol01010->SetParameter(0,0.9090916);
-   pol01010->SetParError(0,0.09230414);
+   pol01010->SetParameter(0,0.9090927);
+   pol01010->SetParError(0,0.09230425);
    pol01010->SetParLimits(0,0,0);
    pol01010->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01010);
@@ -110,8 +110,8 @@ void S18_chi2NDF_vs_p_fit_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("pol0","#LT#chi^{2}/NDF#GT = 0.909
-#pm0.092
+   entry=leg->AddEntry("pol0","#LT#chi^{2}/NDF#GT = 0.91
+#pm0.09
 ","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(2);

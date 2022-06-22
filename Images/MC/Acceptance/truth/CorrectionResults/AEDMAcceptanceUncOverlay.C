@@ -1,7 +1,7 @@
 void AEDMAcceptanceUncOverlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 18:45:19 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(811.7217,-0.2,2678.365,0.3);
    c->SetFillColor(0);
@@ -18,12 +18,12 @@ void AEDMAcceptanceUncOverlay()
    2119.355,
    2367.258};
    Double_t S12_diff_fy1013[6] = {
-   0.1579562,
-   0.06891655,
-   -0.07609042,
-   0.06705933,
-   0.146075,
-   0.1092771};
+   0.1579578,
+   0.06891659,
+   -0.07608932,
+   0.06706285,
+   0.1460793,
+   0.1092785};
    Double_t S12_diff_fex1013[6] = {
    0,
    0,
@@ -89,12 +89,12 @@ void AEDMAcceptanceUncOverlay()
    2119.355,
    2367.258};
    Double_t S18_diff_fy1014[6] = {
-   0.1607342,
-   -0.01441376,
-   0.05276096,
-   -0.02212517,
-   -0.08606372,
-   0.06834446};
+   0.1607359,
+   -0.01441377,
+   0.0527602,
+   -0.02212633,
+   -0.08606629,
+   0.06834537};
    Double_t S18_diff_fex1014[6] = {
    0,
    0,
@@ -122,8 +122,8 @@ void AEDMAcceptanceUncOverlay()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S18_diff1014 = new TH1F("Graph_S18_diff1014","S18",100,998.3861,2491.701);
-   Graph_S18_diff1014->SetMinimum(-0.1107435);
-   Graph_S18_diff1014->SetMaximum(0.185414);
+   Graph_S18_diff1014->SetMinimum(-0.1107465);
+   Graph_S18_diff1014->SetMaximum(0.1854161);
    Graph_S18_diff1014->SetDirectory(0);
    Graph_S18_diff1014->SetStats(0);
 

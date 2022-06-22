@@ -1,7 +1,7 @@
 void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackTruth_WORLD_250MeV_BQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 18:14:33 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 03:45:40 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -9,7 +9,7 @@ void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackTruth_WORLD_250MeV_BQ_noVer
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__1 = new TH1D("h__1","",55,1.084105,2.184318);
+   TH1D *h__1 = new TH1D("h__1","",55,1.083896,2.184165);
    h__1->SetBinContent(15,1);
    h__1->SetBinContent(16,6);
    h__1->SetBinContent(17,4);
@@ -19,15 +19,15 @@ void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackTruth_WORLD_250MeV_BQ_noVer
    h__1->SetBinContent(21,39);
    h__1->SetBinContent(22,48);
    h__1->SetBinContent(23,49);
-   h__1->SetBinContent(24,63);
-   h__1->SetBinContent(25,76);
+   h__1->SetBinContent(24,64);
+   h__1->SetBinContent(25,75);
    h__1->SetBinContent(26,78);
    h__1->SetBinContent(27,81);
    h__1->SetBinContent(28,94);
    h__1->SetBinContent(29,66);
-   h__1->SetBinContent(30,68);
-   h__1->SetBinContent(31,61);
-   h__1->SetBinContent(32,43);
+   h__1->SetBinContent(30,67);
+   h__1->SetBinContent(31,63);
+   h__1->SetBinContent(32,42);
    h__1->SetBinContent(33,46);
    h__1->SetBinContent(34,28);
    h__1->SetBinContent(35,26);
@@ -50,7 +50,7 @@ void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackTruth_WORLD_250MeV_BQ_noVer
    h__1->GetXaxis()->SetTitleSize(0.04);
    h__1->GetXaxis()->SetTitleOffset(1.1);
    h__1->GetXaxis()->SetTitleFont(42);
-   h__1->GetYaxis()->SetTitle("Trials / 0.02");
+   h__1->GetYaxis()->SetTitle("Trials / 0.02 mrad");
    h__1->GetYaxis()->CenterTitle(true);
    h__1->GetYaxis()->SetNdivisions(4000510);
    h__1->GetYaxis()->SetLabelFont(42);

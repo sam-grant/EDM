@@ -1,10 +1,10 @@
 void S12_ParametersVsMomentum_Run-1a_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May  6 12:35:08 2022) by ROOT version 6.24/06
+//=========  (Sun Jun 12 19:00:35 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(125,-127.9975,3125,95.1479);
+   c->Range(125,-125.6773,3125,97.56267);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -22,15 +22,15 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    2375,
    2625};
    Double_t Graph0_fy1027[9] = {
-   -73.30502,
-   -18.31362,
-   -18.89615,
-   -16.16889,
-   -17.84701,
-   -25.54853,
-   -17.04837,
-   -26.6465,
-   -15.74292};
+   -71.46499,
+   -17.01377,
+   -17.7752,
+   -15.45685,
+   -17.22661,
+   -25.17377,
+   -16.67914,
+   -26.36383,
+   -15.49925};
    Double_t Graph0_fex1027[9] = {
    0,
    0,
@@ -42,15 +42,15 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    0,
    0};
    Double_t Graph0_fey1027[9] = {
-   11.24138,
-   5.647049,
-   4.280134,
-   3.685047,
-   3.511227,
-   3.553091,
-   3.723301,
-   4.05022,
-   4.649705};
+   11.21765,
+   5.634952,
+   4.270575,
+   3.676896,
+   3.503724,
+   3.545352,
+   3.7151,
+   4.041636,
+   4.640006};
    TGraphErrors *gre = new TGraphErrors(9,Graph0_fx1027,Graph0_fy1027,Graph0_fex1027,Graph0_fey1027);
    gre->SetName("Graph0");
    gre->SetTitle("S12");
@@ -58,8 +58,8 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01027 = new TH1F("Graph_Graph01027","S12",100,425,2825);
-   Graph_Graph01027->SetMinimum(-105.683);
-   Graph_Graph01027->SetMaximum(72.83335);
+   Graph_Graph01027->SetMinimum(-103.3533);
+   Graph_Graph01027->SetMaximum(75.23867);
    Graph_Graph01027->SetDirectory(0);
    Graph_Graph01027->SetStats(0);
 
@@ -98,15 +98,15 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    2375,
    2625};
    Double_t Graph1_fy1028[9] = {
-   51.85467,
-   29.17627,
-   27.12728,
-   18.67814,
-   16.90178,
-   14.62691,
-   12.023,
-   12.51486,
-   7.778067};
+   53.50411,
+   30.47038,
+   28.43203,
+   19.53759,
+   17.6553,
+   15.18956,
+   12.54288,
+   12.90722,
+   8.000039};
    Double_t Graph1_fex1028[9] = {
    0,
    0,
@@ -118,15 +118,15 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    0,
    0};
    Double_t Graph1_fey1028[9] = {
-   6.412018,
-   3.21623,
-   2.423564,
-   2.068671,
-   1.952535,
-   1.96573,
-   2.070891,
-   2.236549,
-   2.595684};
+   6.686826,
+   3.354786,
+   2.527779,
+   2.157113,
+   2.035458,
+   2.048692,
+   2.159158,
+   2.331076,
+   2.706334};
    gre = new TGraphErrors(9,Graph1_fx1028,Graph1_fy1028,Graph1_fex1028,Graph1_fey1028);
    gre->SetName("Graph1");
    gre->SetTitle("Graph");
@@ -140,8 +140,8 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph11028 = new TH1F("Graph_Graph11028","Graph",100,425,2825);
-   Graph_Graph11028->SetMinimum(4.664144);
-   Graph_Graph11028->SetMaximum(63.57511);
+   Graph_Graph11028->SetMinimum(4.764335);
+   Graph_Graph11028->SetMaximum(65.68066);
    Graph_Graph11028->SetDirectory(0);
    Graph_Graph11028->SetStats(0);
 
@@ -170,15 +170,15 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    2375,
    2625};
    Double_t Graph2_fy1029[9] = {
-   1.055479,
-   0.4142433,
-   -0.2716108,
-   -0.4480641,
-   -0.147299,
-   0.06352767,
-   0.004129889,
-   0.09382171,
-   0.1122903};
+   1.051915,
+   0.4106059,
+   -0.2747857,
+   -0.4498982,
+   -0.1489098,
+   0.06295275,
+   0.003286074,
+   0.09358704,
+   0.1117778};
    Double_t Graph2_fex1029[9] = {
    0,
    0,
@@ -190,15 +190,15 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    0,
    0};
    Double_t Graph2_fey1029[9] = {
-   0.07230818,
-   0.03659992,
-   0.0278867,
-   0.02415491,
-   0.0231546,
-   0.0235023,
-   0.02469856,
-   0.02693432,
-   0.03087351};
+   0.07269308,
+   0.03679315,
+   0.02803228,
+   0.02428017,
+   0.0232744,
+   0.02362311,
+   0.02482476,
+   0.02707161,
+   0.0310312};
    gre = new TGraphErrors(9,Graph2_fx1029,Graph2_fy1029,Graph2_fex1029,Graph2_fey1029);
    gre->SetName("Graph2");
    gre->SetTitle("Graph");
@@ -212,8 +212,8 @@ void S12_ParametersVsMomentum_Run-1a_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph21029 = new TH1F("Graph_Graph21029","Graph",100,425,2825);
-   Graph_Graph21029->SetMinimum(-0.6322197);
-   Graph_Graph21029->SetMaximum(1.287788);
+   Graph_Graph21029->SetMinimum(-0.634057);
+   Graph_Graph21029->SetMaximum(1.284487);
    Graph_Graph21029->SetDirectory(0);
    Graph_Graph21029->SetStats(0);
 

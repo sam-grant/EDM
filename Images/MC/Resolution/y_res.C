@@ -1,7 +1,7 @@
 void y_res()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May 22 13:26:14 2022) by ROOT version 6.24/06
+//=========  (Thu Jun  9 13:41:02 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -9,89 +9,82 @@ void y_res()
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *y_res__1 = new TH1D("y_res__1","",60,-30,30);
-   y_res__1->SetBinContent(0,13);
-   y_res__1->SetBinContent(2,4);
-   y_res__1->SetBinContent(3,5);
-   y_res__1->SetBinContent(4,3);
-   y_res__1->SetBinContent(5,7);
-   y_res__1->SetBinContent(6,10);
-   y_res__1->SetBinContent(7,6);
-   y_res__1->SetBinContent(8,9);
-   y_res__1->SetBinContent(9,13);
-   y_res__1->SetBinContent(10,30);
-   y_res__1->SetBinContent(11,29);
-   y_res__1->SetBinContent(12,42);
-   y_res__1->SetBinContent(13,54);
-   y_res__1->SetBinContent(14,73);
-   y_res__1->SetBinContent(15,99);
-   y_res__1->SetBinContent(16,176);
-   y_res__1->SetBinContent(17,215);
-   y_res__1->SetBinContent(18,397);
-   y_res__1->SetBinContent(19,629);
-   y_res__1->SetBinContent(20,1151);
-   y_res__1->SetBinContent(21,2117);
-   y_res__1->SetBinContent(22,4039);
-   y_res__1->SetBinContent(23,8198);
-   y_res__1->SetBinContent(24,17188);
-   y_res__1->SetBinContent(25,36362);
-   y_res__1->SetBinContent(26,76737);
-   y_res__1->SetBinContent(27,146146);
-   y_res__1->SetBinContent(28,250084);
-   y_res__1->SetBinContent(29,373844);
-   y_res__1->SetBinContent(30,474217);
-   y_res__1->SetBinContent(31,473667);
-   y_res__1->SetBinContent(32,378161);
-   y_res__1->SetBinContent(33,252182);
-   y_res__1->SetBinContent(34,147320);
-   y_res__1->SetBinContent(35,77447);
-   y_res__1->SetBinContent(36,37312);
-   y_res__1->SetBinContent(37,17499);
-   y_res__1->SetBinContent(38,8305);
-   y_res__1->SetBinContent(39,4143);
-   y_res__1->SetBinContent(40,2213);
-   y_res__1->SetBinContent(41,1210);
-   y_res__1->SetBinContent(42,704);
-   y_res__1->SetBinContent(43,382);
-   y_res__1->SetBinContent(44,235);
-   y_res__1->SetBinContent(45,160);
-   y_res__1->SetBinContent(46,111);
-   y_res__1->SetBinContent(47,83);
-   y_res__1->SetBinContent(48,51);
-   y_res__1->SetBinContent(49,41);
-   y_res__1->SetBinContent(50,30);
-   y_res__1->SetBinContent(51,23);
-   y_res__1->SetBinContent(52,19);
-   y_res__1->SetBinContent(53,14);
-   y_res__1->SetBinContent(54,7);
-   y_res__1->SetBinContent(55,8);
-   y_res__1->SetBinContent(56,6);
-   y_res__1->SetBinContent(57,10);
-   y_res__1->SetBinContent(58,6);
-   y_res__1->SetBinContent(59,3);
-   y_res__1->SetBinContent(60,4);
-   y_res__1->SetBinContent(61,31);
-   y_res__1->SetEntries(2793284);
-   y_res__1->SetStats(0);
-   y_res__1->SetLineWidth(2);
-   y_res__1->GetXaxis()->SetTitle("#Delta y (truth #minus reco) [mm]");
-   y_res__1->GetXaxis()->CenterTitle(true);
-   y_res__1->GetXaxis()->SetLabelFont(42);
-   y_res__1->GetXaxis()->SetTitleSize(0.04);
-   y_res__1->GetXaxis()->SetTitleOffset(1.1);
-   y_res__1->GetXaxis()->SetTitleFont(42);
-   y_res__1->GetYaxis()->SetTitle("Decay vertices / 1
+   TH1D *y_res__3 = new TH1D("y_res__3","",60,-30,30);
+   y_res__3->SetBinContent(0,6);
+   y_res__3->SetBinContent(1,1);
+   y_res__3->SetBinContent(4,2);
+   y_res__3->SetBinContent(5,1);
+   y_res__3->SetBinContent(7,1);
+   y_res__3->SetBinContent(8,3);
+   y_res__3->SetBinContent(9,3);
+   y_res__3->SetBinContent(10,2);
+   y_res__3->SetBinContent(11,1);
+   y_res__3->SetBinContent(12,3);
+   y_res__3->SetBinContent(13,6);
+   y_res__3->SetBinContent(14,8);
+   y_res__3->SetBinContent(15,18);
+   y_res__3->SetBinContent(16,16);
+   y_res__3->SetBinContent(17,33);
+   y_res__3->SetBinContent(18,25);
+   y_res__3->SetBinContent(19,60);
+   y_res__3->SetBinContent(20,129);
+   y_res__3->SetBinContent(21,175);
+   y_res__3->SetBinContent(22,372);
+   y_res__3->SetBinContent(23,769);
+   y_res__3->SetBinContent(24,1480);
+   y_res__3->SetBinContent(25,3311);
+   y_res__3->SetBinContent(26,6657);
+   y_res__3->SetBinContent(27,12575);
+   y_res__3->SetBinContent(28,21334);
+   y_res__3->SetBinContent(29,31422);
+   y_res__3->SetBinContent(30,39458);
+   y_res__3->SetBinContent(31,39565);
+   y_res__3->SetBinContent(32,31815);
+   y_res__3->SetBinContent(33,21866);
+   y_res__3->SetBinContent(34,12773);
+   y_res__3->SetBinContent(35,6783);
+   y_res__3->SetBinContent(36,3275);
+   y_res__3->SetBinContent(37,1552);
+   y_res__3->SetBinContent(38,768);
+   y_res__3->SetBinContent(39,397);
+   y_res__3->SetBinContent(40,197);
+   y_res__3->SetBinContent(41,99);
+   y_res__3->SetBinContent(42,61);
+   y_res__3->SetBinContent(43,39);
+   y_res__3->SetBinContent(44,25);
+   y_res__3->SetBinContent(45,20);
+   y_res__3->SetBinContent(46,8);
+   y_res__3->SetBinContent(47,4);
+   y_res__3->SetBinContent(48,5);
+   y_res__3->SetBinContent(49,4);
+   y_res__3->SetBinContent(50,2);
+   y_res__3->SetBinContent(51,1);
+   y_res__3->SetBinContent(52,2);
+   y_res__3->SetBinContent(56,2);
+   y_res__3->SetBinContent(57,2);
+   y_res__3->SetBinContent(58,1);
+   y_res__3->SetBinContent(61,2);
+   y_res__3->SetEntries(237139);
+   y_res__3->SetStats(0);
+   y_res__3->SetLineWidth(2);
+   y_res__3->GetXaxis()->SetTitle("#Delta y (truth #minus reco) [mm]");
+   y_res__3->GetXaxis()->CenterTitle(true);
+   y_res__3->GetXaxis()->SetLabelFont(42);
+   y_res__3->GetXaxis()->SetTitleSize(0.04);
+   y_res__3->GetXaxis()->SetTitleOffset(1.1);
+   y_res__3->GetXaxis()->SetTitleFont(42);
+   y_res__3->GetYaxis()->SetTitle("Decay vertices / 1
  mm");
-   y_res__1->GetYaxis()->CenterTitle(true);
-   y_res__1->GetYaxis()->SetNdivisions(4000510);
-   y_res__1->GetYaxis()->SetLabelFont(42);
-   y_res__1->GetYaxis()->SetTitleSize(0.04);
-   y_res__1->GetYaxis()->SetTitleOffset(1.1);
-   y_res__1->GetYaxis()->SetTitleFont(42);
-   y_res__1->GetZaxis()->SetLabelFont(42);
-   y_res__1->GetZaxis()->SetTitleOffset(1);
-   y_res__1->GetZaxis()->SetTitleFont(42);
-   y_res__1->Draw("HIST ][");
+   y_res__3->GetYaxis()->CenterTitle(true);
+   y_res__3->GetYaxis()->SetNdivisions(4000510);
+   y_res__3->GetYaxis()->SetLabelFont(42);
+   y_res__3->GetYaxis()->SetTitleSize(0.04);
+   y_res__3->GetYaxis()->SetTitleOffset(1.2);
+   y_res__3->GetYaxis()->SetTitleFont(42);
+   y_res__3->GetZaxis()->SetLabelFont(42);
+   y_res__3->GetZaxis()->SetTitleOffset(1);
+   y_res__3->GetZaxis()->SetTitleFont(42);
+   y_res__3->Draw("HIST ][");
    
    TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
    pt->SetFillColor(0);
@@ -107,11 +100,11 @@ void y_res()
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(23);
-   pt_LaTex = pt->AddText("0.011
-#pm0.002
+   pt_LaTex = pt->AddText("0.014
+#pm0.005
 ");
-   pt_LaTex = pt->AddText("2.549
-#pm0.001
+   pt_LaTex = pt->AddText("2.594
+#pm0.004
 ");
    pt->Draw();
    c->Modified();

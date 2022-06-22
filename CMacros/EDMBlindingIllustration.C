@@ -13,6 +13,10 @@ using namespace blinding;
 double boxWidth = 0.25;
 double gausWidth = 0.7;
 
+/*double R = 4.81; // ppm shift
+double boxWidth = 0.25;
+double gausWidth = 0.7;*/
+
 //double R = 10; // ppm shift
 //double boxWidth = 0.3;
 //double gausWidth = 0.8;
@@ -106,15 +110,15 @@ void DrawLimitPlot(TH1D *hist, std::string title, std::string fname) {
    line->SetLineColor(kRed);
    line->SetLineStyle(2);
 
-   line->Draw("same");
+   //line->Draw("same");
 
-   TPaveText *txt = new TPaveText(1.5,350,2.0,450);
-   txt->AddText("BNL");
+   TPaveText *txt = new TPaveText(1.75 ,350,2.0,450);
+   txt->AddText("BNL limit");
    txt->SetTextSize(26);
    txt->SetTextFont(44);
    txt->SetFillColor(0);
    txt->SetTextColor(kRed);
-   txt->Draw("same");
+   //txt->Draw("same");
    
    c->SaveAs((fname+".C").c_str());
    c->SaveAs((fname+".pdf").c_str());
@@ -215,7 +219,7 @@ void DrawScan(TGraphErrors *graph, std::string title, std::string fname) {
    txt->SetTextFont(44);
    txt->SetFillColor(0);
    txt->SetTextColor(kRed);
-   //txt->Draw("same");
+   txt->Draw("same");
 
    //c->SetLogy();
 
@@ -237,16 +241,16 @@ int main() {
 
    TH1D *h_xd0 = GetHist(nStrings, R);
 
-   DrawLimitPlot(h_xd0, ";Blind signal [#timesd_{0}];Random blinding strings", "../Images/Blinding/Limits"); 
+   DrawLimitPlot(h_xd0, ";Signal multiplier;Unique blinding phrases", "../Images/Blinding/Limits"); 
 
    //cout<<h_xd0->GetBinContent(0)<<endl;
+/*
+   TGraphErrors *RScan = GetRScan(nStrings);
 
-   //TGraphErrors *RScan = GetRScan(nStrings);
+   RScan->GetXaxis()->SetRangeUser(2,5);
 
-   //RScan->GetXaxis()->SetRangeUser(2,5);
-
-   //DrawScan(RScan, ";R [ppm];Limits less than BNL / 10,000 blinding strings [%] ", "../Images/RScan");
-
+   DrawScan(RScan, ";Average signal multiplier [ppm];Blind signals < BNL limit / 10,000 phrases [%] ", "../Images/RScan");
+*/
    return 0;
 
 }

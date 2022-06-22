@@ -19,7 +19,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 
 	gr1->GetXaxis()->SetRangeUser(500, 3000);//xmin - 100, xmax + 100);
-	gr1->GetYaxis()->SetRangeUser(0, 0.35);
+	gr1->GetYaxis()->SetRangeUser(-0.05, 0.40);
 
 	gr1->SetLineColor(kBlack);
 	gr1->SetMarkerColor(kBlack);
@@ -75,7 +75,7 @@ void AEDM_overlay_sim() {
 
 	gr1->GetYaxis()->SetRangeUser(-0.1, 0.4);
 
-	DrawOverlay(gr1, gr2, gr3, "", "../Images/MC/dMu/5.4e-18/Results/S12S18_AEDM_overlay");
+	DrawOverlay(gr1, gr2, gr3, ";Momentum, p [MeV];A_{EDM} [mrad];", "../Images/MC/dMu/5.4e-18/Results/S12S18_AEDM_overlay");
 
 	f1->Close();
 	f2->Close();

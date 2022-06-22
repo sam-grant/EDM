@@ -281,12 +281,12 @@ void FitAsym(TH1F *hist, bool edm, string boostLabel) {
 
 	if(edm) {
 		fname += "edm/hFit_A";
-		if(!boost) legEntry += "Fit: #frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}";
-		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}"; 
+		if(!boost) legEntry += "#frac{#sqrt{#lambda(1-#lambda)}(1+4#lambda)}{5+5#lambda-4#lambda^{2}}";
+		else legEntry += "#frac{2#lambda-1}{3-2#lambda}"; 
 	} else { 
 		fname += "g2/hFit_A";
-		if(!boost) legEntry += "Fit: #frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}";
-		else legEntry += "Fit: #frac{2#lambda-1}{3-2#lambda}";
+		if(!boost) legEntry += "#frac{-1-#lambda+8#lambda^{2}}{5+5#lambda-4#lambda^{2}}";
+		else legEntry += "#frac{2#lambda-1}{3-2#lambda}";
 	}
 
 	fname += "_"+boostLabel;

@@ -1,8 +1,8 @@
 void S12_AcceptanceMapY_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:50:06 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:43:20 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75.58442,-125,80.25974,125);
    c->SetFillColor(0);
@@ -770,7 +770,7 @@ void S12_AcceptanceMapY_0_3127_MeV()
 
    ci = TColor::GetColor("#000099");
    S12_WeightMapY->SetLineColor(ci);
-   S12_WeightMapY->GetXaxis()->SetTitle("Vertical decay postion [mm]");
+   S12_WeightMapY->GetXaxis()->SetTitle("y [mm]");
    S12_WeightMapY->GetXaxis()->SetRange(1,24);
    S12_WeightMapY->GetXaxis()->CenterTitle(true);
    S12_WeightMapY->GetXaxis()->SetLabelFont(42);
@@ -792,7 +792,7 @@ void S12_AcceptanceMapY_0_3127_MeV()
    S12_WeightMapY->GetZaxis()->SetTitleFont(42);
    S12_WeightMapY->Draw("COLZ TEXT");
    
-   TPaveText *pt = new TPaveText(0.4571053,0.94,0.5428947,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

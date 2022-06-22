@@ -1,7 +1,7 @@
 void S12_AverageVerticalOffsetVsMomentum_Run-1a_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri May  6 12:35:08 2022) by ROOT version 6.24/06
+//=========  (Sun Jun 12 19:00:35 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(125,-2,3125,3);
@@ -22,15 +22,15 @@ void S12_AverageVerticalOffsetVsMomentum_Run-1a_BQ()
    2375,
    2625};
    Double_t Graph0_fy1030[9] = {
-   1.055479,
-   0.4142433,
-   -0.2716108,
-   -0.4480641,
-   -0.147299,
-   0.06352767,
-   0.004129889,
-   0.09382171,
-   0.1122903};
+   1.051915,
+   0.4106059,
+   -0.2747857,
+   -0.4498982,
+   -0.1489098,
+   0.06295275,
+   0.003286074,
+   0.09358704,
+   0.1117778};
    Double_t Graph0_fex1030[9] = {
    0,
    0,
@@ -42,15 +42,15 @@ void S12_AverageVerticalOffsetVsMomentum_Run-1a_BQ()
    0,
    0};
    Double_t Graph0_fey1030[9] = {
-   0.07230818,
-   0.03659992,
-   0.0278867,
-   0.02415491,
-   0.0231546,
-   0.0235023,
-   0.02469856,
-   0.02693432,
-   0.03087351};
+   0.07269308,
+   0.03679315,
+   0.02803228,
+   0.02428017,
+   0.0232744,
+   0.02362311,
+   0.02482476,
+   0.02707161,
+   0.0310312};
    TGraphErrors *gre = new TGraphErrors(9,Graph0_fx1030,Graph0_fy1030,Graph0_fex1030,Graph0_fey1030);
    gre->SetName("Graph0");
    gre->SetTitle("S12");
@@ -113,15 +113,15 @@ void S12_AverageVerticalOffsetVsMomentum_Run-1a_BQ()
    2375,
    2625};
    Double_t Graph0_fy1031[9] = {
-   1.055479,
-   0.4142433,
-   -0.2716108,
-   -0.4480641,
-   -0.147299,
-   0.06352767,
-   0.004129889,
-   0.09382171,
-   0.1122903};
+   1.051915,
+   0.4106059,
+   -0.2747857,
+   -0.4498982,
+   -0.1489098,
+   0.06295275,
+   0.003286074,
+   0.09358704,
+   0.1117778};
    Double_t Graph0_fex1031[9] = {
    0,
    0,
@@ -133,15 +133,15 @@ void S12_AverageVerticalOffsetVsMomentum_Run-1a_BQ()
    0,
    0};
    Double_t Graph0_fey1031[9] = {
-   0.07230818,
-   0.03659992,
-   0.0278867,
-   0.02415491,
-   0.0231546,
-   0.0235023,
-   0.02469856,
-   0.02693432,
-   0.03087351};
+   0.07269308,
+   0.03679315,
+   0.02803228,
+   0.02428017,
+   0.0232744,
+   0.02362311,
+   0.02482476,
+   0.02707161,
+   0.0310312};
    gre = new TGraphErrors(9,Graph0_fx1031,Graph0_fy1031,Graph0_fex1031,Graph0_fey1031);
    gre->SetName("Graph0");
    gre->SetTitle("S12");

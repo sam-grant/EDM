@@ -1,7 +1,7 @@
 void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 22:35:44 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 03:41:22 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(830.3881,-0.04375,2659.699,0.39375);
@@ -19,12 +19,12 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    2119.355,
    2367.258};
    Double_t _fy1001[6] = {
-   0.3053675,
-   0.2809278,
-   0.2539968,
-   0.2316457,
-   0.1671082,
-   0.1612269};
+   0.3053643,
+   0.2809277,
+   0.2540005,
+   0.2316335,
+   0.1671032,
+   0.1612248};
    Double_t _fex1001[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    0,
    0};
    Double_t _fey1001[6] = {
-   0.01485289,
-   0.01322649,
-   0.01204238,
-   0.01118043,
-   0.01053627,
-   0.01009493};
+   0.01485295,
+   0.01322656,
+   0.01204244,
+   0.01118049,
+   0.01053632,
+   0.010095};
    TGraphErrors *gre = new TGraphErrors(6,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
    gre->SetTitle("S12");
@@ -55,7 +55,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
-   Graph_Graph1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_Graph1001->GetXaxis()->SetTitle("Momentum [MeV]");
    Graph_Graph1001->GetXaxis()->SetRange(2,99);
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
@@ -74,7 +74,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    Graph_Graph1001->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1001);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    
    Double_t _fx1002[6] = {
    1122.829,
@@ -128,7 +128,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    Graph_Graph1002->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1002);
    
-   gre->Draw("pl ");
+   gre->Draw("p ");
    
    Double_t _fx1003[6] = {
    1123.157,
@@ -138,12 +138,12 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    2114.946,
    2362.647};
    Double_t _fy1003[6] = {
-   0.1404079,
-   0.1260699,
-   0.1495787,
-   0.1490699,
-   0.1231835,
-   0.08041457};
+   0.1405128,
+   0.1260855,
+   0.14967,
+   0.1489986,
+   0.1230028,
+   0.08037916};
    Double_t _fex1003[6] = {
    0,
    0,
@@ -152,12 +152,12 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    0,
    0};
    Double_t _fey1003[6] = {
-   0.02023076,
-   0.01845655,
-   0.01754713,
-   0.01763438,
-   0.01864525,
-   0.02007888};
+   0.02023203,
+   0.01845806,
+   0.01754852,
+   0.01763604,
+   0.01864711,
+   0.02008073};
    gre = new TGraphErrors(6,_fx1003,_fy1003,_fex1003,_fey1003);
    gre->SetName("");
    gre->SetTitle("");
@@ -168,11 +168,11 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
 
    ci = TColor::GetColor("#ff0000");
    gre->SetMarkerColor(ci);
-   gre->SetMarkerStyle(24);
+   gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,999.2077,2486.596);
-   Graph_Graph1003->SetMinimum(0.04965667);
-   Graph_Graph1003->SetMaximum(0.1778048);
+   Graph_Graph1003->SetMinimum(0.04960643);
+   Graph_Graph1003->SetMaximum(0.1779105);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -188,7 +188,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
    Graph_Graph1003->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1003);
    
-   gre->Draw("pl ");
+   gre->Draw("p ");
    
    TLegend *leg = new TLegend(0.49,0.75,0.89,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
@@ -227,7 +227,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
 
    ci = TColor::GetColor("#ff0000");
    entry->SetMarkerColor(ci);
-   entry->SetMarkerStyle(24);
+   entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
    leg->Draw();
@@ -278,7 +278,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_overlay()
 
    ci = TColor::GetColor("#ff0000");
    entry->SetMarkerColor(ci);
-   entry->SetMarkerStyle(24);
+   entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
    leg->Draw();

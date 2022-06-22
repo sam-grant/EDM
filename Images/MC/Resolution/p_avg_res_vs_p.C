@@ -1,9 +1,9 @@
 void p_avg_res_vs_p()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May 22 13:26:14 2022) by ROOT version 6.24/06
+//=========  (Thu Jun  9 13:41:03 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(-297.5,-0.125,3377.5,1.125);
+   c->Range(-297.5,-0.07503118,3377.5,1.142772);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -38,32 +38,32 @@ void p_avg_res_vs_p()
    2750,
    2850};
    Double_t _fy1008[26] = {
-   0.04909168,
-   0.02086349,
-   0.02165109,
-   0.01704389,
-   0.01455752,
-   0.01519126,
-   0.01605855,
-   0.01733438,
-   0.01946335,
-   0.02145634,
-   0.02370209,
-   0.02602224,
-   0.0283701,
-   0.03065214,
-   0.03324005,
-   0.03617372,
-   0.03922693,
-   0.04191378,
-   0.04375711,
-   0.04486956,
-   0.04665647,
-   0.04938727,
-   0.05158875,
-   0.05737425,
-   0.07419493,
-   0.1761785};
+   0.1988738,
+   0.09058754,
+   0.07599817,
+   0.06511099,
+   0.05194354,
+   0.05267277,
+   0.05502624,
+   0.05848406,
+   0.06642119,
+   0.07172627,
+   0.08034649,
+   0.08744886,
+   0.09487823,
+   0.1023544,
+   0.1143303,
+   0.1233032,
+   0.1294356,
+   0.1422075,
+   0.1524403,
+   0.16366,
+   0.1721551,
+   0.1891395,
+   0.1957605,
+   0.226033,
+   0.3167709,
+   0.9328967};
    Double_t _fex1008[26] = {
    0,
    0,
@@ -125,8 +125,8 @@ void p_avg_res_vs_p()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1008 = new TH1F("Graph_Graph1008","",100,100,3100);
-   Graph_Graph1008->SetMinimum(0);
-   Graph_Graph1008->SetMaximum(1);
+   Graph_Graph1008->SetMinimum(0.04674918);
+   Graph_Graph1008->SetMaximum(1.020992);
    Graph_Graph1008->SetDirectory(0);
    Graph_Graph1008->SetStats(0);
 
@@ -146,7 +146,7 @@ void p_avg_res_vs_p()
    Graph_Graph1008->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1008->GetYaxis()->SetLabelFont(42);
    Graph_Graph1008->GetYaxis()->SetTitleSize(0.04);
-   Graph_Graph1008->GetYaxis()->SetTitleOffset(1.2);
+   Graph_Graph1008->GetYaxis()->SetTitleOffset(1.25);
    Graph_Graph1008->GetYaxis()->SetTitleFont(42);
    Graph_Graph1008->GetZaxis()->SetLabelFont(42);
    Graph_Graph1008->GetZaxis()->SetTitleOffset(1);

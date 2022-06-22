@@ -29,7 +29,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c","c",1600,1200);
+	TCanvas *c = new TCanvas("c","c",800,600);
 
 	hist->SetTitle(title.c_str());
 

@@ -1,7 +1,7 @@
 void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 22:35:44 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 03:41:22 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(830.3881,0.0125,2659.699,0.3875);
@@ -19,12 +19,12 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    2119.355,
    2367.258};
    Double_t _fy1004[6] = {
-   0.3053675,
-   0.2809278,
-   0.2539968,
-   0.2316457,
-   0.1671082,
-   0.1612269};
+   0.3053643,
+   0.2809277,
+   0.2540005,
+   0.2316335,
+   0.1671032,
+   0.1612248};
    Double_t _fex1004[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    0,
    0};
    Double_t _fey1004[6] = {
-   0.01485289,
-   0.01322649,
-   0.01204238,
-   0.01118043,
-   0.01053627,
-   0.01009493};
+   0.01485295,
+   0.01322656,
+   0.01204244,
+   0.01118049,
+   0.01053632,
+   0.010095};
    TGraphErrors *gre = new TGraphErrors(6,_fx1004,_fy1004,_fex1004,_fey1004);
    gre->SetName("");
    gre->SetTitle("S12");
@@ -55,7 +55,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph_Graph10011004->SetLineColor(ci);
-   Graph_Graph_Graph10011004->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_Graph_Graph10011004->GetXaxis()->SetTitle("Momentum [MeV]");
    Graph_Graph_Graph10011004->GetXaxis()->SetRange(2,99);
    Graph_Graph_Graph10011004->GetXaxis()->CenterTitle(true);
    Graph_Graph_Graph10011004->GetXaxis()->SetLabelFont(42);
@@ -74,7 +74,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    Graph_Graph_Graph10011004->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph_Graph10011004);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    
    Double_t _fx1005[6] = {
    1122.829,
@@ -134,9 +134,9 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    Graph_Graph_Graph10021005->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph_Graph10021005);
    
-   gre->Draw("pl ");
+   gre->Draw("p ");
    
-   TLegend *leg = new TLegend(0.49,0.75,0.89,0.89,NULL,"brNDC");
+   TLegend *leg = new TLegend(0.65,0.79,0.89,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetTextFont(44);
    leg->SetTextSize(24);
@@ -169,16 +169,7 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    entry->SetTextFont(44);
    leg->Draw();
    
-   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   TText *pt_LaTex = pt->AddText("S12");
-   pt->Draw();
-   
-   leg = new TLegend(0.49,0.75,0.89,0.89,NULL,"brNDC");
+   leg = new TLegend(0.65,0.79,0.89,0.89,NULL,"brNDC");
    leg->SetBorderSize(0);
    leg->SetTextFont(44);
    leg->SetTextSize(24);
@@ -210,6 +201,15 @@ void S12_AcceptanceCorrected_AEDM_vs_p_partial_overlay()
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
    leg->Draw();
+   
+   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   TText *pt_LaTex = pt->AddText("S12");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

@@ -1,7 +1,7 @@
 void S18_OverlayAEDMAcceptanceFraction()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 18:45:19 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(811.7217,-0.18125,2678.365,1.13125);
    c->SetFillColor(0);
@@ -18,12 +18,12 @@ void S18_OverlayAEDMAcceptanceFraction()
    2119.355,
    2367.258};
    Double_t S18_gr_ratio_nominal_fy1010[6] = {
-   0.3753683,
-   0.4958012,
-   0.6032882,
-   0.4247337,
-   0.4595643,
-   0.3390797};
+   0.3753722,
+   0.4958014,
+   0.6032795,
+   0.424756,
+   0.4595781,
+   0.3390842};
    Double_t S18_gr_ratio_nominal_fex1010[6] = {
    0,
    0,
@@ -32,12 +32,12 @@ void S18_OverlayAEDMAcceptanceFraction()
    0,
    0};
    Double_t S18_gr_ratio_nominal_fey1010[6] = {
-   0.1023468,
-   0.1039348,
-   0.1107299,
-   0.1202592,
-   0.1769445,
-   0.1976935};
+   0.102348,
+   0.1039349,
+   0.1107282,
+   0.1202657,
+   0.1769499,
+   0.1976962};
    TGraphErrors *gre = new TGraphErrors(6,S18_gr_ratio_nominal_fx1010,S18_gr_ratio_nominal_fy1010,S18_gr_ratio_nominal_fex1010,S18_gr_ratio_nominal_fey1010);
    gre->SetName("S18_gr_ratio_nominal");
    gre->SetTitle("S18");
@@ -88,12 +88,12 @@ void S18_OverlayAEDMAcceptanceFraction()
    2144.355,
    2392.258};
    Double_t S18_gr_ratio_shift_fy1011[6] = {
-   0.2146341,
-   0.510215,
-   0.5505272,
-   0.4468589,
-   0.5456281,
-   0.2707352};
+   0.2146363,
+   0.5102152,
+   0.5505193,
+   0.4468824,
+   0.5456443,
+   0.2707388};
    Double_t S18_gr_ratio_shift_fex1011[6] = {
    0,
    0,
@@ -102,12 +102,12 @@ void S18_OverlayAEDMAcceptanceFraction()
    0,
    0};
    Double_t S18_gr_ratio_shift_fey1011[6] = {
-   0.1355594,
-   0.1387432,
-   0.1469687,
-   0.1621286,
-   0.2399353,
-   0.2702071};
+   0.1355608,
+   0.1387433,
+   0.1469666,
+   0.1621373,
+   0.2399426,
+   0.2702107};
    gre = new TGraphErrors(6,S18_gr_ratio_shift_fx1011,S18_gr_ratio_shift_fy1011,S18_gr_ratio_shift_fex1011,S18_gr_ratio_shift_fey1011);
    gre->SetName("S18_gr_ratio_shift");
    gre->SetTitle("");
@@ -121,8 +121,8 @@ void S18_OverlayAEDMAcceptanceFraction()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S18_gr_ratio_shift1011 = new TH1F("Graph_S18_gr_ratio_shift1011","",100,1023.386,2516.701);
-   Graph_S18_gr_ratio_shift1011->SetMinimum(0.0004753375);
-   Graph_S18_gr_ratio_shift1011->SetMaximum(0.8640668);
+   Graph_S18_gr_ratio_shift1011->SetMinimum(0.0004753253);
+   Graph_S18_gr_ratio_shift1011->SetMaximum(0.8640928);
    Graph_S18_gr_ratio_shift1011->SetDirectory(0);
    Graph_S18_gr_ratio_shift1011->SetStats(0);
 

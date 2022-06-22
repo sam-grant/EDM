@@ -1,9 +1,9 @@
 void S12S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 18:14:34 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 03:45:40 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(813.104,0.901884,2672.985,2.36047);
+   c->Range(813.104,0.9011976,2672.985,2.358272);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -18,12 +18,12 @@ void S12S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
    2114.997,
    2363.005};
    Double_t _fy1005[6] = {
-   1.741461,
-   1.71208,
-   1.686786,
-   1.718412,
-   1.437865,
-   1.706319};
+   1.74193,
+   1.711908,
+   1.686776,
+   1.717443,
+   1.437046,
+   1.704249};
    Double_t _fex1005[6] = {
    0,
    0,
@@ -32,12 +32,12 @@ void S12S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
    0,
    0};
    Double_t _fey1005[6] = {
-   0.2057932,
-   0.1731483,
-   0.1494874,
-   0.1555447,
-   0.1901228,
-   0.2582919};
+   0.2058083,
+   0.1731621,
+   0.1494988,
+   0.1555593,
+   0.1901413,
+   0.2583159};
    TGraphErrors *gre = new TGraphErrors(6,_fx1005,_fy1005,_fex1005,_fey1005);
    gre->SetName("");
    gre->SetTitle(";Decay vertex momentum [MeV];#delta [mrad] / 250 MeV;");
@@ -45,8 +45,8 @@ void S12S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1005 = new TH1F("Graph_Graph1005","",100,999.0921,2486.997);
-   Graph_Graph1005->SetMinimum(1.047743);
-   Graph_Graph1005->SetMaximum(2.214611);
+   Graph_Graph1005->SetMinimum(1.046905);
+   Graph_Graph1005->SetMaximum(2.212565);
    Graph_Graph1005->SetDirectory(0);
    Graph_Graph1005->SetStats(0);
 
@@ -78,15 +78,15 @@ void S12S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
    pol01006->SetFillStyle(0);
    pol01006->SetLineColor(2);
    pol01006->SetLineWidth(2);
-   pol01006->SetChisquare(1.799662);
+   pol01006->SetChisquare(1.804846);
    pol01006->SetNDF(5);
    pol01006->GetXaxis()->SetLabelFont(42);
    pol01006->GetXaxis()->SetTitleOffset(1);
    pol01006->GetXaxis()->SetTitleFont(42);
    pol01006->GetYaxis()->SetLabelFont(42);
    pol01006->GetYaxis()->SetTitleFont(42);
-   pol01006->SetParameter(0,1.669814);
-   pol01006->SetParError(0,0.073382);
+   pol01006->SetParameter(0,1.669337);
+   pol01006->SetParError(0,0.07338824);
    pol01006->SetParLimits(0,0,0);
    pol01006->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01006);
@@ -108,7 +108,7 @@ void S12S18_EDM_delta_prime_vs_p_trackTruth_WORLD_250MeV_BQ_noVertCorr()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta#GT = 1.7
+   entry=leg->AddEntry("pol0","#LT#delta#GT = 1.67
 #pm0.07
  mrad","lpf");
    entry->SetFillColor(19);

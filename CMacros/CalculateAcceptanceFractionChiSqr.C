@@ -73,7 +73,7 @@ void CalculateAcceptanceFractionChiSqr() {
 
 		double sigma = sqrt(var_tot / n); 
 
-		cout<<"sigma = "<<sigma<<endl;
+		cout<<"stn "<<stn<<"; sigma = "<<sigma<<endl;
 
 		f2->Close();
 	}

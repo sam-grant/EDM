@@ -1,8 +1,8 @@
 void S18_AcceptanceSurfaceY_2500_2750()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:51:09 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:43:49 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);
    TView *view112 = TView::CreateView(1);
@@ -242,7 +242,7 @@ void S18_AcceptanceSurfaceY_2500_2750()
    S18_WeightMapY_2500_2750__112->GetZaxis()->SetTitleFont(42);
    S18_WeightMapY_2500_2750__112->Draw("SURF2");
    
-   TPaveText *pt = new TPaveText(0.2960777,0.9356143,0.7039223,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

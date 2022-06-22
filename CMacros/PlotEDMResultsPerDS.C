@@ -162,12 +162,12 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   //TLegend *l = new TLegend(0.69, 0.11, 0.89, 0.31); 
   //l->SetTextAlign(31);
   l->SetBorderSize(0);
-  l->SetTextSize(24);
+  l->SetTextSize(22);
   l->SetTextFont(44);
 
   vector<string> label_ = {"Station 12", "Station 18", "Combined"};
 
-  graph_.at(0)->GetYaxis()->SetTitle("d_{#mu} (BLIND) [e#upointcm]");//title.c_str());
+  graph_.at(0)->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");//title.c_str());
   //graph_.at(0)->SetTextSize(26);//"d_{#mu}^{BLIND} [e#upointcm]");
   graph_.at(0)->GetXaxis()->SetTitleSize(.04);
   graph_.at(0)->GetYaxis()->SetTitleSize(.04);
@@ -201,13 +201,41 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   }
 
-  graph_.at(0)->GetYaxis()->SetRangeUser(ymin, ymax);
 
-  for(int i(0); i<graph_.at(0)->GetN(); i++) graph_.at(0)->GetXaxis()->SetBinLabel(graph_.at(0)->GetXaxis()->FindBin(i+1), (xLabel_.at(i)).c_str());
 
-  graph_.at(0)->GetXaxis()->LabelsOption("h");
-  graph_.at(0)->GetXaxis()->SetLabelSize(0.055);//Option("h");
-  graph_.at(0)->Draw("AP");
+  // Dummy graph for range
+  TGraph *dummy = new TGraph();
+  dummy->SetPoint(0, 0, 0);
+  dummy->SetPoint(1, 1, 0);
+  dummy->SetPoint(2, 2, 0);
+  dummy->SetPoint(3, 3, 0);
+  dummy->SetPoint(4, 4, 0);
+  dummy->SetPoint(5, 5, 0);
+
+
+  dummy->SetMarkerSize(0);
+  dummy->SetLineWidth(0);
+
+  dummy->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
+  dummy->GetYaxis()->SetRangeUser(-0.5e-18, 2.1e-18);//ymin, ymax);
+  dummy->GetXaxis()->SetRangeUser(0.5,4.5);//, 100);
+  dummy->GetXaxis()->SetTitleSize(.04);
+  dummy->GetYaxis()->SetTitleSize(.04);
+  dummy->GetXaxis()->SetTitleOffset(1.1);
+  dummy->GetYaxis()->SetTitleOffset(1.2);
+  dummy->GetXaxis()->CenterTitle(true);
+  dummy->GetYaxis()->CenterTitle(true);
+  dummy->GetYaxis()->SetMaxDigits(4);
+
+  for(int i(1); i<dummy->GetN()-1; i++) dummy->GetXaxis()->SetBinLabel(dummy->GetXaxis()->FindBin(i), (xLabel_.at(i-1)).c_str());
+
+  dummy->GetXaxis()->LabelsOption("h");
+  dummy->GetXaxis()->SetLabelSize(0.055);//Option("h");
+  dummy->GetXaxis()->SetTickLength(0);
+
+  dummy->Draw("AP");
+
+  graph_.at(0)->Draw("P SAME");
   gPad->Update();
   
   vector<int> colour_ = {2,4,1};
@@ -237,19 +265,22 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   }
 
+  l->SetTextSize(22);
   l->Draw("SAME");
 
   // Text box
-  TPaveText *result = new TPaveText(0.15,0.79,0.40,0.89,"NDC");
+  //PaveText *result = new TPaveText(0.15,0.79,0.40,0.89,"NDC");
+  TPaveText *result = new TPaveText(0.135,0.79,0.40,0.89,"NDC");
+ // TPaveText *result = new TPaveText(0.125,0.82,0.40,0.89,"NDC");
   result->SetTextAlign(13);
-  result->SetTextSize(26);
+  result->SetTextSize(24);
   result->SetTextFont(44);
   result->SetFillColor(0);
 
   std::ostringstream result_str; result_str << fit->GetParameter(0); 
   std::ostringstream error_str; error_str << fit->GetParError(0);  
 
-  result->AddText("#delta#LTd_{#mu}#GT = "+SciNotation(fit->GetParError(0))+" e#upointcm");// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  result->AddText("#LTd_{#mu}^{BLIND}#GT = (1.05#pm0.10)#times10^{-18} e#upointcm");//"+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" );// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
   result->Draw("SAME");
 
   c->SaveAs((fname+".pdf").c_str());
@@ -311,7 +342,9 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      TFile *file = TFile::Open(("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root").c_str());
+      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root";
+      if(ds == "Run-1d" && randomisationStr == "randomised_") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
+      TFile *file = TFile::Open(finName.c_str());//("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root").c_str());
 
       TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
       
@@ -332,6 +365,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
       if(stn=="S12S18") x = x + 0.1; 
 
       gr->SetPoint(i_ds,x,result);
+      //-9.13787e-19);
       gr->SetPointError(i_ds,0,error);
 
     }
@@ -352,6 +386,66 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
 }
 
+void RunFromRawValues() { // std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "") { //, string test = "") { 
+
+  vector<vector<double>> results_ = { {1.91533E-18, 9.57667E-19, 2.04302E-18, 1.50034E-18}
+                           , {6.38445E-19, 1.27689E-18, 1.91533E-18, 1.30881E-18}
+                           , {1.30881E-18, 1.18112E-18, 1.94726E-18, 1.40458E-18} };
+
+
+  vector<vector<double>> errors_ = { {3.19222E-19, 3.19222E-19, 2.873E-19, 2.23456E-19}
+                           , {3.19222E-19, 3.19222E-19, 3.19222E-19, 2.55378E-19}
+                           , {2.55378E-19, 2.23456E-19, 1.91533E-19, 1.91533E-19} };
+
+  vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
+  vector<string> stn_ = {"S12", "S18", "S12S18"};
+
+  vector<TGraphErrors*> gr_; 
+
+  int i_entry = 0;
+  
+  for(int i_stn(0); i_stn < stn_.size(); i_stn++) { 
+
+    std::string stn = stn_.at(i_stn);
+
+    TGraphErrors *gr = new TGraphErrors();
+
+    for(int i_ds(0); i_ds < ds_.size(); i_ds++) { 
+
+      std::string ds = ds_.at(i_ds);
+      //double result = 0; double error = 0;
+      
+      double result = (results_.at(i_stn)).at(i_ds);
+      double error = (errors_.at(i_stn)).at(i_ds);
+
+      cout<<stn<<", "<<result<<"±"<<error<<endl;
+
+      // Set x values where stations are spaced out
+      double x = i_ds+1;
+      if(stn=="S12") x = x - 0.1; 
+      if(stn=="S12S18") x = x + 0.1; 
+
+      gr->SetPoint(i_ds,x,result);
+      gr->SetPointError(i_ds,0,error);
+
+    }
+
+    // Fit 
+    if(stn=="S12S18") gr->Fit("pol0");
+
+   // DrawGraph(gr, "", "../Images/Data/dMu/Run-1/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_);
+
+    gr_.push_back(gr);
+
+  }
+
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/Run-1//Results/SimultaneousFits_vs_DS_blinded_"+xmin+"_"+xmax+"MeV_250MeV_randomised_BQ", ds_);
+
+
+  return;
+
+}
+
 void PlotEDMResultsPerDS() { 
 
   //Run("Run-1", 250, "blinded", "EDM", "", "");//"randomised_");
@@ -360,7 +454,8 @@ void PlotEDMResultsPerDS() {
   //Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
   //Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 
 
-  
+  //RunFromRawValues();
+
   return;
 
 }

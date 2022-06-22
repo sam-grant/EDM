@@ -1,10 +1,10 @@
 void S12S18_eAEDM_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun May 29 20:29:07 2022) by ROOT version 6.24/06
+//=========  (Sun Jun 12 11:40:04 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(785.1581,0.004494342,2703.793,0.01320198);
+   c->Range(785.1581,0.004494379,2703.793,0.01320213);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_eAEDM_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
    2607.571,
    2781.578};
    Double_t Graph0_fy1113[11] = {
-   0.07968603,
-   0.02034666,
-   0.01043855,
-   0.007979998,
-   0.006971754,
-   0.006706303,
-   0.006895256,
-   0.007307278,
-   0.008023472,
-   0.009151149,
-   0.03321499};
+   0.07968702,
+   0.02034687,
+   0.01043867,
+   0.007980079,
+   0.006971822,
+   0.006706363,
+   0.006895309,
+   0.007307326,
+   0.008023502,
+   0.009151143,
+   0.03321488};
    Double_t Graph0_fex1113[11] = {
    0.05666778,
    0.040015,
@@ -66,8 +66,8 @@ void S12S18_eAEDM_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01113 = new TH1F("Graph_Graph01113","S12S18",100,223.5213,3014.263);
-   Graph_Graph01113->SetMinimum(0.005365106);
-   Graph_Graph01113->SetMaximum(0.01233122);
+   Graph_Graph01113->SetMinimum(0.005365155);
+   Graph_Graph01113->SetMaximum(0.01233136);
    Graph_Graph01113->SetDirectory(0);
    Graph_Graph01113->SetStats(0);
 

@@ -37,7 +37,7 @@ void DrawChi2Fit(TGraphErrors *gr, string label, string title, string fname) {
   TF1 *fit = (TF1*)gr->GetFunction("pol0");
 
   l->AddEntry(gr, label.c_str());
-  l->AddEntry(fit, ("#LT#chi^{2}/NDF#GT = "+Round(fit->GetParameter(0),3)+"#pm"+Round(fit->GetParError(0),2)));
+  l->AddEntry(fit, ("#LT#chi^{2}/NDF#GT = "+Round(fit->GetParameter(0),2)+"#pm"+Round(fit->GetParError(0),1)));
 
   l->SetTextSize(26);
   l->SetTextFont(44);
@@ -129,12 +129,24 @@ void Run(std::string config) {
 
 void Chi2PerMomentumBin() { 
 
-	Run("Run-1a_250MeV_1000_2500MeV_randomised_BQ");
+/*	Run("Run-1a_250MeV_1000_2500MeV_randomised_BQ");
 	Run("Run-1b_250MeV_1000_2500MeV_randomised_BQ");
   Run("Run-1c_250MeV_1000_2500MeV_randomised_BQ");
-  Run("Run-1d_250MeV_1000_2500MeV_randomised_BQ");
+  Run("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ");*/
+
+  //Run("Run-1a_250MeV_1000_2500MeV_noRand_BQ");
+  //Run("Run-1b_250MeV_1000_2500MeV_noRand_BQ");
+  //Run("Run-1c_250MeV_1000_2500MeV_noRand_BQ");
+  //Run("Run-1d_250MeV_1000_2500MeV_noRand_BQ");
+  //Run("Run-1d_250MeV_1000_2500MeV_randomised_BQ");
+  //Run("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ");
+  //Run("Run-1d_250MeV_1000_2500MeV_50usStartTime_noRand_BQ");
 	//Run("Run-1c_250MeV_1000_2500_MeV_BQ");
 	//Run("Run-1d_250MeV_1000_2500_MeV_BQ");
+
+  //Run("Run-1a_250MeV_1000_2500MeV_randomised_BQ_noVertCorr");
+  //Run("Run-1b_250MeV_1000_2500MeV_randomised_BQ_noVertCorr");
+  Run("Run-1c_250MeV_1000_2500MeV_randomised_BQ_noVertCorr");
 
 	return;
 

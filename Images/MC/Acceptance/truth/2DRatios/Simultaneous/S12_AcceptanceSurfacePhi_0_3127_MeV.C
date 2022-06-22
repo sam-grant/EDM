@@ -1,8 +1,8 @@
 void S12_AcceptanceSurfacePhi_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:50:07 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:43:21 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);
    TView *view42 = TView::CreateView(1);
@@ -554,7 +554,7 @@ void S12_AcceptanceSurfacePhi_0_3127_MeV()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    S12_WeightMapR__42->SetLineColor(ci);
-   S12_WeightMapR__42->GetXaxis()->SetTitle("Azimuthal decay angle [rad]");
+   S12_WeightMapR__42->GetXaxis()->SetTitle("#phi [rad]");
    S12_WeightMapR__42->GetXaxis()->SetRange(0,126);
    S12_WeightMapR__42->GetXaxis()->CenterTitle(true);
    S12_WeightMapR__42->GetXaxis()->SetLabelFont(42);
@@ -576,7 +576,7 @@ void S12_AcceptanceSurfacePhi_0_3127_MeV()
    S12_WeightMapR__42->GetZaxis()->SetTitleFont(42);
    S12_WeightMapR__42->Draw("SURF2");
    
-   TPaveText *pt = new TPaveText(0.4571053,0.94,0.5428947,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

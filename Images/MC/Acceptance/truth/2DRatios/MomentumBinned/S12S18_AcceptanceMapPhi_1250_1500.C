@@ -1,8 +1,8 @@
 void S12S18_AcceptanceMapPhi_1250_1500()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:49:26 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:42:56 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8793196,-125,7.411221,125);
    c->SetFillColor(0);
@@ -160569,7 +160569,7 @@ void S12S18_AcceptanceMapPhi_1250_1500()
    S12S18_WeightMapPhi_1250_1500->GetZaxis()->SetTitleFont(42);
    S12S18_WeightMapPhi_1250_1500->Draw("COLZ");
    
-   TPaveText *pt = new TPaveText(0.2960777,0.9356143,0.7039223,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

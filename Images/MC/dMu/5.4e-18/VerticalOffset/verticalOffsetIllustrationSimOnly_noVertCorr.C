@@ -1,58 +1,50 @@
 void verticalOffsetIllustrationSimOnly_noVertCorr()
 {
 //=========Macro generated from canvas: c/
-//=========  (Tue Apr  5 16:45:15 2022) by ROOT version 6.24/06
+//=========  (Sun Jun 12 17:26:22 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
-   c->Range(438.2574,-1.25,3048.213,1.25);
+   c->Range(811.7217,-1.25,2678.365,1.25);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t _fx1001[8] = {
-   873.25,
+   Double_t _fx1001[6] = {
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
-   2367.258,
-   2613.22};
-   Double_t _fy1001[8] = {
-   -0.002126049,
-   -0.01744567,
-   0.01637706,
-   -0.001140048,
-   -0.004650469,
-   0.00369904,
-   0.007343833,
-   0.003158794};
-   Double_t _fex1001[8] = {
-   0,
-   0,
+   2367.258};
+   Double_t _fy1001[6] = {
+   -0.01744462,
+   0.0163779,
+   -0.001139381,
+   -0.004649449,
+   0.00369966,
+   0.007344266};
+   Double_t _fex1001[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1001[8] = {
-   0.01221683,
+   Double_t _fey1001[6] = {
    0.01051015,
-   0.009362542,
-   0.00854835,
-   0.007987062,
-   0.007634845,
-   0.007500768,
-   0.007672783};
-   TGraphErrors *gre = new TGraphErrors(8,_fx1001,_fy1001,_fex1001,_fey1001);
+   0.00936255,
+   0.008548368,
+   0.007987093,
+   0.007634892,
+   0.007500835};
+   TGraphErrors *gre = new TGraphErrors(6,_fx1001,_fy1001,_fex1001,_fey1001);
    gre->SetName("");
-   gre->SetTitle(";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
+   gre->SetTitle(";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,699.253,2787.217);
+   TH1F *Graph_Graph1001 = new TH1F("Graph_Graph1001","",100,998.3861,2491.701);
    Graph_Graph1001->SetMinimum(-1);
    Graph_Graph1001->SetMaximum(1);
    Graph_Graph1001->SetDirectory(0);
@@ -62,7 +54,7 @@ void verticalOffsetIllustrationSimOnly_noVertCorr()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph1001->SetLineColor(ci);
-   Graph_Graph1001->GetXaxis()->SetTitle("Decay vertex momentum [MeV]");
+   Graph_Graph1001->GetXaxis()->SetTitle("Momentum [MeV]");
    Graph_Graph1001->GetXaxis()->CenterTitle(true);
    Graph_Graph1001->GetXaxis()->SetLabelFont(42);
    Graph_Graph1001->GetXaxis()->SetTitleSize(0.04);
@@ -82,49 +74,41 @@ void verticalOffsetIllustrationSimOnly_noVertCorr()
    
    gre->Draw("apl");
    
-   Double_t _fx1002[8] = {
-   873.25,
+   Double_t _fx1002[6] = {
    1122.829,
    1372.245,
    1621.478,
    1870.594,
    2119.355,
-   2367.258,
-   2613.22};
-   Double_t _fy1002[8] = {
-   -0.2766769,
+   2367.258};
+   Double_t _fy1002[6] = {
    -0.3150225,
    -0.279177,
    -0.2358988,
    -0.1790306,
    -0.1274037,
-   -0.06574668,
-   -0.08531841};
-   Double_t _fex1002[8] = {
-   0,
-   0,
+   -0.06574668};
+   Double_t _fex1002[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1002[8] = {
-   0.006983207,
+   Double_t _fey1002[6] = {
    0.006381241,
    0.005980672,
    0.005645745,
    0.005393703,
    0.005247819,
-   0.005338,
-   0.006171018};
-   gre = new TGraphErrors(8,_fx1002,_fy1002,_fex1002,_fey1002);
+   0.005338};
+   gre = new TGraphErrors(6,_fx1002,_fy1002,_fex1002,_fey1002);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,699.253,2787.217);
+   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,998.3861,2491.701);
    Graph_Graph1002->SetMinimum(-0.3475033);
    Graph_Graph1002->SetMaximum(-0.03430917);
    Graph_Graph1002->SetDirectory(0);
@@ -144,43 +128,35 @@ void verticalOffsetIllustrationSimOnly_noVertCorr()
    
    gre->Draw("pl ");
    
-   Double_t _fx1003[8] = {
-   880.3222,
-   1123.094,
-   1371.099,
-   1620.134,
-   1866.992,
-   2115.379,
-   2362.982,
-   2613.714};
-   Double_t _fy1003[8] = {
-   -0.4614711,
-   -0.3589119,
-   -0.2789773,
-   -0.2799331,
-   -0.1896839,
-   -0.1246899,
-   -0.1311361,
-   -0.08100928};
-   Double_t _fex1003[8] = {
-   0,
-   0,
+   Double_t _fx1003[6] = {
+   1123.071,
+   1371.146,
+   1620.133,
+   1867.045,
+   2115.331,
+   2363.045};
+   Double_t _fy1003[6] = {
+   -0.3669009,
+   -0.2898417,
+   -0.2854817,
+   -0.2043663,
+   -0.1356397,
+   -0.1403748};
+   Double_t _fex1003[6] = {
    0,
    0,
    0,
    0,
    0,
    0};
-   Double_t _fey1003[8] = {
-   0.0110986,
-   0.009109488,
-   0.008351933,
-   0.007981295,
-   0.008064142,
-   0.008598615,
-   0.009443757,
-   0.009784803};
-   gre = new TGraphErrors(8,_fx1003,_fy1003,_fex1003,_fey1003);
+   Double_t _fey1003[6] = {
+   0.009079925,
+   0.008318315,
+   0.007953484,
+   0.008032046,
+   0.008555777,
+   0.009395149};
+   gre = new TGraphErrors(6,_fx1003,_fy1003,_fex1003,_fey1003);
    gre->SetName("");
    gre->SetTitle("");
    gre->SetFillStyle(1000);
@@ -192,9 +168,9 @@ void verticalOffsetIllustrationSimOnly_noVertCorr()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,706.983,2787.053);
-   Graph_Graph1003->SetMinimum(-0.5127042);
-   Graph_Graph1003->SetMaximum(-0.03108996);
+   TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,999.074,2487.042);
+   Graph_Graph1003->SetMinimum(-0.4008705);
+   Graph_Graph1003->SetMaximum(-0.1021943);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -239,7 +215,7 @@ void verticalOffsetIllustrationSimOnly_noVertCorr()
    entry->SetMarkerStyle(24);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("","Sim: reco vertices","lpf");
+   entry=leg->AddEntry("","Sim: truth vertices","lpf");
    entry->SetFillStyle(1000);
 
    ci = TColor::GetColor("#ff0000");

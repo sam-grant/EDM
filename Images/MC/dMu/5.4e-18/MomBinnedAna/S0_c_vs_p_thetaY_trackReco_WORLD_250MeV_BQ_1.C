@@ -1,10 +1,10 @@
 void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon May 30 11:55:13 2022) by ROOT version 6.24/06
+//=========  (Tue Jun  7 11:37:10 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-164.6275,-0.1889924,3377.862,0.2082693);
+   c->Range(-164.6275,-0.1889923,3377.862,0.2082688);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_1()
    2615.303,
    2789.539};
    Double_t Graph0_fy1057[11] = {
-   0.009638483,
-   0.01021861,
-   -0.001126831,
-   0.0006858827,
-   -0.000806153,
-   -0.002224229,
-   0.002418651,
-   -0.002649638,
-   0.007720588,
-   -0.005767578,
-   0.0007512625};
+   0.009638246,
+   0.0102147,
+   -0.001126506,
+   0.00068488,
+   -0.0008054236,
+   -0.002224153,
+   0.002419621,
+   -0.002649603,
+   0.007721662,
+   -0.00576787,
+   0.000751212};
    Double_t Graph0_fex1057[11] = {
    0.1383888,
    0.1171073,
@@ -48,17 +48,17 @@ void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_1()
    0.2138176,
    0.2465359};
    Double_t Graph0_fey1057[11] = {
-   0.1324206,
-   0.04421792,
-   0.02551607,
-   0.02095714,
-   0.01913568,
-   0.01823092,
-   0.01804784,
-   0.01875397,
-   0.01994747,
-   0.02080306,
-   0.04706687};
+   0.1324204,
+   0.04421785,
+   0.02551604,
+   0.02095713,
+   0.0191357,
+   0.01823095,
+   0.01804791,
+   0.01875408,
+   0.01994765,
+   0.02080332,
+   0.04706763};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1057,Graph0_fy1057,Graph0_fex1057,Graph0_fey1057);
    gre->SetName("Graph0");
    gre->SetTitle("S0_");
@@ -67,7 +67,7 @@ void S0_c_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_1()
    
    TH1F *Graph_Graph01057 = new TH1F("Graph_Graph01057","S0_",100,217.6808,3023.613);
    Graph_Graph01057->SetMinimum(-0.1492662);
-   Graph_Graph01057->SetMaximum(0.1685432);
+   Graph_Graph01057->SetMaximum(0.1685427);
    Graph_Graph01057->SetDirectory(0);
    Graph_Graph01057->SetStats(0);
 

@@ -1,7 +1,7 @@
 void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackReco_WORLD_250MeV_BQ_noVertCorr()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 20:46:05 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 03:45:41 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -9,23 +9,23 @@ void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackReco_WORLD_250MeV_BQ_noVert
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__4 = new TH1D("h__4","",54,1.094953,2.194565);
+   TH1D *h__4 = new TH1D("h__4","",54,1.094696,2.194306);
    h__4->SetBinContent(15,2);
    h__4->SetBinContent(16,6);
    h__4->SetBinContent(17,6);
    h__4->SetBinContent(18,9);
    h__4->SetBinContent(19,22);
    h__4->SetBinContent(20,34);
-   h__4->SetBinContent(21,44);
-   h__4->SetBinContent(22,45);
+   h__4->SetBinContent(21,45);
+   h__4->SetBinContent(22,44);
    h__4->SetBinContent(23,69);
    h__4->SetBinContent(24,65);
    h__4->SetBinContent(25,77);
    h__4->SetBinContent(26,83);
    h__4->SetBinContent(27,96);
-   h__4->SetBinContent(28,78);
-   h__4->SetBinContent(29,65);
-   h__4->SetBinContent(30,62);
+   h__4->SetBinContent(28,77);
+   h__4->SetBinContent(29,67);
+   h__4->SetBinContent(30,61);
    h__4->SetBinContent(31,51);
    h__4->SetBinContent(32,46);
    h__4->SetBinContent(33,37);
@@ -49,7 +49,7 @@ void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackReco_WORLD_250MeV_BQ_noVert
    h__4->GetXaxis()->SetTitleSize(0.04);
    h__4->GetXaxis()->SetTitleOffset(1.1);
    h__4->GetXaxis()->SetTitleFont(42);
-   h__4->GetYaxis()->SetTitle("Trials / 0.02");
+   h__4->GetYaxis()->SetTitle("Trials / 0.02 mrad");
    h__4->GetYaxis()->CenterTitle(true);
    h__4->GetYaxis()->SetNdivisions(4000510);
    h__4->GetYaxis()->SetLabelFont(42);
@@ -75,7 +75,7 @@ void S12_EDM_delta_prime_hist_1000_1000-2500MeV_trackReco_WORLD_250MeV_BQ_noVert
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("1.638
+   pt_LaTex = pt->AddText("1.637
 #pm0.003
 ");
    pt_LaTex = pt->AddText("0.099

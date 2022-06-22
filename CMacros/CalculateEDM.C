@@ -8,7 +8,7 @@ double GetEDM(double delta_prime) {
 
 	// gm2consts
 	double m_mu = 105.6583715; // MeV
-	double a_mu = 11659208.9e-10;
+	double a_mu = 11659208.9e-10; // BNL value
 	double gmagic = std::sqrt( 1.+1./a_mu );
 	double beta = sqrt(1-(1/pow(gmagic,2)));
 	double hbar = h/(2*pi);
@@ -73,9 +73,29 @@ double GetTilt(double dMu) {
 
 void CalculateEDM() { 
 
-	double tilt = GetTilt(5.4e-18);//1.9e-18);//9.13787e-19);
+	cout<<GetTilt(2.6e-19)<<endl;
+	cout<<GetEDM(2*sqrt(3.41e-09)*(1/std::sqrt( 1.+1./11659208.9e-10)))*1e3<<endl;
+/*
+	cout<<"---> S12S18"<<endl;
+	cout<<GetEDM(0.41)<<"±"<<GetEDM(0.08)<<endl;
+	cout<<GetEDM(0.37)<<"±"<<GetEDM(0.07)<<endl;
+	cout<<GetEDM(0.61)<<"±"<<GetEDM(0.06)<<endl;
+	cout<<GetEDM(0.44)<<"±"<<GetEDM(0.06)<<endl;
 
-	cout<<tilt<<endl;
+	cout<<"---> S12"<<endl;
+	cout<<GetEDM(0.6)<<"±"<<GetEDM(0.1)<<endl;
+	cout<<GetEDM(0.3)<<"±"<<GetEDM(0.1)<<endl;
+	cout<<GetEDM(0.64)<<"±"<<GetEDM(0.09)<<endl;
+	cout<<GetEDM(0.47)<<"±"<<GetEDM(0.07)<<endl;
+
+	cout<<"---> S18"<<endl;
+	cout<<GetEDM(0.2)<<"±"<<GetEDM(0.1)<<endl;
+	cout<<GetEDM(0.4)<<"±"<<GetEDM(0.1)<<endl;
+	cout<<GetEDM(0.6)<<"±"<<GetEDM(0.1)<<endl;
+	cout<<GetEDM(0.41)<<"±"<<GetEDM(0.08)<<endl;*/
+	//double tilt = GetTilt(1.9e-18);//5.4e-18);//1.9e-18);//9.13787e-19);
+
+	//cout<<tilt<<endl;
 
 /*vector<double> Br_ = {22.1956
 					,22.7213

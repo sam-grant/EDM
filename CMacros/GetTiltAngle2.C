@@ -102,13 +102,13 @@ string GetTracksOrDecaysLegend(string config) {
 
 int GetStep(string config) { 
 
-  if(config.find("500MeV") != std::string::npos) { 
+  if(config.find("_500MeV_") != std::string::npos) { 
     return 500;
-  } else if(config.find("250MeV") != std::string::npos) { 
+  } else if(config.find("_250MeV_") != std::string::npos) { 
     return 250;
-  } else if(config.find("200MeV") != std::string::npos) { 
+  } else if(config.find("_200MeV_") != std::string::npos) { 
     return 200;
-  } else if(config.find("125MeV") != std::string::npos) { 
+  } else if(config.find("_125MeV_") != std::string::npos) { 
     return 125;
   } else { 
     cerr<<"Step size is unknown";
@@ -233,7 +233,7 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
   TString delta_prime_err = Round(gr_delta_prime->GetFunction("pol0")->GetParError(0), 1.);
 
   l->AddEntry(gr_delta_prime, label.c_str());
-  l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+  l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta^{BLIND}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
 
   gr_delta_prime->SetTitle(title.c_str());
   gr_delta_prime->GetXaxis()->SetTitleSize(.04);
@@ -401,10 +401,10 @@ void DrawDeltaPrimeHist(TH1D *hist, std::string title, std::string fname) {
   names->AddText("#LT#delta#GT [mrad]"); 
   names->AddText("#sigma_{#delta} [mrad]"); 
 
-  TPaveText *values = new TPaveText(0.30,0.75,0.45,0.89,"NDC");
+  TPaveText *values = new TPaveText(0.375,0.745,0.425,0.89,"NDC");
   values->SetTextAlign(33);
   values->AddText(Round(hist->GetMean(),4)+"#pm"+Round(hist->GetMeanError(),1)); 
-  values->AddText(Round(hist->GetRMS(),2)+"#pm"+Round(hist->GetRMSError(),1)); 
+  values->AddText(Round(hist->GetRMS(),3)+"#pm"+Round(hist->GetRMSError(),1)); 
 
   names->SetTextSize(24);
   names->SetTextFont(44);
@@ -573,7 +573,7 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
       TH1D *h_delta_prime  = GetDeltaPrimeHist(delta_prime_trials_, h_min, h_max, binWidth);
 
       // Draw and write histogram
-      DrawDeltaPrimeHist(h_delta_prime, ";#delta [mrad];Trials / "+oss_binWidth.str(), "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config);
+      DrawDeltaPrimeHist(h_delta_prime, ";#delta [mrad];Trials / "+oss_binWidth.str()+" mrad", "../Images/MC/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config);
       h_delta_prime->SetName((stn+"h_delta_prime").c_str());
       h_delta_prime->Write();
 
@@ -884,7 +884,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       // DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";p [MeV]: in range p #minus "+to_string(step/2)+" < p < p #plus "+to_string(step/2)+";#delta'_{"+subscript+"}^{BLIND} [mrad];", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
       //DrawDeltaPrimeFit(gr_delta_prime, "Data: "+dataset, ";Decay vertex momentum [MeV];#delta'_{"+subscript+"}^{BLIND} [mrad] / 125 MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+fitType+"_delta_prime_vs_p");
 
-      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta (BLIND) [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_vs_p_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr);
+      DrawDeltaPrimeFit(gr_delta_prime, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta^{BLIND} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_vs_p_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr);
 
       gr_delta_prime->SetName((stn+"_delta_prime_vs_p").c_str());
       gr_delta_prime->Write();
@@ -920,8 +920,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
         lastVal = val;
       }
 
-      h_min = h_min-0.5; h_max = h_max+0.5;
-      double binWidth = 0.02;
+      h_min = h_min-0.15; h_max = h_max+0.15;
+      double binWidth = 0.01;
 
       std::ostringstream oss_binWidth; oss_binWidth << binWidth;
 
@@ -929,7 +929,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       TH1D *h_delta_prime  = GetDeltaPrimeHist(delta_prime_trials_, h_min, h_max, binWidth);
 
       // Draw and write histogram
-      if(correctDilution) DrawDeltaPrimeHist(h_delta_prime, stn+";#delta (BLIND) [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr);
+      if(correctDilution) DrawDeltaPrimeHist(h_delta_prime, stn+";#delta^{BLIND} [mrad];Trials  / "+oss_binWidth.str()+" [mrad]", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_hist_"+to_string(nTrials)+"_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr);
       h_delta_prime->SetName((stn+"_h_delta_prime").c_str());
       h_delta_prime->Write();
 
@@ -1114,7 +1114,7 @@ void GetTiltAngle2() {
 
   bool correctDilution = true; 
   bool correctAcceptance = true;
-  bool correctVerticalAngleOffset = true; 
+  bool correctVerticalAngleOffset = true;  // not sure what this is about?
 
   //TF1 *dilutionFunc = new TF1("dilutionFunc", )
 
@@ -1123,8 +1123,8 @@ void GetTiltAngle2() {
   //RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
   //RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
   //RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
-  RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "blinded", true);
-  RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
+  //RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "blinded", true);
+  //RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
   //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded", true);
   //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "blinded", true);
 
@@ -1138,11 +1138,57 @@ void GetTiltAngle2() {
  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
  // RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
+  // RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
   //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+
+  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+  RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+
+  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+/*RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+*/
+  //RunData("Run-1a_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1b_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1c_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
 
 
   //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);

@@ -1,8 +1,8 @@
 void S12S18_AcceptanceMapPhi_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:48:41 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:42:31 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.8793196,-125,7.411221,125);
    c->SetFillColor(0);
@@ -1038,7 +1038,7 @@ void S12S18_AcceptanceMapPhi_0_3127_MeV()
 
    ci = TColor::GetColor("#000099");
    S12S18_WeightMapR->SetLineColor(ci);
-   S12S18_WeightMapR->GetXaxis()->SetTitle("Azimuthal decay angle [rad]");
+   S12S18_WeightMapR->GetXaxis()->SetTitle("#phi [rad]");
    S12S18_WeightMapR->GetXaxis()->SetRange(0,126);
    S12S18_WeightMapR->GetXaxis()->CenterTitle(true);
    S12S18_WeightMapR->GetXaxis()->SetLabelFont(42);
@@ -1060,7 +1060,7 @@ void S12S18_AcceptanceMapPhi_0_3127_MeV()
    S12S18_WeightMapR->GetZaxis()->SetTitleFont(42);
    S12S18_WeightMapR->Draw("COLZ TEXT");
    
-   TPaveText *pt = new TPaveText(0.423584,0.94,0.576416,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4253015,0.94,0.5746985,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

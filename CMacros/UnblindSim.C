@@ -14,11 +14,11 @@ void UnblindSim() {
   	double tan_A_edm = tan(delta_blind) / gmagic;
   	double A_edm = alpha*atan(tan_A_edm) * 1e3; 
 
-  	// std::cout<<"Blinded dMu signal = "<<dMu_blind<<std::endl;
+  	std::cout<<"Blinded dMu signal = "<<dMu_blind<<std::endl;
   	
   	cout<<"This is simulation! I use a different blinding string!"<<endl;
   	cout<<endl;
-
+/*
 	TString finNameBlinded = "../Plots/MC/dMu/5.4e-18/Fits/edmResults_blinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root";
 	TFile *finBlinded = TFile::Open(finNameBlinded);
 
@@ -53,9 +53,9 @@ void UnblindSim() {
     	cout<<endl;
 
     }
-
-	finBlinded->Close();
-	finUnblinded->Close();
+*/
+/*	finBlinded->Close();
+	finUnblinded->Close();*/
 
 	return;
 }

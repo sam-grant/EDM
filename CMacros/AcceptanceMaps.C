@@ -43,7 +43,7 @@ int GetStep(string config) {
 
 void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString drawOption) { //";Decay y-position [mm];#theta_{y} [mrad];Ratio", "../Images/MC/Acceptance/BaseHistograms/h2_thetaY_vs_Y_ratio");
 
-	TCanvas *c = new TCanvas("c","c",1600,1200);
+	TCanvas *c = new TCanvas("c","c",800,600);
 
 	map->SetTitle(title.c_str());
 	map->SetStats(0);
@@ -325,7 +325,6 @@ void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY
 	return;
 }
 
-
 void Run(string config, string momSlice, int rebin = 1) {	
 
 	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots."+config+".root";
@@ -374,14 +373,14 @@ void Run(string config, string momSlice, int rebin = 1) {
 		
 		cout<<"----> Created weight maps " << acceptanceWeightingMapY << ", " << acceptanceWeightingMapR << ", " << acceptanceWeightingMapPhi << " for all momentum"<<endl;
 		
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";Vertical decay postion [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ TEXT");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";Vertical decay postion [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ TEXT");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";Radial decay position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapR_"+momSlice, "COLZ TEXT");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";Radial decay position [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceR_"+momSlice, "SURF2");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";R [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapR_"+momSlice, "COLZ TEXT");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";R [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceR_"+momSlice, "SURF2");
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";Azimuthal decay angle [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapPhi_"+momSlice, "COLZ TEXT");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";Azimuthal decay angle [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfacePhi_"+momSlice, "SURF2");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";#phi [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapPhi_"+momSlice, "COLZ TEXT");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";#phi [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfacePhi_"+momSlice, "SURF2");
 
 		acceptanceWeightingMapY->Write();
 		acceptanceWeightingMapR->Write();

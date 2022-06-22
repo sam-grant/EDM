@@ -129,7 +129,7 @@ void VerticalAngleWidth() {
 
 	for(auto& ds : ds_) {
 
-		TFile *f3 = TFile::Open(("../Plots/Data/dMu/Run-1/Plots/edmPlots_"+ds+"_250MeV_BQ_noVertCorr.root").c_str());//250MeV_1000_2500MeV_randomised_BQ.root").c_str()); 
+		TFile *f3 = TFile::Open(("../Plots/Data/dMu/Run-1/Plots/edmPlots_"+ds+"_250MeV_1000_2500MeV_randomised_BQ.root").c_str());//250MeV_1000_2500MeV_randomised_BQ.root").c_str()); 
 
 		cout<<"\n"<<ds<<",,"<<endl;
 
@@ -164,7 +164,7 @@ void VerticalAngleWidth() {
 				h2->GetXaxis()->SetRangeUser(-80, 80);
 				h2->RebinX(3);	
 				cout<<h2->GetXaxis()->GetBinWidth(0)<<endl;
-				DrawTH1(h2, 3, 5, ";#theta_{y} [mrad];Decays / mrad", "../Images/VerticalAngleDists/ThetaY_"+ds);//, "(0#pm4)#times10^{-3}");
+				DrawTH1(h2, 1, 5, ds+";#theta_{y} [mrad];Decays / mrad", "../Images/VerticalAngleDists/ThetaY_"+ds);//, "(0#pm4)#times10^{-3}");
 			}
 
 		}

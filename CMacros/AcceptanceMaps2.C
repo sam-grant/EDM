@@ -78,10 +78,10 @@ void DrawBasicRatioPlot(TH1D *h1_decays, TH1D *h1_tracks, string stn, string axt
 
 }
 
-void DrawFancyRatioPlot(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string stn, string axtitle, std::string fname) { 
+void DrawFancyRatioPlot(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string stn, string axtitle, std::string fname, TH2D *h2_2 = 0) { 
 
 	// Mother canvas
-	TCanvas *c = new TCanvas("c", "c", 800, 600);
+	TCanvas *c = new TCanvas("c", "c", 800, 600);//1600, 1200);
 
 	c->Draw(); 
 
@@ -137,9 +137,10 @@ void DrawFancyRatioPlot(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string stn, 
 	c->cd(0); 
 
 	TPad *p2 = new TPad("p2", "p2", .69, .69, .99, .99);
+
 	p2->Draw();
 	p2->cd();
-	gStyle->SetPalette(kLightTemperature);
+	gStyle->SetPalette(kRainBow);//LightTemperature);
 
 	h2->GetXaxis()->CenterTitle(1);
 	h2->GetYaxis()->CenterTitle(1);
@@ -152,14 +153,16 @@ void DrawFancyRatioPlot(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string stn, 
 
 	h2->Draw("COL");
 
+	if(h2_2!=0) h2_2->Draw("COL SAME");
+
 	c->cd(0);
 
 	TLegend *l = new TLegend(0.12, 0.79, .40, .89);
 	l->SetBorderSize(0);
-	l->SetTextSize(24);
+	l->SetTextSize(24);//50);
 	l->SetTextFont(44);
 	l->AddEntry(h1_decays, "All decays");
-	l->AddEntry(h1_tracks, "Reco vertices");
+	l->AddEntry(h1_tracks, "Truth vertices");
 	l->Draw("SAME");
 
 	c->SaveAs((fname+".C").c_str());
@@ -337,7 +340,7 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 		h1_Y_tracks->Scale(1./h1_Y_tracks->GetBinContent(maxRatioBinY)); 
 
 		// Draw ratio plot 
-		DrawBasicRatioPlot(h1_Y_decays, h1_Y_tracks, stn, "Vertical decay position, y [mm]", "../Images/MC/Acceptance/1DRatios/VerticalPosition/"+stn+"_VerticalDecayPositionRatio_"+momSlice); //h1_thetaY_tracks, fname, slice, stn);
+		DrawBasicRatioPlot(h1_Y_decays, h1_Y_tracks, stn, "y [mm]", "../Images/MC/Acceptance/1DRatios/VerticalPosition/test/"+stn+"_VerticalDecayPositionRatio_"+momSlice); //h1_thetaY_tracks, fname, slice, stn);
 
 		// Draw overall ratio
 		TH2D *h2_thetaY_vs_Y_decays= (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_Y").c_str());
@@ -363,14 +366,78 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 
 		//h2_thetaY_vs_Y_decays->Scale(1./max_thetaY_vs_Y);// h2_thetaY_vs_Y_decays->GetMaximum());
 
-		DrawFancyRatioPlot(h2_thetaY_vs_Y_decays, h1_thetaY_decays, h1_thetaY_tracks, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio");
+		DrawFancyRatioPlot(h2_thetaY_vs_Y_decays, h1_thetaY_decays, h1_thetaY_tracks, stn, "#theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/test/"+stn+"_VerticalDecayAngleRatio");
 
 		// In these same slices of y, we need weightings per 5 mrad vertical angle
-	  	int y_step = 5; 
-	  	int y_slices = 18; // verticalPosWeights_.size(); // 18 
+	  	int y_step = 10;//5; 
+	  	int y_slices = 9;//18; // verticalPosWeights_.size(); // 18 
 
 	  	vector<vector<double>> verticalAngleWeights_;
 
+	  	for ( int i(0); i < y_slices; i++ ) { 
+
+	    	int lo = -45 + i*y_step; 
+	    	int hi = y_step + lo;
+
+	    	std::string stepStr = to_string(lo)+"_"+to_string(hi);
+/*	    	std::string stepStr1 = to_string(lo)+"_"+to_string(hi-5);
+	    	std::string stepStr2 = to_string(lo+5)+"_"+to_string(hi);*/
+
+	    	// cout<<"\n---> step 0 "<<stepStr<<"\n---> step 1 "<<stepStr1<<"\n---> step 2 "<<stepStr2<<endl;
+
+	    	// Illustration histogram
+			TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
+			//TH2D *h2_thetaY_vs_Y_decays_slice_2 = (TH2D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
+/*
+			h2_thetaY_vs_Y_decays_slice->Add(h2_thetaY_vs_Y_decays_slice_2);
+			h2_thetaY_vs_Y_decays_slice->Scale(1./h2_thetaY_vs_Y_decays->Integral());*/
+
+			//int N_slice = h2_thetaY_vs_Y_decays_slice->GetEntries() + h2_thetaY_vs_Y_decays_slice_2->GetEntries();
+
+			//h2_thetaY_vs_Y_decays_slice->Scale(1./(h2_thetaY_vs_Y_decays->Integral()N_slice))
+
+
+			//h2_thetaY_vs_Y_decays_slice->Scale(1./h2_thetaY_vs_Y_decays->Integral());//Integral());
+			//h2_thetaY_vs_Y_decays_slice_2->Scale(1./h2_thetaY_vs_Y_decays->Integral());
+
+			//h2_thetaY_vs_Y_decays_slice->Add(h2_thetaY_vs_Y_decays_slice_2);
+
+			//h2_thetaY_vs_Y_decays_slice->Add(h2_thetaY_vs_Y_decays_slice_2);
+
+			h2_thetaY_vs_Y_decays_slice->GetXaxis()->SetRangeUser(-45, 45);
+			h2_thetaY_vs_Y_decays_slice->GetYaxis()->SetRangeUser(-45, 45);
+			h2_thetaY_vs_Y_decays_slice->GetZaxis()->SetRangeUser(h2_thetaY_vs_Y_decays->GetMinimum(), h2_thetaY_vs_Y_decays->GetMaximum());
+			//h2_thetaY_vs_Y_decays_slice->Scale(1./h2_thetaY_vs_Y_decays->Integral());//max_thetaY_vs_Y);
+
+	    	// Get theta_y histograms
+	    	TH1D *h1_thetaY_decays_slice = (TH1D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
+	    	TH1D *h1_thetaY_tracks_slice = (TH1D*)fin->Get((momSlice+"/Tracks/VertPosBins/"+stn+"_ThetaY_"+stepStr).c_str());
+
+/*	    	TH1D *h1_thetaY_decays_slice_2 = (TH1D*)fin->Get((momSlice+"/AllDecays/VertPosBins/ThetaY_"+stepStr2).c_str());
+	    	TH1D *h1_thetaY_tracks_slice_2 = (TH1D*)fin->Get((momSlice+"/Tracks/VertPosBins/"+stn+"_ThetaY_"+stepStr2).c_str());
+
+	    	h1_thetaY_decays_slice->Add(h1_thetaY_decays_slice_2);
+	    	h1_thetaY_tracks_slice->Add(h1_thetaY_tracks_slice_2);*/
+
+	    	// Get ratio
+	    	TH1D *h1_thetaY_ratio_slice = Ratio(h1_thetaY_tracks_slice, h1_thetaY_decays_slice);
+
+	    	h1_thetaY_ratio_slice->Write((stn+"_thetaY_ratio_"+stepStr).c_str());
+
+			cout<<"---> Made vertical angle ratio: "<<h1_thetaY_ratio<<endl;
+
+			// Normalise to max RATIO 
+			int maxRatioBinThetaY = h1_thetaY_ratio_slice->GetMaximumBin();
+
+			h1_thetaY_ratio_slice->Scale(1./h1_thetaY_ratio_slice->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_decays_slice->Scale(1./h1_thetaY_decays_slice->GetBinContent(maxRatioBinThetaY)); 
+			h1_thetaY_tracks_slice->Scale(1./h1_thetaY_tracks_slice->GetBinContent(maxRatioBinThetaY)); 
+
+			DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, stn, "#theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/test/"+stn+"_VerticalDecayAngleRatio_"+stepStr);//, h2_thetaY_vs_Y_decays_slice_2);
+
+		} // vertical position slice loop
+
+/*
 	  	for ( int i(0); i < y_slices; i++ ) { 
 
 	    	int lo = -45 + i*y_step; 
@@ -403,9 +470,9 @@ void Run(TFile *fout, string momSlice = "0_3127_MeV") {
 			h1_thetaY_decays_slice->Scale(1./h1_thetaY_decays_slice->GetBinContent(maxRatioBinThetaY)); 
 			h1_thetaY_tracks_slice->Scale(1./h1_thetaY_tracks_slice->GetBinContent(maxRatioBinThetaY)); 
 
-			DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, stn, "Vertical decay angle, #theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
+			DrawFancyRatioPlot(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, stn, "#theta_{y} [mrad]", "../Images/MC/Acceptance/1DRatios/VerticalAngle/"+momSlice+"/test/"+stn+"_VerticalDecayAngleRatio_"+stepStr);
 
-		} // vertical position slice loop
+		} // vertical position slice loop*/
 
  	} // stn loop
 

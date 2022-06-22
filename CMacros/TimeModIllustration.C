@@ -1,6 +1,6 @@
 void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c","c",1600,1200);
+	TCanvas *c = new TCanvas("c","c",800,600);
 
 	hist->SetTitle(title.c_str());
 
@@ -14,9 +14,9 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetZaxis()->CenterTitle(1);
-	hist->GetYaxis()->SetMaxDigits(4);
+	hist->GetZaxis()->SetMaxDigits(3);
 
-	hist->GetZaxis()->SetTitle("Normalised units");
+	//hist->GetZaxis()->SetTitle("");
 
 	gStyle->SetPalette(55);
 	c->SetRightMargin(0.13);
@@ -46,8 +46,8 @@ void TimeModIllustration() {
 	TH2D *h1 = (TH2D*)fin->Get("SimultaneousAnalysis/ThetaY_vs_Time");
 	TH2D *h2 = (TH2D*)fin->Get("SimultaneousAnalysis/ThetaY_vs_Time_Modulo");
 
-	h1->Scale(1/h1->GetMaximum());
-	h2->Scale(1/h2->GetMaximum());
+	//h1->Scale(1/h1->GetMaximum());
+	//h2->Scale(1/h2->GetMaximum());
 
 	cout<<"---> Hists "<<h1<<", "<<h2<<endl;
 
@@ -56,8 +56,8 @@ void TimeModIllustration() {
 
 	h2->GetYaxis()->SetRangeUser(-45, 45);
 
-	DrawTH2(h1, ";Decay time [#mus]; #theta_{y} [mrad];Normalised units", "../Images/MC/dMu/5.4e-18/Misc/allDecays_ThetaY_vs_t");
-	DrawTH2(h2, ";t^{mod}_{g-2} [#mus]; #theta_{y} [mrad];Normalised units", "../Images/MC/dMu/5.4e-18/Misc/allDecays_ThetaY_vs_t_modulo");
+	DrawTH2(h1, ";Decay time [#mus]; #theta_{y} [mrad]", "../Images/MC/dMu/5.4e-18/Misc/allDecays_ThetaY_vs_t");
+	DrawTH2(h2, ";t^{mod}_{g-2} [#mus]; #theta_{y} [mrad]", "../Images/MC/dMu/5.4e-18/Misc/allDecays_ThetaY_vs_t_modulo");
 
 
 	fin->Close();

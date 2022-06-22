@@ -1,8 +1,8 @@
 void S12S18_AcceptanceSurfaceR_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:48:40 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:42:31 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);
    TView *view2 = TView::CreateView(1);
@@ -1058,7 +1058,7 @@ void S12S18_AcceptanceSurfaceR_0_3127_MeV()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    S12S18_WeightMapR__2->SetLineColor(ci);
-   S12S18_WeightMapR__2->GetXaxis()->SetTitle("Radial decay position [mm]");
+   S12S18_WeightMapR__2->GetXaxis()->SetTitle("R [mm]");
    S12S18_WeightMapR__2->GetXaxis()->SetRange(1,24);
    S12S18_WeightMapR__2->GetXaxis()->CenterTitle(true);
    S12S18_WeightMapR__2->GetXaxis()->SetLabelFont(42);
@@ -1080,7 +1080,7 @@ void S12S18_AcceptanceSurfaceR_0_3127_MeV()
    S12S18_WeightMapR__2->GetZaxis()->SetTitleFont(42);
    S12S18_WeightMapR__2->Draw("SURF2");
    
-   TPaveText *pt = new TPaveText(0.423584,0.94,0.576416,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4253015,0.94,0.5746985,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

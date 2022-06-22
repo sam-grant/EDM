@@ -3,7 +3,7 @@
 
 void DrawMaximumVerticalAngleFit(TH2D *h2, TF1 *f1, TF1 *f2, std::string eqn, std::string title, std::string fname) {
 
-	TCanvas *c = new TCanvas("c", "c", 800, 600);
+	TCanvas *c = new TCanvas("c", "c", 800, 600);//, 1200);//800, 600);
 
 	h2->SetTitle(title.c_str());
 	h2->SetStats(0);	
@@ -18,7 +18,7 @@ void DrawMaximumVerticalAngleFit(TH2D *h2, TF1 *f1, TF1 *f2, std::string eqn, st
 
 	h2->GetXaxis()->SetRangeUser(100, 3200);//127);
 
-	gStyle->SetPalette(kThermometer);//LightTemperature);//ake);//DarkBodyRadiator);//Bird);
+	gStyle->SetPalette(kBird);//LightTemperature);//ake);//DarkBodyRadiator);//Bird);
 	c->SetRightMargin(0.13);
 
 	h2->Draw("COLZ");
@@ -52,12 +52,13 @@ void DrawMaximumVerticalAngleFit(TH2D *h2, TF1 *f1, TF1 *f2, std::string eqn, st
 
 void MaximumVerticalAngleFit() {
 
-	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.root";
+	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.BK.root";
 	TFile *fin = TFile::Open(finName);
 
-	TH2D *h2_thetaY_vs_p = (TH2D*)fin->Get("0_3127_MeV/AllDecays/Main/ThetaY_vs_p");
+	TH2D *h2_thetaY_vs_p = (TH2D*)fin->Get("AllDecays/Main/ThetaY_vs_p_Fine");
 
-	TF1 *f1 = new TF1("f1", "[0] * asin( (1/x) * sqrt( ([1]*x/[2]) - (x/[2])**2 ) )", 0, 3111);
+	TF1 *f1 = new TF1("f1", "[0] * atan( (1/x) * sqrt( ([1]*x/[2]) - (x/[2])**2 ) )", 0, M_MU * GMAGIC);
+
 	//TF1 *f1 = new TF1("f1", "[0] * TMath::ASin( (0.5*[1]) / x ) ", 0, 3111);
 	//f1->SetParameter(0, 1e3);
 	//f1->SetParameter(1, 105.6583755);
@@ -65,16 +66,16 @@ void MaximumVerticalAngleFit() {
 	f1->SetParameter(0, 1e3);
 	f1->SetParameter(1, 105.6583755);
 	f1->SetParameter(2, 29.3);
-	TF1 *f2 = new TF1("f2", "-f1", 0, 3111);
+	TF1 *f2 = new TF1("f2", "-f1", 0, M_MU * GMAGIC);//3111);
 
-	cout<<f2->Eval(1e-12)<<endl;
+	//cout<<f2->Eval(1e-12)<<endl;
 
 	//return;
 
-	std::string eqn = "sin^{-1}#frac{#sqrt{m_{#mu}p/#gamma#minusp^{2}/#gamma^{2}}}{p}";
+	std::string eqn = "#pmtan^{-1}#frac{#sqrt{m_{#mu}p/#gamma#minusp^{2}/#gamma^{2}}}{p}";
 
-	h2_thetaY_vs_p->GetXaxis()->SetRangeUser(0+h2_thetaY_vs_p->GetBinWidth(1), 3127);
-	DrawMaximumVerticalAngleFit(h2_thetaY_vs_p, f1, f2, eqn, ";Laboratory frame e^{+} momentum [MeV];#theta_{y} [mrad]", "../Images/MC/MaxVerticalAngle/2DFit");
+	h2_thetaY_vs_p->GetXaxis()->SetRangeUser(0, 3110);
+	DrawMaximumVerticalAngleFit(h2_thetaY_vs_p, f1, f2, eqn, ";Laboratory frame e^{+} momentum, p [MeV];#theta_{y} [mrad]", "../Images/MC/MaxVerticalAngle/2DFit");
 
 	DrawTH2(h2_thetaY_vs_p, "", "../Images/MC/MaxVerticalAngle/NoFit");
 	fin->Close();

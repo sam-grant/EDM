@@ -23,6 +23,9 @@ void DoubleExponentialFit(TGraphErrors *graph, double p1, double e1, double p3, 
   TF1 *fit = new TF1("DoubleExponentialFunc", DoubleExponentialFunc, xmin, xmax, 5);
 
   // Keep these fixed to Mottys values
+
+  // Yeah unfortunately these change between stations
+
   fit->FixParameter(1, p1); // tauA
   fit->FixParameter(3, p3); // tauB
 
@@ -70,11 +73,11 @@ void DrawFitGraph(TGraphErrors *graph, std::string dataset, std::string title, s
   TPaveText *values = new TPaveText(0.35,0.60,0.50,0.89,"NDC");
   values->SetTextAlign(33);
   values->AddText(Round(chi2ndf, 3));
-  values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1)); 
+  values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1)); 
   values->AddText(Round(par1, 3)+"#pm"+Round(err1, 1)); 
   values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1)); 
   values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1)); 
-  values->AddText(Round(par4, 3)+"#pm"+Round(err4, 1)); 
+  values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1)); 
 
   values->SetTextSize(26);
   values->SetTextFont(44);
@@ -342,14 +345,22 @@ void DrawSingleParameter(vector<double> x_, vector<double> y_, vector<double> ey
 
 }
 
-void FitDataset(TGraphErrors *gr, std::string dataset, double xmin = 7*G2PERIOD, double xmax = 70*G2PERIOD) {
+void FitDataset(TGraphErrors *gr, std::string stn, std::string dataset, double xmin = 7*G2PERIOD, double xmax = 70*G2PERIOD) {
 
   // Params reported by Mott.
-  if(dataset=="Run-1a") DoubleExponentialFit(gr, 59.6, 1.4, 6.57, 0.07, xmin, xmax);
-  if(dataset=="Run-1b") DoubleExponentialFit(gr, 44.6, 1.1, 6.43, 0.09, xmin, xmax);
-  if(dataset=="Run-1c") DoubleExponentialFit(gr, 79.8, 1.0, 6.99, 0.05, xmin, xmax);
-  if(dataset=="Run-1d") DoubleExponentialFit(gr, 79.8, 0.6, 7.34, 0.04, xmin, xmax);
 
+  if(stn=="S12") { 
+    if(dataset=="Run-1a") DoubleExponentialFit(gr, 61.1, 1.4, 6.07, 0.07, xmin, xmax);
+    if(dataset=="Run-1b") DoubleExponentialFit(gr, 49.2, 1.1, 6.18, 0.09, xmin, xmax);
+    if(dataset=="Run-1c") DoubleExponentialFit(gr, 56.6, 1.0, 6.32, 0.05, xmin, xmax);
+    if(dataset=="Run-1d") DoubleExponentialFit(gr, 78.3, 0.6, 6.54, 0.04, xmin, xmax);  
+  }
+  if(stn=="S18") {
+    if(dataset=="Run-1a") DoubleExponentialFit(gr, 59.6, 1.4, 6.57, 0.07, xmin, xmax);
+    if(dataset=="Run-1b") DoubleExponentialFit(gr, 44.6, 1.1, 6.43, 0.09, xmin, xmax);
+    if(dataset=="Run-1c") DoubleExponentialFit(gr, 57.6, 1.0, 6.99, 0.05, xmin, xmax);
+    if(dataset=="Run-1d") DoubleExponentialFit(gr, 79.8, 0.6, 7.34, 0.04, xmin, xmax);
+  }
   return; 
 
 }
@@ -375,7 +386,7 @@ void Run(std::string dataset, int step, bool write) {
 
   cout<<"Reading input file "<<finName<<", "<<fin<<endl;
 
-  vector<string> stn_ = {"S12", "S18", "S12S18"};
+  vector<string> stn_ = {"S12", "S18"};//, "S12S18"};
 
   // Slice momentum
   int nSlices = PMAX/step;
@@ -402,7 +413,7 @@ void Run(std::string dataset, int step, bool write) {
     }
 
     TGraphErrors *gr = ConvertToTGraphErrors(px);
-    FitDataset(gr, dataset, xmin, xmax);
+    FitDataset(gr, stn, dataset, xmin, xmax);
     DrawFitGraph(gr, dataset, stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 4.365 #mus", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ThetaYvsTimeFit_"+dataset+"_BQ", xmin, xmax, 1000, 2500);
 
     // To be honest, everything below this point if kind of useless. 
@@ -429,7 +440,7 @@ void Run(std::string dataset, int step, bool write) {
     vector<double> eA_; vector<double> eB_; vector<double> ec_;
     
     // Momentum slices
-/*    for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
+    for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
 
       int lo = 0 + i_slice*step; 
       int hi = step + i_slice*step;
@@ -438,7 +449,7 @@ void Run(std::string dataset, int step, bool write) {
       TH2D *h2Slice = (TH2D*)fin->Get(h2SliceName);
       TH1D *pxSlice = h2Slice->ProfileX();
       TGraphErrors *grSlice = ConvertToTGraphErrors(pxSlice);
-      FitDataset(grSlice, dataset, xmin, xmax);
+      FitDataset(grSlice, stn, dataset, xmin, xmax);
 
       grSlice->SetName((stn+"_ThetaY_vs_Time_Fit_"+std::to_string(lo)+"_"+std::to_string(hi)).c_str());
       grSlice->Write();
@@ -459,7 +470,7 @@ void Run(std::string dataset, int step, bool write) {
 
     DrawAllParameters(p_, A_, eA_, B_, eB_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];Parameter value [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_ParametersVsMomentum_"+dataset+"_BQ");//, -125, +75);
     DrawSingleParameter(p_, c_, ec_, dataset, stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad]", "../Images/Data/dMu/Run-1/VerticalOffset/MainPlots/"+stn+"_AverageVerticalOffsetVsMomentum_"+dataset+"_BQ", -1.5, +2.5);
-*/
+
   }
 
   fin->Close();

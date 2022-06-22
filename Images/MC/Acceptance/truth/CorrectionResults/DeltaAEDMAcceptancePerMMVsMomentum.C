@@ -1,7 +1,7 @@
 void DeltaAEDMAcceptancePerMMVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 18:45:19 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -10,12 +10,12 @@ void DeltaAEDMAcceptancePerMMVsMomentum()
    c->SetFrameBorderMode(0);
    
    TH1D *h_delta__3 = new TH1D("h_delta__3","",6,1000,2500);
-   h_delta__3->SetBinContent(1,0.1593452);
-   h_delta__3->SetBinContent(2,0.04166516);
-   h_delta__3->SetBinContent(3,0.06442569);
-   h_delta__3->SetBinContent(4,0.04459225);
-   h_delta__3->SetBinContent(5,0.1160694);
-   h_delta__3->SetBinContent(6,0.08881077);
+   h_delta__3->SetBinContent(1,0.1593469);
+   h_delta__3->SetBinContent(2,0.04166518);
+   h_delta__3->SetBinContent(3,0.06442476);
+   h_delta__3->SetBinContent(4,0.04459459);
+   h_delta__3->SetBinContent(5,0.1160728);
+   h_delta__3->SetBinContent(6,0.08881195);
    h_delta__3->SetMinimum(0);
    h_delta__3->SetMaximum(0.17);
    h_delta__3->SetEntries(12);

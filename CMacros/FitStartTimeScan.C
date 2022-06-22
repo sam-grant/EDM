@@ -1,7 +1,7 @@
 // Just re-fit the no-mod blinded dists.
 #include "Utils.h"
 
-double tmax = 120*G2PERIOD;
+double tmax = 92*G2PERIOD;
 
 TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
 
@@ -36,10 +36,10 @@ void DrawFitStartTimeScan(TGraphErrors *graph, TGraph *plus, TGraph *minus, std:
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
 	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.25);
+	graph->GetYaxis()->SetTitleOffset(1.1);
 	graph->GetXaxis()->CenterTitle(true);
 	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
+	graph->GetYaxis()->SetMaxDigits(2);
 	graph->SetMarkerStyle(20); //  Full circle
 
 /*	plus->SetTitle(title.c_str());
@@ -102,13 +102,22 @@ void Run(string dataset = "Run-1a") {
 
 		double tmin = (7+i)*G2PERIOD;
 
+		cout<<"---> i "<<i<<endl;
+		cout<<"---> tmin "<<tmin<<endl;
+
 		FullEDMFit(gr_edm, 0, OMEGA_A, phi, 0, 0, tmin, tmax);
+
+		cout<<gr_edm->GetFunction("FullEDMFunc")<<endl;
 
 		double AEDM = gr_edm->GetFunction("FullEDMFunc")->GetParameter(3);
 		double eAEDM = gr_edm->GetFunction("FullEDMFunc")->GetParError(3);
 
 		gr_scan->SetPoint(i, tmin, AEDM);
 		gr_scan->SetPointError(i, 0, eAEDM);
+
+		gr_edm->GetListOfFunctions()->Remove(gr_edm->GetFunction("FullEDMFunc"));
+
+		cout<<"tmin "<<tmin<<endl;
 
 	}	
 
@@ -171,7 +180,7 @@ void Run(string dataset = "Run-1a") {
 
 	//gr_scan = ResetGraph(gr_scan, gr_scan->GetX()[0], gr_scan->GetX()[gr_scan->GetN()-2]);
 
-	DrawFitStartTimeScan(gr_scan, gr_plus, gr_minus, dataset+";Fit start time [#mus]; A_{EDM} (BLIND) [mrad]", "../Images/Data/dMu/Run-1/Scans/FitStartTime_"+dataset);
+	DrawFitStartTimeScan(gr_scan, gr_plus, gr_minus, dataset+";Fit start time [#mus]; A_{EDM}^{BLIND} [mrad]", "../Images/Data/dMu/Run-1/Scans/FitStartTime_"+dataset);
 
 	// Refit 
 

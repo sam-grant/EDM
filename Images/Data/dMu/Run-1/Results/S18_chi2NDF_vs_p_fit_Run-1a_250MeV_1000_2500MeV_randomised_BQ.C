@@ -1,7 +1,7 @@
 void S18_chi2NDF_vs_p_fit_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 24 20:23:15 2022) by ROOT version 6.24/06
+//=========  (Wed Jun  8 15:37:19 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(819.2554,-0.2273545,2667.767,2.04619);
    c->SetFillColor(0);
@@ -18,12 +18,12 @@ void S18_chi2NDF_vs_p_fit_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
    2115.978,
    2359.682};
    Double_t _fy1003[6] = {
-   0.6732088,
-   0.6499164,
-   1.178961,
-   0.817886,
-   0.8396124,
-   0.7534289};
+   0.6732068,
+   0.6499175,
+   1.178962,
+   0.8178866,
+   0.8396113,
+   0.7534294};
    Double_t _fex1003[6] = {
    0,
    0,
@@ -78,15 +78,15 @@ void S18_chi2NDF_vs_p_fit_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
    pol01004->SetFillStyle(0);
    pol01004->SetLineColor(2);
    pol01004->SetLineWidth(2);
-   pol01004->SetChisquare(0.1841421);
+   pol01004->SetChisquare(0.1841424);
    pol01004->SetNDF(5);
    pol01004->GetXaxis()->SetLabelFont(42);
    pol01004->GetXaxis()->SetTitleOffset(1);
    pol01004->GetXaxis()->SetTitleFont(42);
    pol01004->GetYaxis()->SetLabelFont(42);
    pol01004->GetYaxis()->SetTitleFont(42);
-   pol01004->SetParameter(0,0.8188357);
-   pol01004->SetParError(0,0.07834583);
+   pol01004->SetParameter(0,0.8188356);
+   pol01004->SetParError(0,0.07834591);
    pol01004->SetParLimits(0,0,0);
    pol01004->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01004);
@@ -110,8 +110,8 @@ void S18_chi2NDF_vs_p_fit_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("pol0","#LT#chi^{2}/NDF#GT = 0.819
-#pm0.078
+   entry=leg->AddEntry("pol0","#LT#chi^{2}/NDF#GT = 0.82
+#pm0.08
 ","lpf");
    entry->SetFillColor(19);
    entry->SetLineColor(2);

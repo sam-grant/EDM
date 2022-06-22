@@ -10,7 +10,10 @@
 
 // This should really be "fitStartTime" and "fitEndTime"
 double tmin = 7*G2PERIOD;
-double tmax = 70*G2PERIOD;
+double tmax = 92*G2PERIOD;
+
+/*double tmin = 15*G2PERIOD;
+double tmax = 23*G2PERIOD;*/
 
 double pmin = 1000;
 double pmax = 2500;
@@ -236,8 +239,8 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
     ymax = 310e3;//220e3;
     phi = 2.080;
   } else if(dataset == "Run-1d") {
-    ymin = 240e3;//100e3;
-    ymax = 600e3;//400e3;
+    ymin = 170e3;//240e3-100e3;//100e3;
+    ymax = 400e3;//600e3-200e3;//400e3;
     phi = 2.067;
   } 
 
@@ -267,7 +270,7 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   gr_wiggle_mod->SetName("ModuloWiggle");
   gr_wiggle_mod->Write();
 
-  return modWiggle->GetParameter(4);
+  return modWiggle->GetParameter(4) - modWiggle->GetParError(4);// wiggle->GetParameter(4);//modWiggle->GetParameter(4);
 
 }
 
@@ -373,7 +376,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     double ymin =  c-0.35; double ymax =  c+0.45; 
 
     //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
-    DrawFullEDMFitData(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
+    DrawFullEDMFitData(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_"+config).c_str(), "1000 < p [MeV] < 2500", double(nEntries), ymin, ymax, false);//,unblind);
 
     tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr_thetaY_mod);
 
@@ -399,7 +402,6 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
 }
 
-// TESTING
 void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config) { 
 
   int step = GetStep(config);
@@ -413,6 +415,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     cout<<stn<<endl;
 
     TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time").c_str());
+    //TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time_Modulo").c_str());
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
@@ -421,15 +424,18 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_vs_t), false);
 
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, tmin, tmax);
+    //FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
     double c = func->GetParameter(4);
     double ymin =  c-4.75; double ymax =  c+5; 
 
-    //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
-    DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 20 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_noMod_"+config).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
+    //DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
+    DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_noMod_"+config).c_str(), "1000 < p [MeV] < 2500", double(nEntries), ymin, ymax, false);//,unblind);
+    //DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_1492ns_"+config).c_str(), "1000 < p [MeV] < 2500", double(nEntries), ymin, ymax, false);//,unblind);
 
     gr_thetaY_vs_t->SetName((stn+"_edmFit_noMod").c_str());
+    //gr_thetaY_vs_t->SetName((stn+"_edmFit_149ns").c_str());
     gr_thetaY_vs_t->Write();
 
     // Get residuals
@@ -437,10 +443,23 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     // We have to convert back into a TH1D to preserve blinding
     TH1D *h1_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
     TH1D *FFT_h1_thetaY_vs_t = GetFFT(h1_thetaY_vs_t);
-    TH1D *h1_res_thetaY_vs_t = GetResidual(px_thetaY_vs_t, func);
+    TH1D *h1_res_thetaY_vs_t = GetResidual(h1_thetaY_vs_t, func);
+
+/*    tmin = 0;
+    tmax = G2PERIOD;*/
+    // Ensure that we're not getting a residual for bins outside of the time range
+    for(int i(0); i<h1_res_thetaY_vs_t->GetXaxis()->GetNbins(); i++) { 
+      double time = h1_res_thetaY_vs_t->GetXaxis()->GetBinCenter(i);
+
+      if(time < tmin || time > tmax) {
+        h1_res_thetaY_vs_t->SetBinContent(i+1, 0);//GetXaxis()->GetBinCenter(ibin);
+        h1_res_thetaY_vs_t->SetBinError(i+1, 0);
+      }
+    }
+ 
     TH1D *FFT_h1_res_thetaY_vs_t = GetFFT(h1_res_thetaY_vs_t);
 
-    DrawTH1(h1_thetaY_vs_t, "h_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
+    DrawTH1(h1_thetaY_vs_t, "h_thetaY_vs_t;Decay time [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
     h1_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
     h1_thetaY_vs_t->Write();
 
@@ -449,7 +468,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FFT_h1_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
     FFT_h1_thetaY_vs_t->Write();
 
-    DrawTH1(h1_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 20 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
+    DrawTH1(h1_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 149.2 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
     h1_res_thetaY_vs_t->Draw("HIST");
     h1_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
     h1_res_thetaY_vs_t->Write();
@@ -458,6 +477,27 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FFT_h1_res_thetaY_vs_t->Draw("HIST");
     FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
     FFT_h1_res_thetaY_vs_t->Write();
+/*
+    DrawTH1(h1_thetaY_vs_t, "h_thetaY_vs_t;t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
+    h1_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
+    h1_thetaY_vs_t->Write();
+
+    DrawTH1(FFT_h1_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
+    FFT_h1_thetaY_vs_t->Draw("HIST");
+    FFT_h1_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
+    FFT_h1_thetaY_vs_t->Write();
+
+    DrawTH1(h1_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 50 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
+    h1_res_thetaY_vs_t->Draw("HIST");
+    h1_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
+    h1_res_thetaY_vs_t->Write();
+
+    DrawTH1(FFT_h1_res_thetaY_vs_t, dataset+";Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
+    FFT_h1_res_thetaY_vs_t->Draw("HIST");
+    FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
+    FFT_h1_res_thetaY_vs_t->Write();*/
+
+    // Also do this for fine binned mod plots if you have them.
 
   }
 
@@ -582,7 +622,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       double c = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
       double ymin =  c-0.6; double ymax =  c+0.7; 
 
-      DrawFullEDMFitData(gr_thetaY_mod, stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MomBinnedAna/Fits/"+stn+"_edmFit_"+momSlice+"_"+dataset+"_"+to_string(step)+"MeV_"+qual).c_str(), double(nEntries), ymin, ymax, false);
+      DrawFullEDMFitData(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MomBinnedAna/Fits/"+stn+"_edmFit_"+momSlice+"_"+dataset+"_"+to_string(step)+"MeV_"+qual).c_str(), std::to_string(lo)+" < p [MeV] < "+std::to_string(hi), double(nEntries), ymin, ymax, false);
 
       gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
@@ -733,7 +773,7 @@ void Run(std::string config, bool write) {
 
   cout<<"Reading\t"<<inputName<<" "<<input<<endl;
 
-  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+".root";//"_"+to_string(step)+"MeV_"+qual+".root";
+  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+"_minusPhiErr.root";//"_"+to_string(step)+"MeV_"+qual+".root";
   //std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+".root";//"_"+to_string(step)+"MeV_"+qual+".root";
   if(!write) outputName = "delete_me.root";
 
@@ -749,6 +789,11 @@ void Run(std::string config, bool write) {
 
   SimultaneousAnalysis(phi, input, output, config);
   SimultaneousAnalysisFFT(phi, input, output, config);
+
+/*  input->Close();
+  output->Close();
+
+  return;*/
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");

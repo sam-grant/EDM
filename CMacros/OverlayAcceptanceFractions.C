@@ -12,7 +12,7 @@
 	for(int i(0); i<gr_S18->GetN(); i++) gr_S18->SetPoint(i, gr_S18->GetX()[i]+25, gr_S18->GetY()[i]);
 	for(int i(0); i<gr_S12S18->GetN(); i++) gr_S12S18->SetPoint(i, gr_S12S18->GetX()[i]+50, gr_S12S18->GetY()[i]);
 
-	gr_S12S18->SetTitle(";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance fraction / 250 MeV");
+	gr_S12S18->SetTitle(";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance factor / 250 MeV");
 	gr_S12S18->GetXaxis()->SetTitleSize(.04);
 	gr_S12S18->GetYaxis()->SetTitleSize(.04);
 	gr_S12S18->GetXaxis()->SetTitleOffset(1.1);

@@ -1,8 +1,8 @@
 void S12S18_AcceptanceSurfaceR_1000_1250()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 18:49:20 2022) by ROOT version 6.24/06
-   TCanvas *c = new TCanvas("c", "c",0,0,1600,1200);
+//=========  (Thu Jun  2 10:42:51 2022) by ROOT version 6.24/06
+   TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(nan,nan,nan,nan);
    TView *view17 = TView::CreateView(1);

@@ -1,10 +1,10 @@
 void S12_AltAcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sat May  7 22:35:44 2022) by ROOT version 6.24/06
+//=========  (Fri Jun  3 03:41:22 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(811.7217,0.4542857,2678.365,0.8389313);
+   c->Range(811.7217,0.4544396,2678.365,0.838892);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -19,12 +19,12 @@ void S12_AltAcceptanceWeightingVsMomentum()
    2119.355,
    2367.258};
    Double_t _fy1007[6] = {
-   0.5594507,
-   0.5530336,
-   0.6005023,
-   0.6338861,
-   0.5907435,
-   0.7351836};
+   0.5594566,
+   0.5530339,
+   0.6004936,
+   0.6339194,
+   0.5907611,
+   0.7351934};
    Double_t _fex1007[6] = {
    0,
    0,
@@ -33,12 +33,12 @@ void S12_AltAcceptanceWeightingVsMomentum()
    0,
    0};
    Double_t _fey1007[6] = {
-   0.03573345,
-   0.03450933,
-   0.04207441,
-   0.04473928,
-   0.07235013,
-   0.03964008};
+   0.03576053,
+   0.03451363,
+   0.04209948,
+   0.04472025,
+   0.07224614,
+   0.03962315};
    TGraphErrors *gre = new TGraphErrors(6,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
    gre->SetTitle("S12");
@@ -46,8 +46,8 @@ void S12_AltAcceptanceWeightingVsMomentum()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1007 = new TH1F("Graph_Graph1007","S12",100,998.3861,2491.701);
-   Graph_Graph1007->SetMinimum(0.4927503);
-   Graph_Graph1007->SetMaximum(0.8004668);
+   Graph_Graph1007->SetMinimum(0.4928848);
+   Graph_Graph1007->SetMaximum(0.8004468);
    Graph_Graph1007->SetDirectory(0);
    Graph_Graph1007->SetStats(0);
 
@@ -61,7 +61,7 @@ void S12_AltAcceptanceWeightingVsMomentum()
    Graph_Graph1007->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph1007->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph1007->GetXaxis()->SetTitleFont(42);
-   Graph_Graph1007->GetYaxis()->SetTitle("A_{EDM} acceptance fraction / 250 MeV");
+   Graph_Graph1007->GetYaxis()->SetTitle("A_{EDM} acceptance factor / 250 MeV");
    Graph_Graph1007->GetYaxis()->CenterTitle(true);
    Graph_Graph1007->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph1007->GetYaxis()->SetLabelFont(42);
@@ -73,7 +73,7 @@ void S12_AltAcceptanceWeightingVsMomentum()
    Graph_Graph1007->GetZaxis()->SetTitleFont(42);
    gre->SetHistogram(Graph_Graph1007);
    
-   gre->Draw("apl");
+   gre->Draw("ap");
    
    TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");

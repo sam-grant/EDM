@@ -6,7 +6,7 @@
 // - These offsets can be used in the reconstruction of our acceptance maps;
 
 // Globals
-double xmin = 1000; double xmax = 2750;
+double xmin = 0; double xmax = 3000;
 
 #include "Utils.h"
 

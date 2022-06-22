@@ -1356,7 +1356,7 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   TPaveText *cuts = new TPaveText(0.60,0.75,0.80,0.85,"NDC");
   cuts->SetTextAlign(22);
   cuts->AddText("p [MeV] > 1700");
-  cuts->AddText("t [#mus] > 30.6");
+  cuts->AddText("t [#mus] > 52.4");//30.6");
 
   names->SetTextSize(26);
   names->SetTextFont(44);
@@ -1719,7 +1719,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 
 }
 
-void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string dataset, std::string fname, double N, double ymin, double ymax, bool unblind) {
+void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string dataset, std::string fname, std::string cutStr, double N, double ymin, double ymax, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1737,7 +1737,7 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
 	leg->SetNColumns(1);
 	leg->AddEntry(graph, ("Data: "+dataset).c_str());
-	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c");
+	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) #plus c");
 	leg->SetBorderSize(0);
 
 	leg->SetTextSize(22); // 26
@@ -1771,7 +1771,7 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	values->AddText(Round(chi2ndf, 3));
 	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
-	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par3, 1)+"#pm"+Round(err3, 1));
 	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
 
 	//TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
@@ -1779,9 +1779,9 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	TPaveText *cuts = new TPaveText(0.20,0.65,0.40,0.75,"NDC");
 	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("1000 < p [MeV] < 2500");
-	cuts->AddText("t [#mus] > 30.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
-
+	cuts->AddText(cutStr.c_str());//"1000 < p [MeV] < 2500");
+	cuts->AddText("t [#mus] > 30.6");//52.4");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
+//52.4");/
 	names->SetTextSize(22); // 26
 	names->SetTextFont(44);
 	names->SetFillColor(0);

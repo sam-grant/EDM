@@ -117,7 +117,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 	gr2->Draw("P SAME");
 
 	if(gr3!=0) {
-		gr3->SetMarkerStyle(24);
+		gr3->SetMarkerStyle(20);
 		gr3->SetMarkerColor(kRed);
 		gr3->SetLineColor(kRed);
 		gr3->Draw("P SAME");
@@ -658,7 +658,7 @@ void Run(bool write, string misalign) {
 
 	cout<<"---> Got base files "<<f1Name<<", "<<f1<<", "<<f2Name<<", "<<f2<<endl;
 
-	vector<string> stn_ = {"S12S18"};//S12", "S18", "S12S18"};
+	vector<string> stn_ = {"S12", "S18", "S12S18"};
 
 	for(auto& stn : stn_) {
 
@@ -675,9 +675,9 @@ void Run(bool write, string misalign) {
 		TGraphErrors *gr2_reset = ResetGraph(gr2, xmin, xmax);
 		TGraphErrors *gr3_reset = ResetGraph(gr3, xmin, xmax);
 
-		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_overlay"+misalign);
+		DrawOverlay(gr1_reset, gr2_reset, gr3_reset, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_overlay"+misalign);
 		
-		DrawOverlay2(gr1_reset, gr3_reset, stn+";Decay vertex momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_partial_overlay"+misalign);
+		DrawOverlay2(gr1_reset, gr3_reset, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AcceptanceCorrected_AEDM_vs_p_partial_overlay"+misalign);
 
 		// Make ratio of gr2/gr1
 		
@@ -724,8 +724,8 @@ void Run(bool write, string misalign) {
 
 		}
 
-		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_MainAcceptanceWeightingVsMomentum"+misalign);
-		DrawTGraphErrors(gr_ratio_alt, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AltAcceptanceWeightingVsMomentum"+misalign);
+		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_MainAcceptanceWeightingVsMomentum"+misalign);
+		DrawTGraphErrors(gr_ratio_alt, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_AltAcceptanceWeightingVsMomentum"+misalign);
 
 		fout->cd("graphs");
 		gr_ratio_main->SetName((stn+"_ratio_main").c_str());
@@ -748,8 +748,8 @@ void Run(bool write, string misalign) {
 			h1_ratio_alt->SetBinError(i+1, gr_ratio_alt->GetEY()[i]);
 		}
 
-		DrawTH1(h1_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistMainAcceptanceWeightingVsMomentum"+misalign);
-		DrawTH1(h1_ratio_alt, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance fraction / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAltAcceptanceWeightingVsMomentum"+misalign);
+		DrawTH1(h1_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistMainAcceptanceWeightingVsMomentum"+misalign);
+		DrawTH1(h1_ratio_alt, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_HistAltAcceptanceWeightingVsMomentum"+misalign);
 
 		fout->cd("hists");
 		h1_ratio_main->Write();

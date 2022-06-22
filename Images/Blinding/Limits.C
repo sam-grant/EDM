@@ -1,7 +1,7 @@
 void Limits()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Dec  6 08:09:08 2021) by ROOT version 6.24/04
+//=========  (Tue Jun  7 13:37:33 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-1.25,-63.2625,11.25,569.3625);
@@ -71,14 +71,14 @@ void Limits()
    h__1->SetEntries(10000);
    h__1->SetStats(0);
    h__1->SetLineWidth(3);
-   h__1->GetXaxis()->SetTitle("Blind signal [#timesd_{0}]");
+   h__1->GetXaxis()->SetTitle("Signal multiplier");
    h__1->GetXaxis()->SetRange(1,100);
    h__1->GetXaxis()->CenterTitle(true);
    h__1->GetXaxis()->SetLabelFont(42);
    h__1->GetXaxis()->SetTitleSize(0.04);
    h__1->GetXaxis()->SetTitleOffset(1.1);
    h__1->GetXaxis()->SetTitleFont(42);
-   h__1->GetYaxis()->SetTitle("Random blinding strings");
+   h__1->GetYaxis()->SetTitle("Unique blinding phrases");
    h__1->GetYaxis()->CenterTitle(true);
    h__1->GetYaxis()->SetNdivisions(4000510);
    h__1->GetYaxis()->SetLabelFont(42);
@@ -89,25 +89,6 @@ void Limits()
    h__1->GetZaxis()->SetTitleOffset(1);
    h__1->GetZaxis()->SetTitleFont(42);
    h__1->Draw("HIST");
-   TLine *line = new TLine(1,0,1,506.1);
-
-   Int_t ci;      // for color index setting
-   TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#ff0000");
-   line->SetLineColor(ci);
-   line->SetLineStyle(2);
-   line->SetLineWidth(3);
-   line->Draw();
-   
-   TPaveText *pt = new TPaveText(1.5,350,2,450,"br");
-   pt->SetFillColor(0);
-
-   ci = TColor::GetColor("#ff0000");
-   pt->SetTextColor(ci);
-   pt->SetTextFont(44);
-   pt->SetTextSize(26);
-   TText *pt_LaTex = pt->AddText("BNL");
-   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

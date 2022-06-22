@@ -11,7 +11,7 @@ void DrawTH1(TH1D *hist, TString title, string fname, string parName, string uni
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
 	hist->GetXaxis()->SetTitleOffset(1.1);
-	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.2);
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
@@ -23,7 +23,9 @@ void DrawTH1(TH1D *hist, TString title, string fname, string parName, string uni
 	hist->Draw("HIST ][");
 	
 
-	TPaveText *names = new TPaveText(0.53,0.75,0.75,0.88,"NDC"); // 1/QHV
+	//TPaveText *names = new TPaveText(0.53,0.75,0.75,0.88,"NDC"); // 1/QHV
+	//TPaveText *names = new TPaveText(0.57,0.75,0.75,0.88,"NDC"); // 1/QHV
+	TPaveText *names = new TPaveText(0.6,0.75,0.75,0.88,"NDC"); // 1/QHV
 	names->SetTextAlign(13);
 	if(parName=="#theta_{y}") {
 		names->AddText(("#LT#Delta#theta_{y}#GT ["+unit+"]").c_str()); 
@@ -66,7 +68,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
 	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.2);
+	graph->GetYaxis()->SetTitleOffset(1.25);
 	graph->GetXaxis()->CenterTitle(true);
 	graph->GetYaxis()->CenterTitle(true);
 	graph->GetYaxis()->SetMaxDigits(4);
@@ -137,7 +139,7 @@ TGraphErrors *SliceY(TH2D *hist, bool RMS = false, bool percent = false) {
 
 void TrackExtrapolationResolution() { 
 
-	TString finName = "../Plots/MC/Resolution/Plots/trackerResolutionPlots.root";
+	TString finName = "../Plots/MC/Resolution/Plots/trackerResolutionPlots.thesis.root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"Opened "<<finName<<", "<<fin<<endl;
@@ -160,10 +162,12 @@ void TrackExtrapolationResolution() {
   	theta_y_res->GetXaxis()->SetRangeUser(-20, 20);
 
   	// Draw 1D hists
+  	DrawTH1(theta_y_reco, ";Reco #theta_{y} [mrad];Decay vertices / "+Round(theta_y_reco->GetBinWidth(1),3)+" mrad", "../Images/MC/Resolution/theta_y_true", "#theta_{y}", "mrad", 2, 4);
+  	DrawTH1(theta_y_true, ";True #theta_{y} [mrad];Decay vertices / "+Round(theta_y_true->GetBinWidth(1),3)+" mrad", "../Images/MC/Resolution/theta_y_reco", "#theta_{y}", "mrad", 2, 4);
   	DrawTH1(y_res, ";#Delta y (truth #minus reco) [mm];Decay vertices / "+Round(y_res->GetBinWidth(1),3)+" mm", "../Images/MC/Resolution/y_res", "y", "mm", 2, 4);
   	DrawTH1(r_res, ";#Delta r (truth #minus reco) [mm];Decay vertices / "+Round(r_res->GetBinWidth(1),3)+" mm", "../Images/MC/Resolution/r_res", "r", "mm", 3, 4);
-  	DrawTH1(p_res, ";#Delta p (truth #minus reco) [MeV];Decay vertices / "+Round(p_res->GetBinWidth(1),3)+" MeV", "../Images/MC/Resolution/p_res", "p", "MeV", 3,5);
-  	DrawTH1(theta_y_res, ";#Delta #theta_{y} (truth #minus reco) [mrad];Decay vertices / "+Round(theta_y_res->GetBinWidth(1),3)+" mrad", "../Images/MC/Resolution/theta_y_res", "#theta_{y}", "mrad", 3, 5);
+  	DrawTH1(p_res, ";#Delta p (truth #minus reco) [MeV];Decay vertices / "+Round(p_res->GetBinWidth(1),3)+" MeV", "../Images/MC/Resolution/p_res", "p", "MeV", 2, 4);
+  	DrawTH1(theta_y_res, ";#Delta #theta_{y} (truth #minus reco) [mrad];Decay vertices / "+Round(theta_y_res->GetBinWidth(1),3)+" mrad", "../Images/MC/Resolution/theta_y_res", "#theta_{y}", "mrad", 2, 4);
 
 /*  	DrawTH1(y_res, ";#Delta y (truth #minus reco) [mm];Decay vertices / mm", "../Images/MC/Resolution/y_res", "#Deltay", "mm", 2, 4);
   	DrawTH1(r_res, ";#Delta r (truth #minus reco) [mm];Decay vertices / mm", "../Images/MC/Resolution/r_res", "#Deltar", "mm", 3, 4);
@@ -188,9 +192,9 @@ void TrackExtrapolationResolution() {
 	gr_p_res_vs_p_percent = SliceY(p_res_vs_p, false, true);
 	gr_theta_y_res_vs_p = SliceY(theta_y_res_vs_p, false);
 	
-	gr_y_res_vs_p->GetYaxis()->SetRangeUser(0, 0.3);
-	gr_r_res_vs_p->GetYaxis()->SetRangeUser(0.025, 0.5);
-	gr_p_res_vs_p->GetYaxis()->SetRangeUser(0, 1);
+	//gr_y_res_vs_p->GetYaxis()->SetRangeUser(0, 0.3);
+	//gr_r_res_vs_p->GetYaxis()->SetRangeUser(0.025, 0.5);
+	//gr_p_res_vs_p->GetYaxis()->SetRangeUser(0, 1);
 	gr_theta_y_res_vs_p->GetYaxis()->SetRangeUser(0, 0.17);
 
   	DrawTGraphErrors(gr_y_res_vs_p, ";True momentum [MeV];#delta #LT#Deltay#GT [mm] / 100 MeV", "../Images/MC/Resolution/y_avg_res_vs_p");

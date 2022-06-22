@@ -63,27 +63,303 @@ void DrawGraph(TGraphErrors *graph, std::string ds, std::string title, std::stri
 
 }
 
+void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string fname, vector<string> ds_) {
+
+  // Get one sigma band
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  // S12 ect 
+  //TLegend *l = new TLegend(0.66, 0.18, 0.85, 0.38); 
+  //TLegend *l = new TLegend(0.15, 0.15, 0.45, 0.30);  // MAIN
+  TLegend *l = new TLegend(0.15, 0.15, 0.85, 0.20);  // INDIVIDUAL STN
+  l->SetNColumns(4);
+  l->SetBorderSize(0);
+  l->SetTextSize(24);
+  l->SetTextFont(44);
+
+  //graph_.at(0)->GetYaxis()->SetTitle("d_{#mu} (BLIND) [e#upointcm]");//title.c_str());
+  //graph_.at(0)->SetTextSize(26);//"d_{#mu}^{BLIND} [e#upointcm]");
+  graph_.at(0)->GetXaxis()->SetTitleSize(.04);
+  graph_.at(0)->GetYaxis()->SetTitleSize(.04);
+  graph_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graph_.at(0)->GetYaxis()->SetTitleOffset(1.2);
+  graph_.at(0)->GetXaxis()->CenterTitle(true);
+  graph_.at(0)->GetYaxis()->CenterTitle(true);
+  graph_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+  // Find y-range
+  double ymax = graph_.at(0)->GetY()[0] + 2.5*graph_.at(0)->GetEY()[0];
+  double ymin = graph_.at(0)->GetY()[0] - 2.5*graph_.at(0)->GetEY()[0];  
+
+  for(int i(0); i<graph_.size(); i++) {
+
+    double ymin1 = graph_.at(i)->GetY()[0] - 2.5*graph_.at(i)->GetEY()[0]; 
+    double ymax1 = graph_.at(i)->GetY()[0] + 2.5*graph_.at(i)->GetEY()[0]; 
+
+    for(int j(1); j<graph_.at(0)->GetN(); j++) { 
+
+      double ymax2 = graph_.at(i)->GetY()[j] + 2.5*graph_.at(i)->GetEY()[j];
+      double ymin2 = graph_.at(i)->GetY()[j] - 2.5*graph_.at(i)->GetEY()[j]; 
+
+      if(ymin2 < ymin1) ymin1 = ymin2;
+      if(ymax2 > ymax1) ymax1 = ymax2;
+
+    }
+
+    if(ymin1 < ymin) ymin = ymin1;
+    if(ymax1 > ymax) ymax = ymax1;
+
+  }
+
+  graph_.at(0)->GetYaxis()->SetRangeUser(-0.02, 1.0);//ymin, ymax);
+
+
+  	//for(int i(0); i<gr_S18->GetN(); i++) gr_S18->SetPoint(i, gr_S18->GetX()[i]+25, gr_S18->GetY()[i]);
+	//for(int i(0); i<gr_S12S18->GetN(); i++) gr_S12S18->SetPoint(i, gr_S12S18->GetX()[i]+50, gr_S12S18->GetY()[i]);
+
+  for(int i(0); i<graph_.size(); i++) {
+
+  	for(int j(0); j<graph_.at(i)->GetN(); j++) { 
+
+  		graph_.at(i)->SetPoint(j, graph_.at(i)->GetX()[j]+(25*i), graph_.at(i)->GetY()[j]);
+  		graph_.at(i)->SetPointError(j, 0, graph_.at(i)->GetEY()[j]);
+
+  	}
+  	
+
+  }
+
+  vector<int> colours_ = {4, 807, 413, 614};
+
+  //for(int i(0); i<graph_.at(0)->GetN(); i++) graph_.at(0)->GetXaxis()->SetBinLabel(graph_.at(0)->GetXaxis()->FindBin(i+1), (xLabel_.at(i)).c_str());
+
+  //graph_.at(0)->GetXaxis()->LabelsOption("h");
+/*  graph_.at(0)->GetXaxis()->SetLabelSize(0.055);//Option("h");*/
+/*  graph_.at(0)->GetXaxis()->SetRangeUser(0, 5);*/
+/*  graph_.at(0)->GetXaxis()->SetTickLength(0);*/
+  graph_.at(0)->GetYaxis()->SetRangeUser(-0.04, 0.1);
+  graph_.at(0)->GetXaxis()->SetRangeUser(1050, 2500);
+  graph_.at(0)->Draw("AP");
+  gPad->Update();
+  
+  //vector<int> colour_ = {2,4,1};
+
+  for(int i(0); i<graph_.size(); i++) {
+    graph_.at(i)->SetMarkerStyle(20);
+    graph_.at(i)->SetMarkerColor(colours_.at(i));
+    graph_.at(i)->SetLineColor(colours_.at(i));
+
+    if(i==0) {
+
+/*      fit->Draw("same");
+      minusSigma->Draw("same");
+      plusSigma->Draw("same");*/
+      // minusTwoSigma->Draw("same");
+      // plusTwoSigma->Draw("same");
+      // minusThreeSigma->Draw("same");
+      // plusThreeSigma->Draw("same");
+
+      graph_.at(i)->Draw("P SAME");
+
+    }
+
+    else graph_.at(i)->Draw("P SAME");
+
+    l->AddEntry(graph_.at(i), ds_.at(i).c_str());
+
+  }
+
+  l->Draw("SAME");
+
+  // Text box
+  TPaveText *result = new TPaveText(0.15,0.79,0.40,0.89,"NDC");
+  result->SetTextAlign(13);
+  result->SetTextSize(26);
+  result->SetTextFont(44);
+  result->SetFillColor(0);
+
+  //std::ostringstream result_str; result_str << fit->GetParameter(0); 
+  //std::ostringstream error_str; error_str << fit->GetParError(0);  
+
+  //result->AddText("#delta#LTd_{#mu}#GT = "+SciNotation(fit->GetParError(0))+" e#upointcm");// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  //result->Draw("SAME");
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  c->SaveAs((fname+".C").c_str());  
+
+  delete c;
+
+  return;
+
+}
+
+
+void DrawAllMaxSigmaGraphs(vector<TGraphErrors*> graph_, std::string title, std::string fname, vector<string> stn_) {
+
+  TCanvas *c = new TCanvas("c","c",800,600);
+
+  // S12 ect 
+  //TLegend *l = new TLegend(0.66, 0.18, 0.85, 0.38); 
+  TLegend *l = new TLegend(0.66, 0.69, 0.85, 0.89); 
+  //TLegend *l = new TLegend(0.15, 0.15, 0.45, 0.30);  // MAIN
+  //TLegend *l = new TLegend(0.15, 0.15, 0.85, 0.20);  // INDIVIDUAL STN
+  l->SetNColumns(1);
+  l->SetBorderSize(0);
+  l->SetTextSize(24);
+  l->SetTextFont(44);
+
+  graph_.at(0)->SetTitle(title.c_str());//"d_{#mu} (BLIND) [e#upointcm]");//title.c_str());
+  //graph_.at(0)->SetTextSize(26);//"d_{#mu}^{BLIND} [e#upointcm]");
+  graph_.at(0)->GetXaxis()->SetTitleSize(.04);
+  graph_.at(0)->GetYaxis()->SetTitleSize(.04);
+  graph_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+  graph_.at(0)->GetYaxis()->SetTitleOffset(1.2);
+  graph_.at(0)->GetXaxis()->CenterTitle(true);
+  graph_.at(0)->GetYaxis()->CenterTitle(true);
+  graph_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+
+  graph_.at(0)->GetYaxis()->SetRangeUser(-3, 3);//ymin, ymax);
+
+/*  // Offset x-values
+  for(int i(0); i<graph_.size(); i++) {
+
+  	for(int j(0); j<graph_.at(i)->GetN(); j++) { 
+
+  		graph_.at(i)->SetPoint(j, graph_.at(i)->GetX()[j]+(25*i), graph_.at(i)->GetY()[j]);
+  		graph_.at(i)->SetPointError(j, 0, graph_.at(i)->GetEY()[j]);
+
+  	}
+  	
+  }*/
+
+  vector<int> colours_ = {2,4,1};
+/*
+  graph_.at(0)->GetYaxis()->SetRangeUser(-0.04, 0.1);
+  graph_.at(0)->GetXaxis()->SetRangeUser(1050, 2500);*/
+
+  graph_.at(0)->GetYaxis()->SetRangeUser(0, 3);
+  graph_.at(0)->Draw("APL");
+  gPad->Update();
+  
+  //vector<int> colour_ = {2,4,1};
+
+  for(int i(0); i<graph_.size(); i++) {
+    graph_.at(i)->SetMarkerStyle(20);
+    graph_.at(i)->SetMarkerColor(colours_.at(i));
+    graph_.at(i)->SetLineColor(colours_.at(i));
+    graph_.at(i)->Draw("PL SAME");
+
+    l->AddEntry(graph_.at(i), stn_.at(i).c_str());
+
+  }
+
+
+  l->Draw("SAME");
+
+
+  c->SaveAs((fname+".pdf").c_str());
+  c->SaveAs((fname+".png").c_str());
+  //c->SaveAs((fname+".C").c_str());  
+
+  delete c;
+
+  return;
+
+}
+
+TGraphErrors *GetMaxSigma(vector<TGraphErrors*> gr_) { 
+
+	TGraphErrors *gr_max_sigma = new TGraphErrors();
+
+	// Loop through bins
+	for(int i_bin(0); i_bin<gr_.at(0)->GetN(); i_bin++) {
+
+		double max_sigma = 0;
+
+		int i_count = 0;
+
+		// Loop through graphs 
+		for(int i_gr(0); i_gr<gr_.size(); i_gr++) {
+
+			// Loop through graphs again
+			for(int i_gr2(0); i_gr2<gr_.size(); i_gr2++) { 
+				
+				if(i_gr==i_gr2) continue;
+
+				i_count++;
+
+				double y1 = gr_.at(i_gr)->GetY()[i_bin];
+				double y2 = gr_.at(i_gr2)->GetY()[i_bin];
+				
+				double ey1 = gr_.at(i_gr)->GetEY()[i_bin];
+				double ey2 = gr_.at(i_gr2)->GetEY()[i_bin];
+
+				double sigma = abs(y1-y2)/sqrt(pow(ey1,2)+pow(ey2,2));
+
+				if(sigma > max_sigma) max_sigma = sigma;
+ 
+ 				//cout<<"---> sigma = "<<sigma<<endl;
+
+			}
+
+		}
+
+		gr_max_sigma->SetPoint(i_bin, gr_.at(0)->GetX()[i_bin], max_sigma);
+
+		// cout<<"---> Combinations (should be 12) = "<<i_count<<endl;
+		// cout<<"---> Max sigma = "<<max_sigma<<endl;
+
+
+	}
+
+	return gr_max_sigma;
+
+
+}
+
 void AEDM_overlay() { 
 
 	vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
 
-	for(auto &ds : ds_) {
+	vector<string> stn_ = {"S12", "S18", "S12S18"};
 
-		TString finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+ds+"_250MeV_1000_2500MeV_randomised_BQ.root";
-		TFile *fin = TFile::Open(finName);
+	vector<TGraphErrors*> gr_max_sigma_;
 
-		cout<<"----> Opened "<<finName<<", "<<fin<<endl;
+	for(auto &stn : stn_) {
 
-		TGraphErrors *gr = ResetGraph( (TGraphErrors*)fin->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_AEDM_vs_p"), pmin, pmax);
+		vector<TGraphErrors*> gr_;
 
-		cout<<"----> Graph "<<gr<<endl;
+		for(auto &ds : ds_) {
 
+			TString finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+ds+"_250MeV_1000_2500MeV_randomised_BQ.root";
+			if(ds == "Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+ds+"_250MeV_1000_2500MeV_50usStartTime_randomised_BQ.root";
 
-		DrawGraph(gr, ds, ";Decay vertex momentum [MeV];A_{EDM} (BLIND) [mrad]", "../Images/Data/dMu/Run-1/MainPlots/S12S18_AEDM_vs_p_overlay_"+ds+"_"+to_string(int(pmin))+"_"+to_string(int(pmax)));
+			TFile *fin = TFile::Open(finName);
 
-		fin->Close();
+			cout<<"----> Opened "<<finName<<", "<<fin<<endl;
+
+			TGraphErrors *gr = ResetGraph( (TGraphErrors*)fin->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p").c_str()), pmin, pmax);
+
+			cout<<"----> Graph "<<gr<<endl;
+
+			DrawGraph(gr, ds, ";Decay vertex momentum (Run-1a) [MeV];A_{EDM}^{BLIND} [mrad]", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_AEDM_vs_p_overlay_"+ds+"_"+to_string(int(pmin))+"_"+to_string(int(pmax)));
+
+			gr_.push_back(gr);
+
+			fin->Close();
+
+		}
+
+		DrawAllGraphs(gr_, "", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_AEDM_vs_p_overlay_"+to_string(int(pmin))+"_"+to_string(int(pmax)), ds_);
+
+		gr_max_sigma_.push_back(GetMaxSigma(gr_));
 
 	}
+
+	DrawAllMaxSigmaGraphs(gr_max_sigma_, ";Decay vertex momentum [MeV];#sigma_{max}", "../Images/Data/dMu/Run-1/MainPlots/AEDM_max_sigma_vs_p_overlay_"+to_string(int(pmin))+"_"+to_string(int(pmax)), {"Station 12", "Station 18", "Combined"});
 
 	return;
 

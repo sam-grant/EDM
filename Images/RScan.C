@@ -1,7 +1,7 @@
 void RScan()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Oct 12 00:20:58 2021) by ROOT version 6.24/04
+//=========  (Tue Jun  7 13:32:51 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.694375,-12.26088,5.699375,110.3479);
@@ -101,7 +101,7 @@ void RScan()
    0};
    TGraphErrors *gre = new TGraphErrors(21,Graph0_fx1001,Graph0_fy1001,Graph0_fex1001,Graph0_fey1001);
    gre->SetName("Graph0");
-   gre->SetTitle(";R [ppm];Limits less than BNL / 10,000 blinding strings [%] ");
+   gre->SetTitle(";Average signal multiplier [ppm];Blind signals < BNL limit / 10,000 phrases [%] ");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -115,14 +115,14 @@ void RScan()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_Graph01001->SetLineColor(ci);
-   Graph_Graph01001->GetXaxis()->SetTitle("R [ppm]");
+   Graph_Graph01001->GetXaxis()->SetTitle("Average signal multiplier [ppm]");
    Graph_Graph01001->GetXaxis()->SetRange(0,92);
    Graph_Graph01001->GetXaxis()->CenterTitle(true);
    Graph_Graph01001->GetXaxis()->SetLabelFont(42);
    Graph_Graph01001->GetXaxis()->SetTitleSize(0.04);
    Graph_Graph01001->GetXaxis()->SetTitleOffset(1.1);
    Graph_Graph01001->GetXaxis()->SetTitleFont(42);
-   Graph_Graph01001->GetYaxis()->SetTitle("Limits less than BNL / 10,000 blinding strings [%] ");
+   Graph_Graph01001->GetYaxis()->SetTitle("Blind signals < BNL limit / 10,000 phrases [%] ");
    Graph_Graph01001->GetYaxis()->CenterTitle(true);
    Graph_Graph01001->GetYaxis()->SetNdivisions(4000510);
    Graph_Graph01001->GetYaxis()->SetLabelFont(42);
@@ -142,6 +142,16 @@ void RScan()
    line->SetLineStyle(2);
    line->SetLineWidth(3);
    line->Draw();
+   
+   TPaveText *pt = new TPaveText(1.5,350,2,450,"br");
+   pt->SetFillColor(0);
+
+   ci = TColor::GetColor("#ff0000");
+   pt->SetTextColor(ci);
+   pt->SetTextFont(44);
+   pt->SetTextSize(26);
+   TText *pt_LaTex = pt->AddText("Zero");
+   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

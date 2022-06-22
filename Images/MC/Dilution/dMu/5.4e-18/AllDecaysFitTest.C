@@ -1,7 +1,7 @@
 void AllDecaysFitTest()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed May 11 19:08:13 2022) by ROOT version 6.24/06
+//=========  (Thu Jun  2 15:46:44 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-394.2606,-0.0275,3548.345,0.2475);
@@ -65,7 +65,7 @@ void AllDecaysFitTest()
    0.005973244};
    TGraphErrors *gre = new TGraphErrors(12,allDecays_fx1003,allDecays_fy1003,allDecays_fex1003,allDecays_fey1003);
    gre->SetName("allDecays");
-   gre->SetTitle(";Decay positron momentum [MeV];d_{EDM} / 250 MeV");
+   gre->SetTitle(";Momentum, p [MeV];d_{EDM} / 250 MeV");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
@@ -79,7 +79,7 @@ void AllDecaysFitTest()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    Graph_allDecays1003->SetLineColor(ci);
-   Graph_allDecays1003->GetXaxis()->SetTitle("Decay positron momentum [MeV]");
+   Graph_allDecays1003->GetXaxis()->SetTitle("Momentum, p [MeV]");
    Graph_allDecays1003->GetXaxis()->SetRange(1,101);
    Graph_allDecays1003->GetXaxis()->CenterTitle(true);
    Graph_allDecays1003->GetXaxis()->SetLabelFont(42);
@@ -373,7 +373,7 @@ void AllDecaysFitTest()
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
-   entry=leg->AddEntry("DilutionFunc","Fit: #frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}","lpf");
+   entry=leg->AddEntry("DilutionFunc","#frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}","lpf");
    entry->SetFillColor(19);
 
    ci = TColor::GetColor("#ff0000");

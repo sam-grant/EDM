@@ -429,7 +429,7 @@ void DrawRecoVertexFit(TFile *input, int step, string fname, double ymin, double
       l->SetNColumns(2);
       l->AddEntry(gr,"Sim: reco vertices");
       // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
-      l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+      l->AddEntry(fit, "a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
       l->Draw("SAME");
 
       TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
@@ -559,7 +559,7 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    gr->GetXaxis()->SetRangeUser(xmin, xmax);
    gr->GetYaxis()->SetRangeUser(ymin, ymax);
 
-   TString title = ";Decay positron momentum [MeV];d_{EDM} / "+to_string(step)+" MeV";
+   TString title = ";Momentum, p [MeV];d_{EDM} / "+to_string(step)+" MeV";
    gr->SetTitle(title);
 
    gr->Draw("AP");
@@ -586,7 +586,7 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
-   l->AddEntry(fit, "Fit: #frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}");//p^{2}+bp+d_{0}");
+   l->AddEntry(fit, "#frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}");//p^{2}+bp+d_{0}");
    l->SetTextSize(26);
    l->SetTextFont(44);
    l->Draw("SAME");
