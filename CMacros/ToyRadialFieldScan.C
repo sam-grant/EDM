@@ -214,13 +214,21 @@ tuple<double, double> GetRadialField(TRandom3 *rndm, int i_experiment, int i_sub
 	double BrErr = fabs(Br) * sqrt(pow(p0_err/p0,2) + pow(p1_err/p1,2) - 2*mainFitRes->GetCovarianceMatrix()(0,1)/(p0*p1));
 	double BrErr_check = fabs(Br_check) * sqrt(pow(p0_err_check/p0_check,2) + pow(p1_err_check/p1_check,2) - 2*checkFitRes->GetCovarianceMatrix()(0,1)/(p0_check*p1_check));
 
-	// Only draw the plots once 
-	if(i_experiment==500) { 
+	double chi2ndf = mainFit->GetChisquare()/mainFit->GetNDF();
 
-		tuple<double, double> quadScanYRange = QuadScanYRange(quadScans);
-		DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment), get<0>(quadScanYRange), get<1>(quadScanYRange), BR_APP);
-		DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", std::to_string(subruns)+" sub-runs;#LTB_{r}^{App}#GT [ppm];#LTy#GT QHV [mm#upointkV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
-		DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", std::to_string(subruns)+" sub-runs;#LTB_{r}^{App}#GT [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+/*	if( (Br>=7.8 && Br<=8.2) && (chi2ndf > 0.95 && chi2ndf < 1.5) ) {
+		cout<<i_experiment<<endl;
+		cout<<chi2ndf<<endl;
+		cout<<Br<<endl;
+	}
+*/
+	// Only draw the plots once 
+	if(i_experiment==738) { 
+
+		//tuple<double, double> quadScanYRange = QuadScanYRange(quadScans);
+		//DrawQuadScanFits(quadScans, "quadLineFit", ";1/QHV [kV^{-1}];#LTy#GT [mm]", "../Images/MC/ToyRadialFieldScan/QuadScans_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment), get<0>(quadScanYRange), get<1>(quadScanYRange), BR_APP);
+		//DrawRadialFieldLineFit(QuadGrads_vs_BrApp, BrErr, "mainFit", std::to_string(subruns)+" sub-runs;#LTB_{r}^{App}#GT [ppm];#LTy#GT QHV [mm#upointkV]","../Images/MC/ToyRadialFieldScan/FieldFit_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
+		//DrawRadialFieldLineFit(BrCalc_vs_BrApp, BrErr_check, "checkFit", std::to_string(subruns)+" sub-runs;#LTB_{r}^{App}#GT [ppm];Calculated B_{r} [ppm]","../Images/MC/ToyRadialFieldScan/FieldFitCheck_NSUBRUN_"+std::to_string(subruns)+"_NEXP_"+std::to_string(i_experiment));
 	}
 	
 	delete QuadGrads_vs_BrApp; delete BrCalc_vs_BrApp; delete mainFit;

@@ -489,6 +489,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
   if(NoStations(config)) stn_ = {""};
   if(TwoStations(config)) stn_ = {"S12_", "S18_", "S12S18_"};
 
+  cout<<"---> SimultaneousAnalysis"<<endl;
+
   for(auto& stn : stn_) { 
 
     TH2D *h2_thetaY_mod = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"ThetaY_vs_Time_Modulo").c_str());
@@ -541,8 +543,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
     }
 
-    DrawFullEDMFitSim(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_thetaY_"+config+"_"+to_string(unblind)).c_str(), recoLabel, double(nEntries), ymin_thetaY*scaleFactor, ymax_thetaY*scaleFactor, unblind);
-    DrawFullEDMFitSim(gr_A_mod,  ";t_{g#minus2}^{mod} [#mus];Asymmetry / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_asymmetry_"+config+"_"+to_string(unblind)).c_str(), recoLabel, double(nEntries), ymin_A*scaleFactor, ymax_A*scaleFactor, unblind);
+    DrawFullEDMFitSim(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_thetaY_"+config+"_"+to_string(unblind)).c_str(), "1000 < p [MeV] < 2500", recoLabel, double(nEntries), ymin_thetaY*scaleFactor, ymax_thetaY*scaleFactor, unblind);
+    DrawFullEDMFitSim(gr_A_mod,  ";t_{g#minus2}^{mod} [#mus];Asymmetry / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_asymmetry_"+config+"_"+to_string(unblind)).c_str(), "1000 < p [MeV] < 2500", recoLabel, double(nEntries), ymin_A*scaleFactor, ymax_A*scaleFactor, unblind);
     
     gr_thetaY_mod->SetName((stn+"edmFit_thetaY").c_str());
     gr_A_mod->SetName((stn+"edmFit_A").c_str());
@@ -566,6 +568,13 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
     DrawTH1(h_pull, stn+";Pull [#sigma]; Entries / 0.25 #sigma", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"h_pull_"+config).c_str());
 
+    //TH1D* GetResidual(TH1D* data, TF1* fit)
+    TGraphErrors* gr_res = ConvertToTGraphErrors(GetResidual(px_thetaY_mod, f_thetaY));
+
+    DrawTGraphErrors(gr_res, ";t_{g#minus2}^{mod} [#mus];Fit residual [mrad]", "../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"gr_res_"+config);
+
+    gr_res->SetName((stn+"edmFit_res").c_str());
+    gr_res->Write();
 
   }
 
@@ -644,7 +653,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FFT_h_res_thetaY_vs_t->SetName((stn+"FFT_h_res_thetaY_vs_t").c_str());
     FFT_h_res_thetaY_vs_t->Write();
 
-    DrawFullEDMFitSim(gr_thetaY_vs_t,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 20 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_noMod_thetaY_"+config+"_"+to_string(unblind)).c_str(), recoLabel, double(nEntries), ymin*scaleFactor, ymax*scaleFactor, unblind);
+    DrawFullEDMFitSim(gr_thetaY_vs_t,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 20 ns", ("../Images/MC/"+dname+"/"+dataset+"/MainPlots/"+stn+"edmFit_noMod_thetaY_"+config+"_"+to_string(unblind)).c_str(), "1000 < p [MeV] < 2500", recoLabel, double(nEntries), ymin*scaleFactor, ymax*scaleFactor, unblind);
     gr_thetaY_vs_t->SetName((stn+"edmFit_thetaY_noMod").c_str());
     gr_thetaY_vs_t->Write();
 
@@ -807,7 +816,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       double c_tmp = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
       double ymin_tmp = c_tmp-1; double ymax_tmp = c_tmp+1;
-      DrawFullEDMFitSim(gr_thetaY_mod,  std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"edmFit_thetaY_"+momSlice+"_"+config+"_"+to_string(unblind)).c_str(), recoLabel, double(nEntries), ymin_tmp, ymax_tmp, unblind);
+      
+      DrawFullEDMFitSim(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../Images/MC/"+dname+"/"+dataset+"/MomBinnedAna/"+stn+"edmFit_thetaY_"+momSlice+"_"+config+"_"+to_string(unblind)).c_str(), std::to_string(lo)+" < p [MeV] < "+std::to_string(hi), recoLabel, double(nEntries), ymin_tmp, ymax_tmp, unblind);
 
       gr_thetaY_mod->SetName((stn+"moduloFit_thetaY_"+momSlice).c_str());
       gr_thetaY_mod->Write();
@@ -1019,6 +1029,8 @@ void Run(std::string config, std::string dataset, const bool unblind, bool write
   output->cd("Wiggle");
 
   const double phi = GetPhase(input, output, config, dataset);//, noStations); 
+
+  cout<<"---> Got phase"<<endl;
 
   output->mkdir("SimultaneousAnalysis");
   output->cd("SimultaneousAnalysis");

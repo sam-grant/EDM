@@ -1,17 +1,17 @@
 void BrErr_and_BrResRMS_overlay()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 19:16:47 2022) by ROOT version 6.24/06
+//=========  (Sat Jun 25 13:30:56 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-1669544,-0.1091014,1.502589e+07,0.9819129);
+   c->Range(-1669544,0.1599812,1.502589e+07,1.858034);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    c->SetFrameBorderMode(0);
    
-   Double_t Mean fit uncertainty_fx1213[13] = {
+   Double_t Mean fit uncertainty_fx1005[13] = {
    941716,
    1907064,
    2868345,
@@ -25,35 +25,21 @@ void BrErr_and_BrResRMS_overlay()
    1.054512e+07,
    1.151148e+07,
    1.247554e+07};
-   Double_t Mean fit uncertainty_fy1213[13] = {
-   0.793465,
-   0.556715,
-   0.45437,
-   0.39851,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
-   Double_t Mean fit uncertainty_fex1213[13] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
-   Double_t Mean fit uncertainty_fey1213[13] = {
+   Double_t Mean fit uncertainty_fy1005[13] = {
+   1.575025,
+   1.13535,
+   0.926365,
+   0.80422,
+   0.71767,
+   0.653965,
+   0.60566,
+   0.565575,
+   0.53338,
+   0.50554,
+   0.481985,
+   0.46124,
+   0.44299};
+   Double_t Mean fit uncertainty_fex1005[13] = {
    0,
    0,
    0,
@@ -67,44 +53,58 @@ void BrErr_and_BrResRMS_overlay()
    0,
    0,
    0};
-   TGraphErrors *gre = new TGraphErrors(13,Mean fit uncertainty_fx1213,Mean fit uncertainty_fy1213,Mean fit uncertainty_fex1213,Mean fit uncertainty_fey1213);
+   Double_t Mean fit uncertainty_fey1005[13] = {
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
+   TGraphErrors *gre = new TGraphErrors(13,Mean fit uncertainty_fx1005,Mean fit uncertainty_fy1005,Mean fit uncertainty_fex1005,Mean fit uncertainty_fey1005);
    gre->SetName("Mean fit uncertainty");
    gre->SetTitle(";CTAGs / setting;#delta#LTB_{r}^{b}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_MeansPfitsPuncertainty1213 = new TH1F("Graph_MeansPfitsPuncertainty1213","",100,0,1.362893e+07);
-   Graph_MeansPfitsPuncertainty1213->SetMinimum(0);
-   Graph_MeansPfitsPuncertainty1213->SetMaximum(0.8728115);
-   Graph_MeansPfitsPuncertainty1213->SetDirectory(0);
-   Graph_MeansPfitsPuncertainty1213->SetStats(0);
+   TH1F *Graph_MeansPfitsPuncertainty1005 = new TH1F("Graph_MeansPfitsPuncertainty1005","",100,0,1.362893e+07);
+   Graph_MeansPfitsPuncertainty1005->SetMinimum(0.3297865);
+   Graph_MeansPfitsPuncertainty1005->SetMaximum(1.688229);
+   Graph_MeansPfitsPuncertainty1005->SetDirectory(0);
+   Graph_MeansPfitsPuncertainty1005->SetStats(0);
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
-   Graph_MeansPfitsPuncertainty1213->SetLineColor(ci);
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->SetTitle("CTAGs / setting");
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->SetRange(1,98);
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->CenterTitle(true);
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->SetLabelFont(42);
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->SetTitleSize(0.04);
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->SetTitleOffset(1.1);
-   Graph_MeansPfitsPuncertainty1213->GetXaxis()->SetTitleFont(42);
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->SetTitle("#delta#LTB_{r}^{b}#GT [ppm]");
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->CenterTitle(true);
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->SetNdivisions(4000510);
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->SetLabelFont(42);
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->SetTitleSize(0.04);
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->SetTitleOffset(1.1);
-   Graph_MeansPfitsPuncertainty1213->GetYaxis()->SetTitleFont(42);
-   Graph_MeansPfitsPuncertainty1213->GetZaxis()->SetLabelFont(42);
-   Graph_MeansPfitsPuncertainty1213->GetZaxis()->SetTitleOffset(1);
-   Graph_MeansPfitsPuncertainty1213->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_Mean fit uncertainty1213);
+   Graph_MeansPfitsPuncertainty1005->SetLineColor(ci);
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->SetTitle("CTAGs / setting");
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->SetRange(1,98);
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->CenterTitle(true);
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->SetLabelFont(42);
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->SetTitleSize(0.04);
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->SetTitleOffset(1.1);
+   Graph_MeansPfitsPuncertainty1005->GetXaxis()->SetTitleFont(42);
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->SetTitle("#delta#LTB_{r}^{b}#GT [ppm]");
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->CenterTitle(true);
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->SetNdivisions(4000510);
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->SetLabelFont(42);
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->SetTitleSize(0.04);
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->SetTitleOffset(1.1);
+   Graph_MeansPfitsPuncertainty1005->GetYaxis()->SetTitleFont(42);
+   Graph_MeansPfitsPuncertainty1005->GetZaxis()->SetLabelFont(42);
+   Graph_MeansPfitsPuncertainty1005->GetZaxis()->SetTitleOffset(1);
+   Graph_MeansPfitsPuncertainty1005->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Mean fit uncertainty1005);
    
    gre->Draw("ap");
    
-   Double_t RMS of truth residual_fx1214[13] = {
+   Double_t RMS of truth residual_fx1006[13] = {
    941716,
    1907064,
    2868345,
@@ -118,21 +118,21 @@ void BrErr_and_BrResRMS_overlay()
    1.054512e+07,
    1.151148e+07,
    1.247554e+07};
-   Double_t RMS of truth residual_fy1214[13] = {
-   0.7929698,
-   0.5470955,
-   0.4515364,
-   0.3896659,
-   0.3632856,
-   0.3161952,
-   0.2990022,
-   0.2760917,
-   0.2708734,
-   0.2445977,
-   0.2383316,
-   0.2304464,
-   0.2210973};
-   Double_t RMS of truth residual_fex1214[13] = {
+   Double_t RMS of truth residual_fy1006[13] = {
+   1.653168,
+   1.122725,
+   0.9104954,
+   0.8191217,
+   0.7122489,
+   0.6414378,
+   0.6079917,
+   0.562985,
+   0.556473,
+   0.4974539,
+   0.4709518,
+   0.4652094,
+   0.45571};
+   Double_t RMS of truth residual_fex1006[13] = {
    0,
    0,
    0,
@@ -146,52 +146,52 @@ void BrErr_and_BrResRMS_overlay()
    0,
    0,
    0};
-   Double_t RMS of truth residual_fey1214[13] = {
-   0.01773134,
-   0.01223343,
-   0.01009666,
-   0.008713194,
-   0.008123313,
-   0.007070339,
-   0.006685893,
-   0.006173599,
-   0.006056912,
-   0.005469371,
-   0.005329256,
-   0.005152939,
-   0.004943885};
-   gre = new TGraphErrors(13,RMS of truth residual_fx1214,RMS of truth residual_fy1214,RMS of truth residual_fex1214,RMS of truth residual_fey1214);
+   Double_t RMS of truth residual_fey1006[13] = {
+   0.03696596,
+   0.02510489,
+   0.0203593,
+   0.01831612,
+   0.01592637,
+   0.01434299,
+   0.01359511,
+   0.01258873,
+   0.01244312,
+   0.01112341,
+   0.0105308,
+   0.0104024,
+   0.01018999};
+   gre = new TGraphErrors(13,RMS of truth residual_fx1006,RMS of truth residual_fy1006,RMS of truth residual_fex1006,RMS of truth residual_fey1006);
    gre->SetName("RMS of truth residual");
    gre->SetTitle(";CTAGs / setting;RMS of meas #minus true #LTB_{r}^{b}#GT [ppm]");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(24);
    
-   TH1F *Graph_RMSsPofsPtruthsPresidual1214 = new TH1F("Graph_RMSsPofsPtruthsPresidual1214","",100,0,1.362893e+07);
-   Graph_RMSsPofsPtruthsPresidual1214->SetMinimum(0.1566986);
-   Graph_RMSsPofsPtruthsPresidual1214->SetMaximum(0.8701559);
-   Graph_RMSsPofsPtruthsPresidual1214->SetDirectory(0);
-   Graph_RMSsPofsPtruthsPresidual1214->SetStats(0);
+   TH1F *Graph_RMSsPofsPtruthsPresidual1006 = new TH1F("Graph_RMSsPofsPtruthsPresidual1006","",100,0,1.362893e+07);
+   Graph_RMSsPofsPtruthsPresidual1006->SetMinimum(0.3210586);
+   Graph_RMSsPofsPtruthsPresidual1006->SetMaximum(1.814595);
+   Graph_RMSsPofsPtruthsPresidual1006->SetDirectory(0);
+   Graph_RMSsPofsPtruthsPresidual1006->SetStats(0);
 
    ci = TColor::GetColor("#000099");
-   Graph_RMSsPofsPtruthsPresidual1214->SetLineColor(ci);
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->SetTitle("CTAGs / setting");
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->SetRange(1,98);
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->CenterTitle(true);
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->SetLabelFont(42);
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->SetTitleSize(0.04);
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->SetTitleOffset(1.1);
-   Graph_RMSsPofsPtruthsPresidual1214->GetXaxis()->SetTitleFont(42);
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->SetTitle("RMS of meas #minus true #LTB_{r}^{b}#GT [ppm]");
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->CenterTitle(true);
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->SetNdivisions(4000510);
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->SetLabelFont(42);
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->SetTitleSize(0.04);
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->SetTitleOffset(1.1);
-   Graph_RMSsPofsPtruthsPresidual1214->GetYaxis()->SetTitleFont(42);
-   Graph_RMSsPofsPtruthsPresidual1214->GetZaxis()->SetLabelFont(42);
-   Graph_RMSsPofsPtruthsPresidual1214->GetZaxis()->SetTitleOffset(1);
-   Graph_RMSsPofsPtruthsPresidual1214->GetZaxis()->SetTitleFont(42);
-   gre->SetHistogram(Graph_RMS of truth residual1214);
+   Graph_RMSsPofsPtruthsPresidual1006->SetLineColor(ci);
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->SetTitle("CTAGs / setting");
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->SetRange(1,98);
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->CenterTitle(true);
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->SetLabelFont(42);
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->SetTitleSize(0.04);
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->SetTitleOffset(1.1);
+   Graph_RMSsPofsPtruthsPresidual1006->GetXaxis()->SetTitleFont(42);
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->SetTitle("RMS of meas #minus true #LTB_{r}^{b}#GT [ppm]");
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->CenterTitle(true);
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->SetNdivisions(4000510);
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->SetLabelFont(42);
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->SetTitleSize(0.04);
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->SetTitleOffset(1.1);
+   Graph_RMSsPofsPtruthsPresidual1006->GetYaxis()->SetTitleFont(42);
+   Graph_RMSsPofsPtruthsPresidual1006->GetZaxis()->SetLabelFont(42);
+   Graph_RMSsPofsPtruthsPresidual1006->GetZaxis()->SetTitleOffset(1);
+   Graph_RMSsPofsPtruthsPresidual1006->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_RMS of truth residual1006);
    
    gre->Draw("p ");
    
@@ -223,7 +223,7 @@ void BrErr_and_BrResRMS_overlay()
    entry->SetMarkerSize(1);
    entry->SetTextFont(44);
    leg->Draw();
-   TGaxis *gaxis = new TGaxis(0,0.8728115,1.335635e+07,0.8728115,0,344.5,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.688229,1.335635e+07,1.688229,0,344.5,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

@@ -1,0 +1,171 @@
+// Run tracking sim on ringsim files, make ntuples
+// Sam Grant - Sept 2020
+
+#include "messageParams.fcl"
+#include "geom/world.fcl"
+#include "geom/strawtracker.fcl"
+#include "trackingConfig.fcl"
+#include "geom/gm2FieldManager.fcl"
+#include "geom/magnetIronAndCryostat.fcl"
+#include "geom/inflector.fcl"
+#include "geom/kicker.fcl"
+#include "geom/quad.fcl"
+#include "conDBParams.fcl"
+
+process_name : trees
+
+source : {
+	module_type : RootInput
+	maxEvents   : -1
+}
+
+services : {
+
+	message : {
+
+		debugModules : []
+		suppressInfo : []
+
+		destinations : {
+			LogToConsole : {
+				type       : "cout"
+				threshold  : "INFO"
+				categories : @local::message_categories
+			}
+			LogToFile : {
+				type      : "file"
+				filename  : "gm2tracker_particle_gun_full.log"
+				append    :  false
+				threshold : "INFO"
+				categories : @local::message_categories
+			}
+		}
+  } // end of message services
+
+  DetectorHolder    : {}
+  ActionHolder      : {}
+  CoordSystemsStore : {}
+  Gm2Constants      : {}
+  RandomNumberGenerator : {}
+
+  Geometry : {
+  	world : @local::world_geom
+  	strawtracker : @local::strawtracker_geom
+  	magnetIronAndCryostat : @local::magnetIronAndCryostat_geom
+  	inflector : @local::inflector_geom
+  	kicker : @local::kicker_geom
+  	quad : @local::quad_geom
+  }
+
+  World : {}
+  StrawTrackerGeometry : {}
+  StrawTrackerGeometryConstants : { DatabaseURL : @local::condb_prod_params } # dev db is @local::condb_dev_params
+
+  gm2FieldManager : @local::gm2FieldManager
+
+  @table::trackingChain.geometry
+  @table::trackingChain.field
+
+  Database: {
+  	conDBHost  : 'dbdata0vm.fnal.gov'
+  	conDBPort  : '9091'
+  	conDBName  : 'postgres_dev'
+  }
+
+  scheduler : { errorOnFailureToPut : false }
+
+  TFileService: {
+  	fileName: "gm2tracker_particle_gun_full.root"
+  }
+
+  TrackQuality : {}
+
+} // end of services block
+
+
+physics : {
+
+	filters : {
+		// Put many muons into same fill 
+		fillEvents : @local::fill_params
+		// Track selector
+		geaneTrackSelector : {module_type : GeaneTrackSelector}
+		// Filter laser shots
+		noDigitsFilter : { module_type : NoDigitsFilter }
+		
+		} // end of filter block
+		
+		producers : {
+		  // digitization of simulation
+			digitizer : @local::digit_params
+		  // Reco chain
+			@table::trackingChain.producers
+
+			trackCaloMatching : {
+				module_type           : TrackCaloMatching
+				clusterModuleLabel    : hitClusterDAQ 
+				clusterInstanceLabel  : cluster
+		  		coincidenceTimeWindow : [-15,10] // ns
+		  		throwOnEmptyCluster : true // set to true for the out-of-synch runs
+		  	}
+
+  	}	 // end of producer block 
+
+  	analyzers : {
+
+  		trackerNTup : {
+    	// Run backwards only trees
+  		// module_type : TrackNTupBackwardsOnly
+  			module_type : TrackerMCDecayTrees 
+    	// Run calo-matched trees
+ 		  //module_type : TrackAndTrackCaloNTup
+  		} 
+
+  } // end of analyzer block
+
+  matchingPath : [ noDigitsFilter, trackCaloMatching ]
+
+  filterPath : [ noDigitsFilter ]
+
+  recoPath : [ fillEvents, digitizer, @sequence::trackingChain.trackingPath ] 
+
+  outputPath : [ out , trackerNTup ] // [ trackerNTup ] // 
+
+  trigger_paths : [ recoPath , filterPath ] // Use matchingPath instead of filterPath for calo matching
+
+  end_paths     : [ outputPath ]
+
+} // end of physics block
+
+outputs :
+{
+	out : { 
+		module_type  : RootOutput
+		fileName     : "gm2tracker_particle_gun_full.root"
+		dataTier     : "full"
+
+		outputCommands : [ "keep *",
+			"drop gm2truth*_*_*_mdc*",
+			@sequence::trackingChain.outputDrops
+			] 
+
+		SelectEvents : ["recoPath"] 
+	}
+
+} // end of outputs block
+
+//dca calc patched parameters
+physics.producers.driftDistReco.calculatorName : garfieldDriftDistanceEstimator
+
+//t0 finder patches
+// physics.producers.t0Finder.meanTimeOffset : 28.65 // 24.6
+
+// Use truth LR and truth T0 to get a boost in stats
+physics.producers.tracks.fitMode : truthLRFit
+physics.producers.driftDistReco.useTrueDigitT0 : true
+
+// Extrapolation for backwards only
+physics.producers.vertices.doForwardsExtrap : false
+// Extrapolation for calo-matching
+//physics.producers.vertices.doForwardsExtrap : true
+

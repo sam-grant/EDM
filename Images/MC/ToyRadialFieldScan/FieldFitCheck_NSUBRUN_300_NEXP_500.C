@@ -1,7 +1,7 @@
 void FieldFitCheck_NSUBRUN_300_NEXP_500()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 19:16:44 2022) by ROOT version 6.24/06
+//=========  (Fri Jun 24 16:05:56 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75,-107.0945,75,398.2908);

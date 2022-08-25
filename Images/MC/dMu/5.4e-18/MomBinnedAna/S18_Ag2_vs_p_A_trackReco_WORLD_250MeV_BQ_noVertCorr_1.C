@@ -1,10 +1,10 @@
 void S18_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:49 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:51:01 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-163.5383,-4.431948e-05,3375.034,1.401876e-05);
+   c->Range(-163.5383,-4.431947e-05,3375.034,1.401876e-05);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -25,15 +25,15 @@ void S18_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    2787.407};
    Double_t Graph0_fy1136[11] = {
    -2.453734e-06,
-   9.753222e-08,
-   -1.767766e-08,
-   1.307706e-08,
-   3.075788e-08,
-   -2.236492e-08,
+   9.753223e-08,
+   -1.767765e-08,
+   1.307707e-08,
+   3.075789e-08,
+   -2.23649e-08,
    -1.049925e-07,
    -2.496561e-07,
-   -1.617525e-07,
-   1.199131e-08,
+   -1.617524e-07,
+   1.199147e-08,
    -1.515036e-05};
    Double_t Graph0_fex1136[11] = {
    0.09668649,
@@ -56,8 +56,8 @@ void S18_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    3.56298e-08,
    6.040963e-08,
    1.262048e-07,
-   3.094216e-07,
-   6.607523e-07,
+   3.094215e-07,
+   6.607524e-07,
    1.944608e-05};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1136,Graph0_fy1136,Graph0_fex1136,Graph0_fey1136);
    gre->SetName("Graph0");
@@ -67,7 +67,7 @@ void S18_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    
    TH1F *Graph_Graph01136 = new TH1F("Graph_Graph01136","S18_",100,218.3473,3021.177);
    Graph_Graph01136->SetMinimum(-3.848565e-05);
-   Graph_Graph01136->SetMaximum(8.184934e-06);
+   Graph_Graph01136->SetMaximum(8.184933e-06);
    Graph_Graph01136->SetDirectory(0);
    Graph_Graph01136->SetStats(0);
 

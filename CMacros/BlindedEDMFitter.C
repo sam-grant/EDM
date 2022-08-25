@@ -10,7 +10,7 @@
 
 // This should really be "fitStartTime" and "fitEndTime"
 double tmin = 7*G2PERIOD;
-double tmax = 92*G2PERIOD;
+double tmax = 92*G2PERIOD; // huh?
 
 /*double tmin = 15*G2PERIOD;
 double tmax = 23*G2PERIOD;*/
@@ -608,7 +608,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
       // Blind with dilution weighting
-      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
+      TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);//BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
 
       //cout<<"blinded"<<endl;
       // TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
@@ -685,9 +685,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       count++;
 
-
     } // Mom slices
-
 
     output->cd("MomentumBinnedAnalysis/ParameterScans");
 
@@ -773,7 +771,7 @@ void Run(std::string config, bool write) {
 
   cout<<"Reading\t"<<inputName<<" "<<input<<endl;
 
-  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+"_minusPhiErr.root";//"_"+to_string(step)+"MeV_"+qual+".root";
+  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+"_testing.root";//"_"+to_string(step)+"MeV_"+qual+".root";
   //std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+".root";//"_"+to_string(step)+"MeV_"+qual+".root";
   if(!write) outputName = "delete_me.root";
 

@@ -1,7 +1,7 @@
 void ThetaY_TrackTruth()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jun 22 19:11:33 2022) by ROOT version 6.24/06
+//=========  (Wed Jun 29 22:53:04 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);

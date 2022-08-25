@@ -1,7 +1,7 @@
 void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:47:25 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:49:39 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-3.249792e-07,4.876443,1.750208e-07);
@@ -1530,7 +1530,7 @@ void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1016->SetSavedPoint(1353,-4.848598e-08);
    FullEDMFunc1016->SetSavedPoint(1354,-4.84714e-08);
    FullEDMFunc1016->SetSavedPoint(1355,-4.845684e-08);
-   FullEDMFunc1016->SetSavedPoint(1356,-4.844229e-08);
+   FullEDMFunc1016->SetSavedPoint(1356,-4.844228e-08);
    FullEDMFunc1016->SetSavedPoint(1357,-4.842774e-08);
    FullEDMFunc1016->SetSavedPoint(1358,-4.841321e-08);
    FullEDMFunc1016->SetSavedPoint(1359,-4.839868e-08);
@@ -10190,15 +10190,15 @@ void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1016->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1016->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1016->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1016->SetParameter(0,-4.908437e-09);
+   FullEDMFunc1016->SetParameter(0,-4.908434e-09);
    FullEDMFunc1016->SetParError(0,3.09261e-09);
    FullEDMFunc1016->SetParLimits(0,0,0);
    FullEDMFunc1016->SetParameter(1,1.439311);
    FullEDMFunc1016->SetParError(1,0);
    FullEDMFunc1016->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1016->SetParameter(2,0.141151);
+   FullEDMFunc1016->SetParameter(2,0.1411509);
    FullEDMFunc1016->SetParError(2,0);
-   FullEDMFunc1016->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1016->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1016->SetParameter(3,3.487574e-08);
    FullEDMFunc1016->SetParError(3,3.042133e-09);
    FullEDMFunc1016->SetParLimits(3,0,0);
@@ -10220,7 +10220,7 @@ void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("-5e-09
 #pm3e-09
 ");
-   pt_LaTex = pt->AddText("3.49e-08
+   pt_LaTex = pt->AddText("3.5e-08
 #pm3e-09
 ");
    pt_LaTex = pt->AddText("-7.5e-08
@@ -11640,7 +11640,7 @@ void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1017->SetSavedPoint(1353,-4.848598e-08);
    FullEDMFunc1017->SetSavedPoint(1354,-4.84714e-08);
    FullEDMFunc1017->SetSavedPoint(1355,-4.845684e-08);
-   FullEDMFunc1017->SetSavedPoint(1356,-4.844229e-08);
+   FullEDMFunc1017->SetSavedPoint(1356,-4.844228e-08);
    FullEDMFunc1017->SetSavedPoint(1357,-4.842774e-08);
    FullEDMFunc1017->SetSavedPoint(1358,-4.841321e-08);
    FullEDMFunc1017->SetSavedPoint(1359,-4.839868e-08);
@@ -20300,15 +20300,15 @@ void S18_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1017->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1017->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1017->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1017->SetParameter(0,-4.908437e-09);
+   FullEDMFunc1017->SetParameter(0,-4.908434e-09);
    FullEDMFunc1017->SetParError(0,3.09261e-09);
    FullEDMFunc1017->SetParLimits(0,0,0);
    FullEDMFunc1017->SetParameter(1,1.439311);
    FullEDMFunc1017->SetParError(1,0);
    FullEDMFunc1017->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1017->SetParameter(2,0.141151);
+   FullEDMFunc1017->SetParameter(2,0.1411509);
    FullEDMFunc1017->SetParError(2,0);
-   FullEDMFunc1017->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1017->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1017->SetParameter(3,3.487574e-08);
    FullEDMFunc1017->SetParError(3,3.042133e-09);
    FullEDMFunc1017->SetParLimits(3,0,0);

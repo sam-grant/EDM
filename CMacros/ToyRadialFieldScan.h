@@ -14,36 +14,36 @@ const int N_EXP = 1000;
 
 // Prelimary scan
 // 2 million ctags 
-//const int N_QHV = 2;
-//const int N_FIELD = 2;
-//const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
+const int N_QHV = 2;
+const int N_FIELD = 2;
+const double QHV[N_QHV] = {14, 18}; //  quad settings, kV
+const double BR_APP[N_FIELD] = {30, -30}; // Applied radial field, ppm
 
 // New settings proposal
 
 // Config A -- All settings, ideal scenario, 6 hour measurement
-const int N_QHV = 4;
-const int N_FIELD = 6;
-const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
-const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+//const int N_QHV = 4;
+//const int N_FIELD = 6;
+//const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
 
 //
 //// Config B -- All field settings without 20 kV (in case untenable)
-//const int N_QHV = 3;
-//const int N_FIELD = 6;
-//const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
-//const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
+// const int N_QHV = 3;
+// const int N_FIELD = 6;
+// const double QHV[N_QHV] = {14, 16, 18}; //  quad settings, kV
+// const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
 //
 //// Config C -- All field settings without 14 kV (in case untenable)
 //const int N_QHV = 3;
 //const int N_FIELD = 6;
-//const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
+//const double QHV[N_QHV] = {16, 18, 19.5}; //  quad settings, kV
 //const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial field, ppm
 //
 //// Config D -- All quad settings without high/low field settings, to check if we need them
 //const int N_QHV = 4;
 //const int N_FIELD = 4;
-//const double QHV[N_QHV] = {14, 16, 18, 20}; //  quad settings, kV
+//const double QHV[N_QHV] = {14, 16, 18, 19.5}; //  quad settings, kV
 //const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 //
 //// Config E -- No 20 kV, no high/low field COLLOBORATION MEETING SETTINGS
@@ -53,10 +53,10 @@ const double BR_APP[N_FIELD] = {-50, -30, -10, 10, 30, 50}; // Applied radial fi
 //const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 //
 //// Config F -- No 14 kV, no high/low field
-// const int N_QHV = 3;
-// const int N_FIELD = 4;
-// const double QHV[N_QHV] = {16, 18, 20}; //  quad settings, kV
-// const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
+//const int N_QHV = 3;
+//const int N_FIELD = 4;
+//const double QHV[N_QHV] = {16, 18, 19.5}; //  quad settings, kV
+//const double BR_APP[N_FIELD] = {-30, -10, 10, 30}; // Applied radial field, ppm
 
 const int N_SUBRUNS = 13; // 13; // Lucky number
 const int SUBRUN_INTERVAL = 25; // 66; 66 is for modelling the preliminary scan

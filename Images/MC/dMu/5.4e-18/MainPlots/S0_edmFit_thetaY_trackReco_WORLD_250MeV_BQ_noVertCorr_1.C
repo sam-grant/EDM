@@ -1,7 +1,7 @@
 void S0_edmFit_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:47:23 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:49:38 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-0.8125615,4.876443,0.5624386);
@@ -10190,15 +10190,15 @@ void S0_edmFit_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1006->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1006->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1006->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1006->SetParameter(0,-0.01834682);
+   FullEDMFunc1006->SetParameter(0,-0.0183468);
    FullEDMFunc1006->SetParError(0,0.01231129);
    FullEDMFunc1006->SetParLimits(0,0,0);
    FullEDMFunc1006->SetParameter(1,1.439311);
    FullEDMFunc1006->SetParError(1,0);
    FullEDMFunc1006->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1006->SetParameter(2,0.141151);
+   FullEDMFunc1006->SetParameter(2,0.1411509);
    FullEDMFunc1006->SetParError(2,0);
-   FullEDMFunc1006->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1006->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1006->SetParameter(3,0.1493569);
    FullEDMFunc1006->SetParError(3,0.01222528);
    FullEDMFunc1006->SetParLimits(3,0,0);
@@ -10220,7 +10220,7 @@ void S0_edmFit_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("-0.02
 #pm0.01
 ");
-   pt_LaTex = pt->AddText("0.149
+   pt_LaTex = pt->AddText("0.15
 #pm0.01
 ");
    pt_LaTex = pt->AddText("-0.125
@@ -20300,15 +20300,15 @@ void S0_edmFit_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1007->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1007->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1007->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1007->SetParameter(0,-0.01834682);
+   FullEDMFunc1007->SetParameter(0,-0.0183468);
    FullEDMFunc1007->SetParError(0,0.01231129);
    FullEDMFunc1007->SetParLimits(0,0,0);
    FullEDMFunc1007->SetParameter(1,1.439311);
    FullEDMFunc1007->SetParError(1,0);
    FullEDMFunc1007->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1007->SetParameter(2,0.141151);
+   FullEDMFunc1007->SetParameter(2,0.1411509);
    FullEDMFunc1007->SetParError(2,0);
-   FullEDMFunc1007->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1007->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1007->SetParameter(3,0.1493569);
    FullEDMFunc1007->SetParError(3,0.01222528);
    FullEDMFunc1007->SetParLimits(3,0,0);

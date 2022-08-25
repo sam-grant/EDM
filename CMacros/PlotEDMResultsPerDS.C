@@ -105,7 +105,7 @@ void DrawGraph(TGraphErrors *graph, std::string title, std::string fname, vector
 
 }
 
-void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string fname, vector<string> xLabel_) {
+void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string fname, vector<string> xLabel_, bool orthogonal = false) {
 
   // Get one sigma band
 
@@ -217,7 +217,9 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   dummy->SetLineWidth(0);
 
   dummy->GetYaxis()->SetTitle("d_{#mu}^{BLIND} [e#upointcm]");
-  dummy->GetYaxis()->SetRangeUser(-0.5e-18, 2.1e-18);//ymin, ymax);
+  if(orthogonal) dummy->GetYaxis()->SetTitle("d_{#Omega} [e#upointcm]");
+  //dummy->GetYaxis()->SetRangeUser(-0.5e-18, 2.1e-18);//ymin, ymax);
+  dummy->GetYaxis()->SetRangeUser(ymin, ymax);
   dummy->GetXaxis()->SetRangeUser(0.5,4.5);//, 100);
   dummy->GetXaxis()->SetTitleSize(.04);
   dummy->GetYaxis()->SetTitleSize(.04);
@@ -280,7 +282,9 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   std::ostringstream result_str; result_str << fit->GetParameter(0); 
   std::ostringstream error_str; error_str << fit->GetParError(0);  
 
-  result->AddText("#LTd_{#mu}^{BLIND}#GT = (1.05#pm0.10)#times10^{-18} e#upointcm");//"+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" );// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  //result->AddText("#LTd_{#mu}^{BLIND}#GT = (1.05#pm0.10)#times10^{-18} e#upointcm");//"+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" );// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  if(!orthogonal) result->AddText("#LTd_{#mu}^{BLIND}#GT = "+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  else result->AddText("#LTd_{#Omega}#GT = "+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
   result->Draw("SAME");
 
   c->SaveAs((fname+".pdf").c_str());
@@ -323,6 +327,9 @@ double GetLimit(double delta_prime) {
 
 void Run(std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "") { //, string test = "") { 
 
+  bool orthogonal = false;
+  if(blinding=="_orthogonal") orthogonal = true;
+
   if(correctionString != "") correctionString = "_"+correctionString;
 
   vector<string> ds_ = {"Run-1a", "Run-1b", "Run-1c", "Run-1d"};
@@ -342,8 +349,9 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root";
-      if(ds == "Run-1d" && randomisationStr == "randomised_") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
+      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".5.root";
+      if(ds == "Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".5.root";//finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
+      cout<<finName<<endl;
       TFile *file = TFile::Open(finName.c_str());//("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root").c_str());
 
       TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
@@ -379,7 +387,7 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_, orthogonal);
 
 
   return;
@@ -448,8 +456,9 @@ void RunFromRawValues() { // std::string dataset, int step, std::string blinding
 
 void PlotEDMResultsPerDS() { 
 
-  //Run("Run-1", 250, "blinded", "EDM", "", "");//"randomised_");
+ // Run("Run-1", 250, "_orthogonal", "EDM", "", "randomised_");
   Run("Run-1", 250, "blinded", "EDM", "", "randomised_");
+  //Run("Run-1", 250, "blinded", "EDM", "", "randomised_");
   //Run("Run-1", 250, "blinded", "EDM", "noDilCorr");
   //Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
   //Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 

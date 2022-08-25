@@ -1,7 +1,7 @@
 void S12_VerticalDecayAngleRatio()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 09:37:37 2022) by ROOT version 6.24/06
+//=========  (Thu Jun 30 16:21:36 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->Range(0,0,1,1);

@@ -1,10 +1,10 @@
 void S12S18_eAEDM_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:54 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:51:10 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-163.6875,-0.00705165,3375.235,0.1102726);
+   c->Range(-163.6875,-0.007051652,3375.235,0.1102726);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -66,8 +66,8 @@ void S12S18_eAEDM_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01178 = new TH1F("Graph_Graph01178","S12S18_",100,218.2359,3021.343);
-   Graph_Graph01178->SetMinimum(0.004680773);
-   Graph_Graph01178->SetMaximum(0.09854015);
+   Graph_Graph01178->SetMinimum(0.004680772);
+   Graph_Graph01178->SetMaximum(0.09854016);
    Graph_Graph01178->SetDirectory(0);
    Graph_Graph01178->SetStats(0);
 

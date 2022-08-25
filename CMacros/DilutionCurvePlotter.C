@@ -579,10 +579,11 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
    //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
    //TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
-   TLegend *l = new TLegend(0.59,0.69,0.89,0.89);
+   //TLegend *l = new TLegend(0.59,0.69,0.89,0.89);
+   TLegend *l = new TLegend(0.65,0.715,0.89,0.89);
    l->SetBorderSize(0);
    l->SetNColumns(1);
-   l->AddEntry(gr,"Sim: all decays");
+   l->AddEntry(gr,"All decays");
    // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
@@ -947,7 +948,7 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";//refit.acceptanceCorrected.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.test.full.root";//refit.acceptanceCorrected.reweight.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;

@@ -1,10 +1,13 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void allDecaysErrors()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 15:46:44 2022) by ROOT version 6.24/06
+//=========  (Tue Aug 16 13:46:20 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-390.357,-0.003240064,3513.213,0.05105506);
+   c->Range(-390.3568,-0.0006040152,3513.211,0.009521596);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,31 +15,31 @@ void allDecaysErrors()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1002[12] = {
-   124.3987,
-   374.0359,
-   623.6717,
-   873.25,
-   1122.829,
-   1372.245,
-   1621.478,
-   1870.594,
-   2119.355,
-   2367.258,
-   2613.22,
-   2850.269};
+   124.3991,
+   374.0341,
+   623.7056,
+   873.2706,
+   1122.785,
+   1372.229,
+   1621.527,
+   1870.634,
+   2119.341,
+   2367.305,
+   2613.177,
+   2850.267};
    Double_t _fy1002[12] = {
-   0.04200587,
-   0.01683296,
-   0.01241166,
-   0.01015493,
-   0.008740876,
-   0.007783745,
-   0.007086902,
-   0.006579648,
-   0.006200557,
-   0.005940834,
-   0.005809123,
-   0.005973244};
+   0.007833994,
+   0.0031414,
+   0.002315717,
+   0.001893978,
+   0.001631612,
+   0.001451678,
+   0.001322653,
+   0.001227599,
+   0.001157624,
+   0.001109479,
+   0.001083587,
+   0.001115188};
    Double_t _fex1002[12] = {
    0,
    0,
@@ -69,9 +72,9 @@ void allDecaysErrors()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,0,3122.856);
-   Graph_Graph1002->SetMinimum(0.002189448);
-   Graph_Graph1002->SetMaximum(0.04562555);
+   TH1F *Graph_Graph1002 = new TH1F("Graph_Graph1002","",100,0,3122.854);
+   Graph_Graph1002->SetMinimum(0.000408546);
+   Graph_Graph1002->SetMaximum(0.008509035);
    Graph_Graph1002->SetDirectory(0);
    Graph_Graph1002->SetStats(0);
 

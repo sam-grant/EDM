@@ -1,7 +1,7 @@
 void BrErr_75()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 19:16:25 2022) by ROOT version 6.24/06
+//=========  (Sat Jun 25 13:30:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,20 +11,47 @@ void BrErr_75()
    c->SetFrameBorderMode(0);
    
    TH1D *__8 = new TH1D("__8","Number of sub-runs: 75",240,0.4,1.6);
-   __8->SetBinContent(7,4);
-   __8->SetBinContent(8,25);
-   __8->SetBinContent(9,79);
-   __8->SetBinContent(10,155);
-   __8->SetBinContent(11,276);
-   __8->SetBinContent(12,236);
-   __8->SetBinContent(13,154);
-   __8->SetBinContent(14,52);
-   __8->SetBinContent(15,17);
-   __8->SetBinContent(16,2);
+   __8->SetBinContent(89,2);
+   __8->SetBinContent(91,3);
+   __8->SetBinContent(92,3);
+   __8->SetBinContent(93,7);
+   __8->SetBinContent(94,7);
+   __8->SetBinContent(95,8);
+   __8->SetBinContent(96,24);
+   __8->SetBinContent(97,35);
+   __8->SetBinContent(98,33);
+   __8->SetBinContent(99,43);
+   __8->SetBinContent(100,45);
+   __8->SetBinContent(101,47);
+   __8->SetBinContent(102,53);
+   __8->SetBinContent(103,59);
+   __8->SetBinContent(104,61);
+   __8->SetBinContent(105,67);
+   __8->SetBinContent(106,70);
+   __8->SetBinContent(107,53);
+   __8->SetBinContent(108,59);
+   __8->SetBinContent(109,62);
+   __8->SetBinContent(110,41);
+   __8->SetBinContent(111,51);
+   __8->SetBinContent(112,42);
+   __8->SetBinContent(113,22);
+   __8->SetBinContent(114,18);
+   __8->SetBinContent(115,18);
+   __8->SetBinContent(116,15);
+   __8->SetBinContent(117,8);
+   __8->SetBinContent(118,11);
+   __8->SetBinContent(119,11);
+   __8->SetBinContent(120,6);
+   __8->SetBinContent(121,5);
+   __8->SetBinContent(122,3);
+   __8->SetBinContent(123,4);
+   __8->SetBinContent(124,2);
+   __8->SetBinContent(126,1);
+   __8->SetBinContent(134,1);
    __8->SetEntries(1000);
    __8->SetStats(0);
    __8->GetXaxis()->SetTitle("Fitted #delta#LTB_{r}^{b}#GT [ppm]");
-   __8->GetXaxis()->SetRange(0,36);
+   __8->GetXaxis()->SetRange(0,212);
    __8->GetXaxis()->CenterTitle(true);
    __8->GetXaxis()->SetLabelFont(42);
    __8->GetXaxis()->SetTitleSize(0.04);
@@ -59,11 +86,11 @@ void BrErr_75()
    pt->SetTextFont(44);
    pt->SetTextSize(23);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("0.454
-#pm0.0002
+   pt_LaTex = pt->AddText("0.926
+#pm0.001
 ");
-   pt_LaTex = pt->AddText("0.00752
-#pm0.0002
+   pt_LaTex = pt->AddText("0.0312
+#pm0.0007
 ");
    pt->Draw();
    c->Modified();

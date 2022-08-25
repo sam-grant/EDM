@@ -132,7 +132,8 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	hist->SetTitle(title.c_str());
 
-	hist->SetStats(0);
+	//hist->SetStats(2210);
+	gStyle->SetOptStat(2210);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
@@ -143,9 +144,9 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 	hist->GetYaxis()->SetMaxDigits(4);
 
 	gStyle->SetPalette(55);
-	c->SetRightMargin(0.13);
+	//c->SetRightMargin(0.13);
 
-	hist->Draw("COLZ");
+	hist->Draw("COL");
 
 	//c->SetLogz();
 	
@@ -533,8 +534,8 @@ void DrawTGraphErrorsDoubleXAxisOverlay(TGraphErrors *graph1, TGraphErrors *grap
 	graph2->SetName(name2.c_str());
 	gPad->Update();
 	l->SetBorderSize(0);
-	l->SetTextSize(26);
-	l->SetTextFont(44);
+l->SetTextSize(26);
+l->SetTextFont(44);
 	l->AddEntry(graph1,name1.c_str());
 	l->AddEntry(graph2,name2.c_str());
 	l->Draw("same");
@@ -1066,7 +1067,7 @@ void DrawRadialFieldLineFit(TGraphErrors *graph, double BrErr, string func, std:
 	values->AddText(FormatNegativeNumber(par0)+"#pm"+ThreeSigFig(err0));
 	values->AddText(FormatNegativeNumber(-xint)+"#pm"+ThreeSigFig(xint_err));*/
 	values->AddText(Round(par1, 3)+"#pm"+Round(err1, 1));
-	values->AddText(Round(par0, 3)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
 	values->AddText(Round(-xint, 2)+"#pm"+Round(xint_err, 1));
 	// std::cout<<"xint_err\t"<<xint_err<<std::endl;
 
@@ -1619,7 +1620,7 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 
 // TODO: change to DrawFullEDMFitSim
-void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, std::string recoLabel, double N, double ymin, double ymax, bool unblind) {
+void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, std::string cutStr, std::string recoLabel, double N, double ymin, double ymax, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -1630,6 +1631,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 
 	double chi2ndf = func->GetChisquare() / func->GetNDF();
 	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
+	double par1 = func->GetParameter(1); double err1 = func->GetParError(1);
 	double par2 = func->GetParameter(2); double err2 = func->GetParError(2);
 	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
 	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
@@ -1647,6 +1649,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	names->AddText("N") ; 
 	names->AddText("#chi^{2}/ndf");
 	names->AddText("A_{g-2} [mrad]");
+	names->AddText("#omega_{a} [rad/#mus]");
 	//names->AddText("#phi");
 	string amplitude;
 	amplitude = "A_{EDM} [mrad]";
@@ -1660,14 +1663,15 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(Round(chi2ndf, 3));
 	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par1, 4)+"#pm"+Round(err1, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
-	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 3)+"#pm"+Round(err4, 1));
+	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
 
 	TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 //	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
 	cuts->SetTextAlign(22);
-	cuts->AddText("1000 < p [MeV] < 2500");
+	cuts->AddText(cutStr.c_str());
 	cuts->AddText("t [#mus] > 30.6");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
 
 	names->SetTextSize(26);

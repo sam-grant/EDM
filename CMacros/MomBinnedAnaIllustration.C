@@ -77,7 +77,11 @@ void DrawHist(TH1D *hist, std::string title, std::string fname, bool MomBinnedAn
 
 void Run() { 
 
-	TFile *fin = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/RecoMomentum.root");//../Plots/Data/dMu/Run-1/Plots/momentumDist_Run-1a.root");
+	TString finName = "../Plots/Data/dMu/Run-1/Plots/momentumDist_Run-1a.root";
+	// TString finName = "../Plots/MC/dMu/5.4e-18/Plots/RecoMomentum.root";
+
+	TFile *fin = TFile::Open(finName);//
+
 
 	TH1D *hist = (TH1D*)fin->Get("Momentum/S12S18_Momentum");
 

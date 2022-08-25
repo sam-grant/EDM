@@ -1,7 +1,7 @@
 void S18_eAEDM_vs_p_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Jun 12 21:16:36 2022) by ROOT version 6.24/06
+//=========  (Tue Jul 12 23:21:00 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(785.1394,0.01260789,2704.191,0.03660213);
@@ -34,7 +34,7 @@ void S18_eAEDM_vs_p_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
    0.0207556,
    0.02286446,
    0.02573651,
-   0.09397105};
+   0.09397104};
    Double_t Graph0_fex1080[11] = {
    0.1558733,
    0.109756,

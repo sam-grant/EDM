@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S18_EDM_delta_prime_hist_1000_1000-2500MeV_Run-1a_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jun 13 18:32:17 2022) by ROOT version 6.24/06
+//=========  (Tue Aug 23 11:13:41 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);
@@ -9,22 +12,9 @@ void S18_EDM_delta_prime_hist_1000_1000-2500MeV_Run-1a_250MeV_1000_2500MeV_rando
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__2 = new TH1D("h__2","S18",32,-0.07163808,0.2495935);
-   h__2->SetBinContent(7,1);
-   h__2->SetBinContent(8,6);
-   h__2->SetBinContent(9,13);
-   h__2->SetBinContent(10,48);
-   h__2->SetBinContent(11,83);
-   h__2->SetBinContent(12,125);
-   h__2->SetBinContent(13,170);
-   h__2->SetBinContent(14,160);
-   h__2->SetBinContent(15,179);
-   h__2->SetBinContent(16,109);
-   h__2->SetBinContent(17,69);
-   h__2->SetBinContent(18,18);
-   h__2->SetBinContent(19,12);
-   h__2->SetBinContent(20,5);
-   h__2->SetBinContent(21,2);
+   TH1D *h__2 = new TH1D("h__2","S18",30,-0.07039466,0.2296647);
+   h__2->SetBinContent(15,898);
+   h__2->SetBinContent(16,102);
    h__2->SetEntries(1000);
    h__2->SetStats(0);
    h__2->SetLineWidth(3);
@@ -60,11 +50,11 @@ void S18_EDM_delta_prime_hist_1000_1000-2500MeV_Run-1a_250MeV_1000_2500MeV_rando
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.06214
-#pm0.0007
+   pt_LaTex = pt->AddText("0.07913
+#pm1e-05
 ");
-   pt_LaTex = pt->AddText("0.022
-#pm0.0005
+   pt_LaTex = pt->AddText("0.000396
+#pm9e-06
 ");
    pt->Draw();
    c->Modified();

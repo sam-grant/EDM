@@ -1,7 +1,7 @@
 void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:39 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:50:46 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-1.346429,4.876443,1.153571);
@@ -133,11 +133,11 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    0.1086222};
    TGraphErrors *gre = new TGraphErrors(29,_fx1047,_fy1047,_fex1047,_fey1047);
    gre->SetName("");
-   gre->SetTitle("1750 < p [MeV] < 2000");
+   gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1047 = new TH1F("Graph_Graph1047","1750 < p [MeV] < 2000",100,0,4.711539);
+   TH1F *Graph_Graph1047 = new TH1F("Graph_Graph1047","",100,0,4.711539);
    Graph_Graph1047->SetMinimum(-1.096429);
    Graph_Graph1047->SetMaximum(0.9035709);
    Graph_Graph1047->SetDirectory(0);
@@ -2875,7 +2875,7 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1048->SetSavedPoint(2698,9.869224e-05);
    FullEDMFunc1048->SetSavedPoint(2699,5.903281e-05);
    FullEDMFunc1048->SetSavedPoint(2700,1.933528e-05);
-   FullEDMFunc1048->SetSavedPoint(2701,-2.040033e-05);
+   FullEDMFunc1048->SetSavedPoint(2701,-2.040032e-05);
    FullEDMFunc1048->SetSavedPoint(2702,-6.017399e-05);
    FullEDMFunc1048->SetSavedPoint(2703,-9.99857e-05);
    FullEDMFunc1048->SetSavedPoint(2704,-0.0001398354);
@@ -10190,15 +10190,15 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1048->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1048->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1048->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1048->SetParameter(0,0.0355446);
+   FullEDMFunc1048->SetParameter(0,0.03554461);
    FullEDMFunc1048->SetParError(0,0.02552594);
    FullEDMFunc1048->SetParLimits(0,0,0);
    FullEDMFunc1048->SetParameter(1,1.439311);
    FullEDMFunc1048->SetParError(1,0);
    FullEDMFunc1048->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1048->SetParameter(2,0.141151);
+   FullEDMFunc1048->SetParameter(2,0.1411509);
    FullEDMFunc1048->SetParError(2,0);
-   FullEDMFunc1048->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1048->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1048->SetParameter(3,0.1097018);
    FullEDMFunc1048->SetParError(3,0.02529336);
    FullEDMFunc1048->SetParLimits(3,0,0);
@@ -10273,7 +10273,7 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("1750 < p [MeV] < 2000");
    pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    
@@ -12985,7 +12985,7 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1049->SetSavedPoint(2698,9.869224e-05);
    FullEDMFunc1049->SetSavedPoint(2699,5.903281e-05);
    FullEDMFunc1049->SetSavedPoint(2700,1.933528e-05);
-   FullEDMFunc1049->SetSavedPoint(2701,-2.040033e-05);
+   FullEDMFunc1049->SetSavedPoint(2701,-2.040032e-05);
    FullEDMFunc1049->SetSavedPoint(2702,-6.017399e-05);
    FullEDMFunc1049->SetSavedPoint(2703,-9.99857e-05);
    FullEDMFunc1049->SetSavedPoint(2704,-0.0001398354);
@@ -20300,15 +20300,15 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1049->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1049->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1049->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1049->SetParameter(0,0.0355446);
+   FullEDMFunc1049->SetParameter(0,0.03554461);
    FullEDMFunc1049->SetParError(0,0.02552594);
    FullEDMFunc1049->SetParLimits(0,0,0);
    FullEDMFunc1049->SetParameter(1,1.439311);
    FullEDMFunc1049->SetParError(1,0);
    FullEDMFunc1049->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1049->SetParameter(2,0.141151);
+   FullEDMFunc1049->SetParameter(2,0.1411509);
    FullEDMFunc1049->SetParError(2,0);
-   FullEDMFunc1049->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1049->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1049->SetParameter(3,0.1097018);
    FullEDMFunc1049->SetParError(3,0.02529336);
    FullEDMFunc1049->SetParLimits(3,0,0);
@@ -20316,15 +20316,6 @@ void S0_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1049->SetParError(4,0.01804807);
    FullEDMFunc1049->SetParLimits(4,0,0);
    FullEDMFunc1049->Draw("SAME");
-   
-   pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   pt_LaTex = pt->AddText("1750 < p [MeV] < 2000");
-   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

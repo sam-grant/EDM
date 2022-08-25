@@ -1,9 +1,12 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jun 13 17:27:31 2022) by ROOT version 6.24/06
+//=========  (Tue Aug 23 11:24:35 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(-0.006875037,-8.25e-19,5.011875,2.425e-18);
+   c->Range(-0.006875037,-9.720671e-19,5.011875,2.409026e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -32,8 +35,8 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    graph->SetMarkerSize(0);
    
    TH1F *Graph_Graph1 = new TH1F("Graph_Graph1","",100,0,5.5);
-   Graph_Graph1->SetMinimum(-5e-19);
-   Graph_Graph1->SetMaximum(2.1e-18);
+   Graph_Graph1->SetMinimum(-6.339578e-19);
+   Graph_Graph1->SetMaximum(2.070917e-18);
    Graph_Graph1->SetDirectory(0);
    Graph_Graph1->SetStats(0);
 
@@ -74,20 +77,20 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    2.9,
    3.9};
    Double_t _fy1005[4] = {
-   1.269418e-18,
-   7.383555e-19,
-   1.539857e-18,
-   1.030352e-18};
+   1.254265e-18,
+   7.311283e-19,
+   1.502457e-18,
+   9.932666e-19};
    Double_t _fex1005[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1005[4] = {
-   3.409858e-19,
-   2.802039e-19,
-   2.618114e-19,
-   2.180771e-19};
+   3.188491e-19,
+   2.648836e-19,
+   2.273839e-19,
+   1.955609e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1005,_fy1005,_fex1005,_fey1005);
    gre->SetName("");
    gre->SetTitle("");
@@ -97,8 +100,8 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10011005 = new TH1F("Graph_Graph_Graph10011005","",100,0.6,4.2);
-   Graph_Graph_Graph10011005->SetMinimum(3.237999e-19);
-   Graph_Graph_Graph10011005->SetMaximum(1.93602e-18);
+   Graph_Graph_Graph10011005->SetMinimum(3.398851e-19);
+   Graph_Graph_Graph10011005->SetMaximum(1.856201e-18);
    Graph_Graph_Graph10011005->SetDirectory(0);
    Graph_Graph_Graph10011005->SetStats(0);
 
@@ -140,8 +143,8 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    fit1005->GetXaxis()->SetTitleFont(42);
    fit1005->GetYaxis()->SetLabelFont(42);
    fit1005->GetYaxis()->SetTitleFont(42);
-   fit1005->SetParameter(0,1.052687e-18);
-   fit1005->SetParError(0,1.044073e-19);
+   fit1005->SetParameter(0,9.709634e-19);
+   fit1005->SetParError(0,8.587271e-20);
    fit1005->SetParLimits(0,0,0);
    fit1005->Draw("same");
    
@@ -158,7 +161,7 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    minusSigma1006->GetXaxis()->SetTitleFont(42);
    minusSigma1006->GetYaxis()->SetLabelFont(42);
    minusSigma1006->GetYaxis()->SetTitleFont(42);
-   minusSigma1006->SetParameter(0,9.482795e-19);
+   minusSigma1006->SetParameter(0,8.850906e-19);
    minusSigma1006->SetParError(0,0);
    minusSigma1006->SetParLimits(0,0,0);
    minusSigma1006->Draw("same");
@@ -176,7 +179,7 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    plusSigma1007->GetXaxis()->SetTitleFont(42);
    plusSigma1007->GetYaxis()->SetLabelFont(42);
    plusSigma1007->GetYaxis()->SetTitleFont(42);
-   plusSigma1007->SetParameter(0,1.157094e-18);
+   plusSigma1007->SetParameter(0,1.056836e-18);
    plusSigma1007->SetParError(0,0);
    plusSigma1007->SetParLimits(0,0,0);
    plusSigma1007->Draw("same");
@@ -187,20 +190,20 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    2.9,
    3.9};
    Double_t _fy1006[4] = {
-   1.269418e-18,
-   7.383555e-19,
-   1.539857e-18,
-   1.030352e-18};
+   1.254265e-18,
+   7.311283e-19,
+   1.502457e-18,
+   9.932666e-19};
    Double_t _fex1006[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1006[4] = {
-   3.409858e-19,
-   2.802039e-19,
-   2.618114e-19,
-   2.180771e-19};
+   3.188491e-19,
+   2.648836e-19,
+   2.273839e-19,
+   1.955609e-19};
    gre = new TGraphErrors(4,_fx1006,_fy1006,_fex1006,_fey1006);
    gre->SetName("");
    gre->SetTitle("");
@@ -210,8 +213,8 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph_Graph100110051006 = new TH1F("Graph_Graph_Graph_Graph100110051006","",100,0.6,4.2);
-   Graph_Graph_Graph_Graph100110051006->SetMinimum(3.237999e-19);
-   Graph_Graph_Graph_Graph100110051006->SetMaximum(1.93602e-18);
+   Graph_Graph_Graph_Graph100110051006->SetMinimum(3.398851e-19);
+   Graph_Graph_Graph_Graph100110051006->SetMaximum(1.856201e-18);
    Graph_Graph_Graph_Graph100110051006->SetDirectory(0);
    Graph_Graph_Graph_Graph100110051006->SetStats(0);
 
@@ -247,20 +250,20 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    3,
    4};
    Double_t _fy1007[4] = {
-   1.315543e-19,
-   7.336035e-19,
-   1.382242e-18,
-   9.616653e-19};
+   1.817633e-19,
+   6.597994e-19,
+   1.186536e-18,
+   8.095481e-19};
    Double_t _fex1007[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1007[4] = {
-   3.902626e-19,
-   3.367118e-19,
-   2.967604e-19,
-   2.6409e-19};
+   3.262884e-19,
+   2.79618e-19,
+   2.328186e-19,
+   2.052523e-19};
    gre = new TGraphErrors(4,_fx1007,_fy1007,_fex1007,_fey1007);
    gre->SetName("");
    gre->SetTitle("");
@@ -270,8 +273,8 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10021007 = new TH1F("Graph_Graph_Graph10021007","",100,0.7,4.3);
-   Graph_Graph_Graph10021007->SetMinimum(-4.524794e-19);
-   Graph_Graph_Graph10021007->SetMaximum(1.872774e-18);
+   Graph_Graph_Graph10021007->SetMinimum(-3.009131e-19);
+   Graph_Graph_Graph10021007->SetMaximum(1.575743e-18);
    Graph_Graph_Graph10021007->SetDirectory(0);
    Graph_Graph_Graph10021007->SetStats(0);
 
@@ -306,20 +309,20 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    3.1,
    4.1};
    Double_t _fy1008[4] = {
-   8.339392e-19,
-   7.604678e-19,
-   1.510485e-18,
-   1.011276e-18};
+   7.512861e-19,
+   6.964781e-19,
+   1.353664e-18,
+   9.058698e-19};
    Double_t _fex1008[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1008[4] = {
-   2.565616e-19,
-   2.186361e-19,
-   2.062106e-19,
-   1.764818e-19};
+   2.248534e-19,
+   1.927533e-19,
+   1.598692e-19,
+   1.417208e-19};
    gre = new TGraphErrors(4,_fx1008,_fy1008,_fex1008,_fey1008);
    gre->SetName("");
    gre->SetTitle("");
@@ -327,8 +330,8 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph_Graph10031008 = new TH1F("Graph_Graph_Graph10031008","",100,0.8,4.4);
-   Graph_Graph_Graph10031008->SetMinimum(4.243452e-19);
-   Graph_Graph_Graph10031008->SetMaximum(1.834182e-18);
+   Graph_Graph_Graph10031008->SetMinimum(4.02744e-19);
+   Graph_Graph_Graph10031008->SetMaximum(1.614514e-18);
    Graph_Graph_Graph10031008->SetDirectory(0);
    Graph_Graph_Graph10031008->SetStats(0);
 
@@ -361,15 +364,15 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    pol01009->SetFillStyle(0);
    pol01009->SetLineColor(2);
    pol01009->SetLineWidth(0);
-   pol01009->SetChisquare(7.497019);
+   pol01009->SetChisquare(8.923741);
    pol01009->SetNDF(3);
    pol01009->GetXaxis()->SetLabelFont(42);
    pol01009->GetXaxis()->SetTitleOffset(1);
    pol01009->GetXaxis()->SetTitleFont(42);
    pol01009->GetYaxis()->SetLabelFont(42);
    pol01009->GetYaxis()->SetTitleFont(42);
-   pol01009->SetParameter(0,1.052687e-18);
-   pol01009->SetParError(0,1.044073e-19);
+   pol01009->SetParameter(0,9.709634e-19);
+   pol01009->SetParError(0,8.587271e-20);
    pol01009->SetParLimits(0,0,0);
    pol01009->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01009);
@@ -418,7 +421,7 @@ void EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    pt->SetTextAlign(13);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   TText *pt_LaTex = pt->AddText("#LTd_{#mu}^{BLIND}#GT = (1.05#pm0.10)#times10^{-18} e#upointcm");
+   TText *pt_LaTex = pt->AddText("#LTd_{#mu}^{BLIND}#GT = 9.71#times10^{#minus19}#pm8.59#times10^{#minus20} e#upointcm");
    pt->Draw();
    c->Modified();
    c->cd();

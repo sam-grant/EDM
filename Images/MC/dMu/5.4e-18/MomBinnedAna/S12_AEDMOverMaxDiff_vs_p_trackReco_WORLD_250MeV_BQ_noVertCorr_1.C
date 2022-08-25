@@ -1,7 +1,7 @@
 void S12_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:44 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:50:54 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-163.9303,-0.00133178,3375.567,0.004940757);
@@ -24,14 +24,14 @@ void S12_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    2614.361,
    2787.793};
    Double_t Graph0_fy1107[11] = {
-   0.0004365513,
+   0.0004365511,
    0.0006867047,
    0.0007858958,
    0.001222746,
    0.001277399,
    0.001503998,
    0.002081972,
-   0.001992668,
+   0.001992667,
    0.001783478,
    0.001905289,
    0.002158707};
@@ -66,7 +66,7 @@ void S12_AEDMOverMaxDiff_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01107 = new TH1F("Graph_Graph01107","S12_",100,218.0551,3021.618);
-   Graph_Graph01107->SetMinimum(-0.000704526);
+   Graph_Graph01107->SetMinimum(-0.0007045261);
    Graph_Graph01107->SetMaximum(0.004313503);
    Graph_Graph01107->SetDirectory(0);
    Graph_Graph01107->SetStats(0);

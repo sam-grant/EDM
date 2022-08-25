@@ -1,7 +1,7 @@
 void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:43 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:50:51 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-1.461333,4.876443,1.038667);
@@ -133,11 +133,11 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    0.07578205};
    TGraphErrors *gre = new TGraphErrors(29,_fx1084,_fy1084,_fex1084,_fey1084);
    gre->SetName("");
-   gre->SetTitle("1750 < p [MeV] < 2000");
+   gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1084 = new TH1F("Graph_Graph1084","1750 < p [MeV] < 2000",100,0,4.711539);
+   TH1F *Graph_Graph1084 = new TH1F("Graph_Graph1084","",100,0,4.711539);
    Graph_Graph1084->SetMinimum(-1.211333);
    Graph_Graph1084->SetMaximum(0.7886671);
    Graph_Graph1084->SetDirectory(0);
@@ -1359,7 +1359,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->SetSavedPoint(1182,-0.08182292);
    FullEDMFunc1085->SetSavedPoint(1183,-0.08177404);
    FullEDMFunc1085->SetSavedPoint(1184,-0.08172521);
-   FullEDMFunc1085->SetSavedPoint(1185,-0.08167643);
+   FullEDMFunc1085->SetSavedPoint(1185,-0.08167642);
    FullEDMFunc1085->SetSavedPoint(1186,-0.0816277);
    FullEDMFunc1085->SetSavedPoint(1187,-0.08157902);
    FullEDMFunc1085->SetSavedPoint(1188,-0.08153039);
@@ -1660,7 +1660,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->SetSavedPoint(1483,-0.06949847);
    FullEDMFunc1085->SetSavedPoint(1484,-0.06946576);
    FullEDMFunc1085->SetSavedPoint(1485,-0.0694331);
-   FullEDMFunc1085->SetSavedPoint(1486,-0.06940051);
+   FullEDMFunc1085->SetSavedPoint(1486,-0.0694005);
    FullEDMFunc1085->SetSavedPoint(1487,-0.06936796);
    FullEDMFunc1085->SetSavedPoint(1488,-0.06933548);
    FullEDMFunc1085->SetSavedPoint(1489,-0.06930305);
@@ -2345,7 +2345,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->SetSavedPoint(2168,-0.06069437);
    FullEDMFunc1085->SetSavedPoint(2169,-0.06070183);
    FullEDMFunc1085->SetSavedPoint(2170,-0.06070935);
-   FullEDMFunc1085->SetSavedPoint(2171,-0.06071693);
+   FullEDMFunc1085->SetSavedPoint(2171,-0.06071692);
    FullEDMFunc1085->SetSavedPoint(2172,-0.06072456);
    FullEDMFunc1085->SetSavedPoint(2173,-0.06073226);
    FullEDMFunc1085->SetSavedPoint(2174,-0.06074002);
@@ -2562,7 +2562,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->SetSavedPoint(2385,-0.0636998);
    FullEDMFunc1085->SetSavedPoint(2386,-0.06372006);
    FullEDMFunc1085->SetSavedPoint(2387,-0.06374037);
-   FullEDMFunc1085->SetSavedPoint(2388,-0.06376075);
+   FullEDMFunc1085->SetSavedPoint(2388,-0.06376074);
    FullEDMFunc1085->SetSavedPoint(2389,-0.06378118);
    FullEDMFunc1085->SetSavedPoint(2390,-0.06380166);
    FullEDMFunc1085->SetSavedPoint(2391,-0.06382221);
@@ -2778,7 +2778,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->SetSavedPoint(2601,-0.06941287);
    FullEDMFunc1085->SetSavedPoint(2602,-0.06944549);
    FullEDMFunc1085->SetSavedPoint(2603,-0.06947816);
-   FullEDMFunc1085->SetSavedPoint(2604,-0.0695109);
+   FullEDMFunc1085->SetSavedPoint(2604,-0.06951089);
    FullEDMFunc1085->SetSavedPoint(2605,-0.06954368);
    FullEDMFunc1085->SetSavedPoint(2606,-0.06957653);
    FullEDMFunc1085->SetSavedPoint(2607,-0.06960942);
@@ -3131,7 +3131,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->SetSavedPoint(2954,-0.08429991);
    FullEDMFunc1085->SetSavedPoint(2955,-0.08435135);
    FullEDMFunc1085->SetSavedPoint(2956,-0.08440283);
-   FullEDMFunc1085->SetSavedPoint(2957,-0.08445437);
+   FullEDMFunc1085->SetSavedPoint(2957,-0.08445436);
    FullEDMFunc1085->SetSavedPoint(2958,-0.08450595);
    FullEDMFunc1085->SetSavedPoint(2959,-0.08455758);
    FullEDMFunc1085->SetSavedPoint(2960,-0.08460927);
@@ -10190,15 +10190,15 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1085->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1085->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1085->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1085->SetParameter(0,0.02195205);
+   FullEDMFunc1085->SetParameter(0,0.02195207);
    FullEDMFunc1085->SetParError(0,0.01787731);
    FullEDMFunc1085->SetParLimits(0,0,0);
    FullEDMFunc1085->SetParameter(1,1.439311);
    FullEDMFunc1085->SetParError(1,0);
    FullEDMFunc1085->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1085->SetParameter(2,0.141151);
+   FullEDMFunc1085->SetParameter(2,0.1411509);
    FullEDMFunc1085->SetParError(2,0);
-   FullEDMFunc1085->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1085->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1085->SetParameter(3,0.1494989);
    FullEDMFunc1085->SetParError(3,0.01770003);
    FullEDMFunc1085->SetParLimits(3,0,0);
@@ -10220,7 +10220,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("0.02
 #pm0.02
 ");
-   pt_LaTex = pt->AddText("0.149
+   pt_LaTex = pt->AddText("0.15
 #pm0.02
 ");
    pt_LaTex = pt->AddText("-0.211
@@ -10273,7 +10273,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("1750 < p [MeV] < 2000");
    pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    
@@ -11469,7 +11469,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetSavedPoint(1182,-0.08182292);
    FullEDMFunc1086->SetSavedPoint(1183,-0.08177404);
    FullEDMFunc1086->SetSavedPoint(1184,-0.08172521);
-   FullEDMFunc1086->SetSavedPoint(1185,-0.08167643);
+   FullEDMFunc1086->SetSavedPoint(1185,-0.08167642);
    FullEDMFunc1086->SetSavedPoint(1186,-0.0816277);
    FullEDMFunc1086->SetSavedPoint(1187,-0.08157902);
    FullEDMFunc1086->SetSavedPoint(1188,-0.08153039);
@@ -11770,7 +11770,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetSavedPoint(1483,-0.06949847);
    FullEDMFunc1086->SetSavedPoint(1484,-0.06946576);
    FullEDMFunc1086->SetSavedPoint(1485,-0.0694331);
-   FullEDMFunc1086->SetSavedPoint(1486,-0.06940051);
+   FullEDMFunc1086->SetSavedPoint(1486,-0.0694005);
    FullEDMFunc1086->SetSavedPoint(1487,-0.06936796);
    FullEDMFunc1086->SetSavedPoint(1488,-0.06933548);
    FullEDMFunc1086->SetSavedPoint(1489,-0.06930305);
@@ -12455,7 +12455,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetSavedPoint(2168,-0.06069437);
    FullEDMFunc1086->SetSavedPoint(2169,-0.06070183);
    FullEDMFunc1086->SetSavedPoint(2170,-0.06070935);
-   FullEDMFunc1086->SetSavedPoint(2171,-0.06071693);
+   FullEDMFunc1086->SetSavedPoint(2171,-0.06071692);
    FullEDMFunc1086->SetSavedPoint(2172,-0.06072456);
    FullEDMFunc1086->SetSavedPoint(2173,-0.06073226);
    FullEDMFunc1086->SetSavedPoint(2174,-0.06074002);
@@ -12672,7 +12672,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetSavedPoint(2385,-0.0636998);
    FullEDMFunc1086->SetSavedPoint(2386,-0.06372006);
    FullEDMFunc1086->SetSavedPoint(2387,-0.06374037);
-   FullEDMFunc1086->SetSavedPoint(2388,-0.06376075);
+   FullEDMFunc1086->SetSavedPoint(2388,-0.06376074);
    FullEDMFunc1086->SetSavedPoint(2389,-0.06378118);
    FullEDMFunc1086->SetSavedPoint(2390,-0.06380166);
    FullEDMFunc1086->SetSavedPoint(2391,-0.06382221);
@@ -12888,7 +12888,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetSavedPoint(2601,-0.06941287);
    FullEDMFunc1086->SetSavedPoint(2602,-0.06944549);
    FullEDMFunc1086->SetSavedPoint(2603,-0.06947816);
-   FullEDMFunc1086->SetSavedPoint(2604,-0.0695109);
+   FullEDMFunc1086->SetSavedPoint(2604,-0.06951089);
    FullEDMFunc1086->SetSavedPoint(2605,-0.06954368);
    FullEDMFunc1086->SetSavedPoint(2606,-0.06957653);
    FullEDMFunc1086->SetSavedPoint(2607,-0.06960942);
@@ -13241,7 +13241,7 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetSavedPoint(2954,-0.08429991);
    FullEDMFunc1086->SetSavedPoint(2955,-0.08435135);
    FullEDMFunc1086->SetSavedPoint(2956,-0.08440283);
-   FullEDMFunc1086->SetSavedPoint(2957,-0.08445437);
+   FullEDMFunc1086->SetSavedPoint(2957,-0.08445436);
    FullEDMFunc1086->SetSavedPoint(2958,-0.08450595);
    FullEDMFunc1086->SetSavedPoint(2959,-0.08455758);
    FullEDMFunc1086->SetSavedPoint(2960,-0.08460927);
@@ -20300,15 +20300,15 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1086->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1086->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1086->SetParameter(0,0.02195205);
+   FullEDMFunc1086->SetParameter(0,0.02195207);
    FullEDMFunc1086->SetParError(0,0.01787731);
    FullEDMFunc1086->SetParLimits(0,0,0);
    FullEDMFunc1086->SetParameter(1,1.439311);
    FullEDMFunc1086->SetParError(1,0);
    FullEDMFunc1086->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1086->SetParameter(2,0.141151);
+   FullEDMFunc1086->SetParameter(2,0.1411509);
    FullEDMFunc1086->SetParError(2,0);
-   FullEDMFunc1086->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1086->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1086->SetParameter(3,0.1494989);
    FullEDMFunc1086->SetParError(3,0.01770003);
    FullEDMFunc1086->SetParLimits(3,0,0);
@@ -20316,15 +20316,6 @@ void S12_edmFit_thetaY_1750_2000_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1086->SetParError(4,0.01263481);
    FullEDMFunc1086->SetParLimits(4,0,0);
    FullEDMFunc1086->Draw("SAME");
-   
-   pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   pt_LaTex = pt->AddText("1750 < p [MeV] < 2000");
-   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

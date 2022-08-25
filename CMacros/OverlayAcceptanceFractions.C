@@ -2,11 +2,16 @@
 
 	TCanvas *c = new TCanvas("c", "c", 800, 600);
 
-	TFile *fin = TFile::Open("../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root");
+	TFile *fin = TFile::Open("../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV.root");//../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root");
 
-	TGraphErrors *gr_S12S18 = (TGraphErrors*)fin->Get("graphs/S12S18_ratio_main");
+/*	TGraphErrors *gr_S12S18 = (TGraphErrors*)fin->Get("graphs/S12S18_ratio_main");
 	TGraphErrors *gr_S12 = (TGraphErrors*)fin->Get("graphs/S12_ratio_main");
-	TGraphErrors *gr_S18 = (TGraphErrors*)fin->Get("graphs/S18_ratio_main");
+	TGraphErrors *gr_S18 = (TGraphErrors*)fin->Get("graphs/S18_ratio_main");*/
+
+
+	TGraphErrors *gr_S12S18 = (TGraphErrors*)fin->Get("graphs/S12S18_ratio");
+	TGraphErrors *gr_S12 = (TGraphErrors*)fin->Get("graphs/S12_ratio");
+	TGraphErrors *gr_S18 = (TGraphErrors*)fin->Get("graphs/S18_ratio");
 
 	// Offset x for S12 and S12S18 slightly 
 	for(int i(0); i<gr_S18->GetN(); i++) gr_S18->SetPoint(i, gr_S18->GetX()[i]+25, gr_S18->GetY()[i]);
@@ -49,7 +54,7 @@
 
  	l->Draw("SAME");
 
- 	c->SaveAs("../Images/MC/Acceptance/truth/CorrectionResults/OverlayMainAcceptanceWeightingVsMomentum.pdf");
+ 	c->SaveAs("../Images/MC/Acceptance/truth/CorrectionResults/OverlayAcceptanceCorrectionVsMomentum.pdf");
 
 	fin->Close();
 

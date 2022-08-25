@@ -122,7 +122,7 @@ void BrHallTempPlot() {
 	overlay->SetFrameFillStyle(4000);
 	overlay->Draw();
 	overlay->cd();*/
-	gr_temp->SetLineWidth(3);
+	gr_temp->SetLineWidth(2);
 	gr_temp->Draw("SAME");
 	axis->Draw("SAME");
 

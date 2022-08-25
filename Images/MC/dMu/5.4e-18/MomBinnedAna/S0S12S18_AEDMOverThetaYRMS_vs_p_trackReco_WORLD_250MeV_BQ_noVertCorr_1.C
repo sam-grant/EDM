@@ -1,7 +1,7 @@
 void S0S12S18_AEDMOverThetaYRMS_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:59 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:51:17 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-163.8644,-0.005793415,3375.839,0.02125702);
@@ -27,12 +27,12 @@ void S0S12S18_AEDMOverThetaYRMS_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    0.001868694,
    0.004864029,
    0.005809481,
-   0.007044156,
+   0.007044157,
    0.009435196,
    0.01109571,
    0.01141925,
    0.01102557,
-   0.01110023,
+   0.01110022,
    0.01473147,
    0.004533878};
    Double_t Graph0_fex1219[11] = {
@@ -52,7 +52,7 @@ void S0S12S18_AEDMOverThetaYRMS_vs_p_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    0.001058429,
    0.0007385682,
    0.0007168523,
-   0.0007661009,
+   0.000766101,
    0.0008476629,
    0.0009928097,
    0.001235857,

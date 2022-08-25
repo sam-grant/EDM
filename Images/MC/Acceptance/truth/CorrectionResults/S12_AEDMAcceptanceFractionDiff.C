@@ -1,9 +1,12 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12_AEDMAcceptanceFractionDiff()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
+//=========  (Fri Aug 19 14:49:51 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(811.7217,-0.1346011,2678.365,0.2164696);
+   c->Range(813.2621,-0.01002609,2672.502,0.01002609);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -11,19 +14,19 @@ void S12_AEDMAcceptanceFractionDiff()
    c->SetFrameBorderMode(0);
    
    Double_t _fx1006[6] = {
-   1122.829,
-   1372.245,
-   1621.478,
-   1870.594,
-   2119.355,
-   2367.258};
+   1123.136,
+   1371.18,
+   1620.234,
+   1867.049,
+   2114.925,
+   2362.629};
    Double_t _fy1006[6] = {
-   0.1579578,
-   0.06891659,
-   -0.07608932,
-   0.06706285,
-   0.1460793,
-   0.1092785};
+   0,
+   0,
+   0,
+   0,
+   0,
+   0};
    Double_t _fex1006[6] = {
    0,
    0,
@@ -32,21 +35,21 @@ void S12_AEDMAcceptanceFractionDiff()
    0,
    0};
    Double_t _fey1006[6] = {
-   0,
-   0,
-   0,
-   0,
-   0,
-   0};
+   0.003635864,
+   0.003547432,
+   0.003672787,
+   0.00411945,
+   0.005050991,
+   0.006684059};
    TGraphErrors *gre = new TGraphErrors(6,_fx1006,_fy1006,_fex1006,_fey1006);
    gre->SetName("");
    gre->SetTitle("S12");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","S12",100,998.3861,2491.701);
-   Graph_Graph1006->SetMinimum(-0.09949403);
-   Graph_Graph1006->SetMaximum(0.1813625);
+   TH1F *Graph_Graph1006 = new TH1F("Graph_Graph1006","S12",100,999.1862,2486.578);
+   Graph_Graph1006->SetMinimum(-0.00802087);
+   Graph_Graph1006->SetMaximum(0.00802087);
    Graph_Graph1006->SetDirectory(0);
    Graph_Graph1006->SetStats(0);
 

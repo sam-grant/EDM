@@ -1,9 +1,12 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12_OverlayAEDMAcceptanceFraction()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Jun  3 12:58:48 2022) by ROOT version 6.24/06
+//=========  (Fri Aug 19 14:49:51 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(811.7217,-0.18125,2678.365,1.13125);
+   c->Range(813.2621,-0.18125,2672.502,1.13125);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -11,19 +14,19 @@ void S12_OverlayAEDMAcceptanceFraction()
    c->SetFrameBorderMode(0);
    
    Double_t S12_gr_ratio_nominal_fx1004[6] = {
-   1122.829,
-   1372.245,
-   1621.478,
-   1870.594,
-   2119.355,
-   2367.258};
+   1123.136,
+   1371.18,
+   1620.234,
+   1867.049,
+   2114.925,
+   2362.629};
    Double_t S12_gr_ratio_nominal_fy1004[6] = {
-   0.419305,
-   0.5442367,
-   0.4298695,
-   0.7356013,
-   0.4331312,
-   0.6463458};
+   0.4739418,
+   0.4966805,
+   0.6231932,
+   0.5706841,
+   0.5992536,
+   0.4334988};
    Double_t S12_gr_ratio_nominal_fex1004[6] = {
    0,
    0,
@@ -32,12 +35,12 @@ void S12_OverlayAEDMAcceptanceFraction()
    0,
    0};
    Double_t S12_gr_ratio_nominal_fey1004[6] = {
-   0.1023345,
-   0.103312,
-   0.1070817,
-   0.1206827,
-   0.1710728,
-   0.1926213};
+   0.06329412,
+   0.06175467,
+   0.06393688,
+   0.07171252,
+   0.08792904,
+   0.1163579};
    TGraphErrors *gre = new TGraphErrors(6,S12_gr_ratio_nominal_fx1004,S12_gr_ratio_nominal_fy1004,S12_gr_ratio_nominal_fex1004,S12_gr_ratio_nominal_fey1004);
    gre->SetName("S12_gr_ratio_nominal");
    gre->SetTitle("S12");
@@ -52,7 +55,7 @@ void S12_OverlayAEDMAcceptanceFraction()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12_gr_ratio_nominal1004 = new TH1F("Graph_S12_gr_ratio_nominal1004","S12",100,998.3861,2491.701);
+   TH1F *Graph_S12_gr_ratio_nominal1004 = new TH1F("Graph_S12_gr_ratio_nominal1004","S12",100,999.1862,2486.578);
    Graph_S12_gr_ratio_nominal1004->SetMinimum(-0.05);
    Graph_S12_gr_ratio_nominal1004->SetMaximum(1);
    Graph_S12_gr_ratio_nominal1004->SetDirectory(0);
@@ -81,19 +84,19 @@ void S12_OverlayAEDMAcceptanceFraction()
    gre->Draw("ap");
    
    Double_t S12_gr_ratio_shift_fx1005[6] = {
-   1147.829,
-   1397.245,
-   1646.478,
-   1895.594,
-   2144.355,
-   2392.258};
+   1148.136,
+   1396.18,
+   1645.234,
+   1892.049,
+   2139.925,
+   2387.629};
    Double_t S12_gr_ratio_shift_fy1005[6] = {
-   0.2613472,
-   0.4753201,
-   0.5059588,
-   0.6685385,
-   0.2870518,
-   0.5370672};
+   0.4739418,
+   0.4966805,
+   0.6231932,
+   0.5706841,
+   0.5992536,
+   0.4334988};
    Double_t S12_gr_ratio_shift_fex1005[6] = {
    0,
    0,
@@ -102,12 +105,12 @@ void S12_OverlayAEDMAcceptanceFraction()
    0,
    0};
    Double_t S12_gr_ratio_shift_fey1005[6] = {
-   0.1335915,
-   0.1348231,
-   0.141881,
-   0.1567653,
-   0.2263617,
-   0.2539747};
+   0.06329412,
+   0.06175467,
+   0.06393688,
+   0.07171252,
+   0.08792904,
+   0.1163579};
    gre = new TGraphErrors(6,S12_gr_ratio_shift_fx1005,S12_gr_ratio_shift_fy1005,S12_gr_ratio_shift_fex1005,S12_gr_ratio_shift_fey1005);
    gre->SetName("S12_gr_ratio_shift");
    gre->SetTitle("");
@@ -120,9 +123,9 @@ void S12_OverlayAEDMAcceptanceFraction()
    gre->SetMarkerColor(ci);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_S12_gr_ratio_shift1005 = new TH1F("Graph_S12_gr_ratio_shift1005","",100,1023.386,2516.701);
-   Graph_S12_gr_ratio_shift1005->SetMinimum(0.05462111);
-   Graph_S12_gr_ratio_shift1005->SetMaximum(0.9017651);
+   TH1F *Graph_S12_gr_ratio_shift1005 = new TH1F("Graph_S12_gr_ratio_shift1005","",100,1024.186,2511.578);
+   Graph_S12_gr_ratio_shift1005->SetMinimum(0.2801367);
+   Graph_S12_gr_ratio_shift1005->SetMaximum(0.7241868);
    Graph_S12_gr_ratio_shift1005->SetDirectory(0);
    Graph_S12_gr_ratio_shift1005->SetStats(0);
 

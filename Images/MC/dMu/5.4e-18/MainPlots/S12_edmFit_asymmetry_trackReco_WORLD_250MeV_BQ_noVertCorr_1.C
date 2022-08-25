@@ -1,7 +1,7 @@
 void S12_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:47:24 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:49:39 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-3.396927e-07,4.876443,1.603073e-07);
@@ -10196,9 +10196,9 @@ void S12_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1012->SetParameter(1,1.439311);
    FullEDMFunc1012->SetParError(1,0);
    FullEDMFunc1012->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1012->SetParameter(2,0.141151);
+   FullEDMFunc1012->SetParameter(2,0.1411509);
    FullEDMFunc1012->SetParError(2,0);
-   FullEDMFunc1012->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1012->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1012->SetParameter(3,3.951764e-08);
    FullEDMFunc1012->SetParError(3,2.954232e-09);
    FullEDMFunc1012->SetParLimits(3,0,0);
@@ -10220,7 +10220,7 @@ void S12_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("-1e-08
 #pm3e-09
 ");
-   pt_LaTex = pt->AddText("3.95e-08
+   pt_LaTex = pt->AddText("4e-08
 #pm3e-09
 ");
    pt_LaTex = pt->AddText("-8.97e-08
@@ -20306,9 +20306,9 @@ void S12_edmFit_asymmetry_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1013->SetParameter(1,1.439311);
    FullEDMFunc1013->SetParError(1,0);
    FullEDMFunc1013->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1013->SetParameter(2,0.141151);
+   FullEDMFunc1013->SetParameter(2,0.1411509);
    FullEDMFunc1013->SetParError(2,0);
-   FullEDMFunc1013->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1013->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1013->SetParameter(3,3.951764e-08);
    FullEDMFunc1013->SetParError(3,2.954232e-09);
    FullEDMFunc1013->SetParLimits(3,0,0);

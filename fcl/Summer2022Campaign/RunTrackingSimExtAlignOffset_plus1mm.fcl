@@ -1,0 +1,210 @@
+// Run tracking sim with an offset into the external alignment parameters
+// Sam Grant - 2022
+
+#include "messageParams.fcl"
+#include "trackingConfig.fcl"
+
+process_name : offline
+
+source : {
+  module_type : RootInput
+  maxEvents   : -1
+  // Make sure to drop geometry artifacts
+  inputCommands : ["keep *", 
+  						     "drop gm2strawtracker::TrackerAlignmentConstantsArtRecord_StrawTrackerGeometryConstants__mdc1",
+  						     "drop gm2geom::CoordSystemsStoreData_artg4__mdc1" ] 
+
+}
+
+services : {
+
+  message : {
+    debugModules : []
+    suppressInfo : []
+
+    destinations : {
+      LogToFile : {
+        type      : "file"
+				filename  : "trackSimPlots.log"
+        append    :  false
+        threshold : "INFO" 
+        //threshold : "DEBUG" // This is for debug
+        categories : @local::message_categories // Comment for debug
+      }
+    }
+  } // end of message services 
+
+  DetectorHolder    : {}
+  ActionHolder      : {}
+  CoordSystemsStore : {}
+  Gm2Constants      : {}
+  RandomNumberGenerator : {}
+
+  gm2FieldManager : @local::gm2FieldManager
+
+  @table::trackingChain.geometry
+  @table::trackingChain.field
+
+  // World : {}
+
+  scheduler : { errorOnFailureToPut : false }
+
+  TFileService : {
+  	fileName : "gm2tracker_particle_gun_full.root" // "trackSimPlots.root" 
+  }
+
+  TrackQuality : {}
+
+} // end of services block
+
+
+physics : {
+
+	filters : {
+		// Put many muons into same fill 
+		fillEvents : @local::fill_params
+		// Track selector
+		geaneTrackSelector : { module_type : GeaneTrackSelector }
+		// Filter laser shots
+		noDigitsFilter : { module_type : NoDigitsFilter }
+
+    TrackFilter : {
+      module_type : TrackerFillTypeFilter
+      fillType    : 1
+      throwOnEmptyHeaderCollection : false
+    }
+		
+		} // end of filter block
+		
+		producers : {
+
+		  // digitization of simulation
+			digitizer : @local::digit_params
+		  // Reco chain
+			@table::trackingChain.producers
+
+
+  		}	 // end of producer block 
+
+  	analyzers : {
+
+  		trackerNTup : {
+  			module_type : TrackerMCDecayTrees 
+  			SelectEvents :["offline:recoPath"] 
+  		} 
+
+      // Extrapolation plots for debug/verification
+      extrapPlots : { 
+        module_type : TrackExtrapolationAna
+        SelectEvents :["offline:recoPath"]
+        plotBackwardsExtrap : true
+        plotPlaneExtrap : true
+        //applyTrackQuality : false
+      }
+
+//    	summaryPlots : { 
+//    		module_type : SummaryPlots
+//	 			SelectEvents :["offline:recoPath"] 
+//			}
+//    	geanePlots : { 
+//          module_type : GeanePlots
+//					SelectEvents :["offline:recoPath"]
+//			}
+//
+//    	qualityPlots : {
+//	      module_type : QualityCutPlots
+//			  SelectEvents : ["offline:recoPath"]
+//      }
+
+  } // end of analyzer block
+
+	// Custom tracking path. Geom must be called before the digitizer!
+  recoPath : [ 
+  								fillEvents,
+  								artg4,
+  								digitizer,
+                  removeFlash,
+                  killStraws,
+                  digitTimeSync,
+                  deadTime,       
+                  timeIslands, 
+                  clustering, 
+                  seeds, 
+                  trackCandidates,
+		              candidateCleaner,
+                  t0Finder,
+                  driftDistReco,
+                  tracks,
+                  vertices 
+
+              ]
+
+  filterPath : [ noDigitsFilter ]
+
+  outputPath : [ extrapPlots, trackerNTup ] 
+
+  trigger_paths : [recoPath,  filterPath ] 
+
+  end_paths     : [ outputPath ]
+
+} // end of physics block
+
+// Don't call this unless you want the track files
+outputs :
+{
+	out : { 
+		module_type  : RootOutput
+		fileName     : "gm2tracker_particle_gun_full.root"
+		dataTier     : "full"
+
+		outputCommands : [ "keep *", "drop gm2truth*_*_*_mdc*", @sequence::trackingChain.outputDrops ] 
+
+		SelectEvents : ["offline:recoPath"] 
+	}
+
+} // end of outputs block
+
+//dca calc patched parameters
+physics.producers.driftDistReco.calculatorName : garfieldDriftDistanceEstimator
+
+//t0 finder patches
+physics.producers.tracks.fitMode : truthLRFit
+physics.producers.driftDistReco.useTrueDigitT0 : true
+
+// Extrapolation for backwards only
+physics.producers.vertices.doForwardsExtrap : false
+
+// Conditions DB (default ext. alignment params)b
+// gm2_conditions_prod=> SELECT * FROM tracker_align_external_data;
+//  __iov_id | channel | radialshift | verticalshift | trackerxzangle | trackeryzangle
+// ----------+---------+-------------+---------------+----------------+----------------
+//         1 |       1 |           0 |             0 |              0 |              0
+//         1 |       2 |       -1.51 |         -0.55 |       -0.06417 |       -0.00235
+//         1 |       3 |       -2.75 |         -0.61 |       -0.13522 |        0.02366
+//         2 |       1 |           0 |             0 |              0 |              0
+//         2 |       2 |       -1.51 |         -0.55 |       -0.06417 |       -0.00235
+//         2 |       3 |       -2.75 |         -0.61 |       -0.13522 |        0.02366
+
+services.StrawTrackerGeometryConstants.loadExtConsts : false
+services.StrawTrackerGeometryConstants.loadIntModConsts : false // false
+
+// Turn on and modify global alignment constants 
+services.Geometry.strawtracker.radialShift0 : 0
+services.Geometry.strawtracker.verticalShift0 : 1 
+services.Geometry.strawtracker.trackerXZAngle0 : 0
+services.Geometry.strawtracker.trackerYZAngle0 : 0
+services.Geometry.strawtracker.radialShift12 : -1.51
+services.Geometry.strawtracker.verticalShift12 : 0.45 
+services.Geometry.strawtracker.trackerXZAngle12 : -0.06417
+services.Geometry.strawtracker.trackerYZAngle12 : -0.00235
+services.Geometry.strawtracker.radialShift18 : -2.75
+services.Geometry.strawtracker.verticalShift18 : 0.39 
+services.Geometry.strawtracker.trackerXZAngle18 : -0.13522
+services.Geometry.strawtracker.trackerYZAngle18 : 0.02366
+
+// Turn on internal alignment constants
+services.Geometry.strawtracker.strawModuleRShift12 : [ 0.0207, -0.0185, -0.021, 0.0148, -0.0134, 0.0014, 0.0481, -0.0323 ]
+services.Geometry.strawtracker.strawModuleHShift12 : [ -0.025, -0.0306, 0.0542, 0.0277, 0.0153, -0.0124, -0.0439, 0.0148 ]
+services.Geometry.strawtracker.strawModuleRShift18 : [ 0.0153, -0.0182, -0.0107, 0.0651, -0.0534, 0.0275, 0.0752, -0.0413 ]
+services.Geometry.strawtracker.strawModuleHShift18 : [ -0.0711, -0.0919, 0.0645, 0.0803, 0.0581, 0.157, 0.018, -0.1705 ]
+

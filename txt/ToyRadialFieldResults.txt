@@ -1,0 +1,83 @@
+
+CONFIG A
+********************* RESULTS *********************
+SUBRUN:	100
+CTAG:	3.79244e+06
+SIGMA:	0.0148505
+BR:	8.00819
+DELTA BR:	0.402842
+RESIDUAL:	0.00818845
+DELTA RESIDUAL:	0.0122658
+RMS OF RESIDUAL:	0.387878
+DELTA RMS OF RESIDUAL:	0.00867322
+***************************************************
+
+CONFIG B
+********************* RESULTS *********************
+SUBRUN:	100
+CTAG:	3.79244e+06
+SIGMA:	0.0148505
+BR:	8.00141
+DELTA BR:	0.573017
+RESIDUAL:	0.00140928
+DELTA RESIDUAL:	0.0187331
+RMS OF RESIDUAL:	0.592392
+DELTA RMS OF RESIDUAL:	0.0132463
+***************************************************
+
+CONFIG C
+********************* RESULTS *********************
+SUBRUN:	100
+CTAG:	3.79244e+06
+SIGMA:	0.0148505
+BR:	7.9994
+DELTA BR:	0.647268
+RESIDUAL:	-0.000595257
+DELTA RESIDUAL:	0.0204509
+RMS OF RESIDUAL:	0.646716
+DELTA RMS OF RESIDUAL:	0.014461
+***************************************************
+
+CONFIG D
+********************* RESULTS *********************
+SUBRUN:	100
+CTAG:	3.79244e+06
+SIGMA:	0.0148505
+BR:	8.02253
+DELTA BR:	0.433944
+RESIDUAL:	0.0225287
+DELTA RESIDUAL:	0.0139627
+RMS OF RESIDUAL:	0.44154
+DELTA RMS OF RESIDUAL:	0.00987314
+***************************************************
+
+CONFIG E
+********************* RESULTS *********************
+SUBRUN:	100
+CTAG:	3.79244e+06
+SIGMA:	0.0148505
+BR:	8.02064
+DELTA BR:	0.62044
+RESIDUAL:	0.0206386
+DELTA RESIDUAL:	0.0198054
+RMS OF RESIDUAL:	0.626302
+DELTA RMS OF RESIDUAL:	0.0140045
+***************************************************
+
+CONFIG F
+********************* RESULTS *********************
+SUBRUN:	100
+CTAG:	3.79244e+06
+SIGMA:	0.0148505
+BR:	8.0284
+DELTA BR:	0.820758
+RESIDUAL:	0.0284039
+DELTA RESIDUAL:	0.0259251
+RMS OF RESIDUAL:	0.819825
+DELTA RMS OF RESIDUAL:	0.0183318
+***************************************************
+
+
+
+
+

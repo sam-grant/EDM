@@ -1,7 +1,7 @@
 void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:43 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:50:53 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.5418271,-1.367073,4.876443,1.132927);
@@ -133,11 +133,11 @@ void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    0.1202579};
    TGraphErrors *gre = new TGraphErrors(29,_fx1090,_fy1090,_fex1090,_fey1090);
    gre->SetName("");
-   gre->SetTitle("2500 < p [MeV] < 2750");
+   gre->SetTitle(";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns");
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_Graph1090 = new TH1F("Graph_Graph1090","2500 < p [MeV] < 2750",100,0,4.711539);
+   TH1F *Graph_Graph1090 = new TH1F("Graph_Graph1090","",100,0,4.711539);
    Graph_Graph1090->SetMinimum(-1.117073);
    Graph_Graph1090->SetMaximum(0.882927);
    Graph_Graph1090->SetDirectory(0);
@@ -10190,15 +10190,15 @@ void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1091->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1091->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1091->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1091->SetParameter(0,0.01753005);
+   FullEDMFunc1091->SetParameter(0,0.01753006);
    FullEDMFunc1091->SetParError(0,0.02209766);
    FullEDMFunc1091->SetParLimits(0,0,0);
    FullEDMFunc1091->SetParameter(1,1.439311);
    FullEDMFunc1091->SetParError(1,0);
    FullEDMFunc1091->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1091->SetParameter(2,0.141151);
+   FullEDMFunc1091->SetParameter(2,0.1411509);
    FullEDMFunc1091->SetParError(2,0);
-   FullEDMFunc1091->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1091->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1091->SetParameter(3,0.08138555);
    FullEDMFunc1091->SetParError(3,0.0200642);
    FullEDMFunc1091->SetParLimits(3,0,0);
@@ -10220,7 +10220,7 @@ void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("0.02
 #pm0.02
 ");
-   pt_LaTex = pt->AddText("0.0814
+   pt_LaTex = pt->AddText("0.081
 #pm0.02
 ");
    pt_LaTex = pt->AddText("-0.117
@@ -10273,7 +10273,7 @@ void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt->SetFillColor(0);
    pt->SetTextFont(44);
    pt->SetTextSize(26);
-   pt_LaTex = pt->AddText("1000 < p [MeV] < 2500");
+   pt_LaTex = pt->AddText("2500 < p [MeV] < 2750");
    pt_LaTex = pt->AddText("t [#mus] > 30.6");
    pt->Draw();
    
@@ -20300,15 +20300,15 @@ void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1092->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1092->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1092->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1092->SetParameter(0,0.01753005);
+   FullEDMFunc1092->SetParameter(0,0.01753006);
    FullEDMFunc1092->SetParError(0,0.02209766);
    FullEDMFunc1092->SetParLimits(0,0,0);
    FullEDMFunc1092->SetParameter(1,1.439311);
    FullEDMFunc1092->SetParError(1,0);
    FullEDMFunc1092->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1092->SetParameter(2,0.141151);
+   FullEDMFunc1092->SetParameter(2,0.1411509);
    FullEDMFunc1092->SetParError(2,0);
-   FullEDMFunc1092->SetParLimits(2,0.141151,0.141151);
+   FullEDMFunc1092->SetParLimits(2,0.1411509,0.1411509);
    FullEDMFunc1092->SetParameter(3,0.08138555);
    FullEDMFunc1092->SetParError(3,0.0200642);
    FullEDMFunc1092->SetParLimits(3,0,0);
@@ -20316,15 +20316,6 @@ void S12_edmFit_thetaY_2500_2750_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1092->SetParError(4,0.01560627);
    FullEDMFunc1092->SetParLimits(4,0,0);
    FullEDMFunc1092->Draw("SAME");
-   
-   pt = new TPaveText(0.3021859,0.9341608,0.6978141,0.995,"blNDC");
-   pt->SetName("title");
-   pt->SetBorderSize(0);
-   pt->SetFillColor(0);
-   pt->SetFillStyle(0);
-   pt->SetTextFont(42);
-   pt_LaTex = pt->AddText("2500 < p [MeV] < 2750");
-   pt->Draw();
    c->Modified();
    c->cd();
    c->SetSelected(c);

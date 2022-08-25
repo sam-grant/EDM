@@ -10,8 +10,10 @@ void GaussianCL() {
 	//double sigma = 1.6e-19;//1.05057e-19;
 
 	// BNL tot 
-	double mu = -0.1e-19;
-	double sigma = 0.9e-19;//1.05057e-19;
+	//double sigma = 0.9e-19;//1.05057e-19;
+	//double sigma = 0.9e-19;//1.05057e-19;
+	//double mu = -0.1e-19
+	//double mu = 0.0;
 
 	// McNabb
 	//double mu = -0.14772727e-19;//-0.1e-19;
@@ -20,8 +22,8 @@ void GaussianCL() {
 	//double sigma = 1.4e-19;//1.3522988e-19;//1.4e-19;
 
     // FNAL (prelim)
-   //double mu = 0.00e-19;
-   //double sigma = 1.04e-19;
+   	double mu = 0.00e-19;
+   	double sigma = 9.6e-20;//1.04e-19;
 
  	//double mu = 2.47117e-19;
 	//double sigma = 2.50084e-19;

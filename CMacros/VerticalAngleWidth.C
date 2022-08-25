@@ -55,6 +55,70 @@ void DrawTH1(TH1D *hist, int a, int b, TString title, string fname, TString mean
 }
 
 
+void DrawAll(vector<TH1D*> hist_, string title) {
+
+	cout<<hist_.size()<<endl;
+	//for(auto hist : hist_) hist->Scale(1/hist->Integral());
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	cout<<"TCanvas"<<endl;
+
+	cout<<hist_.at(0)<<endl;
+
+	//hist_.at(0)->SetTitle(title.c_str());
+
+	//hist_.at(0)->SetStats(0);	
+	//hist_.at(0)->GetXaxis()->SetTitleSize(.04);
+	//hist_.at(0)->GetYaxis()->SetTitleSize(.04);
+	//hist_.at(0)->GetXaxis()->SetTitleOffset(1.1);
+	//hist_.at(0)->GetYaxis()->SetTitleOffset(1.1);
+	//hist_.at(0)->GetXaxis()->CenterTitle(1);
+	//hist_.at(0)->GetYaxis()->CenterTitle(1);
+	//hist_.at(0)->GetYaxis()->SetMaxDigits(4);
+
+	//hist_.at(0)->SetLineWidth(2);
+	//hist_.at(0)->SetLineColor(kBlue);
+	//hist_.at(1)->SetLineColor(kOrange+7);
+	//hist_.at(2)->SetLineColor(kGreen-3);
+	//hist_.at(3)->SetLineColor(kMagenta+2);
+
+	cout<<"drawing"<<endl;
+
+	hist_.at(0)->Draw("HIST ][");
+	//hist_.at(1)->Draw("HIST SAME");
+	//hist_.at(2)->Draw("HIST SAME");
+	//hist_.at(3)->Draw("HIST SAME");
+/*//
+	TPaveText *names = new TPaveText(0.575,0.75,0.75,0.88,"NDC"); // 1/QHV
+	names->SetTextAlign(13);
+	names->AddText("#LT#theta_{y}#GT [mrad]");
+	names->AddText("#sigma_{#theta_{y}} [mrad]");
+
+	TPaveText *values = new TPaveText(0.75,0.75,0.89,0.88,"NDC");
+	values->SetTextAlign(33);
+	if(mean=="") values->AddText(Round(hist->GetMean(), a)+"#pm"+Round(hist->GetMeanError(),1));
+	else values->AddText(mean);
+	values->AddText(Round(hist->GetRMS(), b)+"#pm"+Round(hist->GetRMSError(), 1));
+
+	names->SetTextSize(22);
+	names->SetTextFont(44);
+	names->SetFillColor(0);
+	values->SetFillColor(0);
+	values->SetTextFont(44);
+	values->SetTextSize(22);
+
+	names->Draw("same");
+	values->Draw("same");*/
+
+	//	c->SaveAs("../Images/Data/Run1ThetaYOverlay.pdf");//(fname+".pdf").c_str());
+
+	delete c;
+
+
+	return;
+}
+
 void VerticalAngleWidth() {
 
 	cout << "\n *** SIM ALL DECAYS *** ,, " << endl;
@@ -127,9 +191,15 @@ void VerticalAngleWidth() {
 
 	stn_ = {"S12", "S18", "S12S18"};
 
+	vector<TH1D*> hists_;
+
 	for(auto& ds : ds_) {
 
-		TFile *f3 = TFile::Open(("../Plots/Data/dMu/Run-1/Plots/edmPlots_"+ds+"_250MeV_1000_2500MeV_randomised_BQ.root").c_str());//250MeV_1000_2500MeV_randomised_BQ.root").c_str()); 
+		cout<<ds<<endl;
+
+		TString f3Name = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+ds+"_250MeV_1000_2500MeV_randomised_BQ.root";//).c_str());//250MeV_1000_2500MeV_randomised_BQ.root").c_str()); 
+		if(ds=="Run-1d") f3Name = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+ds+"_250MeV_1000_2500MeV_50usStartTime_randomised_BQ.root";//).c_str());//250MeV_1000_2500MeV_randomised_BQ.root").c_str()); 
+		TFile *f3 = TFile::Open(f3Name);
 
 		cout<<"\n"<<ds<<",,"<<endl;
 
@@ -165,15 +235,16 @@ void VerticalAngleWidth() {
 				h2->RebinX(3);	
 				cout<<h2->GetXaxis()->GetBinWidth(0)<<endl;
 				DrawTH1(h2, 1, 5, ds+";#theta_{y} [mrad];Decays / mrad", "../Images/VerticalAngleDists/ThetaY_"+ds);//, "(0#pm4)#times10^{-3}");
+				//hists_.push_back(h2);
 			}
 
 		}
-
 
 		f3->Close();
 
 	}
 
+	//DrawAll(hists_, ";#theta_{y} [mrad];Decays / mrad");
 /*	cout << "\n *** REWIEGHTED SIM *** ,, " << endl;
 
 	TFile *f3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_BQ.reweight.root");

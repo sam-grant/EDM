@@ -1,9 +1,12 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12S18_EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Jun 13 17:27:31 2022) by ROOT version 6.24/06
+//=========  (Tue Aug 23 11:24:35 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
-   c->Range(0.35,2.481156e-19,4.85,2.010412e-18);
+   c->Range(0.35,2.512727e-19,4.85,1.765985e-18);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -16,20 +19,20 @@ void S12S18_EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    3.1,
    4.1};
    Double_t _fy1003[4] = {
-   8.339392e-19,
-   7.604678e-19,
-   1.510485e-18,
-   1.011276e-18};
+   7.512861e-19,
+   6.964781e-19,
+   1.353664e-18,
+   9.058698e-19};
    Double_t _fex1003[4] = {
    0,
    0,
    0,
    0};
    Double_t _fey1003[4] = {
-   2.565616e-19,
-   2.186361e-19,
-   2.062106e-19,
-   1.764818e-19};
+   2.248534e-19,
+   1.927533e-19,
+   1.598692e-19,
+   1.417208e-19};
    TGraphErrors *gre = new TGraphErrors(4,_fx1003,_fy1003,_fex1003,_fey1003);
    gre->SetName("");
    gre->SetTitle("");
@@ -37,8 +40,8 @@ void S12S18_EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph1003 = new TH1F("Graph_Graph1003","",100,0.8,4.4);
-   Graph_Graph1003->SetMinimum(4.243452e-19);
-   Graph_Graph1003->SetMaximum(1.834182e-18);
+   Graph_Graph1003->SetMinimum(4.02744e-19);
+   Graph_Graph1003->SetMaximum(1.614514e-18);
    Graph_Graph1003->SetDirectory(0);
    Graph_Graph1003->SetStats(0);
 
@@ -73,15 +76,15 @@ void S12S18_EDM_vs_DS_blinded_1000_2500MeV_250MeV_randomised_BQ()
    pol01004->SetFillStyle(0);
    pol01004->SetLineColor(2);
    pol01004->SetLineWidth(2);
-   pol01004->SetChisquare(7.497019);
+   pol01004->SetChisquare(8.923741);
    pol01004->SetNDF(3);
    pol01004->GetXaxis()->SetLabelFont(42);
    pol01004->GetXaxis()->SetTitleOffset(1);
    pol01004->GetXaxis()->SetTitleFont(42);
    pol01004->GetYaxis()->SetLabelFont(42);
    pol01004->GetYaxis()->SetTitleFont(42);
-   pol01004->SetParameter(0,1.052687e-18);
-   pol01004->SetParError(0,1.044073e-19);
+   pol01004->SetParameter(0,9.709634e-19);
+   pol01004->SetParError(0,8.587271e-20);
    pol01004->SetParLimits(0,0,0);
    pol01004->SetParent(gre);
    gre->GetListOfFunctions()->Add(pol01004);

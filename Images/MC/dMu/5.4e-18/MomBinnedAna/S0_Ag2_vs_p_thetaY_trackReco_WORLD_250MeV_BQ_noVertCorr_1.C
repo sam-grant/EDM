@@ -1,7 +1,7 @@
 void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:40 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:50:48 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-164.6275,-0.3824684,3377.862,0.2682537);
@@ -24,17 +24,17 @@ void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    2615.303,
    2789.539};
    Double_t Graph0_fy1059[11] = {
-   -0.02803804,
+   -0.02803803,
    -0.2113349,
-   -0.001453943,
-   -0.06827268,
-   0.01289761,
-   -0.01954816,
-   0.0355446,
-   -0.009536367,
+   -0.001453931,
+   -0.06827267,
+   0.01289763,
+   -0.01954815,
+   0.03554461,
+   -0.009536357,
    0.03648719,
    -0.01786973,
-   0.001546163};
+   0.001546158};
    Double_t Graph0_fex1059[11] = {
    0.1383888,
    0.1171073,
@@ -58,7 +58,7 @@ void S0_Ag2_vs_p_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    0.02648567,
    0.0282125,
    0.02949178,
-   0.06641297};
+   0.06641298};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1059,Graph0_fy1059,Graph0_fex1059,Graph0_fey1059);
    gre->SetName("Graph0");
    gre->SetTitle("S0_");

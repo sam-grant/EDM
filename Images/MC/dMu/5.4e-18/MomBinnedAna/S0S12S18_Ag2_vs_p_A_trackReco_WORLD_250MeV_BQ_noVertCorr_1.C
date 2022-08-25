@@ -1,7 +1,7 @@
 void S0S12S18_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:48:59 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:51:17 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-163.8644,-1.244509e-05,3375.839,2.53491e-06);
@@ -25,13 +25,13 @@ void S0S12S18_Ag2_vs_p_A_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    2788.104};
    Double_t Graph0_fy1210[11] = {
    -1.379702e-06,
-   2.073894e-08,
-   6.468221e-09,
-   2.790945e-09,
-   -4.897273e-10,
-   -2.607846e-08,
-   -2.466258e-08,
-   -3.794973e-08,
+   2.073895e-08,
+   6.468223e-09,
+   2.790948e-09,
+   -4.89722e-10,
+   -2.607845e-08,
+   -2.466257e-08,
+   -3.794971e-08,
    -1.3694e-07,
    -2.788824e-07,
    -5.872112e-06};

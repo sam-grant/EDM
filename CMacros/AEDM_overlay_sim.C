@@ -19,7 +19,7 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 	double xmax = gr1->GetX()[gr1->GetN()-1];
 
 	gr1->GetXaxis()->SetRangeUser(500, 3000);//xmin - 100, xmax + 100);
-	gr1->GetYaxis()->SetRangeUser(-0.05, 0.40);
+	gr1->GetYaxis()->SetRangeUser(0, 0.35);
 
 	gr1->SetLineColor(kBlack);
 	gr1->SetMarkerColor(kBlack);
@@ -32,16 +32,19 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 
 	gr1->Draw("AP");
 	gr2->Draw("P SAME");
-	gr3->Draw("P SAME");
+	//gr3->Draw("P SAME");
 
-	TLegend *l = new TLegend(.65, .75, .89, .89);
+	//TLegend *l = new TLegend(.65, .75, .89, .89);
+	TLegend *l = new TLegend(.60, .75, .89, .89);
+	//TLegend *l = new TLegend(.59, .825, .89, .89);
 	l->SetBorderSize(0);
 	l->SetTextSize(24);
 	l->SetTextFont(44);
 	
-	l->AddEntry(gr1, "All decays");
-	l->AddEntry(gr2, "Truth vertices");
-	l->AddEntry(gr3, "Reco vertices");
+	l->AddEntry(gr1, "Sim: all decays");
+	l->AddEntry(gr2, "Sim: truth vertices");
+	//y
+	//l->AddEntry(gr1, "Sim: reco vertices");
 
 	l->Draw("SAME");
 
@@ -59,8 +62,8 @@ void DrawOverlay(TGraphErrors *gr1, TGraphErrors *gr3, TGraphErrors *gr2, std::s
 
 void AEDM_overlay_sim() { 
 
-	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root";
-	TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr.root";
+	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
+	TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
 	TString f3Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root";
 
 	TFile *f1 = TFile::Open(f1Name);
@@ -75,7 +78,8 @@ void AEDM_overlay_sim() {
 
 	gr1->GetYaxis()->SetRangeUser(-0.1, 0.4);
 
-	DrawOverlay(gr1, gr2, gr3, ";Momentum, p [MeV];A_{EDM} [mrad];", "../Images/MC/dMu/5.4e-18/Results/S12S18_AEDM_overlay");
+	DrawOverlay(gr1, gr2, gr3, ";Momentum, p [MeV];A_{EDM} [mrad];", "../Images/MC/dMu/5.4e-18/Results/S12S18_AEDM_verlay");
+	//DrawOverlay(gr3, gr3, gr3, ";Momentum, p [MeV];A_{EDM} [mrad];", "../Images/MC/dMu/5.4e-18/Results/S12S18_AEDM_reco");
 
 	f1->Close();
 	f2->Close();

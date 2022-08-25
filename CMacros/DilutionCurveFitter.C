@@ -590,7 +590,7 @@ int main() { //int argc, char *argv[]) {
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
-  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.root";
+  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.full.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
 
@@ -601,8 +601,8 @@ int main() { //int argc, char *argv[]) {
   //FitDilution("trackReco_WORLD_250MeV_BQ_HS", "EDM", output, true, true); 
 
   // Regular samples
-  FitDilution("allDecays_WORLD_250MeV_AQ_eTimeCut_noCorr", "EDM", output, true); // this is what we're going with. 
-  FitDilution("acceptedDecays_WORLD_250MeV_AQ", "EDM", output, true);
+  //  FitDilution("allDecays_WORLD_250MeV_AQ_eTimeCut_noCorr", "EDM", output, true); // this is what we're going with. 
+  FitDilution("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "EDM", output, true);
   FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);
   FitDilution("trackTruth_WORLD_250MeV_BQ", "EDM", output, true);

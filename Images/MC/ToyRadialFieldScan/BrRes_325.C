@@ -1,7 +1,7 @@
 void BrRes_325()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue May 31 19:16:46 2022) by ROOT version 6.24/06
+//=========  (Sat Jun 25 13:30:55 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -11,28 +11,42 @@ void BrRes_325()
    c->SetFrameBorderMode(0);
    
    TH1D *__39 = new TH1D("__39","Number of sub-runs: 325",240,-11,11);
-   __39->SetBinContent(112,1);
-   __39->SetBinContent(113,1);
-   __39->SetBinContent(114,2);
-   __39->SetBinContent(115,12);
-   __39->SetBinContent(116,26);
-   __39->SetBinContent(117,63);
-   __39->SetBinContent(118,89);
-   __39->SetBinContent(119,129);
-   __39->SetBinContent(120,159);
-   __39->SetBinContent(121,176);
-   __39->SetBinContent(122,127);
-   __39->SetBinContent(123,101);
-   __39->SetBinContent(124,64);
-   __39->SetBinContent(125,30);
-   __39->SetBinContent(126,16);
-   __39->SetBinContent(127,1);
-   __39->SetBinContent(128,2);
-   __39->SetBinContent(129,1);
+   __39->SetBinContent(105,1);
+   __39->SetBinContent(106,1);
+   __39->SetBinContent(107,3);
+   __39->SetBinContent(108,2);
+   __39->SetBinContent(109,3);
+   __39->SetBinContent(110,9);
+   __39->SetBinContent(111,13);
+   __39->SetBinContent(112,23);
+   __39->SetBinContent(113,20);
+   __39->SetBinContent(114,37);
+   __39->SetBinContent(115,42);
+   __39->SetBinContent(116,49);
+   __39->SetBinContent(117,60);
+   __39->SetBinContent(118,70);
+   __39->SetBinContent(119,84);
+   __39->SetBinContent(120,88);
+   __39->SetBinContent(121,81);
+   __39->SetBinContent(122,74);
+   __39->SetBinContent(123,71);
+   __39->SetBinContent(124,57);
+   __39->SetBinContent(125,51);
+   __39->SetBinContent(126,46);
+   __39->SetBinContent(127,42);
+   __39->SetBinContent(128,20);
+   __39->SetBinContent(129,13);
+   __39->SetBinContent(130,11);
+   __39->SetBinContent(131,7);
+   __39->SetBinContent(132,8);
+   __39->SetBinContent(133,9);
+   __39->SetBinContent(134,3);
+   __39->SetBinContent(135,1);
+   __39->SetBinContent(137,1);
    __39->SetEntries(1000);
    __39->SetStats(0);
    __39->GetXaxis()->SetTitle("#LTB_{r}^{b}#GT truth residual [ppm]");
-   __39->GetXaxis()->SetRange(80,161);
+   __39->GetXaxis()->SetRange(36,205);
    __39->GetXaxis()->CenterTitle(true);
    __39->GetXaxis()->SetLabelFont(42);
    __39->GetXaxis()->SetTitleSize(0.04);
@@ -67,11 +81,11 @@ void BrRes_325()
    pt->SetTextFont(44);
    pt->SetTextSize(23);
    pt_LaTex = pt->AddText("1000");
-   pt_LaTex = pt->AddText("0.00733
-#pm0.007
+   pt_LaTex = pt->AddText("0.00532
+#pm0.01
 ");
-   pt_LaTex = pt->AddText("0.221
-#pm0.005
+   pt_LaTex = pt->AddText("0.456
+#pm0.01
 ");
    pt->Draw();
    c->Modified();

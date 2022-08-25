@@ -1,10 +1,10 @@
 void S12S18_AEDMOverMaxDiff_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Sun Jun 12 21:18:06 2022) by ROOT version 6.24/06
+//=========  (Tue Jul 12 23:22:30 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(785.102,6.662052e-05,2703.55,0.007934332);
+   c->Range(785.102,-0.0005228479,2703.55,0.001758493);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +24,17 @@ void S12S18_AEDMOverMaxDiff_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_random
    2607.511,
    2781.302};
    Double_t Graph0_fy1115[11] = {
-   -0.00229331,
-   0.002904003,
-   0.00109075,
-   0.001066002,
-   0.002295805,
-   0.001775268,
-   0.002610923,
-   0.00319955,
-   0.003229677,
-   0.006163349,
-   0.008196296};
+   -0.003215213,
+   0.001728196,
+   -0.0003856796,
+   -0.0001251828,
+   0.0008096449,
+   -0.000119023,
+   0.0004451678,
+   0.0009731755,
+   0.001075439,
+   0.001290476,
+   0.002367293};
    Double_t Graph0_fex1115[11] = {
    0.06685408,
    0.04739569,
@@ -48,17 +48,17 @@ void S12S18_AEDMOverMaxDiff_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_random
    0.08999573,
    0.1485384};
    Double_t Graph0_fey1115[11] = {
-   -0.003018786,
-   0.0009851893,
-   0.0006364632,
-   0.0005684538,
-   0.0005699526,
-   0.0006334973,
-   0.0007693039,
-   0.0009706498,
-   0.001295812,
-   0.001869123,
-   0.008042873};
+   -0.003018788,
+   0.0009851886,
+   -0.0006364631,
+   -0.0005684537,
+   0.0005699522,
+   -0.0006334971,
+   0.0007693032,
+   0.0009706487,
+   0.001295811,
+   0.001869115,
+   0.00804281};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1115,Graph0_fy1115,Graph0_fex1115,Graph0_fey1115);
    gre->SetName("Graph0");
    gre->SetTitle("S12S18");
@@ -66,8 +66,8 @@ void S12S18_AEDMOverMaxDiff_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_random
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01115 = new TH1F("Graph_Graph01115","S12S18",100,223.5199,3013.99);
-   Graph_Graph01115->SetMinimum(0.0008533917);
-   Graph_Graph01115->SetMaximum(0.007147561);
+   Graph_Graph01115->SetMinimum(-0.0002947138);
+   Graph_Graph01115->SetMaximum(0.001530359);
    Graph_Graph01115->SetDirectory(0);
    Graph_Graph01115->SetStats(0);
 

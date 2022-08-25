@@ -1,7 +1,7 @@
 void S12_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jun  7 21:47:51 2022) by ROOT version 6.24/06
+//=========  (Tue Jun 28 10:50:04 2022) by ROOT version 6.24/06
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-20.25395,-2.278373,450.8004,1.596627);
@@ -74181,7 +74181,7 @@ void S12_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1028->SetSavedPoint(244,-0.3780125);
    FullEDMFunc1028->SetSavedPoint(245,-0.3832731);
    FullEDMFunc1028->SetSavedPoint(246,-0.3884672);
-   FullEDMFunc1028->SetSavedPoint(247,-0.3935869);
+   FullEDMFunc1028->SetSavedPoint(247,-0.3935868);
    FullEDMFunc1028->SetSavedPoint(248,-0.3986239);
    FullEDMFunc1028->SetSavedPoint(249,-0.4035704);
    FullEDMFunc1028->SetSavedPoint(250,-0.4084187);
@@ -83950,20 +83950,20 @@ void S12_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1028->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1028->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1028->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1028->SetParameter(0,-0.01438456);
+   FullEDMFunc1028->SetParameter(0,-0.01438455);
    FullEDMFunc1028->SetParError(0,0.008636386);
    FullEDMFunc1028->SetParLimits(0,0,0);
    FullEDMFunc1028->SetParameter(1,1.439311);
    FullEDMFunc1028->SetParError(1,0);
    FullEDMFunc1028->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1028->SetParameter(2,0.141151);
+   FullEDMFunc1028->SetParameter(2,0.1411509);
    FullEDMFunc1028->SetParError(2,0);
-   FullEDMFunc1028->SetParLimits(2,0.141151,0.141151);
-   FullEDMFunc1028->SetParameter(3,0.1379826);
-   FullEDMFunc1028->SetParError(3,0.008583952);
+   FullEDMFunc1028->SetParLimits(2,0.1411509,0.1411509);
+   FullEDMFunc1028->SetParameter(3,0.1379827);
+   FullEDMFunc1028->SetParError(3,0.008583953);
    FullEDMFunc1028->SetParLimits(3,0,0);
    FullEDMFunc1028->SetParameter(4,-0.3408735);
-   FullEDMFunc1028->SetParError(4,0.006106793);
+   FullEDMFunc1028->SetParError(4,0.006106794);
    FullEDMFunc1028->SetParLimits(4,0,0);
    FullEDMFunc1028->SetParent(gre);
    gre->GetListOfFunctions()->Add(FullEDMFunc1028);
@@ -83980,7 +83980,7 @@ void S12_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    pt_LaTex = pt->AddText("-0.01
 #pm0.009
 ");
-   pt_LaTex = pt->AddText("0.138
+   pt_LaTex = pt->AddText("0.14
 #pm0.009
 ");
    pt_LaTex = pt->AddText("-0.341
@@ -84291,7 +84291,7 @@ void S12_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1029->SetSavedPoint(244,-0.3780125);
    FullEDMFunc1029->SetSavedPoint(245,-0.3832731);
    FullEDMFunc1029->SetSavedPoint(246,-0.3884672);
-   FullEDMFunc1029->SetSavedPoint(247,-0.3935869);
+   FullEDMFunc1029->SetSavedPoint(247,-0.3935868);
    FullEDMFunc1029->SetSavedPoint(248,-0.3986239);
    FullEDMFunc1029->SetSavedPoint(249,-0.4035704);
    FullEDMFunc1029->SetSavedPoint(250,-0.4084187);
@@ -94060,20 +94060,20 @@ void S12_edmFit_noMod_thetaY_trackReco_WORLD_250MeV_BQ_noVertCorr_1()
    FullEDMFunc1029->GetXaxis()->SetTitleFont(42);
    FullEDMFunc1029->GetYaxis()->SetLabelFont(42);
    FullEDMFunc1029->GetYaxis()->SetTitleFont(42);
-   FullEDMFunc1029->SetParameter(0,-0.01438456);
+   FullEDMFunc1029->SetParameter(0,-0.01438455);
    FullEDMFunc1029->SetParError(0,0.008636386);
    FullEDMFunc1029->SetParLimits(0,0,0);
    FullEDMFunc1029->SetParameter(1,1.439311);
    FullEDMFunc1029->SetParError(1,0);
    FullEDMFunc1029->SetParLimits(1,1.439311,1.439311);
-   FullEDMFunc1029->SetParameter(2,0.141151);
+   FullEDMFunc1029->SetParameter(2,0.1411509);
    FullEDMFunc1029->SetParError(2,0);
-   FullEDMFunc1029->SetParLimits(2,0.141151,0.141151);
-   FullEDMFunc1029->SetParameter(3,0.1379826);
-   FullEDMFunc1029->SetParError(3,0.008583952);
+   FullEDMFunc1029->SetParLimits(2,0.1411509,0.1411509);
+   FullEDMFunc1029->SetParameter(3,0.1379827);
+   FullEDMFunc1029->SetParError(3,0.008583953);
    FullEDMFunc1029->SetParLimits(3,0,0);
    FullEDMFunc1029->SetParameter(4,-0.3408735);
-   FullEDMFunc1029->SetParError(4,0.006106793);
+   FullEDMFunc1029->SetParError(4,0.006106794);
    FullEDMFunc1029->SetParLimits(4,0,0);
    FullEDMFunc1029->Draw("SAME");
    

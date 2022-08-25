@@ -1,10 +1,13 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void allDecays_gr_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 15:46:44 2022) by ROOT version 6.24/06
+//=========  (Tue Aug 16 13:46:20 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-390.357,-3.657018,3513.213,1.327882);
+   c->Range(-390.3568,-7.130022,3513.211,-0.5560504);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -12,31 +15,31 @@ void allDecays_gr_pull()
    c->SetFrameBorderMode(0);
    
    Double_t allDecays_gr_pull_fx1001[12] = {
-   124.3987,
-   374.0359,
-   623.6717,
-   873.25,
-   1122.829,
-   1372.245,
-   1621.478,
-   1870.594,
-   2119.355,
-   2367.258,
-   2613.22,
-   2850.269};
+   124.3991,
+   374.0341,
+   623.7056,
+   873.2706,
+   1122.785,
+   1372.229,
+   1621.527,
+   1870.634,
+   2119.341,
+   2367.305,
+   2613.177,
+   2850.267};
    Double_t allDecays_gr_pull_fy1001[12] = {
-   -0.9502276,
-   -0.261016,
-   -0.414114,
-   0.2996927,
-   0.4970655,
-   0.1666063,
-   -0.1436061,
-   0.270894,
-   -2.826201,
-   0.1339038,
-   -2.18017,
-   -1.347159};
+   -2.314656,
+   -2.854294,
+   -1.947095,
+   -3.893199,
+   -4.740055,
+   -6.03436,
+   -1.888651,
+   -2.498426,
+   -2.958638,
+   -4.619092,
+   -1.651712,
+   -4.919106};
    Double_t allDecays_gr_pull_fex1001[12] = {
    0,
    0,
@@ -69,9 +72,9 @@ void allDecays_gr_pull()
    gre->SetFillStyle(1000);
    gre->SetMarkerStyle(20);
    
-   TH1F *Graph_allDecays_gr_pull1001 = new TH1F("Graph_allDecays_gr_pull1001","",100,0,3122.856);
-   Graph_allDecays_gr_pull1001->SetMinimum(-3.158528);
-   Graph_allDecays_gr_pull1001->SetMaximum(0.8293921);
+   TH1F *Graph_allDecays_gr_pull1001 = new TH1F("Graph_allDecays_gr_pull1001","",100,0,3122.854);
+   Graph_allDecays_gr_pull1001->SetMinimum(-6.472624);
+   Graph_allDecays_gr_pull1001->SetMaximum(-1.213448);
    Graph_allDecays_gr_pull1001->SetDirectory(0);
    Graph_allDecays_gr_pull1001->SetStats(0);
 
