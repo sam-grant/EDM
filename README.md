@@ -1,5 +1,5 @@
-Local code for g-2 Run-1 muon EDM analysis 
-------------------------------------------
+Offline code for the g-2 Run-1 muon EDM analysis 
+------------------------------------------------
 
 Important information:
 
