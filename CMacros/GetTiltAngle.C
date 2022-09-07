@@ -1128,139 +1128,17 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
 }
 
-void GetTiltAngle() { 
+int main() {
 
   bool correctDilution = true; 
   bool correctAcceptance = true;
   bool correctVerticalAngleOffset = true;  // not sure what this is about?
-
-  //RunData("orthogonal_Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "", correctDilution, correctAcceptance, correctVerticalAngleOffset, true);
-  //RunData("orthogonal_Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "", correctDilution, correctAcceptance, correctVerticalAngleOffset, true);
-  //RunData("orthogonal_Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "", correctDilution, correctAcceptance, correctVerticalAngleOffset, true);
-  //RunData("orthogonal_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "", correctDilution, correctAcceptance, correctVerticalAngleOffset, true);
 
   RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_testing", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_testing", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_testing", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_testing", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-
-
-  //TF1 *dilutionFunc = new TF1("dilutionFunc", )
-
-  // Unblinded sim samples
-  //RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "blinded");
-  //RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  //RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
-  //RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
-  //RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "blinded", true);
-  //RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr", "5.4e-18", "unblinded", true);
-  //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded", true);
-  //RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "blinded", true);
-
-  //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
- // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
- // RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ_fixedPhase", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //// //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // //RunData("Run-1d_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_plusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-
-
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_minusPhiErr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-/*RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_noVertCorr", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-*/
-  //RunData("Run-1a_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_noRand_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-
-
-  //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1d_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-
-
-  //RunData("Run-1a_250MeV_1000_2500_MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-/*
-  RunSim("allDecays_WORLD_250MeV_AQ", "1.8e-18", "unblinded");
-  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");*/
-  // RunSim("trackReco_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
-
-/*  
-
-  RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("allDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("acceptedDecays_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("acceptedDecaysControl_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("trackRecoControl_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
-  RunSim("trackRecoControl_WORLD_250MeV_CQ", "5.4e-18", "unblinded");
-  RunSim("trackTruth_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("trackReco_WORLD_250MeV_AQ", "5.4e-18", "unblinded");
-  RunSim("trackTruth_WORLD_250MeV_BQ", "5.4e-18", "unblinded");
-	
-*/
-  // Data
-
-/*  bool correctDilution = false; 
-  bool correctAcceptance = true;
-  bool correctVerticalAngleOffset = true; 
-
-  RunData("Run-1a_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1b_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1c_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1d_250MeV_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
-*/
-	return;
+	return 0;
 
 }

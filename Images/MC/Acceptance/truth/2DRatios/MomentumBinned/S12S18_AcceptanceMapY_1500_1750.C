@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12S18_AcceptanceMapY_1500_1750()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 10:42:59 2022) by ROOT version 6.24/06
+//=========  (Wed Sep  7 16:55:35 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75.58442,-125,80.25974,125);
@@ -430,14 +433,14 @@ void S12S18_AcceptanceMapY_1500_1750()
 
    ci = TColor::GetColor("#000099");
    S12S18_WeightMapY_1500_1750->SetLineColor(ci);
-   S12S18_WeightMapY_1500_1750->GetXaxis()->SetTitle("y [mm]");
+   S12S18_WeightMapY_1500_1750->GetXaxis()->SetTitle("Decay y-position [mm]");
    S12S18_WeightMapY_1500_1750->GetXaxis()->SetRange(1,24);
    S12S18_WeightMapY_1500_1750->GetXaxis()->CenterTitle(true);
    S12S18_WeightMapY_1500_1750->GetXaxis()->SetLabelFont(42);
    S12S18_WeightMapY_1500_1750->GetXaxis()->SetTitleSize(0.04);
    S12S18_WeightMapY_1500_1750->GetXaxis()->SetTitleOffset(1.1);
    S12S18_WeightMapY_1500_1750->GetXaxis()->SetTitleFont(42);
-   S12S18_WeightMapY_1500_1750->GetYaxis()->SetTitle("#theta_{y} [mrad]");
+   S12S18_WeightMapY_1500_1750->GetYaxis()->SetTitle(" #theta_{y} [mrad]");
    S12S18_WeightMapY_1500_1750->GetYaxis()->SetRange(296,335);
    S12S18_WeightMapY_1500_1750->GetYaxis()->CenterTitle(true);
    S12S18_WeightMapY_1500_1750->GetYaxis()->SetNdivisions(4000510);

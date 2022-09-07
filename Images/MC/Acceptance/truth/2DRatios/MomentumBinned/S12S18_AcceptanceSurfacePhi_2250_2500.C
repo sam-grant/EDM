@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12S18_AcceptanceSurfacePhi_2250_2500()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 10:43:11 2022) by ROOT version 6.24/06
+//=========  (Tue Sep  6 16:26:53 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(nan,nan,nan,nan);
@@ -160569,14 +160572,14 @@ void S12S18_AcceptanceSurfacePhi_2250_2500()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    S12S18_WeightMapPhi_2250_2500__33->SetLineColor(ci);
-   S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetTitle("y [mm]");
+   S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetTitle("Decay azimuthal angle [rad]");
    S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetRange(0,126);
    S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->CenterTitle(true);
    S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetLabelFont(42);
    S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetTitleSize(0.04);
    S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetTitleOffset(1.5);
    S12S18_WeightMapPhi_2250_2500__33->GetXaxis()->SetTitleFont(42);
-   S12S18_WeightMapPhi_2250_2500__33->GetYaxis()->SetTitle("#theta_{y} [mrad]");
+   S12S18_WeightMapPhi_2250_2500__33->GetYaxis()->SetTitle("Tracks");
    S12S18_WeightMapPhi_2250_2500__33->GetYaxis()->SetRange(296,335);
    S12S18_WeightMapPhi_2250_2500__33->GetYaxis()->CenterTitle(true);
    S12S18_WeightMapPhi_2250_2500__33->GetYaxis()->SetNdivisions(4000510);

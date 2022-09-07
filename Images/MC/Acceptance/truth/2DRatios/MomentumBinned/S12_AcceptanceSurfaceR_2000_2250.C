@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12_AcceptanceSurfaceR_2000_2250()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 10:43:32 2022) by ROOT version 6.24/06
+//=========  (Tue Sep  6 16:27:10 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);
@@ -396,14 +399,14 @@ void S12_AcceptanceSurfaceR_2000_2250()
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#000099");
    S12_WeightMapR_2000_2250__68->SetLineColor(ci);
-   S12_WeightMapR_2000_2250__68->GetXaxis()->SetTitle("y [mm]");
+   S12_WeightMapR_2000_2250__68->GetXaxis()->SetTitle("Decay radial position [mm]");
    S12_WeightMapR_2000_2250__68->GetXaxis()->SetRange(1,24);
    S12_WeightMapR_2000_2250__68->GetXaxis()->CenterTitle(true);
    S12_WeightMapR_2000_2250__68->GetXaxis()->SetLabelFont(42);
    S12_WeightMapR_2000_2250__68->GetXaxis()->SetTitleSize(0.04);
    S12_WeightMapR_2000_2250__68->GetXaxis()->SetTitleOffset(1.5);
    S12_WeightMapR_2000_2250__68->GetXaxis()->SetTitleFont(42);
-   S12_WeightMapR_2000_2250__68->GetYaxis()->SetTitle("#theta_{y} [mrad]");
+   S12_WeightMapR_2000_2250__68->GetYaxis()->SetTitle("Tracks");
    S12_WeightMapR_2000_2250__68->GetYaxis()->SetRange(296,335);
    S12_WeightMapR_2000_2250__68->GetYaxis()->CenterTitle(true);
    S12_WeightMapR_2000_2250__68->GetYaxis()->SetNdivisions(4000510);

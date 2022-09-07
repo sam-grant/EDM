@@ -116,18 +116,15 @@ void DrawOverlayA(TGraphErrors *gr_decays, TGraphErrors *gr_tracks, TGraphErrors
 	gr_weight->SetMarkerStyle(24); // open circle
 	gr_weight->Draw("P SAME");
 
-	if(gr_weight!=0) {
-		gr_weight->SetMarkerStyle(20);
-		gr_weight->SetMarkerColor(kRed);
-		gr_weight->SetLineColor(kRed);
-		gr_weight->Draw("P SAME");
-	}
+	gr_tracks->SetMarkerStyle(20);
+	gr_tracks->SetMarkerColor(kRed);
+	gr_tracks->SetLineColor(kRed);
+	gr_tracks->Draw("P SAME");
 
 	TLegend *l = new TLegend(.69, .79, .89, .89);
 	l->SetBorderSize(0);
 	l->SetTextSize(24);
 	l->SetTextFont(44);
-
 
 	l->AddEntry(gr_decays, "All decays (unweighted)");
 	l->AddEntry(gr_weight, "All decays (weighted)");
@@ -215,6 +212,67 @@ void DrawOverlayB(TGraphErrors *gr_weight, TGraphErrors *gr_tracks, TGraphErrors
 	return;
 
 }
+
+// DrawOverlayC(gr_tracks, gr_weight, gr_tracksReweight, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_C");
+void DrawOverlayC(TGraphErrors *gr_tracks, TGraphErrors *gr_weight, TGraphErrors *gr_tracksReweight, std::string title, std::string fname, std::string dataset) {
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gr_tracks->SetTitle(title.c_str());
+	gr_tracks->GetXaxis()->SetTitleSize(.04);
+	gr_tracks->GetYaxis()->SetTitleSize(.04);
+	gr_tracks->GetXaxis()->SetTitleOffset(1.1);
+	gr_tracks->GetYaxis()->SetTitleOffset(1.2);
+	gr_tracks->GetXaxis()->CenterTitle(true);
+	gr_tracks->GetYaxis()->CenterTitle(true);
+	gr_tracks->GetYaxis()->SetMaxDigits(4);
+	gr_tracks->SetMarkerStyle(20); //  Full circle
+
+	// range
+	double xmin = gr_tracks->GetX()[0];
+	double xmax = gr_tracks->GetX()[gr_tracks->GetN()-1];
+	gr_tracks->GetXaxis()->SetRangeUser(xmin - 100, xmax + 100);
+	gr_tracks->GetYaxis()->SetRangeUser(0.00, 0.20);
+	gr_tracks->Draw("AP");
+
+	gr_weight->SetMarkerStyle(24); // open circle
+	gr_weight->Draw("P SAME");
+
+	gr_tracksReweight->SetMarkerStyle(24);
+	gr_tracksReweight->SetMarkerColor(kRed);
+	gr_tracksReweight->SetLineColor(kRed);
+	gr_tracksReweight->Draw("P SAME");
+
+	TLegend *l = new TLegend(.35, .75, .89, .89);
+	l->SetBorderSize(0);
+	l->SetTextSize(24);
+	l->SetTextFont(44);
+
+	l->AddEntry(gr_weight, "All decays (acc. weighted)");
+	l->AddEntry(gr_tracks, "Truth vertices");
+	l->AddEntry(gr_tracksReweight, ("Truth vertices ("+dataset+" weighted)").c_str());
+	l->Draw("SAME");
+	// gPad->Update();
+	// l->SetX1NDC(.49);
+	// l->SetX2NDC(.89);
+	// l->SetY1NDC(.75);
+	// l->SetY2NDC(.89);
+		//c->Update();
+
+	l->Draw("SAME");
+
+	//c->SetGridx();
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
+
 
 // Delete this??
 TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) { 
@@ -319,7 +377,6 @@ void GausTrials(TFile *fout, TH1D *h_ratio, int nTrials, string stn) {
 	return;
 }
 
-
 void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string fname) { 
 	
 	TCanvas *c = new TCanvas("c", "c", 800, 600);
@@ -355,11 +412,11 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
  	// TLegend *l = new TLegend(0.65, 0.15, 0.85, 0.30); 
  	TLegend *l = new TLegend(0.15, 0.725, 0.45, 0.89); 
  	 //l->SetNColumns(3);
-  	l->SetBorderSize(0);
-  	l->SetTextSize(24);
-  	l->SetTextFont(44);
+  l->SetBorderSize(0);
+  l->SetTextSize(24);
+  l->SetTextFont(44);
 
-  	l->AddEntry(gr_.at(0), "Station 12");
+  l->AddEntry(gr_.at(0), "Station 12");
  	l->AddEntry(gr_.at(1), "Station 18");
  	l->AddEntry(gr_.at(2), "Combined");
 
@@ -416,12 +473,12 @@ void OverlayAcceptanceFractionsB(vector<vector<TGraphErrors*>> gr_, vector<strin
 
 	 	// TLegend *l = new TLegend(0.65, 0.15, 0.85, 0.30); 
 	 	TLegend *l = new TLegend(0.15, 0.725, 0.45, 0.89); 
-	 	 //l->SetNColumns(3);
-	  	l->SetBorderSize(0);
-	  	l->SetTextSize(24);
-	  	l->SetTextFont(44);
+	 	//l->SetNColumns(3);
+	  l->SetBorderSize(0);
+	  l->SetTextSize(24);
+	  l->SetTextFont(44);
 
-	  	l->AddEntry(gr_align_.at(0), "Station 12");
+	  l->AddEntry(gr_align_.at(0), "Station 12");
 	 	l->AddEntry(gr_align_.at(1), "Station 18");
 	 	l->AddEntry(gr_align_.at(2), "Combined");
 
@@ -542,7 +599,7 @@ void OverlayAlignDiffGraphs(TGraphErrors *gr1, TGraphErrors *gr2, string shift, 
 
 */
 
-void Run(bool write) { 
+void Run(bool write, string dataset = "Run-1a") { 
 
 	vector<string> alignStr_ = {"plus1mm", "minus1mm", "plus0.1deg", "minus0.1deg"};
 
@@ -555,6 +612,9 @@ void Run(bool write) {
 	TString finName_decays = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
 	TString finName_tracks = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
 
+	TString finName_tracksReweight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full_"+dataset+"_accWeight.root";
+	TFile *fin_tracksReweight = TFile::Open(finName_tracksReweight);
+
 	// Loop thro' 
 	//TString finName_align = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_"+align+"_full.root";
 
@@ -562,7 +622,7 @@ void Run(bool write) {
 	TFile *fin_tracks = TFile::Open(finName_tracks);
 	//TFile *f3 = TFile::Open(f3Name);
 
-	cout<<"\n---> Got base files "<<finName_decays<<", "<<fin_decays<<", "<<finName_tracks<<", "<<fin_tracks<<endl;
+	cout<<"\n---> Got base files "<<finName_decays<<", "<<fin_decays<<", "<<finName_tracks<<", "<<fin_tracks<<", "<<finName_tracksReweight<<", "<<fin_tracksReweight<<endl;
 
 	// Holder for main acceptance factors / stn
 	vector<TGraphErrors*> gr_ratio_main_;
@@ -584,17 +644,21 @@ void Run(bool write) {
 		TGraphErrors *gr_decays = (TGraphErrors*)fin_decays->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY"); 
 		TGraphErrors *gr_tracks = (TGraphErrors*)fin_tracks->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
 		TGraphErrors *gr_weight = (TGraphErrors*)fin_weight->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY");
+		TGraphErrors *gr_tracksReweight = (TGraphErrors*)fin_tracksReweight->Get(("MomentumBinnedAnalysis/ParameterScans/"+stn+"_AEDM_vs_p_thetaY").c_str());
 
-		cout<<"\n---> Got graphs "<<gr_decays<<", "<<gr_tracks<<", "<<gr_weight<<endl;
+		cout<<"\n---> Got graphs "<<gr_decays<<", "<<gr_tracks<<", "<<gr_weight<<", "<<gr_tracksReweight<<endl;
 
 		// Reset x-ranges
 		gr_decays = ResetGraph(gr_decays, xmin, xmax);
 		gr_tracks = ResetGraph(gr_tracks, xmin, xmax);
 		// gr_align = ResetGraph(gr_align, xmin, xmax);
 		gr_weight = ResetGraph(gr_weight, xmin, xmax);
+		gr_tracksReweight = ResetGraph(gr_tracksReweight, xmin, xmax);
 
 		// Draw overlay A
 		DrawOverlayA(gr_decays, gr_tracks, gr_weight, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_A");
+
+		DrawOverlayC(gr_tracks, gr_weight, gr_tracksReweight, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_C_"+dataset, dataset);
 
 		TGraphErrors *gr_ratio_main = GetAcceptanceFactors(gr_decays, gr_weight);
 
@@ -745,6 +809,7 @@ void Run(bool write) {
 
 	fin_decays->Close();
 	fin_tracks->Close();
+	fin_tracksReweight->Close();
 
 	fout->Close();
 
@@ -757,7 +822,7 @@ void Run(bool write) {
 
 int main() { 
 
-	bool write = true;
+	bool write = false;
 	
 	Run(write);
 

@@ -4,8 +4,9 @@
 void S12_EDM_delta_prime_vs_p_1000-2500MeV_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Aug 23 11:13:43 2022) by ROOT version 6.26/04
+//=========  (Tue Aug 30 13:18:20 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
+   c->SetHighLightColor(2);
    c->Range(819.2626,-0.1848189,2667.66,0.9774205);
    c->SetFillColor(0);
    c->SetBorderMode(0);

@@ -57,6 +57,7 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 
 	map->GetZaxis()->SetTitle("Acceptance weighting");
 
+	//gStyle->SetPalette(kDarkBodyRadiator);
 	gStyle->SetPalette(kLightTemperature);
 	c->SetRightMargin(0.13);
 
@@ -83,8 +84,35 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 	delete c;
 
 	return;
+
 }
 
+void DrawAcceptanceWeightingGraph(TGraph2D *gr, string title, string fname) { 
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	gr->SetTitle(title.c_str());
+	gr->GetXaxis()->SetTitleSize(.04);
+	gr->GetYaxis()->SetTitleSize(.04);
+	gr->GetXaxis()->CenterTitle(1);
+	gr->GetYaxis()->CenterTitle(1);
+	gr->GetZaxis()->CenterTitle(1);
+	gr->GetYaxis()->SetMaxDigits(4);
+	gr->GetXaxis()->SetTitleOffset(1.5);
+	gr->GetYaxis()->SetTitleOffset(1.5);
+	gr->GetZaxis()->SetTitleOffset(1.25);
+	gr->SetMarkerStyle(20);
+	gr->Draw();
+
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+	//c->SaveAs((fname+".C").c_str());
+
+	delete c;
+
+	return;
+
+}
 
 void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
@@ -121,7 +149,7 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 	return;
 }
 
-TH2D *AcceptanceWeightingMap(TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_tracks, int rebin, string dir, string par = "Y", string stepStr = "", string title = "", string stn = "") {
+TH2D *AcceptanceWeightingMap(TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_tracks, int rebin = 1, string dir = "", string par = "Y", string stepStr = "", string title = "", string stn = "") {
 
 	if(stepStr != "") stepStr = "_"+stepStr;
 
@@ -140,21 +168,35 @@ TH2D *AcceptanceWeightingMap(TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_t
  	if (h2_thetaY_vs_Y_tracks_clone->GetSumw2N() == 0) h2_thetaY_vs_Y_tracks_clone->Sumw2(kTRUE);
 
 	// Draw hists
-  h2_thetaY_vs_Y_decays_clone->GetXaxis()->SetRangeUser(-60, 60);
-  h2_thetaY_vs_Y_decays_clone->GetYaxis()->SetRangeUser(-100, 100);
-  h2_thetaY_vs_Y_tracks_clone->GetXaxis()->SetRangeUser(-60, 60);
-  h2_thetaY_vs_Y_tracks_clone->GetYaxis()->SetRangeUser(-100, 100);
+ 	if(false) { 
+  
+  	h2_thetaY_vs_Y_decays_clone->GetXaxis()->SetRangeUser(-60, 60);
+  	h2_thetaY_vs_Y_decays_clone->GetYaxis()->SetRangeUser(-100, 100);
+  	h2_thetaY_vs_Y_tracks_clone->GetXaxis()->SetRangeUser(-60, 60);
+  	h2_thetaY_vs_Y_tracks_clone->GetYaxis()->SetRangeUser(-100, 100);
 
-	DrawTH2(h2_thetaY_vs_Y_decays_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../Images/MC/Acceptance/"+dir+"/h2_thetaY_vs_Y_decays_normTest"+stepStr);
-	DrawTH2(h2_thetaY_vs_Y_tracks_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../Images/MC/Acceptance/"+dir+"/h2_thetaY_vs_Y_tracks_normTest"+stepStr);
+		DrawTH2(h2_thetaY_vs_Y_decays_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../Images/MC/Acceptance/"+dir+"/h2_thetaY_vs_Y_decays_normTest"+stepStr);
+		DrawTH2(h2_thetaY_vs_Y_tracks_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../Images/MC/Acceptance/"+dir+"/h2_thetaY_vs_Y_tracks_normTest"+stepStr);
 
+	}
 	// cout<<"finised drawing"<<endl;
 
-	TH2D *ratio = (TH2D*)h2_thetaY_vs_Y_tracks_clone->Clone((stn+"_WeightMap"+par+stepStr).c_str());
+	string ratioName = stn+"_WeightMap"+par+stepStr;
+
+	cout<<"Setting name to "<<ratioName<<endl;
+
+	//cout<<"\nstepStr = "<<stepStr<<endl;
+	TH2D *ratio = (TH2D*)h2_thetaY_vs_Y_tracks_clone->Clone(ratioName.c_str());
 	ratio->Divide(h2_thetaY_vs_Y_decays_clone);
+
+	cout<<"Name set to "<<ratio->GetName()<<endl;
+	
+	// ratio->SetName((stn+"_WeightMap"+par+stepStr).c_str());
 
 	//int x, y, z;
 	//ratio->GetBinXYZ(ratio->GetMaximumBin(), x, y, z);
+
+	// You can just use "GetMaximum" in future... 
 	ratio->Scale(1./ratio->GetBinContent(ratio->GetMaximumBin()));
 	
 	return ratio;
@@ -323,17 +365,19 @@ void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY
  	cout<<fit->GetChisquare()/fit->GetNDF()<<endl;
 
 	return;
+
 }
 
-void Run(string config, string momSlice, int rebin = 1) {	
+void RunThetaYvsY(string config, string momSlice, int rebin = 1) {	
 
 	TString finName = "../Plots/MC/Acceptance/Plots/trackerAcceptancePlots."+config+".root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots."+config+".root";
-	foutName = "test.root";
+	// formally "acceptanceWeightingPlots."+config+".root"
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.thetaYvsY."+config+".root";
+	//foutName = "test.root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 
 	fout->mkdir("AcceptanceWeighting");
@@ -346,19 +390,12 @@ void Run(string config, string momSlice, int rebin = 1) {
 
 		cout<<"----> Running "<<stn<<endl;
 
-		TH1D *h1_thetaY_decays = (TH1D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY").c_str());
-		TH1D *h1_thetaY_tracks = (TH1D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_ThetaY").c_str());
 
 	  TH2D *h2_thetaY_vs_Y_decays = (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_Y").c_str());
 	  TH2D *h2_thetaY_vs_Y_tracks = (TH2D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_ThetaY_vs_Y").c_str()); 
 
-	  TH2D *h2_thetaY_vs_R_decays = (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_R").c_str());
-	  TH2D *h2_thetaY_vs_R_tracks = (TH2D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_ThetaY_vs_R").c_str()); 
 
-	  TH2D *h2_thetaY_vs_Phi_decays = (TH2D*)fin->Get((momSlice+"/AllDecays/Main/ThetaY_vs_Phi").c_str());
-	  TH2D *h2_thetaY_vs_Phi_tracks = (TH2D*)fin->Get((momSlice+"/Tracks/Main/"+stn+"_ThetaY_vs_Phi").c_str()); 
-
-	 	cout<<"----> Got histograms: "<<h2_thetaY_vs_Y_decays<<", "<<h2_thetaY_vs_Y_tracks<<", "<<h1_thetaY_decays<<", "<<h1_thetaY_tracks<<", "<<h2_thetaY_vs_R_decays<<", "<<h2_thetaY_vs_R_tracks<<", "<<h2_thetaY_vs_Phi_decays<<", "<<h2_thetaY_vs_Phi_tracks<<endl;
+	 	cout<<"----> Got histograms: "<<h2_thetaY_vs_Y_decays<<", "<<h2_thetaY_vs_Y_tracks<<endl;
 
 	 	// Draw
 	 	cout<<"----> Drawing base histograms"<<endl;
@@ -366,34 +403,27 @@ void Run(string config, string momSlice, int rebin = 1) {
 	  string dir = "AllMom";
 	  fout->cd(("AcceptanceWeighting/"+dir).c_str());
 
-	  // TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_tracks, int rebin, string dir, string stepStr = "", string title = "", string stn = ""
 		TH2D *acceptanceWeightingMapY = AcceptanceWeightingMap(h2_thetaY_vs_Y_decays, h2_thetaY_vs_Y_tracks, rebin, config+"/2DRatios/Simultaneous", "Y", "", "", stn); 
-		TH2D *acceptanceWeightingMapR = AcceptanceWeightingMap(h2_thetaY_vs_R_decays, h2_thetaY_vs_R_tracks, rebin, config+"/2DRatios/Simultaneous", "R", "", "", stn); 
-		TH2D *acceptanceWeightingMapPhi = AcceptanceWeightingMap(h2_thetaY_vs_Phi_decays, h2_thetaY_vs_Phi_tracks, rebin, config+"/2DRatios/Simultaneous", "R", "", "", stn); 
-		
-		cout<<"----> Created weight maps " << acceptanceWeightingMapY << ", " << acceptanceWeightingMapR << ", " << acceptanceWeightingMapPhi << " for all momentum"<<endl;
+		//acceptanceWeightingMapY->GetYaxis()->SetRangeUser(-60, 60);
+/*		acceptanceWeightingMapY->Draw("COlZ");
+		gPad->Update(); */
+		acceptanceWeightingMapY->Write();
+
+		cout<<"----> Created weight maps " << acceptanceWeightingMapY << endl; // ", " << acceptanceWeightingMapR << ", " << acceptanceWeightingMapPhi << " for all momentum"<<endl;
 		
 		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ TEXT");
 		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";R [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapR_"+momSlice, "COLZ TEXT");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapR, stn+";R [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceR_"+momSlice, "SURF2");
+		// acceptanceWeightingMapY->Draw("COLZ");
+		
 
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";#phi [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapPhi_"+momSlice, "COLZ TEXT");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi, stn+";#phi [rad];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfacePhi_"+momSlice, "SURF2");
+		// Reproduce as 2D graphs for interpolation
 
-		acceptanceWeightingMapY->Write();
-		acceptanceWeightingMapR->Write();
-		acceptanceWeightingMapPhi->Write();
-
-/*	}
-
-	fin->Close();
-	fout->Close();
-
-	cout<<"\n------------------------------------------\nWritten ROOT file "<<foutName<<", "<<fout<<endl;
-
-	return;*/
+		TGraph2D *acceptanceWeightingGraphY = ConvertToTGraph2D(acceptanceWeightingMapY);
+		DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceGraphY_"+momSlice);
+		string graph2DName = stn+"_WeightGraphY";//+stepStr;
+		acceptanceWeightingGraphY->SetName(graph2DName.c_str());
+		acceptanceWeightingGraphY->Write();
 
 		// ------------------------------------------------------------------------ // 
 
@@ -409,46 +439,32 @@ void Run(string config, string momSlice, int rebin = 1) {
 	 		int lo = i_slice*step; 
 	    int hi = step + lo;
 
-	 		std::string stepStr = to_string(lo)+"_"+to_string(hi);
+	 		string stepStr = to_string(lo)+"_"+to_string(hi);
 
-	  	TH1D *h1_thetaY_decays_slice = (TH1D*)fin->Get((momSlice+"/AllDecays/MomBins/ThetaY_"+stepStr).c_str());
-			TH1D *h1_thetaY_tracks_slice = (TH1D*)fin->Get((momSlice+"/Tracks/MomBins/"+stn+"_ThetaY_"+stepStr).c_str());
+	 		cout<<stepStr<<endl;
 
 	 		TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/MomBins/ThetaY_vs_Y_"+stepStr).c_str());
 	  	TH2D *h2_thetaY_vs_Y_tracks_slice = (TH2D*)fin->Get((momSlice+"/Tracks/MomBins/"+stn+"_ThetaY_vs_Y_"+stepStr).c_str()); 
-	 		
-	 		TH2D *h2_thetaY_vs_R_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/MomBins/ThetaY_vs_R_"+stepStr).c_str());
-	  	TH2D *h2_thetaY_vs_R_tracks_slice = (TH2D*)fin->Get((momSlice+"/Tracks/MomBins/"+stn+"_ThetaY_vs_R_"+stepStr).c_str()); 
-
-	 		TH2D *h2_thetaY_vs_Phi_decays_slice = (TH2D*)fin->Get((momSlice+"/AllDecays/MomBins/ThetaY_vs_Phi_"+stepStr).c_str());
-	  	TH2D *h2_thetaY_vs_Phi_tracks_slice = (TH2D*)fin->Get((momSlice+"/Tracks/MomBins/"+stn+"_ThetaY_vs_Phi_"+stepStr).c_str()); 
 
 			string title = to_string(lo)+" < p [Mev] < "+to_string(hi);
 
 			TH2D *acceptanceWeightingMapY_momSlice = AcceptanceWeightingMap(h2_thetaY_vs_Y_decays_slice, h2_thetaY_vs_Y_tracks_slice, rebin, config+"/2DRatios/MomentumBinned", "Y", stepStr, title, stn); 
-			TH2D *acceptanceWeightingMapR_momSlice = AcceptanceWeightingMap(h2_thetaY_vs_R_decays_slice, h2_thetaY_vs_R_tracks_slice, rebin, config+"/2DRatios/MomentumBinned", "R", stepStr, title, stn); 
-			TH2D *acceptanceWeightingMapPhi_momSlice = AcceptanceWeightingMap(h2_thetaY_vs_Phi_decays_slice, h2_thetaY_vs_Phi_tracks_slice, rebin, config+"/2DRatios/MomentumBinned", "Phi", stepStr, title, stn); 
 
-			cout<<"----> Creating regular weight maps " << acceptanceWeightingMapY_momSlice << ", " << acceptanceWeightingMapR_momSlice << " for momentum bin: "<<lo<<" < p [MeV] < "<<hi<<endl;
+			acceptanceWeightingMapY_momSlice->Draw("COLZ");
+			acceptanceWeightingMapY_momSlice->Write();
+
+			cout << "----> Creating regular weight maps " << acceptanceWeightingMapY_momSlice << " for momentum bin: " << lo << " < p [MeV] < " << hi << endl;
 
 			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceMapY_"+stepStr, "COLZ");
 			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceSurfaceY_"+stepStr, "SURF2");
 
-			DrawAcceptanceWeightingMap(acceptanceWeightingMapR_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceMapR_"+stepStr, "COLZ");
-			DrawAcceptanceWeightingMap(acceptanceWeightingMapR_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceSurfaceR_"+stepStr, "SURF2");
-
-			DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceMapPhi_"+stepStr, "COLZ");
-			DrawAcceptanceWeightingMap(acceptanceWeightingMapPhi_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceSurfacePhi_"+stepStr, "SURF2");
-
-
-			acceptanceWeightingMapY->Write();
-			acceptanceWeightingMapR->Write();
-			acceptanceWeightingMapPhi->Write();
+			TGraph2D *acceptanceWeightingGraphY_momSlice = ConvertToTGraph2D(acceptanceWeightingMapY_momSlice);
+			DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY_momSlice, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceGraphY_"+stepStr);
+			graph2DName = stn+"_WeightGraphY_"+stepStr;
+			acceptanceWeightingGraphY_momSlice->SetName(graph2DName.c_str());
+			acceptanceWeightingGraphY_momSlice->Write();
 
 	 	}
-
-
-
 
  		// We do not need to keep re-running this stuff since it's just an illustration of what happens when you step through vertical position slices
 
@@ -502,9 +518,69 @@ void Run(string config, string momSlice, int rebin = 1) {
 
 int main() { 
 
-    Run("truth", "0_3127_MeV", 1);
-	//Run("reco", 4);
+	// theta_y vs y maps for decays weighting 
+	//RunThetaYvsY("truth", "0_3127_MeV", 1);
+	RunThetaYvsY("truth", "1000_2500_MeV", 1);
 
-	//RunData("Run-1d_250MeV_BQ", 4);
-    return 0;
+	// theta_y vs p for sim ---> data weighting
+	//RunThetaYvsP("Run-1a");
+
+
+  return 0;
+
 }
+
+// Ignore all this shit 
+void RunThetaYvsP(string dataset, int rebin = 1) {	
+
+	// Get/book files
+
+	string finNameSim = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr.root";
+	string finNameData = "../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
+
+	if(dataset=="Run-1d") finNameData = "../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_50usStartTime_BQ_noVertCorr.root";
+
+	TFile *finSim = TFile::Open(finNameSim.c_str());
+	TFile *finData = TFile::Open(finNameData.c_str());
+
+	cout<<"----> Opened file "<<finNameSim<<", "<<finSim<<", "<<finNameData<<", "<<finData<<endl;
+
+	string foutName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.thetaYvsP."+dataset+".root";
+	TFile *fout = new TFile(foutName.c_str(), "RECREATE");
+
+	fout->mkdir("Maps"); fout->cd("Maps");
+
+	// Get histograms
+
+	vector<string> stn_ = {"S12", "S18", "S12S18"};
+
+	for(auto& stn : stn_) { 
+
+		TH2D *h_sim = (TH2D*)finSim->Get(("SanityPlots/"+stn+"_ThetaY_vs_Momentum").c_str());
+		TH2D *h_data = (TH2D*)finData->Get(("SanityPlots/"+stn+"_ThetaY_vs_Momentum").c_str());
+
+		cout<<"\n---> Got histograms for "<<stn<<": "<<", "<<h_sim<<", "<<h_data<<endl;
+
+		// Now, make map data/sim
+		// TH2D *map = AcceptanceWeightingMap(h_sim, h_data);
+		
+		TH2D *map = (TH2D*)h_data->Clone((stn+"_WeightMap").c_str());
+
+		map->Divide(h_sim);
+		map->Scale(1./map->GetBinContent(map->GetMaximumBin()));
+
+		map->Draw("COLZ");
+		map->Write();	
+
+	}
+
+	fout->Close();
+	finData->Close();
+	finSim->Close();	
+
+	cout<<"\n---> Written ROOT file "<<foutName<<", "<<fout<<endl;
+
+	return;
+
+}
+

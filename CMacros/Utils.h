@@ -206,8 +206,10 @@ TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
   int counter = 0;
 
+
   for(int i = 0; i < nBin; i++) {
 
+    // Caution! The zeroth bin in a TGraph is the first bin a TH1, graphs don't have underflows. 
     double x = hist->GetBinCenter(i+1); 
     double ex = 0; 
     double y = hist->GetBinContent(i+1); 
@@ -230,6 +232,37 @@ TGraphErrors *ConvertToTGraphErrors(TH1D *hist) {
 
 }
 
+TGraph2D *ConvertToTGraph2D(TH2D *h) { 
+
+  TGraph2D *gr = new TGraph2D();
+
+  int nBinsX = h->GetNbinsX();
+  int nBinsY = h->GetNbinsY();
+
+  int n = 0;
+
+  for(int i(0); i < nBinsX; i++) {
+
+    for(int j(0); j < nBinsY; j++) {
+
+      // Caution! The zeroth bin in a TGraph2D is the first bin a TH2, graphs don't have underflows. 
+      double x = h->GetXaxis()->GetBinCenter(i+1);
+      double y = h->GetYaxis()->GetBinCenter(j+1);
+      double z = h->GetBinContent(i+1, j+1);
+
+      if(z==0) continue;
+
+      gr->SetPoint(n, x, y, z);
+
+      n++;
+      
+    } 
+
+  }
+
+  return gr;
+
+}
 
 TGraphErrors *GenerateTGraphErrors(std::vector<double> x_, std::vector<double> y_, std::vector<double> ex_, std::vector<double> ey_) {
 
