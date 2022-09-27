@@ -4,7 +4,7 @@
 void S12_AcceptanceSurfaceY_500_750()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Sep  7 16:55:39 2022) by ROOT version 6.26/04
+//=========  (Mon Sep 26 11:20:48 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);

@@ -35,7 +35,7 @@ void CalculateAcceptanceFractionChiSqr() {
 	double xmin = 1000;
 	double xmax = 2500;
 
-	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr.root";
+	TString f1Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
 
 	TFile *f1 = TFile::Open(f1Name);
 
@@ -45,7 +45,7 @@ void CalculateAcceptanceFractionChiSqr() {
 
 	for(auto& stn : stn_) {
 
-		TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+".root";
+		TString f2Name = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full.root";
 
 		TFile *f2 = TFile::Open(f2Name);
 

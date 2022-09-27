@@ -58,7 +58,7 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 	map->GetZaxis()->SetTitle("Acceptance weighting");
 
 	//gStyle->SetPalette(kDarkBodyRadiator);
-	gStyle->SetPalette(kLightTemperature);
+	gStyle->SetPalette(53); // dark body. Maybe I should stick to rain bow?
 	c->SetRightMargin(0.13);
 
 	if(drawOption == "SURF2") {
@@ -67,7 +67,7 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 	} else{ 
 		map->GetXaxis()->SetTitleOffset(1.1);
 		map->GetYaxis()->SetTitleOffset(1.1);
-		gStyle->SetPaintTextFormat("4.2f");
+		//gStyle->SetPaintTextFormat("4.2f");
 		gPad->Update();
 	}
 
@@ -91,6 +91,9 @@ void DrawAcceptanceWeightingGraph(TGraph2D *gr, string title, string fname) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
+	//gStyle->SetPalette(53);
+	//gPad->Update();
+	//gr->SetDrawOpt("TRI1");
 	gr->SetTitle(title.c_str());
 	gr->GetXaxis()->SetTitleSize(.04);
 	gr->GetYaxis()->SetTitleSize(.04);
@@ -101,8 +104,12 @@ void DrawAcceptanceWeightingGraph(TGraph2D *gr, string title, string fname) {
 	gr->GetXaxis()->SetTitleOffset(1.5);
 	gr->GetYaxis()->SetTitleOffset(1.5);
 	gr->GetZaxis()->SetTitleOffset(1.25);
-	gr->SetMarkerStyle(20);
-	gr->Draw();
+	
+	//gr->SetMarkerStyle(20);
+	
+	//if(gr==0) gr->Draw();
+	// attempting any sort of nice draw option leads to all sorts of fuck ups 
+	gr->Draw(); // "TRI1"
 
 	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
@@ -132,7 +139,7 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	hist->GetYaxis()->SetRangeUser(-100,100);
 
-	gStyle->SetPalette(kRainBow);
+	gStyle->SetPalette(kDarkBodyRadiator);
 	c->SetRightMargin(0.13);
 
 	hist->Draw("COLZ");
@@ -411,7 +418,7 @@ void RunThetaYvsY(string config, string momSlice, int rebin = 1) {
 
 		cout<<"----> Created weight maps " << acceptanceWeightingMapY << endl; // ", " << acceptanceWeightingMapR << ", " << acceptanceWeightingMapPhi << " for all momentum"<<endl;
 		
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ TEXT");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ");
 		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../Images/MC/Acceptance/"+config+"/2DRatios/Simultaneous/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
 
 		// acceptanceWeightingMapY->Draw("COLZ");
@@ -459,7 +466,7 @@ void RunThetaYvsY(string config, string momSlice, int rebin = 1) {
 			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceSurfaceY_"+stepStr, "SURF2");
 
 			TGraph2D *acceptanceWeightingGraphY_momSlice = ConvertToTGraph2D(acceptanceWeightingMapY_momSlice);
-			DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY_momSlice, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceGraphY_"+stepStr);
+			if(acceptanceWeightingMapY_momSlice->GetEntries()!=0) DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY_momSlice, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/"+config+"/2DRatios/MomentumBinned/"+stn+"_AcceptanceGraphY_"+stepStr);
 			graph2DName = stn+"_WeightGraphY_"+stepStr;
 			acceptanceWeightingGraphY_momSlice->SetName(graph2DName.c_str());
 			acceptanceWeightingGraphY_momSlice->Write();
@@ -516,11 +523,19 @@ void RunThetaYvsY(string config, string momSlice, int rebin = 1) {
 
 }
 
+/*void AcceptanceMaps() { 
+
+	RunThetaYvsY("truth", "1000_2500_MeV", 1);
+
+	return;
+
+}*/
+
 int main() { 
 
 	// theta_y vs y maps for decays weighting 
-	//RunThetaYvsY("truth", "0_3127_MeV", 1);
-	RunThetaYvsY("truth", "1000_2500_MeV", 1);
+	RunThetaYvsY("truth", "0_3127_MeV", 1);
+	//RunThetaYvsY("truth", "1000_2500_MeV", 1);
 
 	// theta_y vs p for sim ---> data weighting
 	//RunThetaYvsP("Run-1a");

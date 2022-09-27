@@ -4,10 +4,10 @@
 void allDecays_gr_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Aug 16 13:46:20 2022) by ROOT version 6.26/04
+//=========  (Mon Sep 26 18:45:09 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(-390.3568,-7.130022,3513.211,-0.5560504);
+   c->Range(-390.3568,-6.564425,3513.211,-0.3277372);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -28,18 +28,18 @@ void allDecays_gr_pull()
    2613.177,
    2850.267};
    Double_t allDecays_gr_pull_fy1001[12] = {
-   -2.314656,
-   -2.854294,
-   -1.947095,
-   -3.893199,
-   -4.740055,
-   -6.03436,
-   -1.888651,
-   -2.498426,
-   -2.958638,
-   -4.619092,
-   -1.651712,
-   -4.919106};
+   -2.199583,
+   -2.571349,
+   -1.573107,
+   -3.453311,
+   -4.25531,
+   -5.524977,
+   -1.375992,
+   -2.00506,
+   -2.5085,
+   -4.238217,
+   -1.367185,
+   -4.758251};
    Double_t allDecays_gr_pull_fex1001[12] = {
    0,
    0,
@@ -73,8 +73,8 @@ void allDecays_gr_pull()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_allDecays_gr_pull1001 = new TH1F("Graph_allDecays_gr_pull1001","",100,0,3122.854);
-   Graph_allDecays_gr_pull1001->SetMinimum(-6.472624);
-   Graph_allDecays_gr_pull1001->SetMaximum(-1.213448);
+   Graph_allDecays_gr_pull1001->SetMinimum(-5.940757);
+   Graph_allDecays_gr_pull1001->SetMaximum(-0.951406);
    Graph_allDecays_gr_pull1001->SetDirectory(0);
    Graph_allDecays_gr_pull1001->SetStats(0);
 

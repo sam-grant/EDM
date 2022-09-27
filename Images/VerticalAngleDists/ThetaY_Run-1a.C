@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void ThetaY_Run-1a()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Wed Jun 29 22:53:04 2022) by ROOT version 6.24/06
+//=========  (Sun Sep 11 22:54:00 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(0,0,1,1);
    c->SetFillColor(0);

@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void verticalOffsetStationComp_Run-1a_noVertCorr()
 {
 //=========Macro generated from canvas: c/
-//=========  (Sun Jun 12 17:26:22 2022) by ROOT version 6.24/06
+//=========  (Thu Sep 15 12:11:36 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(819.5576,-1.25,2668.079,1.25);
    c->SetFillColor(0);

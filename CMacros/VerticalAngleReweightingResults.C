@@ -147,7 +147,7 @@ void Run2(string dataset = "Run-1a", int rebin = 1) {
 	// First, weighted ratio plots 
 
 	string finNameTRWeighted = "../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root";//+dataset+"_accWeight.root";
-	string finNameADWeighted  = "../../copy_dump/plots_000_S12S18.root";//../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeightS12S18_full.root"; // "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+dataset+"_250MeV_1000_2500MeV_randomised_BQ_noVertCorr.root";//../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
+	string finNameADWeighted  = "../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeightS12S18_noInt_full.root"; // "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+dataset+"_250MeV_1000_2500MeV_randomised_BQ_noVertCorr.root";//../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
 	//if(dataset=="Run-1d") finNameData = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+dataset+"_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_noVertCorr.root";//../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
 
 	//TFile *finSimWeighted = TFile::Open(finNameSimWeighted.c_str());
@@ -192,7 +192,7 @@ void Run2(string dataset = "Run-1a", int rebin = 1) {
 
 	     	//DrawRatioPlot1D(h_thetaY_data, h_thetaY_sim, dataset, to_string(lo)+"-"+to_string(hi)+" MeV", "../Images/VerticalAngleDists/Projections/"+stns[i_stn]+"_thetaY_weighted_ratio_slice_"+to_string(lo)+"_"+to_string(hi)+"MeV_trackReco_"+dataset, -60, 60);
 	     	//DrawRatioPlot1D(h_thetaY_AD, h_thetaY_TR, dataset, to_string(lo)+"-"+to_string(hi)+" MeV", "All decays (weighted)", "Reco vertices ("+dataset+" weighted)", "../Images/VerticalAngleDists/Projections/"+stns[i_stn]+"_thetaY_ratio_slice_"+to_string(lo)+"_"+to_string(hi)+"MeV_TR_vs_AD_"+dataset, -60, 60);
-	     	DrawRatioPlot1D(h_thetaY_AD, h_thetaY_TR, dataset, to_string(lo)+"-"+to_string(hi)+" MeV", "All decays (weighted)", "Reco vertices", "../Images/VerticalAngleDists/Projections/"+stns[i_stn]+"_thetaY_ratio_slice_"+to_string(lo)+"_"+to_string(hi)+"MeV_TRnoW_vs_AD_"+dataset, -60, 60);
+	     	DrawRatioPlot1D(h_thetaY_AD, h_thetaY_TR, dataset, to_string(lo)+"-"+to_string(hi)+" MeV", "All decays (weighted)", "Reco vertices", "../Images/VerticalAngleDists/Projections/"+stns[i_stn]+"_thetaY_ratio_slice_"+to_string(lo)+"_"+to_string(hi)+"MeV_TR_vs_AD_noInt_"+dataset, -60, 60);
 
 	  	}
 

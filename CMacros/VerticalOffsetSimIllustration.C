@@ -84,11 +84,11 @@ void DrawOffsetOverlay(vector<TGraphErrors*> gr_, vector<string> label_, string 
 
 void VerticalOffsetSimIllustration() { 
 
-	TFile *fin1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr.root");
-	TFile *fin2 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr.root");
-	TFile *fin3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr.root");
+	TFile *fin1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root");
+	TFile *fin2 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root");
+	TFile *fin3 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root");
 
-	TFile *fin4 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_AQ_noVertCorr.root");
+	TFile *fin4 = TFile::Open("../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackReco_WORLD_250MeV_AQ_noVertCorr.root"); // currently no full file
 	
 
 	cout<<"---> "<<fin1<<", "<<fin2<<", "<<fin3<<endl;
@@ -97,9 +97,11 @@ void VerticalOffsetSimIllustration() {
 	TGraphErrors *gr2 = (TGraphErrors*)fin2->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_c_vs_p_thetaY");
 	TGraphErrors *gr3 = (TGraphErrors*)fin3->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_c_vs_p_thetaY");
 	
-/*	vector<TGraphErrors*> gr_ = {gr1, gr2, gr3};
+/*	
+	vector<TGraphErrors*> gr_ = {gr1, gr2, gr3};
 	vector<string> label_ = {"All decay", "Truth vertices", "Reco vertices"};
 */
+	
 	vector<TGraphErrors*> gr_ = {gr1, gr3};
 	vector<string> label_ = {"All decays", "Reco vertices"};
 
@@ -114,8 +116,10 @@ void VerticalOffsetSimIllustration() {
 	gr_ = {grS0, grS12, grS18};
 	label_ = {"Station 0", "Station 12", "Station 18"};
 
-	DrawOffsetOverlay(gr_, label_, ";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/VerticalOffsetIllustration/VerticalOffsetSimStationOverlay", 500, 2900, -0.75, 0.15);
+	DrawOffsetOverlay(gr_, label_, ";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/VerticalOffsetIllustration/VerticalOffsetSimStationOverlay", 500, 2900, -0.75, 0.2);
 
+
+	// Vertex quality exaggerates this effect
 	TGraphErrors *grS0_2 = (TGraphErrors*)fin4->Get("MomentumBinnedAnalysis/ParameterScans/S0_c_vs_p_thetaY");
 
 	gr_ = {grS0_2, grS0};

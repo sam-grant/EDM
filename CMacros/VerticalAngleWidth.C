@@ -123,7 +123,7 @@ void VerticalAngleWidth() {
 
 	cout << "\n *** SIM ALL DECAYS *** ,, " << endl;
 
-	TFile *f0 = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ_noVertCorr.root");
+	TFile *f0 = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeightS12S18_full.root");//../Plots/MC/dMu/5.4e-18/Plots/edmPlots_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root");
 
 	TH1D *h0 = (TH1D*)f0->Get("SimultaneousAnalysis/ThetaY");
 
@@ -141,7 +141,7 @@ void VerticalAngleWidth() {
 
 	vector<string> stn_ = {"S0", "S12", "S18", "S12S18", "S0S12S18"};
 
-	TFile *f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_BQ_noVertCorr.root");
+	TFile *f1 = TFile::Open("../Plots/MC/dMu/5.4e-18/Plots/edmPlots_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root");
 
 	for(auto& stn : stn_) { 
 
@@ -241,6 +241,28 @@ void VerticalAngleWidth() {
 		}
 
 		f3->Close();
+
+	}
+
+
+	cout << "\n *** SIM ACCEPTANCE *** ,, " << endl;
+
+	TFile *f4 = TFile::Open("../Plots/MC/Acceptance/Plots/trackerAcceptancePlots.truth.fine.root");
+
+	stn_ = {"S12", "S18", "S12S18"};
+
+	for(auto& stn : stn_) {
+
+		string tmp = "1000_2500_MeV/Tracks/Main/S12S18_ThetaY";
+
+		TH1D *h1 = (TH1D*)f4->Get(("1000_2500_MeV/Tracks/Main/"+stn+"_ThetaY").c_str());
+
+		sigma = h1->GetRMS();
+		dsigma = h1->GetRMSError();
+
+		cout<<stn<<", "<<sigma<<", "<<dsigma<<endl;
+
+		DrawTH1(h1, 3, 5, ";#theta_{y} [mrad];Decays / mrad", "../Images/VerticalAngleDists/ThetaY_TrackAcceptance");
 
 	}
 

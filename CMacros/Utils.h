@@ -13,7 +13,7 @@
 
 // ====================== Constants ====================== 
 //1.43948 ??
-double OMEGA_A = 1.439311; // (average for mu+ at BNL) 0.00143934*1e3;//1.439311; // rad/us 0.00143934; // kHz from gm2const, it's an angular frequency though...
+double OMEGA_A = 1.439359; // 1.439311; // (average for mu+ at BNL) 0.00143934*1e3;//1.439311; // rad/us 0.00143934; // kHz from gm2const, it's an angular frequency though...
 double G2PERIOD = (2 * TMath::Pi() / OMEGA_A);//s * 1e-3; // us
 double M_MU = 105.6583715; // MeV
 double A_MU = 11659208.9e-10; 
@@ -30,19 +30,19 @@ double SimpleEDMFunc(double *x, double *par) {
 }
 
 
-void SimpleEDMFit(TGraphErrors *graph, double par1, double par2, double par3) {
+void SimpleEDMFit(TGraphErrors *graph, double par1, double par2, double par3, double xmin, double xmax) {
   
-  TF1 *func = new TF1("SimpleEDMFunc", SimpleEDMFunc, 0, G2PERIOD, 3);
+  TF1 *func = new TF1("SimpleEDMFunc", SimpleEDMFunc, xmin, xmax, 3);
 
   // Put 10% limits on omega_a
   // func->SetParLimits(1, par2-(par2*0.10), par2+(par2*0.10));  // Omega
   func->SetParameter(0, par1);
   func->SetParameter(1, par2);
-  func->FixParameter(1, par2);  // Omega
+  //func->FixParameter(1, par2);  // Omega
   //func->SetParameter(1, par2);  // Omega
   func->SetParameter(2, par3);
 
-  graph->Fit(func, "QMR"); // ,"MR");
+  graph->Fit(func, "MR"); // ,"MR");
 
   return;
 
@@ -58,14 +58,14 @@ void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, doub
   TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, xmin, xmax, 5);
 
   func->SetParameter(0, par0); // A_g-2
-  //func->FixParameter(1, par1); // Omega
   func->SetParameter(1, par1); // Omega
+  func->FixParameter(1, par1); // Omega
   func->SetParameter(2, par2); // Phi
   func->FixParameter(2, par2);
   func->SetParameter(3, par3); // A_EDM
   func->SetParameter(4, par4); // c
 
-  graph->Fit(func, "MR"); // ,"MR");
+  graph->Fit(func, "QMR"); // ,"MR");
 
   return;
 
@@ -98,7 +98,7 @@ void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, doub
   TF1 *func = new TF1("FiveParFunc", FiveParFunc, min, max, 5);
 
   //func->SetParameter(0, par0); // N0
-  func->SetParameter(1, par1); // tau
+  func->FixParameter(1, par1); // tau
   //func->SetParLimits(1, 55, 70);
   func->SetParameter(2, par2); // A
   func->FixParameter(3, par3); // Omega (let float?)

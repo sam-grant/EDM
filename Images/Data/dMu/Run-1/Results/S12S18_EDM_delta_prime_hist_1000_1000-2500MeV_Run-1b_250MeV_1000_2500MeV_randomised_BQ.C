@@ -4,7 +4,7 @@
 void S12S18_EDM_delta_prime_hist_1000_1000-2500MeV_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Aug 30 13:18:19 2022) by ROOT version 6.26/04
+//=========  (Thu Sep 15 21:31:44 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -13,29 +13,29 @@ void S12S18_EDM_delta_prime_hist_1000_1000-2500MeV_Run-1b_250MeV_1000_2500MeV_ra
    c->SetBorderSize(2);
    c->SetFrameBorderMode(0);
    
-   TH1D *h__6 = new TH1D("h__6","S12S18",30,0.09064158,0.3912412);
-   h__6->SetBinContent(15,537);
-   h__6->SetBinContent(16,463);
-   h__6->SetEntries(1000);
-   h__6->SetStats(0);
-   h__6->SetLineWidth(3);
-   h__6->GetXaxis()->SetTitle("#delta^{BLIND} [mrad]");
-   h__6->GetXaxis()->CenterTitle(true);
-   h__6->GetXaxis()->SetLabelFont(42);
-   h__6->GetXaxis()->SetTitleSize(0.04);
-   h__6->GetXaxis()->SetTitleOffset(1.1);
-   h__6->GetXaxis()->SetTitleFont(42);
-   h__6->GetYaxis()->SetTitle("Trials  / 0.01 [mrad]");
-   h__6->GetYaxis()->CenterTitle(true);
-   h__6->GetYaxis()->SetNdivisions(4000510);
-   h__6->GetYaxis()->SetLabelFont(42);
-   h__6->GetYaxis()->SetTitleSize(0.04);
-   h__6->GetYaxis()->SetTitleOffset(1.1);
-   h__6->GetYaxis()->SetTitleFont(42);
-   h__6->GetZaxis()->SetLabelFont(42);
-   h__6->GetZaxis()->SetTitleOffset(1);
-   h__6->GetZaxis()->SetTitleFont(42);
-   h__6->Draw("HIST");
+   TH1D *h__3 = new TH1D("h__3","S12S18",30,0.09071759,0.3913393);
+   h__3->SetBinContent(15,539);
+   h__3->SetBinContent(16,461);
+   h__3->SetEntries(1000);
+   h__3->SetStats(0);
+   h__3->SetLineWidth(3);
+   h__3->GetXaxis()->SetTitle("#delta^{BLIND} [mrad]");
+   h__3->GetXaxis()->CenterTitle(true);
+   h__3->GetXaxis()->SetLabelFont(42);
+   h__3->GetXaxis()->SetTitleSize(0.04);
+   h__3->GetXaxis()->SetTitleOffset(1.1);
+   h__3->GetXaxis()->SetTitleFont(42);
+   h__3->GetYaxis()->SetTitle("Trials  / 0.01 [mrad]");
+   h__3->GetYaxis()->CenterTitle(true);
+   h__3->GetYaxis()->SetNdivisions(4000510);
+   h__3->GetYaxis()->SetLabelFont(42);
+   h__3->GetYaxis()->SetTitleSize(0.04);
+   h__3->GetYaxis()->SetTitleOffset(1.1);
+   h__3->GetYaxis()->SetTitleFont(42);
+   h__3->GetZaxis()->SetLabelFont(42);
+   h__3->GetZaxis()->SetTitleOffset(1);
+   h__3->GetZaxis()->SetTitleFont(42);
+   h__3->Draw("HIST");
    
    TPaveText *pt = new TPaveText(0,0,0,0,"brNDC");
    pt->SetFillColor(0);
@@ -51,10 +51,10 @@ void S12S18_EDM_delta_prime_hist_1000_1000-2500MeV_Run-1b_250MeV_1000_2500MeV_ra
    pt->SetTextAlign(33);
    pt->SetTextFont(44);
    pt->SetTextSize(24);
-   pt_LaTex = pt->AddText("0.2409
+   pt_LaTex = pt->AddText("0.241
 #pm1e-05
 ");
-   pt_LaTex = pt->AddText("0.000396
+   pt_LaTex = pt->AddText("0.000416
 #pm9e-06
 ");
    pt->Draw();

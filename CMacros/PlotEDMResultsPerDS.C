@@ -349,8 +349,8 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".5.root";
-      if(ds == "Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".5.root";//finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
+      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".reweight.root";
+      if(ds == "Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".reweight.root";//finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
       cout<<finName<<endl;
       TFile *file = TFile::Open(finName.c_str());//("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root").c_str());
 
@@ -381,13 +381,13 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_);
+    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString+"_reweight", ds_);
 
     gr_.push_back(gr);
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString, ds_, orthogonal);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString+"_reweight", ds_, orthogonal);
 
 
   return;
@@ -447,7 +447,7 @@ void RunFromRawValues() { // std::string dataset, int step, std::string blinding
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/Run-1//Results/SimultaneousFits_vs_DS_blinded_"+xmin+"_"+xmax+"MeV_250MeV_randomised_BQ", ds_);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/Run-1/Results/SimultaneousFits_vs_DS_blinded_"+xmin+"_"+xmax+"MeV_250MeV_randomised_BQ", ds_);
 
 
   return;

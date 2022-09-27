@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12_AcceptanceMapY_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 10:43:20 2022) by ROOT version 6.24/06
+//=========  (Mon Sep 26 11:20:45 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-75.58442,-125,80.25974,125);
@@ -763,7 +766,7 @@ void S12_AcceptanceMapY_0_3127_MeV()
 
    Int_t ci;      // for color index setting
    TColor *color; // for color definition with alpha
-   ci = TColor::GetColor("#b74322");
+   ci = TColor::GetColor("#f1f2e1");
    palette->SetFillColor(ci);
    palette->SetFillStyle(1001);
    S12_WeightMapY->GetListOfFunctions()->Add(palette,"br");
@@ -790,7 +793,7 @@ void S12_AcceptanceMapY_0_3127_MeV()
    S12_WeightMapY->GetZaxis()->SetLabelFont(42);
    S12_WeightMapY->GetZaxis()->SetTitleOffset(1);
    S12_WeightMapY->GetZaxis()->SetTitleFont(42);
-   S12_WeightMapY->Draw("COLZ TEXT");
+   S12_WeightMapY->Draw("COLZ");
    
    TPaveText *pt = new TPaveText(0.4579648,0.94,0.5420352,0.995,"blNDC");
    pt->SetName("title");

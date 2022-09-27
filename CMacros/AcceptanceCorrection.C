@@ -307,7 +307,70 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
 
   TCanvas *c = new TCanvas("c","c",800,600);
 
-  hists_.at(0)->SetStats(0);//title.c_str());
+
+  // Convert to TH2D ?????????? 
+
+  TH2D *h2_dummy = new TH2D("h2_dummy", "", 1, 1000, 2550, 1, 0, 1);
+
+  TH2D *h2 = new TH2D("h2", "", 6, 1000, 2500, 1e3, 0, 1);
+
+  for(auto& hist : hists_) { 
+
+	  for(int i(0); i<hist->GetXaxis()->GetNbins(); i++) { 
+
+	  	double x = hist->GetBinCenter(i+1);
+	  	double y = hist->GetBinContent(i+1);
+
+	  	cout<<x<<", "<<y<<endl;
+
+	  	double a = h2->GetXaxis()->FindBin(x);
+	  	double b = h2->GetYaxis()->FindBin(y);
+
+	  	h2->SetBinContent(a, b, 1 + h2->GetBinContent(a, b));
+
+	  }
+
+	}
+
+
+	h2->SetTitle(title.c_str());
+
+	//hist->SetStats(2210);
+	gStyle->SetOptStat(0);//2210);
+			
+	h2->GetXaxis()->SetTitleSize(.04);
+	h2->GetYaxis()->SetTitleSize(.04);
+	h2->GetXaxis()->SetTitleOffset(1.1);
+	h2->GetYaxis()->SetTitleOffset(1.1);
+	h2->GetXaxis()->CenterTitle(1);
+	h2->GetYaxis()->CenterTitle(1);
+	h2->GetYaxis()->SetMaxDigits(4);
+
+	//h2->GetXaxis()->SetRangeUser(900, 2550);
+	h2->GetYaxis()->SetRangeUser(.35, .65);
+
+	gStyle->SetPalette(53);
+
+	//h2->SetMarkerStyle(20);
+
+	h2->Scale(1./h2->GetMaximum());
+	//c->SetRightMargin(0.13);
+	//h2->GetZaxis()->SetLimits(0.9, 1);
+
+	//c->SetLogz();
+
+	//h2_dummy->Draw("COL");
+
+	h2->Draw("COL");
+
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+/*  hists_.at(0)->SetStats(0);//title.c_str());
   hists_.at(0)->SetTitle(title.c_str());
   hists_.at(0)->GetXaxis()->SetTitleSize(.04);
   hists_.at(0)->GetYaxis()->SetTitleSize(.04);
@@ -316,7 +379,7 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
   hists_.at(0)->GetXaxis()->CenterTitle(true);
   hists_.at(0)->GetYaxis()->CenterTitle(true);
   hists_.at(0)->GetYaxis()->SetMaxDigits(4);
-  hists_.at(0)->GetYaxis()->SetRangeUser(0,1);//Draw("E");
+  hists_.at(0)->GetYaxis()->SetRangeUser(.3, .7); // 0,1);//Draw("E");
 
   for(int i = 0; i < hists_.size(); i++) {
 
@@ -333,8 +396,8 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
   c->SaveAs((fname+".png").c_str());
   c->SaveAs((fname+".C").c_str());
 
-  delete c;
-
+  
+*/
   return;
 
 }
@@ -372,7 +435,7 @@ void GausTrials(TFile *fout, TH1D *h_ratio, int nTrials, string stn) {
 
 	}
 
-	DrawGausTrials(trialHists_, stn, "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
+	DrawGausTrials(trialHists_, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
 
 	return;
 }
@@ -394,7 +457,9 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
 	gr_.at(2)->GetYaxis()->CenterTitle(true);
 	gr_.at(2)->GetYaxis()->SetMaxDigits(4);
 	gr_.at(2)->SetMarkerStyle(20); //  Full circle
-	gr_.at(2)->GetYaxis()->SetRangeUser(0,1);//0.4, 0.75);
+	
+
+	gr_.at(2)->GetYaxis()->SetRangeUser(.35, .65);//0,1);//0.4, 0.75);
 
 	gr_.at(0)->SetMarkerStyle(20);
 	gr_.at(1)->SetMarkerStyle(20);
@@ -403,7 +468,7 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
 	gr_.at(0)->SetLineColor(kRed);
 	gr_.at(1)->SetLineColor(kBlue);
 
-	gr_.at(2)->GetXaxis()->SetRangeUser(900, 2500);
+	gr_.at(2)->GetXaxis()->SetRangeUser(1000, 2500);
 	
 	gr_.at(2)->Draw("AP");
 	gr_.at(0)->Draw("P SAME");
@@ -603,7 +668,10 @@ void Run(bool write, string dataset = "Run-1a") {
 
 	vector<string> alignStr_ = {"plus1mm", "minus1mm", "plus0.1deg", "minus0.1deg"};
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";//acceptanceWeightingVsMomentum_250MeV_full.root";
+	// I don't think we want the reweighting stuff here
+	// The reweighting stuff is currently being held in a secure location (AEDM_overlay_reweight.C)
+
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";//_reweight"+dataset+".root";//acceptanceWeightingVsMomentum_250MeV_full.root";
 	if(!write) foutName = "delete_me.root";
 
 	TFile *fout = new TFile(foutName, "RECREATE");
@@ -612,7 +680,8 @@ void Run(bool write, string dataset = "Run-1a") {
 	TString finName_decays = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
 	TString finName_tracks = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
 
-	TString finName_tracksReweight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full_"+dataset+"_accWeight.root";
+	// I no longer bother with reweighting the tracked samples 
+	TString finName_tracksReweight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full_Run-1a_accWeight.root";
 	TFile *fin_tracksReweight = TFile::Open(finName_tracksReweight);
 
 	// Loop thro' 
@@ -636,7 +705,7 @@ void Run(bool write, string dataset = "Run-1a") {
 	for(auto& stn : stn_) {
 
 		// Acceptance weighted decays
-		TString finName_weight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full.root";
+		TString finName_weight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full_reweight"+stn+dataset+".root";
 		TFile *fin_weight = TFile::Open(finName_weight);
 
 		cout<<"\n---> Got acceptance weighted file for "<<stn<<", "<<finName_weight<<", "<<fin_weight<<endl;
@@ -662,6 +731,7 @@ void Run(bool write, string dataset = "Run-1a") {
 
 		TGraphErrors *gr_ratio_main = GetAcceptanceFactors(gr_decays, gr_weight);
 
+		//gr_ratio_main->GetYaxis()->SetRangeUser(.3, .65);
 		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_acceptanceFactors_main");
 	
 		//TGraphErrors *gr_ratio_main = new TGraphErrors(gr_decays, gr_weight);
@@ -708,7 +778,8 @@ void Run(bool write, string dataset = "Run-1a") {
 
 			DrawOverlayB(gr_weight, gr_tracks, gr_align, alignStr, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_B_"+alignStr);
 
-			// Calculate the acceptance factors 
+			// Calculate the acceptance factors... comparing vertices to weighted decays here... 
+			// Need to reweight the tracks no?
 			TGraphErrors *gr_ratio_align = GetAcceptanceFactors(gr_decays, gr_align);
 
 			DrawTGraphErrors(gr_ratio_align, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_acceptanceFactors_align_"+alignStr);
@@ -822,9 +893,10 @@ void Run(bool write, string dataset = "Run-1a") {
 
 int main() { 
 
-	bool write = false;
+	bool write = true;
 	
-	Run(write);
+	// Dataset reweighting plots do not get written to file
+	Run(write, "Run-1d");
 
 	return 0; 
 

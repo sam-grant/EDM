@@ -4,7 +4,7 @@
 void FFT_px_thetaY_vs_t()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Aug 23 12:48:41 2022) by ROOT version 6.26/04
+//=========  (Sun Sep 25 14:00:49 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

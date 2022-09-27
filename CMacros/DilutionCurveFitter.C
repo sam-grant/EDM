@@ -15,7 +15,8 @@
 
 using namespace std;
 
-const double delta_calc = 1.699245178; // mrad
+// 
+const double delta_calc = 1.69161; // 9245178; // mrad
 string dMu = "5.4e-18";
 
 const double xmin = 0; //750;
@@ -590,7 +591,7 @@ int main() { //int argc, char *argv[]) {
 
   string fname = "";
   if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
-  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.test.full.root";
+  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.full.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
 

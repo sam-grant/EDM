@@ -29,3 +29,4 @@
 #include "TDecompChol.h"
 #include "TRatioPlot.h"
 #include "TGraph2D.h"
+#include "TGraph2DPainter.h"

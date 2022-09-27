@@ -205,6 +205,8 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
+	gStyle->SetOptFit(11111);
+
 	graph->SetTitle(title.c_str());
 	graph->GetXaxis()->SetTitleSize(.04);
 	graph->GetYaxis()->SetTitleSize(.04);
@@ -1649,7 +1651,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	names->AddText("N") ; 
 	names->AddText("#chi^{2}/ndf");
 	names->AddText("A_{g-2} [mrad]");
-	names->AddText("#omega_{a} [rad/#mus]");
+	//names->AddText("#omega_{a} [rad/#mus]");
 	//names->AddText("#phi");
 	string amplitude;
 	amplitude = "A_{EDM} [mrad]";
@@ -1663,7 +1665,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(Round(chi2ndf, 3));
 	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
-	values->AddText(Round(par1, 4)+"#pm"+Round(err1, 1));
+	//values->AddText(Round(par1, 4)+"#pm"+Round(err1, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
 	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
 	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));

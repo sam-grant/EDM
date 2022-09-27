@@ -73,7 +73,7 @@ double GetTilt(double dMu) {
 
 void CalculateEDM() { 
 
-	cout<<GetTilt(1.8e-18)<<endl;//2.6e-19)<<endl;
+	cout<<GetTilt(5.4e-18)*1e-3<<", "<<sin(GetTilt(5.4e-18)*1e-3)<<endl;//2.6e-19)<<endl;
 //	cout<<GetEDM(2*sqrt(3.41e-09)*(1/std::sqrt( 1.+1./11659208.9e-10)))*1e3<<endl;
 /*
 	cout<<"---> S12S18"<<endl;

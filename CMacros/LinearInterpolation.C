@@ -4,26 +4,29 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 
 	hist->SetTitle(title.c_str());
 
-	//hist->SetStats(2210);
-	gStyle->SetOptStat(0);
+	hist->SetStats(0);
 			
 	hist->GetXaxis()->SetTitleSize(.04);
 	hist->GetYaxis()->SetTitleSize(.04);
 	hist->GetXaxis()->SetTitleOffset(1.1);
 	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetZaxis()->CenterTitle(1);
 	hist->GetXaxis()->CenterTitle(1);
 	hist->GetYaxis()->CenterTitle(1);
 	hist->GetYaxis()->SetMaxDigits(4);
 
-	gStyle->SetPalette(kDarkBodyRadiator);
-	//c->SetRightMargin(0.13);
+	hist->GetYaxis()->SetRangeUser(-100,100);
+
+	gStyle->SetPalette(kDarkBodyRadiator);// No I like the dark body for some reason RainBow); // Better to stick with rainbow and keep things (DarkBodyRadiator);
+	c->SetRightMargin(0.13);
 
 	hist->Draw("COLZ");
 
-	//c->SetLogz();
+	// For some reason you need to update the pad when dealing with cloned histograms
+	c->Update();
 	
-	//c->SaveAs((fname+".C").c_str());
-	//c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
 
 	delete c;
@@ -62,25 +65,41 @@ TGraph2D *ConvertToTGraph2D(TH2D *h) {
 
 }
 
-void DrawTGraph2D(TGraph2D *graph, std::string title, std::string fname) {
+void DrawTGraph2D(TGraph2D *gr, string title, string fname) { 
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.2);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	//graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw();
-	//c->SetGridx();
+	gStyle->SetPalette(53);
+	//gPad->Update();
+	//gr->SetDrawOpt("TRI1");
+	gr->Draw("TRI1");
+	c->Update();
+	gr->SetTitle(title.c_str());
+	gr->GetXaxis()->SetTitleSize(.04);
+	gr->GetYaxis()->SetTitleSize(.04);
+	gr->GetXaxis()->CenterTitle(1);
+	gr->GetYaxis()->CenterTitle(1);
+	gr->GetZaxis()->CenterTitle(1);
+	gr->GetYaxis()->SetMaxDigits(4);
+	gr->GetXaxis()->SetTitleOffset(1.95);
+	gr->GetYaxis()->SetTitleOffset(1.95);
+	gr->GetZaxis()->SetTitleOffset(1.25);
+	//c->SetRightMargin(0.1);
+	//c->SetTopMargin(0.5);
+	//c->SetBottomMargin(0.5);
 
-	//c->SaveAs((fname+".pdf").c_str());
+
+	gPad->Update();
+	
+	//gr->SetMarkerStyle(20);
+	
+	//if(gr==0) gr->Draw();
+	// attempting any sort of nice draw option leads to all sorts of fuck ups 
+	gr->Draw("TRI1");
+
+	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
-
+	//c->SaveAs((fname+".C").c_str());
 
 	delete c;
 
@@ -96,13 +115,17 @@ void LinearInterpolation() {
 	h1->GetXaxis()->SetRangeUser(-100, 100);
 	h1->GetYaxis()->SetRangeUser(-100, 100);
 
-	DrawTH2(h1, "", "../Images/MC/Acceptance/Interpolation/h1");
+	DrawTH2(h1, ";y [mm];#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/Interpolation/S12S18_WeightHistY_0_3127_MeV");
 
 	// Convert to 2D graph
 	//double ymin = -100; double ymax = 100; double xmin = -60; double xmax = 60;
 	TGraph2D *gr = ConvertToTGraph2D(h1);//, xmin, xmax, ymin, ymax);
 
-	DrawTGraph2D(gr, "", "../Images/MC/Acceptance/Interpolation/gr");
+	DrawTGraph2D(gr, ";y [mm];#theta_{y} [mrad];Acceptance weighting", "../Images/MC/Acceptance/Interpolation/S12S18_WeightGraphY_0_3127_MeV");
+
+	fin->Close();
+
+	return;
 
 	//double y = 32.8;
 	//double theta_y = -10.1; 

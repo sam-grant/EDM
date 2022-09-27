@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12S18_AcceptanceSurfaceY_0_3127_MeV()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Jun  2 10:42:31 2022) by ROOT version 6.24/06
+//=========  (Mon Sep 26 11:20:38 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.9935258,-1.117922,1.054981,1.117922);
