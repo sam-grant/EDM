@@ -205,7 +205,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-	gStyle->SetOptFit(11111);
+	//gStyle->SetOptFit(11111);
 
 	graph->SetTitle(title.c_str());
 	graph->GetXaxis()->SetTitleSize(.04);
@@ -1211,9 +1211,12 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
 }
 
 // TODO: change this to DrawModWiggleSim
-void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string reco, double N, double ymin, double ymax) {
+void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string reco, double N, double ymin, double ymax, string cutStr = "p [MeV] > 1700") {
 
   TCanvas *c = new TCanvas("c","c",800,600);
+
+  graph->Draw();
+  gPad->Update();
 
   TF1 *func = graph->GetFunction("FiveParFunc");
   func->SetLineWidth(3);
@@ -1236,7 +1239,7 @@ void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string re
   leg->SetTextSize(26);
   leg->SetTextFont(44);
 
-  TPaveText *names = new TPaveText(0.58,0.62,0.65,0.89,"NDC");
+  TPaveText *names = new TPaveText(0.58,0.65,0.65,0.89,"NDC");
 
   names->SetTextAlign(13);
   names->AddText("N"); 
@@ -1246,7 +1249,7 @@ void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string re
   names->AddText("A"); 
   names->AddText("#phi [rad]"); 
 
-  TPaveText *values = new TPaveText(0.70,0.62,0.89,0.89,"NDC");
+  TPaveText *values = new TPaveText(0.70,0.65,0.89,0.89,"NDC");
   values->SetTextAlign(33);
   values->AddText(SciNotation(double(N))); 
   values->AddText(Round(chi2ndf, 3));
@@ -1258,7 +1261,7 @@ void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string re
 
   TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
   cuts->SetTextAlign(22);
-  cuts->AddText("p [MeV] > 1700");
+  cuts->AddText(cutStr.c_str());
   cuts->AddText("t [#mus] > 30.6");
 
   names->SetTextSize(26);
@@ -1273,7 +1276,7 @@ void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string re
 
   graph->SetTitle(title.c_str());
 
-  graph->GetYaxis()->SetRangeUser(ymin, ymax);
+  graph->GetYaxis()->SetRangeUser(gPad->GetUymin() - 0.25, gPad->GetUymax() + 0.25);
 
   // Hack together x-axis range
   int n_points = graph->GetN();
@@ -1619,8 +1622,6 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 }
 
-
-
 // TODO: change to DrawFullEDMFitSim
 void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, std::string cutStr, std::string recoLabel, double N, double ymin, double ymax, bool unblind) {
 
@@ -1629,7 +1630,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	TF1 *func = graph->GetFunction("FullEDMFunc");
 	func->SetLineWidth(3);
 	func->SetLineColor(kRed);
-	func->SetNpx(1e4); // (max)
+	func->SetNpx(1e5); // (max)
 
 	double chi2ndf = func->GetChisquare() / func->GetNDF();
 	double par0 = func->GetParameter(0); double err0 = func->GetParError(0);
@@ -1638,10 +1639,13 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	double par3 = func->GetParameter(3); double err3 = func->GetParError(3);
 	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
 
-	TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
+	//TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.35);//0.25);
 	leg->SetNColumns(1);
 	leg->AddEntry(graph, ("Sim: "+recoLabel).c_str());
-	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c");
+	leg->AddEntry(func,"#frac{1}{N(t)} (A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c)");//"}{e^{-t/#gamma#tau}[1+#alphacos(#omega_{a}t+#phi)])");
+	leg->SetTextSize(26);
+  leg->SetTextFont(44);
 	leg->SetBorderSize(0);
 
 	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");

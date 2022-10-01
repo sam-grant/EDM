@@ -321,7 +321,7 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
 	  	double x = hist->GetBinCenter(i+1);
 	  	double y = hist->GetBinContent(i+1);
 
-	  	cout<<x<<", "<<y<<endl;
+	  	// cout<<x<<", "<<y<<endl;
 
 	  	double a = h2->GetXaxis()->FindBin(x);
 	  	double b = h2->GetYaxis()->FindBin(y);
@@ -458,8 +458,7 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
 	gr_.at(2)->GetYaxis()->SetMaxDigits(4);
 	gr_.at(2)->SetMarkerStyle(20); //  Full circle
 	
-
-	gr_.at(2)->GetYaxis()->SetRangeUser(.35, .65);//0,1);//0.4, 0.75);
+	gr_.at(2)->GetYaxis()->SetRangeUser(0.35, 0.70);
 
 	gr_.at(0)->SetMarkerStyle(20);
 	gr_.at(1)->SetMarkerStyle(20);
@@ -573,8 +572,15 @@ TGraphErrors *GetAcceptanceFactors(TGraphErrors *gr1, TGraphErrors *gr2) {
 		
 		double y = gr2->GetY()[i]/gr1->GetY()[i];
 
-		// gr3 is a subset of gr1, so take it's stat error
-		double ey = gr2->GetEY()[i];
+		// I state in this talk, https://gm2-docdb.fnal.gov/cgi-bin/sso/ShowDocument?docid=27773, 
+		// that you can just compare "all decays (weighted)" to "all decays". However, on further inspection this does not give the correct tilt angle.
+		// If you were to use this you can just take the stat error on "all decays"
+		// double ey = gr2->GetEY()[i];
+
+		// When comparing decays to tracks you have to combine the stat error in quadrature 
+		// There will be some correlation but it's non-trivial to calculate 
+		
+		double ey = y * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) );
 
 		gr_ratio->SetPoint(counter, x1, y);
 		gr_ratio->SetPointError(counter, 0, ey);
@@ -664,14 +670,14 @@ void OverlayAlignDiffGraphs(TGraphErrors *gr1, TGraphErrors *gr2, string shift, 
 
 */
 
-void Run(bool write, string dataset = "Run-1a") { 
+void Run(bool write, bool reweight = false, string dataset = "Run-1a") { 
 
 	vector<string> alignStr_ = {"plus1mm", "minus1mm", "plus0.1deg", "minus0.1deg"};
 
-	// I don't think we want the reweighting stuff here
-	// The reweighting stuff is currently being held in a secure location (AEDM_overlay_reweight.C)
+	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full";
+	if(reweight) foutName += "_reweight"+dataset; 
+	foutName += ".root";
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";//_reweight"+dataset+".root";//acceptanceWeightingVsMomentum_250MeV_full.root";
 	if(!write) foutName = "delete_me.root";
 
 	TFile *fout = new TFile(foutName, "RECREATE");
@@ -680,7 +686,7 @@ void Run(bool write, string dataset = "Run-1a") {
 	TString finName_decays = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
 	TString finName_tracks = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
 
-	// I no longer bother with reweighting the tracked samples 
+	// I no longer bother with reweighting the tracked samples, this is just for illustration but can be deleted
 	TString finName_tracksReweight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full_Run-1a_accWeight.root";
 	TFile *fin_tracksReweight = TFile::Open(finName_tracksReweight);
 
@@ -705,7 +711,10 @@ void Run(bool write, string dataset = "Run-1a") {
 	for(auto& stn : stn_) {
 
 		// Acceptance weighted decays
-		TString finName_weight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full_reweight"+stn+dataset+".root";
+		TString finName_weight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full"; // _reweight"+stn+dataset+".root";
+		if(reweight) finName_weight += "_reweight"+stn+dataset;
+		finName_weight += ".root";
+
 		TFile *fin_weight = TFile::Open(finName_weight);
 
 		cout<<"\n---> Got acceptance weighted file for "<<stn<<", "<<finName_weight<<", "<<fin_weight<<endl;
@@ -729,7 +738,9 @@ void Run(bool write, string dataset = "Run-1a") {
 
 		DrawOverlayC(gr_tracks, gr_weight, gr_tracksReweight, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_C_"+dataset, dataset);
 
-		TGraphErrors *gr_ratio_main = GetAcceptanceFactors(gr_decays, gr_weight);
+		// I would ideally use gr_weight instead of gr_tracks, but it just does not give the correct tilt angle in the end
+		// Improving the weighting procedure should be a priority to make the most the acceptance correction
+		TGraphErrors *gr_ratio_main = GetAcceptanceFactors(gr_decays, gr_tracks);
 
 		//gr_ratio_main->GetYaxis()->SetRangeUser(.3, .65);
 		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_acceptanceFactors_main");
@@ -778,8 +789,7 @@ void Run(bool write, string dataset = "Run-1a") {
 
 			DrawOverlayB(gr_weight, gr_tracks, gr_align, alignStr, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_B_"+alignStr);
 
-			// Calculate the acceptance factors... comparing vertices to weighted decays here... 
-			// Need to reweight the tracks no?
+			// Calculate the acceptance factors for misaligned sameples
 			TGraphErrors *gr_ratio_align = GetAcceptanceFactors(gr_decays, gr_align);
 
 			DrawTGraphErrors(gr_ratio_align, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_acceptanceFactors_align_"+alignStr);
@@ -894,9 +904,9 @@ void Run(bool write, string dataset = "Run-1a") {
 int main() { 
 
 	bool write = true;
+	bool reweight = false; // reweight according to datasets
 	
-	// Dataset reweighting plots do not get written to file
-	Run(write, "Run-1d");
+	Run(write, false, "Run-1a");
 
 	return 0; 
 

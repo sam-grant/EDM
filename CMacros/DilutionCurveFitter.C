@@ -15,11 +15,12 @@
 
 using namespace std;
 
-// 
-const double delta_calc = 1.69161; // 9245178; // mrad
+const double delta_rest = 0.0495092; // rad
+const double delta_lab = (delta_rest / GMAGIC) * 1e3; // mrad
+
 string dMu = "5.4e-18";
 
-const double xmin = 0; //750;
+const double xmin = 0; // 
 const double xmax = PMAX;//2500;
 const int nTrials = 1e3;
 
@@ -193,20 +194,19 @@ double DilutionFunc(double *x, double *par) {
 void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
   
   TF1 *fnc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 1);
-  fnc->FixParameter(0, 1); 
-  //fnc->SetParameter(1, -1.3e-04);
 
-/*  if(config == "Tracks") {
-    fnc->SetParameter(0, -5.5e-8);
-    fnc->SetParameter(1, 1.5e-4);
-    fnc->SetParameter(2, -0.05);
-  }  else if(config == "Decays") { 
-    fnc->SetParameter(0, -5.5e-8);
-    fnc->SetParameter(1, 8.0e-5);
-    fnc->SetParameter(2, 2.5e-1);
-  } */
+  // Derived from floating fits to A_EDM, for some reason it doesn't take when you fit d_EDM
+  double norm = 1.58088; // mrad
+  double err_norm = 5.35241e-03;
 
-  graph->Fit(fnc, "R");    
+  norm = norm / delta_lab;
+  err_norm = err_norm / delta_lab;
+
+  cout<<"!!!!!\nNORM = "<<norm<<"±"<<err_norm<<endl;
+
+  fnc->FixParameter(0, norm);  // let float
+  fnc->SetParError(0, err_norm);  // let float
+  graph->Fit(fnc, "MR");    
 
   return;
 
@@ -221,11 +221,9 @@ TGraphErrors *ConvertToDilution(TGraphErrors *gr) {
 
   for(int i = 0; i<n; i++) { 
 
-    // Remove x-error bars
     x[i] = gr->GetX()[i]; ex[i] = 0;
-    y[i] = gr->GetY()[i] / delta_calc;
-    // Is this an overestimate?
-    ey[i] = gr->GetEY()[i] / delta_calc;
+    y[i] = gr->GetY()[i] / delta_lab;
+    ey[i] = gr->GetEY()[i] / delta_lab;
 
   }
 
@@ -587,11 +585,11 @@ int main() { //int argc, char *argv[]) {
   //std::string tmp = argv[1];
 
   bool fit = true;
-  bool write = false;
+  bool write = true;
 
   string fname = "";
-  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.root";
-  else if(!write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.full.root";
+  if(write) fname += "../Plots/MC/dMu/Dilution/dilutionCurves.floatingNormalisation.root";
+  else if(!write) fname += "delete_me.root";
 
   TFile *output = new TFile(fname.c_str(), "RECREATE");
 

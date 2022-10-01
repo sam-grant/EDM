@@ -18,6 +18,7 @@ double G2PERIOD = (2 * TMath::Pi() / OMEGA_A);//s * 1e-3; // us
 double M_MU = 105.6583715; // MeV
 double A_MU = 11659208.9e-10; 
 double GMAGIC = std::sqrt( 1.+1./A_MU );
+double TAU = 2.196981;
 double PMAX = 1.01 * M_MU * GMAGIC; // 3127.1144
 double T_c = 149.2 * 1e-3; // cyclotron period [us]
 
@@ -71,18 +72,34 @@ void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, doub
 
 }
 
-void FullEDMFit2(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double xmin, double xmax) {
+// Divide by number oscillation
+
+double FullEDMFuncB(double *x, double *par) {
+
+  double EDM_A = ( par[0] * TMath::Cos((par[1] * x[0]) + par[2]) ) + ( par[3] * TMath::Sin((par[1] * x[0]) + par[2]) ) + par[4];
+  double wiggle = par[5] * exp(-x[0]/par[6]) * (1  + (par[7] * TMath::Cos((par[1] * x[0]) + par[2])));
+
+  return EDM_A / wiggle; 
+
+}
+
+
+void FullEDMFitB(TGraphErrors *graph, double par0, double par1, double par2, double par3, double par4, double par5, double par6, double par7, double xmin, double xmax) {
   
-  TF1 *func = new TF1("FullEDMFunc", FullEDMFunc, xmin, xmax, 5);
+  TF1 *func = new TF1("FullEDMFunc", FullEDMFuncB, xmin, xmax, 8);
 
-  func->FixParameter(0, par0); // A_g-2
+  func->SetParameter(0, par0); // A_g-2
+  //func->SetParameter(1, par1); // Omega
   func->FixParameter(1, par1); // Omega
-  func->FixParameter(2, par2); // Phi
+  //func->SetParameter(2, par2); // Phi
   func->FixParameter(2, par2);
-  func->FixParameter(3, par3); // A_EDM
-  func->FixParameter(4, par4); // c
+  func->SetParameter(3, par3); // A_EDM
+  func->SetParameter(4, par4); // c
+  func->FixParameter(5, par5); // N_0
+  func->FixParameter(6, par6); // tau*gamma
+  func->FixParameter(7, par7); // A
 
-  graph->Fit(func, "QMR"); // ,"MR");
+  graph->Fit(func, "MR"); // ,"MR");
 
   return;
 
@@ -97,14 +114,13 @@ void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, doub
   
   TF1 *func = new TF1("FiveParFunc", FiveParFunc, min, max, 5);
 
-  //func->SetParameter(0, par0); // N0
-  func->FixParameter(1, par1); // tau
-  //func->SetParLimits(1, 55, 70);
+  //func->SetParameter(0, par0); // N0, don't set normalisation
+  func->SetParameter(1, par1); // tau
   func->SetParameter(2, par2); // A
   func->FixParameter(3, par3); // Omega (let float?)
   func->SetParameter(4, par4);
   
-  // Only for sim
+  // Only for sim.. 
   func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
 
   func->SetNpx(1e3);

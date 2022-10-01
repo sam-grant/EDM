@@ -418,10 +418,10 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     //TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time_Modulo").c_str());
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
-    TH1D *px_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
+    TH1D *h1_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
 
     // Blinding
-    TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_vs_t), false);
+    TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(h1_thetaY_vs_t), false);
 
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, tmin, tmax);
     //FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
@@ -441,7 +441,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     // Get residuals
 
     // We have to convert back into a TH1D to preserve blinding
-    TH1D *h1_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
+    h1_thetaY_vs_t = ConvertToTH1D(gr_thetaY_vs_t); 
     TH1D *FFT_h1_thetaY_vs_t = GetFFT(h1_thetaY_vs_t);
     TH1D *h1_res_thetaY_vs_t = GetResidual(h1_thetaY_vs_t, func);
 

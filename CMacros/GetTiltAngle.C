@@ -359,7 +359,7 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
 
   l->SetBorderSize(0);
 
-  TString delta_prime = Round(gr_delta_prime->GetFunction("pol0")->GetParameter(0), 2.);
+  TString delta_prime = Round(gr_delta_prime->GetFunction("pol0")->GetParameter(0), 3.);
   TString delta_prime_err = Round(gr_delta_prime->GetFunction("pol0")->GetParError(0), 1.);
 
   l->AddEntry(gr_delta_prime, label.c_str());
@@ -588,7 +588,7 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
 
   cout<<"\n***************************** Getting data *****************************\n"<<endl;
 
-  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.full.root";
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.floatingNormalisation.root";
   TFile *dilution_file  = TFile::Open(dilution_fileName);
 
   TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";//BK.OVERESTIMATION.root"; // _dataAccCorr_"+datasetLabel+".root";
@@ -605,7 +605,6 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
 	cout<<"\n***************************** Creating output file *****************************\n"<<endl;
 
 	TString outputFileName = "../Plots/MC/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+config+".root";
-  outputFileName = "delete_me.root";
 	TFile *outputFile = new TFile(outputFileName, "RECREATE");
 
   // Result tree
@@ -1301,10 +1300,13 @@ int main() {
   bool correctAcceptance = true;
   bool correctVerticalAngleOffset = true;  // not sure what this is about?
 
-  //RunSim(string config, string dataset, string blinding, bool correctAcceptance = false) { 
-  RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);// , correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "5.4e-18", "unblinded", true);// , correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // Currently forced to use a fitted normalisation for the dilution 
 
+  // RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+  RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+  //RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+
+  // Need to re-fit using the new function
 
   //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);

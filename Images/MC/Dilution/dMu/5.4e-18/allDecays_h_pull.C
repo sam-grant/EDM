@@ -4,7 +4,7 @@
 void allDecays_h_pull()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Sep 26 18:45:09 2022) by ROOT version 6.26/04
+//=========  (Sat Oct  1 21:50:31 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);
@@ -14,11 +14,17 @@ void allDecays_h_pull()
    c->SetFrameBorderMode(0);
    
    TH1D *allDecays_h_pull__1 = new TH1D("allDecays_h_pull__1","",24,-3,3);
-   allDecays_h_pull__1->SetBinContent(0,5);
-   allDecays_h_pull__1->SetBinContent(2,2);
-   allDecays_h_pull__1->SetBinContent(4,2);
-   allDecays_h_pull__1->SetBinContent(6,1);
-   allDecays_h_pull__1->SetBinContent(7,2);
+   allDecays_h_pull__1->SetBinContent(1,1);
+   allDecays_h_pull__1->SetBinContent(6,2);
+   allDecays_h_pull__1->SetBinContent(8,1);
+   allDecays_h_pull__1->SetBinContent(9,1);
+   allDecays_h_pull__1->SetBinContent(10,1);
+   allDecays_h_pull__1->SetBinContent(11,1);
+   allDecays_h_pull__1->SetBinContent(14,1);
+   allDecays_h_pull__1->SetBinContent(15,1);
+   allDecays_h_pull__1->SetBinContent(17,1);
+   allDecays_h_pull__1->SetBinContent(19,1);
+   allDecays_h_pull__1->SetBinContent(22,1);
    allDecays_h_pull__1->SetEntries(12);
    allDecays_h_pull__1->GetXaxis()->SetTitle("Pull [#sigma]");
    allDecays_h_pull__1->GetXaxis()->CenterTitle(true);

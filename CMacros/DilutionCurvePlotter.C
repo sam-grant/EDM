@@ -559,7 +559,9 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    gr->GetXaxis()->SetRangeUser(xmin, xmax);
    gr->GetYaxis()->SetRangeUser(ymin, ymax);
 
-   TString title = ";Momentum, p [MeV];d_{EDM} / "+to_string(step)+" MeV";
+   // gr->GetXaxis()->SetLimits(0, 1);//ymin, ymax);
+
+   TString title = ";Momentum, p [MeV];Dilution, d / "+to_string(step)+" MeV";
    gr->SetTitle(title);
 
    gr->Draw("AP");
@@ -580,14 +582,14 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
    //TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
    //TLegend *l = new TLegend(0.59,0.69,0.89,0.89);
-   TLegend *l = new TLegend(0.65,0.715,0.89,0.89);
+   TLegend *l = new TLegend(0.645,0.715,0.89,0.89);
    l->SetBorderSize(0);
    l->SetNColumns(1);
    l->AddEntry(gr,"All decays");
    // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
    //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
-   l->AddEntry(fit, "#frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}");//p^{2}+bp+d_{0}");
+   l->AddEntry(fit, "d_{0}#frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}");//p^{2}+bp+d_{0}");
    l->SetTextSize(26);
    l->SetTextFont(44);
    l->Draw("SAME");
@@ -948,18 +950,18 @@ int main() {
    bool fit = true;
    bool write = false;
 
-   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.full.root";//refit.acceptanceCorrected.reweight.root";
+   TString inputFileName = "../Plots/MC/dMu/Dilution/dilutionCurves.floatingNormalisation.root";
    TFile *inputFile = TFile::Open(inputFileName);
 
    cout<<"Opened input file "<<inputFileName<<", "<<inputFile<<endl;
 
    cout<<"\n****************** Drawing ******************"<<endl;
 
-  // DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitFull", 0, .22);//0.06, 0.22); 
-  // DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
+   // DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", -0.02, 0.13); // 0, 0.12
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFitFloatingNormalisation", 0, .22); //0.06, 0.22); 
+   // DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.25);
 
-/*   // Graphs
+   /* // Graphs
    DrawAllGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs", -0.1,0.25);
    //DrawAllGraphs2(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllGraphs2", -0.1,0.25);
    DrawVertexGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexGraphs", "AQ", 0,0.125);
@@ -970,22 +972,13 @@ int main() {
    // Fits
    DrawAllFits(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllFits", 0, 0.225); 
    DrawRecoVertexFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit", 0, 0.12);
-   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", 0, 0.25);
+   DrawAllDecaysFit(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllDecaysFit", 0, 0.25); */
 
-*/
-/*   
-   
-   
-   DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "BQ", 0, 0.075);
-
-
-
-   
+   /* DrawVertexErrorGraphs(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/VertexErrorGraphs", "BQ", 0, 0.075);
    DrawRecoVertexFitFullRange(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/RecoVertexFit_FullRange",-0.20, 0.20);
    DrawAllFitsControl(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/AllControlFits", 0, 0.225); 
-
    // Fit trials
-   DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12);*/
+   DrawMottFunctions(inputFile, 250, "../Images/MC/Dilution/dMu/"+dMu+"/MottFunctionsOverlay"+to_string(nTrials), 0, 0.12); */
 
    inputFile->Close();
 
