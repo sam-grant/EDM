@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void Asymmetry_EDM_labFrame()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Apr 21 20:44:27 2022) by ROOT version 6.24/06
+//=========  (Tue Oct  4 19:01:37 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.1428571,-0.25,1.285714,1.25);
@@ -75,7 +78,7 @@ void Asymmetry_EDM_labFrame()
    entry->SetTextFont(44);
    leg->Draw();
    
-   TF1 *A_411 = new TF1("A_4","( 0.5 * (1/0.266991) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x) )",0,1, TF1::EAddToList::kDefault);
+   TF1 *A_411 = new TF1("A_4","( (8/5) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x) )",0,1, TF1::EAddToList::kDefault);
    A_411->SetFillColor(19);
    A_411->SetFillStyle(0);
 
@@ -89,7 +92,7 @@ void Asymmetry_EDM_labFrame()
    A_411->GetYaxis()->SetTitleFont(42);
    A_411->Draw("same");
    
-   TF1 *NA2_412 = new TF1("NA2_4"," (1/0.122511) * N_4 * A_4 * A_4",0,1, TF1::EAddToList::kDefault);
+   TF1 *NA2_412 = new TF1("NA2_4"," - (1 / (4 * 3.14159265359) ) * 128 * N_4 * A_4 * A_4 / 75",0,1, TF1::EAddToList::kDefault);
    NA2_412->SetFillColor(19);
    NA2_412->SetFillStyle(0);
 
@@ -106,7 +109,7 @@ void Asymmetry_EDM_labFrame()
    line->SetLineStyle(2);
    line->SetLineWidth(3);
    line->Draw();
-   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,3127.114,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,3096.153,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

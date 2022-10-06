@@ -10,17 +10,41 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2489,         86]
-NotebookOptionsPosition[      2018,         69]
-NotebookOutlinePosition[      2411,         85]
-CellTagsIndexPosition[      2368,         82]
+NotebookDataLength[      5436,        168]
+NotebookOptionsPosition[      4866,        150]
+NotebookOutlinePosition[      5259,        166]
+CellTagsIndexPosition[      5216,        163]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[BoxData[
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Tau]", "=", 
+   RowBox[{"2.2", "*", 
+    RowBox[{"10", "^", 
+     RowBox[{"-", "6"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Gamma]", "=", "29.3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Phi]", "=", 
+   RowBox[{"Pi", "/", "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ag2", "=", "0.0001"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AEDM", "=", "1.69"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "=", "0.10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Omega]", "=", 
+    RowBox[{"1.439359", "*", 
+     RowBox[{"10", "^", "6"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"\[Theta]", "=", 
   FractionBox[
    RowBox[{" ", 
@@ -40,31 +64,88 @@ Cell[BoxData[
      RowBox[{"1", "+", 
       RowBox[{"A", "*", 
        RowBox[{"Cos", "[", 
-        RowBox[{"\[Omega]t", "+", "\[Phi]"}], "]"}]}]}], ")"}]}]]}]], "Input",\
-
+        RowBox[{"\[Omega]t", "+", "\[Phi]"}], "]"}]}]}], 
+     ")"}]}]]}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{"\[Theta]", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", " ", "0", ",", " ", 
+     RowBox[{"4.365", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"-", "6"}]}]}]}], "}"}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.8735475076537743`*^9, 3.873547713503903*^9}, {
-  3.873547762483382*^9, 
-  3.87354779282957*^9}},ExpressionUUID->"95b001f6-b778-481b-a835-\
-a045173e5270"],
+  3.873547762483382*^9, 3.8735479918332977`*^9}},
+ CellLabel->
+  "In[150]:=",ExpressionUUID->"95b001f6-b778-481b-a835-a045173e5270"],
 
 Cell[BoxData[
  FractionBox[
   RowBox[{
    SuperscriptBox["\[ExponentialE]", 
-    RowBox[{"-", "\[Tau]\[Gamma]"}]], " ", 
-   RowBox[{"Sec", "[", 
-    RowBox[{"\[Phi]", "+", "\[Omega]t"}], "]"}], " ", 
+    RowBox[{"t", "/", "\[Tau]\[Gamma]"}]], " ", 
    RowBox[{"(", 
-    RowBox[{"c", "+", 
-     RowBox[{"Ag2", " ", 
-      RowBox[{"Cos", "[", 
-       RowBox[{"\[Phi]", "+", "\[Omega]t"}], "]"}]}], "+", 
-     RowBox[{"AEDM", " ", 
-      RowBox[{"Sin", "[", 
-       RowBox[{"\[Phi]", "+", "\[Omega]t"}], "]"}]}]}], ")"}]}], 
-  "A"]], "Output",
- CellChangeTimes->{3.873547720691888*^9},
- CellLabel->"Out[29]=",ExpressionUUID->"27334048-a162-4f02-83eb-0065618f11c3"]
+    RowBox[{
+     RowBox[{"1.69`", " ", 
+      RowBox[{"Cos", "[", "\[Omega]t", "]"}]}], "-", 
+     RowBox[{"0.0001`", " ", 
+      RowBox[{"Sin", "[", "\[Omega]t", "]"}]}]}], ")"}]}], 
+  RowBox[{"1", "-", 
+   RowBox[{"0.1`", " ", 
+    RowBox[{"Sin", "[", "\[Omega]t", "]"}]}]}]]], "Output",
+ CellChangeTimes->{
+  3.873547720691888*^9, {3.8735478626334553`*^9, 3.873547943865851*^9}, {
+   3.873547992516107*^9, 3.873547997223628*^9}, {3.8735480472101927`*^9, 
+   3.8735480498225927`*^9}},
+ CellLabel->
+  "Out[158]=",ExpressionUUID->"824e43f2-32c7-41d7-88b3-98f07e79ebdf"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "ScalingFunctions" -> None, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 4.365*^-6}, {0., 0.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.873547720691888*^9, {3.8735478626334553`*^9, 3.873547943865851*^9}, {
+   3.873547992516107*^9, 3.873547997223628*^9}, {3.8735480472101927`*^9, 
+   3.873548049891574*^9}},
+ CellLabel->
+  "Out[159]=",ExpressionUUID->"df2de849-533c-40c4-9fce-f53b68feb23a"]
 }, Open  ]]
 },
 WindowSize->{808, 747},
@@ -85,12 +166,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 807, 25, 61, "Input",ExpressionUUID->"95b001f6-b778-481b-a835-a045173e5270"],
-Cell[1390, 49, 612, 17, 51, "Output",ExpressionUUID->"27334048-a162-4f02-83eb-0065618f11c3"]
+Cell[580, 22, 1866, 56, 278, "Input",ExpressionUUID->"95b001f6-b778-481b-a835-a045173e5270"],
+Cell[2449, 80, 713, 19, 55, "Output",ExpressionUUID->"824e43f2-32c7-41d7-88b3-98f07e79ebdf"],
+Cell[3165, 101, 1685, 46, 254, "Output",ExpressionUUID->"df2de849-533c-40c4-9fce-f53b68feb23a"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

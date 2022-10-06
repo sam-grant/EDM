@@ -582,7 +582,8 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
    //TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
    //TLegend *l = new TLegend(0.59,0.69,0.89,0.89);
-   TLegend *l = new TLegend(0.645,0.715,0.89,0.89);
+   //TLegend *l = new TLegend(0.645,0.715,0.89,0.89);
+   TLegend *l = new TLegend(0.15,0.20,0.45,0.40);
    l->SetBorderSize(0);
    l->SetNColumns(1);
    l->AddEntry(gr,"All decays");
@@ -594,21 +595,22 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    l->SetTextFont(44);
    l->Draw("SAME");
 
-   TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
+   // TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
+   TPaveText *names = new TPaveText(0.645,0.715,0.89,0.89,"NDC");
 
    names->SetTextAlign(13);
    names->AddText("#chi^{2}/NDF");
-   //names->AddText("a") ; 
+   names->AddText("d_{0}"); 
    //names->AddText("b [MeV^{-1}]" );
       //names->AddText("d_{0}");
 
-   TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
+   // TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
+   TPaveText *values = new TPaveText(0.80,0.715,0.89,0.89,"NDC");
    // TPaveText *values = new TPaveText(0.30,0.20,0.45,0.45,"NDC");
 
    values->SetTextAlign(33);
    values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
-
-   //values->AddText(Round(fit->GetParameter(0), 1)+"#pm"+Round(fit->GetParError(0), 1));
+   values->AddText("0.936#pm0.003");// Round(fit->GetParameter(0), 3)+"#pm"+Round(fit->GetParError(0), 3));
    //values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
 
    //values->AddText("0.177#pm0.004"); 
@@ -627,8 +629,8 @@ void DrawAllDecaysFit(TFile *input, int step, string fname, double ymin, double 
    values->SetTextFont(44);
    values->SetTextSize(26);
 
-   //names->Draw("SAME");
-   //values->Draw("SAME");
+   names->Draw("SAME");
+   values->Draw("SAME");
 
    c->SaveAs((fname+".pdf").c_str());
    c->SaveAs((fname+".png").c_str());

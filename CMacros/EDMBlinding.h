@@ -4,8 +4,8 @@
 #include "RootInclude.h"
 
 //#include "BlindingStrings/O.h"
-#include "BlindingStrings/Run-1.h"
-//#include "BlindingStrings/Sim.h"
+//#include "BlindingStrings/Run-1.h"
+#include "BlindingStrings/Sim.h"
 
 using namespace blinding;
 
@@ -80,7 +80,17 @@ double GetDelta(double dMu) {
 
 double EDMFunc( double *x, double *p )  {
   double time = x[0];// + p[3]; // time offset
-  return (-p[0] * cos(p[1]* time + p[2])); 
+  return (-p[0] * sin(p[1]* time + p[2]));  
+}
+
+// With number oscillation denominator
+double EDMFuncB( double *x, double *p )  {
+
+  double numerator = p[0] * TMath::Sin((p[1] * x[0]) + p[2]); 
+  double denominator = exp(-x[0]/p[3]) * (1  + (p[4] * TMath::Cos((p[1] * x[0]) + p[2])));
+
+  return numerator / denominator; 
+
 }
 
 TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc) { 
@@ -107,12 +117,13 @@ TGraphErrors *InjectBlindedModulo(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc
 
 }
 
+// An effort to make the behaviour of the blind signal more realistic
 TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 *blindEDMFunc, std::string stn, double momentum) { 
 
-  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.fullRange.root";
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.floatingNormalisation.root";
   TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root"; // _dataAccCorr_"+datasetLabel+".root";
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_full.root"; // _dataAccCorr_"+datasetLabel+".root";
   TFile *acceptance_file = TFile::Open(acceptance_fileName);
 
   TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/AQ/Decays/250MeV/d_vs_p/allDecays");

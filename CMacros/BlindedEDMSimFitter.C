@@ -234,9 +234,6 @@ TH2D *ReweightedHist(TH2D *h1, string ds, string slice, string stn = "S12S18") {
 
   TH1D *h2 = (TH1D*)f->Get(name.c_str());
 
-  // cout<<name<<endl;
-  // cout<<"h2 = "<<h2<<endl;
-
   // Loop thro' reweight 
   for(int i(0); i<h1->GetNbinsX(); i++) {
 
@@ -462,15 +459,16 @@ const double GetPhase(TFile *input, TFile *output, std::string config, std::stri
 
 }
 
-TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S0S12S18_", double momentum = -1) { 
+// wiggle is the number oscillation in that momentum interval
+TGraphErrors *BlindedModuloGraph(const double phi_omegaa, TF1 *wiggle, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S0S12S18_", double momentum = -1) { 
 
   // ================== First, shift phase ==================
 
-  // Shift the phase 90 deg
-  double phi_edm = phi_omega + M_PI/2.; 
+  // Shift the phase 90 deg (not needed anymore)
+  // double phi_edm = phi_omega + M_PI/2.; 
 
   // Find a zero crossing 
-  double t0 = phi_omega * G2PERIOD / (2*M_PI);
+  double t0 = phi_omegaa * G2PERIOD / (2*M_PI);
   double zeroCrossing = 8*G2PERIOD - t0;
 
   // ================== Second, get blinded A_EDM ================== 
@@ -478,22 +476,28 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
   double dMu_blind = blinded_edm_value(false);  
   double delta_blind = GetDelta(dMu_blind);
   double delta_prime_blind = atan( tan(delta_blind) / gmagic) * 1e3; // mrad
-  double omega_a = getBlinded.referenceValue(); 
+  //double omega_a = getBlinded.referenceValue(); 
 
-  cout<<"\n----> reference omega_a = "<<omega_a<<endl;
+  // cout<<"\n----> reference omega_a = "<<omega_a<<endl;
 
+  // Wiggle parameters
+  double tauGamma = wiggle->GetParameter(1);
+  double A = wiggle->GetParameter(2); // Not clear what this value should be for the blinding.
+  A = A;
   // ================== Third, inject blinded A_EDM into modulo plot ================== 
 
   // Define blinded EDM oscillation
-  TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
+  TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFuncB,zeroCrossing,zeroCrossing+G2PERIOD,5);
 
-  blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#omega_{a}^{FIXED}","#phi");//,"offset");
-  blindEDMFunc->SetParameters(delta_prime_blind,omega_a,phi_edm);//,xmin);
+  blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#omega_{a}^{FIXED}","#phi", "#tau#gamma", "A");//,"offset");
+
+  // Dilution is applied after
+  blindEDMFunc->SetParameters(delta_prime_blind, OMEGA_A, phi_omegaa, tauGamma, A);//,xmin);
 
   blindEDMFunc->SetNpx(50000);
 
   // Best not to draw this :)
-  // DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/Data/dMu/"+config+"/blindEDMFunc_"+qual);
+  DrawTF1(blindEDMFunc,";Time [#mus];#LT#theta_{y}#GT [mrad]","../Images/Data/dMu/blindEDMFunc_test");
 
   if(weighted) return InjectBlindedModuloWithWeighting(gr_thetaY_mod, blindEDMFunc, stn, momentum);
   else return InjectBlindedModulo(gr_thetaY_mod, blindEDMFunc);
@@ -553,7 +557,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
   for(auto& stn : stn_) { 
 
-    // ---> Get number oscillation in this range
+    // ---> Get mod number oscillation in this range
 
     TH1D *h1_wiggle_mod = (TH1D*)input->Get(("SimultaneousAnalysis/"+stn+"Wiggle_Modulo_2").c_str());
 
@@ -565,7 +569,6 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
 
     // ---> 5-par fit
-
     FitFivePar(gr_wiggle_mod, 1.0, TAU*GMAGIC, 0.35, OMEGA_A, 0, 0, G2PERIOD);
 
     TF1 *f_wiggle_mod = (TF1*)gr_wiggle_mod->GetFunction("FiveParFunc");
@@ -593,7 +596,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
     // Blinding
     TGraphErrors *gr_thetaY_mod;
-    if(!unblind) gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
+    if(!unblind) gr_thetaY_mod = BlindedModuloGraph(phi, f_wiggle_mod, ConvertToTGraphErrors(px_thetaY_mod), false);
     else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
 
     // TODO: figure out blinding for asymmetry 
@@ -670,7 +673,9 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
     // ----> FFT stuff
 
-    // ---> Get number oscillation in this range
+    // ---> Get unmodulated number oscillation in this range (don't currently have this!)
+
+    
 
     // ---> Normalise and convert to graph
 
@@ -685,7 +690,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     // Blinding
     TGraphErrors *gr_thetaY_vs_t;
 
-    if(!unblind) gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(h1_thetaY_vs_t), false);
+    if(!unblind) gr_thetaY_vs_t = BlindedModuloGraph(phi, f_wiggle_mod, ConvertToTGraphErrors(h1_thetaY_vs_t), false);
     else gr_thetaY_vs_t = ConvertToTGraphErrors(h1_thetaY_vs_t);
 
     gr_thetaY_vs_t->GetYaxis()->SetRangeUser(-.425, .425);
@@ -972,7 +977,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       cout<<"\n Blinding"<<endl;
       if(!unblind) {
         // This is the issue
-        gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
+        gr_thetaY_mod = BlindedModuloGraph(phi, f_wiggle_mod, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
       } else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
 
       // Fits  
@@ -986,6 +991,9 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       double ymin_tmp = c_tmp-1; double ymax_tmp = c_tmp+1;
       
       DrawFullEDMFitSim(gr_thetaY_mod, ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../Images/MC/"+dname+"/"+dMu+"/MomBinnedAna/"+stn+"edmFit_thetaY_"+momSlice+"_"+config+"_"+to_string(unblind)).c_str(), std::to_string(lo)+" < p [MeV] < "+std::to_string(hi), recoLabel, double(nEntries), ymin_tmp, ymax_tmp, unblind);
+
+      // For some reason this is needed twice?
+      output->cd("MomentumBinnedAnalysis/ModuloFits");
 
       gr_thetaY_mod->SetName((stn+"moduloFit_thetaY_"+momSlice).c_str());
       gr_thetaY_mod->Write();
@@ -1216,6 +1224,7 @@ void Run(string config, string dMu, string dataset, string station, const bool u
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
   output->mkdir("MomentumBinnedAnalysis/ParameterScans");
 
+  // Re-weighting currently only for momentum binned analysis
   MomentumBinnedAnalysis(phi, input, output, config, dMu, scaleFactor, unblind, dataset, station, reweight); 
 
   std::cout<<"\nWritten plots to root file:\n"<<outputName<<std::endl;

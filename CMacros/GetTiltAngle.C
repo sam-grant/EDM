@@ -269,7 +269,7 @@ Delta Run-1d = 0.0038669
 
 TGraphErrors *GetDeltaPrimeFitReweight(TGraphErrors *gr_A, TF1 *dilutionFunc, string dataset = "Run-1a", string stn = "S12S18") {
 
-    TFile *fin = TFile::Open(("../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full_reweight"+stn+".root").c_str());
+    TFile *fin = TFile::Open(("../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full_reweightRun1_"+stn+".root").c_str());
 
     //vector<double> weights_;
 
@@ -363,8 +363,12 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
   TString delta_prime_err = Round(gr_delta_prime->GetFunction("pol0")->GetParError(0), 1.);
 
   l->AddEntry(gr_delta_prime, label.c_str());
-  if(!orthogonal) l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta^{BLIND}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+  // if(!orthogonal) l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta^{BLIND}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+  if(!orthogonal) l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
   else l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta_{#Omega}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+  //else l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+  //l->AddEntry(gr_delta_prime->GetFunction("pol0"), "HELLO #LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+
 
   gr_delta_prime->SetTitle(title.c_str());
   if(orthogonal) gr_delta_prime->GetYaxis()->SetTitle("#delta_{#Omega} [mrad] / 250 MeV");
@@ -1303,13 +1307,14 @@ int main() {
   // Currently forced to use a fitted normalisation for the dilution 
 
   // RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
-  RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+  //RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
   //RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+  // RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "1.8e-18", "unblinded", true);
 
   // Need to re-fit using the new function
 
   //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   //RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 

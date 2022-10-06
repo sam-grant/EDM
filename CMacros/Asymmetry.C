@@ -402,9 +402,14 @@ int main() {
 
 	// ==================== Lab frame EDM ====================
 	// I did some hacky normalisation to make it look like Saskia and Gleb's plots, but I don't understand why 
-	TF1 *N_4 = new TF1("N_4","(1/1.65) * 0.33 * (x-1) * (4*x*x-5*x-5)",0,1); // 3.43
-	TF1 *A_4 = new TF1("A_4","( 0.5 * (1/0.266991) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x) )",0,1); // 3.57
-	TF1 *NA2_4 = new TF1("NA2_4"," (1/0.122511) * N_4 * A_4 * A_4",0,1);  
+	// TF1 *N_4 = new TF1("N_4","(1/1.65) * 0.33 * (x-1) * (4*x*x-5*x-5)",0,1); // 3.43
+	// TF1 *A_4 = new TF1("A_4","( 0.5 * (1/0.266991) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x) )",0,1); // 3.57
+	// TF1 *NA2_4 = new TF1("NA2_4"," (1/0.122511) * N_4 * A_4 * A_4",0,1);  
+
+	// Paul's normalisation
+	TF1 *N_4 = new TF1("N_4"," - ( 1 / (4 * 3.14159265359) ) * 2 * (x-1) * (5+5*x-4*x*x) / 3", 0, 1); // 3.43
+	TF1 *A_4 = new TF1("A_4","( (8/5) * (sqrt(x * (1-x)) * (1 + 4*x) ) / (5 + 5*x - 4*x*x) )", 0, 1); // 3.57
+	TF1 *NA2_4 = new TF1("NA2_4"," - (1 / (4 * 3.14159265359) ) * 128 * N_4 * A_4 * A_4 / 75", 0, 1);  
 
 	std::cout<<"\nN_4 max:\t"<<N_4->GetMaximum()<<"\n"<<std::endl;
 	std::cout<<"A_3 max:\t"<<A_4->GetMaximum()<<"\n"<<std::endl;

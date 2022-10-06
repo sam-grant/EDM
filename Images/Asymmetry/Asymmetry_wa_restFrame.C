@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void Asymmetry_wa_restFrame()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Apr 21 20:44:27 2022) by ROOT version 6.24/06
+//=========  (Tue Oct  4 19:01:37 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.1428571,-0.5875,1.285714,1.2875);

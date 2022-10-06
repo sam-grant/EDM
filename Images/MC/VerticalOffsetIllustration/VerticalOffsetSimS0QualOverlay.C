@@ -4,7 +4,7 @@
 void VerticalOffsetSimS0QualOverlay()
 {
 //=========Macro generated from canvas: c/
-//=========  (Sun Sep 25 14:24:40 2022) by ROOT version 6.26/04
+//=========  (Tue Oct  4 14:56:59 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(193.1389,-0.58125,3206.106,0.23125);
    c->SetFillColor(0);
@@ -115,17 +115,17 @@ void VerticalOffsetSimS0QualOverlay()
    2614.765,
    2787.854};
    Double_t S0_c_vs_p_thetaY_fy1007[11] = {
-   5.669889,
-   0.1255085,
-   -0.2081711,
-   -0.1745036,
-   -0.1313914,
-   -0.147111,
-   -0.06172958,
-   -0.02059434,
-   0.01858561,
-   0.002514351,
-   -0.07358436};
+   5.528468,
+   0.1215535,
+   -0.1998807,
+   -0.1670715,
+   -0.1249403,
+   -0.1398474,
+   -0.06266201,
+   -0.01975476,
+   0.01144286,
+   0.003879446,
+   -0.09225369};
    Double_t S0_c_vs_p_thetaY_fex1007[11] = {
    0.1002108,
    0.08522798,
@@ -139,17 +139,17 @@ void VerticalOffsetSimS0QualOverlay()
    0.1545819,
    0.1789477};
    Double_t S0_c_vs_p_thetaY_fey1007[11] = {
-   0.09621891,
-   0.03215632,
-   0.0185151,
-   0.01520998,
-   0.01387826,
-   0.01317524,
-   0.01306866,
-   0.01357145,
-   0.01445461,
-   0.01506939,
-   0.03554807};
+   0.09363491,
+   0.03097649,
+   0.01787033,
+   0.01466364,
+   0.01338184,
+   0.01271462,
+   0.01257118,
+   0.01289757,
+   0.01324681,
+   0.0133104,
+   0.03001409};
    gre = new TGraphErrors(11,S0_c_vs_p_thetaY_fx1007,S0_c_vs_p_thetaY_fy1007,S0_c_vs_p_thetaY_fex1007,S0_c_vs_p_thetaY_fey1007);
    gre->SetName("S0_c_vs_p_thetaY");
    gre->SetTitle(";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");

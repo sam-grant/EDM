@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void Asymmetry_wa_labFrame_eCut()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Thu Apr 21 20:44:27 2022) by ROOT version 6.24/06
+//=========  (Tue Oct  4 19:01:37 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(-0.1428571,-0.25,1.285714,1.25);
@@ -106,7 +109,7 @@ void Asymmetry_wa_labFrame_eCut()
    line->SetLineStyle(2);
    line->SetLineWidth(3);
    line->Draw();
-   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,3127.114,510,"-");
+   TGaxis *gaxis = new TGaxis(0,1.1,1,1.1,0,3096.153,510,"-");
    gaxis->SetLabelOffset(0.005);
    gaxis->SetLabelSize(0.04);
    gaxis->SetTickSize(0.03);

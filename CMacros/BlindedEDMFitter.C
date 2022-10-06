@@ -274,15 +274,18 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
 
 }
 
-TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S12S18", double momentum = -1) { 
+TGraphErrors *BlindedModuloGraph(const double phi_omegaa, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S12S18", double momentum = -1) { 
+
+/*  cerr<<"BLINDING CODE UNDER CONSTRUCTION";
+  return 0;*/
 
   // ================== First, shift phase ==================
 
   // Shift the phase 90 deg
-  double phi_edm = phi_omega + M_PI/2.; 
+  double phi_edm = phi_omegaa + M_PI/2.; 
 
   // Find a zero crossing 
-  double t0 = phi_omega * G2PERIOD / (2*M_PI);
+  double t0 = phi_omegaa * G2PERIOD / (2*M_PI);
   double zeroCrossing = 8*G2PERIOD - t0;
 
   // ================== Second, get blinded tilt angle ================== 
@@ -307,7 +310,7 @@ TGraphErrors *BlindedModuloGraph(const double phi_omega, TFile *input, TGraphErr
   // Define blinded EDM oscillation
   TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
   blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#omega_{a}^{FIXED}","#phi");//,"offset");
-  blindEDMFunc->SetParameters(delta_prime_blind,omega_a,phi_edm);//,xmin);
+  blindEDMFunc->SetParameters(delta_prime_blind,omega_a,phi_omegaa);//,xmin);
   blindEDMFunc->SetNpx(50000);
 
   // Best not to draw this :)

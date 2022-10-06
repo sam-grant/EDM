@@ -76,10 +76,10 @@ void FullEDMFit(TGraphErrors *graph, double par0, double par1, double par2, doub
 
 double FullEDMFuncB(double *x, double *par) {
 
-  double EDM_A = ( par[0] * TMath::Cos((par[1] * x[0]) + par[2]) ) + ( par[3] * TMath::Sin((par[1] * x[0]) + par[2]) ) + par[4];
-  double wiggle = par[5] * exp(-x[0]/par[6]) * (1  + (par[7] * TMath::Cos((par[1] * x[0]) + par[2])));
+  double numerator = ( par[0] * TMath::Cos((par[1] * x[0]) + par[2]) ) + ( par[3] * TMath::Sin((par[1] * x[0]) + par[2]) ) + par[4];
+  double denominator = par[5] * exp(-x[0]/par[6]) * (1  + (par[7] * TMath::Cos((par[1] * x[0]) + par[2])));
 
-  return EDM_A / wiggle; 
+  return numerator / denominator; 
 
 }
 
@@ -92,10 +92,10 @@ void FullEDMFitB(TGraphErrors *graph, double par0, double par1, double par2, dou
   //func->SetParameter(1, par1); // Omega
   func->FixParameter(1, par1); // Omega
   //func->SetParameter(2, par2); // Phi
-  func->FixParameter(2, par2);
+  func->FixParameter(2, 0);//par2);
   func->SetParameter(3, par3); // A_EDM
   func->SetParameter(4, par4); // c
-  func->FixParameter(5, par5); // N_0
+  func->FixParameter(5, 1.0); // N_0
   func->FixParameter(6, par6); // tau*gamma
   func->FixParameter(7, par7); // A
 
@@ -119,7 +119,8 @@ void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, doub
   func->SetParameter(2, par2); // A
   func->FixParameter(3, par3); // Omega (let float?)
   func->SetParameter(4, par4);
-  
+  //func->FixParameter(4, 0);
+
   // Only for sim.. 
   func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
 

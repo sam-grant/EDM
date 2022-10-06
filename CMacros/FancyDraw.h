@@ -1622,7 +1622,6 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 }
 
-// TODO: change to DrawFullEDMFitSim
 void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, std::string cutStr, std::string recoLabel, double N, double ymin, double ymax, bool unblind) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -1640,7 +1639,7 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	double par4 = func->GetParameter(4); double err4 = func->GetParError(4);
 
 	//TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
-	TLegend *leg = new TLegend(0.15,0.15,0.85,0.35);//0.25);
+	TLegend *leg = new TLegend(0.15,0.15,0.85,0.30);//0.25);
 	leg->SetNColumns(1);
 	leg->AddEntry(graph, ("Sim: "+recoLabel).c_str());
 	leg->AddEntry(func,"#frac{1}{N(t)} (A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM} sin(#omega_{a}t+#phi) #plus c)");//"}{e^{-t/#gamma#tau}[1+#alphacos(#omega_{a}t+#phi)])");
@@ -1668,11 +1667,11 @@ void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(Round(chi2ndf, 3));
-	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
+	values->AddText(Round(par0, 2)+"#pm"+Round(err0, 1));
 	//values->AddText(Round(par1, 4)+"#pm"+Round(err1, 1));
 	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
-	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
-	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
+	values->AddText(Round(par3, 3)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par4, 2)+"#pm"+Round(err4, 1));
 
 	TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 //	TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");

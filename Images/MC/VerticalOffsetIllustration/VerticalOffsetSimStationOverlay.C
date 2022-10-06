@@ -4,7 +4,7 @@
 void VerticalOffsetSimStationOverlay()
 {
 //=========Macro generated from canvas: c/
-//=========  (Sun Sep 25 14:24:39 2022) by ROOT version 6.26/04
+//=========  (Tue Oct  4 14:56:59 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(197.158,-0.86875,3210.89,0.31875);
    c->SetFillColor(0);
@@ -26,17 +26,17 @@ void VerticalOffsetSimStationOverlay()
    2614.765,
    2787.854};
    Double_t S0_c_vs_p_thetaY_fy1003[11] = {
-   5.669889,
-   0.1255085,
-   -0.2081711,
-   -0.1745036,
-   -0.1313914,
-   -0.147111,
-   -0.06172958,
-   -0.02059434,
-   0.01858561,
-   0.002514351,
-   -0.07358436};
+   5.528468,
+   0.1215535,
+   -0.1998807,
+   -0.1670715,
+   -0.1249403,
+   -0.1398474,
+   -0.06266201,
+   -0.01975476,
+   0.01144286,
+   0.003879446,
+   -0.09225369};
    Double_t S0_c_vs_p_thetaY_fex1003[11] = {
    0.1002108,
    0.08522798,
@@ -50,17 +50,17 @@ void VerticalOffsetSimStationOverlay()
    0.1545819,
    0.1789477};
    Double_t S0_c_vs_p_thetaY_fey1003[11] = {
-   0.09621891,
-   0.03215632,
-   0.0185151,
-   0.01520998,
-   0.01387826,
-   0.01317524,
-   0.01306866,
-   0.01357145,
-   0.01445461,
-   0.01506939,
-   0.03554807};
+   0.09363491,
+   0.03097649,
+   0.01787033,
+   0.01466364,
+   0.01338184,
+   0.01271462,
+   0.01257118,
+   0.01289757,
+   0.01324681,
+   0.0133104,
+   0.03001409};
    TGraphErrors *gre = new TGraphErrors(11,S0_c_vs_p_thetaY_fx1003,S0_c_vs_p_thetaY_fy1003,S0_c_vs_p_thetaY_fex1003,S0_c_vs_p_thetaY_fey1003);
    gre->SetName("S0_c_vs_p_thetaY");
    gre->SetTitle(";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV");
@@ -111,17 +111,17 @@ void VerticalOffsetSimStationOverlay()
    2613.835,
    2786.947};
    Double_t S12_c_vs_p_thetaY_fy1004[11] = {
-   5.057332,
-   -0.3277161,
-   -0.6170577,
-   -0.4505353,
-   -0.3639681,
-   -0.3484803,
-   -0.2107882,
-   -0.1630386,
-   -0.1734397,
-   -0.09903334,
-   -0.09212177};
+   4.866715,
+   -0.3106749,
+   -0.594907,
+   -0.4349358,
+   -0.3513033,
+   -0.3351015,
+   -0.2033608,
+   -0.1570851,
+   -0.1740306,
+   -0.09800164,
+   -0.08506539};
    Double_t S12_c_vs_p_thetaY_fex1004[11] = {
    0.08043361,
    0.06802521,
@@ -135,17 +135,17 @@ void VerticalOffsetSimStationOverlay()
    0.1323241,
    0.1630051};
    Double_t S12_c_vs_p_thetaY_fey1004[11] = {
-   0.07620734,
-   0.0255477,
-   0.01463073,
-   0.01201824,
-   0.01098505,
-   0.01047016,
-   0.0105642,
-   0.01134891,
-   0.01252182,
-   0.01306908,
-   0.03240963};
+   0.07296709,
+   0.02465975,
+   0.01410407,
+   0.01163111,
+   0.01064083,
+   0.0100925,
+   0.01009103,
+   0.01066601,
+   0.01164823,
+   0.01157434,
+   0.02791341};
    gre = new TGraphErrors(11,S12_c_vs_p_thetaY_fx1004,S12_c_vs_p_thetaY_fy1004,S12_c_vs_p_thetaY_fex1004,S12_c_vs_p_thetaY_fey1004);
    gre->SetName("S12_c_vs_p_thetaY");
    gre->SetTitle("S12_");
@@ -159,8 +159,8 @@ void VerticalOffsetSimStationOverlay()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S12_c_vs_p_thetaY1004 = new TH1F("Graph_S12_c_vs_p_thetaY1004","S12_",100,218.301,3020.638);
-   Graph_S12_c_vs_p_thetaY1004->SetMinimum(-1.208211);
-   Graph_S12_c_vs_p_thetaY1004->SetMaximum(5.710062);
+   Graph_S12_c_vs_p_thetaY1004->SetMinimum(-1.16388);
+   Graph_S12_c_vs_p_thetaY1004->SetMaximum(5.494551);
    Graph_S12_c_vs_p_thetaY1004->SetDirectory(0);
    Graph_S12_c_vs_p_thetaY1004->SetStats(0);
 
@@ -200,17 +200,17 @@ void VerticalOffsetSimStationOverlay()
    2611.794,
    2786.517};
    Double_t S18_c_vs_p_thetaY_fy1005[11] = {
-   5.277136,
-   -0.112415,
-   -0.4140974,
-   -0.3433315,
-   -0.2536775,
-   -0.2433802,
-   -0.2100542,
-   -0.1321991,
-   -0.1590736,
-   -0.08893159,
-   -0.04922163};
+   5.081156,
+   -0.1026226,
+   -0.4009445,
+   -0.3309663,
+   -0.2421865,
+   -0.2357446,
+   -0.2034012,
+   -0.1242869,
+   -0.1558606,
+   -0.09737728,
+   -0.06249754};
    Double_t S18_c_vs_p_thetaY_fex1005[11] = {
    0.0811291,
    0.06835249,
@@ -224,17 +224,17 @@ void VerticalOffsetSimStationOverlay()
    0.1327986,
    0.1685929};
    Double_t S18_c_vs_p_thetaY_fey1005[11] = {
-   0.07648357,
-   0.02554342,
-   0.01457203,
-   0.01194558,
-   0.01099882,
-   0.01054642,
-   0.01075828,
-   0.01154377,
-   0.0128329,
-   0.01319663,
-   0.03429231};
+   0.07326822,
+   0.02452466,
+   0.01411252,
+   0.01155315,
+   0.01056861,
+   0.0101661,
+   0.01032303,
+   0.01092072,
+   0.01188887,
+   0.01146838,
+   0.02717116};
    gre = new TGraphErrors(11,S18_c_vs_p_thetaY_fx1005,S18_c_vs_p_thetaY_fy1005,S18_c_vs_p_thetaY_fex1005,S18_c_vs_p_thetaY_fey1005);
    gre->SetName("S18_c_vs_p_thetaY");
    gre->SetTitle("S18_");
@@ -248,8 +248,8 @@ void VerticalOffsetSimStationOverlay()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_S18_c_vs_p_thetaY1005 = new TH1F("Graph_S18_c_vs_p_thetaY1005","S18_",100,218.4509,3020.162);
-   Graph_S18_c_vs_p_thetaY1005->SetMinimum(-1.006898);
-   Graph_S18_c_vs_p_thetaY1005->SetMaximum(5.931848);
+   Graph_S18_c_vs_p_thetaY1005->SetMinimum(-0.9720052);
+   Graph_S18_c_vs_p_thetaY1005->SetMaximum(5.711373);
    Graph_S18_c_vs_p_thetaY1005->SetDirectory(0);
    Graph_S18_c_vs_p_thetaY1005->SetStats(0);
 
