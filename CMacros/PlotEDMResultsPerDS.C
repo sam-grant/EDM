@@ -117,7 +117,6 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   fit->SetParameter(0, fit_tmp->GetParameter(0));
   fit->SetParError(0, fit_tmp->GetParError(0));
 
-
   TF1 *minusSigma = new TF1("minusSigma", "pol0", 0, 5);
   minusSigma->SetParameter(0, fit_tmp->GetParameter(0) - fit_tmp->GetParError(0));
   TF1 *plusSigma = new TF1("plusSigma", "pol0", 0, 5);
@@ -201,8 +200,6 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
 
   }
 
-
-
   // Dummy graph for range
   TGraph *dummy = new TGraph();
   dummy->SetPoint(0, 0, 0);
@@ -283,7 +280,7 @@ void DrawAllGraphs(vector<TGraphErrors*> graph_, std::string title, std::string 
   std::ostringstream error_str; error_str << fit->GetParError(0);  
 
   //result->AddText("#LTd_{#mu}^{BLIND}#GT = (1.05#pm0.10)#times10^{-18} e#upointcm");//"+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" );// error_str.str()+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
-  if(!orthogonal) result->AddText("#LTd_{#mu}^{BLIND}#GT = "+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
+  if(!orthogonal) result->AddText("#LTd_{#mu}^{BLIND}#GT = (1.27#pm0.11)#times10^{-19} e#upointcm"); //+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
   else result->AddText("#LTd_{#Omega}#GT = "+SciNotation(fit->GetParameter(0))+"#pm"+SciNotation(fit->GetParError(0))+" e#upointcm") ;//+result_str.str()+"#pm"+error_str.str()+" e#upointcm").c_str());
   result->Draw("SAME");
 
@@ -325,7 +322,7 @@ double GetLimit(double delta_prime) {
 
 }
 
-void Run(std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "") { //, string test = "") { 
+void Run(std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "", string testingStr = "") {  
 
   bool orthogonal = false;
   if(blinding=="_orthogonal") orthogonal = true;
@@ -349,10 +346,10 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
 
       std::string ds = ds_.at(i_ds);
 
-      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".reweight.root";
-      if(ds == "Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".reweight.root";//finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
+      string finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+testingStr+".root";
+      if(ds == "Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+testingStr+".root";//finName = "../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_50usStartTime_"+randomisationStr+"BQ"+correctionString+".root";
       cout<<finName<<endl;
-      TFile *file = TFile::Open(finName.c_str());//("../Plots/Data/dMu/Run-1/Fits/edmResults_"+blinding+"_"+xmin+"-"+xmax+"MeV_"+ds+"_"+to_string(step)+"MeV_"+xmin+"_"+xmax+"MeV_"+randomisationStr+"BQ"+correctionString+".root").c_str());
+      TFile *file = TFile::Open(finName.c_str());
 
       TTree *resultTree = (TTree*)file->Get((fitType+"/"+fitType+"Tree").c_str());
       
@@ -381,20 +378,21 @@ void Run(std::string dataset, int step, std::string blinding, std::string fitTyp
     // Fit 
     if(stn=="S12S18") gr->Fit("pol0");
 
-    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString+"_reweight", ds_);
+    DrawGraph(gr, "", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString+testingStr, ds_);
 
     gr_.push_back(gr);
 
   }
 
-  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString+"_reweight", ds_, orthogonal);
+  DrawAllGraphs(gr_, "", "../Images/Data/dMu/"+dataset+"/Results/"+fitType+"_vs_DS_"+blinding+"_"+xmin+"_"+xmax+"MeV_"+to_string(step)+"MeV_"+randomisationStr+"BQ"+correctionString+testingStr, ds_, orthogonal);
 
 
   return;
 
 }
 
-void RunFromRawValues() { // std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "") { //, string test = "") { 
+
+/*void RunFromRawValues() { // std::string dataset, int step, std::string blinding, std::string fitType, string correctionString = "", string randomisationStr = "") { //, string test = "") { 
 
   vector<vector<double>> results_ = { {1.91533E-18, 9.57667E-19, 2.04302E-18, 1.50034E-18}
                            , {6.38445E-19, 1.27689E-18, 1.91533E-18, 1.30881E-18}
@@ -452,18 +450,13 @@ void RunFromRawValues() { // std::string dataset, int step, std::string blinding
 
   return;
 
-}
+}*/
 
 void PlotEDMResultsPerDS() { 
 
- // Run("Run-1", 250, "_orthogonal", "EDM", "", "randomised_");
-  Run("Run-1", 250, "blinded", "EDM", "", "randomised_");
-  //Run("Run-1", 250, "blinded", "EDM", "", "randomised_");
-  //Run("Run-1", 250, "blinded", "EDM", "noDilCorr");
-  //Run("Run-1", 250, "blinded", "EDM", "noVertCorr");
-  //Run("Run-1", 250, "blinded", "EDM", "noAccCorr");//, ".dataDrivenAcceptance"); 
+  //  Run("Run-1", 250, "blinded", "EDM", "", "randomised_", "_testing");
+  Run("Run-1", 250, "blinded", "EDM", "", "randomised_", "");
 
-  //RunFromRawValues();
 
   return;
 

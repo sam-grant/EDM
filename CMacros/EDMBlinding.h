@@ -123,7 +123,7 @@ TGraphErrors *InjectBlindedModuloWithWeighting(TGraphErrors* gr_thetaY_mod, TF1 
   TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.floatingNormalisation.root";
   TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV_full.root"; // _dataAccCorr_"+datasetLabel+".root";
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root"; // _dataAccCorr_"+datasetLabel+".root";
   TFile *acceptance_file = TFile::Open(acceptance_fileName);
 
   TGraphErrors *d_gr = (TGraphErrors*)dilution_file->Get("DilutionFits/AQ/Decays/250MeV/d_vs_p/allDecays");

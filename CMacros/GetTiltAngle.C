@@ -817,9 +817,6 @@ void RunSim(string config, string dataset, string blinding, bool correctAcceptan
 
     }*/
 
-     
-
-
       
 
 /*      TH1D *h_delta_1mm = (TH1D*)misalignment_file->Get("hists/h_delta");
@@ -926,7 +923,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   cout<<"\n***************************** Defining output tree *****************************\n"<<endl;
 
-  // This needs to come before you define the output file or it will throw a WriteBuffer error. No idea why. 
+  // This stuff needs to come before you define the output file or it will throw a WriteBuffer error for some reason only known to Rene Brun 
 
   // Result tree
   TTree *EDMTree = new TTree("EDMTree", "EDMTree");
@@ -940,7 +937,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   cout<<"\n***************************** Creating output file *****************************\n"<<endl;
 
-  //TString outputFileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+config+corrStr+".reweight.root";
   TString outputFileName = "../Plots/Data/dMu/"+dataset+"/Fits/edmResults_"+blinding+"_"+config+corrStr+".root";
   TFile *outputFile = new TFile(outputFileName, "RECREATE");
 
@@ -951,22 +947,14 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
   TFile *A_file = TFile::Open(A_fileName);
 
-//  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingVsMomentum_250MeV.root"; // _dataAccCorr_"+datasetLabel+".root";
-  //TString acceptance_fileName = "delete_me.root";//../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV.5.root";
-  //TFile *acceptance_file = TFile::Open(acceptance_fileName);
-
-  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.exact.root";
+  TString dilution_fileName = "../Plots/MC/dMu/Dilution/dilutionCurves.floatingNormalisation.root";
   TFile *dilution_file  = TFile::Open(dilution_fileName);
 
-  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";//_reweight"+datasetLabel+".root";
-  //TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";
+  TString acceptance_fileName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full.root";
+
   TFile *acceptance_file = TFile::Open(acceptance_fileName);
-  //TString misalignment_fileName = "../Plots/MC/Acceptance/Plots/acceptanceWeightingErrorVsMomentum_250MeV.root";
-  //TFile *misalignment_file = TFile::Open(misalignment_fileName);
 
-  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<acceptance_fileName<<", "<<acceptance_file<<endl;//", "<<misalignment_fileName<<", "<<misalignment_file<<endl;
-
-  //cout<<"Got vector of mott functions:\n"<<mottFunctions_<<endl;
+  cout<<"Got files:\n"<<A_fileName<<", "<<A_file<<"\n"<<acceptance_fileName<<", "<<acceptance_file<<endl;
 
   cout<<"\n***************************** Performing dilution correction *****************************\n"<<endl;
   // Get dilution curve
@@ -990,8 +978,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
     if(dataset!="O") { 
       if(fitType == "EDM") {
         subscript += fitType;
-        results_.push_back(", delta_prime, , dMu [ecm], ,");
-        results_.push_back("Station, value, fit_error, acc_error, align_error, Br_error, tot_error, reweight_error, value, fit_error, acc_error, align_error, Br_error, tot_error, reweight_err, ");
+        results_.push_back(", delta_prime , , , , , , , dMu [ecm] , , , , , , ,");
+        results_.push_back("Station, value, fit_error, acc_error, align_error, Br_error, reweight_error, tot_error, value, fit_error, acc_error, align_error, Br_error, reweight_err, tot_error");
         blind += "BLIND";
       } else if(fitType == "g2") {
         subscript += "g#minus2";
@@ -1211,9 +1199,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       double delta_prime_reweight = abs(f_delta_prime_reweight->GetParameter(0));
 
-      cout<<"\ndelta_prime = "<<delta_prime<<endl;
-      cout<<"delta_prime_reweight = "<<delta_prime_reweight<<endl;
-
       // ------------------ Fudge results together, god i hate this . ------------------ 
 
       // Br tilt is opposite to EDM... so add it 
@@ -1222,9 +1207,8 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
       //if(!orthogonal) result - Br;
       double err_fit = f_delta_prime->GetParError(0);
       double err_acc = h_delta_prime->GetRMS();
-      double err_tot = sqrt(pow(err_fit,2) + pow(err_Br,2) + pow(err_acc,2) + pow(err_align,2));    
-
-      double err_reweight = delta_prime - delta_prime_reweight;
+      double err_reweight = abs(delta_prime - delta_prime_reweight);
+      double err_tot = sqrt(pow(err_fit,2) + pow(err_Br,2) + pow(err_acc,2) + pow(err_align,2) + pow(err_reweight,2));    
 
       cout<<"err_reweight = "<<err_reweight<<endl;
 
@@ -1240,20 +1224,18 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
         std::ostringstream oss_err_acc; oss_err_acc << GetLimit(err_acc);
         std::ostringstream oss_err_Br; oss_err_Br << GetLimit(err_Br);
         std::ostringstream oss_err_align; oss_err_align << GetLimit(err_align);
-        std::ostringstream oss_err_tot; oss_err_tot << GetLimit(err_tot);
-
         std::ostringstream oss_err_reweight; oss_err_reweight << GetLimit(err_reweight);
+        std::ostringstream oss_err_tot; oss_err_tot << GetLimit(err_tot);
 
         std::string dMu_str = oss_result.str();
         std::string err_dMu_fit = oss_err_fit.str();
         std::string err_dMu_acc = oss_err_acc.str();
         std::string err_dMu_align = oss_err_align.str();
         std::string err_dMu_Br = oss_err_Br.str();
+        std::string err_dMu_reweight = oss_err_reweight.str();
         std::string err_dMu_tot = oss_err_tot.str();
 
-        std::string err_dMu_reweight = oss_err_reweight.str();
-
-        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_acc)+", "+to_string(err_align)+", "+to_string(err_Br)+", "+to_string(err_tot)+", "+to_string(err_reweight)+", "+dMu_str+", "+err_dMu_fit+", "+err_dMu_acc+", "+err_dMu_align+", "+err_dMu_Br+", "+err_dMu_tot+", "+err_dMu_reweight);
+        results_.push_back(stn+", "+to_string(delta_prime)+", "+to_string(err_fit)+", "+to_string(err_acc)+", "+to_string(err_align)+", "+to_string(err_Br)+", "+to_string(err_reweight)+", "+to_string(err_tot)+", "+dMu_str+", "+err_dMu_fit+", "+err_dMu_acc+", "+err_dMu_align+", "+err_dMu_Br+", "+err_dMu_reweight+", "+err_dMu_tot);
 
       } else if(fitType == "g2") {
 
@@ -1313,9 +1295,14 @@ int main() {
 
   // Need to re-fit using the new function
 
-  //RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  //RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+
+  RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
 	return 0;

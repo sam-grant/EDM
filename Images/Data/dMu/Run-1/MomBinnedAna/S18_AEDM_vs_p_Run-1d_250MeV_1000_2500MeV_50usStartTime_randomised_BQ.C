@@ -4,10 +4,10 @@
 void S18_AEDM_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  7 11:40:46 2022) by ROOT version 6.26/04
+//=========  (Fri Oct  7 12:34:49 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(785.3487,-0.02256676,2703.496,0.03198106);
+   c->Range(785.3487,-0.008740134,2703.496,0.06027763);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -27,17 +27,17 @@ void S18_AEDM_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
    2606.684,
    2781.155};
    Double_t Graph0_fy1073[11] = {
-   -0.05539772,
-   0.05666457,
-   -0.01090822,
-   -0.01044472,
-   0.02246739,
-   -0.0214545,
-   0.008459536,
-   0.02242194,
-   0.002620834,
-   0.003027916,
-   0.1322177};
+   -0.02665435,
+   0.0854085,
+   0.01783575,
+   0.007561202,
+   0.04491081,
+   -0.002365229,
+   0.02882716,
+   0.03965874,
+   0.02183643,
+   0.03177545,
+   0.1609618};
    Double_t Graph0_fex1073[11] = {
    0.09432122,
    0.06716796,
@@ -52,7 +52,7 @@ void S18_AEDM_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
    0.2302059};
    Double_t Graph0_fey1073[11] = {
    0.1319297,
-   0.03398031,
+   0.0339803,
    0.01772437,
    0.01359439,
    0.01201167,
@@ -69,8 +69,8 @@ void S18_AEDM_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01073 = new TH1F("Graph_Graph01073","S18",100,223.8545,3013.888);
-   Graph_Graph01073->SetMinimum(-0.01711198);
-   Graph_Graph01073->SetMaximum(0.02652628);
+   Graph_Graph01073->SetMinimum(-0.001838357);
+   Graph_Graph01073->SetMaximum(0.05337585);
    Graph_Graph01073->SetDirectory(0);
    Graph_Graph01073->SetStats(0);
 

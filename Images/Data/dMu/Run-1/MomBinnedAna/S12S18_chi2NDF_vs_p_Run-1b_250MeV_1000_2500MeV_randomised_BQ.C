@@ -1,10 +1,13 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12S18_chi2NDF_vs_p_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jul 12 23:21:32 2022) by ROOT version 6.24/06
+//=========  (Fri Oct  7 12:34:14 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(784.7944,0.3906285,2703.518,1.458234);
+   c->Range(784.7944,0.3906471,2703.518,1.458252);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -24,17 +27,17 @@ void S12S18_chi2NDF_vs_p_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    2607.533,
    2781.231};
    Double_t Graph0_fy1108[11] = {
-   0.8216895,
-   0.5894099,
-   0.9065257,
-   1.129286,
-   0.8395636,
+   0.8216875,
+   0.5894107,
+   0.9065261,
+   1.129301,
+   0.8395448,
    1.118867,
-   0.7804945,
-   0.6190606,
-   0.7954835,
-   1.029106,
-   0.9522365};
+   0.7804801,
+   0.6190841,
+   0.7954797,
+   1.02913,
+   0.9522423};
    Double_t Graph0_fex1108[11] = {
    0.09410448,
    0.06648851,
@@ -66,8 +69,8 @@ void S12S18_chi2NDF_vs_p_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01108 = new TH1F("Graph_Graph01108","S12S18",100,223.1319,3014.002);
-   Graph_Graph01108->SetMinimum(0.4973891);
-   Graph_Graph01108->SetMaximum(1.351474);
+   Graph_Graph01108->SetMinimum(0.4974075);
+   Graph_Graph01108->SetMaximum(1.351491);
    Graph_Graph01108->SetDirectory(0);
    Graph_Graph01108->SetStats(0);
 

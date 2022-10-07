@@ -12,9 +12,6 @@
 double tmin = 7*G2PERIOD;
 double tmax = 92*G2PERIOD; // huh?
 
-/*double tmin = 15*G2PERIOD;
-double tmax = 23*G2PERIOD;*/
-
 double pmin = 1000;
 double pmax = 2500;
 
@@ -128,7 +125,7 @@ void DrawScanGraph(TGraphErrors *graph, std::string title, std::string fname, in
 }
 
 
-void FoldWiggle(TGraphErrors *gr, const double phi, std::string config) { //, std::string title, std::string fname) {
+void FoldWiggle(TGraphErrors *gr, const double phi, std::string config) {
 
   int step = GetStep(config);
   std::string qual = GetQual(config);
@@ -183,8 +180,6 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config) { //, st
 
     gr_.push_back(gr_tmp);
 
-    // DrawTGraphErrors(gr_tmp, "", "../tmp/gr_tmp_"+to_string(i_fold));
-
     lo = lo + t_mod; 
     hi = hi + t_mod;
 
@@ -226,21 +221,24 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   double phi; 
   
   // Phi values from Nick's thesis table 5.7
+
+  // TODO: fix phi values and look at the shift in A_EDM as an asymmetric uncertainty, is it significant?
+
   if(dataset == "Run-1a") {
-    ymin = 65e3;//25e3;
-    ymax = 155e3;//110e3;
+    ymin = 65e3;
+    ymax = 155e3;
     phi = 2.091;
   } else if(dataset == "Run-1b") {
-    ymin = 90e3;//40e3;
-    ymax = 215e3;//150e3;
+    ymin = 90e3;
+    ymax = 215e3;
     phi = 2.081;
   } else if(dataset == "Run-1c") {
-    ymin = 130e3;//60e3;
-    ymax = 310e3;//220e3;
+    ymin = 130e3;
+    ymax = 310e3;
     phi = 2.080;
   } else if(dataset == "Run-1d") {
-    ymin = 170e3;//240e3-100e3;//100e3;
-    ymax = 400e3;//600e3-200e3;//400e3;
+    ymin = 170e3;
+    ymax = 400e3;
     phi = 2.067;
   } 
 
@@ -263,20 +261,18 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
   DrawModWiggleData(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Vertices / 149.2 ns", dataset, "../Images/Data/dMu/Run-1/MainPlots/fit_mod_wiggle_"+config, double(h1_wiggle_mod->GetEntries()), ymin, ymax);
 
   // Fold wiggle
-  // FoldWiggle(gr_wiggle, modWiggle->GetParameter(4), config);
- 
   gr_wiggle->SetName("Wiggle");
   gr_wiggle->Write();
   gr_wiggle_mod->SetName("ModuloWiggle");
   gr_wiggle_mod->Write();
 
-  return modWiggle->GetParameter(4) - modWiggle->GetParError(4);// wiggle->GetParameter(4);//modWiggle->GetParameter(4);
+  return modWiggle->GetParameter(4) - modWiggle->GetParError(4);
 
 }
 
 TGraphErrors *BlindedModuloGraph(const double phi, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S12S18", double momentum = -1) { 
 
-/*  cerr<<"BLINDING CODE UNDER CONSTRUCTION";
+  /*  cerr<<"BLINDING CODE UNDER CONSTRUCTION";
   return 0;*/
 
   // ================== First, shift phase ==================
@@ -304,7 +300,6 @@ TGraphErrors *BlindedModuloGraph(const double phi, TGraphErrors *gr_thetaY_mod, 
   //double tan_A_edm = tan(delta_blind) / gmagic;
   //double A_edm = alpha*atan(tan_A_edm); // alpha is an unfortunate hangover from when we didn't understand dilution. It's a factor of 0.1.
 
-  // 
   // ================== Third, inject blinded A_EDM into modulo plot ==================
 
   // Define blinded EDM oscillation
@@ -376,20 +371,18 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     double c = func->GetParameter(4);
     double ymin =  c-0.35; double ymax =  c+0.45; 
 
-    //DrawFullEDMFitData(gr_thetaY_mod,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
     DrawFullEDMFitData(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_"+config).c_str(), "1000 < p [MeV] < 2500", double(nEntries), ymin, ymax, false);//,unblind);
 
     tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr_thetaY_mod);
 
     TGraphErrors *gr_pull = GenerateTGraphErrors(get<0>(pull_tuple), get<1>(pull_tuple), get<2>(pull_tuple), get<3>(pull_tuple));
     gr_pull->SetName((stn+"_edmFit_pull_vs_t").c_str());
-    gr_pull->SetTitle(";t_{g#minus2}^{mod} [#mus];Pull / 149.2 #mus");//.c_str());
+    gr_pull->SetTitle(";t_{g#minus2}^{mod} [#mus];Pull / 149.2 #mus");
     gr_pull->Write();
 
     // This writes two histograms for some reason?
     TH1D *h_pull = new TH1D((stn+"_edmFit_pull").c_str(), (stn+";Pull [#sigma]; Entries / 0.25 #sigma").c_str(), 40, -5, +5);
     for(auto& pull : get<1>(pull_tuple)) h_pull->Fill(pull);
-    //h_pull->Fit("gaus", "Q");
     h_pull->Write();
 
     DrawTH1(h_pull, stn+";Pull [#sigma]; Entries / 0.25 #sigma", ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_pull_"+config).c_str());
@@ -403,6 +396,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
 }
 
+// TODO: incorporate this into the above function
 void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std::string config) { 
 
   int step = GetStep(config);
@@ -413,10 +407,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
 
   for(auto& stn : stn_) { 
 
-    cout<<stn<<endl;
-
     TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time").c_str());
-    //TH2D *h2_thetaY_vs_t = (TH2D*)input->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Time_Modulo").c_str());
 
     int nEntries = h2_thetaY_vs_t->GetEntries();
     TH1D *h1_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
@@ -425,18 +416,14 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, ConvertToTGraphErrors(h1_thetaY_vs_t), false);
 
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, tmin, tmax);
-    //FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
 
     TF1 *func = gr_thetaY_vs_t->GetFunction("FullEDMFunc");
     double c = func->GetParameter(4);
     double ymin =  c-4.75; double ymax =  c+5; 
 
-    //DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/"+dataset+"/MainPlots/"+stn+"_edmFit_"+qual).c_str(), double(nEntries), ymin, ymax, false);//,unblind);
     DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";Decay time [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_noMod_"+config).c_str(), "1000 < p [MeV] < 2500", double(nEntries), ymin, ymax, false);//,unblind);
-    //DrawFullEDMFitData(gr_thetaY_vs_t,  stn+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns", dataset, ("../Images/Data/dMu/Run-1/MainPlots/"+stn+"_edmFit_1492ns_"+config).c_str(), "1000 < p [MeV] < 2500", double(nEntries), ymin, ymax, false);//,unblind);
 
     gr_thetaY_vs_t->SetName((stn+"_edmFit_noMod").c_str());
-    //gr_thetaY_vs_t->SetName((stn+"_edmFit_149ns").c_str());
     gr_thetaY_vs_t->Write();
 
     // Get residuals
@@ -446,14 +433,11 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     TH1D *FFT_h1_thetaY_vs_t = GetFFT(h1_thetaY_vs_t);
     TH1D *h1_res_thetaY_vs_t = GetResidual(h1_thetaY_vs_t, func);
 
-/*    tmin = 0;
-    tmax = G2PERIOD;*/
     // Ensure that we're not getting a residual for bins outside of the time range
     for(int i(0); i<h1_res_thetaY_vs_t->GetXaxis()->GetNbins(); i++) { 
       double time = h1_res_thetaY_vs_t->GetXaxis()->GetBinCenter(i);
-
       if(time < tmin || time > tmax) {
-        h1_res_thetaY_vs_t->SetBinContent(i+1, 0);//GetXaxis()->GetBinCenter(ibin);
+        h1_res_thetaY_vs_t->SetBinContent(i+1, 0); 
         h1_res_thetaY_vs_t->SetBinError(i+1, 0);
       }
     }
@@ -478,27 +462,6 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     FFT_h1_res_thetaY_vs_t->Draw("HIST");
     FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
     FFT_h1_res_thetaY_vs_t->Write();
-/*
-    DrawTH1(h1_thetaY_vs_t, "h_thetaY_vs_t;t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 50 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_px_thetaY_vs_t_"+config);
-    h1_thetaY_vs_t->SetName((stn+"_px_thetaY_vs_t").c_str());
-    h1_thetaY_vs_t->Write();
-
-    DrawTH1(FFT_h1_thetaY_vs_t, "FFT_px_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_px_thetaY_vs_t_"+config);
-    FFT_h1_thetaY_vs_t->Draw("HIST");
-    FFT_h1_thetaY_vs_t->SetName((stn+"_FFT_px_thetaY_vs_t").c_str());
-    FFT_h1_thetaY_vs_t->Write();
-
-    DrawTH1(h1_res_thetaY_vs_t, "h_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / 50 ns",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_h_res_thetaY_vs_t_"+config);
-    h1_res_thetaY_vs_t->Draw("HIST");
-    h1_res_thetaY_vs_t->SetName((stn+"_h_res_thetaY_vs_t").c_str());
-    h1_res_thetaY_vs_t->Write();
-
-    DrawTH1(FFT_h1_res_thetaY_vs_t, dataset+";Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../Images/Data/dMu/Run-1/MainPlots/"+stn+"_FFT_h_res_thetaY_vs_t_"+config);
-    FFT_h1_res_thetaY_vs_t->Draw("HIST");
-    FFT_h1_res_thetaY_vs_t->SetName((stn+"_FFT_h_res_thetaY_vs_t").c_str());
-    FFT_h1_res_thetaY_vs_t->Write();*/
-
-    // Also do this for fine binned mod plots if you have them.
 
   }
 
@@ -576,16 +539,10 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       lo = 0 + i_cut*step; 
       hi = step + i_cut*step;
 
-      // Get hist
       std::string momSlice = std::to_string(lo)+"_"+std::to_string(hi);
-
-      cout<<momSlice<<endl;
 
       std::string pHistName = "MomentumBinnedAnalysis/"+stn+"_Momentum_"+momSlice;
       TH1D *pHist = (TH1D*)input->Get((pHistName).c_str());
-
-      cout<<pHist<<endl;
-      //int p = (hi+lo)/2;
 
       double p = pHist->GetMean(); 
       double ep = pHist->GetMeanError();
@@ -594,8 +551,6 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       TH2D *h2_thetaY_mod = (TH2D*)input->Get(h2_thetaY_mod_name.c_str());
 
       if(h2_thetaY_mod==0) continue;
-
-      //cout<<h2_thetaY_mod<<endl;
 
       int nEntries = h2_thetaY_mod->GetEntries();
 
@@ -608,17 +563,12 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       // Run fits
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
-      // Blind with dilution weighting LOL
-      TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);//BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
-
-      //cout<<"blinded"<<endl;
-      // TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), false);
+      // Blind with dilution weighting 
+      TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
 
       output->cd("MomentumBinnedAnalysis/ModuloFits");
 
       FullEDMFit(gr_thetaY_mod , 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
-
-      //cout<<"fitted"<<endl;
 
       double c = gr_thetaY_mod->GetFunction("FullEDMFunc")->GetParameter(4);
       double ymin =  c-0.6; double ymax =  c+0.7; 
@@ -689,9 +639,6 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     } // Mom slices
 
     output->cd("MomentumBinnedAnalysis/ParameterScans");
-
-    //TGraphErrors *c_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_config]);
-    //TGraphErrors *A_vs_p_slice = GenerateTGraphErrors(p_[i_cut_config], c_[i_cut_config], ep_[i_cut_config], ec_[i_cut_
     c_vs_p = GenerateTGraphErrors(p_, c_, ep_, ec_);
     AEDM_vs_p = GenerateTGraphErrors(p_, AEDM_, ep_, eAEDM_);
     Ag2_vs_p = GenerateTGraphErrors(p_, Ag2_, ep_, eAg2_);
@@ -748,11 +695,6 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     AEDMOverMaxDiff_vs_p->SetName((stn+"_AEDMOverThetaYRMS_vs_p").c_str());
     AEDMOverMaxDiff_vs_p->Write();
 
-/*    AEDMOverMaxDiff_vs_p = GenerateTGraphErrors(p_, AEDMOverThetaYRMS_, ep_, e_AEDMOverThetaYRMS_);
-    DrawScanGraph(AEDMOverMaxDiff_vs_p, stn+";Decay vertex momentum [MeV];A_{EDM}/#sigma#theta_{y} "+to_string(step)+" MeV", ("../Images/Data/dMu/Run-1/MomBinnedAna/"+stn+"_AEDMOverThetaYRMS_vs_p_"+config).c_str(), step, false);
-    AEDMOverMaxDiff_vs_p->SetName((stn+"_AEDMOverThetaYRMS_vs_p").c_str());
-    AEDMOverMaxDiff_vs_p->Write();
-*/
   
   } // Stn loop
 
@@ -767,13 +709,12 @@ void Run(std::string config, bool write) {
   std::string dataset = GetDataset(config);
 
   // Read file
-  std::string inputName = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+config+".root";//to_string(step)+"MeV_"+qual+".root";
+  std::string inputName = "../Plots/Data/dMu/Run-1/Plots/edmPlots_"+config+".root";
   TFile *input = TFile::Open(inputName.c_str());
 
   cout<<"Reading\t"<<inputName<<" "<<input<<endl;
 
-  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+"_testing.root";//"_"+to_string(step)+"MeV_"+qual+".root";
-  //std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+".root";//"_"+to_string(step)+"MeV_"+qual+".root";
+  std::string outputName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+config+".root";
   if(!write) outputName = "delete_me.root";
 
   TFile *output = new TFile(outputName.c_str(), "RECREATE");
@@ -788,11 +729,6 @@ void Run(std::string config, bool write) {
 
   SimultaneousAnalysis(phi, input, output, config);
   SimultaneousAnalysisFFT(phi, input, output, config);
-
-/*  input->Close();
-  output->Close();
-
-  return;*/
 
   output->mkdir("MomentumBinnedAnalysis");
   output->mkdir("MomentumBinnedAnalysis/ModuloFits");
@@ -843,7 +779,7 @@ int main(int argc, char *argv[]) {
   }
   ////////////////////////////////////////////////////////
 
-  string config = argv[1];//"Run-1a_125MeV_BQ";
+  string config = argv[1]; 
 
   bool write = true;
 
