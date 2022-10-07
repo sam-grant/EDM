@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12_thetaYMaxDiff_vs_p_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Tue Jul 12 23:22:23 2022) by ROOT version 6.24/06
+//=========  (Fri Oct  7 11:40:42 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(784.8151,25.9148,2703.684,241.5565);

@@ -4,8 +4,8 @@
 #include "RootInclude.h"
 
 //#include "BlindingStrings/O.h"
-//#include "BlindingStrings/Run-1.h"
-#include "BlindingStrings/Sim.h"
+#include "BlindingStrings/Run-1.h"
+//#include "BlindingStrings/Sim.h"
 
 using namespace blinding;
 
@@ -79,8 +79,8 @@ double GetDelta(double dMu) {
 }
 
 double EDMFunc( double *x, double *p )  {
-  double time = x[0];// + p[3]; // time offset
-  return (-p[0] * sin(p[1]* time + p[2]));  
+  double time = x[0];// time offset
+  return p[0] * TMath::Sin(p[1]*time + p[2]);  
 }
 
 // With number oscillation denominator

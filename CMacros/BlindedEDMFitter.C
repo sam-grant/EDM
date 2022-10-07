@@ -274,7 +274,7 @@ const double GetPhase(TFile *input, TFile *output, std::string config) {
 
 }
 
-TGraphErrors *BlindedModuloGraph(const double phi_omegaa, TFile *input, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S12S18", double momentum = -1) { 
+TGraphErrors *BlindedModuloGraph(const double phi, TGraphErrors *gr_thetaY_mod, bool weighted, std::string stn = "S12S18", double momentum = -1) { 
 
 /*  cerr<<"BLINDING CODE UNDER CONSTRUCTION";
   return 0;*/
@@ -282,10 +282,10 @@ TGraphErrors *BlindedModuloGraph(const double phi_omegaa, TFile *input, TGraphEr
   // ================== First, shift phase ==================
 
   // Shift the phase 90 deg
-  double phi_edm = phi_omegaa + M_PI/2.; 
+  double phi_edm = phi + M_PI/2.; 
 
   // Find a zero crossing 
-  double t0 = phi_omegaa * G2PERIOD / (2*M_PI);
+  double t0 = phi * G2PERIOD / (2*M_PI);
   double zeroCrossing = 8*G2PERIOD - t0;
 
   // ================== Second, get blinded tilt angle ================== 
@@ -310,7 +310,7 @@ TGraphErrors *BlindedModuloGraph(const double phi_omegaa, TFile *input, TGraphEr
   // Define blinded EDM oscillation
   TF1 *blindEDMFunc = new TF1("blindEDMFunc",EDMFunc,zeroCrossing,zeroCrossing+G2PERIOD,3);
   blindEDMFunc->SetParNames("A_{EDM}^{BLIND}","#omega_{a}^{FIXED}","#phi");//,"offset");
-  blindEDMFunc->SetParameters(delta_prime_blind,omega_a,phi_omegaa);//,xmin);
+  blindEDMFunc->SetParameters(delta_prime_blind,omega_a,phi);//,xmin);
   blindEDMFunc->SetNpx(50000);
 
   // Best not to draw this :)
@@ -351,8 +351,6 @@ tuple<vector<double>, vector<double>, vector<double>, vector<double>> GetPulls(T
 
 void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::string config) { 
 
-  bool weightedBlinding = false;
-
   int step = GetStep(config);
   std::string qual = GetQual(config);
   std::string dataset = GetDataset(config);
@@ -367,7 +365,7 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
     // Blinding
-    TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding);
+    TGraphErrors *gr_thetaY_mod = BlindedModuloGraph(phi, ConvertToTGraphErrors(px_thetaY_mod), false);
 
     gr_thetaY_mod->GetYaxis()->SetRangeUser(-.425, .425);
 
@@ -424,7 +422,7 @@ void SimultaneousAnalysisFFT(const double phi, TFile *input, TFile *output, std:
     TH1D *h1_thetaY_vs_t = h2_thetaY_vs_t->ProfileX();
 
     // Blinding
-    TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, input, ConvertToTGraphErrors(h1_thetaY_vs_t), false);
+    TGraphErrors *gr_thetaY_vs_t = BlindedModuloGraph(phi, ConvertToTGraphErrors(h1_thetaY_vs_t), false);
 
     FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, tmin, tmax);
     //FullEDMFit(gr_thetaY_vs_t, 0, OMEGA_A, phi, 0, 0, 0, G2PERIOD);
@@ -610,7 +608,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       // Run fits
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
 
-      // Blind with dilution weighting
+      // Blind with dilution weighting LOL
       TGraphErrors *gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);//BlindedModuloGraph(phi, input, ConvertToTGraphErrors(px_thetaY_mod), weightedBlinding, stn+"_", p);
 
       //cout<<"blinded"<<endl;

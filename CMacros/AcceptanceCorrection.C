@@ -921,13 +921,16 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") { // , st
 
 int main() { 
 
+
+	Run(true, false);
+
 	bool write = true;
 	bool reweight = true; // reweight according to Run-1 theta_y widths (just a check really) 
 
 	// Run(write, reweight, "Run-1a");
 	// Run(write, reweight, "Run-1b");
 	//Run(write, reweight, "Run-1c");
-	Run(write, reweight, "Run-1d");
+	//Run(write, reweight, "Run-1d");
 
 	return 0; 
 

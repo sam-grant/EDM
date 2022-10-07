@@ -114,21 +114,21 @@ void FitFivePar(TGraphErrors *graph, double par0, double par1, double par2, doub
   
   TF1 *func = new TF1("FiveParFunc", FiveParFunc, min, max, 5);
 
-  //func->SetParameter(0, par0); // N0, don't set normalisation
+  // func->SetParameter(0, par0); // N0, don't set normalisation
   func->SetParameter(1, par1); // tau
   func->SetParameter(2, par2); // A
   func->FixParameter(3, par3); // Omega (let float?)
   func->SetParameter(4, par4);
-  //func->FixParameter(4, 0);
+  // func->FixParameter(4, 0);
 
   // Only for sim.. 
-  func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
+  // func->SetParLimits(4, -TMath::Pi()/2, TMath::Pi()/2);
 
   func->SetNpx(1e3);
 
   graph->Fit(func, "QMR"); // ,"MR");
 
-    //std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
+  //std::cout << "\nChi^2/ndf...\t:" << func->GetChisquare() / func->GetNDF() << std::endl;
 
   return;
 

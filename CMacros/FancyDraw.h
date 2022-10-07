@@ -1752,14 +1752,6 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	leg->SetTextSize(22); // 26
 	leg->SetTextFont(44);
 
-/*	TLegend *leg = new TLegend(0.15,0.15,0.85,0.25);
-	leg->SetNColumns(2);
-	leg->AddEntry(graph, ("Data: "+dataset+"   ").c_str());
-	leg->AddEntry(func,"A_{g-2} cos(#omega_{a}t+#phi) #plus A_{EDM}^{BLIND} sin(#omega_{a}t+#phi) #plus c");
-	leg->SetBorderSize(0);*/
-
-	//TPaveText *names = new TPaveText(0.52,0.555,0.69,0.88,"NDC");
-	//TPaveText *names = new TPaveText(0.55,0.635,0.65,0.88,"NDC");
 	TPaveText *names = new TPaveText(0.50,0.595,0.67,0.88,"NDC");
 	names->SetTextAlign(13);
 	names->AddText("N") ; 
@@ -1772,25 +1764,20 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 	names->AddText(amplitude.c_str());
 	names->AddText("c [mrad]"); 
 
-	//TPaveText *values = new TPaveText(0.65,0.55,0.89,0.89,"NDC");
-	//TPaveText *values = new TPaveText(0.65,0.63,0.89,0.89,"NDC");
 	TPaveText *values = new TPaveText(0.65,0.59,0.89,0.89,"NDC");
+
 	values->SetTextAlign(33);
 	values->AddText(SciNotation(double(N))); 
 	values->AddText(Round(chi2ndf, 3));
 	values->AddText(Round(par0, 1)+"#pm"+Round(err0, 1));
-	//values->AddText(Round(par2, 3)+"#pm"+Round(err2, 1));
-	values->AddText(Round(par3, 1)+"#pm"+Round(err3, 1));
+	values->AddText(Round(par3, 2)+"#pm"+Round(err3, 1));
 	values->AddText(Round(par4, 1)+"#pm"+Round(err4, 1));
 
-	//TPaveText *cuts = new TPaveText(0.20,0.70,0.40,0.80,"NDC");
-	//TPaveText *cuts = new TPaveText(0.20,0.75,0.40,0.85,"NDC");
 	TPaveText *cuts = new TPaveText(0.20,0.65,0.40,0.75,"NDC");
-	//TPaveText *cuts = new TPaveText(0.20,0.30,0.40,0.40,"NDC");
+
 	cuts->SetTextAlign(22);
-	cuts->AddText(cutStr.c_str());//"1000 < p [MeV] < 2500");
-	cuts->AddText("t [#mus] > 30.6");//52.4");//(to_string(7*G2PERIOD)+" < t [#mus] < "+to_string(70*G2PERIOD)).c_str());
-//52.4");/
+	cuts->AddText(cutStr.c_str());
+	cuts->AddText("t [#mus] > 30.6");
 	names->SetTextSize(22); // 26
 	names->SetTextFont(44);
 	names->SetFillColor(0);
@@ -1822,7 +1809,6 @@ void DrawFullEDMFitData(TGraphErrors *graph, std::string title, std::string data
 
   graph->GetXaxis()->SetRangeUser(xmin, xmax);
 
-/*	graph->GetXaxis()->SetRangeUser(0,G2PERIOD);*/
 	graph->Draw("AP");
 	values->Draw("same");
 	names->Draw("same");
