@@ -316,7 +316,7 @@ void RunSimFits(TFile *fout) {
 
 	fout->mkdir("SimFits"); 
 	
-	TString finNameSim = "../Plots/MC/dMu/5.4e-18/Plots/verticalOffsetHists_trackTruth_WORLD_250MeV_BQ.root";
+	TString finNameSim = "../../Plots/MC/dMu/5.4e-18/Plots/verticalOffsetHists_trackTruth_WORLD_250MeV_BQ.root";
 	TFile *finSim = TFile::Open(finNameSim);
 
 	cout<<"\n---> Opened sim file "<<finNameSim<<", "<<finSim<<endl;
@@ -383,7 +383,7 @@ void RunSimFits(TFile *fout) {
 
 	}	
 
-	DrawSimThetaYvsMomFits(gr_thetaY_vs_p_,  "../Images/MC/dMu/5.4e-18/VerticalOffset/ThetaYvsMomFitsSim", -0.6, 0.2);
+	DrawSimThetaYvsMomFits(gr_thetaY_vs_p_,  "../../Images/MC/dMu/5.4e-18/VerticalOffset/ThetaYvsMomFitsSim", -0.6, 0.2);
 
 	finSim->Close();
 
@@ -416,7 +416,7 @@ void RunDataFits(TFile *fout) {
 
   	for(auto& ds : ds_) { 
 
-		string finNameData = "../Plots/Data/dMu/Run-1/Plots/verticalOffsetHists_"+ds+"_250MeV_BQ.root";
+		string finNameData = "../../Plots/Data/dMu/Run-1/Plots/verticalOffsetHists_"+ds+"_250MeV_BQ.root";
 		TFile *finData = TFile::Open(finNameData.c_str());
 
 	    fout->cd("DataFits");
@@ -491,14 +491,14 @@ void RunDataFits(TFile *fout) {
 
 	}	
 
-	DrawDataThetaYvsMomFits(gr12_, ds_, "S12", "S12;Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/S12_AvgThetaYvsMomFitsData", -1, 0.5);
-	DrawDataThetaYvsMomFits(gr18_, ds_, "S18", "S18;Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/S18_AvgThetaYvsMomFitsData", -1, 0.5);
+	DrawDataThetaYvsMomFits(gr12_, ds_, "S12", "S12;Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../../Images/MC/dMu/5.4e-18/VerticalOffset/S12_AvgThetaYvsMomFitsData", -1, 0.5);
+	DrawDataThetaYvsMomFits(gr18_, ds_, "S18", "S18;Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../../Images/MC/dMu/5.4e-18/VerticalOffset/S18_AvgThetaYvsMomFitsData", -1, 0.5);
 
-	DrawDataYvsMomFits(gr12_y_, ds_, "S12", "S12;Decay vertex momentum [MeV];#LTy#GT [mm] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/S12_AvgYvsMomFitsData", -0.5, 1.5);
-	DrawDataYvsMomFits(gr18_y_, ds_, "S18", "S18;Decay vertex momentum [MeV];#LTy#GT [mm] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/S18_AvgYvsMomFitsData", 0, 2);
+	DrawDataYvsMomFits(gr12_y_, ds_, "S12", "S12;Decay vertex momentum [MeV];#LTy#GT [mm] / 250 MeV", "../../Images/MC/dMu/5.4e-18/VerticalOffset/S12_AvgYvsMomFitsData", -0.5, 1.5);
+	DrawDataYvsMomFits(gr18_y_, ds_, "S18", "S18;Decay vertex momentum [MeV];#LTy#GT [mm] / 250 MeV", "../../Images/MC/dMu/5.4e-18/VerticalOffset/S18_AvgYvsMomFitsData", 0, 2);
 
-	DrawDataExtrapDistvsMomFits(gr12_extrap_, ds_, "S12", "S12;Decay vertex momentum [MeV];Decay extrapolated distance [mm] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/S18_ExtrapDistvsMomFitsData", -1, 0.5);
-	DrawDataExtrapDistvsMomFits(gr18_extrap_, ds_, "S18", "S18;Decay vertex momentum [MeV];Decay extrapolated distance [mm] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/S12_ExtrapDistvsMomFitsData", -1, 0.5);
+	DrawDataExtrapDistvsMomFits(gr12_extrap_, ds_, "S12", "S12;Decay vertex momentum [MeV];Decay extrapolated distance [mm] / 250 MeV", "../../Images/MC/dMu/5.4e-18/VerticalOffset/S18_ExtrapDistvsMomFitsData", -1, 0.5);
+	DrawDataExtrapDistvsMomFits(gr18_extrap_, ds_, "S18", "S18;Decay vertex momentum [MeV];Decay extrapolated distance [mm] / 250 MeV", "../../Images/MC/dMu/5.4e-18/VerticalOffset/S12_ExtrapDistvsMomFitsData", -1, 0.5);
 
 	return;
 
@@ -511,7 +511,7 @@ void RunSlopes(TFile *fout) {
 	fout->mkdir("SlopesSim");
 
 	// Beam position info
-	TString finNameSim = "../Plots/MC/dMu/5.4e-18/Plots/verticalPositionPlots_trackTruth_BQ.root";
+	TString finNameSim = "../../Plots/MC/dMu/5.4e-18/Plots/verticalPositionPlots_trackTruth_BQ.root";
 	TFile *finSim = TFile::Open(finNameSim); 
 
 	// Fill graphs
@@ -660,7 +660,7 @@ void RunSlopes(TFile *fout) {
 
 	l->Draw("SAME");
 
-	string fname = "../Images/MC/dMu/5.4e-18/VerticalOffset/SlopeVsBeamPosition";
+	string fname = "../../Images/MC/dMu/5.4e-18/VerticalOffset/SlopeVsBeamPosition";
 
   	c->SaveAs((fname+".pdf").c_str());
   	c->SaveAs((fname+".png").c_str());
@@ -793,7 +793,7 @@ void RunShiftedSlopes(TFile *fout) {
 
 	l->Draw("SAME");
 
-	string fname = "../Images/MC/dMu/5.4e-18/VerticalOffset/SlopeVsShiftedBeamPosition";
+	string fname = "../../Images/MC/dMu/5.4e-18/VerticalOffset/SlopeVsShiftedBeamPosition";
 
   	c->SaveAs((fname+".pdf").c_str());
   	c->SaveAs((fname+".png").c_str());
@@ -927,7 +927,7 @@ void RunSlopeVsSlope(TFile *fout) {
 
 	l->Draw("SAME");
 
-	string fname = "../Images/MC/dMu/5.4e-18/VerticalOffset/SlopeVsSlope";
+	string fname = "../../Images/MC/dMu/5.4e-18/VerticalOffset/SlopeVsSlope";
 
   	c->SaveAs((fname+".pdf").c_str());
   	c->SaveAs((fname+".png").c_str());
@@ -943,7 +943,7 @@ void VerticalOffsetSlope4() {
 
 	// Sim fits
 
-	TString foutName = "../Plots/verticalOffsetFits.test.root";
+	TString foutName = "../../Plots/verticalOffsetFits.test.root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 
 	RunSimFits(fout);

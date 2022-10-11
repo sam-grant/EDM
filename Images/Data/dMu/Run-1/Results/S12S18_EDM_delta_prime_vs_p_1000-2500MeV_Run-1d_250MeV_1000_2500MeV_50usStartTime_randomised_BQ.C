@@ -4,7 +4,7 @@
 void S12S18_EDM_delta_prime_vs_p_1000-2500MeV_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  7 13:29:17 2022) by ROOT version 6.26/04
+//=========  (Fri Oct  7 16:07:33 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(819.2245,-0.2053459,2667.425,0.9717383);
@@ -112,7 +112,7 @@ void S12S18_EDM_delta_prime_vs_p_1000-2500MeV_Run-1d_250MeV_1000_2500MeV_50usSta
    entry->SetMarkerStyle(20);
    entry->SetMarkerSize(1);
    entry->SetTextFont(42);
-   entry=leg->AddEntry("pol0","#LT#delta#GT = 0.357
+   entry=leg->AddEntry("pol0","#LT#delta^{BLIND}#GT = 0.36
 #pm0.05
  mrad","lpf");
    entry->SetFillColor(19);

@@ -4,7 +4,7 @@
 void S12S18_AEDM_vs_p_Run-1b_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  7 12:34:14 2022) by ROOT version 6.26/04
+//=========  (Fri Oct  7 14:47:04 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(784.7944,-0.002705794,2703.518,0.0790752);

@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void S12_ExtrapDistvsMomFitsData()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Mon Apr 18 11:40:08 2022) by ROOT version 6.24/06
+//=========  (Fri Oct  7 17:03:31 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->Range(757.2364,507.5168,2977.453,3466.191);
    c->SetFillColor(0);

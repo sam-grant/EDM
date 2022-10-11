@@ -279,10 +279,10 @@ void DrawOverlay(vector<TGraphErrors*> gr_sim_, vector<TGraphErrors*> gr_data_, 
   	gr_sim_.at(0)->SetMarkerColor(kBlack);
   	gr_sim_.at(0)->SetLineColor(kBlack);
 	gr_sim_.at(0)->SetMarkerStyle(20);  
- 
-  	gr_sim_.at(1)->SetMarkerColor(kBlack);
-  	gr_sim_.at(1)->SetLineColor(kBlack);
-	gr_sim_.at(1)->SetMarkerStyle(24);
+
+  	gr_sim_.at(1)->SetMarkerColor(kRed);
+  	gr_sim_.at(1)->SetLineColor(kRed);
+	gr_sim_.at(1)->SetMarkerStyle(20); 
 
   	gr_sim_.at(2)->SetMarkerColor(kBlue);
   	gr_sim_.at(2)->SetLineColor(kBlue);
@@ -329,11 +329,11 @@ void DrawOverlay(vector<TGraphErrors*> gr_sim_, vector<TGraphErrors*> gr_data_, 
 	gr_data_.at(3)->Draw("PL SAME");
 
 	l->AddEntry(gr_sim_.at(0), "Sim: all decays");
-	l->AddEntry(gr_sim_.at(1), "Sim: all decays (acc.)");
-	l->AddEntry(gr_sim_.at(2), "Sim: all decays (acc. + Run-1a)");
-	l->AddEntry(gr_sim_.at(3), "Sim: all decays (acc. + Run-1b)");
-	l->AddEntry(gr_sim_.at(4), "Sim: all decays (acc. + Run-1c)");
-	l->AddEntry(gr_sim_.at(5), "Sim: all decays (acc. + Run-1d)");
+	l->AddEntry(gr_sim_.at(1), "Sim: truth vertices");
+	l->AddEntry(gr_sim_.at(2), "Sim: truth vertices (Run-1a)");
+	l->AddEntry(gr_sim_.at(3), "Sim: truth vertices (Run-1b)");
+	l->AddEntry(gr_sim_.at(4), "Sim: truth vertices (Run-1c)");
+	l->AddEntry(gr_sim_.at(5), "Sim: truth vertices (Run-1d)");
 	l->AddEntry(gr_data_.at(0), "Data: Run-1a");
 	l->AddEntry(gr_data_.at(1), "Data: Run-1b");
 	l->AddEntry(gr_data_.at(2), "Data: Run-1c");
@@ -404,29 +404,35 @@ void Run(string stn = "S12S18") {
 
 	vector<TString> simConfig_ = { 
 								"allDecays_WORLD_250MeV_AQ_noVertCorr_full",
-								"allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full",
-								"allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full_reweight"+stn+"Run-1a",
-								"allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full_reweight"+stn+"Run-1b",
-								"allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full_reweight"+stn+"Run-1c",
-								"allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full_reweight"+stn+"Run-1d"
+								"trackTruth_WORLD_250MeV_BQ_noVertCorr_full",
+								//"trackTruth_WORLD_250MeV_BQ_noVertCorr_full_reweight"+stn+"_full",
+								"trackTruth_WORLD_250MeV_BQ_noVertCorr_full_reweight"+stn+"Run-1a",
+								"trackTruth_WORLD_250MeV_BQ_noVertCorr_full_reweight"+stn+"Run-1b",
+								"trackTruth_WORLD_250MeV_BQ_noVertCorr_full_reweight"+stn+"Run-1c",
+								"trackTruth_WORLD_250MeV_BQ_noVertCorr_full_reweight"+stn+"Run-1d"
 							  };
 
 	TString dataPath = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_";
 
 	vector<TString> dataConfig_ = { 
-								"Run-1a_250MeV_BQ_noVertCorr",
-								"Run-1b_250MeV_BQ_noVertCorr",
-								"Run-1c_250MeV_BQ_noVertCorr",
-								"Run-1d_250MeV_BQ_noVertCorr"
+								"Run-1a_250MeV_1000_2500MeV_randomised_BQ_noVertCorr",
+								"Run-1b_250MeV_1000_2500MeV_randomised_BQ_noVertCorr",
+								"Run-1c_250MeV_1000_2500MeV_randomised_BQ_noVertCorr",
+								"Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ_noVertCorr"
 							  };
 
 	vector<TGraphErrors*> gr_sim_; 
 
+	// eh 
+	int count = 0;
 	for(auto& simConfig : simConfig_) {
 		TFile *f_sim = TFile::Open(simPath+simConfig+".root");
-		TGraphErrors *gr_sim = ResetGraph((TGraphErrors*)f_sim->Get("MomentumBinnedAnalysis/ParameterScans/c_vs_p_thetaY"), xmin, xmax);
+		string grName = "MomentumBinnedAnalysis/ParameterScans/"+stn+"_c_vs_p_thetaY";
+		if(count==0) grName = "MomentumBinnedAnalysis/ParameterScans/c_vs_p_thetaY"; 
+		TGraphErrors *gr_sim = ResetGraph((TGraphErrors*)f_sim->Get(grName.c_str()), xmin, xmax);
 		gr_sim_.push_back(gr_sim);
 		f_sim->Close();
+		count++;
 	}
 
 	vector<TGraphErrors*> gr_data_; 
@@ -441,10 +447,10 @@ void Run(string stn = "S12S18") {
 	// Draw them
 	DrawOverlay(gr_sim_, gr_data_, stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration", -1, 1);
 
-	DrawTwoOverlay(gr_sim_.at(2), gr_data_.at(0), "Sim: all decays (acc. + Run-1a)", "Data: Run-1a", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1a", -1, 0.25);
-	DrawTwoOverlay(gr_sim_.at(3), gr_data_.at(1), "Sim: all decays (acc. + Run-1b)", "Data: Run-1b", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1b", -1, 0.25);
-	DrawTwoOverlay(gr_sim_.at(4), gr_data_.at(2), "Sim: all decays (acc. + Run-1c)", "Data: Run-1c", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1c", -1, 0.25);
-	DrawTwoOverlay(gr_sim_.at(5), gr_data_.at(3), "Sim: all decays (acc. + Run-1d)", "Data: Run-1d", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1d", -1, 0.25);
+	DrawTwoOverlay(gr_sim_.at(2), gr_data_.at(0), "Sim: truth vertices (Run-1a weights)", "Data: Run-1a", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1a", -1, 0.25);
+	DrawTwoOverlay(gr_sim_.at(3), gr_data_.at(1), "Sim: truth vertices (Run-1b weights)", "Data: Run-1b", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1b", -1, 0.25);
+	DrawTwoOverlay(gr_sim_.at(4), gr_data_.at(2), "Sim: truth vertices (Run-1c weights)", "Data: Run-1c", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1c", -1, 0.25);
+	DrawTwoOverlay(gr_sim_.at(5), gr_data_.at(3), "Sim: truth vertices (Run-1d weights)", "Data: Run-1d", stn+";Momentum [MeV];#LT#theta_{y}#GT [mrad] / 250 MeV", "../Images/MC/dMu/5.4e-18/VerticalOffset/"+stn+"_verticalOffsetIllustration_Run-1d", -1, 0.25);
 
 	return;
 

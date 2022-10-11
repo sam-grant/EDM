@@ -4,7 +4,7 @@
 void S12_h_res_thetaY_vs_t_Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  7 12:34:39 2022) by ROOT version 6.26/04
+//=========  (Fri Oct  7 14:47:32 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
    c->Range(0,0,1,1);

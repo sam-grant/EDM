@@ -208,7 +208,8 @@ void Run2(string dataset = "Run-1a", int rebin = 1) {
 
 void VerticalAngleReweightingResults() { 
 
-	Run2();
+	Run();
+	//	Run2();
 
 	return;
 

@@ -170,28 +170,29 @@ void Run(string stn) {
 
   		// Nominal
   		ratio->SetPoint(i, gr0->GetX()[i], gr5->GetY()[i]/gr0->GetY()[i]);
-  		ratio->SetPointError(i, 0., gr5->GetY()[i]/gr0->GetY()[i] * sqrt( pow(gr0->GetEY()[i]/gr0->GetY()[i], 2) + pow(gr5->GetEY()[i]/gr5->GetY()[i], 2) ) );
-
-  		//cout<<"Delta Main = "<<gr0->GetY()[i]/gr5->GetY()[i]<<endl;
+  		ratio->SetPointError(i, 0., 0.); // gr5->GetY()[i]/gr0->GetY()[i] * sqrt( pow(gr0->GetEY()[i]/gr0->GetY()[i], 2) + pow(gr5->GetEY()[i]/gr5->GetY()[i], 2) ) );
 
   		// Run-1a
   	  	ratio_a->SetPoint(i, gr6->GetX()[i], gr6->GetY()[i]/gr1->GetY()[i]);
-  		ratio_a->SetPointError(i, 0., gr6->GetY()[i]/gr1->GetY()[i] * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr6->GetEY()[i]/gr6->GetY()[i], 2) ) );
+  		ratio_a->SetPointError(i, 0., 0.); // gr6->GetY()[i]/gr1->GetY()[i] * sqrt( pow(gr1->GetEY()[i]/gr1->GetY()[i], 2) + pow(gr6->GetEY()[i]/gr6->GetY()[i], 2) ) );
   	  	
   	  	cout<<"\nDelta Run-1a = "<<(gr6->GetY()[i]/gr1->GetY()[i]) - (gr5->GetY()[i]/gr0->GetY()[i])<<endl;
 
+  	  	// Run-1b
   	  	ratio_b->SetPoint(i, gr7->GetX()[i], gr7->GetY()[i]/gr2->GetY()[i]);
-		ratio_b->SetPointError(i, 0., gr7->GetY()[i]/gr2->GetY()[i] * sqrt( pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) + pow(gr7->GetEY()[i]/gr7->GetY()[i], 2) ) );
+		ratio_b->SetPointError(i, 0., 0.); // gr7->GetY()[i]/gr2->GetY()[i] * sqrt( pow(gr2->GetEY()[i]/gr2->GetY()[i], 2) + pow(gr7->GetEY()[i]/gr7->GetY()[i], 2) ) );
 
   		cout<<"Delta Run-1b = "<<(gr7->GetY()[i]/gr2->GetY()[i]) - (gr5->GetY()[i]/gr0->GetY()[i])<<endl;
 
+  		// Run-1c
   	  	ratio_c->SetPoint(i, gr8->GetX()[i], gr8->GetY()[i]/gr3->GetY()[i]);
-		ratio_c->SetPointError(i, 0., gr8->GetY()[i]/gr3->GetY()[i] * sqrt( pow(gr3->GetEY()[i]/gr3->GetY()[i], 2) + pow(gr8->GetEY()[i]/gr8->GetY()[i], 2) ) );
+		ratio_c->SetPointError(i, 0., 0.); // gr8->GetY()[i]/gr3->GetY()[i] * sqrt( pow(gr3->GetEY()[i]/gr3->GetY()[i], 2) + pow(gr8->GetEY()[i]/gr8->GetY()[i], 2) ) );
 
 		cout<<"Delta Run-1c = "<<(gr8->GetY()[i]/gr3->GetY()[i]) - (gr5->GetY()[i]/gr0->GetY()[i])<<endl;
 
+		// Run-1d
    	  	ratio_d->SetPoint(i, gr9->GetX()[i], gr9->GetY()[i]/gr4->GetY()[i]);
-		ratio_d->SetPointError(i, 0., gr9->GetY()[i]/gr4->GetY()[i] * sqrt( pow(gr4->GetEY()[i]/gr4->GetY()[i], 2) + pow(gr9->GetEY()[i]/gr9->GetY()[i], 2) ) );
+		ratio_d->SetPointError(i, 0., 0.); // gr9->GetY()[i]/gr4->GetY()[i] * sqrt( pow(gr4->GetEY()[i]/gr4->GetY()[i], 2) + pow(gr9->GetEY()[i]/gr9->GetY()[i], 2) ) );
 
   		cout<<"Delta Run-1d = "<<(gr9->GetY()[i]/gr4->GetY()[i]) - (gr5->GetY()[i]/gr0->GetY()[i])<<endl;
 

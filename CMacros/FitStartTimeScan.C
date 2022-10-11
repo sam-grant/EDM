@@ -72,7 +72,9 @@ void DrawFitStartTimeScan(TGraphErrors *graph, TGraph *plus, TGraph *minus, std:
 
 void Run(string dataset = "Run-1a") { 
 	
+
 	TString finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+dataset+"_250MeV_1000_2500MeV_randomised_BQ.root";
+	//if(dataset=="Run-1d") finName = "../Plots/Data/dMu/Run-1/Fits/edmFits_blinded_"+dataset+"_250MeV_1000_2500MeV_50usStartTime_randomised_BQ.root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"---> Got file "<<finName<<", "<<fin<<endl;

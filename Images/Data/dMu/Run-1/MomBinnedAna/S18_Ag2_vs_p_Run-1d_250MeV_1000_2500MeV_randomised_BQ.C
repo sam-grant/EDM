@@ -4,10 +4,10 @@
 void S18_Ag2_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  7 11:56:31 2022) by ROOT version 6.26/04
+//=========  (Fri Oct  7 16:22:26 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    c->SetHighLightColor(2);
-   c->Range(785.4727,-0.02527355,2703.942,0.02782344);
+   c->Range(785.4727,-0.02526909,2703.942,0.02783186);
    c->SetFillColor(0);
    c->SetBorderMode(0);
    c->SetBorderSize(2);
@@ -27,17 +27,17 @@ void S18_Ag2_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
    2606.767,
    2781.65};
    Double_t Graph0_fy1074[11] = {
-   0.1566771,
-   -0.004666161,
-   0.01958835,
-   0.007281956,
-   -0.009126352,
-   0.005782595,
-   -0.02555816,
-   0.01803201,
-   -0.007734365,
-   0.001148129,
-   0.05128036};
+   0.156692,
+   -0.004659579,
+   0.01959542,
+   0.007283415,
+   -0.009120921,
+   0.005786936,
+   -0.02555208,
+   0.01803793,
+   -0.007729791,
+   0.001155385,
+   0.05128767};
    Double_t Graph0_fex1074[11] = {
    0.08002766,
    0.05682926,
@@ -61,7 +61,7 @@ void S18_Ag2_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
    0.01104506,
    0.01244541,
    0.01472616,
-   0.05814642};
+   0.05814641};
    TGraphErrors *gre = new TGraphErrors(11,Graph0_fx1074,Graph0_fy1074,Graph0_fex1074,Graph0_fey1074);
    gre->SetName("Graph0");
    gre->SetTitle("S18");
@@ -69,8 +69,8 @@ void S18_Ag2_vs_p_Run-1d_250MeV_1000_2500MeV_randomised_BQ()
    gre->SetMarkerStyle(20);
    
    TH1F *Graph_Graph01074 = new TH1F("Graph_Graph01074","S18",100,223.8844,3014.385);
-   Graph_Graph01074->SetMinimum(-0.01996385);
-   Graph_Graph01074->SetMaximum(0.02251374);
+   Graph_Graph01074->SetMinimum(-0.01995899);
+   Graph_Graph01074->SetMaximum(0.02252177);
    Graph_Graph01074->SetDirectory(0);
    Graph_Graph01074->SetStats(0);
 

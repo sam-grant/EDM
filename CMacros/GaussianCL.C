@@ -23,7 +23,7 @@ void GaussianCL() {
 
     // FNAL (prelim)
    	double mu = 0.00e-19;
-   	double sigma = 9.6e-20;//1.04e-19;
+   	double sigma = 1.04e-19;//1.04e-19;
 
  	//double mu = 2.47117e-19;
 	//double sigma = 2.50084e-19;

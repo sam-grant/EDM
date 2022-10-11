@@ -1,7 +1,10 @@
+#ifdef __CLING__
+#pragma cling optimize(0)
+#endif
 void ThetaYvsMomFitsSim()
 {
 //=========Macro generated from canvas: c/
-//=========  (Mon Apr 18 11:40:07 2022) by ROOT version 6.24/06
+//=========  (Fri Oct  7 17:03:30 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "",0,0,800,600);
    c->Range(749.8357,-0.7,2988.409,0.3);
    c->SetFillColor(0);

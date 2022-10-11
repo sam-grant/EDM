@@ -359,12 +359,12 @@ void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title,
 
   l->SetBorderSize(0);
 
-  TString delta_prime = Round(gr_delta_prime->GetFunction("pol0")->GetParameter(0), 3.);
+  TString delta_prime = Round(gr_delta_prime->GetFunction("pol0")->GetParameter(0), 2.);
   TString delta_prime_err = Round(gr_delta_prime->GetFunction("pol0")->GetParError(0), 1.);
 
   l->AddEntry(gr_delta_prime, label.c_str());
   // if(!orthogonal) l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta^{BLIND}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
-  if(!orthogonal) l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
+  if(!orthogonal) l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta^{BLIND}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
   else l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta_{#Omega}#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
   //else l->AddEntry(gr_delta_prime->GetFunction("pol0"), "#LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
   //l->AddEntry(gr_delta_prime->GetFunction("pol0"), "HELLO #LT#delta#GT = "+delta_prime+"#pm"+delta_prime_err+" mrad");
@@ -1294,12 +1294,7 @@ int main() {
   // RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "1.8e-18", "unblinded", true);
 
   // Need to re-fit using the new function
-
-  // RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-
+  
   RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
   RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
