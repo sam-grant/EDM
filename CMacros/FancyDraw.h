@@ -1210,10 +1210,9 @@ void DrawWiggle(TGraphErrors *graph, string title, string dataset, string fname,
 
 }
 
-// TODO: change this to DrawModWiggleSim
 void DrawModWiggleSim(TGraphErrors *graph, string title, string fname, string reco, double N, double ymin, double ymax, string cutStr = "p [MeV] > 1700") {
 
-  TCanvas *c = new TCanvas("c","c",800,600);
+  TCanvas *c = new TCanvas("c","c",400,300);
 
   graph->Draw();
   gPad->Update();
@@ -1413,7 +1412,6 @@ void DrawModWiggleData(TGraphErrors *graph, std::string title, std::string datas
   return;
 
 }
-
 
 void DrawFoldedWiggleSim(std::vector<TGraphErrors*> graphs, std::string title, std::string fname, double xmin, double xmax, double ymin, double ymax ) {
 
@@ -1624,7 +1622,7 @@ void DrawSimpleEDMFit(TGraphErrors *graph, std::string title, std::string fname,
 
 void DrawFullEDMFitSim(TGraphErrors *graph, std::string title, std::string fname, std::string cutStr, std::string recoLabel, double N, double ymin, double ymax, bool unblind) {
 
-	TCanvas *c = new TCanvas("c","c",800,600);
+	TCanvas *c = new TCanvas("c","c",400,400);
 
 	TF1 *func = graph->GetFunction("FullEDMFunc");
 	func->SetLineWidth(3);

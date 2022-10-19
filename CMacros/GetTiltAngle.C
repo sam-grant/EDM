@@ -188,7 +188,6 @@ TGraphErrors *GetDeltaPrimeFit(TGraphErrors *gr_A, TF1 *dilutionFunc, TH1D *weig
       double weighting_err = 0.0;
 
 
-
       if(weightingHist!=0) {
         weighting = weightingHist->GetBinContent(weightingHist->FindBin(x));
         weighting_err = weightingHist->GetBinError(weightingHist->FindBin(x));
@@ -1194,7 +1193,6 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       DrawDeltaPrimeFit(gr_delta_prime_reweight, "Data: "+datasetLabel, stn+";Decay vertex momentum [MeV];#delta^{BLIND} [mrad] / "+to_string(step)+" MeV;", "../Images/Data/dMu/"+dataset+"/Results/"+stn+"_"+fitType+"_delta_prime_vs_p_reweight_"+to_string(int(xmin))+"-"+to_string(int(xmax))+"MeV_"+config+corrStr, orthogonal);
 
-
       TF1 *f_delta_prime_reweight = (TF1*)gr_delta_prime_reweight->GetFunction("pol0");
 
       double delta_prime_reweight = abs(f_delta_prime_reweight->GetParameter(0));
@@ -1289,16 +1287,16 @@ int main() {
   // Currently forced to use a fitted normalisation for the dilution 
 
   // RunSim("trackReco_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
-  //RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
-  //RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+  // RunSim("trackTruth_WORLD_250MeV_BQ_noVertCorr_full", "5.4e-18", "unblinded", true);
+  // RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "5.4e-18", "unblinded", true);
   // RunSim("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "1.8e-18", "unblinded", true);
 
   // Need to re-fit using the new function
   
   RunData("Run-1a_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
-  RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1b_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1c_250MeV_1000_2500MeV_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
+  // RunData("Run-1d_250MeV_1000_2500MeV_50usStartTime_randomised_BQ", "Run-1", "blinded", correctDilution, correctAcceptance, correctVerticalAngleOffset);
 
 	return 0;
 

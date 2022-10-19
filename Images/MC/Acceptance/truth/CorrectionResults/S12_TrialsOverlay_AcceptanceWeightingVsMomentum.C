@@ -4,7 +4,7 @@
 void S12_TrialsOverlay_AcceptanceWeightingVsMomentum()
 {
 //=========Macro generated from canvas: c/c
-//=========  (Fri Oct  7 11:38:59 2022) by ROOT version 6.26/04
+//=========  (Tue Oct 11 15:46:56 2022) by ROOT version 6.26/04
    TCanvas *c = new TCanvas("c", "c",0,0,800,600);
    gStyle->SetOptStat(0);
    c->SetHighLightColor(2);

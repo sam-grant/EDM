@@ -827,7 +827,7 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") { // , st
 
 			h1_ratio_align->Write();
 
-			// Find thew difference from nominal
+			// Find the difference from nominal
 
 			TGraphErrors *gr_ratio_align_diff = new TGraphErrors();
 
@@ -918,19 +918,19 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") { // , st
 
 }
 
-
 int main() { 
 
-
-	Run(true, false);
+	Run(false, false);
 
 	bool write = true;
-	bool reweight = true; // reweight according to Run-1 theta_y widths (just a check really) 
+	bool reweight = true;
 
-	// Run(write, reweight, "Run-1a");
-	// Run(write, reweight, "Run-1b");
-	//Run(write, reweight, "Run-1c");
-	//Run(write, reweight, "Run-1d");
+	// reweight according to Run-1 theta_y widths (just a check really) 
+
+	// 	Run(write, reweight, "Run-1a");
+	// 	Run(write, reweight, "Run-1b");
+	//	Run(write, reweight, "Run-1c");
+	//	Run(write, reweight, "Run-1d");
 
 	return 0; 
 

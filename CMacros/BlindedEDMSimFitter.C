@@ -1269,7 +1269,7 @@ int main(int argc, char *argv[]) {
   string dMu = argv[2]; 
   string unblindStr = argv[3];
 
-  // Direct reweighting 
+  // Direct re-weighting 
   string dataset = argv[4];
   string station = argv[5];
 
