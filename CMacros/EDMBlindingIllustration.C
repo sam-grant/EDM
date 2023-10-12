@@ -239,9 +239,9 @@ int main() {
 
    int nStrings = 1e4;
 
-   TH1D *h_xd0 = GetHist(nStrings, R);
+   //TH1D *h_xd0 = GetHist(nStrings, R);
 
-   DrawLimitPlot(h_xd0, ";Signal multiplier;Unique blinding phrases", "../Images/Blinding/Limits"); 
+   //DrawLimitPlot(h_xd0, ";Signal multiplier;Unique blinding phrases", "../Images/Blinding/Limits"); 
 
    //cout<<h_xd0->GetBinContent(0)<<endl;
 /*

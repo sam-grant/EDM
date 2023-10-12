@@ -15,7 +15,7 @@ int main() {
   Blinders::fitType ftype = Blinders::kOmega_a;
   Blinders myBlinder( ftype );
   
-  Blinders getBlinded( ftype, "Inspiral" );
+  Blinders getBlinded( ftype, "My blinding string" );
   
   Blinders systematicallyBlinded( ftype, 1, 10, "Ringdown" );
 
@@ -38,9 +38,6 @@ int main() {
     double result = ( systematicallyBlinded.paramToFreq( R ) / systematicallyBlinded.referenceValue() ) - 1;
     std::cout << " input R: " << R << "   output: " << result << std::endl;
   }
-
-
-
 
   std::string config = "30xBNL"; // 1xBNL"
   std::string qualString = "Q";

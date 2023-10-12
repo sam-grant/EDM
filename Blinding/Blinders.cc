@@ -8,6 +8,8 @@
  *
  */
 
+#define OPENSSL_SUPPRESS_DEPRECATED 1
+
 #include <iostream>
 #include <cmath>
 #include <openssl/md5.h>
@@ -31,11 +33,11 @@ const double k_precisionR = 1e-6;
 using namespace blinding;
 
 // Code in extern to enable python access
-/*#ifdef __cplusplus
-extern "C" {
-#include "python_header.h" 
-  }
-#endif*/
+// #ifdef __cplusplus
+// extern "C" {
+// #include "python_header.h" 
+//   }
+// #endif
 
 // ******************************************************************************************************
 // ******************************************************************************************************

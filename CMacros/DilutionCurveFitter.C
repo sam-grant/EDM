@@ -15,6 +15,108 @@
 
 using namespace std;
 
+////////
+
+
+void DrawTGraphErrorsFit(TGraphErrors *gr, string title, string fname) { 
+      
+
+   TCanvas *c = new TCanvas("c","c",800,600);
+
+   gr->GetXaxis()->SetTitleSize(.04);
+   gr->GetYaxis()->SetTitleSize(.04);
+   gr->GetXaxis()->SetTitleOffset(1.1);
+   gr->GetYaxis()->SetTitleOffset(1.25);
+   gr->GetXaxis()->CenterTitle(true);
+   gr->GetYaxis()->CenterTitle(true);
+   gr->GetYaxis()->SetMaxDigits(4);
+
+   // Set marker style & colour
+   gr->SetMarkerStyle(20);
+   gr->SetMarkerColor(kBlack);
+
+   gr->SetTitle(title.c_str());
+
+   gr->Draw("AP");
+
+   // Get function
+   TF1 *fit = (TF1*)gr->GetFunction("DilutionFunc");
+   fit->SetLineColor(kRed);
+   fit->SetLineWidth(3);
+
+   gr->Fit(fit);
+
+
+   fit->Draw("SAME");
+
+   // Draw legend
+   //TLegend *l = new TLegend(0.125,0.79,0.875,0.89);
+   //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
+   //TLegend *l = new TLegend(0.125,0.25,0.45,0.45);
+   //TLegend *l = new TLegend(0.15,0.15,0.50,0.50);
+   //TLegend *l = new TLegend(0.59,0.69,0.89,0.89);
+   //TLegend *l = new TLegend(0.645,0.715,0.89,0.89);
+   TLegend *l = new TLegend(0.15,0.20,0.45,0.40);
+   l->SetBorderSize(0);
+   l->SetNColumns(1);
+   l->AddEntry(gr,"All decays");
+   // [0] * ( ( ([1]*x) - 1)^2 * (2*([1]*x) +1) )
+   //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+   //l->AddEntry(fit, "Fit: a(bp-1)^{2}(2bp+1)");//p^{2}+bp+d_{0}");
+   l->AddEntry(fit, "d_{0}#frac{(p#minus1)(2p#plus1)}{4p^{2}#minus5p#minus5}");//p^{2}+bp+d_{0}");
+   l->SetTextSize(26);
+   l->SetTextFont(44);
+   l->Draw("SAME");
+
+   // TPaveText *names = new TPaveText(0.15,0.20,0.30,0.45,"NDC");
+   TPaveText *names = new TPaveText(0.645,0.715,0.89,0.89,"NDC");
+
+   names->SetTextAlign(13);
+   names->AddText("#chi^{2}/NDF");
+   names->AddText("d_{0}"); 
+   //names->AddText("b [MeV^{-1}]" );
+      //names->AddText("d_{0}");
+
+   // TPaveText *values = new TPaveText(0.40,0.20,0.55,0.45,"NDC");
+   TPaveText *values = new TPaveText(0.80,0.715,0.89,0.89,"NDC");
+   // TPaveText *values = new TPaveText(0.30,0.20,0.45,0.45,"NDC");
+
+   values->SetTextAlign(33);
+   values->AddText(Round(fit->GetChisquare()/fit->GetNDF(),3));
+   values->AddText(Round(fit->GetParameter(0), 3)+"#pm"+Round(fit->GetParError(0), 3));
+   //values->AddText(Round(fit->GetParameter(1), 1)+"#pm"+Round(fit->GetParError(1), 1));
+
+   //values->AddText("0.177#pm0.004"); 
+   //values->AddText("(-1.57#pm0.03)#times10^{-4}");
+
+   cout<<"\n*** Fit results ***"<<endl;
+   cout<<"chi2/ndf = "<<fit->GetChisquare()/fit->GetNDF()<<endl;
+   cout<<"a = "<<fit->GetParameter(0)<<"±"<<fit->GetParError(0)<<endl;
+   cout<<"b = "<<fit->GetParameter(1)<<"±"<<fit->GetParError(1)<<endl;
+   cout<<"*** *** ***\n"<<endl;
+
+   names->SetTextSize(26);
+   names->SetTextFont(44);
+   names->SetFillColor(0);
+   values->SetFillColor(0);
+   values->SetTextFont(44);
+   values->SetTextSize(26);
+
+   names->Draw("SAME");
+   values->Draw("SAME");
+
+   c->SaveAs((fname+".pdf").c_str());
+   c->SaveAs((fname+".png").c_str());
+   c->SaveAs((fname+".C").c_str());
+
+   delete c;
+
+   return;
+
+}
+
+////////
+
 const double delta_rest = 0.0495092; // rad
 const double delta_lab = (delta_rest / GMAGIC) * 1e3; // mrad
 
@@ -193,11 +295,11 @@ double DilutionFunc(double *x, double *par) {
 
 void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) { // double p0, double p1, double p2, 
   
-  TF1 *fnc = new TF1("DilutionFunc", DilutionFunc, xmin, xmax, 1);
+  TF1 *fnc = new TF1("DilutionFunc", DilutionFunc, 500, 1000, 1);
 
   // Derived from floating fits to A_EDM, for some reason it doesn't take when you fit d_EDM
-  double norm = 1.58088; // mrad
-  double err_norm = 5.35241e-03;
+  double norm = 1.55454; // 1.58088; // mrad
+  double err_norm = 5.34194e-03; // 5.35241e-03;
 
   norm = norm / delta_lab;
   err_norm = err_norm / delta_lab;
@@ -206,6 +308,10 @@ void DilutionFit(TGraphErrors *graph, string config, double xmin, double xmax) {
 
   fnc->FixParameter(0, norm);  // let float
   fnc->SetParError(0, err_norm);  // let float
+
+  // fnc->SetParameter(0, norm); //  -0.000001, norm+0.000001);  // let float
+  // fnc->SetParError(0, err_norm);  // let float
+
   graph->Fit(fnc, "MR");    
 
   return;
@@ -522,6 +628,9 @@ void FitDilution(string config, string fitType, TFile *output, bool getError) { 
 
       cout<<"chisqr/ndf\t"<<fit->GetChisquare() / fit->GetNDF()<<endl;
 
+      // Draw this guy?
+      DrawTGraphErrorsFit(gr, "", "../Images/MC/Dilution/dMu/5.4e-18/gr_AEDM_dilution_fit");
+
       //continue;
 
       cout<<"\n *** Getting fit result pointer *** \n"<<endl;
@@ -602,18 +711,20 @@ int main() { //int argc, char *argv[]) {
   // Regular samples
   //  FitDilution("allDecays_WORLD_250MeV_AQ_eTimeCut_noCorr", "EDM", output, true); // this is what we're going with. 
   FitDilution("allDecays_WORLD_250MeV_AQ_noVertCorr_full", "EDM", output, true);
-  FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
-  FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);
-  FitDilution("trackTruth_WORLD_250MeV_BQ", "EDM", output, true);
 
-  // With full distribution
-  FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
-  //FitDilution("trackReco_WORLD_250MeV_BQ_acceptanceCorrected", "EDM", output, true);
+
+  // FitDilution("trackReco_WORLD_250MeV_AQ", "EDM", output, true);
+  // FitDilution("trackTruth_WORLD_250MeV_AQ", "EDM", output, true);
+  // FitDilution("trackTruth_WORLD_250MeV_BQ", "EDM", output, true);
+
+  // // With full distribution
+  // FitDilution("trackReco_WORLD_250MeV_BQ", "EDM", output, true); 
+  // //FitDilution("trackReco_WORLD_250MeV_BQ_acceptanceCorrected", "EDM", output, true);
 
   // Control sample. All reconstructions arise from the same MC sample.
-  FitDilution("acceptedDecaysControl_WORLD_250MeV_AQ", "EDM", output, true); 
-  FitDilution("trackRecoControl_WORLD_250MeV_BQ", "EDM", output, true);
-  FitDilution("trackRecoControl_WORLD_250MeV_CQ", "EDM", output, true);
+  // FitDilution("acceptedDecaysControl_WORLD_250MeV_AQ", "EDM", output, true); 
+  // FitDilution("trackRecoControl_WORLD_250MeV_BQ", "EDM", output, true);
+  // FitDilution("trackRecoControl_WORLD_250MeV_CQ", "EDM", output, true);
 
 /*  // Regular samples
   FitDilution("allDecays_AAR_250MeV_AQ", "EDM", output, false);

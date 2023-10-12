@@ -1,5 +1,11 @@
-#include "Blinders.hh"
-//#include "TFile.h"
+#include "../Blinding/Blinders.hh"
+#include "TTree.h"
+#include "TCanvas.h"
+#include "TFile.h"
+#include "TH1D.h"
+#include "TH2D.h"
+#include "TProfile.h"
+
 using namespace blinding;
 
 int main() {
@@ -7,7 +13,7 @@ int main() {
   Blinders::fitType ftype = Blinders::kOmega_a;
   Blinders myBlinder( ftype );
   
-  Blinders getBlinded( ftype, "Inspiral" );
+  Blinders getBlinded( ftype, "My blinding string" );
   
   Blinders systematicallyBlinded( ftype, 1, 10, "Ringdown" );
 
@@ -30,6 +36,27 @@ int main() {
     double result = ( systematicallyBlinded.paramToFreq( R ) / systematicallyBlinded.referenceValue() ) - 1;
     std::cout << " input R: " << R << "   output: " << result << std::endl;
   }
-  ///TCanvas *c = new TCanvas();
-  //c->SaveAs("blank.png");
+
+  std::string config = "30xBNL"; // 1xBNL"
+  std::string qualString = "Q";
+  //bool quality = false;
+  //std::string qualString;
+  //if(quality) qualString = "Q";
+  //else qualString = "NoQ";
+
+  // Read file
+  TFile *input = TFile::Open(("../Plots/MC/"+config+"/moduloPlots"+qualString+".root").c_str());
+  std::cout << "\nRead input...\t\t: " << input << std::endl;
+
+  TH2D *moduloHist = (TH2D*)input->Get("ThetaY_vs_Time_Modulo");
+  std::cout << "Got modulo hist...\t: " << moduloHist << std::endl;
+
+  // Make profile
+  TH1D *moduloProf = moduloHist->ProfileX();
+  std::cout << "Generated x-profile...\t: " << moduloProf << std::endl; 
+
+  TCanvas *c = new TCanvas();
+  moduloProf->Draw();
+  c->SaveAs("blank.png");
+
 }

@@ -1273,6 +1273,7 @@ int main(int argc, char *argv[]) {
   string dataset = argv[4];
   string station = argv[5];
 
+  //string config = ""
   bool reweight = false;
 
   // TODO: come up with better soln for these re-weighting options

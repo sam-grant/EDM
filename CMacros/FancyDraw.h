@@ -205,7 +205,7 @@ void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname)
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
-	//gStyle->SetOptFit(11111);
+	gStyle->SetOptFit(0);
 
 	graph->SetTitle(title.c_str());
 	graph->GetXaxis()->SetTitleSize(.04);

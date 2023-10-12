@@ -192,10 +192,11 @@ void DrawRatioPlot1D(TH1D *h1, TH1D *h2, std::string dataset, std::string title,
 void Run(string dataset = "Run-1a", int rebin = 1) {	
 
 	string binning = to_string(int(50*rebin));
+
 	// Get/book files
-	string finNameSimReco = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr.root";
-	string finNameSimTruth = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr.root";
-	string finNameSimAllDecays = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_allDecays_WORLD_250MeV_AQ_noVertCorr.root";
+	string finNameSimReco = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root"; // this was trackTruth before... 
+	string finNameSimTruth = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
+	string finNameSimAllDecays = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
 	string finNameData = "../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
 	if(dataset=="Run-1d") finNameData = "../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_50usStartTime_BQ_noVertCorr.root";
 
@@ -290,7 +291,7 @@ void Run(string dataset = "Run-1a", int rebin = 1) {
 
 			// data/sim
 			TH1D *h_ratio = (TH1D*)h_data_projY->Clone((stn+"_h_ratio_"+to_string(i_bin)).c_str()); // Form(stn+"_h_ratio_%d",i_bin+1));
-			h_ratio->Divide(h_simReco_projY);	
+			h_ratio->Divide(h_simReco_projY); // in the note I think this was truth... 	
 			h_ratio->Write();
 
 			DrawTH1(h_ratio, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Ratio", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_hratio_slice_"+range+"_trackReco_"+dataset, 0, 1.5);
