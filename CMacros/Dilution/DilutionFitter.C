@@ -172,7 +172,7 @@ void FitDilution(string config, TFile *fout, bool getError) {
   DilutionFit(gr, true, norm, normErr); 
   
   // Draw fit 
-  DrawDilutionFit(gr, "../../Images/Sim/"+dMu+"/DilutionAndAcceptance/dilutionFit_"+config);
+  DrawDilutionFit(gr, "../../Images/Sim/"+dMu+"/Dilution/dilutionFit_"+config);
 
   // Write to file
   fout->cd("DilutionFit");
@@ -193,7 +193,7 @@ int main() {
   bool write = true;
 
   string fname = "";
-  if(write) fname += "../../Plots/Sim/5.4e-18/DilutionAndAcceptance/dilutionFit.root";
+  if(write) fname += "../../Plots/Sim/5.4e-18/Dilution/dilutionFit.root";
   else if(!write) fname += "../../Plots/Test/dilutionFit.root";
 
   TFile *fout = new TFile(fname.c_str(), "RECREATE");

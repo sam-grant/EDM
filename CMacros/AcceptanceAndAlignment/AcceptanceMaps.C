@@ -4,6 +4,8 @@ Samuel Grant
 
 Produce theta_y vs y acceptance maps, to be used to weight the "all decays" sample. 
 
+Note: 'maps' is a bit of misnomer in this case, they're not technically acceptance maps.
+
 */
 
 #include <iostream>
@@ -59,9 +61,12 @@ void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString d
 
 // Acceptance weighting graph (3D)
 void DrawAcceptanceWeightingGraph(TGraph2D *gr, string title, string fname) { 
-
+	
 	TCanvas *c = new TCanvas("c","c",800,600);
 
+	gStyle->SetPalette(53);
+	gr->Draw("TRI1");
+	c->Update();
 	gr->SetTitle(title.c_str());
 	gr->GetXaxis()->SetTitleSize(.04);
 	gr->GetYaxis()->SetTitleSize(.04);
@@ -69,17 +74,18 @@ void DrawAcceptanceWeightingGraph(TGraph2D *gr, string title, string fname) {
 	gr->GetYaxis()->CenterTitle(1);
 	gr->GetZaxis()->CenterTitle(1);
 	gr->GetYaxis()->SetMaxDigits(4);
-	gr->GetXaxis()->SetTitleOffset(1.5);
-	gr->GetYaxis()->SetTitleOffset(1.5);
+	gr->GetXaxis()->SetTitleOffset(1.95);
+	gr->GetYaxis()->SetTitleOffset(1.95);
 	gr->GetZaxis()->SetTitleOffset(1.25);
 
-	gr->Draw(); 
+	gPad->Update();
+	
+	gr->Draw("TRI1");
 
 	c->SaveAs((fname+".pdf").c_str());
 
 	delete c;
 
-	return;
 
 }
 

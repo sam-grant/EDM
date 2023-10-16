@@ -191,26 +191,30 @@ void DrawRatioPlot1D(TH1D *h1, TH1D *h2, std::string dataset, std::string title,
 
 void Run(string dataset = "Run-1a", int rebin = 1) {	
 
+	// What's this?
 	string binning = to_string(int(50*rebin));
 
-	// Get/book files
+	// Get input files
 
-	// These should be superceded by the base histogams, which ought to have the required theta_y distributions.
-	// There was nothing special about ThetaYvsMomentum.C 
-	string finNameSimReco = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root"; // this was trackTruth before... 
-	string finNameSimTruth = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
-	string finNameSimAllDecays = "../Plots/MC/dMu/5.4e-18/Plots/thetaYvsMomentum_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
-	string finNameData = "../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
-	if(dataset=="Run-1d") finNameData = "../Plots/Data/dMu/Run-1/Plots/thetaYvsMomentum_"+dataset+"_50usStartTime_BQ_noVertCorr.root";
+	// TODO: these should ALL be superceded by the vertical angle base histogams, which ought to have the required theta_y distributions.
+	// There was nothing special about ThetaYvsMomentum.C (harsh but true)
+	// Actually it was kind of convinient, too late now I suppose.
+
+	string finNameSimReco = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_trackReco_LAB_250MeV_BQ_randCorr.root"; //  thetaYvsMomentum_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root"; // this was trackTruth before... 
+	string finNameSimTruth = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_trackTruth_LAB_250MeV_BQ_randCorr.root"; // "../../Plots/Sim/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
+	string finNameSimAllDecays = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_allDecays_LAB_250MeV_noQ_randCorr.root"; //  ../../Plots/Sim/5.4e-18/Plots/thetaYvsMomentum_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
+	string finNameData = "../../Plots/Data/Run-1/BaseHistograms/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
+	if(dataset=="Run-1d") finNameData = "../../Plots/Data/Run-1/BaseHistograms/thetaYvsMomentum_"+dataset+"_50usStartTime_BQ_noVertCorr.root";
 
 	TFile *finSimReco = TFile::Open(finNameSimReco.c_str());
 	TFile *finSimTruth = TFile::Open(finNameSimTruth.c_str());
 	TFile *finSimAllDecays = TFile::Open(finNameSimAllDecays.c_str());
 	TFile *finData = TFile::Open(finNameData.c_str());
 
-	cout<<"----> Opened files "<<finNameSimReco<<", "<<finSimTruth<<", "<<", "<<finSimReco<<", "<<finSimAllDecays<<", "<<finData<<endl;
+	cout<<"----> Opened files:\n"<<finNameSimReco<<", "<<finSimReco<<"\n"<<finNameSimTruth<<", "<<finSimTruth<<"\n"<<finNameSimAllDecays<<", "<<finSimAllDecays<<"\n"<<finNameData<<", "<<finData<<endl;
 
-	string foutName = "../Plots/MC/Acceptance/Plots/verticalAngleMomentumSlices."+dataset+".root";
+	string foutName = "../../Plots/Sim/VerticalAngleWidths/verticalAngleMomentumSlices."+dataset+".root";
+
 	TFile *fout = new TFile(foutName.c_str(), "RECREATE");
 	fout->mkdir("ratios"); fout->cd("ratios");
 
@@ -324,12 +328,12 @@ void Run(string dataset = "Run-1a", int rebin = 1) {
 
 // Make ratios data/sim in momentum bins for simple reweighting
 
-void VerticalAngleSlices() { 
+void VerticalAngleWidths() { 
 
-	//Run("Run-1a", 5); // rebin from 50 to 250 MeV
+	Run("Run-1a", 5); // rebin from 50 to 250 MeV
 	//Run("Run-1b", 5); // rebin from 50 to 250 MeV
 	//Run("Run-1c", 5); // rebin from 50 to 250 MeV
-	Run("Run-1d", 5); // rebin from 50 to 250 MeV
+	// Run("Run-1d", 5); // rebin from 50 to 250 MeV
 
 	return;
 

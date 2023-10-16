@@ -1,5 +1,0 @@
-for file in `ls /pnfs/GM2/daq/run4/nearline/nearlineHists_merged/`; do
-    run=${file##*_run}
-    run=${run%%.root*}
-    echo $run
-done

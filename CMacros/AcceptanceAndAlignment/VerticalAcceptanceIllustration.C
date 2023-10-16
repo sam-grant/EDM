@@ -2,7 +2,7 @@
 
 Samuel Grant
 
-Produce plots of theta_y in slices of y
+Produce ratio plots of theta_y in slices of y
 
 */
 
@@ -13,7 +13,7 @@ Produce plots of theta_y in slices of y
 
 using namespace std;
 
-void DrawRatioPlot1D(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string config, string slice, std::string stn = "") { 
+void DrawRatioPlot1D(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string slice, string stn = "") { 
 
 	// Mother canvas
 	TCanvas *c = new TCanvas("c", "c", 800, 600);
@@ -91,9 +91,7 @@ void DrawRatioPlot1D(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string config, 
 	l->AddEntry(h1_tracks, "Reco vertices");
 	l->Draw("SAME");
 
-	//c->SaveAs(("../../Images/Sim/Acceptance/"+config+"/"+stn+"_RatioPlot"+slice+".C").c_str());
-	c->SaveAs(("../../Images/Sim/Acceptance/"+config+"/"+stn+"_RatioPlot"+slice+".pdf").c_str());
-	c->SaveAs(("../../Images/Sim/Acceptance/"+config+"/"+stn+"_RatioPlot"+slice+".png").c_str());
+	c->SaveAs(("../../Images/Sim/Acceptance/VerticalAcceptanceIllustration/"+stn+"_RatioPlot"+slice+".pdf").c_str());
 
 	delete p1;
 	delete p2;
@@ -105,11 +103,11 @@ void DrawRatioPlot1D(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string config, 
 
 }
 
+// Get ratio graph
 TGraphErrors *GetRatioGraph(TH1D *h1, TH1D *h2) {
 
 	TGraphErrors *gr = new TGraphErrors();
 
-	cout<<"here"<<endl;
 	int counter = 0;
 
 	for(int i(0); i<h1->GetNbinsX(); i++) {
@@ -138,9 +136,7 @@ TGraphErrors *GetRatioGraph(TH1D *h1, TH1D *h2) {
 
 }
 
-void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY_tracks, std::string config, std::string slice = "", std::string stn = "") {
-
-	cout<<"----> "<<config<<" "<<slice<<endl;
+void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY_tracks, string slice, std::string stn = "") {
 
 	// Normalise projections to max bin
  	cout<<"----> Normalising to max bin"<<endl;
@@ -155,27 +151,13 @@ void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY
 
   	cout<<"----> Drawing ratio plot"<<endl;
 
-  	DrawRatioPlot1D(h2_thetaY_vs_Y_decays, h1_thetaY_decays, h1_thetaY_tracks, config, slice, stn);
-
- 	// Get ratio graph manually
- 	TGraphErrors *rg = GetRatioGraph(h1_thetaY_tracks, h1_thetaY_decays);
-
-	// What the heck? We don't use this do we?
- 	TF1 *fit = new TF1("AcceptanceFunc", "1/([0]*exp(-0.5*((x-[1])/[2])**2))", -60, 60);//, 3);
- 	fit->SetParameter(0, 1.00457);
-  	fit->SetParameter(1, 8.91755e-01);
- 	fit->SetParameter(2, 2.70153e+01);
-
- 	//TF1 *fit = new TF1("fit", "([0]+[1]*x**2)**(3/2)", -60, 60);//, 3);
- 	rg->Fit(fit);//"gaus");//	, "R");
-
- 	cout<<fit->GetChisquare()/fit->GetNDF()<<endl;
+  	DrawRatioPlot1D(h2_thetaY_vs_Y_decays, h1_thetaY_decays, h1_thetaY_tracks, slice, stn);
 
 	return;
 
 }
 
-void Run(string momSlice, int rebin = 1) {	
+void Run() {	
 
 	// Get input, always use truth
 	TString finName = "../../Plots/Sim/Acceptance/BaseHistograms/trackerAcceptancePlots.truth.root";
@@ -183,21 +165,69 @@ void Run(string momSlice, int rebin = 1) {
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
-	// Book output
-	TString foutName = "../../Plots/Sim/Acceptance/AcceptanceMaps/acceptanceMaps.thetaYvsY.truth.root";
-	TFile *fout = new TFile(foutName, "RECREATE");
-
-	// Setup output directories
-	fout->mkdir("AcceptanceWeighting");
-	fout->mkdir("AcceptanceWeighting/AllMom");
-	fout->mkdir("AcceptanceWeighting/MomBins");
-
 	// Loop thro' stations
 	vector<string> stn_ = {"S12S18", "S12", "S18"};
 
 	for(auto& stn : stn_) { 
 
 		cout<<"----> Running "<<stn<<endl;
+
+        int nSlices = 18;
+        int step = 5; 
+
+        for ( int i_slice = 0; i_slice < nSlices; i_slice++ ) { 
+
+            int lo = -45 + i_slice*step; 
+            int hi = step + lo;
+
+            std::string stepStr = to_string(lo)+"_"+to_string(hi);
+
+            TH2D *h2_thetaY_vs_Y_decays_slice = (TH2D*)fin->Get(("0_3127_MeV/AllDecays/VertPosBins/ThetaY_vs_Y_"+stepStr).c_str());
+        
+            h2_thetaY_vs_Y_decays_slice->GetXaxis()->SetRangeUser(-45, 45);
+
+            TH1D *h1_thetaY_decays_slice = (TH1D*)fin->Get(("0_3127_MeV/AllDecays/VertPosBins/ThetaY_"+stepStr).c_str());
+            TH1D *h1_thetaY_tracks_slice = (TH1D*)fin->Get(("0_3127_MeV/Tracks/VertPosBins/S12S18_ThetaY_"+stepStr).c_str());
+
+            Ratios(h2_thetaY_vs_Y_decays_slice, h1_thetaY_decays_slice, h1_thetaY_tracks_slice, "_"+stepStr, stn);
+
+        }
+
+    }
+
+	fin->Close();
+
+	return;
+            
+}
+
+int main() { 
+
+	Run();
+
+	return 0;
+
+}
+ 		// We do not need to keep re-running this stuff since it's just an illustration of what happens when you step through vertical position slices
+
+ 		// Now make ratios in slices of y
+ 		// No need to to write these to ROOT
+
+  	// Reset range for decays histogram
+/*		double xmin = h2_thetaY_vs_Y_decays->GetXaxis()->GetBinLowEdge(h2_thetaY_vs_Y_decays->FindFirstBinAbove(0));
+		double ymin = h2_thetaY_vs_Y_decays->GetXaxis()->GetBinLowEdge(h2_thetaY_vs_Y_decays->FindFirstBinAbove(0));
+		double xmax = h2_thetaY_vs_Y_decays->GetXaxis()->GetBinUpEdge(h2_thetaY_vs_Y_decays->FindLastBinAbove(0));
+		double ymax = h2_thetaY_vs_Y_decays->GetXaxis()->GetBinUpEdge(h2_thetaY_vs_Y_decays->FindLastBinAbove(0));
+		
+		h2_thetaY_vs_Y_decays->GetXaxis()->SetRangeUser(xmin, xmax);
+		h2_thetaY_vs_Y_decays->GetYaxis()->SetRangeUser(ymin, ymax);
+
+	 	Ratios(h2_thetaY_vs_Y_decays, h1_thetaY_decays, h1_thetaY_tracks, "1DRatios/Simultaneous", stn);
+
+	 	// Vertical slices to prove that we need 2D acceptance
+	  	step = 10; 
+	  	nSlices = 9;
+
 
 	  	TH2D *h2_thetaY_vs_Y_decays = (TH2D*)fin->Get((momSlice+"/AllDecays/ThetaY_vs_Y").c_str());
 	  	TH2D *h2_thetaY_vs_Y_tracks = (TH2D*)fin->Get((momSlice+"/Tracks/"+stn+"_ThetaY_vs_Y").c_str()); 
@@ -279,15 +309,6 @@ void Run(string momSlice, int rebin = 1) {
 
 }
 
-int main() { 
+*/
 
-	// theta_y vs y acceptance maps
-	// 0-3127 MeV part is really just for illustration
-
-	Run("0_3127_MeV", 1);
-	// Run("1000_2500_MeV", 1);
-
-	return 0;
-
-}
 

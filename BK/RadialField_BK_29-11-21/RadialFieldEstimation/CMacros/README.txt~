@@ -1,8 +1,0 @@
-0. Beam position histograms are under samweb caloBeamPosPlots_EDM 
-1. ReadNearlineTrees to produce calo position plots from nearline
-2. PlotCaloYvsRun to produce <y> plots 
-3. GetRefPos to produce a file for the reference position, and check for bad calos (calos 5 & 9 which are out of line in the mean subtracted plots)
-4. CheckCaloAlignment produces uncertainty due to calo misalignment
-5. EstimateRadialField to turn those <y> plots into Br plots
-	This is where all uncertainties need to be accounted for.  
-6. PlotBrVsDS to present results per dataset

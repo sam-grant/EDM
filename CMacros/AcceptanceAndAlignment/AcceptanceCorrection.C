@@ -1,7 +1,24 @@
-#include <iostream>
-#include "Utils.h"
+/*
 
-using namespace std;
+Samuel Grant
+
+Main purpose: produce A_EDM acceptance scale factors.
+
+Not sure where this comes in the analysis chain, probably after running vertical angle reweighting stuff and the alignment.
+So, that puts it at 4 or 5. 
+
+* Evaulate the impact of the acceptance weighting on "all decays" (draw A_EDM for the weighted sample)
+* Calculate A_EDM acceptance scale factors for the acceptance correction
+* Estimate the Gaussian uncertainty on said scale factors 
+* Perform this analysis with the regular samples, but also with the vertical angle width reweighted samples and the misaligned samples. 
+
+*/
+
+#include <iostream>
+
+#include "../Common/RootInclude.h"
+#include "../Common/Utils.h"
+#include "../Common/FancyDraw.h"
 
 double xmin = 1000;
 double xmax = 2500;
@@ -30,63 +47,6 @@ TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
 
 	return grOut;
 
-}
-
-void DrawTGraphErrors(TGraphErrors *graph, std::string title, std::string fname) {
-
-	TCanvas *c = new TCanvas("c","c",800,600);
-
-	graph->SetTitle(title.c_str());
-	graph->GetXaxis()->SetTitleSize(.04);
-	graph->GetYaxis()->SetTitleSize(.04);
-	graph->GetXaxis()->SetTitleOffset(1.1);
-	graph->GetYaxis()->SetTitleOffset(1.2);
-	graph->GetXaxis()->CenterTitle(true);
-	graph->GetYaxis()->CenterTitle(true);
-	graph->GetYaxis()->SetMaxDigits(4);
-	graph->SetMarkerStyle(20); //  Full circle
-	graph->Draw("AP");
-	//c->SetGridx();
-
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-	c->SaveAs((fname+".C").c_str());
-
-	delete c;
-
-	return;
-
-}
-
-
-void DrawTH1(TH1D *hist, std::string title, std::string fname) {
-
-	TCanvas *c = new TCanvas("c","c",800,600);
-
-	hist->SetTitle(title.c_str());
-
-	hist->SetStats(0);
-			
-	hist->GetXaxis()->SetTitleSize(.04);
-	hist->GetYaxis()->SetTitleSize(.04);
-	hist->GetXaxis()->SetTitleOffset(1.1);
-	hist->GetYaxis()->SetTitleOffset(1.1);
-	hist->GetXaxis()->CenterTitle(1);
-	hist->GetYaxis()->CenterTitle(1);
-	hist->GetYaxis()->SetMaxDigits(4);
-	hist->SetLineWidth(1);
-	hist->SetLineColor(1);
-	hist->SetMarkerStyle(20);
-
-	hist->Draw("P");
-	
-	c->SaveAs((fname+".C").c_str());
-	c->SaveAs((fname+".pdf").c_str());
-	c->SaveAs((fname+".png").c_str());
-
-	delete c;
-
-	return;
 }
 
 void DrawOverlayA(TGraphErrors *gr_decays, TGraphErrors *gr_tracks, TGraphErrors *gr_weight, std::string title, std::string fname) {
@@ -683,7 +643,7 @@ void OverlayAlignDiffGraphs(TGraphErrors *gr1, TGraphErrors *gr2, string shift, 
 
 */
 
-void Run(bool write, bool reweight = false, string dataset = "Run-1a") { // , string stn = "S12S18") { 
+void Run(bool write, bool reweight = false, string dataset = "Run-1a") { 
 
 	vector<string> alignStr_ = {"plus1mm", "minus1mm", "plus0.1deg", "minus0.1deg"};
 
@@ -875,8 +835,6 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") { // , st
 	} // stn loop
 
 	OverlayAcceptanceFractionsA(gr_ratio_main_, ";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/gr_AcceptanceScaleFactors_AEDM_vs_p_main_overlay");
-
-	// So dumb, vector<vector> is the wrong way around, to tired to figure out how to loop this properly
 
 	vector<TGraphErrors*> plus1mm_;
 	vector<TGraphErrors*> minus1mm_;

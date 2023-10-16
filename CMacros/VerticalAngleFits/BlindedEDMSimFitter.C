@@ -18,8 +18,8 @@ This is the second step in the EDM analysis chain, and is where the blinding is 
 // Globals
 double tmin = 7*G2PERIOD;
 double tmax = 70*G2PERIOD;
-double pmin = 0; 
-double pmax = 3000; 
+double pmin = 1000; 
+double pmax = 2500; 
 
 // Helper functions
 
@@ -220,11 +220,19 @@ void FoldWiggle(TGraphErrors *gr, const double phi, std::string config, std::str
 
   double ymin = 10; double ymax = 5e4;
 
-  DrawFoldedWiggleSim(gr_, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/FoldedWiggle_"+to_string(t_mod)+"_"+config, 0, t_mod, ymin, ymax);
+  DrawFoldedWiggleSim(gr_, ";Time modulo "+std::to_string(t_mod)+" #mus;Tracks / 149 ns", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/Wiggle/FoldedWiggle_"+to_string(t_mod)+"_"+config, 0, t_mod, ymin, ymax);
 
   return;
 
 }
+
+/*
+
+IMPORTANT: 
+
+When using the full fit function, FullEDMFuncB, the phase is obtained in the relevant momentum bin. So, this function is not used.
+
+*/
 
 // Perform five paramter fit on modulo N(t) and retreive the g-2 phase
 const double GetPhase(TFile *input, TFile *output, std::string config, std::string dMu) { 
@@ -279,13 +287,13 @@ const double GetPhase(TFile *input, TFile *output, std::string config, std::stri
   }
 
   // Draw unmodulated wiggle
-  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns", "Sim", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, ymin, ymax);
+  DrawWiggle(gr_wiggle, ";Decay time [#mus];Tracks / 149 ns", "Sim", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/Wiggle/fit_wiggle_"+config, double(h1_wiggle->GetEntries()), tmin, tmax, ymin, ymax);
 
   // Extract phase from modulated wiggle
   TF1 *modWiggle = gr_wiggle_mod->GetFunction("FiveParFunc");
 
   // Draw modualed wiggle
-  DrawModWiggleSim(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Normalised decays / 149.2 ns", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/fit_mod_wiggle_"+config, recoLabel, double(h1_wiggle_mod->GetEntries()));
+  DrawModWiggleSim(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Normalised decays / 149.2 ns", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/Wiggle/fit_mod_wiggle_"+config, recoLabel, double(h1_wiggle_mod->GetEntries()));
 
   const double phi = modWiggle->GetParameter(4);
 
@@ -404,8 +412,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     // Convert to graph
     TGraphErrors *gr_wiggle_mod = ConvertToTGraphErrors(h1_wiggle_mod);
 
-    // 5-par fit
-    FitFivePar(gr_wiggle_mod, 1.0, TAU*GMAGIC, 0.35, OMEGA_A, 0, 0, G2PERIOD);
+    // 5-par fit. Use the original phi as starting phase, why not. 
+    FitFivePar(gr_wiggle_mod, 1.0, TAU*GMAGIC, 0.35, OMEGA_A, phi, 0, G2PERIOD); 
 
     // Get function
     TF1 *f_wiggle_mod = (TF1*)gr_wiggle_mod->GetFunction("FiveParFunc");
@@ -419,6 +427,9 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     gr_wiggle_mod->SetName((stn+"Wiggle_Modulo_B").c_str()); 
     gr_wiggle_mod->Write();
 
+    // Draw modualed wiggle
+    DrawModWiggleSim(gr_wiggle_mod, ";t_{g#minus2}^{mod} [#mus];Normalised decays / 149.2 ns", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"fit_mod_wiggle_B_"+config, recoLabel, double(h1_wiggle_mod->GetEntries()), to_string(int(pmin))+" < p [MeV] < "+to_string(int(pmax)));
+    
     // Vertical angle fit
 
     // Get 2D histogram and convert to profle
@@ -432,8 +443,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
 
     // Fits
-    FullEDMFitB(gr_thetaY_mod, 0, OMEGA_A, phi, 0.0375e-6, 0, 1.0, tauGamma, A, 0, G2PERIOD); // Numerator/Demoninator
-
+    FullEDMFitB(gr_thetaY_mod, 0, OMEGA_A, phi_slice, 0.0375e-6, 0, 1.0, tauGamma, A, 0, G2PERIOD); // Numerator/Demoninator
+    
     // Get function
     TF1 *f_thetaY = gr_thetaY_mod->GetFunction("FullEDMFuncB");
 
@@ -443,14 +454,12 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
     // Draw 
     DrawFullEDMFitSim(gr_thetaY_mod,  ";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns", ("../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"edmFit_thetaY_"+config+"_"+to_string(unblind)).c_str(), "1000 < p [MeV] < 2500", recoLabel, double(nEntries), ymin_thetaY*scaleFactor, ymax_thetaY*scaleFactor, unblind);
-    
     // Write
     gr_thetaY_mod->SetName((stn+"edmFit_thetaY").c_str());
     gr_thetaY_mod->Write();
 
     // Get fit pulls
     tuple<vector<double>, vector<double>, vector<double>, vector<double>> pull_tuple = GetPulls(gr_thetaY_mod);
-    cout<<"DEBUG"<<endl;
     TGraphErrors *gr_pull = GenerateTGraphErrors(get<0>(pull_tuple), get<1>(pull_tuple), get<2>(pull_tuple), get<3>(pull_tuple));
     gr_pull->SetName((stn+"edmFit_pull_vs_t").c_str());
     gr_pull->SetTitle(";t_{g#minus2}^{mod} [#mus];Pull / 149.2 #mus");//.c_str());
@@ -486,8 +495,8 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
     TGraphErrors *gr_thetaY_vs_t_early = (TGraphErrors*)gr_thetaY_vs_t->Clone();
 
     // Fit 
-    FullEDMFitB(gr_thetaY_vs_t, Ag2, OMEGA_A, phi, Aedm, 0, 1.0, tauGamma, A, 7*G2PERIOD, 70*G2PERIOD); // xmin, xmax);
-    FullEDMFitB(gr_thetaY_vs_t_early, Ag2, OMEGA_A, phi, Aedm, 0, 1.0, tauGamma, A, 7*G2PERIOD, 15*G2PERIOD); 
+    FullEDMFitB(gr_thetaY_vs_t, Ag2, OMEGA_A, phi_slice, Aedm, 0, 1.0, tauGamma, A, 7*G2PERIOD, 70*G2PERIOD); // xmin, xmax);
+    FullEDMFitB(gr_thetaY_vs_t_early, Ag2, OMEGA_A, phi_slice, Aedm, 0, 1.0, tauGamma, A, 7*G2PERIOD, 15*G2PERIOD); 
 
     gr_thetaY_vs_t->SetName((stn+"edmFit_noMod").c_str());
     gr_thetaY_vs_t->Write();
@@ -541,35 +550,35 @@ void SimultaneousAnalysis(const double phi, TFile *input, TFile *output, std::st
 
     // Sanity plots
 
-    DrawTH1(h1_thetaY_vs_t, "h1_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"h1_thetaY_vs_t");
+    DrawTH1(h1_thetaY_vs_t, "h1_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"h1_thetaY_vs_t_"+config);
     h1_thetaY_vs_t->SetName((stn+"h1_thetaY_vs_t").c_str());
     h1_thetaY_vs_t->Draw("HIST");
     h1_thetaY_vs_t->Write();
 
-    DrawTH1(FFT_h1_thetaY_vs_t, "FFT_h1_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"FFT_h1_thetaY_vs_t");
+    DrawTH1(FFT_h1_thetaY_vs_t, "FFT_h1_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_thetaY_vs_t->GetBinWidth(1))+" MHz", "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"FFT_h1_thetaY_vs_t_"+config);
     FFT_h1_thetaY_vs_t->SetName((stn+"FFT_h1_thetaY_vs_t").c_str());
     FFT_h1_thetaY_vs_t->Draw("HIST");
     FFT_h1_thetaY_vs_t->Write();
 
     // Residuals
 
-    DrawTH1(h1_res_thetaY_vs_t, "h1_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / "+to_string(h1_res_thetaY_vs_t->GetBinWidth(1))+" #mus",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"h1_res_thetaY_vs_t");
+    DrawTH1(h1_res_thetaY_vs_t, "h1_res_thetaY_vs_t;Decay time [#mus];Residual [mrad] / "+to_string(h1_res_thetaY_vs_t->GetBinWidth(1))+" #mus",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"h1_res_thetaY_vs_t_"+config);
     h1_res_thetaY_vs_t->SetName((stn+"h1_res_thetaY_vs_t").c_str());
     h1_res_thetaY_vs_t->Draw("HIST");
     h1_res_thetaY_vs_t->Write();
 
-    DrawTH1(h1_res_thetaY_vs_t_early, "h1_res_thetaY_vs_t_early;Decay time [#mus];Residual [mrad] / "+to_string(h1_res_thetaY_vs_t_early->GetBinWidth(1))+" #mus",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"h1_res_thetaY_vs_t_early");
+    DrawTH1(h1_res_thetaY_vs_t_early, "h1_res_thetaY_vs_t_early;Decay time [#mus];Residual [mrad] / "+to_string(h1_res_thetaY_vs_t_early->GetBinWidth(1))+" #mus",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"h1_res_thetaY_vs_t_early_"+config);
     h1_res_thetaY_vs_t_early->SetName((stn+"h1_res_thetaY_vs_t_early").c_str());
     h1_res_thetaY_vs_t_early->Draw("HIST");
     h1_res_thetaY_vs_t_early->Write();
 
     // Residual FFTs
 
-    DrawTH1(FFT_h1_res_thetaY_vs_t, "FFT_h1_res_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_res_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"FFT_h1_res_thetaY_vs_t");
+    DrawTH1(FFT_h1_res_thetaY_vs_t, "FFT_h1_res_thetaY_vs_t;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_res_thetaY_vs_t->GetBinWidth(1))+" MHz",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"FFT_h1_res_thetaY_vs_t_"+config);
     FFT_h1_res_thetaY_vs_t->SetName((stn+"FFT_h1_res_thetaY_vs_t").c_str());
     FFT_h1_res_thetaY_vs_t->Write();
 
-    DrawTH1(FFT_h1_res_thetaY_vs_t_early, "FFT_h1_res_thetaY_vs_t_early;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_res_thetaY_vs_t_early->GetBinWidth(1))+" MHz",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"FFT_h1_res_thetaY_vs_t_early");
+    DrawTH1(FFT_h1_res_thetaY_vs_t_early, "FFT_h1_res_thetaY_vs_t_early;Frequency [MHz];FFT magnitude / "+to_string(FFT_h1_res_thetaY_vs_t_early->GetBinWidth(1))+" MHz",  "../../Images/Sim/"+dMu+"/VerticalAngleFitting/SimultaneousAnalysis/"+stn+"FFT_h1_res_thetaY_vs_t_early_"+config);
     FFT_h1_res_thetaY_vs_t_early->SetName((stn+"FFT_h1_res_thetaY_vs_t_early").c_str());
     FFT_h1_res_thetaY_vs_t_early->Write();
 
@@ -736,8 +745,8 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
         gr_thetaY_mod = BlindedModuloGraph(phi, f_wiggle_mod, ConvertToTGraphErrors(px_thetaY_mod), true, stn, p);
       } else gr_thetaY_mod = ConvertToTGraphErrors(px_thetaY_mod);
 
-      // Fits  
-      FullEDMFitB(gr_thetaY_mod, Ag2, OMEGA_A, phi, Aedm, 0, 1.0, tauGamma, A, 0, G2PERIOD); // Numerator/demoninator
+      // Fits, set phi to phi_slice
+      FullEDMFitB(gr_thetaY_mod, Ag2, OMEGA_A, phi_slice, Aedm, 0, 1.0, tauGamma, A, 0, G2PERIOD); // Numerator/demoninator
 
       gr_thetaY_mod->SetTitle( (stn+", "+std::to_string(lo)+" < p [MeV] < "+std::to_string(hi)+";t_{g#minus2}^{mod} [#mus];#LT#theta_{y}#GT [mrad] / 149.2 ns").c_str() );
       gr_thetaY_mod->Draw("AP");
@@ -997,11 +1006,18 @@ With reweighting:
 ./BlindedEDMSimFitter.out trackReco_LAB_250MeV_BQ_randCorr 5.4e-18 true Run-1a S12S18
 ./BlindedEDMSimFitter.out trackTruth_LAB_250MeV_BQ_randCorr 5.4e-18 true Run-1a S12S18
 
+Misalignment: 
+
+./BlindedEDMSimFitter.out trackTruth_LAB_250MeV_BQ_randCorr_plus1mm. 5.4e-18 true none none
+./BlindedEDMSimFitter.out trackTruth_LAB_250MeV_BQ_randCorr_minus1mm 5.4e-18 true none none
+./BlindedEDMSimFitter.out trackTruth_LAB_250MeV_BQ_randCorr_plus0.1deg 5.4e-18 true none none
+./BlindedEDMSimFitter.out trackTruth_LAB_250MeV_BQ_randCorr_minus0.1deg 5.4e-18 true none none
+
 */
 
 int main(int argc, char *argv[]) {
 
-  string config= argv[1]; // e.g. <recoType>_<refFrame>_<binWidth>_<qualityInfo>_<corrInfo>
+  string config= argv[1]; // e.g. <recoType>_<refFrame>_<binWidth>_<qualityInfo>_<corrInfo>_<alignInfo>
   string dMu = argv[2]; // Option to run with different injected EDM
   string unblindStr = argv[3]; // true or false
   string dataset = argv[4]; // none, Run-1a, Run-1b, Run-1c, Run-1d

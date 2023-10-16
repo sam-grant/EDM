@@ -1,1 +1,0 @@
-string blindingString = "Though this be madness, yet there is method in't";

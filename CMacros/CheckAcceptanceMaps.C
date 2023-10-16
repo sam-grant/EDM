@@ -1,6 +1,6 @@
 {
 
-	TFile *fin = TFile::Open("../Plots/MC/Acceptance/Plots/acceptanceWeightingPlots.thetaYvsY.truth.root");
+	TFile *fin = TFile::Open("../../Plots/Sim/Acceptance/AcceptanceMaps/acceptanceMaps.thetaYvsY.truth.root");
 
 	TH2D *h2 = (TH2D*)fin->Get("AcceptanceWeighting/AllMom/S12S18_WeightMapY");
 	TGraph2D *gr = (TGraph2D*)fin->Get("AcceptanceWeighting/AllMom/S12S18_WeightGraphY");
