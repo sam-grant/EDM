@@ -104,32 +104,20 @@ string RecoLabel(std::string config) {
 
 }
 
-// !!! Need to create the source file for this !!!
+// Vertical angle width reweighting for theta_y vs t_mod
 TH2D *ReweightedHist(TH2D *h1, string ds, string slice, string stn = "S12S18") {
 
+  // Clone input histogram to prevent memory issues
   TH2D *h1_rw = (TH2D*)h1->Clone("h1_rw");
 
   // File for reweighting
-  TFile *f = TFile::Open(("../Plots/Sim/Acceptance/Plots/verticalAngleMomentumSlices."+ds+".root").c_str());
+  TFile *f = TFile::Open(("../../Plots/Sim/VerticalAngleWidths/verticalAngleDataSimRatios."+ds+".root").c_str());
 
-  // Could use some rewriting!
-  string name;
-  if(slice=="0_250") name = "ratios/"+stn+"_h_ratio_0";
-  else if(slice=="250_500") name = "ratios/"+stn+"_h_ratio_1";
-  else if(slice=="500_750") name = "ratios/"+stn+"_h_ratio_2";
-  else if(slice=="750_1000") name = "ratios/"+stn+"_h_ratio_3";
-  else if(slice=="1000_1250") name = "ratios/"+stn+"_h_ratio_4";
-  else if(slice=="1250_1500") name = "ratios/"+stn+"_h_ratio_5";
-  else if(slice=="1500_1750") name = "ratios/"+stn+"_h_ratio_6";
-  else if(slice=="1750_2000") name = "ratios/"+stn+"_h_ratio_7";
-  else if(slice=="2000_2250") name = "ratios/"+stn+"_h_ratio_8";
-  else if(slice=="2250_2500") name = "ratios/"+stn+"_h_ratio_9";
-  else if(slice=="2500_2750") name = "ratios/"+stn+"_h_ratio_10";
-  else if(slice=="2750_3000") name = "ratios/"+stn+"_h_ratio_11";
-
+  // Get ratio
+  string name = "ThetaYDataSimRatio/"+stn+"_h_ratio_"+slice+"MeV";
   TH1D *h2 = (TH1D*)f->Get(name.c_str());
 
-  // Loop thro' reweight 
+  // Loop thro' bins
   for(int i(0); i<h1->GetNbinsX(); i++) {
 
     for(int j(0); j<h1->GetNbinsY(); j++) { 
@@ -150,7 +138,6 @@ TH2D *ReweightedHist(TH2D *h1, string ds, string slice, string stn = "S12S18") {
     }
 
   }
-
 
   f->Close();
 

@@ -340,7 +340,7 @@ void Run(string dataset = "Run-1a", int rebin = 1) {
 			// Use comparison with between data and truth tracks
 			// I think an argument could be made for reco as well...
 
-			TH1D *h_ratio = (TH1D*)h_data_projY->Clone((stn+"_h_ratio_"+to_string(i_bin)).c_str()); 
+			TH1D *h_ratio = (TH1D*)h_data_projY->Clone((stn+"_h_ratio_"+range).c_str()); 
 			h_ratio->Divide(h_simReco_projY); 
 			h_ratio->Write();
 
