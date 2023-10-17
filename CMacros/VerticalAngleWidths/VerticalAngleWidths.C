@@ -1,3 +1,19 @@
+/*
+
+Samuel Grant
+
+Produce data/sim ratios of theta_y, used for reweighting theta_y and evaluating the impact of the different vertical angle widths.
+
+*/
+
+#include <iostream>
+
+#include "../Common/RootInclude.h"
+#include "../Common/Utils.h"
+#include "../Common/FancyDraw.h"
+
+using namespace std;
+
 void DrawManyTH1(vector<TH1D*> h_, string title, string fname, double xmin = 0, double xmax = 1, double ymin = 0, double ymax = 1) {
 
 	TCanvas *c = new TCanvas("c","c",800,600);
@@ -42,7 +58,7 @@ void DrawManyTH1(vector<TH1D*> h_, string title, string fname, double xmin = 0, 
 
 	//c->SetLogy();	
 
-	c->SaveAs((fname+".png").c_str());
+	//c->SaveAs((fname+".png").c_str());
 	c->SaveAs((fname+".pdf").c_str());
 
 	delete c;
@@ -74,7 +90,7 @@ void DrawTH1(TH1D *hist, std::string title, std::string fname, double ymin, doub
 
 	//->SetLogy();
 	
-	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".pdf").c_str());
 	//c->SaveAs((fname+".C").c_str());
 
 	delete c;
@@ -109,7 +125,7 @@ void DrawTwoTH1(TH1D *h1, TH1D *h2, std::string title, std::string fname, double
 
 	//->SetLogy();
 	
-	c->SaveAs((fname+".png").c_str());
+	c->SaveAs((fname+".pdf").c_str());
 	//c->SaveAs((fname+".C").c_str());
 
 	delete c;
@@ -175,9 +191,10 @@ void DrawRatioPlot1D(TH1D *h1, TH1D *h2, std::string dataset, std::string title,
 	l->SetTextSize(24);
 	l->SetTextFont(44);
 	l->AddEntry(h1, ("Data: "+dataset).c_str());
-	l->AddEntry(h2, "Sim: reco vertices");
+	l->AddEntry(h2, "Sim: truth vertices");
 	l->Draw("SAME");
 
+	c->SaveAs((fname+".pdf").c_str());
 	c->SaveAs((fname+".png").c_str());
 
 	delete p1;
@@ -190,21 +207,18 @@ void DrawRatioPlot1D(TH1D *h1, TH1D *h2, std::string dataset, std::string title,
 }
 
 void Run(string dataset = "Run-1a", int rebin = 1) {	
-
-	// What's this?
-	string binning = to_string(int(50*rebin));
+	
+	// Define binning 
+	string binning = to_string(int(10*rebin));
 
 	// Get input files
+	// Inputs have been superceded by the vertical angle base histogams compared to the thesis version 
 
-	// TODO: these should ALL be superceded by the vertical angle base histogams, which ought to have the required theta_y distributions.
-	// There was nothing special about ThetaYvsMomentum.C (harsh but true)
-	// Actually it was kind of convinient, too late now I suppose.
-
+	string finNameSimAllDecays = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_allDecays_LAB_250MeV_noQ_randCorr.root"; //  ../../Plots/Sim/5.4e-18/Plots/thetaYvsMomentum_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
 	string finNameSimReco = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_trackReco_LAB_250MeV_BQ_randCorr.root"; //  thetaYvsMomentum_trackReco_WORLD_250MeV_BQ_noVertCorr_full.root"; // this was trackTruth before... 
 	string finNameSimTruth = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_trackTruth_LAB_250MeV_BQ_randCorr.root"; // "../../Plots/Sim/5.4e-18/Plots/thetaYvsMomentum_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
-	string finNameSimAllDecays = "../../Plots/Sim/5.4e-18/BaseHistograms/edmPlots_allDecays_LAB_250MeV_noQ_randCorr.root"; //  ../../Plots/Sim/5.4e-18/Plots/thetaYvsMomentum_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
-	string finNameData = "../../Plots/Data/Run-1/BaseHistograms/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
-	if(dataset=="Run-1d") finNameData = "../../Plots/Data/Run-1/BaseHistograms/thetaYvsMomentum_"+dataset+"_50usStartTime_BQ_noVertCorr.root";
+	string finNameData = "../../Plots/Data/Run-1/BaseHistograms/edmPlots_"+dataset+"_250MeV_randCorr_BQ.root"; // ../../Plots/Data/Run-1/BaseHistograms/thetaYvsMomentum_"+dataset+"_BQ_noVertCorr.root";
+	if(dataset=="Run-1d") finNameData = "../../Plots/Data/Run-1/BaseHistograms/edmPlots_"+dataset+"_50usStartTime_250MeV_randCorr_BQ.root"; //  ../../Plots/Data/Run-1/BaseHistograms/thetaYvsMomentum_"+dataset+"_50usStartTime_BQ_noVertCorr.root";
 
 	TFile *finSimReco = TFile::Open(finNameSimReco.c_str());
 	TFile *finSimTruth = TFile::Open(finNameSimTruth.c_str());
@@ -213,104 +227,134 @@ void Run(string dataset = "Run-1a", int rebin = 1) {
 
 	cout<<"----> Opened files:\n"<<finNameSimReco<<", "<<finSimReco<<"\n"<<finNameSimTruth<<", "<<finSimTruth<<"\n"<<finNameSimAllDecays<<", "<<finSimAllDecays<<"\n"<<finNameData<<", "<<finData<<endl;
 
-	string foutName = "../../Plots/Sim/VerticalAngleWidths/verticalAngleMomentumSlices."+dataset+".root";
-
+	// Book & setup output
+	string foutName = "../../Plots/Sim/VerticalAngleWidths/verticalAngleDataSimRatios."+dataset+".root";
 	TFile *fout = new TFile(foutName.c_str(), "RECREATE");
-	fout->mkdir("ratios"); fout->cd("ratios");
+	fout->mkdir("ThetaYDataSimRatio"); fout->cd("ThetaYDataSimRatio"); // directory
 
-	TH2D *h_simAllDecays = (TH2D*)finSimAllDecays->Get("SanityPlots/ThetaY_vs_Momentum");
-	h_simAllDecays->RebinX(2);
+	// ---------- Illustration of theta_y in momentum slices for all decays ---------- 
+
+	// Get all decays histogram
+	TH2D *h_simAllDecays = (TH2D*)finSimAllDecays->Get("SimultaneousAnalysis/ThetaY_vs_Momentum_NoCuts");
+	
+	// Rebin and normalise
+	h_simAllDecays->RebinX(rebin);
 	h_simAllDecays->Scale(1./h_simAllDecays->GetMaximum());
 
+	// Container for projections per momentum slice
 	vector<TH1D*> h_simAllDecays_projY_; 
 
+	// Counter
 	int count = 0;
 
+	// Loop through momentum bins
 	for(int i_bin(0); i_bin<h_simAllDecays->GetNbinsX(); i_bin++) { 
 
+		// Get projection
 		TH1D *h_simAllDecays_projY = (TH1D*)h_simAllDecays->ProjectionY(Form("py_simAllDecays_%d",i_bin+1), i_bin+1, i_bin+1); // first and last bin
 
+		// Store if there are entries in this momentum bin
 		if(h_simAllDecays_projY->GetEntries() != 0) {
 			h_simAllDecays_projY_.push_back(h_simAllDecays_projY);
+			// Iterate counter
 			count++;
 		}
 
 	}
 
-	DrawManyTH1(h_simAllDecays_projY_, "All decays / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../Images/VerticalAngleDists/Projections/thetaY_"+binning+"MeVslices_allDecays_WORLD_250MeV_AQ_noVertCorr", -200, 200, 0, 1.1);
+	// Overlay the projections 
+	DrawManyTH1(h_simAllDecays_projY_, "All decays / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/h1_thetaY_"+binning+"MeV_allDecays_LAB_250MeV_noQ_randCorr", -200, 200, 0, 1.1);
 
-	// Get histograms
+	// ----------------------------------------------------------------------------------
+
+	// Now for tracks 
+
+	// Loop thro' stations 
 	vector<string> stn_ = {"S12", "S18", "S12S18"};
 
 	for(auto& stn : stn_) { 
 
-		TH2D *h_simReco = (TH2D*)finSimReco->Get(("SanityPlots/"+stn+"_ThetaY_vs_Momentum").c_str());
-		TH2D *h_simTruth = (TH2D*)finSimTruth->Get(("SanityPlots/"+stn+"_ThetaY_vs_Momentum").c_str());
-		TH2D *h_data = (TH2D*)finData->Get(("SanityPlots/"+stn+"_ThetaY_vs_Momentum").c_str());
+		TH2D *h_simReco = (TH2D*)finSimReco->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Momentum_VertexCuts").c_str());
+		TH2D *h_simTruth = (TH2D*)finSimTruth->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Momentum_VertexCuts").c_str());
+		TH2D *h_data = (TH2D*)finData->Get(("SimultaneousAnalysis/"+stn+"_ThetaY_vs_Momentum_VertexCuts").c_str()); 
 
-		// rebin
+		cout<<"\n---> Got histograms for "<<stn<<": "<<", "<<h_simReco<<", "<<h_simTruth<<", "<<h_data<<endl;
+
+		// Rebin
 		h_simReco->RebinX(rebin);
 		h_simTruth->RebinX(rebin);
 		h_data->RebinX(rebin);
 
+		// Normalise
 		if (h_simReco->GetSumw2N() == 0) h_simReco->Sumw2(kTRUE);
+		if (h_simTruth->GetSumw2N() == 0) h_simTruth->Sumw2(kTRUE);
  		if (h_data->GetSumw2N() == 0) h_data->Sumw2(kTRUE);
 
 		h_simReco->Scale(1./h_simReco->GetMaximum());
 		h_simTruth->Scale(1./h_simTruth->GetMaximum());
 		h_data->Scale(1./h_data->GetMaximum());
 
-		cout<<"\n---> Got histograms for "<<stn<<": "<<", "<<h_simReco<<", "<<h_simTruth<<", "<<h_data<<endl;
+		// Slice momentum and project
 
-		// Slice bins and project
-
-		// containers
+		// Containers
 		vector<TH1D*> h_simTruth_projY_;
 		vector<TH1D*> h_simReco_projY_;
-		vector<TH1D*> h_data_projY_; // vector<TH1D*> h_simAllDecays_projY_; 
+		vector<TH1D*> h_data_projY_; 
+		vector<TH1D*> h_ratio_; 
 
+		// Momentum bin loop
 		for(int i_bin(0); i_bin<h_simReco->GetNbinsX(); i_bin++) { 
-
+			
+			// Project
 			TH1D *h_simReco_projY = (TH1D*)h_simReco->ProjectionY(Form("py_simReco_%d",i_bin+1), i_bin+1, i_bin+1); // first and last bin
 			TH1D *h_simTruth_projY = (TH1D*)h_simTruth->ProjectionY(Form("py_simTruth_%d",i_bin+1), i_bin+1, i_bin+1); 
 			TH1D *h_data_projY = (TH1D*)h_data->ProjectionY(Form("py_data_%d",i_bin+1), i_bin+1, i_bin+1); 
 
+			// Store
 			if(h_simReco_projY->GetEntries() != 0) h_simReco_projY_.push_back(h_simReco_projY);
 			if(h_simTruth_projY->GetEntries() != 0) h_simTruth_projY_.push_back(h_simTruth_projY);
 			if(h_data_projY->GetEntries() != 0) h_data_projY_.push_back(h_data_projY);
 
 			// Draw reco and data in analysis range on the same plot
-			string lowEdge = to_string(int(h_simReco->GetXaxis()->GetBinLowEdge(i_bin+1)));
-			string upEdge = to_string(int(h_simReco->GetXaxis()->GetBinUpEdge(i_bin+1)));
+			string lowEdge = to_string(int(h_simTruth->GetXaxis()->GetBinLowEdge(i_bin+1)));
+			string upEdge = to_string(int(h_simTruth->GetXaxis()->GetBinUpEdge(i_bin+1)));
 			string range = lowEdge+"_"+upEdge+"MeV";
 
-			//if(h_simReco->GetXaxis()->GetBinLowEdge(i_bin+1) < 1000 || h_simReco->GetXaxis()->GetBinLowEdge(i_bin+1) > 2500) continue;
-
-			// Normalise again
+			// Normalise again, why?
 			if (h_data_projY->GetSumw2N() == 0) h_data_projY->Sumw2(kTRUE);
- 			if (h_simReco_projY->GetSumw2N() == 0) h_simReco_projY->Sumw2(kTRUE);
+			if (h_simReco_projY->GetSumw2N() == 0) h_simReco_projY->Sumw2(kTRUE);
+ 			if (h_simTruth_projY->GetSumw2N() == 0) h_simTruth_projY->Sumw2(kTRUE);
 
 			h_data_projY->Scale(1./h_data_projY->GetMaximum());
+			h_simTruth_projY->Scale(1./h_simTruth_projY->GetMaximum());
 			h_simReco_projY->Scale(1./h_simReco_projY->GetMaximum());
 
-			DrawTwoTH1(h_data_projY, h_simReco_projY, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Normalised entries", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_slice_"+range+"_trackReco_"+dataset, -60, 60);
-			DrawRatioPlot1D(h_data_projY, h_simReco_projY, dataset, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Normalised entries", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_ratio_slice_"+range+"_trackReco_"+dataset, -60, 60);
+			// Draw comparisons
+			// DrawTwoTH1(h_data_projY, h_simReco_projY, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_slice_"+range+"_trackReco_"+dataset, -60, 60);
+			// DrawRatioPlot1D(h_data_projY, h_simReco_projY, dataset, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_ratio_slice_"+range+"_trackReco_"+dataset, -60, 60);
 
-			// data/sim
-			TH1D *h_ratio = (TH1D*)h_data_projY->Clone((stn+"_h_ratio_"+to_string(i_bin)).c_str()); // Form(stn+"_h_ratio_%d",i_bin+1));
-			h_ratio->Divide(h_simReco_projY); // in the note I think this was truth... 	
+			// DrawTwoTH1(h_data_projY, h_simTruth_projY, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_slice_"+range+"_trackTruth_"+dataset, -60, 60);
+			DrawRatioPlot1D(h_data_projY, h_simTruth_projY, dataset, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_ratio_"+range+"_trackTruth_"+dataset, -60, 60);
+			
+			// data/sim ratio
+			// Use comparison with between data and truth tracks
+			// I think an argument could be made for reco as well...
+
+			TH1D *h_ratio = (TH1D*)h_data_projY->Clone((stn+"_h_ratio_"+to_string(i_bin)).c_str()); 
+			h_ratio->Divide(h_simReco_projY); 
 			h_ratio->Write();
 
-			DrawTH1(h_ratio, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Ratio", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_hratio_slice_"+range+"_trackReco_"+dataset, 0, 1.5);
-			//h_ratio->Write();
-
+			// DrawTH1(h_ratio, lowEdge+"-"+upEdge+" MeV;#theta_{y} [mrad];Ratio", "../../Images/Sim/VerticalAngleWidths/Ratios/"+stn+"_thetaY_ratio_slice_"+range+"_trackTruth_"+dataset, 0, 1.5);
+			
+			// Store
+			h_ratio_.push_back(h_ratio);
 		}
 
 		// Draw for every station
-		DrawManyTH1(h_simReco_projY_, "Reco vertices / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_"+binning+"MeVslices_trackReco_WORLD_250MeV_BQ_noVertCorr", -60, 60, 0, 1.1);
-		DrawManyTH1(h_simTruth_projY_, "Truth vertices / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_"+binning+"MeVslices_trackTruth_WORLD_250MeV_BQ_noVertCorr", -60, 60, 0, 1.1);
-		DrawManyTH1(h_data_projY_, dataset+" / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../Images/VerticalAngleDists/Projections/"+stn+"_thetaY_"+binning+"MeVslices_"+dataset+"_BQ_noVertCorr", -60, 60, 0, 1.1);
-
+		DrawManyTH1(h_simReco_projY_, "Reco vertices / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_"+binning+"MeVslices_trackReco_WORLD_250MeV_BQ_noVertCorr", -60, 60, 0, 1.1);
+		DrawManyTH1(h_simTruth_projY_, "Truth vertices / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_"+binning+"MeVslices_trackTruth_WORLD_250MeV_BQ_noVertCorr", -60, 60, 0, 1.1);
+		DrawManyTH1(h_data_projY_, dataset+" / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/Projections/"+stn+"_thetaY_"+binning+"MeVslices_"+dataset+"_BQ_noVertCorr", -60, 60, 0, 1.1);
+		// DrawManyTH1(h_ratio_, dataset+" / "+binning+" MeV;#theta_{y} [mrad];Normalised entries", "../../Images/Sim/VerticalAngleWidths/"+stn+"_thetaY_ratio_trackTruth_LAB_250MeV_BQ_randCorr", -60, 60, 0, 1.1);
 	}
 
 	finData->Close();
@@ -326,15 +370,15 @@ void Run(string dataset = "Run-1a", int rebin = 1) {
 
 }
 
-// Make ratios data/sim in momentum bins for simple reweighting
+// Make ratios data/sim in momentum bins for reweighting
 
-void VerticalAngleWidths() { 
+int main() { 
 
-	Run("Run-1a", 5); // rebin from 50 to 250 MeV
-	//Run("Run-1b", 5); // rebin from 50 to 250 MeV
-	//Run("Run-1c", 5); // rebin from 50 to 250 MeV
-	// Run("Run-1d", 5); // rebin from 50 to 250 MeV
+	Run("Run-1a", 25); // rebin from 10 to 250 MeV
+	Run("Run-1b", 25); // rebin from 10 to 250 MeV
+	Run("Run-1c", 25); // rebin from 10 to 250 MeV
+	Run("Run-1d", 25); // rebin from 10 to 250 MeV
 
-	return;
+	return 0;
 
 }
