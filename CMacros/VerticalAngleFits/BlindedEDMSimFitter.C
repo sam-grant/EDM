@@ -105,13 +105,14 @@ string RecoLabel(std::string config) {
 }
 
 // Vertical angle width reweighting for theta_y vs t_mod
-TH2D *ReweightedHist(TH2D *h1, string ds, string slice, string stn = "S12S18") {
+TH2D *ReweightedHist(TH2D *h1, string ds, string slice, string histOutName, string stn = "S12S18") {
 
   // Clone input histogram to prevent memory issues
-  TH2D *h1_rw = (TH2D*)h1->Clone("h1_rw");
+  TH2D *h1_rw = (TH2D*)h1->Clone(histOutName.c_str());
 
   // File for reweighting
-  TFile *f = TFile::Open(("../../Plots/Sim/VerticalAngleWidths/verticalAngleDataSimRatios."+ds+".root").c_str());
+  string reweightFinName = "../../Plots/Sim/VerticalAngleReweight/verticalAngleDataSimRatios."+ds+".root";
+  TFile *f = TFile::Open(reweightFinName.c_str());
 
   // Get ratio
   string name = "ThetaYDataSimRatio/"+stn+"_h_ratio_"+slice+"MeV";
@@ -593,6 +594,9 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
   double Ag2 = .0; double Aedm = .35;
   string dname = "dMu"; 
 
+  // Setup output for reweighting verification
+  if(reweight) output->mkdir("MomentumBinnedAnalysis/Reweighting"); 
+
   cout<<"---> MomentumBinnedAnalysis"<<endl;
 
   for(int i_stn = 0; i_stn < stn_.size(); i_stn++) {
@@ -600,9 +604,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     TGraphErrors* AEDM_vs_p_thetaY;
     TGraphErrors* Ag2_vs_p_thetaY;
     TGraphErrors* c_vs_p_thetaY;
-    TGraphErrors* AEDM_vs_p_A;
-    TGraphErrors* Ag2_vs_p_A;
-    TGraphErrors* c_vs_p_A;
+    TGraphErrors* thetaY_mean_vs_p;
     TGraphErrors* thetaY_RMS_vs_p;
     TGraphErrors* Y_RMS_vs_p;
     TGraphErrors* pY_RMS_vs_p;
@@ -613,26 +615,16 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     TGraphErrors* AEDMOverMaxDiff_vs_p;
     TGraphErrors* AEDMOverThetaYRMS_vs_p;
 
-    std::vector<double> p_;
-    std::vector<double> ep_;
-
-    // Theta Y mod
-    std::vector<double> c_thetaY_;
-    std::vector<double> ec_thetaY_;
-    std::vector<double> AEDM_thetaY_;
-    std::vector<double> eAEDM_thetaY_;
-    std::vector<double> Ag2_thetaY_;
-    std::vector<double> eAg2_thetaY_;
-
-    // Asymmetry mod
-    std::vector<double> c_A_;
-    std::vector<double> ec_A_;
-    std::vector<double> AEDM_A_;
-    std::vector<double> eAEDM_A_;
-    std::vector<double> Ag2_A_;
-    std::vector<double> eAg2_A_;
-
-    // Extra scans
+    vector<double> p_;
+    vector<double> ep_;
+    vector<double> c_thetaY_;
+    vector<double> ec_thetaY_;
+    vector<double> AEDM_thetaY_;
+    vector<double> eAEDM_thetaY_;
+    vector<double> Ag2_thetaY_;
+    vector<double> eAg2_thetaY_;
+    vector<double> thetaY_mean_;
+    vector<double> e_thetaY_mean_;
     vector<double> thetaY_RMS_;
     vector<double> e_thetaY_RMS_;
     vector<double> Y_RMS_;
@@ -719,8 +711,23 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
       p_.push_back(p);
       ep_.push_back(ep);
 
-      // Reweight again 
-      if(reweight) h2_thetaY_mod = ReweightedHist(h2_thetaY_mod, dataset, momSlice, station);
+      // Reweight
+      if(reweight) {
+        
+        string histName = string(h2_thetaY_mod->GetName());
+
+        // Clone original
+        TH2D *h2_thetaY_mod_original = (TH2D*)h2_thetaY_mod->Clone( (histName + "_Original").c_str() );
+
+        h2_thetaY_mod = ReweightedHist(h2_thetaY_mod, dataset, momSlice, histName + "_Reweighted",  station);
+
+        output->cd("MomentumBinnedAnalysis/Reweighting");
+        
+        // Write both 
+        h2_thetaY_mod_original->Write(); // original
+        h2_thetaY_mod->Write(); // weighted
+      
+      }
 
       // Make profile
       TH1D *px_thetaY_mod = h2_thetaY_mod->ProfileX();
@@ -759,7 +766,7 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
 
       // Clean up pointers
-      delete h2_thetaY_mod;
+      delete h2_thetaY_mod; // need to write this out if reweighting
       delete px_thetaY_mod;
       delete gr_thetaY_mod;
 
@@ -767,6 +774,12 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
 
       std::string thetaYHistName = "MomentumBinnedAnalysis/"+stn+"ThetaY_"+momSlice;
       TH1D *thetaYHist = (TH1D*)input->Get((thetaYHistName).c_str());
+
+      double thetaYMean = thetaYHist->GetMean();
+      double e_thetaYMean = thetaYHist->GetMeanError();
+
+      thetaY_mean_.push_back(thetaYMean);
+      e_thetaY_mean_.push_back(e_thetaYMean); 
 
       double thetaYRMS = thetaYHist->GetRMS();
       double e_thetaYRMS = thetaYHist->GetRMSError();
@@ -836,6 +849,11 @@ void MomentumBinnedAnalysis(const double phi, TFile *input, TFile *output, std::
     c_vs_p_thetaY->Write();
     AEDM_vs_p_thetaY->Write();
     Ag2_vs_p_thetaY->Write();
+
+    thetaY_mean_vs_p = GenerateTGraphErrors(p_, thetaY_mean_, ep_, e_thetaY_mean_);
+    DrawScanGraph(thetaY_mean_vs_p, stn+";Decay vertex momentum [MeV];#LT#theta_{y}#GT [mrad] / "+to_string(step)+" MeV", ("../../Images/Sim/"+dMu+"/VerticalAngleFitting/MomentumBinnedAnalysis/"+stn+"theta_Y_mean_vs_p_"+config+"_"+to_string(unblind)).c_str(), step, false);
+    thetaY_mean_vs_p->SetName((stn+"thetaY_mean_vs_p").c_str());
+    thetaY_mean_vs_p->Write();
 
     thetaY_RMS_vs_p = GenerateTGraphErrors(p_, thetaY_RMS_, ep_, e_thetaY_RMS_);
     DrawScanGraph(thetaY_RMS_vs_p, stn+";Decay vertex momentum [MeV];#sigma#theta_{y} [mrad] / "+to_string(step)+" MeV", ("../../Images/Sim/"+dMu+"/VerticalAngleFitting/MomentumBinnedAnalysis/"+stn+"theta_Y_RMS_vs_p_"+config+"_"+to_string(unblind)).c_str(), step, false);
