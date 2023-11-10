@@ -4,8 +4,6 @@ Samuel Grant
 
 Produce theta_y vs y acceptance maps, to be used to weight the "all decays" sample. 
 
-Note: 'maps' is a bit of misnomer in this case, they're not technically acceptance maps.
-
 */
 
 #include <iostream>
@@ -17,7 +15,7 @@ Note: 'maps' is a bit of misnomer in this case, they're not technically acceptan
 using namespace std;
 
 // Draw acceptance weighting map (2D)
-void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString drawOption) { //";Decay y-position [mm];#theta_{y} [mrad];Ratio", "../../Images/Sim/Acceptance/BaseHistograms/h2_thetaY_vs_Y_ratio");
+void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString drawOption) { 
 
 	TCanvas *c = new TCanvas("c","c",800,600);
 
@@ -117,8 +115,8 @@ TH2D *AcceptanceWeightingMap(TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_t
   		h2_thetaY_vs_Y_tracks_clone->GetXaxis()->SetRangeUser(-60, 60);
   		h2_thetaY_vs_Y_tracks_clone->GetYaxis()->SetRangeUser(-100, 100);
 
-		DrawTH2(h2_thetaY_vs_Y_decays_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../../Images/Sim/Acceptance/AcceptanceMaps/h2_thetaY_vs_Y_decays_normTest"+stepStr);
-		DrawTH2(h2_thetaY_vs_Y_tracks_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../../Images/Sim/Acceptance/AcceptanceMaps/h2_thetaY_vs_Y_tracks_normTest"+stepStr);
+		DrawTH2(h2_thetaY_vs_Y_decays_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/h2_thetaY_vs_Y_decays_normTest"+stepStr);
+		DrawTH2(h2_thetaY_vs_Y_tracks_clone, (title+";y [mm];#theta_{y} [mrad]").c_str(), "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/h2_thetaY_vs_Y_tracks_normTest"+stepStr);
 
 	}
 
@@ -147,13 +145,13 @@ TH2D *AcceptanceWeightingMap(TH2D *h2_thetaY_vs_Y_decays, TH2D *h2_thetaY_vs_Y_t
 void Run(string momSlice, int rebin = 1) {	
 
 	// Get input, always use truth
-	TString finName = "../../Plots/Sim/Acceptance/BaseHistograms/trackerAcceptancePlots.truth.root";
+	TString finName = "../../Plots/Sim/AcceptanceAndAlignment/BaseHistograms/trackerAcceptancePlots.truth.root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
 
 	// Book output
-	TString foutName = "../../Plots/Sim/Acceptance/AcceptanceMaps/acceptanceMaps.thetaYvsY.truth.root";
+	TString foutName = "../../Plots/Sim/AcceptanceAndAlignment/AcceptanceMaps/acceptanceMaps.thetaYvsY.truth.root";
 	TFile *fout = new TFile(foutName, "RECREATE");
 
 	// Setup output directories
@@ -186,12 +184,12 @@ void Run(string momSlice, int rebin = 1) {
 		cout<<"----> Created weight maps " << acceptanceWeightingMapY << endl; // ", " << acceptanceWeightingMapR << ", " << acceptanceWeightingMapPhi << " for all momentum"<<endl;
 		
 		// Draw
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../../Images/Sim/Acceptance/AcceptanceMaps/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ");
-		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../../Images/Sim/Acceptance/AcceptanceMaps/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/"+stn+"_AcceptanceMapY_"+momSlice, "COLZ");
+		DrawAcceptanceWeightingMap(acceptanceWeightingMapY, stn+";y [mm];#theta_{y} [mrad]", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/"+stn+"_AcceptanceSurfaceY_"+momSlice, "SURF2");
 
 		// Reproduce as 2D graphs for interpolation
 		TGraph2D *acceptanceWeightingGraphY = ConvertToTGraph2D(acceptanceWeightingMapY);
-		DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../../Images/Sim/Acceptance/AcceptanceMaps/"+stn+"_AcceptanceGraphY_"+momSlice);
+		DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/"+stn+"_AcceptanceGraphY_"+momSlice);
 		string graph2DName = stn+"_WeightGraphY";
 		acceptanceWeightingGraphY->SetName(graph2DName.c_str());
 		acceptanceWeightingGraphY->Write();
@@ -226,11 +224,11 @@ void Run(string momSlice, int rebin = 1) {
 
 			cout << "----> Creating regular weight maps " << acceptanceWeightingMapY_momSlice << " for momentum bin: " << lo << " < p [MeV] < " << hi << endl;
 
-			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../../Images/Sim/Acceptance/AcceptanceMaps/MomBins/"+stn+"_AcceptanceMapY_"+stepStr, "COLZ");
-			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../../Images/Sim/Acceptance/AcceptanceMaps/MomBins/"+stn+"_AcceptanceSurfaceY_"+stepStr, "SURF2");
+			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/MomBins/"+stn+"_AcceptanceMapY_"+stepStr, "COLZ");
+			DrawAcceptanceWeightingMap(acceptanceWeightingMapY_momSlice, to_string(lo)+" < p [MeV] < "+to_string(hi), "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/MomBins/"+stn+"_AcceptanceSurfaceY_"+stepStr, "SURF2");
 
 			TGraph2D *acceptanceWeightingGraphY_momSlice = ConvertToTGraph2D(acceptanceWeightingMapY_momSlice);
-			if(acceptanceWeightingMapY_momSlice->GetEntries()!=0) DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY_momSlice, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../../Images/Sim/Acceptance/AcceptanceMaps/MomBins/"+stn+"_AcceptanceGraphY_"+stepStr);
+			if(acceptanceWeightingMapY_momSlice->GetEntries()!=0) DrawAcceptanceWeightingGraph(acceptanceWeightingGraphY_momSlice, stn+";y [mm];#theta_{y} [mrad];Acceptance weighting", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceMaps/MomBins/"+stn+"_AcceptanceGraphY_"+stepStr);
 			graph2DName = stn+"_WeightGraphY_"+stepStr;
 			acceptanceWeightingGraphY_momSlice->SetName(graph2DName.c_str());
 			acceptanceWeightingGraphY_momSlice->Write();

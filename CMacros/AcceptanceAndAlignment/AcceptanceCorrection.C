@@ -2,15 +2,9 @@
 
 Samuel Grant
 
-Main purpose: produce A_EDM acceptance scale factors.
+Produce the acceptance scale factors and their uncertainties. 
 
-Not sure where this comes in the analysis chain, probably after running vertical angle reweighting stuff and the alignment.
-So, that puts it at 4 or 5. 
-
-* Evaulate the impact of the acceptance weighting on "all decays" (draw A_EDM for the weighted sample)
-* Calculate A_EDM acceptance scale factors for the acceptance correction
-* Estimate the Gaussian uncertainty on said scale factors 
-* Perform this analysis with the regular samples, but also with the vertical angle width reweighted samples and the misaligned samples. 
+This should at the end of the simulation part of the EDM analysis chain. 
 
 */
 
@@ -20,34 +14,10 @@ So, that puts it at 4 or 5.
 #include "../Common/Utils.h"
 #include "../Common/FancyDraw.h"
 
+using namespace std;
+
 double xmin = 1000;
 double xmax = 2500;
-
-// Reset graph range (stops vector out-of-range errors down the line)
-TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
-
-	TGraphErrors *grOut = new TGraphErrors();
-	int count = 0;
-	
-	for(int i(0); i<grIn->GetN(); i++) { 
-
-		double x = grIn->GetX()[i];
-		double y = grIn->GetY()[i];
-		double ey = grIn->GetEY()[i];   
-
-    	if(x<xmin || x>xmax) continue;
-
-    	grOut->SetPoint(count, x, y);
-    	grOut->SetPointError(count, 0., ey);  
-
-    	count++;
-
-	}
-
-
-	return grOut;
-
-}
 
 void DrawOverlayA(TGraphErrors *gr_decays, TGraphErrors *gr_tracks, TGraphErrors *gr_weight, std::string title, std::string fname) {
 
@@ -285,6 +255,7 @@ TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) {
 	for(int i(0); i<gr1->GetN(); i++) {
 
 		double x =  gr1->GetX()[i];
+
 		if(x < 750 || x > 2750) continue;
 
 		double y1 = gr1->GetY()[i];
@@ -307,7 +278,6 @@ TH1D *GetResiduals(TGraphErrors *gr1, TGraphErrors *gr2) {
 void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) { 
 
   TCanvas *c = new TCanvas("c","c",800,600);
-
 
   // Convert to TH2D ?????????? 
 
@@ -336,7 +306,6 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
 
 	h2->SetTitle(title.c_str());
 
-	//hist->SetStats(2210);
 	gStyle->SetOptStat(0);//2210);
 			
 	h2->GetXaxis()->SetTitleSize(.04);
@@ -347,20 +316,11 @@ void DrawGausTrials(vector<TH1D*> hists_, std::string title, std::string fname) 
 	h2->GetYaxis()->CenterTitle(1);
 	h2->GetYaxis()->SetMaxDigits(4);
 
-	//h2->GetXaxis()->SetRangeUser(900, 2550);
 	h2->GetYaxis()->SetRangeUser(0, 1);
 
 	gStyle->SetPalette(53);
 
-	//h2->SetMarkerStyle(20);
-
 	h2->Scale(1./h2->GetMaximum());
-	//c->SetRightMargin(0.13);
-	//h2->GetZaxis()->SetLimits(0.9, 1);
-
-	//c->SetLogz();
-
-	//h2_dummy->Draw("COL");
 
 	h2->Draw("COL");
 
@@ -408,9 +368,10 @@ void GausTrials(TFile *fout, TH1D *h_ratio, int nTrials, string stn) {
 
 	}
 
-	DrawGausTrials(trialHists_, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/CorrectionResults/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
+	DrawGausTrials(trialHists_, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/"+stn+"_TrialsOverlay_AcceptanceWeightingVsMomentum");
 
 	return;
+
 }
 
 void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string fname) { 
@@ -431,7 +392,7 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
 	gr_.at(2)->GetYaxis()->SetMaxDigits(4);
 	gr_.at(2)->SetMarkerStyle(20); //  Full circle
 	
-	gr_.at(2)->GetYaxis()->SetRangeUser(0, 1);//0.35, 0.70);
+	gr_.at(2)->GetYaxis()->SetRangeUser(0, 1);
 
 	gr_.at(0)->SetMarkerStyle(20);
 	gr_.at(1)->SetMarkerStyle(20);
@@ -448,12 +409,12 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
 
  	// TLegend *l = new TLegend(0.65, 0.15, 0.85, 0.30); 
  	TLegend *l = new TLegend(0.15, 0.725, 0.45, 0.89); 
- 	 //l->SetNColumns(3);
-  l->SetBorderSize(0);
-  l->SetTextSize(24);
-  l->SetTextFont(44);
+ 	//l->SetNColumns(3);
+	l->SetBorderSize(0);
+	l->SetTextSize(24);
+	l->SetTextFont(44);
 
-  l->AddEntry(gr_.at(0), "Station 12");
+  	l->AddEntry(gr_.at(0), "Station 12");
  	l->AddEntry(gr_.at(1), "Station 18");
  	l->AddEntry(gr_.at(2), "Combined");
 
@@ -461,6 +422,8 @@ void OverlayAcceptanceFractionsA(vector<TGraphErrors*> gr_, string title, string
 
  	c->SaveAs((fname+".pdf").c_str());
  	c->SaveAs((fname+".png").c_str());
+
+	delete c;
 
 	return;
 
@@ -632,22 +595,12 @@ void OverlayAlignDiffGraphs(TGraphErrors *gr1, TGraphErrors *gr2, string shift, 
 
 }
 
-/*
-
-1. Get all files, including all four misalignment files
-2. Plot A_EDM
-3. Calculate the acceptance scale factors for each 
-4. Make difference plots 
-5. Include option to use Run-1 weighted histograms for the correction
-6. Write to output in a sensible way
-
-*/
 
 void Run(bool write, bool reweight = false, string dataset = "Run-1a") { 
 
 	vector<string> alignStr_ = {"plus1mm", "minus1mm", "plus0.1deg", "minus0.1deg"};
 
-	TString foutName = "../Plots/MC/Acceptance/Plots/acceptanceCorrection_250MeV_full";
+	TString foutName = "../../Plots/Sim/AcceptanceAndAlignment/AcceptanceCorrection/acceptanceCorrection";
 	if(reweight) foutName += "_reweight"+dataset; 
 	foutName += ".root";
 
@@ -657,12 +610,9 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 	fout->cd(); fout->mkdir("graphs"); fout->mkdir("hists"); fout->mkdir("trials");
 
 	// No weighting 	
-	TString finName_decays = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full.root";
-	TString finName_tracks = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full.root";
-
-	// Loop thro' 
-	//TString finName_align = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_"+align+"_full.root";
-
+	TString finName_decays = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_allDecays_LAB_250MeV_noQ_randCorr.root";
+	TString finName_tracks = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_trackTruth_LAB_250MeV_BQ_randCorr.root";
+	
 	TFile *fin_decays = TFile::Open(finName_decays);
 	TFile *fin_tracks = TFile::Open(finName_tracks);
 
@@ -679,17 +629,17 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 	for(auto& stn : stn_) {
 
 		// Acceptance weighted decays
-		TString finName_decaysAccWeight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_accWeight"+stn+"_full"; // _reweight"+stn+dataset+".root";
+		TString finName_decaysAccWeight = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_allDecays_LAB_250MeV_noQ_randCorr_accWeight"+stn+""; // _reweight"+stn+dataset+".root";
 		if(reweight) finName_decaysAccWeight += "_reweight"+stn+dataset;
 		finName_decaysAccWeight += ".root";
 		TFile *fin_decaysAccWeight = TFile::Open(finName_decaysAccWeight);
 
 		// Data weighted tracks
-		TString finName_decaysDataWeight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_allDecays_WORLD_250MeV_AQ_noVertCorr_full_reweight"+stn+dataset+".root";
+		TString finName_decaysDataWeight = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_allDecays_LAB_250MeV_noQ_randCorr_reweight"+stn+dataset+".root";
 		TFile *fin_decaysDataWeight = TFile::Open(finName_decaysDataWeight);
 
 		// Data weighted decays 
-		TString finName_tracksDataWeight = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_full_reweight"+stn+dataset+".root";
+		TString finName_tracksDataWeight = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_trackTruth_LAB_250MeV_BQ_randCorr_reweight"+stn+dataset+".root";
 		TFile *fin_tracksDataWeight = TFile::Open(finName_tracksDataWeight);
 
 		cout<<"\n---> Got weighted files for "<<stn<<", "<<finName_decaysAccWeight<<", "<<fin_decaysAccWeight<<", "<<finName_decaysDataWeight<<", "<<fin_decaysDataWeight<<", "<<finName_tracksDataWeight<<", "<<fin_tracksDataWeight<<endl;
@@ -709,17 +659,19 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 		gr_decaysDataWeight = ResetGraph(gr_decaysDataWeight, xmin, xmax);
 		gr_tracksDataWeight = ResetGraph(gr_tracksDataWeight, xmin, xmax);
 
-		// Draw overlay A
-		DrawOverlayA(gr_decays, gr_tracks, gr_decaysAccWeight, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_A");
+		cout<<"*** DEBUG ***"<<endl;
 
-		DrawOverlayD(gr_decays, gr_decaysDataWeight, gr_tracks, gr_tracksDataWeight, dataset, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_D_"+dataset, 0, 0.35);
+		// Draw overlay A
+		DrawOverlayA(gr_decays, gr_tracks, gr_decaysAccWeight, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/"+stn+"_gr_AEDM_vs_p_overlay_A");
+
+		DrawOverlayD(gr_decays, gr_decaysDataWeight, gr_tracks, gr_tracksDataWeight, dataset, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/"+stn+"_gr_AEDM_vs_p_overlay_D_"+dataset, 0, 0.35);
 
 		// I would ideally use gr_decaysAccWeight instead of gr_tracks, but it just does not give the correct tilt angle in the end
 		// Improving the weighting procedure should be a priority to make the most the acceptance correction
 		TGraphErrors *gr_ratio_main = GetAcceptanceFactors(gr_decays, gr_tracks);
 		if(reweight) gr_ratio_main = GetAcceptanceFactors(gr_decaysDataWeight, gr_tracksDataWeight);
 
-		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_acceptanceFactors_main_"+to_string(reweight));
+		DrawTGraphErrors(gr_ratio_main, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/"+stn+"_gr_AEDM_acceptanceFactors_main_"+to_string(reweight));
 	
 		//TGraphErrors *gr_ratio_main = new TGraphErrors(gr_decays, gr_weight);
 
@@ -738,6 +690,8 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 		fout->cd("hists");
 		h1_ratio_main->Write();
 
+		
+
 		// Draw acceptance weightings from Gaussian distribution for uncertainty estimate
 		fout->mkdir(("trials/"+stn).c_str());
 		fout->cd(("trials/"+stn).c_str());
@@ -752,7 +706,7 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 
 		for(auto& alignStr : alignStr_) { 
 
-			TString finName_align = "../Plots/MC/dMu/5.4e-18/Fits/edmFits_unblinded_trackTruth_WORLD_250MeV_BQ_noVertCorr_"+alignStr+"_full.root";
+			TString finName_align = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_trackTruth_LAB_250MeV_BQ_randCorr_"+alignStr+".root";
 			TFile *fin_align = TFile::Open(finName_align);
 
 			cout<<"\n---> Got alignment file for "<<stn<<": "<<finName_align<<", "<<fin_align<<endl;
@@ -762,12 +716,12 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 
 			cout<<"\n---> Got alignment graph for "<<gr_align<<endl;
 
-			DrawOverlayB(gr_decaysAccWeight, gr_tracks, gr_align, alignStr, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_vs_p_overlay_B_"+alignStr);
+			DrawOverlayB(gr_decaysAccWeight, gr_tracks, gr_align, alignStr, stn+";Momentum [MeV];A_{EDM} [mrad] / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/"+stn+"_gr_AEDM_vs_p_overlay_B_"+alignStr);
 
 			// Calculate the acceptance factors for misaligned sameples
 			TGraphErrors *gr_ratio_align = GetAcceptanceFactors(gr_decays, gr_align);
 
-			DrawTGraphErrors(gr_ratio_align, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/"+stn+"_gr_AEDM_acceptanceFactors_align_"+alignStr);
+			DrawTGraphErrors(gr_ratio_align, stn+";Decay vertex momentum [MeV];A_{EDM} acceptance factor / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/"+stn+"_gr_AEDM_acceptanceFactors_align_"+alignStr);
 
 			fout->cd("graphs");
 			gr_ratio_align->SetName((stn+"_ratio_align_"+alignStr).c_str());
@@ -834,7 +788,9 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 
 	} // stn loop
 
-	OverlayAcceptanceFractionsA(gr_ratio_main_, ";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/gr_AcceptanceScaleFactors_AEDM_vs_p_main_overlay");
+	OverlayAcceptanceFractionsA(gr_ratio_main_, ";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance factor / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/gr_AcceptanceScaleFactors_AEDM_vs_p_main_overlay");
+
+	// So dumb, vector<vector> is the wrong way around, to tired to figure out how to loop this properly
 
 	vector<TGraphErrors*> plus1mm_;
 	vector<TGraphErrors*> minus1mm_;
@@ -852,14 +808,14 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 
 	vector<vector<TGraphErrors*>> gr_ratio_align_2_ = {plus1mm_,  minus1mm_, plus1deg_, minus1deg_};
 
-	OverlayAcceptanceFractionsB(gr_ratio_align_2_, alignStr_, ";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance factor / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/gr_AcceptanceScaleFactors_AEDM_vs_p_align_overlay_");
+	OverlayAcceptanceFractionsB(gr_ratio_align_2_, alignStr_, ";Decay vertex momentum (station 12) [MeV];A_{EDM} acceptance factor / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/gr_AcceptanceScaleFactors_AEDM_vs_p_align_overlay_");
 
 	for(int i(0); i<stn_.size(); i++) { 
 
 		vector<TGraphErrors*> gr_tmp_ = gr_ratio_align_diff_.at(i);
 
-		OverlayAlignDiffGraphs(gr_tmp_.at(0), gr_tmp_.at(2), "1 mm", ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/gr_DiffAcceptanceScaleFactors_AEDM_vs_p_align_overlay_1mm");
-		OverlayAlignDiffGraphs(gr_tmp_.at(1), gr_tmp_.at(3), "0.1#circ", ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per 0.1#circ / 250 MeV", "../Images/MC/Acceptance/truth/FullCorrectionResults/gr_DiffAcceptanceScaleFactors_AEDM_vs_p_align_overlay_0.1deg");
+		OverlayAlignDiffGraphs(gr_tmp_.at(0), gr_tmp_.at(2), "1 mm", ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per mm / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/gr_DiffAcceptanceScaleFactors_AEDM_vs_p_align_overlay_1mm");
+		OverlayAlignDiffGraphs(gr_tmp_.at(1), gr_tmp_.at(3), "0.1#circ", ";Decay vertex momentum [MeV];#Delta A_{EDM} acceptance fraction per 0.1#circ / 250 MeV", "../../Images/Sim/AcceptanceAndAlignment/AcceptanceCorrection/gr_DiffAcceptanceScaleFactors_AEDM_vs_p_align_overlay_0.1deg");
 
 	}
 
@@ -878,10 +834,10 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 
 int main() { 
 
-	Run(false, false);
-
 	bool write = true;
-	bool reweight = true;
+	bool reweight = false;
+
+	Run(write, reweight);
 
 	// reweight according to Run-1 theta_y widths (just a check really) 
 
