@@ -1,3 +1,5 @@
+**NOTE: refer to the run1_paper branch for recent updates.
+
 # Analysis code for the Run-1 muon EDM search 
 
 * Base histograms are produced in **ReadNTup**
