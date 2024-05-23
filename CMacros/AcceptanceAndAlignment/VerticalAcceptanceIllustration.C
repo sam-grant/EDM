@@ -91,7 +91,7 @@ void DrawRatioPlot1D(TH2D *h2, TH1D *h1_decays, TH1D *h1_tracks, string slice, s
 	l->AddEntry(h1_tracks, "Reco vertices");
 	l->Draw("SAME");
 
-	c->SaveAs(("../../Images/Sim/Acceptance/VerticalAcceptanceIllustration/"+stn+"_RatioPlot"+slice+".pdf").c_str());
+	c->SaveAs(("../../Images/Sim/AcceptanceAndAlignment/VerticalAcceptanceIllustration/"+stn+"_RatioPlot"+slice+".pdf").c_str());
 
 	delete p1;
 	delete p2;
@@ -160,7 +160,7 @@ void Ratios(TH2D *h2_thetaY_vs_Y_decays, TH1D *h1_thetaY_decays, TH1D *h1_thetaY
 void Run() {	
 
 	// Get input, always use truth
-	TString finName = "../../Plots/Sim/Acceptance/BaseHistograms/trackerAcceptancePlots.truth.root";
+	TString finName = "../../Plots/Sim/AcceptanceAndAlignment/BaseHistograms/trackerAcceptancePlots.truth.root";
 	TFile *fin = TFile::Open(finName);
 
 	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
@@ -208,6 +208,8 @@ int main() {
 	return 0;
 
 }
+
+
  		// We do not need to keep re-running this stuff since it's just an illustration of what happens when you step through vertical position slices
 
  		// Now make ratios in slices of y

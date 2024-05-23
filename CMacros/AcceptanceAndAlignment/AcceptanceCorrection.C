@@ -634,13 +634,25 @@ void Run(bool write, bool reweight = false, string dataset = "Run-1a") {
 		finName_decaysAccWeight += ".root";
 		TFile *fin_decaysAccWeight = TFile::Open(finName_decaysAccWeight);
 
+		if(!fin_decaysAccWeight) { 
+			cerr << "---> Error: " << finName_decaysAccWeight << " could not be opened." << endl;
+		}
+
 		// Data weighted tracks
 		TString finName_decaysDataWeight = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_allDecays_LAB_250MeV_noQ_randCorr_reweight"+stn+dataset+".root";
 		TFile *fin_decaysDataWeight = TFile::Open(finName_decaysDataWeight);
 
+		if(!fin_decaysDataWeight) { 
+			cerr << "---> Error: " << finName_decaysDataWeight << " could not be opened." << endl;
+		}
+
 		// Data weighted decays 
 		TString finName_tracksDataWeight = "../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_trackTruth_LAB_250MeV_BQ_randCorr_reweight"+stn+dataset+".root";
 		TFile *fin_tracksDataWeight = TFile::Open(finName_tracksDataWeight);
+
+		if(!finName_tracksDataWeight) { 
+			cerr << "---> Error: " << finName_tracksDataWeight << " could not be opened." << endl;
+		}
 
 		cout<<"\n---> Got weighted files for "<<stn<<", "<<finName_decaysAccWeight<<", "<<fin_decaysAccWeight<<", "<<finName_decaysDataWeight<<", "<<fin_decaysDataWeight<<", "<<finName_tracksDataWeight<<", "<<fin_tracksDataWeight<<endl;
 

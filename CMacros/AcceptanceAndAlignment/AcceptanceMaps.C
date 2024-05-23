@@ -17,6 +17,11 @@ using namespace std;
 // Draw acceptance weighting map (2D)
 void DrawAcceptanceWeightingMap(TH2D *map, string title, string fname, TString drawOption) { 
 
+    if (!map) {
+        cerr << "---> Error: Null map provided!" << endl;
+        return;
+    }
+
 	TCanvas *c = new TCanvas("c","c",800,600);
 
 	map->SetTitle(title.c_str());
@@ -148,7 +153,12 @@ void Run(string momSlice, int rebin = 1) {
 	TString finName = "../../Plots/Sim/AcceptanceAndAlignment/BaseHistograms/trackerAcceptancePlots.truth.root";
 	TFile *fin = TFile::Open(finName);
 
-	cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
+	if (!fin) { 
+        cerr << "---> " << finName << " Could not be opened. Exiting." << endl;
+        return;
+    } else { 
+		cout<<"----> Opened file "<<finName<<", "<<fin<<endl;
+	}
 
 	// Book output
 	TString foutName = "../../Plots/Sim/AcceptanceAndAlignment/AcceptanceMaps/acceptanceMaps.thetaYvsY.truth.root";
