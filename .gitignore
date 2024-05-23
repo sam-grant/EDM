@@ -2,7 +2,8 @@
 *.pdf
 *.root
 *.dSYM
-*.exe
+*.out
 CMacros/BlindingStrings/
+CMacros/*/*.out
 Images
 Plots

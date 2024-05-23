@@ -8,7 +8,7 @@ Compare data and unweighted/reweighted simulation.
 
 Produce a file used in GetTiltAngle.C to estimate the reweighting uncertainty.
 
-Not very nice code, but it's functional.
+Ugly as all hell, does the job though.
 
 */
 
@@ -22,30 +22,6 @@ Not very nice code, but it's functional.
 using namespace std;
 
 double xmin = 1000; double xmax = 2500;
-
-TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
-
-	TGraphErrors *grOut = new TGraphErrors();
-	int count = 0;
-	
-	for(int i(0); i<grIn->GetN(); i++) { 
-
-		double x = grIn->GetX()[i];
-		double y = grIn->GetY()[i];
-		double ey = grIn->GetEY()[i];   
-
-    	if(x<xmin || x>xmax) continue;
-
-    	grOut->SetPoint(count, x, y);
-    	grOut->SetPointError(count, 0., ey);  
-
-    	count++;
-
-	}
-
-	return grOut;
-
-}
 
 // Gave up on the idea of loops today //
 
@@ -63,6 +39,11 @@ void Run(string stn) {
 	TFile *f8 = TFile::Open(("../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_trackTruth_LAB_250MeV_BQ_randCorr_reweight"+stn+"Run-1c.root").c_str());
 	TFile *f9 = TFile::Open(("../../Plots/Sim/5.4e-18/VerticalAngleFits/edmFits_unblinded_trackTruth_LAB_250MeV_BQ_randCorr_reweight"+stn+"Run-1d.root").c_str());
 
+    if (!f0 || !f1 || !f2 || !f3 || !f4 || !f5 || !f6 || !f7 || !f8 || !f9) {
+        cerr << "One or more files could not be opened. Exiting." << endl;
+        return;
+    }
+
 	TGraphErrors *gr0 = ResetGraph( (TGraphErrors*)f0->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY"), xmin, xmax );
 	TGraphErrors *gr1 = ResetGraph( (TGraphErrors*)f1->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY"), xmin, xmax );
 	TGraphErrors *gr2 = ResetGraph( (TGraphErrors*)f2->Get("MomentumBinnedAnalysis/ParameterScans/AEDM_vs_p_thetaY"), xmin, xmax );
@@ -74,6 +55,11 @@ void Run(string stn) {
 	TGraphErrors *gr7 = ResetGraph( (TGraphErrors*)f7->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_AEDM_vs_p_thetaY"), xmin, xmax );
 	TGraphErrors *gr8 = ResetGraph( (TGraphErrors*)f8->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_AEDM_vs_p_thetaY"), xmin, xmax );
 	TGraphErrors *gr9 = ResetGraph( (TGraphErrors*)f9->Get("MomentumBinnedAnalysis/ParameterScans/S12S18_AEDM_vs_p_thetaY"), xmin, xmax );
+
+    if (!gr0 || !gr1 || !gr2 || !gr3 || !gr4 || !gr5 || !gr6 || !gr7 || !gr8 || !gr9) {
+        cerr << "One or more graphs could not be retrieved. Exiting." << endl;
+        return;
+    }
 
 	TCanvas *c1 = new TCanvas("c1", "c1", 800, 600);
 
@@ -228,6 +214,8 @@ void Run(string stn) {
 
 	cout<<"---> Written plots to "<<foutName<<", "<<fout<<endl;
 
+	fout->Close();
+
   	TCanvas *c2 = new TCanvas("c2", "c2", 800, 600);
 
 	ratio->GetYaxis()->SetRangeUser(0.3, 0.8);
@@ -296,8 +284,8 @@ void Run(string stn) {
 
 int main() { 
 
-	Run("S12");
-	Run("S18");
+	// Run("S12");
+	// Run("S18");
 	Run("S12S18");
 
 	return 0;
