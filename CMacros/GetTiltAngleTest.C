@@ -1,6 +1,0 @@
-void GetTiltAngleTest() { 
-
-	
-	return;
-
-}
