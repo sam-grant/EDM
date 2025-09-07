@@ -1,0 +1,108 @@
+#include "Utils.h"
+
+double pLo = 1000;
+double pHi = 2500;
+
+void DrawHist(TH1D *hist, std::string title, std::string fname, bool MomBinnedAna) { 
+
+	TCanvas *c = new TCanvas("c","c",800,600);
+
+	hist->SetTitle(title.c_str());
+	gStyle->SetOptStat(0);
+			
+	hist->GetXaxis()->SetTitleSize(.04);
+	hist->GetYaxis()->SetTitleSize(.04);
+	hist->GetXaxis()->SetTitleOffset(1.1);
+	hist->GetYaxis()->SetTitleOffset(1.1);
+	hist->GetXaxis()->CenterTitle(1);
+	hist->GetYaxis()->CenterTitle(1);
+	hist->GetYaxis()->SetMaxDigits(4);
+	hist->SetLineColor(1);
+
+	hist->Draw("HIST");
+
+	gPad->Update();
+
+	if(MomBinnedAna) { 
+
+		int step = 250; 
+		int n_cuts = PMAX / step;
+		int lo = -1; 
+		int hi = -1;
+
+	    for(int i_cut = 0; i_cut < n_cuts; i_cut++) {
+
+	      lo = (pLo-step) + i_cut*step; 
+	      //hi = lo + i_cut*step;
+
+	      if(lo > pHi) break;
+
+		  TLine *line = new TLine(lo, gPad->GetUymin(), lo, gPad->GetUymax());
+
+		  //TLine *hiLine = new TLine(hi, gPad->GetUymin(), hi, gPad->GetUymax());
+		  line->SetLineColor(kRed);
+		  line->SetLineStyle(2);
+
+		  if(i_cut!=0) line->Draw("SAME");
+
+		}
+
+	} else { 
+
+		TLine *loLine = new TLine(pLo, gPad->GetUymin(), pLo, gPad->GetUymax());
+		TLine *hiLine = new TLine(pHi, gPad->GetUymin(), pHi, gPad->GetUymax());
+
+		loLine->SetLineColor(kRed);
+		hiLine->SetLineColor(kRed);
+		loLine->SetLineStyle(2);
+		hiLine->SetLineStyle(2);
+
+		loLine->Draw("SAME");
+		hiLine->Draw("SAME");	
+
+		TBox *bv = new TBox(pLo, gPad->GetUymin(), pHi, gPad->GetUymax());
+		bv->SetFillColor(kRed); bv->SetFillStyle(3005);
+		bv->Draw("SAME");
+	}
+	
+	c->SaveAs((fname+".C").c_str());
+	c->SaveAs((fname+".pdf").c_str());
+	c->SaveAs((fname+".png").c_str());
+
+	delete c;
+
+	return;
+
+}
+
+void Run() { 
+
+	TString finName = "../Plots/Data/dMu/Run-1/Plots/momentumDist_Run-1a.root";
+	// TString finName = "../Plots/MC/dMu/5.4e-18/Plots/RecoMomentum.root";
+
+	TFile *fin = TFile::Open(finName);//
+
+
+	TH1D *hist = (TH1D*)fin->Get("Momentum/S12S18_Momentum");
+
+	hist->Rebin(10);
+
+	// DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_momBinned", true);
+	// DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / "+to_string(int(hist->GetBinWidth(1)))+" MeV", "../Images/Data/dMu/Run-1/MainPlots/momentumDist_Run-1a_simulataneous", false);
+	
+	DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / 10 MeV", "../Images/MC/dMu/5.4e-18/MomentumDist/RecoMomentum_MomentumBinned", true);
+	DrawHist(hist, ";Decay vertex momentum [MeV];Decay vertices / 10 MeV", "../Images/MC/dMu/5.4e-18/MomentumDist/RecoMomentum_Simultaneous", false);
+
+	fin->Close();
+
+	return; 
+
+}
+
+void MomBinnedAnaIllustration() { 
+
+	Run();
+
+	return;
+
+}

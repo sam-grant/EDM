@@ -1,0 +1,1 @@
+std::string blindingString = "Inspiral coalescence ringdown";
