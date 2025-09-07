@@ -325,6 +325,30 @@ TH1D* GetResidual(TH1D* data, TF1* fit) {
 
 }
 
+TGraphErrors *ResetGraph(TGraphErrors *grIn, double xmin, double xmax) {
+
+	TGraphErrors *grOut = new TGraphErrors();
+	int count = 0;
+	
+	for(int i(0); i<grIn->GetN(); i++) { 
+
+		double x = grIn->GetX()[i];
+		double y = grIn->GetY()[i];
+		double ey = grIn->GetEY()[i];   
+
+    	if(x<xmin || x>xmax) continue;
+
+    	grOut->SetPoint(count, x, y);
+    	grOut->SetPointError(count, 0., ey);  
+
+    	count++;
+
+	}
+
+	return grOut;
+
+}
+
 std::tuple<double, double> QuadScanYRange(std::vector<TGraphErrors*> gr_) {
 
   double ymin = 1e6; double ymax = -1e6;

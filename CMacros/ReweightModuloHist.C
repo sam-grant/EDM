@@ -33,8 +33,6 @@ void DrawTH2(TH2D *hist, std::string title, std::string fname) {
 	return;
 }
 
-
-
 void ReweightModuloHist() { 
 
 	// File to be reweighted

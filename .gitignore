@@ -1,9 +1,14 @@
-*.png
-*.pdf
-*.root
-*.dSYM
-*.out
+# Ignore everything
+*
+
+# But keep these file types
+!*.C
+!*.py
+!*.sh
+!Makefile
+
+# Keep directories (so Git can traverse them)
+!*/
+
+# Hide this one!
 CMacros/BlindingStrings/
-CMacros/*/*.out
-Images
-Plots

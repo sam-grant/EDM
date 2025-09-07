@@ -344,8 +344,6 @@ TGraphErrors *GetDeltaPrimeFitReweight(TGraphErrors *gr_A, TF1 *dilutionFunc, st
 
     return gr_delta_prime;
 
-
-
 }
 
 void DrawDeltaPrimeFit(TGraphErrors *gr_delta_prime, string label, string title, string fname, bool orthogonal = false) {
@@ -1197,7 +1195,7 @@ void RunData(std::string config, std::string dataset, std::string blinding, bool
 
       double delta_prime_reweight = abs(f_delta_prime_reweight->GetParameter(0));
 
-      // ------------------ Fudge results together, god i hate this . ------------------ 
+      // ------------------ Put results together . ------------------ 
 
       // Br tilt is opposite to EDM... so add it 
       double result = delta_prime + Br;
